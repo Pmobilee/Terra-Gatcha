@@ -86,6 +86,7 @@ Each fact in the database contains:
 ```
 {
   id: string,
+  type: "fact" | "vocabulary" | "grammar" | "phrase",  // Extensible for language learning
   statement: string,           // The core fact (1-2 sentences)
   explanation: string,         // Why it's true / deeper context (2-3 sentences)
   quiz_question: string,       // The question asked during review
@@ -93,17 +94,52 @@ Each fact in the database contains:
   distractors: string[25],    // ~25 plausible wrong answers (similar domain)
   category: string[],          // Hierarchical: ["Science", "Biology", "Evolution"]
   rarity: Rarity,             // Determines which artifact tier contains this
-  difficulty: number,          // 1-5, affects distractor similarity
+  difficulty: number,          // 1-5, affects distractor similarity (not rarity)
   fun_score: number,          // 1-10, editorial rating of interestingness
   novelty_score: number,      // 1-10, how surprising is this to most people
   source_url: string,         // Where we verified this fact
   source_name: string,        // Human-readable source
   tags: string[],             // For cross-referencing and gap analysis
   related_facts: string[],    // IDs of related facts for "deep dive" chains
+  image_prompt: string,       // Prompt for generating pixel art illustration
+  image_url: string,          // Generated pixel art image for this fact
+
+  // Language learning fields (used when type != "fact")
+  language?: string,          // Target language code (e.g., "es", "ja")
+  pronunciation?: string,     // IPA or phonetic guide
+  example_sentence?: string,  // Usage in context
+  audio_url?: string,         // Pronunciation audio clip
 }
 ```
 
 **Why 25 distractors?** Each quiz shows 1 correct + 3 randomly selected distractors from the pool of ~25. This prevents players from memorizing the wrong answers by process of elimination. With 25 distractors, a fact can be quizzed hundreds of times before the player sees the same set of 3 wrong answers. This is critical for the spaced repetition system — players must actually *know* the answer, not just recognize which wrong answers they've seen before.
+
+**Difficulty vs Rarity**: These are independent axes. Difficulty (1-5) affects how similar the distractors are to the correct answer. Rarity (Common-Mythic) reflects how *awesome/memorable* the fact is. A Common artifact can have an easy or moderate fact, a Legendary has the most mind-blowing facts regardless of quiz difficulty.
+
+### Pixel Art Per Fact
+**Every fact gets a unique pixel art illustration.** We have GPU resources (RTX 3060) and the ComfyUI pipeline, so we generate one per fact.
+
+**Rules for fact images:**
+- The image must **illustrate the topic** but **NOT reveal the answer**
+  - YES: A pixel art octopus for "How many hearts does an octopus have?"
+  - NO: A pixel art octopus with 3 visible hearts
+- Images use **greyscale-to-color progression** based on mastery level:
+  - New/Learning: fully greyscale — mysterious, unknown
+  - Familiar: partial color bleeding through
+  - Known: mostly colored
+  - Mastered: full vibrant color
+  - This mirrors the Knowledge Tree leaf color system
+- Creates a visual incentive: players want to see their facts "come alive" with color
+- Image generation pipeline: auto-generated from `image_prompt` field via ComfyUI, reviewed for quality
+
+### Language Learning Schema (Future-Proofing)
+The fact schema is designed from the start to support language learning:
+- `type` field distinguishes facts from vocabulary/grammar/phrases
+- Language-specific fields (`language`, `pronunciation`, `example_sentence`, `audio_url`) are optional
+- A vocabulary "fact" works identically in the quiz system: "What does 'biblioteca' mean in Spanish?" + 25 plausible English word distractors
+- The Knowledge Tree can have a "Languages" major branch with sub-branches per language
+- Artifacts can contain language items in the same way they contain facts
+- This allows language learning to be a **natural extension** of the existing system, not a bolt-on
 
 ### Fact Categories (Wikipedia-Inspired Structure)
 Top-level branches (expandable over time):
@@ -212,6 +248,36 @@ As a fact's interval grows (meaning the player keeps getting it right over longe
 - The fact re-enters active rotation with a shortened interval
 - Leaves can regrow easily — this is not punishing, just visual feedback
 - Mastered facts that haven't been reviewed in a very long time may show slight color changes as a gentle reminder
+
+### In-Run Quiz Consistency Penalty
+If a player answers a fact correctly during a base study session but then gets it **wrong during a dive quiz gate**, there is a **heavy penalty** to that fact's SM-2 scores. The rationale: getting it right at home in a calm setting but wrong under pressure means you don't truly know it yet. This prevents false mastery and ensures the Anki system reflects genuine retention.
+
+## Study Session Experience
+
+### Setting & Mood
+Study sessions are a deliberate **contrast to the action of diving**:
+- The miner sits in a comfy chair, helmet off, relaxed posture
+- Calm ambient background (dome sounds, soft music)
+- The Knowledge Tree is visible nearby — you can see it react to your answers
+- This should feel like a peaceful, rewarding ritual, not a test
+
+### Study UI: Card Flip
+- Player sees the **question** on a card
+- They think about the answer (no timer, no pressure)
+- **Tap to flip** the card — reveals the answer
+- Player self-rates: "Got it" / "Didn't get it" (maps to SM-2 quality internally)
+- The pixel art illustration is shown alongside, gaining color as mastery increases
+
+### Session Length
+- Player chooses session size: **5 or 10 facts** per session
+- The system selects facts that are **due for review** (SM-2 scheduling)
+- If no facts are due, the system suggests new facts from recently ingested artifacts
+- Option to continue after the session ("Keep studying?" prompt)
+
+### Tree Growth During Study
+- When a fact is answered correctly, the corresponding **leaf on the Knowledge Tree shimmers and grows slightly**
+- Camera focuses on a **small subset of the tree** — the branch where the current fact lives — so the player sees the immediate impact of their learning
+- Over a full study session, the tree visibly changes — deeply satisfying
 
 ## Knowledge Tree
 

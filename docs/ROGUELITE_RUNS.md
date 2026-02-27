@@ -29,8 +29,55 @@ Every dive is a **self-contained roguelite run**. The player starts weak and get
 - **No real-time drain**: Players can sit and think about their next move, plan their path, read quiz questions carefully
 - **Quiz gate failures cost oxygen** — wrong answers are punished mechanically, but players aren't rushed while answering
 - **Layer oxygen recovery**: When descending to a new layer, the player receives a small oxygen bonus. This makes the "go deeper" risk more palatable — you get a reward for committing.
-- **Running out**: Player is automatically pulled to surface, **dropping random loot** on the way up
-- **IMPORTANT DESIGN NOTE**: The exact formula for loot loss on oxygen depletion needs careful research and testing. This is one of the most sensitive balance points in the game — too punishing kills motivation, too lenient removes tension. See `docs/OPEN_QUESTIONS.md` for details.
+- **Running out**: Player is automatically pulled to surface using **"The Sacrifice"** system (see below)
+
+### Oxygen Depletion: "The Sacrifice" (Loot Loss Model)
+When oxygen hits zero:
+1. **Emergency alert** — screen flashes, alarm sound, dramatic moment
+2. **Sacrifice screen** appears — player sees their full backpack contents
+3. Player must **choose what to drop** to reduce weight for emergency ascent
+4. How much to drop scales with depth: deeper = must sacrifice more (e.g., Layer 1 = drop 20%, Layer 3 = drop 50%, Layer 5 = drop 70%)
+5. Player picks which items to keep, discards the rest
+6. **Ascent animation** — pulled to surface with remaining items
+
+**Why "The Sacrifice" works:**
+- Player has **agency** — they choose what matters most (that Epic artifact? or the pile of Crystals?)
+- Creates memorable moments ("I had to drop 3 minerals to save that Legendary artifact")
+- Depth-scaling punishment makes going deeper genuinely risky
+- Less frustrating than random loss — you never feel cheated by bad RNG
+
+### Rescue Beacon (Consumable)
+- **Rare consumable** — craftable at the Materializer or found during dives
+- When activated: emergency extraction with **no loot loss**
+- Finding or crafting one is a significant event
+- Creates a pre-dive decision: "Do I bring my rescue beacon on this run?"
+- Economy sink: beacons cost meaningful minerals to craft
+
+## Camera & Viewport
+
+### View
+- **Miner is always centered** on screen. The mine scrolls around them.
+- **Relatively small viewport** — shows ~10-12 tiles in each direction. Claustrophobic by design: limited visibility creates tension and makes the scanner more valuable.
+- Fog of war beyond visibility radius. No minimap (intentional — discovery over information).
+- Player can scroll back within the **current layer** to review where they've been, but cannot physically return past a layer boundary.
+
+### Mining Feedback ("Juice")
+Every single tap must feel satisfying. The mining feedback loop:
+1. **Tap** → block shows crack lines (visual, per tap for multi-tap blocks)
+2. **Break** → block shatters with particles flying in all directions
+3. **Loot pop** → minerals/artifacts bounce out with a small physics pop
+4. **Collection** → most items auto-collect with a satisfying "suck" toward the backpack. Important/large items (artifacts, rare minerals) require a tap to collect, giving the player a moment to decide.
+5. **Backpack feedback** → brief glow on the backpack UI showing the item slotted in
+
+Different block types should have **different break sounds and particle colors**. Mining obsidian should feel vastly different from mining dirt.
+
+### Miner Visual State (Low Priority — Future Polish)
+The miner's appearance should reflect the run's progress:
+- Starts clean and fresh
+- Gets progressively dirtier/scuffed as blocks are mined
+- Gear visually changes as in-run upgrades are found (new pickaxe visible, scanner antenna, etc.)
+- Backpack visually bulges when inventory is nearly full
+- This is purely cosmetic polish — implement after core gameplay is solid.
 
 ## Mine Structure
 
@@ -60,16 +107,45 @@ Every dive is a **self-contained roguelite run**. The player starts weak and get
   - Better in-run upgrade drops
   - Tougher quiz gates
 
-### Layer Progression (Tentative)
-| Layer | Depth | Theme | Difficulty |
-|---|---|---|---|
-| Surface | 0-50 | Topsoil, loose rock | Easy — tutorial zone |
-| Shallow | 50-150 | Sedimentary, clay | Moderate |
-| Deep | 150-300 | Granite, ore veins | Hard |
-| Ancient | 300-500 | Fossilized layers, ruins | Very Hard |
-| Core | 500+ | Crystalline, primordial | Extreme |
+### Biome Shuffling
+**Biome order is randomized per run.** You might hit Ancient before Deep, or Crystalline before Fossilized. This is critical for replayability — players can't memorize a fixed progression. The only guarantee is that difficulty scales with depth (deeper = harder blocks, better loot, tougher gates), regardless of which biome appears.
 
-*Layer count, depth values, and themes are all tunable. More layers can be added over time.*
+### Biome Pool (Tentative)
+| Biome | Theme | Visual Identity | Unique Features |
+|---|---|---|---|
+| Topsoil | Loose earth, roots | Brown/green, organic | Easy blocks, tutorial |
+| Sedimentary | Clay, limestone | Tan/beige, layered | Fossils more common |
+| Granite | Hard rock, ore veins | Grey/metallic, sparkles | Dense mining, rich minerals |
+| Volcanic | Basalt, lava pockets | Red/orange, glowing | Hazard-heavy, rare loot |
+| Fossilized | Ancient remains, amber | Gold/brown, bones | Fossil pets, artifact-rich |
+| Crystalline | Gemstone caves | Blue/purple, prismatic | Highest-tier minerals |
+| Primordial | Core material, unknown | Iridescent, alien | Extreme difficulty, mythic artifacts |
+
+*Biome pool grows over time. Each run draws 3-5 biomes from the pool and shuffles them.*
+
+### Layer Sizing
+- Layers are not forced to a fixed time, but are **designed** with intended durations:
+  - A "medium dive" (2 oxygen) targeting ~10 minutes total → ~3 min per layer across 3 layers
+  - Layers get **physically larger** as you go deeper (more blocks to explore, more to find)
+  - This naturally creates pacing: early layers are quick warm-ups, deeper layers are where you spend real time
+
+### Layer Transition: The Descent Shaft
+At certain depths within a layer, the player encounters a **Descent Shaft** — a visually distinct vertical tunnel glowing with the next biome's colors.
+
+**Transition flow:**
+1. Scanner picks up the shaft from a few blocks away (distinct ping)
+2. Player mines to the shaft entrance
+3. Prompt appears: *"Descend to [Biome Name]? No return. Oxygen bonus: +X"*
+4. Player confirms → **falling animation** through a transition screen showing the biome change
+5. Land in the new layer with a small oxygen recovery bonus
+
+### Layer Entrance Challenge
+Each layer transition includes a **gate challenge** — harder than standard quiz gates:
+- **3 questions** instead of the usual 1
+- Or a mini-puzzle (arrange blocks, decode a pattern)
+- Or an especially hard block to mine through
+- Failing the entrance challenge still lets you through but with a significant oxygen penalty
+- This makes reaching each new layer feel **earned**
 
 ## Block Types
 
@@ -191,8 +267,9 @@ Certain upgrades should combo, and discovering synergies is one of the most addi
 ## Run End Conditions
 
 1. **Voluntary surface**: Player chooses to return. Keep all loot. Best outcome.
-2. **Oxygen depleted**: Forced to surface. **Drop random portion of loot.** Painful but survivable.
-3. **Reached maximum depth**: Surface with everything. Rare achievement.
+2. **Oxygen depleted**: "The Sacrifice" — choose what to drop based on depth penalty. Painful but player has agency.
+3. **Rescue beacon used**: Emergency extraction, keep everything. Rare and valuable.
+4. **Reached maximum depth**: Surface with everything. Rare achievement.
 
 ## Key Metrics to Track Per Run
 

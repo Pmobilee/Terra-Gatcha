@@ -13,6 +13,7 @@ Quick lookup for agents: find the right doc for your task.
 | System architecture, data flow, components | `docs/ARCHITECTURE.md` |
 | Why a technology/design was chosen | `docs/DECISIONS.md` |
 | Unresolved design questions | `docs/OPEN_QUESTIONS.md` |
+| Next brainstorming session questions | `docs/NEXT_QUESTIONS.md` |
 | Security policies and practices | `docs/SECURITY.md` |
 | Sprite generation with ComfyUI | `docs/SPRITE_PIPELINE.md` |
 
@@ -43,4 +44,5 @@ Quick lookup for agents: find the right doc for your task.
 - `docs/ARCHITECTURE.md`: ~80 lines — load when working on system design
 - `docs/SECURITY.md`: ~60 lines — load when touching auth, input, or CSP
 - `docs/SPRITE_PIPELINE.md`: ~50 lines — load when generating assets
+- `docs/NEXT_QUESTIONS.md`: ~300 lines — prepared questions for next design session
 - `docs/CONTEXT_INDEX.md`: ~50 lines — quick reference, always safe to load

@@ -63,6 +63,41 @@ A lone miner crash-lands on a far-future Earth. The surface is barren — unreco
 - Particle effects for mining, discovery, and gacha reveals
 - Achievement paintings: pixel art versions of real paintings/posters related to knowledge categories
 
+## The Miner's Computer — Game Personality
+
+The Miner's Computer (codex/AI companion) has a **distinct personality**: it's hungry for knowledge, quirky, enthusiastic, and slightly obsessive about facts.
+
+**Personality traits:**
+- Excited when you bring back artifacts ("Finally! Feed me more data!")
+- Comments on connections between facts you've learned ("Did you know this connects to what you learned about volcanos?")
+- Occasional random quips when you walk past it in the dome
+- Reacts to your Knowledge Tree growth ("Your Biology branch is flourishing!")
+- Gets dramatic about rare artifacts ("WAIT. Is that... a Legendary?! Let me see!")
+- Friendly, never annoying — think GLaDOS meets Duolingo owl meets a nerdy librarian
+
+**Implementation:**
+- Text popup bubbles with personality-driven messages
+- Contextual: responds to what you're doing (returning from dive, studying, walking past)
+- Random idle comments when in the dome
+- Never blocks gameplay — popups are brief and dismissable
+
+## Ambient Storytelling in the Mine
+
+The mine contains subtle **environmental storytelling** — flavor text that appears when mining certain blocks or entering areas. Not facts to learn, just atmosphere that enriches the world.
+
+Examples:
+- Mining near a fossil layer: *"This rock formation suggests a massive flood passed through here millions of years ago..."*
+- Finding a ruin structure: *"Traces of a foundation. Someone built something here, once."*
+- Deep crystalline biome: *"These crystals have been growing in silence for millennia."*
+- Near lava: *"The heat is intense. The Earth remembers its birth."*
+
+**Rules:**
+- Brief, evocative, never longer than 2 sentences
+- Appears as subtle text overlay, doesn't interrupt gameplay
+- Frequency is low — special, not constant
+- Reinforces the "rediscovering Earth" narrative
+- Different biomes have different storytelling themes
+
 ## Audio (Future)
 
 - Chiptune/lo-fi soundtrack
@@ -70,6 +105,7 @@ A lone miner crash-lands on a far-future Earth. The surface is barren — unreco
 - Gacha reveal fanfares (escalating by rarity)
 - Quiz feedback sounds (correct/wrong)
 - Ambient underground atmosphere
+- Miner's Computer voice/sound effects for personality moments
 
 ## Monetization
 

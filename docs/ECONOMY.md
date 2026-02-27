@@ -165,6 +165,32 @@ Examples:
 
 These are displayed in the player's Gallery in their dome. Collectible, shareable, visually rewarding.
 
+## Mastery → Free Play: The Oxygen Economy
+
+### Core Principle
+**Oxygen only buys playtime.** It does not buy minerals, crafting, pets, or anything else. The entire economy of upgrades, cosmetics, and base building runs on minerals. Oxygen is purely the ticket to enter the mine.
+
+This means mastery players who earn unlimited oxygen still need to engage with the mineral economy for progression. Unlimited play time ≠ unlimited resources.
+
+### Earning Oxygen Through Mastery (In-Run)
+During a dive, quiz gates are opportunities to **earn extra oxygen tanks**:
+- Players start a dive with their allocated oxygen (1-3 tanks)
+- **Gate 5** (5th quiz gate passed): earn +1 bonus oxygen tank
+- **Gate 10**: earn +1 bonus oxygen tank
+- **Gate 15**: earn +1 bonus oxygen tank
+- **Gate 20**: earn +1 bonus oxygen tank
+- A **perfect run** (all gates correct) in a deep dive could earn +4 tanks
+- Bonus tanks are stored and can be used for future dives
+
+**Anti-Spam Protection**: Players cannot just repeatedly do tiny shallow runs to farm quiz gates. Oxygen tanks earned are proportional to depth reached and quiz difficulty. Shallow gates give smaller oxygen rewards. Must always spend minimum oxygen to enter.
+
+### Rescue Beacon
+- Craftable consumable at the Materializer
+- When activated during oxygen depletion: emergency extraction with **zero loot loss**
+- Costs significant minerals to craft (economy sink)
+- Can also be found very rarely during dives
+- Pre-dive decision: bring the beacon (safety net) or save it for a harder run?
+
 ## Streak System
 
 - **Daily review streak**: Consecutive days of completing fact reviews

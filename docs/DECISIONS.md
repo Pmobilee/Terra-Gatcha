@@ -6,6 +6,72 @@ Log of key technical and design decisions with context and rationale. Newest fir
 
 ## Design Decisions (Game)
 
+### DD-021: "The Sacrifice" Loot Loss Model
+- **Date**: 2026-02-27
+- **Context**: What happens to loot when oxygen runs out?
+- **Decision**: Player gets a "sacrifice screen" where they choose which items to drop. Amount to drop scales with depth (deeper = drop more). Player has agency over what to keep.
+- **Rationale**: Player agency prevents frustration from random loss. Depth-scaling creates real risk for deep dives. Creates memorable moments ("I saved the Legendary artifact but lost all my crystals"). Model B from our options — "The Sacrifice."
+
+### DD-022: Biome Shuffling Per Run
+- **Date**: 2026-02-27
+- **Context**: Should layers always follow the same order?
+- **Decision**: Biome order is randomized per run. Difficulty still scales with depth. Pool of 7+ biomes, each run draws 3-5 and shuffles them.
+- **Rationale**: Massive replayability boost. Players can't memorize a fixed progression. Each run feels genuinely different. Combined with procedural generation for maximum variety.
+
+### DD-023: Descent Shaft Layer Transitions with Entrance Challenges
+- **Date**: 2026-02-27
+- **Context**: How do players move between layers?
+- **Decision**: Descent Shafts are visually distinct, detectable by scanner. Prompt shows layer name + oxygen bonus. Falling animation for transition. Each layer has an entrance challenge (3-question quiz gate or mini-puzzle).
+- **Rationale**: Shafts make layer transitions a discoverable event, not just a depth counter. Entrance challenges make each new layer feel earned. Oxygen bonus on descent rewards the risk.
+
+### DD-024: Card-Flip Study Sessions with Tree Growth
+- **Date**: 2026-02-27
+- **Context**: What does the study/review experience look like?
+- **Decision**: Card flip UI (see question → think → flip to see answer → self-rate). Miner sits in comfy chair, helmet off. Knowledge Tree visible and reacts to correct answers (leaf shimmers/grows). Session size: 5-10 facts, player's choice. Calm, relaxed contrast to diving.
+- **Rationale**: Card flip is the gold standard for spaced repetition UIs. The relaxed setting creates a deliberate contrast to the action of diving. Tree growth provides immediate visual feedback that learning has impact.
+
+### DD-025: Pixel Art Illustration Per Fact with Greyscale-to-Color Mastery
+- **Date**: 2026-02-27
+- **Context**: Should facts have images?
+- **Decision**: Every fact gets a unique pixel art illustration generated via ComfyUI. Images must NOT reveal the answer. Greyscale-to-color progression based on mastery level (new = grey, mastered = full color), mirroring the Knowledge Tree leaf system.
+- **Rationale**: Visual learning reinforcement. Greyscale-to-color creates a tangible "unlock" feeling as you master each fact. GPU resources available via existing ComfyUI pipeline. Adds huge visual polish to the learning experience.
+
+### DD-026: In-Run Quiz Gates Award Bonus Oxygen Tanks
+- **Date**: 2026-02-27
+- **Context**: How do mastery players earn free unlimited play?
+- **Decision**: Quiz gates at milestones (5th, 10th, 15th, 20th gate passed) award bonus oxygen tanks. A perfect deep run can earn +4 tanks. Tanks are stored for future dives. Anti-spam: shallow gates give less oxygen, minimum entry cost always applies.
+- **Rationale**: Creates a self-sustaining loop for knowledge masters. The better you learn, the more you can play, the more you learn. Milestone gates (not every gate) prevent exploitation.
+
+### DD-027: Oxygen Only Buys Playtime — Economy Separate
+- **Date**: 2026-02-27
+- **Context**: Could mastery players bypass the mineral economy?
+- **Decision**: Oxygen exclusively buys dive access. All upgrades, crafting, pets, cosmetics, and base building require minerals. Mastery players have unlimited playtime but still need to engage with mining/economy for progression.
+- **Rationale**: Prevents mastery from trivializing the entire game. Unlimited play ≠ unlimited power. Maintains the economic loop for all player types.
+
+### DD-028: Miner's Computer as Personality-Driven AI Companion
+- **Date**: 2026-02-27
+- **Context**: Should the codex have personality?
+- **Decision**: The Miner's Computer is a quirky, knowledge-hungry AI companion. Comments on artifacts, connections between facts, tree growth. Random quips when idle. Personality: enthusiastic, nerdy, slightly obsessive. Never annoying.
+- **Rationale**: Adds character and warmth to the game. Makes the codex feel alive, not just a database. Creates moments of delight. Reinforces the "rediscovering knowledge" theme with genuine enthusiasm.
+
+### DD-029: Ambient Environmental Storytelling in the Mine
+- **Date**: 2026-02-27
+- **Context**: Should the mine have atmospheric text?
+- **Decision**: Subtle flavor text appears when mining certain blocks or entering special areas. Brief (1-2 sentences), evocative, low frequency. Different biomes have different themes. Not facts to learn — just atmosphere.
+- **Rationale**: Enriches the world without adding learning load. Reinforces the "far-future Earth" setting. Makes the mine feel like a real place with history, not just a resource grid.
+
+### DD-030: Language Learning Schema Designed Early
+- **Date**: 2026-02-27
+- **Context**: Should we design for language learning now or later?
+- **Decision**: The fact schema includes `type` field (fact/vocabulary/grammar/phrase) and optional language-specific fields from the start. Knowledge Tree has a planned "Languages" branch.
+- **Rationale**: Bolting on language learning later would require schema migration and system redesign. Designing the schema now is cheap and ensures language learning is a natural extension of the existing system.
+
+### DD-031: Small Viewport, Centered Miner, No Minimap
+- **Date**: 2026-02-27
+- **Context**: How much of the mine should the player see?
+- **Decision**: Small viewport (~10-12 tiles visible per direction), miner always centered, no minimap. Player can scroll within current layer to review explored areas.
+- **Rationale**: Small viewport creates claustrophobia and tension. Makes the scanner upgrade genuinely valuable. No minimap preserves the feeling of exploration over information. Centering on the miner keeps the experience intimate.
+
 ### DD-001: Motherload-Style 2D Side-View Mining
 - **Date**: 2026-02-27
 - **Context**: Need to decide on mining perspective and movement model.
