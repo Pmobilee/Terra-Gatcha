@@ -17,13 +17,13 @@
   const hasTanks = $derived(availableTanks > 0)
   const estimatedOxygen = $derived(selectedTanks * BALANCE.OXYGEN_PER_TANK)
 
-  const diveLabel = $derived(() => {
+  const diveLabel = $derived.by(() => {
     if (selectedTanks <= 1) return 'Short Dive'
     if (selectedTanks === 2) return 'Medium Dive'
     return 'Long Dive'
   })
 
-  const diveTone = $derived(() => {
+  const diveTone = $derived.by(() => {
     if (selectedTanks <= 1) return 'short'
     if (selectedTanks === 2) return 'medium'
     return 'long'
