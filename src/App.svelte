@@ -8,7 +8,6 @@
     inventory,
   } from './ui/stores/gameState'
   import { playerSave } from './ui/stores/playerData'
-  import type { Fact } from './data/types'
 
   // Components
   import HUD from './ui/components/HUD.svelte'
@@ -17,6 +16,7 @@
   import FactReveal from './ui/components/FactReveal.svelte'
   import DivePrepScreen from './ui/components/DivePrepScreen.svelte'
   import BaseView from './ui/components/BaseView.svelte'
+  import DevPanel from './ui/components/DevPanel.svelte'
 
   const gm = GameManager.getInstance()
 
@@ -176,6 +176,8 @@
       <button type="button" onclick={() => currentScreen.set('base')}>Return to Base</button>
     </div>
   {/if}
+
+  <DevPanel />
 </div>
 
 <style>

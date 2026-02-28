@@ -20,12 +20,11 @@ const app = mount(App, {
 const save = initPlayer('teen')
 
 // Ensure oxygen tanks are available (replenish if 0)
-if (save.oxygen <= 0) {
-  playerSave.update(s => {
-    if (!s) return s
-    return { ...s, oxygen: BALANCE.STARTING_OXYGEN_TANKS }
-  })
-}
+playerSave.update(s => {
+  if (!s) return s
+  const oxygen = s.oxygen <= 0 ? BALANCE.STARTING_OXYGEN_TANKS : s.oxygen
+  return { ...s, oxygen }
+})
 
 // Seed 5 starting facts if player has none learned yet
 if (save.learnedFacts.length === 0) {
@@ -34,6 +33,10 @@ if (save.learnedFacts.length === 0) {
     addLearnedFact(fact.id)
   }
 }
+
+// Persist everything after seeding
+import { persistPlayer } from './ui/stores/playerData'
+persistPlayer()
 
 // Initialize game manager and load facts
 const gameManager = GameManager.getInstance()
