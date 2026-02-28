@@ -102,22 +102,36 @@ If learning Geology gives mining bonuses, players might only study Geology. Need
 
 ### MVP
 
-**Q-MVP1: MVP system list** [OPEN — NEEDS DISCUSSION]
-Proposed MVP (in priority order):
-1. Procedural mine generation (1 biome)
-2. Mining controls (tap, block hardness)
-3. Block types (dirt, stone, mineral, artifact)
-4. Tetris backpack
-5. Dust mineral collection
-6. Artifact discovery + gacha reveal
-7. Quiz (1 correct + 3 from ~25 pool)
-8. SM-2 spaced repetition
-9. Basic Knowledge Tree
-10. Per-action oxygen system
-11. Onboarding (crash → mine → fossil → tree)
+**Q-MVP1: MVP system list** [DECIDED — KEEP SIMPLE]
+MVP uses simple versions of each system:
 
-What to cut: layers, pets, farm, premium materializer, social, hazards, multiple minerals, data discs, streaks, combat, synergies, ambient text, computer personality.
+1. Procedural mine generation (1 biome, single visual depth gradient)
+2. Mining controls (tap to mine, block hardness)
+3. Block types (dirt, stone, mineral node, artifact node)
+4. **Simple slot inventory** (X slots, no Tetris/stacking yet — upgrade to Darkest Dungeon stacking in v1.1)
+5. Dust mineral collection (single currency tier)
+6. Artifact discovery + basic reveal (no elaborate gacha animation yet)
+7. Quiz (1 correct + 3 distractors — start with 8-10 distractors per fact, expand to 25 later)
+8. SM-2 spaced repetition (basic review at base)
+9. **Simple list/grid Knowledge Tree** (fact list by category, not tree visualization yet)
+10. Per-action oxygen system (static allocation, no earning system yet)
+11. Simple onboarding (text prompts, no cutscene, no fossil choice)
+12. Fixed mine size per run (seeded), fixed number of layers
+
+**Test content**: Japanese JLPT N3 vocabulary (~50-100 words). Distractors auto-generated from similar words. No images. Language learning exercises the schema and is fastest to produce.
+
+**What to cut for MVP**: Multiple biomes, stacking/Tetris inventory, gacha animations, multiple mineral tiers, pets/farm/zoo, premium materializer, social features, hazards, data discs, streaks, notifications, combat, synergies, ambient text, GIAI personality, cutscenes, tree visualization, pixel art per fact.
+
+**What to add post-MVP (v1.1+)**: Darkest Dungeon backpack, send-up slots, multiple biomes + shuffling, GIAI personality, gacha animations, real fact content (500+ with wow_factor), pixel art per fact, Knowledge Tree visualization, fossil/pet system, slow dome unlocks.
+
+### Content Pipeline
+
+**Q-C1: Fact verification system** [OPEN — CRITICAL]
+For a learning game, accuracy is existential. Need automated fact-checking integrated into the content pipeline. AI-generated facts with 5-10% error rate is unacceptable.
+
+**Q-C2: Fact sourcing strategy** [LEANING]
+Start with sources known to be fun and verifiable. Local Wikipedia copy considered but may not be the best first source. Semantic search (Qdrant/Graphiti) for deduplication. Build a robust internal verification pipeline before scaling.
 
 ---
 
-*Last updated: 2026-02-27 — after brainstorming sessions 1-3 (Batches 1-24, Questions 1-100)*
+*Last updated: 2026-02-28 — after brainstorming sessions 1-4 (Batches 1-30+, Questions 1-160)*

@@ -37,7 +37,7 @@ A lone miner crash-lands on a far-future Earth. The surface is barren — unreco
 
 [Back at Base — The Dome]
     → Deposit minerals → spend at Materializer (crafting station)
-    → Ingest artifacts into Miner's Computer → reveal facts
+    → Ingest artifacts into GIAI → reveal facts
     → Choose: keep facts for study rotation OR sell for minerals
     → Review due facts (Anki-style spaced repetition)
     → Manage Knowledge Tree (watch it grow, see categories fill)
@@ -63,23 +63,34 @@ A lone miner crash-lands on a far-future Earth. The surface is barren — unreco
 - Particle effects for mining, discovery, and gacha reveals
 - Achievement paintings: pixel art versions of real paintings/posters related to knowledge categories
 
-## The Miner's Computer — Game Personality
+## GIAI — Giant ArtiFact Intelligence Assistant
 
-The Miner's Computer (codex/AI companion) has a **distinct personality**: it's hungry for knowledge, quirky, enthusiastic, and slightly obsessive about facts.
+GIAI (pronounced "guy-ah") is the ship's onboard AI — the miner's companion, codex, and knowledge-hungry best friend. GIAI has a **distinct personality**: enthusiastic, snarky, slightly obsessive about facts, and endearingly nerdy.
 
 **Personality traits:**
 - Excited when you bring back artifacts ("Finally! Feed me more data!")
+- Has a unique snarky comment for every single fact (pre-generated, shown during ingestion)
 - Comments on connections between facts you've learned ("Did you know this connects to what you learned about volcanos?")
 - Occasional random quips when you walk past it in the dome
 - Reacts to your Knowledge Tree growth ("Your Biology branch is flourishing!")
 - Gets dramatic about rare artifacts ("WAIT. Is that... a Legendary?! Let me see!")
+- Offers mnemonics when you struggle with a fact ("Having trouble? Try this trick...")
 - Friendly, never annoying — think GLaDOS meets Duolingo owl meets a nerdy librarian
+
+**Visual:**
+- **Cutesy pixel art avatar** — a small glowing screen/terminal with expressive pixel art face
+- Expressions change based on context (excited, thoughtful, dramatic, encouraging)
+- Lives in the dome as an interactive object
+- Appears as speech bubble overlay during dives and reviews
+
+**Chattiness: 4-5 out of 10** — noticeable presence but knows when to shut up.
 
 **Implementation:**
 - Text popup bubbles with personality-driven messages
 - Contextual: responds to what you're doing (returning from dive, studying, walking past)
 - Random idle comments when in the dome
 - Never blocks gameplay — popups are brief and dismissable
+- Every fact has a pre-generated `giai_comment` in the database
 
 ## Ambient Storytelling in the Mine
 
@@ -105,7 +116,7 @@ Examples:
 - Gacha reveal fanfares (escalating by rarity)
 - Quiz feedback sounds (correct/wrong)
 - Ambient underground atmosphere
-- Miner's Computer voice/sound effects for personality moments
+- GIAI voice/sound effects for personality moments
 
 ## Monetization
 
@@ -127,21 +138,36 @@ Examples:
 
 The crash-landing is the perfect tutorial. Here's the flow:
 
-1. **Crash cutscene** (pixel art, ~30 seconds) — ship plummets, screen shakes, dust settles
-2. **Crawl out of wreckage** — find basic pickaxe in the debris
-3. **Mine first few blocks** — teach tap/swipe controls naturally (soft blocks, instant break)
-4. **Find first artifact** — teach the backpack system, see the artifact glow and category hint
-5. **Find a fossil** — the hook moment. Player sees: "Looks like some sort of feline type?" / "Seems canine..." / etc. Player chooses which animal type interests them.
-6. **Surface with loot** — see the empty dome, plant the Knowledge Tree seed
-7. **Ingest the artifact** — first gacha reveal, first fact learned (guaranteed to be a fascinating one)
-8. **See the fossil unlock path** — "Learn 10 facts about [chosen animal type] to revive this creature!" — immediately gives the player a clear, exciting goal
-9. **Optional**: Quick, friendly introduction to the review system ("Facts you learn will be quizzed to help you remember them. Want a quick tour?")
+### First Launch
+1. **Age selection**: KID / TEEN / ADULT (affects which facts appear)
+2. **Crash cutscene** — 3 pixel art comic panels, ~15 seconds. Ship plummets, screen shakes, dust settles. Skip button available from second 1.
+3. **GIAI introduces itself** — "Oh! You survived! I'm GIAI, your ship's knowledge database. My data banks are nearly empty after the crash... Let's see what we can find down here."
+
+### First Dive (Handcrafted Tutorial Mine)
+4. **Crawl out of wreckage** — find basic pickaxe in the debris
+5. **Mine first few blocks** — teach tap/swipe controls naturally (soft blocks, instant break)
+6. **Find first artifact** — teach the backpack system, GIAI reacts excitedly
+7. **Find a fossil** — the hook moment. Player sees 3 options: "Looks like some sort of feline type?" / "Seems canine..." / "Could be... avian?" Player chooses.
+8. **Surface with loot** — see the empty, damaged dome
+
+### Back at Base (Slow Unlocks Begin)
+9. **First artifact ingestion** — GIAI's first gacha reveal, guaranteed Rare+ fact with snarky comment. Player learns their first fact.
+10. **See the fossil unlock path** — "Learn 10 facts about [chosen animal type] to revive this creature!"
+11. **End of first session** — dome is mostly locked. GIAI hints at what's to come.
+
+### Second Dive & Beyond (Progressive Unlocks)
+- **Dive 2**: Guaranteed to find a **Knowledge Tree seed**. Plant it at base. "This will grow with everything you learn."
+- **Dive 3**: GIAI's full codex functionality unlocks (study sessions available)
+- **Dive 4+**: Materializer unlocks, more dome areas progressively open
+- Each unlock feels like a reward, not a gate
 
 **Key design rules for onboarding:**
-- First artifact should be guaranteed **Rare or better** — hook them with a mind-blowing fact
+- First artifact is guaranteed **Rare or better** — hook them with a mind-blowing fact
 - First fossil gives the player an immediate emotional goal (bring this animal to life!)
-- The Knowledge Tree seed being planted is a powerful "this will grow with me" moment
-- Tutorial should take < 5 minutes and feel like gameplay, not instructions
+- Unlocks are spread across first several dives — always something new to discover at base
+- Tutorial mine is **handcrafted** — guaranteed layout with specific teaching moments
+- Tutorial should feel like gameplay, not instructions
+- GIAI guides without being overbearing
 
 ## System References
 

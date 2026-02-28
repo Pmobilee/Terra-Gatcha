@@ -48,7 +48,7 @@ Each gacha moment should have **escalating visual and audio spectacle by rarity*
 - Mythic: unique animation, unforgettable moment
 
 ### At Base: Ingestion
-- Back at the dome, player feeds artifacts into the **Miner's Computer** (codex)
+- Back at the dome, player feeds artifacts into **GIAI** (the ship's AI codex)
 - The fact is revealed with a gacha-tier animation (see above)
 - Player then chooses:
   - **Keep for study rotation**: Fact enters the Anki-style review system
@@ -81,28 +81,82 @@ Facts must be **ultra-interesting**. The bar is high:
 
 Every fact should make the player think "wait, really?!" or "I need to tell someone this."
 
+### Fact Voice
+In the spirit of Anki, the core fact statement and quiz question must be **clear and concise** — optimized for memorization. The "wow factor" lives in a separate field:
+- `statement`: Clear, concise, memorizable. "Octopuses have three hearts."
+- `wow_factor`: The mind-blowing framing. "The ocean is full of aliens — octopuses have THREE hearts, blue blood, and can change color in milliseconds."
+- The wow_factor is shown during artifact ingestion (the gacha reveal moment) and on the fact card, but the quiz question tests the concise statement.
+- This separation keeps quizzes clean while making discovery exciting.
+
+### Fact Sources
+Every fact **credits its source** to the player. ("Source: NASA.gov")
+- Builds trust in the learning content
+- Teaches source literacy as a meta-skill
+- Shown on the fact card detail view (not during quizzes — would clutter)
+- Sources are stored in the database and verified during the quality pipeline
+
+### Age & Sensitivity Ratings
+Facts are rated for audience appropriateness:
+
+**Age tiers** (selected during first launch):
+| Tier | Label | Content |
+|---|---|---|
+| KID | Kid Mode | Family-safe, no violence, no controversy. Nature, science, fun facts. |
+| TEEN | Teen Mode | Broader content. History including conflicts, more complex topics. |
+| ADULT | Adult Mode | Full content. Controversial history, mature science topics, nuanced subjects. |
+
+**Per-fact fields:**
+- `age_rating`: "kid" | "teen" | "adult"
+- `sensitivity_level`: 0-5 (0 = universally safe, 5 = requires mature framing)
+- `sensitivity_note`: Brief note on why it's flagged (for editorial review)
+
+**Design rules:**
+- Default to KID mode for new accounts
+- Age selection on first launch (not gate-kept — honor system)
+- Core safe fact set available to all users before preferences are set
+- Category system helps self-selection (players choose topics they're interested in)
+- Controversial facts always include careful, neutral framing in the explanation field
+
 ### Fact Structure
 Each fact in the database contains:
 ```
 {
   id: string,
   type: "fact" | "vocabulary" | "grammar" | "phrase",  // Extensible for language learning
-  statement: string,           // The core fact (1-2 sentences)
+
+  // Core content
+  statement: string,           // Clear, concise, memorizable (1-2 sentences)
+  wow_factor: string,          // Mind-blowing framing shown during ingestion
   explanation: string,         // Why it's true / deeper context (2-3 sentences)
+  giai_comment: string,        // GIAI's snarky/enthusiastic comment for ingestion popup
+
+  // Quiz
   quiz_question: string,       // The question asked during review
   correct_answer: string,      // The right answer
   distractors: string[25],    // ~25 plausible wrong answers (similar domain)
+
+  // Classification
   category: string[],          // Hierarchical: ["Science", "Biology", "Evolution"]
   rarity: Rarity,             // Determines which artifact tier contains this
-  difficulty: number,          // 1-5, affects distractor similarity (not rarity)
+  difficulty: number,          // 1-5, affects distractor similarity (independent of rarity)
   fun_score: number,          // 1-10, editorial rating of interestingness
   novelty_score: number,      // 1-10, how surprising is this to most people
+  age_rating: "kid" | "teen" | "adult",
+  sensitivity_level: number,  // 0-5 (0 = universally safe)
+  sensitivity_note?: string,  // Why it's flagged (editorial)
+
+  // Sourcing
   source_url: string,         // Where we verified this fact
-  source_name: string,        // Human-readable source
+  source_name: string,        // Human-readable source (shown on fact card)
+
+  // Connections
   tags: string[],             // For cross-referencing and gap analysis
   related_facts: string[],    // IDs of related facts for "deep dive" chains
+
+  // Media
   image_prompt: string,       // Prompt for generating pixel art illustration
   image_url: string,          // Generated pixel art image for this fact
+  mnemonic?: string,          // Visual/verbal mnemonic to help remember
 
   // Language learning fields (used when type != "fact")
   language?: string,          // Target language code (e.g., "es", "ja")
@@ -110,8 +164,6 @@ Each fact in the database contains:
   example_sentence?: string,  // Usage in context
   audio_url?: string,         // Pronunciation audio clip
 }
-```
-
 **Why 25 distractors?** Each quiz shows 1 correct + 3 randomly selected distractors from the pool of ~25. This prevents players from memorizing the wrong answers by process of elimination. With 25 distractors, a fact can be quizzed hundreds of times before the player sees the same set of 3 wrong answers. This is critical for the spaced repetition system — players must actually *know* the answer, not just recognize which wrong answers they've seen before.
 
 **Difficulty vs Rarity**: These are independent axes. Difficulty (1-5) affects how similar the distractors are to the correct answer. Rarity (Common-Mythic) reflects how *awesome/memorable* the fact is. A Common artifact can have an easy or moderate fact, a Legendary has the most mind-blowing facts regardless of quiz difficulty.
@@ -132,11 +184,30 @@ Each fact in the database contains:
 - Creates a visual incentive: players want to see their facts "come alive" with color
 - Image generation pipeline: auto-generated from `image_prompt` field via ComfyUI, reviewed for quality
 
+### GIAI Comments (Snarky Ingestion Notes)
+Every fact has a pre-generated `giai_comment` — a short, personality-driven remark from GIAI that plays during artifact ingestion:
+- "Octopuses have three hearts? I can barely keep ONE processing unit running!"
+- "Cleopatra and the Moon landing... time is WEIRD, right?!"
+- "Blue whale hearts are the size of a car. I... I need a moment."
+- Comments should be: snarky, enthusiastic, occasionally self-deprecating, always brief
+- Generated during the fact creation pipeline (not at runtime)
+- Shown as a speech bubble from GIAI's avatar during the gacha reveal moment
+
+### Visual Mnemonics
+Facts can include a `mnemonic` field — a memory aid to help retention:
+- **Visual mnemonics** are the highest priority (images or described scenes that encode the answer)
+- Example: "Octopus + 3 hearts → picture an octopus juggling 3 hearts"
+- GIAI offers mnemonics when a player struggles with a fact (gets it wrong multiple times)
+- "Having trouble? Here's a trick: think of octopuses as the 'three-hearted aliens of the sea'..."
+- Mnemonics are generated during fact creation, not at runtime
+- Not every fact needs one — prioritize facts that players commonly get wrong (tracked via analytics)
+
 ### Language Learning Schema (Future-Proofing)
 The fact schema is designed from the start to support language learning:
 - `type` field distinguishes facts from vocabulary/grammar/phrases
 - Language-specific fields (`language`, `pronunciation`, `example_sentence`, `audio_url`) are optional
 - A vocabulary "fact" works identically in the quiz system: "What does 'biblioteca' mean in Spanish?" + 25 plausible English word distractors
+- For vocabulary, distractors are **automatically generated** from semantically similar words in the same language — much easier than fact distractors
 - The Knowledge Tree can have a "Languages" major branch with sub-branches per language
 - Artifacts can contain language items in the same way they contain facts
 - This allows language learning to be a **natural extension** of the existing system, not a bolt-on

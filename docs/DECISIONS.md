@@ -48,10 +48,10 @@ Log of key technical and design decisions with context and rationale. Newest fir
 - **Decision**: Oxygen exclusively buys dive access. All upgrades, crafting, pets, cosmetics, and base building require minerals. Mastery players have unlimited playtime but still need to engage with mining/economy for progression.
 - **Rationale**: Prevents mastery from trivializing the entire game. Unlimited play ≠ unlimited power. Maintains the economic loop for all player types.
 
-### DD-028: Miner's Computer as Personality-Driven AI Companion
+### DD-028: GIAI (Giant ArtiFact Intelligence Assistant) as AI Companion
 - **Date**: 2026-02-27
-- **Context**: Should the codex have personality?
-- **Decision**: The Miner's Computer is a quirky, knowledge-hungry AI companion. Comments on artifacts, connections between facts, tree growth. Random quips when idle. Personality: enthusiastic, nerdy, slightly obsessive. Never annoying.
+- **Context**: Should the codex have personality? What should it be called?
+- **Decision**: Named GIAI ("guy-ah"). Quirky, knowledge-hungry AI companion with cutesy pixel art avatar. Comments on artifacts, connections between facts, tree growth. Has a pre-generated snarky comment for every single fact. Random quips when idle. Personality: enthusiastic, nerdy, slightly obsessive. Chattiness: 4-5/10. Never annoying.
 - **Rationale**: Adds character and warmth to the game. Makes the codex feel alive, not just a database. Creates moments of delight. Reinforces the "rediscovering knowledge" theme with genuine enthusiasm.
 
 ### DD-029: Ambient Environmental Storytelling in the Mine
@@ -65,6 +65,96 @@ Log of key technical and design decisions with context and rationale. Newest fir
 - **Context**: Should we design for language learning now or later?
 - **Decision**: The fact schema includes `type` field (fact/vocabulary/grammar/phrase) and optional language-specific fields from the start. Knowledge Tree has a planned "Languages" branch.
 - **Rationale**: Bolting on language learning later would require schema migration and system redesign. Designing the schema now is cheap and ensures language learning is a natural extension of the existing system.
+
+### DD-032: Unique Procedural Generation Per Biome
+- **Date**: 2026-02-28
+- **Context**: Should biomes have distinct generation algorithms?
+- **Decision**: Yes. Each biome has structurally unique generation (Sedimentary = horizontal fossil bands, Volcanic = lava rivers, Crystalline = open gem caverns, etc.). Not just palette swaps.
+- **Rationale**: Biomes feeling genuinely different is critical for replayability. Combined with biome shuffling, this ensures each run looks AND plays differently.
+
+### DD-033: Pathfinding Validation During Mine Generation
+- **Date**: 2026-02-28
+- **Context**: Can players get stuck in the mine?
+- **Decision**: Run pathfinding validation during procedural generation. Ensure no sealed pockets of unbreakable blocks. All areas must be reachable.
+- **Rationale**: Getting stuck with no way forward is the worst possible player experience. Validation is cheap at generation time and prevents frustration.
+
+### DD-034: Spelunky-Style Micro-Structures in Procedural Mines
+- **Date**: 2026-02-28
+- **Context**: How to make procedural generation feel hand-crafted?
+- **Decision**: Pre-designed micro-structures (ancient libraries, crystal caverns, rest alcoves, quote stones) are embedded within procedural grids. Biome-appropriate pool, not every layer has one.
+- **Rationale**: Micro-structures create memorable moments within procedural variety. The Spelunky approach is proven to make generated levels feel designed.
+
+### DD-035: Empty Caverns with Readable Content
+- **Date**: 2026-02-28
+- **Context**: The mine needs pacing — not just block after block.
+- **Decision**: Pre-cleared caverns serve as "rest stops" with upgrade crates, oxygen caches, or readable content (famous quotes, philosophical passages — enrichment, not quiz material).
+- **Rationale**: Pacing is critical for session enjoyment. Constant dense mining is exhausting. Breathing rooms with readable content fit the knowledge theme.
+
+### DD-036: Descent Shaft Requires Exploratory Search
+- **Date**: 2026-02-28
+- **Context**: Where does the layer transition appear?
+- **Decision**: Not at the bottom — placed randomly (biased lower half). Scanner detects it. Finding the shaft IS part of the gameplay.
+- **Rationale**: Exploration is rewarded. Players balance "keep mining" vs "find the exit." Scanner becomes more valuable.
+
+### DD-037: Darkest Dungeon-Style Backpack with Stacking
+- **Date**: 2026-02-28
+- **Context**: Tetris shapes or something else for inventory?
+- **Decision**: Darkest Dungeon-inspired slot system with stacking. Dust stacks 50/slot, Shards 20, Crystals 5, Core Fragments 2, Primordial Essence 1. Artifacts take 1-3 slots by rarity. Fossils take 3 slots. Items can be rotated. Auto-place first, manual rearrange available.
+- **Rationale**: Stacking creates natural value tiers (rare items take proportionally more space). Simpler to implement than Tetris shapes while maintaining meaningful inventory decisions. Darkest Dungeon proved this system works.
+
+### DD-038: The Decision Screen (Two-Panel Loot Management)
+- **Date**: 2026-02-28
+- **Context**: How does the player manage a full backpack when finding new loot?
+- **Decision**: Split-screen: left panel shows new items on a stone slab with cloth ("The Cloth"), right panel shows current backpack. Player drags between them. Walking away = items on cloth lost forever.
+- **Rationale**: Visual clarity for the most important micro-decisions in the game. The stone slab/cloth visual adds ceremony to loot moments. Walking away = permanent loss creates urgency without time pressure.
+
+### DD-039: Per-Layer Send-Up Slots
+- **Date**: 2026-02-28
+- **Context**: How can players secure loot before going deeper?
+- **Decision**: At each Descent Shaft (before descending), player can "send up" items to surface for safekeeping. Slots scale with depth: Layer 1→2 gets 1 slot, Layer 2→3 gets 2, etc. Sent items are guaranteed safe even if oxygen runs out later.
+- **Rationale**: Brilliant strategic layer. "Do I send up this Rare artifact now (safe) or gamble deeper?" Reduces sting of oxygen depletion. Creates compound decisions at every layer boundary. Rewards careful players.
+
+### DD-040: GIAI Named "Giant ArtiFact Intelligence Assistant"
+- **Date**: 2026-02-28
+- **Context**: The computer companion needs a name and identity.
+- **Decision**: GIAI ("guy-ah"), cutesy pixel art avatar with expressive face. Every fact has a pre-generated snarky GIAI comment. Visual mnemonics offered when player struggles.
+- **Rationale**: A named, visible companion creates emotional attachment. Pre-generated comments ensure personality without runtime AI cost. Mnemonics directly support the learning mission.
+
+### DD-041: Snarky GIAI Comment Per Fact + Visual Mnemonics
+- **Date**: 2026-02-28
+- **Context**: How to make artifact ingestion feel personal?
+- **Decision**: Every fact has a `giai_comment` field generated during the content pipeline. Shown during gacha reveal. Also: `mnemonic` field with visual/verbal memory aids, offered by GIAI when player struggles.
+- **Rationale**: Personality is content. Each fact feels like a conversation with GIAI, not just a database entry. Mnemonics are proven to dramatically improve retention.
+
+### DD-042: Age Rating System (KID/TEEN/ADULT)
+- **Date**: 2026-02-28
+- **Context**: Facts range from universally safe to politically sensitive.
+- **Decision**: Three age tiers selected at first launch (KID/TEEN/ADULT). Each fact has `age_rating` and `sensitivity_level` fields. Core safe set available to all before preferences set. Honor system, not gate-kept.
+- **Rationale**: Widens audience from children to adults. Allows mature content (history, science) without alienating younger players. Category system + age rating = self-selecting content.
+
+### DD-043: Handcrafted First Mine + Slow Progressive Dome Unlocks
+- **Date**: 2026-02-28
+- **Context**: How to handle onboarding and base progression?
+- **Decision**: First mine is handcrafted (guaranteed layout, teaching moments). Dome unlocks progressively: Dive 1 = artifact + fossil. Dive 2 = Knowledge Tree seed. Dive 3 = GIAI codex. Dive 4+ = Materializer, more areas. Always something new.
+- **Rationale**: Handcrafted first experience ensures quality first impression. Slow unlocks create anticipation and reward repeated play. Each dive has a "new thing to discover at base."
+
+### DD-044: Fact Voice — Concise Statement + Separate Wow Factor
+- **Date**: 2026-02-28
+- **Context**: How should facts be written for Anki effectiveness?
+- **Decision**: Core `statement` is clear and concise (Anki-optimized for memorization). Separate `wow_factor` field has the mind-blowing framing (shown during gacha reveal). Quiz tests the concise statement.
+- **Rationale**: Anki works best with clear, atomic facts. But discovery needs spectacle. Separating these serves both goals — clean quizzes AND exciting reveals.
+
+### DD-045: Fact Source Credits Shown to Player
+- **Date**: 2026-02-28
+- **Context**: Should facts cite their sources?
+- **Decision**: Yes. Source name shown on fact card detail view. Not during quizzes (would clutter).
+- **Rationale**: Builds trust. Teaches source literacy. Distinguishes Terra-Gacha from trivia games with unverified content.
+
+### DD-046: Japanese N3 Vocabulary as First Test Content
+- **Date**: 2026-02-28
+- **Context**: What content to start testing with?
+- **Decision**: Generate initial test facts using Japanese JLPT N3 vocabulary. Distractors are semantically similar words (easy to auto-generate for vocabulary). No images needed for vocab. Enables testing core loop immediately.
+- **Rationale**: Language vocabulary is the easiest content type to generate at scale (distractors from same-domain word lists). Tests the language learning schema early. Personally motivating for the developer.
 
 ### DD-031: Small Viewport, Centered Miner, No Minimap
 - **Date**: 2026-02-27

@@ -1,10 +1,10 @@
 # Next Session Questions — Terra Miner
 
-Deep questions for the next brainstorming session. These focus on implementation-critical details, unexplored systems, and areas where the design needs pressure-testing.
+Questions prepared for brainstorming. Batches 25-30 have been **answered** (session 4, 2026-02-28). Remaining batches 31-36 are still open for future discussion.
 
 ---
 
-## Batch 25: Procedural Generation Deep Dive
+## Batch 25: Procedural Generation Deep Dive [ANSWERED]
 
 The mine is the core experience. We need to get generation right.
 
@@ -22,7 +22,7 @@ The mine is the core experience. We need to get generation right.
 
 ---
 
-## Batch 26: Tetris Backpack — The Micro-Decisions
+## Batch 26: Tetris Backpack — The Micro-Decisions [ANSWERED — Redesigned to Darkest Dungeon stacking]
 
 The backpack might be the most interaction-heavy UI in the game.
 
@@ -45,7 +45,7 @@ The backpack might be the most interaction-heavy UI in the game.
 
 ---
 
-## Batch 27: The Miner's Computer Personality — Writing the Character
+## Batch 27: The Miner's Computer → GIAI [ANSWERED — Named GIAI]
 
 **112.** What's the Computer's **name**? "The Miner's Computer" is functional but not lovable. Options:
    - ARIA (Artifact Research & Intelligence Assistant)
@@ -64,7 +64,7 @@ The backpack might be the most interaction-heavy UI in the game.
 
 ---
 
-## Batch 28: Onboarding — Minute by Minute
+## Batch 28: Onboarding — Minute by Minute [ANSWERED]
 
 **117.** The crash cutscene — how long, how elaborate? Options:
    - 3 panels, comic-style, 15 seconds (fast, gets to gameplay)
@@ -82,7 +82,7 @@ The backpack might be the most interaction-heavy UI in the game.
 
 ---
 
-## Batch 29: Analytics & Metrics — What to Measure
+## Batch 29: Analytics & Metrics — What to Measure [STILL OPEN]
 
 **122.** What **retention metrics** matter most for a learning game?
    - D1/D7/D30 retention (standard mobile)
@@ -103,7 +103,7 @@ The backpack might be the most interaction-heavy UI in the game.
 
 ---
 
-## Batch 30: The Fact Quality Problem
+## Batch 30: The Fact Quality Problem [ANSWERED]
 
 This is arguably the biggest non-technical challenge in the entire game.
 
@@ -123,7 +123,7 @@ This is arguably the biggest non-technical challenge in the entire game.
 
 ---
 
-## Batch 31: Sound Design as Game Feel
+## Batch 31: Sound Design as Game Feel [STILL OPEN]
 
 **131.** Mining sounds are critical to "juice." Should different block types have **completely different sounds** (crumbly dirt, sharp stone crack, crystalline chime) or variations of one sound?
 
@@ -137,7 +137,7 @@ This is arguably the biggest non-technical challenge in the entire game.
 
 ---
 
-## Batch 32: Edge Cases & Weird Player Behavior
+## Batch 32: Edge Cases & Weird Player Behavior [STILL OPEN]
 
 **136.** What if a player **only studies and never mines**? They'd have no new facts to study (no artifacts). Should the base provide a small trickle of facts via pop-up reviews, or force mining for new content?
 
@@ -155,7 +155,7 @@ This is arguably the biggest non-technical challenge in the entire game.
 
 ---
 
-## Batch 33: Competitive & Social Dynamics
+## Batch 33: Competitive & Social Dynamics [STILL OPEN]
 
 **141.** **Leaderboards** — what do they rank?
    - Deepest single dive
@@ -186,7 +186,7 @@ This is arguably the biggest non-technical challenge in the entire game.
 
 ---
 
-## Batch 34: Long-Term Content & Live Ops
+## Batch 34: Long-Term Content & Live Ops [STILL OPEN]
 
 **146.** How often should new facts be added? Weekly batch? Monthly? Should there be a content roadmap tied to game events?
 
@@ -204,7 +204,7 @@ This is arguably the biggest non-technical challenge in the entire game.
 
 ---
 
-## Batch 35: The MVP — What to Build First
+## Batch 35: The MVP — What to Build First [ANSWERED — Keep Everything Simple]
 
 These questions are specifically about scoping the MVP to be buildable and testable.
 
@@ -230,7 +230,7 @@ These questions are specifically about scoping the MVP to be buildable and testa
 
 ---
 
-## Batch 36: Technical Architecture for Game Systems
+## Batch 36: Technical Architecture for Game Systems [STILL OPEN]
 
 **161.** State management: the game has complex state (mine grid, backpack contents, oxygen level, active upgrades, SM-2 data per fact, Knowledge Tree). Should this all live in Phaser's scene data, or do we need a separate **state management layer** (e.g., a central store that both Phaser and Svelte can read)?
 
@@ -244,5 +244,5 @@ These questions are specifically about scoping the MVP to be buildable and testa
 
 ---
 
-*Prepared for next session — 2026-02-27*
-*Total questions asked so far: 100 answered, 65 new questions prepared*
+*Updated: 2026-02-28*
+*Total: 160 questions asked, ~130 answered. Remaining open: Batches 29, 31-34, 36 (~35 questions)*

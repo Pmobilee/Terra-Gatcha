@@ -88,11 +88,53 @@ The miner's appearance should reflect the run's progress:
 - Each run generates a completely new mine layout
 
 ### Procedural Generation
+- **Unique generation algorithm per biome** — not just palette swaps. Each biome has distinct structural patterns:
+  - Sedimentary: horizontal layers with fossil bands
+  - Volcanic: lava rivers, obsidian walls, heat vents
+  - Crystalline: open gem caverns, crystal clusters on walls
+  - Fossilized: bone formations, amber deposits in clusters
+  - etc.
 - Random distribution of mineral nodes, artifact nodes, and empty/rock blocks
-- **Biome layers** at different depths with different loot tables, visuals, and hazards
 - Environmental hazards vary per run (lava pockets, gas vents, cave-ins — future: creatures)
 - Density and quality of loot increases with depth
-- Special structures: caverns, veins, ruins (future)
+- **Pathfinding validation**: generation must verify the mine is always solvable — no sealed-off pockets of unbreakable blocks that trap the player. Run pathfinding check during generation to ensure all areas are reachable.
+
+### Micro-Structures (Spelunky-Style)
+Pre-designed small rooms/formations embedded within the procedural grid. These make procedural generation feel hand-crafted:
+- **Ancient Library**: Small room with guaranteed artifact nodes and readable lore
+- **Crystal Cavern**: Open space with mineral clusters on walls
+- **Collapsed Tunnel**: Forces a detour, mining around debris
+- **Rest Alcove**: Empty pocket with an oxygen cache and maybe an upgrade crate
+- **Ruins**: Broken walls with embedded artifacts, ambient storytelling text
+- **Quote Stones**: Readable blocks with famous quotes, philosophical musings, interesting passages — not quiz material, just enrichment
+
+Micro-structures are selected from a biome-appropriate pool and placed during generation. Not every layer has one, making them a pleasant surprise.
+
+### Empty Caverns (Pacing)
+Pre-cleared spaces the player can walk through without mining. Essential for pacing:
+- Break up dense mining sections with moments of breathing room
+- Can contain upgrade crates, quiz gates, readable content, or just atmosphere
+- Larger caverns at deeper layers (more dramatic reveals)
+- Some caverns have ambient storytelling text on the walls
+
+### Default Node Density (Tunable)
+Starting values for a ~30x50 block layer (easily adjustable):
+- **Mineral nodes**: 15-20 per layer
+- **Artifact nodes**: 3-5 per layer
+- **Upgrade crates**: 1-2 per layer
+- **Quiz gates**: 1-2 per layer
+- **Oxygen caches**: 1 per layer
+- **Micro-structures**: 0-1 per layer (not guaranteed)
+- **Empty caverns**: 1-2 per layer
+
+All densities scale with depth (deeper = slightly denser, higher quality drops).
+
+### Descent Shaft Placement
+The Descent Shaft is **not at the bottom** — it requires exploratory search:
+- Placed at a random position within the layer, biased toward the lower half
+- Scanner can detect it from a moderate range (distinct ping)
+- Finding the shaft IS part of the gameplay — exploration is rewarded
+- Players must balance "keep mining for loot" vs. "find the shaft before oxygen runs low"
 
 ### Depth Layers & Point of No Return
 - The mine is divided into discrete **layers** (depth zones)
@@ -168,20 +210,55 @@ Each layer transition includes a **gate challenge** — harder than standard qui
 
 ## Backpack (Inventory System)
 
-### Tetris-Style Slotting
-- Items have **shapes** (1x1, 2x1, L-shape, T-shape, etc.)
-- Backpack is a small grid that items must physically fit into
-- **Starting size is very small** (e.g., 3x3 or 4x3 grid)
-- Creates agonizing trade-off decisions: carry minerals or artifacts? Keep the big rare crystal or two small common ones?
+### Darkest Dungeon-Style Stacking
+Inspired by Darkest Dungeon's inventory rather than Tetris. Items occupy **slots** with **stacking**:
+- Backpack has a limited number of **slots** (e.g., 6-8 starting slots)
+- Common minerals (Dust) stack high: **50 per slot**
+- Uncommon minerals (Shards) stack moderately: **20 per slot**
+- Rare minerals (Crystals): **5 per slot**
+- Epic minerals (Core Fragments): **2 per slot**
+- Legendary minerals (Primordial Essence): **1 per slot**
+- Artifacts occupy 1-3 slots depending on rarity (Common = 1, Rare = 2, Legendary = 3)
+- Fossils are large: **3 slots** — real sacrifice to carry one
+
+### Backpack UI
+- **Not always visible** — a small backpack icon on screen shows fill level (color-coded: green/yellow/red)
+- **Tap the icon** to open backpack overlay
+- Backpack opens automatically when an important decision needs to be made (new loot when full)
+- Items can be **rotated** when placing (adds puzzle element for tight fits)
+- New loot **auto-places** in the first available spot — player can rearrange manually if they want
+
+### The Decision Screen (When Full)
+When the backpack is full and new loot is found:
+1. Screen splits into two panels:
+   - **Left: "The Cloth"** — a stone slab with cloth showing the new item(s) just found
+   - **Right: "Your Backpack"** — current contents, fully interactable
+2. Player can drag items between the cloth and backpack to swap
+3. If the player **closes/walks away**, anything left on the cloth is **lost forever**
+4. Creates those agonizing "what do I keep" moments with full visual clarity
+
+### Send-Up Slots (Per Layer)
+At each layer transition (before descending), the player can **send items to the surface** for safekeeping:
+- **Layer 1 → 2**: 1 send-up slot available
+- **Layer 2 → 3**: 2 send-up slots available
+- **Layer 3 → 4**: 3 send-up slots available
+- **Layer 4 → 5**: 4 send-up slots available
+
+**How it works:**
+- At the Descent Shaft, before choosing to descend, a "Send Up" panel appears
+- Player selects items from their backpack to secure (matching the slot count for that layer)
+- Sent items are **guaranteed safe** — even if oxygen runs out later, these are kept
+- A slot can hold: one artifact, one stack of minerals, one fossil piece, etc.
+- This creates a powerful strategic layer: "Do I send up this Rare artifact now (safe) or gamble that I'll find something better below?"
 
 ### Capacity Progression
-- **Permanent upgrades** (at base): Slightly expand backpack grid
+- **Permanent upgrades** (at base): Slightly expand number of backpack slots
 - **In-run upgrades**: Find backpack expansion drops during dives (temporary, lost after run)
 - Both are intentionally limited — the tension of limited space is a core mechanic
 
-### When Full
-- Player must **choose what to drop** to make room
-- Dropped items are **lost forever** (no going back for them, especially across layer boundaries)
+### When Full (Mid-Layer)
+- Player must **choose what to drop** via the Decision Screen
+- Dropped items are **lost forever** (no going back, especially across layer boundaries)
 - This decision pressure is intentional — it forces players to value what they carry
 
 ## In-Run Upgrades
