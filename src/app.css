@@ -54,6 +54,4 @@ html, body {
   z-index: 10;
 }
 
-#ui-overlay > * {
-  pointer-events: auto;
-}
+/* Each component manages its own pointer-events individually */
