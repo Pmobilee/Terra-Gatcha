@@ -5,6 +5,7 @@ Quick lookup for agents: find the right doc for your task.
 ## By Topic
 | Need to understand... | Read this file |
 |---|---|
+| **MVP implementation plan (BUILD THIS)** | **`docs/MVP_PLAN.md`** |
 | Project overview, tech stack, conventions | `CLAUDE.md` (project root) |
 | Game concept, loop, pillars, monetization | `docs/GAME_DESIGN.md` |
 | Dive mechanics, layers, oxygen, mining, backpack | `docs/ROGUELITE_RUNS.md` |
@@ -20,6 +21,7 @@ Quick lookup for agents: find the right doc for your task.
 ## By Task
 | Task | Start here |
 |---|---|
+| **Build the MVP** | **`docs/MVP_PLAN.md`** — follow the build order |
 | Understand the full game vision | `docs/GAME_DESIGN.md` → system-specific docs |
 | Add a new game mechanic | `docs/ROGUELITE_RUNS.md` or `docs/ECONOMY.md` then `src/game/systems/` |
 | Work on the mining system | `docs/ROGUELITE_RUNS.md` then `src/game/scenes/MainScene.ts` |
