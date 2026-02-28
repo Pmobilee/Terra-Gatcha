@@ -10,7 +10,7 @@ Expand vocabulary content from 50 to 500 entries. Build tooling for generating q
 ---
 
 ## Task 1.2.1: Expand vocab-n3.json to 200 Entries
-**Status**: 🔴 Not Started
+**Status**: ✅ Completed
 **File**: `src/data/seed/vocab-n3.json`
 
 ### Steps:
@@ -43,7 +43,7 @@ Expand vocabulary content from 50 to 500 entries. Build tooling for generating q
 ---
 
 ## Task 1.2.3: Add N3 Vocab Batch 2 (200→500)
-**Status**: 🔴 Not Started
+**Status**: ✅ Completed
 **File**: `src/data/seed/vocab-n3.json`
 
 ### Steps:
