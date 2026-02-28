@@ -107,6 +107,13 @@ export class MineScene extends Phaser.Scene {
     })
   }
 
+  /**
+   * Phaser update loop — redraws the visible mine each frame.
+   */
+  update(): void {
+    this.redrawAll()
+  }
+
   private redrawAll(): void {
     this.updateCameraTarget()
     this.drawTiles()
@@ -125,10 +132,15 @@ export class MineScene extends Phaser.Scene {
     this.tileGraphics.clear()
 
     const camera = this.cameras.main
-    const startX = Math.max(0, Math.floor(camera.worldView.x / TILE_SIZE) - 1)
-    const endX = Math.min(this.gridWidth - 1, Math.ceil((camera.worldView.x + camera.worldView.width) / TILE_SIZE) + 1)
-    const startY = Math.max(0, Math.floor(camera.worldView.y / TILE_SIZE) - 1)
-    const endY = Math.min(this.gridHeight - 1, Math.ceil((camera.worldView.y + camera.worldView.height) / TILE_SIZE) + 1)
+    const viewWidth = camera.worldView.width > 0 ? camera.worldView.width : camera.width
+    const viewHeight = camera.worldView.height > 0 ? camera.worldView.height : camera.height
+    const viewX = camera.worldView.width > 0 ? camera.worldView.x : camera.scrollX
+    const viewY = camera.worldView.height > 0 ? camera.worldView.y : camera.scrollY
+
+    const startX = Math.max(0, Math.floor(viewX / TILE_SIZE) - 1)
+    const endX = Math.min(this.gridWidth - 1, Math.ceil((viewX + viewWidth) / TILE_SIZE) + 1)
+    const startY = Math.max(0, Math.floor(viewY / TILE_SIZE) - 1)
+    const endY = Math.min(this.gridHeight - 1, Math.ceil((viewY + viewHeight) / TILE_SIZE) + 1)
 
     for (let y = startY; y <= endY; y += 1) {
       for (let x = startX; x <= endX; x += 1) {
@@ -181,10 +193,15 @@ export class MineScene extends Phaser.Scene {
     this.fogGraphics.clear()
 
     const camera = this.cameras.main
-    const startX = Math.max(0, Math.floor(camera.worldView.x / TILE_SIZE) - 1)
-    const endX = Math.min(this.gridWidth - 1, Math.ceil((camera.worldView.x + camera.worldView.width) / TILE_SIZE) + 1)
-    const startY = Math.max(0, Math.floor(camera.worldView.y / TILE_SIZE) - 1)
-    const endY = Math.min(this.gridHeight - 1, Math.ceil((camera.worldView.y + camera.worldView.height) / TILE_SIZE) + 1)
+    const viewWidth = camera.worldView.width > 0 ? camera.worldView.width : camera.width
+    const viewHeight = camera.worldView.height > 0 ? camera.worldView.height : camera.height
+    const viewX = camera.worldView.width > 0 ? camera.worldView.x : camera.scrollX
+    const viewY = camera.worldView.height > 0 ? camera.worldView.y : camera.scrollY
+
+    const startX = Math.max(0, Math.floor(viewX / TILE_SIZE) - 1)
+    const endX = Math.min(this.gridWidth - 1, Math.ceil((viewX + viewWidth) / TILE_SIZE) + 1)
+    const startY = Math.max(0, Math.floor(viewY / TILE_SIZE) - 1)
+    const endY = Math.min(this.gridHeight - 1, Math.ceil((viewY + viewHeight) / TILE_SIZE) + 1)
 
     this.fogGraphics.fillStyle(0x000000, 0.45)
     for (let y = startY; y <= endY; y += 1) {
