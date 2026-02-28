@@ -122,9 +122,11 @@ export class MineScene extends Phaser.Scene {
   }
 
   private updateCameraTarget(): void {
+    const offsetY = this.cameras.main.height / 2
+
     this.cameraTarget.setPosition(
       this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5,
-      this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5,
+      this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5 + offsetY,
     )
   }
 
@@ -232,7 +234,6 @@ export class MineScene extends Phaser.Scene {
     const playerY = this.player.gridY
 
     if (targetX === playerX && targetY === playerY) {
-      this.game.events.emit('open-backpack')
       return
     }
 
@@ -267,15 +268,18 @@ export class MineScene extends Phaser.Scene {
     }
 
     const blockType = targetCell.type
-    const oxygenCost = getOxygenCostForBlock(blockType)
-    const oxygenResult = consumeOxygen(this.oxygenState, oxygenCost)
-    this.oxygenState = oxygenResult.state
 
-    if (oxygenResult.depleted) {
-      this.game.events.emit('oxygen-changed', this.oxygenState)
-      this.game.events.emit('oxygen-depleted')
-      this.redrawAll()
-      return
+    if (blockType !== BlockType.QuizGate) {
+      const oxygenCost = getOxygenCostForBlock(blockType)
+      const oxygenResult = consumeOxygen(this.oxygenState, oxygenCost)
+      this.oxygenState = oxygenResult.state
+
+      if (oxygenResult.depleted) {
+        this.game.events.emit('oxygen-changed', this.oxygenState)
+        this.game.events.emit('oxygen-depleted')
+        this.redrawAll()
+        return
+      }
     }
 
     const mineResult = mineBlock(this.grid, targetX, targetY)
