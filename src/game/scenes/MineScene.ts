@@ -91,7 +91,8 @@ export class MineScene extends Phaser.Scene {
 
     const worldWidth = this.gridWidth * TILE_SIZE
     const worldHeight = this.gridHeight * TILE_SIZE
-    this.cameras.main.setBounds(0, 0, worldWidth, worldHeight)
+    const cameraOffsetY = this.cameras.main.height / 2
+    this.cameras.main.setBounds(0, -cameraOffsetY, worldWidth, worldHeight + cameraOffsetY)
     this.cameras.main.startFollow(this.cameraTarget, true, 0.2, 0.2)
 
     this.redrawAll()
@@ -237,33 +238,49 @@ export class MineScene extends Phaser.Scene {
       return
     }
 
+    let finalX = targetX
+    let finalY = targetY
+
+    // If not adjacent, move in the direction of the click
     if (Math.abs(targetX - playerX) + Math.abs(targetY - playerY) !== 1) {
-      return
+      const dx = targetX - playerX
+      const dy = targetY - playerY
+
+      // Determine primary direction (prefer vertical over horizontal for ties)
+      if (Math.abs(dy) >= Math.abs(dx)) {
+        // Move vertically
+        finalX = playerX
+        finalY = playerY + (dy > 0 ? 1 : -1)
+      } else {
+        // Move horizontally
+        finalX = playerX + (dx > 0 ? 1 : -1)
+        finalY = playerY
+      }
+
+      // Bounds check
+      if (finalX < 0 || finalY < 0 || finalX >= this.gridWidth || finalY >= this.gridHeight) {
+        return
+      }
     }
 
-    const targetCell = this.grid[targetY][targetX]
+    const targetCell = this.grid[finalY][finalX]
 
     if (targetCell.type === BlockType.Empty) {
-      const moved = this.player.moveToEmpty(targetX, targetY, this.grid)
+      const moved = this.player.moveToEmpty(finalX, finalY, this.grid)
       if (!moved) {
         return
       }
 
-      const moveCostResult = consumeOxygen(this.oxygenState, BALANCE.OXYGEN_COST_MOVE)
-      this.oxygenState = moveCostResult.state
       revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
 
       this.game.events.emit('oxygen-changed', this.oxygenState)
       this.game.events.emit('depth-changed', this.player.gridY)
-      if (moveCostResult.depleted) {
-        this.game.events.emit('oxygen-depleted')
-      }
 
       this.redrawAll()
       return
     }
 
-    if (!canMine(this.grid, targetX, targetY, playerX, playerY)) {
+    if (!canMine(this.grid, finalX, finalY, playerX, playerY)) {
       return
     }
 
@@ -282,7 +299,7 @@ export class MineScene extends Phaser.Scene {
       }
     }
 
-    const mineResult = mineBlock(this.grid, targetX, targetY)
+    const mineResult = mineBlock(this.grid, finalX, finalY)
     if (mineResult.success) {
       this.blocksMinedThisRun += 1
     }
@@ -339,6 +356,12 @@ export class MineScene extends Phaser.Scene {
           break
         default:
           break
+      }
+
+      const moved = this.player.moveToEmpty(finalX, finalY, this.grid)
+      if (moved) {
+        revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
+        this.game.events.emit('depth-changed', this.player.gridY)
       }
     }
 
