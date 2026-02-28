@@ -19,23 +19,31 @@ The core game loop is **code-complete and playable**:
 - Game loop: dive -> mine -> surface -> artifact review -> study session
 
 ### Recent Fixes (Last 10 Commits)
-1. `d5f4f78` — Fix DivePrepScreen `$derived()` -> `$derived.by()` for Svelte 5 multi-statement derivations
-2. `1e944e2` — Fix click handling by adding `pointer-events:auto` to all UI overlays site-wide
-3. `3da90bc` — Add `@playwright/mcp` server to opencode config for browser testing
-4. `ab56eaa` — Fix mine tiles invisible due to `camera.worldView` being uninitialized during `create()`
-5. `322c977` — Fix pointer-event propagation so Phaser canvas receives clicks correctly
-6. `516f255` — Add fallback for `crypto.randomUUID` on non-HTTPS contexts
-7. `83e48c6` — Add DevPanel for god-mode testing and fix oxygen persistence on init
-8. `1d9d809` — Replenish oxygen after dives and seed 5 starter facts for new players
-9. `c3d492f` — Implement complete MVP (all 25 steps: data layer, mine systems, scene/UI, full loop)
-10. `f5ca221` — Add Japanese JLPT N3 seed content (50 vocabulary entries)
+1. `9b4b3d4` — Add pathfinding: clicking distant empty tile now auto-navigates without mining
+2. `ec186d3` — Fix camera to keep player centered at all times and randomize spawn position
+3. `bc0fcce` — Major UX overhaul: camera centering, free movement, auto-step, directional clicks
+4. `9ac652c` — Fix UX issues: remove backpack-on-player-click, center camera, fix quiz gate oxygen costs
+5. `d5f4f78` — Fix DivePrepScreen `$derived()` -> `$derived.by()` for Svelte 5 multi-statement derivations
+6. `1e944e2` — Fix click handling by adding `pointer-events:auto` to all UI overlays site-wide
+7. `3da90bc` — Add `@playwright/mcp` server to opencode config for browser testing
+8. `ab56eaa` — Fix mine tiles invisible due to `camera.worldView` being uninitialized during `create()`
+9. `322c977` — Fix pointer-event propagation so Phaser canvas receives clicks correctly
+10. `516f255` — Add fallback for `crypto.randomUUID` on non-HTTPS contexts
+
+### Recent Improvements
+- ✅ Camera always centers player (no more sticking to top)
+- ✅ Random spawn position in mine center (40-60% depth)
+- ✅ Free movement (no oxygen cost for empty tiles)
+- ✅ Auto-step after mining (one-click mining)
+- ✅ Directional movement (click anywhere to move/mine that direction)
+- ✅ Pathfinding (click distant empty tile to auto-navigate)
 
 ## Known Issues / Polish Needed
 
 ### High Priority
-- [ ] Quiz gate blocks: verify passing quiz avoids oxygen penalty
-- [ ] Camera offset: player should start mid-screen (not top edge) — **in progress**
-- [ ] Backpack click: remove "click player tile to open backpack" — **in progress**
+- [x] Quiz gate blocks: verify passing quiz avoids oxygen penalty
+- [x] Camera offset: player should start mid-screen (not top edge)
+- [x] Backpack click: remove "click player tile to open backpack"
 
 ### Medium Priority
 - [ ] Visual feedback when mining multi-hit blocks (cracks/progress bar)
@@ -50,10 +58,10 @@ The core game loop is **code-complete and playable**:
 
 ## Next Steps
 
-1. **Finish current polish** (camera offset, backpack click, quiz gate verification)
-2. **Playtesting** — test on mobile device via Tailscale/LAN
-3. **Balance tuning** — adjust oxygen costs, block hardness, artifact drop rates based on feel
-4. **Documentation** — update README with setup/run instructions
+1. **Mobile playtesting** — test on device via Tailscale/LAN, gather UX feedback
+2. **Visual polish** — mining feedback, artifact rarity colors, animations
+3. **Balance tuning** — adjust oxygen costs, block hardness, drop rates based on playtesting
+4. **Sound effects** — mining, collecting, quiz feedback
 5. **Deployment** — Capacitor build for Android/iOS
 
 ## Testing Access
