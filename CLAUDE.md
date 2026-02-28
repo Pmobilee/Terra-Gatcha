@@ -55,6 +55,13 @@ docs/              — Project documentation (LLM-optimized)
 - After codex workers complete, the orchestrator verifies (typecheck, build, visual test) and commits
 - This conserves Claude planning budget for architecture and creative decisions where it matters most
 
+## Roadmap Workflow — MANDATORY
+- `docs/roadmap/PROGRESS.md` is the master index and must be consulted first for next work
+- Active work must have a corresponding detailed task doc in `docs/roadmap/in-progress/`
+- When starting a new phase/sub-phase, create or expand the in-progress doc with codex-executable steps (file paths, verification commands)
+- After completing a sub-phase, update its status in `docs/roadmap/in-progress/PHASE-1.0-OVERVIEW.md` (or the relevant overview doc) and move the completed doc to `docs/roadmap/completed/`
+- Keep the roadmap current on every meaningful change; if the session resets, this is the source of truth
+
 ## Sub-Agent Rules
 - When spawning Task sub-agents, NEVER use "spark" tier — always use **codex 5.3 medium** or **codex 5.3 high** depending on task complexity
 - Simple/mechanical tasks (file creation from spec, refactoring): medium

@@ -2,6 +2,15 @@
 
 Last updated: 2026-02-28
 
+## How This Roadmap Works
+
+- **This file** (`PROGRESS.md`) is the master index of all phases
+- **`completed/`** contains detailed records of finished phases with all sub-tasks checked off
+- **`in-progress/`** contains detailed, codex-executable task documents for active phases
+- Each in-progress document has step-by-step instructions a coding agent can follow without creative interpretation
+- When a sub-phase is complete, its document moves from `in-progress/` to `completed/`
+- The Opus model (planner) creates these documents; Codex models (builders) execute them
+
 ## Vision
 
 Terra-Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuels a long-term knowledge journey. The player crash-lands on a far-future Earth, excavates procedural mines for minerals and artifacts, and returns to the dome to ingest discoveries through GIAI (the ship AI), review facts with spaced repetition, and grow a living Knowledge Tree. The core fantasy is rediscovering Earth one artifact at a time while building an emotionally sticky loop of risk, reward, and curiosity.
