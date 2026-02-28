@@ -1,6 +1,6 @@
 # Phase 1.2: Content Pipeline
 
-**Status**: 🔴 Not Started
+**Status**: 🟡 In Progress
 **Depends on**: None (can run parallel with 1.1)
 **Estimated effort**: 1 week
 
@@ -10,6 +10,7 @@ Expand vocabulary content from 50 to 500 entries. Build tooling for generating q
 ---
 
 ## Task 1.2.1: Expand vocab-n3.json to 200 Entries
+**Status**: 🔴 Not Started
 **File**: `src/data/seed/vocab-n3.json`
 
 ### Steps:
@@ -25,6 +26,7 @@ Expand vocabulary content from 50 to 500 entries. Build tooling for generating q
 ---
 
 ## Task 1.2.2: Add Distractor Generation Utility
+**Status**: ✅ Completed
 **File**: `src/services/distractorService.ts` (NEW)
 
 ### Steps:
@@ -41,6 +43,7 @@ Expand vocabulary content from 50 to 500 entries. Build tooling for generating q
 ---
 
 ## Task 1.2.3: Add N3 Vocab Batch 2 (200→500)
+**Status**: 🔴 Not Started
 **File**: `src/data/seed/vocab-n3.json`
 
 ### Steps:
@@ -54,6 +57,8 @@ Expand vocabulary content from 50 to 500 entries. Build tooling for generating q
 ---
 
 ## Task 1.2.4: Category Organization
+**Status**: 🟡 Partially Completed
+**Progress note**: Only step #2 (adding `CATEGORIES` constant) is completed in `src/data/types.ts`.
 **File**: `src/data/types.ts` (update), `src/data/seed/vocab-n3.json` (update)
 
 ### Steps:

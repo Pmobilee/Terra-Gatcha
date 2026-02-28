@@ -8,6 +8,17 @@ export type ContentType = 'fact' | 'vocabulary' | 'grammar' | 'phrase'
 /** Age rating for content filtering */
 export type AgeRating = 'kid' | 'teen' | 'adult'
 
+/** Top-level fact categories */
+export const CATEGORIES = [
+  'Language',
+  'Natural Sciences',
+  'Life Sciences',
+  'History',
+  'Geography',
+  'Technology',
+  'Culture',
+] as const
+
 /** Artifact rarity tier */
 export type Rarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'mythic'
 
