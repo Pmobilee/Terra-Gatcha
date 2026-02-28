@@ -280,6 +280,13 @@ export class GameManager {
     // Record dive stats
     recordDiveComplete(0, results.blocksMinedThisRun)
 
+    // Replenish oxygen tanks for next dive
+    playerSave.update(s => {
+      if (!s) return s
+      return { ...s, oxygen: BALANCE.STARTING_OXYGEN_TANKS }
+    })
+    persistPlayer()
+
     // Stop the mine scene
     this.game?.scene.stop('MineScene')
 
