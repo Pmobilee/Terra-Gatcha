@@ -47,6 +47,11 @@ docs/              — Project documentation (LLM-optimized)
 - MUST ASK: Before deleting files
 - MUST ASK: Before changing security-critical configuration (CSP, auth, CORS)
 
+## Sub-Agent Rules
+- When spawning Task sub-agents, NEVER use "spark" tier — always use **codex 5.3 medium** or **codex 5.3 high** depending on task complexity
+- Simple/mechanical tasks (file creation from spec, refactoring): medium
+- Complex tasks (system integration, architecture, debugging): high
+
 ## Context Guide — What to Read
 - Game mechanics and design → `docs/GAME_DESIGN.md`
 - System architecture and data flow → `docs/ARCHITECTURE.md`

@@ -3,6 +3,9 @@ import Phaser from 'phaser'
 /**
  * BootScene: First scene loaded. Handles asset preloading
  * and displays a loading indicator.
+ *
+ * After loading completes, it sleeps — the GameManager handles
+ * screen transitions, and MineScene is started on demand.
  */
 export class BootScene extends Phaser.Scene {
   constructor() {
@@ -10,7 +13,6 @@ export class BootScene extends Phaser.Scene {
   }
 
   preload(): void {
-    // Create a simple loading bar
     const width = this.cameras.main.width
     const height = this.cameras.main.height
 
@@ -38,12 +40,16 @@ export class BootScene extends Phaser.Scene {
       loadingText.destroy()
     })
 
-    // Placeholder: load game assets here as they're created
-    // this.load.image('player', 'assets/sprites/player.png')
+    // Future: load sprite assets here
+    // this.load.image('player', 'assets/sprites/characters/miner_idle.png')
     // this.load.image('tiles', 'assets/tilesets/underground.png')
   }
 
   create(): void {
-    this.scene.start('MainScene')
+    // Emit boot-complete so main.ts can transition to base screen
+    this.game.events.emit('boot-complete')
+
+    // Scene sleeps — MineScene will be started on demand by GameManager
+    this.scene.sleep()
   }
 }
