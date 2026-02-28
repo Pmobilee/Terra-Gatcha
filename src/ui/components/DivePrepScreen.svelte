@@ -102,6 +102,7 @@
   .dive-prep {
     position: fixed;
     inset: 0;
+    pointer-events: auto;
     z-index: 30;
     display: grid;
     place-items: center;

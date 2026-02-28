@@ -40,17 +40,26 @@ docs/              — Project documentation (LLM-optimized)
 ## Agent Autonomy Rules
 - MAY: Run ComfyUI workflows to generate sprites autonomously
 - MAY: Run `npm run typecheck`, `npm run build`, `npm run dev`
-- MAY: Edit game code, UI components, and documentation
-- MAY: Create new files in src/ and docs/
+- MAY: Read code/docs and run diagnostics to plan changes
+- MUST: Delegate all code/doc file edits and new file creation to codex Task sub-agents
 - MUST ASK: Before adding new npm dependencies
 - MUST ASK: Before modifying database schemas
 - MUST ASK: Before deleting files
 - MUST ASK: Before changing security-critical configuration (CSP, auth, CORS)
 
+## Workflow Rules — MANDATORY
+- **ALL code changes** (edits, new files, refactors) MUST be performed by codex sub-agents via the Task tool
+- The orchestrating Claude agent is for **planning, analysis, and coordination only** — it must NOT directly edit or write code files
+- The orchestrator MAY: read files, run typecheck/build/git commands, take screenshots, analyze bugs
+- The orchestrator MUST delegate to codex workers: all file edits, all code writing, all refactoring
+- After codex workers complete, the orchestrator verifies (typecheck, build, visual test) and commits
+- This conserves Claude planning budget for architecture and creative decisions where it matters most
+
 ## Sub-Agent Rules
 - When spawning Task sub-agents, NEVER use "spark" tier — always use **codex 5.3 medium** or **codex 5.3 high** depending on task complexity
 - Simple/mechanical tasks (file creation from spec, refactoring): medium
 - Complex tasks (system integration, architecture, debugging): high
+- For code changes, ALWAYS use Task sub-agents — the orchestrator must never edit files directly
 
 ## Context Guide — What to Read
 - Game mechanics and design → `docs/GAME_DESIGN.md`

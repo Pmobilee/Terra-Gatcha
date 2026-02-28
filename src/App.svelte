@@ -184,6 +184,7 @@
   .main-menu {
     position: fixed;
     inset: 0;
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -232,6 +233,7 @@
   .sacrifice-screen {
     position: fixed;
     inset: 0;
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
     align-items: center;

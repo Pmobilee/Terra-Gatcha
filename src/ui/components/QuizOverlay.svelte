@@ -112,6 +112,7 @@
   .quiz-overlay {
     position: fixed;
     inset: 0;
+    pointer-events: auto;
     z-index: 50;
     display: flex;
     align-items: center;

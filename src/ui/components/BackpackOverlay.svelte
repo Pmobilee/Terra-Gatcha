@@ -98,6 +98,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    pointer-events: auto;
     z-index: 40;
     height: 60dvh;
     background: var(--color-surface);

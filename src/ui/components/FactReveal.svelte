@@ -87,6 +87,7 @@
   .fact-reveal-overlay {
     position: fixed;
     inset: 0;
+    pointer-events: auto;
     z-index: 50;
     display: grid;
     place-items: center;

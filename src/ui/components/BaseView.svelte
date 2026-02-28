@@ -153,6 +153,7 @@
   .base-view {
     position: fixed;
     inset: 0;
+    pointer-events: auto;
     z-index: 30;
     overflow-y: auto;
     background: var(--color-bg);
