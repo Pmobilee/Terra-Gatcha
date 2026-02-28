@@ -1,6 +1,6 @@
 # Phase 1.2: Content Pipeline
 
-**Status**: 🟡 In Progress
+**Status**: ✅ Completed
 **Depends on**: None (can run parallel with 1.1)
 **Estimated effort**: 1 week
 
@@ -57,12 +57,11 @@ Expand vocabulary content from 50 to 500 entries. Build tooling for generating q
 ---
 
 ## Task 1.2.4: Category Organization
-**Status**: 🟡 Partially Completed
-**Progress note**: Only step #2 (adding `CATEGORIES` constant) is completed in `src/data/types.ts`.
+**Status**: ✅ Completed
 **File**: `src/data/types.ts` (update), `src/data/seed/vocab-n3.json` (update)
 
 ### Steps:
-1. Ensure all facts have proper `category` arrays: `["Language", "Japanese", "N3", "Verbs"]` etc.
+1. Ensure all facts have proper `category` arrays: `["Language", "Japanese", "JLPT N3", "Verbs"]` etc.
 2. Add a `CATEGORIES` constant to types.ts listing all top-level categories
 3. Update seed data to use consistent category paths
 4. Run `npm run typecheck` and `npm run build`

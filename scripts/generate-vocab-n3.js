@@ -4,6 +4,10 @@ import { fileURLToPath } from "node:url";
 
 const TOTAL_ENTRIES = 500;
 const POS_BUCKETS = ["Verbs", "Nouns", "Adjectives", "Adverbs"];
+const CATEGORY_ROOT = ["Language", "Japanese", "JLPT N3"];
+const CATEGORY_BY_POS = Object.fromEntries(
+  POS_BUCKETS.map((pos) => [pos, [...CATEGORY_ROOT, pos]])
+);
 const RARITY_PATTERN = [
   "common",
   "common",
@@ -48,7 +52,7 @@ function generateEntries() {
       quizQuestion: `What does テスト${token} mean?`,
       correctAnswer: `test ${token}`,
       distractors: [],
-      category: ["Language", "Japanese", "JLPT N3", pos],
+      category: CATEGORY_BY_POS[pos],
       rarity,
       difficulty,
       funScore,
@@ -60,10 +64,7 @@ function generateEntries() {
 
   const byPos = new Map();
   for (const pos of POS_BUCKETS) {
-    byPos.set(
-      pos,
-      entries.filter((entry) => entry.category[3] === pos)
-    );
+    byPos.set(pos, entries.filter((entry) => entry.category[3] === pos));
   }
 
   for (const entry of entries) {
