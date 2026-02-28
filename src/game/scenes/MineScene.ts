@@ -245,6 +245,68 @@ export class MineScene extends Phaser.Scene {
     }
   }
 
+  /**
+   * Find shortest path through empty tiles using BFS.
+   * Returns positions from start to end (excluding start, including end).
+   */
+  private findPath(
+    startX: number,
+    startY: number,
+    endX: number,
+    endY: number,
+  ): { x: number; y: number }[] | null {
+    if (startX === endX && startY === endY) {
+      return []
+    }
+
+    const visited = new Set<string>()
+    const queue: { x: number; y: number; path: { x: number; y: number }[] }[] = []
+
+    queue.push({ x: startX, y: startY, path: [] })
+    visited.add(`${startX},${startY}`)
+
+    while (queue.length > 0) {
+      const current = queue.shift()
+      if (!current) {
+        break
+      }
+
+      const neighbors = [
+        { x: current.x + 1, y: current.y },
+        { x: current.x - 1, y: current.y },
+        { x: current.x, y: current.y + 1 },
+        { x: current.x, y: current.y - 1 },
+      ]
+
+      for (const next of neighbors) {
+        if (next.x < 0 || next.y < 0 || next.x >= this.gridWidth || next.y >= this.gridHeight) {
+          continue
+        }
+
+        const key = `${next.x},${next.y}`
+        if (visited.has(key)) {
+          continue
+        }
+
+        const cell = this.grid[next.y][next.x]
+        if (cell.type !== BlockType.Empty) {
+          continue
+        }
+
+        const newPath = [...current.path, next]
+
+        if (next.x === endX && next.y === endY) {
+          return newPath
+        }
+
+        queue.push({ x: next.x, y: next.y, path: newPath })
+        visited.add(key)
+      }
+    }
+
+    return null
+  }
+
   private handlePointerDown(pointer: Phaser.Input.Pointer): void {
     if (this.isPaused) {
       return
@@ -265,6 +327,23 @@ export class MineScene extends Phaser.Scene {
 
     if (targetX === playerX && targetY === playerY) {
       return
+    }
+
+    // Check if clicked target is empty and reachable via pathfinding.
+    const clickedCell = this.grid[targetY][targetX]
+    if (clickedCell.type === BlockType.Empty && clickedCell.revealed) {
+      const path = this.findPath(playerX, playerY, targetX, targetY)
+      if (path && path.length > 0) {
+        const nextStep = path[0]
+        const moved = this.player.moveToEmpty(nextStep.x, nextStep.y, this.grid)
+        if (moved) {
+          revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
+          this.game.events.emit('oxygen-changed', this.oxygenState)
+          this.game.events.emit('depth-changed', this.player.gridY)
+          this.redrawAll()
+        }
+        return
+      }
     }
 
     let finalX = targetX
