@@ -81,19 +81,46 @@ export class MineScene extends Phaser.Scene {
     this.oxygenState = createOxygenState(this.oxygenTanks)
     this.inventory = Array.from({ length: this.inventorySlots }, () => ({ type: 'empty' as const }))
 
-    const startX = Math.floor(this.gridWidth / 2)
-    this.player = new Player(startX, 1)
+    // Start in center area of mine (middle third vertically)
+    const minStartY = Math.floor(this.gridHeight * 0.4)
+    const maxStartY = Math.floor(this.gridHeight * 0.6)
+    const startY = Math.floor(Math.random() * (maxStartY - minStartY + 1)) + minStartY
+
+    // Start in center horizontally with some randomness
+    const centerX = Math.floor(this.gridWidth / 2)
+    const startX = centerX + Math.floor(Math.random() * 5) - 2
+
+    this.player = new Player(startX, startY)
+
+    // Ensure starting area is empty (3x3 around player)
+    for (let dy = -1; dy <= 1; dy += 1) {
+      for (let dx = -1; dx <= 1; dx += 1) {
+        const x = startX + dx
+        const y = startY + dy
+        if (y >= 0 && y < this.gridHeight && x >= 0 && x < this.gridWidth) {
+          this.grid[y][x] = {
+            type: BlockType.Empty,
+            hardness: 0,
+            maxHardness: 0,
+            revealed: false,
+          }
+        }
+      }
+    }
 
     this.tileGraphics = this.add.graphics()
     this.fogGraphics = this.add.graphics()
     this.playerGraphics = this.add.graphics()
-    this.cameraTarget = this.add.zone(startX * TILE_SIZE + TILE_SIZE * 0.5, TILE_SIZE + TILE_SIZE * 0.5, 1, 1)
+    this.cameraTarget = this.add.zone(
+      startX * TILE_SIZE + TILE_SIZE * 0.5,
+      startY * TILE_SIZE + TILE_SIZE * 0.5,
+      1,
+      1,
+    )
 
     const worldWidth = this.gridWidth * TILE_SIZE
     const worldHeight = this.gridHeight * TILE_SIZE
-    const cameraOffsetY = this.cameras.main.height / 2
-    this.cameras.main.setBounds(0, -cameraOffsetY, worldWidth, worldHeight + cameraOffsetY)
-    this.cameras.main.startFollow(this.cameraTarget, true, 0.2, 0.2)
+    this.cameras.main.setBounds(0, 0, worldWidth, worldHeight)
 
     this.redrawAll()
     revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
@@ -123,12 +150,14 @@ export class MineScene extends Phaser.Scene {
   }
 
   private updateCameraTarget(): void {
-    const offsetY = this.cameras.main.height / 2
+    const targetX = this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5
+    const targetY = this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5
 
-    this.cameraTarget.setPosition(
-      this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5,
-      this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5 + offsetY,
-    )
+    this.cameraTarget.setPosition(targetX, targetY)
+
+    const cam = this.cameras.main
+    cam.scrollX = targetX - cam.width / 2
+    cam.scrollY = targetY - cam.height / 2
   }
 
   private drawTiles(): void {
