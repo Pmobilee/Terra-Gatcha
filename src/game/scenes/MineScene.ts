@@ -46,7 +46,9 @@ export class MineScene extends Phaser.Scene {
   private tileGraphics!: Phaser.GameObjects.Graphics
   private fogGraphics!: Phaser.GameObjects.Graphics
   private playerGraphics!: Phaser.GameObjects.Graphics
+  private breakEmitter!: Phaser.GameObjects.Particles.ParticleEmitter
   private cameraTarget!: Phaser.GameObjects.Zone
+  private flashTiles = new Map<string, number>()
   private facts: string[] = []
   private blocksMinedThisRun = 0
   private artifactsFound: string[] = []
@@ -69,6 +71,7 @@ export class MineScene extends Phaser.Scene {
     this.blocksMinedThisRun = 0
     this.artifactsFound = []
     this.isPaused = false
+    this.flashTiles.clear()
   }
 
   /**
@@ -111,6 +114,25 @@ export class MineScene extends Phaser.Scene {
     this.tileGraphics = this.add.graphics()
     this.fogGraphics = this.add.graphics()
     this.playerGraphics = this.add.graphics()
+
+    const particleTextureKey = 'break-particle'
+    if (!this.textures.exists(particleTextureKey)) {
+      const particleGraphics = this.make.graphics({ x: 0, y: 0 })
+      particleGraphics.fillStyle(0xffffff, 1)
+      particleGraphics.fillRect(0, 0, 4, 4)
+      particleGraphics.generateTexture(particleTextureKey, 4, 4)
+      particleGraphics.destroy()
+    }
+
+    this.breakEmitter = this.add.particles(0, 0, particleTextureKey, {
+      speed: { min: 30, max: 80 },
+      angle: { min: 0, max: 360 },
+      scale: { start: 0.8, end: 0 },
+      lifespan: 400,
+      quantity: 6,
+      emitting: false,
+    })
+
     this.cameraTarget = this.add.zone(
       startX * TILE_SIZE + TILE_SIZE * 0.5,
       startY * TILE_SIZE + TILE_SIZE * 0.5,
@@ -156,8 +178,127 @@ export class MineScene extends Phaser.Scene {
     this.cameraTarget.setPosition(targetX, targetY)
 
     const cam = this.cameras.main
-    cam.scrollX = targetX - cam.width / 2
-    cam.scrollY = targetY - cam.height / 2
+    const desiredX = targetX - cam.width / 2
+    const desiredY = targetY - cam.height / 2
+    const lerp = 0.15
+
+    cam.scrollX += (desiredX - cam.scrollX) * lerp
+    cam.scrollY += (desiredY - cam.scrollY) * lerp
+  }
+
+  private shiftColor(color: number, amount: number): number {
+    const r = Phaser.Math.Clamp(((color >> 16) & 0xff) + amount, 0, 255)
+    const g = Phaser.Math.Clamp(((color >> 8) & 0xff) + amount, 0, 255)
+    const b = Phaser.Math.Clamp((color & 0xff) + amount, 0, 255)
+    return (r << 16) | (g << 8) | b
+  }
+
+  private seededModulo(tileX: number, tileY: number, salt: number, modulo: number): number {
+    const rawSeed = tileX * 31 + tileY * 17 + salt * 13
+    const positiveSeed = ((rawSeed % 7919) + 7919) % 7919
+    return positiveSeed % modulo
+  }
+
+  private drawBlockPattern(cell: MineCell, tileX: number, tileY: number, px: number, py: number): void {
+    const baseColor = BLOCK_COLORS[cell.type] ?? 0x111111
+    const darkerColor = this.shiftColor(baseColor, -26)
+    const lighterColor = this.shiftColor(baseColor, 30)
+    const centerX = px + TILE_SIZE * 0.5
+    const centerY = py + TILE_SIZE * 0.5
+
+    switch (cell.type) {
+      case BlockType.Dirt: {
+        const dotCount = 3 + this.seededModulo(tileX, tileY, 1, 2)
+        this.tileGraphics.fillStyle(darkerColor, 0.85)
+        for (let i = 0; i < dotCount; i += 1) {
+          const offsetX = 2 + this.seededModulo(tileX, tileY, 10 + i, Math.max(1, TILE_SIZE - 4))
+          const offsetY = 2 + this.seededModulo(tileX, tileY, 20 + i, Math.max(1, TILE_SIZE - 4))
+          this.tileGraphics.fillRect(px + offsetX, py + offsetY, 2, 2)
+        }
+        break
+      }
+      case BlockType.SoftRock: {
+        const lineOffset = this.seededModulo(tileX, tileY, 2, 3) - 1
+        this.tileGraphics.lineStyle(2, lighterColor, 0.55)
+        this.tileGraphics.lineBetween(
+          px + 3,
+          py + TILE_SIZE * 0.5 + lineOffset,
+          px + TILE_SIZE - 3,
+          py + TILE_SIZE * 0.5 + lineOffset,
+        )
+        break
+      }
+      case BlockType.Stone: {
+        this.tileGraphics.lineStyle(1, lighterColor, 0.45)
+        this.tileGraphics.lineBetween(px + 3, py + TILE_SIZE - 4, px + TILE_SIZE - 5, py + 4)
+        this.tileGraphics.lineBetween(px + 7, py + TILE_SIZE - 3, px + TILE_SIZE - 2, py + 6)
+        break
+      }
+      case BlockType.HardRock: {
+        this.tileGraphics.lineStyle(1, lighterColor, 0.35)
+        for (let i = -2; i <= TILE_SIZE + 2; i += 5) {
+          this.tileGraphics.lineBetween(px + i, py + 1, px + i + 8, py + TILE_SIZE - 1)
+          this.tileGraphics.lineBetween(px + i + 8, py + 1, px + i, py + TILE_SIZE - 1)
+        }
+        break
+      }
+      case BlockType.MineralNode: {
+        const pulse = (Math.sin(this.time.now * 0.003 + this.seededModulo(tileX, tileY, 3, 32)) + 1) * 0.5
+        this.tileGraphics.fillStyle(lighterColor, 0.16 + pulse * 0.24)
+        this.tileGraphics.fillRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
+        this.tileGraphics.lineStyle(2, this.shiftColor(baseColor, 46), 0.35 + pulse * 0.35)
+        this.tileGraphics.strokeRect(px + 1.5, py + 1.5, TILE_SIZE - 3, TILE_SIZE - 3)
+        break
+      }
+      case BlockType.ArtifactNode: {
+        const rotation = this.time.now * 0.004 + this.seededModulo(tileX, tileY, 4, 360) * (Math.PI / 180)
+        const radius = TILE_SIZE * 0.28
+        const dx = Math.cos(rotation) * radius
+        const dy = Math.sin(rotation) * radius
+        this.tileGraphics.lineStyle(2, 0xffffff, 0.32)
+        this.tileGraphics.lineBetween(centerX - dx, centerY - dy, centerX + dx, centerY + dy)
+        this.tileGraphics.fillStyle(0xffffff, 0.18)
+        this.tileGraphics.fillCircle(centerX + dx * 0.25, centerY + dy * 0.25, 2)
+        break
+      }
+      case BlockType.OxygenCache: {
+        const bubbleCount = 3 + this.seededModulo(tileX, tileY, 5, 2)
+        this.tileGraphics.fillStyle(this.shiftColor(baseColor, 36), 0.5)
+        for (let i = 0; i < bubbleCount; i += 1) {
+          const bubbleX = 4 + this.seededModulo(tileX, tileY, 30 + i, Math.max(1, TILE_SIZE - 8))
+          const bubbleY = 4 + this.seededModulo(tileX, tileY, 40 + i, Math.max(1, TILE_SIZE - 8))
+          const radius = 1 + this.seededModulo(tileX, tileY, 50 + i, 2)
+          this.tileGraphics.fillCircle(px + bubbleX, py + bubbleY, radius)
+        }
+        break
+      }
+      case BlockType.UpgradeCrate: {
+        this.tileGraphics.lineStyle(2, this.shiftColor(baseColor, 34), 0.6)
+        this.tileGraphics.strokeRect(px + 4, py + 4, TILE_SIZE - 8, TILE_SIZE - 8)
+        this.tileGraphics.lineBetween(px + 4, py + TILE_SIZE * 0.5, px + TILE_SIZE - 4, py + TILE_SIZE * 0.5)
+        this.tileGraphics.lineBetween(px + TILE_SIZE * 0.5, py + 4, px + TILE_SIZE * 0.5, py + TILE_SIZE - 4)
+        break
+      }
+      case BlockType.QuizGate: {
+        this.tileGraphics.lineStyle(2, darkerColor, 0.9)
+        this.tileGraphics.lineBetween(px + 6, py + 7, px + TILE_SIZE * 0.5, py + 4)
+        this.tileGraphics.lineBetween(px + TILE_SIZE * 0.5, py + 4, px + TILE_SIZE - 6, py + 8)
+        this.tileGraphics.lineBetween(px + TILE_SIZE - 6, py + 8, px + TILE_SIZE * 0.5, py + 12)
+        this.tileGraphics.lineBetween(px + TILE_SIZE * 0.5, py + 12, px + TILE_SIZE * 0.5, py + 15)
+        this.tileGraphics.fillStyle(darkerColor, 0.9)
+        this.tileGraphics.fillCircle(centerX, py + TILE_SIZE - 5, 1.8)
+        break
+      }
+      case BlockType.Unbreakable: {
+        this.tileGraphics.lineStyle(1, this.shiftColor(baseColor, 36), 0.5)
+        for (let i = -4; i <= TILE_SIZE + 4; i += 4) {
+          this.tileGraphics.lineBetween(px + i, py + 1, px + i + 10, py + TILE_SIZE - 1)
+        }
+        break
+      }
+      default:
+        break
+    }
   }
 
   private drawTiles(): void {
@@ -191,15 +332,77 @@ export class MineScene extends Phaser.Scene {
         this.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
 
         if (cell.type !== BlockType.Empty) {
+          this.drawBlockPattern(cell, x, y, px, py)
           this.tileGraphics.lineStyle(1, 0x111111, 0.7)
           this.tileGraphics.strokeRect(px + 0.5, py + 0.5, TILE_SIZE - 1, TILE_SIZE - 1)
         }
 
         if (cell.maxHardness > 0 && cell.hardness > 0 && cell.hardness < cell.maxHardness) {
-          const crackAlpha = 0.3 + (1 - cell.hardness / cell.maxHardness) * 0.5
-          this.tileGraphics.lineStyle(1, 0x000000, crackAlpha)
-          this.tileGraphics.lineBetween(px + 4, py + 4, px + TILE_SIZE - 4, py + TILE_SIZE - 4)
-          this.tileGraphics.lineBetween(px + TILE_SIZE - 4, py + 4, px + 4, py + TILE_SIZE - 4)
+          const damagePercent = 1 - cell.hardness / cell.maxHardness
+          const crackPadding = 4
+
+          if (damagePercent <= 0.33) {
+            this.tileGraphics.lineStyle(1, 0x000000, 0.3)
+            this.tileGraphics.lineBetween(
+              px + crackPadding,
+              py + crackPadding,
+              px + TILE_SIZE - crackPadding,
+              py + TILE_SIZE - crackPadding,
+            )
+          } else if (damagePercent <= 0.66) {
+            this.tileGraphics.lineStyle(1.5, 0x000000, 0.5)
+            this.tileGraphics.lineBetween(
+              px + crackPadding,
+              py + crackPadding,
+              px + TILE_SIZE - crackPadding,
+              py + TILE_SIZE - crackPadding,
+            )
+            this.tileGraphics.lineBetween(
+              px + TILE_SIZE - crackPadding,
+              py + crackPadding,
+              px + crackPadding,
+              py + TILE_SIZE - crackPadding,
+            )
+          } else {
+            this.tileGraphics.lineStyle(2, 0x662222, 0.7)
+            this.tileGraphics.lineBetween(
+              px + crackPadding,
+              py + crackPadding,
+              px + TILE_SIZE - crackPadding,
+              py + TILE_SIZE - crackPadding,
+            )
+            this.tileGraphics.lineBetween(
+              px + TILE_SIZE - crackPadding,
+              py + crackPadding,
+              px + crackPadding,
+              py + TILE_SIZE - crackPadding,
+            )
+            this.tileGraphics.lineBetween(
+              px + TILE_SIZE * 0.5,
+              py + crackPadding,
+              px + TILE_SIZE * 0.45,
+              py + TILE_SIZE - crackPadding,
+            )
+            this.tileGraphics.lineBetween(
+              px + crackPadding + 1,
+              py + TILE_SIZE * 0.7,
+              px + TILE_SIZE - crackPadding - 1,
+              py + TILE_SIZE * 0.35,
+            )
+          }
+        }
+
+        const flashKey = `${x},${y}`
+        const flashStart = this.flashTiles.get(flashKey)
+        if (flashStart !== undefined) {
+          const elapsed = this.time.now - flashStart
+          if (elapsed < 150) {
+            const alpha = 0.45 * (1 - elapsed / 150)
+            this.tileGraphics.fillStyle(0xffffff, alpha)
+            this.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
+          } else {
+            this.flashTiles.delete(flashKey)
+          }
         }
       }
     }
@@ -211,14 +414,34 @@ export class MineScene extends Phaser.Scene {
     const px = this.player.gridX * TILE_SIZE
     const py = this.player.gridY * TILE_SIZE
 
-    this.playerGraphics.fillStyle(0x00ff88, 0.25)
-    this.playerGraphics.fillRect(px + 2, py + 2, TILE_SIZE - 4, TILE_SIZE - 4)
+    const bodyWidth = TILE_SIZE * 0.6
+    const bodyHeight = TILE_SIZE * 0.5
+    const bodyX = px + (TILE_SIZE - bodyWidth) * 0.5
+    const bodyY = py + TILE_SIZE * 0.42
+
+    const headWidth = TILE_SIZE * 0.42
+    const headHeight = TILE_SIZE * 0.24
+    const headX = px + (TILE_SIZE - headWidth) * 0.5
+    const headY = py + TILE_SIZE * 0.2
 
     this.playerGraphics.fillStyle(0x00ff88, 1)
-    this.playerGraphics.fillRect(px + 6, py + 6, TILE_SIZE - 12, TILE_SIZE - 12)
+    this.playerGraphics.fillRect(bodyX, bodyY, bodyWidth, bodyHeight)
 
-    this.playerGraphics.lineStyle(2, 0x7dffca, 0.95)
-    this.playerGraphics.strokeRect(px + 4, py + 4, TILE_SIZE - 8, TILE_SIZE - 8)
+    this.playerGraphics.fillStyle(0x228b22, 1)
+    this.playerGraphics.fillRect(headX, headY, headWidth, headHeight)
+
+    this.playerGraphics.fillStyle(0xffff00, 1)
+    this.playerGraphics.fillCircle(headX + headWidth * 0.78, headY + headHeight * 0.42, Math.max(1.5, TILE_SIZE * 0.06))
+
+    const pickaxeBaseX = bodyX + bodyWidth
+    const pickaxeBaseY = bodyY + bodyHeight * 0.42
+    const pickaxeTipX = pickaxeBaseX + TILE_SIZE * 0.2
+    const pickaxeTipY = pickaxeBaseY - TILE_SIZE * 0.26
+
+    this.playerGraphics.lineStyle(2, 0xb0b0b0, 1)
+    this.playerGraphics.lineBetween(pickaxeBaseX, pickaxeBaseY, pickaxeTipX, pickaxeTipY)
+    this.playerGraphics.lineStyle(2, 0xd9d9d9, 1)
+    this.playerGraphics.lineBetween(pickaxeTipX - TILE_SIZE * 0.08, pickaxeTipY + TILE_SIZE * 0.03, pickaxeTipX + TILE_SIZE * 0.08, pickaxeTipY - TILE_SIZE * 0.03)
   }
 
   private drawFog(): void {
@@ -243,6 +466,12 @@ export class MineScene extends Phaser.Scene {
         }
       }
     }
+  }
+
+  private spawnBreakParticles(px: number, py: number, blockType: BlockType): void {
+    this.breakEmitter.setParticleTint(BLOCK_COLORS[blockType])
+    this.breakEmitter.setPosition(px + TILE_SIZE * 0.5, py + TILE_SIZE * 0.5)
+    this.breakEmitter.explode(6)
   }
 
   /**
@@ -410,9 +639,14 @@ export class MineScene extends Phaser.Scene {
     const mineResult = mineBlock(this.grid, finalX, finalY)
     if (mineResult.success) {
       this.blocksMinedThisRun += 1
+      if (!mineResult.destroyed) {
+        this.flashTiles.set(`${finalX},${finalY}`, this.time.now)
+      }
     }
 
     if (mineResult.destroyed) {
+      this.spawnBreakParticles(finalX * TILE_SIZE, finalY * TILE_SIZE, blockType)
+
       switch (blockType) {
         case BlockType.MineralNode: {
           const mineralSlot: InventorySlot = {

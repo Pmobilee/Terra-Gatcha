@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { InventorySlot, MineralTier } from '../../data/types'
+  import type { InventorySlot, MineralTier, Rarity } from '../../data/types'
 
   interface Props {
     slots: InventorySlot[]
@@ -10,6 +10,15 @@
   let { slots, onClose, onDropItem }: Props = $props()
 
   let selectedIndex = $state<number | null>(null)
+
+  const RARITY_COLORS: Record<Rarity, string> = {
+    common: '#9e9e9e',
+    uncommon: '#4ecca3',
+    rare: '#5dade2',
+    epic: '#a855f7',
+    legendary: '#ffd369',
+    mythic: '#ff6b9d',
+  }
 
   const filledCount = $derived(slots.filter((slot) => slot.type !== 'empty').length)
   const totalCount = $derived(slots.length)
@@ -71,6 +80,12 @@
         class:empty={slot.type === 'empty'}
         class:mineral={slot.type === 'mineral'}
         class:artifact={slot.type === 'artifact'}
+        class:rarity-common={slot.type === 'artifact' && (slot.artifactRarity ?? 'common') === 'common'}
+        class:rarity-uncommon={slot.type === 'artifact' && slot.artifactRarity === 'uncommon'}
+        class:rarity-rare={slot.type === 'artifact' && slot.artifactRarity === 'rare'}
+        class:rarity-epic={slot.type === 'artifact' && slot.artifactRarity === 'epic'}
+        class:rarity-legendary={slot.type === 'artifact' && slot.artifactRarity === 'legendary'}
+        class:rarity-mythic={slot.type === 'artifact' && slot.artifactRarity === 'mythic'}
         class:fossil={slot.type === 'fossil'}
         class:selected={selectedIndex === index}
         type="button"
@@ -82,7 +97,9 @@
           <span class="label">{formatMineralTier(slot.mineralTier)}</span>
           <span class="value">x{slot.mineralAmount ?? 0}</span>
         {:else if slot.type === 'artifact'}
-          <span class="label">{formatRarity(slot.artifactRarity)}</span>
+          <span class="label" style={`color: ${RARITY_COLORS[slot.artifactRarity ?? 'common']}`}>
+            {formatRarity(slot.artifactRarity)}
+          </span>
           <span class="value">Artifact</span>
         {:else if slot.type === 'fossil'}
           <span class="label">Fossil</span>
@@ -175,8 +192,38 @@
   }
 
   .slot.artifact {
-    background: rgba(233, 69, 96, 0.2);
+    background: rgba(233, 69, 96, 0.12);
     color: var(--color-accent);
+  }
+
+  .slot.artifact.rarity-common {
+    border-color: #9e9e9e;
+    box-shadow: 0 0 10px rgba(158, 158, 158, 0.25);
+  }
+
+  .slot.artifact.rarity-uncommon {
+    border-color: #4ecca3;
+    box-shadow: 0 0 10px rgba(78, 204, 163, 0.25);
+  }
+
+  .slot.artifact.rarity-rare {
+    border-color: #5dade2;
+    box-shadow: 0 0 10px rgba(93, 173, 226, 0.25);
+  }
+
+  .slot.artifact.rarity-epic {
+    border-color: #a855f7;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+  }
+
+  .slot.artifact.rarity-legendary {
+    border-color: #ffd369;
+    box-shadow: 0 0 12px rgba(255, 211, 105, 0.35);
+  }
+
+  .slot.artifact.rarity-mythic {
+    border-color: #ff6b9d;
+    box-shadow: 0 0 12px rgba(255, 107, 157, 0.35);
   }
 
   .slot.fossil {
