@@ -1,42 +1,68 @@
 <script lang="ts">
   import { get } from 'svelte/store'
-  import { getDomeSpriteUrls, DOME_OBJECTS } from '../../game/domeManifest'
-  import type { DomeObject } from '../../game/domeManifest'
+  import { getDomeSpriteUrls } from '../../game/domeManifest'
+  import {
+    getDefaultDomeLayout,
+    BG_TILE_SPRITES,
+    FG_TILE_SPRITES,
+    BgTile,
+    FgTile,
+    TILE_SIZE,
+    DOME_WIDTH,
+    DOME_HEIGHT,
+  } from '../../data/domeLayout'
+  import type { DomeLayout, DomeObject } from '../../data/domeLayout'
   import { spriteResolution } from '../stores/settings'
 
+  // ---------------------------------------------------------------------------
+  // Props
+  // ---------------------------------------------------------------------------
+
   /**
-   * Props for the DomeCanvas interactive pixel-art dome scene.
+   * Props for the tile-based DomeCanvas scene.
    */
   interface Props {
     /** Called when an interactive dome object is tapped/clicked. */
     onObjectTap: (objectId: string, room: string) => void
     /** Current GAIA expression sprite key. Defaults to 'neutral'. */
     gaiaExpression?: string
-    /** Canvas render width in pixels. Defaults to 800. */
-    width?: number
-    /** Canvas render height in pixels. Defaults to 600. */
-    height?: number
   }
 
-  let {
-    onObjectTap,
-    gaiaExpression = 'neutral',
-    width = 800,
-    height = 600,
-  }: Props = $props()
+  let { onObjectTap, gaiaExpression = 'neutral' }: Props = $props()
 
-  // ── Canvas ref ────────────────────────────────────────────────────────────
+  // ---------------------------------------------------------------------------
+  // DOM refs
+  // ---------------------------------------------------------------------------
+
+  let containerEl = $state<HTMLDivElement | null>(null)
   let canvasEl = $state<HTMLCanvasElement | null>(null)
 
-  // ── Reactive state ────────────────────────────────────────────────────────
+  // ---------------------------------------------------------------------------
+  // Reactive state
+  // ---------------------------------------------------------------------------
+
   let imagesLoaded = $state(false)
   let hoveredObject = $state<DomeObject | null>(null)
   let dirty = $state(true)
 
-  // ── Image cache ───────────────────────────────────────────────────────────
+  // ---------------------------------------------------------------------------
+  // Layout & image cache
+  // ---------------------------------------------------------------------------
+
+  /** The dome layout data model (grid + objects). */
+  const layout: DomeLayout = getDefaultDomeLayout()
+
+  /** Internal canvas pixel width — the full grid width at TILE_SIZE per cell. */
+  const CANVAS_W = DOME_WIDTH * TILE_SIZE   // 24 * 32 = 768
+  const CANVAS_H = DOME_HEIGHT * TILE_SIZE  // 16 * 32 = 512
+
+  /** Cached HTMLImageElement instances, keyed by sprite key. */
   const imageMap = new Map<string, HTMLImageElement>()
 
-  // ── Star positions (seeded, stable between frames) ────────────────────────
+  // ---------------------------------------------------------------------------
+  // Star field (seeded, stable)
+  // ---------------------------------------------------------------------------
+
   interface Star {
     x: number
     y: number
@@ -46,11 +72,10 @@
 
   /**
    * Generate deterministic star positions using a simple seeded LCG.
-   * Stars are placed in the sky area (top 70% of canvas).
+   * Stars are scattered across the sky area of the canvas.
    */
-  function generateStars(count: number, canvasW: number, canvasH: number): Star[] {
+  function generateStars(count: number, w: number, h: number): Star[] {
     const stars: Star[] = []
-    // Simple LCG parameters (Numerical Recipes)
     const a = 1664525
     const c = 1013904223
     const m = 2 ** 32
@@ -61,17 +86,17 @@
       return seed / m
     }
 
-    const skyHeight = canvasH * 0.72
+    // Sky occupies approximately the top ~4 rows (BgTile.Sky rows 0-3)
+    const skyHeight = h * 0.28
 
     for (let i = 0; i < count; i++) {
-      const x = rand() * canvasW
+      const x = rand() * w
       const y = rand() * skyHeight
-      const r = rand() * 1.2 + 0.4
+      const r = rand() * 1.0 + 0.5
       const bright = Math.floor(rand() * 80 + 175)
-      // Occasional warm-tinted star
-      const warm = rand() > 0.75
+      const warm = rand() > 0.78
       const color = warm
-        ? `rgb(${bright}, ${bright - 20}, ${bright - 60})`
+        ? `rgb(${bright}, ${bright - 20}, ${bright - 55})`
         : `rgb(${bright}, ${bright}, ${bright})`
       stars.push({ x, y, r, color })
     }
@@ -79,78 +104,112 @@
     return stars
   }
 
-  let stars: Star[] = []
+  const stars: Star[] = generateStars(90, CANVAS_W, CANVAS_H)
 
-  // ── RAF handle ────────────────────────────────────────────────────────────
+  // ---------------------------------------------------------------------------
+  // RAF / animation
+  // ---------------------------------------------------------------------------
+
   let rafId: number | null = null
   let lastGaiaOffset = 0
 
+  // ---------------------------------------------------------------------------
+  // Image loading
+  // ---------------------------------------------------------------------------
+
   /**
-   * Load all dome sprite images for the given resolution.
-   * Calls the provided callback when all images are ready.
+   * Load all dome sprite images for the current resolution setting.
+   * Invokes onAllLoaded when every pending image has resolved.
    */
   function loadImages(onAllLoaded: () => void): void {
     const res = get(spriteResolution)
     const urls = getDomeSpriteUrls(res)
 
-    // Collect keys we need: all DOME_OBJECTS sprites + GAIA sprites + scene sprites
-    const needed = new Set<string>([
-      'dome_shell',
-      'surface_terrain',
-      'gaia_neutral',
-      'gaia_happy',
-      'gaia_excited',
-      'gaia_thinking',
-      ...DOME_OBJECTS.map(o => o.spriteKey),
-    ])
+    // Collect every sprite key referenced by the layout
+    const needed = new Set<string>()
+
+    for (const key of Object.values(BG_TILE_SPRITES)) {
+      if (key) needed.add(key)
+    }
+    for (const key of Object.values(FG_TILE_SPRITES)) {
+      if (key) needed.add(key)
+    }
+    for (const obj of layout.objects) {
+      needed.add(obj.spriteKey)
+    }
+    // GAIA expressions
+    needed.add('gaia_neutral')
+    needed.add('gaia_happy')
+    needed.add('gaia_thinking')
+    // Surface horizon
+    needed.add('surface_ground')
 
     let remaining = 0
 
     for (const key of needed) {
       const url = urls[key]
       if (!url) continue
-
-      // Avoid re-loading if already cached
       if (imageMap.has(key)) continue
 
       remaining++
       const img = new Image()
       img.onload = () => {
         remaining--
-        if (remaining === 0) {
-          onAllLoaded()
-        }
+        if (remaining === 0) onAllLoaded()
       }
       img.onerror = () => {
-        // Count errored images as loaded so we don't block indefinitely
         remaining--
-        if (remaining === 0) {
-          onAllLoaded()
-        }
+        if (remaining === 0) onAllLoaded()
       }
       img.src = url
       imageMap.set(key, img)
     }
 
-    // If all keys were already cached (or none needed loading)
-    if (remaining === 0) {
-      onAllLoaded()
+    if (remaining === 0) onAllLoaded()
+  }
+
+  // ---------------------------------------------------------------------------
+  // Rendering helpers
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Draw an image into a grid cell, with an optional globalAlpha override.
+   * Silently skips if the image is not yet loaded.
+   */
+  function drawTile(
+    ctx: CanvasRenderingContext2D,
+    key: string,
+    col: number,
+    row: number,
+    alpha = 1,
+  ): void {
+    const img = imageMap.get(key)
+    if (!img || !img.complete || img.naturalWidth === 0) return
+
+    const x = col * TILE_SIZE
+    const y = row * TILE_SIZE
+
+    if (alpha !== 1) {
+      ctx.save()
+      ctx.globalAlpha = alpha
+      ctx.drawImage(img, x, y, TILE_SIZE, TILE_SIZE)
+      ctx.restore()
+    } else {
+      ctx.drawImage(img, x, y, TILE_SIZE, TILE_SIZE)
     }
   }
 
-  // ── Rendering ─────────────────────────────────────────────────────────────
-
   /**
-   * Draw a sky gradient with scattered star dots.
+   * Draw a sky gradient + procedural stars across the full canvas.
+   * This is the base layer visible through BgTile.Empty / sky cells.
    */
-  function drawSky(ctx: CanvasRenderingContext2D, w: number, h: number): void {
-    const grad = ctx.createLinearGradient(0, 0, 0, h)
+  function drawSkyGradient(ctx: CanvasRenderingContext2D): void {
+    const grad = ctx.createLinearGradient(0, 0, 0, CANVAS_H)
     grad.addColorStop(0, '#0a0a2e')
-    grad.addColorStop(1, '#1a0a3e')
+    grad.addColorStop(1, '#1a0e30')
     ctx.fillStyle = grad
-    ctx.fillRect(0, 0, w, h)
+    ctx.fillRect(0, 0, CANVAS_W, CANVAS_H)
 
-    // Draw stars
     for (const star of stars) {
       ctx.beginPath()
       ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2)
@@ -160,187 +219,185 @@
   }
 
   /**
-   * Draw the surface terrain: wavy ground line at ~70% height filled with dark brown.
-   * Tiles the surface_terrain sprite along the ground.
+   * Draw all background tiles (BgTile layer), row by row.
+   * BgTile.Empty cells are skipped — the sky gradient shows through.
    */
-  function drawTerrain(ctx: CanvasRenderingContext2D, w: number, h: number): void {
-    const groundY = h * 0.70
-
-    // Draw wavy ground path
-    ctx.beginPath()
-    ctx.moveTo(0, groundY)
-
-    // Gentle sine wave along the ground line
-    const segments = 20
-    for (let i = 0; i <= segments; i++) {
-      const x = (i / segments) * w
-      const wave = Math.sin((i / segments) * Math.PI * 4) * 4
-      ctx.lineTo(x, groundY + wave)
-    }
-
-    ctx.lineTo(w, h)
-    ctx.lineTo(0, h)
-    ctx.closePath()
-
-    ctx.fillStyle = '#2a1810'
-    ctx.fill()
-
-    // Tile surface_terrain sprite along the ground line
-    const terrainImg = imageMap.get('surface_terrain')
-    if (terrainImg && terrainImg.complete && terrainImg.naturalWidth > 0) {
-      const tileH = h * 0.08
-      const tileW = terrainImg.naturalWidth * (tileH / terrainImg.naturalHeight)
-      const tileY = groundY - tileH * 0.35
-
-      ctx.save()
-      // Clip to a thin strip around the ground line
-      ctx.beginPath()
-      ctx.rect(0, tileY - 4, w, tileH + 8)
-      ctx.clip()
-
-      let tx = 0
-      while (tx < w) {
-        ctx.drawImage(terrainImg, tx, tileY, tileW, tileH)
-        tx += tileW
+  function drawBgLayer(ctx: CanvasRenderingContext2D): void {
+    for (let row = 0; row < layout.height; row++) {
+      for (let col = 0; col < layout.width; col++) {
+        const tile = layout.bg[row][col]
+        const key = BG_TILE_SPRITES[tile]
+        if (!key) continue
+        drawTile(ctx, key, col, row)
       }
-      ctx.restore()
     }
   }
 
   /**
-   * Draw the dome shell sprite, centered horizontally, spanning ~80% width,
-   * as a semi-transparent overlay.
+   * Draw the surface_ground sprite as a horizon band at the sky/dome transition.
+   * It is drawn full-width, centred vertically on the row-13 boundary.
    */
-  function drawDomeShell(ctx: CanvasRenderingContext2D, w: number, h: number): void {
-    const shellImg = imageMap.get('dome_shell')
-    if (!shellImg || !shellImg.complete || shellImg.naturalWidth === 0) return
+  function drawSurfaceHorizon(ctx: CanvasRenderingContext2D): void {
+    const img = imageMap.get('surface_ground')
+    if (!img || !img.complete || img.naturalWidth === 0) return
 
-    const domeW = w * 0.80
-    // Maintain aspect ratio of the sprite
-    const domeH = shellImg.naturalHeight * (domeW / shellImg.naturalWidth)
-    const domeX = (w - domeW) / 2
-    const domeY = h - domeH
+    // Draw it along the transition between sky and dirt (row 13 = y 416)
+    const horizonY = 13 * TILE_SIZE
+    const tileH = TILE_SIZE * 2  // two tiles tall for a nice horizon band
+    const tileW = img.naturalWidth * (tileH / img.naturalHeight)
 
     ctx.save()
-    ctx.globalAlpha = 0.72
-    ctx.drawImage(shellImg, domeX, domeY, domeW, domeH)
+    ctx.beginPath()
+    ctx.rect(0, horizonY - TILE_SIZE, CANVAS_W, tileH + TILE_SIZE)
+    ctx.clip()
+
+    let x = 0
+    while (x < CANVAS_W) {
+      ctx.drawImage(img, x, horizonY - Math.floor(tileH * 0.4), tileW, tileH)
+      x += tileW
+    }
     ctx.restore()
   }
 
   /**
-   * Draw glow highlight behind the hovered object.
+   * Draw all foreground / structural tiles (FgTile layer).
+   * DomeGlass and DomeGlassCurved tiles are rendered at 0.7 alpha.
    */
-  function drawHoverGlow(
-    ctx: CanvasRenderingContext2D,
-    obj: DomeObject,
-    w: number,
-    h: number,
-  ): void {
-    const cx = (obj.x + obj.width / 2) * w
-    const cy = (obj.y + obj.height / 2) * h
-    const rx = (obj.width * w) / 2 + 10
-    const ry = (obj.height * h) / 2 + 10
-    const r = Math.max(rx, ry)
+  function drawFgLayer(ctx: CanvasRenderingContext2D): void {
+    for (let row = 0; row < layout.height; row++) {
+      for (let col = 0; col < layout.width; col++) {
+        const tile = layout.fg[row][col]
+        const key = FG_TILE_SPRITES[tile]
+        if (!key) continue
+
+        const alpha =
+          tile === FgTile.DomeGlass || tile === FgTile.DomeGlassCurved ? 0.7 : 1
+
+        drawTile(ctx, key, col, row, alpha)
+      }
+    }
+  }
+
+  /**
+   * Draw a radial glow highlight centred on the given object's grid area.
+   * Called before drawing the object sprite so the glow sits behind it.
+   */
+  function drawHoverGlow(ctx: CanvasRenderingContext2D, obj: DomeObject): void {
+    const px = obj.gridX * TILE_SIZE
+    const py = obj.gridY * TILE_SIZE
+    const pw = obj.gridW * TILE_SIZE
+    const ph = obj.gridH * TILE_SIZE
+
+    const cx = px + pw / 2
+    const cy = py + ph / 2
+    const r = Math.max(pw, ph) * 0.65 + 8
 
     const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r)
-    grad.addColorStop(0, 'rgba(255,255,255,0.22)')
-    grad.addColorStop(0.5, 'rgba(255,255,255,0.10)')
+    grad.addColorStop(0, 'rgba(255,255,255,0.24)')
+    grad.addColorStop(0.5, 'rgba(180,220,255,0.12)')
     grad.addColorStop(1, 'rgba(255,255,255,0)')
 
     ctx.save()
     ctx.beginPath()
-    ctx.ellipse(cx, cy, rx + 12, ry + 12, 0, 0, Math.PI * 2)
+    ctx.ellipse(cx, cy, pw * 0.6 + 10, ph * 0.6 + 10, 0, 0, Math.PI * 2)
     ctx.fillStyle = grad
     ctx.fill()
     ctx.restore()
   }
 
   /**
-   * Draw all interactive dome objects.
+   * Draw all dome objects and furniture.
+   * Interactive objects get a hover glow when they are the current hoveredObject.
    */
-  function drawObjects(
-    ctx: CanvasRenderingContext2D,
-    w: number,
-    h: number,
-    hovered: DomeObject | null,
-  ): void {
-    for (const obj of DOME_OBJECTS) {
-      // Draw glow before drawing the sprite (so glow is behind)
-      if (hovered && hovered.id === obj.id) {
-        drawHoverGlow(ctx, obj, w, h)
+  function drawObjects(ctx: CanvasRenderingContext2D, hovered: DomeObject | null): void {
+    for (const obj of layout.objects) {
+      if (hovered && hovered.id === obj.id && obj.interactive) {
+        drawHoverGlow(ctx, obj)
       }
 
       const img = imageMap.get(obj.spriteKey)
-      if (img && img.complete && img.naturalWidth > 0) {
-        const px = obj.x * w
-        const py = obj.y * h
-        const pw = obj.width * w
-        const ph = obj.height * h
-        ctx.drawImage(img, px, py, pw, ph)
-      }
+      if (!img || !img.complete || img.naturalWidth === 0) continue
+
+      const px = obj.gridX * TILE_SIZE
+      const py = obj.gridY * TILE_SIZE
+      const pw = obj.gridW * TILE_SIZE
+      const ph = obj.gridH * TILE_SIZE
+
+      ctx.drawImage(img, px, py, pw, ph)
     }
   }
 
   /**
-   * Draw the GAIA avatar at position (0.28, 0.52) with a vertical float bob.
+   * Draw the GAIA avatar with a gentle sinusoidal vertical float.
+   * GAIA is positioned at grid column 12, row 7, occupying 1.5 × 2 tiles.
    */
   function drawGaia(
     ctx: CanvasRenderingContext2D,
-    w: number,
-    h: number,
     expressionKey: string,
     floatOffset: number,
+    hovered: DomeObject | null,
   ): void {
-    // Resolve the expression key: fall back to neutral if not found
-    const validKeys = ['neutral', 'happy', 'excited', 'thinking']
+    const validKeys = ['neutral', 'happy', 'thinking']
     const key = validKeys.includes(expressionKey) ? expressionKey : 'neutral'
-    const imgKey = `gaia_${key}`
-    const img = imageMap.get(imgKey)
-
+    const img = imageMap.get(`gaia_${key}`)
     if (!img || !img.complete || img.naturalWidth === 0) return
 
-    const GAIA_X = 0.28
-    const GAIA_Y = 0.52
-    // Render at ~12% of canvas width
-    const gw = w * 0.12
-    const gh = img.naturalHeight * (gw / img.naturalWidth)
-    const gx = GAIA_X * w - gw / 2
-    const gy = GAIA_Y * h - gh / 2 + floatOffset
+    const GAIA_GRID_COL = 12
+    const GAIA_GRID_ROW = 7
+    const GAIA_W = TILE_SIZE * 1.5
+    const GAIA_H = TILE_SIZE * 2
 
-    ctx.drawImage(img, gx, gy, gw, gh)
+    const gx = GAIA_GRID_COL * TILE_SIZE - GAIA_W / 2
+    const gy = GAIA_GRID_ROW * TILE_SIZE + floatOffset
+
+    // Hover glow for GAIA
+    if (hovered && hovered.id === 'gaia') {
+      const cx = gx + GAIA_W / 2
+      const cy = gy + GAIA_H / 2
+      const r = Math.max(GAIA_W, GAIA_H) * 0.6 + 8
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r)
+      grad.addColorStop(0, 'rgba(100,200,255,0.28)')
+      grad.addColorStop(1, 'rgba(100,200,255,0)')
+      ctx.save()
+      ctx.beginPath()
+      ctx.ellipse(cx, cy, GAIA_W * 0.7, GAIA_H * 0.6, 0, 0, Math.PI * 2)
+      ctx.fillStyle = grad
+      ctx.fill()
+      ctx.restore()
+    }
+
+    ctx.drawImage(img, gx, gy, GAIA_W, GAIA_H)
   }
 
   /**
-   * Draw a tooltip label below the hovered object.
+   * Draw a rounded-rect tooltip label below the hovered object.
    */
-  function drawTooltip(
-    ctx: CanvasRenderingContext2D,
-    obj: DomeObject,
-    w: number,
-    h: number,
-  ): void {
-    const cx = (obj.x + obj.width / 2) * w
-    const bottomY = (obj.y + obj.height) * h + 6
+  function drawTooltip(ctx: CanvasRenderingContext2D, obj: DomeObject): void {
+    const label = obj.id === 'gaia' ? 'G.A.I.A.' : obj.label
 
-    const label = obj.label
-    const fontSize = Math.max(10, Math.round(w * 0.018))
+    // Bottom-centre of the object in canvas pixels
+    const cx = (obj.gridX + obj.gridW / 2) * TILE_SIZE
+    const bottomY = (obj.gridY + obj.gridH) * TILE_SIZE + 4
+
+    const fontSize = 9
     ctx.font = `${fontSize}px "Courier New", monospace`
     ctx.textAlign = 'center'
     ctx.textBaseline = 'top'
 
     const textW = ctx.measureText(label).width
-    const padX = 8
-    const padY = 4
+    const padX = 6
+    const padY = 3
     const boxW = textW + padX * 2
     const boxH = fontSize + padY * 2
     const boxX = cx - boxW / 2
     const boxY = bottomY
+    const r = 3
+
+    ctx.save()
 
     // Background pill
-    ctx.save()
-    ctx.fillStyle = 'rgba(10, 10, 46, 0.82)'
+    ctx.fillStyle = 'rgba(8,8,40,0.84)'
     ctx.beginPath()
-    const r = 4
     ctx.moveTo(boxX + r, boxY)
     ctx.lineTo(boxX + boxW - r, boxY)
     ctx.arcTo(boxX + boxW, boxY, boxX + boxW, boxY + r, r)
@@ -354,18 +411,40 @@
     ctx.fill()
 
     // Border
-    ctx.strokeStyle = 'rgba(255,255,255,0.18)'
+    ctx.strokeStyle = 'rgba(180,220,255,0.22)'
     ctx.lineWidth = 1
     ctx.stroke()
 
-    // Text
-    ctx.fillStyle = '#e8e8f0'
+    // Label text
+    ctx.fillStyle = '#ddeeff'
     ctx.fillText(label, cx, boxY + padY)
+
     ctx.restore()
   }
 
+  // ---------------------------------------------------------------------------
+  // GAIA virtual object (for hit detection)
+  // ---------------------------------------------------------------------------
+
+  /** Virtual DomeObject representing GAIA for hit detection purposes. */
+  const GAIA_OBJECT: DomeObject = {
+    id: 'gaia',
+    spriteKey: 'gaia_neutral',
+    label: 'G.A.I.A.',
+    room: 'command',
+    gridX: 11,
+    gridY: 7,
+    gridW: 2,
+    gridH: 2,
+    interactive: true,
+  }
+
+  // ---------------------------------------------------------------------------
+  // Main render
+  // ---------------------------------------------------------------------------
+
   /**
-   * Main render function. Draws all layers onto the canvas.
+   * Render all layers onto the canvas in back-to-front order.
    */
   function render(): void {
     const canvas = canvasEl
@@ -374,95 +453,110 @@
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const w = width
-    const h = height
-
-    // GAIA float animation: continuous sine-based vertical bob
-    const floatOffset = Math.sin(Date.now() / 1000) * 3
-
-    // Only re-render if dirty or GAIA offset has changed (for animation)
-    const gaiaChanged = Math.abs(floatOffset - lastGaiaOffset) > 0.05
+    const floatOffset = Math.sin(Date.now() / 800) * 2
+    const gaiaChanged = Math.abs(floatOffset - lastGaiaOffset) > 0.04
     if (!dirty && !gaiaChanged) return
 
     lastGaiaOffset = floatOffset
     dirty = false
 
-    // 1. Sky gradient + stars
-    drawSky(ctx, w, h)
+    // Layer 1: sky gradient + stars (base)
+    drawSkyGradient(ctx)
 
-    // 2. Surface terrain
-    drawTerrain(ctx, w, h)
+    // Layer 2: background tiles (sky_stars, interior_wall, dirt_ground)
+    drawBgLayer(ctx)
 
-    // 3. Dome shell
-    drawDomeShell(ctx, w, h)
+    // Layer 3: surface horizon (sky-to-ground transition band)
+    drawSurfaceHorizon(ctx)
 
-    // 4. Interactive objects (with hover glow)
-    drawObjects(ctx, w, h, hoveredObject)
+    // Layer 4: foreground / structural tiles (dome glass, frame, floor)
+    drawFgLayer(ctx)
 
-    // 5. GAIA avatar with float animation
-    drawGaia(ctx, w, h, gaiaExpression, floatOffset)
+    // Layer 5: objects and furniture
+    drawObjects(ctx, hoveredObject)
 
-    // 6. Tooltip for hovered object
+    // Layer 6: GAIA avatar (with float bob)
+    drawGaia(ctx, gaiaExpression, floatOffset, hoveredObject)
+
+    // Layer 7: tooltip for hovered object/GAIA
     if (hoveredObject) {
-      drawTooltip(ctx, hoveredObject, w, h)
+      drawTooltip(ctx, hoveredObject)
     }
   }
 
   /**
-   * The animation loop. Schedules re-renders via requestAnimationFrame.
+   * The main animation loop — runs every frame via requestAnimationFrame.
    */
   function loop(): void {
     render()
     rafId = requestAnimationFrame(loop)
   }
 
-  // ── Pointer coordinate scaling ────────────────────────────────────────────
+  // ---------------------------------------------------------------------------
+  // Hit detection
+  // ---------------------------------------------------------------------------
 
   /**
-   * Convert a pointer event's client coordinates to canvas-space coordinates,
-   * accounting for CSS scaling (canvas may be displayed smaller than its pixel size).
+   * Convert a pointer/touch client coordinate to canvas-internal grid coordinates,
+   * accounting for the CSS scale applied by the container.
    */
-  function getCanvasCoords(e: PointerEvent | MouseEvent | Touch): { x: number; y: number } {
+  function clientToGrid(clientX: number, clientY: number): { gridX: number; gridY: number } {
     const canvas = canvasEl
-    if (!canvas) return { x: 0, y: 0 }
+    if (!canvas) return { gridX: -1, gridY: -1 }
 
     const rect = canvas.getBoundingClientRect()
-    const scaleX = width / rect.width
-    const scaleY = height / rect.height
+    // canvas.width / rect.width gives the CSS-to-internal-pixel scale
+    const scaleX = canvas.width / rect.width
+    const scaleY = canvas.height / rect.height
 
-    const clientX = 'clientX' in e ? e.clientX : (e as Touch).clientX
-    const clientY = 'clientY' in e ? e.clientY : (e as Touch).clientY
+    const canvasPx = (clientX - rect.left) * scaleX
+    const canvasPy = (clientY - rect.top) * scaleY
 
     return {
-      x: (clientX - rect.left) * scaleX,
-      y: (clientY - rect.top) * scaleY,
+      gridX: Math.floor(canvasPx / TILE_SIZE),
+      gridY: Math.floor(canvasPy / TILE_SIZE),
     }
   }
 
   /**
-   * Find the topmost dome object whose bounding box contains the given canvas point.
-   * Returns null if none matched.
+   * Find the frontmost interactive object whose grid bounds contain (gx, gy).
+   * GAIA is checked as a virtual object. Returns null if no hit.
    */
-  function hitTest(canvasX: number, canvasY: number): DomeObject | null {
-    // Iterate in reverse so front-rendered objects take priority
-    for (let i = DOME_OBJECTS.length - 1; i >= 0; i--) {
-      const obj = DOME_OBJECTS[i]
-      const ox = obj.x * width
-      const oy = obj.y * height
-      const ow = obj.width * width
-      const oh = obj.height * height
-      if (canvasX >= ox && canvasX <= ox + ow && canvasY >= oy && canvasY <= oy + oh) {
+  function hitTest(gx: number, gy: number): DomeObject | null {
+    // Check GAIA first (highest visual priority)
+    if (
+      gx >= GAIA_OBJECT.gridX &&
+      gx < GAIA_OBJECT.gridX + GAIA_OBJECT.gridW &&
+      gy >= GAIA_OBJECT.gridY &&
+      gy < GAIA_OBJECT.gridY + GAIA_OBJECT.gridH
+    ) {
+      return GAIA_OBJECT
+    }
+
+    // Check layout objects in reverse render order (front = last in array)
+    for (let i = layout.objects.length - 1; i >= 0; i--) {
+      const obj = layout.objects[i]
+      if (!obj.interactive) continue
+      if (
+        gx >= obj.gridX &&
+        gx < obj.gridX + obj.gridW &&
+        gy >= obj.gridY &&
+        gy < obj.gridY + obj.gridH
+      ) {
         return obj
       }
     }
+
     return null
   }
 
-  // ── Event handlers ────────────────────────────────────────────────────────
+  // ---------------------------------------------------------------------------
+  // Event handlers
+  // ---------------------------------------------------------------------------
 
   function handlePointerMove(e: PointerEvent): void {
-    const { x, y } = getCanvasCoords(e)
-    const hit = hitTest(x, y)
+    const { gridX, gridY } = clientToGrid(e.clientX, e.clientY)
+    const hit = hitTest(gridX, gridY)
     if (hit?.id !== hoveredObject?.id) {
       hoveredObject = hit
       dirty = true
@@ -483,38 +577,35 @@
   }
 
   function handleClick(e: MouseEvent): void {
-    const { x, y } = getCanvasCoords(e)
-    const hit = hitTest(x, y)
+    const { gridX, gridY } = clientToGrid(e.clientX, e.clientY)
+    const hit = hitTest(gridX, gridY)
     if (hit) {
       onObjectTap(hit.id, hit.room)
     }
   }
 
   function handleTouchStart(e: TouchEvent): void {
-    // Prevent scroll so the tap is handled as a click on the canvas
     e.preventDefault()
     const touch = e.changedTouches[0]
     if (!touch) return
-    const { x, y } = getCanvasCoords(touch)
-    const hit = hitTest(x, y)
+    const { gridX, gridY } = clientToGrid(touch.clientX, touch.clientY)
+    const hit = hitTest(gridX, gridY)
     if (hit) {
       onObjectTap(hit.id, hit.room)
     }
   }
 
-  // ── Svelte 5 lifecycle via $effect ────────────────────────────────────────
+  // ---------------------------------------------------------------------------
+  // Svelte 5 lifecycle
+  // ---------------------------------------------------------------------------
 
   $effect(() => {
-    // Re-run whenever canvas element is bound or width/height change
     const canvas = canvasEl
     if (!canvas) return
 
-    // Set canvas pixel dimensions
-    canvas.width = width
-    canvas.height = height
-
-    // Generate stable star field for this canvas size
-    stars = generateStars(120, width, height)
+    // Set internal canvas resolution to the full grid pixel size (1:1 pixel art)
+    canvas.width = CANVAS_W
+    canvas.height = CANVAS_H
 
     // Attach event listeners
     canvas.addEventListener('pointermove', handlePointerMove)
@@ -522,7 +613,7 @@
     canvas.addEventListener('click', handleClick)
     canvas.addEventListener('touchstart', handleTouchStart, { passive: false })
 
-    // Load images, then start the render loop
+    // Load sprites then start the render loop
     imagesLoaded = false
     dirty = true
 
@@ -531,11 +622,9 @@
       dirty = true
     })
 
-    // Start animation loop
     rafId = requestAnimationFrame(loop)
 
     return () => {
-      // Cleanup on unmount or re-run
       if (rafId !== null) {
         cancelAnimationFrame(rafId)
         rafId = null
@@ -547,28 +636,39 @@
     }
   })
 
-  // Re-mark dirty whenever gaiaExpression prop changes (handled by loop naturally,
-  // but we set dirty so first frame after change renders immediately)
+  // Mark dirty when gaiaExpression changes so the first frame renders immediately
   $effect(() => {
-    // Track gaiaExpression reactively
     void gaiaExpression
     dirty = true
   })
 </script>
 
 <!--
-  DomeCanvas: Interactive pixel-art dome scene rendered on a 2D canvas.
-  Objects are tappable/clickable to navigate dome rooms.
+  DomeCanvas: Terraria-style tile-based dome hub rendered on a 2D canvas.
+  The canvas internal resolution is 768×512 (24×16 tiles at 32px each).
+  CSS scales it up with image-rendering: pixelated to fill the container width.
 -->
-<canvas
-  bind:this={canvasEl}
-  aria-label="Dome scene — tap an object to explore"
-  style="
+<div class="dome-canvas-container" bind:this={containerEl}>
+  <canvas
+    bind:this={canvasEl}
+    aria-label="Dome hub — tap an object to explore a room"
+  ></canvas>
+</div>
+
+<style>
+  .dome-canvas-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  canvas {
+    display: block;
     width: 100%;
     height: auto;
-    display: block;
     pointer-events: auto;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-  "
-></canvas>
+  }
+</style>
