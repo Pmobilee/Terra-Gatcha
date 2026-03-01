@@ -1,0 +1,106 @@
+import type { FarmSlot } from './types'
+
+/** Resource production output definition for a farm slot */
+export interface FarmProduction {
+  mineralTier: 'dust' | 'shard' | 'crystal'
+  amountPerHour: number
+}
+
+/**
+ * Production rates keyed by fossil species ID.
+ * Common species produce dust, uncommon produce shards, rare/legendary produce crystals.
+ */
+export const FARM_PRODUCTION: Record<string, FarmProduction> = {
+  // Common: dust producers
+  trilobite:    { mineralTier: 'dust',    amountPerHour: 8 },
+  ammonite:     { mineralTier: 'dust',    amountPerHour: 10 },
+  dodo:         { mineralTier: 'dust',    amountPerHour: 12 },
+  // Uncommon: shard producers
+  raptor:       { mineralTier: 'shard',   amountPerHour: 2 },
+  mammoth:      { mineralTier: 'shard',   amountPerHour: 3 },
+  sabertooth:   { mineralTier: 'shard',   amountPerHour: 2 },
+  // Rare: crystal producers (slow)
+  megalodon:    { mineralTier: 'crystal', amountPerHour: 0.5 },
+  pteranodon:   { mineralTier: 'crystal', amountPerHour: 0.4 },
+  archaeopteryx:{ mineralTier: 'crystal', amountPerHour: 0.3 },
+  // Legendary: crystal at decent rate
+  trex:         { mineralTier: 'crystal', amountPerHour: 1 },
+}
+
+/**
+ * Costs for each farm expansion step. Index 0 = 3→4 slots, etc.
+ * Keys are mineral tier names, values are the amount required.
+ */
+export const FARM_EXPANSION_COSTS: Partial<Record<'dust' | 'shard' | 'crystal', number>>[] = [
+  { dust: 500, shard: 10 },               // 3 → 4 slots
+  { dust: 1000, shard: 30, crystal: 5 },  // 4 → 5 slots
+  { dust: 2000, shard: 50, crystal: 15 }, // 5 → 6 slots
+]
+
+/** Hard maximum number of farm slots. */
+export const FARM_MAX_SLOTS = 6
+
+/** Production caps out after this many hours (prevents infinite accumulation while away). */
+export const FARM_MAX_ACCUMULATION_HOURS = 24
+
+/**
+ * Calculates the uncollected resources for a single farm slot.
+ *
+ * @param slot - The occupied farm slot to evaluate.
+ * @returns An object with the mineral tier and integer amount ready to collect,
+ *          or `null` if the species has no production config or nothing has accumulated.
+ */
+export function calculateProduction(slot: FarmSlot): { tier: 'dust' | 'shard' | 'crystal'; amount: number } | null {
+  const prod = FARM_PRODUCTION[slot.speciesId]
+  if (!prod) return null
+
+  const now = Date.now()
+  const hoursSinceCollect = Math.min(
+    (now - slot.lastCollectedAt) / (1000 * 60 * 60),
+    FARM_MAX_ACCUMULATION_HOURS,
+  )
+  const amount = Math.floor(prod.amountPerHour * hoursSinceCollect)
+  if (amount <= 0) return null
+
+  return { tier: prod.mineralTier, amount }
+}
+
+/**
+ * Calculates the total pending production across all occupied slots.
+ *
+ * @param slots - Array of farm slots (null entries are skipped).
+ * @returns A summary of how many resources of each tier are ready to collect.
+ */
+export function calculateTotalPending(
+  slots: (FarmSlot | null)[],
+): { dust: number; shard: number; crystal: number } {
+  const totals = { dust: 0, shard: 0, crystal: 0 }
+  for (const slot of slots) {
+    if (!slot) continue
+    const result = calculateProduction(slot)
+    if (result) {
+      totals[result.tier] += result.amount
+    }
+  }
+  return totals
+}
+
+/**
+ * Calculates the per-hour production rates across all occupied slots.
+ *
+ * @param slots - Array of farm slots (null entries are skipped).
+ * @returns A summary of how many resources of each tier are produced per hour.
+ */
+export function calculateHourlyRates(
+  slots: (FarmSlot | null)[],
+): { dust: number; shard: number; crystal: number } {
+  const rates = { dust: 0, shard: 0, crystal: 0 }
+  for (const slot of slots) {
+    if (!slot) continue
+    const prod = FARM_PRODUCTION[slot.speciesId]
+    if (prod) {
+      rates[prod.mineralTier] += prod.amountPerHour
+    }
+  }
+  return rates
+}

@@ -5,8 +5,8 @@ Generates pixel art sprites via ComfyUI API, removes background, and
 produces both a 512x512 high-res version and a game-ready downscaled version.
 
 Directory structure:
-  src/assets/sprites-hires/<category>/<name>.png   — 512x512 source of truth
-  src/assets/sprites/<category>/<name>.png         — game-ready (e.g. 64x64)
+  src/assets/sprites-hires/<category>/<name>.png   — 256x256 source of truth
+  src/assets/sprites/<category>/<name>.png         — game-ready (32x32 items, 64x64 chars)
 
 Usage:
     python generate_sprite.py --prompt "pixel art miner" --name miner_idle --category characters --size 64
@@ -163,7 +163,7 @@ def main():
     parser.add_argument("--category", required=True, choices=VALID_CATEGORIES,
                         help="Sprite category: characters, items, tiles, ui")
     parser.add_argument("--size", type=int, default=64, help="Game-ready pixel size (default 64)")
-    parser.add_argument("--hires", type=int, default=512, help="High-res size (default 512)")
+    parser.add_argument("--hires", type=int, default=256, help="High-res size (default 256)")
     parser.add_argument("--seed", type=int, default=42, help="Generation seed")
     parser.add_argument("--no-copy", action="store_true", help="Don't copy to src/assets")
     args = parser.parse_args()

@@ -89,7 +89,40 @@ export enum BlockType {
   OxygenCache = 12,
   UpgradeCrate = 13,
   QuizGate = 14,
+  ExitLadder = 15,
+  DescentShaft = 16,
+  RelicShrine = 17,
+  QuoteStone = 18,
+  SendUpStation = 19,
+  LavaBlock = 20,
+  GasPocket = 21,
+  UnstableGround = 22,
+  OxygenTank = 23,
+  DataDisc = 24,
+  FossilNode = 25,
   Unbreakable = 99,
+}
+
+// ============================================================
+// RELIC SYSTEM
+// ============================================================
+
+/** The effect a relic provides during a dive */
+export type RelicEffect =
+  | { type: 'oxygen_regen'; amount: number }      // Restore N O2 every 10 blocks mined
+  | { type: 'mineral_magnet'; radius: number }     // Auto-collect minerals within N tiles
+  | { type: 'tough_skin'; reduction: number }      // Reduce hazard O2 cost by N
+  | { type: 'lucky_strike'; chance: number }       // N% chance to double mineral drops
+  | { type: 'deep_breath'; bonus: number }         // +N max oxygen
+  | { type: 'quiz_master'; bonus: number }         // +N bonus dust on correct quiz answers
+
+/** A collectible relic found at shrines, providing persistent in-run bonuses */
+export interface Relic {
+  id: string
+  name: string
+  description: string
+  icon: string        // emoji for now
+  effect: RelicEffect
 }
 
 /** A single cell in the mine grid */
@@ -98,6 +131,7 @@ export interface MineCell {
   hardness: number            // Taps remaining to break
   maxHardness: number         // Original hardness
   revealed: boolean           // Visible to player?
+  visibilityLevel?: number    // 0=hidden, 1=silhouette, 2=dim, 3=faint — controlled by scanner
   content?: MineCellContent   // What's inside (if special block)
 }
 
@@ -110,8 +144,8 @@ export interface MineCellContent {
   oxygenAmount?: number
 }
 
-/** Mineral currency tiers */
-export type MineralTier = 'dust' | 'shard' | 'crystal' | 'coreFragment' | 'primordialEssence'
+/** Mineral currency tiers — ordered from common (surface) to rare (extreme depth) */
+export type MineralTier = 'dust' | 'shard' | 'crystal' | 'geode' | 'essence'
 
 // ============================================================
 // INVENTORY
@@ -124,6 +158,36 @@ export interface InventorySlot {
   mineralAmount?: number      // Stack count
   artifactRarity?: Rarity
   factId?: string
+}
+
+// ============================================================
+// FOSSIL SYSTEM
+// ============================================================
+
+/** Per-species fossil collection state stored in the player save */
+export interface FossilState {
+  speciesId: string
+  fragmentsFound: number
+  fragmentsNeeded: number
+  revived: boolean
+  revivedAt?: number
+}
+
+// ============================================================
+// FARM SYSTEM
+// ============================================================
+
+/** A single occupied slot in The Farm */
+export interface FarmSlot {
+  speciesId: string
+  placedAt: number        // Unix timestamp (ms) when placed
+  lastCollectedAt: number // Unix timestamp (ms) of last resource collection
+}
+
+/** Persistent state of the player's farm */
+export interface FarmState {
+  slots: (FarmSlot | null)[] // null = empty slot
+  maxSlots: number            // starts at 3, expandable up to FARM_MAX_SLOTS
 }
 
 // ============================================================
@@ -150,7 +214,60 @@ export interface PlayerSave {
   // Stats
   stats: PlayerStats
 
-  // Progression (future: pets, dome, etc.)
+  // Streak tracking
+  lastDiveDate?: string       // ISO date string (YYYY-MM-DD) of last completed dive
+
+  // Data Discs
+  unlockedDiscs: string[]     // Disc IDs the player has found
+
+  // Crafting (Materializer)
+  craftedItems: Record<string, number>  // recipe_id → times crafted
+  craftCounts: Record<string, number>   // recipe_id → times crafted (for scaling cost calculation)
+  activeConsumables: string[]           // consumable recipe_ids queued for next dive
+
+  // Dive insurance
+  insuredDive: boolean                  // whether the next dive is insured
+
+  // Cosmetics
+  ownedCosmetics: string[]              // cosmetic IDs the player owns
+  equippedCosmetic: string | null       // currently equipped cosmetic ID
+
+  // Daily Deals
+  purchasedDeals: string[]              // deal IDs purchased today
+  lastDealDate?: string                 // ISO date (YYYY-MM-DD) of last deal purchase batch; resets daily
+
+  // Fossil collection
+  fossils: Record<string, FossilState> // speciesId → fossil state
+
+  // Companion (active revived fossil)
+  activeCompanion: string | null        // species ID of active companion, or null if none
+
+  // Review Rituals
+  lastMorningReview?: string            // ISO date of last morning ritual (YYYY-MM-DD)
+  lastEveningReview?: string            // ISO date of last evening ritual (YYYY-MM-DD)
+
+  // Knowledge Store
+  knowledgePoints: number               // Derived currency earned through learning milestones
+  purchasedKnowledgeItems: string[]     // Knowledge Store item IDs the player has purchased
+
+  // Dome Expansion
+  unlockedRooms: string[]               // Room IDs the player has unlocked
+
+  // Farm
+  farm: FarmState
+
+  // Premium Materials (earned from rare in-game drops, never purchasable with real money)
+  premiumMaterials: Record<string, number>  // premium material id → count
+
+  // Streak protection & milestones
+  streakFreezes: number         // remaining freeze days available
+  lastStreakMilestone: number   // last milestone days value that triggered a claim
+  claimedMilestones: number[]  // milestone day values already claimed
+  streakProtected: boolean      // whether current streak is protected for today
+  titles: string[]              // unlocked titles (cosmetic)
+  activeTitle: string | null    // currently displayed title
+
+  // Progression (future: dome, etc.)
 }
 
 /** Player statistics */
@@ -166,6 +283,9 @@ export interface PlayerStats {
   bestStreak: number
 }
 
+/** Temporary in-run upgrade types */
+export type RunUpgrade = 'pickaxe_boost' | 'scanner_boost' | 'backpack_expand' | 'oxygen_efficiency' | 'bomb'
+
 // ============================================================
 // RUN STATE (active dive, not persisted)
 // ============================================================
@@ -177,6 +297,7 @@ export interface RunState {
   maxOxygen: number           // Starting oxygen for this run
   depth: number               // Current y-position
   layer: number               // Current layer index (0-based)
+  maxLayers: number           // Total layers in this dive
   inventory: InventorySlot[]  // Current backpack contents
   inventorySlots: number      // Max inventory slots this run
   minerX: number              // Player grid position

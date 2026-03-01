@@ -37,36 +37,91 @@ docs/              — Project documentation (LLM-optimized)
 - ALWAYS validate API responses against expected schemas
 - Keep dependencies minimal; audit before adding new packages
 
+## Agent Architecture (Claude Code)
+- **Orchestrator**: Claude Opus 4.6 — planning, analysis, coordination, verification
+- **Coding workers**: Sonnet 4.5 sub-agents via Agent tool (`model: "sonnet"`) — all code edits, new files, refactoring
+- **Quick tasks**: Haiku 4.5 sub-agents via Agent tool (`model: "haiku"`) — simple/mechanical changes, formatting, boilerplate
+- **Exploration**: Explore-type sub-agents (`subagent_type: "Explore"`) — codebase search, file discovery, code understanding
+
 ## Agent Autonomy Rules
 - MAY: Run ComfyUI workflows to generate sprites autonomously
 - MAY: Run `npm run typecheck`, `npm run build`, `npm run dev`
 - MAY: Read code/docs and run diagnostics to plan changes
-- MUST: Delegate all code/doc file edits and new file creation to codex Task sub-agents
+- MUST: Delegate all code/doc file edits and new file creation to Agent sub-agents (Sonnet or Haiku)
 - MUST ASK: Before adding new npm dependencies
 - MUST ASK: Before modifying database schemas
 - MUST ASK: Before deleting files
 - MUST ASK: Before changing security-critical configuration (CSP, auth, CORS)
 
 ## Workflow Rules — MANDATORY
-- **ALL code changes** (edits, new files, refactors) MUST be performed by codex sub-agents via the Task tool
-- The orchestrating Claude agent is for **planning, analysis, and coordination only** — it must NOT directly edit or write code files
+- **ALL code changes** (edits, new files, refactors) MUST be performed by Sonnet/Haiku sub-agents via the Agent tool
+- The Opus orchestrator is for **planning, analysis, and coordination only** — it must NOT directly edit or write code files
 - The orchestrator MAY: read files, run typecheck/build/git commands, take screenshots, analyze bugs
-- The orchestrator MUST delegate to codex workers: all file edits, all code writing, all refactoring
-- After codex workers complete, the orchestrator verifies (typecheck, build, visual test) and commits
-- This conserves Claude planning budget for architecture and creative decisions where it matters most
+- The orchestrator MUST delegate to Sonnet/Haiku workers: all file edits, all code writing, all refactoring
+- After workers complete, the orchestrator verifies (typecheck, build, visual test) and commits
+- This conserves Opus budget for architecture and creative decisions where it matters most
+
+## Visual Testing with Playwright — MANDATORY
+- **ALWAYS take screenshots after every visual/UI change** before considering work done
+- **ALWAYS take a screenshot before ending a session** to confirm the game is in a working visual state
+- The MCP Playwright tool DOES NOT WORK in this environment (sandbox restriction) — use the Bash Node.js script approach below
+- When debugging visual bugs, screenshot FIRST to see the actual problem, then after each fix attempt
+- **Template** (write to `/tmp/ss.js` and run with `node /tmp/ss.js`):
+```js
+const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
+;(async () => {
+  const browser = await chromium.launch({
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    executablePath: '/opt/google/chrome/chrome'
+  })
+  const page = await browser.newPage()
+  await page.setViewportSize({ width: 800, height: 600 })
+  await page.goto('http://localhost:5173')
+  await page.waitForSelector('button:has-text("Dive")', { timeout: 15000 })
+  await page.screenshot({ path: '/tmp/ss-base.png' })
+  // Navigate to mine:
+  await page.click('button:has-text("Dive")')
+  await page.waitForTimeout(1500)
+  await page.click('button:has-text("Enter Mine")')
+  await page.waitForTimeout(3000)
+  await page.screenshot({ path: '/tmp/ss-mine.png' })
+  await browser.close()
+})()
+```
+- Then read `/tmp/ss-mine.png` with the Read tool to visually inspect the result
+- Full reference: see `memory/playwright-workflow.md` in the auto-memory directory
 
 ## Roadmap Workflow — MANDATORY
 - `docs/roadmap/PROGRESS.md` is the master index and must be consulted first for next work
 - Active work must have a corresponding detailed task doc in `docs/roadmap/in-progress/`
-- When starting a new phase/sub-phase, create or expand the in-progress doc with codex-executable steps (file paths, verification commands)
+- When starting a new phase/sub-phase, create or expand the in-progress doc with sub-agent-executable steps (file paths, verification commands)
 - After completing a sub-phase, update its status in `docs/roadmap/in-progress/PHASE-1.0-OVERVIEW.md` (or the relevant overview doc) and move the completed doc to `docs/roadmap/completed/`
 - Keep the roadmap current on every meaningful change; if the session resets, this is the source of truth
 
-## Sub-Agent Rules
-- When spawning Task sub-agents, NEVER use "spark" tier — always use **codex 5.3 medium** or **codex 5.3 high** depending on task complexity
-- Simple/mechanical tasks (file creation from spec, refactoring): medium
-- Complex tasks (system integration, architecture, debugging): high
-- For code changes, ALWAYS use Task sub-agents — the orchestrator must never edit files directly
+## Sub-Agent Rules (Agent Tool)
+- **Complex tasks** (system integration, architecture, multi-file changes, debugging): use `model: "sonnet"`, `subagent_type: "general-purpose"`
+- **Simple tasks** (file creation from spec, single-file edits, formatting, boilerplate): use `model: "haiku"`, `subagent_type: "general-purpose"`
+- **Codebase exploration** (finding files, searching code, understanding patterns): use `subagent_type: "Explore"`
+- Always provide sub-agents with full context: file paths, expected behavior, verification commands
+- Parallelize independent sub-agent tasks whenever possible
+- The orchestrator must NEVER edit files directly — always delegate via Agent tool
+
+## Specialized Task Patterns
+### Security Audit
+When reviewing code for security, delegate to a Sonnet sub-agent with these instructions:
+- Review for XSS (innerHTML, eval, document.write), CSP issues, input validation gaps
+- Check for dependency vulnerabilities, secret leaks, unsafe deserialization, CORS misconfig
+- Reference `docs/SECURITY.md` for project security policies
+- Report findings with severity (critical/high/medium/low) and file:line references
+
+### Sprite Generation
+When generating sprites, delegate to a sub-agent with these instructions:
+- Create ComfyUI API workflow payloads for pixel art sprites
+- Submit to local ComfyUI server at `http://localhost:8188`
+- Validate output (correct dimensions, transparent background, PNG format)
+- Save to appropriate location under `src/assets/`
+- Reference `docs/SPRITE_PIPELINE.md` for prompt templates and resolution targets
+- ComfyUI Python venv: `/opt/comfyui-env`, Models: `/opt/ComfyUI/models/`
 
 ## Context Guide — What to Read
 - Game mechanics and design → `docs/GAME_DESIGN.md`

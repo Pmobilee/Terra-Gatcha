@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import type { Fact, Rarity } from '../../data/types'
+  import { GIAI_EXPRESSIONS, GIAI_NAME, getGiaiExpression } from '../../data/giaiAvatar'
+  import { giaiMood } from '../stores/settings'
 
   type Props = {
     fact: Fact
@@ -35,6 +37,17 @@
   const rarityColor = $derived(rarityColors[fact.rarity])
   const sellHint = $derived(`Sell for ${sellDustValues[fact.rarity]} Dust`)
 
+  /** Map rarity to the trigger used for GIAI expression selection */
+  const rarityTrigger = $derived.by(() => {
+    if (fact.rarity === 'legendary' || fact.rarity === 'mythic') return 'relic_found'
+    if (fact.rarity === 'rare' || fact.rarity === 'epic') return 'artifact_found'
+    return 'quiz_correct'
+  })
+
+  const giaiCommentEmoji = $derived(
+    getGiaiExpression(rarityTrigger, $giaiMood).emoji
+  )
+
   onMount(() => {
     const timer = setTimeout(() => {
       phase = 'revealed'
@@ -67,6 +80,23 @@
       {/if}
 
       <p class="explanation">{fact.explanation}</p>
+
+      {#if fact.wowFactor}
+        <div class="wow-section">
+          <span class="wow-label">Mind-Blowing</span>
+          <p class="wow-text">{fact.wowFactor}</p>
+        </div>
+      {/if}
+
+      {#if fact.giaiComment}
+        <div class="giai-section">
+          <div class="giai-section-header">
+            <span class="giai-section-emoji" aria-hidden="true">{giaiCommentEmoji}</span>
+            <span class="giai-label">{GIAI_NAME}</span>
+          </div>
+          <p class="giai-text">"{fact.giaiComment}"</p>
+        </div>
+      {/if}
 
       {#if fact.exampleSentence}
         <p class="example">"{fact.exampleSentence}"</p>
@@ -194,6 +224,67 @@
     font-size: 1rem;
     line-height: 1.45;
     margin-bottom: 0.9rem;
+  }
+
+  .wow-section {
+    margin-top: 14px;
+    padding: 12px;
+    background: color-mix(in srgb, var(--color-warning) 10%, var(--color-surface) 90%);
+    border-radius: 10px;
+    border-left: 3px solid var(--color-warning);
+  }
+
+  .wow-label {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: var(--color-warning);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .wow-text {
+    color: var(--color-text);
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .giai-section {
+    margin-top: 10px;
+    padding: 10px 12px;
+    background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface) 88%);
+    border-radius: 10px;
+    border-left: 3px solid var(--color-accent);
+  }
+
+  .giai-section-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .giai-section-emoji {
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  .giai-label {
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    color: var(--color-accent);
+    font-weight: 800;
+    letter-spacing: 1.5px;
+  }
+
+  .giai-text {
+    color: var(--color-text-dim);
+    font-size: 0.82rem;
+    line-height: 1.4;
+    margin: 0;
+    font-style: italic;
   }
 
   .example {

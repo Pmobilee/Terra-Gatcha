@@ -1,4 +1,6 @@
 import Phaser from 'phaser'
+import { getSpriteUrls } from '../spriteManifest'
+import { getSpriteResolution } from '../../ui/stores/settings'
 
 /**
  * BootScene: First scene loaded. Handles asset preloading
@@ -40,12 +42,25 @@ export class BootScene extends Phaser.Scene {
       loadingText.destroy()
     })
 
-    // Future: load sprite assets here
-    // this.load.image('player', 'assets/sprites/characters/miner_idle.png')
-    // this.load.image('tiles', 'assets/tilesets/underground.png')
+    const resolution = getSpriteResolution()
+    const spriteUrls = getSpriteUrls(resolution)
+    for (const [key, url] of Object.entries(spriteUrls)) {
+      this.load.image(key, url)
+    }
   }
 
   create(): void {
+    // Apply LINEAR filter for hi-res sprites (downscaled from 256px to 32px)
+    if (getSpriteResolution() === 'high') {
+      const texManager = this.textures
+      for (const key of Object.keys(getSpriteUrls('high'))) {
+        const texture = texManager.get(key)
+        if (texture) {
+          texture.setFilter(Phaser.Textures.FilterMode.LINEAR)
+        }
+      }
+    }
+
     // Emit boot-complete so main.ts can transition to base screen
     this.game.events.emit('boot-complete')
 

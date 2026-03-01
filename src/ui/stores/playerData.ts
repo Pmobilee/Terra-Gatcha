@@ -1,7 +1,10 @@
 import { get, writable } from 'svelte/store'
 import type { AgeRating, MineralTier, PlayerSave, ReviewState } from '../../data/types'
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'
-import { createReviewState, isDue, reviewFact } from '../../services/sm2'
+import { createReviewState, isDue, getMasteryLevel, reviewFact } from '../../services/sm2'
+import type { Cosmetic } from '../../data/cosmetics'
+import { calculateKnowledgePoints } from '../../data/knowledgeStore'
+import { BALANCE } from '../../data/balance'
 
 /** The active player save data. */
 export const playerSave = writable<PlayerSave | null>(null)
@@ -167,7 +170,52 @@ export function addMinerals(tier: MineralTier, amount: number): void {
 }
 
 /**
- * Records a completed dive in player statistics.
+ * Deducts minerals from the player. Clamps to zero — never goes negative.
+ *
+ * @param tier - Mineral tier to decrement.
+ * @param amount - Amount to deduct.
+ */
+export function deductMinerals(tier: MineralTier, amount: number): void {
+  playerSave.update((save) => {
+    if (!save) {
+      return save
+    }
+
+    return {
+      ...save,
+      minerals: {
+        ...save.minerals,
+        [tier]: Math.max(0, save.minerals[tier] - amount),
+      },
+    }
+  })
+
+  persistPlayer()
+}
+
+/**
+ * Unlocks a dome room for the player if it is not already unlocked.
+ *
+ * @param roomId - The room ID to unlock.
+ */
+export function unlockRoom(roomId: string): void {
+  playerSave.update((save) => {
+    if (!save) return save
+    const currentRooms = save.unlockedRooms ?? ['command']
+    if (currentRooms.includes(roomId)) return save
+    return {
+      ...save,
+      unlockedRooms: [...currentRooms, roomId],
+    }
+  })
+
+  persistPlayer()
+}
+
+/**
+ * Records a completed dive in player statistics and updates the daily streak.
+ * Also checks if any new dome rooms should be unlocked based on total dives,
+ * and auto-claims any newly reached streak milestones.
  *
  * @param deepestLayer - Deepest layer reached in the dive.
  * @param blocksMined - Number of blocks mined during the dive.
@@ -178,19 +226,312 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
       return save
     }
 
+    const today = new Date().toISOString().split('T')[0]
+    const lastDate = save.lastDiveDate
+
+    let newStreak = save.stats.currentStreak
+    let streakProtected = save.streakProtected ?? false
+
+    if (lastDate === today) {
+      // Already dived today — streak unchanged, clear protection flag
+      streakProtected = false
+    } else if (lastDate) {
+      const lastDiveDate = new Date(lastDate)
+      const todayDate = new Date(today)
+      const diffDays = Math.floor((todayDate.getTime() - lastDiveDate.getTime()) / (1000 * 60 * 60 * 24))
+
+      if (diffDays === 1) {
+        // Consecutive day — increment streak
+        newStreak += 1
+        streakProtected = false
+      } else if (diffDays > 1 && streakProtected) {
+        // Missed a day but streak was protected — don't reset, just consume the protection
+        streakProtected = false
+      } else {
+        // Streak broken — reset to 1
+        newStreak = 1
+        streakProtected = false
+      }
+    } else {
+      // First ever dive
+      newStreak = 1
+      streakProtected = false
+    }
+
+    const newDiveCount = save.stats.totalDivesCompleted + 1
+
+    // Check if any dome rooms should be unlocked based on new dive count
+    const currentRooms = save.unlockedRooms ?? ['command']
+    const newlyUnlocked = BALANCE.DOME_ROOMS
+      .filter(room => room.unlockDives > 0 && newDiveCount >= room.unlockDives && !currentRooms.includes(room.id))
+      .map(room => room.id)
+    const updatedRooms = newlyUnlocked.length > 0
+      ? [...currentRooms, ...newlyUnlocked]
+      : currentRooms
+
+    // Auto-claim newly reached streak milestones
+    const claimedMilestones = [...(save.claimedMilestones ?? [])]
+    let updatedMinerals = { ...save.minerals }
+    let updatedOxygen = save.oxygen
+    const updatedTitles = [...(save.titles ?? [])]
+
+    for (const milestone of BALANCE.STREAK_MILESTONES) {
+      if (newStreak >= milestone.days && !claimedMilestones.includes(milestone.days)) {
+        claimedMilestones.push(milestone.days)
+        // Apply the milestone reward
+        if (milestone.reward === 'dust_bonus') {
+          updatedMinerals = { ...updatedMinerals, dust: updatedMinerals.dust + milestone.value }
+        } else if (milestone.reward === 'crystal_bonus') {
+          updatedMinerals = { ...updatedMinerals, crystal: updatedMinerals.crystal + milestone.value }
+        } else if (milestone.reward === 'geode_bonus') {
+          updatedMinerals = { ...updatedMinerals, geode: updatedMinerals.geode + milestone.value }
+        } else if (milestone.reward === 'essence_bonus') {
+          updatedMinerals = { ...updatedMinerals, essence: updatedMinerals.essence + milestone.value }
+        } else if (milestone.reward === 'oxygen_bonus') {
+          updatedOxygen = updatedOxygen + milestone.value
+        } else if (milestone.reward === 'title') {
+          if (!updatedTitles.includes(milestone.name)) {
+            updatedTitles.push(milestone.name)
+          }
+        }
+      }
+    }
+
+    const highestClaimed = claimedMilestones.length > 0 ? Math.max(...claimedMilestones) : 0
+
     return {
       ...save,
+      lastDiveDate: today,
+      streakProtected,
+      claimedMilestones,
+      lastStreakMilestone: highestClaimed,
+      titles: updatedTitles,
+      minerals: updatedMinerals,
+      oxygen: updatedOxygen,
+      unlockedRooms: updatedRooms,
       stats: {
         ...save.stats,
-        totalDivesCompleted: save.stats.totalDivesCompleted + 1,
+        totalDivesCompleted: newDiveCount,
         totalBlocksMined: save.stats.totalBlocksMined + blocksMined,
         deepestLayerReached:
           deepestLayer > save.stats.deepestLayerReached
             ? deepestLayer
             : save.stats.deepestLayerReached,
+        currentStreak: newStreak,
+        bestStreak: Math.max(save.stats.bestStreak, newStreak),
       },
     }
   })
 
   persistPlayer()
+}
+
+/**
+ * Consumes one streak freeze to protect the current streak for the next missed day.
+ *
+ * @returns `true` if a freeze was available and consumed, `false` otherwise.
+ */
+export function useStreakFreeze(): boolean {
+  const current = get(playerSave)
+  if (!current) return false
+
+  const freezes = current.streakFreezes ?? 0
+  if (freezes <= 0) return false
+
+  playerSave.update(save => {
+    if (!save) return save
+    return {
+      ...save,
+      streakFreezes: (save.streakFreezes ?? 0) - 1,
+      streakProtected: true,
+      lastPlayedAt: Date.now(),
+    }
+  })
+
+  persistPlayer()
+  return true
+}
+
+/**
+ * Purchases one streak freeze for the configured dust cost.
+ * Respects BALANCE.STREAK_FREEZE_MAX as the cap on total freezes.
+ *
+ * @returns `true` if purchase succeeded, `false` if insufficient dust or at max freezes.
+ */
+export function purchaseStreakFreeze(): boolean {
+  const current = get(playerSave)
+  if (!current) return false
+
+  const freezes = current.streakFreezes ?? 0
+  if (freezes >= BALANCE.STREAK_FREEZE_MAX) return false
+
+  const cost = BALANCE.STREAK_PROTECTION_COST.dust ?? 200
+  if (current.minerals.dust < cost) return false
+
+  playerSave.update(save => {
+    if (!save) return save
+    return {
+      ...save,
+      streakFreezes: (save.streakFreezes ?? 0) + 1,
+      minerals: {
+        ...save.minerals,
+        dust: save.minerals.dust - cost,
+      },
+      lastPlayedAt: Date.now(),
+    }
+  })
+
+  persistPlayer()
+  return true
+}
+
+/**
+ * Sets or clears the active cosmetic title displayed under the pilot name.
+ *
+ * @param title - The title string to activate, or `null` to clear.
+ */
+export function setActiveTitle(title: string | null): void {
+  playerSave.update(save => {
+    if (!save) return save
+    // Only allow titles the player has actually unlocked
+    if (title !== null && !(save.titles ?? []).includes(title)) return save
+    return {
+      ...save,
+      activeTitle: title,
+      lastPlayedAt: Date.now(),
+    }
+  })
+
+  persistPlayer()
+}
+
+/**
+ * Attempts to buy a cosmetic. Checks affordability, deducts cost, adds to ownedCosmetics.
+ *
+ * @param cosmeticId - The ID of the cosmetic to buy.
+ * @param cost - Mineral cost map for this cosmetic.
+ * @returns `true` if the purchase succeeded, `false` if insufficient funds or already owned.
+ */
+export function buyCosmetic(cosmeticId: string, cost: Cosmetic['cost']): boolean {
+  const current = get(playerSave)
+  if (!current) return false
+
+  // Already owned — no double purchase
+  if (current.ownedCosmetics.includes(cosmeticId)) return false
+
+  // Validate player can afford
+  for (const [tier, required] of Object.entries(cost) as [MineralTier, number][]) {
+    if ((current.minerals[tier] ?? 0) < required) return false
+  }
+
+  // Deduct minerals
+  const updatedMinerals = { ...current.minerals }
+  for (const [tier, required] of Object.entries(cost) as [MineralTier, number][]) {
+    updatedMinerals[tier] = (updatedMinerals[tier] ?? 0) - required
+  }
+
+  playerSave.update(save => {
+    if (!save) return save
+    return {
+      ...save,
+      minerals: updatedMinerals,
+      ownedCosmetics: [...save.ownedCosmetics, cosmeticId],
+      lastPlayedAt: Date.now(),
+    }
+  })
+
+  persistPlayer()
+  return true
+}
+
+/**
+ * Sets or clears the equipped cosmetic.
+ *
+ * @param cosmeticId - The cosmetic ID to equip, or `null` to unequip.
+ */
+export function equipCosmetic(cosmeticId: string | null): void {
+  playerSave.update(save => {
+    if (!save) return save
+    return {
+      ...save,
+      equippedCosmetic: cosmeticId,
+      lastPlayedAt: Date.now(),
+    }
+  })
+
+  persistPlayer()
+}
+
+/**
+ * Recalculates the player's Knowledge Points from stats and mastery, then updates
+ * the store and persists. Call this after any study session or stat-changing event.
+ */
+export function syncKnowledgePoints(): void {
+  const save = get(playerSave)
+  if (!save) return
+
+  const masteredCount = save.reviewStates.filter(
+    rs => getMasteryLevel(rs) === 'mastered',
+  ).length
+
+  const kp = calculateKnowledgePoints(save.stats, masteredCount)
+
+  // Only update if the value actually changed to avoid unnecessary re-renders
+  if (save.knowledgePoints === kp) return
+
+  playerSave.update(s => {
+    if (!s) return s
+    return { ...s, knowledgePoints: kp }
+  })
+
+  persistPlayer()
+}
+
+/**
+ * Sets or clears the active companion fossil species.
+ *
+ * @param speciesId - The species ID to set as companion, or `null` to remove.
+ */
+export function setActiveCompanion(speciesId: string | null): void {
+  playerSave.update(save => {
+    if (!save) return save
+    return {
+      ...save,
+      activeCompanion: speciesId,
+      lastPlayedAt: Date.now(),
+    }
+  })
+
+  persistPlayer()
+}
+
+/**
+ * Attempts to purchase a Knowledge Store item. Checks KP balance, deducts KP,
+ * and appends the item ID to purchasedKnowledgeItems.
+ *
+ * For items with maxPurchases > 1 the same ID is appended multiple times so the
+ * count is simply derived via `filter`.
+ *
+ * @param itemId - The Knowledge Store item ID to purchase.
+ * @param cost - KP cost of the item (taken from KNOWLEDGE_ITEMS).
+ * @returns `true` if the purchase succeeded, `false` otherwise.
+ */
+export function purchaseKnowledgeItem(itemId: string, cost: number): boolean {
+  const current = get(playerSave)
+  if (!current) return false
+
+  if (current.knowledgePoints < cost) return false
+
+  playerSave.update(save => {
+    if (!save) return save
+    return {
+      ...save,
+      knowledgePoints: save.knowledgePoints - cost,
+      purchasedKnowledgeItems: [...save.purchasedKnowledgeItems, itemId],
+      lastPlayedAt: Date.now(),
+    }
+  })
+
+  persistPlayer()
+  return true
 }

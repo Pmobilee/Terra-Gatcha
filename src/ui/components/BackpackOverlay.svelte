@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { InventorySlot, MineralTier, Rarity } from '../../data/types'
+  import { BALANCE } from '../../data/balance'
+  import { tempBackpackSlots } from '../stores/gameState'
 
   interface Props {
     slots: InventorySlot[]
@@ -31,12 +33,31 @@
         return 'Shard'
       case 'crystal':
         return 'Crystal'
-      case 'coreFragment':
-        return 'Core Fragment'
-      case 'primordialEssence':
-        return 'Primordial Essence'
+      case 'geode':
+        return 'Geode'
+      case 'essence':
+        return 'Essence'
       default:
         return 'Mineral'
+    }
+  }
+
+  function getMaxStackSize(tier: MineralTier | undefined): number {
+    switch (tier) {
+      case 'dust': return BALANCE.DUST_STACK_SIZE
+      case 'shard': return BALANCE.SHARD_STACK_SIZE
+      case 'crystal': return BALANCE.CRYSTAL_STACK_SIZE
+      case 'geode': return BALANCE.GEODE_STACK_SIZE
+      case 'essence': return BALANCE.ESSENCE_STACK_SIZE
+      default: return 1
+    }
+  }
+
+  function getMineralColor(tier: MineralTier | undefined): string {
+    switch (tier) {
+      case 'geode': return '#9b59b6'
+      case 'essence': return '#ffd700'
+      default: return ''
     }
   }
 
@@ -69,7 +90,12 @@
 
 <section class="backpack-overlay" aria-label="Backpack inventory">
   <header class="title-bar">
-    <h2>Backpack ({filledCount}/{totalCount})</h2>
+    <div class="title-group">
+      <h2>Backpack ({filledCount}/{totalCount})</h2>
+      {#if $tempBackpackSlots > 0}
+        <span class="temp-indicator">Temp: +{$tempBackpackSlots}</span>
+      {/if}
+    </div>
     <button class="close-button" type="button" aria-label="Close backpack" onclick={onClose}>X</button>
   </header>
 
@@ -94,8 +120,8 @@
         aria-pressed={selectedIndex === index}
       >
         {#if slot.type === 'mineral'}
-          <span class="label">{formatMineralTier(slot.mineralTier)}</span>
-          <span class="value">x{slot.mineralAmount ?? 0}</span>
+          <span class="label" style={getMineralColor(slot.mineralTier) ? `color: ${getMineralColor(slot.mineralTier)}` : ''}>{formatMineralTier(slot.mineralTier)}</span>
+          <span class="value">x{slot.mineralAmount ?? 0}/{getMaxStackSize(slot.mineralTier)}</span>
         {:else if slot.type === 'artifact'}
           <span class="label" style={`color: ${RARITY_COLORS[slot.artifactRarity ?? 'common']}`}>
             {formatRarity(slot.artifactRarity)}
@@ -139,13 +165,33 @@
     color: var(--color-text);
   }
 
+  .title-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .temp-indicator {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-warning);
+    background: color-mix(in srgb, var(--color-warning) 15%, transparent 85%);
+    border: 1px solid color-mix(in srgb, var(--color-warning) 50%, transparent 50%);
+    border-radius: 4px;
+    padding: 1px 6px;
+    letter-spacing: 0.5px;
+  }
+
   .close-button {
     position: absolute;
     right: 16px;
     top: 50%;
     transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
     border: none;
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.1);
@@ -153,6 +199,8 @@
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
+    display: grid;
+    place-items: center;
   }
 
   .slot-grid {

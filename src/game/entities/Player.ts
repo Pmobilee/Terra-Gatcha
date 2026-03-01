@@ -27,7 +27,7 @@ export class Player {
       return false
     }
 
-    if (row[x].type !== BlockType.Empty) {
+    if (row[x].type !== BlockType.Empty && row[x].type !== BlockType.ExitLadder) {
       return false
     }
 

@@ -35,9 +35,11 @@ API available at `http://localhost:8188`
 `3d render, realistic, photograph, blurry, watermark, text, signature, low quality, deformed`
 
 ## Resolution Strategy
-- Generation resolution: 512x512 (SD 1.5) or 1024x1024 (SDXL)
-- Downscaled to target: 16x16, 32x32, or 64x64 per tile
+- Generation resolution: 1024x1024 (SDXL + pixel-art-xl LoRA)
+- Hi-res source of truth: 256x256 (stored in `src/assets/sprites-hires/`)
+- Game-ready sizes: 32x32 (items/tiles), 64x64 (characters) — downscaled per platform
 - Use nearest-neighbor scaling to preserve pixel art crispness
+- 256x256 hi-res allows clean downscale to any target: 128, 64, 32, 16
 
 ## Automation
 Workflows stored in `sprite-gen/workflows/` as JSON files.

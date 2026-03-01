@@ -183,3 +183,48 @@ Detailed design for each system lives in its own doc:
 | Security | `docs/SECURITY.md` |
 | Sprite pipeline | `docs/SPRITE_PIPELINE.md` |
 | Open design questions | `docs/OPEN_QUESTIONS.md` |
+
+---
+
+## Visibility System — Layered Fog of War
+
+*Design intent: feel like Minesweeper. The player always knows something lurks just beyond their light — but only faintly.*
+
+### Vision Layers
+
+The mine has four visibility levels per cell:
+
+| Level | Name | Always Visible? | Description |
+|-------|------|----------------|-------------|
+| 0 | **Hidden** | No | Fully black. No information. |
+| 1 | **Silhouette** | Yes | Dark block tinted barely with its color (~10% opacity). The player can tell *something* is there, but not what. Adjacent to any revealed cell. |
+| 2 | **Dim** | Scanner ≥ 1 | Slightly more visible (~16–30% opacity, scales with scanner stacks). Block type color starts bleeding through. |
+| 3 | **Faint** | Scanner ≥ 3 | Very faint tint of the 3rd ring beyond the player's light. |
+
+### Reveal Rules
+
+- **Full reveal radius**: cells within Manhattan distance `FOG_REVEAL_RADIUS` of the player become fully visible (`revealed = true`)
+- **Silhouette ring**: cells at exactly `radius+1` get `visibilityLevel = 1`
+- **Dim ring**: cells at exactly `radius+2` get `visibilityLevel = 2`
+- Once a cell is fully revealed it stays revealed (no fog re-cover on movement)
+- Penumbra levels are re-computed each time `revealAround` is called
+
+### Scanner Upgrade Scaling
+
+Each `scanner_boost` upgrade stack enhances what the dim ring shows:
+
+| Scanner Stacks | Dim ring opacity | Effect |
+|---|---|---|
+| 0 | — | Dim ring hidden entirely |
+| 1 | ~23% | Color barely visible |
+| 2 | ~30% | Color clearly visible, block type readable |
+| 3+ | ~30% + faint 3rd ring | Extended awareness |
+
+This gives the scanner upgrade a meaningful visual impact at each tier — not just a number going up, but a literally expanding field of perception.
+
+### Future Extensions
+
+- **Biome-specific fog colours**: volcanic areas glow orange in the penumbra; crystalline biomes shimmer blue
+- **Gas pocket hazards**: temporarily expand the hidden zone around a pocket
+- **Torch/light relics**: temporarily increase `FOG_REVEAL_RADIUS` for a run
+- **Pattern visibility**: at very high scanner (4+), the block pattern detail (cracks, grain) renders at low opacity inside the dim ring

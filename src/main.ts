@@ -2,14 +2,14 @@ import './app.css'
 import App from './App.svelte'
 import { mount } from 'svelte'
 import { GameManager } from './game/GameManager'
-import { addLearnedFact, initPlayer, playerSave } from './ui/stores/playerData'
+import { addLearnedFact, initPlayer, persistPlayer, playerSave } from './ui/stores/playerData'
 import { currentScreen } from './ui/stores/gameState'
 import { get } from 'svelte/store'
 import { BALANCE } from './data/balance'
-import type { Fact } from './data/types'
+import { factsDB } from './services/factsDB'
 
-// Import seed vocabulary data (Vite JSON import)
-import vocabData from './data/seed/vocab-n3.json'
+// Prevent long-press context menu on mobile
+document.addEventListener('contextmenu', (e) => e.preventDefault())
 
 // Mount Svelte UI overlay
 const app = mount(App, {
@@ -26,31 +26,37 @@ playerSave.update(s => {
   return { ...s, oxygen }
 })
 
-// Seed 5 starting facts if player has none learned yet
-if (save.learnedFacts.length === 0) {
-  const starterFacts = (vocabData as Fact[]).slice(0, 5)
-  for (const fact of starterFacts) {
-    addLearnedFact(fact.id)
+async function bootGame(): Promise<void> {
+  // Initialize facts database (fetches WASM + .db file)
+  try {
+    await factsDB.init()
+  } catch (err) {
+    console.warn('FactsDB init failed, continuing without database:', err)
+  }
+
+  // Seed starter facts if DB is available and player has none learned yet
+  if (factsDB.isReady() && save.learnedFacts.length === 0) {
+    const starterVocab = factsDB.getByType('vocabulary').slice(0, 3)
+    const starterFacts = factsDB.getByType('fact').slice(0, 3)
+    for (const fact of [...starterVocab, ...starterFacts]) {
+      addLearnedFact(fact.id)
+    }
+    persistPlayer()
+  }
+
+  // Boot Phaser engine
+  const gameManager = GameManager.getInstance()
+  gameManager.boot()
+
+  // When Phaser finishes booting, navigate to base screen
+  const game = gameManager.getGame()
+  if (game) {
+    game.events.on('boot-complete', () => {
+      currentScreen.set('base')
+    })
   }
 }
 
-// Persist everything after seeding
-import { persistPlayer } from './ui/stores/playerData'
-persistPlayer()
-
-// Initialize game manager and load facts
-const gameManager = GameManager.getInstance()
-gameManager.setFacts(vocabData as Fact[])
-
-// Boot Phaser engine
-gameManager.boot()
-
-// When Phaser finishes booting, navigate to base screen
-const game = gameManager.getGame()
-if (game) {
-  game.events.on('boot-complete', () => {
-    currentScreen.set('base')
-  })
-}
+bootGame()
 
 export default app

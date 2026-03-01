@@ -72,7 +72,18 @@ export function getOxygenCostForBlock(blockType: BlockType): number {
       return BALANCE.OXYGEN_COST_QUIZ_ATTEMPT
     case BlockType.UpgradeCrate:
       return BALANCE.OXYGEN_COST_MINE_SOFT_ROCK
+    case BlockType.LavaBlock:
+      return BALANCE.OXYGEN_COST_MINE_STONE  // Base cost; extra applied on destruction
+    case BlockType.GasPocket:
+      return BALANCE.OXYGEN_COST_MINE_DIRT   // Soft base cost; burst drain applied on destruction
+    case BlockType.UnstableGround:
+      return BALANCE.OXYGEN_COST_MINE_DIRT   // Crumbles easily; cave-in is the real danger
+    case BlockType.OxygenTank:
+      return BALANCE.OXYGEN_COST_MINE_STONE  // Hardness 3 hard casing — same cost per tap as Stone
+    case BlockType.DataDisc:
+      return BALANCE.OXYGEN_COST_MINE_SOFT_ROCK  // Hardness 2 — same cost per tap as SoftRock
     case BlockType.Empty:
+    case BlockType.ExitLadder:
     case BlockType.Unbreakable:
       return 0
     default:

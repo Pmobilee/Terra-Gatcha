@@ -1,0 +1,943 @@
+<script lang="ts">
+  import type { Fact, ReviewState } from '../../data/types'
+  import { audioManager } from '../../services/audioService'
+  import KnowledgeTree from './KnowledgeTree.svelte'
+
+  interface Props {
+    facts: Fact[]
+    reviewStates: ReviewState[]
+    onAnswer: (factId: string, correct: boolean) => void
+    onComplete: () => void
+  }
+
+  let { facts, reviewStates, onAnswer, onComplete }: Props = $props()
+
+  // ── Session size selection ──────────────────────────────────
+  type SessionSize = 5 | 10 | 'all'
+  let sessionSize = $state<SessionSize | null>(null)
+
+  // ── Card queue (set once sessionSize is chosen) ─────────────
+  let queue = $state<Fact[]>([])
+  let cardIndex = $state(0)
+
+  // ── Card flip state ─────────────────────────────────────────
+  let isFlipped = $state(false)
+  let isFlipping = $state(false)
+  let flipRipple = $state(false)
+
+  // ── Score tracking ──────────────────────────────────────────
+  let correctCount = $state(0)
+  let isDone = $state(false)
+
+  // ── Derived helpers ─────────────────────────────────────────
+  const currentFact = $derived(queue[cardIndex] ?? null)
+  const totalCards = $derived(queue.length)
+  const progressLabel = $derived(`${cardIndex + 1} / ${totalCards}`)
+  const progressPct = $derived(totalCards > 0 ? ((cardIndex) / totalCards) * 100 : 0)
+  const progressOver50 = $derived(progressPct > 50)
+
+  const allCorrect = $derived(isDone && correctCount === totalCards)
+  const mostlyCorrect = $derived(isDone && !allCorrect && correctCount / totalCards > 0.7)
+
+  const summaryMessage = $derived.by(() => {
+    if (!isDone) return ''
+    if (allCorrect) return 'Perfect session! Your knowledge grows stronger.'
+    if (mostlyCorrect) return 'Solid review. The tree appreciates your effort.'
+    return 'Some of those need more practice. The tree will wait.'
+  })
+
+  // ── Progress bar color based on fill percentage ──────────────
+  const progressColor = $derived.by(() => {
+    if (progressPct >= 90) return '#ffd369'   // gold near complete
+    if (progressPct >= 50) return '#4ecca3'   // green over halfway
+    return '#6464ff'                           // blue at start
+  })
+
+  // ── Category color for top label ────────────────────────────
+  const CATEGORY_COLORS: Record<string, string> = {
+    'Language':        '#a78bfa',
+    'Life Sciences':   '#34d399',
+    'History':         '#f59e0b',
+    'Culture':         '#f472b6',
+    'Natural Sciences':'#60a5fa',
+    'Geography':       '#4ade80',
+    'Technology':      '#38bdf8',
+  }
+
+  function getCategoryColor(categories: string[]): string {
+    const top = categories[0] ?? ''
+    return CATEGORY_COLORS[top] ?? '#9ca3af'
+  }
+
+  // ── Handlers ────────────────────────────────────────────────
+
+  /** Choose session size and build the card queue. */
+  function chooseSize(size: SessionSize): void {
+    audioManager.playSound('button_click')
+    sessionSize = size
+    const cap = size === 'all' ? facts.length : size
+    queue = facts.slice(0, cap)
+    cardIndex = 0
+    isFlipped = false
+    correctCount = 0
+    isDone = false
+  }
+
+  /** Flip the card to reveal the answer. */
+  async function revealCard(): Promise<void> {
+    if (isFlipped || isFlipping) return
+    audioManager.playSound('button_click')
+    isFlipping = true
+    // Trigger ripple animation
+    flipRipple = false
+    await new Promise<void>(r => setTimeout(r, 10))
+    flipRipple = true
+    await new Promise<void>(r => setTimeout(r, 400))
+    isFlipped = true
+    isFlipping = false
+  }
+
+  /** Player self-rates and advances to the next card. */
+  async function rate(correct: boolean): Promise<void> {
+    if (!currentFact) return
+    audioManager.playSound(correct ? 'quiz_correct' : 'quiz_wrong')
+    if (correct) correctCount++
+    onAnswer(currentFact.id, correct)
+
+    // Brief visual pause before transitioning
+    await new Promise<void>(r => setTimeout(r, 300))
+
+    if (cardIndex + 1 >= totalCards) {
+      isDone = true
+    } else {
+      isFlipped = false
+      isFlipping = false
+      flipRipple = false
+      cardIndex++
+    }
+  }
+
+  function handleComplete(): void {
+    audioManager.playSound('button_click')
+    onComplete()
+  }
+</script>
+
+<div class="study-session" role="main" aria-label="Study session">
+
+  <!-- ── AMBIENT PARTICLES ─────────────────────────────────────── -->
+  <div class="particles" aria-hidden="true">
+    <span class="particle particle-1"></span>
+    <span class="particle particle-2"></span>
+    <span class="particle particle-3"></span>
+    <span class="particle particle-4"></span>
+    <span class="particle particle-5"></span>
+    <span class="particle particle-6"></span>
+    <span class="particle particle-7"></span>
+    <span class="particle particle-8"></span>
+    <span class="particle particle-9"></span>
+    <span class="particle particle-10"></span>
+  </div>
+
+  <!-- ── BREATHING GUIDE ────────────────────────────────────────── -->
+  <div class="breathing-guide" aria-hidden="true"></div>
+
+  <!-- ── SIZE SELECTOR ───────────────────────────────────────── -->
+  {#if sessionSize === null}
+    <div class="selector-screen">
+      <!-- Tree preview decoration in corner -->
+      <div class="tree-preview" aria-hidden="true">
+        <KnowledgeTree {facts} />
+      </div>
+
+      <h1 class="selector-title">
+        <span class="tree-icon" aria-hidden="true">🌿</span>
+        Study Session
+      </h1>
+      <p class="selector-sub">
+        Choose your session
+      </p>
+      <p class="selector-card-count">
+        {facts.length} card{facts.length === 1 ? '' : 's'} ready for review
+      </p>
+      <div class="selector-buttons">
+        <button
+          class="size-btn"
+          type="button"
+          disabled={facts.length === 0}
+          onclick={() => chooseSize(5)}
+        >
+          <span class="size-number">5</span>
+          <span class="size-label">Quick review</span>
+        </button>
+        <button
+          class="size-btn"
+          type="button"
+          disabled={facts.length === 0}
+          onclick={() => chooseSize(10)}
+        >
+          <span class="size-number">10</span>
+          <span class="size-label">Standard session</span>
+        </button>
+        <button
+          class="size-btn size-btn--all"
+          type="button"
+          disabled={facts.length === 0}
+          onclick={() => chooseSize('all')}
+        >
+          <span class="size-number">{facts.length}</span>
+          <span class="size-label">All due</span>
+        </button>
+      </div>
+
+      {#if facts.length === 0}
+        <p class="no-cards-note">No cards due right now. Dive to discover more facts!</p>
+      {/if}
+
+      <button class="back-link" type="button" onclick={handleComplete}>
+        Return to Base
+      </button>
+    </div>
+
+  <!-- ── COMPLETE SCREEN ─────────────────────────────────────── -->
+  {:else if isDone}
+    <div class="complete-screen">
+      {#if allCorrect}
+        <!-- Confetti burst for perfect score -->
+        <div class="confetti-wrap" aria-hidden="true">
+          <span class="confetti c1"></span>
+          <span class="confetti c2"></span>
+          <span class="confetti c3"></span>
+          <span class="confetti c4"></span>
+          <span class="confetti c5"></span>
+          <span class="confetti c6"></span>
+          <span class="confetti c7"></span>
+          <span class="confetti c8"></span>
+        </div>
+      {/if}
+      <h1 class="complete-title">Session Complete!</h1>
+      <div class="score-display">
+        <span class="score-correct">{correctCount}</span>
+        <span class="score-sep">/</span>
+        <span class="score-total">{totalCards}</span>
+      </div>
+      <p class="score-label">correct</p>
+      <p class="summary-message">{summaryMessage}</p>
+      <button class="return-btn" type="button" onclick={handleComplete}>
+        Return to Base
+      </button>
+    </div>
+
+  <!-- ── CARD INTERFACE ──────────────────────────────────────── -->
+  {:else if currentFact}
+    <!-- Tree preview in corner for card phase -->
+    <div class="tree-preview tree-preview--card" aria-hidden="true">
+      <KnowledgeTree {facts} />
+    </div>
+
+    <!-- Progress bar -->
+    <div class="progress-bar-wrap" aria-label="Session progress">
+      <div class="progress-bar">
+        <div
+          class="progress-fill"
+          style="width: {progressPct}%; background: {progressColor};"
+        >
+          {#if progressOver50}
+            <span class="progress-sparkle" aria-hidden="true">✦</span>
+          {/if}
+        </div>
+      </div>
+      <span class="progress-label">{progressLabel}</span>
+    </div>
+
+    <!-- Card scene -->
+    <div class="card-scene" aria-live="polite">
+      <!-- Flip ripple indicator -->
+      {#if flipRipple}
+        <div class="flip-ripple" aria-hidden="true"></div>
+      {/if}
+
+      <div
+        class="card"
+        class:card--flipped={isFlipped}
+        role="button"
+        tabindex={isFlipped ? -1 : 0}
+        aria-label={isFlipped ? undefined : 'Reveal answer'}
+        onclick={() => void revealCard()}
+        onkeydown={e => { if (!isFlipped && (e.key === 'Enter' || e.key === ' ')) void revealCard() }}
+      >
+        <!-- Front (question) -->
+        <div class="card-face card-front">
+          <p
+            class="card-category"
+            style="color: {getCategoryColor(currentFact.category)};"
+          >{currentFact.category.join(' › ')}</p>
+          <p class="card-question">{currentFact.quizQuestion}</p>
+          <p class="tap-hint">Tap card or press Reveal</p>
+          <button
+            class="reveal-btn"
+            type="button"
+            onclick={e => { e.stopPropagation(); void revealCard() }}
+          >
+            Reveal
+          </button>
+        </div>
+
+        <!-- Back (answer + explanation) -->
+        <div class="card-face card-back">
+          <p
+            class="card-category"
+            style="color: {getCategoryColor(currentFact.category)};"
+          >{currentFact.category.join(' › ')}</p>
+          <p class="card-answer">{currentFact.correctAnswer}</p>
+          {#if currentFact.explanation}
+            <p class="card-explanation">{currentFact.explanation}</p>
+          {/if}
+        </div>
+      </div>
+    </div>
+
+    <!-- Self-rating buttons (only after flip) -->
+    {#if isFlipped}
+      <div class="rating-buttons">
+        <button
+          class="rating-btn rating-btn--wrong"
+          type="button"
+          onclick={() => void rate(false)}
+        >
+          Didn't get it
+        </button>
+        <button
+          class="rating-btn rating-btn--correct"
+          type="button"
+          onclick={() => void rate(true)}
+        >
+          Got it
+        </button>
+      </div>
+    {:else}
+      <!-- Placeholder to prevent layout shift -->
+      <div class="rating-buttons rating-buttons--hidden" aria-hidden="true">
+        <div class="rating-btn-placeholder"></div>
+        <div class="rating-btn-placeholder"></div>
+      </div>
+    {/if}
+  {/if}
+
+</div>
+
+<style>
+  /* ── Layout ─────────────────────────────────────────────────── */
+  .study-session {
+    position: fixed;
+    inset: 0;
+    pointer-events: auto;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #0a0a1a 0%, #12122a 50%, #1a1a2e 100%);
+    font-family: 'Courier New', monospace;
+    padding: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* ── Ambient floating particles ──────────────────────────────── */
+  .particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+    background: rgba(180, 180, 255, 0.2);
+  }
+
+  /* 10 particles — varied sizes, positions, speeds, horizontal sway */
+  .particle-1  { width: 2px; height: 2px; left: 8%;   bottom: -10px; animation: float-up 14s  2.0s ease-in-out infinite; opacity: 0.18; }
+  .particle-2  { width: 3px; height: 3px; left: 20%;  bottom: -10px; animation: float-up 11s  0.5s ease-in-out infinite; opacity: 0.22; }
+  .particle-3  { width: 2px; height: 2px; left: 33%;  bottom: -10px; animation: float-up 16s  4.0s ease-in-out infinite; opacity: 0.15; }
+  .particle-4  { width: 4px; height: 4px; left: 45%;  bottom: -10px; animation: float-up 12s  1.2s ease-in-out infinite; opacity: 0.20; }
+  .particle-5  { width: 2px; height: 2px; left: 58%;  bottom: -10px; animation: float-up 18s  6.5s ease-in-out infinite; opacity: 0.17; }
+  .particle-6  { width: 3px; height: 3px; left: 70%;  bottom: -10px; animation: float-up 13s  3.0s ease-in-out infinite; opacity: 0.25; }
+  .particle-7  { width: 2px; height: 2px; left: 82%;  bottom: -10px; animation: float-up 15s  0.0s ease-in-out infinite; opacity: 0.19; }
+  .particle-8  { width: 3px; height: 3px; left: 25%;  bottom: -10px; animation: float-up 10s  7.0s ease-in-out infinite; opacity: 0.28; }
+  .particle-9  { width: 2px; height: 2px; left: 55%;  bottom: -10px; animation: float-up 17s  2.8s ease-in-out infinite; opacity: 0.16; }
+  .particle-10 { width: 4px; height: 4px; left: 90%;  bottom: -10px; animation: float-up 12s  5.0s ease-in-out infinite; opacity: 0.22; }
+
+  @keyframes float-up {
+    0%   { transform: translateY(0)    translateX(0);   opacity: 0;    }
+    10%  { opacity: 1; }
+    50%  { transform: translateY(-50vh) translateX(12px); }
+    90%  { opacity: 0.8; }
+    100% { transform: translateY(-105vh) translateX(-8px); opacity: 0; }
+  }
+
+  /* ── Breathing guide ─────────────────────────────────────────── */
+  .breathing-guide {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(100, 100, 255, 0.25) 0%, transparent 70%);
+    pointer-events: none;
+    will-change: transform;
+    animation: breathe 4s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: translateX(-50%) scale(0.8);  opacity: 0.08; }
+    50%       { transform: translateX(-50%) scale(1.2);  opacity: 0.12; }
+  }
+
+  /* ── Tree preview (decorative corner) ───────────────────────── */
+  .tree-preview {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 150px;
+    height: 100px;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0.22;
+    border-radius: 8px;
+    z-index: 1;
+  }
+
+  .tree-preview--card {
+    top: 10px;
+    right: 10px;
+  }
+
+  /* ── Size selector ───────────────────────────────────────────── */
+  .selector-screen {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .selector-title {
+    color: var(--color-warning);
+    font-family: Georgia, serif;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    margin: 0;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tree-icon {
+    font-size: 0.85em;
+    line-height: 1;
+  }
+
+  .selector-sub {
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 300;
+    margin: -0.5rem 0 0;
+    letter-spacing: 0.5px;
+  }
+
+  .selector-card-count {
+    color: var(--color-text-dim);
+    font-size: 0.85rem;
+    margin: -0.5rem 0 0;
+  }
+
+  .selector-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .size-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    min-height: 68px;
+    border: 1.5px solid rgba(100, 100, 255, 0.35);
+    border-radius: 18px;
+    background: rgba(30, 30, 60, 0.6);
+    color: var(--color-text);
+    font-family: inherit;
+    cursor: pointer;
+    padding: 0 1.5rem;
+    transition: background 160ms ease, border-color 160ms ease, transform 100ms ease, box-shadow 160ms ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .size-btn:hover:not(:disabled) {
+    border-color: rgba(130, 130, 255, 0.65);
+    background: rgba(50, 50, 100, 0.65);
+    box-shadow: 0 0 18px rgba(100, 100, 255, 0.18);
+  }
+
+  .size-btn:active:not(:disabled) {
+    transform: scale(0.97);
+    background: rgba(60, 60, 120, 0.75);
+  }
+
+  .size-btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  .size-btn--all {
+    border-color: rgba(255, 211, 105, 0.35);
+    background: rgba(40, 35, 20, 0.55);
+  }
+
+  .size-btn--all:hover:not(:disabled) {
+    border-color: rgba(255, 211, 105, 0.65);
+    background: rgba(60, 50, 20, 0.65);
+    box-shadow: 0 0 18px rgba(255, 211, 105, 0.18);
+  }
+
+  .size-btn--all:active:not(:disabled) {
+    background: rgba(70, 60, 20, 0.75);
+  }
+
+  .size-number {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-warning);
+    min-width: 2.5rem;
+    text-align: center;
+  }
+
+  .size-label {
+    color: var(--color-text-dim);
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .no-cards-note {
+    color: var(--color-text-dim);
+    font-size: 0.85rem;
+    text-align: center;
+    font-style: italic;
+  }
+
+  .back-link {
+    background: transparent;
+    border: 1px solid rgba(150, 150, 180, 0.3);
+    border-radius: 12px;
+    color: var(--color-text-dim);
+    font-family: inherit;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+    cursor: pointer;
+    transition: border-color 160ms, color 160ms, box-shadow 160ms;
+  }
+
+  .back-link:hover {
+    border-color: rgba(150, 150, 200, 0.65);
+    color: var(--color-text);
+    box-shadow: 0 0 10px rgba(120, 120, 200, 0.12);
+  }
+
+  /* ── Progress bar ────────────────────────────────────────────── */
+  .progress-bar-wrap {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .progress-bar {
+    flex: 1;
+    height: 7px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-fill {
+    position: relative;
+    height: 100%;
+    border-radius: 999px;
+    transition: width 300ms ease, background 500ms ease;
+    box-shadow: 0 0 8px currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: visible;
+  }
+
+  .progress-sparkle {
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+    line-height: 1;
+    animation: sparkle-pulse 1.2s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes sparkle-pulse {
+    0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(0.9); }
+    50%       { opacity: 1.0; transform: translateY(-50%) scale(1.2); }
+  }
+
+  .progress-label {
+    color: var(--color-text-dim);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    min-width: 3.5rem;
+    text-align: right;
+  }
+
+  /* ── Card scene (3-D flip) ───────────────────────────────────── */
+  .card-scene {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 420px;
+    perspective: 1000px;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Flip ripple — visual cue when card flips */
+  .flip-ripple {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    pointer-events: none;
+    z-index: 3;
+    animation: ripple-expand 0.5s ease-out forwards;
+    border: 2px solid rgba(100, 100, 255, 0.5);
+    will-change: transform, opacity;
+  }
+
+  @keyframes ripple-expand {
+    0%   { transform: scale(1);    opacity: 0.7; }
+    100% { transform: scale(1.06); opacity: 0;   }
+  }
+
+  .card {
+    position: relative;
+    width: 100%;
+    min-height: 300px;
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border-radius: 18px;
+    will-change: transform;
+  }
+
+  .card--flipped {
+    transform: rotateY(180deg);
+    cursor: default;
+  }
+
+  .card-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.75rem 1.5rem;
+    gap: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  /* Card front: dark base with blue/purple glow */
+  .card-front {
+    background: #1a1a2e;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.55),
+      0 0 15px rgba(100, 100, 255, 0.15);
+  }
+
+  /* Card back: slightly lighter background */
+  .card-back {
+    transform: rotateY(180deg);
+    background: #252540;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.55),
+      0 0 15px rgba(78, 204, 163, 0.12);
+  }
+
+  .card-category {
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .card-question {
+    color: var(--color-warning);
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    text-align: center;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .tap-hint {
+    color: var(--color-text-dim);
+    font-size: 0.75rem;
+    font-style: italic;
+    margin: 0;
+    opacity: 0.7;
+  }
+
+  .reveal-btn {
+    margin-top: 0.5rem;
+    min-width: 140px;
+    min-height: 46px;
+    border: 1.5px solid rgba(100, 100, 255, 0.5);
+    border-radius: 12px;
+    background: rgba(40, 40, 100, 0.5);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 120ms ease, transform 100ms ease, box-shadow 120ms ease;
+  }
+
+  .reveal-btn:hover {
+    background: rgba(60, 60, 140, 0.65);
+    box-shadow: 0 0 12px rgba(100, 100, 255, 0.25);
+  }
+
+  .reveal-btn:active {
+    transform: scale(0.96);
+    background: rgba(80, 80, 170, 0.7);
+  }
+
+  .card-answer {
+    color: var(--color-success);
+    font-size: clamp(1.3rem, 5vw, 1.9rem);
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.3;
+    margin: 0;
+    letter-spacing: 0.5px;
+  }
+
+  .card-explanation {
+    color: #8a8aa0;
+    font-size: 0.85rem;
+    text-align: center;
+    line-height: 1.55;
+    margin: 0;
+    font-style: italic;
+    max-width: 320px;
+  }
+
+  /* ── Rating buttons ──────────────────────────────────────────── */
+  .rating-buttons {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .rating-buttons--hidden {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .rating-btn {
+    flex: 1;
+    min-height: 56px;
+    border: 0;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 100ms ease, filter 120ms ease;
+  }
+
+  .rating-btn:active {
+    transform: scale(0.97);
+  }
+
+  .rating-btn--wrong {
+    background: color-mix(in srgb, var(--color-accent) 55%, #0d0d1a 45%);
+    color: #fff;
+  }
+
+  .rating-btn--wrong:hover {
+    filter: brightness(1.1);
+  }
+
+  .rating-btn--correct {
+    background: var(--color-success);
+    color: #0b231a;
+  }
+
+  .rating-btn--correct:hover {
+    filter: brightness(1.05);
+  }
+
+  .rating-btn-placeholder {
+    flex: 1;
+    min-height: 56px;
+  }
+
+  /* ── Complete screen ─────────────────────────────────────────── */
+  .complete-screen {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    max-width: 360px;
+  }
+
+  /* Confetti burst for perfect score */
+  .confetti-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .confetti {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    will-change: transform, opacity;
+  }
+
+  .c1 { background: #ffd369; animation: confetti-burst 1.2s 0.0s ease-out forwards; }
+  .c2 { background: #4ecca3; animation: confetti-burst 1.2s 0.1s ease-out forwards; }
+  .c3 { background: #a78bfa; animation: confetti-burst 1.2s 0.05s ease-out forwards; }
+  .c4 { background: #f472b6; animation: confetti-burst 1.2s 0.15s ease-out forwards; }
+  .c5 { background: #60a5fa; animation: confetti-burst 1.2s 0.08s ease-out forwards; }
+  .c6 { background: #ffd369; animation: confetti-burst 1.2s 0.2s ease-out forwards; }
+  .c7 { background: #4ecca3; animation: confetti-burst 1.2s 0.03s ease-out forwards; }
+  .c8 { background: #f472b6; animation: confetti-burst 1.2s 0.12s ease-out forwards; }
+
+  @keyframes confetti-burst {
+    0%   { transform: translate(0, 0)    scale(1);   opacity: 1; }
+    100% { transform: var(--burst-dir, translate(60px, -80px)) scale(0.3); opacity: 0; }
+  }
+
+  /* Give each confetti dot a different direction via custom property fallbacks */
+  .c1 { --burst-dir: translate(-80px, -90px); }
+  .c2 { --burst-dir: translate(80px,  -90px); }
+  .c3 { --burst-dir: translate(-110px, -50px); }
+  .c4 { --burst-dir: translate(110px, -50px); }
+  .c5 { --burst-dir: translate(-60px, -120px); }
+  .c6 { --burst-dir: translate(60px,  -120px); }
+  .c7 { --burst-dir: translate(-40px, -100px); }
+  .c8 { --burst-dir: translate(40px,  -100px); }
+
+  .complete-title {
+    color: var(--color-warning);
+    font-family: Georgia, serif;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    margin: 0;
+    letter-spacing: 1px;
+  }
+
+  .score-display {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    font-size: clamp(3rem, 12vw, 5rem);
+    font-weight: 800;
+    line-height: 1;
+    margin-top: 0.5rem;
+  }
+
+  .score-correct {
+    color: var(--color-success);
+  }
+
+  .score-sep {
+    color: var(--color-text-dim);
+    font-size: 0.5em;
+  }
+
+  .score-total {
+    color: var(--color-text-dim);
+  }
+
+  .score-label {
+    color: var(--color-text-dim);
+    font-size: 0.9rem;
+    margin: -0.5rem 0 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .summary-message {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-style: italic;
+    line-height: 1.5;
+    max-width: 280px;
+    margin: 0.5rem 0;
+  }
+
+  .return-btn {
+    margin-top: 0.5rem;
+    min-width: 200px;
+    min-height: 56px;
+    border: 1.5px solid rgba(78, 204, 163, 0.5);
+    border-radius: 14px;
+    background: rgba(20, 50, 40, 0.6);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: background 160ms ease, transform 100ms ease, box-shadow 160ms ease;
+  }
+
+  .return-btn:hover {
+    background: rgba(30, 70, 55, 0.75);
+    box-shadow: 0 0 18px rgba(78, 204, 163, 0.25);
+  }
+
+  .return-btn:active {
+    transform: scale(0.97);
+    background: rgba(40, 90, 70, 0.8);
+  }
+</style>

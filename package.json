@@ -4,8 +4,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node scripts/build-facts-db.mjs && vite",
+    "build": "node scripts/build-facts-db.mjs && vite build",
+    "build:facts": "node scripts/build-facts-db.mjs",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
     "typecheck": "svelte-check --tsconfig ./tsconfig.app.json",
@@ -16,12 +17,15 @@
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@tsconfig/svelte": "^5.0.6",
     "@types/node": "^24.10.1",
+    "@types/sql.js": "^1.4.9",
+    "playwright-core": "^1.58.2",
     "svelte": "^5.45.2",
     "svelte-check": "^4.3.4",
     "typescript": "~5.9.3",
     "vite": "^7.3.1"
   },
   "dependencies": {
-    "phaser": "^3.90.0"
+    "phaser": "^3.90.0",
+    "sql.js": "^1.14.0"
   }
 }

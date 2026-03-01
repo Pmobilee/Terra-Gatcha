@@ -39,6 +39,10 @@ ios/
 sprite-gen/output/raw/
 sprite-gen/output/*.tmp
 
+# Python cache
+__pycache__/
+*.pyc
+
 # OS files
 Thumbs.db
 .DS_Store
@@ -49,3 +53,6 @@ coverage/
 # Temporary files
 *.tmp
 *.bak
+
+# Generated facts database
+public/facts.db
