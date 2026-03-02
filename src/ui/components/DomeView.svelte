@@ -299,10 +299,15 @@
     right: 0;
     max-height: 65vh;
     background: var(--color-surface, #111128);
-    border-radius: 16px 16px 0 0;
-    border-top: 1px solid rgba(78, 204, 163, 0.25);
+    border-radius: 18px 18px 0 0;
+    border-top: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow:
+      0 -4px 24px rgba(0, 0, 0, 0.55),
+      0 -1px 0 rgba(251, 191, 36, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
     transform: translateY(100%);
-    transition: transform 0.3s ease;
+    transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
     display: flex;
     flex-direction: column;
     z-index: 10;
@@ -317,26 +322,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 8px 12px 4px;
+    padding: 10px 12px 6px;
     flex-shrink: 0;
     position: relative;
+    background: linear-gradient(
+      180deg,
+      rgba(251, 191, 36, 0.06) 0%,
+      rgba(17, 17, 40, 0) 100%
+    );
   }
 
   .panel-handle {
-    width: 40px;
-    height: 4px;
-    border-radius: 2px;
-    background: rgba(255, 255, 255, 0.2);
+    width: 48px;
+    height: 5px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.32);
     margin-bottom: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   }
 
   .panel-close {
     position: absolute;
     top: 8px;
     right: 12px;
-    background: none;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
     color: var(--color-text-dim, #888);
     font-size: 1rem;
     width: 44px;
@@ -346,13 +357,14 @@
     justify-content: center;
     cursor: pointer;
     padding: 0;
-    transition: color 120ms ease, border-color 120ms ease;
+    transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
   }
 
   .panel-close:hover,
   .panel-close:focus-visible {
-    color: #4ecca3;
-    border-color: rgba(78, 204, 163, 0.5);
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.55);
+    background: rgba(251, 191, 36, 0.08);
     outline: none;
   }
 

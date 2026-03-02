@@ -167,7 +167,7 @@
 
 <div class="gaia-card" class:gaia-visible={gaiaVisible} aria-label="GAIA comment" aria-live="polite">
   <div class="gaia-avatar-col">
-    <img class="gaia-avatar-img" src={idleSpriteUrl} alt={`G.A.I.A. ${idleExpressionId}`} width="40" height="40" />
+    <img class="gaia-avatar-img" src={idleSpriteUrl} alt={`G.A.I.A. ${idleExpressionId}`} width="56" height="56" />
     <span class="gaia-name">{gaiaNameLabel}</span>
   </div>
   <div class="gaia-body">
@@ -617,11 +617,12 @@
   }
 
   .gaia-avatar-img {
-    width: 40px;
-    height: 40px;
+    width: 56px;
+    height: 56px;
     object-fit: contain;
     image-rendering: pixelated;
-    border-radius: 6px;
+    border-radius: 8px;
+    filter: drop-shadow(0 0 6px rgba(34, 217, 217, 0.4));
   }
 
   .gaia-name {

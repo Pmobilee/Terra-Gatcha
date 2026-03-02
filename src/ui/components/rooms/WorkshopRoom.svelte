@@ -3,6 +3,12 @@
   import { audioManager } from '../../../services/audioService'
   import MineralConverter from '../MineralConverter.svelte'
 
+  // Resource icon sprites
+  import iconDust from '../../../assets/sprites/icons/icon_dust.png'
+  import iconShard from '../../../assets/sprites/icons/icon_shard.png'
+  import iconCrystal from '../../../assets/sprites/icons/icon_crystal.png'
+  import iconGeode from '../../../assets/sprites/icons/icon_geode.png'
+
   interface Props {
     onMaterializer?: () => void
     onPremiumMaterializer?: () => void
@@ -46,22 +52,22 @@
 
 <div class="card resources-card" aria-label="Mineral resources">
   <div class="resource-item">
-    <span class="resource-dot dust-dot" aria-hidden="true"></span>
+    <img class="resource-icon-img" src={iconDust} alt="Dust" />
     <span class="resource-label">Dust</span>
     <span class="resource-value">{dust}</span>
   </div>
   <div class="resource-item">
-    <span class="resource-dot shard-dot" aria-hidden="true"></span>
+    <img class="resource-icon-img" src={iconShard} alt="Shard" />
     <span class="resource-label">Shard</span>
     <span class="resource-value">{shard}</span>
   </div>
   <div class="resource-item">
-    <span class="resource-dot crystal-dot" aria-hidden="true"></span>
+    <img class="resource-icon-img" src={iconCrystal} alt="Crystal" />
     <span class="resource-label">Crystal</span>
     <span class="resource-value">{crystal}</span>
   </div>
   <div class="resource-item">
-    <span class="resource-dot geode-dot" aria-hidden="true"></span>
+    <img class="resource-icon-img" src={iconGeode} alt="Geode" />
     <span class="resource-label">Geode</span>
     <span class="resource-value">{geode}</span>
   </div>
@@ -147,17 +153,12 @@
     padding: 8px 10px;
   }
 
-  .resource-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+  .resource-icon-img {
+    width: 18px;
+    height: 18px;
+    image-rendering: pixelated;
     flex-shrink: 0;
   }
-
-  .dust-dot { background: #4ecca3; }
-  .shard-dot { background: #ffd369; }
-  .crystal-dot { background: #e94560; }
-  .geode-dot { background: #9b59b6; }
 
   .resource-label {
     color: var(--color-text-dim);

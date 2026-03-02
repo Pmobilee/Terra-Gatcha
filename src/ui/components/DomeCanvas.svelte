@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { get } from 'svelte/store'
   import { getDomeSpriteUrls } from '../../game/domeManifest'
   import {
     getDefaultDomeLayout,
@@ -29,7 +28,6 @@
     COL_POSITIONS,
   } from '../../data/domeLayout'
   import type { DomeLayout, DomeObject } from '../../data/domeLayout'
-  import { spriteResolution } from '../stores/settings'
 
   // ---------------------------------------------------------------------------
   // Props
@@ -72,6 +70,98 @@
   let dragOffsetY = $state(0)
   let showPalette = $state(false)
 
+  // ---------------------------------------------------------------------------
+  // Animation state
+  // ---------------------------------------------------------------------------
+
+  /** Animation timestamp in seconds — updated each frame. */
+  let animTime = 0
+
+  /** Data for each twinkling star. Generated once on mount. */
+  interface StarData {
+    x: number
+    y: number
+    baseAlpha: number
+    twinkleSpeed: number
+    twinklePhase: number
+    radius: number
+    /** Optional subtle tint — undefined means pure white */
+    tint?: string
+  }
+  let stars: StarData[] = []
+
+  /** Data for each ambient dust mote inside the dome. */
+  interface DustMote {
+    x: number
+    y: number
+    alpha: number
+    speed: number
+    radius: number
+    wobble: number   // horizontal oscillation amplitude
+    wobbleFreq: number
+    wobblePhase: number
+  }
+  let dustMotes: DustMote[] = []
+
+  /** Generates star and dust mote arrays using the seeded RNG so they are
+   *  reproducible between reloads. Called once after canvas setup. */
+  function initAnimationData(): void {
+    const rng = makeSeededRng(0xcafebabe)
+
+    // Stars — scattered in the upper 50% of the canvas, outside the dome interior
+    stars = []
+    const halfH = CANVAS_H * 0.5
+    const totalStars = 40 + Math.floor(rng() * 21) // 40–60
+
+    // Subtle warm/cool tints for a handful of stars
+    const TINTS = ['rgba(255,230,180', 'rgba(180,210,255', 'rgba(255,240,210']
+
+    for (let i = 0; i < totalStars; i++) {
+      const hasTint = rng() < 0.12
+      const tintBase = hasTint ? TINTS[Math.floor(rng() * TINTS.length)] : undefined
+      stars.push({
+        x: rng() * CANVAS_W,
+        y: rng() * halfH,
+        baseAlpha: 0.35 + rng() * 0.45,
+        twinkleSpeed: 0.5 + rng() * 2.0,
+        twinklePhase: rng() * Math.PI * 2,
+        radius: 0.5 + rng() * 1.5,
+        tint: tintBase,
+      })
+    }
+
+    // Dust motes — start scattered across the dome interior
+    dustMotes = []
+    const domeCX = DOME_CX * TILE_SIZE
+    const domeCY = DOME_BASE * TILE_SIZE
+    const domeRX = DOME_A * TILE_SIZE
+    const domeRY = DOME_B * TILE_SIZE
+    const NUM_MOTES = 15 + Math.floor(rng() * 6) // 15–20
+
+    let placed = 0
+    let attempts = 0
+    while (placed < NUM_MOTES && attempts < 500) {
+      attempts++
+      const mx = domeCX - domeRX * 0.85 + rng() * domeRX * 1.7
+      const my = domeCY - domeRY * 0.85 + rng() * domeRY * 0.85
+      // Check the point is inside the ellipse
+      const ex = (mx - domeCX) / domeRX
+      const ey = (my - domeCY) / domeRY
+      if (ex * ex + ey * ey > 0.85) continue
+      dustMotes.push({
+        x: mx,
+        y: my,
+        alpha: 0.1 + rng() * 0.15,
+        speed: 0.3 + rng() * 0.7,   // px/sec upward drift
+        radius: 0.8 + rng() * 1.2,
+        wobble: 3 + rng() * 8,
+        wobbleFreq: 0.3 + rng() * 0.8,
+        wobblePhase: rng() * Math.PI * 2,
+      })
+      placed++
+    }
+  }
+
   /** Decoration items available to place from the palette. */
   const PALETTE_ITEMS: Array<{ spriteKey: string; label: string; gridW: number; gridH: number }> = [
     { spriteKey: 'deco_ceiling_light', label: 'Ceiling Light', gridW: 6, gridH: 4 },
@@ -79,7 +169,11 @@
     { spriteKey: 'deco_wall_monitor', label: 'Wall Monitor', gridW: 6, gridH: 5 },
   ]
 
-  /** CSS scale factor applied to the canvas element so it fills the container. */
+  /**
+   * CSS scale factor — kept for legacy reference but no longer used for the
+   * canvas transform.  clientToGrid() computes its own ratio from
+   * getBoundingClientRect(), so pointer-event math remains accurate.
+   */
   let cssScale = $state(1)
 
   // ---------------------------------------------------------------------------
@@ -122,8 +216,9 @@
    * longer need to load sky_stars, surface_ground, or tile sprite sheets.
    */
   function loadImages(onAllLoaded: () => void): void {
-    const res = get(spriteResolution)
-    const urls = getDomeSpriteUrls(res)
+    // Always use hi-res sprites for the canvas — the dome renders at 1536×1024
+    // internally and 32px sprites look blurry at that scale.
+    const urls = getDomeSpriteUrls('high')
 
     const needed = new Set<string>()
 
@@ -191,38 +286,8 @@
     bgCtx.fillStyle = skyGrad
     bgCtx.fillRect(0, 0, CANVAS_W, CANVAS_H)
 
-    // --- Stars (top 50% only) ---
-    const rng = makeSeededRng(0xdeadbeef)
-    const halfH = CANVAS_H * 0.5
-
-    // Small dim stars
-    for (let i = 0; i < 60; i++) {
-      const sx = rng() * CANVAS_W
-      const sy = rng() * halfH
-      const r = 0.5 + rng() * 0.5
-      const alpha = 0.4 + rng() * 0.4
-      bgCtx.beginPath()
-      bgCtx.arc(sx, sy, r, 0, Math.PI * 2)
-      bgCtx.fillStyle = `rgba(255, 255, 255, ${alpha.toFixed(2)})`
-      bgCtx.fill()
-    }
-
-    // Larger bright stars with a soft glow
-    for (let i = 0; i < 5; i++) {
-      const sx = rng() * CANVAS_W
-      const sy = rng() * halfH * 0.8
-      // Glow halo
-      const glowGrad = bgCtx.createRadialGradient(sx, sy, 0, sx, sy, 6)
-      glowGrad.addColorStop(0, 'rgba(255, 255, 255, 0.35)')
-      glowGrad.addColorStop(1, 'rgba(255, 255, 255, 0)')
-      bgCtx.fillStyle = glowGrad
-      bgCtx.fillRect(sx - 6, sy - 6, 12, 12)
-      // Star core
-      bgCtx.beginPath()
-      bgCtx.arc(sx, sy, 1.5, 0, Math.PI * 2)
-      bgCtx.fillStyle = 'rgba(255, 255, 255, 0.9)'
-      bgCtx.fill()
-    }
+    // Stars are now animated (twinkling) and drawn live each frame in
+    // drawAnimatedStars() — we skip them in the static offscreen bg layer.
 
     // --- Dome interior fill (clipped to ellipse) ---
     const domeCX = DOME_CX * TILE_SIZE        // 384
@@ -525,8 +590,8 @@
    */
   function loadSingleSprite(key: string): void {
     if (imageMap.has(key)) return
-    const res = get(spriteResolution)
-    const urls = getDomeSpriteUrls(res)
+    // Always use hi-res sprites for the dome canvas
+    const urls = getDomeSpriteUrls('high')
     const url = urls[key]
     if (!url) return
     const img = new Image()
@@ -771,6 +836,153 @@
   }
 
   // ---------------------------------------------------------------------------
+  // Animated layer helpers
+  // ---------------------------------------------------------------------------
+
+  /**
+   * Draw twinkling stars in the upper 50% of the canvas (outside the dome
+   * interior). Each star's alpha oscillates using a sine wave so they twinkle
+   * independently. A few stars carry a subtle warm-yellow or cool-blue tint.
+   */
+  function drawAnimatedStars(ctx: CanvasRenderingContext2D, t: number): void {
+    for (const star of stars) {
+      const alpha = Math.max(0, Math.min(1,
+        star.baseAlpha + Math.sin(t * star.twinkleSpeed + star.twinklePhase) * 0.3,
+      ))
+
+      if (star.radius >= 1.2) {
+        // Slightly larger stars get a soft glow halo
+        const glowR = star.radius * 4
+        const glowGrad = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, glowR)
+        const colorBase = star.tint ?? 'rgba(255,255,255'
+        glowGrad.addColorStop(0, `${colorBase},${(alpha * 0.5).toFixed(3)})`)
+        glowGrad.addColorStop(1, `${colorBase},0)`)
+        ctx.fillStyle = glowGrad
+        ctx.fillRect(star.x - glowR, star.y - glowR, glowR * 2, glowR * 2)
+      }
+
+      // Star core dot
+      ctx.beginPath()
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2)
+      if (star.tint) {
+        ctx.fillStyle = `${star.tint},${alpha.toFixed(3)})`
+      } else {
+        ctx.fillStyle = `rgba(255,255,255,${alpha.toFixed(3)})`
+      }
+      ctx.fill()
+    }
+  }
+
+  /**
+   * Draw a pulsing golden radial glow beneath the dive hatch object to draw
+   * the player's attention toward it. The glow is drawn BEFORE the object
+   * sprite so it appears behind it.
+   */
+  function drawDiveHatchGlow(ctx: CanvasRenderingContext2D, t: number): void {
+    const hatch = layout.objects.find((o) => o.id === 'dive_hatch')
+    if (!hatch) return
+
+    const px = hatch.gridX * TILE_SIZE
+    const py = hatch.gridY * TILE_SIZE
+    const pw = hatch.gridW * TILE_SIZE
+    const ph = hatch.gridH * TILE_SIZE
+    const cx = px + pw / 2
+    const cy = py + ph / 2
+
+    // Alpha oscillates between 0.15 and 0.4 at ~0.8 Hz
+    const alpha = 0.15 + (Math.sin(t * 5.0) * 0.5 + 0.5) * 0.25
+
+    const r = Math.max(pw, ph) * 0.9
+    const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r)
+    grad.addColorStop(0, `rgba(255, 170, 0, ${alpha.toFixed(3)})`)
+    grad.addColorStop(0.45, `rgba(255, 120, 0, ${(alpha * 0.5).toFixed(3)})`)
+    grad.addColorStop(1, 'rgba(255, 100, 0, 0)')
+
+    ctx.save()
+    ctx.fillStyle = grad
+    ctx.fillRect(cx - r, cy - r, r * 2, r * 2)
+    ctx.restore()
+  }
+
+  /**
+   * Draw soft downward-casting warm glow cones below each ceiling light object.
+   * This is a static effect — no animation — since ceiling lights don't flicker.
+   * Called once per frame but the result never changes.
+   */
+  function drawCeilingLightGlows(ctx: CanvasRenderingContext2D): void {
+    for (const obj of layout.objects) {
+      if (obj.spriteKey !== 'deco_ceiling_light') continue
+
+      const px = obj.gridX * TILE_SIZE
+      const py = obj.gridY * TILE_SIZE
+      const pw = obj.gridW * TILE_SIZE
+      const ph = obj.gridH * TILE_SIZE
+      const cx = px + pw / 2
+      // Glow origin starts at the bottom of the light sprite
+      const lightBottomY = py + ph
+
+      // Elliptical radial gradient — wide and short to simulate a downward cone
+      const gw = pw * 2.5
+      const gh = ph * 3.5
+      // canvas gradient is circular so we use scale() to squish it
+      ctx.save()
+      ctx.translate(cx, lightBottomY)
+      ctx.scale(1, gh / gw)
+
+      const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, gw / 2)
+      grad.addColorStop(0, 'rgba(255, 240, 200, 0.10)')
+      grad.addColorStop(0.5, 'rgba(255, 230, 180, 0.05)')
+      grad.addColorStop(1, 'rgba(255, 230, 180, 0)')
+
+      ctx.fillStyle = grad
+      ctx.fillRect(-gw / 2, 0, gw, gw)  // square in this scaled space, clipped visually
+      ctx.restore()
+    }
+  }
+
+  /**
+   * Update dust mote positions and draw them on the canvas.
+   * Motes drift upward slowly with a gentle horizontal wobble.
+   * They reset to the bottom of the dome interior when they reach the top.
+   */
+  function drawAmbientParticles(ctx: CanvasRenderingContext2D, dt: number, t: number): void {
+    const domeCX = DOME_CX * TILE_SIZE
+    const domeCY = DOME_BASE * TILE_SIZE
+    const domeRX = DOME_A * TILE_SIZE
+    const domeRY = DOME_B * TILE_SIZE
+    const domeTopY = DOME_APEX * TILE_SIZE
+
+    const rng = makeSeededRng(0xabcdef12)
+
+    for (const mote of dustMotes) {
+      // Move upward
+      mote.y -= mote.speed * dt
+
+      // Horizontal wobble
+      const wobbleX = Math.sin(t * mote.wobbleFreq + mote.wobblePhase) * mote.wobble
+      const drawX = mote.x + wobbleX
+
+      // Check if mote is still inside dome ellipse (upper half only)
+      const ex = (drawX - domeCX) / domeRX
+      const ey = (mote.y - domeCY) / domeRY
+
+      // Reset mote when it leaves the dome interior (top or sides)
+      if (mote.y < domeTopY || ex * ex + ey * ey > 0.9) {
+        // Reset to a random position near the bottom of the dome interior
+        mote.y = domeCY - domeRY * 0.05 + rng() * domeRY * 0.15
+        mote.x = domeCX - domeRX * 0.6 + rng() * domeRX * 1.2
+        continue
+      }
+
+      // Draw the mote as a tiny warm-tinted dot
+      ctx.beginPath()
+      ctx.arc(drawX, mote.y, mote.radius, 0, Math.PI * 2)
+      ctx.fillStyle = `rgba(255, 220, 150, ${mote.alpha.toFixed(3)})`
+      ctx.fill()
+    }
+  }
+
+  // ---------------------------------------------------------------------------
   // Main render
   // ---------------------------------------------------------------------------
 
@@ -780,23 +992,36 @@
    * built once in renderStaticLayers() so the per-frame cost is just two
    * drawImage() calls regardless of content complexity.
    */
-  function render(): void {
+  /** Timestamp of the previous animation frame, used to compute delta time. */
+  let lastFrameTime = 0
+
+  function render(now: number): void {
     const canvas = canvasEl
     if (!canvas) return
 
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    if (!dirty) return
+    // Compute delta time (seconds) and advance the animation clock
+    const dt = lastFrameTime === 0 ? 0 : Math.min((now - lastFrameTime) / 1000, 0.1)
+    lastFrameTime = now
+    animTime += dt
 
-    dirty = false
+    // Animations run every frame — always mark dirty so the RAF loop draws continuously.
+    // This allows twinkling stars, particles, and glow pulses to update smoothly.
+    dirty = true
 
     // Reset and apply render scale each frame so all coordinate math stays in 768×512 space
     ctx.setTransform(RENDER_SCALE, 0, 0, RENDER_SCALE, 0, 0)
 
     if (bgLayerCanvas && fgLayerCanvas) {
-      // Fast path: composite pre-rendered static layers
+      // Fast path: composite pre-rendered static layers (sky gradient, dome fill, dirt)
       ctx.drawImage(bgLayerCanvas, 0, 0, CANVAS_W, CANVAS_H)
+
+      // Draw animated twinkling stars on top of the static sky background
+      drawAnimatedStars(ctx, animTime)
+
+      // Composite the foreground structural layer (dome glass, platforms, columns)
       ctx.drawImage(fgLayerCanvas, 0, 0, CANVAS_W, CANVAS_H)
     } else {
       // Fallback before offscreen canvases are ready
@@ -804,25 +1029,17 @@
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H)
     }
 
-    // Ambient light pools under ceiling lights
-    const lightPositions = [
-      { x: 45, y: 26 },
-      { x: 88, y: 20 },
-      { x: 105, y: 20 },
-      { x: 155, y: 26 },
-    ]
-    for (const light of lightPositions) {
-      const px = light.x * TILE_SIZE
-      const py = light.y * TILE_SIZE
-      const grad = ctx.createRadialGradient(px, py + 40, 0, px, py + 40, 80)
-      grad.addColorStop(0, 'rgba(255, 230, 180, 0.06)')
-      grad.addColorStop(1, 'rgba(255, 230, 180, 0)')
-      ctx.fillStyle = grad
-      ctx.fillRect(px - 80, py, 160, 120)
-    }
+    // Pulsing glow beneath the dive hatch — drawn before objects so it appears behind
+    drawDiveHatchGlow(ctx, animTime)
+
+    // Ceiling light glows — static warm cones beneath each ceiling light sprite
+    drawCeilingLightGlows(ctx)
 
     // Objects and furniture (rendered live — state changes each frame)
     drawObjects(ctx, hoveredObject, tappedObjectId)
+
+    // Ambient dust motes floating inside the dome
+    drawAmbientParticles(ctx, dt, animTime)
 
     // Tooltip for hovered object (skip in edit mode to reduce clutter)
     if (hoveredObject && !editMode) {
@@ -852,9 +1069,11 @@
 
   /**
    * The main animation loop — runs every frame via requestAnimationFrame.
+   * Passes the high-resolution DOMHighResTimeStamp to render() for smooth
+   * delta-time based animation.
    */
-  function loop(): void {
-    render()
+  function loop(now: number): void {
+    render(now)
     rafId = requestAnimationFrame(loop)
   }
 
@@ -1313,6 +1532,12 @@
 
     renderStaticLayers()
 
+    // Generate twinkling star and dust mote data (reproducible via seeded RNG)
+    initAnimationData()
+
+    lastFrameTime = 0
+    animTime = 0
+
     loadImages(() => {
       imagesLoaded = true
       dirty = true
@@ -1340,20 +1565,16 @@
     if (!container) return
 
     /**
-     * Recompute the CSS scale whenever the container resizes so the canvas
-     * always fills the available space (cover behaviour — may crop edges on
-     * very wide viewports, but fills the full height on tall mobile screens).
+     * Track the displayed scale for any callers that still read cssScale.
+     * clientToGrid() derives its own ratio from getBoundingClientRect() so
+     * pointer accuracy is unaffected by this value.
      */
     function updateScale(): void {
       if (!container) return
       const w = container.clientWidth
-      const h = container.clientHeight
-      if (w === 0 || h === 0) return
-      const scaleX = w / CANVAS_W
-      const scaleY = h / CANVAS_H
-      // Use Math.max for cover (fills container, may crop) or Math.min for fit.
-      // Cover is preferred for a game scene so there is no empty dark space.
-      cssScale = Math.max(scaleX, scaleY)
+      if (w === 0) return
+      // The canvas fills 100% width; height follows the 3:2 aspect ratio.
+      cssScale = w / CANVAS_W
     }
 
     updateScale()
@@ -1385,7 +1606,6 @@
 <div class="dome-canvas-container" bind:this={containerEl}>
   <canvas
     bind:this={canvasEl}
-    style="width: {CANVAS_W}px; height: {CANVAS_H}px; transform: translate(-50%, -50%) scale({cssScale});"
     aria-label="Dome hub — tap an object to explore a room"
   ></canvas>
 
@@ -1425,20 +1645,16 @@
 <style>
   .dome-canvas-container {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
     position: relative;
   }
 
   canvas {
     display: block;
-    /* Natural pixel dimensions (768×512) — CSS scaling is applied via inline
-       transform driven by the ResizeObserver, not by width/height attributes. */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* transform is set inline: translate(-50%, -50%) scale(cssScale) */
-    transform-origin: center center;
+    /* Always fill the full container width; height scales automatically to
+       preserve the 3:2 aspect ratio (internal resolution 1536×1024).
+       On mobile this means the canvas sits at the top with no dark gaps. */
+    width: 100%;
+    height: auto;
     pointer-events: auto;
     image-rendering: auto;
   }

@@ -162,10 +162,10 @@
         aria-label={unlocked ? room.name : room.name + ' — unlocks at ' + room.unlockDives + ' dives'}
         title={unlocked ? room.description : 'Unlocks after ' + room.unlockDives + ' dives (you have ' + totalDives + ')'}
       >
-        <span class="room-tab-icon" aria-hidden="true">{unlocked ? room.icon : '🔒'}</span>
+        <span class="room-tab-icon" aria-hidden="true">{unlocked ? room.icon : '⛔'}</span>
         <span class="room-tab-name">{room.name.split(' ')[0]}</span>
         {#if !unlocked}
-          <span class="room-tab-unlock-hint">{room.unlockDives - totalDives}d</span>
+          <span class="room-tab-unlock-hint">{room.unlockDives - totalDives} dives</span>
         {/if}
       </button>
     {/each}
@@ -262,7 +262,7 @@
     gap: 2px;
     padding: 8px 10px 6px;
     border: 0;
-    border-bottom: 2px solid transparent;
+    border-bottom: 3px solid transparent;
     border-radius: 8px 8px 0 0;
     background: transparent;
     color: var(--color-text-dim);
@@ -271,9 +271,14 @@
     font-weight: 600;
     cursor: pointer;
     white-space: nowrap;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     min-width: 58px;
     position: relative;
+  }
+
+  .room-tab:hover:not(:disabled) {
+    background: color-mix(in srgb, var(--color-text) 6%, transparent 94%);
+    color: var(--color-text);
   }
 
   .room-tab:active:not(:disabled) {
@@ -281,14 +286,16 @@
   }
 
   .room-tab-active {
-    color: #4ecca3;
-    border-bottom-color: #4ecca3;
-    background: color-mix(in srgb, #4ecca3 10%, transparent 90%);
+    color: #fbbf24;
+    border-bottom-color: #fbbf24;
+    background: color-mix(in srgb, #fbbf24 10%, transparent 90%);
   }
 
   .room-tab-locked {
-    opacity: 0.4;
+    opacity: 0.45;
     cursor: not-allowed;
+    background: rgba(0, 0, 0, 0.25);
+    filter: grayscale(0.4);
   }
 
   @keyframes room-unlock-pulse {
@@ -304,8 +311,13 @@
   }
 
   .room-tab-icon {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     line-height: 1;
+    transition: transform 0.15s ease;
+  }
+
+  .room-tab-active .room-tab-icon {
+    transform: scale(1.1);
   }
 
   .room-tab-name {
@@ -315,10 +327,12 @@
   }
 
   .room-tab-unlock-hint {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: var(--color-text-dim);
-    opacity: 0.8;
+    opacity: 0.75;
     line-height: 1;
+    font-style: italic;
+    letter-spacing: 0.02em;
   }
 
   /* ---- Scrollable room content ---- */
