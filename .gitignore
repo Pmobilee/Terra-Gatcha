@@ -31,9 +31,12 @@ dist-ssr
 .env.local
 .env.*.local
 
-# Capacitor native builds
-android/
-ios/
+# Capacitor native build artifacts (keep project structure in git)
+android/app/build
+android/.gradle
+android/build
+ios/App/Pods
+ios/App/App.xcworkspace/xcuserdata
 
 # ComfyUI raw outputs (processed sprites go in src/assets/)
 sprite-gen/output/raw/

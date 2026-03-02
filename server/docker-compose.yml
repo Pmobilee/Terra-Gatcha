@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: terra-gacha-server
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      # Override these via a .env file or external secrets manager
+      - JWT_SECRET=${JWT_SECRET:-change-me-in-production}
+      - JWT_EXPIRY=${JWT_EXPIRY:-15m}
+      - REFRESH_EXPIRY=${REFRESH_EXPIRY:-7d}
+      - DATABASE_URL=${DATABASE_URL:-/data/terra-gacha.db}
+      - CORS_ORIGIN=${CORS_ORIGIN:-http://localhost:5173}
+    volumes:
+      # Persist SQLite database across container restarts
+      - terra-gacha-data:/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3001/health').then(r => process.exit(r.ok ? 0 : 1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  terra-gacha-data:
+    driver: local
