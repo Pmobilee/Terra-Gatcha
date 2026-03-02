@@ -64,6 +64,13 @@
   let tappedObjectId = $state<string | null>(null)
   let showDevGrid = $state(false)
 
+  // Edit mode state
+  let editMode = $state(false)
+  let selectedObject = $state<DomeObject | null>(null)
+  let dragging = $state(false)
+  let dragOffsetX = $state(0)
+  let dragOffsetY = $state(0)
+
   /** CSS scale factor applied to the canvas element so it fills the container. */
   let cssScale = $state(1)
 
@@ -589,6 +596,64 @@
     ctx.restore()
   }
 
+  /**
+   * Draw edit mode overlays: selected object border, coordinate label, and banner.
+   */
+  function drawEditModeOverlays(ctx: CanvasRenderingContext2D): void {
+    // Top banner
+    const bannerH = 14
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.72)'
+    ctx.fillRect(0, 0, CANVAS_W, bannerH)
+    ctx.font = '7px "Courier New", monospace'
+    ctx.fillStyle = '#00ddff'
+    ctx.textAlign = 'center'
+    ctx.textBaseline = 'middle'
+    ctx.fillText('EDIT MODE — Drag objects | E exit | C copy | Arrow nudge', CANVAS_W / 2, bannerH / 2)
+
+    // Selected object highlight and coordinate label
+    const sel = selectedObject
+    if (sel) {
+      const px = sel.gridX * TILE_SIZE
+      const py = sel.gridY * TILE_SIZE
+      const pw = sel.gridW * TILE_SIZE
+      const ph = sel.gridH * TILE_SIZE
+
+      // Cyan dashed border
+      ctx.save()
+      ctx.strokeStyle = '#00ffee'
+      ctx.lineWidth = 2
+      ctx.setLineDash([4, 3])
+      ctx.strokeRect(px, py, pw, ph)
+      ctx.setLineDash([])
+      ctx.restore()
+
+      // Coordinate label below selected object
+      const labelText = `X:${sel.gridX} Y:${sel.gridY} W:${sel.gridW} H:${sel.gridH}`
+      const fontSize = 7
+      ctx.font = `${fontSize}px "Courier New", monospace`
+      ctx.textAlign = 'center'
+      ctx.textBaseline = 'top'
+
+      const labelX = px + pw / 2
+      const labelY = py + ph + 3
+      const textW = ctx.measureText(labelText).width
+      const padX = 4
+      const padY = 2
+      const boxW = textW + padX * 2
+      const boxH = fontSize + padY * 2
+
+      ctx.save()
+      ctx.fillStyle = 'rgba(0, 20, 30, 0.85)'
+      ctx.fillRect(labelX - boxW / 2, labelY, boxW, boxH)
+      ctx.strokeStyle = 'rgba(0, 220, 240, 0.5)'
+      ctx.lineWidth = 1
+      ctx.strokeRect(labelX - boxW / 2, labelY, boxW, boxH)
+      ctx.fillStyle = '#00ffee'
+      ctx.fillText(labelText, labelX, labelY + padY)
+      ctx.restore()
+    }
+  }
+
   // ---------------------------------------------------------------------------
   // Main render
   // ---------------------------------------------------------------------------
@@ -643,8 +708,8 @@
     // Objects and furniture (rendered live — state changes each frame)
     drawObjects(ctx, hoveredObject, tappedObjectId)
 
-    // Tooltip for hovered object
-    if (hoveredObject) {
+    // Tooltip for hovered object (skip in edit mode to reduce clutter)
+    if (hoveredObject && !editMode) {
       drawTooltip(ctx, hoveredObject)
     }
 
@@ -661,6 +726,11 @@
     // Dev grid overlay — drawn last so it sits on top of everything
     if (showDevGrid) {
       drawDevGrid(ctx)
+    }
+
+    // Edit mode overlays — drawn after dev grid
+    if (editMode) {
+      drawEditModeOverlays(ctx)
     }
   }
 
@@ -683,6 +753,33 @@
   function toggleDevGrid(): void {
     showDevGrid = !showDevGrid
     dirty = true
+  }
+
+  /**
+   * Toggle edit mode on/off.
+   * Enabling edit mode also enables the dev grid for better object positioning.
+   * Disabling edit mode deselects any currently selected object.
+   */
+  function toggleEditMode(): void {
+    editMode = !editMode
+    if (editMode) {
+      showDevGrid = true
+    } else {
+      selectedObject = null
+      dragging = false
+    }
+    dirty = true
+  }
+
+  /**
+   * Export all current object positions to the browser console as a
+   * copy-paste-ready code snippet for domeLayout.ts.
+   */
+  function exportPositions(): void {
+    const lines = layout.objects.map(
+      (obj) => `  { id: '${obj.id}', gridX: ${obj.gridX}, gridY: ${obj.gridY}, gridW: ${obj.gridW}, gridH: ${obj.gridH} },`,
+    )
+    console.log('// Dome object positions — paste into domeLayout.ts\n' + lines.join('\n'))
   }
 
   /**
@@ -829,23 +926,67 @@
     return null
   }
 
+  /**
+   * Find ANY object (interactive or not) at the given grid position.
+   * Used in edit mode to allow selecting non-interactive decorations.
+   */
+  function hitTestAny(gx: number, gy: number): DomeObject | null {
+    for (let i = layout.objects.length - 1; i >= 0; i--) {
+      const obj = layout.objects[i]
+      if (
+        gx >= obj.gridX &&
+        gx < obj.gridX + obj.gridW &&
+        gy >= obj.gridY &&
+        gy < obj.gridY + obj.gridH
+      ) {
+        return obj
+      }
+    }
+    return null
+  }
+
   // ---------------------------------------------------------------------------
   // Event handlers
   // ---------------------------------------------------------------------------
 
   function handlePointerMove(e: PointerEvent): void {
+    // Drag logic — runs first when in edit mode with an active drag
+    if (editMode && dragging && selectedObject) {
+      const { gridX, gridY } = clientToGrid(e.clientX, e.clientY)
+      const newX = Math.max(0, Math.min(DOME_WIDTH - selectedObject.gridW, gridX - dragOffsetX))
+      const newY = Math.max(0, Math.min(DOME_HEIGHT - selectedObject.gridH, gridY - dragOffsetY))
+
+      // Find and mutate the object in the layout array directly
+      const idx = layout.objects.findIndex((o) => o.id === selectedObject!.id)
+      if (idx !== -1) {
+        layout.objects[idx].gridX = newX
+        layout.objects[idx].gridY = newY
+        // Keep selectedObject reference in sync so the toolbar shows live coords
+        selectedObject = layout.objects[idx]
+      }
+
+      dirty = true
+      return
+    }
+
+    // Normal hover detection (skip in edit mode drag)
     const { gridX, gridY } = clientToGrid(e.clientX, e.clientY)
-    const hit = hitTest(gridX, gridY)
+    const hit = editMode ? hitTestAny(gridX, gridY) : hitTest(gridX, gridY)
     if (hit?.id !== hoveredObject?.id) {
       hoveredObject = hit
       dirty = true
       if (canvasEl) {
-        canvasEl.style.cursor = hit ? 'pointer' : 'default'
+        if (editMode) {
+          canvasEl.style.cursor = hit ? (dragging ? 'grabbing' : 'grab') : 'default'
+        } else {
+          canvasEl.style.cursor = hit ? 'pointer' : 'default'
+        }
       }
     }
   }
 
   function handlePointerLeave(): void {
+    if (dragging) return  // don't reset hover state while dragging
     if (hoveredObject !== null) {
       hoveredObject = null
       dirty = true
@@ -865,7 +1006,50 @@
     }, 200)
   }
 
+  function handlePointerDown(e: PointerEvent): void {
+    if (!editMode) return
+
+    const { gridX, gridY } = clientToGrid(e.clientX, e.clientY)
+    const hit = hitTestAny(gridX, gridY)
+
+    if (hit && selectedObject && hit.id === selectedObject.id) {
+      // Start drag on the already-selected object
+      dragging = true
+      dragOffsetX = gridX - selectedObject.gridX
+      dragOffsetY = gridY - selectedObject.gridY
+      if (canvasEl) {
+        canvasEl.setPointerCapture(e.pointerId)
+        canvasEl.style.cursor = 'grabbing'
+      }
+    }
+  }
+
+  function handlePointerUp(e: PointerEvent): void {
+    if (dragging) {
+      dragging = false
+      if (canvasEl) {
+        try { canvasEl.releasePointerCapture(e.pointerId) } catch (_) { /* ignore */ }
+        canvasEl.style.cursor = selectedObject ? 'grab' : 'default'
+      }
+      dirty = true
+    }
+  }
+
   function handleClick(e: MouseEvent): void {
+    if (editMode) {
+      // In edit mode: select/deselect objects rather than triggering room navigation
+      const { gridX, gridY } = clientToGrid(e.clientX, e.clientY)
+      const hit = hitTestAny(gridX, gridY)
+      if (hit) {
+        selectedObject = hit
+      } else {
+        selectedObject = null
+      }
+      dirty = true
+      return
+    }
+
+    // Normal (non-edit) mode: trigger tap
     const { gridX, gridY } = clientToGrid(e.clientX, e.clientY)
     const hit = hitTest(gridX, gridY)
     if (hit) {
@@ -874,6 +1058,7 @@
   }
 
   function handleTouchStart(e: TouchEvent): void {
+    if (editMode) return  // edit mode uses pointer events only
     e.preventDefault()
     const touch = e.changedTouches[0]
     if (!touch) return
@@ -896,17 +1081,70 @@
     canvas.width = CANVAS_W * RENDER_SCALE   // 1536
     canvas.height = CANVAS_H * RENDER_SCALE  // 1024
 
-    // Keyboard shortcut: press 'G' to toggle the dev grid overlay
+    // Keyboard shortcuts
     function handleKeyDown(e: KeyboardEvent): void {
-      if (e.key === 'g' || e.key === 'G') {
+      // Skip if user is typing in a form element
+      const target = e.target as HTMLElement | null
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT')) {
+        return
+      }
+      // Skip if the event came from the Phaser canvas (no aria-label or wrong aria-label)
+      if (target && target.tagName === 'CANVAS') {
+        const label = target.getAttribute('aria-label') ?? ''
+        if (!label.toLowerCase().includes('dome')) return
+      }
+
+      const key = e.key
+
+      if (key === 'g' || key === 'G') {
         toggleDevGrid()
+        return
+      }
+
+      if (key === 'e' || key === 'E') {
+        toggleEditMode()
+        return
+      }
+
+      if (key === 'c' || key === 'C') {
+        if (editMode) {
+          exportPositions()
+        }
+        return
+      }
+
+      // Arrow key nudging when an object is selected in edit mode
+      if (editMode && selectedObject) {
+        let dx = 0
+        let dy = 0
+        const step = e.shiftKey ? 4 : 1
+
+        if (key === 'ArrowLeft')  dx = -step
+        if (key === 'ArrowRight') dx = step
+        if (key === 'ArrowUp')    dy = -step
+        if (key === 'ArrowDown')  dy = step
+
+        if (dx !== 0 || dy !== 0) {
+          e.preventDefault()
+          const idx = layout.objects.findIndex((o) => o.id === selectedObject!.id)
+          if (idx !== -1) {
+            layout.objects[idx].gridX = Math.max(0, Math.min(DOME_WIDTH - layout.objects[idx].gridW, layout.objects[idx].gridX + dx))
+            layout.objects[idx].gridY = Math.max(0, Math.min(DOME_HEIGHT - layout.objects[idx].gridH, layout.objects[idx].gridY + dy))
+            selectedObject = layout.objects[idx]
+          }
+          dirty = true
+        }
       }
     }
-    document.addEventListener('keydown', handleKeyDown)
+
+    // Use window instead of document so events aren't eaten by Phaser
+    window.addEventListener('keydown', handleKeyDown)
 
     // Attach event listeners
     canvas.addEventListener('pointermove', handlePointerMove)
     canvas.addEventListener('pointerleave', handlePointerLeave)
+    canvas.addEventListener('pointerdown', handlePointerDown)
+    canvas.addEventListener('pointerup', handlePointerUp)
     canvas.addEventListener('click', handleClick)
     canvas.addEventListener('touchstart', handleTouchStart, { passive: false })
 
@@ -930,9 +1168,11 @@
         cancelAnimationFrame(rafId)
         rafId = null
       }
-      document.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('keydown', handleKeyDown)
       canvas.removeEventListener('pointermove', handlePointerMove)
       canvas.removeEventListener('pointerleave', handlePointerLeave)
+      canvas.removeEventListener('pointerdown', handlePointerDown)
+      canvas.removeEventListener('pointerup', handlePointerUp)
       canvas.removeEventListener('click', handleClick)
       canvas.removeEventListener('touchstart', handleTouchStart)
     }
@@ -978,6 +1218,12 @@
   Object/furniture sprites are drawn live each frame to reflect interaction state.
   A ResizeObserver on the container computes a CSS scale (cover) so the canvas
   fills the full container height on tall mobile screens with no empty dark space.
+
+  Dev tools:
+    G key — toggle grid overlay
+    E key — toggle edit mode (drag objects to reposition)
+    C key — (in edit mode) copy all positions to console
+    Arrow keys — (in edit mode, object selected) nudge 1 tile; Shift+Arrow nudge 4 tiles
 -->
 <div class="dome-canvas-container" bind:this={containerEl}>
   <canvas
@@ -985,6 +1231,23 @@
     style="width: {CANVAS_W}px; height: {CANVAS_H}px; transform: translate(-50%, -50%) scale({cssScale});"
     aria-label="Dome hub — tap an object to explore a room"
   ></canvas>
+
+  {#if showDevGrid || editMode}
+    <div class="dome-toolbar">
+      <button class="dome-tool-btn" class:active={showDevGrid} onclick={toggleDevGrid}>Grid</button>
+      <button class="dome-tool-btn" class:active={editMode} onclick={toggleEditMode}>Edit</button>
+      {#if editMode && selectedObject}
+        <span class="dome-tool-info">
+          {selectedObject.id}: ({selectedObject.gridX}, {selectedObject.gridY}) {selectedObject.gridW}&times;{selectedObject.gridH}
+        </span>
+      {/if}
+    </div>
+  {/if}
+
+  <div class="dome-hints">
+    <button class="dome-hint-btn" onclick={toggleDevGrid} title="Toggle grid (G)">G</button>
+    <button class="dome-hint-btn" onclick={toggleEditMode} title="Toggle edit mode (E)">E</button>
+  </div>
 </div>
 
 <style>
@@ -1006,5 +1269,78 @@
     transform-origin: center center;
     pointer-events: auto;
     image-rendering: auto;
+  }
+
+  .dome-toolbar {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  .dome-tool-btn {
+    background: rgba(20, 25, 40, 0.85);
+    color: #aabbcc;
+    border: 1px solid rgba(100, 150, 200, 0.3);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    min-height: 28px;
+  }
+
+  .dome-tool-btn:hover {
+    background: rgba(30, 40, 60, 0.9);
+    color: #ccddff;
+  }
+
+  .dome-tool-btn.active {
+    background: rgba(40, 80, 120, 0.85);
+    color: #88ccff;
+    border-color: rgba(100, 180, 255, 0.5);
+  }
+
+  .dome-tool-info {
+    color: #88ccff;
+    font-size: 10px;
+    font-family: 'Courier New', monospace;
+    background: rgba(20, 25, 40, 0.8);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+
+  .dome-hints {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  .dome-hint-btn {
+    background: rgba(20, 25, 40, 0.5);
+    color: rgba(150, 170, 200, 0.5);
+    border: 1px solid rgba(100, 150, 200, 0.15);
+    border-radius: 3px;
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dome-hint-btn:hover {
+    background: rgba(30, 40, 60, 0.8);
+    color: #aabbcc;
   }
 </style>
