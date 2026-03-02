@@ -22,6 +22,57 @@ export const DOME_WIDTH = 192
 export const DOME_HEIGHT = 128
 
 // ---------------------------------------------------------------------------
+// Dome geometry constants (used by DomeCanvas for procedural rendering)
+// ---------------------------------------------------------------------------
+
+/** Dome centre column. */
+export const DOME_CX = 96
+/** Dome apex row (top of arch). */
+export const DOME_APEX = 12
+/** Dome base row (bottom of arch / main floor top). */
+export const DOME_BASE = 80
+/** Half-width of dome ellipse in tiles. */
+export const DOME_A = 72
+/** Half-height of dome ellipse in tiles (DOME_BASE - DOME_APEX). */
+export const DOME_B = 68
+/** Leftmost dome column (inclusive). */
+export const DOME_LEFT = 24
+/** Rightmost dome column (exclusive). */
+export const DOME_RIGHT = 168
+/** First row of upper catwalk platforms. */
+export const UPPER_CATWALK_TOP = 52
+/** Last row of upper catwalk platforms. */
+export const UPPER_CATWALK_BOT = 55
+/** First column of left catwalk wing. */
+export const LEFT_WING_START = 32
+/** Last column of left catwalk wing (inclusive). */
+export const LEFT_WING_END = 82
+/** First column of right catwalk wing. */
+export const RIGHT_WING_START = 110
+/** Last column of right catwalk wing (inclusive). */
+export const RIGHT_WING_END = 160
+/** First row of main stone floor. */
+export const MAIN_FLOOR_TOP = 76
+/** Last row of main stone floor. */
+export const MAIN_FLOOR_BOT = 79
+/** First row of basement metal platform. */
+export const BASEMENT_TOP = 84
+/** Last row of basement metal platform. */
+export const BASEMENT_BOT = 87
+/** First row of dirt/ground region. */
+export const DIRT_START = 90
+/** First interior column of main floor / basement (DOME_LEFT + 1). */
+export const FLOOR_LEFT = 25
+/** Last interior column of main floor / basement (DOME_RIGHT - 1, inclusive). */
+export const FLOOR_RIGHT = 167
+/** Support column spans — three columns wide each. */
+export const COL_POSITIONS: Array<{ start: number; end: number }> = [
+  { start: 46, end: 48 },   // left column
+  { start: 95, end: 97 },   // center column
+  { start: 144, end: 146 }, // right column
+]
+
+// ---------------------------------------------------------------------------
 // Enums
 // ---------------------------------------------------------------------------
 

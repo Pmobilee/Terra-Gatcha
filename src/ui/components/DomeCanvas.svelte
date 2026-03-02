@@ -3,13 +3,30 @@
   import { getDomeSpriteUrls } from '../../game/domeManifest'
   import {
     getDefaultDomeLayout,
-    BG_TILE_SPRITES,
-    FG_TILE_SPRITES,
-    BgTile,
-    FgTile,
     TILE_SIZE,
     DOME_WIDTH,
     DOME_HEIGHT,
+    DOME_CX,
+    DOME_APEX,
+    DOME_BASE,
+    DOME_A,
+    DOME_B,
+    DOME_LEFT,
+    DOME_RIGHT,
+    UPPER_CATWALK_TOP,
+    UPPER_CATWALK_BOT,
+    LEFT_WING_START,
+    LEFT_WING_END,
+    RIGHT_WING_START,
+    RIGHT_WING_END,
+    MAIN_FLOOR_TOP,
+    MAIN_FLOOR_BOT,
+    BASEMENT_TOP,
+    BASEMENT_BOT,
+    DIRT_START,
+    FLOOR_LEFT,
+    FLOOR_RIGHT,
+    COL_POSITIONS,
   } from '../../data/domeLayout'
   import type { DomeLayout, DomeObject } from '../../data/domeLayout'
   import { spriteResolution } from '../stores/settings'
@@ -19,7 +36,7 @@
   // ---------------------------------------------------------------------------
 
   /**
-   * Props for the tile-based DomeCanvas scene.
+   * Props for the procedural DomeCanvas scene.
    */
   interface Props {
     /** Called when an interactive dome object is tapped/clicked. */
@@ -64,8 +81,8 @@
   const imageMap = new Map<string, HTMLImageElement>()
 
   /**
-   * Offscreen canvases for static tile layers (bg and fg).
-   * These are rendered once after images load and composited cheaply each frame.
+   * Offscreen canvases for static layers (bg and fg).
+   * Rendered once after images load and composited cheaply each frame.
    */
   let bgLayerCanvas: HTMLCanvasElement | null = null
   let fgLayerCanvas: HTMLCanvasElement | null = null
@@ -81,29 +98,20 @@
   // ---------------------------------------------------------------------------
 
   /**
-   * Load all dome sprite images for the current resolution setting.
-   * Invokes onAllLoaded when every pending image has resolved.
+   * Load only the object/furniture sprites needed by the layout.
+   * Background and foreground tiles are now drawn procedurally, so we no
+   * longer need to load sky_stars, surface_ground, or tile sprite sheets.
    */
   function loadImages(onAllLoaded: () => void): void {
     const res = get(spriteResolution)
     const urls = getDomeSpriteUrls(res)
 
-    // Collect every sprite key referenced by the layout
     const needed = new Set<string>()
 
-    for (const key of Object.values(BG_TILE_SPRITES)) {
-      if (key) needed.add(key)
-    }
-    for (const key of Object.values(FG_TILE_SPRITES)) {
-      if (key) needed.add(key)
-    }
+    // Only object sprites — no bg/fg tile sprites needed
     for (const obj of layout.objects) {
       needed.add(obj.spriteKey)
     }
-    // Surface horizon
-    needed.add('surface_ground')
-    // Sky background
-    needed.add('sky_stars')
 
     let remaining = 0
 
@@ -130,120 +138,259 @@
   }
 
   // ---------------------------------------------------------------------------
-  // Rendering helpers
+  // Procedural background rendering
   // ---------------------------------------------------------------------------
 
   /**
-   * Draw an image into a grid cell, with an optional globalAlpha override.
-   * Silently skips if the image is not yet loaded.
+   * Simple seeded pseudo-random number generator (LCG) for reproducible star
+   * placement without relying on Math.random() which is non-deterministic.
    */
-  function drawTile(
-    ctx: CanvasRenderingContext2D,
-    key: string,
-    col: number,
-    row: number,
-    alpha = 1,
-  ): void {
-    const img = imageMap.get(key)
-    if (!img || !img.complete || img.naturalWidth === 0) return
-
-    const x = col * TILE_SIZE
-    const y = row * TILE_SIZE
-
-    if (alpha !== 1) {
-      ctx.save()
-      ctx.globalAlpha = alpha
-      ctx.drawImage(img, x, y, TILE_SIZE, TILE_SIZE)
-      ctx.restore()
-    } else {
-      ctx.drawImage(img, x, y, TILE_SIZE, TILE_SIZE)
+  function makeSeededRng(seed: number): () => number {
+    let s = seed
+    return () => {
+      s = (s * 1664525 + 1013904223) & 0xffffffff
+      return (s >>> 0) / 0xffffffff
     }
   }
 
   /**
-   * Draw the sky background using the sky_stars sprite stretched across the
-   * full canvas. Falls back to a dark gradient if the image is not yet loaded.
+   * Draw a rich procedural background onto bgCtx:
+   *  - Sky gradient (top half, outside dome)
+   *  - Stars scattered in the top 50% of the canvas
+   *  - Dome interior fill (dark blue-gray) clipped to the ellipse
+   *  - Dirt/ground fill with geological layer lines
    */
-  function drawSkyGradient(ctx: CanvasRenderingContext2D): void {
-    const skyImg = imageMap.get('sky_stars')
-    if (skyImg && skyImg.complete && skyImg.naturalWidth > 0) {
-      ctx.drawImage(skyImg, 0, 0, CANVAS_W, CANVAS_H)
-    } else {
-      // Fallback: dark gradient while image loads
-      const grad = ctx.createLinearGradient(0, 0, 0, CANVAS_H)
-      grad.addColorStop(0, '#0a0a2e')
-      grad.addColorStop(1, '#1a0e30')
-      ctx.fillStyle = grad
-      ctx.fillRect(0, 0, CANVAS_W, CANVAS_H)
+  function drawProceduralBg(bgCtx: CanvasRenderingContext2D): void {
+    // --- Sky gradient (full canvas base) ---
+    const skyGrad = bgCtx.createLinearGradient(0, 0, 0, CANVAS_H)
+    skyGrad.addColorStop(0, '#0b0b1e')
+    skyGrad.addColorStop(0.25, '#141030')
+    skyGrad.addColorStop(0.5, '#251545')
+    skyGrad.addColorStop(0.7, '#4a1942')
+    skyGrad.addColorStop(0.85, '#6b3035')
+    skyGrad.addColorStop(1, '#4a2818')
+    bgCtx.fillStyle = skyGrad
+    bgCtx.fillRect(0, 0, CANVAS_W, CANVAS_H)
+
+    // --- Stars (top 50% only) ---
+    const rng = makeSeededRng(0xdeadbeef)
+    const halfH = CANVAS_H * 0.5
+
+    // Small dim stars
+    for (let i = 0; i < 60; i++) {
+      const sx = rng() * CANVAS_W
+      const sy = rng() * halfH
+      const r = 0.5 + rng() * 0.5
+      const alpha = 0.4 + rng() * 0.4
+      bgCtx.beginPath()
+      bgCtx.arc(sx, sy, r, 0, Math.PI * 2)
+      bgCtx.fillStyle = `rgba(255, 255, 255, ${alpha.toFixed(2)})`
+      bgCtx.fill()
+    }
+
+    // Larger bright stars with a soft glow
+    for (let i = 0; i < 5; i++) {
+      const sx = rng() * CANVAS_W
+      const sy = rng() * halfH * 0.8
+      // Glow halo
+      const glowGrad = bgCtx.createRadialGradient(sx, sy, 0, sx, sy, 6)
+      glowGrad.addColorStop(0, 'rgba(255, 255, 255, 0.35)')
+      glowGrad.addColorStop(1, 'rgba(255, 255, 255, 0)')
+      bgCtx.fillStyle = glowGrad
+      bgCtx.fillRect(sx - 6, sy - 6, 12, 12)
+      // Star core
+      bgCtx.beginPath()
+      bgCtx.arc(sx, sy, 1.5, 0, Math.PI * 2)
+      bgCtx.fillStyle = 'rgba(255, 255, 255, 0.9)'
+      bgCtx.fill()
+    }
+
+    // --- Dome interior fill (clipped to ellipse) ---
+    const domeCX = DOME_CX * TILE_SIZE        // 384
+    const domeCY = DOME_BASE * TILE_SIZE       // 320
+    const domeRX = DOME_A * TILE_SIZE          // 288
+    const domeRY = DOME_B * TILE_SIZE          // 272
+
+    bgCtx.save()
+    // Build ellipse clip path (upper half of dome down to BASE row)
+    bgCtx.beginPath()
+    bgCtx.ellipse(domeCX, domeCY, domeRX, domeRY, 0, Math.PI, 0)
+    bgCtx.lineTo(domeCX + domeRX, domeCY)
+    bgCtx.lineTo(domeCX - domeRX, domeCY)
+    bgCtx.closePath()
+    bgCtx.clip()
+
+    // Dark interior base fill
+    bgCtx.fillStyle = '#161a28'
+    bgCtx.fillRect(DOME_LEFT * TILE_SIZE, DOME_APEX * TILE_SIZE, (DOME_RIGHT - DOME_LEFT) * TILE_SIZE, (DOME_BASE - DOME_APEX) * TILE_SIZE)
+
+    // Radial gradient overlay — lighter at centre, darker at walls
+    const interiorGrad = bgCtx.createRadialGradient(domeCX, domeCY - 80, 20, domeCX, domeCY - 80, domeRX * 0.9)
+    interiorGrad.addColorStop(0, 'rgba(35, 45, 65, 0.5)')
+    interiorGrad.addColorStop(1, 'rgba(12, 16, 26, 0.8)')
+    bgCtx.fillStyle = interiorGrad
+    bgCtx.fillRect(DOME_LEFT * TILE_SIZE, DOME_APEX * TILE_SIZE, (DOME_RIGHT - DOME_LEFT) * TILE_SIZE, (DOME_BASE - DOME_APEX) * TILE_SIZE)
+
+    bgCtx.restore()
+
+    // --- Interior fill below dome (between legs, rows BASE to DIRT_START) ---
+    const legGapLeft = (DOME_LEFT + 1) * TILE_SIZE
+    const legGapRight = (DOME_RIGHT - 1) * TILE_SIZE
+    bgCtx.fillStyle = '#161a28'
+    bgCtx.fillRect(legGapLeft, DOME_BASE * TILE_SIZE, legGapRight - legGapLeft, (DIRT_START - DOME_BASE) * TILE_SIZE)
+
+    // --- Dirt / ground region (rows DIRT_START to bottom) ---
+    const dirtTopY = DIRT_START * TILE_SIZE
+    const dirtGrad = bgCtx.createLinearGradient(0, dirtTopY, 0, CANVAS_H)
+    dirtGrad.addColorStop(0, '#5a3a22')
+    dirtGrad.addColorStop(1, '#1a0e08')
+    bgCtx.fillStyle = dirtGrad
+    bgCtx.fillRect(0, dirtTopY, CANVAS_W, CANVAS_H - dirtTopY)
+
+    // Geological layer lines
+    for (let y = dirtTopY; y < CANVAS_H; y += TILE_SIZE * 4) {
+      const isMajor = ((y - dirtTopY) % (TILE_SIZE * 8)) === 0
+      bgCtx.fillStyle = isMajor ? 'rgba(0,0,0,0.25)' : 'rgba(0,0,0,0.15)'
+      bgCtx.fillRect(0, y, CANVAS_W, 1)
     }
   }
 
   /**
-   * Draw all background tiles (BgTile layer), row by row.
-   * BgTile.Empty cells are skipped — the sky gradient shows through.
+   * Draw all structural elements procedurally onto fgCtx:
+   *  - Dome glass shell (elliptical arc)
+   *  - Frame legs
+   *  - Support columns
+   *  - Upper catwalks (left and right wings)
+   *  - Main floor
+   *  - Basement platform
    */
-  function drawBgLayer(ctx: CanvasRenderingContext2D): void {
-    for (let row = 0; row < layout.height; row++) {
-      for (let col = 0; col < layout.width; col++) {
-        const tile = layout.bg[row][col]
-        const key = BG_TILE_SPRITES[tile]
-        if (!key) continue
-        drawTile(ctx, key, col, row)
-      }
+  function drawProceduralFg(fgCtx: CanvasRenderingContext2D): void {
+    const TS = TILE_SIZE
+
+    const domeCX = DOME_CX * TS         // 384
+    const domeCY = DOME_BASE * TS        // 320
+    const domeRX = DOME_A * TS           // 288
+    const domeRY = DOME_B * TS           // 272
+
+    // --- Dome glass shell ---
+    // Outer glow / fill band
+    fgCtx.beginPath()
+    fgCtx.ellipse(domeCX, domeCY, domeRX, domeRY, 0, Math.PI, 0)
+    fgCtx.strokeStyle = 'rgba(80, 180, 210, 0.3)'
+    fgCtx.lineWidth = 12
+    fgCtx.stroke()
+
+    // Outer structural frame ring
+    fgCtx.beginPath()
+    fgCtx.ellipse(domeCX, domeCY, domeRX + 2, domeRY + 2, 0, Math.PI, 0)
+    fgCtx.strokeStyle = '#2a3040'
+    fgCtx.lineWidth = 3
+    fgCtx.stroke()
+
+    // Inner glow highlight
+    fgCtx.beginPath()
+    fgCtx.ellipse(domeCX, domeCY, domeRX - 6, domeRY - 6, 0, Math.PI, 0)
+    fgCtx.strokeStyle = 'rgba(120, 220, 255, 0.08)'
+    fgCtx.lineWidth = 2
+    fgCtx.stroke()
+
+    // --- Frame legs (left and right, from MAIN_FLOOR_TOP down to bottom) ---
+    const legW = 3 * TS   // 12px wide
+    const legTop = MAIN_FLOOR_TOP * TS
+    const legH = CANVAS_H - legTop
+
+    fgCtx.fillStyle = '#2a3040'
+    // Left leg
+    fgCtx.fillRect(DOME_LEFT * TS, legTop, legW, legH)
+    // Right leg
+    fgCtx.fillRect((DOME_RIGHT - 3) * TS, legTop, legW, legH)
+
+    // --- Support columns ---
+    for (const col of COL_POSITIONS) {
+      const colX = col.start * TS
+      const colW = (col.end - col.start + 1) * TS
+      // Column runs from UPPER_CATWALK_BOT+1 to MAIN_FLOOR_TOP (left/right)
+      // or from row 20 to MAIN_FLOOR_TOP (center)
+      const isCenter = col.start === 95
+      const colTopRow = isCenter ? 20 : UPPER_CATWALK_BOT + 1
+      const colTopY = colTopRow * TS
+      const colBotY = MAIN_FLOOR_TOP * TS
+
+      fgCtx.fillStyle = '#2a3040'
+      fgCtx.fillRect(colX, colTopY, colW, colBotY - colTopY)
+
+      // Left-edge highlight
+      fgCtx.fillStyle = 'rgba(100, 130, 160, 0.25)'
+      fgCtx.fillRect(colX, colTopY, 1, colBotY - colTopY)
     }
+
+    // Helper: draw a platform slab with top highlight and drop shadow
+    function drawSlab(
+      x: number,
+      y: number,
+      w: number,
+      h: number,
+      color: string,
+    ): void {
+      // Body
+      fgCtx.fillStyle = color
+      fgCtx.fillRect(x, y, w, h)
+
+      // Top highlight
+      fgCtx.fillStyle = 'rgba(140, 170, 200, 0.3)'
+      fgCtx.fillRect(x, y, w, 1)
+
+      // Drop shadow below
+      const shadowGrad = fgCtx.createLinearGradient(0, y + h, 0, y + h + 4 * TS)
+      shadowGrad.addColorStop(0, 'rgba(0,0,0,0.25)')
+      shadowGrad.addColorStop(1, 'rgba(0,0,0,0)')
+      fgCtx.fillStyle = shadowGrad
+      fgCtx.fillRect(x, y + h, w, 4 * TS)
+    }
+
+    // --- Upper catwalks ---
+    const catwalkY = UPPER_CATWALK_TOP * TS
+    const catwalkH = (UPPER_CATWALK_BOT - UPPER_CATWALK_TOP + 1) * TS
+
+    // Left wing
+    drawSlab(
+      LEFT_WING_START * TS,
+      catwalkY,
+      (LEFT_WING_END - LEFT_WING_START + 1) * TS,
+      catwalkH,
+      '#33384a',
+    )
+    // Right wing
+    drawSlab(
+      RIGHT_WING_START * TS,
+      catwalkY,
+      (RIGHT_WING_END - RIGHT_WING_START + 1) * TS,
+      catwalkH,
+      '#33384a',
+    )
+
+    // --- Main floor ---
+    drawSlab(
+      FLOOR_LEFT * TS,
+      MAIN_FLOOR_TOP * TS,
+      (FLOOR_RIGHT - FLOOR_LEFT + 1) * TS,
+      (MAIN_FLOOR_BOT - MAIN_FLOOR_TOP + 1) * TS,
+      '#3a3f50',
+    )
+
+    // --- Basement platform ---
+    drawSlab(
+      FLOOR_LEFT * TS,
+      BASEMENT_TOP * TS,
+      (FLOOR_RIGHT - FLOOR_LEFT + 1) * TS,
+      (BASEMENT_BOT - BASEMENT_TOP + 1) * TS,
+      '#33384a',
+    )
   }
 
   /**
-   * Draw the surface_ground sprite as a horizon band at the sky/dome transition.
-   * It is drawn full-width, centred vertically on the row-104 boundary.
-   * (104 × 4 = 416px — same pixel position as the old 13 × 32 = 416px.)
-   */
-  function drawSurfaceHorizon(ctx: CanvasRenderingContext2D): void {
-    const img = imageMap.get('surface_ground')
-    if (!img || !img.complete || img.naturalWidth === 0) return
-
-    // Draw it along the transition between sky and dirt (row 104 = y 416)
-    const horizonY = 104 * TILE_SIZE
-    const tileH = TILE_SIZE * 2  // two tiles tall for a nice horizon band
-    const tileW = img.naturalWidth * (tileH / img.naturalHeight)
-
-    ctx.save()
-    ctx.beginPath()
-    ctx.rect(0, horizonY - TILE_SIZE, CANVAS_W, tileH + TILE_SIZE)
-    ctx.clip()
-
-    let x = 0
-    while (x < CANVAS_W) {
-      ctx.drawImage(img, x, horizonY - Math.floor(tileH * 0.4), tileW, tileH)
-      x += tileW
-    }
-    ctx.restore()
-  }
-
-  /**
-   * Draw all foreground / structural tiles (FgTile layer).
-   * DomeGlass and DomeGlassCurved tiles are rendered at 0.7 alpha.
-   */
-  function drawFgLayer(ctx: CanvasRenderingContext2D): void {
-    for (let row = 0; row < layout.height; row++) {
-      for (let col = 0; col < layout.width; col++) {
-        const tile = layout.fg[row][col]
-        const key = FG_TILE_SPRITES[tile]
-        if (!key) continue
-
-        const alpha =
-          tile === FgTile.DomeGlass || tile === FgTile.DomeGlassCurved ? 0.7 : 1
-
-        drawTile(ctx, key, col, row, alpha)
-      }
-    }
-  }
-
-  /**
-   * Render background and foreground tile layers to offscreen canvases once.
-   * After this call, `bgLayerCanvas` and `fgLayerCanvas` can be composited
-   * cheaply in each frame via `ctx.drawImage()` instead of iterating all tiles.
-   * Only needs to be called once after images load (tile layout never changes).
+   * Render background and foreground static layers to offscreen canvases once.
+   * Only needs to be called once after images load (layout never changes).
    */
   function renderStaticLayers(): void {
     // --- bg offscreen ---
@@ -252,43 +399,7 @@
     bgCanvas.height = CANVAS_H
     const bgCtx = bgCanvas.getContext('2d')
     if (bgCtx) {
-      // Paint the sky gradient first as base
-      const skyImg = imageMap.get('sky_stars')
-      if (skyImg && skyImg.complete && skyImg.naturalWidth > 0) {
-        bgCtx.drawImage(skyImg, 0, 0, CANVAS_W, CANVAS_H)
-      } else {
-        const grad = bgCtx.createLinearGradient(0, 0, 0, CANVAS_H)
-        grad.addColorStop(0, '#0a0a2e')
-        grad.addColorStop(1, '#1a0e30')
-        bgCtx.fillStyle = grad
-        bgCtx.fillRect(0, 0, CANVAS_W, CANVAS_H)
-      }
-      // Draw each bg tile
-      for (let row = 0; row < layout.height; row++) {
-        for (let col = 0; col < layout.width; col++) {
-          const tile = layout.bg[row][col]
-          const key = BG_TILE_SPRITES[tile]
-          if (!key) continue
-          drawTile(bgCtx, key, col, row)
-        }
-      }
-      // Surface horizon band
-      const horizonImg = imageMap.get('surface_ground')
-      if (horizonImg && horizonImg.complete && horizonImg.naturalWidth > 0) {
-        const horizonY = 104 * TILE_SIZE
-        const tileH = TILE_SIZE * 2
-        const tileW = horizonImg.naturalWidth * (tileH / horizonImg.naturalHeight)
-        bgCtx.save()
-        bgCtx.beginPath()
-        bgCtx.rect(0, horizonY - TILE_SIZE, CANVAS_W, tileH + TILE_SIZE)
-        bgCtx.clip()
-        let x = 0
-        while (x < CANVAS_W) {
-          bgCtx.drawImage(horizonImg, x, horizonY - Math.floor(tileH * 0.4), tileW, tileH)
-          x += tileW
-        }
-        bgCtx.restore()
-      }
+      drawProceduralBg(bgCtx)
     }
     bgLayerCanvas = bgCanvas
 
@@ -298,19 +409,14 @@
     fgCanvas.height = CANVAS_H
     const fgCtx = fgCanvas.getContext('2d')
     if (fgCtx) {
-      for (let row = 0; row < layout.height; row++) {
-        for (let col = 0; col < layout.width; col++) {
-          const tile = layout.fg[row][col]
-          const key = FG_TILE_SPRITES[tile]
-          if (!key) continue
-          const alpha =
-            tile === FgTile.DomeGlass || tile === FgTile.DomeGlassCurved ? 0.7 : 1
-          drawTile(fgCtx, key, col, row, alpha)
-        }
-      }
+      drawProceduralFg(fgCtx)
     }
     fgLayerCanvas = fgCanvas
   }
+
+  // ---------------------------------------------------------------------------
+  // Object rendering helpers
+  // ---------------------------------------------------------------------------
 
   /**
    * Draw a radial glow highlight centred on the given object's grid area.
@@ -437,9 +543,9 @@
 
   /**
    * Render all layers onto the canvas in back-to-front order.
-   * Static tile layers (bg + fg) are composited from offscreen canvas caches
+   * Static layers (bg + fg) are composited from offscreen canvas caches
    * built once in renderStaticLayers() so the per-frame cost is just two
-   * drawImage() calls regardless of tile count.
+   * drawImage() calls regardless of content complexity.
    */
   function render(): void {
     const canvas = canvasEl
@@ -454,26 +560,48 @@
 
     if (bgLayerCanvas && fgLayerCanvas) {
       // Fast path: composite pre-rendered static layers
-      // Layer 1+2+3: bg (sky gradient + bg tiles + surface horizon) from cache
       ctx.drawImage(bgLayerCanvas, 0, 0)
-
-      // Layer 4: fg structural tiles (dome glass, frame, floor) from cache
       ctx.drawImage(fgLayerCanvas, 0, 0)
     } else {
-      // Fallback before offscreen canvases are ready: render inline
-      drawSkyGradient(ctx)
-      drawBgLayer(ctx)
-      drawSurfaceHorizon(ctx)
-      drawFgLayer(ctx)
+      // Fallback before offscreen canvases are ready
+      ctx.fillStyle = '#0b0b1e'
+      ctx.fillRect(0, 0, CANVAS_W, CANVAS_H)
     }
 
-    // Layer 5: objects and furniture (rendered live — state changes each frame)
+    // Ambient light pools under ceiling lights
+    const lightPositions = [
+      { x: 45, y: 27 },
+      { x: 89, y: 21 },
+      { x: 105, y: 21 },
+      { x: 155, y: 27 },
+    ]
+    for (const light of lightPositions) {
+      const px = light.x * TILE_SIZE
+      const py = light.y * TILE_SIZE
+      const grad = ctx.createRadialGradient(px, py + 40, 0, px, py + 40, 80)
+      grad.addColorStop(0, 'rgba(255, 230, 180, 0.06)')
+      grad.addColorStop(1, 'rgba(255, 230, 180, 0)')
+      ctx.fillStyle = grad
+      ctx.fillRect(px - 80, py, 160, 120)
+    }
+
+    // Objects and furniture (rendered live — state changes each frame)
     drawObjects(ctx, hoveredObject, tappedObjectId)
 
-    // Layer 6: tooltip for hovered object
+    // Tooltip for hovered object
     if (hoveredObject) {
       drawTooltip(ctx, hoveredObject)
     }
+
+    // Vignette overlay (final pass)
+    const vigGrad = ctx.createRadialGradient(
+      CANVAS_W / 2, CANVAS_H / 2, CANVAS_W * 0.35,
+      CANVAS_W / 2, CANVAS_H / 2, CANVAS_W * 0.7,
+    )
+    vigGrad.addColorStop(0, 'rgba(0,0,0,0)')
+    vigGrad.addColorStop(1, 'rgba(0,0,0,0.2)')
+    ctx.fillStyle = vigGrad
+    ctx.fillRect(0, 0, CANVAS_W, CANVAS_H)
   }
 
   /**
@@ -605,13 +733,16 @@
     canvas.addEventListener('click', handleClick)
     canvas.addEventListener('touchstart', handleTouchStart, { passive: false })
 
-    // Load sprites then build offscreen layer caches and start the render loop
+    // Load object sprites then build offscreen layer caches and start the render loop.
+    // renderStaticLayers() is called immediately without waiting for images since
+    // the procedural bg/fg layers do not depend on any image data.
     imagesLoaded = false
     dirty = true
 
+    renderStaticLayers()
+
     loadImages(() => {
       imagesLoaded = true
-      renderStaticLayers()
       dirty = true
     })
 
@@ -663,10 +794,10 @@
 </script>
 
 <!--
-  DomeCanvas: Terraria-style tile-based dome hub rendered on a 2D canvas.
-  The canvas internal resolution is 768×512 (192×128 tiles at 4px each).
-  The finer 4px grid allows smooth elliptical dome curves.
-  Static tile layers are pre-rendered to offscreen canvases for performance.
+  DomeCanvas: Dome hub rendered on a 2D canvas with fully procedural background
+  and structural layers. The canvas internal resolution is 768×512 (192×128 tiles
+  at 4px each). Static layers are pre-rendered to offscreen canvases for performance.
+  Object/furniture sprites are drawn live each frame to reflect interaction state.
   A ResizeObserver on the container computes a CSS scale (cover) so the canvas
   fills the full container height on tall mobile screens with no empty dark space.
 -->
