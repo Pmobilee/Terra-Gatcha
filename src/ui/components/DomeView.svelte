@@ -61,11 +61,12 @@
    * @param objectId - Unique identifier of the tapped object.
    */
   function handleObjectTap(objectId: string, room: string): void {
-    if (objectId === 'obj_dive_hatch') {
+    if (objectId === 'dive_hatch') {
       onDive()
       return
     }
-    // Set the room (not objectId) as the active room for the panel
+    // Only open panel for valid dome rooms (not 'none' or 'dive')
+    if (room === 'none' || room === 'dive') return
     activeRoom = room
   }
 
@@ -357,7 +358,7 @@
 
   .panel-content {
     overflow-y: auto;
-    overflow: hidden;
+    overflow-x: hidden;
     padding: 0 0 env(safe-area-inset-bottom, 0);
     flex: 1;
     min-height: 0;

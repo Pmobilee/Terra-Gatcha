@@ -57,11 +57,18 @@
   const layout: DomeLayout = getDefaultDomeLayout()
 
   /** Internal canvas pixel width — the full grid width at TILE_SIZE per cell. */
-  const CANVAS_W = DOME_WIDTH * TILE_SIZE   // 24 * 32 = 768
-  const CANVAS_H = DOME_HEIGHT * TILE_SIZE  // 16 * 32 = 512
+  const CANVAS_W = DOME_WIDTH * TILE_SIZE   // 192 * 4 = 768
+  const CANVAS_H = DOME_HEIGHT * TILE_SIZE  // 128 * 4 = 512
 
   /** Cached HTMLImageElement instances, keyed by sprite key. */
   const imageMap = new Map<string, HTMLImageElement>()
+
+  /**
+   * Offscreen canvases for static tile layers (bg and fg).
+   * These are rendered once after images load and composited cheaply each frame.
+   */
+  let bgLayerCanvas: HTMLCanvasElement | null = null
+  let fgLayerCanvas: HTMLCanvasElement | null = null
 
   // ---------------------------------------------------------------------------
   // RAF / animation
@@ -188,14 +195,15 @@
 
   /**
    * Draw the surface_ground sprite as a horizon band at the sky/dome transition.
-   * It is drawn full-width, centred vertically on the row-13 boundary.
+   * It is drawn full-width, centred vertically on the row-104 boundary.
+   * (104 × 4 = 416px — same pixel position as the old 13 × 32 = 416px.)
    */
   function drawSurfaceHorizon(ctx: CanvasRenderingContext2D): void {
     const img = imageMap.get('surface_ground')
     if (!img || !img.complete || img.naturalWidth === 0) return
 
-    // Draw it along the transition between sky and dirt (row 13 = y 416)
-    const horizonY = 13 * TILE_SIZE
+    // Draw it along the transition between sky and dirt (row 104 = y 416)
+    const horizonY = 104 * TILE_SIZE
     const tileH = TILE_SIZE * 2  // two tiles tall for a nice horizon band
     const tileW = img.naturalWidth * (tileH / img.naturalHeight)
 
@@ -229,6 +237,79 @@
         drawTile(ctx, key, col, row, alpha)
       }
     }
+  }
+
+  /**
+   * Render background and foreground tile layers to offscreen canvases once.
+   * After this call, `bgLayerCanvas` and `fgLayerCanvas` can be composited
+   * cheaply in each frame via `ctx.drawImage()` instead of iterating all tiles.
+   * Only needs to be called once after images load (tile layout never changes).
+   */
+  function renderStaticLayers(): void {
+    // --- bg offscreen ---
+    const bgCanvas = document.createElement('canvas')
+    bgCanvas.width = CANVAS_W
+    bgCanvas.height = CANVAS_H
+    const bgCtx = bgCanvas.getContext('2d')
+    if (bgCtx) {
+      // Paint the sky gradient first as base
+      const skyImg = imageMap.get('sky_stars')
+      if (skyImg && skyImg.complete && skyImg.naturalWidth > 0) {
+        bgCtx.drawImage(skyImg, 0, 0, CANVAS_W, CANVAS_H)
+      } else {
+        const grad = bgCtx.createLinearGradient(0, 0, 0, CANVAS_H)
+        grad.addColorStop(0, '#0a0a2e')
+        grad.addColorStop(1, '#1a0e30')
+        bgCtx.fillStyle = grad
+        bgCtx.fillRect(0, 0, CANVAS_W, CANVAS_H)
+      }
+      // Draw each bg tile
+      for (let row = 0; row < layout.height; row++) {
+        for (let col = 0; col < layout.width; col++) {
+          const tile = layout.bg[row][col]
+          const key = BG_TILE_SPRITES[tile]
+          if (!key) continue
+          drawTile(bgCtx, key, col, row)
+        }
+      }
+      // Surface horizon band
+      const horizonImg = imageMap.get('surface_ground')
+      if (horizonImg && horizonImg.complete && horizonImg.naturalWidth > 0) {
+        const horizonY = 104 * TILE_SIZE
+        const tileH = TILE_SIZE * 2
+        const tileW = horizonImg.naturalWidth * (tileH / horizonImg.naturalHeight)
+        bgCtx.save()
+        bgCtx.beginPath()
+        bgCtx.rect(0, horizonY - TILE_SIZE, CANVAS_W, tileH + TILE_SIZE)
+        bgCtx.clip()
+        let x = 0
+        while (x < CANVAS_W) {
+          bgCtx.drawImage(horizonImg, x, horizonY - Math.floor(tileH * 0.4), tileW, tileH)
+          x += tileW
+        }
+        bgCtx.restore()
+      }
+    }
+    bgLayerCanvas = bgCanvas
+
+    // --- fg offscreen ---
+    const fgCanvas = document.createElement('canvas')
+    fgCanvas.width = CANVAS_W
+    fgCanvas.height = CANVAS_H
+    const fgCtx = fgCanvas.getContext('2d')
+    if (fgCtx) {
+      for (let row = 0; row < layout.height; row++) {
+        for (let col = 0; col < layout.width; col++) {
+          const tile = layout.fg[row][col]
+          const key = FG_TILE_SPRITES[tile]
+          if (!key) continue
+          const alpha =
+            tile === FgTile.DomeGlass || tile === FgTile.DomeGlassCurved ? 0.7 : 1
+          drawTile(fgCtx, key, col, row, alpha)
+        }
+      }
+    }
+    fgLayerCanvas = fgCanvas
   }
 
   /**
@@ -356,6 +437,9 @@
 
   /**
    * Render all layers onto the canvas in back-to-front order.
+   * Static tile layers (bg + fg) are composited from offscreen canvas caches
+   * built once in renderStaticLayers() so the per-frame cost is just two
+   * drawImage() calls regardless of tile count.
    */
   function render(): void {
     const canvas = canvasEl
@@ -368,19 +452,22 @@
 
     dirty = false
 
-    // Layer 1: sky gradient + stars (base)
-    drawSkyGradient(ctx)
+    if (bgLayerCanvas && fgLayerCanvas) {
+      // Fast path: composite pre-rendered static layers
+      // Layer 1+2+3: bg (sky gradient + bg tiles + surface horizon) from cache
+      ctx.drawImage(bgLayerCanvas, 0, 0)
 
-    // Layer 2: background tiles (sky_stars, interior_wall, dirt_ground)
-    drawBgLayer(ctx)
+      // Layer 4: fg structural tiles (dome glass, frame, floor) from cache
+      ctx.drawImage(fgLayerCanvas, 0, 0)
+    } else {
+      // Fallback before offscreen canvases are ready: render inline
+      drawSkyGradient(ctx)
+      drawBgLayer(ctx)
+      drawSurfaceHorizon(ctx)
+      drawFgLayer(ctx)
+    }
 
-    // Layer 3: surface horizon (sky-to-ground transition band)
-    drawSurfaceHorizon(ctx)
-
-    // Layer 4: foreground / structural tiles (dome glass, frame, floor)
-    drawFgLayer(ctx)
-
-    // Layer 5: objects and furniture
+    // Layer 5: objects and furniture (rendered live — state changes each frame)
     drawObjects(ctx, hoveredObject, tappedObjectId)
 
     // Layer 6: tooltip for hovered object
@@ -518,12 +605,13 @@
     canvas.addEventListener('click', handleClick)
     canvas.addEventListener('touchstart', handleTouchStart, { passive: false })
 
-    // Load sprites then start the render loop
+    // Load sprites then build offscreen layer caches and start the render loop
     imagesLoaded = false
     dirty = true
 
     loadImages(() => {
       imagesLoaded = true
+      renderStaticLayers()
       dirty = true
     })
 
@@ -576,7 +664,9 @@
 
 <!--
   DomeCanvas: Terraria-style tile-based dome hub rendered on a 2D canvas.
-  The canvas internal resolution is 768×512 (24×16 tiles at 32px each).
+  The canvas internal resolution is 768×512 (192×128 tiles at 4px each).
+  The finer 4px grid allows smooth elliptical dome curves.
+  Static tile layers are pre-rendered to offscreen canvases for performance.
   A ResizeObserver on the container computes a CSS scale (cover) so the canvas
   fills the full container height on tall mobile screens with no empty dark space.
 -->
