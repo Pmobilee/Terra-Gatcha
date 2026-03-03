@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-7 complete. Phase 13 (Knowledge Tree 2.0) complete. Phase 11 complete: fact content engine with ingestion API, LLM pipeline, dashboard, sprite generation, delta sync, and in-game reporting. Visual Overhaul (A-I) complete. Capacitor + Fastify backend scaffolded. V2 roadmap (Phases 8-12, 14-25) remaining with detailed phase documents. All 5 Q&A batches complete (281 design decisions total). Phase 13 implemented: hierarchical radial tree with 3-level LOD (forest/branch/leaf), sub-branch system, tap-to-view fact detail card, Focus Study mode, Show All/Learned toggle, DD-V2-098 mastery coloring, content-type-aware SM-2 thresholds.
+Phases 0-8.13 complete. Phases 11, 13, 18 complete. Visual Overhaul (A-I) complete. Phase 18 delivered: DevPanel scenario presets (9 one-click states), save snapshots with import/export, session design metrics (dual profiles, cozy dome flow), gentle review pressure audit (zero anxiety-inducing language), quiz anti-homework pass (all quiz text uses adventure vocabulary), CI/CD pipelines (3 GitHub Actions workflows), Vitest testing setup, seed determinism tests, and build-time asset audit. V2 roadmap (remaining phases 9-25) in progress.
 
 ---
 
@@ -58,7 +58,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Engagement & Tooling (Phases 17-18)
 - [ ] **Phase 17: Addictiveness Pass** — Gacha animations, sound design, session flow, streaks, weekly challenges, login calendar → [`phases/PHASE-17-ADDICTIVENESS-PASS.md`](phases/PHASE-17-ADDICTIVENESS-PASS.md)
-- [ ] **Phase 18: Dev Tooling** — Scenario presets, save snapshots, session profiles, review pressure audit, quiz anti-homework → [`phases/PHASE-18-DEV-TOOLING.md`](phases/PHASE-18-DEV-TOOLING.md)
+- [x] **Phase 18: Dev Tooling** — Scenario presets, save snapshots, session profiles, review pressure audit, quiz anti-homework → [`completed/PHASE-18-DEV-TOOLING.md`](completed/PHASE-18-DEV-TOOLING.md)
 
 ### Infrastructure & Launch (Phases 19-20)
 - [ ] **Phase 19: Auth & Cloud** — Auth UI, cloud sync, PostgreSQL, Docker, offline mode, legal, profiles, analytics → [`phases/PHASE-19-AUTH-CLOUD.md`](phases/PHASE-19-AUTH-CLOUD.md)
