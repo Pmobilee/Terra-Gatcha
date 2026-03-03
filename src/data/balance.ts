@@ -260,6 +260,15 @@ export const BALANCE = {
   ] as const,
 } as const
 
+// ---- Tick-Based Timing Constants (DD-V2-051) ----
+export const TICK_LAVA_SPREAD_INTERVAL = 1;          // lava expands every N ticks
+export const TICK_GAS_DRIFT_INTERVAL = 2;            // gas cloud moves every N ticks
+export const TICK_GAS_DISSIPATE_AFTER = 30;          // gas cloud lifetime in ticks
+export const TICK_INSTABILITY_WARNING = 0.75;        // 75% = doubled earthquake frequency
+export const TICK_INSTABILITY_COLLAPSE = 1.0;        // 100% = evacuation countdown begins
+export const UNSTABLE_GROUND_TICK_THRESHOLD = 3;     // ticks adjacent before collapse
+export const TICK_INSTABILITY_PER_ACTION = 0.001;    // instability gained per player action
+
 /** Pickaxe tier impact profiles — each tier adds unique visual signature to mining feedback. */
 export const PICKAXE_TIER_VISUALS = [
   { name: 'Stone Pick',    shakeMultiplier: 1.0, flashIntensity: 0.2, particleBonus: 0  },

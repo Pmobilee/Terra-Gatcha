@@ -5,7 +5,7 @@
   import { deleteSave } from '../../services/saveService'
   import { factsDB } from '../../services/factsDB'
   import { GameManager } from '../../game/GameManager'
-  import { currentScreen, type Screen } from '../stores/gameState'
+  import { currentScreen, tickCount, layerTickCount, type Screen } from '../stores/gameState'
   import {
     addLearnedFact,
     addMinerals,
@@ -205,6 +205,11 @@
     persistPlayer()
   }
 
+  function giveOxygen(): void {
+    playerSave.update(s => s ? { ...s, oxygen: (s.oxygen || 0) + 3 } : s)
+    persistPlayer()
+  }
+
   function fillBackpack(): void {
     // Fill backpack with random minerals and artifacts to test display
     const tiers: MineralTier[] = ['dust', 'shard', 'crystal', 'geode', 'essence']
@@ -236,6 +241,16 @@
   }
 
   // ─── Section 5: Navigation ────────────────────────────────────
+
+  function quickDive(): void {
+    // Ensure at least 1 O2 tank exists
+    const save = get(playerSave)
+    if (save && save.oxygen < 1) {
+      playerSave.update(s => s ? { ...s, oxygen: 1 } : s)
+      persistPlayer()
+    }
+    gm.startDive(1)
+  }
 
   const NAV_SCREENS: { label: string; screen: Screen }[] = [
     { label: 'Base', screen: 'base' },
@@ -323,6 +338,7 @@
             <button class="btn-give" type="button" onclick={givePremiumMaterials}>+Prem Mats</button>
           </div>
           <button class="btn-give btn-wide" type="button" onclick={giveAllResources}>Give All Resources</button>
+          <button class="btn-give btn-wide" type="button" onclick={giveOxygen}>+3 O2 Tanks</button>
           <!-- Custom amount -->
           <div class="custom-row">
             <select bind:value={customTier} class="custom-select" aria-label="Mineral tier">
@@ -439,6 +455,7 @@
       </button>
       {#if sectionsOpen.navigation}
         <div class="section-body">
+          <button class="btn-nav btn-wide" type="button" onclick={quickDive}>Quick Dive (with O2)</button>
           <div class="btn-grid">
             {#each NAV_SCREENS as nav (nav.screen)}
               <button class="btn-nav" type="button" onclick={() => goTo(nav.screen)}>
@@ -521,6 +538,10 @@
           <div class="debug-row">
             <span class="debug-key">Total dives:</span>
             <span class="debug-val">{$playerSave?.stats.totalDivesCompleted ?? 0}</span>
+          </div>
+          <div class="debug-row" data-testid="debug-tick-count">
+            <span class="debug-key">Ticks:</span>
+            <span class="debug-val">{$tickCount} (Layer: {$layerTickCount})</span>
           </div>
         </div>
       {/if}

@@ -21,9 +21,11 @@ import { pickQuote } from '../../data/quotes'
 import { setupCamera, PinchZoomController } from '../systems/CameraSystem'
 import { ParticleSystem } from '../systems/ParticleSystem'
 import { miniMapData } from '../../ui/stores/miniMap'
+import { tickCount, layerTickCount } from '../../ui/stores/gameState'
 import { LootPopSystem } from '../systems/LootPopSystem'
 import { ImpactSystem } from '../systems/ImpactSystem'
 import { BlockAnimSystem } from '../systems/BlockAnimSystem'
+import { TickSystem } from '../systems/TickSystem'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
 
@@ -178,6 +180,20 @@ export class MineScene extends Phaser.Scene {
    */
   create(): void {
     audioManager.unlock()
+
+    // Initialize or reset tick system depending on whether this is a new dive or a new layer.
+    const ts = TickSystem.getInstance()
+    if (this.currentLayer === 0) {
+      // Fresh dive — full reset of all tick state and registered callbacks
+      ts.resetAll()
+      tickCount.set(0)
+      layerTickCount.set(0)
+    } else {
+      // Layer descent — preserve cumulative tick count but reset the per-layer counter
+      ts.resetLayerTick()
+      layerTickCount.set(0)
+    }
+
     const mineResult = generateMine(this.seed, BALANCE.MINE_WIDTH, BALANCE.MINE_LAYER_HEIGHT, this.facts, this.currentLayer, this.currentBiome)
     this.grid = mineResult.grid
     // Compute initial autotile variants for all terrain blocks
@@ -275,6 +291,7 @@ export class MineScene extends Phaser.Scene {
 
     this.input.on('pointerdown', this.handlePointerDown, this)
     this.input.keyboard?.on('keydown', this.handleKeyDown, this)
+    this.events.on('shutdown', this.handleShutdown, this)
 
     this.game.events.emit('mine-started', {
       seed: this.seed,
@@ -1096,6 +1113,12 @@ export class MineScene extends Phaser.Scene {
         this.revealSpecialBlocks()
       }
 
+      // Advance tick on every successful player move
+      const tsMove = TickSystem.getInstance()
+      tsMove.advance()
+      tickCount.set(tsMove.getTick())
+      layerTickCount.set(tsMove.getLayerTick())
+
       this.game.events.emit('oxygen-changed', this.oxygenState)
       this.game.events.emit('depth-changed', this.player.gridY)
       this.checkPointOfNoReturn()
@@ -1204,6 +1227,12 @@ export class MineScene extends Phaser.Scene {
       this.blocksMinedThisRun += 1
       this.blocksSinceLastQuake += 1
       this.game.events.emit('blocks-mined-update', this.blocksMinedThisRun)
+
+      // Advance tick on every successful block hit
+      const tsMine = TickSystem.getInstance()
+      tsMine.advance()
+      tickCount.set(tsMine.getTick())
+      layerTickCount.set(tsMine.getLayerTick())
       // oxygen_regen relic: restore O2 every 10 blocks mined
       if (this.blocksMinedThisRun % 10 === 0) {
         const regenRelic = this.collectedRelics.find(r => r.effect.type === 'oxygen_regen')
@@ -2499,9 +2528,9 @@ export class MineScene extends Phaser.Scene {
 
   /**
    * Scene shutdown — clean up systems that hold references to Phaser objects.
+   * Registered via this.events.on('shutdown', ...) in create().
    */
-  override shutdown(): void {
+  private handleShutdown(): void {
     this.lootPop?.destroy()
-    super.shutdown()
   }
 }

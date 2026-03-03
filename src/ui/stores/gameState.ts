@@ -125,3 +125,8 @@ export const activeCompanion = writable<{
 
 /** Whether the companion badge should flash (triggered effect pulse). Reset after each flash. */
 export const companionBadgeFlash = writable<boolean>(false)
+
+/** Cumulative ticks this dive — increments on every player movement or block hit */
+export const tickCount = writable(0)
+/** Ticks since last layer entry — reset on layer change */
+export const layerTickCount = writable(0)
