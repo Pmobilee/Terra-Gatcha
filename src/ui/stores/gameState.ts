@@ -1,6 +1,6 @@
 import { writable, derived } from 'svelte/store'
 import type { Fact, InventorySlot, Relic, ReviewState } from '../../data/types'
-import type { RelicSynergy } from '../../data/relics'
+import type { RelicSynergy, RelicDefinition } from '../../data/relics'
 import type { CompanionEffect } from '../../data/fossils'
 import { getO2DepthMultiplier } from '../../data/balance'
 import type { ConsumableId } from '../../data/consumables'
@@ -181,6 +181,12 @@ export const activeRelics = writable<Relic[]>([])
 
 // Active relic synergies for the current dive run
 export const activeSynergies = writable<RelicSynergy[]>([])
+
+/** V2 equipped relics for the current run (max 3). */
+export const equippedRelicsV2 = writable<RelicDefinition[]>([])
+
+/** Pending relic pickup (shown in RelicPickupOverlay). */
+export const pendingRelicPickup = writable<RelicDefinition | null>(null)
 
 // Retained for compatibility; PONR mechanic removed in Phase 8.2 — always stays false
 export const pastPointOfNoReturn = writable<boolean>(false)

@@ -277,6 +277,13 @@ export function getLayerGridSize(layer: number): [number, number] {
   return [40, 40];
 }
 
+// ---- SM-2 Tuning Constants (DD-V2-085, DD-V2-095) ----
+export const SM2_SECOND_INTERVAL_DAYS = 3          // second interval: 3 days (default SM-2 = 6)
+export const SM2_CONSISTENCY_PENALTY_O2 = 5        // O2 drained when lapsing a mature fact
+export const SM2_CONSISTENCY_PENALTY_REPS_MIN = 4  // minimum reps before penalty applies
+export const SM2_MASTERY_INTERVAL_GENERAL = 60     // days — general fact mastered threshold
+export const SM2_MASTERY_INTERVAL_VOCAB = 30       // days — vocab fact mastered threshold
+
 // ---- Quiz Rate System (DD-V2-060, DD-V2-085) ----
 export const QUIZ_BASE_RATE = 0.08
 export const QUIZ_COOLDOWN_BLOCKS = 15

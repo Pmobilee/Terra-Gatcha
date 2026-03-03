@@ -13,6 +13,8 @@
     studyFacts,
     studyReviewStates,
     showSendUp,
+    pendingRelicPickup,
+    equippedRelicsV2,
   } from './ui/stores/gameState'
   import { playerSave } from './ui/stores/playerData'
   import type { Fact } from './data/types'
@@ -41,6 +43,7 @@
   import Farm from './ui/components/Farm.svelte'
   import Settings from './ui/components/Settings.svelte'
   import MiniMap from './ui/components/MiniMap.svelte'
+  import RelicPickupOverlay from './ui/components/RelicPickupOverlay.svelte'
   import { collectFarmResources } from './services/saveService'
   import { calculateTotalPending } from './data/farm'
   import { gaiaMessage } from './ui/stores/gameState'
@@ -523,6 +526,20 @@
       slots={$inventory}
       onConfirm={handleSendUpConfirm}
       onSkip={handleSendUpSkip}
+    />
+  {/if}
+
+  {#if $pendingRelicPickup}
+    <RelicPickupOverlay
+      relic={$pendingRelicPickup}
+      onAccept={() => {
+        const relic = $pendingRelicPickup
+        if (relic) {
+          equippedRelicsV2.update(relics => relics.length < 3 ? [...relics, relic] : relics)
+        }
+        pendingRelicPickup.set(null)
+      }}
+      onDecline={() => pendingRelicPickup.set(null)}
     />
   {/if}
 

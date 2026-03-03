@@ -71,6 +71,8 @@ export interface ReviewState {
   nextReviewAt: number        // Unix timestamp (ms)
   lastReviewAt: number        // Unix timestamp (ms)
   quality: number             // Last response quality (0-5)
+  /** Context in which the fact was last reviewed. Used for DD-V2-097 consistency penalty. */
+  lastReviewContext?: 'study' | 'mine' | 'ritual'
 }
 
 // ============================================================
