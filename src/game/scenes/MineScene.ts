@@ -6,6 +6,7 @@ import { getActiveSynergies, pickRandomRelic, type SynergyEffect } from '../../d
 import { type CompanionEffect } from '../../data/fossils'
 import { Player } from '../entities/Player'
 import { canMine, mineBlock } from '../systems/MiningSystem'
+import { MinerAnimController } from '../systems/AnimationSystem'
 import { isAutotiledBlock, getAutotileGroup, bitmaskToSpriteKey, computeAllVariants, invalidateNeighborVariants } from '../systems/AutotileSystem'
 import { generateMine, revealAround, seededRandom } from '../systems/MineGenerator'
 import {
@@ -71,7 +72,11 @@ export class MineScene extends Phaser.Scene {
   private inventorySlots: number = BALANCE.STARTING_INVENTORY_SLOTS
   private tileGraphics!: Phaser.GameObjects.Graphics
   private overlayGraphics!: Phaser.GameObjects.Graphics
-  private playerSprite!: Phaser.GameObjects.Image
+  private playerSprite!: Phaser.GameObjects.Sprite
+  private animController!: MinerAnimController
+  private playerVisualX: number = 0
+  private playerVisualY: number = 0
+  private readonly MOVE_LERP = 0.25
   private breakEmitter!: Phaser.GameObjects.Particles.ParticleEmitter
   private itemSpritePool: Phaser.GameObjects.Image[] = []
   private itemSpritePoolIndex = 0
@@ -205,13 +210,25 @@ export class MineScene extends Phaser.Scene {
     this.overlayGraphics = this.add.graphics()
     this.overlayGraphics.setDepth(7)
 
-    this.playerSprite = this.add.image(
-      startX * TILE_SIZE + TILE_SIZE * 0.5,
-      startY * TILE_SIZE + TILE_SIZE * 0.5,
-      'miner_idle'
-    )
+    const startPx = startX * TILE_SIZE + TILE_SIZE * 0.5
+    const startPy = startY * TILE_SIZE + TILE_SIZE * 0.5
+    // Use sprite sheet if available, otherwise fall back to static image
+    if (this.textures.exists('miner_sheet')) {
+      this.playerSprite = this.add.sprite(startPx, startPy, 'miner_sheet', 0)
+    } else {
+      this.playerSprite = this.add.sprite(startPx, startPy, 'miner_idle')
+    }
     this.playerSprite.setDisplaySize(TILE_SIZE, TILE_SIZE)
     this.playerSprite.setDepth(10)
+    this.playerVisualX = startPx
+    this.playerVisualY = startPy
+
+    // Set up animation controller
+    this.animController = new MinerAnimController(this.playerSprite)
+    if (this.textures.exists('miner_sheet')) {
+      this.animController.registerAnims(this)
+      this.animController.setIdle()
+    }
 
     const particleTextureKey = 'break-particle'
     if (!this.textures.exists(particleTextureKey)) {
@@ -426,6 +443,53 @@ export class MineScene extends Phaser.Scene {
   }
 
   /**
+   * Renders a sprite-based crack overlay on a damaged block.
+   * Replaces the old procedural crack drawing with 4 damage stages.
+   */
+  private drawCrackOverlay(cell: MineCell, tileX: number, tileY: number, px: number, py: number): void {
+    if (cell.maxHardness <= 0 || cell.hardness <= 0 || cell.hardness >= cell.maxHardness) return
+
+    const damagePercent = 1 - cell.hardness / cell.maxHardness
+    if (damagePercent < 0.25) return  // Stage 0: pristine
+
+    const cx = px + TILE_SIZE * 0.5
+    const cy = py + TILE_SIZE * 0.5
+
+    // Select crack sprite key based on damage stage
+    let crackKey: string
+    if (damagePercent < 0.50) {
+      crackKey = 'crack_stage1'  // hairline
+    } else if (damagePercent < 0.75) {
+      crackKey = 'crack_stage2'  // medium fractures
+    } else if (damagePercent < 0.90) {
+      crackKey = 'crack_stage3'  // severe breaks
+    } else {
+      crackKey = 'crack_stage4'  // crumbling
+    }
+
+    // Graceful fallback to legacy procedural cracks
+    if (!this.textures.exists(crackKey)) {
+      this.drawLegacyCracks(px, py, tileX, tileY, damagePercent)
+      return
+    }
+
+    const crackSprite = this.getPooledSprite(crackKey, cx, cy)
+    crackSprite.setDepth(6)  // Above tile (5), below overlay graphics (7)
+    crackSprite.setAlpha(0.7 + damagePercent * 0.3)
+
+    // Per-block-type crack tinting
+    if (cell.type === BlockType.Dirt || cell.type === BlockType.SoftRock) {
+      crackSprite.setTint(0x6b3a2a)
+    } else if (cell.type === BlockType.LavaBlock) {
+      crackSprite.setTint(0xcc2200)
+    } else if (cell.type === BlockType.GasPocket) {
+      crackSprite.setTint(0x224422)
+    } else {
+      crackSprite.setTint(0x2a2a2a)  // dark gray for rock types
+    }
+  }
+
+  /**
    * Draws procedural crack lines on the overlayGraphics for a partially mined block.
    * Uses a position-seeded pattern so cracks are visually consistent across redraws.
    *
@@ -435,7 +499,7 @@ export class MineScene extends Phaser.Scene {
    * @param tileY - Grid row (used for seeded offsets)
    * @param damagePercent - Value from 0 to 1 (0 = undamaged, 1 = about to break)
    */
-  private drawCracks(px: number, py: number, tileX: number, tileY: number, damagePercent: number): void {
+  private drawLegacyCracks(px: number, py: number, tileX: number, tileY: number, damagePercent: number): void {
     // 0-33% damage: no overlay
     if (damagePercent <= 0.33) return
 
@@ -706,8 +770,7 @@ export class MineScene extends Phaser.Scene {
         }
 
         if (cell.maxHardness > 0 && cell.hardness > 0 && cell.hardness < cell.maxHardness) {
-          const damagePercent = 1 - cell.hardness / cell.maxHardness
-          this.drawCracks(px, py, x, y, damagePercent)
+          this.drawCrackOverlay(cell, x, y, px, py)
         }
 
         const flashKey = `${x},${y}`
@@ -727,9 +790,15 @@ export class MineScene extends Phaser.Scene {
   }
 
   private drawPlayer(): void {
-    const px = this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5
-    const py = this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5
-    this.playerSprite.setPosition(px, py)
+    const targetX = this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5
+    const targetY = this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5
+    // Lerp visual position toward logical position for smooth movement
+    this.playerVisualX += (targetX - this.playerVisualX) * this.MOVE_LERP
+    this.playerVisualY += (targetY - this.playerVisualY) * this.MOVE_LERP
+    // Snap if within 1px to avoid floating-point drift
+    if (Math.abs(this.playerVisualX - targetX) < 1) this.playerVisualX = targetX
+    if (Math.abs(this.playerVisualY - targetY) < 1) this.playerVisualY = targetY
+    this.playerSprite.setPosition(this.playerVisualX, this.playerVisualY)
   }
 
   private spawnBreakParticles(px: number, py: number, blockType: BlockType): void {
@@ -944,6 +1013,14 @@ export class MineScene extends Phaser.Scene {
         return
       }
 
+      // Trigger walk animation
+      this.animController.setWalk(targetX - playerX, targetY - playerY)
+      this.time.delayedCall(200, () => {
+        if (!this.animController.isPlayingMineAnim) {
+          this.animController.setIdle()
+        }
+      })
+
       revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
       if (this.activeUpgrades.has('scanner_boost')) {
         this.revealSpecialBlocks()
@@ -1014,6 +1091,13 @@ export class MineScene extends Phaser.Scene {
     if (tierDamage > 1 && targetCell.hardness > 1) {
       targetCell.hardness = Math.max(1, targetCell.hardness - (tierDamage - 1))
     }
+
+    // Trigger mine animation
+    const mineDx = targetX - playerX
+    const mineDy = targetY - playerY
+    this.animController.setMine(mineDx, mineDy, () => {
+      this.animController.setIdle()
+    })
 
     const mineResult = mineBlock(this.grid, targetX, targetY)
     if (mineResult.destroyed) {

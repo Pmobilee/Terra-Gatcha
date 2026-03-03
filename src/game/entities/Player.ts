@@ -3,6 +3,9 @@ import { BlockType, type MineCell } from '../../data/types'
 export class Player {
   public gridX: number
   public gridY: number
+  public facing: 'left' | 'right' | 'up' | 'down' = 'down'
+  public lastMoveDx: number = 0
+  public lastMoveDy: number = 0
 
   constructor(startX: number, startY: number) {
     this.gridX = startX
@@ -33,6 +36,16 @@ export class Player {
 
     if (!this.isAdjacentTo(x, y)) {
       return false
+    }
+
+    const dx = x - this.gridX
+    const dy = y - this.gridY
+    this.lastMoveDx = dx
+    this.lastMoveDy = dy
+    if (Math.abs(dx) > Math.abs(dy)) {
+      this.facing = dx < 0 ? 'left' : 'right'
+    } else {
+      this.facing = dy < 0 ? 'up' : 'down'
     }
 
     this.gridX = x
