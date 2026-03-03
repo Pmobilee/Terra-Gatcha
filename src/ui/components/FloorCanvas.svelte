@@ -5,14 +5,29 @@
     type HubFloor, type FloorUpgradeTier,
   } from '../../data/hubLayout'
   import { getDomeSpriteUrls } from '../../game/domeManifest'
+  import { getTreeStage } from '../../data/knowledgeTreeStages'
 
   interface Props {
     floor: HubFloor
     upgradeTier: FloorUpgradeTier
     onObjectTap: (objectId: string, action: string) => void
+    /** Number of facts the player has mastered (SM-2 repetitions >= 6). Used to show tree stage label. */
+    masteredCount?: number
   }
 
-  const { floor, upgradeTier, onObjectTap }: Props = $props()
+  const { floor, upgradeTier, onObjectTap, masteredCount = 0 }: Props = $props()
+
+  /**
+   * Returns an effective display label for an object.
+   * For the knowledge tree, swaps the static label with the current tree stage name.
+   */
+  function getEffectiveLabel(action: string, defaultLabel: string): string {
+    if (action === 'knowledgeTree') {
+      const stage = getTreeStage(masteredCount)
+      return stage.label
+    }
+    return defaultLabel
+  }
 
   let canvasEl: HTMLCanvasElement | undefined = $state()
 
@@ -91,19 +106,20 @@
         ctx.strokeRect(x + 1, y + 1, w - 2, h - 2)
       }
 
-      // Label
+      // Label — use effective label (tree stage name for knowledge tree)
       ctx.fillStyle = '#e0e0e0'
       ctx.font = `${10 * scale}px 'Press Start 2P', monospace`
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
-      const labelText = obj.label.length > 12 ? obj.label.slice(0, 11) + '\u2026' : obj.label
+      const effectiveLabel = getEffectiveLabel(obj.action, obj.label)
+      const labelText = effectiveLabel.length > 12 ? effectiveLabel.slice(0, 11) + '\u2026' : effectiveLabel
       ctx.fillText(labelText, x + w / 2, y + h / 2)
     }
   }
 
   $effect(() => {
-    // Redraw whenever floor or tier changes
-    floor; upgradeTier;
+    // Redraw whenever floor, tier, or mastered count changes
+    floor; upgradeTier; masteredCount;
     // Use requestAnimationFrame to ensure canvas is mounted
     requestAnimationFrame(() => drawFloor())
   })

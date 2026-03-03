@@ -40,6 +40,11 @@
   const unlockedIds = $derived($playerSave?.hubState?.unlockedFloorIds ?? ['starter'])
   const floorTiers = $derived(($playerSave?.hubState?.floorTiers ?? { starter: 0 }) as Record<string, number>)
 
+  // Derive mastered fact count (SM-2 repetitions >= 6) for Knowledge Tree stage display
+  const masteredCount = $derived(
+    ($playerSave?.reviewStates ?? []).filter(rs => rs.repetitions >= 6).length
+  )
+
   // Filter to unlocked floors only
   const unlockedFloors = $derived(
     hubStack.floors.filter(f => unlockedIds.includes(f.id))
@@ -164,6 +169,7 @@
             {floor}
             upgradeTier={(floorTiers[floor.id] ?? 0) as FloorUpgradeTier}
             onObjectTap={handleObjectTap}
+            {masteredCount}
           />
         </div>
       {/each}
