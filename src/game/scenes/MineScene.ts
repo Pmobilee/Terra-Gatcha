@@ -18,6 +18,9 @@ import {
 } from '../systems/OxygenSystem'
 import { audioManager } from '../../services/audioService'
 import { pickQuote } from '../../data/quotes'
+import { setupCamera, PinchZoomController } from '../systems/CameraSystem'
+import { ParticleSystem } from '../systems/ParticleSystem'
+import { miniMapData } from '../../ui/stores/miniMap'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
 
@@ -77,10 +80,10 @@ export class MineScene extends Phaser.Scene {
   private playerVisualX: number = 0
   private playerVisualY: number = 0
   private readonly MOVE_LERP = 0.25
-  private breakEmitter!: Phaser.GameObjects.Particles.ParticleEmitter
+  private particles!: ParticleSystem
+  private pinchZoom!: PinchZoomController
   private itemSpritePool: Phaser.GameObjects.Image[] = []
   private itemSpritePoolIndex = 0
-  private cameraTarget!: Phaser.GameObjects.Zone
   private flashTiles = new Map<string, number>()
   private facts: string[] = []
   private blocksMinedThisRun = 0
@@ -230,34 +233,18 @@ export class MineScene extends Phaser.Scene {
       this.animController.setIdle()
     }
 
-    const particleTextureKey = 'break-particle'
-    if (!this.textures.exists(particleTextureKey)) {
-      const particleGraphics = this.make.graphics({ x: 0, y: 0 })
-      particleGraphics.fillStyle(0xffffff, 1)
-      particleGraphics.fillRect(0, 0, 4, 4)
-      particleGraphics.generateTexture(particleTextureKey, 4, 4)
-      particleGraphics.destroy()
-    }
-
-    this.breakEmitter = this.add.particles(0, 0, particleTextureKey, {
-      speed: { min: 30, max: 80 },
-      angle: { min: 0, max: 360 },
-      scale: { start: 0.8, end: 0 },
-      lifespan: 400,
-      quantity: 6,
-      emitting: false,
-    })
-
-    this.cameraTarget = this.add.zone(
-      startX * TILE_SIZE + TILE_SIZE * 0.5,
-      startY * TILE_SIZE + TILE_SIZE * 0.5,
-      1,
-      1,
-    )
+    // Initialize particle system with per-block-type emitters
+    this.particles = new ParticleSystem(this)
+    this.particles.init()
 
     const worldWidth = this.gridWidth * TILE_SIZE
     const worldHeight = this.gridHeight * TILE_SIZE
-    this.cameras.main.setBounds(0, 0, worldWidth, worldHeight)
+    setupCamera(this.cameras.main, worldWidth, worldHeight, TILE_SIZE)
+    this.cameras.main.startFollow(this.playerSprite, true, 0.12, 0.12)
+    this.pinchZoom = new PinchZoomController(this.cameras.main, this.input)
+
+    // Start biome-specific ambient particles
+    this.particles.startAmbientEmitters(this.currentBiome, worldWidth, worldHeight)
 
     this.redrawAll()
     revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
@@ -291,6 +278,17 @@ export class MineScene extends Phaser.Scene {
    * Phaser update loop — redraws the visible mine each frame.
    */
   update(): void {
+    this.pinchZoom?.update()
+    // O2 warning particles when below 30%
+    if (this.particles && this.oxygenState) {
+      const oxygenPct = this.oxygenState.current / this.oxygenState.max
+      const cam = this.cameras.main
+      this.particles.setO2Warning(
+        oxygenPct < 0.3,
+        cam.scrollX, cam.scrollY,
+        cam.width, cam.height
+      )
+    }
     this.redrawAll()
   }
 
@@ -298,21 +296,18 @@ export class MineScene extends Phaser.Scene {
     this.updateCameraTarget()
     this.drawTiles()
     this.drawPlayer()
+    // Update mini-map store
+    miniMapData.set({
+      grid: this.grid,
+      playerX: this.player.gridX,
+      playerY: this.player.gridY,
+    })
   }
 
+  /** Camera follow is now handled by Phaser's startFollow(). */
   private updateCameraTarget(): void {
-    const targetX = this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5
-    const targetY = this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5
-
-    this.cameraTarget.setPosition(targetX, targetY)
-
-    const cam = this.cameras.main
-    const desiredX = targetX - cam.width / 2
-    const desiredY = targetY - cam.height / 2
-    const lerp = 0.15
-
-    cam.scrollX += (desiredX - cam.scrollX) * lerp
-    cam.scrollY += (desiredY - cam.scrollY) * lerp
+    // No-op — Phaser's built-in camera follow handles position tracking.
+    // Kept as a method stub since redrawAll() calls it.
   }
 
   private shiftColor(color: number, amount: number): number {
@@ -802,11 +797,7 @@ export class MineScene extends Phaser.Scene {
   }
 
   private spawnBreakParticles(px: number, py: number, blockType: BlockType): void {
-    // Use biome color override if present, otherwise fall back to default BLOCK_COLORS
-    const particleColor = (this.currentBiome.blockColorOverrides[blockType] ?? BLOCK_COLORS[blockType]) ?? 0x888888
-    this.breakEmitter.setParticleTint(particleColor)
-    this.breakEmitter.setPosition(px + TILE_SIZE * 0.5, py + TILE_SIZE * 0.5)
-    this.breakEmitter.explode(6)
+    this.particles.emitBreak(blockType, px + TILE_SIZE * 0.5, py + TILE_SIZE * 0.5)
   }
 
   /**
