@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-8 complete. Phase 9 (Biome Expansion) complete. Phases 11, 13, 18 complete. Visual Overhaul (A-I) complete. Capacitor + Fastify backend scaffolded. V2 roadmap (Phases 10, 12, 14-17, 19-25) remaining. All 5 Q&A batches complete (281 design decisions total). Phase 9 added: palette system, structural features, ambient particles, landmark variants, audio manager, biome glow system, animated tiles, viewport particle culling across all 25 biomes.
+Phases 0-9 complete. Phase 11, 13, 18 complete. Phase 8 (Mine Gameplay Overhaul) fully implemented: 20-layer system, tick-based hazards, O2 depth decay, landmarks, consumables, quiz overhaul, SM-2 tuning, relic expansion, pre-dive prep, companions, difficulty scaling, auto-save/loot loss. Visual Overhaul (A-I) complete. V2 roadmap (Phases 10, 12, 14-17, 19-25) remaining.
 
 ---
 
@@ -40,7 +40,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Core Gameplay (Phases 7-9)
 - [x] **Phase 7: Visual Engine Overhaul** — Autotiling, character animation, camera/zoom, particles, loot physics, mining feel → [`completed/PHASE-07-VISUAL-ENGINE.md`](completed/PHASE-07-VISUAL-ENGINE.md)
-- [ ] **Phase 8: Mine Gameplay Overhaul** — 20 layers, tick system, active hazards, O2 decay, landmarks, consumables, quiz overhaul, SM-2 tuning → [`phases/PHASE-08-MINE-GAMEPLAY.md`](phases/PHASE-08-MINE-GAMEPLAY.md)
+- [x] **Phase 8: Mine Gameplay Overhaul** — 20 layers, tick system, active hazards, O2 decay, landmarks, consumables, quiz overhaul, SM-2 tuning → [`completed/PHASE-08-MINE-GAMEPLAY.md`](completed/PHASE-08-MINE-GAMEPLAY.md)
 - [x] **Phase 9: Biome Expansion** — 25 unique biomes, per-biome tiles, structural generation, ambient particles → [`completed/PHASE-09-BIOME-EXPANSION.md`](completed/PHASE-09-BIOME-EXPANSION.md)
 
 ### Hub & Content (Phases 10-11)
