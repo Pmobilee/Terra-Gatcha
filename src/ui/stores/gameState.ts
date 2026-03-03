@@ -6,6 +6,39 @@ import { getO2DepthMultiplier } from '../../data/balance'
 import type { ConsumableId } from '../../data/consumables'
 import type { BiomeId } from '../../data/biomes'
 
+// =========================================================
+// Phase 8.11 — Dive Loadout
+// =========================================================
+
+/** Full pre-dive loadout selected on the DivePrepScreen. */
+export interface DiveLoadout {
+  pickaxeId: string | null
+  companionId: string | null
+  /** Exactly 3 slots; null = empty slot. */
+  consumableSlots: [string | null, string | null, string | null]
+  /** Relic ids; max 3. */
+  relicIds: string[]
+}
+
+/** Currently selected dive loadout (persists within a session). */
+export const selectedLoadout = writable<DiveLoadout>({
+  pickaxeId: null,
+  companionId: null,
+  consumableSlots: [null, null, null],
+  relicIds: [],
+})
+
+/**
+ * True when the minimum viable loadout is filled (pickaxe selected).
+ * Used to gate the "Enter Mine" button on the DivePrepScreen.
+ */
+export const loadoutReady = derived(selectedLoadout, (loadout): boolean => {
+  return loadout.pickaxeId !== null
+})
+
+/** Player's relic vault — all relics collected across runs, available for pre-dive equipping. */
+export const relicVault = writable<RelicDefinition[]>([])
+
 export interface ConsumableSlot {
   id: ConsumableId
   count: number

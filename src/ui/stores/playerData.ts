@@ -535,3 +535,15 @@ export function purchaseKnowledgeItem(itemId: string, cost: number): boolean {
   persistPlayer()
   return true
 }
+
+import type { CompanionState } from '../../data/companions'
+import { COMPANION_CATALOGUE } from '../../data/companions'
+
+/** Persistent companion states for all companions (unlocked or not). */
+export const playerCompanionStates = writable<CompanionState[]>(
+  COMPANION_CATALOGUE.map(c => ({
+    companionId: c.id,
+    currentStage: 0,
+    unlocked: c.id === 'comp_borebot', // Borebot unlocked by default
+  }))
+)

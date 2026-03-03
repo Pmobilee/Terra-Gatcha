@@ -1,5 +1,15 @@
 <script lang="ts">
   import { BALANCE } from '../../data/balance'
+  import { CONSUMABLE_DEFS, type ConsumableId } from '../../data/consumables'
+  import { RELIC_CATALOGUE, type RelicDefinition } from '../../data/relics'
+  import {
+    selectedLoadout,
+    loadoutReady,
+    relicVault,
+    equippedRelicsV2,
+    currentLayer,
+    layerTierLabel,
+  } from '../stores/gameState'
 
   interface Props {
     availableTanks: number
@@ -11,6 +21,7 @@
 
   let { availableTanks, onStartDive, onBack, nextBiomeName, nextBiomeDesc }: Props = $props()
 
+  // ── Tank selection ────────────────────────────────────────────────────────
   let selectedTanks = $state<number>(1)
 
   const maxSelectableTanks = $derived(Math.min(availableTanks, 3))
@@ -36,7 +47,6 @@
       selectedTanks = 1
       return
     }
-
     const clamped = Math.max(1, Math.min(selectedTanks, maxSelectableTanks))
     if (clamped !== selectedTanks) {
       selectedTanks = clamped
@@ -58,8 +68,99 @@
     selectedTanks = tankCount
   }
 
+  // ── Pickaxe selection ─────────────────────────────────────────────────────
+  interface PickaxeDef {
+    id: string
+    name: string
+    damage: string
+    icon: string
+  }
+
+  const PICKAXE_OPTIONS: PickaxeDef[] = [
+    { id: 'standard_pick', name: 'Standard Pick', damage: '×1.0 dmg', icon: '⛏️' },
+    { id: 'reinforced_pick', name: 'Reinforced Pick', damage: '×1.5 dmg', icon: '🪨' },
+  ]
+
+  function selectPickaxe(id: string): void {
+    selectedLoadout.update(l => ({ ...l, pickaxeId: id }))
+  }
+
+  // ── Consumable slot selection ─────────────────────────────────────────────
+  const CONSUMABLE_OPTIONS = Object.values(CONSUMABLE_DEFS)
+  type SlotIndex = 0 | 1 | 2
+
+  function cycleConsumableSlot(slot: SlotIndex): void {
+    selectedLoadout.update(l => {
+      const slots = [...l.consumableSlots] as [string | null, string | null, string | null]
+      const currentId = slots[slot]
+      const currentIdx = currentId ? CONSUMABLE_OPTIONS.findIndex(c => c.id === currentId) : -1
+      const nextIdx = (currentIdx + 1) % (CONSUMABLE_OPTIONS.length + 1)
+      slots[slot] = nextIdx < CONSUMABLE_OPTIONS.length ? CONSUMABLE_OPTIONS[nextIdx].id : null
+      return { ...l, consumableSlots: slots }
+    })
+  }
+
+  function clearConsumableSlot(slot: SlotIndex): void {
+    selectedLoadout.update(l => {
+      const slots = [...l.consumableSlots] as [string | null, string | null, string | null]
+      slots[slot] = null
+      return { ...l, consumableSlots: slots }
+    })
+  }
+
+  function consumableLabel(id: string | null): string {
+    if (!id) return 'Empty'
+    return CONSUMABLE_DEFS[id as ConsumableId]?.label ?? id
+  }
+
+  function consumableIcon(id: string | null): string {
+    const icons: Record<ConsumableId, string> = {
+      bomb: '💣',
+      flare: '🔦',
+      shield_charge: '🛡️',
+      drill_charge: '🔩',
+      sonar_pulse: '📡',
+    }
+    return id ? (icons[id as ConsumableId] ?? '?') : '＋'
+  }
+
+  // ── Relic vault ───────────────────────────────────────────────────────────
+  function toggleRelic(id: string): void {
+    selectedLoadout.update(l => {
+      const isEquipped = l.relicIds.includes(id)
+      if (isEquipped) {
+        return { ...l, relicIds: l.relicIds.filter(r => r !== id) }
+      }
+      if (l.relicIds.length >= 3) return l   // max 3
+      return { ...l, relicIds: [...l.relicIds, id] }
+    })
+  }
+
+  function tierColor(tier: RelicDefinition['tier']): string {
+    if (tier === 'legendary') return '#ffd700'
+    if (tier === 'rare') return '#b388ff'
+    return '#78909c'
+  }
+
+  // Use vault relics; fall back to the full catalogue when vault is empty (dev/demo)
+  const displayRelics = $derived(
+    $relicVault.length > 0 ? $relicVault : RELIC_CATALOGUE
+  )
+
+  // ── Difficulty display ────────────────────────────────────────────────────
+  const displayLayer = $derived($currentLayer + 1)
+  const starRating = $derived(Math.min(5, Math.max(1, Math.ceil(displayLayer / 4))))
+
+  // ── Gate: dive needs tanks AND pickaxe ────────────────────────────────────
+  const canDive = $derived(hasTanks && $loadoutReady)
+
   function startDive(): void {
-    if (!hasTanks) return
+    if (!canDive) return
+    // Sync selected relics into the equippedRelicsV2 store before starting
+    const relicDefs = $selectedLoadout.relicIds
+      .map(id => RELIC_CATALOGUE.find(r => r.id === id))
+      .filter((r): r is RelicDefinition => r !== undefined)
+    equippedRelicsV2.set(relicDefs)
     onStartDive(selectedTanks)
   }
 </script>
@@ -69,6 +170,7 @@
     <h1>Prepare for Dive</h1>
     <p class="available">Oxygen Tanks: {availableTanks} available</p>
 
+    <!-- Tank selector -->
     <div class="tank-selector" aria-label="Select oxygen tanks">
       <button class="stepper" type="button" onclick={decreaseTanks} disabled={!canDecrease}>-</button>
 
@@ -103,8 +205,111 @@
       </div>
     {/if}
 
-    <button class="enter-btn" type="button" onclick={startDive} disabled={!hasTanks}>
-      Enter Mine
+    <!-- ── Pickaxe selection ──────────────────────────────────────────── -->
+    <div class="loadout-section" aria-label="Pickaxe selection">
+      <p class="section-label">Pickaxe <span class="required-badge">Required</span></p>
+      <div class="pickaxe-grid">
+        {#each PICKAXE_OPTIONS as pick}
+          {@const isSelected = $selectedLoadout.pickaxeId === pick.id}
+          <button
+            class={`pickaxe-btn${isSelected ? ' selected' : ''}`}
+            type="button"
+            onclick={() => selectPickaxe(pick.id)}
+            aria-pressed={isSelected}
+            aria-label={`Select ${pick.name}`}
+          >
+            <span class="pick-icon">{pick.icon}</span>
+            <span class="pick-name">{pick.name}</span>
+            <span class="pick-damage">{pick.damage}</span>
+          </button>
+        {/each}
+      </div>
+    </div>
+
+    <!-- ── Consumable slots ───────────────────────────────────────────── -->
+    <div class="loadout-section" aria-label="Consumable loadout">
+      <p class="section-label">Consumables <span class="section-hint">(tap to cycle)</span></p>
+      <div class="consumable-slots">
+        {#each [0, 1, 2] as slot}
+          {@const slotId = $selectedLoadout.consumableSlots[slot as SlotIndex]}
+          <div class="consumable-slot-wrap">
+            <button
+              class={`consumable-btn${slotId ? ' filled' : ''}`}
+              type="button"
+              onclick={() => cycleConsumableSlot(slot as SlotIndex)}
+              aria-label={`Consumable slot ${slot + 1}: ${consumableLabel(slotId)}. Tap to cycle.`}
+            >
+              <span class="cons-icon">{consumableIcon(slotId)}</span>
+            </button>
+            {#if slotId}
+              <button
+                class="clear-slot"
+                type="button"
+                onclick={() => clearConsumableSlot(slot as SlotIndex)}
+                aria-label={`Clear slot ${slot + 1}`}
+              >×</button>
+            {/if}
+            <span class="cons-label">{consumableLabel(slotId)}</span>
+          </div>
+        {/each}
+      </div>
+    </div>
+
+    <!-- ── Relic vault ────────────────────────────────────────────────── -->
+    <div class="loadout-section" aria-label="Relic vault">
+      <p class="section-label">
+        Relics
+        <span class="section-hint">
+          ({$selectedLoadout.relicIds.length}/3 equipped)
+        </span>
+      </p>
+      {#if displayRelics.length === 0}
+        <p class="empty-hint">No relics in vault — find them during dives!</p>
+      {:else}
+        <div class="relic-list">
+          {#each displayRelics as relic}
+            {@const isEquipped = $selectedLoadout.relicIds.includes(relic.id)}
+            {@const atMax = $selectedLoadout.relicIds.length >= 3 && !isEquipped}
+            <button
+              class={`relic-btn${isEquipped ? ' equipped' : ''}${atMax ? ' dimmed' : ''}`}
+              type="button"
+              onclick={() => toggleRelic(relic.id)}
+              disabled={atMax}
+              aria-pressed={isEquipped}
+              aria-label={`${relic.name} (${relic.tier}): ${relic.description}`}
+              style="--tier-color: {tierColor(relic.tier)}"
+            >
+              <span class="relic-icon">{relic.icon}</span>
+              <span class="relic-details">
+                <span class="relic-name">{relic.name}</span>
+                <span class="relic-desc">{relic.description}</span>
+              </span>
+              <span class="tier-dot" style="background:{tierColor(relic.tier)}" title={relic.tier}></span>
+            </button>
+          {/each}
+        </div>
+      {/if}
+    </div>
+
+    <!-- ── Difficulty display ─────────────────────────────────────────── -->
+    <div class="difficulty-row" aria-label="Dive difficulty">
+      <span class="diff-layer">Layer {displayLayer}</span>
+      <span class="diff-tier">{$layerTierLabel}</span>
+      <span class="diff-stars" aria-label={`${starRating} stars`}>
+        {#each { length: 5 } as _, i}
+          <span class={i < starRating ? 'star on' : 'star'}>{i < starRating ? '★' : '☆'}</span>
+        {/each}
+      </span>
+    </div>
+
+    <button class="enter-btn" type="button" onclick={startDive} disabled={!canDive}>
+      {#if !hasTanks}
+        No Tanks
+      {:else if !$loadoutReady}
+        Select a Pickaxe
+      {:else}
+        Enter Mine
+      {/if}
     </button>
     <button class="back-btn" type="button" onclick={onBack}>Back</button>
   </div>
@@ -121,6 +326,7 @@
     padding: 1rem;
     background: var(--color-bg);
     font-family: 'Courier New', monospace;
+    overflow-y: auto;
   }
 
   .panel {
@@ -133,6 +339,7 @@
     flex-direction: column;
     gap: 0.9rem;
     text-align: center;
+    margin: auto;
   }
 
   h1 {
@@ -200,17 +407,9 @@
     font-weight: 700;
   }
 
-  .dive-estimate.short {
-    color: #ff6b6b;
-  }
-
-  .dive-estimate.medium {
-    color: var(--color-warning);
-  }
-
-  .dive-estimate.long {
-    color: var(--color-success);
-  }
+  .dive-estimate.short  { color: #ff6b6b; }
+  .dive-estimate.medium { color: var(--color-warning); }
+  .dive-estimate.long   { color: var(--color-success); }
 
   .enter-btn {
     border: 2px solid color-mix(in srgb, var(--color-success) 75%, white 25%);
@@ -220,6 +419,7 @@
     color: #e9fff8;
     font-size: 1.05rem;
     font-weight: 700;
+    min-height: 44px;
   }
 
   .back-btn {
@@ -229,6 +429,7 @@
     background: transparent;
     color: var(--color-text-dim);
     font-size: 0.95rem;
+    min-height: 44px;
   }
 
   .biome-preview {
@@ -265,6 +466,280 @@
 
   button:active:not(:disabled) {
     transform: translateY(1px);
+  }
+
+  /* ── Loadout sections ────────────────────────────────────────────────── */
+  .loadout-section {
+    border: 1px solid color-mix(in srgb, var(--color-text-dim) 25%, transparent 75%);
+    border-radius: 12px;
+    padding: 0.75rem;
+    background: color-mix(in srgb, var(--color-surface) 60%, black 40%);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .section-label {
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .section-hint {
+    color: var(--color-text-dim);
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .required-badge {
+    background: color-mix(in srgb, #ff6b6b 20%, transparent 80%);
+    border: 1px solid #ff6b6b88;
+    border-radius: 6px;
+    color: #ff9b9b;
+    font-size: 0.7rem;
+    padding: 0.1rem 0.35rem;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 700;
+  }
+
+  /* Pickaxe */
+  .pickaxe-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .pickaxe-btn {
+    min-height: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    border: 1px solid color-mix(in srgb, var(--color-text-dim) 30%, transparent 70%);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--color-surface) 80%, black 20%);
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0.5rem;
+    font: inherit;
+    transition: border-color 120ms ease, background 120ms ease;
+  }
+
+  .pickaxe-btn.selected {
+    border-color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-primary) 18%, var(--color-surface) 82%);
+    box-shadow: 0 0 0 1px var(--color-primary);
+  }
+
+  .pick-icon {
+    font-size: 1.4rem;
+  }
+
+  .pick-name {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .pick-damage {
+    font-size: 0.72rem;
+    color: var(--color-text-dim);
+  }
+
+  /* Consumables */
+  .consumable-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .consumable-slot-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    position: relative;
+  }
+
+  .consumable-btn {
+    min-height: 56px;
+    width: 100%;
+    border: 1px dashed color-mix(in srgb, var(--color-text-dim) 40%, transparent 60%);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--color-surface) 60%, black 40%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: inherit;
+    cursor: pointer;
+    transition: border-color 120ms ease, background 120ms ease;
+  }
+
+  .consumable-btn.filled {
+    border-style: solid;
+    border-color: color-mix(in srgb, var(--color-warning) 60%, transparent 40%);
+    background: color-mix(in srgb, var(--color-warning) 10%, var(--color-surface) 90%);
+  }
+
+  .cons-icon {
+    font-size: 1.5rem;
+  }
+
+  .clear-slot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 20px;
+    height: 20px;
+    min-height: 20px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 107, 107, 0.7);
+    color: white;
+    font-size: 0.75rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .cons-label {
+    font-size: 0.7rem;
+    color: var(--color-text-dim);
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* Relic vault */
+  .empty-hint {
+    color: var(--color-text-dim);
+    font-size: 0.8rem;
+    font-style: italic;
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+
+  .relic-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .relic-btn {
+    min-height: 44px;
+    display: grid;
+    grid-template-columns: 1.8rem 1fr auto;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid color-mix(in srgb, var(--color-text-dim) 25%, transparent 75%);
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--color-surface) 70%, black 30%);
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    font: inherit;
+    text-align: left;
+    transition: border-color 120ms ease, background 120ms ease;
+  }
+
+  .relic-btn.equipped {
+    border-color: var(--tier-color, var(--color-primary));
+    background: color-mix(in srgb, var(--tier-color, var(--color-primary)) 12%, var(--color-surface) 88%);
+  }
+
+  .relic-btn.dimmed {
+    opacity: 0.4;
+  }
+
+  .relic-icon {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .relic-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+  }
+
+  .relic-name {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .relic-desc {
+    font-size: 0.68rem;
+    color: var(--color-text-dim);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tier-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Difficulty row */
+  .difficulty-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.5rem;
+    border: 1px solid color-mix(in srgb, var(--color-text-dim) 20%, transparent 80%);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--color-surface) 50%, black 50%);
+  }
+
+  .diff-layer {
+    font-size: 0.85rem;
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  .diff-tier {
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    padding: 0.1rem 0.4rem;
+    border: 1px solid color-mix(in srgb, var(--color-text-dim) 30%, transparent 70%);
+    border-radius: 6px;
+  }
+
+  .diff-stars {
+    display: flex;
+    gap: 0.05rem;
+  }
+
+  .star {
+    font-size: 0.95rem;
+    color: var(--color-text-dim);
+  }
+
+  .star.on {
+    color: var(--color-warning);
   }
 
   @media (max-width: 480px) {
