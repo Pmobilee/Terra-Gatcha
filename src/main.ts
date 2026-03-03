@@ -1,4 +1,5 @@
 import './app.css'
+import './ui/styles/overlay.css'
 import App from './App.svelte'
 import WebGLFallback from './ui/components/WebGLFallback.svelte'
 import { mount } from 'svelte'

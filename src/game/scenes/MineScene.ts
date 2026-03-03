@@ -813,6 +813,42 @@ export class MineScene extends Phaser.Scene {
         }
       }
     }
+
+    // Biome glow pass: emitting blocks bleed color into adjacent unexplored fog
+    for (let y = startY; y <= endY; y += 1) {
+      for (let x = startX; x <= endX; x += 1) {
+        const cell = this.grid[y][x]
+        if (!cell.revealed && (cell.visibilityLevel ?? 0) < 1) continue
+
+        let glowColor: number | null = null
+        if (cell.type === BlockType.LavaBlock) {
+          glowColor = 0xff6600
+        } else if (cell.type === BlockType.MineralNode) {
+          const tier = cell.content?.mineralType
+          if (tier === 'crystal') glowColor = 0x44aaff
+          else if (tier === 'essence') glowColor = 0x9944cc
+        }
+        if (glowColor === null) continue
+
+        // Bleed glow into cardinal neighbors that are in full fog
+        const neighbors = [
+          { nx: x, ny: y - 1 },
+          { nx: x, ny: y + 1 },
+          { nx: x - 1, ny: y },
+          { nx: x + 1, ny: y },
+        ]
+        for (const { nx, ny } of neighbors) {
+          if (ny < 0 || ny >= this.gridHeight || nx < 0 || nx >= this.gridWidth) continue
+          const neighbor = this.grid[ny][nx]
+          // Only glow into fully dark unrevealed tiles
+          if (neighbor.revealed || (neighbor.visibilityLevel ?? 0) >= 1) continue
+          const npx = nx * TILE_SIZE
+          const npy = ny * TILE_SIZE
+          this.overlayGraphics.fillStyle(glowColor, 0.10)
+          this.overlayGraphics.fillRect(npx, npy, TILE_SIZE, TILE_SIZE)
+        }
+      }
+    }
   }
 
   private drawPlayer(): void {
