@@ -63,6 +63,7 @@ import { type Biome, pickBiome, generateBiomeSequence } from '../data/biomes'
 import { seededRandom } from './systems/MineGenerator'
 import { BootScene } from './scenes/BootScene'
 import { MineScene } from './scenes/MineScene'
+import { DomeScene } from './scenes/DomeScene'
 import { GaiaManager } from './managers/GaiaManager'
 import { QuizManager } from './managers/QuizManager'
 import { StudyManager } from './managers/StudyManager'
@@ -176,7 +177,7 @@ export class GameManager {
           debug: false,
         },
       },
-      scene: [BootScene, MineScene],
+      scene: [BootScene, MineScene, DomeScene],
       input: {
         activePointers: 3,
       },
@@ -825,6 +826,52 @@ export class GameManager {
     return scene as MineScene | null
   }
 
+  /** Get the DomeScene instance (null if game not booted) */
+  getDomeScene(): DomeScene | null {
+    if (!this.game) return null
+    return this.game.scene.getScene('DomeScene') as DomeScene | null
+  }
+
+  /**
+   * Start the DomeScene (called when entering the hub).
+   * Stops MineScene if it is currently active.
+   */
+  startDome(data?: {
+    unlockedIds?: string[]
+    floorTiers?: Record<string, number>
+    masteredCount?: number
+    floorIndex?: number
+  }): void {
+    if (!this.game) return
+    const sceneManager = this.game.scene
+    if (sceneManager.isActive('MineScene')) {
+      sceneManager.stop('MineScene')
+    }
+    if (sceneManager.isActive('DomeScene')) {
+      // Already running — just update its state in-place
+      const dome = this.getDomeScene()
+      if (dome && data) {
+        dome.setHubState(
+          data.unlockedIds ?? ['starter'],
+          data.floorTiers  ?? { starter: 0 },
+          data.masteredCount ?? 0,
+        )
+      }
+    } else {
+      sceneManager.start('DomeScene', data)
+    }
+  }
+
+  /**
+   * Stop the DomeScene (called when starting a dive or navigating away from hub).
+   */
+  stopDome(): void {
+    if (!this.game) return
+    if (this.game.scene.isActive('DomeScene')) {
+      this.game.scene.stop('DomeScene')
+    }
+  }
+
   // =========================================================
   // Dive lifecycle
   // =========================================================
@@ -971,6 +1018,9 @@ export class GameManager {
     const layer0Biome = this.biomeSequence[0]
     currentBiomeStore.set(layer0Biome.name)
     currentBiomeId.set(layer0Biome.id)
+
+    // Stop DomeScene before starting MineScene
+    this.stopDome()
 
     // Start the MineScene (pass crafted bonuses so MineScene can apply them)
     this.game.scene.start('MineScene', {

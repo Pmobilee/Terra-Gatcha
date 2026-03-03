@@ -1,14 +1,15 @@
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte'
   import { getDefaultHubStack } from '../../data/hubFloors'
   import type { FloorUpgradeTier } from '../../data/hubLayout'
-  import { FLOOR_CANVAS_H } from '../../data/hubLayout'
   import { playerSave } from '../stores/playerData'
   import { currentFloorIndex } from '../stores/gameState'
-  import FloorCanvas from './FloorCanvas.svelte'
   import FloorIndicator from './FloorIndicator.svelte'
   import FloorUpgradePanel from './FloorUpgradePanel.svelte'
   import { upgradeFloor } from '../stores/playerData'
   import type { Fact } from '../../data/types'
+  import { GameManager } from '../../game/GameManager'
+  import { hubEvents } from '../../game/hubEvents'
 
   interface Props {
     onDive: () => void
@@ -31,16 +32,15 @@
     onDive, onStudy, onReviewArtifact, onViewTree,
     onMaterializer, onPremiumMaterializer, onCosmetics,
     onKnowledgeStore, onFossils, onZoo, onStreakPanel,
-    onFarm, onSettings, facts,
+    onFarm, onSettings,
   }: Props = $props()
 
   const hubStack = getDefaultHubStack()
+  const gm = GameManager.getInstance()
 
-  // Derive unlocked floors from player save
-  const unlockedIds = $derived($playerSave?.hubState?.unlockedFloorIds ?? ['starter'])
-  const floorTiers = $derived(($playerSave?.hubState?.floorTiers ?? { starter: 0 }) as Record<string, number>)
-
-  // Derive mastered fact count (SM-2 repetitions >= 6) for Knowledge Tree stage display
+  // Derive hub state from playerSave
+  const unlockedIds   = $derived($playerSave?.hubState?.unlockedFloorIds ?? ['starter'])
+  const floorTiers    = $derived(($playerSave?.hubState?.floorTiers ?? { starter: 0 }) as Record<string, number>)
   const masteredCount = $derived(
     ($playerSave?.reviewStates ?? []).filter(rs => rs.repetitions >= 6).length
   )
@@ -52,15 +52,30 @@
 
   let floorIndex = $state(0)
 
-  // Sync with store
+  // Sync floor index to the shared store
   $effect(() => {
     currentFloorIndex.set(floorIndex)
   })
 
-  // Clamp floor index when unlocked floors change
+  // Clamp floor index if unlocked floors shrinks
   $effect(() => {
     if (floorIndex >= unlockedFloors.length) {
       floorIndex = Math.max(0, unlockedFloors.length - 1)
+    }
+  })
+
+  // Keep DomeScene in sync when player save or floor index changes
+  $effect(() => {
+    const dome = gm.getDomeScene()
+    if (dome) {
+      dome.setHubState(unlockedIds, floorTiers, masteredCount)
+    }
+  })
+
+  $effect(() => {
+    const dome = gm.getDomeScene()
+    if (dome) {
+      dome.goToFloor(floorIndex)
     }
   })
 
@@ -126,8 +141,26 @@
     showUpgradePanel = false
   }
 
-  // Calculate translateY for slide animation
-  const slideOffset = $derived(-floorIndex * 100)
+  // ---- Lifecycle ----
+
+  onMount(() => {
+    // Start DomeScene, passing current hub state
+    gm.startDome({
+      unlockedIds,
+      floorTiers,
+      masteredCount,
+      floorIndex,
+    })
+
+    // Listen for object taps emitted by DomeScene
+    hubEvents.on('objectTap', handleObjectTap)
+  })
+
+  onDestroy(() => {
+    hubEvents.off('objectTap', handleObjectTap)
+    // Do NOT stop DomeScene here — GameManager.startDive() / stopDome() handles that
+    // so we don't flicker when navigating to other hub sub-screens.
+  })
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -157,25 +190,6 @@
     />
   {/if}
 
-  <!-- Floor viewport -->
-  <div class="floor-viewport">
-    <div
-      class="floor-slide-container"
-      style="transform: translateY({slideOffset}%)"
-    >
-      {#each unlockedFloors as floor, i (floor.id)}
-        <div class="floor-slot">
-          <FloorCanvas
-            {floor}
-            upgradeTier={(floorTiers[floor.id] ?? 0) as FloorUpgradeTier}
-            onObjectTap={handleObjectTap}
-            {masteredCount}
-          />
-        </div>
-      {/each}
-    </div>
-  </div>
-
   <FloorIndicator
     floors={hubStack.floors}
     {unlockedIds}
@@ -185,16 +199,18 @@
 </div>
 
 <style>
+  /* Transparent overlay — DomeScene renders behind this in #game-container */
   .hub-view {
     width: 100%;
     height: 100vh;
-    overflow: hidden;
-    background: #0a0a1e;
     position: relative;
     touch-action: none;
+    /* pointer-events passthrough to the Phaser canvas for object taps */
+    pointer-events: none;
   }
 
   .hub-resource-bar {
+    pointer-events: auto;
     position: absolute;
     top: 0;
     left: 0;
@@ -230,26 +246,5 @@
 
   .upgrade-floor-btn:hover {
     background: #6eddb8;
-  }
-
-  .floor-viewport {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .floor-slide-container {
-    transition: transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1);
-    will-change: transform;
-  }
-
-  .floor-slot {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 40px;
   }
 </style>
