@@ -21,6 +21,8 @@ import { pickQuote } from '../../data/quotes'
 import { setupCamera, PinchZoomController } from '../systems/CameraSystem'
 import { ParticleSystem } from '../systems/ParticleSystem'
 import { miniMapData } from '../../ui/stores/miniMap'
+import { LootPopSystem } from '../systems/LootPopSystem'
+import { ImpactSystem } from '../systems/ImpactSystem'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
 
@@ -85,6 +87,9 @@ export class MineScene extends Phaser.Scene {
   private itemSpritePool: Phaser.GameObjects.Image[] = []
   private itemSpritePoolIndex = 0
   private flashTiles = new Map<string, number>()
+  private lootPop!: LootPopSystem
+  private impactSystem!: ImpactSystem
+  private bufferedInput: { x: number; y: number } | null = null
   private facts: string[] = []
   private blocksMinedThisRun = 0
   private artifactsFound: string[] = []
@@ -236,6 +241,10 @@ export class MineScene extends Phaser.Scene {
     // Initialize particle system with per-block-type emitters
     this.particles = new ParticleSystem(this)
     this.particles.init()
+
+    // Initialize loot pop and impact feedback systems
+    this.lootPop = new LootPopSystem(this)
+    this.impactSystem = new ImpactSystem(this)
 
     const worldWidth = this.gridWidth * TILE_SIZE
     const worldHeight = this.gridHeight * TILE_SIZE
@@ -930,6 +939,12 @@ export class MineScene extends Phaser.Scene {
       }
     }
 
+    // Buffer input if mine animation is playing (rhythm mining support)
+    if (this.animController?.isPlayingMineAnim) {
+      this.bufferedInput = { x: finalX, y: finalY }
+      return
+    }
+
     this.handleMoveOrMine(finalX, finalY)
   }
 
@@ -978,6 +993,12 @@ export class MineScene extends Phaser.Scene {
     const targetY = this.player.gridY + dy
 
     if (targetX < 0 || targetY < 0 || targetX >= this.gridWidth || targetY >= this.gridHeight) {
+      return
+    }
+
+    // Buffer input if mine animation is playing (rhythm mining support)
+    if (this.animController?.isPlayingMineAnim) {
+      this.bufferedInput = { x: targetX, y: targetY }
       return
     }
 
@@ -1083,11 +1104,22 @@ export class MineScene extends Phaser.Scene {
       targetCell.hardness = Math.max(1, targetCell.hardness - (tierDamage - 1))
     }
 
-    // Trigger mine animation
+    // Track per-block hit count for impact escalation
+    const hitCount = this.player.recordHit(targetX, targetY)
+    const targetCellBefore = this.grid[targetY][targetX]
+    const isFinalHit = targetCellBefore.hardness === 1
+
+    // Trigger mine animation with input buffering support
     const mineDx = targetX - playerX
     const mineDy = targetY - playerY
     this.animController.setMine(mineDx, mineDy, () => {
       this.animController.setIdle()
+      // Process buffered input for rhythm mining
+      if (this.bufferedInput) {
+        const buf = this.bufferedInput
+        this.bufferedInput = null
+        this.handleMoveOrMine(buf.x, buf.y)
+      }
     })
 
     const mineResult = mineBlock(this.grid, targetX, targetY)
@@ -1095,6 +1127,22 @@ export class MineScene extends Phaser.Scene {
       invalidateNeighborVariants(this.grid, targetX, targetY)
     }
     if (mineResult.success) {
+      const blockWorldX = targetX * TILE_SIZE + TILE_SIZE * 0.5
+      const blockWorldY = targetY * TILE_SIZE + TILE_SIZE * 0.5
+
+      // Trigger impact feedback (shake, flash, haptic)
+      this.impactSystem.triggerHit(
+        blockType,
+        hitCount,
+        isFinalHit,
+        blockWorldX,
+        blockWorldY,
+        targetX,
+        targetY,
+        this.pickaxeTierIndex,
+        this.flashTiles
+      )
+
       this.blocksMinedThisRun += 1
       this.blocksSinceLastQuake += 1
       this.game.events.emit('blocks-mined-update', this.blocksMinedThisRun)
@@ -1111,7 +1159,7 @@ export class MineScene extends Phaser.Scene {
         }
       }
       if (!mineResult.destroyed) {
-        this.flashTiles.set(`${targetX},${targetY}`, this.time.now)
+        // Sound feedback for non-destroying hits (impact system handles flash)
         if (blockType === BlockType.Dirt || blockType === BlockType.SoftRock || blockType === BlockType.GasPocket) {
           audioManager.playSound('mine_dirt')
         } else if (blockType === BlockType.Stone || blockType === BlockType.HardRock || blockType === BlockType.Unbreakable || blockType === BlockType.LavaBlock) {
@@ -1121,6 +1169,11 @@ export class MineScene extends Phaser.Scene {
         } else {
           audioManager.playSound('mine_dirt')
         }
+      }
+
+      // Clear hit count when block is destroyed
+      if (mineResult.destroyed) {
+        this.player.clearHitCount(targetX, targetY)
       }
     }
 
@@ -1199,6 +1252,14 @@ export class MineScene extends Phaser.Scene {
             addedToInventory: added,
           })
           audioManager.playSound('collect')
+          // Pop loot toward player with physics arc
+          this.lootPop.popLoot({
+            spriteKey: `block_mineral_${mineResult.content?.mineralType ?? 'dust'}`,
+            worldX: targetX * TILE_SIZE + TILE_SIZE * 0.5,
+            worldY: targetY * TILE_SIZE + TILE_SIZE * 0.5,
+            targetX: this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5,
+            targetY: this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5,
+          })
           // mineral_magnet: auto-collect minerals within radius
           this.applyMineralMagnet(targetX, targetY)
           break
@@ -1239,6 +1300,15 @@ export class MineScene extends Phaser.Scene {
               addedToInventory: added,
             })
             audioManager.playSound('collect')
+            // Pop artifact toward player with rarity-based effects
+            this.lootPop.popLoot({
+              spriteKey: 'block_artifact',
+              worldX: targetX * TILE_SIZE + TILE_SIZE * 0.5,
+              worldY: targetY * TILE_SIZE + TILE_SIZE * 0.5,
+              targetX: this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5,
+              targetY: this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5,
+              rarity: mineResult.content?.artifactRarity,
+            })
           }
           break
         }
@@ -2367,5 +2437,13 @@ export class MineScene extends Phaser.Scene {
     for (let i = 0; i < revealCount; i++) {
       this.grid[candidates[i].y][candidates[i].x].visibilityLevel = 1
     }
+  }
+
+  /**
+   * Scene shutdown — clean up systems that hold references to Phaser objects.
+   */
+  override shutdown(): void {
+    this.lootPop?.destroy()
+    super.shutdown()
   }
 }
