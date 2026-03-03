@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-7 complete. Visual Overhaul (A-I) complete. Capacitor + Fastify backend scaffolded. V2 roadmap (Phases 8-25) remaining with detailed phase documents. All 5 Q&A batches complete (281 design decisions total). Phase 7 implemented 16 sub-phases: autotiling, character animation, camera/zoom, particles, loot physics, impact system, block animations, event bus, overlay styles, hybrid fonts, biome glow, input buffering.
+Phases 0-7 complete. Phase 13 (Knowledge Tree 2.0) complete. Visual Overhaul (A-I) complete. Capacitor + Fastify backend scaffolded. V2 roadmap (Phases 8-12, 14-25) remaining with detailed phase documents. All 5 Q&A batches complete (281 design decisions total). Phase 13 implemented: hierarchical radial tree with 3-level LOD (forest/branch/leaf), sub-branch system, tap-to-view fact detail card, Focus Study mode, Show All/Learned toggle, DD-V2-098 mastery coloring, content-type-aware SM-2 thresholds.
 
 ---
 
@@ -49,7 +49,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Personalization & Learning (Phases 12-13)
 - [ ] **Phase 12: Interest & Personalization** — Interest settings, weighted spawning, behavioral learning, category lock, archetypes → [`phases/PHASE-12-INTEREST-PERSONALIZATION.md`](phases/PHASE-12-INTEREST-PERSONALIZATION.md)
-- [ ] **Phase 13: Knowledge Tree 2.0** — Radial tree, 3-level LOD, sub-branches, tap-to-view, mastery coloring → [`phases/PHASE-13-KNOWLEDGE-TREE-V2.md`](phases/PHASE-13-KNOWLEDGE-TREE-V2.md)
+- [x] **Phase 13: Knowledge Tree 2.0** — Radial tree, 3-level LOD, sub-branches, tap-to-view, mastery coloring → [`completed/PHASE-13-KNOWLEDGE-TREE-V2.md`](completed/PHASE-13-KNOWLEDGE-TREE-V2.md)
 
 ### Onboarding & Personality (Phases 14-16)
 - [ ] **Phase 14: Onboarding & Tutorial** — Backstory, GAIA intro, tutorial mine, progressive unlocks, reward front-loading → [`phases/PHASE-14-ONBOARDING-TUTORIAL.md`](phases/PHASE-14-ONBOARDING-TUTORIAL.md)
