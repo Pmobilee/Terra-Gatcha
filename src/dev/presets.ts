@@ -1,6 +1,7 @@
 import type { PlayerSave } from '../data/types'
 import { BALANCE } from '../data/balance'
 import { FOSSIL_SPECIES } from '../data/fossils'
+import { defaultHubSaveState } from '../data/hubLayout'
 import { createReviewState } from '../services/sm2'
 import { SAVE_VERSION } from '../services/saveService'
 
@@ -125,6 +126,7 @@ export function BASE_SAVE(now: number): PlayerSave {
     streakProtected: false,
     titles: [],
     activeTitle: null,
+    hubState: defaultHubSaveState(),
   }
 }
 

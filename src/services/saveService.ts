@@ -1,4 +1,5 @@
 import { BALANCE } from '../data/balance'
+import { defaultHubSaveState } from '../data/hubLayout'
 import type {
   AgeRating,
   FarmState,
@@ -181,6 +182,10 @@ export function load(): PlayerSave | null {
     // Backward compatibility: ensure session tracking stats fields exist
     if (parsed.stats.totalSessions === undefined) parsed.stats.totalSessions = 0
     if (parsed.stats.zeroDiveSessions === undefined) parsed.stats.zeroDiveSessions = 0
+    // Backward compatibility: ensure hubState exists (Phase 10)
+    if (!parsedAny['hubState'] || typeof parsedAny['hubState'] !== 'object') {
+      parsedAny['hubState'] = defaultHubSaveState()
+    }
     return parsed as PlayerSave
   } catch {
     return null
@@ -233,6 +238,7 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     titles: [],
     activeTitle: null,
     stats: { ...EMPTY_STATS },
+    hubState: defaultHubSaveState(),
   }
 }
 

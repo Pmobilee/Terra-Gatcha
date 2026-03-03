@@ -117,6 +117,9 @@ export type Screen =
 
 export const currentScreen = writable<Screen>('mainMenu')
 
+/** Index of the currently displayed hub floor (0 = Starter Hub). */
+export const currentFloorIndex = writable<number>(0)
+
 /** Summary data shown on the dive results screen. */
 export interface DiveResults {
   dustCollected: number

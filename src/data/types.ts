@@ -1,3 +1,5 @@
+import type { HubSaveState } from './hubLayout'
+
 // ============================================================
 // CONTENT TYPES
 // ============================================================
@@ -337,6 +339,9 @@ export interface PlayerSave {
   activeTitle: string | null    // currently displayed title
 
   // Progression (future: dome, etc.)
+
+  // Hub (Phase 10)
+  hubState: HubSaveState
 }
 
 /** Player statistics */

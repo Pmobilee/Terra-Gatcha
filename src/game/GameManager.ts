@@ -1175,7 +1175,7 @@ export class GameManager {
     return {
       version: DIVE_SAVE_VERSION,
       savedAt: new Date().toISOString(),
-      mineGrid: scene.getGrid().map(row => row.map(cell => cell.type)),
+      mineGrid: scene.getGrid().map(row => row.map(cell => (cell.type as unknown) as string)),
       playerPos,
       inventorySnapshot: get(inventory).map(slot => ({ type: slot.type, count: slot.mineralAmount ?? 1 })),
       ticks: TickSystem.getInstance().getTick(),
