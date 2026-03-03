@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { activeRelics, activeSynergies, activeUpgrades, pickaxeTier, scannerTier, currentBiome, currentDepth, currentLayer, inventory, oxygenCurrent, oxygenMax, pastPointOfNoReturn, activeCompanion, companionBadgeFlash } from '../stores/gameState'
+  import { activeRelics, activeSynergies, activeUpgrades, pickaxeTier, scannerTier, currentBiome, currentDepth, currentLayer, inventory, oxygenCurrent, oxygenMax, pastPointOfNoReturn, activeCompanion, companionBadgeFlash, o2DepthMultiplier } from '../stores/gameState'
   import { BALANCE } from '../../data/balance'
   import GaiaToast from './GaiaToast.svelte'
 
@@ -88,7 +88,14 @@
 <div class="hud">
   <div class="top-row">
     <div class="oxygen-panel">
-      <div class="oxygen-label">{oxygenText}</div>
+      <div class="oxygen-label">
+        {oxygenText}
+        {#if $o2DepthMultiplier > 1.05}
+          <span class="o2-multiplier" class:amber={$o2DepthMultiplier >= 1.5 && $o2DepthMultiplier < 2.0} class:red={$o2DepthMultiplier >= 2.0}>
+            x{$o2DepthMultiplier.toFixed(1)}
+          </span>
+        {/if}
+      </div>
       <div class="oxygen-track" aria-hidden="true">
         <div class="oxygen-fill {oxygenTone}" style={`width: ${oxygenPercent}%`}></div>
       </div>
@@ -278,6 +285,13 @@
   .oxygen-fill.danger {
     background: var(--color-accent);
   }
+
+  .o2-multiplier {
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+  }
+  .o2-multiplier.amber { color: #f0a030; }
+  .o2-multiplier.red { color: #ff4444; }
 
   .upgrades-row {
     display: flex;

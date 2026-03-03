@@ -1,6 +1,6 @@
 import Phaser from 'phaser'
 import { get } from 'svelte/store'
-import { BALANCE, getLayerGridSize } from '../data/balance'
+import { BALANCE, getLayerGridSize, BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE } from '../data/balance'
 import { audioManager } from '../services/audioService'
 import type { Fact, FossilState, InventorySlot, MineralTier, Relic } from '../data/types'
 import { pickFossilDrop, getActiveCompanionEffect, getSpeciesById, type CompanionEffect } from '../data/fossils'
@@ -641,6 +641,20 @@ export class GameManager {
       // Flash the companion badge for a moment
       companionBadgeFlash.set(true)
       setTimeout(() => companionBadgeFlash.set(false), 600)
+    })
+
+    // ---- Hazard contact events (Phase 8.3) ----
+    events.on('hazard-lava-contact', () => {
+      // Apply lava damage — drain O2 and trigger GAIA commentary (DD-V2-060)
+      const damage = BASE_LAVA_HAZARD_DAMAGE
+      oxygenCurrent.update(o => Math.max(0, o - damage))
+      this.gaiaManager.triggerGaia('hazardLava')
+    })
+
+    events.on('hazard-gas-contact', () => {
+      // Apply gas damage per tick while player stands in cloud (DD-V2-062)
+      const damage = BASE_GAS_HAZARD_DAMAGE
+      oxygenCurrent.update(o => Math.max(0, o - damage))
     })
   }
 

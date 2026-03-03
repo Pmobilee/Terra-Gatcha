@@ -26,6 +26,8 @@ import { LootPopSystem } from '../systems/LootPopSystem'
 import { ImpactSystem } from '../systems/ImpactSystem'
 import { BlockAnimSystem } from '../systems/BlockAnimSystem'
 import { TickSystem } from '../systems/TickSystem'
+import { HazardSystem } from '../systems/HazardSystem'
+import { BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE, getO2DepthMultiplier } from '../../data/balance'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
 
@@ -128,6 +130,8 @@ export class MineScene extends Phaser.Scene {
   private companionEffect: CompanionEffect | null = null
   /** Tracks whether the companion effect triggered on the last mining action (for badge flash). */
   public companionFlash: boolean = false
+  /** Active hazard manager — lava flows and gas clouds. Initialized in create(). */
+  private hazardSystem: HazardSystem | null = null
 
   constructor() {
     super({ key: 'MineScene' })
@@ -288,6 +292,22 @@ export class MineScene extends Phaser.Scene {
     }
 
     this.redrawAll()
+
+    // Initialize HazardSystem — active lava flows and gas clouds. (Phase 8.3)
+    this.hazardSystem = new HazardSystem(
+      this.gridWidth,
+      this.gridHeight,
+      (x, y) => this.grid[y]?.[x]?.type?.toString() ?? 'Unbreakable',
+      (x, y) => this.grid[y]?.[x]?.type === BlockType.Empty,
+      (x, y) => this.grid[y]?.[x]?.type === BlockType.Unbreakable,
+      () => ({ x: this.player.gridX, y: this.player.gridY }),
+      () => this.handleLavaContact(),
+      () => this.handleGasContact(),
+      (x, y) => this.markCellAsLava(x, y),
+    )
+    TickSystem.getInstance().register('hazard-system',
+      (tick, layerTick) => this.hazardSystem?.onTick(tick, layerTick)
+    )
 
     this.input.on('pointerdown', this.handlePointerDown, this)
     this.input.keyboard?.on('keydown', this.handleKeyDown, this)
@@ -1143,6 +1163,9 @@ export class MineScene extends Phaser.Scene {
         const o2Count = this.activeUpgrades.get('oxygen_efficiency') ?? 0
         oxygenCost = Math.max(1, Math.ceil(oxygenCost * Math.pow(BALANCE.UPGRADE_OXYGEN_EFFICIENCY, o2Count)))
       }
+      // Apply depth multiplier: O2 costs scale linearly with layer (DD-V2-061)
+      const depthMult = getO2DepthMultiplier(this.currentLayer)
+      oxygenCost = Math.ceil(oxygenCost * depthMult)
       const oxygenResult = consumeOxygen(this.oxygenState, oxygenCost)
       this.oxygenState = oxygenResult.state
 
@@ -1610,6 +1633,23 @@ export class MineScene extends Phaser.Scene {
         }
         default:
           break
+      }
+
+      // Check adjacent cells for lava blocks — if a lava block is now exposed, spawn a flow. (Phase 8.3)
+      if (this.hazardSystem) {
+        for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as [number, number][]) {
+          const nx = targetX + dx, ny = targetY + dy
+          if (ny >= 0 && ny < this.gridHeight && nx >= 0 && nx < this.gridWidth) {
+            if (this.grid[ny][nx]?.type === BlockType.LavaBlock) {
+              this.hazardSystem.spawnLava(nx, ny)
+            }
+          }
+        }
+      }
+
+      // Spawn a gas cloud when a GasPocket block is broken. (Phase 8.3)
+      if (blockType === BlockType.GasPocket && this.hazardSystem) {
+        this.hazardSystem.spawnGas(targetX, targetY)
       }
 
       const moved = this.player.moveToEmpty(targetX, targetY, this.grid)
@@ -2520,10 +2560,46 @@ export class MineScene extends Phaser.Scene {
   }
 
   /**
+   * Called by HazardSystem when the player occupies a lava cell.
+   * Emits a game event so GameManager can drain O2 and trigger GAIA commentary. (Phase 8.3)
+   */
+  private handleLavaContact(): void {
+    this.game.events.emit('hazard-lava-contact')
+  }
+
+  /**
+   * Called by HazardSystem when the player occupies a gas cloud cell.
+   * Emits a game event so GameManager can drain O2 per tick. (Phase 8.3)
+   */
+  private handleGasContact(): void {
+    this.game.events.emit('hazard-gas-contact')
+  }
+
+  /**
+   * Called by HazardSystem when lava spreads into a new empty cell.
+   * Updates the grid to reflect the new lava block and redraws the tile. (Phase 8.3)
+   *
+   * @param x - Grid column of the newly lava-filled cell.
+   * @param y - Grid row of the newly lava-filled cell.
+   */
+  private markCellAsLava(x: number, y: number): void {
+    if (this.grid[y]?.[x]) {
+      this.grid[y][x] = {
+        type: BlockType.LavaBlock,
+        hardness: 0,
+        maxHardness: 0,
+        revealed: true,
+      }
+    }
+  }
+
+  /**
    * Scene shutdown — clean up systems that hold references to Phaser objects.
    * Registered via this.events.on('shutdown', ...) in create().
    */
   private handleShutdown(): void {
+    this.hazardSystem?.clearAll()
+    TickSystem.getInstance().unregister('hazard-system')
     this.lootPop?.destroy()
   }
 }

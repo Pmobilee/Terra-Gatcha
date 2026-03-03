@@ -150,6 +150,21 @@ export const GAIA_TRIGGERS = {
     { text: "Ground shifting. Observe new openings.", mood: 'calm' },
     { text: "Tectonic movement. Adjust your bearings.", mood: 'calm' },
   ] satisfies GaiaLine[],
+
+  hazardLava: [
+    { text: "LAVA! Move! That stuff will cook you alive!", mood: 'enthusiastic' },
+    { text: "Active lava flow! Get clear of the hot zone — NOW!", mood: 'enthusiastic' },
+    { text: "You're standing in lava! That's going to hurt!", mood: 'enthusiastic' },
+    { text: "Molten rock detected. Move before your O2 is the least of your worries!", mood: 'enthusiastic' },
+    { text: "Oh, you found the lava. Congratulations on your catastrophic choice.", mood: 'snarky' },
+    { text: "I did warn you about the thermal readings. I did.", mood: 'snarky' },
+    { text: "Lava: nature's way of saying you went too far.", mood: 'snarky' },
+    { text: "Your suit is rated for a lot of things. That is not one of them.", mood: 'snarky' },
+    { text: "Thermal hazard contact. Evacuate the cell immediately.", mood: 'calm' },
+    { text: "Lava flow detected. Retreat and reassess your path.", mood: 'calm' },
+    { text: "High-temperature contact. Oxygen reserves declining.", mood: 'calm' },
+    { text: "Active lava. Find an alternate route.", mood: 'calm' },
+  ] satisfies GaiaLine[],
 } as const
 
 /**

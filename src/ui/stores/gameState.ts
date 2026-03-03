@@ -2,6 +2,7 @@ import { writable, derived } from 'svelte/store'
 import type { Fact, InventorySlot, Relic, ReviewState } from '../../data/types'
 import type { RelicSynergy } from '../../data/relics'
 import type { CompanionEffect } from '../../data/fossils'
+import { getO2DepthMultiplier } from '../../data/balance'
 
 /** All top-level UI screens used by routing state. */
 export type Screen =
@@ -63,6 +64,14 @@ export const layerTierLabel = derived(currentLayer, (layer): string => {
   if (l <= 15) return 'Deep'
   return 'Extreme'
 })
+
+/**
+ * O2 cost multiplier derived from the current layer (0-based).
+ * Layer 0 = 1.0×, Layer 9 ≈ 1.5×, Layer 19 = 2.5×. (DD-V2-061)
+ */
+export const o2DepthMultiplier = derived(currentLayer, (layer) =>
+  getO2DepthMultiplier(layer)
+)
 
 /** Display name of the active biome for the current mine layer (empty string while at base). */
 export const currentBiome = writable<string>('')

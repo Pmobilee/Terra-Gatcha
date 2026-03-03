@@ -257,6 +257,15 @@ export const BALANCE = {
 } as const
 
 /**
+ * Returns the O2 cost multiplier for the given layer (0-indexed).
+ * Layer 0 = 1.0×, Layer 9 ≈ 1.5×, Layer 19 = 2.5×. Linear interpolation. (DD-V2-061)
+ */
+export function getO2DepthMultiplier(layer: number): number {
+  const clamped = Math.max(0, Math.min(19, layer))
+  return 1.0 + (1.5 * clamped / 19)
+}
+
+/**
  * Returns the [width, height] grid dimensions for the given layer (1-indexed).
  * Tier boundaries: L1-5 = 20x20, L6-10 = 25x25, L11-15 = 30x30, L16-20 = 40x40.
  * (DD-V2-054)
@@ -267,6 +276,11 @@ export function getLayerGridSize(layer: number): [number, number] {
   if (layer <= 15) return [30, 30];
   return [40, 40];
 }
+
+// ---- Hazard Damage Constants (DD-V2-060/062) ----
+export const BASE_LAVA_HAZARD_DAMAGE = 20
+export const BASE_GAS_HAZARD_DAMAGE = 5
+export const HAZARD_MAX_DEFENSE_REDUCTION = 0.5
 
 // ---- Tick-Based Timing Constants (DD-V2-051) ----
 export const TICK_LAVA_SPREAD_INTERVAL = 1;          // lava expands every N ticks

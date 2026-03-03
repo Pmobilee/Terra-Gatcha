@@ -5,7 +5,7 @@
   import { deleteSave } from '../../services/saveService'
   import { factsDB } from '../../services/factsDB'
   import { GameManager } from '../../game/GameManager'
-  import { currentScreen, tickCount, layerTickCount, type Screen } from '../stores/gameState'
+  import { currentScreen, tickCount, layerTickCount, o2DepthMultiplier, type Screen } from '../stores/gameState'
   import {
     addLearnedFact,
     addMinerals,
@@ -542,6 +542,10 @@
           <div class="debug-row" data-testid="debug-tick-count">
             <span class="debug-key">Ticks:</span>
             <span class="debug-val">{$tickCount} (Layer: {$layerTickCount})</span>
+          </div>
+          <div class="debug-row">
+            <span class="debug-key">O2 Mult:</span>
+            <span class="debug-val">x{$o2DepthMultiplier.toFixed(2)}</span>
           </div>
         </div>
       {/if}
