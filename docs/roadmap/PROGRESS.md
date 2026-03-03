@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-7 complete. Phase 13 (Knowledge Tree 2.0) complete. Visual Overhaul (A-I) complete. Capacitor + Fastify backend scaffolded. V2 roadmap (Phases 8-12, 14-25) remaining with detailed phase documents. All 5 Q&A batches complete (281 design decisions total). Phase 13 implemented: hierarchical radial tree with 3-level LOD (forest/branch/leaf), sub-branch system, tap-to-view fact detail card, Focus Study mode, Show All/Learned toggle, DD-V2-098 mastery coloring, content-type-aware SM-2 thresholds.
+Phases 0-7 complete. Phase 13 (Knowledge Tree 2.0) complete. Phase 11 complete: fact content engine with ingestion API, LLM pipeline, dashboard, sprite generation, delta sync, and in-game reporting. Visual Overhaul (A-I) complete. Capacitor + Fastify backend scaffolded. V2 roadmap (Phases 8-12, 14-25) remaining with detailed phase documents. All 5 Q&A batches complete (281 design decisions total). Phase 13 implemented: hierarchical radial tree with 3-level LOD (forest/branch/leaf), sub-branch system, tap-to-view fact detail card, Focus Study mode, Show All/Learned toggle, DD-V2-098 mastery coloring, content-type-aware SM-2 thresholds.
 
 ---
 
@@ -45,7 +45,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Hub & Content (Phases 10-11)
 - [ ] **Phase 10: Dome Hub Redesign** — Multi-floor hub, navigation, upgrades, animated pets, Knowledge Tree growth, daily briefing → [`phases/PHASE-10-DOME-HUB-REDESIGN.md`](phases/PHASE-10-DOME-HUB-REDESIGN.md)
-- [ ] **Phase 11: Fact Content Engine** — Ingestion API, LLM pipeline, dashboard, pixel art generation, schema updates → [`phases/PHASE-11-FACT-CONTENT-ENGINE.md`](phases/PHASE-11-FACT-CONTENT-ENGINE.md)
+- [x] **Phase 11: Fact Content Engine** — Ingestion API, LLM pipeline, dashboard, pixel art generation, schema updates → [`completed/PHASE-11-FACT-CONTENT-ENGINE.md`](completed/PHASE-11-FACT-CONTENT-ENGINE.md)
 
 ### Personalization & Learning (Phases 12-13)
 - [ ] **Phase 12: Interest & Personalization** — Interest settings, weighted spawning, behavioral learning, category lock, archetypes → [`phases/PHASE-12-INTEREST-PERSONALIZATION.md`](phases/PHASE-12-INTEREST-PERSONALIZATION.md)

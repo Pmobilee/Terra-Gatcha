@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terra Gacha — Fact Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Terra Gacha</h1>
+    <span class="subtitle">Fact Content Dashboard</span>
+  </header>
+
+  <nav>
+    <button class="tab-btn active" onclick="showTab('facts')">Facts</button>
+    <button class="tab-btn" onclick="showTab('gap-analysis')">Gap Analysis</button>
+    <button class="tab-btn" onclick="showTab('distractor-review')">Distractors</button>
+    <button class="tab-btn" onclick="showTab('metrics')">Quality Metrics</button>
+    <button class="tab-btn" onclick="showTab('sprites')">Sprites</button>
+    <button class="tab-btn" onclick="showTab('pipeline')">Pipeline</button>
+  </nav>
+
+  <main id="content">
+    <div class="loading">Loading...</div>
+  </main>
+
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -34,6 +34,7 @@ import { LANDMARK_TEMPLATES, COMPLETION_EVENTS, getLandmarkIdForLayer } from '..
 import { BiomeParticleManager } from '../managers/BiomeParticleManager'
 import { AudioManager } from '../managers/AudioManager'
 import { BiomeGlowSystem } from '../systems/BiomeGlowSystem'
+import { AnimatedTileSystem } from '../systems/AnimatedTileSystem'
 import { ALL_BIOMES } from '../../data/biomes'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
@@ -149,6 +150,8 @@ export class MineScene extends Phaser.Scene {
   private audioManager: AudioManager | null = null
   /** Phase 9: Fog glow system for luminous blocks. */
   private glowSystem: BiomeGlowSystem | null = null
+  /** Phase 9: Animated tile frame cycling system. */
+  private animatedTileSystem: AnimatedTileSystem | null = null
 
   constructor() {
     super({ key: 'MineScene' })
@@ -320,6 +323,9 @@ export class MineScene extends Phaser.Scene {
     this.glowSystem = new BiomeGlowSystem(this, 32) // 32px tile size
     this.glowSystem.init()
 
+    // Phase 9.15: Animated tile system
+    this.animatedTileSystem = new AnimatedTileSystem()
+
     this.redrawAll()
     revealAround(this.grid, this.player.gridX, this.player.gridY, BALANCE.FOG_REVEAL_RADIUS)
     // Update fog glow after initial block reveals
@@ -375,7 +381,8 @@ export class MineScene extends Phaser.Scene {
   /**
    * Phaser update loop — redraws the visible mine each frame.
    */
-  update(): void {
+  update(_time: number, delta: number): void {
+    this.animatedTileSystem?.update(delta)
     this.pinchZoom?.update()
     // O2 warning particles when below 30%
     if (this.particles && this.oxygenState) {
@@ -2914,5 +2921,7 @@ export class MineScene extends Phaser.Scene {
     this.audioManager = null
     this.glowSystem?.destroy()
     this.glowSystem = null
+    this.animatedTileSystem?.reset()
+    this.animatedTileSystem = null
   }
 }

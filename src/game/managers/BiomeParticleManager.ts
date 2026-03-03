@@ -7,6 +7,10 @@ import { BIOME_PARTICLE_CONFIGS, type ParticleConfig } from '../../data/biomePar
 
 /** Hard cap on simultaneous on-screen particles across all emitters */
 const MAX_PARTICLES = 50
+/** Hard cap on ambient particles visible at any time (DD-V2-253) */
+const VIEWPORT_PARTICLE_CAP = 20
+/** LOD cap for low-memory devices */
+const VIEWPORT_PARTICLE_CAP_LOD = 10
 
 /**
  * Manages per-biome ambient particle emitters for MineScene.
@@ -59,6 +63,41 @@ export class BiomeParticleManager {
       count += emitter.getAliveParticleCount()
     }
     return count
+  }
+
+  /** Returns the total number of active particles across all emitters. */
+  public getActiveParticleCount(): number {
+    return this.getParticleCount()
+  }
+
+  /** Returns the viewport particle cap, respecting LOD for low-memory devices. */
+  private getViewportCap(): number {
+    const nav = globalThis.navigator as Navigator & { deviceMemory?: number }
+    if (nav?.deviceMemory !== undefined && nav.deviceMemory < 4) {
+      return VIEWPORT_PARTICLE_CAP_LOD
+    }
+    return VIEWPORT_PARTICLE_CAP
+  }
+
+  /**
+   * Enforces viewport particle budget (DD-V2-253).
+   * Pauses emitters when count exceeds cap, resumes at 80% hysteresis.
+   */
+  public enforceViewportBudget(_cameraBounds: { x: number; y: number; width: number; height: number }): void {
+    if (!this.emitters.length) return
+    const count = this.getActiveParticleCount()
+    const cap = this.getViewportCap()
+    if (count >= cap) {
+      // Pause all emitters
+      for (const emitter of this.emitters) {
+        emitter.pause()
+      }
+    } else if (count < cap * 0.8) {
+      // Resume (hysteresis)
+      for (const emitter of this.emitters) {
+        emitter.resume()
+      }
+    }
   }
 
   private createEmitter(

@@ -1,0 +1,206 @@
+/**
+ * Schema migration for the Terra Gacha facts content database.
+ * Creates all tables, indexes, and triggers needed for the fact content engine.
+ * All DDL statements use IF NOT EXISTS — safe to run multiple times.
+ */
+
+import { factsDb } from "./facts-db.js";
+
+/**
+ * Initialise the facts database schema idempotently.
+ * Creates tables, indexes, and triggers for the fact content engine.
+ * Safe to call on every server startup.
+ */
+export function initFactsSchema(): void {
+  // ── facts table ─────────────────────────────────────────────────────────────
+  factsDb.exec(`
+    CREATE TABLE IF NOT EXISTS facts (
+      -- Identity
+      id                    TEXT PRIMARY KEY,
+      type                  TEXT NOT NULL DEFAULT 'fact',
+      status                TEXT NOT NULL DEFAULT 'draft',
+      in_game_reports       INTEGER NOT NULL DEFAULT 0,
+
+      -- Core content
+      statement             TEXT NOT NULL,
+      wow_factor            TEXT,
+      explanation           TEXT NOT NULL,
+      alternate_explanations TEXT,          -- JSON array of strings
+      gaia_comments         TEXT,           -- JSON array of {variant, text}
+      gaia_wrong_comments   TEXT,           -- JSON object {snarky, enthusiastic, calm}
+
+      -- Quiz fields
+      quiz_question         TEXT NOT NULL,
+      correct_answer        TEXT NOT NULL,
+      acceptable_answers    TEXT,           -- JSON array of strings
+      distractor_count      INTEGER NOT NULL DEFAULT 0,
+
+      -- Categorisation
+      category_l1           TEXT NOT NULL DEFAULT '',
+      category_l2           TEXT NOT NULL DEFAULT '',
+      category_l3           TEXT NOT NULL DEFAULT '',
+      category_legacy       TEXT,           -- JSON array (migration compatibility)
+
+      -- Quality scoring
+      rarity                TEXT NOT NULL DEFAULT 'common',
+      difficulty            INTEGER NOT NULL DEFAULT 3,
+      fun_score             INTEGER NOT NULL DEFAULT 5,
+      novelty_score         INTEGER NOT NULL DEFAULT 5,
+
+      -- Safety & content policy
+      age_rating            TEXT NOT NULL DEFAULT 'teen',
+      sensitivity_level     INTEGER NOT NULL DEFAULT 0,
+      sensitivity_note      TEXT,
+
+      -- Longevity
+      content_volatility    TEXT NOT NULL DEFAULT 'timeless',
+      source_name           TEXT,
+      source_url            TEXT,
+
+      -- Relations
+      related_facts         TEXT,           -- JSON array of fact IDs
+      tags                  TEXT,           -- JSON array of strings
+      mnemonic              TEXT,
+
+      -- Visuals
+      image_prompt          TEXT,
+      visual_description    TEXT,
+      image_url             TEXT,
+      has_pixel_art         INTEGER NOT NULL DEFAULT 0,
+      pixel_art_status      TEXT NOT NULL DEFAULT 'none',
+
+      -- Language / vocabulary fields
+      language              TEXT,
+      pronunciation         TEXT,
+      example_sentence      TEXT,
+
+      -- Sync / versioning
+      db_version            INTEGER NOT NULL DEFAULT 0,
+      created_at            INTEGER NOT NULL DEFAULT (unixepoch() * 1000),
+      updated_at            INTEGER NOT NULL DEFAULT (unixepoch() * 1000),
+      last_reviewed_at      INTEGER
+    );
+  `);
+
+  // ── Auto-increment db_version triggers ──────────────────────────────────────
+  factsDb.exec(`
+    CREATE TRIGGER IF NOT EXISTS trg_facts_version_insert
+    AFTER INSERT ON facts
+    BEGIN
+      UPDATE facts
+      SET db_version = (SELECT COALESCE(MAX(db_version), 0) + 1 FROM facts)
+      WHERE id = NEW.id;
+    END;
+
+    CREATE TRIGGER IF NOT EXISTS trg_facts_version_update
+    AFTER UPDATE ON facts
+    WHEN OLD.db_version = NEW.db_version
+    BEGIN
+      UPDATE facts
+      SET db_version = (SELECT COALESCE(MAX(db_version), 0) + 1 FROM facts)
+      WHERE id = NEW.id;
+    END;
+  `);
+
+  // ── facts indexes ────────────────────────────────────────────────────────────
+  factsDb.exec(`
+    CREATE INDEX IF NOT EXISTS idx_facts_status
+      ON facts (status);
+
+    CREATE INDEX IF NOT EXISTS idx_facts_type
+      ON facts (type);
+
+    CREATE INDEX IF NOT EXISTS idx_facts_rarity
+      ON facts (rarity);
+
+    CREATE INDEX IF NOT EXISTS idx_facts_difficulty
+      ON facts (difficulty);
+
+    CREATE INDEX IF NOT EXISTS idx_facts_age_rating
+      ON facts (age_rating);
+
+    CREATE INDEX IF NOT EXISTS idx_facts_category_l1
+      ON facts (category_l1);
+
+    CREATE INDEX IF NOT EXISTS idx_facts_category_l1_l2
+      ON facts (category_l1, category_l2);
+
+    CREATE INDEX IF NOT EXISTS idx_facts_pixel_art_status
+      ON facts (pixel_art_status);
+
+    CREATE INDEX IF NOT EXISTS idx_facts_content_volatility
+      ON facts (content_volatility);
+
+    CREATE INDEX IF NOT EXISTS idx_facts_in_game_reports
+      ON facts (in_game_reports DESC);
+
+    CREATE INDEX IF NOT EXISTS idx_facts_db_version
+      ON facts (db_version);
+  `);
+
+  // ── distractors table ────────────────────────────────────────────────────────
+  factsDb.exec(`
+    CREATE TABLE IF NOT EXISTS distractors (
+      id                   INTEGER PRIMARY KEY AUTOINCREMENT,
+      fact_id              TEXT NOT NULL REFERENCES facts(id) ON DELETE CASCADE,
+      text                 TEXT NOT NULL,
+      difficulty_tier      TEXT NOT NULL DEFAULT 'medium',
+      distractor_confidence REAL NOT NULL DEFAULT 1.0,
+      is_approved          INTEGER NOT NULL DEFAULT 1
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_distractors_fact_id
+      ON distractors (fact_id);
+
+    CREATE INDEX IF NOT EXISTS idx_distractors_confidence
+      ON distractors (distractor_confidence);
+  `);
+
+  // ── fact_reports table ───────────────────────────────────────────────────────
+  factsDb.exec(`
+    CREATE TABLE IF NOT EXISTS fact_reports (
+      id          INTEGER PRIMARY KEY AUTOINCREMENT,
+      fact_id     TEXT NOT NULL REFERENCES facts(id) ON DELETE CASCADE,
+      player_id   TEXT,
+      report_text TEXT NOT NULL,
+      created_at  INTEGER NOT NULL DEFAULT (unixepoch() * 1000)
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_fact_reports_fact_id
+      ON fact_reports (fact_id);
+  `);
+
+  // ── fact_pack_versions table ─────────────────────────────────────────────────
+  factsDb.exec(`
+    CREATE TABLE IF NOT EXISTS fact_pack_versions (
+      id          INTEGER PRIMARY KEY AUTOINCREMENT,
+      pack_name   TEXT NOT NULL,
+      version     INTEGER NOT NULL,
+      fact_count  INTEGER NOT NULL DEFAULT 0,
+      built_at    INTEGER NOT NULL DEFAULT (unixepoch() * 1000),
+      file_path   TEXT
+    );
+  `);
+
+  // ── facts_processing_queue table ─────────────────────────────────────────────
+  factsDb.exec(`
+    CREATE TABLE IF NOT EXISTS facts_processing_queue (
+      id               INTEGER PRIMARY KEY AUTOINCREMENT,
+      fact_id          TEXT NOT NULL REFERENCES facts(id) ON DELETE CASCADE,
+      status           TEXT NOT NULL DEFAULT 'pending',
+      attempts         INTEGER NOT NULL DEFAULT 0,
+      last_error       TEXT,
+      enqueued_at      INTEGER NOT NULL DEFAULT (unixepoch()),
+      processed_at     INTEGER,
+      raw_llm_response TEXT
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_queue_status
+      ON facts_processing_queue (status);
+
+    CREATE INDEX IF NOT EXISTS idx_queue_fact_id
+      ON facts_processing_queue (fact_id);
+  `);
+
+  console.log("[facts-db] Facts schema initialised.");
+}

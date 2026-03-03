@@ -10,15 +10,21 @@
     "start": "node dist/index.js",
     "migrate": "tsx src/db/migrate.ts",
     "db:push": "drizzle-kit push",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "dashboard": "tsx src/dashboard/index.ts",
+    "sprite-daemon": "tsx src/scripts/sprite-gen-daemon.ts",
+    "pipeline": "tsx src/workers/pipelineWorker.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
     "@fastify/cors": "^11.2.0",
     "@fastify/jwt": "^10.0.0",
+    "@fastify/static": "^9.0.0",
     "better-sqlite3": "^9.4.3",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.30.10",
-    "fastify": "^5.7.4"
+    "fastify": "^5.7.4",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.10",

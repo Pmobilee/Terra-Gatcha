@@ -24,6 +24,14 @@ export interface Config {
   corsOrigin: string | string[];
   /** True when running in production mode. */
   isProduction: boolean;
+  /** Admin API key for fact management endpoints. */
+  adminApiKey: string;
+  /** Anthropic API key for LLM features (dedup, categorization, generation). */
+  anthropicApiKey: string;
+  /** ComfyUI server URL for pixel art generation. */
+  comfyuiUrl: string;
+  /** Minimum confidence score for a distractor to be served (default 0.7). */
+  distractorConfidenceThreshold: number;
 }
 
 /**
@@ -41,6 +49,18 @@ function env(key: string, fallback?: string): string {
   return value;
 }
 
+/**
+ * Read an environment variable with a fallback, allowing empty string result.
+ * Used for optional keys like ANTHROPIC_API_KEY that default to empty in dev.
+ *
+ * @param key - The environment variable name.
+ * @param fallback - Default value if the variable is not set.
+ * @returns The resolved string value (may be empty string).
+ */
+function envOptional(key: string, fallback: string): string {
+  return process.env[key] ?? fallback;
+}
+
 const rawCors = env("CORS_ORIGIN", "http://localhost:5173");
 
 /** Singleton configuration object populated from environment variables. */
@@ -55,4 +75,10 @@ export const config: Config = {
     ? rawCors.split(",").map((s) => s.trim())
     : rawCors,
   isProduction: env("NODE_ENV", "development") === "production",
+  adminApiKey: env("ADMIN_API_KEY", "dev-admin-key-change-me"),
+  anthropicApiKey: envOptional("ANTHROPIC_API_KEY", ""),
+  comfyuiUrl: env("COMFYUI_URL", "http://localhost:8188"),
+  distractorConfidenceThreshold: parseFloat(
+    env("DISTRACTOR_CONFIDENCE_THRESHOLD", "0.7")
+  ),
 };

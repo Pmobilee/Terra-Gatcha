@@ -321,6 +321,14 @@ export const HAZARD_DENSITY_BY_LAYER: Record<number, number> = {
   16: 2.8, 17: 3.2, 18: 3.6, 19: 4.0, 20: 4.5,
 }
 
+// ---- Loot Loss Rates on Death (DD-V2-181) ----
+export const LOOT_LOSS_RATE_SHALLOW = 0       // L1-5: no loss
+export const LOOT_LOSS_RATE_MID = 0.15        // L6-10: 15% of un-banked minerals lost
+export const LOOT_LOSS_RATE_DEEP = 0.30       // L11-20: 30% of un-banked minerals lost
+
+// ---- Send-Up Pod (DD-V2-053) ----
+export const SEND_UP_TICK_COST = 5
+
 /** O2 tank size per layer. Deep layers have larger tanks. */
 export const O2_TANK_SIZE_BY_LAYER: Record<number, number> = {
   1: 100, 2: 100, 3: 100, 4: 100, 5: 100,

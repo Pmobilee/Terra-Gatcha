@@ -8,10 +8,12 @@ import cors from "@fastify/cors";
 import jwt from "@fastify/jwt";
 import { config } from "./config.js";
 import { initSchema } from "./db/migrate.js";
+import { initFactsSchema } from "./db/facts-migrate.js";
 import { healthRoutes } from "./routes/health.js";
 import { authRoutes } from "./routes/auth.js";
 import { savesRoutes } from "./routes/saves.js";
 import { leaderboardRoutes } from "./routes/leaderboards.js";
+import { factsRoutes } from "./routes/facts.js";
 
 /**
  * Build the Fastify application instance with all plugins and routes.
@@ -30,7 +32,7 @@ export async function buildApp() {
   await fastify.register(cors, {
     origin: config.corsOrigin,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Admin-Key"],
     credentials: true,
   });
 
@@ -57,6 +59,7 @@ export async function buildApp() {
   await fastify.register(authRoutes, { prefix: "/api/auth" });
   await fastify.register(savesRoutes, { prefix: "/api/saves" });
   await fastify.register(leaderboardRoutes, { prefix: "/api/leaderboards" });
+  await fastify.register(factsRoutes, { prefix: "/api/facts" });
 
   // ── 404 handler ─────────────────────────────────────────────────────────────
   fastify.setNotFoundHandler((_request, reply) => {
@@ -72,6 +75,7 @@ export async function buildApp() {
 async function start(): Promise<void> {
   // Bootstrap the database schema (idempotent)
   initSchema();
+  initFactsSchema();
 
   const app = await buildApp();
 
