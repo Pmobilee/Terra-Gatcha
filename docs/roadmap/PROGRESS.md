@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-8.13 complete. Phases 11, 13, 18 complete. Visual Overhaul (A-I) complete. Phase 18 delivered: DevPanel scenario presets (9 one-click states), save snapshots with import/export, session design metrics (dual profiles, cozy dome flow), gentle review pressure audit (zero anxiety-inducing language), quiz anti-homework pass (all quiz text uses adventure vocabulary), CI/CD pipelines (3 GitHub Actions workflows), Vitest testing setup, seed determinism tests, and build-time asset audit. V2 roadmap (remaining phases 9-25) in progress.
+Phases 0-8 complete. Phase 9 (Biome Expansion) complete. Phases 11, 13, 18 complete. Visual Overhaul (A-I) complete. Capacitor + Fastify backend scaffolded. V2 roadmap (Phases 10, 12, 14-17, 19-25) remaining. All 5 Q&A batches complete (281 design decisions total). Phase 9 added: palette system, structural features, ambient particles, landmark variants, audio manager, biome glow system, animated tiles, viewport particle culling across all 25 biomes.
 
 ---
 
@@ -41,7 +41,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 ### Core Gameplay (Phases 7-9)
 - [x] **Phase 7: Visual Engine Overhaul** — Autotiling, character animation, camera/zoom, particles, loot physics, mining feel → [`completed/PHASE-07-VISUAL-ENGINE.md`](completed/PHASE-07-VISUAL-ENGINE.md)
 - [ ] **Phase 8: Mine Gameplay Overhaul** — 20 layers, tick system, active hazards, O2 decay, landmarks, consumables, quiz overhaul, SM-2 tuning → [`phases/PHASE-08-MINE-GAMEPLAY.md`](phases/PHASE-08-MINE-GAMEPLAY.md)
-- [ ] **Phase 9: Biome Expansion** — 25 unique biomes, per-biome tiles, structural generation, ambient particles → [`phases/PHASE-09-BIOME-EXPANSION.md`](phases/PHASE-09-BIOME-EXPANSION.md)
+- [x] **Phase 9: Biome Expansion** — 25 unique biomes, per-biome tiles, structural generation, ambient particles → [`completed/PHASE-09-BIOME-EXPANSION.md`](completed/PHASE-09-BIOME-EXPANSION.md)
 
 ### Hub & Content (Phases 10-11)
 - [ ] **Phase 10: Dome Hub Redesign** — Multi-floor hub, navigation, upgrades, animated pets, Knowledge Tree growth, daily briefing → [`phases/PHASE-10-DOME-HUB-REDESIGN.md`](phases/PHASE-10-DOME-HUB-REDESIGN.md)
