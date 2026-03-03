@@ -27,7 +27,6 @@
   import FactReveal from './ui/components/FactReveal.svelte'
   import DivePrepScreen from './ui/components/DivePrepScreen.svelte'
   import BaseView from './ui/components/BaseView.svelte'
-  import DomeView from './ui/components/DomeView.svelte'
   import HubView from './ui/components/HubView.svelte'
   import DiveResults from './ui/components/DiveResults.svelte'
   import DevPanel from './ui/components/DevPanel.svelte'

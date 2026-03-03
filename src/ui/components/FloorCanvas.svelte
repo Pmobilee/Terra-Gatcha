@@ -7,6 +7,31 @@
   import { getDomeSpriteUrls } from '../../game/domeManifest'
   import { getTreeStage } from '../../data/knowledgeTreeStages'
 
+  interface AmbientConfig {
+    particleColor: string
+    particleCount: number
+    glowColor: string
+    glowBlur: number
+  }
+
+  const THEME_AMBIENT: Record<string, AmbientConfig> = {
+    'sci-fi':       { particleColor: 'rgba(78,204,163,0.15)',  particleCount: 12, glowColor: '#4ecca3', glowBlur: 8  },
+    'organic':      { particleColor: 'rgba(144,238,144,0.15)', particleCount: 18, glowColor: '#90ee90', glowBlur: 6  },
+    'crystal':      { particleColor: 'rgba(100,149,237,0.2)',  particleCount: 20, glowColor: '#6495ed', glowBlur: 12 },
+    'observatory':  { particleColor: 'rgba(255,255,200,0.25)', particleCount: 35, glowColor: '#ffffc8', glowBlur: 4  },
+    'archive':      { particleColor: 'rgba(200,180,120,0.15)', particleCount: 8,  glowColor: '#c8b478', glowBlur: 6  },
+    'market':       { particleColor: 'rgba(255,160,80,0.15)',  particleCount: 14, glowColor: '#ffa050', glowBlur: 8  },
+    'industrial':   { particleColor: 'rgba(255,100,50,0.1)',   particleCount: 10, glowColor: '#ff6432', glowBlur: 10 },
+  }
+
+  interface Particle {
+    x: number
+    y: number
+    speed: number
+    size: number
+    alpha: number
+  }
+
   interface Props {
     floor: HubFloor
     upgradeTier: FloorUpgradeTier
@@ -54,6 +79,45 @@
   /** Color for objects — fallback when sprites aren't loaded */
   const OBJ_COLOR = 'rgba(80,200,160,0.4)'
 
+  // Particle state
+  let particles: Particle[] = []
+  let animFrameId: number | null = null
+  let lastTimestamp: number = 0
+
+  /**
+   * Seeded pseudo-random number generator (mulberry32).
+   * Produces deterministic values from a numeric seed.
+   */
+  function seededRng(seed: number): () => number {
+    let s = seed >>> 0
+    return () => {
+      s += 0x6d2b79f5
+      let t = Math.imul(s ^ (s >>> 15), 1 | s)
+      t ^= t + Math.imul(t ^ (t >>> 7), 61 | t)
+      return ((t ^ (t >>> 14)) >>> 0) / 0xffffffff
+    }
+  }
+
+  /**
+   * Initialises the particle array seeded by floor.id so positions are
+   * deterministic across re-renders but vary per floor.
+   */
+  function initParticles(floorId: string, config: AmbientConfig, w: number, h: number): Particle[] {
+    // Convert floorId string to a numeric seed
+    let seed = 0
+    for (let i = 0; i < floorId.length; i++) {
+      seed = (seed * 31 + floorId.charCodeAt(i)) >>> 0
+    }
+    const rng = seededRng(seed)
+    return Array.from({ length: config.particleCount }, () => ({
+      x:     rng() * w,
+      y:     rng() * h,
+      speed: 0.15 + rng() * 0.35,
+      size:  1.5 + rng() * 1.5,
+      alpha: 0.4 + rng() * 0.6,
+    }))
+  }
+
   function drawFloor(): void {
     if (!canvasEl) return
     const ctx = canvasEl.getContext('2d')
@@ -62,6 +126,8 @@
     const scale = FLOOR_RENDER_SCALE
     const tileW = FLOOR_TILE_SIZE * scale
     const tileH = FLOOR_TILE_SIZE * scale
+
+    const ambient = THEME_AMBIENT[floor.theme] ?? THEME_AMBIENT['sci-fi']
 
     // Clear
     ctx.clearRect(0, 0, canvasEl.width, canvasEl.height)
@@ -95,9 +161,19 @@
       const w = obj.gridW * tileW
       const h = obj.gridH * tileH
 
+      // Apply glow to interactive objects
+      if (obj.interactive) {
+        ctx.shadowColor = ambient.glowColor
+        ctx.shadowBlur = ambient.glowBlur
+      }
+
       // Object background fill
       ctx.fillStyle = obj.interactive ? OBJ_COLOR : 'rgba(60,60,80,0.3)'
       ctx.fillRect(x, y, w, h)
+
+      // Reset shadow after fill so the border stroke isn't double-blurred
+      ctx.shadowColor = 'transparent'
+      ctx.shadowBlur = 0
 
       // Object border
       if (obj.interactive) {
@@ -117,11 +193,75 @@
     }
   }
 
+  /**
+   * Draws the current particle positions on top of the floor content.
+   */
+  function drawParticles(ctx: CanvasRenderingContext2D, config: AmbientConfig): void {
+    ctx.save()
+    for (const p of particles) {
+      ctx.globalAlpha = p.alpha * 0.8
+      ctx.fillStyle = config.particleColor
+      ctx.beginPath()
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+      ctx.fill()
+    }
+    ctx.globalAlpha = 1
+    ctx.restore()
+  }
+
+  /**
+   * Animation loop: updates particle positions and redraws the canvas each frame.
+   */
+  function animLoop(timestamp: number): void {
+    if (!canvasEl) return
+    const ctx = canvasEl.getContext('2d')
+    if (!ctx) return
+
+    const delta = lastTimestamp === 0 ? 16 : timestamp - lastTimestamp
+    lastTimestamp = timestamp
+
+    const ambient = THEME_AMBIENT[floor.theme] ?? THEME_AMBIENT['sci-fi']
+    const h = canvasEl.height
+
+    // Update particle positions
+    for (const p of particles) {
+      p.y -= p.speed * delta * 0.06
+      if (p.y < -p.size) {
+        p.y = h + p.size
+      }
+    }
+
+    // Redraw floor then overlay particles
+    drawFloor()
+    drawParticles(ctx, ambient)
+
+    animFrameId = requestAnimationFrame(animLoop)
+  }
+
   $effect(() => {
-    // Redraw whenever floor, tier, or mastered count changes
+    // Re-initialise particles whenever floor changes
     floor; upgradeTier; masteredCount;
-    // Use requestAnimationFrame to ensure canvas is mounted
-    requestAnimationFrame(() => drawFloor())
+
+    if (!canvasEl) return
+
+    const ambient = THEME_AMBIENT[floor.theme] ?? THEME_AMBIENT['sci-fi']
+    particles = initParticles(floor.id, ambient, canvasEl.width, canvasEl.height)
+    lastTimestamp = 0
+
+    // Cancel any existing animation loop before starting a new one
+    if (animFrameId !== null) {
+      cancelAnimationFrame(animFrameId)
+      animFrameId = null
+    }
+
+    animFrameId = requestAnimationFrame(animLoop)
+
+    return () => {
+      if (animFrameId !== null) {
+        cancelAnimationFrame(animFrameId)
+        animFrameId = null
+      }
+    }
   })
 
   function handleClick(event: MouseEvent): void {
