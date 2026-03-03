@@ -43,6 +43,7 @@
   import StreakPanel from './ui/components/StreakPanel.svelte'
   import Farm from './ui/components/Farm.svelte'
   import Settings from './ui/components/Settings.svelte'
+  import GaiaReport from './ui/components/GaiaReport.svelte'
   import MiniMap from './ui/components/MiniMap.svelte'
   import RelicPickupOverlay from './ui/components/RelicPickupOverlay.svelte'
   import ResumeDiveModal from './ui/components/ResumeDiveModal.svelte'
@@ -511,6 +512,9 @@
 
   {:else if $currentScreen === 'settings'}
     <Settings onBack={handleBackFromSettings} />
+
+  {:else if $currentScreen === 'gaiaReport'}
+    <GaiaReport onBack={() => currentScreen.set('base')} />
 
   {:else if $currentScreen === 'sacrifice'}
     <div class="sacrifice-screen">

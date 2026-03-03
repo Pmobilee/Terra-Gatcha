@@ -6,6 +6,8 @@
   import { currentFloorIndex } from '../stores/gameState'
   import FloorCanvas from './FloorCanvas.svelte'
   import FloorIndicator from './FloorIndicator.svelte'
+  import FloorUpgradePanel from './FloorUpgradePanel.svelte'
+  import { upgradeFloor } from '../stores/playerData'
   import type { Fact } from '../../data/types'
 
   interface Props {
@@ -111,6 +113,14 @@
     }
   }
 
+  // Upgrade panel state
+  let showUpgradePanel = $state(false)
+
+  function handleUpgrade(floorId: string, targetTier: FloorUpgradeTier): void {
+    upgradeFloor(floorId, targetTier)
+    showUpgradePanel = false
+  }
+
   // Calculate translateY for slide animation
   const slideOffset = $derived(-floorIndex * 100)
 </script>
@@ -130,7 +140,17 @@
       <span class="res">💠 {$playerSave.minerals.crystal}</span>
       <span class="res">🫧 {$playerSave.oxygen} O₂</span>
     {/if}
+    <button class="upgrade-floor-btn" onclick={() => { showUpgradePanel = true }} aria-label="Upgrade current floor">⬆</button>
   </div>
+
+  {#if showUpgradePanel}
+    <FloorUpgradePanel
+      floorId={unlockedFloors[floorIndex]?.id ?? 'starter'}
+      currentTier={(floorTiers[unlockedFloors[floorIndex]?.id ?? 'starter'] ?? 0) as FloorUpgradeTier}
+      onClose={() => { showUpgradePanel = false }}
+      onUpgrade={handleUpgrade}
+    />
+  {/if}
 
   <!-- Floor viewport -->
   <div class="floor-viewport">
@@ -186,6 +206,24 @@
 
   .res {
     white-space: nowrap;
+  }
+
+  .upgrade-floor-btn {
+    background: #4ecca3;
+    color: #0a0a1a;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    padding: 4px 8px;
+    cursor: pointer;
+    min-height: 28px;
+    min-width: 32px;
+    margin-left: auto;
+  }
+
+  .upgrade-floor-btn:hover {
+    background: #6eddb8;
   }
 
   .floor-viewport {

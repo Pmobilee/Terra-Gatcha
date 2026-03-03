@@ -547,3 +547,64 @@ export const playerCompanionStates = writable<CompanionState[]>(
     unlocked: c.id === 'comp_borebot', // Borebot unlocked by default
   }))
 )
+
+import type { FloorUpgradeTier } from '../../data/hubLayout'
+import { getUpgradeDef, canUpgrade } from '../../data/hubUpgrades'
+
+/**
+ * Upgrades a hub floor to the next tier, spending resources.
+ * Returns true on success.
+ *
+ * @param floorId - The hub floor identifier.
+ * @param targetTier - The tier to upgrade to.
+ */
+export function upgradeFloor(floorId: string, targetTier: FloorUpgradeTier): boolean {
+  const current = get(playerSave)
+  if (!current) return false
+
+  const check = canUpgrade(floorId, targetTier, current)
+  if (!check.allowed) return false
+
+  const def = getUpgradeDef(floorId, targetTier)!
+
+  playerSave.update(s => {
+    if (!s) return s
+    const updatedMinerals = { ...s.minerals, dust: s.minerals.dust - def.dustCost }
+    const updatedPremium = { ...s.premiumMaterials }
+    for (const { materialId, count } of def.premiumCosts) {
+      updatedPremium[materialId] = Math.max(0, (updatedPremium[materialId] ?? 0) - count)
+    }
+    return {
+      ...s,
+      minerals: updatedMinerals,
+      premiumMaterials: updatedPremium,
+      hubState: {
+        ...s.hubState,
+        floorTiers: { ...s.hubState.floorTiers, [floorId]: targetTier },
+      },
+    }
+  })
+
+  persistPlayer()
+  return true
+}
+
+/**
+ * Sets the active wallpaper for a hub floor.
+ *
+ * @param floorId - The hub floor identifier.
+ * @param wallpaperId - The wallpaper ID to apply, or null to clear.
+ */
+export function setFloorWallpaper(floorId: string, wallpaperId: string | null): void {
+  playerSave.update(s => {
+    if (!s) return s
+    return {
+      ...s,
+      hubState: {
+        ...s.hubState,
+        activeWallpapers: { ...s.hubState.activeWallpapers, [floorId]: wallpaperId },
+      },
+    }
+  })
+  persistPlayer()
+}

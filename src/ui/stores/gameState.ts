@@ -114,6 +114,7 @@ export type Screen =
   | 'farm'
   | 'streakPanel'
   | 'settings'
+  | 'gaiaReport'
 
 export const currentScreen = writable<Screen>('mainMenu')
 
