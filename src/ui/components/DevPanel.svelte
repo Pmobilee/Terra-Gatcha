@@ -14,9 +14,13 @@
     playerSave,
   } from '../stores/playerData'
   import type { FossilState } from '../../data/types'
+  import { ALL_BIOMES, type BiomeId } from '../../data/biomes'
 
   // ─── panel open/close ───────────────────────────────────────
   let open = $state(false)
+
+  // ─── biome selector ──────────────────────────────────────────
+  let forcedBiomeId = $state<BiomeId | ''>('')
 
   function toggle(): void {
     open = !open
@@ -249,9 +253,10 @@
       playerSave.update(s => s ? { ...s, oxygen: 1 } : s)
       persistPlayer()
     }
-    // Start MineScene at the target layer (0-indexed)
+    // Start MineScene at the target layer (0-indexed), optionally with a forced biome
     const g = gm.getGame()
     if (g) {
+      const biomeOverride = forcedBiomeId ? ALL_BIOMES.find(b => b.id === forcedBiomeId) : undefined
       g.scene.stop('MineScene')
       g.scene.start('MineScene', {
         seed: Date.now(),
@@ -262,6 +267,7 @@
         inventory: [],
         blocksMinedThisRun: 0,
         artifactsFound: [],
+        ...(biomeOverride ? { biome: biomeOverride } : {}),
       })
       currentScreen.set('mining')
     }
@@ -384,6 +390,8 @@
             />
             <button class="btn-give" type="button" onclick={giveCustomAmount}>Give</button>
           </div>
+          <!-- Force Quiz (Phase 8.8) -->
+          <button class="btn-give btn-wide" data-testid="dev-force-quiz" type="button" onclick={() => { gm.forceQuiz?.() }}>Force Quiz</button>
           <!-- Consumables (Phase 8.6) -->
           <div style="margin-top:6px">
             <span style="font-size:0.72rem;opacity:0.65">Consumables (dive only):</span>
@@ -507,6 +515,21 @@
                   if (val >= 1 && val <= 20) jumpToLayer(val)
                 }}
               />
+            </label>
+          </div>
+          <div>
+            <label style="font-size:11px;color:#aaa;">Force Biome:
+              <select
+                bind:value={forcedBiomeId}
+                class="custom-select"
+                style="margin-left:6px;max-width:160px;"
+                aria-label="Force biome override"
+              >
+                <option value="">(random / tier)</option>
+                {#each ALL_BIOMES as b (b.id)}
+                  <option value={b.id}>[{b.tier}] {b.label}</option>
+                {/each}
+              </select>
             </label>
           </div>
           <div class="btn-grid">

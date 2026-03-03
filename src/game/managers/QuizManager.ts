@@ -5,7 +5,15 @@ import {
   gaiaMessage,
 } from '../../ui/stores/gameState'
 import { playerSave, updateReviewState } from '../../ui/stores/playerData'
-import { BALANCE } from '../../data/balance'
+import {
+  BALANCE,
+  QUIZ_BASE_RATE,
+  QUIZ_COOLDOWN_BLOCKS,
+  QUIZ_FIRST_TRIGGER_AFTER_BLOCKS,
+  QUIZ_FATIGUE_PENALTY_PER_QUIZ,
+  QUIZ_FATIGUE_THRESHOLD,
+  QUIZ_MIN_RATE,
+} from '../../data/balance'
 import type { MineScene } from '../scenes/MineScene'
 
 /**
@@ -25,12 +33,86 @@ export class QuizManager {
   /** Fact IDs already used in the current artifact appraisal flow (avoids repeats). */
   artifactQuizUsedFactIds = new Set<string>()
 
+  // =========================================================
+  // Quiz rate tracking fields (DD-V2-060)
+  // =========================================================
+
+  private blocksSinceLastQuiz = 0
+  private totalBlocksThisDive = 0
+  private quizzesThisDive = 0
+  private failureCounts: Map<string, number> = new Map()
+
   constructor(
     getMineScene: () => MineScene | null,
     randomGaia: (lines: string[], trigger?: string) => void,
   ) {
     this.getMineScene = getMineScene
     this.randomGaia = randomGaia
+  }
+
+  // =========================================================
+  // Quiz rate tracking (DD-V2-060)
+  // =========================================================
+
+  /**
+   * Call after every block is mined. Returns true if a quiz should trigger.
+   * Enforces cooldown, fatigue, and first-quiz-after-10 rules. (DD-V2-060)
+   */
+  shouldTriggerQuiz(): boolean {
+    this.totalBlocksThisDive++
+    this.blocksSinceLastQuiz++
+
+    if (this.totalBlocksThisDive < QUIZ_FIRST_TRIGGER_AFTER_BLOCKS) return false
+    if (this.blocksSinceLastQuiz < QUIZ_COOLDOWN_BLOCKS) return false
+
+    const excessQuizzes = Math.max(0, this.quizzesThisDive - QUIZ_FATIGUE_THRESHOLD)
+    const effectiveRate = Math.max(
+      QUIZ_MIN_RATE,
+      QUIZ_BASE_RATE - (excessQuizzes * QUIZ_FATIGUE_PENALTY_PER_QUIZ),
+    )
+
+    if (Math.random() < effectiveRate) {
+      this.blocksSinceLastQuiz = 0
+      this.quizzesThisDive++
+      return true
+    }
+    return false
+  }
+
+  /** Reset quiz rate tracking for a new dive. */
+  resetForDive(): void {
+    this.blocksSinceLastQuiz = 0
+    this.totalBlocksThisDive = 0
+    this.quizzesThisDive = 0
+    this.failureCounts.clear()
+  }
+
+  /**
+   * Tracks failure escalation for repeated wrong answers on the same fact.
+   * 1-2 wrong: show mnemonic, 3-4: alternate explanation, 5+: suggest study session.
+   * (DD-V2-060)
+   *
+   * @param factId - The fact that was answered incorrectly.
+   */
+  trackFailureEscalation(factId: string): void {
+    const count = (this.failureCounts.get(factId) ?? 0) + 1
+    this.failureCounts.set(factId, count)
+
+    if (count <= 2) {
+      this.randomGaia([
+        "Let me help you remember this one...",
+        "Here's a way to think about it...",
+      ], 'quiz_failure_mild')
+    } else if (count <= 4) {
+      this.randomGaia([
+        "This one keeps tripping you up. Try a different angle.",
+        "Alternate perspective might help here.",
+      ], 'quiz_failure_moderate')
+    } else {
+      this.randomGaia([
+        "This one is proving difficult. Consider a study session in the Dome — I will focus on it with you.",
+      ], 'quiz_failure_severe')
+    }
   }
 
   // =========================================================

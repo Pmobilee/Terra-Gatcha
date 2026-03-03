@@ -39,6 +39,7 @@ import {
   companionBadgeFlash,
   activeConsumables,
   shieldActive,
+  currentBiomeId,
 } from '../ui/stores/gameState'
 import {
   playerSave,
@@ -94,6 +95,8 @@ export class GameManager {
   private fossilRng: () => number = Math.random
   /** Companion effect active for the current dive (null if no companion equipped). */
   private companionEffect: CompanionEffect | null = null
+  /** Whether O2 drain is paused (during quiz overlays). (DD-V2-085) */
+  private o2Paused = false
 
   // ---- Sub-managers (initialized lazily in boot()) ----
   private gaiaManager!: GaiaManager
@@ -164,6 +167,9 @@ export class GameManager {
     }
 
     this.game = new Phaser.Game(config)
+    // Store adaptive quiz rate checker in game registry so MineScene can use it
+    // without a circular import. (DD-V2-060)
+    this.game.registry.set('shouldTriggerRandomQuiz', () => this.quizManager.shouldTriggerQuiz())
     this.setupEventBridge()
 
     // Unlock audio on first user gesture (click/tap)
@@ -734,6 +740,7 @@ export class GameManager {
       nextBiome = pickBiome(biomeRng, nextLayer)
     }
     currentBiomeStore.set(nextBiome.name)
+    currentBiomeId.set(nextBiome.id)
 
     // GAIA descent quips — include a biome greeting.
     this.triggerGaia('mineEntry')
@@ -902,6 +909,8 @@ export class GameManager {
     shieldActive.set(false)
     this.runRelics = []
     this.maxDepthThisRun = 0
+    this.o2Paused = false
+    this.quizManager.resetForDive()
     this.gaiaDepthMilestones.clear()
     this.gaiaManager.gaiaLowO2Warned = false
     this.currentLayer = 0
@@ -915,6 +924,7 @@ export class GameManager {
     this.biomeSequence = generateBiomeSequence(biomeRng, BALANCE.MAX_LAYERS)
     const layer0Biome = this.biomeSequence[0]
     currentBiomeStore.set(layer0Biome.name)
+    currentBiomeId.set(layer0Biome.id)
 
     // Start the MineScene (pass crafted bonuses so MineScene can apply them)
     this.game.scene.start('MineScene', {
@@ -1100,6 +1110,34 @@ export class GameManager {
   /** Handle a layer entrance quiz answer */
   handleLayerQuizAnswer(correct: boolean): void {
     this.quizManager.handleLayerQuizAnswer(correct)
+  }
+
+  // =========================================================
+  // O2 pause during overlays (DD-V2-085)
+  // =========================================================
+
+  /** Pause O2 drain (called when a quiz overlay opens). (DD-V2-085) */
+  pauseO2(): void {
+    this.o2Paused = true
+  }
+
+  /** Resume O2 drain (called when a quiz overlay closes). */
+  resumeO2(): void {
+    this.o2Paused = false
+  }
+
+  /** Whether O2 drain is currently paused. */
+  get isO2Paused(): boolean {
+    return this.o2Paused
+  }
+
+  /**
+   * Force a random quiz to trigger immediately (dev/testing helper).
+   * No-ops if not in an active dive or game is not running.
+   */
+  forceQuiz(): void {
+    if (!this.game) return
+    this.game.events.emit('random-quiz')
   }
 
   // =========================================================

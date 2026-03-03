@@ -277,6 +277,16 @@ export function getLayerGridSize(layer: number): [number, number] {
   return [40, 40];
 }
 
+// ---- Quiz Rate System (DD-V2-060, DD-V2-085) ----
+export const QUIZ_BASE_RATE = 0.08
+export const QUIZ_COOLDOWN_BLOCKS = 15
+export const QUIZ_FIRST_TRIGGER_AFTER_BLOCKS = 10
+export const QUIZ_FATIGUE_PENALTY_PER_QUIZ = 0.02
+export const QUIZ_FATIGUE_THRESHOLD = 5
+export const QUIZ_MIN_RATE = 0.02
+export const QUIZ_DISCOVERY_O2_REWARD = 5
+export const QUIZ_REVIEW_O2_PENALTY = 8
+
 // ---- Consumable Drop Chance (DD-V2-064) ----
 export const CONSUMABLE_DROP_CHANCE = 0.04  // 4% chance per block broken
 

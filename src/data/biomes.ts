@@ -1,124 +1,557 @@
 import { BlockType } from './types'
 
+// ─── Tier and ID types ────────────────────────────────────────────────────────
+
+/** Depth tier that determines which layers a biome can appear in. */
+export type BiomeTier = 'shallow' | 'mid' | 'deep' | 'extreme' | 'anomaly'
+
+/** All valid biome identifiers. */
+export type BiomeId =
+  | 'limestone_caves' | 'clay_basin' | 'iron_seam' | 'root_tangle' | 'peat_bog'
+  | 'basalt_maze' | 'salt_flats' | 'coal_veins' | 'granite_canyon' | 'sulfur_springs'
+  | 'obsidian_rift' | 'magma_shelf' | 'crystal_geode' | 'fossil_layer' | 'quartz_halls'
+  | 'primordial_mantle' | 'iron_core_fringe' | 'pressure_dome' | 'deep_biolume' | 'tectonic_scar'
+  | 'temporal_rift' | 'alien_intrusion' | 'bioluminescent' | 'void_pocket' | 'echo_chamber'
+
+// ─── Hazard and mineral weight sub-types ─────────────────────────────────────
+
+/** Per-biome hazard density configuration. */
+export interface BiomeHazardWeights {
+  /** Multiplier applied to BALANCE.LAVA_DENSITY */
+  lavaBlockDensity: number
+  /** Multiplier applied to BALANCE.GAS_POCKET_DENSITY */
+  gasPocketDensity: number
+  /** Multiplier applied to BALANCE.UNSTABLE_GROUND_DENSITY */
+  unstableGroundChance: number
+}
+
+/** Per-biome mineral rarity and quantity modifiers. */
+export interface BiomeMineralWeights {
+  dustMultiplier: number
+  shardMultiplier: number
+  crystalMultiplier: number
+  geodeMultiplier: number
+  essenceMultiplier: number
+  /** Bonus probability of spawning a rare mineral node */
+  rareNodeBonus: number
+}
+
+// ─── Unified Biome interface ──────────────────────────────────────────────────
+
 /**
- * Defines the visual and procedural character of a mine layer.
+ * Full biome descriptor. Contains both the new Phase 8.7 fields and backward-compatible
+ * aliases used by existing consumers (MineGenerator, MineScene, ParticleSystem).
  */
 export interface Biome {
-  id: string
+  /** Unique biome identifier */
+  id: BiomeId
+  /** Display label shown in HUD (primary field) */
+  label: string
+  /** Alias for label — kept for backward compatibility with all consumers */
   name: string
+  /** Depth tier that governs when this biome can appear */
+  tier: BiomeTier
+  /** Inclusive [min, max] layer range (1-indexed) where this biome can occur */
+  layerRange: [number, number]
+  /** For anomaly biomes: independent per-layer chance of overriding the tier biome */
+  anomalyChance?: number
+  /** Short description shown in GAIA toast on biome entry */
   description: string
-  /** Base background color for empty cells */
+  /** GAIA commentary on entering this biome (DD-V2-057) */
+  gaiaEntryComment: string
+  /** Primary ambient background color for empty cells (new primary field) */
+  ambientColor: number
+  /** Alias for ambientColor — kept for backward compatibility with MineScene */
   bgColor: number
-  /** Color overrides for block types (merged with BLOCK_COLORS in MineScene) */
+  /** Color overrides per block type — merged with BLOCK_COLORS in MineScene */
   blockColorOverrides: Partial<Record<BlockType, number>>
-  /** Multipliers for block distribution weights */
+  /** Multipliers for block distribution weights (used by MineGenerator.getDepthWeights) */
   blockWeights: {
     dirt: number
     softRock: number
     stone: number
     hardRock: number
   }
-  /** Multipliers applied to hazard densities (LAVA_DENSITY, GAS_POCKET_DENSITY, UNSTABLE_GROUND_DENSITY) */
+  /** Hazard density multipliers — maps to the new hazardWeights for backward compat */
   hazardMultipliers: {
     lava: number
     gas: number
     unstable: number
   }
-  /** Multiplier applied to the mineral node placement count */
+  /** New-style named hazard weights (DD-V2-073) */
+  hazardWeights: BiomeHazardWeights
+  /** Overall mineral node count multiplier (legacy compat — max of all mineral weights) */
   mineralMultiplier: number
-  /** Fog tint color used for ring-1 and ring-2 hidden block backgrounds */
+  /** Per-mineral-tier multipliers (DD-V2-074) */
+  mineralWeights: BiomeMineralWeights
+  /** Fog tint applied to unexplored/hidden cells */
   fogTint: number
+  /** Tile theme key for Phase 9 per-biome tile sets */
+  tileTheme: string
+}
+
+/** Alias for Biome — used in phase doc spec references. */
+export type BiomeDefinition = Biome
+
+// ─── Helper: derive compatible fields from primary fields ─────────────────────
+
+/**
+ * Returns block weights tuned to the given tier.
+ * Shallow biomes have more dirt; extreme biomes have more hardRock.
+ */
+function blockWeightsForTier(tier: BiomeTier): Biome['blockWeights'] {
+  switch (tier) {
+    case 'shallow':  return { dirt: 1.4, softRock: 1.1, stone: 0.8, hardRock: 0.2 }
+    case 'mid':      return { dirt: 0.9, softRock: 1.0, stone: 1.2, hardRock: 0.6 }
+    case 'deep':     return { dirt: 0.4, softRock: 0.8, stone: 1.3, hardRock: 1.0 }
+    case 'extreme':  return { dirt: 0.1, softRock: 0.4, stone: 1.1, hardRock: 1.8 }
+    case 'anomaly':  return { dirt: 0.8, softRock: 0.8, stone: 1.0, hardRock: 1.0 }
+  }
+}
+
+/** Darkens a hex color by ~30% to produce a fog tint. */
+function darkenColor(color: number): number {
+  const r = ((color >> 16) & 0xff)
+  const g = ((color >> 8)  & 0xff)
+  const b = ((color)       & 0xff)
+  return ((Math.floor(r * 0.55) << 16) | (Math.floor(g * 0.55) << 8) | Math.floor(b * 0.55))
+}
+
+interface BiomeInput {
+  id: BiomeId
+  label: string
+  tier: BiomeTier
+  layerRange: [number, number]
+  anomalyChance?: number
+  gaiaEntryComment: string
+  ambientColor: number
+  hazardWeights: BiomeHazardWeights
+  mineralWeights: BiomeMineralWeights
+  tileTheme: string
+  /** Override blockColorOverrides — defaults to {} */
+  blockColorOverrides?: Partial<Record<BlockType, number>>
+  /** Override blockWeights — defaults to tier-derived weights */
+  blockWeights?: Biome['blockWeights']
 }
 
 /**
- * All available biomes. The first entry (sedimentary) is the default/tutorial biome.
+ * Constructs a full Biome object from a compact spec, filling in all
+ * derived backward-compatibility fields automatically.
  */
-export const BIOMES: Biome[] = [
-  {
-    id: 'sedimentary',
-    name: 'Sedimentary Depths',
-    description: 'Ancient layers of compressed earth.',
-    bgColor: 0x111118,
-    blockColorOverrides: {},
-    blockWeights: { dirt: 1.0, softRock: 1.0, stone: 1.0, hardRock: 1.0 },
-    hazardMultipliers: { lava: 1.0, gas: 1.0, unstable: 1.0 },
-    mineralMultiplier: 1.0,
-    fogTint: 0x1a1a2e,
-  },
-  {
-    id: 'volcanic',
-    name: 'Volcanic Veins',
-    description: 'Heat radiates from the ancient magma flows.',
-    bgColor: 0x1a0a0a,
-    blockColorOverrides: {
-      [BlockType.Dirt]: 0x8B4513,
-      [BlockType.SoftRock]: 0x6B3410,
-      [BlockType.Stone]: 0x4a3030,
-      [BlockType.HardRock]: 0x3a2020,
+function makeBiome(input: BiomeInput): Biome {
+  const { hazardWeights, mineralWeights, ambientColor } = input
+  const bw = input.blockWeights ?? blockWeightsForTier(input.tier)
+  const maxMineral = Math.max(
+    mineralWeights.dustMultiplier,
+    mineralWeights.shardMultiplier,
+    mineralWeights.crystalMultiplier,
+    mineralWeights.geodeMultiplier,
+    mineralWeights.essenceMultiplier,
+    mineralWeights.rareNodeBonus,
+    0.1,  // floor so mineralMultiplier is never 0
+  )
+  return {
+    id: input.id,
+    label: input.label,
+    name: input.label,   // backward compat alias
+    tier: input.tier,
+    layerRange: input.layerRange,
+    ...(input.anomalyChance !== undefined ? { anomalyChance: input.anomalyChance } : {}),
+    description: input.gaiaEntryComment.split('.')[0] + '.',
+    gaiaEntryComment: input.gaiaEntryComment,
+    ambientColor,
+    bgColor: ambientColor,  // backward compat alias
+    blockColorOverrides: input.blockColorOverrides ?? {},
+    blockWeights: bw,
+    hazardMultipliers: {
+      lava:     hazardWeights.lavaBlockDensity,
+      gas:      hazardWeights.gasPocketDensity,
+      unstable: hazardWeights.unstableGroundChance,
     },
-    blockWeights: { dirt: 0.6, softRock: 0.8, stone: 1.2, hardRock: 1.4 },
-    hazardMultipliers: { lava: 2.5, gas: 0.5, unstable: 1.5 },
-    mineralMultiplier: 0.8,
-    fogTint: 0x2a1010,
-  },
-  {
-    id: 'crystalline',
-    name: 'Crystalline Caverns',
-    description: 'Prismatic minerals line every surface.',
-    bgColor: 0x0a0a1a,
-    blockColorOverrides: {
-      [BlockType.Dirt]: 0x3a4a6a,
-      [BlockType.SoftRock]: 0x4a5a7a,
-      [BlockType.Stone]: 0x5a6a8a,
-      [BlockType.HardRock]: 0x3a3a5a,
-    },
-    blockWeights: { dirt: 0.8, softRock: 1.0, stone: 1.3, hardRock: 0.9 },
-    hazardMultipliers: { lava: 0.3, gas: 1.5, unstable: 0.5 },
-    mineralMultiplier: 1.6,
-    fogTint: 0x10102a,
-  },
+    hazardWeights,
+    mineralMultiplier: maxMineral,
+    mineralWeights,
+    fogTint: darkenColor(ambientColor) || 0x0a0a14,
+    tileTheme: input.tileTheme,
+  }
+}
+
+// ─── 25 Biome definitions ─────────────────────────────────────────────────────
+
+/** All 25 biomes, organised by tier. */
+export const ALL_BIOMES: Biome[] = [
+
+  // ── Shallow (L1-5) ────────────────────────────────────────────────────────
+
+  makeBiome({
+    id: 'limestone_caves',
+    label: 'Limestone Caves',
+    tier: 'shallow',
+    layerRange: [1, 5],
+    gaiaEntryComment: 'Carbonate rock, formed from ancient marine sediments. You are walking on ocean floor.',
+    ambientColor: 0xd4c8a8,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0.1, unstableGroundChance: 0.05 },
+    mineralWeights: { dustMultiplier: 1.5, shardMultiplier: 0.5, crystalMultiplier: 0, geodeMultiplier: 0, essenceMultiplier: 0, rareNodeBonus: 0 },
+    tileTheme: 'limestone',
+  }),
+
+  makeBiome({
+    id: 'clay_basin',
+    label: 'Clay Basin',
+    tier: 'shallow',
+    layerRange: [1, 5],
+    gaiaEntryComment: 'Clay deposits indicate prolonged waterlogging. This region was once a shallow lake bed.',
+    ambientColor: 0xc4a882,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0, unstableGroundChance: 0.1 },
+    mineralWeights: { dustMultiplier: 2.0, shardMultiplier: 0, crystalMultiplier: 0, geodeMultiplier: 0, essenceMultiplier: 0, rareNodeBonus: 0 },
+    tileTheme: 'clay',
+  }),
+
+  makeBiome({
+    id: 'iron_seam',
+    label: 'Iron Seam',
+    tier: 'shallow',
+    layerRange: [1, 5],
+    gaiaEntryComment: 'Banded iron formations. Some of these ore veins are 2.4 billion years old.',
+    ambientColor: 0x8b5a2b,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0, unstableGroundChance: 0 },
+    mineralWeights: { dustMultiplier: 0.8, shardMultiplier: 1.8, crystalMultiplier: 0, geodeMultiplier: 0, essenceMultiplier: 0, rareNodeBonus: 1 },
+    tileTheme: 'iron',
+  }),
+
+  makeBiome({
+    id: 'root_tangle',
+    label: 'Root Tangle',
+    tier: 'shallow',
+    layerRange: [1, 5],
+    gaiaEntryComment: 'Root systems can penetrate up to 60 meters in extreme cases. These belong to trees that fell centuries ago.',
+    ambientColor: 0x4a7c3f,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0.2, unstableGroundChance: 0.15 },
+    mineralWeights: { dustMultiplier: 1.0, shardMultiplier: 0, crystalMultiplier: 0, geodeMultiplier: 0, essenceMultiplier: 0.5, rareNodeBonus: 0 },
+    tileTheme: 'roots',
+  }),
+
+  makeBiome({
+    id: 'peat_bog',
+    label: 'Peat Bog',
+    tier: 'shallow',
+    layerRange: [1, 5],
+    gaiaEntryComment: 'Peat bogs preserve organic matter for millennia. Bog bodies have been found here — intact, eerily so.',
+    ambientColor: 0x3d2b1f,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0.3, unstableGroundChance: 0.2 },
+    mineralWeights: { dustMultiplier: 1.2, shardMultiplier: 0, crystalMultiplier: 0, geodeMultiplier: 0, essenceMultiplier: 0.8, rareNodeBonus: 0 },
+    tileTheme: 'peat',
+  }),
+
+  // ── Mid (L6-10) ───────────────────────────────────────────────────────────
+
+  makeBiome({
+    id: 'basalt_maze',
+    label: 'Basalt Maze',
+    tier: 'mid',
+    layerRange: [6, 10],
+    gaiaEntryComment: 'Columnar basalt — lava that cooled and fractured into hexagonal prisms. Mathematics encoded in stone.',
+    ambientColor: 0x333344,
+    hazardWeights: { lavaBlockDensity: 0.3, gasPocketDensity: 0.1, unstableGroundChance: 0.05 },
+    mineralWeights: { dustMultiplier: 0.5, shardMultiplier: 1.5, crystalMultiplier: 0.5, geodeMultiplier: 0, essenceMultiplier: 0, rareNodeBonus: 0 },
+    tileTheme: 'basalt',
+  }),
+
+  makeBiome({
+    id: 'salt_flats',
+    label: 'Salt Flats',
+    tier: 'mid',
+    layerRange: [6, 10],
+    gaiaEntryComment: 'Halite. Evaporite deposits from ancient inland seas. These crystals have been here since the Permian.',
+    ambientColor: 0xe8e8e0,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0, unstableGroundChance: 0.1 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 2.0, crystalMultiplier: 0.3, geodeMultiplier: 0, essenceMultiplier: 0, rareNodeBonus: 2 },
+    tileTheme: 'salt',
+  }),
+
+  makeBiome({
+    id: 'coal_veins',
+    label: 'Coal Veins',
+    tier: 'mid',
+    layerRange: [6, 10],
+    gaiaEntryComment: 'Compressed Carboniferous forest. Every lump of coal is a tree that lived 300 million years ago.',
+    ambientColor: 0x1a1a1a,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0.5, unstableGroundChance: 0.1 },
+    mineralWeights: { dustMultiplier: 0.5, shardMultiplier: 0.5, crystalMultiplier: 0, geodeMultiplier: 0, essenceMultiplier: 1.5, rareNodeBonus: 0 },
+    tileTheme: 'coal',
+  }),
+
+  makeBiome({
+    id: 'granite_canyon',
+    label: 'Granite Canyon',
+    tier: 'mid',
+    layerRange: [6, 10],
+    gaiaEntryComment: 'Granite forms from slowly cooling magma deep in the crust. What you see took millions of years to reach this surface.',
+    ambientColor: 0x888080,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0, unstableGroundChance: 0 },
+    mineralWeights: { dustMultiplier: 0.3, shardMultiplier: 1.0, crystalMultiplier: 1.0, geodeMultiplier: 0.5, essenceMultiplier: 0, rareNodeBonus: 1 },
+    tileTheme: 'granite',
+  }),
+
+  makeBiome({
+    id: 'sulfur_springs',
+    label: 'Sulfur Springs',
+    tier: 'mid',
+    layerRange: [6, 10],
+    gaiaEntryComment: 'Hydrothermal vents. The chemosynthetic organisms here do not require sunlight. Life finds a way.',
+    ambientColor: 0xaaaa00,
+    hazardWeights: { lavaBlockDensity: 0.2, gasPocketDensity: 0.6, unstableGroundChance: 0.05 },
+    mineralWeights: { dustMultiplier: 0.5, shardMultiplier: 0.5, crystalMultiplier: 0, geodeMultiplier: 0, essenceMultiplier: 2.0, rareNodeBonus: 0 },
+    tileTheme: 'sulfur',
+  }),
+
+  // ── Deep (L11-15) ─────────────────────────────────────────────────────────
+
+  makeBiome({
+    id: 'obsidian_rift',
+    label: 'Obsidian Rift',
+    tier: 'deep',
+    layerRange: [11, 15],
+    gaiaEntryComment: 'Volcanic glass. Obsidian fractures with conchoidal edges sharp enough to outperform surgical steel.',
+    ambientColor: 0x110022,
+    hazardWeights: { lavaBlockDensity: 0.5, gasPocketDensity: 0.2, unstableGroundChance: 0.1 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 0.5, crystalMultiplier: 1.5, geodeMultiplier: 1.0, essenceMultiplier: 0, rareNodeBonus: 2 },
+    tileTheme: 'obsidian',
+  }),
+
+  makeBiome({
+    id: 'magma_shelf',
+    label: 'Magma Shelf',
+    tier: 'deep',
+    layerRange: [11, 15],
+    gaiaEntryComment: 'You are near the boundary between crust and upper mantle. The Mohorovičić discontinuity is close.',
+    ambientColor: 0xff3300,
+    hazardWeights: { lavaBlockDensity: 0.8, gasPocketDensity: 0.3, unstableGroundChance: 0.2 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 0, crystalMultiplier: 1.0, geodeMultiplier: 2.0, essenceMultiplier: 0.5, rareNodeBonus: 3 },
+    tileTheme: 'magma',
+  }),
+
+  makeBiome({
+    id: 'crystal_geode',
+    label: 'Crystal Geode',
+    tier: 'deep',
+    layerRange: [11, 15],
+    gaiaEntryComment: 'A geode cavity of this scale forms over millions of years through hydrothermal fluid deposition.',
+    ambientColor: 0xaaffff,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0, unstableGroundChance: 0 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 0, crystalMultiplier: 3.0, geodeMultiplier: 3.0, essenceMultiplier: 0, rareNodeBonus: 5 },
+    tileTheme: 'geode',
+  }),
+
+  makeBiome({
+    id: 'fossil_layer',
+    label: 'Fossil Layer',
+    tier: 'deep',
+    layerRange: [11, 15],
+    gaiaEntryComment: 'The density of preserved organisms here suggests a mass extinction boundary. Likely the K-Pg event.',
+    ambientColor: 0x887766,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0.1, unstableGroundChance: 0.05 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 0, crystalMultiplier: 0.5, geodeMultiplier: 0, essenceMultiplier: 2.0, rareNodeBonus: 2 },
+    tileTheme: 'fossil',
+  }),
+
+  makeBiome({
+    id: 'quartz_halls',
+    label: 'Quartz Halls',
+    tier: 'deep',
+    layerRange: [11, 15],
+    gaiaEntryComment: 'Pure quartz formations. Piezoelectric properties. Pressure applied here generates measurable current.',
+    ambientColor: 0xffffff,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0, unstableGroundChance: 0.05 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 1.0, crystalMultiplier: 2.5, geodeMultiplier: 1.5, essenceMultiplier: 0, rareNodeBonus: 3 },
+    tileTheme: 'quartz',
+  }),
+
+  // ── Extreme (L16-20) ──────────────────────────────────────────────────────
+
+  makeBiome({
+    id: 'primordial_mantle',
+    label: 'Primordial Mantle',
+    tier: 'extreme',
+    layerRange: [16, 20],
+    gaiaEntryComment: 'You are in the upper mantle. Peridotite. Olivine. Rocks that have never seen a surface.',
+    ambientColor: 0xff6600,
+    hazardWeights: { lavaBlockDensity: 1.0, gasPocketDensity: 0.5, unstableGroundChance: 0.3 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 0, crystalMultiplier: 1.0, geodeMultiplier: 2.0, essenceMultiplier: 3.0, rareNodeBonus: 5 },
+    tileTheme: 'mantle',
+  }),
+
+  makeBiome({
+    id: 'iron_core_fringe',
+    label: 'Iron Core Fringe',
+    tier: 'extreme',
+    layerRange: [16, 20],
+    gaiaEntryComment: 'The iron-nickel core begins approximately 2,890 km below the surface. You are metaphorically close.',
+    ambientColor: 0x882200,
+    hazardWeights: { lavaBlockDensity: 0.8, gasPocketDensity: 0, unstableGroundChance: 0.4 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 0, crystalMultiplier: 0, geodeMultiplier: 3.0, essenceMultiplier: 5.0, rareNodeBonus: 8 },
+    tileTheme: 'iron_core',
+  }),
+
+  makeBiome({
+    id: 'pressure_dome',
+    label: 'Pressure Dome',
+    tier: 'extreme',
+    layerRange: [16, 20],
+    gaiaEntryComment: 'Pressure here exceeds anything achievable in a surface laboratory. Diamond formation conditions.',
+    ambientColor: 0x004488,
+    hazardWeights: { lavaBlockDensity: 0.3, gasPocketDensity: 0.8, unstableGroundChance: 0.5 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 0, crystalMultiplier: 2.0, geodeMultiplier: 2.0, essenceMultiplier: 4.0, rareNodeBonus: 6 },
+    tileTheme: 'pressure',
+  }),
+
+  makeBiome({
+    id: 'deep_biolume',
+    label: 'Deep Biolume',
+    tier: 'extreme',
+    layerRange: [16, 20],
+    gaiaEntryComment: 'Bioluminescent extremophile colonies. These organisms have been evolving in complete darkness for geological timescales.',
+    ambientColor: 0x003366,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0.4, unstableGroundChance: 0.1 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 0, crystalMultiplier: 0, geodeMultiplier: 1.0, essenceMultiplier: 6.0, rareNodeBonus: 4 },
+    tileTheme: 'biolume',
+  }),
+
+  makeBiome({
+    id: 'tectonic_scar',
+    label: 'Tectonic Scar',
+    tier: 'extreme',
+    layerRange: [16, 20],
+    gaiaEntryComment: 'A fault boundary. Two tectonic plates once ground together here. The energy released was... considerable.',
+    ambientColor: 0x660000,
+    hazardWeights: { lavaBlockDensity: 0.6, gasPocketDensity: 0.6, unstableGroundChance: 0.6 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 0, crystalMultiplier: 0.5, geodeMultiplier: 1.5, essenceMultiplier: 5.0, rareNodeBonus: 7 },
+    tileTheme: 'tectonic',
+  }),
+
+  // ── Anomaly (L1-20) ───────────────────────────────────────────────────────
+
+  makeBiome({
+    id: 'temporal_rift',
+    label: 'Temporal Rift',
+    tier: 'anomaly',
+    layerRange: [1, 20],
+    anomalyChance: 0.12,
+    gaiaEntryComment: 'My sensors are reading inconsistent isotope signatures. The apparent age of this stratum changes with depth.',
+    ambientColor: 0x8800ff,
+    hazardWeights: { lavaBlockDensity: 0.3, gasPocketDensity: 0.3, unstableGroundChance: 0.3 },
+    mineralWeights: { dustMultiplier: 1.5, shardMultiplier: 1.5, crystalMultiplier: 1.5, geodeMultiplier: 1.5, essenceMultiplier: 1.5, rareNodeBonus: 3 },
+    tileTheme: 'rift',
+  }),
+
+  makeBiome({
+    id: 'alien_intrusion',
+    label: 'Alien Intrusion',
+    tier: 'anomaly',
+    layerRange: [1, 20],
+    anomalyChance: 0.10,
+    gaiaEntryComment: 'Non-terrestrial mineral composition detected. This rock did not form on Earth.',
+    ambientColor: 0x00ff88,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0.5, unstableGroundChance: 0.2 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 2.0, crystalMultiplier: 2.0, geodeMultiplier: 3.0, essenceMultiplier: 3.0, rareNodeBonus: 10 },
+    tileTheme: 'alien',
+  }),
+
+  makeBiome({
+    id: 'bioluminescent',
+    label: 'Bioluminescent',
+    tier: 'anomaly',
+    layerRange: [1, 20],
+    anomalyChance: 0.10,
+    gaiaEntryComment: 'These organisms emit light via luciferin oxidation. In the darkness below, they create their own day.',
+    ambientColor: 0x00ffcc,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0, unstableGroundChance: 0 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 0, crystalMultiplier: 0, geodeMultiplier: 0, essenceMultiplier: 10.0, rareNodeBonus: 5 },
+    tileTheme: 'biolume_anomaly',
+  }),
+
+  makeBiome({
+    id: 'void_pocket',
+    label: 'Void Pocket',
+    tier: 'anomaly',
+    layerRange: [1, 20],
+    anomalyChance: 0.08,
+    gaiaEntryComment: 'Acoustic monitoring returns no echoes. This cavity has been sealed for an estimated 400 million years.',
+    ambientColor: 0x000000,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0, unstableGroundChance: 0.8 },
+    mineralWeights: { dustMultiplier: 0, shardMultiplier: 0, crystalMultiplier: 0, geodeMultiplier: 5.0, essenceMultiplier: 5.0, rareNodeBonus: 12 },
+    tileTheme: 'void',
+  }),
+
+  makeBiome({
+    id: 'echo_chamber',
+    label: 'Echo Chamber',
+    tier: 'anomaly',
+    layerRange: [1, 20],
+    anomalyChance: 0.10,
+    gaiaEntryComment: 'The resonance frequency of this chamber matches human vocal range. Ancient cultures considered such spaces sacred.',
+    ambientColor: 0x666699,
+    hazardWeights: { lavaBlockDensity: 0, gasPocketDensity: 0.2, unstableGroundChance: 0.1 },
+    mineralWeights: { dustMultiplier: 1.0, shardMultiplier: 1.0, crystalMultiplier: 1.0, geodeMultiplier: 1.0, essenceMultiplier: 1.0, rareNodeBonus: 2 },
+    tileTheme: 'echo',
+  }),
 ]
 
-/** The default sedimentary biome — used when no explicit biome is specified. */
-export const DEFAULT_BIOME: Biome = BIOMES[0]
+// ─── Legacy export — kept for consumers that import BIOMES ────────────────────
+/** @deprecated Use ALL_BIOMES instead */
+export const BIOMES: Biome[] = ALL_BIOMES
+
+/** Biome look-up map keyed by BiomeId. */
+export const BIOME_REGISTRY: Record<BiomeId, Biome> = Object.fromEntries(
+  ALL_BIOMES.map(b => [b.id, b])
+) as Record<BiomeId, Biome>
+
+/** Default biome used when no explicit biome is specified (limestone_caves). */
+export const DEFAULT_BIOME: Biome = ALL_BIOMES.find(b => b.id === 'limestone_caves')!
+
+// ─── Anomaly override probability for selectBiome ────────────────────────────
+const ANOMALY_OVERRIDE_CHANCE = 0.12
+
+/**
+ * Selects a biome for the given 1-based layer index using seeded RNG.
+ *
+ * With probability ANOMALY_OVERRIDE_CHANCE the layer receives a random anomaly biome
+ * regardless of depth tier. Otherwise a biome matching the tier for the layer is chosen.
+ *
+ * @param layer - 1-based layer number (1 = shallowest)
+ * @param rng - Seeded random number generator
+ */
+export function selectBiome(layer: number, rng: () => number): Biome {
+  if (rng() < ANOMALY_OVERRIDE_CHANCE) {
+    const anomalyBiomes = ALL_BIOMES.filter(b => b.tier === 'anomaly')
+    return anomalyBiomes[Math.floor(rng() * anomalyBiomes.length)]
+  }
+  const tier: BiomeTier =
+    layer <= 5  ? 'shallow' :
+    layer <= 10 ? 'mid'     :
+    layer <= 15 ? 'deep'    : 'extreme'
+  const tierBiomes = ALL_BIOMES.filter(b => b.tier === tier)
+  return tierBiomes[Math.floor(rng() * tierBiomes.length)]
+}
 
 /**
  * Picks a biome for a given layer using seeded RNG.
- * Layer 0 is always sedimentary (tutorial-like intro). Deeper layers get random biomes.
+ * Converts the 0-based layer index to 1-based before delegating to selectBiome.
  *
  * @param rng - Seeded random number generator for deterministic results
  * @param layer - Zero-based layer index
  */
 export function pickBiome(rng: () => number, layer: number): Biome {
-  if (layer === 0) return BIOMES[0]
-  return BIOMES[Math.floor(rng() * BIOMES.length)]
+  return selectBiome(layer + 1, rng)
 }
 
 /**
- * Generates a shuffled biome sequence for an entire dive run using Fisher-Yates shuffle.
- * If maxLayers exceeds the number of available biomes, the sequence cycles with a fresh
- * shuffle for each additional pass so every layer still gets a deterministic biome.
+ * Generates a biome sequence for an entire dive run, one entry per layer.
  *
- * @param rng - Seeded RNG (from seededRandom) for fully deterministic results per dive
+ * @param rng - Seeded RNG for fully deterministic results per dive
  * @param maxLayers - Total number of layers in the run (typically BALANCE.MAX_LAYERS)
- * @returns Array of Biome objects, one per layer index
+ * @returns Array of Biome objects, one per layer index (0-based)
  */
 export function generateBiomeSequence(rng: () => number, maxLayers: number): Biome[] {
-  const sequence: Biome[] = []
-
-  while (sequence.length < maxLayers) {
-    // Clone the biome pool and Fisher-Yates shuffle it with the seeded RNG.
-    const pool = [...BIOMES]
-    for (let i = pool.length - 1; i > 0; i--) {
-      const j = Math.floor(rng() * (i + 1))
-      const temp = pool[i]
-      pool[i] = pool[j]
-      pool[j] = temp
-    }
-    // Append as many shuffled biomes as needed to fill the sequence.
-    const needed = maxLayers - sequence.length
-    sequence.push(...pool.slice(0, needed))
-  }
-
-  return sequence
+  return Array.from({ length: maxLayers }, (_, i) => selectBiome(i + 1, rng))
 }

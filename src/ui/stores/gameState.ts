@@ -4,6 +4,7 @@ import type { RelicSynergy } from '../../data/relics'
 import type { CompanionEffect } from '../../data/fossils'
 import { getO2DepthMultiplier } from '../../data/balance'
 import type { ConsumableId } from '../../data/consumables'
+import type { BiomeId } from '../../data/biomes'
 
 export interface ConsumableSlot {
   id: ConsumableId
@@ -128,6 +129,9 @@ export const o2DepthMultiplier = derived(currentLayer, (layer) =>
 
 /** Display name of the active biome for the current mine layer (empty string while at base). */
 export const currentBiome = writable<string>('')
+
+/** Biome ID of the active biome for the current mine layer (null while at base). */
+export const currentBiomeId = writable<BiomeId | null>(null)
 export const inventory = writable<InventorySlot[]>([])
 
 // Quiz overlay state

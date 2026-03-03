@@ -269,104 +269,117 @@ export class ParticleSystem {
     const texMedium = PARTICLE_TEX_PREFIX + '3'
     this.ensureTexture(texMedium, 3)
 
-    // Each biome adds its own set of emitters
-    switch (biome.id) {
-      case 'volcanic': {
-        // Embers rising from bottom of world — fast, upward, warm red-orange
-        const embers = this.scene.add.particles(0, worldHeight, texSmall, {
-          color: [0xff4500, 0xff6a00, 0xffaa00],
-          lifespan: { min: 1000, max: 2200 },
-          speed: { min: 15, max: 50 },
-          angle: { min: 240, max: 300 }, // upward spread
-          scale: { start: 0.6, end: 0 },
-          alpha: { start: 0.9, end: 0 },
-          quantity: 1,
-          frequency: 80,
-          emitZone: {
-            type: 'random',
-            source: new Phaser.Geom.Rectangle(0, 0, worldWidth, 20),
-          } as Phaser.Types.GameObjects.Particles.ParticleEmitterRandomZoneConfig,
-        })
-        embers.setDepth(50)
-        this.ambientEmitters.push(embers)
+    // Map biome properties to particle effect categories.
+    // Phase 9 will expand this to per-biome particle sets.
+    // For now: lava-heavy biomes → ember effects; crystal biomes → sparkles; all others → dust.
+    const isLavaBiome = biome.hazardWeights.lavaBlockDensity > 0.3
+    const isCrystalBiome = biome.mineralWeights.crystalMultiplier >= 1.5 || biome.mineralWeights.geodeMultiplier >= 1.5
+    const isDeepOrExtreme = biome.tier === 'deep' || biome.tier === 'extreme'
 
-        // Hot gas shimmer — subtle, quick, scattered
-        const shimmer = this.scene.add.particles(0, 0, texSmall, {
-          color: [0xff2200, 0xff7722],
-          lifespan: { min: 500, max: 900 },
-          speed: { min: 5, max: 20 },
-          scale: { start: 0.4, end: 0 },
-          alpha: { start: 0.4, end: 0 },
-          quantity: 1,
-          frequency: 120,
-          emitZone: {
-            type: 'random',
-            source: new Phaser.Geom.Rectangle(0, 0, worldWidth, worldHeight),
-          } as Phaser.Types.GameObjects.Particles.ParticleEmitterRandomZoneConfig,
-        })
-        shimmer.setDepth(50)
-        this.ambientEmitters.push(shimmer)
-        break
-      }
+    if (isLavaBiome) {
+      // Embers rising from bottom of world — fast, upward, warm red-orange
+      const embers = this.scene.add.particles(0, worldHeight, texSmall, {
+        color: [0xff4500, 0xff6a00, 0xffaa00],
+        lifespan: { min: 1000, max: 2200 },
+        speed: { min: 15, max: 50 },
+        angle: { min: 240, max: 300 }, // upward spread
+        scale: { start: 0.6, end: 0 },
+        alpha: { start: 0.9, end: 0 },
+        quantity: 1,
+        frequency: 80,
+        emitZone: {
+          type: 'random',
+          source: new Phaser.Geom.Rectangle(0, 0, worldWidth, 20),
+        } as Phaser.Types.GameObjects.Particles.ParticleEmitterRandomZoneConfig,
+      })
+      embers.setDepth(50)
+      this.ambientEmitters.push(embers)
 
-      case 'crystalline': {
-        // Crystal sparkles — slow drift, blue/cyan/white tints
-        const sparkles = this.scene.add.particles(0, 0, texSmall, {
-          color: [0x88eeff, 0x44ccff, 0xffffff, 0xaaffdd],
-          lifespan: { min: 1500, max: 3500 },
-          speed: { min: 3, max: 18 },
-          scale: { start: 0.5, end: 0 },
-          alpha: { start: 0.8, end: 0 },
-          quantity: 1,
-          frequency: 60,
-          emitZone: {
-            type: 'random',
-            source: new Phaser.Geom.Rectangle(0, 0, worldWidth, worldHeight),
-          } as Phaser.Types.GameObjects.Particles.ParticleEmitterRandomZoneConfig,
-        })
-        sparkles.setDepth(50)
-        this.ambientEmitters.push(sparkles)
+      // Hot gas shimmer — subtle, quick, scattered
+      const shimmer = this.scene.add.particles(0, 0, texSmall, {
+        color: [0xff2200, 0xff7722],
+        lifespan: { min: 500, max: 900 },
+        speed: { min: 5, max: 20 },
+        scale: { start: 0.4, end: 0 },
+        alpha: { start: 0.4, end: 0 },
+        quantity: 1,
+        frequency: 120,
+        emitZone: {
+          type: 'random',
+          source: new Phaser.Geom.Rectangle(0, 0, worldWidth, worldHeight),
+        } as Phaser.Types.GameObjects.Particles.ParticleEmitterRandomZoneConfig,
+      })
+      shimmer.setDepth(50)
+      this.ambientEmitters.push(shimmer)
+    } else if (isCrystalBiome) {
+      // Crystal sparkles — slow drift, blue/cyan/white tints
+      const sparkles = this.scene.add.particles(0, 0, texSmall, {
+        color: [0x88eeff, 0x44ccff, 0xffffff, 0xaaffdd],
+        lifespan: { min: 1500, max: 3500 },
+        speed: { min: 3, max: 18 },
+        scale: { start: 0.5, end: 0 },
+        alpha: { start: 0.8, end: 0 },
+        quantity: 1,
+        frequency: 60,
+        emitZone: {
+          type: 'random',
+          source: new Phaser.Geom.Rectangle(0, 0, worldWidth, worldHeight),
+        } as Phaser.Types.GameObjects.Particles.ParticleEmitterRandomZoneConfig,
+      })
+      sparkles.setDepth(50)
+      this.ambientEmitters.push(sparkles)
 
-        // Occasional bright flash — rare, bigger, pure white
-        const flashes = this.scene.add.particles(0, 0, texMedium, {
-          color: [0xffffff],
-          lifespan: { min: 200, max: 500 },
-          speed: { min: 0, max: 5 },
-          scale: { start: 1.2, end: 0 },
-          alpha: { start: 1, end: 0 },
-          quantity: 1,
-          frequency: 400,
-          emitZone: {
-            type: 'random',
-            source: new Phaser.Geom.Rectangle(0, 0, worldWidth, worldHeight),
-          } as Phaser.Types.GameObjects.Particles.ParticleEmitterRandomZoneConfig,
-        })
-        flashes.setDepth(51)
-        this.ambientEmitters.push(flashes)
-        break
-      }
-
-      case 'sedimentary':
-      default: {
-        // Falling dust particles — slow, brownish
-        const dust = this.scene.add.particles(0, 0, texSmall, {
-          color: [0x887766, 0x998877, 0x776655],
-          lifespan: { min: 2000, max: 4000 },
-          speed: { min: 4, max: 12 },
-          angle: { min: 80, max: 100 }, // mostly downward
-          scale: { start: 0.4, end: 0 },
-          alpha: { start: 0.5, end: 0 },
-          quantity: 1,
-          frequency: 150,
-          emitZone: {
-            type: 'random',
-            source: new Phaser.Geom.Rectangle(0, 0, worldWidth, 20),
-          } as Phaser.Types.GameObjects.Particles.ParticleEmitterRandomZoneConfig,
-        })
-        dust.setDepth(50)
-        this.ambientEmitters.push(dust)
-        break
-      }
+      // Occasional bright flash — rare, bigger, pure white
+      const flashes = this.scene.add.particles(0, 0, texMedium, {
+        color: [0xffffff],
+        lifespan: { min: 200, max: 500 },
+        speed: { min: 0, max: 5 },
+        scale: { start: 1.2, end: 0 },
+        alpha: { start: 1, end: 0 },
+        quantity: 1,
+        frequency: 400,
+        emitZone: {
+          type: 'random',
+          source: new Phaser.Geom.Rectangle(0, 0, worldWidth, worldHeight),
+        } as Phaser.Types.GameObjects.Particles.ParticleEmitterRandomZoneConfig,
+      })
+      flashes.setDepth(51)
+      this.ambientEmitters.push(flashes)
+    } else if (isDeepOrExtreme) {
+      // Generic deep/extreme particles — slow drifting dark motes
+      const motes = this.scene.add.particles(0, 0, texSmall, {
+        color: [0x334455, 0x445566, 0x223344],
+        lifespan: { min: 2500, max: 5000 },
+        speed: { min: 2, max: 8 },
+        scale: { start: 0.4, end: 0 },
+        alpha: { start: 0.4, end: 0 },
+        quantity: 1,
+        frequency: 200,
+        emitZone: {
+          type: 'random',
+          source: new Phaser.Geom.Rectangle(0, 0, worldWidth, worldHeight),
+        } as Phaser.Types.GameObjects.Particles.ParticleEmitterRandomZoneConfig,
+      })
+      motes.setDepth(50)
+      this.ambientEmitters.push(motes)
+    } else {
+      // Default: falling dust particles — slow, brownish
+      const dust = this.scene.add.particles(0, 0, texSmall, {
+        color: [0x887766, 0x998877, 0x776655],
+        lifespan: { min: 2000, max: 4000 },
+        speed: { min: 4, max: 12 },
+        angle: { min: 80, max: 100 }, // mostly downward
+        scale: { start: 0.4, end: 0 },
+        alpha: { start: 0.5, end: 0 },
+        quantity: 1,
+        frequency: 150,
+        emitZone: {
+          type: 'random',
+          source: new Phaser.Geom.Rectangle(0, 0, worldWidth, 20),
+        } as Phaser.Types.GameObjects.Particles.ParticleEmitterRandomZoneConfig,
+      })
+      dust.setDepth(50)
+      this.ambientEmitters.push(dust)
     }
   }
 

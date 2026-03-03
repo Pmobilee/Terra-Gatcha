@@ -210,6 +210,11 @@ export class MineScene extends Phaser.Scene {
     // Compute initial autotile variants for all terrain blocks
     computeAllVariants(this.grid)
     this.currentBiome = mineResult.biome
+    this.cameras.main.setBackgroundColor(this.currentBiome.ambientColor)
+    // GAIA biome entry comment (DD-V2-057)
+    if (this.currentBiome.gaiaEntryComment) {
+      this.game.events.emit('gaia-toast', this.currentBiome.gaiaEntryComment)
+    }
     this.gridHeight = this.grid.length
     this.gridWidth = this.gridHeight > 0 ? this.grid[0].length : 0
     this.oxygenState = createOxygenState(this.oxygenTanks)
@@ -833,16 +838,19 @@ export class MineScene extends Phaser.Scene {
             cell.type === BlockType.Stone ||
             cell.type === BlockType.HardRock
           ) {
-            const biomeId = this.currentBiome.id
-            if (biomeId === 'volcanic') {
+            // Derive tint color from biome properties for a subtle overlay.
+            // Lava-heavy biomes get warm red; crystal biomes get cool blue; others get ambient wash.
+            const hw = this.currentBiome.hazardWeights
+            const mw = this.currentBiome.mineralWeights
+            if (hw.lavaBlockDensity > 0.3) {
               this.overlayGraphics.fillStyle(0xb43c1e, 0.15)
               this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
-            } else if (biomeId === 'crystalline') {
+            } else if (mw.crystalMultiplier >= 1.5 || mw.geodeMultiplier >= 1.5) {
               this.overlayGraphics.fillStyle(0x5078c8, 0.15)
               this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
             } else {
-              // Sedimentary: very faint warm brown
-              this.overlayGraphics.fillStyle(0x8b7765, 0.08)
+              // Faint ambient wash based on biome ambientColor
+              this.overlayGraphics.fillStyle(this.currentBiome.ambientColor, 0.08)
               this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
             }
           }
@@ -1338,8 +1346,9 @@ export class MineScene extends Phaser.Scene {
         }
       }
 
-      // Random quiz: only on plain terrain blocks, after at least RANDOM_QUIZ_MIN_BLOCKS mined,
-      // and only when not already paused (no nested quizzes).
+      // Random quiz: only on plain terrain blocks, not when already paused.
+      // The adaptive rate check (cooldown, fatigue, first-trigger-after-N) is
+      // delegated to QuizManager via the game registry. (DD-V2-060)
       const randomQuizEligibleTypes = new Set<BlockType>([
         BlockType.Dirt,
         BlockType.SoftRock,
@@ -1348,11 +1357,14 @@ export class MineScene extends Phaser.Scene {
         BlockType.LavaBlock,
         BlockType.GasPocket,
       ])
+      const adaptiveQuizCheck = this.game.registry.get('shouldTriggerRandomQuiz') as (() => boolean) | undefined
+      const shouldTriggerQuiz = adaptiveQuizCheck
+        ? adaptiveQuizCheck()
+        : (this.blocksMinedThisRun >= BALANCE.RANDOM_QUIZ_MIN_BLOCKS && Math.random() < BALANCE.RANDOM_QUIZ_CHANCE)
       if (
         randomQuizEligibleTypes.has(blockType) &&
-        this.blocksMinedThisRun >= BALANCE.RANDOM_QUIZ_MIN_BLOCKS &&
         !this.isPaused &&
-        Math.random() < BALANCE.RANDOM_QUIZ_CHANCE
+        shouldTriggerQuiz
       ) {
         this.isPaused = true
         this.game.events.emit('random-quiz')

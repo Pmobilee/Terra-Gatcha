@@ -31,17 +31,21 @@
   interface Props {
     fact: Fact
     choices: string[]
-    mode: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer'
+    mode: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'review' | 'discovery'
     gateProgress?: { remaining: number; total: number }
     /** Whether the wrong answer triggered a consistency penalty (knew this before). */
     isConsistencyPenalty?: boolean
+    /** When 'three_button', shows Easy/Got it/Didn't get it instead of answer choices */
+    responseMode?: 'standard' | 'three_button'
     onAnswer: (correct: boolean) => void
+    /** Callback for 3-button study responses: quality 1=didn't get it, 4=got it, 5=easy */
+    onStudyResponse?: (quality: number) => void
     onClose: () => void
   }
 
   const totalAttempts = BALANCE.QUIZ_GATE_MAX_FAILURES + 1
 
-  let { fact, choices, mode, gateProgress, isConsistencyPenalty = false, onAnswer, onClose }: Props = $props()
+  let { fact, choices, mode, gateProgress, isConsistencyPenalty = false, responseMode = 'standard', onAnswer, onStudyResponse, onClose }: Props = $props()
 
   let selectedAnswer = $state<string | null>(null)
   let isCorrect = $state<boolean | null>(null)
@@ -259,6 +263,20 @@
       <div class="memory-tip" role="note" aria-label="Memory Tip">
         <span class="memory-tip-label">💡 Memory Tip:</span>
         <span class="memory-tip-text">{memoryTipText}</span>
+      </div>
+    {/if}
+
+    {#if responseMode === 'three_button' && showResult}
+      <div class="study-response-buttons">
+        <button class="btn-study btn-easy" type="button" onclick={() => onStudyResponse?.(5)}>
+          Easy
+        </button>
+        <button class="btn-study btn-got-it" type="button" onclick={() => onStudyResponse?.(4)}>
+          Got it
+        </button>
+        <button class="btn-study btn-didnt" type="button" onclick={() => onStudyResponse?.(1)}>
+          Didn't get it
+        </button>
       </div>
     {/if}
   </div>
@@ -569,6 +587,28 @@
     background: rgba(255, 107, 53, 0.08);
     margin-top: -4px;
   }
+
+  /* 3-button study response row */
+  .study-response-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .btn-study {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .btn-easy { background: #27ae60; color: white; }
+  .btn-got-it { background: #2980b9; color: white; }
+  .btn-didnt { background: #c0392b; color: white; }
 
   /* GAIA reaction bubble shown after answering */
   .gaia-reaction {
