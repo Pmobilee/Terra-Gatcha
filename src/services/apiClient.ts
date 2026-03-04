@@ -19,6 +19,79 @@ const TOKEN_KEY = 'terra_auth_token'
 const REFRESH_TOKEN_KEY = 'terra_refresh_token'
 
 // ============================================================
+// TOKEN STORAGE ABSTRACTION (19.11)
+//
+// Tokens are currently stored in localStorage. This is a known security
+// trade-off: localStorage is susceptible to XSS extraction. The planned
+// migration path is:
+//
+//   1. Server: Set tokens as httpOnly, Secure, SameSite=Strict cookies.
+//   2. Client: Remove `storeAuthResponse` / `persistTokens` / `loadTokens`.
+//   3. Client: All authenticated requests automatically carry the cookie;
+//      no explicit Authorization header is needed.
+//   4. Server: Validate the httpOnly cookie on every protected route.
+//
+// Until the backend is updated, `LocalStorageTokenStorage` is the active
+// implementation. Swapping to `HttpOnlyCookieTokenStorage` (a no-op stub)
+// requires only changing the `tokenStorage` assignment below.
+// ============================================================
+
+/** Contract for reading and writing auth tokens. */
+export interface TokenStorage {
+  /** Read the access token. Returns `null` if not present. */
+  getToken(): string | null
+  /** Read the refresh token. Returns `null` if not present. */
+  getRefreshToken(): string | null
+  /** Persist both tokens. */
+  store(token: string, refreshToken: string): void
+  /** Clear all stored tokens. */
+  clear(): void
+}
+
+/**
+ * Current implementation: stores tokens in localStorage.
+ *
+ * NOTE: When the backend is migrated to httpOnly cookie delivery,
+ * replace this class with a no-op stub and remove `loadTokens` /
+ * `persistTokens` calls from `ApiClient`.
+ */
+class LocalStorageTokenStorage implements TokenStorage {
+  getToken(): string | null {
+    return localStorage.getItem(TOKEN_KEY)
+  }
+
+  getRefreshToken(): string | null {
+    return localStorage.getItem(REFRESH_TOKEN_KEY)
+  }
+
+  store(token: string, refreshToken: string): void {
+    localStorage.setItem(TOKEN_KEY, token)
+    localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken)
+  }
+
+  clear(): void {
+    localStorage.removeItem(TOKEN_KEY)
+    localStorage.removeItem(REFRESH_TOKEN_KEY)
+  }
+}
+
+/**
+ * Future implementation stub: tokens will be set as httpOnly cookies by
+ * the server and are inaccessible from JavaScript. This class intentionally
+ * does nothing — the browser handles cookie transmission automatically.
+ *
+ * Activate by: `const tokenStorage: TokenStorage = new HttpOnlyCookieTokenStorage()`
+ */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+class HttpOnlyCookieTokenStorage implements TokenStorage {
+  getToken(): null { return null }
+  getRefreshToken(): null { return null }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  store(_token: string, _refreshToken: string): void { /* no-op: server sets httpOnly cookie */ }
+  clear(): void { /* no-op: server clears httpOnly cookie via /auth/logout */ }
+}
+
+// ============================================================
 // PUBLIC TYPES
 // ============================================================
 
@@ -123,6 +196,50 @@ export class ApiClient {
     const response = await this.fetchWithAuth('/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
+    })
+
+    const data = (await response.json()) as AuthResponse
+    this.storeAuthResponse(data)
+    return data
+  }
+
+  /**
+   * Creates a temporary guest account on the server and stores the returned
+   * tokens, allowing immediate play without registering.
+   *
+   * The guest account is identified by a generated email like
+   * `guest-<uuid>@terragacha.local`. Guests can later upgrade their account
+   * to a full registered account via `linkGuest()`.
+   *
+   * @returns The auth response containing tokens and the guest user's info.
+   * @throws {ApiError} On network failure or server error.
+   */
+  async loginAsGuest(): Promise<AuthResponse> {
+    const response = await this.fetchWithAuth('/auth/guest', {
+      method: 'POST',
+    })
+
+    const data = (await response.json()) as AuthResponse
+    this.storeAuthResponse(data)
+    return data
+  }
+
+  /**
+   * Upgrades the currently authenticated guest account to a full account
+   * by linking it to a real email address and password.
+   * All progress associated with the guest account is preserved.
+   *
+   * @param email       - The real email address to attach to the account.
+   * @param password    - The desired password (min 8 characters).
+   * @param displayName - Optional public display name.
+   * @returns The auth response with refreshed tokens and updated user info.
+   * @throws {ApiError} On validation failure (400), if already a full account
+   *   (403), or if the email is already taken (409).
+   */
+  async linkGuest(email: string, password: string, displayName?: string): Promise<AuthResponse> {
+    const response = await this.fetchWithAuth('/auth/link-guest', {
+      method: 'POST',
+      body: JSON.stringify({ email, password, displayName }),
     })
 
     const data = (await response.json()) as AuthResponse
@@ -412,8 +529,13 @@ export class ApiClient {
 
   /**
    * Writes the current in-memory tokens to localStorage.
+   *
+   * MIGRATION NOTE (19.11): When the backend migrates to httpOnly cookie
+   * delivery, this method becomes a no-op and can be removed. The server
+   * will set tokens directly via Set-Cookie headers on auth responses.
    */
   private persistTokens(): void {
+    // TODO (19.11): Remove localStorage writes when backend uses httpOnly cookies.
     if (this.token !== null) {
       localStorage.setItem(TOKEN_KEY, this.token)
     } else {
@@ -430,8 +552,13 @@ export class ApiClient {
   /**
    * Reads any previously persisted tokens from localStorage into memory.
    * Called once during construction.
+   *
+   * MIGRATION NOTE (19.11): When the backend migrates to httpOnly cookie
+   * delivery, this method becomes a no-op and can be removed. The browser
+   * will transmit the cookie automatically on each request.
    */
   private loadTokens(): void {
+    // TODO (19.11): Remove localStorage reads when backend uses httpOnly cookies.
     this.token = localStorage.getItem(TOKEN_KEY)
     this.refreshToken = localStorage.getItem(REFRESH_TOKEN_KEY)
   }

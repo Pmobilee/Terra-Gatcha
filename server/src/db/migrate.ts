@@ -27,6 +27,10 @@ export function initSchema(): void {
       email TEXT NOT NULL UNIQUE,
       password_hash TEXT NOT NULL,
       display_name TEXT,
+      age_bracket TEXT NOT NULL DEFAULT 'adult',
+      is_guest INTEGER NOT NULL DEFAULT 0,
+      is_deleted INTEGER NOT NULL DEFAULT 0,
+      deleted_at INTEGER,
       created_at INTEGER NOT NULL,
       updated_at INTEGER NOT NULL
     );
@@ -36,6 +40,7 @@ export function initSchema(): void {
       user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
       save_data TEXT NOT NULL,
       version INTEGER NOT NULL DEFAULT 1,
+      profile_id TEXT NOT NULL DEFAULT 'default',
       created_at INTEGER NOT NULL,
       updated_at INTEGER NOT NULL
     );
@@ -56,12 +61,43 @@ export function initSchema(): void {
       created_at INTEGER NOT NULL
     );
 
+    CREATE TABLE IF NOT EXISTS analytics_events (
+      id TEXT PRIMARY KEY,
+      session_id TEXT NOT NULL,
+      event_name TEXT NOT NULL,
+      properties TEXT NOT NULL,
+      platform TEXT,
+      app_version TEXT,
+      created_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS password_reset_tokens (
+      token TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL,
+      expires_at INTEGER NOT NULL,
+      used INTEGER NOT NULL DEFAULT 0,
+      created_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS fact_packs (
+      id TEXT PRIMARY KEY,
+      version INTEGER NOT NULL,
+      category TEXT NOT NULL,
+      pack_data TEXT NOT NULL,
+      created_at INTEGER NOT NULL,
+      updated_at INTEGER NOT NULL
+    );
+
     CREATE INDEX IF NOT EXISTS idx_saves_user_id ON saves(user_id);
     CREATE INDEX IF NOT EXISTS idx_saves_created_at ON saves(created_at DESC);
     CREATE INDEX IF NOT EXISTS idx_leaderboards_category ON leaderboards(category);
     CREATE INDEX IF NOT EXISTS idx_leaderboards_score ON leaderboards(score DESC);
     CREATE INDEX IF NOT EXISTS idx_refresh_tokens_user_id ON refresh_tokens(user_id);
     CREATE INDEX IF NOT EXISTS idx_refresh_tokens_expires_at ON refresh_tokens(expires_at);
+    CREATE INDEX IF NOT EXISTS idx_analytics_events_session_id ON analytics_events(session_id);
+    CREATE INDEX IF NOT EXISTS idx_analytics_events_event_name ON analytics_events(event_name);
+    CREATE INDEX IF NOT EXISTS idx_password_reset_tokens_user_id ON password_reset_tokens(user_id);
+    CREATE INDEX IF NOT EXISTS idx_fact_packs_category ON fact_packs(category);
   `);
   console.log("[db] Schema initialised.");
 }

@@ -24,6 +24,12 @@ import type {
 /** Maximum entries returned for a category leaderboard. */
 const TOP_N = 50;
 
+/** Maximum entries stored in the in-memory LRU cache per category. */
+const CACHE_TOP_N = 100;
+
+/** LRU cache TTL in milliseconds (60 seconds). */
+const CACHE_TTL_MS = 60_000;
+
 /** Known valid leaderboard categories. */
 const VALID_CATEGORIES: Set<string> = new Set([
   "deepest_dive",
@@ -31,6 +37,67 @@ const VALID_CATEGORIES: Set<string> = new Set([
   "longest_streak",
   "total_dust",
 ]);
+
+// ── In-memory LRU cache ───────────────────────────────────────────────────────
+
+/**
+ * A single cache entry holding the cached result and its expiry timestamp.
+ */
+interface CacheEntry {
+  data: LeaderboardEntry[];
+  expiresAt: number;
+}
+
+/**
+ * Minimal LRU cache for top-100 leaderboard results per category.
+ * Evicts the least-recently-used entry when the capacity is exceeded.
+ * Each entry expires after CACHE_TTL_MS milliseconds.
+ *
+ * Using a Map preserves insertion order; moving an accessed key to the end
+ * (delete + re-insert) implements the LRU eviction policy in O(1).
+ */
+class LeaderboardLruCache {
+  private readonly capacity: number;
+  private readonly store = new Map<string, CacheEntry>();
+
+  constructor(capacity: number) {
+    this.capacity = capacity;
+  }
+
+  /** Retrieve a cached result for `category`, or null if missing/expired. */
+  get(category: string): LeaderboardEntry[] | null {
+    const entry = this.store.get(category);
+    if (!entry) return null;
+    if (Date.now() > entry.expiresAt) {
+      this.store.delete(category);
+      return null;
+    }
+    // Move to most-recently-used position
+    this.store.delete(category);
+    this.store.set(category, entry);
+    return entry.data;
+  }
+
+  /** Store a result for `category`. Evicts the LRU entry if at capacity. */
+  set(category: string, data: LeaderboardEntry[]): void {
+    if (this.store.has(category)) {
+      this.store.delete(category);
+    } else if (this.store.size >= this.capacity) {
+      // Evict the oldest (first) key
+      const firstKey = this.store.keys().next().value;
+      if (firstKey !== undefined) this.store.delete(firstKey);
+    }
+    this.store.set(category, { data, expiresAt: Date.now() + CACHE_TTL_MS });
+  }
+
+  /** Invalidate the cache entry for `category` (call after a score upsert). */
+  invalidate(category: string): void {
+    this.store.delete(category);
+  }
+}
+
+/** Singleton cache — shared across all requests in this process. */
+const leaderboardCache = new LeaderboardLruCache(VALID_CATEGORIES.size + 10);
 
 const withAuth: RouteShorthandOptions = { preHandler: requireAuth };
 
@@ -116,11 +183,13 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
     }
   );
 
-  // ── GET /:category — top 50 ─────────────────────────────────────────────────
+  // ── GET /:category — top 50 (cached) ────────────────────────────────────────
 
   /**
    * GET /api/leaderboards/:category
    * Returns the top 50 entries for the given category.
+   * Results are served from an in-memory LRU cache (60-second TTL, top-100
+   * entries per category) to reduce database load under read traffic.
    * Public endpoint — no authentication required.
    */
   fastify.get(
@@ -136,8 +205,15 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
         });
       }
 
-      // Get top scores per user (best score per user, not per submission)
-      // Use a subquery approach: for each user, take their max score.
+      // Try the LRU cache first (avoids a DB query for 60 seconds after each write)
+      const cached = leaderboardCache.get(category);
+      if (cached !== null) {
+        // Slice to TOP_N in case the cache holds the full CACHE_TOP_N
+        return cached.slice(0, TOP_N);
+      }
+
+      // Cache miss — query the database.
+      // Fetch CACHE_TOP_N rows so the cache can serve any slice up to that limit.
       const rows = await db
         .select({
           id: leaderboards.id,
@@ -152,10 +228,11 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
         .leftJoin(users, eq(leaderboards.userId, users.id))
         .where(eq(leaderboards.category, category as LeaderboardCategory))
         .orderBy(desc(leaderboards.score))
-        .limit(TOP_N)
+        .limit(CACHE_TOP_N)
         .all();
 
-      // Deduplicate: keep only the best score per user
+      // Deduplicate: keep only the best score per user (one row per user_id
+      // guaranteed by the upsert on write, but guard here for legacy data).
       const seen = new Set<string>();
       const deduped: typeof rows = [];
       for (const row of rows) {
@@ -176,7 +253,10 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
         rank: index + 1,
       }));
 
-      return result;
+      // Populate the cache for subsequent requests
+      leaderboardCache.set(category, result);
+
+      return result.slice(0, TOP_N);
     }
   );
 
@@ -226,7 +306,7 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
       }
 
       const now = Date.now();
-      const id = crypto.randomUUID();
+      const flooredScore = Math.floor(score);
 
       let serialisedMeta: string | null = null;
       if (metadata !== undefined) {
@@ -240,21 +320,59 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
         }
       }
 
-      await db.insert(leaderboards).values({
-        id,
-        userId,
-        category,
-        score: Math.floor(score),
-        metadata: serialisedMeta,
-        createdAt: now,
-      });
+      // ── Upsert: one row per (userId, category) ────────────────────────────
+      // Check if the user already has an entry for this category.
+      // If they do, update only when the new score is strictly higher.
+      // This prevents duplicate leaderboard entries and keeps the best score.
+      //
+      // SQLite equivalent of INSERT ... ON CONFLICT DO UPDATE SET ...
+      // We implement this with a manual check+update rather than raw SQL so
+      // that Drizzle's type system stays intact.
+      const existingEntry = await db
+        .select({ id: leaderboards.id, score: leaderboards.score })
+        .from(leaderboards)
+        .where(
+          sql`${leaderboards.userId} = ${userId} AND ${leaderboards.category} = ${category}`
+        )
+        .get();
+
+      let entryId: string;
+      let entryCreatedAt: number;
+
+      if (existingEntry) {
+        entryId = existingEntry.id;
+        // Only update if the new score is strictly higher (keep personal best)
+        if (flooredScore > existingEntry.score) {
+          await db
+            .update(leaderboards)
+            .set({ score: flooredScore, metadata: serialisedMeta })
+            .where(eq(leaderboards.id, existingEntry.id));
+          // Invalidate the cache so the next read reflects the updated score
+          leaderboardCache.invalidate(category);
+        }
+        entryCreatedAt = now;
+      } else {
+        // New entry — insert fresh row
+        entryId = crypto.randomUUID();
+        entryCreatedAt = now;
+        await db.insert(leaderboards).values({
+          id: entryId,
+          userId,
+          category,
+          score: flooredScore,
+          metadata: serialisedMeta,
+          createdAt: now,
+        });
+        // Invalidate the cache for this category
+        leaderboardCache.invalidate(category);
+      }
 
       // Compute rank for the submitted score
       const higherCount = await db
         .select({ count: sql<number>`COUNT(DISTINCT ${leaderboards.userId})` })
         .from(leaderboards)
         .where(
-          sql`${leaderboards.category} = ${category} AND ${leaderboards.score} > ${Math.floor(score)}`
+          sql`${leaderboards.category} = ${category} AND ${leaderboards.score} > ${flooredScore}`
         )
         .get();
 
@@ -266,14 +384,19 @@ export async function leaderboardRoutes(fastify: FastifyInstance): Promise<void>
         .where(eq(users.id, userId))
         .get();
 
+      // Return the effective score (the actual best stored, which may be unchanged)
+      const effectiveScore = existingEntry && existingEntry.score > flooredScore
+        ? existingEntry.score
+        : flooredScore;
+
       const result: LeaderboardEntry = {
-        id,
+        id: entryId,
         userId,
         displayName: user?.displayName ?? null,
         category,
-        score: Math.floor(score),
+        score: effectiveScore,
         metadata: metadata ?? null,
-        createdAt: now,
+        createdAt: entryCreatedAt,
         rank,
       };
       return reply.status(201).send(result);

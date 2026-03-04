@@ -15,9 +15,45 @@ import { calculateProduction, FARM_EXPANSION_COSTS, FARM_MAX_SLOTS } from '../da
 import { createDefaultInterestConfig } from '../data/interestConfig'
 import { DEFAULT_ARCHETYPE_DATA } from '../services/archetypeDetector'
 import { DEFAULT_ENGAGEMENT_DATA } from '../services/engagementScorer'
+import { profileService } from '../services/profileService'
 
+/**
+ * Legacy/fallback save key. Used when no profiles exist (backward compatibility).
+ * Active profile saves use the profile-namespaced key from profileService.getSaveKey().
+ */
 export const SAVE_KEY = 'terra-gacha-save'
 export const SAVE_VERSION = 1
+
+// ============================================================
+// SAVE DURABILITY — APP BACKGROUND LISTENER (19.12)
+//
+// When the app is backgrounded (tab hidden or Capacitor sends the app to
+// background), we immediately trigger a cloud sync to prevent data loss
+// if the OS kills the process. This fires BEFORE the process is suspended.
+//
+// The import is dynamic and lazy to avoid a circular-dependency issue:
+// syncService → saveService → syncService would create a cycle. Using
+// import() at call time breaks the cycle because the module is only
+// resolved after both modules have finished initialising.
+// ============================================================
+if (typeof window !== 'undefined') {
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') {
+      // Trigger cloud sync on background — fire-and-forget; errors are swallowed
+      // inside syncService.pushToCloud() and must not propagate here.
+      import('./syncService').then(m => m.syncService.pushToCloud()).catch(() => {})
+    }
+  })
+}
+
+/**
+ * Returns the localStorage key to use for the current player's save.
+ * When profiles exist, delegates to profileService to get the namespaced key.
+ * Falls back to the legacy SAVE_KEY for backward compatibility.
+ */
+function getActiveSaveKey(): string {
+  return profileService.getSaveKey()
+}
 
 const DEFAULT_FARM_STATE: FarmState = {
   slots: [null, null, null],
@@ -47,19 +83,19 @@ const EMPTY_STATS: PlayerStats = {
 }
 
 /**
- * Stores player save data in localStorage.
+ * Stores player save data in localStorage using the active profile's key.
  */
 export function save(data: PlayerSave): void {
-  localStorage.setItem(SAVE_KEY, JSON.stringify(data))
+  localStorage.setItem(getActiveSaveKey(), JSON.stringify(data))
 }
 
 /**
- * Loads player save data from localStorage.
+ * Loads player save data from localStorage using the active profile's key.
  *
  * Returns null when no save exists or the stored JSON is invalid.
  */
 export function load(): PlayerSave | null {
-  const raw = localStorage.getItem(SAVE_KEY)
+  const raw = localStorage.getItem(getActiveSaveKey())
 
   if (!raw) {
     return null
@@ -327,7 +363,7 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
  * Deletes the current player save from localStorage.
  */
 export function deleteSave(): void {
-  localStorage.removeItem(SAVE_KEY)
+  localStorage.removeItem(getActiveSaveKey())
 }
 
 /**

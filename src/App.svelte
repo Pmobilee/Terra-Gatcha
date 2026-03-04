@@ -65,29 +65,124 @@
   import ForgotPasswordView from './ui/components/auth/ForgotPasswordView.svelte'
   import ProfileView from './ui/components/auth/ProfileView.svelte'
   import OfflineToast from './ui/components/OfflineToast.svelte'
+  import AgeGate from './ui/components/legal/AgeGate.svelte'
+  import { AGE_BRACKET_KEY, type AgeBracket } from './services/legalConstants'
+  import PrivacyPolicy from './ui/components/legal/PrivacyPolicy.svelte'
+  import TermsOfService from './ui/components/legal/TermsOfService.svelte'
+  import { profileService } from './services/profileService'
+  import { profileStore } from './ui/stores/profileStore'
+  import type { PlayerProfile } from './data/profileTypes'
+  import ProfileSelectView from './ui/components/profiles/ProfileSelectView.svelte'
+  import ProfileCreateView from './ui/components/profiles/ProfileCreateView.svelte'
+  import ProfileManageView from './ui/components/profiles/ProfileManageView.svelte'
+
+  // ============================================================
+  // PROFILE ROUTING LAYER (Phase 19.6)
+  // ============================================================
+
+  /** Which profile screen is shown. null = proceed to auth/game. */
+  type ProfileScreen = 'select' | 'create' | 'manage' | null
+
+  /**
+   * Initialises the profile screen state.
+   * If profiles exist → show select. If not → show create.
+   */
+  let profileScreen = $state<ProfileScreen>(
+    profileService.hasProfiles() ? 'select' : 'create',
+  )
+
+  /** Whether the player has passed the profile gate and entered the game layer. */
+  let profileGateCleared = $state(false)
+
+  function handleProfileSelect(id: string): void {
+    profileStore.setActive(id)
+    profileGateCleared = true
+    profileScreen = null
+  }
+
+  function handleProfileCreated(_profile: PlayerProfile): void {
+    // Profile was created and set active by profileService.createProfile()
+    profileStore.refresh()
+    profileGateCleared = true
+    profileScreen = null
+  }
+
+  function handleAddProfile(): void {
+    profileScreen = 'create'
+  }
+
+  function handleManageProfiles(): void {
+    profileScreen = 'manage'
+  }
+
+  function handleBackFromManage(): void {
+    profileScreen = profileService.hasProfiles() ? 'select' : 'create'
+  }
+
+  function handleProfileDeleted(): void {
+    // If all profiles were deleted, go to create; otherwise stay in manage
+    if (!profileService.hasProfiles()) {
+      profileScreen = 'create'
+    }
+  }
+
+  function handleBackFromCreate(): void {
+    if (profileService.hasProfiles()) {
+      profileScreen = 'select'
+    }
+    // If no profiles exist there is nowhere to go back to — stay on create
+  }
 
   // ============================================================
   // AUTH ROUTING LAYER
   // ============================================================
 
   /** Which auth sub-screen is visible (null = game is shown). */
-  type AuthScreen = 'login' | 'register' | 'forgot' | 'profile' | null
+  type AuthScreen = 'login' | 'register' | 'forgot' | 'profile' | 'privacy' | 'terms' | null
 
   let authScreen = $state<AuthScreen>(null)
 
+  // ── Guest mode tracking — reactive state for Svelte reactivity ──
+  let isGuestMode = $state(
+    typeof localStorage !== 'undefined'
+      ? localStorage.getItem('terra_guest_mode') === 'true'
+      : false,
+  )
+
+  // ── Age gate — shown on first-ever launch before anything else ──
+  /**
+   * Whether we need to show the age gate.
+   * We check once at mount; AgeGate writes the result to localStorage so the
+   * check will be false on every subsequent app start.
+   */
+  let showAgeGate = $state(
+    typeof localStorage !== 'undefined'
+      ? localStorage.getItem(AGE_BRACKET_KEY) === null
+      : false,
+  )
+
+  /** AgeGate confirmation — persist bracket and dismiss the gate. */
+  function handleAgeGateSelect(_bracket: AgeBracket): void {
+    // AGE_BRACKET_KEY is written inside AgeGate before onSelect fires;
+    // we just need to hide the gate and let the normal auth flow continue.
+    showAgeGate = false
+  }
+
   /**
    * Determines whether the game should be visible.
-   * True when the user is authenticated OR has chosen guest mode.
+   * True when the profile gate is cleared AND
+   * (user is authenticated OR has chosen guest mode).
    */
   const gameVisible = $derived.by(() => {
+    if (!profileGateCleared) return false
     if ($authStore.isLoggedIn) return true
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('terra_guest_mode') === 'true') return true
+    if (isGuestMode) return true
     return false
   })
 
-  // Show login gate on first render if not authenticated and not in guest mode
+  // Show login gate once profile gate is cleared but auth is missing
   $effect(() => {
-    if (!gameVisible && authScreen === null) {
+    if (profileGateCleared && !gameVisible && authScreen === null) {
       authScreen = 'login'
     }
   })
@@ -111,6 +206,7 @@
   /** Handles "Continue as Guest" — sets the guest flag and dismisses auth. */
   function handleAuthGuest(): void {
     localStorage.setItem('terra_guest_mode', 'true')
+    isGuestMode = true
     authScreen = null
   }
 
@@ -119,9 +215,20 @@
     authScreen = 'login'
   }
 
+  /** Opens the Privacy Policy screen from within the register flow. */
+  function handleViewPrivacy(): void {
+    authScreen = 'privacy'
+  }
+
+  /** Opens the Terms of Service screen from within the register flow. */
+  function handleViewTerms(): void {
+    authScreen = 'terms'
+  }
+
   /** Profile view: logout handler. */
   function handleProfileLogout(): void {
     localStorage.removeItem('terra_guest_mode')
+    isGuestMode = false
     authScreen = 'login'
   }
 
@@ -467,9 +574,37 @@
 <div id="game-container"></div>
 <div id="ui-overlay" data-screen={$currentScreen}>
   <!-- ============================================================
+       AGE GATE — shown on first-ever launch, before everything else
+       ============================================================ -->
+  {#if showAgeGate}
+    <AgeGate onSelect={handleAgeGateSelect} />
+
+  <!-- ============================================================
+       PROFILE ROUTING LAYER (Phase 19.6) — shown after age gate,
+       before auth, to select or create a player profile
+       ============================================================ -->
+  {:else if profileScreen === 'select'}
+    <ProfileSelectView
+      profiles={$profileStore}
+      onSelect={handleProfileSelect}
+      onAddProfile={handleAddProfile}
+      onManageProfiles={handleManageProfiles}
+    />
+  {:else if profileScreen === 'create'}
+    <ProfileCreateView
+      onCreated={handleProfileCreated}
+      onBack={handleBackFromCreate}
+    />
+  {:else if profileScreen === 'manage'}
+    <ProfileManageView
+      onBack={handleBackFromManage}
+      onProfileDeleted={handleProfileDeleted}
+    />
+
+  <!-- ============================================================
        AUTH ROUTING LAYER — overlays the entire game when visible
        ============================================================ -->
-  {#if authScreen === 'login'}
+  {:else if authScreen === 'login'}
     <LoginView
       onLogin={handleAuthLogin}
       onRegister={handleAuthGoRegister}
@@ -480,6 +615,8 @@
     <RegisterView
       onRegisterSuccess={handleAuthLogin}
       onBack={handleAuthBack}
+      onViewPrivacy={handleViewPrivacy}
+      onViewTerms={handleViewTerms}
     />
   {:else if authScreen === 'forgot'}
     <ForgotPasswordView
@@ -490,6 +627,10 @@
       onLogout={handleProfileLogout}
       onBack={() => { authScreen = null }}
     />
+  {:else if authScreen === 'privacy'}
+    <PrivacyPolicy onBack={() => { authScreen = 'register' }} />
+  {:else if authScreen === 'terms'}
+    <TermsOfService onBack={() => { authScreen = 'register' }} />
   {:else}
     <!-- Game is visible — normal screen routing below -->
 

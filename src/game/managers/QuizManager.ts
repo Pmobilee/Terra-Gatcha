@@ -3,6 +3,7 @@ import {
   currentScreen,
   activeQuiz,
   gaiaMessage,
+  currentLayer,
 } from '../../ui/stores/gameState'
 import { playerSave, updateReviewState } from '../../ui/stores/playerData'
 import {
@@ -15,6 +16,17 @@ import {
   QUIZ_MIN_RATE,
 } from '../../data/balance'
 import type { MineScene } from '../scenes/MineScene'
+import type { Fact } from '../../data/types'
+import { analyticsService } from '../../services/analyticsService'
+
+/** Value shape of the activeQuiz store (non-null state). */
+type ActiveQuizValue = {
+  fact: Fact
+  choices: string[]
+  source?: 'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer'
+  gateProgress?: { remaining: number; total: number }
+  isConsistencyPenalty?: boolean
+}
 
 /**
  * Manages all quiz flows during a dive: gate quizzes, oxygen quizzes,
@@ -186,6 +198,34 @@ export class QuizManager {
   }
 
   // =========================================================
+  // Analytics helpers
+  // =========================================================
+
+  /**
+   * Track a quiz_answered analytics event for the given quiz state.
+   * Captures fact ID, correctness, quiz type, distractor count, and current layer.
+   *
+   * @param quiz  - The active quiz at the time of answer.
+   * @param correct - Whether the player's answer was correct.
+   */
+  private trackQuizAnswered(
+    quiz: ActiveQuizValue,
+    correct: boolean,
+  ): void {
+    analyticsService.track({
+      name: 'quiz_answered',
+      properties: {
+        fact_id: quiz.fact.id,
+        correct,
+        quiz_type: quiz.source ?? 'unknown',
+        response_time_ms: 0, // Response time is not tracked at this layer
+        current_layer: get(currentLayer),
+        distractor_count: quiz.choices.length - 1,
+      },
+    })
+  }
+
+  // =========================================================
   // Resume / gate
   // =========================================================
 
@@ -213,6 +253,7 @@ export class QuizManager {
   handleQuizAnswer(correct: boolean): void {
     const quiz = get(activeQuiz)
     if (quiz) {
+      this.trackQuizAnswered(quiz, correct)
       updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
       if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
         this.applyConsistencyPenalty(quiz.fact.id)
@@ -225,6 +266,7 @@ export class QuizManager {
   handleOxygenQuizAnswer(correct: boolean): void {
     const quiz = get(activeQuiz)
     if (quiz) {
+      this.trackQuizAnswered(quiz, correct)
       updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
       if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
         this.applyConsistencyPenalty(quiz.fact.id)
@@ -244,6 +286,7 @@ export class QuizManager {
   handleArtifactQuizAnswer(correct: boolean): void {
     const quiz = get(activeQuiz)
     if (quiz) {
+      this.trackQuizAnswered(quiz, correct)
       updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
     }
     // Check if more questions remain by inspecting gateProgress
@@ -273,6 +316,7 @@ export class QuizManager {
   handleRandomQuizAnswer(correct: boolean): void {
     const quiz = get(activeQuiz)
     if (quiz) {
+      this.trackQuizAnswered(quiz, correct)
       updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
       if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
         this.applyConsistencyPenalty(quiz.fact.id)
@@ -297,6 +341,7 @@ export class QuizManager {
   handleLayerQuizAnswer(correct: boolean): void {
     const quiz = get(activeQuiz)
     if (quiz) {
+      this.trackQuizAnswered(quiz, correct)
       updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
       if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
         this.applyConsistencyPenalty(quiz.fact.id)

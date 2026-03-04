@@ -5,10 +5,12 @@
    * States:
    *   idle    — grey cloud, no animation
    *   syncing — blue cloud with CSS spin animation
-   *   error   — red cloud with "!" badge; auto-dismisses to idle after 5 s
+   *   error   — red cloud with "!" badge; GAIA tooltip; tap-to-retry
+   *             auto-dismisses to idle after 5 s
    */
 
   import { syncStatus, type SyncState } from '../stores/syncStore'
+  import { syncService } from '../../services/syncService'
 
   /** Current sync state, driven by the shared store. */
   let state = $state<SyncState>('idle')
@@ -48,19 +50,35 @@
     state === 'syncing'
       ? 'Syncing to cloud…'
       : state === 'error'
-        ? 'Sync failed'
+        ? 'GAIA: Sync hiccup — tap to retry'
         : 'Cloud save up to date',
   )
+
+  /** Tap-to-retry: only active in error state. */
+  function handleClick(): void {
+    if (state === 'error') {
+      syncStatus.set('idle')
+      if (errorTimer !== null) {
+        clearTimeout(errorTimer)
+        errorTimer = null
+      }
+      void syncService.pushToCloud()
+    }
+  }
 </script>
 
+<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 <div
   class="sync-indicator"
   class:sync-indicator--syncing={state === 'syncing'}
   class:sync-indicator--error={state === 'error'}
   aria-label={label}
   title={label}
-  role="status"
+  role={state === 'error' ? 'button' : 'status'}
   aria-live="polite"
+  tabindex={state === 'error' ? 0 : -1}
+  onclick={handleClick}
+  onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick() }}
 >
   <!-- Cloud icon constructed entirely with CSS — no external assets required. -->
   <div class="cloud-icon" aria-hidden="true">
@@ -88,8 +106,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Don't capture pointer events; purely informational */
+    /* Don't capture pointer events in idle/syncing states; purely informational */
     pointer-events: none;
+    cursor: default;
+  }
+
+  /* Error state is interactive — allow tap-to-retry */
+  .sync-indicator--error {
+    pointer-events: auto;
+    cursor: pointer;
   }
 
   /* ---- Cloud icon ---- */

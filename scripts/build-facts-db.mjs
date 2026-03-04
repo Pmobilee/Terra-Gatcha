@@ -20,7 +20,8 @@ const __dirname  = path.dirname(__filename);
 const ROOT       = path.resolve(__dirname, '..');
 const SEED_DIR   = path.join(ROOT, 'src', 'data', 'seed');
 const PUBLIC_DIR = path.join(ROOT, 'public');
-const OUT_DB     = path.join(PUBLIC_DIR, 'facts.db');
+const OUT_DB       = path.join(PUBLIC_DIR, 'facts.db');
+const OUT_SEED_PACK = path.join(PUBLIC_DIR, 'seed-pack.json');
 const WASM_PATH  = path.join(ROOT, 'node_modules', 'sql.js', 'dist', 'sql-wasm.wasm');
 
 // ---------------------------------------------------------------------------
@@ -269,14 +270,75 @@ async function main() {
 
   const exported = db.export(); // Uint8Array
   fs.writeFileSync(OUT_DB, Buffer.from(exported));
+
+  // -- Export seed-pack.json for offline FactPackService bootstrap --
+  // Re-query all facts from the just-built database and format as a FactPack
+  // so the client can serve quiz content without a network call on first run.
+  const seedStmt = db.prepare(
+    `SELECT
+      id, quiz_question, correct_answer, distractors,
+      gaia_comment, gaia_comments, explanation, category_l1,
+      novelty_score
+     FROM facts
+     WHERE status = 'approved' OR status IS NULL
+     ORDER BY category_l1 ASC, id ASC`
+  );
+  const seedRows = [];
+  while (seedStmt.step()) {
+    seedRows.push(seedStmt.getAsObject());
+  }
+  seedStmt.free();
+
+  const seedFacts = seedRows.map(row => {
+    let distractors = [];
+    try {
+      if (row['distractors']) {
+        const parsed = JSON.parse(String(row['distractors']));
+        if (Array.isArray(parsed)) distractors = parsed.map(String);
+      }
+    } catch { /* ignore */ }
+
+    let gaiaComment = '';
+    if (row['gaia_comments']) {
+      try {
+        const pool = JSON.parse(String(row['gaia_comments']));
+        if (Array.isArray(pool) && pool.length > 0) gaiaComment = String(pool[0]);
+      } catch { /* fall through */ }
+    }
+    if (!gaiaComment && row['gaia_comment']) gaiaComment = String(row['gaia_comment']);
+
+    return {
+      id:          String(row['id']),
+      question:    String(row['quiz_question'] ?? ''),
+      answer:      String(row['correct_answer'] ?? ''),
+      distractors,
+      gaiaComment,
+      explanation: String(row['explanation'] ?? ''),
+      category:    String(row['category_l1'] ?? ''),
+      wowFactor:   Number(row['novelty_score'] ?? 5),
+    };
+  });
+
+  const seedPack = {
+    packId:    'seed-v1',
+    category:  'all',
+    version:   1,
+    factCount: seedFacts.length,
+    facts:     seedFacts,
+  };
+
+  fs.writeFileSync(OUT_SEED_PACK, JSON.stringify(seedPack, null, 2));
+
   db.close();
 
-  const sizeKb = (fs.statSync(OUT_DB).size / 1024).toFixed(1);
+  const sizeKb     = (fs.statSync(OUT_DB).size        / 1024).toFixed(1);
+  const packSizeKb = (fs.statSync(OUT_SEED_PACK).size / 1024).toFixed(1);
   console.log('');
   console.log('Build complete:');
   console.log(`  Files processed : ${seedFiles.length}`);
   console.log(`  Total facts     : ${totalFacts}`);
   console.log(`  Output          : ${path.relative(ROOT, OUT_DB)} (${sizeKb} KB)`);
+  console.log(`  Seed pack       : ${path.relative(ROOT, OUT_SEED_PACK)} (${packSizeKb} KB) — ${seedFacts.length} facts`);
 }
 
 main().catch(err => {

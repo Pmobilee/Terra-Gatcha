@@ -7,6 +7,7 @@ import { initPlayer, playerSave } from './ui/stores/playerData'
 import { currentScreen } from './ui/stores/gameState'
 import { get } from 'svelte/store'
 import { BALANCE } from './data/balance'
+import { analyticsService } from './services/analyticsService'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -126,6 +127,20 @@ async function bootGame(): Promise<void> {
   // Hide splash screen now that the game is fully initialized (DD-V2 Sub-Phase 20.1)
   const splashScreen = await setupCapacitor()
   if (splashScreen) await splashScreen.hide()
+
+  // Track app_open analytics event (Phase 19.7)
+  const currentSave = get(playerSave)
+  analyticsService.track({
+    name: 'app_open',
+    properties: {
+      platform: 'web',
+      app_version: '0.1.0',
+      launch_type: 'cold',
+      client_ts: Date.now(),
+      has_existing_save: currentSave !== null,
+      age_bracket: currentSave?.ageRating === 'kid' ? 'under_13' : (currentSave?.ageRating ?? 'unknown'),
+    },
+  })
 }
 
 bootGame()

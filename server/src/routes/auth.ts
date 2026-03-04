@@ -1,24 +1,91 @@
 /**
  * Authentication routes for the Terra Gacha server.
  * Handles user registration, login, JWT token refresh, account deletion,
- * and password reset (request + confirm).
+ * password reset (request + confirm), guest account creation, and guest linking.
  * Passwords are hashed with Node.js built-in crypto (PBKDF2).
+ *
+ * Refresh tokens are stored as SHA-256 hashes in the database (19.20).
+ * The raw token is returned to the client but never persisted (DD-V2-223).
  */
 
 import type { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import * as crypto from "crypto";
 import { eq } from "drizzle-orm";
-import { db } from "../db/index.js";
+import { db, sqliteDb } from "../db/index.js";
 import { users, refreshTokens, passwordResetTokens } from "../db/schema.js";
 import { config } from "../config.js";
 import { requireAuth, getAuthUser } from "../middleware/auth.js";
 import type { AuthResponse, PublicUser } from "../types/index.js";
+import { anonymizeLeaderboardEntries } from "../services/dataDeletion.js";
 
 // ── Password helpers ──────────────────────────────────────────────────────────
 
 const PBKDF2_ITERATIONS = 100_000;
 const PBKDF2_KEYLEN = 64;
 const PBKDF2_DIGEST = "sha512";
+
+// ── Argon2id migration stub (DD-V2-222) ──────────────────────────────────────
+//
+// PLANNED MIGRATION: Replace PBKDF2 with Argon2id (argon2 npm package).
+//
+// Why Argon2id?
+//   - Memory-hard algorithm designed to resist GPU/ASIC brute-force attacks
+//   - Recommended by OWASP for password hashing (2024+)
+//   - Parameters: memoryCost=65536 (64 MB), timeCost=3, parallelism=4
+//
+// Migration strategy (zero-downtime):
+//   1. On every successful PBKDF2 login, detect the old hash format and
+//      re-hash the password with Argon2id transparently (reHashOnLogin).
+//   2. Over time, all active users migrate naturally on next login.
+//   3. After a grace period, force a password-reset for any remaining PBKDF2 accounts.
+//
+// Hash format detection:
+//   - PBKDF2 hashes: "salt:hash" (two colon-separated hex strings)
+//   - Argon2id hashes: start with "$argon2id$" (PHC string format)
+//
+// To activate: `npm install argon2` (server package), then uncomment the
+// argon2 import and activate the reHashOnLogin call in the login route.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Detect whether a stored password hash is in Argon2id PHC format.
+ * Argon2id hashes produced by the `argon2` npm package always begin with
+ * the prefix "$argon2id$", making format detection trivial and reliable.
+ *
+ * @param hash - The stored hash string from the database.
+ * @returns True if the hash is Argon2id format, false if PBKDF2 ("salt:hash").
+ */
+function isArgon2Hash(hash: string): boolean {
+  return hash.startsWith("$argon2id$");
+}
+
+/**
+ * Placeholder for the Argon2id re-hash-on-login migration step.
+ *
+ * When activated, this function should be called after a successful PBKDF2
+ * password verification. It re-hashes the plaintext password with Argon2id
+ * and updates the database row, so the user's hash is silently upgraded.
+ *
+ * Implementation (requires `npm install argon2`):
+ * ```ts
+ * import argon2 from 'argon2'
+ * const newHash = await argon2.hash(password, {
+ *   type: argon2.argon2id,
+ *   memoryCost: 65536,
+ *   timeCost: 3,
+ *   parallelism: 4,
+ * })
+ * await db.update(users).set({ passwordHash: newHash, updatedAt: Date.now() })
+ *   .where(eq(users.id, userId))
+ * ```
+ *
+ * @param _userId   - The user's UUID (needed for the DB update).
+ * @param _password - The verified plaintext password to re-hash.
+ */
+async function reHashOnLogin(_userId: string, _password: string): Promise<void> {
+  // Stub — activate after installing the argon2 package.
+  // console.log(`[auth] Would re-hash PBKDF2 → Argon2id for user ${_userId}`)
+}
 
 /**
  * Hash a plaintext password using PBKDF2 with a random salt.
@@ -56,6 +123,25 @@ function verifyPassword(password: string, stored: string): boolean {
   } catch {
     return false;
   }
+}
+
+// ── Refresh token hashing (DD-V2-223) ────────────────────────────────────────
+
+/**
+ * Hash a refresh token using SHA-256 before storing it in the database.
+ * The raw token is returned to the client but never persisted; only the hash
+ * is stored. This ensures that even if the `refresh_tokens` table is leaked,
+ * attackers cannot replay the tokens without the original values.
+ *
+ * SHA-256 is appropriate here because refresh tokens are already long, random,
+ * high-entropy strings (64 random bytes = 128 hex chars). Unlike passwords,
+ * they do not benefit from memory-hard algorithms (no dictionary attack risk).
+ *
+ * @param token - The raw refresh token string (128 hex characters).
+ * @returns The SHA-256 hex digest of the token.
+ */
+function hashRefreshToken(token: string): string {
+  return crypto.createHash("sha256").update(token).digest("hex");
 }
 
 // ── Token helpers ─────────────────────────────────────────────────────────────
@@ -103,9 +189,11 @@ async function issueTokens(
   const expiresAt = Date.now() + durationToMs(config.refreshExpiry);
   const now = Date.now();
 
-  // Persist the refresh token for rotation-based invalidation
+  // Store only the SHA-256 hash of the refresh token (DD-V2-223).
+  // The raw token is returned to the client and never touches the database.
+  const hashedRefresh = hashRefreshToken(rawRefresh);
   await db.insert(refreshTokens).values({
-    token: rawRefresh,
+    token: hashedRefresh,
     userId,
     expiresAt,
     createdAt: now,
@@ -276,6 +364,12 @@ export async function authRoutes(fastify: FastifyInstance): Promise<void> {
         user.email
       );
 
+      // Argon2id migration: if the password was verified against a PBKDF2 hash,
+      // schedule an async re-hash upgrade (no-op stub until argon2 is installed).
+      if (!isArgon2Hash(user.passwordHash)) {
+        void reHashOnLogin(user.id, password as string);
+      }
+
       const publicUser: PublicUser = {
         id: user.id,
         email: user.email,
@@ -311,10 +405,14 @@ export async function authRoutes(fastify: FastifyInstance): Promise<void> {
           .send({ error: "refreshToken is required", statusCode: 400 });
       }
 
+      // Hash the incoming raw token before looking it up — the database stores
+      // only the SHA-256 hash, never the raw value (DD-V2-223).
+      const hashedIncoming = hashRefreshToken(incomingToken);
+
       const stored = await db
         .select()
         .from(refreshTokens)
-        .where(eq(refreshTokens.token, incomingToken))
+        .where(eq(refreshTokens.token, hashedIncoming))
         .get();
 
       if (!stored || stored.expiresAt < Date.now()) {
@@ -322,7 +420,7 @@ export async function authRoutes(fastify: FastifyInstance): Promise<void> {
         if (stored) {
           await db
             .delete(refreshTokens)
-            .where(eq(refreshTokens.token, incomingToken));
+            .where(eq(refreshTokens.token, hashedIncoming));
         }
         return reply
           .status(401)
@@ -339,10 +437,10 @@ export async function authRoutes(fastify: FastifyInstance): Promise<void> {
         return reply.status(401).send({ error: "User not found", statusCode: 401 });
       }
 
-      // Rotate: delete old token, issue new pair
+      // Rotate: delete old hashed token, issue new pair
       await db
         .delete(refreshTokens)
-        .where(eq(refreshTokens.token, incomingToken));
+        .where(eq(refreshTokens.token, hashedIncoming));
 
       const tokens = await issueTokens(fastify, user.id, user.email);
       return tokens;
@@ -375,6 +473,10 @@ export async function authRoutes(fastify: FastifyInstance): Promise<void> {
       await db
         .delete(refreshTokens)
         .where(eq(refreshTokens.userId, userId));
+
+      // GDPR: immediately anonymise any public leaderboard entries (DD-V2-229).
+      // Full data purge happens after the 30-day soft-delete grace period.
+      anonymizeLeaderboardEntries(sqliteDb, userId);
 
       return reply.status(204).send();
     }
@@ -497,6 +599,168 @@ export async function authRoutes(fastify: FastifyInstance): Promise<void> {
         .where(eq(passwordResetTokens.token, token));
 
       return reply.status(200).send({ message: "Password updated successfully" });
+    }
+  );
+
+  // ── POST /guest ──────────────────────────────────────────────────────────────
+
+  /**
+   * POST /api/auth/guest
+   * Creates a temporary guest account and issues tokens immediately.
+   * Guest accounts use a generated email like `guest-<uuid>@terragacha.local`
+   * and a random 32-byte password that is never returned to the client.
+   * Guests can later link their account to a real email via POST /link-guest.
+   *
+   * Body: (none)
+   * Returns: { token, refreshToken, user }
+   */
+  fastify.post(
+    "/guest",
+    async (_request: FastifyRequest, reply: FastifyReply): Promise<AuthResponse> => {
+      const now = Date.now();
+      const guestId = crypto.randomUUID();
+      // Generate a synthetic email that will never conflict with real accounts
+      const guestEmail = `guest-${guestId}@terragacha.local`;
+      // Random password — never shared with the client; used only for internal hash
+      const guestPassword = crypto.randomBytes(32).toString("hex");
+      const passwordHash = hashPassword(guestPassword);
+
+      await db.insert(users).values({
+        id: guestId,
+        email: guestEmail,
+        passwordHash,
+        displayName: null,
+        isGuest: 1,
+        createdAt: now,
+        updatedAt: now,
+      });
+
+      const { token, refreshToken } = await issueTokens(fastify, guestId, guestEmail);
+
+      const publicUser: PublicUser = {
+        id: guestId,
+        email: guestEmail,
+        displayName: null,
+        createdAt: now,
+      };
+
+      return reply.status(201).send({ token, refreshToken, user: publicUser });
+    }
+  );
+
+  // ── POST /link-guest ─────────────────────────────────────────────────────────
+
+  /**
+   * POST /api/auth/link-guest
+   * Converts an existing guest account into a full account by assigning
+   * a real email address and password. All save data, leaderboard entries,
+   * and other user records associated with the guest ID are preserved.
+   *
+   * This endpoint is authenticated — the caller must supply a valid access token
+   * for the guest account being upgraded (preHandler: requireAuth).
+   *
+   * Body: { email: string, password: string, displayName?: string }
+   * Returns: { token, refreshToken, user }
+   *
+   * Errors:
+   *   400 — invalid email / password too short
+   *   403 — account is not a guest (already a full account)
+   *   409 — email already registered by another account
+   */
+  fastify.post(
+    "/link-guest",
+    { preHandler: requireAuth },
+    async (request: FastifyRequest, reply: FastifyReply): Promise<AuthResponse> => {
+      const { sub: userId } = getAuthUser(request);
+
+      const body = request.body as Record<string, unknown> | null | undefined;
+      const email = body?.email;
+      const password = body?.password;
+      const displayName = body?.displayName;
+
+      if (typeof email !== "string" || !isValidEmail(email)) {
+        return reply
+          .status(400)
+          .send({ error: "Invalid email address", statusCode: 400 });
+      }
+      if (typeof password !== "string" || !isValidPassword(password)) {
+        return reply.status(400).send({
+          error: "Password must be at least 8 characters",
+          statusCode: 400,
+        });
+      }
+      if (displayName !== undefined && typeof displayName !== "string") {
+        return reply
+          .status(400)
+          .send({ error: "displayName must be a string", statusCode: 400 });
+      }
+
+      // Verify the account being upgraded is actually a guest
+      const guestUser = await db
+        .select()
+        .from(users)
+        .where(eq(users.id, userId))
+        .get();
+
+      if (!guestUser) {
+        return reply.status(401).send({ error: "User not found", statusCode: 401 });
+      }
+      if (guestUser.isGuest !== 1) {
+        return reply.status(403).send({
+          error: "This account is already a full account and cannot be linked",
+          statusCode: 403,
+        });
+      }
+
+      // Ensure the target email is not already taken by another account
+      const emailConflict = await db
+        .select({ id: users.id })
+        .from(users)
+        .where(eq(users.email, email.toLowerCase()))
+        .get();
+
+      if (emailConflict) {
+        return reply
+          .status(409)
+          .send({ error: "Email already registered", statusCode: 409 });
+      }
+
+      const now = Date.now();
+      const newHash = hashPassword(password);
+      const trimmedDisplay = typeof displayName === "string"
+        ? displayName.trim() || null
+        : null;
+
+      // Upgrade: clear isGuest flag, set real email and password
+      await db
+        .update(users)
+        .set({
+          email: email.toLowerCase(),
+          passwordHash: newHash,
+          displayName: trimmedDisplay,
+          isGuest: 0,
+          updatedAt: now,
+        })
+        .where(eq(users.id, userId));
+
+      // Invalidate all existing refresh tokens — forces re-login on all devices
+      // with the new credentials, preventing stale guest tokens from lingering.
+      await db.delete(refreshTokens).where(eq(refreshTokens.userId, userId));
+
+      const { token, refreshToken } = await issueTokens(
+        fastify,
+        userId,
+        email.toLowerCase()
+      );
+
+      const publicUser: PublicUser = {
+        id: userId,
+        email: email.toLowerCase(),
+        displayName: trimmedDisplay,
+        createdAt: guestUser.createdAt,
+      };
+
+      return reply.status(200).send({ token, refreshToken, user: publicUser });
     }
   );
 }

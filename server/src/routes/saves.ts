@@ -16,6 +16,17 @@ import { db } from "../db/index.js";
 import { saves } from "../db/schema.js";
 import { requireAuth, getAuthUser } from "../middleware/auth.js";
 import type { SaveRecord, SaveSummary } from "../types/index.js";
+import { checkSavePlausibility, logAntiCheatFlags } from "../services/antiCheat.js";
+
+/**
+ * Save summary extended with an is_active flag.
+ * The active save is the most recent one (last written); older ones are
+ * history-only snapshots that are retained per the MAX_SAVE_HISTORY policy.
+ */
+interface SaveSummaryWithActive extends SaveSummary {
+  /** True for the most recent (active) save; false for older history entries. */
+  isActive: boolean;
+}
 
 /** Maximum number of save history entries to keep per user. */
 const MAX_SAVE_HISTORY = 10;
@@ -123,6 +134,13 @@ export async function savesRoutes(fastify: FastifyInstance): Promise<void> {
       });
     }
 
+    // Anti-cheat plausibility check (DD-V2-225).
+    // Flags anomalous saves for soft review but always accepts the save.
+    const { flags } = checkSavePlausibility(saveData as Record<string, unknown>);
+    if (flags.length > 0) {
+      logAntiCheatFlags(userId, flags);
+    }
+
     const now = Date.now();
     const id = crypto.randomUUID();
 
@@ -165,10 +183,12 @@ export async function savesRoutes(fastify: FastifyInstance): Promise<void> {
 
   /**
    * GET /api/saves/history
-   * Returns a list of save summaries (no saveData blob) for the user.
+   * Returns a list of save summaries (no saveData blob) for the user,
+   * capped at MAX_SAVE_HISTORY entries. The first entry (index 0, most recent)
+   * is marked is_active=true; all older entries are history-only (is_active=false).
    * Ordered by creation date, most recent first.
    */
-  fastify.get("/history", withAuth, async (request: FastifyRequest): Promise<SaveSummary[]> => {
+  fastify.get("/history", withAuth, async (request: FastifyRequest): Promise<SaveSummaryWithActive[]> => {
     const { sub: userId } = getAuthUser(request);
 
     const rows = await db
@@ -184,6 +204,11 @@ export async function savesRoutes(fastify: FastifyInstance): Promise<void> {
       .limit(MAX_SAVE_HISTORY)
       .all();
 
-    return rows;
+    // The latest save (first row after DESC sort) is the active one.
+    // All others are historical snapshots that can be restored but not modified.
+    return rows.map((row, index) => ({
+      ...row,
+      isActive: index === 0,
+    }));
   });
 }

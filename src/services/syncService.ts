@@ -243,6 +243,69 @@ export class SyncService {
   }
 
   // ----------------------------------------------------------
+  // FIELD-LEVEL MERGE
+  // ----------------------------------------------------------
+
+  /**
+   * Merges a local and remote `PlayerSave` at the field level, applying
+   * domain-specific rules rather than a simple "latest timestamp wins"
+   * strategy. This supplements `resolveConflict()` for callers that need
+   * finer-grained control (DD-V2-182).
+   *
+   * Rules applied per field group:
+   * - **SM-2 / review state** (`reviewStates`): remote timestamp wins.
+   *   The server is the authority for learning progress to prevent cheating.
+   * - **Cosmetic preferences** (`equippedCosmetic`, `activeTitle`):
+   *   client (local) wins. These are low-stakes presentation choices that
+   *   the player last set on this device.
+   * - **Numeric progress** (`stats.*`, `minerals.*`):
+   *   merge-max — take the higher value for each key independently.
+   *   Ensures neither session's progress is lost when both were active.
+   *
+   * @param local - The save currently stored on this device.
+   * @param remote - The save downloaded from the cloud.
+   * @returns A merged `PlayerSave` that should be persisted and re-uploaded.
+   */
+  fieldLevelMerge(local: PlayerSave, remote: PlayerSave): PlayerSave {
+    // --- SM-2: server wins (learning integrity) ---
+    const mergedReviewStates = remote.reviewStates
+
+    // --- Cosmetic prefs: client wins ---
+    const mergedEquippedCosmetic = local.equippedCosmetic
+    const mergedActiveTitle = local.activeTitle
+
+    // --- Numeric stats: merge-max ---
+    const mergedStats = { ...local.stats }
+    for (const key of Object.keys(remote.stats) as (keyof typeof remote.stats)[]) {
+      const rv = remote.stats[key] as number
+      const lv = mergedStats[key] as number
+      if (typeof rv === 'number' && typeof lv === 'number' && rv > lv) {
+        // TypeScript narrows union; cast through unknown for assignment
+        ;(mergedStats as Record<string, number>)[key] = rv
+      }
+    }
+
+    // --- Minerals: merge-max per tier ---
+    const mergedMinerals = { ...local.minerals }
+    for (const tier of Object.keys(remote.minerals) as (keyof typeof remote.minerals)[]) {
+      const rv = remote.minerals[tier] as number
+      const lv = mergedMinerals[tier] as number
+      if (typeof rv === 'number' && typeof lv === 'number' && rv > lv) {
+        mergedMinerals[tier] = rv
+      }
+    }
+
+    return {
+      ...local,
+      reviewStates: mergedReviewStates,
+      equippedCosmetic: mergedEquippedCosmetic,
+      activeTitle: mergedActiveTitle,
+      stats: mergedStats,
+      minerals: mergedMinerals,
+    }
+  }
+
+  // ----------------------------------------------------------
   // INTERNALS
   // ----------------------------------------------------------
 

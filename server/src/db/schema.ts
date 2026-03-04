@@ -4,6 +4,108 @@
  * All timestamps are stored as Unix epoch integers (milliseconds).
  */
 
+// ── PostgreSQL jsonb migration plan (DD-V2-209) ───────────────────────────────
+//
+// When migrating from SQLite to PostgreSQL, the following columns should be
+// converted from TEXT (JSON string) to JSONB for native indexing and querying:
+//
+//   saves.save_data          → jsonb  (full PlayerSave document)
+//   leaderboards.metadata    → jsonb  (optional dive metadata)
+//   analytics_events.properties → jsonb  (event property bag)
+//   fact_packs.pack_data     → jsonb  (array of fact objects)
+//
+// Additionally, the saves table will be split into sub-document columns for
+// efficient partial updates and field-level conflict resolution (DD-V2-214):
+//
+//   save_data_progression    jsonb  — { layer, minerals, artifacts, relics }
+//   save_data_learning       jsonb  — { sm2Cards, masteredFacts, streaks }
+//   save_data_dome           jsonb  — { upgrades, floors, pets, farm }
+//   save_data_settings       jsonb  — { audio, language, accessibility }
+//   save_data_meta           jsonb  — { version, clientTimestamp, sessionId }
+//
+// The PostgreSQL equivalent CREATE TABLE for saves would be:
+//
+//   CREATE TABLE saves (
+//     id                   UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+//     user_id              UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+//     version              INTEGER NOT NULL DEFAULT 1,
+//     profile_id           TEXT NOT NULL DEFAULT 'default',
+//     save_data_progression JSONB,
+//     save_data_learning   JSONB,
+//     save_data_dome       JSONB,
+//     save_data_settings   JSONB,
+//     save_data_meta       JSONB,
+//     created_at           TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+//     updated_at           TIMESTAMPTZ NOT NULL DEFAULT NOW()
+//   );
+//   CREATE INDEX idx_saves_user_id_created ON saves(user_id, created_at DESC);
+//
+// Analytics columns for PostgreSQL (partitioned by month for retention):
+//
+//   CREATE TABLE analytics_events (
+//     id           UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+//     session_id   TEXT NOT NULL,
+//     event_name   TEXT NOT NULL,
+//     properties   JSONB NOT NULL,
+//     platform     TEXT,
+//     app_version  TEXT,
+//     user_id      UUID REFERENCES users(id) ON DELETE SET NULL,
+//     created_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
+//   ) PARTITION BY RANGE (created_at);
+//
+// See server/src/db/pgReadiness.ts for migration utilities and dual-write plan.
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * TypeScript types for future PostgreSQL jsonb sub-document columns.
+ * These represent the decomposed structure of PlayerSave for field-level sync.
+ * Not used at runtime (SQLite stores the full blob as TEXT).
+ */
+
+/** Progression sub-document: mining state, layer, collected items. */
+export interface PgSaveProgression {
+  layer: number;
+  minerals: Record<string, number>;
+  artifacts: string[];
+  relics: string[];
+  diveCount: number;
+}
+
+/** Learning sub-document: SM-2 card state, mastered facts, streaks. */
+export interface PgSaveLearning {
+  sm2Cards: Record<string, { interval: number; easeFactor: number; reps: number; dueDate: number }>;
+  masteredFacts: string[];
+  streakDays: number;
+  longestStreak: number;
+}
+
+/** Dome sub-document: hub upgrades, floors, pets, farm plots. */
+export interface PgSaveDome {
+  upgrades: Record<string, number>;
+  unlockedFloors: number[];
+  pets: Array<{ species: string; stage: number }>;
+  farmPlots: Array<{ crop: string | null; plantedAt: number | null }>;
+}
+
+/** Settings sub-document: audio, language, accessibility preferences. */
+export interface PgSaveSettings {
+  audioEnabled: boolean;
+  musicVolume: number;
+  sfxVolume: number;
+  language: string;
+  languageMode: "normal" | "categoryLock";
+  ageGroup: "kid" | "teen" | "adult";
+}
+
+/** Meta sub-document: save format version, timestamps, session info. */
+export interface PgSaveMeta {
+  schemaVersion: number;
+  clientTimestamp: number;
+  sessionId: string;
+  platform: string;
+  appVersion: string;
+}
+
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 import { relations } from "drizzle-orm";
 

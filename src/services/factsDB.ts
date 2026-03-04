@@ -2,6 +2,31 @@ import initSqlJs, { type Database } from 'sql.js'
 import type { Fact, ContentType, Rarity, AgeRating } from '../data/types'
 import sqlWasmUrl from 'sql.js/dist/sql-wasm.wasm?url'
 import { factPackService } from './factPackService'
+import { AGE_BRACKET_KEY } from './legalConstants'
+
+/**
+ * Maps the raw `terra_age_bracket` localStorage string to the canonical
+ * `AgeRating` type used throughout the app.
+ *
+ * - 'under_13' → 'kid'
+ * - 'teen'     → 'teen'
+ * - 'adult'    → 'adult'
+ * - unknown / missing → 'adult' (safest default for existing players)
+ */
+function ageBracketToRating(bracket: string | null): AgeRating {
+  if (bracket === 'under_13') return 'kid'
+  if (bracket === 'teen') return 'teen'
+  return 'adult'
+}
+
+/**
+ * Reads the age bracket that was set by the AgeGate and converts it to an
+ * `AgeRating`. Returns 'adult' when no bracket has been stored.
+ */
+function getStoredAgeRating(): AgeRating {
+  if (typeof localStorage === 'undefined') return 'adult'
+  return ageBracketToRating(localStorage.getItem(AGE_BRACKET_KEY))
+}
 
 /**
  * Singleton service that loads a SQLite database via sql.js (WASM) in the browser
@@ -107,16 +132,17 @@ class FactsDB {
   }
 
   /**
-   * Returns a random selection of facts.
+   * Returns a random selection of facts, automatically filtered by the age
+   * bracket stored in localStorage (set by the AgeGate on first launch).
    * @param count Number of facts to return (default 1).
    */
   getRandom(count = 1): Fact[] {
-    return this.query(`SELECT * FROM facts ORDER BY RANDOM() LIMIT ${Math.max(1, Math.floor(count))}`)
+    return this.getRandomFiltered(count, getStoredAgeRating())
   }
 
   /**
-   * Convenience wrapper that returns a single random fact, or null if the
-   * database is empty.
+   * Convenience wrapper that returns a single random fact filtered by the
+   * stored age bracket, or null if the database is empty.
    */
   getRandomOne(): Fact | null {
     const results = this.getRandom(1)
@@ -142,16 +168,20 @@ class FactsDB {
 
   /**
    * Returns a random selection of facts, optionally filtered by age rating.
-   * When `ageRating` is omitted the behaviour is identical to `getRandom`.
+   * When `ageRating` is omitted, the age rating stored in localStorage
+   * (written by the AgeGate on first launch) is used as the default.
+   *
    * @param count     Number of facts to return (default 1).
-   * @param ageRating Optional age-rating filter applied before random selection.
+   * @param ageRating Optional age-rating filter. Defaults to the stored bracket.
+   *                  Pass 'adult' explicitly to bypass filtering.
    */
   getRandomFiltered(count = 1, ageRating?: AgeRating): Fact[] {
     const n = Math.max(1, Math.floor(count))
-    if (ageRating === undefined || ageRating === 'adult') {
+    const rating = ageRating ?? getStoredAgeRating()
+    if (rating === 'adult') {
       return this.query(`SELECT * FROM facts ORDER BY RANDOM() LIMIT ${n}`)
     }
-    if (ageRating === 'teen') {
+    if (rating === 'teen') {
       return this.query(
         `SELECT * FROM facts WHERE age_rating IN ('kid', 'teen') ORDER BY RANDOM() LIMIT ${n}`,
       )

@@ -10,9 +10,13 @@
     onRegisterSuccess: (user: { id: string; email: string; displayName: string | null }) => void
     /** Navigates back to the login screen. */
     onBack: () => void
+    /** Optional: opens the Privacy Policy screen. When not provided the link is plain text. */
+    onViewPrivacy?: () => void
+    /** Optional: opens the Terms of Service screen. When not provided the link is plain text. */
+    onViewTerms?: () => void
   }
 
-  let { onRegisterSuccess, onBack }: Props = $props()
+  let { onRegisterSuccess, onBack, onViewPrivacy, onViewTerms }: Props = $props()
 
   // Form state
   let displayName = $state('')
@@ -252,7 +256,16 @@
             bind:checked={tosAccepted}
             disabled={loading}
           />
-          <span>I accept the <strong>Terms of Service</strong></span>
+          <span>
+            I accept the
+            {#if onViewTerms}
+              <button class="legal-link" type="button" onclick={onViewTerms} disabled={loading}>
+                Terms of Service
+              </button>
+            {:else}
+              <strong>Terms of Service</strong>
+            {/if}
+          </span>
         </label>
         <label class="checkbox-label">
           <input
@@ -261,7 +274,16 @@
             bind:checked={privacyAccepted}
             disabled={loading}
           />
-          <span>I accept the <strong>Privacy Policy</strong></span>
+          <span>
+            I accept the
+            {#if onViewPrivacy}
+              <button class="legal-link" type="button" onclick={onViewPrivacy} disabled={loading}>
+                Privacy Policy
+              </button>
+            {:else}
+              <strong>Privacy Policy</strong>
+            {/if}
+          </span>
         </label>
       </div>
 
@@ -504,6 +526,29 @@
 
   .checkbox-label strong {
     color: rgba(78, 205, 196, 0.9);
+  }
+
+  .legal-link {
+    background: none;
+    border: none;
+    padding: 0;
+    color: rgba(78, 205, 196, 0.9);
+    font: inherit;
+    font-size: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    display: inline;
+  }
+
+  .legal-link:hover:not(:disabled) {
+    color: #4ecdc4;
+  }
+
+  .legal-link:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
   }
 
   .primary-btn {

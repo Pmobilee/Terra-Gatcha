@@ -1,6 +1,7 @@
 import { get, writable } from 'svelte/store'
 import type { AgeRating, MineralTier, PlayerSave, ReviewState } from '../../data/types'
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'
+import { AGE_BRACKET_KEY } from '../../services/legalConstants'
 import { createReviewState, isDue, getMasteryLevel, reviewFact } from '../../services/sm2'
 import type { Cosmetic } from '../../data/cosmetics'
 import { calculateKnowledgePoints } from '../../data/knowledgeStore'
@@ -14,16 +15,34 @@ import { recordFastMastery } from '../../services/behavioralLearner'
 export const playerSave = writable<PlayerSave | null>(null)
 
 /**
+ * Reads the age bracket stored by the AgeGate and maps it to an AgeRating.
+ * Returns 'teen' as the default if no bracket has been stored yet (safe for
+ * existing players who pre-date the AgeGate).
+ */
+function getStoredAgeRating(): AgeRating {
+  if (typeof localStorage === 'undefined') return 'teen'
+  const bracket = localStorage.getItem(AGE_BRACKET_KEY)
+  if (bracket === 'under_13') return 'kid'
+  if (bracket === 'adult') return 'adult'
+  // 'teen' or missing → 'teen'
+  return 'teen'
+}
+
+/**
  * Initializes player data from storage or creates a fresh save.
+ * When creating a new save, reads the age bracket stored by the AgeGate and
+ * uses that to set the ageRating, falling back to the explicit `ageRating`
+ * parameter (default: 'teen') if nothing is stored.
  *
- * @param ageRating - Age rating to use when creating a new save.
+ * @param ageRating - Fallback age rating to use if no bracket is stored.
  * @returns The loaded or newly created player save.
  */
 export function initPlayer(ageRating: AgeRating = 'teen'): PlayerSave {
   let save = load()
 
   if (!save) {
-    save = createNewPlayer(ageRating)
+    const effectiveRating = getStoredAgeRating() ?? ageRating
+    save = createNewPlayer(effectiveRating)
     saveFn(save)
   }
 

@@ -3,7 +3,7 @@
  * Builds and starts the Fastify application with all plugins and routes.
  */
 
-import Fastify from "fastify";
+import Fastify, { type FastifyRequest, type FastifyReply } from "fastify";
 import cors from "@fastify/cors";
 import jwt from "@fastify/jwt";
 import { config } from "./config.js";
@@ -15,6 +15,47 @@ import { savesRoutes } from "./routes/saves.js";
 import { leaderboardRoutes } from "./routes/leaderboards.js";
 import { factsRoutes } from "./routes/facts.js";
 import { factPackRoutes } from "./routes/factPacks.js";
+import { analyticsRoutes } from "./routes/analytics.js";
+
+// ── In-memory rate limiter ────────────────────────────────────────────────────
+
+/** Per-key hit counter with a rolling reset timestamp. */
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+/**
+ * Create a Fastify preHandler that rate-limits requests by (IP + route).
+ * Uses a simple fixed-window counter stored in process memory.
+ * No external dependencies required.
+ *
+ * @param max      - Maximum number of requests allowed per window.
+ * @param windowMs - Window duration in milliseconds.
+ * @returns A preHandler hook function compatible with Fastify route options.
+ */
+function createRateLimiter(max: number, windowMs: number) {
+  return async (request: FastifyRequest, reply: FastifyReply) => {
+    const key = request.ip + ":" + request.routeOptions.url;
+    const now = Date.now();
+    const entry = rateLimitMap.get(key);
+    if (!entry || now > entry.resetAt) {
+      rateLimitMap.set(key, { count: 1, resetAt: now + windowMs });
+      return;
+    }
+    entry.count++;
+    if (entry.count > max) {
+      reply.header("Retry-After", Math.ceil((entry.resetAt - now) / 1000));
+      return reply.status(429).send({ error: "Too many requests" });
+    }
+  };
+}
+
+// Pre-built rate-limiter instances for each sensitive auth endpoint.
+// Limits are intentionally tighter than the global default.
+const loginRateLimit = createRateLimiter(10, 60_000);           // 10/min
+const registerRateLimit = createRateLimiter(5, 60_000);          // 5/min
+const refreshRateLimit = createRateLimiter(20, 60_000);          // 20/min
+const passwordResetRateLimit = createRateLimiter(3, 5 * 60_000); // 3 per 5 min
+const savesRateLimit = createRateLimiter(30, 60_000);            // 30/min
+const leaderboardRateLimit = createRateLimiter(60, 60_000);      // 60/min
 
 /**
  * Build the Fastify application instance with all plugins and routes.
@@ -57,11 +98,56 @@ export async function buildApp() {
 
   // ── Routes ──────────────────────────────────────────────────────────────────
   await fastify.register(healthRoutes);
-  await fastify.register(authRoutes, { prefix: "/api/auth" });
-  await fastify.register(savesRoutes, { prefix: "/api/saves" });
-  await fastify.register(leaderboardRoutes, { prefix: "/api/leaderboards" });
+
+  // Auth routes — wrapped in an encapsulated plugin so we can attach
+  // per-endpoint rate limiters via a scoped preHandler hook.
+  await fastify.register(
+    async (authInstance) => {
+      // Route-level rate limiting: match on the path *after* the /api/auth prefix.
+      authInstance.addHook(
+        "preHandler",
+        async (request: FastifyRequest, reply: FastifyReply) => {
+          const url = request.routeOptions.url ?? "";
+          if (url === "/login") {
+            return loginRateLimit(request, reply);
+          }
+          if (url === "/register") {
+            return registerRateLimit(request, reply);
+          }
+          if (url === "/refresh") {
+            return refreshRateLimit(request, reply);
+          }
+          if (url === "/password-reset-request") {
+            return passwordResetRateLimit(request, reply);
+          }
+        }
+      );
+
+      await authRoutes(authInstance);
+    },
+    { prefix: "/api/auth" }
+  );
+
+  // Saves routes — rate limited to 30 requests/min per IP to prevent save spam.
+  await fastify.register(
+    async (savesInstance) => {
+      savesInstance.addHook("preHandler", savesRateLimit);
+      await savesRoutes(savesInstance);
+    },
+    { prefix: "/api/saves" }
+  );
+
+  // Leaderboard routes — rate limited to 60 requests/min per IP.
+  await fastify.register(
+    async (lbInstance) => {
+      lbInstance.addHook("preHandler", leaderboardRateLimit);
+      await leaderboardRoutes(lbInstance);
+    },
+    { prefix: "/api/leaderboards" }
+  );
   await fastify.register(factsRoutes, { prefix: "/api/facts" });
   await fastify.register(factPackRoutes, { prefix: "/api/facts/packs" });
+  await fastify.register(analyticsRoutes, { prefix: "/api/analytics" });
 
   // ── 404 handler ─────────────────────────────────────────────────────────────
   fastify.setNotFoundHandler((_request, reply) => {
