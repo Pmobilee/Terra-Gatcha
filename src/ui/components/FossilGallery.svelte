@@ -62,13 +62,24 @@
     if (state.fragmentsFound < state.fragmentsNeeded) return false
     const species = getSpeciesById(speciesId)
     if (!species) return false
+    // Phase 16.2: per-species fact gate
+    if (species.requiredSpeciesFacts && species.requiredSpeciesFacts.length > 0) {
+      const learnedSet = new Set($playerSave?.learnedFacts ?? [])
+      return species.requiredSpeciesFacts.every(id => learnedSet.has(id))
+    }
+    // Fallback: global fact count (backward compat)
     return learnedCount >= species.requiredFacts
   }
 
-  function factsNeededToRevive(speciesId: string): number {
+  function speciesFactsProgress(speciesId: string): { learned: number; total: number } {
     const species = getSpeciesById(speciesId)
-    if (!species) return 0
-    return Math.max(0, species.requiredFacts - learnedCount)
+    if (!species || !species.requiredSpeciesFacts || species.requiredSpeciesFacts.length === 0) {
+      // Fallback for species without per-species facts
+      return { learned: Math.min(learnedCount, species?.requiredFacts ?? 0), total: species?.requiredFacts ?? 0 }
+    }
+    const learnedSet = new Set($playerSave?.learnedFacts ?? [])
+    const learnedFactCount = species.requiredSpeciesFacts.filter(id => learnedSet.has(id)).length
+    return { learned: learnedFactCount, total: species.requiredSpeciesFacts.length }
   }
 
   function handleRevive(speciesId: string): void {
@@ -158,7 +169,7 @@
       {@const complete = state !== null && state.fragmentsFound >= state.fragmentsNeeded}
       {@const revived = state?.revived ?? false}
       {@const canReviveNow = canRevive(species.id)}
-      {@const factsNeeded = factsNeededToRevive(species.id)}
+      {@const factsProgress = speciesFactsProgress(species.id)}
 
       <div
         class="species-card"
@@ -268,7 +279,10 @@
             </button>
           {:else}
             <div class="revive-locked">
-              Need {factsNeeded} more facts
+              Know {factsProgress.learned}/{factsProgress.total} species facts
+            </div>
+            <div class="species-fact-bar">
+              <div class="species-fact-fill" style="width: {(factsProgress.learned / Math.max(1, factsProgress.total)) * 100}%"></div>
             </div>
           {/if}
         {/if}
@@ -639,5 +653,22 @@
   .crop-badge {
     background: color-mix(in srgb, #3cb371 30%, var(--color-surface) 70%) !important;
     color: #3cb371 !important;
+  }
+
+  /* ─── Species fact progress bar (Phase 16.2) ─── */
+  .species-fact-bar {
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+
+  .species-fact-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+    border-radius: 999px;
+    transition: width 0.3s ease;
   }
 </style>

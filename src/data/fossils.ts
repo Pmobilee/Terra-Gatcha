@@ -36,6 +36,8 @@ export interface FossilSpecies {
   isCrop?: boolean
   /** Botanical/agricultural fact category tags for knowledge gating (used in Phase 16.2). */
   factCategories?: string[]
+  /** Array of exactly 10 fact IDs the player must learn to revive this species. */
+  requiredSpeciesFacts?: string[]
 }
 
 export const FOSSIL_SPECIES: FossilSpecies[] = [
@@ -50,6 +52,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     rarity: 'common',
     companionBonus: '+5% mineral find rate',
     companionEffect: { type: 'mineral_rate', value: 0.05 },
+    requiredSpeciesFacts: ['fossil_trilobite_01', 'fossil_trilobite_02', 'fossil_trilobite_03', 'fossil_trilobite_04', 'fossil_trilobite_05', 'fossil_trilobite_06', 'fossil_trilobite_07', 'fossil_trilobite_08', 'fossil_trilobite_09', 'fossil_trilobite_10'],
   },
   {
     id: 'ammonite',
@@ -62,6 +65,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     rarity: 'common',
     companionBonus: '+3 O2 per layer',
     companionEffect: { type: 'layer_oxygen', value: 3 },
+    requiredSpeciesFacts: ['fossil_ammonite_01', 'fossil_ammonite_02', 'fossil_ammonite_03', 'fossil_ammonite_04', 'fossil_ammonite_05', 'fossil_ammonite_06', 'fossil_ammonite_07', 'fossil_ammonite_08', 'fossil_ammonite_09', 'fossil_ammonite_10'],
   },
   {
     id: 'raptor',
@@ -74,6 +78,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     rarity: 'uncommon',
     companionBonus: 'Alerts nearby hazards',
     companionEffect: { type: 'hazard_alert', value: 2 },
+    requiredSpeciesFacts: ['fossil_raptor_01', 'fossil_raptor_02', 'fossil_raptor_03', 'fossil_raptor_04', 'fossil_raptor_05', 'fossil_raptor_06', 'fossil_raptor_07', 'fossil_raptor_08', 'fossil_raptor_09', 'fossil_raptor_10'],
   },
   {
     id: 'mammoth',
@@ -86,6 +91,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     rarity: 'uncommon',
     companionBonus: '+10 max O2',
     companionEffect: { type: 'max_oxygen', value: 10 },
+    requiredSpeciesFacts: ['fossil_mammoth_01', 'fossil_mammoth_02', 'fossil_mammoth_03', 'fossil_mammoth_04', 'fossil_mammoth_05', 'fossil_mammoth_06', 'fossil_mammoth_07', 'fossil_mammoth_08', 'fossil_mammoth_09', 'fossil_mammoth_10'],
   },
   {
     id: 'megalodon',
@@ -98,6 +104,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     rarity: 'rare',
     companionBonus: '2x mineral magnet range',
     companionEffect: { type: 'magnet_range', value: 2 },
+    requiredSpeciesFacts: ['fossil_megalodon_01', 'fossil_megalodon_02', 'fossil_megalodon_03', 'fossil_megalodon_04', 'fossil_megalodon_05', 'fossil_megalodon_06', 'fossil_megalodon_07', 'fossil_megalodon_08', 'fossil_megalodon_09', 'fossil_megalodon_10'],
   },
   {
     id: 'pteranodon',
@@ -110,6 +117,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     rarity: 'rare',
     companionBonus: 'Reveals exit location',
     companionEffect: { type: 'reveal_exit', value: 1 },
+    requiredSpeciesFacts: ['fossil_pteranodon_01', 'fossil_pteranodon_02', 'fossil_pteranodon_03', 'fossil_pteranodon_04', 'fossil_pteranodon_05', 'fossil_pteranodon_06', 'fossil_pteranodon_07', 'fossil_pteranodon_08', 'fossil_pteranodon_09', 'fossil_pteranodon_10'],
   },
   {
     id: 'trex',
@@ -122,6 +130,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     rarity: 'legendary',
     companionBonus: 'Breaks blocks in 1 hit (10% chance)',
     companionEffect: { type: 'instant_break', value: 0.10 },
+    requiredSpeciesFacts: ['fossil_trex_01', 'fossil_trex_02', 'fossil_trex_03', 'fossil_trex_04', 'fossil_trex_05', 'fossil_trex_06', 'fossil_trex_07', 'fossil_trex_08', 'fossil_trex_09', 'fossil_trex_10'],
   },
   {
     id: 'dodo',
@@ -134,6 +143,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     rarity: 'common',
     companionBonus: '+1 inventory slot',
     companionEffect: { type: 'extra_slot', value: 1 },
+    requiredSpeciesFacts: ['fossil_dodo_01', 'fossil_dodo_02', 'fossil_dodo_03', 'fossil_dodo_04', 'fossil_dodo_05', 'fossil_dodo_06', 'fossil_dodo_07', 'fossil_dodo_08', 'fossil_dodo_09', 'fossil_dodo_10'],
   },
   {
     id: 'sabertooth',
@@ -146,6 +156,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     rarity: 'uncommon',
     companionBonus: '-3 O2 per hazard',
     companionEffect: { type: 'hazard_resist', value: 3 },
+    requiredSpeciesFacts: ['fossil_sabertooth_01', 'fossil_sabertooth_02', 'fossil_sabertooth_03', 'fossil_sabertooth_04', 'fossil_sabertooth_05', 'fossil_sabertooth_06', 'fossil_sabertooth_07', 'fossil_sabertooth_08', 'fossil_sabertooth_09', 'fossil_sabertooth_10'],
   },
   {
     id: 'archaeopteryx',
@@ -158,6 +169,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     rarity: 'rare',
     companionBonus: 'Scout drone on each dive',
     companionEffect: { type: 'scout_drone', value: 1 },
+    requiredSpeciesFacts: ['fossil_archaeopteryx_01', 'fossil_archaeopteryx_02', 'fossil_archaeopteryx_03', 'fossil_archaeopteryx_04', 'fossil_archaeopteryx_05', 'fossil_archaeopteryx_06', 'fossil_archaeopteryx_07', 'fossil_archaeopteryx_08', 'fossil_archaeopteryx_09', 'fossil_archaeopteryx_10'],
   },
   // ─── Crop Fossils (Phase 16.1) ────────────────────────────────
   {
@@ -172,6 +184,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     isCrop: true,
     factCategories: ['Life Sciences', 'History'],
     companionEffect: { type: 'mineral_rate', value: 0 },
+    requiredSpeciesFacts: ['fossil_ancient_wheat_01', 'fossil_ancient_wheat_02', 'fossil_ancient_wheat_03', 'fossil_ancient_wheat_04', 'fossil_ancient_wheat_05', 'fossil_ancient_wheat_06', 'fossil_ancient_wheat_07', 'fossil_ancient_wheat_08', 'fossil_ancient_wheat_09', 'fossil_ancient_wheat_10'],
   },
   {
     id: 'lotus_fossil',
@@ -185,6 +198,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     isCrop: true,
     factCategories: ['Life Sciences', 'Culture'],
     companionEffect: { type: 'mineral_rate', value: 0 },
+    requiredSpeciesFacts: ['fossil_lotus_fossil_01', 'fossil_lotus_fossil_02', 'fossil_lotus_fossil_03', 'fossil_lotus_fossil_04', 'fossil_lotus_fossil_05', 'fossil_lotus_fossil_06', 'fossil_lotus_fossil_07', 'fossil_lotus_fossil_08', 'fossil_lotus_fossil_09', 'fossil_lotus_fossil_10'],
   },
   {
     id: 'cave_mushroom',
@@ -198,6 +212,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     isCrop: true,
     factCategories: ['Life Sciences', 'Natural Sciences'],
     companionEffect: { type: 'mineral_rate', value: 0 },
+    requiredSpeciesFacts: ['fossil_cave_mushroom_01', 'fossil_cave_mushroom_02', 'fossil_cave_mushroom_03', 'fossil_cave_mushroom_04', 'fossil_cave_mushroom_05', 'fossil_cave_mushroom_06', 'fossil_cave_mushroom_07', 'fossil_cave_mushroom_08', 'fossil_cave_mushroom_09', 'fossil_cave_mushroom_10'],
   },
   {
     id: 'ancient_rice',
@@ -211,6 +226,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     isCrop: true,
     factCategories: ['Life Sciences', 'History', 'Geography'],
     companionEffect: { type: 'mineral_rate', value: 0 },
+    requiredSpeciesFacts: ['fossil_ancient_rice_01', 'fossil_ancient_rice_02', 'fossil_ancient_rice_03', 'fossil_ancient_rice_04', 'fossil_ancient_rice_05', 'fossil_ancient_rice_06', 'fossil_ancient_rice_07', 'fossil_ancient_rice_08', 'fossil_ancient_rice_09', 'fossil_ancient_rice_10'],
   },
   {
     id: 'giant_fern',
@@ -224,6 +240,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     isCrop: true,
     factCategories: ['Natural Sciences', 'Life Sciences'],
     companionEffect: { type: 'mineral_rate', value: 0 },
+    requiredSpeciesFacts: ['fossil_giant_fern_01', 'fossil_giant_fern_02', 'fossil_giant_fern_03', 'fossil_giant_fern_04', 'fossil_giant_fern_05', 'fossil_giant_fern_06', 'fossil_giant_fern_07', 'fossil_giant_fern_08', 'fossil_giant_fern_09', 'fossil_giant_fern_10'],
   },
   {
     id: 'amber_orchid',
@@ -237,6 +254,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     isCrop: true,
     factCategories: ['Life Sciences', 'Natural Sciences'],
     companionEffect: { type: 'mineral_rate', value: 0 },
+    requiredSpeciesFacts: ['fossil_amber_orchid_01', 'fossil_amber_orchid_02', 'fossil_amber_orchid_03', 'fossil_amber_orchid_04', 'fossil_amber_orchid_05', 'fossil_amber_orchid_06', 'fossil_amber_orchid_07', 'fossil_amber_orchid_08', 'fossil_amber_orchid_09', 'fossil_amber_orchid_10'],
   },
   {
     id: 'ancient_corn',
@@ -250,6 +268,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     isCrop: true,
     factCategories: ['Life Sciences', 'History', 'Culture'],
     companionEffect: { type: 'mineral_rate', value: 0 },
+    requiredSpeciesFacts: ['fossil_ancient_corn_01', 'fossil_ancient_corn_02', 'fossil_ancient_corn_03', 'fossil_ancient_corn_04', 'fossil_ancient_corn_05', 'fossil_ancient_corn_06', 'fossil_ancient_corn_07', 'fossil_ancient_corn_08', 'fossil_ancient_corn_09', 'fossil_ancient_corn_10'],
   },
   {
     id: 'petrified_vine',
@@ -263,6 +282,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     isCrop: true,
     factCategories: ['Life Sciences', 'History', 'Culture'],
     companionEffect: { type: 'mineral_rate', value: 0 },
+    requiredSpeciesFacts: ['fossil_petrified_vine_01', 'fossil_petrified_vine_02', 'fossil_petrified_vine_03', 'fossil_petrified_vine_04', 'fossil_petrified_vine_05', 'fossil_petrified_vine_06', 'fossil_petrified_vine_07', 'fossil_petrified_vine_08', 'fossil_petrified_vine_09', 'fossil_petrified_vine_10'],
   },
   {
     id: 'star_moss',
@@ -276,6 +296,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     isCrop: true,
     factCategories: ['Life Sciences', 'Natural Sciences'],
     companionEffect: { type: 'mineral_rate', value: 0 },
+    requiredSpeciesFacts: ['fossil_star_moss_01', 'fossil_star_moss_02', 'fossil_star_moss_03', 'fossil_star_moss_04', 'fossil_star_moss_05', 'fossil_star_moss_06', 'fossil_star_moss_07', 'fossil_star_moss_08', 'fossil_star_moss_09', 'fossil_star_moss_10'],
   },
   {
     id: 'world_tree_seed',
@@ -289,6 +310,7 @@ export const FOSSIL_SPECIES: FossilSpecies[] = [
     isCrop: true,
     factCategories: ['Natural Sciences', 'Life Sciences'],
     companionEffect: { type: 'mineral_rate', value: 0 },
+    requiredSpeciesFacts: ['fossil_world_tree_seed_01', 'fossil_world_tree_seed_02', 'fossil_world_tree_seed_03', 'fossil_world_tree_seed_04', 'fossil_world_tree_seed_05', 'fossil_world_tree_seed_06', 'fossil_world_tree_seed_07', 'fossil_world_tree_seed_08', 'fossil_world_tree_seed_09', 'fossil_world_tree_seed_10'],
   },
 ]
 
