@@ -9,6 +9,10 @@ import { canMine, mineBlock } from '../systems/MiningSystem'
 import { MinerAnimController } from '../systems/AnimationSystem'
 import { GearOverlaySystem } from '../systems/GearOverlaySystem'
 import { isAutotiledBlock, getAutotileGroup, bitmaskToSpriteKey, computeAllVariants, invalidateNeighborVariants } from '../systems/AutotileSystem'
+import { resolveTileSpriteKey } from '../../data/biomeTileSpec'
+import { transitionTileSpriteKey } from '../../data/biomeTileSpec'
+import type { TileCategory } from '../../data/biomeTileSpec'
+import { applyDepthBackground, computeDepthModifiers } from '../systems/DepthGradientSystem'
 import { generateMine, generateTutorialMine, revealAround, seededRandom } from '../systems/MineGenerator'
 import {
   addOxygen,
@@ -163,6 +167,10 @@ export class MineScene extends Phaser.Scene {
   private animatedTileSystem: AnimatedTileSystem | null = null
   /** Tracks whether LINEAR texture filters have been applied after the first sprite load. */
   private _filtersApplied = false
+  /** Phase 33.5: Depth gradient overlay graphics layer (darkens viewport at deeper layers). */
+  private depthOverlayGraphics!: Phaser.GameObjects.Graphics
+  /** Phase 33.6: Biome ID of the adjacent layer (used for transition tile rendering). */
+  private transitionBiomeId: import('../../data/biomes').BiomeId | null = null
 
   constructor() {
     super({ key: 'MineScene' })
@@ -309,10 +317,11 @@ export class MineScene extends Phaser.Scene {
       ? generateTutorialMine()
       : generateMine(this.seed, this.facts, this.currentLayer, this.currentBiome)
     this.grid = mineResult.grid
-    // Compute initial autotile variants for all terrain blocks
-    computeAllVariants(this.grid)
     this.currentBiome = mineResult.biome
-    this.cameras.main.setBackgroundColor(this.currentBiome.ambientColor)
+    // Compute initial autotile variants for all terrain blocks (blob47 for hero biomes)
+    computeAllVariants(this.grid, this.currentBiome.id)
+    // Phase 33.5: Apply depth-adjusted background color
+    applyDepthBackground(this.cameras.main, this.currentBiome, this.currentLayer)
     // GAIA biome entry comment (DD-V2-057)
     if (this.currentBiome.gaiaEntryComment) {
       this.game.events.emit('gaia-toast', this.currentBiome.gaiaEntryComment)
@@ -352,6 +361,11 @@ export class MineScene extends Phaser.Scene {
 
     this.overlayGraphics = this.add.graphics()
     this.overlayGraphics.setDepth(7)
+
+    // Phase 33.5: Depth gradient overlay — fixed to camera, above tiles, below sprites
+    this.depthOverlayGraphics = this.add.graphics()
+    this.depthOverlayGraphics.setDepth(4)
+    this.depthOverlayGraphics.setScrollFactor(0)
 
     const startPx = startX * TILE_SIZE + TILE_SIZE * 0.5
     const startPy = startY * TILE_SIZE + TILE_SIZE          // bottom of the tile, not center
@@ -545,6 +559,7 @@ export class MineScene extends Phaser.Scene {
 
   private redrawAll(): void {
     this.updateCameraTarget()
+    this.drawDepthOverlay()
     this.drawTiles()
     this.drawPlayer()
     // Update mini-map store
@@ -559,6 +574,33 @@ export class MineScene extends Phaser.Scene {
   private updateCameraTarget(): void {
     // No-op — Phaser's built-in camera follow handles position tracking.
     // Kept as a method stub since redrawAll() calls it.
+  }
+
+  /**
+   * Phase 33.5: Draws a semi-transparent dark overlay over the entire viewport.
+   * Overlay alpha scales with depth: 0 at layer 0, ~0.30 at layer 19.
+   */
+  private drawDepthOverlay(): void {
+    if (!this.depthOverlayGraphics) return
+    const { viewportDarkAlpha } = computeDepthModifiers(this.currentLayer, this.currentBiome)
+    this.depthOverlayGraphics.clear()
+    if (viewportDarkAlpha > 0) {
+      const cam = this.cameras.main
+      this.depthOverlayGraphics.fillStyle(0x000000, viewportDarkAlpha)
+      this.depthOverlayGraphics.fillRect(0, 0, cam.width, cam.height)
+    }
+  }
+
+  /**
+   * Phase 33.6: Returns the transition edge direction for a cell based on its grid position.
+   * Top rows return 'n', bottom rows return 's'.
+   */
+  private getTransitionEdge(tileX: number, tileY: number): 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw' {
+    if (tileY < 3) return 'n'
+    if (tileY >= this.gridHeight - 3) return 's'
+    if (tileX < 3) return 'w'
+    if (tileX >= this.gridWidth - 3) return 'e'
+    return 'n'
   }
 
   private shiftColor(color: number, amount: number): number {
@@ -590,22 +632,38 @@ export class MineScene extends Phaser.Scene {
       case BlockType.Dirt:
       case BlockType.SoftRock: {
         const mask = cell.tileVariant ?? 0
-        const key = bitmaskToSpriteKey('soil', mask)
-        const fallback = cell.type === BlockType.Dirt ? 'tile_dirt' : 'tile_soft_rock'
-        const spriteKey = this.textures.exists(key) ? key : fallback
-        this.getPooledSprite(spriteKey, cx, cy)
+        const category: TileCategory = 'soil'
+        // Phase 33.3: Try biome-specific tile first, fall back to universal autotile
+        const biomeSpriteKey = resolveTileSpriteKey(this.currentBiome.id, category, mask, this.textures)
+        // Phase 33.6: Use transition tile if cell is in a transition zone
+        if (cell.isTransitionZone && this.transitionBiomeId) {
+          const edgeDir = this.getTransitionEdge(tileX, tileY)
+          const transKey = transitionTileSpriteKey(this.currentBiome.id, this.transitionBiomeId, category, edgeDir)
+          if (this.textures.exists(transKey)) {
+            this.getPooledSprite(transKey, cx, cy)
+            break
+          }
+        }
+        this.getPooledSprite(biomeSpriteKey, cx, cy)
         break
       }
       case BlockType.Stone:
       case BlockType.HardRock:
       case BlockType.Unbreakable: {
         const mask = cell.tileVariant ?? 0
-        const key = bitmaskToSpriteKey('rock', mask)
-        const fallback = cell.type === BlockType.Stone ? 'tile_stone'
-          : cell.type === BlockType.HardRock ? 'tile_hard_rock'
-          : 'tile_unbreakable'
-        const spriteKey = this.textures.exists(key) ? key : fallback
-        this.getPooledSprite(spriteKey, cx, cy)
+        const category: TileCategory = 'rock'
+        // Phase 33.3: Try biome-specific tile first, fall back to universal autotile
+        const biomeSpriteKey = resolveTileSpriteKey(this.currentBiome.id, category, mask, this.textures)
+        // Phase 33.6: Use transition tile if cell is in a transition zone
+        if (cell.isTransitionZone && this.transitionBiomeId) {
+          const edgeDir = this.getTransitionEdge(tileX, tileY)
+          const transKey = transitionTileSpriteKey(this.currentBiome.id, this.transitionBiomeId, category, edgeDir)
+          if (this.textures.exists(transKey)) {
+            this.getPooledSprite(transKey, cx, cy)
+            break
+          }
+        }
+        this.getPooledSprite(biomeSpriteKey, cx, cy)
         break
       }
       case BlockType.OxygenCache: {
@@ -904,16 +962,18 @@ export class MineScene extends Phaser.Scene {
           const tierInfo = BALANCE.SCANNER_TIERS[this.scannerTierIndex]
           const visLevel = cell.visibilityLevel ?? 0
 
+          // Phase 33.4: Use per-biome fog palette for distinct colored fog
+          const fp = this.currentBiome.fogPalette
           if (visLevel === 1) {
-            // Ring 1: render actual tile sprite, dimmed by overlay
+            // Ring 1: render actual tile sprite, dimmed by biome ring1 tint
             const borderBrightness = Math.min(0.90, 0.80 + scannerCount * 0.05)
-            // Biome fog tint background in case sprite has transparency
-            this.tileGraphics.fillStyle(this.currentBiome.fogTint, 1)
+            // Biome fog palette ring1 background in case sprite has transparency
+            this.tileGraphics.fillStyle(fp.ring1, 1)
             this.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
             // Render the tile sprite (depth 5)
             this.drawBlockPattern(cell, x, y, px, py)
-            // Dim overlay on overlayGraphics (depth 7) to create fog effect
-            const dimAmount = 1.0 - borderBrightness
+            // Dim overlay using fog palette ring1DimAlpha
+            const dimAmount = Math.max(1.0 - borderBrightness, fp.ring1DimAlpha * 0.5)
             this.overlayGraphics.fillStyle(0x000000, dimAmount)
             this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
             // Rarity hint: full-tile shimmer overlays for valuable blocks (Advanced+ scanner)
@@ -1005,17 +1065,18 @@ export class MineScene extends Phaser.Scene {
               }
             }
           } else if (visLevel === 2 && scannerCount >= 1) {
-            // Ring 2: only visible with scanner; render sprite with heavy dim overlay
+            // Ring 2: only visible with scanner; render sprite with lighter dim
             const dimBrightness = Math.min(0.30, 0.10 + (scannerCount - 1) * 0.10)
-            this.tileGraphics.fillStyle(this.currentBiome.fogTint, 1)
+            // Phase 33.4: Use fog palette ring2 color
+            this.tileGraphics.fillStyle(fp.ring2, 1)
             this.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
             this.drawBlockPattern(cell, x, y, px, py)
-            const dimAmount = 1.0 - dimBrightness
+            const dimAmount = Math.max(1.0 - dimBrightness, fp.ring2DimAlpha)
             this.overlayGraphics.fillStyle(0x000000, dimAmount)
             this.overlayGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
           } else {
-            // Hidden: use biome fog tint
-            this.tileGraphics.fillStyle(this.currentBiome.fogTint, 1)
+            // Hidden: use biome fog palette hidden color (distinct per biome)
+            this.tileGraphics.fillStyle(fp.hidden, 1)
             this.tileGraphics.fillRect(px, py, TILE_SIZE, TILE_SIZE)
           }
           continue
@@ -1512,7 +1573,7 @@ export class MineScene extends Phaser.Scene {
 
     const mineResult = mineBlock(this.grid, targetX, targetY)
     if (mineResult.destroyed) {
-      invalidateNeighborVariants(this.grid, targetX, targetY)
+      invalidateNeighborVariants(this.grid, targetX, targetY, this.currentBiome.id)
     }
     if (mineResult.success) {
       const blockWorldX = targetX * TILE_SIZE + TILE_SIZE * 0.5

@@ -13,6 +13,44 @@ export interface BiomePalette {
   highlight: number
 }
 
+/**
+ * Full fog-of-war palette for a biome.
+ * Controls the visual appearance of unrevealed and scanner-visible cells.
+ * Phase 33.4 (DD-V2-271)
+ */
+export interface FogPalette {
+  /** Color of fully hidden (unrevealed) cells — the "darkness" fill */
+  hidden: number
+  /** Color tint for Ring-1 scanner cells (silhouette outline) */
+  ring1: number
+  /** Color tint for Ring-2 scanner cells (dim, readable) */
+  ring2: number
+  /** Alpha of the dark overlay applied on top of Ring-1 sprites (0.0–1.0) */
+  ring1DimAlpha: number
+  /** Alpha of the dark overlay applied on top of Ring-2 sprites (0.0–1.0) */
+  ring2DimAlpha: number
+}
+
+/**
+ * Derives a FogPalette from a biome's ambient color.
+ * hidden = heavily darkened ambient, ring1 = 50% darkened, ring2 = 30% darkened.
+ */
+export function fogPaletteFromAmbient(ambientColor: number): FogPalette {
+  const darken = (c: number, f: number): number => {
+    const r = Math.floor(((c >> 16) & 0xff) * f)
+    const g = Math.floor(((c >> 8) & 0xff) * f)
+    const b = Math.floor((c & 0xff) * f)
+    return (r << 16) | (g << 8) | b
+  }
+  return {
+    hidden:        darken(ambientColor, 0.15),
+    ring1:         darken(ambientColor, 0.50),
+    ring2:         darken(ambientColor, 0.70),
+    ring1DimAlpha: 0.55,
+    ring2DimAlpha: 0.25,
+  }
+}
+
 /** Returns a CSS hex string from a 0xRRGGBB color number. */
 export function toHex(color: number): string {
   return '#' + color.toString(16).padStart(6, '0')

@@ -1,5 +1,6 @@
 import { BlockType } from './types'
-import type { BiomePalette } from './palette'
+import type { BiomePalette, FogPalette } from './palette'
+import { fogPaletteFromAmbient } from './palette'
 import { BIOME_STRUCTURAL_FEATURES } from './biomeStructures'
 
 // ─── Tier and ID types ────────────────────────────────────────────────────────
@@ -88,6 +89,8 @@ export interface Biome {
   mineralWeights: BiomeMineralWeights
   /** Fog tint applied to unexplored/hidden cells */
   fogTint: number
+  /** Full fog-of-war palette — drives Ring-1 and Ring-2 scanner tints. (Phase 33.4) */
+  fogPalette: FogPalette
   /** Tile theme key for Phase 9 per-biome tile sets */
   tileTheme: string
   /** Biome-specific structural features for procedural generation (Phase 9.4) */
@@ -248,6 +251,7 @@ function makeBiome(input: BiomeInput): Biome {
     mineralMultiplier: maxMineral,
     mineralWeights,
     fogTint: darkenColor(ambientColor) || 0x0a0a14,
+    fogPalette: fogPaletteFromAmbient(ambientColor),
     tileTheme: input.tileTheme,
     structuralFeatures: input.structuralFeatures ?? BIOME_STRUCTURAL_FEATURES[input.id] ?? [],
     palette: input.palette ?? paletteFromColor(ambientColor),

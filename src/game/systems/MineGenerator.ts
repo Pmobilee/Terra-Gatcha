@@ -420,14 +420,22 @@ export function generateMine(
 
 /**
  * Flags cells near biome boundaries as transition zones.
- * Currently a no-op since each layer uses a single biome.
- * Will be activated when multi-biome layers are introduced (Phase 17+).
- * (DD-V2-235)
+ * Phase 33.6 (DD-V2-235): Top 3 and bottom 3 rows of each layer grid are marked
+ * as transition zones. These rows represent conceptual entry/exit zones between
+ * adjacent layers (and their respective biomes), allowing the renderer to blend
+ * transition tiles at layer boundaries.
  */
 function flagTransitionZones(grid: MineCell[][]): void {
-  // No-op: single-biome-per-layer means no boundaries to flag.
-  // When multi-biome layers are introduced, iterate grid cells and mark
-  // any cell within 2-3 tiles of a biome boundary with isTransitionZone = true.
+  const height = grid.length
+  if (height === 0) return
+  const width = grid[0].length
+  const TRANSITION_DEPTH = 3
+  for (let x = 0; x < width; x++) {
+    for (let borderY = 0; borderY < TRANSITION_DEPTH; borderY++) {
+      grid[borderY][x].isTransitionZone = true
+      grid[height - 1 - borderY][x].isTransitionZone = true
+    }
+  }
 }
 
 /**

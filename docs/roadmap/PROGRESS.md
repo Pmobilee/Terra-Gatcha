@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 38, 39, 40, 47. Phase 29 (Character Animation): 52-frame miner sprite sheet (32×48 px frames, 9 animation strips), MinerAnimController with priority state machine (hurt > fall > mine > walk > idle), GearOverlaySystem (pickaxe tier icon, relic glow, companion badge), mineSwingFrame event at impact frame 3, ParticleSystem.emitSwingDust(), bottom-center sprite anchor, camera torso offset, hurt/fall state integration with hazards/DescentShaft, stitch_miner_sheet.py. Next: Phase 33 (Biome Visual Diversity).
+Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 33, 38, 39, 40, 47. Phase 33 (Biome Visual Diversity): BIOME_TILE_SPECS for all 25 biomes, 8-bit hero biome autotiling (blob47 for limestone_caves/basalt_maze/crystal_geode/obsidian_rift/void_pocket), FogPalette per-biome fog colors (hidden/ring1/ring2), DepthGradientSystem (viewport darkening 0→0.30 alpha over 20 layers), biome transition zone flagging (top/bottom 3 rows), tile atlas optimization infrastructure (5 per-tier atlases), 1130 placeholder tile sprites generated. Next: Phase 37 (Advanced Pet System).
 
 ---
 
@@ -94,7 +94,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Content Factory (Phases 32-34)
 - [x] **Phase 32: Fact Content Scaling** — 3,000+ fact pipeline, automated LLM quality gates, distractor expansion, delta sync protocol, content cadence tooling → [`completed/PHASE-32-CONTENT-SCALING.md`](completed/PHASE-32-CONTENT-SCALING.md)
-- [ ] **Phase 33: Biome Visual Diversity** — 25 unique tile sprite sets, 8-bit hero biome autotiling, per-biome fog colors, depth visual gradient, transition tilesets → [`phases/PHASE-33-BIOME-VISUAL-DIVERSITY.md`](phases/PHASE-33-BIOME-VISUAL-DIVERSITY.md)
+- [x] **Phase 33: Biome Visual Diversity** — 25 unique tile sprite sets, 8-bit hero biome autotiling, per-biome fog colors, depth visual gradient, transition tilesets → [`completed/PHASE-33-BIOME-VISUAL-DIVERSITY.md`](completed/PHASE-33-BIOME-VISUAL-DIVERSITY.md)
 - [ ] **Phase 34: Pixel Art Per Fact** — ComfyUI batch pipeline, greyscale-to-color mastery progression, 3-gate sprite QC, resumable generation, build-time audit → [`phases/PHASE-34-PIXEL-ART-PER-FACT.md`](phases/PHASE-34-PIXEL-ART-PER-FACT.md)
 
 ### Gameplay Expansion (Phases 35-37)
