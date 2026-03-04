@@ -14,7 +14,7 @@ import { resolveTileSpriteKey } from '../../data/biomeTileSpec'
 import { transitionTileSpriteKey } from '../../data/biomeTileSpec'
 import type { TileCategory } from '../../data/biomeTileSpec'
 import { applyDepthBackground, computeDepthModifiers } from '../systems/DepthGradientSystem'
-import { generateMine, generateTutorialMine, revealAround, seededRandom } from '../systems/MineGenerator'
+import { generateMine, generateTutorialMine, revealAround, seededRandom, type DifficultyProfile } from '../systems/MineGenerator'
 import {
   addOxygen,
   consumeOxygen,
@@ -94,6 +94,10 @@ export interface MineSceneData {
   collectedRelics?: Relic[]
   /** Optional biome override — if absent the scene picks one deterministically from seed+layer. */
   biome?: Biome
+  /** Optional secondary biome for dual-biome blending (Phase 49.2). */
+  secondaryBiome?: Biome
+  /** Optional dynamic difficulty profile derived from player engagement data (Phase 49.7). */
+  difficultyProfile?: DifficultyProfile
   /** Active fossil companion effect for this dive (null/absent = no companion). */
   companionEffect?: CompanionEffect | null
 }
@@ -183,6 +187,10 @@ export class MineScene extends Phaser.Scene {
   private depthOverlayGraphics!: Phaser.GameObjects.Graphics
   /** Phase 33.6: Biome ID of the adjacent layer (used for transition tile rendering). */
   private transitionBiomeId: import('../../data/biomes').BiomeId | null = null
+  /** Phase 49.2: Optional secondary biome for dual-biome blended layers. */
+  private secondaryBiome: Biome | undefined = undefined
+  /** Phase 49.7: Optional dynamic difficulty profile. */
+  private difficultyProfile: DifficultyProfile | undefined = undefined
 
   constructor() {
     super({ key: 'MineScene' })
@@ -235,6 +243,9 @@ export class MineScene extends Phaser.Scene {
         console.info(`[MineScene] Biome override active: ${found.name}`)
       }
     }
+    // Phase 49.2/49.7: Capture optional secondary biome and difficulty profile.
+    this.secondaryBiome = data.secondaryBiome
+    this.difficultyProfile = data.difficultyProfile
     // Capture companion effect for this layer.
     this.companionEffect = data.companionEffect ?? null
     this.companionFlash = false
@@ -327,7 +338,10 @@ export class MineScene extends Phaser.Scene {
     const isTutorial = GameManager.getInstance().isTutorialDive
     const mineResult = isTutorial
       ? generateTutorialMine()
-      : generateMine(this.seed, this.facts, this.currentLayer, this.currentBiome)
+      : generateMine(
+          this.seed, this.facts, this.currentLayer, this.currentBiome,
+          this.secondaryBiome, undefined, this.difficultyProfile,
+        )
     this.grid = mineResult.grid
     this.currentBiome = mineResult.biome
     // Compute initial autotile variants for all terrain blocks (blob47 for hero biomes)

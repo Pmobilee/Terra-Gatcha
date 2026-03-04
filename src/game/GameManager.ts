@@ -63,11 +63,11 @@ import { factsDB } from '../services/factsDB'
 import { RECIPES } from '../data/recipes'
 import { save as savePlayer } from '../services/saveService'
 import type { OxygenState } from './systems/OxygenSystem'
-import { type Biome, pickBiome, generateBiomeSequence } from '../data/biomes'
+import { type Biome, pickBiome, generateBiomeSequence, ALL_BIOMES } from '../data/biomes'
 import { generateInterestBiasedBiomeSequence, selectWeightedFact } from '../services/interestSpawner'
 import type { InterestConfig } from '../data/interestConfig'
 import { getEligibleFacts } from '../data/contentFilter'
-import { seededRandom } from './systems/MineGenerator'
+import { seededRandom, buildDifficultyProfile, type DifficultyProfile } from './systems/MineGenerator'
 import { BootScene } from './scenes/BootScene'
 import { MineScene } from './scenes/MineScene'
 import { DomeScene } from './scenes/DomeScene'
@@ -835,6 +835,22 @@ export class GameManager {
     currentBiomeStore.set(nextBiome.name)
     currentBiomeId.set(nextBiome.id)
 
+    // Phase 49.2: Optionally assign a secondary biome for this layer (15% chance).
+    const layerBlendRng = seededRandom(layerSeed ^ 0x49b10e5)
+    let nextSecondaryBiome: Biome | undefined = undefined
+    if (layerBlendRng() < BALANCE.DUAL_BIOME_CHANCE) {
+      const candidates = ALL_BIOMES.filter(b =>
+        b.id !== nextBiome.id &&
+        (b.tier === nextBiome.tier ||
+          (nextBiome.tier === 'shallow' && b.tier === 'mid') ||
+          (nextBiome.tier === 'mid' && (b.tier === 'shallow' || b.tier === 'deep'))
+        )
+      )
+      if (candidates.length > 0) {
+        nextSecondaryBiome = candidates[Math.floor(layerBlendRng() * candidates.length)]
+      }
+    }
+
     // GAIA descent quips — include a biome greeting.
     this.triggerGaia('mineEntry')
     // Biome greeting shown as a separate GAIA message after a short delay.
@@ -860,6 +876,7 @@ export class GameManager {
       blocksMinedThisRun: data.blocksMinedThisRun,
       artifactsFound: data.artifactsFound,
       biome: nextBiome,
+      secondaryBiome: nextSecondaryBiome,
       companionEffect: this.companionEffect,
     })
 
@@ -1118,6 +1135,29 @@ export class GameManager {
     currentBiomeStore.set(layer0Biome.name)
     currentBiomeId.set(layer0Biome.id)
 
+    // Phase 49.2: Optionally assign a secondary biome to layer 0 (15% chance).
+    const biomeBlendRng = seededRandom(this.diveSeed ^ 0x49b10e5)
+    let layer0SecondaryBiome: Biome | undefined = undefined
+    if (biomeBlendRng() < BALANCE.DUAL_BIOME_CHANCE) {
+      const candidates = ALL_BIOMES.filter(b =>
+        b.id !== layer0Biome.id &&
+        (b.tier === layer0Biome.tier ||
+          (layer0Biome.tier === 'shallow' && b.tier === 'mid') ||
+          (layer0Biome.tier === 'mid' && (b.tier === 'shallow' || b.tier === 'deep'))
+        )
+      )
+      if (candidates.length > 0) {
+        layer0SecondaryBiome = candidates[Math.floor(biomeBlendRng() * candidates.length)]
+      }
+    }
+
+    // Phase 49.7: Build difficulty profile from player engagement + archetype data.
+    const latestSave = get(playerSave)
+    const difficultyProfile: DifficultyProfile | undefined =
+      latestSave?.engagementData && latestSave?.archetypeData
+        ? buildDifficultyProfile(latestSave.engagementData, latestSave.archetypeData)
+        : undefined
+
     // Phase 14: Determine if this is a tutorial dive (first-time player, diveCount === 0).
     // MineScene reads GameManager.getInstance().isTutorialDive to call generateTutorialMine().
     this.isTutorialDive = !currentSave.tutorialComplete && currentSave.diveCount === 0
@@ -1135,6 +1175,8 @@ export class GameManager {
       facts: factIds,
       layer: 0,
       biome: layer0Biome,
+      secondaryBiome: layer0SecondaryBiome,
+      difficultyProfile,
       craftedOxygenBonus: oxygenBonusFromCrafts + consumableOxygenBonus,
       craftedStartingBombs: startingBombsFromCrafts,
       activeConsumables: activeConsumablesSnapshot,

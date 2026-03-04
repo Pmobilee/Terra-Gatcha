@@ -1,9 +1,12 @@
 import { BALANCE, getLayerGridSize, HAZARD_DENSITY_BY_LAYER } from '../../data/balance'
 import { BlockType, type MineCell, type MineCellContent, type Rarity } from '../../data/types'
-import { type Biome, DEFAULT_BIOME } from '../../data/biomes'
+import { type Biome, DEFAULT_BIOME, ALL_BIOMES } from '../../data/biomes'
 import { LANDMARK_LAYERS, LANDMARK_TEMPLATES, getLandmarkIdForLayer, type LandmarkTemplate } from '../../data/landmarks'
 import { BIOME_STRUCTURAL_FEATURES, STRUCTURAL_FEATURE_CONFIGS, type StructuralFeatureId } from '../../data/biomeStructures'
 import { getFragmentsForLayer } from '../../data/recipeFragments'
+import { injectAnomalyZones } from './AnomalyZoneSystem'
+import type { EngagementData } from '../../services/engagementScorer'
+import type { ArchetypeData } from '../../services/archetypeDetector'
 
 /**
  * Creates a deterministic pseudo-random number generator from a numeric seed.
@@ -105,9 +108,311 @@ function stampLandmark(
 }
 
 /**
+ * Stamps a single structural feature into the grid using shape-aware logic.
+ * Each feature type has its own geometry instead of a uniform rectangle fill.
+ * (DD-V2-236, Phase 49.1)
+ *
+ * @param grid - Mine cell grid to write into.
+ * @param featureId - Which structural feature to stamp.
+ * @param fx - Top-left X of the bounding box.
+ * @param fy - Top-left Y of the bounding box.
+ * @param fw - Width of the bounding box (from config).
+ * @param fh - Height of the bounding box (from config).
+ * @param fillBlock - Primary block type for this feature.
+ * @param rng - Seeded RNG.
+ * @param gridWidth - Full grid width (for bounds checking).
+ * @param gridHeight - Full grid height (for bounds checking).
+ */
+function stampFeature(
+  grid: MineCell[][],
+  featureId: StructuralFeatureId,
+  fx: number, fy: number, fw: number, fh: number,
+  fillBlock: BlockType,
+  rng: () => number,
+  gridWidth: number,
+  gridHeight: number,
+): void {
+  // Helper: safely write a cell only if not a protected block type.
+  function writeCell(x: number, y: number, cell: MineCell): void {
+    if (x < 0 || x >= gridWidth || y < 0 || y >= gridHeight) return
+    const existing = grid[y][x]
+    if (
+      existing.type === BlockType.ExitLadder ||
+      existing.type === BlockType.DescentShaft ||
+      existing.type === BlockType.QuizGate
+    ) return
+    grid[y][x] = cell
+  }
+
+  function solidCell(type: BlockType): MineCell {
+    const h = getHardness(type)
+    return { type, hardness: h, maxHardness: h, revealed: false }
+  }
+
+  function emptyCell(): MineCell {
+    return { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false }
+  }
+
+  switch (featureId) {
+
+    case 'pocket_caves': {
+      // Elliptical hollow: fill interior with Empty, leave surrounding rock intact.
+      const cx = fx + Math.floor(fw / 2)
+      const cy = fy + Math.floor(fh / 2)
+      const rx = fw / 2
+      const ry = fh / 2
+      for (let dy = 0; dy < fh; dy++) {
+        for (let dx = 0; dx < fw; dx++) {
+          const nx = (dx - rx + 0.5) / rx
+          const ny = (dy - ry + 0.5) / ry
+          if (nx * nx + ny * ny <= 1.0) {
+            writeCell(cx - Math.floor(fw / 2) + dx, cy - Math.floor(fh / 2) + dy, emptyCell())
+          }
+        }
+      }
+      break
+    }
+
+    case 'crystal_veins':
+    case 'living_veins':
+    case 'copper_traces': {
+      // Diagonal vein: draw a 1-2 wide diagonal stripe of fillBlock through the bounding box.
+      const veins = 1 + Math.floor(rng() * 2)  // 1 or 2 veins per feature
+      for (let v = 0; v < veins; v++) {
+        const startX = fx + Math.floor(rng() * fw)
+        let curX = startX
+        for (let dy = 0; dy < fh; dy++) {
+          writeCell(curX, fy + dy, solidCell(fillBlock))
+          if (rng() < 0.4) curX = Math.max(fx, Math.min(fx + fw - 1, curX + (rng() < 0.5 ? 1 : -1)))
+        }
+      }
+      break
+    }
+
+    case 'root_corridors': {
+      // Winding horizontal corridor: 1 cell tall, width = fw, meanders ±1 in Y.
+      let curY = fy + Math.floor(fh / 2)
+      for (let dx = 0; dx < fw; dx++) {
+        writeCell(fx + dx, curY, emptyCell())
+        // Occasional vertical branch
+        if (rng() < 0.2) {
+          const branch = rng() < 0.5 ? -1 : 1
+          writeCell(fx + dx, curY + branch, emptyCell())
+        }
+        if (rng() < 0.3) curY = Math.max(fy, Math.min(fy + fh - 1, curY + (rng() < 0.5 ? 1 : -1)))
+      }
+      break
+    }
+
+    case 'lava_streams':
+    case 'magma_rivers': {
+      // Vertical stream with slight horizontal drift, 1-2 wide.
+      let curX = fx + Math.floor(fw / 2)
+      for (let dy = 0; dy < fh; dy++) {
+        writeCell(curX, fy + dy, solidCell(fillBlock))
+        if (fw > 1) writeCell(curX + 1, fy + dy, solidCell(fillBlock))
+        if (rng() < 0.25) curX = Math.max(fx, Math.min(fx + fw - 1, curX + (rng() < 0.5 ? 1 : -1)))
+      }
+      break
+    }
+
+    case 'ice_columns':
+    case 'obsidian_spires':
+    case 'void_columns':
+    case 'temporal_fractures': {
+      // Tapered vertical column: wide at base, narrows toward top.
+      const midX = fx + Math.floor(fw / 2)
+      for (let dy = 0; dy < fh; dy++) {
+        const taper = Math.floor((dy / fh) * (fw / 2))
+        const left = midX - (fw / 2 - taper)
+        const right = midX + (fw / 2 - taper)
+        for (let x = Math.ceil(left); x <= Math.floor(right); x++) {
+          writeCell(x, fy + dy, solidCell(fillBlock))
+        }
+      }
+      break
+    }
+
+    case 'mushroom_clusters': {
+      // 2-3 mushroom silhouettes: thin stem (SoftRock) topped by 3-wide cap (fillBlock).
+      const count = 2 + Math.floor(rng() * 2)
+      for (let m = 0; m < count; m++) {
+        const stemX = fx + 1 + Math.floor(rng() * Math.max(1, fw - 2))
+        const stemTopY = fy + 1
+        const stemH = 2 + Math.floor(rng() * 2)
+        // Cap
+        for (let cx = stemX - 1; cx <= stemX + 1; cx++) {
+          writeCell(cx, stemTopY, solidCell(fillBlock))
+        }
+        // Stem
+        for (let dy = 1; dy <= stemH; dy++) {
+          writeCell(stemX, stemTopY + dy, solidCell(BlockType.SoftRock))
+        }
+      }
+      break
+    }
+
+    case 'fossil_beds': {
+      // Horizontal band of FossilNodes mixed with SoftRock, 2 rows tall.
+      for (let dy = 0; dy < Math.min(fh, 2); dy++) {
+        for (let dx = 0; dx < fw; dx++) {
+          const isFossil = rng() < 0.35
+          writeCell(fx + dx, fy + dy, solidCell(isFossil ? BlockType.FossilNode : fillBlock))
+        }
+      }
+      break
+    }
+
+    case 'sand_pockets': {
+      // Diamond-shaped pocket of Dirt (sand proxy) with empty centre.
+      const cx = fx + Math.floor(fw / 2)
+      const cy = fy + Math.floor(fh / 2)
+      const r = Math.floor(Math.min(fw, fh) / 2)
+      for (let dy = -r; dy <= r; dy++) {
+        for (let dx = -r; dx <= r; dx++) {
+          if (Math.abs(dx) + Math.abs(dy) <= r) {
+            const isEmpty = Math.abs(dx) + Math.abs(dy) < r - 1
+            writeCell(cx + dx, cy + dy, isEmpty ? emptyCell() : solidCell(fillBlock))
+          }
+        }
+      }
+      break
+    }
+
+    case 'amber_inclusions': {
+      // Small cluster of ArtifactNodes surrounded by HardRock.
+      const cx = fx + Math.floor(fw / 2)
+      const cy = fy + Math.floor(fh / 2)
+      writeCell(cx, cy, solidCell(fillBlock))  // fillBlock = ArtifactNode
+      // Surround with HardRock
+      for (let dy = -1; dy <= 1; dy++) {
+        for (let dx = -1; dx <= 1; dx++) {
+          if (dx === 0 && dy === 0) continue
+          writeCell(cx + dx, cy + dy, solidCell(BlockType.HardRock))
+        }
+      }
+      break
+    }
+
+    case 'ruin_walls': {
+      // Partial rectangular ruin: 3 sides present (top, left, right), bottom open.
+      for (let dy = 0; dy < fh; dy++) {
+        for (let dx = 0; dx < fw; dx++) {
+          const isTop = dy === 0
+          const isLeft = dx === 0
+          const isRight = dx === fw - 1
+          if ((isTop || isLeft || isRight) && rng() > 0.3) {
+            writeCell(fx + dx, fy + dy, solidCell(fillBlock))
+          }
+        }
+      }
+      break
+    }
+
+    case 'plasma_nodes':
+    case 'glitch_tiles': {
+      // Scattered cluster: random fill within bounding box at ~50% density.
+      for (let dy = 0; dy < fh; dy++) {
+        for (let dx = 0; dx < fw; dx++) {
+          if (rng() < 0.5) writeCell(fx + dx, fy + dy, solidCell(fillBlock))
+        }
+      }
+      break
+    }
+
+    case 'floating_islands': {
+      // Solid rectangular platform with 2 empty cells below (gap) — gravity-defying feel.
+      const islandH = Math.max(1, Math.floor(fh / 2))
+      for (let dy = 0; dy < islandH; dy++) {
+        for (let dx = 0; dx < fw; dx++) {
+          writeCell(fx + dx, fy + dy, solidCell(fillBlock))
+        }
+      }
+      // Clear below the island
+      for (let dy = islandH; dy < fh; dy++) {
+        for (let dx = 0; dx < fw; dx++) {
+          writeCell(fx + dx, fy + dy, emptyCell())
+        }
+      }
+      break
+    }
+
+    case 'mirror_symmetry': {
+      // Left half filled, right half is a mirror. Creates an echo-chamber visual motif.
+      const halfW = Math.floor(fw / 2)
+      for (let dy = 0; dy < fh; dy++) {
+        for (let dx = 0; dx < halfW; dx++) {
+          if (rng() < 0.5) {
+            writeCell(fx + dx, fy + dy, solidCell(fillBlock))
+            writeCell(fx + fw - 1 - dx, fy + dy, solidCell(fillBlock))
+          }
+        }
+      }
+      break
+    }
+
+    case 'stalactite_field': {
+      // Rows of downward-pointing stalactites from the top edge of the bounding box.
+      // Each column has a probabilistic stalactite of random length (1 to fh/2).
+      for (let dx = 0; dx < fw; dx++) {
+        if (rng() < 0.65) {
+          const len = 1 + Math.floor(rng() * Math.max(1, Math.floor(fh / 2)))
+          for (let dy = 0; dy < len; dy++) {
+            writeCell(fx + dx, fy + dy, solidCell(fillBlock))
+          }
+        }
+      }
+      break
+    }
+
+    case 'crystal_formation': {
+      // Upward-growing crystal spires from the bottom edge, tapering toward the top.
+      const spireCount = 2 + Math.floor(rng() * 3)
+      const step = Math.max(1, Math.floor(fw / spireCount))
+      for (let s = 0; s < spireCount; s++) {
+        const spireX = fx + s * step + Math.floor(rng() * Math.max(1, step - 1))
+        const spireH = Math.ceil(fh * (0.4 + rng() * 0.6))
+        const spireW = 1 + (rng() < 0.4 ? 1 : 0)
+        for (let dy = 0; dy < spireH; dy++) {
+          const taper = dy < 2 ? 0 : (dy === spireH - 1 ? 0 : 1)
+          for (let sw = 0; sw < spireW - (dy > spireH / 2 ? taper : 0); sw++) {
+            writeCell(spireX + sw, fy + fh - 1 - dy, solidCell(fillBlock))
+          }
+        }
+      }
+      break
+    }
+
+    case 'hydrothermal_vent': {
+      // Vertical plume: GasPocket column rising from the bottom, flanked by LavaBlock.
+      const ventX = fx + Math.floor(fw / 2)
+      for (let dy = 0; dy < fh; dy++) {
+        // Central gas column
+        writeCell(ventX, fy + fh - 1 - dy, solidCell(BlockType.GasPocket))
+        // Lava flanks on lower half only
+        if (dy < Math.floor(fh / 2)) {
+          writeCell(ventX - 1, fy + fh - 1 - dy, solidCell(BlockType.LavaBlock))
+          if (fw >= 3) writeCell(ventX + 1, fy + fh - 1 - dy, solidCell(BlockType.LavaBlock))
+        }
+      }
+      break
+    }
+
+    default: {
+      // Fallback: original rectangle fill.
+      for (let dy = 0; dy < fh; dy++) {
+        for (let dx = 0; dx < fw; dx++) {
+          writeCell(fx + dx, fy + dy, solidCell(fillBlock))
+        }
+      }
+    }
+  }
+}
+
+/**
  * Places biome-specific structural features on the grid after base generation.
- * Features are non-overlapping rectangular regions filled with the feature's block type.
- * Phase 9.4
+ * Features use shape-aware stamp logic (stampFeature) instead of plain rectangle fills.
+ * Phase 9.4 / Phase 49.1
  */
 function placeStructuralFeatures(
   grid: MineCell[][],
@@ -149,27 +454,91 @@ function placeStructuralFeatures(
       )
       if (overlaps) continue
 
-      // Place the feature by filling the bounding box with the fill block
-      for (let dy = 0; dy < fh; dy++) {
-        for (let dx = 0; dx < fw; dx++) {
-          const gx = fx + dx
-          const gy = fy + dy
-          if (gy >= 0 && gy < height && gx >= 0 && gx < width) {
-            const cell = grid[gy][gx]
-            // Don't overwrite special blocks (exit, spawn, descent shaft)
-            if (cell.type === BlockType.ExitLadder ||
-                cell.type === BlockType.DescentShaft ||
-                cell.type === BlockType.QuizGate) continue
-            cell.type = config.fillBlock
-            cell.hardness = getHardness(config.fillBlock)
-            cell.maxHardness = cell.hardness
-          }
-        }
-      }
+      // Phase 49.1: Use shape-aware stampFeature() instead of the plain rectangle fill.
+      stampFeature(grid, featureId, fx, fy, fw, fh, config.fillBlock, rng, width, height)
 
       placed.push({ x: fx, y: fy, w: fw, h: fh })
       break // Successfully placed this feature
     }
+  }
+}
+
+/**
+ * Difficulty modifier profile extracted from player engagement and archetype data.
+ * All values are multipliers (1.0 = no change).
+ */
+export interface DifficultyProfile {
+  /** Block hardness multiplier (applied on top of LAYER_HARDNESS_SCALE). */
+  hardnessMultiplier: number
+  /** HardRock block weight multiplier. */
+  hardRockWeightMultiplier: number
+  /** Hazard density multiplier. */
+  hazardMultiplier: number
+  /** OxygenCache density multiplier (inverse of difficulty). */
+  oxygenCacheMultiplier: number
+  /** Anomaly zone injection probability multiplier. */
+  anomalyRateMultiplier: number
+  /** Mineral node count multiplier. */
+  mineralMultiplier: number
+}
+
+/**
+ * Builds a DifficultyProfile from the player's engagement score and archetype.
+ * Engagement score is clamped to [0, 100]. Score 50 → neutral (all 1.0).
+ * Score > 50 → harder; score < 50 → easier.
+ *
+ * @param engagementData - Player's hidden engagement scoring state.
+ * @param archetypeData - Player's detected archetype (explorer/miner/scholar/survivor).
+ */
+export function buildDifficultyProfile(
+  engagementData: EngagementData,
+  archetypeData: ArchetypeData,
+): DifficultyProfile {
+  const score = Math.max(0, Math.min(100, engagementData.currentScore ?? 50))
+  const normalized = (score - 50) / 50  // -1.0 to +1.0
+
+  // Base difficulty scaling: ±20% from neutral
+  const hardnessMult = 1.0 + normalized * BALANCE.DD_HARDNESS_SCALE
+  const hazardMult   = 1.0 + normalized * BALANCE.DD_HAZARD_SCALE
+  const oxygenMult   = 1.0 - normalized * BALANCE.DD_OXYGEN_SCALE  // less O2 when harder
+  let anomalyMult  = 1.0 + normalized * 0.5
+
+  // Archetype modifiers
+  let hardRockMult = 1.0
+  let mineralMult = 1.0
+  const effectiveArchetype = archetypeData.manualOverride ?? archetypeData.detected
+  if (effectiveArchetype === 'collector') {
+    hardRockMult *= 1.1   // Collectors (miners) get extra HardRock as a reward
+    mineralMult *= 1.2
+  } else if (effectiveArchetype === 'explorer') {
+    anomalyMult *= 1.15  // Explorers see more anomalies
+  }
+
+  return {
+    hardnessMultiplier:       Math.max(0.5, hardnessMult),
+    hardRockWeightMultiplier: Math.max(0.5, hardnessMult * hardRockMult),
+    hazardMultiplier:         Math.max(0.3, hazardMult),
+    oxygenCacheMultiplier:    Math.max(0.5, oxygenMult),
+    anomalyRateMultiplier:    Math.max(0.5, anomalyMult),
+    mineralMultiplier:        Math.max(0.7, mineralMult),
+  }
+}
+
+/**
+ * Returns a blend of two biome blockWeights based on a 0.0–1.0 alpha.
+ * alpha=0.0 → fully biomeA, alpha=1.0 → fully biomeB.
+ */
+function blendBiomeWeights(
+  biomeA: Biome,
+  biomeB: Biome,
+  alpha: number,
+): Biome['blockWeights'] {
+  const a = Math.max(0, Math.min(1, alpha))
+  return {
+    dirt:     biomeA.blockWeights.dirt     * (1 - a) + biomeB.blockWeights.dirt     * a,
+    softRock: biomeA.blockWeights.softRock * (1 - a) + biomeB.blockWeights.softRock * a,
+    stone:    biomeA.blockWeights.stone    * (1 - a) + biomeB.blockWeights.stone    * a,
+    hardRock: biomeA.blockWeights.hardRock * (1 - a) + biomeB.blockWeights.hardRock * a,
   }
 }
 
@@ -181,30 +550,57 @@ function placeStructuralFeatures(
  *                On non-final layers (layer < MAX_LAYERS - 1), places a DescentShaft.
  * @param biome - Optional biome definition that overrides block weights, hazard densities, and visuals.
  *                Defaults to the sedimentary biome if not provided.
+ * @param secondaryBiome - Optional second biome for left/right blended layers (DD-V2-235).
+ * @param transitionBandWidth - Width in columns of the blended transition zone (default 5).
+ * @param difficultyProfile - Optional difficulty profile derived from player engagement data (Phase 49.7).
  */
 export function generateMine(
   seed: number,
   facts: string[],
   layer = 0,
   biome: Biome = DEFAULT_BIOME,
-): { grid: MineCell[][], spawnX: number, spawnY: number, biome: Biome } {
+  secondaryBiome?: Biome,
+  transitionBandWidth = 5,
+  difficultyProfile?: DifficultyProfile,
+): { grid: MineCell[][], spawnX: number, spawnY: number, biome: Biome, secondaryBiome?: Biome } {
   const oneIndexedLayer = layer + 1  // layer is 0-based internally, convert to 1-based for getLayerGridSize
   const [width, height] = getLayerGridSize(oneIndexedLayer)
   const rng = seededRandom(seed)
   const grid: MineCell[][] = []
 
   // Per-layer hardness multiplier: each layer is LAYER_HARDNESS_SCALE^layer harder.
+  // Apply difficulty profile hardness adjustment on top.
   const hardnessScale = Math.pow(BALANCE.LAYER_HARDNESS_SCALE, layer)
+    * (difficultyProfile?.hardnessMultiplier ?? 1.0)
 
   // Depth-based block weights for this layer (used to inject HardRock into base block distribution).
   const layerWeights = getBlockWeightsForLayer(layer)
 
+  // Dual-biome transition support (49.2): compute split column and transition half-band.
+  const splitX = Math.floor(width / 2)
+  const halfBand = transitionBandWidth / 2
+
   for (let y = 0; y < height; y++) {
     const row: MineCell[] = []
-    const depthWeights = getDepthWeights(y, height, biome, layerWeights)
-    const depthWeightTotal = depthWeights.reduce((sum, entry) => sum + entry.weight, 0)
 
     for (let x = 0; x < width; x++) {
+      // Determine effective biome for this cell (blend if dual-biome layer)
+      let effectiveBiome = biome
+      if (secondaryBiome) {
+        const distFromSplit = x - splitX  // negative = left side, positive = right side
+        const alpha = Math.max(0, Math.min(1, (distFromSplit + halfBand) / transitionBandWidth))
+        if (Math.abs(distFromSplit) <= halfBand) {
+          // Transition zone: blend weights into a synthetic biome-like object
+          const blended = blendBiomeWeights(biome, secondaryBiome, alpha)
+          effectiveBiome = { ...biome, blockWeights: blended }
+        } else if (distFromSplit > 0) {
+          effectiveBiome = secondaryBiome
+        }
+      }
+
+      const depthWeights = getDepthWeights(y, height, effectiveBiome, layerWeights, difficultyProfile?.hardRockWeightMultiplier)
+      const depthWeightTotal = depthWeights.reduce((sum, entry) => sum + entry.weight, 0)
+
       const type = y < 2 ? BlockType.Empty : pickBaseBlock(rng, depthWeights, depthWeightTotal)
       const baseHardness = getHardness(type)
       // Scale hardness by layer depth (round up, minimum 1 for breakable blocks, preserve 0 and 999).
@@ -238,7 +634,7 @@ export function generateMine(
         }
       }
     }
-    return { grid, spawnX: lSpawnX, spawnY: lSpawnY, biome }
+    return { grid, spawnX: lSpawnX, spawnY: lSpawnY, biome, secondaryBiome }
   }
 
   // Layer 1 spawn (layer === 0): top-center, 3x3 clear area.
@@ -281,8 +677,10 @@ export function generateMine(
     return factId
   }
 
-  // Apply biome mineral multiplier: scale the node count and round to nearest int.
-  const mineralNodeCount = Math.max(1, Math.round(BALANCE.DENSITY_MINERAL_NODES * biome.mineralMultiplier))
+  // Apply biome mineral multiplier and optional difficulty profile multiplier.
+  const mineralNodeCount = Math.max(1, Math.round(
+    BALANCE.DENSITY_MINERAL_NODES * biome.mineralMultiplier * (difficultyProfile?.mineralMultiplier ?? 1.0)
+  ))
 
   placeSpecialBlocks(grid, positions, mineralNodeCount, rng, () => {
     const hardness = BALANCE.HARDNESS_MINERAL_NODE
@@ -313,7 +711,11 @@ export function generateMine(
     }
   })
 
-  placeSpecialBlocks(grid, positions, BALANCE.DENSITY_OXYGEN_CACHES, rng, () => {
+  // Apply optional difficulty profile oxygen cache multiplier.
+  const oxygenCacheCount = Math.max(0, Math.round(
+    BALANCE.DENSITY_OXYGEN_CACHES * (difficultyProfile?.oxygenCacheMultiplier ?? 1.0)
+  ))
+  placeSpecialBlocks(grid, positions, oxygenCacheCount, rng, () => {
     const hardness = 2
     return {
       type: BlockType.OxygenCache,
@@ -390,13 +792,19 @@ export function generateMine(
 
   placeMicroStructures(grid, rng, spawnX, spawnY, width, height, facts)
 
+  // ---- Phase 49.4: Anomaly zone injection ----
+  // Must happen after structural features and micro-structures, before hazards.
+  const anomalyFactCursorRef = { cursor: factCursor }
+  injectAnomalyZones(grid, biome, rng, width, height, spawnX, spawnY, facts, anomalyFactCursorRef)
+  factCursor = anomalyFactCursorRef.cursor
+
   placeEmptyPockets(grid, rng, BALANCE.DENSITY_EMPTY_POCKETS)
 
   placeEmptyCaverns(grid, rng, spawnX, spawnY, width, height)
 
   placeExitRoom(grid, width, height, rng, nextFactId, spawnX, spawnY)
 
-  placeHazards(grid, rng, height, biome, layer)
+  placeHazards(grid, rng, height, biome, layer, difficultyProfile?.hazardMultiplier ?? 1.0)
 
   placeOxygenTanks(grid, positions, rng, height)
 
@@ -496,27 +904,49 @@ export function generateMine(
     }
   }
 
-  flagTransitionZones(grid)
+  flagTransitionZones(grid, !!secondaryBiome, transitionBandWidth)
 
-  return { grid, spawnX, spawnY, biome }
+  return { grid, spawnX, spawnY, biome, secondaryBiome }
 }
 
 /**
- * Flags cells near biome boundaries as transition zones.
- * Phase 33.6 (DD-V2-235): Top 3 and bottom 3 rows of each layer grid are marked
- * as transition zones. These rows represent conceptual entry/exit zones between
- * adjacent layers (and their respective biomes), allowing the renderer to blend
- * transition tiles at layer boundaries.
+ * Marks cells within the transition band as `isTransitionZone = true`.
+ * When a dual-biome layer is present, the band is centered on the vertical split (x = width/2).
+ * Without a secondary biome, the existing layer-boundary marking logic is applied instead.
+ * (DD-V2-235, Phase 49.2.2)
+ *
+ * @param grid - The mine grid to annotate.
+ * @param hasDualBiome - True when a secondary biome was provided to generateMine.
+ * @param transitionBandWidth - Width in columns of the dual-biome transition band.
  */
-function flagTransitionZones(grid: MineCell[][]): void {
+function flagTransitionZones(
+  grid: MineCell[][],
+  hasDualBiome: boolean,
+  transitionBandWidth: number,
+): void {
   const height = grid.length
   if (height === 0) return
   const width = grid[0].length
-  const TRANSITION_DEPTH = 3
-  for (let x = 0; x < width; x++) {
-    for (let borderY = 0; borderY < TRANSITION_DEPTH; borderY++) {
-      grid[borderY][x].isTransitionZone = true
-      grid[height - 1 - borderY][x].isTransitionZone = true
+
+  if (hasDualBiome) {
+    // Dual-biome mode: flag cells within halfBand columns of the vertical split.
+    const splitX = Math.floor(width / 2)
+    const halfBand = Math.ceil(transitionBandWidth / 2)
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        if (Math.abs(x - splitX) <= halfBand) {
+          grid[y][x].isTransitionZone = true
+        }
+      }
+    }
+  } else {
+    // Single-biome mode: flag top/bottom border rows as layer-boundary transition zones.
+    const TRANSITION_DEPTH = 3
+    for (let x = 0; x < width; x++) {
+      for (let borderY = 0; borderY < TRANSITION_DEPTH; borderY++) {
+        grid[borderY][x].isTransitionZone = true
+        grid[height - 1 - borderY][x].isTransitionZone = true
+      }
     }
   }
 }
@@ -636,12 +1066,14 @@ export function pickRarity(rng: () => number): Rarity {
  * @param height - Total mine height in rows
  * @param biome - Active biome whose blockWeights multiply the base weights
  * @param layerWeights - Optional layer-level depth weights from getBlockWeightsForLayer
+ * @param hardRockWeightMultiplier - Optional difficulty multiplier for HardRock density (Phase 49.7)
  */
 function getDepthWeights(
   y: number,
   height: number,
   biome: Biome,
-  layerWeights?: ReturnType<typeof getBlockWeightsForLayer>
+  layerWeights?: ReturnType<typeof getBlockWeightsForLayer>,
+  hardRockWeightMultiplier = 1.0,
 ): Array<{ type: BlockType; weight: number }> {
   const depthRatio = y / height  // 0.0 at top, ~1.0 at bottom
 
@@ -655,7 +1087,9 @@ function getDepthWeights(
   const dirtFinal = layerWeights ? dirtWeight * (layerWeights.dirt / 0.35) : dirtWeight
   const softRockFinal = layerWeights ? softRockWeight * (layerWeights.softRock / 0.20) : softRockWeight
   const stoneFinal = layerWeights ? stoneWeight * (layerWeights.stone / 0.25) : stoneWeight
-  const hardRockFinal = layerWeights ? hardRockWeight * Math.max(0.01, layerWeights.hardRock / 0.35) : hardRockWeight
+  const hardRockFinal = layerWeights
+    ? hardRockWeight * Math.max(0.01, layerWeights.hardRock / 0.35) * hardRockWeightMultiplier
+    : hardRockWeight * hardRockWeightMultiplier
 
   return [
     { type: BlockType.Dirt, weight: dirtFinal * biome.blockWeights.dirt },
@@ -687,7 +1121,8 @@ function pickBaseBlock(
   return BlockType.HardRock
 }
 
-function getHardness(type: BlockType): number {
+/** @internal exported for use by AnomalyZoneSystem and other helpers */
+export function getHardness(type: BlockType): number {
   switch (type) {
     case BlockType.Dirt:
       return BALANCE.HARDNESS_DIRT
@@ -1664,6 +2099,201 @@ function placeMicroStructures(
       rng()
     }
   }
+
+  // ── Phase 49.1.2: Three new micro-structure room types ───────────────────
+
+  /**
+   * Stamps an Underground River channel at (roomX, roomY).
+   *
+   * Layout (10 wide × 4 tall):
+   *   UUUUUUUUUU   U = Unbreakable ceiling
+   *   .LLLLLLLL.   L = LavaBlock river (lava proxy for molten underground river)
+   *   SSSSSSSSSS   S = Stone riverbed
+   *   UUUUUUUUUU   U = Unbreakable floor
+   *
+   * Entrance: 2-wide gap on the left wall (dx=0, dy=1 and dy=2 replaced with Empty).
+   * Exit: 2-wide gap on the right wall (dx=9, dy=1 and dy=2 replaced with Empty).
+   * Only placed at layer depth >= RIVER_MIN_DEPTH_RATIO (0.3) of grid height.
+   */
+  function stampUndergroundRiver(roomX: number, roomY: number): void {
+    const W = 10
+    const H = 4
+    for (let dy = 0; dy < H; dy++) {
+      for (let dx = 0; dx < W; dx++) {
+        const gx = roomX + dx
+        const gy = roomY + dy
+        if (gx < 0 || gx >= gridWidth || gy < 0 || gy >= gridHeight) continue
+        const isEntrance = dx === 0 && (dy === 1 || dy === 2)
+        const isExit = dx === W - 1 && (dy === 1 || dy === 2)
+        let cell: MineCell
+        if (isEntrance || isExit) {
+          cell = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false }
+        } else if (dy === 0 || dy === H - 1) {
+          cell = { type: BlockType.Unbreakable, hardness: 999, maxHardness: 999, revealed: false }
+        } else if (dy === 1) {
+          cell = { type: BlockType.LavaBlock, hardness: 0, maxHardness: 0, revealed: false }
+        } else {
+          const h = BALANCE.HARDNESS_STONE
+          cell = { type: BlockType.Stone, hardness: h, maxHardness: h, revealed: false }
+        }
+        grid[gy][gx] = cell
+      }
+    }
+  }
+
+  /**
+   * Stamps a Stalactite Gallery at (roomX, roomY).
+   *
+   * Layout (8 wide × 7 tall):
+   *   UUUUUUUU   ceiling (Unbreakable)
+   *   UH.H.H.U   H = HardRock stalactite tip, . = open air
+   *   U.HHH..U
+   *   U......U   open interior
+   *   U.M..M.U   M = MineralNode rewards on floor
+   *   U......U
+   *   UUQQUUUU   Q = QuizGate entrance pair (bottom-centre)
+   *
+   * Stalactite pattern is generated probabilistically per column for natural variation.
+   */
+  function stampStalactiteGallery(roomX: number, roomY: number, factId: string | undefined): void {
+    const W = 8
+    const H = 7
+    const stalactiteColumns = new Set<number>()
+    // Randomly pick columns for stalactites (avoid col 0 and W-1 wall cols)
+    for (let col = 1; col < W - 1; col++) {
+      if (rng() < 0.5) stalactiteColumns.add(col)
+    }
+    const mineralCols = new Set([2, 5])  // fixed mineral positions on floor
+
+    for (let dy = 0; dy < H; dy++) {
+      for (let dx = 0; dx < W; dx++) {
+        const gx = roomX + dx
+        const gy = roomY + dy
+        if (gx < 0 || gx >= gridWidth || gy < 0 || gy >= gridHeight) continue
+        const isWall = dy === 0 || dy === H - 1 || dx === 0 || dx === W - 1
+        const isQuizGate = dy === H - 1 && (dx === 3 || dx === 4)
+        const isStalactite = !isWall && dy <= 2 && stalactiteColumns.has(dx) && dy >= 1
+        const isMineral = dy === H - 2 && mineralCols.has(dx)
+
+        let cell: MineCell
+        if (isQuizGate) {
+          const hardness = BALANCE.HARDNESS_QUIZ_GATE
+          cell = { type: BlockType.QuizGate, hardness, maxHardness: hardness, revealed: false, content: { factId } }
+        } else if (isWall) {
+          cell = { type: BlockType.Unbreakable, hardness: 999, maxHardness: 999, revealed: false }
+        } else if (isStalactite) {
+          const h = BALANCE.HARDNESS_HARD_ROCK
+          cell = { type: BlockType.HardRock, hardness: h, maxHardness: h, revealed: false }
+        } else if (isMineral) {
+          const h = BALANCE.HARDNESS_MINERAL_NODE
+          const amt = randomIntInclusive(rng, BALANCE.MINERAL_DROP_MIN, BALANCE.MINERAL_DROP_MAX)
+          cell = { type: BlockType.MineralNode, hardness: h, maxHardness: h, revealed: false, content: { mineralType: 'crystal', mineralAmount: amt } }
+        } else {
+          cell = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false }
+        }
+        grid[gy][gx] = cell
+      }
+    }
+  }
+
+  /**
+   * Stamps a large Geode Chamber at (roomX, roomY).
+   *
+   * A circular hollow (radius ~3) of Empty interior, surrounded by HardRock walls,
+   * with MineralNodes embedded in the inner wall ring,
+   * and a single ArtifactNode at the centre. Entrance: 3-wide gap at bottom.
+   * Only placed at depth >= 0.5 of the grid height.
+   */
+  function stampGeodeChamber(roomX: number, roomY: number, factId: string | undefined): void {
+    const W = 9
+    const H = 9
+    const cx = roomX + 4
+    const cy = roomY + 4
+    const outerR = 4.2
+    const innerR = 3.0
+    const mineralR = 3.5
+
+    // Pre-compute mineral positions on inner-wall ring (6-directional)
+    const mineralAngles = [0, 45, 90, 135, 180, 225].map(a => a * Math.PI / 180)
+    const mineralPositions = new Set(mineralAngles.map(a =>
+      `${cx + Math.round(Math.cos(a) * mineralR)},${cy + Math.round(Math.sin(a) * mineralR)}`
+    ))
+
+    const depthRatio = roomY / gridHeight
+    type MineralTierLocal = 'dust' | 'shard' | 'crystal' | 'geode' | 'essence'
+    let gemTier: MineralTierLocal = 'crystal'
+    if (depthRatio >= 0.8) gemTier = 'geode'
+    if (depthRatio >= 0.95) gemTier = 'essence'
+
+    for (let dy = 0; dy < H; dy++) {
+      for (let dx = 0; dx < W; dx++) {
+        const gx = roomX + dx
+        const gy = roomY + dy
+        if (gx < 0 || gx >= gridWidth || gy < 0 || gy >= gridHeight) continue
+        const dist = Math.sqrt((gx - cx) ** 2 + (gy - cy) ** 2)
+        const key = `${gx},${gy}`
+        const isEntrance = dy === H - 1 && (dx === 3 || dx === 4 || dx === 5)
+        let cell: MineCell
+
+        if (isEntrance) {
+          cell = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false }
+        } else if (gx === cx && gy === cy) {
+          // Central artifact
+          const h = BALANCE.HARDNESS_ARTIFACT_NODE
+          cell = { type: BlockType.ArtifactNode, hardness: h, maxHardness: h, revealed: false, content: { artifactRarity: 'epic', factId } }
+        } else if (mineralPositions.has(key) && dist <= outerR) {
+          const h = BALANCE.HARDNESS_MINERAL_NODE
+          const amt = randomIntInclusive(rng, 1, 3)
+          cell = { type: BlockType.MineralNode, hardness: h, maxHardness: h, revealed: false, content: { mineralType: gemTier, mineralAmount: amt } }
+        } else if (dist <= innerR) {
+          cell = { type: BlockType.Empty, hardness: 0, maxHardness: 0, revealed: false }
+        } else if (dist <= outerR) {
+          const h = BALANCE.HARDNESS_HARD_ROCK
+          cell = { type: BlockType.HardRock, hardness: h, maxHardness: h, revealed: false }
+        } else {
+          continue  // outside the circle — skip (leave existing block)
+        }
+        grid[gy][gx] = cell
+      }
+    }
+  }
+
+  // Underground River — placed once per layer, only in the lower 70% of the grid
+  if (rng() < 0.20 && gridHeight >= 10) {
+    const W = 10; const H = 4
+    const rx = 2 + Math.floor(rng() * Math.max(1, gridWidth - W - 4))
+    const ry = Math.floor(gridHeight * 0.3) + Math.floor(rng() * Math.max(1, Math.floor(gridHeight * 0.5)))
+    if (!overlapsPlaced(rx, ry, W, H) && !overlapsSpawn(rx, ry, W, H)) {
+      stampUndergroundRiver(rx, ry)
+      placedBoxes.push({ x: rx, y: ry, w: W, h: H })
+    }
+  }
+
+  // Stalactite Gallery — once per layer, mid-depth
+  if (rng() < 0.25 && gridHeight >= 8) {
+    const W = 8; const H = 7
+    const rx = 2 + Math.floor(rng() * Math.max(1, gridWidth - W - 4))
+    const ry = Math.floor(gridHeight * 0.2) + Math.floor(rng() * Math.max(1, Math.floor(gridHeight * 0.5)))
+    if (!overlapsPlaced(rx, ry, W, H) && !overlapsSpawn(rx, ry, W, H)) {
+      const factId = facts[factCursor % Math.max(1, facts.length)]
+      factCursor++
+      stampStalactiteGallery(rx, ry, factId)
+      placedBoxes.push({ x: rx, y: ry, w: W, h: H })
+    }
+  }
+
+  // Geode Chamber — once per layer, lower half only
+  if (rng() < 0.15 && gridHeight >= 10) {
+    const W = 9; const H = 9
+    const rx = 2 + Math.floor(rng() * Math.max(1, gridWidth - W - 4))
+    const ry = Math.floor(gridHeight * 0.5) + Math.floor(rng() * Math.max(1, Math.floor(gridHeight * 0.4)))
+    if (!overlapsPlaced(rx, ry, W, H) && !overlapsSpawn(rx, ry, W, H)) {
+      const factId = facts[factCursor % Math.max(1, facts.length)]
+      factCursor++
+      stampGeodeChamber(rx, ry, factId)
+      placedBoxes.push({ x: rx, y: ry, w: W, h: H })
+    }
+  }
 }
 
 /**
@@ -2143,7 +2773,8 @@ function placeSendUpStation(
   // If no valid position found after all attempts, silently skip placement.
 }
 
-function randomIntInclusive(rng: () => number, min: number, max: number): number {
+/** @internal exported for use by AnomalyZoneSystem and other helpers */
+export function randomIntInclusive(rng: () => number, min: number, max: number): number {
   return Math.floor(rng() * (max - min + 1)) + min
 }
 

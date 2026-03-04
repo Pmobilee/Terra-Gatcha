@@ -1,5 +1,7 @@
 import type { DiveSaveState } from '../../data/saveState'
 import { DIVE_SAVE_KEY, DIVE_SAVE_VERSION } from '../../data/saveState'
+import { gridChecksum } from '../systems/SeedVerifier'
+import type { MineCell } from '../../data/types'
 
 /** Auto-save fires every this many ticks. */
 export const AUTO_SAVE_TICK_INTERVAL = 30
@@ -44,6 +46,19 @@ export class SaveManager {
       console.warn('[SaveManager] Failed to parse dive save:', e)
       return null
     }
+  }
+
+  /**
+   * Records the checksum of a freshly generated mine grid into the save state.
+   * Call this immediately after generating a layer's grid. (Phase 49.5)
+   *
+   * @param state - The current dive save state (mutated in place).
+   * @param layer - Zero-based layer index.
+   * @param grid - The generated mine grid to checksum.
+   */
+  static recordLayerChecksum(state: DiveSaveState, layer: number, grid: MineCell[][]): void {
+    if (!state.layerChecksums) state.layerChecksums = []
+    state.layerChecksums[layer] = gridChecksum(grid)
   }
 
   /**

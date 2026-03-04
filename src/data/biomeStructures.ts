@@ -22,6 +22,9 @@ export type StructuralFeatureId =
   | 'mirror_symmetry'
   | 'living_veins'
   | 'glitch_tiles'
+  | 'stalactite_field'
+  | 'crystal_formation'
+  | 'hydrothermal_vent'
 
 /** Configuration for a structural feature placement. */
 export interface StructuralFeatureConfig {
@@ -40,7 +43,7 @@ export interface StructuralFeatureConfig {
 /** Per-biome structural feature assignments. */
 export const BIOME_STRUCTURAL_FEATURES: Record<string, StructuralFeatureId[]> = {
   // Shallow
-  limestone_caves: ['pocket_caves', 'fossil_beds'],
+  limestone_caves: ['pocket_caves', 'fossil_beds', 'stalactite_field'],
   clay_basin: ['pocket_caves', 'sand_pockets'],
   iron_seam: ['crystal_veins', 'copper_traces'],
   root_tangle: ['root_corridors', 'mushroom_clusters'],
@@ -50,18 +53,18 @@ export const BIOME_STRUCTURAL_FEATURES: Record<string, StructuralFeatureId[]> = 
   salt_flats: ['crystal_veins', 'pocket_caves'],
   coal_veins: ['root_corridors', 'amber_inclusions'],
   granite_canyon: ['pocket_caves', 'crystal_veins'],
-  sulfur_springs: ['lava_streams', 'pocket_caves'],
+  sulfur_springs: ['lava_streams', 'pocket_caves', 'hydrothermal_vent'],
   // Deep
   obsidian_rift: ['obsidian_spires', 'void_columns'],
   magma_shelf: ['magma_rivers', 'lava_streams', 'obsidian_spires'],
-  crystal_geode: ['crystal_veins', 'pocket_caves'],
+  crystal_geode: ['crystal_veins', 'pocket_caves', 'crystal_formation'],
   fossil_layer: ['fossil_beds', 'amber_inclusions'],
-  quartz_halls: ['crystal_veins', 'ice_columns'],
+  quartz_halls: ['crystal_veins', 'ice_columns', 'stalactite_field', 'crystal_formation'],
   // Extreme
-  primordial_mantle: ['magma_rivers', 'lava_streams', 'obsidian_spires'],
+  primordial_mantle: ['magma_rivers', 'lava_streams', 'obsidian_spires', 'hydrothermal_vent'],
   iron_core_fringe: ['crystal_veins', 'obsidian_spires'],
   pressure_dome: ['crystal_veins', 'ice_columns'],
-  deep_biolume: ['living_veins', 'mushroom_clusters'],
+  deep_biolume: ['living_veins', 'mushroom_clusters', 'crystal_formation'],
   tectonic_scar: ['magma_rivers', 'void_columns'],
   // Anomaly
   temporal_rift: ['temporal_fractures', 'glitch_tiles', 'floating_islands'],
@@ -93,4 +96,7 @@ export const STRUCTURAL_FEATURE_CONFIGS: Record<StructuralFeatureId, Omit<Struct
   mirror_symmetry: { minSize: { width: 4, height: 4 }, maxSize: { width: 6, height: 6 }, frequency: 0.05, fillBlock: BlockType.Stone },
   living_veins: { minSize: { width: 2, height: 4 }, maxSize: { width: 3, height: 8 }, frequency: 0.10, fillBlock: BlockType.MineralNode },
   glitch_tiles: { minSize: { width: 2, height: 2 }, maxSize: { width: 4, height: 4 }, frequency: 0.12, fillBlock: BlockType.DataDisc },
+  stalactite_field:    { minSize: { width: 6, height: 5 }, maxSize: { width: 10, height: 8 },  frequency: 0.18, fillBlock: BlockType.HardRock },
+  crystal_formation:   { minSize: { width: 3, height: 5 }, maxSize: { width: 5,  height: 9 },  frequency: 0.14, fillBlock: BlockType.MineralNode },
+  hydrothermal_vent:   { minSize: { width: 2, height: 4 }, maxSize: { width: 3,  height: 7 },  frequency: 0.12, fillBlock: BlockType.GasPocket },
 }

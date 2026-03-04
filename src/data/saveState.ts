@@ -37,6 +37,11 @@ export interface DiveSaveState {
   sameLayerDeathCount: number
   /** Auto-balance state: last layer where death occurred. */
   lastDeathLayer: number
+  /**
+   * Per-layer grid checksums recorded at generation time (Phase 49.5, DD-V2-235).
+   * Index i corresponds to layer i. Used for seed determinism verification.
+   */
+  layerChecksums?: number[]
 }
 
 export const DIVE_SAVE_KEY = 'terra_miner_dive_save'

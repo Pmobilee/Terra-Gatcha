@@ -395,6 +395,19 @@ export const BALANCE = {
   // === MINE EVENTS (Phase 35.7) ===
   MINE_EVENT_MIN_TICKS: 30,             // Minimum ticks between events
   MINE_EVENT_CHANCE_PER_TICK: 0.015,    // ~1.5% per tick after min ticks elapsed
+
+  // === BIOME TRANSITIONS (Phase 49.2, DD-V2-235) ===
+  DUAL_BIOME_CHANCE: 0.15,     // 15% of layers get a secondary biome blend
+  TRANSITION_BAND_WIDTH: 5,    // Cells wide for the transition gradient band
+
+  // === ANOMALY ZONES (Phase 49.4, DD-V2-237) ===
+  ANOMALY_ZONE_BASE_CHANCE: 0.18,  // Base probability per injection attempt per layer
+  ANOMALY_MAX_PER_LAYER: 2,        // Maximum anomaly zones per layer
+
+  // === DYNAMIC DIFFICULTY (Phase 49.7) ===
+  DD_HARDNESS_SCALE: 0.20,   // Max ±20% hardness adjustment from engagement score
+  DD_HAZARD_SCALE:   0.25,   // Max ±25% hazard density adjustment
+  DD_OXYGEN_SCALE:   0.15,   // Max ±15% oxygen cache count adjustment
 } as const
 
 /**

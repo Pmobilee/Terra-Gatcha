@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { BALANCE } from '../../data/balance'
   import { CONSUMABLE_DEFS, type ConsumableId } from '../../data/consumables'
   import { RELIC_CATALOGUE, type RelicDefinition } from '../../data/relics'
@@ -10,6 +11,10 @@
     currentLayer,
     layerTierLabel,
   } from '../stores/gameState'
+  import MinePreviewThumbnail from './MinePreviewThumbnail.svelte'
+  import { minePreviewDataUrl } from '../../game/systems/MinePreview'
+  import { generateMine, seededRandom } from '../../game/systems/MineGenerator'
+  import { DEFAULT_BIOME, selectBiome } from '../../data/biomes'
 
   interface Props {
     availableTanks: number
@@ -20,6 +25,23 @@
   }
 
   let { availableTanks, onStartDive, onBack, nextBiomeName, nextBiomeDesc }: Props = $props()
+
+  // Mine preview thumbnail state (Phase 49.6)
+  let previewDataUrl = $state('')
+  let previewBiome = $state(DEFAULT_BIOME)
+
+  /** Generate a mine preview thumbnail when the component mounts. */
+  function generateDivePreview(): void {
+    const seed = Date.now()
+    const rng = seededRandom(seed)
+    previewBiome = selectBiome(1, rng)
+    const { grid } = generateMine(seed, [], 0, previewBiome)
+    previewDataUrl = minePreviewDataUrl(grid, previewBiome)
+  }
+
+  onMount(() => {
+    generateDivePreview()
+  })
 
   // ── Tank selection ────────────────────────────────────────────────────────
   let selectedTanks = $state<number>(1)
@@ -194,6 +216,15 @@
 
     <p class="oxygen-estimate">Estimated Oxygen: {estimatedOxygen} O2</p>
     <p class={`dive-estimate ${diveTone}`}>{diveLabel}</p>
+
+    <!-- Phase 49.6: Mine preview thumbnail -->
+    <div class="mine-preview-section">
+      <MinePreviewThumbnail
+        dataUrl={previewDataUrl}
+        biomeLabel={nextBiomeName ?? previewBiome.name}
+        layer={$currentLayer + 1}
+      />
+    </div>
 
     {#if nextBiomeName}
       <div class="biome-preview">

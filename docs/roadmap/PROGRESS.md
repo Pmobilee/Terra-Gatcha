@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 45, 47. Phase 42 (Viral Growth Engine): Canvas-based share card generator (1200×630 PNG, 3 templates), referral tier progress bar in ReferralModal (4 reward tiers), social proof badges (5 types) with OG page server routes, iOS Universal Links + Android App Links + Capacitor deep link listener, in-app review prompt with eligibility gating, K-factor viral analytics endpoint. New files: shareCardService.ts, ShareCardModal.svelte, badgeService.ts, BadgeDisplay.svelte, deepLinkService.ts, reviewPromptService.ts, ReviewPromptTrigger.svelte, server referralService.ts, badges/deepLinks/aso server routes, asoKeywordTracker job, viralMetrics analytics. 0 typecheck errors, build succeeds. Next: Phase 28 (Performance Optimization) or Phase 44.
+Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 45, 47, 49. Phase 49 (Advanced Mine Generation): shape-aware `stampFeature()` dispatcher replacing rectangular fills in `placeStructuralFeatures()`, 3 new micro-structure room types (Underground River, Stalactite Gallery, Geode Chamber), dual-biome blending with `blendBiomeWeights()` and `flagTransitionZones()`, 3 new `StructuralFeatureId` values (`stalactite_field`, `crystal_formation`, `hydrothermal_vent`), anomaly zone injection system (`AnomalyZoneSystem.ts`, 5 zone types), seed determinism verification (`SeedVerifier.ts`, djb2 checksum), mine preview thumbnail (`MinePreview.ts` + `MinePreviewThumbnail.svelte` integrated into `DivePrepScreen.svelte`), dynamic difficulty profile (`DifficultyProfile`, `buildDifficultyProfile()`) passed from `GameManager.ts`. 0 typecheck errors. Next: Phase 28 (Performance Optimization) or Phase 44.
 
 ---
 
@@ -120,7 +120,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 ### Endgame & Mastery (Phases 47-49)
 - [x] **Phase 47: Achievement Gallery** — 7th dome room, 20 milestone paintings, achievement tracking, paint-reveal animation, share to device gallery → [`completed/PHASE-47-ACHIEVEMENT-GALLERY.md`](completed/PHASE-47-ACHIEVEMENT-GALLERY.md)
 - [ ] **Phase 48: Prestige & Endgame Systems** — Omniscient golden dome, mentor mode, post-mastery challenge mode, biome completion bonuses, GAIA peer dialogue → [`phases/PHASE-48-PRESTIGE-ENDGAME.md`](phases/PHASE-48-PRESTIGE-ENDGAME.md)
-- [ ] **Phase 49: Advanced Mine Generation** — Procedural micro-structures, biome transition zones, structural features, anomaly probability system, seed determinism → [`phases/PHASE-49-ADVANCED-MINE-GENERATION.md`](phases/PHASE-49-ADVANCED-MINE-GENERATION.md)
+- [x] **Phase 49: Advanced Mine Generation** — Procedural micro-structures, biome transition zones, structural features, anomaly probability system, seed determinism, mine preview thumbnail, dynamic difficulty → [`completed/PHASE-49-ADVANCED-MINE-GENERATION.md`](completed/PHASE-49-ADVANCED-MINE-GENERATION.md)
 
 ### Platform Maturity (Phase 50)
 - [ ] **Phase 50: Open Content Ecosystem** — Public fact API, community moderation tools, educational partnerships, content licensing, third-party integrations → [`phases/PHASE-50-OPEN-CONTENT-ECOSYSTEM.md`](phases/PHASE-50-OPEN-CONTENT-ECOSYSTEM.md)
