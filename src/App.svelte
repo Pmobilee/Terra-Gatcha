@@ -48,6 +48,7 @@
   import MiniMap from './ui/components/MiniMap.svelte'
   import RelicPickupOverlay from './ui/components/RelicPickupOverlay.svelte'
   import ResumeDiveModal from './ui/components/ResumeDiveModal.svelte'
+  import GaiaToast from './ui/components/GaiaToast.svelte'
   import { SaveManager } from './game/managers/SaveManager'
   import { collectFarmResources } from './services/saveService'
   import { calculateTotalPending } from './data/farm'
@@ -396,6 +397,7 @@
       onSettings={handleViewSettings}
       facts={cachedFacts}
     />
+    <GaiaToast />
 
   {:else if $currentScreen === 'divePrepScreen'}
     <DivePrepScreen
