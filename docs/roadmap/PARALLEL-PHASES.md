@@ -337,7 +337,7 @@ Parallel agents burn through the budget in minutes and halt all progress.
 | 9 | W2 | **29** | Character Animation | [x] |
 | 10 | W2 | **33** | Biome Visual Diversity | [x] |
 | 11 | W2 | **37** | Advanced Pet System | [x] |
-| 12 | W3 | **41** | Analytics & Experiments | [ ] |
+| 12 | W3 | **41** | Analytics & Experiments | [x] |
 | 13 | W3 | **45** | Kid Mode & Parental Controls | [ ] |
 | 14 | W3 | **34** | Pixel Art Per Fact | [ ] |
 | 15 | W3 | **43** | Cooperative Dives | [ ] |

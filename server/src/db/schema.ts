@@ -1056,3 +1056,47 @@ export type LeaderboardReviewItem = typeof leaderboardReviewQueue.$inferSelect;
 export type NewLeaderboardReviewItem = typeof leaderboardReviewQueue.$inferInsert;
 export type FlaggedAccount = typeof flaggedAccounts.$inferSelect;
 export type NewFlaggedAccount = typeof flaggedAccounts.$inferInsert;
+
+// ── feature_flags ─────────────────────────────────────────────────────────────
+
+/**
+ * Server-side feature flags with per-user rollout control.
+ * The `rollout_pct` field (0–100) determines what fraction of users see the
+ * feature when no explicit user override exists.  A deterministic hash of
+ * (userId + flagKey) decides whether a given user falls inside the rollout.
+ */
+export const featureFlags = sqliteTable('feature_flags', {
+  /** Unique flag identifier, e.g. "rewarded_ads" or "ab_pioneer_timing_v2". */
+  key: text('key').primaryKey(),
+  /** Human-readable description of what this flag controls. */
+  description: text('description').notNull().default(''),
+  /** Whether this flag is globally enabled (1) or disabled (0). */
+  enabled: integer('enabled').notNull().default(0),
+  /** Rollout percentage 0–100 applied when enabled = 1. */
+  rolloutPct: integer('rollout_pct').notNull().default(100),
+  /** Epoch ms when this flag was created. */
+  createdAt: integer('created_at').notNull(),
+  /** Epoch ms when this flag was last modified. */
+  updatedAt: integer('updated_at').notNull(),
+})
+
+// ── feature_flag_overrides ────────────────────────────────────────────────────
+
+/**
+ * Explicit per-user flag overrides.  These always take priority over rollout_pct.
+ * Used for internal testers, support overrides, and force-disable on specific accounts.
+ */
+export const featureFlagOverrides = sqliteTable('feature_flag_overrides', {
+  id: text('id').primaryKey(),
+  flagKey: text('flag_key').notNull().references(() => featureFlags.key, { onDelete: 'cascade' }),
+  userId: text('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  /** Forced value: 1 = force-on, 0 = force-off. */
+  value: integer('value').notNull(),
+  createdAt: integer('created_at').notNull(),
+})
+
+// Feature flags — Phase 41.1
+export type FeatureFlag = typeof featureFlags.$inferSelect;
+export type NewFeatureFlag = typeof featureFlags.$inferInsert;
+export type FeatureFlagOverride = typeof featureFlagOverrides.$inferSelect;
+export type NewFeatureFlagOverride = typeof featureFlagOverrides.$inferInsert;

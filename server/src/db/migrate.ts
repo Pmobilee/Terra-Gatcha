@@ -125,6 +125,26 @@ export function initSchema(): void {
     CREATE INDEX IF NOT EXISTS idx_review_queue_user_id ON leaderboard_review_queue(user_id);
     CREATE INDEX IF NOT EXISTS idx_flagged_accounts_user_id ON flagged_accounts(user_id);
     CREATE INDEX IF NOT EXISTS idx_flagged_accounts_is_active ON flagged_accounts(is_active);
+
+    CREATE TABLE IF NOT EXISTS feature_flags (
+      key TEXT PRIMARY KEY,
+      description TEXT NOT NULL DEFAULT '',
+      enabled INTEGER NOT NULL DEFAULT 0,
+      rollout_pct INTEGER NOT NULL DEFAULT 100,
+      created_at INTEGER NOT NULL,
+      updated_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS feature_flag_overrides (
+      id TEXT PRIMARY KEY,
+      flag_key TEXT NOT NULL REFERENCES feature_flags(key) ON DELETE CASCADE,
+      user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      value INTEGER NOT NULL,
+      created_at INTEGER NOT NULL
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_feature_flag_overrides_flag_key ON feature_flag_overrides(flag_key);
+    CREATE INDEX IF NOT EXISTS idx_feature_flag_overrides_user_id ON feature_flag_overrides(user_id);
   `);
   console.log("[db] Schema initialised.");
 }

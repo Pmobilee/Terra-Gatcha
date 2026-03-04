@@ -28,6 +28,7 @@ import { seasonPassRoutes } from "./routes/seasonPass.js";
 import { subscriptionRoutes } from "./routes/subscriptions.js";
 import { factBundleRoutes } from "./routes/factBundles.js";
 import { startBundleScheduler } from "./jobs/bundleScheduler.js";
+import { featureFlagRoutes } from "./routes/featureFlags.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -189,6 +190,9 @@ export async function buildApp() {
   // Phase 32: Content Scaling routes
   await fastify.register(factBundleRoutes, { prefix: "/api/fact-bundles" });
 
+  // Phase 41: Feature flags routes (registers /api/flags and /api/flags/:key)
+  await fastify.register(featureFlagRoutes);
+
   // ── 404 handler ─────────────────────────────────────────────────────────────
   fastify.setNotFoundHandler((_request, reply) => {
     reply.status(404).send({ error: "Route not found", statusCode: 404 });
@@ -216,6 +220,16 @@ async function start(): Promise<void> {
       console.error('[Cron] Win-back failed:', err)
     );
   }, 86_400_000);
+
+  // Phase 41.5: Retention alert job — runs every hour
+  const { runRetentionAlertJob } = await import('./jobs/retentionAlertJob.js');
+  setTimeout(() => { void runRetentionAlertJob() }, 10_000);
+  setInterval(() => { void runRetentionAlertJob() }, 60 * 60 * 1000);
+
+  // Phase 41.7: Analytics data retention enforcement — daily purge
+  const { runAnalyticsRetentionJob } = await import('./jobs/analyticsRetentionJob.js');
+  setTimeout(() => { void runAnalyticsRetentionJob() }, 30_000);
+  setInterval(() => { void runAnalyticsRetentionJob() }, 24 * 60 * 60 * 1000);
 
   const app = await buildApp();
 

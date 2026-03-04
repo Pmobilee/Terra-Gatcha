@@ -9,6 +9,8 @@ import { generateUUID } from '../utils/uuid'
 import { assignExperiment, type MonetizationEvent } from '../data/analyticsEvents'
 import { get } from 'svelte/store'
 import { analyticsEnabled } from '../ui/stores/settings'
+import { EXPERIMENTS } from '../data/experiments'
+import { assignVariant } from '../utils/experimentBucket'
 
 // ── Event type definitions ────────────────────────────────────────────────────
 
@@ -141,6 +143,12 @@ interface WebVitalsEvent {
   properties: { lcp: number; fcp: number; cls: number; inp: number; ttfb: number }
 }
 
+/** Fired the first time an experiment variant is assigned to a session. */
+interface ExperimentAssignedEvent {
+  name: 'experiment_assigned'
+  properties: { experiment_key: string; variant: string; session_id: string }
+}
+
 /** Union of all supported analytics events. */
 export type AnalyticsEvent =
   | AppOpenEvent
@@ -156,6 +164,7 @@ export type AnalyticsEvent =
   | MonetizationEvent
   | PwaInstallEvent
   | WebVitalsEvent
+  | ExperimentAssignedEvent
 
 // Re-export specific types used externally
 export type {
@@ -422,20 +431,44 @@ export class AnalyticsService {
   }
 
   /**
-   * Get or assign a deterministic A/B experiment group for the current player.
-   * The assignment is persisted in localStorage so it remains stable across
-   * sessions as long as the same browser is used.
+   * Get the assigned variant for an experiment.
+   * Assignment is stable for the lifetime of the device.
+   * Fires an `experiment_assigned` event the first time a variant is resolved,
+   * so we can count impressions in the cohort dashboard.
    *
-   * @param experimentName - Unique name for the experiment (e.g. "pioneer_pack_cta_v2").
+   * @param experimentKey - Must match an ExperimentDef.key in EXPERIMENTS.
+   * @returns The variant label string.
+   */
+  getExperimentVariant(experimentKey: string): string {
+    const cacheKey = `exp_${experimentKey}`
+    const stored = localStorage.getItem(cacheKey)
+    if (stored) return stored
+
+    // Hash sessionId + experimentKey to pick a variant
+    const allVariants = EXPERIMENTS.find((e) => e.key === experimentKey)?.variants ?? ['control', 'treatment']
+    const variant = assignVariant(this.sessionId, experimentKey, allVariants)
+    localStorage.setItem(cacheKey, variant)
+
+    // Track assignment — fires only on first resolution
+    this.track({
+      name: 'experiment_assigned',
+      properties: { experiment_key: experimentKey, variant, session_id: this.sessionId },
+    })
+    return variant
+  }
+
+  /**
+   * Backward-compatible wrapper for getExperimentVariant().
+   * Returns 'A' if the variant is the first (control) variant, 'B' otherwise.
+   *
+   * @param experimentName - Unique name for the experiment.
    * @returns 'A' or 'B' group assignment.
+   * @deprecated Use getExperimentVariant() instead for full variant label support.
    */
   getExperimentGroup(experimentName: string): 'A' | 'B' {
-    const key = `experiment_${experimentName}`
-    const stored = localStorage.getItem(key)
-    if (stored === 'A' || stored === 'B') return stored
-    const group = assignExperiment(this.sessionId, experimentName)
-    localStorage.setItem(key, group)
-    return group
+    const variant = this.getExperimentVariant(experimentName)
+    const allVariants = EXPERIMENTS.find((e) => e.key === experimentName)?.variants ?? ['control', 'treatment']
+    return variant === allVariants[0] ? 'A' : 'B'
   }
 }
 

@@ -1,6 +1,6 @@
 # Terra Gacha — Progress Tracker & Roadmap
 
-Last updated: 2026-03-05
+Last updated: 2026-03-06
 
 ## How This Roadmap Works
 
@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 33, 37, 38, 39, 40, 47. Phase 37 (Advanced Pet System): Dust Cat permanent companion with mine follower and dome wanderer logic, 10 personality traits (petTraits.ts), feeding/grooming mini-game Svelte components (PetFeedGame, PetGroomGame, DustCatHappinessMeter, DustCatWardrobe), happiness decay model with trait modifiers, 10 Dust Cat synergy entries in petPersonalities.ts, legendary stage 3 evolution for all 5 fossil companions, companion stat bonuses (getDustCatBonuses), placeholder sprites for 9 Dust Cat animations + 5 legendary companion sprites, activeDustCatSynergy store. Next: Phase 35 (Mine Mechanics Completion) or Phase 36 (Combat System).
+Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 33, 37, 38, 39, 40, 41, 47. Phase 41 (Advanced Analytics & Experiments): database-backed feature flag service with SHA-256 rollout bucketing, per-user overrides, and /api/flags routes; full A/B experiment framework (client djb2 bucketing, server two-proportion Z-test, experiment_assigned event); funnel analysis pipeline (core_onboarding + monetisation funnels); server-rendered HTML cohort dashboard at /api/admin/dashboard with 5-minute cache; D7 retention alert job (hourly, alerts via email when retention drops below 15%); learning effectiveness endpoint (mastery curve + SM-2 interval histogram); GDPR-compliant 90-day analytics purge job and userId anonymisation hardening in purgeDeletedUsers. Next: Phase 35 (Mine Mechanics Completion) or Phase 36 (Combat System).
 
 ---
 
@@ -108,7 +108,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 40: Internationalization & Localization** — Multi-language UI, RTL support, locale-specific formatting, translation pipeline, content localization → [`completed/PHASE-40-INTERNATIONALIZATION.md`](completed/PHASE-40-INTERNATIONALIZATION.md)
 
 ### Growth & Analytics (Phases 41-43)
-- [ ] **Phase 41: Advanced Analytics & Experiments** — Feature flag system, A/B testing framework, funnel analysis, cohort dashboards, retention optimization → [`phases/PHASE-41-ANALYTICS-EXPERIMENTS.md`](phases/PHASE-41-ANALYTICS-EXPERIMENTS.md)
+- [x] **Phase 41: Advanced Analytics & Experiments** — Feature flag system, A/B testing framework, funnel analysis, cohort dashboards, retention optimization → [`completed/PHASE-41-ANALYTICS-EXPERIMENTS.md`](completed/PHASE-41-ANALYTICS-EXPERIMENTS.md)
 - [ ] **Phase 42: Viral Growth Engine** — Share paintings, referral optimization, social proof badges, invite deep links, ASO iteration → [`phases/PHASE-42-VIRAL-GROWTH.md`](phases/PHASE-42-VIRAL-GROWTH.md)
 - [ ] **Phase 43: Cooperative Dives** — WebSocket 2-player co-op, shared state sync, Miner/Scholar roles, loot ledger, disconnect recovery → [`phases/PHASE-43-COOPERATIVE-DIVES.md`](phases/PHASE-43-COOPERATIVE-DIVES.md)
 

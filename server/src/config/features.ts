@@ -1,6 +1,11 @@
 /**
- * Server-side feature flags.
+ * Server-side feature flags — static configuration object.
  * Controls feature rollout and A/B testing.
+ *
+ * @deprecated (Phase 41.1) — Use the database-backed `featureFlagService` instead.
+ * This static object is kept for backwards compatibility and will be removed once
+ * all callers have been migrated to `resolveFlag()` / `resolveAllFlags()` from
+ * `server/src/services/featureFlagService.ts`.
  */
 
 export const FEATURES = {

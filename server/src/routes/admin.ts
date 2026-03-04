@@ -21,6 +21,9 @@ import * as crypto from "crypto";
 import type { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { eq, sql } from "drizzle-orm";
 import { db } from "../db/index.js";
+import { config } from "../config.js";
+import { assembleDashboard } from "../services/dashboardService.js";
+import { renderDashboard } from "../dashboard/renderDashboard.js";
 import {
   duels,
   tradeOffers,
@@ -517,4 +520,27 @@ export async function adminRoutes(fastify: FastifyInstance): Promise<void> {
       });
     }
   );
+
+  // ── Phase 41.4: Analytics cohort dashboard ────────────────────────────────────
+
+  /** In-memory cache for the dashboard HTML (5-minute TTL). */
+  let dashboardCache: { html: string; expiresAt: number } | null = null
+
+  /**
+   * GET /api/admin/dashboard
+   * Returns a server-rendered HTML cohort dashboard.
+   * Cached in memory for 5 minutes to avoid table-scan storms.
+   */
+  fastify.get('/dashboard', async (request: FastifyRequest, reply: FastifyReply) => {
+    if (request.headers['x-admin-key'] !== config.adminApiKey) {
+      return reply.status(403).send('Forbidden')
+    }
+    if (dashboardCache && Date.now() < dashboardCache.expiresAt) {
+      return reply.type('text/html').send(dashboardCache.html)
+    }
+    const data = await assembleDashboard()
+    const html = renderDashboard(data)
+    dashboardCache = { html, expiresAt: Date.now() + 5 * 60_000 }
+    return reply.type('text/html').send(html)
+  })
 }

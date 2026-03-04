@@ -59,6 +59,10 @@ export interface Config {
   azureSpeechKey: string;
   /** Azure region for the TTS endpoint (e.g. "eastus"). */
   azureSpeechRegion: string;
+  /** Email address for retention alert notifications (optional). */
+  alertEmail?: string;
+  /** Public server URL for dashboard links in alert emails (optional). */
+  serverUrl?: string;
 }
 
 /**
@@ -166,6 +170,9 @@ export const config: Config = {
   // ── TTS (Azure Cognitive Services) ─────────────────────────────────────────
   azureSpeechKey: readDockerSecret("AZURE_SPEECH_KEY", "azure_speech_key"),
   azureSpeechRegion: envOptional("AZURE_SPEECH_REGION", "eastus"),
+  // ── Analytics Alerts (Phase 41.5) ──────────────────────────────────────────
+  alertEmail: envMaybe("ALERT_EMAIL"),
+  serverUrl: envMaybe("SERVER_URL"),
 };
 
 /**

@@ -67,22 +67,36 @@ export function purgeDeletedUsers(db: unknown): { purgedCount: number } {
     database.prepare('DELETE FROM saves WHERE user_id = ?').run(user.id)
     database.prepare('DELETE FROM leaderboards WHERE user_id = ?').run(user.id)
     database.prepare('DELETE FROM refresh_tokens WHERE user_id = ?').run(user.id)
-    // Analytics events reference user_id via the properties JSON blob.
-    // Delete events where the serialised properties contain the user's ID.
-    database
-      .prepare(
-        `DELETE FROM analytics_events
-          WHERE session_id IN (
-            SELECT session_id FROM analytics_events
-             WHERE properties LIKE ?
-          )`
-      )
-      .run(`%"user_id":"${user.id}"%`)
+    // Analytics events: anonymise instead of deleting to preserve aggregate counts.
+    // Replace "userId":"<uuid>" with "userId":"deleted" in the JSON blob.
+    scrubAnalyticsUserId(database, user.id)
     // Finally remove the user record itself.
     database.prepare('DELETE FROM users WHERE id = ?').run(user.id)
   }
 
   return { purgedCount: deletedUsers.length }
+}
+
+/**
+ * Scrub all analytics events whose `properties` blob references the deleted user's ID.
+ * Replaces the userId field in the JSON with the string "deleted" so aggregate
+ * counts remain accurate while removing the personal identifier.
+ *
+ * @param db     - Raw better-sqlite3 Database instance.
+ * @param userId - The user being deleted.
+ */
+export function scrubAnalyticsUserId(db: unknown, userId: string): void {
+  const database = db as {
+    prepare: (sql: string) => { run: (...args: unknown[]) => void }
+  }
+  // Replace "userId":"<uuid>" with "userId":"deleted" in the JSON blob
+  database
+    .prepare(
+      `UPDATE analytics_events
+          SET properties = REPLACE(properties, '"userId":"${userId}"', '"userId":"deleted"')
+        WHERE properties LIKE ?`
+    )
+    .run(`%"userId":"${userId}"%`)
 }
 
 /**
