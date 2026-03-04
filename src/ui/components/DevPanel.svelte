@@ -53,6 +53,9 @@
   // ─── streak input ─────────────────────────────────────────────
   let streakInput = $state<number>(7)
 
+  // ─── dev quiz every block toggle ─────────────────────────────
+  let quizEveryBlock = $state<boolean>(false)
+
   const gm = GameManager.getInstance()
 
   // ─── Presets ─────────────────────────────────────────────────
@@ -565,6 +568,18 @@
           </div>
           <!-- Force Quiz (Phase 8.8) -->
           <button class="btn-give btn-wide" data-testid="dev-force-quiz" type="button" onclick={() => { gm.forceQuiz?.() }}>Force Quiz</button>
+          <!-- Quiz Every Block toggle -->
+          <button
+            class="btn-give btn-wide"
+            class:btn-active={quizEveryBlock}
+            data-testid="dev-quiz-every-block"
+            type="button"
+            onclick={() => {
+              quizEveryBlock = !quizEveryBlock
+              const qm = gm.getQuizManager?.()
+              if (qm) qm.devForceQuizEveryBlock = quizEveryBlock
+            }}
+          >Quiz Every Block: {quizEveryBlock ? 'ON' : 'OFF'}</button>
           <!-- Consumables (Phase 8.6) -->
           <div style="margin-top:6px">
             <span style="font-size:0.72rem;opacity:0.65">Consumables (dive only):</span>
@@ -1010,6 +1025,13 @@
   /* Full width helpers */
   .btn-wide {
     width: 100%;
+  }
+
+  /* Active/toggled state (e.g. Quiz Every Block ON) */
+  .btn-active {
+    background: #4ecca3 !important;
+    color: #0a0a1a !important;
+    border-color: #4ecca3 !important;
   }
 
   /* ─── Custom row ────────────────────────────────────────── */

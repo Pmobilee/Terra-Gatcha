@@ -91,6 +91,7 @@
     align-items: center;
     justify-content: center;
     font-family: 'Press Start 2P', monospace;
+    pointer-events: auto;
   }
 
   .upgrade-panel {

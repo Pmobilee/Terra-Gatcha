@@ -94,7 +94,7 @@ class FactsDB {
    * @param count Number of facts to return (default 1).
    */
   getRandom(count = 1): Fact[] {
-    return this.query('SELECT * FROM facts ORDER BY RANDOM() LIMIT ?', [count])
+    return this.query(`SELECT * FROM facts ORDER BY RANDOM() LIMIT ${Math.max(1, Math.floor(count))}`)
   }
 
   /**
@@ -130,19 +130,18 @@ class FactsDB {
    * @param ageRating Optional age-rating filter applied before random selection.
    */
   getRandomFiltered(count = 1, ageRating?: AgeRating): Fact[] {
+    const n = Math.max(1, Math.floor(count))
     if (ageRating === undefined || ageRating === 'adult') {
-      return this.query('SELECT * FROM facts ORDER BY RANDOM() LIMIT ?', [count])
+      return this.query(`SELECT * FROM facts ORDER BY RANDOM() LIMIT ${n}`)
     }
     if (ageRating === 'teen') {
       return this.query(
-        "SELECT * FROM facts WHERE age_rating IN ('kid', 'teen') ORDER BY RANDOM() LIMIT ?",
-        [count],
+        `SELECT * FROM facts WHERE age_rating IN ('kid', 'teen') ORDER BY RANDOM() LIMIT ${n}`,
       )
     }
     // 'kid'
     return this.query(
-      "SELECT * FROM facts WHERE age_rating = 'kid' ORDER BY RANDOM() LIMIT ?",
-      [count],
+      `SELECT * FROM facts WHERE age_rating = 'kid' ORDER BY RANDOM() LIMIT ${n}`,
     )
   }
 
@@ -229,6 +228,8 @@ class FactsDB {
         const row = stmt.getAsObject() as Record<string, unknown>
         facts.push(this.rowToFact(row))
       }
+    } catch (err) {
+      console.error('FactsDB query error:', err, 'SQL:', sql)
     } finally {
       stmt.free()
     }

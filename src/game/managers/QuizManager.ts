@@ -45,6 +45,9 @@ export class QuizManager {
   /** Fact IDs already used in the current artifact appraisal flow (avoids repeats). */
   artifactQuizUsedFactIds = new Set<string>()
 
+  /** Dev toggle: when true, every block mined triggers a quiz (bypasses all rate/cooldown checks). */
+  devForceQuizEveryBlock = false
+
   // =========================================================
   // Quiz rate tracking fields (DD-V2-060)
   // =========================================================
@@ -73,6 +76,12 @@ export class QuizManager {
   shouldTriggerQuiz(): boolean {
     this.totalBlocksThisDive++
     this.blocksSinceLastQuiz++
+
+    if (this.devForceQuizEveryBlock) {
+      this.blocksSinceLastQuiz = 0
+      this.quizzesThisDive++
+      return true
+    }
 
     if (this.totalBlocksThisDive < QUIZ_FIRST_TRIGGER_AFTER_BLOCKS) return false
     if (this.blocksSinceLastQuiz < QUIZ_COOLDOWN_BLOCKS) return false

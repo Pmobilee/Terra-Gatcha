@@ -1376,6 +1376,13 @@ export class GameManager {
   }
 
   /**
+   * Returns the QuizManager instance (dev/testing access).
+   */
+  getQuizManager(): QuizManager {
+    return this.quizManager
+  }
+
+  /**
    * Force a random quiz to trigger immediately (dev/testing helper).
    * No-ops if not in an active dive or game is not running.
    */
