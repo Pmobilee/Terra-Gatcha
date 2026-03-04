@@ -118,3 +118,18 @@ button {
   font-size: 10px;
   line-height: 1.4;
 }
+
+/* ── Phase 30: Mining Juice & Game Feel ── */
+
+/** HUD flash animation for loot collection feedback */
+@keyframes loot-hud-flash {
+  0%   { transform: scale(1);    color: #ffffff; }
+  30%  { transform: scale(1.35); color: #ffd700; }
+  60%  { transform: scale(1.15); color: #ffaa00; }
+  100% { transform: scale(1);    color: inherit; }
+}
+
+/** Apply to any HUD element that should flash when loot is collected */
+.hud-flash {
+  animation: loot-hud-flash 400ms ease-out forwards;
+}

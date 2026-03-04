@@ -2,20 +2,41 @@
 
 import type { Rarity } from '../../data/types'
 
-interface LootPopConfig {
+/** Full configuration for a single loot pop */
+export interface LootPopConfig {
+  /** Phaser texture key for the loot sprite */
   spriteKey: string
+  /** World X of the source block center */
   worldX: number
+  /** World Y of the source block center */
   worldY: number
+  /** World X of the collection target (player position) */
   targetX: number
+  /** World Y of the collection target (player position) */
   targetY: number
+  /** Optional rarity for reveal effects */
   rarity?: Rarity
+  /** Stagger delay in ms before this pop starts (used for multi-item drops) */
+  staggerMs?: number
+  /** Callback fired when the loot reaches the player (vacuum complete) */
   onComplete?: () => void
+  /** Callback fired when the loot settles to its resting bounce position */
+  onBounceSettled?: () => void
 }
 
 /**
- * Spawns loot items with a physics pop arc + suck-to-player animation.
- * Rarity-based reveal effects escalate from subtle shimmer (common) to
- * full-screen prismatic lightshow (mythic).
+ * Spawns loot items with full physics pop arc + bounce + magnetic vacuum animation.
+ *
+ * 5-phase tween chain per item:
+ *  1. Rise   — Quad.Out upward arc (250ms)
+ *  2. Fall   — Quad.In gravity fall to landing (150ms)
+ *  3. Squash — instant horizontal squash on impact (40ms)
+ *  4. Bounce — Sine.Out upward bounce (60ms)
+ *  5. Settle — Quad.In settle back down (60ms)
+ *  6. Vacuum — Quad.In magnetic pull toward player (350ms, shrinks to 0)
+ *
+ * Rarity-based reveal effects are played immediately on pop.
+ * Multi-item drops are staggered by 50ms each via the staggerMs property.
  */
 export class LootPopSystem {
   private scene: Phaser.Scene
@@ -25,75 +46,41 @@ export class LootPopSystem {
     this.scene = scene
   }
 
+  // ----------------------------------------------------------
+  // PUBLIC API
+  // ----------------------------------------------------------
+
   /**
-   * Spawn a loot item with physics pop + suck-to-player animation.
+   * Spawn a loot item with the full physics pop + bounce + vacuum animation.
    *
-   * Sequence:
-   * 1. Block breaks → loot sprite appears at block center with random upward velocity
-   * 2. Physics arc: gravity pulls loot down, settles at resting position ~1 tile above break (250ms)
-   * 3. Suck animation: loot accelerates toward player position over 350ms
-   * 4. On arrival: onComplete callback fires (caller handles HUD flash)
+   * @param config - Full loot pop configuration
    */
   popLoot(config: LootPopConfig): void {
-    const { spriteKey, worldX, worldY, targetX, targetY, rarity, onComplete } = config
+    const { staggerMs = 0 } = config
 
-    // Use fallback texture if sprite doesn't exist
-    const textureKey = this.scene.textures.exists(spriteKey) ? spriteKey : 'block_mineral_dust'
-    if (!this.scene.textures.exists(textureKey)) {
-      // No valid texture at all — skip visual, still call onComplete
-      onComplete?.()
-      return
+    if (staggerMs > 0) {
+      this.scene.time.delayedCall(staggerMs, () => this._spawnSinglePop(config))
+    } else {
+      this._spawnSinglePop(config)
     }
+  }
 
-    const sprite = this.scene.add.image(worldX, worldY, textureKey)
-    sprite.setDisplaySize(16, 16)
-    sprite.setDepth(20)
-    this.activePops.push(sprite)
-
-    // Phase 1: physics arc upward (200ms)
-    const arcX = worldX + (Math.random() - 0.5) * 24
-    const arcY = worldY - 24 - Math.random() * 16
-    this.scene.tweens.add({
-      targets: sprite,
-      x: arcX,
-      y: arcY,
-      ease: 'Quad.Out',
-      duration: 200,
-      onComplete: () => {
-        // Phase 2: gravity settle (150ms)
-        this.scene.tweens.add({
-          targets: sprite,
-          y: arcY + 8,
-          ease: 'Quad.In',
-          duration: 150,
-          onComplete: () => {
-            // Phase 3: suck toward player (350ms, accelerating)
-            this.scene.tweens.add({
-              targets: sprite,
-              x: targetX,
-              y: targetY,
-              scale: 0,
-              ease: 'Quad.In',
-              duration: 350,
-              onComplete: () => {
-                sprite.destroy()
-                const idx = this.activePops.indexOf(sprite)
-                if (idx >= 0) this.activePops.splice(idx, 1)
-                onComplete?.()
-              },
-            })
-          },
-        })
-      },
+  /**
+   * Spawn multiple loot items with automatic 50ms stagger between each.
+   *
+   * @param configs - Array of loot pop configurations to spawn
+   */
+  popMultiple(configs: LootPopConfig[]): void {
+    configs.forEach((cfg, index) => {
+      this.popLoot({ ...cfg, staggerMs: (cfg.staggerMs ?? 0) + index * 50 })
     })
-
-    // Rarity-based overlay effects (played immediately on pop, not waiting for suck)
-    this.playRarityEffect(rarity, worldX, worldY)
   }
 
   /**
    * Play a descent shaft transition animation.
    * Camera zooms in and pans down, then fades to black.
+   *
+   * @param onComplete - Callback fired when the fade-out completes
    */
   playDescentAnimation(onComplete: () => void): void {
     const cam = this.scene.cameras.main
@@ -110,36 +97,172 @@ export class LootPopSystem {
   }
 
   /**
-   * Play a rarity reveal effect at the given world position.
+   * Destroy all active pop sprites. Call on scene shutdown.
    */
-  private playRarityEffect(rarity: Rarity | undefined, x: number, y: number): void {
+  destroy(): void {
+    for (const s of this.activePops) s.destroy()
+    this.activePops = []
+  }
+
+  // ----------------------------------------------------------
+  // PRIVATE HELPERS
+  // ----------------------------------------------------------
+
+  /**
+   * Spawns and animates a single loot sprite through the full 6-phase chain.
+   *
+   * @param config - The loot pop configuration
+   */
+  private _spawnSinglePop(config: LootPopConfig): void {
+    const { spriteKey, worldX, worldY, targetX, targetY, rarity, onComplete, onBounceSettled } = config
+
+    // Use fallback texture if sprite doesn't exist
+    const textureKey = this.scene.textures.exists(spriteKey) ? spriteKey : 'block_mineral_dust'
+    if (!this.scene.textures.exists(textureKey)) {
+      // No valid texture — skip visual, still fire callbacks
+      onBounceSettled?.()
+      onComplete?.()
+      return
+    }
+
+    const sprite = this.scene.add.image(worldX, worldY, textureKey)
+    sprite.setDisplaySize(16, 16)
+    sprite.setDepth(20)
+    this.activePops.push(sprite)
+
+    // Random horizontal scatter for the arc
+    const arcX = worldX + (Math.random() - 0.5) * 28
+    // Rise destination — upward from source
+    const riseY = worldY - 28 - Math.random() * 14
+    // Land destination — slightly below the rise peak (gravity effect)
+    const landY = riseY + 10
+
+    // Phase 1: Rise — Quad.Out upward arc (250ms)
+    this.scene.tweens.add({
+      targets: sprite,
+      x: arcX,
+      y: riseY,
+      scaleX: 1.1,
+      scaleY: 0.9,
+      ease: 'Quad.Out',
+      duration: 250,
+      onComplete: () => {
+        // Phase 2: Fall — Quad.In gravity fall (150ms)
+        this.scene.tweens.add({
+          targets: sprite,
+          y: landY,
+          scaleX: 1.0,
+          scaleY: 1.0,
+          ease: 'Quad.In',
+          duration: 150,
+          onComplete: () => {
+            // Phase 3: Squash — horizontal squash on impact (40ms)
+            this.scene.tweens.add({
+              targets: sprite,
+              scaleX: 1.4,
+              scaleY: 0.6,
+              ease: 'Quad.Out',
+              duration: 40,
+              onComplete: () => {
+                // Phase 4: Bounce — Sine.Out upward bounce (60ms)
+                this.scene.tweens.add({
+                  targets: sprite,
+                  y: landY - 6,
+                  scaleX: 0.9,
+                  scaleY: 1.1,
+                  ease: 'Sine.Out',
+                  duration: 60,
+                  onComplete: () => {
+                    // Phase 5: Settle — Quad.In back to rest (60ms)
+                    this.scene.tweens.add({
+                      targets: sprite,
+                      y: landY,
+                      scaleX: 1.0,
+                      scaleY: 1.0,
+                      ease: 'Quad.In',
+                      duration: 60,
+                      onComplete: () => {
+                        onBounceSettled?.()
+
+                        // Phase 6: Vacuum — Quad.In magnetic pull to player (350ms)
+                        this.scene.tweens.add({
+                          targets: sprite,
+                          x: targetX,
+                          y: targetY,
+                          scale: 0,
+                          ease: 'Quad.In',
+                          duration: 350,
+                          onComplete: () => {
+                            this._removePop(sprite)
+                            onComplete?.()
+                          },
+                        })
+                      },
+                    })
+                  },
+                })
+              },
+            })
+          },
+        })
+      },
+    })
+
+    // Rarity-based overlay effects (played immediately on pop)
+    this._playRarityEffect(rarity, worldX, worldY)
+  }
+
+  /**
+   * Removes a loot sprite from the active pool and destroys it.
+   *
+   * @param sprite - The sprite to remove
+   */
+  private _removePop(sprite: Phaser.GameObjects.Image): void {
+    sprite.destroy()
+    const idx = this.activePops.indexOf(sprite)
+    if (idx >= 0) this.activePops.splice(idx, 1)
+  }
+
+  /**
+   * Play a rarity reveal effect at the given world position.
+   *
+   * @param rarity - Rarity tier (skips effect if undefined or 'common')
+   * @param x      - World X position
+   * @param y      - World Y position
+   */
+  private _playRarityEffect(rarity: Rarity | undefined, x: number, y: number): void {
     if (!rarity || rarity === 'common') return
 
     if (rarity === 'uncommon') {
-      this.emitSparkleRing(x, y, 0xaaffaa, 8)
+      this._emitSparkleRing(x, y, 0xaaffaa, 8)
     } else if (rarity === 'rare') {
-      this.emitSparkleRing(x, y, 0x4488ff, 14)
-      this.spawnLightColumn(x, y, 0x4488ff)
+      this._emitSparkleRing(x, y, 0x4488ff, 14)
+      this._spawnLightColumn(x, y, 0x4488ff)
     } else if (rarity === 'epic') {
-      this.emitSparkleRing(x, y, 0xdd44ff, 20)
-      this.emitSparkleRing(x, y, 0xff88ff, 12)
-      this.flashScreen(0x330044, 300)
+      this._emitSparkleRing(x, y, 0xdd44ff, 20)
+      this._emitSparkleRing(x, y, 0xff88ff, 12)
+      this._flashScreen(0x330044, 300)
     } else if (rarity === 'legendary') {
-      this.emitSparkleRing(x, y, 0xffd700, 30)
-      this.emitSparkleRing(x, y, 0xff8800, 20)
-      this.flashScreen(0x221100, 500)
+      this._emitSparkleRing(x, y, 0xffd700, 30)
+      this._emitSparkleRing(x, y, 0xff8800, 20)
+      this._flashScreen(0x221100, 500)
     } else if (rarity === 'mythic') {
-      this.emitSparkleRing(x, y, 0xff00ff, 40)
-      this.emitSparkleRing(x, y, 0x00ffff, 30)
-      this.emitSparkleRing(x, y, 0xffd700, 20)
-      this.flashScreen(0x110022, 800)
+      this._emitSparkleRing(x, y, 0xff00ff, 40)
+      this._emitSparkleRing(x, y, 0x00ffff, 30)
+      this._emitSparkleRing(x, y, 0xffd700, 20)
+      this._flashScreen(0x110022, 800)
     }
   }
 
   /**
    * Emit a burst of sparkle particles in a ring pattern.
+   *
+   * @param x     - World X center
+   * @param y     - World Y center
+   * @param tint  - Particle color
+   * @param count - Number of particles to emit
    */
-  private emitSparkleRing(x: number, y: number, tint: number, count: number): void {
+  private _emitSparkleRing(x: number, y: number, tint: number, count: number): void {
     if (!this.scene.textures.exists('particle_square')) return
     const emitter = this.scene.add.particles(x, y, 'particle_square', {
       speed: { min: 40, max: 120 },
@@ -157,8 +280,12 @@ export class LootPopSystem {
 
   /**
    * Spawn a brief vertical light column effect.
+   *
+   * @param x    - World X center
+   * @param y    - World Y center
+   * @param tint - Column color
    */
-  private spawnLightColumn(x: number, y: number, tint: number): void {
+  private _spawnLightColumn(x: number, y: number, tint: number): void {
     const rect = this.scene.add.rectangle(x, y - 40, 8, 80, tint, 0.4)
     rect.setDepth(22)
     this.scene.tweens.add({
@@ -173,17 +300,12 @@ export class LootPopSystem {
 
   /**
    * Trigger a camera flash effect with a color.
+   *
+   * @param color    - 24-bit hex color (0xRRGGBB)
+   * @param duration - Flash duration in ms
    */
-  private flashScreen(color: number, duration: number): void {
+  private _flashScreen(color: number, duration: number): void {
     const cam = this.scene.cameras.main
     cam.flash(duration, (color >> 16) & 0xff, (color >> 8) & 0xff, color & 0xff, false)
-  }
-
-  /**
-   * Destroy all active pop sprites. Call on scene shutdown.
-   */
-  destroy(): void {
-    for (const s of this.activePops) s.destroy()
-    this.activePops = []
   }
 }

@@ -4,6 +4,8 @@ import Phaser from 'phaser'
 import { BlockType } from '../../data/types'
 import type { Rarity } from '../../data/types'
 import type { Biome } from '../../data/biomes'
+import type { HitState } from './ImpactSystem'
+import type { MoteParticleConfig } from './BlockAnimSystem'
 
 // ============================================================
 // PER-BLOCK-TYPE PARTICLE CONFIGURATION
@@ -598,6 +600,85 @@ export class ParticleSystem {
     this.scene.time.delayedCall(500, () => {
       emitter.destroy()
     })
+  }
+
+  // ----------------------------------------------------------
+  // SECONDARY HIT PARTICLES (Phase 30)
+  // ----------------------------------------------------------
+
+  /**
+   * Emit secondary particles on a heavy/final hit for eligible block types.
+   * Secondary particles are smaller and faster than the break burst, signaling
+   * progressive damage without fully committing to the block-break effect.
+   *
+   * @param context - Object containing blockType and hitState
+   * @param px      - World X position of the block centre
+   * @param py      - World Y position of the block centre
+   */
+  emitSecondary(
+    context: { blockType: BlockType; hitState: HitState },
+    px: number,
+    py: number
+  ): void {
+    const { blockType, hitState } = context
+    const cfg = BREAK_CONFIGS[blockType] ?? DEFAULT_BREAK_CONFIG
+
+    // Secondary count scales with hit state
+    const countMultiplier = hitState === 'critical' ? 0.7 : hitState === 'heavy' ? 0.5 : 0.3
+    const count = Math.max(2, Math.floor(cfg.count * countMultiplier))
+
+    const texKey = PARTICLE_TEX_PREFIX + '3'
+    this.ensureTexture(texKey, 3)
+
+    const emitter = this.scene.add.particles(px, py, texKey, {
+      color: [cfg.tint],
+      speed: { min: cfg.speed.min * 0.6, max: cfg.speed.max * 0.6 },
+      scale: { start: cfg.scale.start * 0.6, end: 0 },
+      lifespan: Math.floor(cfg.lifespan * 0.6),
+      gravityY: cfg.gravity ?? 80,
+      alpha: { start: 0.9, end: 0 },
+      quantity: 1,
+      frequency: -1,
+      emitting: false,
+    })
+    emitter.setDepth(201)
+    emitter.explode(count)
+    this.scene.time.delayedCall(cfg.lifespan + 100, () => emitter.destroy())
+  }
+
+  // ----------------------------------------------------------
+  // MOTE PARTICLES (Phase 30)
+  // ----------------------------------------------------------
+
+  /**
+   * Emit a single ambient mote particle at the given position.
+   * Used for RelicShrine and ArtifactNode idle ambiance.
+   * Callers (MineScene) should throttle this call per tile.
+   *
+   * @param config - Mote particle configuration (from BlockAnimSystem.getMoteConfig())
+   * @param px     - World X position of the block centre
+   * @param py     - World Y position of the block centre
+   */
+  emitMote(config: MoteParticleConfig, px: number, py: number): void {
+    const texKey = PARTICLE_TEX_PREFIX + '2'
+    this.ensureTexture(texKey, 2)
+
+    // Emit a single particle at the given position
+    const emitter = this.scene.add.particles(px, py, texKey, {
+      color: [config.tint],
+      speed: config.speed,
+      scale: config.scale,
+      lifespan: config.lifespan,
+      alpha: { start: 0.8, end: 0 },
+      angle: { min: 200, max: 340 }, // drifts upward with slight spread
+      gravityY: -20,
+      quantity: 1,
+      frequency: -1,
+      emitting: false,
+    })
+    emitter.setDepth(51)
+    emitter.explode(1)
+    this.scene.time.delayedCall(config.lifespan + 100, () => emitter.destroy())
   }
 
   // ----------------------------------------------------------

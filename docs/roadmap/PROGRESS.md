@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 33, 34, 37, 38, 39, 40, 41, 43, 45, 47. Phase 43 (Cooperative Dives): WebSocket 2-player co-op with @fastify/websocket plugin, CoopRoom in-memory state management, authoritative server-side mine grid, Miner/Scholar role system with buffs (o2_restore, loot_boost, hardness_cut, speed_surge), co-op loot ledger with 20% cooperation pool, disconnect recovery with 60-second reconnect window and AI Scholar takeover. Client-side: coopService.ts (REST + WebSocket facade, optimistic prediction, reconciliation), coopState.ts (Svelte stores), CoopMatchmaker.svelte (Host/Code/Quickmatch tabs), ScholarQuizPanel.svelte, CoopHUD.svelte, CoopEmoteToast.svelte, CoopRecoveryBanner.svelte, CoopLootSummary.svelte. Next: Phase 30 (Mining Juice) or Phase 35 (Mine Mechanics Completion).
+Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 43, 45, 47. Phase 30 (Mining Juice & Game Feel): CrackSystem (material-specific tints, 4-stage health thresholds), BlockBreakSequence (50ms freeze-frame, radial burst, 4-quadrant shatter pool), ScreenShakeSystem (Perlin noise, 3 tiers micro/medium/heavy, reduced-motion, intensity slider), ImpactSystem (full ImpactProfile per block, resolveShakeTier, resolveHitState, secondary particles), LootPopSystem (6-phase tween chain: rise/fall/squash/bounce/settle/vacuum, multi-item stagger), BlockAnimSystem (per-tile phase offsets, hasMoteParticles/getMoteConfig), ParticleSystem (emitSecondary, emitMote), settings.ts (screenShakeIntensity store), app.css (loot-hud-flash keyframes + .hud-flash class). Next: Phase 35 (Mine Mechanics Completion) or Phase 28 (Performance Optimization).
 
 ---
 
@@ -89,7 +89,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Visual & Game Feel (Phases 29-31)
 - [x] **Phase 29: Character Animation System** — 48-frame miner sprite sheets, directional walk/mine, idle states, gear overlays, animation state machine → [`completed/PHASE-29-CHARACTER-ANIMATION.md`](completed/PHASE-29-CHARACTER-ANIMATION.md)
-- [ ] **Phase 30: Mining Juice & Game Feel** — Loot pop physics, block break sequences, screen shake, crack overlays, per-block impact profiles → [`phases/PHASE-30-MINING-JUICE.md`](phases/PHASE-30-MINING-JUICE.md)
+- [x] **Phase 30: Mining Juice & Game Feel** — Loot pop physics, block break sequences, screen shake, crack overlays, per-block impact profiles → [`completed/PHASE-30-MINING-JUICE.md`](completed/PHASE-30-MINING-JUICE.md)
 - [x] **Phase 31: Gacha & Reveal Polish** — Rarity-tiered reveal timing, artifact reveal sequences, block rarity previews, celebration particles, layer descent animation → [`completed/PHASE-31-GACHA-REVEAL-POLISH.md`](completed/PHASE-31-GACHA-REVEAL-POLISH.md)
 
 ### Content Factory (Phases 32-34)

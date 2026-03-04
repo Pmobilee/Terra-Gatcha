@@ -209,6 +209,29 @@ reducedMotion.subscribe(v => {
 })
 
 // =========================================================
+// Screen Shake Intensity (Phase 30 — Mining Juice)
+// =========================================================
+
+function readScreenShakeIntensity(): number {
+  if (typeof window === 'undefined') return 1.0
+  const raw = window.localStorage.getItem('setting_screenShakeIntensity')
+  const parsed = raw !== null ? parseFloat(raw) : NaN
+  return isNaN(parsed) ? 1.0 : Math.max(0, Math.min(1, parsed))
+}
+
+/**
+ * Reactive store for screen shake intensity (0.0–1.0).
+ * 0.0 = no shake, 1.0 = full shake. Persisted to localStorage.
+ * Respects the ScreenShakeSystem's intensity multiplier.
+ */
+export const screenShakeIntensity = singletonWritable<number>('screenShakeIntensity', readScreenShakeIntensity())
+screenShakeIntensity.subscribe(v => {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('setting_screenShakeIntensity', String(v))
+  }
+})
+
+// =========================================================
 // Analytics Consent (Phase 38 — ATT / iOS)
 // =========================================================
 
