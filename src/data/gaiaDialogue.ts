@@ -865,6 +865,62 @@ export const GAIA_IDLE_QUIPS: Record<GaiaMood, string[]> = {
   ],
 }
 
+// ── Kid Mode Dialogue Pools (Phase 45) ───────────────────────────────────────
+
+/**
+ * GAIA dialogue pools specifically for kid-mode players (ageRating === 'kid').
+ * Language is simple, encouraging, and age-appropriate.
+ * GaiaManager selects from these pools when in kid mode, ignoring the mood setting.
+ */
+export const GAIA_KID_POOLS = {
+  /** Shown after a successful dive. */
+  postDive: [
+    "You did it! That was awesome digging!",
+    "Wow, look at all those cool rocks you found!",
+    "Amazing dive, explorer! You're getting so good at this!",
+    "Super job! You found some really cool stuff down there!",
+    "You rock — literally! Great dive today!",
+    "That was incredible! You went so deep!",
+    "Look how much you found! You're a real explorer!",
+    "Fantastic job! The mine gave up some great treasures today!",
+  ],
+
+  /** Shown after a wrong quiz answer. */
+  wrongAnswer: [
+    "Oops! That wasn't right, but now you know the real answer!",
+    "Nice try! Learning is all about discovering what's true!",
+    "Don't worry — now you'll remember it forever!",
+    "That's okay! Every mistake is a step toward knowing more!",
+    "Almost! The right answer is super interesting — remember it!",
+    "No problem! That's how we learn — by getting curious!",
+    "Good try! Tricky facts make the best surprises!",
+    "It's okay to be wrong sometimes — that's how explorers learn!",
+  ],
+
+  /** Shown when the player encounters a new fact. */
+  newFact: [
+    "Ooh, something new to discover! How exciting!",
+    "A brand new fact! Your brain is going to love this one!",
+    "Cool discovery! Did you know learning new things makes you smarter?",
+    "Wow, that's amazing! The Earth has so many cool secrets!",
+    "New fact unlocked! You're growing your knowledge treasure chest!",
+    "That's a really neat fact! Wait until you remember this one!",
+    "Incredible! You just learned something awesome!",
+    "New fact! Every one makes you a better explorer!",
+  ],
+}
+
+/**
+ * Pick a random line from a kid-mode pool.
+ *
+ * @param pool - Key into GAIA_KID_POOLS
+ * @returns A randomly selected kid-friendly dialogue string.
+ */
+export function getKidGaiaLine(pool: keyof typeof GAIA_KID_POOLS): string {
+  const lines = GAIA_KID_POOLS[pool]
+  return lines[Math.floor(Math.random() * lines.length)]
+}
+
 /**
  * Pick a random GAIA line for the given trigger matching the current mood.
  * Falls back to 'any'-tagged lines if no mood-specific lines exist,

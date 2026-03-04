@@ -8,6 +8,7 @@
     openSubscriptionManagement,
     checkContentGate,
   } from '../../services/subscriptionService'
+  import { kidModeIapGuard } from '../../services/iapService'
   import { onMount } from 'svelte'
 
   interface Props {
@@ -31,14 +32,18 @@
   const subscriptionType = $derived($playerSave?.subscription?.type ?? null)
   const expiresAt = $derived($playerSave?.subscription?.expiresAt ?? null)
 
+  /** True when player is in kid mode (parents must approve purchases). */
+  const isKidMode = $derived($playerSave?.ageRating === 'kid')
+
   onMount(async () => {
     contentGate = await checkContentGate()
   })
 
   async function handleSubscribe(fn: () => Promise<{ success: boolean; error?: string }>) {
-    purchasing = true
-    await fn()
-    purchasing = false
+    kidModeIapGuard(() => {
+      purchasing = true
+      fn().then(() => { purchasing = false })
+    })
   }
 </script>
 
@@ -92,10 +97,12 @@
         </ul>
         <button
           class="subscribe-btn"
+          class:ask-parent-btn={isKidMode}
           onclick={() => handleSubscribe(subscribeTerraPass)}
           disabled={purchasing}
+          aria-label={isKidMode ? 'Ask a Parent to Subscribe' : 'Subscribe to Terra Pass'}
         >
-          {purchasing ? 'Processing...' : 'Subscribe'}
+          {purchasing ? 'Processing...' : isKidMode ? 'Ask a Parent' : 'Subscribe'}
         </button>
       </div>
 
@@ -112,10 +119,12 @@
         </ul>
         <button
           class="subscribe-btn patron-btn"
+          class:ask-parent-btn={isKidMode}
           onclick={() => handleSubscribe(subscribeExpeditionPatron)}
           disabled={purchasing}
+          aria-label={isKidMode ? 'Ask a Parent to Subscribe' : 'Subscribe to Expedition Patron'}
         >
-          {purchasing ? 'Processing...' : 'Subscribe'}
+          {purchasing ? 'Processing...' : isKidMode ? 'Ask a Parent' : 'Subscribe'}
         </button>
       </div>
 
@@ -131,10 +140,12 @@
         </ul>
         <button
           class="subscribe-btn grand-btn"
+          class:ask-parent-btn={isKidMode}
           onclick={() => handleSubscribe(subscribeGrandPatron)}
           disabled={purchasing}
+          aria-label={isKidMode ? 'Ask a Parent to Subscribe' : 'Subscribe to Grand Patron'}
         >
-          {purchasing ? 'Processing...' : 'Subscribe'}
+          {purchasing ? 'Processing...' : isKidMode ? 'Ask a Parent' : 'Subscribe'}
         </button>
       </div>
     {/if}
@@ -329,6 +340,8 @@
   .subscribe-btn:disabled { opacity: 0.5; cursor: not-allowed; }
   .patron-btn { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
   .grand-btn { background: linear-gradient(135deg, #e2b714, #d4a010); color: #1a1a2e; }
+  /* Kid mode: "Ask a Parent" variant — warm amber instead of purple */
+  .ask-parent-btn { background: linear-gradient(135deg, #f59e0b, #d97706); color: #1a1a2e; }
   /* Required Apple subscription disclosure (Guideline 3.1.2) */
   .subscription-terms {
     margin-top: 16px;

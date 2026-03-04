@@ -1,0 +1,42 @@
+/* Kid Theme — applied via .kid-theme class on <body> */
+/* DD-V2-180: larger touch targets, friendlier typography, warmer palette */
+
+.kid-theme {
+  --kid-font-scale: 1.15;
+  --kid-radius: 20px;
+  --kid-accent: #FFD700;
+  --kid-accent-soft: rgba(255, 215, 0, 0.15);
+}
+
+/* Larger minimum touch targets (WCAG 2.5.5 AAA: 44×44px) */
+.kid-theme button,
+.kid-theme [role="button"] {
+  min-height: 52px;
+  min-width: 52px;
+  font-size: calc(1rem * var(--kid-font-scale));
+  border-radius: var(--kid-radius);
+}
+
+/* Friendlier heading scale */
+.kid-theme h1 { font-size: calc(1.8rem * var(--kid-font-scale)); }
+.kid-theme h2 { font-size: calc(1.4rem * var(--kid-font-scale)); }
+
+/* Warmer accent — replace the default teal with gold */
+.kid-theme .bracket-btn--primary,
+.kid-theme .dive-btn {
+  border-color: var(--kid-accent);
+  background: var(--kid-accent-soft);
+  color: var(--kid-accent);
+}
+
+/* Simplify complex labels */
+.kid-theme .sm2-interval-label { display: none; }
+.kid-theme .archetype-badge { display: none; }
+.kid-theme .engagement-score { display: none; }
+
+/* Rounder cards */
+.kid-theme .gate-card,
+.kid-theme .time-up-card,
+.kid-theme .pin-gate-card {
+  border-radius: 28px;
+}

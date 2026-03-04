@@ -2,7 +2,7 @@ import { get } from 'svelte/store'
 import { gaiaMessage, gaiaExpression, gaiaThoughtBubble, type DiveResults } from '../../ui/stores/gameState'
 import { playerSave, persistPlayer, getDueReviews, addMinerals } from '../../ui/stores/playerData'
 import { gaiaMood, gaiaChattiness } from '../../ui/stores/settings'
-import { getGaiaLine, GAIA_TRIGGERS, BIOME_TEASER_CATEGORY } from '../../data/gaiaDialogue'
+import { getGaiaLine, getKidGaiaLine, GAIA_TRIGGERS, BIOME_TEASER_CATEGORY } from '../../data/gaiaDialogue'
 import { getGaiaExpression } from '../../data/gaiaAvatar'
 import { getMasteryLevel, isDue } from '../../services/sm2'
 import { factsDB } from '../../services/factsDB'
@@ -109,6 +109,11 @@ export class GaiaManager {
    * @param rarity - The rarity of the artifact being revealed
    */
   getArtifactRevealLine(rarity: string): string {
+    // Phase 45: In kid mode, use kid-friendly new-fact dialogue
+    const save = get(playerSave)
+    if (save?.ageRating === 'kid') {
+      return getKidGaiaLine('newFact')
+    }
     const pool = GaiaManager.ARTIFACT_REVEAL_LINES[rarity] ?? GaiaManager.ARTIFACT_REVEAL_LINES['common']
     return pool[Math.floor(Math.random() * pool.length)]
   }
@@ -511,6 +516,12 @@ export class GaiaManager {
       dives: totalDives,
     }
 
+    // Phase 45: In kid mode, use simpler kid-friendly post-dive dialogue.
+    if (save?.ageRating === 'kid') {
+      gaiaMessage.set(getKidGaiaLine('postDive'))
+      return
+    }
+
     // Step 1: Depth-bracket line.
     let depthTrigger: keyof typeof GAIA_TRIGGERS
     if (depth < 30) {
@@ -608,6 +619,14 @@ export class GaiaManager {
   fireFailureEscalation(factId: string, explanation: string): void {
     const count = (this.sessionWrongCounts.get(factId) ?? 0) + 1
     this.sessionWrongCounts.set(factId, count)
+
+    // Phase 45: kid-mode uses a simplified encouraging wrong-answer message
+    const save = get(playerSave)
+    if (save?.ageRating === 'kid') {
+      gaiaExpression.set('thinking')
+      gaiaMessage.set(getKidGaiaLine('wrongAnswer'))
+      return
+    }
 
     const mood = get(gaiaMood)
     const truncated = explanation.length > 100 ? explanation.slice(0, 99) + '…' : explanation

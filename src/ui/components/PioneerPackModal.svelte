@@ -1,6 +1,6 @@
 <script lang="ts">
   import { playerSave, persistPlayer } from '../stores/playerData'
-  import { purchaseProduct } from '../../services/iapService'
+  import { purchaseProduct, kidModeIapGuard } from '../../services/iapService'
 
   interface Props {
     onClose: () => void
@@ -32,7 +32,10 @@
 
   let purchasing = $state(false)
 
-  async function handlePurchase() {
+  /** True when player is in kid mode (parents must approve purchases). */
+  const isKidMode = $derived($playerSave?.ageRating === 'kid')
+
+  async function doPurchase() {
     purchasing = true
     const result = await purchaseProduct('com.terragacha.pioneerpack')
     if (result.success) {
@@ -54,6 +57,10 @@
     // In dev/browser mode, IAP not available — silently handle
     purchasing = false
     onClose()
+  }
+
+  function handlePurchase() {
+    kidModeIapGuard(() => { void doPurchase() })
   }
 
   function handleDismiss() {
@@ -98,10 +105,12 @@
 
       <button
         class="purchase-btn"
+        class:ask-parent-btn={isKidMode}
         onclick={handlePurchase}
         disabled={purchasing}
+        aria-label={isKidMode ? 'Ask a Parent to purchase Pioneer Pack' : 'Purchase Pioneer Pack for $4.99'}
       >
-        {purchasing ? 'Processing...' : '$4.99 — One-Time Offer'}
+        {purchasing ? 'Processing...' : isKidMode ? 'Ask a Parent' : '$4.99 — One-Time Offer'}
       </button>
       <button class="dismiss-btn" onclick={handleDismiss}>
         Not now
@@ -181,6 +190,10 @@
   .purchase-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+  /* Kid mode: "Ask a Parent" button — amber/orange instead of gold */
+  .ask-parent-btn {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
   }
   .dismiss-btn {
     width: 100%;

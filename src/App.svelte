@@ -83,6 +83,12 @@
   import ProfileSelectView from './ui/components/profiles/ProfileSelectView.svelte'
   import ProfileCreateView from './ui/components/profiles/ProfileCreateView.svelte'
   import ProfileManageView from './ui/components/profiles/ProfileManageView.svelte'
+  // Phase 45: Kid Mode
+  import { sessionTimer, type SessionTimerState } from './services/sessionTimer'
+  import { parentalStore } from './ui/stores/parentalStore'
+  import TimeUpOverlay from './ui/components/TimeUpOverlay.svelte'
+  import SessionWarningBanner from './ui/components/SessionWarningBanner.svelte'
+  import './app-kid-theme.css'
 
   // ============================================================
   // PROFILE ROUTING LAYER (Phase 19.6)
@@ -608,6 +614,54 @@
     for (const [id, fn] of handlers) shortcutService.on(id, fn)
     return () => { for (const [id, fn] of handlers) shortcutService.off(id, fn) }
   })
+
+  // ============================================================
+  // PHASE 45: KID MODE — session timer & kid-theme CSS class
+  // ============================================================
+
+  /** Reactive session timer state. */
+  let timerState = $state<SessionTimerState>({ secondsToday: 0, limitSeconds: 0, warningSent: false, hardStopped: false })
+
+  /** Whether the 5-minute warning banner is visible. */
+  let showWarningBanner = $state(false)
+
+  // Subscribe to the session timer
+  $effect(() => {
+    const unsub = sessionTimer.subscribe((s) => {
+      timerState = s
+      if (s.warningSent && !s.hardStopped) {
+        showWarningBanner = true
+      }
+      if (s.hardStopped) {
+        showWarningBanner = false
+      }
+    })
+    return () => unsub()
+  })
+
+  // Start timer when kid-mode player enters the game
+  $effect(() => {
+    const save = $playerSave
+    const parental = $parentalStore
+    if (!gameVisible || !save) return
+    if (save.ageRating === 'kid' && parental.limitSeconds > 0) {
+      sessionTimer.start(parental.limitSeconds)
+    }
+    return () => sessionTimer.stop()
+  })
+
+  // Toggle body.kid-theme CSS class based on player age rating and parental setting
+  $effect(() => {
+    const save = $playerSave
+    const parental = $parentalStore
+    const isKid = save?.ageRating === 'kid'
+    const themeEnabled = parental.kidThemeEnabled !== false
+    if (isKid && themeEnabled) {
+      document.body.classList.add('kid-theme')
+    } else {
+      document.body.classList.remove('kid-theme')
+    }
+  })
 </script>
 
 <div id="game-container"></div>
@@ -923,6 +977,19 @@
   <KeyboardShortcutHelp />
   {#if gameVisible}
     <DesktopSidePanel />
+  {/if}
+
+  <!-- Phase 45: Session warning banner (5 min remaining) -->
+  {#if showWarningBanner && !timerState.hardStopped}
+    <SessionWarningBanner
+      minutesRemaining={Math.ceil((timerState.limitSeconds - timerState.secondsToday) / 60)}
+      onDismiss={() => { showWarningBanner = false }}
+    />
+  {/if}
+
+  <!-- Phase 45: Time-up hard stop overlay -->
+  {#if timerState.hardStopped}
+    <TimeUpOverlay secondsPlayed={timerState.secondsToday} />
   {/if}
 
   {/if}

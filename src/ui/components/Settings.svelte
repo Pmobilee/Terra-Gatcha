@@ -25,6 +25,9 @@
   import LanguageSelector from './LanguageSelector.svelte'
   import { locale, LOCALE_META } from '../../i18n'
   import { t } from '../../i18n'
+  import { parentalStore, setPin } from '../stores/parentalStore'
+  import ParentalPinGate from './ParentalPinGate.svelte'
+  import ParentalControlsPanel from './ParentalControlsPanel.svelte'
 
   interface Props {
     /** Called when the user taps the Back button. */
@@ -43,6 +46,43 @@
 
   // Language selector state
   let showLanguageSelector = $state(false)
+
+  // Parental controls state
+  let showParentalPinGate = $state(false)
+  let showParentalPanel = $state(false)
+  let showSetPinFlow = $state(false)
+  let newPinEntry = $state('')
+  let newPinConfirm = $state('')
+  let newPinError = $state('')
+
+  const hasParentalPin = $derived($parentalStore.pinHash !== null)
+
+  async function handleOpenParentalControls(): Promise<void> {
+    if (hasParentalPin) {
+      showParentalPinGate = true
+    } else {
+      // No PIN set yet — show set-PIN flow first
+      showSetPinFlow = true
+    }
+  }
+
+  async function handleSetPinSave(): Promise<void> {
+    newPinError = ''
+    if (newPinEntry.length < 4) {
+      newPinError = 'PIN must be at least 4 digits.'
+      return
+    }
+    if (newPinEntry !== newPinConfirm) {
+      newPinError = 'PINs do not match.'
+      newPinConfirm = ''
+      return
+    }
+    await setPin(newPinEntry)
+    newPinEntry = ''
+    newPinConfirm = ''
+    showSetPinFlow = false
+    showParentalPanel = true
+  }
 
   /** Returns a sample idle quip for the given mood. */
   function getSampleQuip(mood: GaiaMood): string {
@@ -422,6 +462,24 @@
       </div>
     </section>
 
+    <!-- ===== PARENTAL CONTROLS (Phase 45) ===== -->
+    <section class="settings-section" aria-labelledby="parental-heading">
+      <h2 id="parental-heading" class="section-heading">Parental Controls</h2>
+      <div class="settings-card">
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Parental Controls</span>
+            <span class="setting-desc">
+              {hasParentalPin ? 'PIN protected' : 'Not set up'}
+            </span>
+          </div>
+          <button class="setting-toggle" type="button" onclick={handleOpenParentalControls}>
+            {hasParentalPin ? 'Open' : 'Set Up'}
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== ACCOUNT ===== -->
     <section class="settings-section" aria-labelledby="account-heading">
       <h2 id="account-heading" class="section-heading">Account</h2>
@@ -505,6 +563,55 @@
 
 {#if showLanguageSelector}
   <LanguageSelector onClose={() => { showLanguageSelector = false }} />
+{/if}
+
+{#if showParentalPinGate}
+  <ParentalPinGate
+    purpose="Access Parental Controls"
+    onSuccess={() => { showParentalPinGate = false; showParentalPanel = true }}
+    onCancel={() => { showParentalPinGate = false }}
+  />
+{/if}
+
+{#if showSetPinFlow}
+  <div class="set-pin-overlay" role="dialog" aria-modal="true" aria-labelledby="set-pin-title">
+    <div class="set-pin-card">
+      <h2 id="set-pin-title" class="set-pin-heading">Set Parental PIN</h2>
+      <p class="set-pin-hint">Create a 4–6 digit PIN to protect parental settings.</p>
+      <input
+        class="set-pin-input"
+        type="password"
+        inputmode="numeric"
+        maxlength="6"
+        placeholder="New PIN"
+        bind:value={newPinEntry}
+        aria-label="New parental PIN"
+      />
+      <input
+        class="set-pin-input"
+        type="password"
+        inputmode="numeric"
+        maxlength="6"
+        placeholder="Confirm PIN"
+        bind:value={newPinConfirm}
+        onkeydown={(e) => e.key === 'Enter' && handleSetPinSave()}
+        aria-label="Confirm parental PIN"
+      />
+      {#if newPinError}
+        <p class="set-pin-error" role="alert">{newPinError}</p>
+      {/if}
+      <div class="set-pin-actions">
+        <button class="set-pin-cancel" type="button" onclick={() => { showSetPinFlow = false; newPinEntry = ''; newPinConfirm = ''; newPinError = '' }}>Cancel</button>
+        <button class="set-pin-save" type="button" onclick={handleSetPinSave} disabled={newPinEntry.length < 4}>Save PIN</button>
+      </div>
+    </div>
+  </div>
+{/if}
+
+{#if showParentalPanel}
+  <div class="parental-panel-overlay" role="dialog" aria-modal="true">
+    <ParentalControlsPanel onClose={() => { showParentalPanel = false }} />
+  </div>
 {/if}
 
 <style>
@@ -910,5 +1017,133 @@
     .settings-title {
       font-size: 1rem;
     }
+  }
+
+  /* ---- Parental Controls — set-PIN overlay ---- */
+  .set-pin-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9200;
+    padding: 20px;
+  }
+
+  .set-pin-card {
+    background: var(--color-surface);
+    border-radius: 16px;
+    padding: 24px 20px;
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  .set-pin-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-warning);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    text-align: center;
+  }
+
+  .set-pin-hint {
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    margin: 0;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .set-pin-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 2px solid color-mix(in srgb, var(--color-text-dim) 40%, transparent 60%);
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: 4px;
+    transition: border-color 0.15s;
+  }
+
+  .set-pin-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .set-pin-error {
+    font-size: 0.78rem;
+    color: var(--color-accent, #e05);
+    margin: 0;
+    text-align: center;
+  }
+
+  .set-pin-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .set-pin-cancel {
+    flex: 1;
+    padding: 11px 14px;
+    border: 2px solid var(--color-text-dim);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--color-text-dim);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+
+  .set-pin-cancel:active {
+    background: color-mix(in srgb, var(--color-text-dim) 15%, transparent 85%);
+  }
+
+  .set-pin-save {
+    flex: 1;
+    padding: 11px 14px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--color-primary);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.12s;
+  }
+
+  .set-pin-save:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .set-pin-save:not(:disabled):active {
+    transform: translateY(1px);
+  }
+
+  /* ---- Parental Controls — full panel overlay ---- */
+  .parental-panel-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    z-index: 9150;
+    overflow-y: auto;
   }
 </style>

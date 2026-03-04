@@ -8,6 +8,8 @@
   import { GAIA_EXPRESSIONS, GAIA_NAME, getGaiaExpression } from '../../data/gaiaAvatar'
   import ReportModal from './ReportModal.svelte'
   import { notifySuccess, notifyError, tapLight } from '../../services/hapticService'
+  import KidWowStars from './KidWowStars.svelte'
+  import { getWowScore } from '../../services/wowScore'
 
   // GAIA sprite imports for reaction bubble
   import gaiaNeutralImg from '../../assets/sprites/dome/gaia_neutral.png'
@@ -321,6 +323,15 @@
       </button>
     {/if}
 
+    {#if showResult && isCorrect === true}
+      {#if $playerSave?.ageRating === 'kid'}
+        {@const reviewState = $playerSave.reviewStates.find(r => r.factId === fact.id)}
+        <div class="wow-stars-result">
+          <KidWowStars score={getWowScore(reviewState)} />
+        </div>
+      {/if}
+    {/if}
+
     {#if showResult && isCorrect === false}
       <button class="report-fact-btn" type="button" onclick={() => (showReportModal = true)}>
         Report this fact
@@ -349,6 +360,13 @@
 
   .correct-animation {
     animation: dust-burst 800ms ease-out;
+  }
+
+  /* Kid Mode Wow Stars result display */
+  .wow-stars-result {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
   }
 
   .wrong-animation {

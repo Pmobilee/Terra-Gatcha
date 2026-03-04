@@ -9,6 +9,7 @@ import { generateUUID } from '../utils/uuid'
 import { assignExperiment, type MonetizationEvent } from '../data/analyticsEvents'
 import { get } from 'svelte/store'
 import { analyticsEnabled } from '../ui/stores/settings'
+import { playerSave } from '../ui/stores/playerData'
 import { EXPERIMENTS } from '../data/experiments'
 import { assignVariant } from '../utils/experimentBucket'
 
@@ -174,6 +175,20 @@ export type {
   SessionEndEvent,
 }
 
+// ── COPPA: Kid Mode analytics allowlist (DD-V2-131) ───────────────────────────
+
+/** Events allowed to be tracked even in kid mode (COPPA compliance). */
+const KID_ALLOWED_EVENTS = new Set(['session_start', 'session_end', 'dive_complete', 'fact_learned'])
+
+/**
+ * Returns true when the current player is in kid mode (ageRating === 'kid').
+ * Safe to call when playerSave is null (returns false by default).
+ */
+export function isKidMode(): boolean {
+  const save = get(playerSave)
+  return save?.ageRating === 'kid'
+}
+
 // ── Constants ─────────────────────────────────────────────────────────────────
 
 const FLUSH_INTERVAL_MS = 10_000
@@ -315,6 +330,9 @@ export class AnalyticsService {
     // ATT consent gate (Phase 38): do not queue any event if analytics is disabled.
     // This is set to false when the iOS App Tracking Transparency prompt is denied.
     if (!get(analyticsEnabled)) return
+
+    // COPPA compliance (Phase 45): in kid mode, only allow a small set of events.
+    if (isKidMode() && !KID_ALLOWED_EVENTS.has(event.name)) return
 
     // Privacy: strip any PII fields that might have leaked in
     const props = event.properties as Record<string, unknown>

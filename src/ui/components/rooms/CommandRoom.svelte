@@ -1,6 +1,7 @@
 <script lang="ts">
   import { playerSave, persistPlayer } from '../../stores/playerData'
   import ReferralModal from '../ReferralModal.svelte'
+  import { parentalStore } from '../../stores/parentalStore'
 
   // Resource icon sprites
   import iconOxygen from '../../../assets/sprites/icons/icon_oxygen.png'
@@ -104,6 +105,11 @@
   const unreadGuestbookCount = $derived(guestbookEntries.length)
 
   let showReferral = $state(false)
+
+  /** True when social features should be suppressed (kid mode, social disabled). */
+  const socialSuppressed = $derived(
+    $playerSave?.ageRating === 'kid' && !$parentalStore.socialEnabled
+  )
 
   function handleToggleInsurance(): void {
     const save = $playerSave
@@ -278,6 +284,7 @@
 <div class="card stats-card" aria-label="Player statistics">
   <div class="stats-header-row">
     <h2>Stats</h2>
+    {#if !socialSuppressed}
     <div class="stats-social-badges" aria-label="Social notifications">
       {#if visitCount > 0}
         <span class="visitor-badge" aria-label="{visitCount} visitor{visitCount === 1 ? '' : 's'}">
@@ -290,6 +297,7 @@
         </span>
       {/if}
     </div>
+    {/if}
   </div>
   <div class="stats-grid">
     <span>Total dives: {stats.totalDivesCompleted}</span>
@@ -301,6 +309,7 @@
   </div>
 </div>
 
+{#if !socialSuppressed}
 <div class="card social-card" aria-label="Social actions">
   <button
     class="action-button invite-button"
@@ -312,6 +321,7 @@
     <span class="invite-icon" aria-hidden="true">👥</span>
   </button>
 </div>
+{/if}
 
 {#if showReferral}
   <ReferralModal onClose={() => { showReferral = false }} />

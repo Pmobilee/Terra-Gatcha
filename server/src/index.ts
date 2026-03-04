@@ -29,6 +29,7 @@ import { subscriptionRoutes } from "./routes/subscriptions.js";
 import { factBundleRoutes } from "./routes/factBundles.js";
 import { startBundleScheduler } from "./jobs/bundleScheduler.js";
 import { featureFlagRoutes } from "./routes/featureFlags.js";
+import { parentalRoutes } from "./routes/parental.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -193,6 +194,9 @@ export async function buildApp() {
   // Phase 41: Feature flags routes (registers /api/flags and /api/flags/:key)
   await fastify.register(featureFlagRoutes);
 
+  // Phase 45: Parental controls routes
+  await fastify.register(parentalRoutes, { prefix: "/parental" });
+
   // ── 404 handler ─────────────────────────────────────────────────────────────
   fastify.setNotFoundHandler((_request, reply) => {
     reply.status(404).send({ error: "Route not found", statusCode: 404 });
@@ -245,6 +249,10 @@ async function start(): Promise<void> {
 
   // Phase 32.6: Start weekly bundle release scheduler
   startBundleScheduler();
+
+  // Phase 45: Weekly learning report cron job (Mondays 08:00 UTC)
+  const { registerWeeklyReportJob } = await import('./jobs/weeklyReportJob.js');
+  await registerWeeklyReportJob(app);
 }
 
 start();

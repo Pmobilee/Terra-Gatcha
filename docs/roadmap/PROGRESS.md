@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 33, 37, 38, 39, 40, 41, 47. Phase 41 (Advanced Analytics & Experiments): database-backed feature flag service with SHA-256 rollout bucketing, per-user overrides, and /api/flags routes; full A/B experiment framework (client djb2 bucketing, server two-proportion Z-test, experiment_assigned event); funnel analysis pipeline (core_onboarding + monetisation funnels); server-rendered HTML cohort dashboard at /api/admin/dashboard with 5-minute cache; D7 retention alert job (hourly, alerts via email when retention drops below 15%); learning effectiveness endpoint (mastery curve + SM-2 interval histogram); GDPR-compliant 90-day analytics purge job and userId anonymisation hardening in purgeDeletedUsers. Next: Phase 35 (Mine Mechanics Completion) or Phase 36 (Combat System).
+Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 33, 37, 38, 39, 40, 41, 45, 47. Phase 45 (Kid Mode & Parental Controls): Kid Wow Score system (1-5 stars replacing SM-2 numbers in kid mode), session time limits with hard-stop overlay and 5-minute warning banner, parent PIN gate (SHA-256 hashed, Web Crypto API), weekly learning email reports (server aggregator, cron job, in-app preview), age-based fact content filtering, social feature suppression in kid mode, kid-friendly GAIA dialogue pools, COPPA analytics event allowlist, kidModeIapGuard wrapping all IAP purchase flows, ParentalControlsPanel with time/social/email settings, kid-theme CSS class for larger touch targets and gold accents. Next: Phase 35 (Mine Mechanics Completion) or Phase 36 (Combat System).
 
 ---
 
@@ -114,7 +114,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Education (Phases 44-46)
 - [ ] **Phase 44: Teacher Dashboard** — Standalone Vite app, educator verification, class codes, aggregate analytics, homework category lock → [`phases/PHASE-44-TEACHER-DASHBOARD.md`](phases/PHASE-44-TEACHER-DASHBOARD.md)
-- [ ] **Phase 45: Kid Mode & Parental Controls** — Kid Wow Score, session time limits, parent PIN, weekly learning emails, COPPA enforcement → [`phases/PHASE-45-KID-MODE-PARENTAL.md`](phases/PHASE-45-KID-MODE-PARENTAL.md)
+- [x] **Phase 45: Kid Mode & Parental Controls** — Kid Wow Score, session time limits, parent PIN, weekly learning emails, COPPA enforcement → [`completed/PHASE-45-KID-MODE-PARENTAL.md`](completed/PHASE-45-KID-MODE-PARENTAL.md)
 - [ ] **Phase 46: Learning Effectiveness Research** — Anonymization pipeline, academic partnerships, annual reports, GAIA's Report tab, CSV export → [`phases/PHASE-46-LEARNING-EFFECTIVENESS.md`](phases/PHASE-46-LEARNING-EFFECTIVENESS.md)
 
 ### Endgame & Mastery (Phases 47-49)

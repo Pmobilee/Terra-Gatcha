@@ -78,6 +78,32 @@ export async function restorePurchases(): Promise<string[]> {
 }
 
 /**
+ * Kid mode IAP guard (DD-V2-131 / Phase 45.3.4).
+ * If the player is NOT in kid mode, calls onParentApproves immediately.
+ * If the player IS in kid mode, shows a PIN gate via a custom DOM event.
+ * Callers (TerraPassModal, PioneerPackModal) listen for the 'iap:approved' event.
+ *
+ * @param onParentApproves - Callback to invoke when the purchase is authorised.
+ */
+export function kidModeIapGuard(onParentApproves: () => void): void {
+  // Import lazily to avoid circular deps
+  import('../ui/stores/playerData').then(({ playerSave: ps }) => {
+    import('svelte/store').then(({ get }) => {
+      const save = get(ps)
+      if (save?.ageRating !== 'kid') {
+        onParentApproves()
+      } else {
+        // Dispatch a DOM event that App.svelte / the modal can listen to.
+        // The modal must show ParentalPinGate; on success, call onParentApproves.
+        document.dispatchEvent(new CustomEvent('iap:pin-required', {
+          detail: { onApprove: onParentApproves },
+        }))
+      }
+    })
+  })
+}
+
+/**
  * Get current offerings from RevenueCat.
  * In browser/dev mode, returns the full catalog as a single default offering.
  *

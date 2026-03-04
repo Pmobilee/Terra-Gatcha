@@ -63,6 +63,7 @@ import type { OxygenState } from './systems/OxygenSystem'
 import { type Biome, pickBiome, generateBiomeSequence } from '../data/biomes'
 import { generateInterestBiasedBiomeSequence, selectWeightedFact } from '../services/interestSpawner'
 import type { InterestConfig } from '../data/interestConfig'
+import { getEligibleFacts } from '../data/contentFilter'
 import { seededRandom } from './systems/MineGenerator'
 import { BootScene } from './scenes/BootScene'
 import { MineScene } from './scenes/MineScene'
@@ -140,9 +141,12 @@ export class GameManager {
     return GameManager.instance
   }
 
-  /** Get all loaded facts from the database */
+  /** Get all loaded facts from the database, filtered by the player's age rating (Phase 45). */
   getFacts(): Fact[] {
-    return factsDB.getAll()
+    const allFacts = factsDB.getAll()
+    const save = get(playerSave)
+    const ageRating = save?.ageRating ?? 'adult'
+    return getEligibleFacts(allFacts, ageRating)
   }
 
   /** Boot the Phaser game engine and attach to DOM */
