@@ -121,6 +121,7 @@
 
 <style>
   .profile-create-view {
+    pointer-events: auto;
     position: fixed;
     inset: 0;
     display: flex;

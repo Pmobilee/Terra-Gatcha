@@ -98,6 +98,7 @@
 
 <style>
   .profile-manage-view {
+    pointer-events: auto;
     position: fixed;
     inset: 0;
     display: flex;

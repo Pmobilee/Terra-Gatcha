@@ -300,6 +300,7 @@
 
 <style>
   .auth-screen {
+    pointer-events: auto;
     position: fixed;
     inset: 0;
     display: flex;

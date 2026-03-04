@@ -202,6 +202,7 @@
 
 <style>
   .policy-screen {
+    pointer-events: auto;
     position: fixed;
     inset: 0;
     background: #1a1a2e;

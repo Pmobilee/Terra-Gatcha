@@ -69,6 +69,7 @@
 
 <style>
   .profile-select-view {
+    pointer-events: auto;
     position: fixed;
     inset: 0;
     display: flex;
