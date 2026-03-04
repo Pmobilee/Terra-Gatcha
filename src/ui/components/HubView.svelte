@@ -148,7 +148,8 @@
   let hubEventsConnected = false
 
   onMount(() => {
-    const unsub = gameManagerStore.subscribe(gm => {
+    let unsub: (() => void) | undefined
+    unsub = gameManagerStore.subscribe(gm => {
       if (!gm || hubEventsConnected) return
       hubEventsConnected = true
 
@@ -177,7 +178,10 @@
         gm.getGaiaManager().fireJourneyMemory()
       }, 2000)
 
-      unsub()
+      // Defer unsub to next microtask so subscribe() can return first,
+      // avoiding a TDZ error when the store already has a non-null value
+      // at mount time (synchronous callback invocation).
+      queueMicrotask(() => unsub?.())
     })
 
     // Floor navigation listeners — attached to document since hub-view

@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-25 complete. All V2 roadmap phases implemented. Phase 23 (Live Ops & Seasons): seasonal events with 4 hardcoded seasons, UGC fact submission pipeline, push notification scheduling with DD-V2-159 auto-stop, welcome back flow with DD-V2-157 positive framing, win-back email strategy, completionist endgame (Omniscient title at 95% mastery). Phase 24 (Language Learning): multi-language support (Japanese N5/N4/N3, Spanish A1/A2), three SM-2 tracks per vocabulary word (recognition/recall/usage), TTS pronunciation stubs, language-specific knowledge tree rendering. Phase 25 (Advanced Features): turn-based combat system with 3 bosses, co-op lobby via WebSocket, 19 achievement paintings gallery, pet personalities and synergies, gacha ethics compliance (displayed rates, pity system, DD-V2-174), parental controls with Kid Wow Score (DD-V2-175), learning effectiveness metrics, educational partnership APIs (classroom, research), full accessibility pass. V2 roadmap complete.
+Phases 0-22 complete. Phase 22 (Social & Multiplayer) fully implemented: hub visiting with guestbook and gifts, 6-category leaderboards with daily refresh and anti-cheat plausibility checks, async knowledge duels with speed scoring and wagers, artifact card marketplace with trading and duplicate mixing, guild system with weekly challenges and GKP progression, referral system with fossil egg rewards and anti-abuse, admin social health dashboard, privacy settings (hub private, leaderboard opt-out). V2 roadmap Phases 23-25 remaining. V3 roadmap Phases 26-50 planned.
 
 ---
 
@@ -72,6 +72,55 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 23: Live Ops & Seasons** — Seasonal events, content cadence, UGC, push notifications, completionist endgame → [`completed/PHASE-23-LIVE-OPS-SEASONS.md`](completed/PHASE-23-LIVE-OPS-SEASONS.md)
 - [x] **Phase 24: Language Learning** — Multi-language, 3 SM-2 tracks, TTS pronunciation, language-specific tree → [`completed/PHASE-24-LANGUAGE-LEARNING.md`](completed/PHASE-24-LANGUAGE-LEARNING.md)
 - [x] **Phase 25: Advanced Features** — Combat, co-op, achievements, advanced pets, accessibility, educational partnerships → [`completed/PHASE-25-ADVANCED-FEATURES.md`](completed/PHASE-25-ADVANCED-FEATURES.md)
+
+---
+
+## V3 Roadmap — Phases 26-50
+
+Each phase below links to its detailed implementation document in `docs/roadmap/phases/`.
+
+### Production Readiness (Phases 26-28)
+- [ ] **Phase 26: Production Backend Integration** — RevenueCat IAP, email provider (Resend), FCM/APNs push, Azure TTS, mount all server routes → [`phases/PHASE-26-PRODUCTION-BACKEND.md`](phases/PHASE-26-PRODUCTION-BACKEND.md)
+- [ ] **Phase 27: Test Suite & CI/CD** — Unit tests (Vitest), integration tests, E2E (Playwright), GitHub Actions, seed determinism, code coverage → [`phases/PHASE-27-TEST-SUITE-CICD.md`](phases/PHASE-27-TEST-SUITE-CICD.md)
+- [ ] **Phase 28: Performance & Optimization** — Device tier profiling, bundle analysis, GPU budget enforcement, dirty-rect rendering, memory management → [`phases/PHASE-28-PERFORMANCE-OPTIMIZATION.md`](phases/PHASE-28-PERFORMANCE-OPTIMIZATION.md)
+
+### Visual & Game Feel (Phases 29-31)
+- [ ] **Phase 29: Character Animation System** — 48-frame miner sprite sheets, directional walk/mine, idle states, gear overlays, animation state machine → [`phases/PHASE-29-CHARACTER-ANIMATION.md`](phases/PHASE-29-CHARACTER-ANIMATION.md)
+- [ ] **Phase 30: Mining Juice & Game Feel** — Loot pop physics, block break sequences, screen shake, crack overlays, per-block impact profiles → [`phases/PHASE-30-MINING-JUICE.md`](phases/PHASE-30-MINING-JUICE.md)
+- [ ] **Phase 31: Gacha & Reveal Polish** — Rarity-tiered reveal timing, artifact reveal sequences, block rarity previews, celebration particles, layer descent animation → [`phases/PHASE-31-GACHA-REVEAL-POLISH.md`](phases/PHASE-31-GACHA-REVEAL-POLISH.md)
+
+### Content Factory (Phases 32-34)
+- [ ] **Phase 32: Fact Content Scaling** — 3,000+ fact pipeline, automated LLM quality gates, distractor expansion, delta sync protocol, content cadence tooling → [`phases/PHASE-32-CONTENT-SCALING.md`](phases/PHASE-32-CONTENT-SCALING.md)
+- [ ] **Phase 33: Biome Visual Diversity** — 25 unique tile sprite sets, 8-bit hero biome autotiling, per-biome fog colors, depth visual gradient, transition tilesets → [`phases/PHASE-33-BIOME-VISUAL-DIVERSITY.md`](phases/PHASE-33-BIOME-VISUAL-DIVERSITY.md)
+- [ ] **Phase 34: Pixel Art Per Fact** — ComfyUI batch pipeline, greyscale-to-color mastery progression, 3-gate sprite QC, resumable generation, build-time audit → [`phases/PHASE-34-PIXEL-ART-PER-FACT.md`](phases/PHASE-34-PIXEL-ART-PER-FACT.md)
+
+### Gameplay Expansion (Phases 35-37)
+- [ ] **Phase 35: Mine Mechanics Completion** — Quiz gates, quiz streak multipliers, offering altars, layer instability meter, recipe fragments, conditionally breakable blocks → [`phases/PHASE-35-MINE-MECHANICS-COMPLETION.md`](phases/PHASE-35-MINE-MECHANICS-COMPLETION.md)
+- [ ] **Phase 36: Combat System** — Boss encounters at L5/L10/L15/L20, creature spawning, quiz gauntlets, combat rewards, "The Deep" secret biome → [`phases/PHASE-36-COMBAT-SYSTEM.md`](phases/PHASE-36-COMBAT-SYSTEM.md)
+- [ ] **Phase 37: Advanced Pet System** — Dust Cat permanent pet, feeding/grooming mini-games, personality traits, companion synergies, legendary evolution → [`phases/PHASE-37-ADVANCED-PET-SYSTEM.md`](phases/PHASE-37-ADVANCED-PET-SYSTEM.md)
+
+### Platform & International (Phases 38-40)
+- [ ] **Phase 38: iOS App Store Launch** — Apple Developer setup, TestFlight, App Store submission, iOS-specific optimizations, review guidelines → [`phases/PHASE-38-IOS-LAUNCH.md`](phases/PHASE-38-IOS-LAUNCH.md)
+- [ ] **Phase 39: Web Platform Excellence** — PWA optimization, desktop responsive layouts, keyboard shortcuts, SEO, Cloudflare Pages deployment → [`phases/PHASE-39-WEB-PLATFORM.md`](phases/PHASE-39-WEB-PLATFORM.md)
+- [ ] **Phase 40: Internationalization & Localization** — Multi-language UI, RTL support, locale-specific formatting, translation pipeline, content localization → [`phases/PHASE-40-INTERNATIONALIZATION.md`](phases/PHASE-40-INTERNATIONALIZATION.md)
+
+### Growth & Analytics (Phases 41-43)
+- [ ] **Phase 41: Advanced Analytics & Experiments** — Feature flag system, A/B testing framework, funnel analysis, cohort dashboards, retention optimization → [`phases/PHASE-41-ANALYTICS-EXPERIMENTS.md`](phases/PHASE-41-ANALYTICS-EXPERIMENTS.md)
+- [ ] **Phase 42: Viral Growth Engine** — Share paintings, referral optimization, social proof badges, invite deep links, ASO iteration → [`phases/PHASE-42-VIRAL-GROWTH.md`](phases/PHASE-42-VIRAL-GROWTH.md)
+- [ ] **Phase 43: Cooperative Dives** — WebSocket 2-player co-op, shared state sync, Miner/Scholar roles, loot ledger, disconnect recovery → [`phases/PHASE-43-COOPERATIVE-DIVES.md`](phases/PHASE-43-COOPERATIVE-DIVES.md)
+
+### Education (Phases 44-46)
+- [ ] **Phase 44: Teacher Dashboard** — Standalone Vite app, educator verification, class codes, aggregate analytics, homework category lock → [`phases/PHASE-44-TEACHER-DASHBOARD.md`](phases/PHASE-44-TEACHER-DASHBOARD.md)
+- [ ] **Phase 45: Kid Mode & Parental Controls** — Kid Wow Score, session time limits, parent PIN, weekly learning emails, COPPA enforcement → [`phases/PHASE-45-KID-MODE-PARENTAL.md`](phases/PHASE-45-KID-MODE-PARENTAL.md)
+- [ ] **Phase 46: Learning Effectiveness Research** — Anonymization pipeline, academic partnerships, annual reports, GAIA's Report tab, CSV export → [`phases/PHASE-46-LEARNING-EFFECTIVENESS.md`](phases/PHASE-46-LEARNING-EFFECTIVENESS.md)
+
+### Endgame & Mastery (Phases 47-49)
+- [ ] **Phase 47: Achievement Gallery** — 7th dome room, 20 milestone paintings, achievement tracking, paint-reveal animation, share to device gallery → [`phases/PHASE-47-ACHIEVEMENT-GALLERY.md`](phases/PHASE-47-ACHIEVEMENT-GALLERY.md)
+- [ ] **Phase 48: Prestige & Endgame Systems** — Omniscient golden dome, mentor mode, post-mastery challenge mode, biome completion bonuses, GAIA peer dialogue → [`phases/PHASE-48-PRESTIGE-ENDGAME.md`](phases/PHASE-48-PRESTIGE-ENDGAME.md)
+- [ ] **Phase 49: Advanced Mine Generation** — Procedural micro-structures, biome transition zones, structural features, anomaly probability system, seed determinism → [`phases/PHASE-49-ADVANCED-MINE-GENERATION.md`](phases/PHASE-49-ADVANCED-MINE-GENERATION.md)
+
+### Platform Maturity (Phase 50)
+- [ ] **Phase 50: Open Content Ecosystem** — Public fact API, community moderation tools, educational partnerships, content licensing, third-party integrations → [`phases/PHASE-50-OPEN-CONTENT-ECOSYSTEM.md`](phases/PHASE-50-OPEN-CONTENT-ECOSYSTEM.md)
 
 ---
 
