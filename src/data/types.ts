@@ -174,6 +174,9 @@ export enum BlockType {
   FossilNode = 25,
   Chest = 26,
   Tablet = 27,
+  OfferingAltar = 28,       // Sacrifice altar — guaranteed rare drop (Phase 35.3)
+  LockedBlock = 29,          // Tier/tool locked hard rock (Phase 35.6)
+  RecipeFragmentNode = 30,  // Collectible recipe fragment (Phase 35.5)
   Unbreakable = 99,
 }
 
@@ -211,6 +214,12 @@ export interface MineCell {
   tileVariant?: number
   /** True if this cell sits within 2-3 tiles of a biome boundary. (DD-V2-235) */
   isTransitionZone?: boolean
+  /** For OfferingAltar: true once the altar has been used this layer (Phase 35.3). */
+  altarUsed?: boolean
+  /** For LockedBlock: minimum pickaxe tier index required to break (0=any, 3=diamond+) (Phase 35.6). */
+  requiredTier?: number
+  /** For RecipeFragmentNode: which fragment recipe ID is stored here (Phase 35.5). */
+  fragmentId?: string
 }
 
 /** Content inside a special block */
@@ -595,6 +604,14 @@ export interface PlayerSave {
   unlockedFactIds?: string[]
   /** Number of new facts introduced in the current dive session (reset per dive). */
   newFactsThisDive?: number
+
+  // Phase 35.5: Recipe Fragments
+  /** Fragment collection progress: recipe_id → count of fragments found. */
+  recipeFragments?: Record<string, number>
+  /** Recipe IDs fully assembled and available to craft in the Materializer. */
+  assembledRecipes?: string[]
+  /** Recipe IDs already crafted via assembled fragments. */
+  craftedFragmentRecipes?: string[]
 
   // Phase 47: Achievement Gallery
   /** IDs of paintings the player has unlocked (achievement conditions met). */

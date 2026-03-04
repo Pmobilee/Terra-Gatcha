@@ -42,6 +42,8 @@ import {
   currentBiomeId,
   equippedRelicsV2,
   descentOverlayState,
+  activeAltar,
+  activeMineEvent,
 } from '../ui/stores/gameState'
 import {
   playerSave,
@@ -54,6 +56,7 @@ import {
   recordDiveComplete,
   getDueReviews,
   syncKnowledgePoints,
+  deductMinerals,
 } from '../ui/stores/playerData'
 import { getQuizChoices, selectQuestion } from '../services/quizService'
 import { factsDB } from '../services/factsDB'
@@ -77,6 +80,9 @@ import type { DiveSaveState } from '../data/saveState'
 import { DIVE_SAVE_VERSION } from '../data/saveState'
 import { LOOT_LOSS_RATE_SHALLOW, LOOT_LOSS_RATE_MID, LOOT_LOSS_RATE_DEEP, SEND_UP_TICK_COST } from '../data/balance'
 import { TickSystem } from './systems/TickSystem'
+import type { MineEventType } from '../data/mineEvents'
+import { getMineEvent } from '../data/mineEvents'
+import { getFragmentRecipe } from '../data/recipeFragments'
 
 /**
  * Singleton manager for the Phaser game instance.
@@ -752,6 +758,29 @@ export class GameManager {
       const bonusAmount = 5 + Math.floor(data.layer / 2)
       addMinerals(bonusTier as MineralTier, bonusAmount)
       gaiaMessage.set('You opened a treasure chest! Rare minerals secured.')
+    })
+
+    // ---- Phase 35.3: Offering Altar adjacent ----
+    events.on('altar-adjacent', (data: { x: number; y: number }) => {
+      activeAltar.set({ altarX: data.x, altarY: data.y })
+      currentScreen.set('sacrifice')
+    })
+
+    // ---- Phase 35.6: Locked block denied ----
+    events.on('locked-block-denied', (data: { requiredTier: number }) => {
+      const tierNames = ['', 'Iron', 'Steel', 'Diamond', 'Plasma']
+      const name = tierNames[data.requiredTier] ?? `Tier ${data.requiredTier}`
+      gaiaMessage.set(`Locked. Requires ${name} Pick or drill charge.`)
+    })
+
+    // ---- Phase 35.5: Recipe fragment collected ----
+    events.on('fragment-collected', (data: { fragmentId: string }) => {
+      this.collectRecipeFragment(data.fragmentId)
+    })
+
+    // ---- Phase 35.7: Mine event fired ----
+    events.on('mine-event', (data: { type: MineEventType }) => {
+      this.handleMineEvent(data.type)
     })
   }
 
@@ -1654,6 +1683,167 @@ export class GameManager {
   applyConsumable(id: import('../data/consumables').ConsumableId): void {
     const scene = this.getMineScene()
     scene?.applyConsumable(id)
+  }
+
+  // =========================================================
+  // Phase 35: Offering Altar, Fragment Collection, Mine Events
+  // =========================================================
+
+  /**
+   * Execute an altar sacrifice for the given tier.
+   * Deducts the mineral cost, awards an artifact (rarity guaranteed by tier),
+   * optionally rolls a recipe fragment at tier 4, marks the altar as used,
+   * and returns to mining. (Phase 35.3)
+   */
+  completeSacrifice(tier: string): void {
+    const save = get(playerSave)
+    if (!save) return
+
+    const costs = BALANCE.ALTAR_SACRIFICE_COSTS as Record<string, Record<string, number>>
+    const cost = costs[tier]
+    if (!cost) return
+
+    // Deduct each mineral cost
+    for (const [mineralTier, amount] of Object.entries(cost)) {
+      if (amount > 0) {
+        deductMinerals(mineralTier as MineralTier, amount)
+      }
+    }
+
+    // Determine guaranteed rarity floor by tier
+    const rarityFloor: Record<string, string> = {
+      tier1: 'uncommon',
+      tier2: 'rare',
+      tier3: 'epic',
+      tier4: 'legendary',
+    }
+    const guaranteedRarity = rarityFloor[tier] ?? 'uncommon'
+
+    // Emit artifact found event for the scene to handle inventory
+    const altarState = get(activeAltar)
+    if (altarState) {
+      const scene = this.getMineScene()
+      if (scene) {
+        scene.markAltarUsed(altarState.altarX, altarState.altarY)
+      }
+    }
+
+    // Add a pending artifact with the guaranteed rarity
+    pendingArtifacts.update(existing => [...existing, `altar_${guaranteedRarity}_${Date.now()}`])
+
+    gaiaMessage.set(`Sacrifice accepted. A ${guaranteedRarity} relic emerges from the stone.`)
+
+    // Tier 4: roll for a bonus recipe fragment
+    if (tier === 'tier4' && Math.random() < BALANCE.ALTAR_FRAGMENT_CHANCE_TIER4) {
+      // Pick a random recipe fragment from all available recipes
+      const eligibleRecipes = ['ancient_drill', 'resonance_lens', 'temporal_shard', 'echo_compass', 'deep_pact']
+      if (eligibleRecipes.length > 0) {
+        const randomId = eligibleRecipes[Math.floor(Math.random() * eligibleRecipes.length)]
+        this.collectRecipeFragment(randomId)
+      }
+      // Tier 4 altar also adds instability
+      const scene = this.getMineScene()
+      if (scene) {
+        scene.addInstability('altar_tier4')
+      }
+    }
+
+    // Clear altar state and return to mining
+    activeAltar.set(null)
+    currentScreen.set('mining')
+  }
+
+  /**
+   * Collect a recipe fragment for the given fragmentId.
+   * Increments the fragment count in playerSave.recipeFragments.
+   * If the total equals the recipe's totalFragments, pushes to assembledRecipes. (Phase 35.5)
+   */
+  private collectRecipeFragment(fragmentId: string): void {
+    if (!fragmentId) return
+
+    const recipe = getFragmentRecipe(fragmentId)
+    if (!recipe) return
+
+    let justCompleted = false
+    playerSave.update(s => {
+      if (!s) return s
+      const recipeFragments: Record<string, number> = { ...(s.recipeFragments ?? {}) }
+      recipeFragments[fragmentId] = (recipeFragments[fragmentId] ?? 0) + 1
+      const count = recipeFragments[fragmentId]
+
+      let assembledRecipes = [...(s.assembledRecipes ?? [])]
+      if (count >= recipe.totalFragments && !assembledRecipes.includes(fragmentId)) {
+        assembledRecipes = [...assembledRecipes, fragmentId]
+        justCompleted = true
+      }
+
+      return { ...s, recipeFragments, assembledRecipes }
+    })
+    persistPlayer()
+
+    const count = (get(playerSave)?.recipeFragments?.[fragmentId] ?? 0)
+    if (justCompleted) {
+      gaiaMessage.set(`${recipe.icon} Fragment set complete: ${recipe.name}! Check the Materializer to craft it.`)
+    } else {
+      gaiaMessage.set(`${recipe.icon} Fragment collected (${Math.min(count, recipe.totalFragments)}/${recipe.totalFragments}) — ${recipe.name}`)
+    }
+  }
+
+  /**
+   * Handle a random mine event dispatched by MineEventSystem. (Phase 35.7)
+   * Each event type has distinct in-mine effects.
+   */
+  private handleMineEvent(type: MineEventType): void {
+    const event = getMineEvent(type)
+    if (!event) return
+
+    // Show the event overlay in the HUD
+    activeMineEvent.set({ type, label: event.label })
+    gaiaMessage.set(event.gaiaLine)
+
+    const scene = this.getMineScene()
+
+    switch (type) {
+      case 'tremor':
+        // Trigger a small earthquake (scene handles block collapse)
+        if (scene) {
+          scene.triggerSmallEarthquake()
+        }
+        break
+
+      case 'gas_leak':
+        // Spawn a gas cloud at a random position in the lower half of the grid
+        if (scene) {
+          scene.spawnRandomGasLeak()
+        }
+        break
+
+      case 'relic_signal':
+        // Briefly reveal all RelicShrine cells (scene handles the reveal)
+        if (scene) {
+          scene.revealRelicShrines(5000)
+        }
+        break
+
+      case 'crystal_vein':
+        // Reveal mineral nodes near the player
+        if (scene) {
+          scene.revealNearbyMinerals(8)
+        }
+        break
+
+      case 'pressure_surge':
+        // Drain O2 immediately
+        if (scene) {
+          scene.drainOxygen(5)
+        }
+        break
+    }
+
+    // Auto-clear the overlay after 3 seconds
+    setTimeout(() => {
+      activeMineEvent.update(current => (current?.type === type ? null : current))
+    }, 3000)
   }
 
   // =========================================================

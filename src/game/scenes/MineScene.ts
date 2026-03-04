@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import { get } from 'svelte/store'
 import { BALANCE } from '../../data/balance'
 import { BlockType, type InventorySlot, type MineCell, type MineralTier, type Rarity, type Relic, type RunUpgrade } from '../../data/types'
 import { type Biome, DEFAULT_BIOME } from '../../data/biomes'
@@ -34,9 +35,11 @@ import { ImpactSystem } from '../systems/ImpactSystem'
 import { BlockAnimSystem } from '../systems/BlockAnimSystem'
 import { TickSystem } from '../systems/TickSystem'
 import { HazardSystem } from '../systems/HazardSystem'
+import { InstabilitySystem } from '../systems/InstabilitySystem'
+import { MineEventSystem } from '../systems/MineEventSystem'
 import { BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE, getO2DepthMultiplier, CONSUMABLE_DROP_CHANCE, REVEAL_TIMING, DESCENT_ANIM } from '../../data/balance'
 import { ALL_CONSUMABLE_IDS, CONSUMABLE_DEFS, type ConsumableId } from '../../data/consumables'
-import { activeConsumables, addConsumableToDive, useConsumableFromDive, shieldActive } from '../../ui/stores/gameState'
+import { activeConsumables, addConsumableToDive, useConsumableFromDive, shieldActive, instabilityLevel, instabilityCollapsing, instabilityCountdown, activeAltar, activeMineEvent, gaiaMessage } from '../../ui/stores/gameState'
 import { LANDMARK_TEMPLATES, COMPLETION_EVENTS, getLandmarkIdForLayer } from '../../data/landmarks'
 import { BiomeParticleManager } from '../managers/BiomeParticleManager'
 import { AudioManager } from '../managers/AudioManager'
@@ -71,8 +74,11 @@ const BLOCK_COLORS: Record<BlockType, number> = {
   [BlockType.OxygenTank]: 0x00ccaa,
   [BlockType.DataDisc]: 0x22aacc,
   [BlockType.FossilNode]: 0xd4a574,
-  [BlockType.Chest]: 0xffd700,        // gold
-  [BlockType.Tablet]: 0x8888cc,       // blue-purple
+  [BlockType.Chest]: 0xffd700,             // gold
+  [BlockType.Tablet]: 0x8888cc,            // blue-purple
+  [BlockType.OfferingAltar]: 0x9944cc,     // purple — Phase 35.3
+  [BlockType.LockedBlock]: 0x4a4a4a,       // same base as HardRock — Phase 35.6
+  [BlockType.RecipeFragmentNode]: 0x44ccaa, // teal/cyan — Phase 35.5
   [BlockType.Unbreakable]: 0x2c2c2c,
 }
 
@@ -155,6 +161,12 @@ export class MineScene extends Phaser.Scene {
   public companionFlash: boolean = false
   /** Active hazard manager — lava flows and gas clouds. Initialized in create(). */
   private hazardSystem: HazardSystem | null = null
+  /** Layer instability meter — rises from hazards, collapses at 100%. (Phase 35.4) */
+  private instabilitySystem: InstabilitySystem | null = null
+  /** Random mine event dispatcher. (Phase 35.7) */
+  private mineEventSystem: MineEventSystem | null = null
+  /** Tracks which locked blocks have already shown a denial GAIA message this layer (prevent spam). */
+  private lockedBlockDeniedSet: Set<string> = new Set()
   /** Tracks the last direction the player moved/mined, used for Drill Charge. */
   private playerFacing: 'up' | 'down' | 'left' | 'right' = 'down'
   /** Phase 9: Per-biome ambient particle manager. */
@@ -502,6 +514,39 @@ export class MineScene extends Phaser.Scene {
     TickSystem.getInstance().register('hazard-system',
       (tick, layerTick) => this.hazardSystem?.onTick(tick, layerTick)
     )
+
+    // ---- Phase 35.4: Instability system ----
+    this.instabilitySystem = new InstabilitySystem(
+      () => {
+        gaiaMessage.set("Structural readings critical. Find the shaft — now.")
+        audioManager.playSound('oxygen_warning')
+        instabilityLevel.set(this.instabilitySystem!.getLevel())
+      },
+      () => {
+        this.triggerInstabilityCollapse()
+        instabilityCollapsing.set(true)
+      },
+      (remaining) => {
+        instabilityCountdown.set(remaining)
+        instabilityLevel.set(this.instabilitySystem?.getLevel() ?? 100)
+        if (remaining <= 0) {
+          instabilityCollapsing.set(false)
+          this.forceLayerFail()
+        }
+      },
+    )
+    TickSystem.getInstance().register('instability', (t, lt) => {
+      this.instabilitySystem?.onTick(t, lt)
+      if (this.instabilitySystem) {
+        instabilityLevel.set(this.instabilitySystem.getLevel())
+      }
+    })
+
+    // ---- Phase 35.7: Mine event system ----
+    this.mineEventSystem = new MineEventSystem((type) => {
+      this.game.events.emit('mine-event', { type })
+    })
+    TickSystem.getInstance().register('mine-events', (t, lt) => this.mineEventSystem?.onTick(t, lt))
 
     this.input.on('pointerdown', this.handlePointerDown, this)
     this.input.keyboard?.on('keydown', this.handleKeyDown, this)
@@ -1477,6 +1522,22 @@ export class MineScene extends Phaser.Scene {
         this.glowSystem.update(this.grid)
       }
 
+      // Phase 35.3: Check adjacent cells for offering altar after each move
+      {
+        const newX = this.player.gridX
+        const newY = this.player.gridY
+        for (const [adx, ady] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as [number, number][]) {
+          const ax = newX + adx, ay = newY + ady
+          if (ax >= 0 && ax < this.gridWidth && ay >= 0 && ay < this.gridHeight) {
+            const aCell = this.grid[ay][ax]
+            if (aCell?.type === BlockType.OfferingAltar && !aCell.altarUsed) {
+              this.game.events.emit('altar-adjacent', { x: ax, y: ay })
+              break
+            }
+          }
+        }
+      }
+
       // Advance tick on every successful player move
       const tsMove = TickSystem.getInstance()
       tsMove.advance()
@@ -1531,6 +1592,28 @@ export class MineScene extends Phaser.Scene {
         gateRemaining: targetCell.hardness,
         gateTotal: targetCell.maxHardness,
       })
+      return
+    }
+
+    // LockedBlock guard (Phase 35.6): check if player can break this block
+    if (blockType === BlockType.LockedBlock && targetCell.requiredTier !== undefined) {
+      const hasPickaxe = this.pickaxeTierIndex >= targetCell.requiredTier
+      const consumableSlots = get(activeConsumables)
+      const hasDrill = consumableSlots.some(s => s.id === 'drill_charge' && s.count > 0)
+      const hasBomb = consumableSlots.some(s => s.id === 'bomb' && s.count > 0)
+      if (!hasPickaxe && !hasDrill && !hasBomb) {
+        // Only show the GAIA denial message once per unique block position per layer
+        const blockKey = `${targetX},${targetY}`
+        if (!this.lockedBlockDeniedSet.has(blockKey)) {
+          this.lockedBlockDeniedSet.add(blockKey)
+          this.game.events.emit('locked-block-denied', { x: targetX, y: targetY, requiredTier: targetCell.requiredTier })
+        }
+        return  // No O2 cost, no block damage
+      }
+    }
+
+    // OfferingAltar guard (Phase 35.3): can't be mined — tap does nothing
+    if (blockType === BlockType.OfferingAltar) {
       return
     }
 
@@ -1964,6 +2047,8 @@ export class MineScene extends Phaser.Scene {
           }
           // Emit event so GameManager can show a GAIA quip
           this.game.events.emit('cave-in', { affectedCount })
+          // Phase 35.4: Cave-in contributes to instability
+          this.instabilitySystem?.addInstability('cave_in')
           // Screen shake: jitter camera for ~300ms then re-center on player
           const shakeCamera = (): void => {
             const offsetX = (Math.random() - 0.5) * 6
@@ -2006,8 +2091,43 @@ export class MineScene extends Phaser.Scene {
           this.game.events.emit('random-quiz')
           break
         }
+        case BlockType.RecipeFragmentNode: {
+          // Phase 35.5: Recipe fragment node — collect and notify GameManager
+          const fragId = targetCell.fragmentId
+          if (fragId) {
+            this.game.events.emit('fragment-collected', { fragmentId: fragId })
+          }
+          audioManager.playSound('collect')
+          break
+        }
         default:
           break
+      }
+
+      // ---- Phase 35.4: Instability triggers based on what was mined ----
+      if (this.instabilitySystem) {
+        // Lava adjacent trigger: was this block next to any lava?
+        let adjacentToLava = false
+        for (const [adx, ady] of [[1, 0], [-1, 0], [0, 1], [0, -1]] as [number, number][]) {
+          const anx = targetX + adx, any = targetY + ady
+          if (any >= 0 && any < this.gridHeight && anx >= 0 && anx < this.gridWidth) {
+            if (this.grid[any][anx]?.type === BlockType.LavaBlock) {
+              adjacentToLava = true
+              break
+            }
+          }
+        }
+        if (adjacentToLava) {
+          this.instabilitySystem.addInstability('lava_adjacent')
+        }
+        // UnstableGround trigger
+        if (blockType === BlockType.UnstableGround) {
+          this.instabilitySystem.addInstability('unstable_broke')
+        }
+        // HardRock in extreme layer tier (layer index 15+ = layers 16-20)
+        if (blockType === BlockType.HardRock && this.currentLayer >= 15) {
+          this.instabilitySystem.addInstability('hard_rock_deep')
+        }
       }
 
       // Check adjacent cells for lava blocks — if a lava block is now exposed, spawn a flow. (Phase 8.3)
@@ -3336,6 +3456,148 @@ export class MineScene extends Phaser.Scene {
       const worldPy = blockY * TILE_SIZE + TILE_SIZE * 0.5
       this.particles?.emitSwingDust(worldPx, worldPy, data.facing as 'left' | 'right' | 'up' | 'down')
     })
+  }
+
+  // =========================================================
+  // Phase 35: Public methods for GameManager integration
+  // =========================================================
+
+  /**
+   * Mark an offering altar as used after the player completes a sacrifice.
+   * Prevents the altar from triggering again this layer. (Phase 35.3)
+   */
+  public markAltarUsed(x: number, y: number): void {
+    if (x >= 0 && x < this.gridWidth && y >= 0 && y < this.gridHeight) {
+      const cell = this.grid[y][x]
+      if (cell) {
+        this.grid[y][x] = { ...cell, altarUsed: true }
+      }
+    }
+  }
+
+  /**
+   * Add instability from an external trigger (e.g. altar tier 4 sacrifice).
+   * Delegates to the InstabilitySystem instance. (Phase 35.4)
+   */
+  public addInstability(trigger: import('../systems/InstabilitySystem').InstabilityTrigger): void {
+    this.instabilitySystem?.addInstability(trigger)
+  }
+
+  /**
+   * Trigger a small earthquake event (used by mine event system for tremor).
+   * Reveals fewer blocks than a full earthquake. (Phase 35.7)
+   */
+  public triggerSmallEarthquake(): void {
+    // Trigger a standard earthquake — the event system already keeps these infrequent
+    this.triggerEarthquake()
+  }
+
+  /**
+   * Spawn a gas cloud at a random position in the lower half of the grid.
+   * Used by the mine event system for gas_leak events. (Phase 35.7)
+   */
+  public spawnRandomGasLeak(): void {
+    if (!this.hazardSystem) return
+    const rx = Math.floor(Math.random() * this.gridWidth)
+    const ry = Math.floor(this.gridHeight * 0.5 + Math.random() * this.gridHeight * 0.5)
+    const clampedY = Math.min(ry, this.gridHeight - 1)
+    this.hazardSystem.spawnGas(rx, clampedY)
+  }
+
+  /**
+   * Temporarily reveal all RelicShrine cells for the given duration (ms).
+   * Used by the mine event system for relic_signal events. (Phase 35.7)
+   */
+  public revealRelicShrines(durationMs: number): void {
+    const revealed: Array<{ y: number; x: number }> = []
+    for (let y = 0; y < this.gridHeight; y++) {
+      for (let x = 0; x < this.gridWidth; x++) {
+        const cell = this.grid[y][x]
+        if (cell?.type === BlockType.RelicShrine && !cell.revealed) {
+          this.grid[y][x] = { ...cell, revealed: true }
+          revealed.push({ y, x })
+        }
+      }
+    }
+    if (revealed.length > 0) {
+      this.redrawAll()
+      // Re-hide after duration
+      setTimeout(() => {
+        for (const { y, x } of revealed) {
+          const cell = this.grid[y]?.[x]
+          if (cell?.type === BlockType.RelicShrine) {
+            this.grid[y][x] = { ...cell, revealed: false }
+          }
+        }
+        this.redrawAll()
+      }, durationMs)
+    }
+  }
+
+  /**
+   * Temporarily reveal MineralNode cells within radius tiles of the player.
+   * Used by the mine event system for crystal_vein events. (Phase 35.7)
+   */
+  public revealNearbyMinerals(radius: number): void {
+    const px = this.player.gridX
+    const py = this.player.gridY
+    const revealed: Array<{ y: number; x: number }> = []
+    for (let dy = -radius; dy <= radius; dy++) {
+      for (let dx = -radius; dx <= radius; dx++) {
+        const nx = px + dx, ny = py + dy
+        if (nx < 0 || nx >= this.gridWidth || ny < 0 || ny >= this.gridHeight) continue
+        const cell = this.grid[ny][nx]
+        if (cell?.type === BlockType.MineralNode && !cell.revealed) {
+          this.grid[ny][nx] = { ...cell, revealed: true }
+          revealed.push({ y: ny, x: nx })
+        }
+      }
+    }
+    if (revealed.length > 0) {
+      this.redrawAll()
+    }
+  }
+
+  /**
+   * Trigger the instability collapse event: fills random cells with HardRock
+   * and spawns lava near the center. Called by InstabilitySystem on full collapse. (Phase 35.4)
+   */
+  private triggerInstabilityCollapse(): void {
+    const count = BALANCE.INSTABILITY_COLLAPSE_BLOCK_COUNT
+    let placed = 0
+    const minY = Math.floor(this.gridHeight * 0.4)
+    for (let attempts = 0; attempts < count * 4 && placed < count; attempts++) {
+      const rx = Math.floor(Math.random() * this.gridWidth)
+      const ry = Math.floor(minY + Math.random() * (this.gridHeight - minY))
+      const cell = this.grid[ry]?.[rx]
+      if (!cell) continue
+      if (cell.type === BlockType.Empty && cell.revealed && !this.isPlayerAt(rx, ry)) {
+        this.grid[ry][rx] = { type: BlockType.HardRock, hardness: BALANCE.HARDNESS_HARD_ROCK, maxHardness: BALANCE.HARDNESS_HARD_ROCK, revealed: true }
+        placed++
+      }
+    }
+    // Spawn lava near grid center
+    if (this.hazardSystem) {
+      const cx = Math.floor(this.gridWidth / 2)
+      const cy = Math.floor(this.gridHeight * 0.6)
+      this.hazardSystem.spawnLava(cx, cy)
+    }
+    this.redrawAll()
+    gaiaMessage.set("The layer is collapsing! Find the shaft — NOW.")
+    this.game.events.emit('earthquake', { collapsed: placed, revealed: 0 })
+  }
+
+  /** Returns true if the player is at grid cell (x, y). */
+  private isPlayerAt(x: number, y: number): boolean {
+    return this.player.gridX === x && this.player.gridY === y
+  }
+
+  /**
+   * Force a layer failure (triggered when instability countdown reaches 0).
+   * Behaves like oxygen depletion — forced surface with loot loss. (Phase 35.4)
+   */
+  private forceLayerFail(): void {
+    this.game.events.emit('oxygen-depleted')
   }
 
   /**

@@ -83,6 +83,13 @@
   import ProfileSelectView from './ui/components/profiles/ProfileSelectView.svelte'
   import ProfileCreateView from './ui/components/profiles/ProfileCreateView.svelte'
   import ProfileManageView from './ui/components/profiles/ProfileManageView.svelte'
+  // Phase 35: Mine Mechanics HUD
+  import QuizStreakBadge from './ui/components/QuizStreakBadge.svelte'
+  import InstabilityMeter from './ui/components/InstabilityMeter.svelte'
+  import MineEventOverlay from './ui/components/MineEventOverlay.svelte'
+  import AltarSacrificeOverlay from './ui/components/AltarSacrificeOverlay.svelte'
+  import { activeAltar } from './ui/stores/gameState'
+
   // Phase 45: Kid Mode
   import { sessionTimer, type SessionTimerState } from './services/sessionTimer'
   import { parentalStore } from './ui/stores/parentalStore'
@@ -904,7 +911,7 @@
   {:else if $currentScreen === 'interestAssessment'}
     <InterestAssessment />
 
-  {:else if $currentScreen === 'sacrifice'}
+  {:else if $currentScreen === 'sacrifice' && !$activeAltar}
     <div class="sacrifice-screen">
       <h2 class="sacrifice-title">Oxygen Depleted!</h2>
       <p class="sacrifice-subtitle">You've been rescued, but at a cost...</p>
@@ -971,6 +978,12 @@
       onDecline={() => pendingRelicPickup.set(null)}
     />
   {/if}
+
+  <!-- Phase 35: Mine Mechanics HUD overlays (self-conditionally shown during mining) -->
+  <QuizStreakBadge />
+  <InstabilityMeter />
+  <MineEventOverlay />
+  <AltarSacrificeOverlay />
 
   <DevPanel />
   <PwaInstallPrompt />

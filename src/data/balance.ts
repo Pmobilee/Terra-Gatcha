@@ -345,6 +345,56 @@ export const BALANCE = {
   SPENDING_BONUS_THRESHOLD: 500,        // Dust spent per week to activate bonus
   SPENDING_BONUS_YIELD_MULTIPLIER: 1.1, // +10% mineral yield when bonus active
   SPENDING_BONUS_RESET_DAY: 1,          // Monday (ISO day of week)
+
+  // === QUIZ GATES (Phase 35.1) ===
+  QUIZ_GATE_DENSITY: 0.005,           // ~0.5% of eligible cells become quiz gates
+  QUIZ_GATE_MIN_DEPTH_PERCENT: 0.15,  // Only below 15% grid depth (not in spawn row)
+  // Note: QUIZ_GATE_MAX_FAILURES already defined above (value 2)
+  QUIZ_GATE_FAILURE_O2_COST: 10,      // O2 penalty per wrong answer at a gate
+  QUIZ_GATE_PASS_DUST_REWARD: 15,     // Dust dropped when gate unlocks correctly
+
+  // === OFFERING ALTARS (Phase 35.3) ===
+  ALTAR_PER_LANDMARK_LAYER: true,       // One altar per landmark layer
+  ALTAR_SACRIFICE_COSTS: {
+    tier1: { dust: 200 },                // Guaranteed uncommon artifact
+    tier2: { dust: 100, shard: 5 },      // Guaranteed rare artifact
+    tier3: { shard: 10, crystal: 2 },    // Guaranteed epic artifact
+    tier4: { crystal: 5, geode: 1 },     // Guaranteed legendary + small recipe-fragment chance
+  } as const,
+  ALTAR_FRAGMENT_CHANCE_TIER4: 0.35,   // 35% chance tier-4 sacrifice yields a recipe fragment
+  ALTAR_COLOR: 0x9944cc,               // Purple — distinct from RelicShrine gold
+
+  // === LAYER INSTABILITY (Phase 35.4) ===
+  INSTABILITY_WARNING_THRESHOLD: 75,     // Meter appears at 75%
+  INSTABILITY_COLLAPSE_TICKS: 40,        // Player has 40 ticks to reach descent shaft
+  INSTABILITY_COLLAPSE_BLOCK_COUNT: 12,  // Blocks randomly collapsed during the event
+  INSTABILITY_LAVA_FLOOD_RADIUS: 2,      // Lava spawned around collapse center
+  INSTABILITY_DELTAS: {
+    lava_adjacent:  12,
+    unstable_broke: 20,
+    cave_in:        25,
+    hard_rock_deep:  8,
+    altar_tier4:    15,
+  } as const,
+
+  // === RECIPE FRAGMENTS (Phase 35.5) ===
+  FRAGMENT_NODE_DENSITY: 0.003,         // Approximately 1 per eligible layer
+  HARDNESS_RECIPE_FRAGMENT: 4,          // Same as HardRock — rewarding to reach
+
+  // === LOCKED BLOCKS (Phase 35.6) ===
+  LOCKED_BLOCK_DENSITY: 0.012,          // ~1.2% of deep-layer stone becomes locked
+  LOCKED_BLOCK_MIN_DEPTH_PERCENT: 0.45, // Only below 45% mine depth
+  LOCKED_BLOCK_TIER_WEIGHTS: [
+    { tier: 1, weight: 40 },   // Iron pick required — most common
+    { tier: 2, weight: 30 },   // Steel pick
+    { tier: 3, weight: 20 },   // Diamond pick
+    { tier: 4, weight: 10 },   // Plasma Cutter only
+  ] as const,
+  LOCKED_BLOCK_HARDNESS: 6,             // Harder than standard HardRock (5) when unlocked
+
+  // === MINE EVENTS (Phase 35.7) ===
+  MINE_EVENT_MIN_TICKS: 30,             // Minimum ticks between events
+  MINE_EVENT_CHANCE_PER_TICK: 0.015,    // ~1.5% per tick after min ticks elapsed
 } as const
 
 /**

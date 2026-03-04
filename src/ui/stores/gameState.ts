@@ -345,3 +345,28 @@ export const descentOverlayState = singletonWritable<DescentOverlayState>('desce
 
 /** Active Dust Cat synergy during a dive, or null. */
 export const activeDustCatSynergy = singletonWritable<import('../../data/petPersonalities').CompanionSynergy | null>('activeDustCatSynergy', null)
+
+// =========================================================
+// Phase 35 — Mine Mechanics Completion
+// =========================================================
+
+/** Current layer instability level (0–100). Updated by InstabilitySystem. */
+export const instabilityLevel = singletonWritable<number>('instabilityLevel', 0)
+
+/** True when a collapse event is active and the countdown is running. */
+export const instabilityCollapsing = singletonWritable<boolean>('instabilityCollapsing', false)
+
+/** Ticks remaining before total collapse (shown on HUD during collapse event). */
+export const instabilityCountdown = singletonWritable<number>('instabilityCountdown', 0)
+
+/** Payload for the active altar sacrifice interaction. Null when no altar is active. */
+export interface AltarPayload {
+  altarX: number
+  altarY: number
+}
+
+/** Active altar sacrifice state — set when the player stands adjacent to an OfferingAltar. */
+export const activeAltar = singletonWritable<AltarPayload | null>('activeAltar', null)
+
+/** The active mine event notification shown in the overlay. Null = no event. */
+export const activeMineEvent = singletonWritable<{ type: string; label: string } | null>('activeMineEvent', null)

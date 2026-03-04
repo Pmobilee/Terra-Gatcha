@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 43, 45, 47. Phase 30 (Mining Juice & Game Feel): CrackSystem (material-specific tints, 4-stage health thresholds), BlockBreakSequence (50ms freeze-frame, radial burst, 4-quadrant shatter pool), ScreenShakeSystem (Perlin noise, 3 tiers micro/medium/heavy, reduced-motion, intensity slider), ImpactSystem (full ImpactProfile per block, resolveShakeTier, resolveHitState, secondary particles), LootPopSystem (6-phase tween chain: rise/fall/squash/bounce/settle/vacuum, multi-item stagger), BlockAnimSystem (per-tile phase offsets, hasMoteParticles/getMoteConfig), ParticleSystem (emitSecondary, emitMote), settings.ts (screenShakeIntensity store), app.css (loot-hud-flash keyframes + .hud-flash class). Next: Phase 35 (Mine Mechanics Completion) or Phase 28 (Performance Optimization).
+Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 43, 45, 47. Phase 35 (Mine Mechanics Completion): Quiz gates, QuizStreakSystem (×1→×3 multiplier), OfferingAltar (4 sacrifice tiers), InstabilitySystem (collapse countdown, lava flood), RecipeFragmentNode (5 fragment recipes), LockedBlock (tier-locked HardRock), MineEventSystem (5 random events: tremor/gas_leak/relic_signal/crystal_vein/pressure_surge). New HUD components: QuizStreakBadge, InstabilityMeter, MineEventOverlay, AltarSacrificeOverlay. All wired through GameManager event bridge. Next: Phase 28 (Performance Optimization) or Phase 36.
 
 ---
 
@@ -98,7 +98,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 34: Pixel Art Per Fact** — ComfyUI batch pipeline, greyscale-to-color mastery progression, 3-gate sprite QC, resumable generation, build-time audit → [`completed/PHASE-34-PIXEL-ART-PER-FACT.md`](completed/PHASE-34-PIXEL-ART-PER-FACT.md)
 
 ### Gameplay Expansion (Phases 35-37)
-- [ ] **Phase 35: Mine Mechanics Completion** — Quiz gates, quiz streak multipliers, offering altars, layer instability meter, recipe fragments, conditionally breakable blocks → [`phases/PHASE-35-MINE-MECHANICS-COMPLETION.md`](phases/PHASE-35-MINE-MECHANICS-COMPLETION.md)
+- [x] **Phase 35: Mine Mechanics Completion** — Quiz gates, quiz streak multipliers, offering altars, layer instability meter, recipe fragments, conditionally breakable blocks → [`completed/PHASE-35-MINE-MECHANICS-COMPLETION.md`](completed/PHASE-35-MINE-MECHANICS-COMPLETION.md)
 - [ ] **Phase 36: Combat System** — Boss encounters at L5/L10/L15/L20, creature spawning, quiz gauntlets, combat rewards, "The Deep" secret biome → [`phases/PHASE-36-COMBAT-SYSTEM.md`](phases/PHASE-36-COMBAT-SYSTEM.md)
 - [x] **Phase 37: Advanced Pet System** — Dust Cat permanent pet, feeding/grooming mini-games, personality traits, companion synergies, legendary evolution → [`completed/PHASE-37-ADVANCED-PET-SYSTEM.md`](completed/PHASE-37-ADVANCED-PET-SYSTEM.md)
 

@@ -3,6 +3,7 @@ import { BlockType, type MineCell, type MineCellContent, type Rarity } from '../
 import { type Biome, DEFAULT_BIOME } from '../../data/biomes'
 import { LANDMARK_LAYERS, LANDMARK_TEMPLATES, getLandmarkIdForLayer, type LandmarkTemplate } from '../../data/landmarks'
 import { BIOME_STRUCTURAL_FEATURES, STRUCTURAL_FEATURE_CONFIGS, type StructuralFeatureId } from '../../data/biomeStructures'
+import { getFragmentsForLayer } from '../../data/recipeFragments'
 
 /**
  * Creates a deterministic pseudo-random number generator from a numeric seed.
@@ -411,6 +412,88 @@ export function generateMine(
   // Place SendUpStation only on non-final layers (in the middle third of the mine).
   if (layer < BALANCE.MAX_LAYERS - 1) {
     placeSendUpStation(grid, rng, width, height, spawnX, spawnY)
+  }
+
+  // ---- Phase 35.1: Quiz gate scatter pass ----
+  // Replace solid blocks below 15% depth with quiz gates at ~0.5% density.
+  const minGateDepth = Math.floor(height * BALANCE.QUIZ_GATE_MIN_DEPTH_PERCENT)
+  for (let y = minGateDepth; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const cell = grid[y][x]
+      if (
+        cell.type !== BlockType.Stone &&
+        cell.type !== BlockType.SoftRock &&
+        cell.type !== BlockType.Dirt
+      ) continue
+      if (rng() < BALANCE.QUIZ_GATE_DENSITY) {
+        cell.type = BlockType.QuizGate
+        cell.hardness = BALANCE.HARDNESS_QUIZ_GATE
+        cell.maxHardness = BALANCE.HARDNESS_QUIZ_GATE
+      }
+    }
+  }
+
+  // ---- Phase 35.3: Offering altar on landmark layers ----
+  const isLandmarkLayer = [5, 10, 15, 20].includes(oneIndexedLayer)
+  if (isLandmarkLayer) {
+    const altarY = Math.floor(height * 0.6) + Math.floor(rng() * Math.floor(height * 0.25))
+    const altarX = Math.floor(width * 0.2) + Math.floor(rng() * Math.floor(width * 0.6))
+    if (altarY < height && altarX < width) {
+      grid[altarY][altarX] = {
+        type: BlockType.OfferingAltar,
+        hardness: 0,
+        maxHardness: 0,
+        revealed: false,
+        altarUsed: false,
+      }
+    }
+  }
+
+  // ---- Phase 35.5: Recipe fragment nodes ----
+  // At most one fragment node per layer; only on layers where eligible recipes exist.
+  const eligibleRecipes = getFragmentsForLayer(oneIndexedLayer)
+  if (eligibleRecipes.length > 0) {
+    const fragMinDepth = Math.floor(height * 0.5)
+    let fragPlaced = 0
+    for (let y = fragMinDepth; y < height && fragPlaced < 1; y++) {
+      for (let x = 0; x < width && fragPlaced < 1; x++) {
+        const cell = grid[y][x]
+        if (cell.type !== BlockType.Stone && cell.type !== BlockType.HardRock) continue
+        if (rng() < BALANCE.FRAGMENT_NODE_DENSITY) {
+          const recipe = eligibleRecipes[Math.floor(rng() * eligibleRecipes.length)]
+          cell.type = BlockType.RecipeFragmentNode
+          cell.hardness = BALANCE.HARDNESS_RECIPE_FRAGMENT
+          cell.maxHardness = BALANCE.HARDNESS_RECIPE_FRAGMENT
+          cell.fragmentId = recipe.id
+          fragPlaced++
+        }
+      }
+    }
+  }
+
+  // ---- Phase 35.6: Conditionally breakable locked blocks ----
+  // Replace hard rock / stone in the bottom 55% with locked blocks at ~1.2% density.
+  const lockedMinDepth = Math.floor(height * BALANCE.LOCKED_BLOCK_MIN_DEPTH_PERCENT)
+  const lockedTierWeights = BALANCE.LOCKED_BLOCK_TIER_WEIGHTS as ReadonlyArray<{ tier: number; weight: number }>
+  const totalLockedWeight = lockedTierWeights.reduce((s, w) => s + w.weight, 0)
+  for (let y = lockedMinDepth; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const cell = grid[y][x]
+      if (cell.type !== BlockType.Stone && cell.type !== BlockType.HardRock) continue
+      if (rng() < BALANCE.LOCKED_BLOCK_DENSITY) {
+        const tierRoll = rng()
+        let cumulative = 0
+        let requiredTier = 1
+        for (const { tier, weight } of lockedTierWeights) {
+          cumulative += weight / totalLockedWeight
+          if (tierRoll <= cumulative) { requiredTier = tier; break }
+        }
+        cell.type = BlockType.LockedBlock
+        cell.hardness = BALANCE.LOCKED_BLOCK_HARDNESS
+        cell.maxHardness = BALANCE.LOCKED_BLOCK_HARDNESS
+        cell.requiredTier = requiredTier
+      }
+    }
   }
 
   flagTransitionZones(grid)
