@@ -119,3 +119,49 @@ export function calculateHourlyRates(
   }
   return rates
 }
+
+/** Full growth cycle duration in hours, keyed by crop species ID. */
+export const CROP_CYCLE_HOURS: Record<string, number> = {
+  ancient_wheat:   4,
+  lotus_fossil:    4,
+  cave_mushroom:   4,
+  ancient_rice:    8,
+  giant_fern:      8,
+  amber_orchid:    8,
+  ancient_corn:    24,
+  petrified_vine:  24,
+  star_moss:       24,
+  world_tree_seed: 48,
+}
+
+export type CropGrowthStage = 'seed' | 'sprout' | 'mature' | 'harvestable'
+
+/**
+ * Returns the current growth stage for a crop farm slot.
+ * Growth is calculated from lastCollectedAt (resets on harvest).
+ * Returns null for non-crop species.
+ */
+export function getCropGrowthStage(slot: FarmSlot, speciesId: string): CropGrowthStage | null {
+  const cycleDuration = CROP_CYCLE_HOURS[speciesId]
+  if (cycleDuration === undefined) return null
+
+  const now = Date.now()
+  const hoursSinceHarvest = (now - slot.lastCollectedAt) / (1000 * 60 * 60)
+  const cycleProgress = Math.min(hoursSinceHarvest / cycleDuration, 1)
+
+  if (cycleProgress < 0.25) return 'seed'
+  if (cycleProgress < 0.50) return 'sprout'
+  if (cycleProgress < 0.75) return 'mature'
+  return 'harvestable'
+}
+
+/**
+ * Returns the growth percentage (0-100) within the current cycle.
+ */
+export function getCropGrowthPercent(slot: FarmSlot, speciesId: string): number {
+  const cycleDuration = CROP_CYCLE_HOURS[speciesId]
+  if (cycleDuration === undefined) return 0
+  const now = Date.now()
+  const hoursSinceHarvest = (now - slot.lastCollectedAt) / (1000 * 60 * 60)
+  return Math.min((hoursSinceHarvest / cycleDuration) * 100, 100)
+}

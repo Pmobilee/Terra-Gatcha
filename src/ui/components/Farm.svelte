@@ -11,6 +11,9 @@
     calculateProduction,
     calculateHourlyRates,
     calculateTotalPending,
+    getCropGrowthStage,
+    getCropGrowthPercent,
+    CROP_CYCLE_HOURS,
     FARM_PRODUCTION,
     FARM_EXPANSION_COSTS,
     FARM_MAX_SLOTS,
@@ -37,6 +40,16 @@
     )
     return FOSSIL_SPECIES.filter(
       sp => !sp.isCrop && fossilsRecord[sp.id]?.revived && !placedIds.has(sp.id),
+    )
+  })
+
+  /** Revived CROP species not yet placed on farm. */
+  const availableCrops = $derived.by(() => {
+    const placedIds = new Set(
+      farm.slots.filter((s): s is FarmSlot => s !== null).map(s => s.speciesId),
+    )
+    return FOSSIL_SPECIES.filter(
+      sp => sp.isCrop === true && fossilsRecord[sp.id]?.revived && !placedIds.has(sp.id),
     )
   })
 
@@ -75,6 +88,9 @@
   /** Index of the empty slot that is showing the "place companion" dropdown (-1 = none). */
   let placingInSlot = $state(-1)
 
+  /** Index of the empty slot showing the "plant crop" picker (-1 = none). */
+  let plantingInSlot = $state(-1)
+
   // ---- Handlers ----
 
   function handleBack(): void {
@@ -104,6 +120,48 @@
     playerSave.set(updatedSave)
   }
 
+  function isCropSpecies(speciesId: string): boolean {
+    return FOSSIL_SPECIES.find(s => s.id === speciesId)?.isCrop === true
+  }
+
+  function getGrowthStageIcon(stage: string, speciesIcon: string): string {
+    switch (stage) {
+      case 'seed': return '🌰'
+      case 'sprout': return '🌱'
+      case 'mature': return '🌿'
+      case 'harvestable': return speciesIcon
+      default: return '🌰'
+    }
+  }
+
+  function getGrowthStageLabel(stage: string): string {
+    switch (stage) {
+      case 'seed': return 'Seed'
+      case 'sprout': return 'Sprout'
+      case 'mature': return 'Mature'
+      case 'harvestable': return 'Harvestable!'
+      default: return ''
+    }
+  }
+
+  function handlePlantOpen(slotIndex: number): void {
+    audioManager.playSound('button_click')
+    plantingInSlot = slotIndex
+    placingInSlot = -1
+    confirmRemoveIndex = -1
+  }
+
+  function handlePlantCrop(speciesId: string): void {
+    const save = $playerSave
+    if (!save) return
+    audioManager.playSound('button_click')
+    const { success, updatedSave } = placeFarmAnimal(save, plantingInSlot, speciesId)
+    if (success) {
+      playerSave.set(updatedSave)
+    }
+    plantingInSlot = -1
+  }
+
   function handlePlaceOpen(slotIndex: number): void {
     audioManager.playSound('button_click')
     placingInSlot = slotIndex
@@ -125,6 +183,7 @@
     audioManager.playSound('button_click')
     confirmRemoveIndex = slotIndex
     placingInSlot = -1
+    plantingInSlot = -1
   }
 
   function handleRemoveConfirm(): void {
@@ -249,46 +308,107 @@
       >
         {#if slot && species}
           <!-- Occupied slot -->
-          <div class="slot-icon" aria-hidden="true">{species.icon}</div>
-          <div class="slot-name">{species.name}</div>
-          <div class="slot-rate">{getProductionRate(slot.speciesId)}</div>
+          {#if isCropSpecies(slot.speciesId)}
+            <!-- Crop slot with growth stages -->
+            {@const cropStage = getCropGrowthStage(slot, slot.speciesId)}
+            {@const cropPct = getCropGrowthPercent(slot, slot.speciesId)}
+            {@const stageIcon = getGrowthStageIcon(cropStage ?? 'seed', species.icon)}
 
-          {#if pending && pending.amount > 0}
-            <div class="slot-pending" aria-label="Ready to collect">
-              Ready: <span class="pending-amount">{pending.amount} {pending.tier}</span>
-            </div>
-            <button
-              class="slot-btn collect-btn"
-              type="button"
-              onclick={() => handleCollectSlot(i)}
-              aria-label="Collect {pending.amount} {pending.tier} from {species.name}"
-            >
-              Collect
-            </button>
-          {:else}
-            <div class="slot-pending dim">No resources yet</div>
-          {/if}
+            <div
+              class="slot-icon"
+              class:icon-harvestable={cropStage === 'harvestable'}
+              aria-hidden="true"
+            >{stageIcon}</div>
+            <div class="slot-name">{species.name}</div>
+            <div class="slot-stage-label stage-{cropStage ?? 'seed'}">{getGrowthStageLabel(cropStage ?? 'seed')}</div>
 
-          {#if isConfirmingRemove}
-            <div class="confirm-row" aria-label="Confirm removal">
-              <span class="confirm-text">Remove {species.name}?</span>
-              <button class="slot-btn remove-confirm-btn" type="button" onclick={handleRemoveConfirm}>
-                Yes, Remove
-              </button>
-              <button class="slot-btn cancel-btn" type="button" onclick={handleRemoveCancel}>
-                Cancel
-              </button>
+            <!-- Growth progress bar -->
+            <div class="growth-bar-bg" aria-label="Crop growth progress">
+              <div class="growth-bar-fill stage-{cropStage ?? 'seed'}" style="width: {cropPct}%"></div>
             </div>
+
+            <div class="slot-rate">{getProductionRate(slot.speciesId)}</div>
+
+            {#if pending && pending.amount > 0}
+              <div class="slot-pending" aria-label="Ready to harvest">
+                Ready: <span class="pending-amount">{pending.amount} {pending.tier}</span>
+              </div>
+              <button
+                class="slot-btn collect-btn"
+                type="button"
+                onclick={() => handleCollectSlot(i)}
+                aria-label="Harvest {pending.amount} {pending.tier} from {species.name}"
+              >
+                Harvest
+              </button>
+            {:else}
+              <div class="slot-pending dim">Growing...</div>
+            {/if}
+
+            {#if isConfirmingRemove}
+              <div class="confirm-row" aria-label="Confirm removal">
+                <span class="confirm-text">Uproot {species.name}?</span>
+                <button class="slot-btn remove-confirm-btn" type="button" onclick={handleRemoveConfirm}>
+                  Yes, Uproot
+                </button>
+                <button class="slot-btn cancel-btn" type="button" onclick={handleRemoveCancel}>
+                  Cancel
+                </button>
+              </div>
+            {:else}
+              <button
+                class="slot-remove-btn"
+                type="button"
+                onclick={() => handleRemoveRequest(i)}
+                aria-label="Uproot {species.name} from farm"
+                title="Uproot crop (uncollected resources lost)"
+              >
+                Uproot
+              </button>
+            {/if}
           {:else}
-            <button
-              class="slot-remove-btn"
-              type="button"
-              onclick={() => handleRemoveRequest(i)}
-              aria-label="Remove {species.name} from farm"
-              title="Remove from farm (uncollected resources lost)"
-            >
-              Remove
-            </button>
+            <!-- Animal companion slot (existing behavior) -->
+            <div class="slot-icon" aria-hidden="true">{species.icon}</div>
+            <div class="slot-name">{species.name}</div>
+            <div class="slot-rate">{getProductionRate(slot.speciesId)}</div>
+
+            {#if pending && pending.amount > 0}
+              <div class="slot-pending" aria-label="Ready to collect">
+                Ready: <span class="pending-amount">{pending.amount} {pending.tier}</span>
+              </div>
+              <button
+                class="slot-btn collect-btn"
+                type="button"
+                onclick={() => handleCollectSlot(i)}
+                aria-label="Collect {pending.amount} {pending.tier} from {species.name}"
+              >
+                Collect
+              </button>
+            {:else}
+              <div class="slot-pending dim">No resources yet</div>
+            {/if}
+
+            {#if isConfirmingRemove}
+              <div class="confirm-row" aria-label="Confirm removal">
+                <span class="confirm-text">Remove {species.name}?</span>
+                <button class="slot-btn remove-confirm-btn" type="button" onclick={handleRemoveConfirm}>
+                  Yes, Remove
+                </button>
+                <button class="slot-btn cancel-btn" type="button" onclick={handleRemoveCancel}>
+                  Cancel
+                </button>
+              </div>
+            {:else}
+              <button
+                class="slot-remove-btn"
+                type="button"
+                onclick={() => handleRemoveRequest(i)}
+                aria-label="Remove {species.name} from farm"
+                title="Remove from farm (uncollected resources lost)"
+              >
+                Remove
+              </button>
+            {/if}
           {/if}
 
         {:else}
@@ -324,7 +444,35 @@
                 Cancel
               </button>
             </div>
+          {:else if plantingInSlot === i}
+            <!-- Crop picker -->
+            <div class="companion-picker" aria-label="Choose a crop to plant">
+              {#if availableCrops.length === 0}
+                <span class="no-companions">No revived crops available</span>
+              {:else}
+                {#each availableCrops as sp}
+                  <button
+                    class="companion-option"
+                    type="button"
+                    onclick={() => handlePlantCrop(sp.id)}
+                    aria-label="Plant {sp.name}"
+                  >
+                    <span class="companion-opt-icon">{sp.icon}</span>
+                    <span class="companion-opt-name">{sp.name}</span>
+                    <span class="companion-opt-rate">{getProductionRate(sp.id)}</span>
+                  </button>
+                {/each}
+              {/if}
+              <button
+                class="slot-btn cancel-btn"
+                type="button"
+                onclick={() => { plantingInSlot = -1 }}
+              >
+                Cancel
+              </button>
+            </div>
           {:else}
+            <!-- Default empty state: two buttons -->
             <button
               class="slot-btn place-btn"
               type="button"
@@ -333,6 +481,15 @@
               aria-label={availableCompanions.length === 0 ? 'No companions available' : 'Place a companion'}
             >
               {availableCompanions.length === 0 ? 'No companions' : 'Place Companion'}
+            </button>
+            <button
+              class="slot-btn plant-btn"
+              type="button"
+              onclick={() => handlePlantOpen(i)}
+              disabled={availableCrops.length === 0}
+              aria-label={availableCrops.length === 0 ? 'No crops available' : 'Plant a crop'}
+            >
+              {availableCrops.length === 0 ? 'No crops' : 'Plant Crop'}
             </button>
           {/if}
         {/if}
@@ -839,5 +996,53 @@
     .slots-grid {
       grid-template-columns: 1fr;
     }
+  }
+
+  /* ─── Growth stages (Phase 16.3) ─── */
+  .growth-bar-bg {
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 2px 0;
+  }
+
+  .growth-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.5s ease;
+  }
+
+  .growth-bar-fill.stage-seed     { background: #a0522d; }
+  .growth-bar-fill.stage-sprout   { background: #7ec850; }
+  .growth-bar-fill.stage-mature   { background: #3cb371; }
+  .growth-bar-fill.stage-harvestable { background: #ffd700; }
+
+  .slot-stage-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .stage-seed        { color: #a0522d; }
+  .stage-sprout      { color: #7ec850; }
+  .stage-mature      { color: #3cb371; }
+  .stage-harvestable { color: #ffd700; }
+
+  .icon-harvestable {
+    animation: crop-pulse 1.4s ease-in-out infinite;
+  }
+
+  @keyframes crop-pulse {
+    0%   { filter: drop-shadow(0 0 4px #ffd700aa); }
+    50%  { filter: drop-shadow(0 0 10px #ffd700ff); }
+    100% { filter: drop-shadow(0 0 4px #ffd700aa); }
+  }
+
+  .plant-btn {
+    background: color-mix(in srgb, #3cb371 50%, var(--color-surface) 50%);
+    color: var(--color-text);
   }
 </style>
