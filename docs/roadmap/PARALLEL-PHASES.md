@@ -336,7 +336,7 @@ Parallel agents burn through the budget in minutes and halt all progress.
 | 8 | W2 | **31** | Gacha & Reveal Polish | [x] |
 | 9 | W2 | **29** | Character Animation | [x] |
 | 10 | W2 | **33** | Biome Visual Diversity | [x] |
-| 11 | W2 | **37** | Advanced Pet System | [ ] |
+| 11 | W2 | **37** | Advanced Pet System | [x] |
 | 12 | W3 | **41** | Analytics & Experiments | [ ] |
 | 13 | W3 | **45** | Kid Mode & Parental Controls | [ ] |
 | 14 | W3 | **34** | Pixel Art Per Fact | [ ] |

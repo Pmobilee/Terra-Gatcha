@@ -111,6 +111,8 @@ export interface HubSaveState {
   activeWallpapers: Record<string, string | null>
   floorTiers: Record<string, FloorUpgradeTier>
   lastBriefingDate: string | null
+  /** Whether the player has completed their first full dome tour. Used to trigger Dust Cat unlock. */
+  firstDomeTourComplete?: boolean
 }
 
 /** Creates a 2D grid initialized to a fill value. */

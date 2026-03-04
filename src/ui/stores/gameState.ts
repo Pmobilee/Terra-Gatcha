@@ -338,3 +338,10 @@ export const descentOverlayState = singletonWritable<DescentOverlayState>('desce
   toLayer: 2,
   biomeName: null,
 })
+
+// =========================================================
+// Phase 37 — Advanced Pet System
+// =========================================================
+
+/** Active Dust Cat synergy during a dive, or null. */
+export const activeDustCatSynergy = singletonWritable<import('../../data/petPersonalities').CompanionSynergy | null>('activeDustCatSynergy', null)

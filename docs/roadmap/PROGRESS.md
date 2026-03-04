@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 33, 38, 39, 40, 47. Phase 33 (Biome Visual Diversity): BIOME_TILE_SPECS for all 25 biomes, 8-bit hero biome autotiling (blob47 for limestone_caves/basalt_maze/crystal_geode/obsidian_rift/void_pocket), FogPalette per-biome fog colors (hidden/ring1/ring2), DepthGradientSystem (viewport darkening 0→0.30 alpha over 20 layers), biome transition zone flagging (top/bottom 3 rows), tile atlas optimization infrastructure (5 per-tier atlases), 1130 placeholder tile sprites generated. Next: Phase 37 (Advanced Pet System).
+Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 33, 37, 38, 39, 40, 47. Phase 37 (Advanced Pet System): Dust Cat permanent companion with mine follower and dome wanderer logic, 10 personality traits (petTraits.ts), feeding/grooming mini-game Svelte components (PetFeedGame, PetGroomGame, DustCatHappinessMeter, DustCatWardrobe), happiness decay model with trait modifiers, 10 Dust Cat synergy entries in petPersonalities.ts, legendary stage 3 evolution for all 5 fossil companions, companion stat bonuses (getDustCatBonuses), placeholder sprites for 9 Dust Cat animations + 5 legendary companion sprites, activeDustCatSynergy store. Next: Phase 35 (Mine Mechanics Completion) or Phase 36 (Combat System).
 
 ---
 
@@ -100,7 +100,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 ### Gameplay Expansion (Phases 35-37)
 - [ ] **Phase 35: Mine Mechanics Completion** — Quiz gates, quiz streak multipliers, offering altars, layer instability meter, recipe fragments, conditionally breakable blocks → [`phases/PHASE-35-MINE-MECHANICS-COMPLETION.md`](phases/PHASE-35-MINE-MECHANICS-COMPLETION.md)
 - [ ] **Phase 36: Combat System** — Boss encounters at L5/L10/L15/L20, creature spawning, quiz gauntlets, combat rewards, "The Deep" secret biome → [`phases/PHASE-36-COMBAT-SYSTEM.md`](phases/PHASE-36-COMBAT-SYSTEM.md)
-- [ ] **Phase 37: Advanced Pet System** — Dust Cat permanent pet, feeding/grooming mini-games, personality traits, companion synergies, legendary evolution → [`phases/PHASE-37-ADVANCED-PET-SYSTEM.md`](phases/PHASE-37-ADVANCED-PET-SYSTEM.md)
+- [x] **Phase 37: Advanced Pet System** — Dust Cat permanent pet, feeding/grooming mini-games, personality traits, companion synergies, legendary evolution → [`completed/PHASE-37-ADVANCED-PET-SYSTEM.md`](completed/PHASE-37-ADVANCED-PET-SYSTEM.md)
 
 ### Platform & International (Phases 38-40)
 - [x] **Phase 38: iOS App Store Launch** — Apple Developer setup, TestFlight, App Store submission, iOS-specific optimizations, review guidelines → [`completed/PHASE-38-IOS-LAUNCH.md`](completed/PHASE-38-IOS-LAUNCH.md)
