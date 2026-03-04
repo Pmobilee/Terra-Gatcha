@@ -272,13 +272,14 @@
     currentScreen.set('onboarding')
   }
 
-  function handleGaiaIntroComplete(interests: string[], weights: Record<string, number>): void {
+  function handleGaiaIntroComplete(interests: string[], weights: Record<string, number>, targetLanguage: string | null): void {
     playerSave.update(s => {
       if (!s) return s
-      return { ...s, selectedInterests: interests, interestWeights: weights }
+      return { ...s, selectedInterests: interests, interestWeights: weights, targetLanguage, tutorialComplete: true }
     })
     import('./ui/stores/playerData').then(m => m.persistPlayer())
-    currentScreen.set('ageSelection')
+    // Skip AgeSelection — age bracket was already captured by AgeGate (legal compliance step).
+    currentScreen.set('mainMenu')
   }
 
   function handleAgeSelected(ageRating: import('./data/types').AgeRating): void {
@@ -458,11 +459,7 @@
   // Quiz actions
   function handleQuizAnswer(correct: boolean): void {
     const gm = getGM()
-    console.warn('[App] handleQuizAnswer called, correct:', correct, 'quizMode:', quizMode, 'gm:', gm ? 'exists' : 'NULL')
-    if (!gm) {
-      console.error('[App] getGM() returned null! Quiz answer will be silently dropped.')
-      return
-    }
+    if (!gm) return
     if (quizMode === 'gate') {
       gm.handleQuizAnswer(correct)
     } else if (quizMode === 'oxygen') {
@@ -476,7 +473,6 @@
     } else {
       gm.handleStudyAnswer(correct)
     }
-    console.warn('[App] handleQuizAnswer complete')
   }
 
   function handleQuizClose(): void {

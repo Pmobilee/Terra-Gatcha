@@ -222,8 +222,9 @@ export class MineScene extends Phaser.Scene {
     // Skip if already loaded (layer transitions reuse cached textures)
     if (this.textures.exists('tile_dirt')) return
 
-    const width = this.cameras.main.width
-    const height = this.cameras.main.height
+    const cam = this.cameras.main
+    const width = cam?.width ?? 800
+    const height = cam?.height ?? 600
 
     const progressBox = this.add.graphics()
     progressBox.fillStyle(0x16213e, 0.8)
@@ -816,12 +817,14 @@ export class MineScene extends Phaser.Scene {
   }
 
   private drawTiles(): void {
+    const camera = this.cameras.main
+    if (!camera || !camera.worldView) return  // guard: camera not ready (scene transition)
+
     this.itemSpritePoolIndex = 0
     this.itemSpritePool.forEach(s => s.setVisible(false))
     this.tileGraphics.clear()
     this.overlayGraphics.clear()
 
-    const camera = this.cameras.main
     const viewWidth = camera.worldView.width > 0 ? camera.worldView.width : camera.width
     const viewHeight = camera.worldView.height > 0 ? camera.worldView.height : camera.height
     const viewX = camera.worldView.width > 0 ? camera.worldView.x : camera.scrollX
@@ -1159,6 +1162,7 @@ export class MineScene extends Phaser.Scene {
     }
 
     const camera = this.cameras.main
+    if (!camera) return  // guard: camera not ready (scene transition)
     const worldX = pointer.x + camera.scrollX
     const worldY = pointer.y + camera.scrollY
     const targetX = Math.floor(worldX / TILE_SIZE)

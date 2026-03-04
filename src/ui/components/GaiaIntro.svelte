@@ -1,11 +1,11 @@
 <script lang="ts">
   interface Props {
-    onComplete: (interests: string[], weights: Record<string, number>) => void
+    onComplete: (interests: string[], weights: Record<string, number>, targetLanguage: string | null) => void
   }
 
   const { onComplete }: Props = $props()
 
-  type Phase = 'talking' | 'selecting' | 'reacting'
+  type Phase = 'talking' | 'selecting' | 'reacting' | 'languagePrompt' | 'languagePicker'
 
   const LINES = [
     "Oh! You survived! I was running crash-recovery diagnostics for seventeen minutes. That's a new record. For surviving, I mean — not for worrying.",
@@ -33,10 +33,16 @@
     Generalist: "A generalist! My favorite kind. The people who know a little about everything are always the most dangerous in a crisis. This qualifies as a crisis.",
   }
 
+  /** Available languages. Extensible for future additions. */
+  const AVAILABLE_LANGUAGES: { code: string; label: string; nativeLabel: string }[] = [
+    { code: 'ja', label: 'Japanese', nativeLabel: '日本語' },
+  ]
+
   let phase = $state<Phase>('talking')
   let visibleLines = $state(0)
   let selected = $state<string[]>([])
   let reactionStep = $state(0)
+  let targetLanguage = $state<string | null>(null)
 
   // Auto-advance talking lines
   $effect(() => {
@@ -76,14 +82,27 @@
     reactionStep = 0
     // Auto-advance reaction steps
     setTimeout(() => { reactionStep = 1 }, 4000)
-    setTimeout(() => { finalize() }, 7000)
+    setTimeout(() => { afterReaction() }, 7000)
   }
 
   function handleSkip() {
-    onComplete(['Generalist'], {})
+    onComplete(['Generalist'], {}, null)
   }
 
-  function finalize() {
+  /** Called after the reaction phase completes — decide whether to show language prompt. */
+  function afterReaction() {
+    const hasLinguist = selected.includes('Linguist')
+    if (hasLinguist) {
+      // Linguist selected: go straight to language picker
+      phase = 'languagePicker'
+    } else {
+      // No Linguist: ask if they want to learn a language
+      phase = 'languagePrompt'
+    }
+  }
+
+  /** Build interest weights from selections and call onComplete. */
+  function finalize(lang: string | null) {
     const weights: Record<string, number> = {}
     if (!selected.includes('Generalist')) {
       for (const s of selected) {
@@ -95,13 +114,28 @@
         }
       }
     }
-    onComplete([...selected], weights)
+    // Language facts always weighted if a language is selected
+    if (lang) {
+      weights['Language'] = Math.max(weights['Language'] ?? 0, 1.5)
+    }
+    onComplete([...selected], weights, lang)
   }
 
   function advanceTalking() {
     if (phase === 'talking' && visibleLines < LINES.length) {
       visibleLines = Math.min(visibleLines + 1, LINES.length)
     }
+  }
+
+  /** Called when a language is selected from the picker. */
+  function handleLanguageSelect(code: string) {
+    targetLanguage = code
+    finalize(code)
+  }
+
+  /** Called when the player declines language learning from the prompt. */
+  function handleDeclineLanguage() {
+    finalize(null)
   }
 
   const firstSelected = $derived(selected[0] ?? 'Generalist')
@@ -155,6 +189,33 @@
           <p>Perfect. I'll prioritize those areas in my artifact analysis. Now — there's a pickaxe in the emergency kit. Let's see what's buried under this crash site.</p>
         </div>
       {/if}
+
+    {:else if phase === 'languagePrompt'}
+      <div class="speech-bubble">
+        <p>One more thing — I also have vocabulary records for several Earth languages. Would you like to practice a language while you mine?</p>
+      </div>
+      <div class="language-prompt-buttons">
+        <button class="lang-yes-btn" onclick={() => { phase = 'languagePicker' }}>
+          Yes, teach me a language!
+        </button>
+        <button class="lang-no-btn" onclick={handleDeclineLanguage}>
+          Not right now
+        </button>
+      </div>
+
+    {:else if phase === 'languagePicker'}
+      <div class="speech-bubble">
+        <p>Which language? I'll mix vocabulary facts into your dives. You can change this later in Settings.</p>
+      </div>
+      <div class="language-grid">
+        {#each AVAILABLE_LANGUAGES as lang}
+          <button class="language-btn" onclick={() => handleLanguageSelect(lang.code)}>
+            <span class="lang-native">{lang.nativeLabel}</span>
+            <span class="lang-english">{lang.label}</span>
+          </button>
+        {/each}
+      </div>
+      <button class="lang-no-btn" onclick={handleDeclineLanguage}>Skip for now</button>
     {/if}
   </div>
 </div>
@@ -306,6 +367,91 @@
 
   .continue-btn:active {
     transform: scale(0.96);
+  }
+
+  /* Language prompt */
+  .language-prompt-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .lang-yes-btn {
+    background: linear-gradient(135deg, #0af, #08f);
+    border: none;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 0.9rem;
+    min-height: 48px;
+    transition: transform 0.1s;
+  }
+
+  .lang-yes-btn:active {
+    transform: scale(0.96);
+  }
+
+  .lang-no-btn {
+    background: transparent;
+    border: 1px solid #444;
+    color: #888;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 0.85rem;
+    min-height: 44px;
+    align-self: flex-start;
+    transition: border-color 0.15s;
+  }
+
+  .lang-no-btn:hover {
+    border-color: #888;
+    color: #ccc;
+  }
+
+  /* Language picker */
+  .language-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+  }
+
+  .language-btn {
+    background: rgba(40, 40, 80, 0.9);
+    border: 2px solid rgba(0, 200, 255, 0.3);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    min-width: 120px;
+    min-height: 72px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .language-btn:hover {
+    border-color: #0ff;
+    background: rgba(0, 200, 255, 0.12);
+  }
+
+  .lang-native {
+    color: #0ff;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  .lang-english {
+    color: #aaa;
+    font-family: monospace;
+    font-size: 0.75rem;
   }
 
   @keyframes fadeIn {

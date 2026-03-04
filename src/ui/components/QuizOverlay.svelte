@@ -53,24 +53,26 @@
   let attemptsRemaining = $state<number>(totalAttempts)
   let showResult = $state<boolean>(false)
   let showReportModal = $state(false)
+  /** True when a wrong answer result is being displayed, waiting for the player to tap "Got it". */
+  let waitingForTap = $state<boolean>(false)
 
   const CORRECT_PHRASES = ["That's it!", "Nailed it!", "Locked in!"] as const
   const WRONG_PHRASES = ["Not quite!", "Hmm, let me remind you..."] as const
 
-  const resultText = $derived(() => {
+  const resultText = $derived.by(() => {
     if (!showResult || isCorrect === null) return ''
     if (isCorrect) return CORRECT_PHRASES[Math.floor(Math.random() * CORRECT_PHRASES.length)]
     if (mode === 'layer') return `Not quite! -${BALANCE.LAYER_ENTRANCE_WRONG_O2_COST} O2`
     return WRONG_PHRASES[Math.floor(Math.random() * WRONG_PHRASES.length)]
   })
 
-  const resultClass = $derived(() => {
+  const resultClass = $derived.by(() => {
     if (!showResult || isCorrect === null) return ''
     return isCorrect ? 'result-correct' : 'result-wrong'
   })
 
   /** CSS class applied to the quiz card for outcome animation */
-  const cardOutcomeClass = $derived(() => {
+  const cardOutcomeClass = $derived.by(() => {
     if (!showResult || isCorrect === null) return ''
     return isCorrect ? 'correct-animation' : 'wrong-animation'
   })
@@ -116,6 +118,7 @@
     isCorrect = null
     showResult = false
     attemptsRemaining = totalAttempts
+    waitingForTap = false
   })
 
   /** Expression id for the GAIA reaction bubble after answering */
@@ -147,14 +150,24 @@
       attemptsRemaining = Math.max(0, attemptsRemaining - 1)
     }
 
-    await new Promise<void>((resolve) => {
-      setTimeout(resolve, 1000)
-    })
-
     if (isCorrect) {
+      // Correct answer: auto-dismiss after 1s
+      await new Promise<void>((resolve) => {
+        setTimeout(resolve, 1000)
+      })
       onAnswer(true)
       return
     }
+
+    // Wrong answer: wait for explicit player tap (set waitingForTap, do NOT auto-dismiss)
+    waitingForTap = true
+    // The "Got it" button in the template will call handleWrongAnswerTap() to continue
+  }
+
+  /** Called when the player taps "Got it" after a wrong answer. */
+  function handleWrongAnswerTap(): void {
+    if (!waitingForTap) return
+    waitingForTap = false
 
     if (mode === 'gate' && attemptsRemaining === 0) {
       onAnswer(false)
@@ -166,6 +179,7 @@
       return
     }
 
+    // Gate mode with attempts remaining: reset for another try
     selectedAnswer = null
     isCorrect = null
     showResult = false
@@ -203,7 +217,7 @@
 </script>
 
 <div class="quiz-overlay quiz-overlay-enter" class:high-contrast-quiz={$highContrastQuiz} role="dialog" aria-modal="true" aria-label="Quiz Question">
-  <div class={`quiz-card quiz-card-enter ${cardOutcomeClass()}`}>
+  <div class={`quiz-card quiz-card-enter ${cardOutcomeClass}`}>
     <button class="close-button" type="button" onclick={onClose} aria-label="Close field scan">
       x
     </button>
@@ -291,6 +305,12 @@
           Didn't get it
         </button>
       </div>
+    {/if}
+
+    {#if waitingForTap}
+      <button class="got-it-btn" type="button" onclick={handleWrongAnswerTap}>
+        Got it — Continue
+      </button>
     {/if}
 
     {#if showResult && isCorrect === false}
@@ -727,5 +747,33 @@
   .report-fact-btn:hover {
     opacity: 1;
     color: var(--color-text);
+  }
+
+  /** Tap-to-continue button shown after a wrong answer */
+  .got-it-btn {
+    align-self: center;
+    margin-top: 0.5rem;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, #c85c5c, #a04040);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: monospace;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    min-height: 48px;
+    min-width: 160px;
+    letter-spacing: 0.02em;
+    transition: transform 0.1s, filter 0.1s;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .got-it-btn:hover {
+    filter: brightness(1.15);
+  }
+
+  .got-it-btn:active {
+    transform: scale(0.97);
   }
 </style>

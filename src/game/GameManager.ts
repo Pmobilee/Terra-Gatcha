@@ -104,6 +104,8 @@ export class GameManager {
   private fossilRng: () => number = Math.random
   /** Companion effect active for the current dive (null if no companion equipped). */
   private companionEffect: CompanionEffect | null = null
+  /** Count of new (previously unseen) facts shown in the current dive session. Reset per dive. (FIX-9) */
+  private newFactsThisDive = 0
   /** Whether O2 drain is paused (during quiz overlays). (DD-V2-085) */
   private o2Paused = false
   /** Number of completed dives at the start of this session — used to detect zero-dive sessions. */
@@ -838,6 +840,41 @@ export class GameManager {
    */
   private getInterestWeightedFact(): Fact | null {
     const ps = get(playerSave)
+
+    // FIX-9: Use paced fact selection to avoid overwhelming the player with new facts.
+    // Prioritises review-due facts, then previously unlocked facts, then new introductions
+    // (capped at maxNewPerDive per dive).
+    if (ps) {
+      const interestWeights: Record<string, number> = ps.interestWeights ?? {}
+      // Also fold in interest-config category weights
+      const interestConfig: InterestConfig | undefined = ps.interestConfig
+      if (interestConfig) {
+        for (const cat of interestConfig.categories) {
+          if (cat.weight > 0) {
+            interestWeights[cat.category] = Math.max(interestWeights[cat.category] ?? 0, cat.weight)
+          }
+        }
+      }
+
+      const fact = factsDB.getPacedFact({
+        learnedFacts: ps.learnedFacts,
+        reviewStates: ps.reviewStates,
+        unlockedFactIds: ps.unlockedFactIds,
+        newFactsThisDive: this.newFactsThisDive,
+        interestWeights,
+      })
+
+      if (fact) {
+        // Track if this is a new fact for pacing purposes
+        const isNew = !ps.learnedFacts.includes(fact.id) && !(ps.unlockedFactIds ?? []).includes(fact.id)
+        if (isNew) {
+          this.newFactsThisDive++
+        }
+        return fact
+      }
+    }
+
+    // Fallback: legacy interest-weighted selection
     const interestConfig: InterestConfig | undefined = ps?.interestConfig
     if (!interestConfig || !interestConfig.categories.some(c => c.weight > 0)) {
       return factsDB.getRandomOne()
@@ -1029,6 +1066,7 @@ export class GameManager {
     this.bankedMinerals = {}
     this.inventoryManager.sentUpItems = []
     this.fossilRng = seededRandom(this.diveSeed ^ 0xf055111)
+    this.newFactsThisDive = 0  // reset new-fact counter for pacing (FIX-9)
     currentLayerStore.set(0)
 
     // Generate a shuffled biome sequence for the entire run, seeded by the dive seed.

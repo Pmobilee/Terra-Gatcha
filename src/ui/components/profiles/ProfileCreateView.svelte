@@ -1,6 +1,7 @@
 <script lang="ts">
   import { profileService, ProfileService } from '../../../services/profileService'
   import type { PlayerProfile } from '../../../data/profileTypes'
+  import { AGE_BRACKET_KEY } from '../../../services/legalConstants'
 
   interface Props {
     onCreated: (profile: PlayerProfile) => void
@@ -13,11 +14,21 @@
 
   let name = $state('')
   let selectedAvatar = $state(avatarOptions[0] ?? '⛏')
-  let ageBracket = $state<'under_13' | 'teen' | 'adult'>('teen')
   let errorMsg = $state<string | null>(null)
 
   const nameIsValid = $derived(name.trim().length > 0 && name.trim().length <= 20)
   const canSubmit = $derived(nameIsValid && selectedAvatar.length > 0)
+
+  /**
+   * Reads the age bracket stored by the AgeGate (legal compliance step).
+   * Falls back to 'teen' if not set (safe default for existing users).
+   */
+  function getStoredAgeBracket(): 'under_13' | 'teen' | 'adult' {
+    if (typeof localStorage === 'undefined') return 'teen'
+    const val = localStorage.getItem(AGE_BRACKET_KEY)
+    if (val === 'under_13' || val === 'teen' || val === 'adult') return val
+    return 'teen'
+  }
 
   function handleSubmit(): void {
     if (!canSubmit) return
@@ -25,7 +36,7 @@
     try {
       const profile = profileService.createProfile({
         name: name.trim(),
-        ageBracket,
+        ageBracket: getStoredAgeBracket(),
         avatarKey: selectedAvatar,
         interests: [],
       })
@@ -34,12 +45,6 @@
       errorMsg = err instanceof Error ? err.message : 'Failed to create profile.'
     }
   }
-
-  const AGE_BRACKETS: { value: 'under_13' | 'teen' | 'adult'; label: string }[] = [
-    { value: 'under_13', label: 'Under 13' },
-    { value: 'teen', label: '13–17' },
-    { value: 'adult', label: '18+' },
-  ]
 </script>
 
 <div class="profile-create-view">
@@ -84,24 +89,6 @@
       <span class="char-count" class:warn={name.length > 16}>
         {name.length}/20
       </span>
-    </div>
-
-    <!-- Age bracket -->
-    <div class="field">
-      <p class="field-label" id="age-label">Your age group</p>
-      <div class="age-group" role="group" aria-labelledby="age-label">
-        {#each AGE_BRACKETS as bracket}
-          <button
-            class="age-btn"
-            class:selected={ageBracket === bracket.value}
-            type="button"
-            onclick={() => { ageBracket = bracket.value }}
-            aria-pressed={ageBracket === bracket.value}
-          >
-            {bracket.label}
-          </button>
-        {/each}
-      </div>
     </div>
 
     {#if errorMsg}
@@ -245,38 +232,6 @@
 
   .char-count.warn {
     color: #ffd369;
-  }
-
-  /* Age bracket */
-  .age-group {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .age-btn {
-    flex: 1;
-    padding: 0.65rem 0.5rem;
-    border-radius: 10px;
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.04);
-    color: #aaa;
-    font-family: inherit;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    letter-spacing: 0.5px;
-    transition: border-color 120ms ease, background 120ms ease, color 120ms ease;
-  }
-
-  .age-btn:hover {
-    border-color: rgba(255, 255, 255, 0.3);
-    color: #eee;
-  }
-
-  .age-btn.selected {
-    border-color: #e94560;
-    background: rgba(233, 69, 96, 0.2);
-    color: #eee;
   }
 
   /* Error */

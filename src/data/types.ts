@@ -583,6 +583,14 @@ export interface PlayerSave {
   referredBy?: string
   /** Total number of referral reward grants this player has received. */
   referralRewardsEarned?: number
+
+  // Language Learning (FIX-8)
+  /** BCP-47 language code of the target language for vocabulary facts (e.g. "ja"). null = no language selected. */
+  targetLanguage?: string | null
+  /** Unlocked fact IDs for paced discovery (FIX-9). Populated with starter set on first dive. */
+  unlockedFactIds?: string[]
+  /** Number of new facts introduced in the current dive session (reset per dive). */
+  newFactsThisDive?: number
 }
 
 /** Player statistics */

@@ -246,6 +246,99 @@ class FactsDB {
     return ids
   }
 
+  /**
+   * Paced fact selection for the mine quiz system (FIX-9).
+   *
+   * Priority order:
+   *  1. Review-due facts (SM-2 scheduled for today)
+   *  2. Previously unlocked facts not yet mastered
+   *  3. New facts — only introduced if the unmastered queue is manageable,
+   *     capped at MAX_NEW_FACTS_PER_DIVE per dive session
+   *
+   * @param opts.learnedFacts       Fact IDs the player has already encountered
+   * @param opts.reviewStates       SM-2 review states (to find due/low-mastery facts)
+   * @param opts.unlockedFactIds    Fact IDs that have been unlocked for this player
+   * @param opts.newFactsThisDive   How many new facts have already appeared this dive
+   * @param opts.interestWeights    Category weight map (for weighted new-fact selection)
+   * @param opts.maxNewPerDive      Cap on new facts per dive (default 4)
+   * @returns Selected Fact or null
+   */
+  getPacedFact(opts: {
+    learnedFacts: string[]
+    reviewStates: Array<{ factId: string; repetitions: number; nextReviewAt: number }>
+    unlockedFactIds?: string[]
+    newFactsThisDive?: number
+    interestWeights?: Record<string, number>
+    maxNewPerDive?: number
+  }): Fact | null {
+    const MAX_NEW_PER_DIVE = opts.maxNewPerDive ?? 4
+    const MAX_LOW_MASTERY_BEFORE_SLOWDOWN = 10
+    const now = Date.now()
+
+    // Identify which facts are "due" for review
+    const dueFacts = opts.reviewStates.filter(rs => rs.nextReviewAt <= now)
+
+    // If there are due review facts, prefer them
+    if (dueFacts.length > 0) {
+      const shuffled = dueFacts.sort(() => Math.random() - 0.5)
+      for (const rs of shuffled) {
+        const fact = this.getById(rs.factId)
+        if (fact) return fact
+      }
+    }
+
+    // Count low-mastery facts (repetitions <= 1 = still struggling)
+    const lowMasteryCount = opts.reviewStates.filter(rs => rs.repetitions <= 1).length
+    const newFactsThisDive = opts.newFactsThisDive ?? 0
+    const slowdownActive = lowMasteryCount > MAX_LOW_MASTERY_BEFORE_SLOWDOWN
+
+    // Try to pick from unlocked-but-not-yet-seen facts (revisit known)
+    const learnedSet = new Set(opts.learnedFacts)
+    const unlockedIds = opts.unlockedFactIds ?? []
+    const unlockedNotLearned = unlockedIds.filter(id => !learnedSet.has(id))
+    if (unlockedNotLearned.length > 0) {
+      const pick = unlockedNotLearned[Math.floor(Math.random() * unlockedNotLearned.length)]
+      const fact = this.getById(pick)
+      if (fact) return fact
+    }
+
+    // Introduce a new fact if: not slowdown mode AND under per-dive cap
+    if (!slowdownActive && newFactsThisDive < MAX_NEW_PER_DIVE) {
+      // Exclude already-learned and already-unlocked facts
+      const excludeSet = new Set([...opts.learnedFacts, ...unlockedIds])
+      const allFacts = this.getAll()
+      const candidates = allFacts.filter(f => !excludeSet.has(f.id))
+
+      if (candidates.length > 0) {
+        // Apply interest weights if provided
+        const weights = opts.interestWeights ?? {}
+        const scored = candidates.map(f => {
+          const catWeight = f.category.reduce((max, cat) => {
+            return Math.max(max, weights[cat] ?? 1.0)
+          }, 1.0)
+          return { fact: f, weight: catWeight }
+        })
+        // Weighted random pick
+        const totalWeight = scored.reduce((sum, s) => sum + s.weight, 0)
+        let r = Math.random() * totalWeight
+        for (const s of scored) {
+          r -= s.weight
+          if (r <= 0) return s.fact
+        }
+        return scored[scored.length - 1]!.fact
+      }
+    }
+
+    // Fallback: any learned fact that has a review state
+    const anyLearned = opts.learnedFacts
+    if (anyLearned.length > 0) {
+      const pick = anyLearned[Math.floor(Math.random() * anyLearned.length)]
+      return this.getById(pick)
+    }
+
+    return this.getRandomOne()
+  }
+
   // ──────────────────────────────────────────────
   // Private helpers
   // ──────────────────────────────────────────────

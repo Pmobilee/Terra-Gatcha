@@ -241,6 +241,45 @@
             Choose what topics appear in your mine
           </p>
         </div>
+
+        <div class="setting-row coming-soon-row">
+          <div class="setting-info">
+            <span class="setting-label">Language Learning</span>
+            <span class="setting-desc">Change or disable target language</span>
+          </div>
+          <span class="coming-soon-badge">Coming Soon</span>
+        </div>
+
+        <div class="setting-row coming-soon-row">
+          <div class="setting-info">
+            <span class="setting-label">Fact Learning</span>
+            <span class="setting-desc">Toggle fact quizzes on/off</span>
+          </div>
+          <span class="coming-soon-badge">Coming Soon</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NOTIFICATIONS ===== -->
+    <section class="settings-section" aria-labelledby="notif-heading">
+      <h2 id="notif-heading" class="section-heading">Notifications</h2>
+
+      <div class="settings-card">
+        <div class="setting-row coming-soon-row">
+          <div class="setting-info">
+            <span class="setting-label">Review Reminders</span>
+            <span class="setting-desc">Daily notifications when facts are due</span>
+          </div>
+          <span class="coming-soon-badge">Coming Soon</span>
+        </div>
+
+        <div class="setting-row coming-soon-row">
+          <div class="setting-info">
+            <span class="setting-label">Dive Reminders</span>
+            <span class="setting-desc">Reminder to dive each day</span>
+          </div>
+          <span class="coming-soon-badge">Coming Soon</span>
+        </div>
       </div>
     </section>
 
@@ -786,6 +825,24 @@
   }
   .interest-link-btn:hover {
     background: #2a4a3e;
+  }
+
+  /* ---- Coming Soon rows ---- */
+  .coming-soon-row {
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
+  .coming-soon-badge {
+    font-size: 0.6rem;
+    font-family: monospace;
+    background: rgba(255, 200, 80, 0.15);
+    border: 1px solid rgba(255, 200, 80, 0.4);
+    color: #f0b84c;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   /* ---- Responsive ---- */

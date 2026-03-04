@@ -205,6 +205,7 @@ export class DomeScene extends Phaser.Scene {
     if (index === this.floorIndex) return
     this.floorIndex = index
     const cam = this.cameras.main
+    if (!cam) return  // guard: camera not ready
     if (cam.width <= 0 || cam.height <= 0) return
     const zoom = Math.min(cam.width / FLOOR_CANVAS_W, cam.height / FLOOR_CANVAS_H)
     if (zoom <= 0) return
@@ -237,6 +238,7 @@ export class DomeScene extends Phaser.Scene {
   async playDiveTransition(): Promise<void> {
     const floor = this.getCurrentFloor()
     if (!floor) return
+    if (!this.cameras.main) return  // guard: camera not ready
 
     const hatch = floor.objects.find(o => o.action === 'dive')
     if (!hatch) {
@@ -385,6 +387,7 @@ export class DomeScene extends Phaser.Scene {
    */
   private centerCamera(): void {
     const cam = this.cameras.main
+    if (!cam) return  // guard: camera not ready (scene stopped or not yet created)
     // Guard: skip if canvas dimensions are not yet resolved (RESIZE mode race)
     if (cam.width <= 0 || cam.height <= 0) return
     const zoom = Math.min(cam.width / FLOOR_CANVAS_W, cam.height / FLOOR_CANVAS_H)

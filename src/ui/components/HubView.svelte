@@ -225,6 +225,11 @@
     />
   {/if}
 
+  <!-- Settings button — always visible in dome -->
+  <button class="settings-btn" type="button" onclick={() => onSettings?.()} aria-label="Open settings">
+    ⚙
+  </button>
+
   <FloorIndicator
     floors={hubStack.floors}
     {unlockedIds}
@@ -284,5 +289,30 @@
 
   .upgrade-floor-btn:hover {
     background: #6eddb8;
+  }
+
+  .settings-btn {
+    pointer-events: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: rgba(10, 10, 30, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0 0 0 6px;
+    color: #aaa;
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 41;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .settings-btn:hover {
+    color: #fff;
+    background: rgba(20, 20, 50, 0.95);
   }
 </style>
