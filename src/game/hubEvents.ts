@@ -9,6 +9,10 @@ type HubEventMap = {
   'objectTap': [objectId: string, action: string]
   'floorChanged': [index: number]
   'gaia-bubble-tap': [text: string]
+  // Phase 47: Achievement Gallery
+  'gallery-painting-tap': [paintingId: string]
+  'gallery-overview-tap': []
+  'painting-reveal-complete': [paintingId: string]
 }
 
 type Listener<K extends keyof HubEventMap> = (...args: HubEventMap[K]) => void

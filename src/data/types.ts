@@ -591,6 +591,12 @@ export interface PlayerSave {
   unlockedFactIds?: string[]
   /** Number of new facts introduced in the current dive session (reset per dive). */
   newFactsThisDive?: number
+
+  // Phase 47: Achievement Gallery
+  /** IDs of paintings the player has unlocked (achievement conditions met). */
+  unlockedPaintings?: string[]
+  /** IDs of boss entities the player has defeated (used by isPaintingUnlocked). */
+  defeatedBosses?: string[]
 }
 
 /** Player statistics */

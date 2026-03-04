@@ -11,6 +11,9 @@
   import { gameManagerStore, getGM } from '../../game/gameManagerRef'
   import { hubEvents } from '../../game/hubEvents'
   import GaiaThoughtBubble from './GaiaThoughtBubble.svelte'
+  import PaintRevealOverlay from './PaintRevealOverlay.svelte'
+  import AchievementGalleryView from './AchievementGalleryView.svelte'
+  import { pendingReveal } from '../stores/achievements'
 
   interface Props {
     onDive: () => void
@@ -131,9 +134,15 @@
       case 'studySession':        onStudy?.(); break
       case 'settings':            onSettings?.(); break
       case 'command':             onStudy?.(); break // GAIA terminal -> study for now
+      // Phase 47: Achievement Gallery
+      case 'galleryPainting':
+      case 'galleryOverview':     showGallery = true; break
       default: break
     }
   }
+
+  // Gallery panel state (Phase 47)
+  let showGallery = $state(false)
 
   // Upgrade panel state
   let showUpgradePanel = $state(false)
@@ -239,6 +248,16 @@
 
   <!-- Phase 15.2: GAIA idle thought bubbles -->
   <GaiaThoughtBubble />
+
+  <!-- Phase 47: Achievement Gallery view -->
+  {#if showGallery}
+    <AchievementGalleryView onClose={() => { showGallery = false }} />
+  {/if}
+
+  <!-- Phase 47: Paint reveal overlay -->
+  {#if $pendingReveal}
+    <PaintRevealOverlay />
+  {/if}
 </div>
 
 <style>

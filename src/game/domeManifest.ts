@@ -14,6 +14,17 @@ export const DOME_SPRITE_KEYS = [
   'obj_experiment_bench', 'obj_gaia_report', 'obj_study_alcove',
   'obj_telescope', 'obj_streak_shrine', 'obj_star_map',
   'obj_fossil_display', 'obj_fossil_tank',
+  // Phase 47: Achievement Gallery
+  'obj_gallery_frame',
+  // Painting sprites (generated in Phase 34; placeholders during Phase 47)
+  'painting_locked',
+  'painting_first_light', 'painting_deep_dive', 'painting_tree',
+  'painting_flame', 'painting_atlas', 'painting_crystal_garden',
+  'painting_relic_hunter', 'painting_scholar', 'painting_century',
+  'painting_golem', 'painting_wyrm_tame', 'painting_family',
+  'painting_sentinel', 'painting_complete_atlas', 'painting_omniscient',
+  'painting_perfect_year', 'painting_library', 'painting_home',
+  'painting_seasons',
   // knowledge tree stages
   'obj_knowledge_tree_stage0', 'obj_knowledge_tree_stage1',
   'obj_knowledge_tree_stage2', 'obj_knowledge_tree_stage3',

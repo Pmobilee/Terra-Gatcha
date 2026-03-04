@@ -1221,6 +1221,9 @@ export class GameManager {
     // Record dive stats
     recordDiveComplete(0, results.blocksMinedThisRun)
 
+    // Phase 47: Check achievements after dive completion
+    import('../services/achievementService').then(m => m.achievementService.onDiveComplete()).catch(() => {})
+
     // Phase 14: Increment diveCount and handle tutorial completion
     const currentSave = get(playerSave)
     if (currentSave) {

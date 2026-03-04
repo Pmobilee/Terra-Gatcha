@@ -291,6 +291,13 @@ export function load(): PlayerSave | null {
     if (parsedAny['tankBank'] === undefined) {
       parsedAny['tankBank'] = BALANCE.OXYGEN_MAX_BANK_FREE
     }
+    // Phase 47: Achievement Gallery migration
+    if (!Array.isArray(parsedAny['unlockedPaintings'])) {
+      parsedAny['unlockedPaintings'] = []
+    }
+    if (!Array.isArray(parsedAny['defeatedBosses'])) {
+      parsedAny['defeatedBosses'] = []
+    }
     return parsed as PlayerSave
   } catch {
     return null
@@ -362,6 +369,9 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     gracePeriodUsedAt: 0,
     weeklyChallenge: undefined,
     consumables: {},
+    // Phase 47: Achievement Gallery
+    unlockedPaintings: [],
+    defeatedBosses: [],
   }
 }
 

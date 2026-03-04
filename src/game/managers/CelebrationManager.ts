@@ -111,3 +111,15 @@ export class CelebrationManager {
     this.listeners.forEach(l => l(next))
   }
 }
+
+/**
+ * Module-level singleton for cross-module subscription (Phase 47).
+ * Provides a shared reference that achievementService can subscribe to
+ * without requiring GameManager to be initialized first.
+ *
+ * The getSave callback is intentionally a no-op stub that returns a
+ * minimal PlayerSave. The singleton is used only for its subscribe()
+ * method — notifyMastery is called by GameManager's own internal
+ * CelebrationManager instance.
+ */
+export const celebrationManager = new CelebrationManager((): PlayerSave => ({} as PlayerSave))

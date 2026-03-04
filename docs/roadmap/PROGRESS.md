@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes, Phase 32 (Content Scaling), Phase 39 (Web Platform), and Phase 40 (Internationalization). i18n framework: 7 locales (en/es/fr/de/ja/ar/he), RTL support, locale-specific formatting (Intl API), ~200 translated keys per locale, reactive locale switching, code-split locale chunks, validation CLI, fact translation export pipeline, language selector in settings. V3 Phase 47 (Achievement Gallery) is next.
+Phases 0-27 complete plus Critical Fixes and V3 Phases 32, 39, 40, 47. Achievement Gallery: 21 paintings across 4 tiers (bronze/silver/gold/platinum), event-driven unlock tracking, 6-phase reveal animation with tier-dependent timing, share card generation (OffscreenCanvas → Web Share API), gallery dome floor with painting frames, 42 placeholder sprites. V3 Phase 38 (iOS Launch) is next.
 
 ---
 
@@ -118,7 +118,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [ ] **Phase 46: Learning Effectiveness Research** — Anonymization pipeline, academic partnerships, annual reports, GAIA's Report tab, CSV export → [`phases/PHASE-46-LEARNING-EFFECTIVENESS.md`](phases/PHASE-46-LEARNING-EFFECTIVENESS.md)
 
 ### Endgame & Mastery (Phases 47-49)
-- [ ] **Phase 47: Achievement Gallery** — 7th dome room, 20 milestone paintings, achievement tracking, paint-reveal animation, share to device gallery → [`phases/PHASE-47-ACHIEVEMENT-GALLERY.md`](phases/PHASE-47-ACHIEVEMENT-GALLERY.md)
+- [x] **Phase 47: Achievement Gallery** — 7th dome room, 20 milestone paintings, achievement tracking, paint-reveal animation, share to device gallery → [`completed/PHASE-47-ACHIEVEMENT-GALLERY.md`](completed/PHASE-47-ACHIEVEMENT-GALLERY.md)
 - [ ] **Phase 48: Prestige & Endgame Systems** — Omniscient golden dome, mentor mode, post-mastery challenge mode, biome completion bonuses, GAIA peer dialogue → [`phases/PHASE-48-PRESTIGE-ENDGAME.md`](phases/PHASE-48-PRESTIGE-ENDGAME.md)
 - [ ] **Phase 49: Advanced Mine Generation** — Procedural micro-structures, biome transition zones, structural features, anomaly probability system, seed determinism → [`phases/PHASE-49-ADVANCED-MINE-GENERATION.md`](phases/PHASE-49-ADVANCED-MINE-GENERATION.md)
 

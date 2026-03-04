@@ -15,6 +15,8 @@ import { getSyncVersion, setSyncVersion } from './services/deltaSync'
 import { checkBrowserCompat, applyCompatPatches } from './services/browserCompat'
 import { perfService } from './services/perfService'
 import { initI18n } from './i18n/index'
+import { initAchievements } from './ui/stores/achievements'
+import { achievementService } from './services/achievementService'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -101,6 +103,15 @@ const app = mount(App, {
 
 // Initialize player save data
 const save = initPlayer('teen')
+
+// Phase 47: Initialize achievement gallery state from saved data
+{
+  const currentSaveForAchievements = get(playerSave)
+  if (currentSaveForAchievements) {
+    initAchievements(currentSaveForAchievements.unlockedPaintings ?? [])
+    achievementService.init()
+  }
+}
 
 // Ensure oxygen tanks are available (replenish if 0)
 playerSave.update(s => {

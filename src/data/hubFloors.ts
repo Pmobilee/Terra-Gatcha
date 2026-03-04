@@ -204,7 +204,51 @@ function makeObservatoryFloor(): HubFloor {
   }
 }
 
-/** Returns the complete hub stack with all 9 canonical floors. */
+// Floor 9: Achievement Gallery
+function makeGalleryFloor(): HubFloor {
+  const { bg, fg } = buildStandardGrids(FloorBgTile.InteriorWall, FloorFgTile.WoodPlanks)
+
+  // Thicker inner wall texture — fill rows 3-10 to create a gallery frieze
+  fillRect(bg, 1, 3, 94, 10, FloorBgTile.StoneWall)
+
+  return {
+    id: 'gallery',
+    name: 'Achievement Gallery',
+    description: "G.A.I.A.'s permanent record of your journey. Each painting marks a milestone you will never forget.",
+    theme: 'gallery',
+    stackIndex: 9,
+    bg,
+    fg,
+    objects: [
+      // Five painting frames on the left wall
+      { id: 'frame_01', spriteKey: 'obj_gallery_frame', label: 'Painting', action: 'galleryPainting', gridX: 4,  gridY: 12, gridW: 12, gridH: 14, interactive: true },
+      { id: 'frame_02', spriteKey: 'obj_gallery_frame', label: 'Painting', action: 'galleryPainting', gridX: 18, gridY: 12, gridW: 12, gridH: 14, interactive: true },
+      { id: 'frame_03', spriteKey: 'obj_gallery_frame', label: 'Painting', action: 'galleryPainting', gridX: 32, gridY: 12, gridW: 12, gridH: 14, interactive: true },
+      { id: 'frame_04', spriteKey: 'obj_gallery_frame', label: 'Painting', action: 'galleryPainting', gridX: 46, gridY: 12, gridW: 12, gridH: 14, interactive: true },
+      { id: 'frame_05', spriteKey: 'obj_gallery_frame', label: 'Painting', action: 'galleryPainting', gridX: 60, gridY: 12, gridW: 12, gridH: 14, interactive: true },
+      { id: 'frame_06', spriteKey: 'obj_gallery_frame', label: 'Painting', action: 'galleryPainting', gridX: 74, gridY: 12, gridW: 12, gridH: 14, interactive: true },
+      // Six painting frames on the lower register
+      { id: 'frame_07', spriteKey: 'obj_gallery_frame', label: 'Painting', action: 'galleryPainting', gridX: 4,  gridY: 28, gridW: 12, gridH: 14, interactive: true },
+      { id: 'frame_08', spriteKey: 'obj_gallery_frame', label: 'Painting', action: 'galleryPainting', gridX: 18, gridY: 28, gridW: 12, gridH: 14, interactive: true },
+      { id: 'frame_09', spriteKey: 'obj_gallery_frame', label: 'Painting', action: 'galleryPainting', gridX: 32, gridY: 28, gridW: 12, gridH: 14, interactive: true },
+      { id: 'frame_10', spriteKey: 'obj_gallery_frame', label: 'Painting', action: 'galleryPainting', gridX: 46, gridY: 28, gridW: 12, gridH: 14, interactive: true },
+      { id: 'frame_11', spriteKey: 'obj_gallery_frame', label: 'Painting', action: 'galleryPainting', gridX: 60, gridY: 28, gridW: 12, gridH: 14, interactive: true },
+      { id: 'frame_12', spriteKey: 'obj_gallery_frame', label: 'Painting', action: 'galleryPainting', gridX: 74, gridY: 28, gridW: 12, gridH: 14, interactive: true },
+      // Placard near entry
+      { id: 'gallery_entry', spriteKey: 'obj_achievement_wall', label: 'Gallery Overview', action: 'galleryOverview', gridX: 42, gridY: 38, gridW: 12, gridH: 7, interactive: true },
+    ],
+    unlockRequirements: {
+      divesCompleted: 50,
+      factsLearned: 250,
+      factsMastered: 50,
+      dustCost: 15000,
+      prerequisiteFloorIds: ['archive'],
+    },
+    availableWallpapers: ['wallpaper_marble', 'wallpaper_hall_of_fame', 'wallpaper_antiquity'],
+  }
+}
+
+/** Returns the complete hub stack with all 10 canonical floors. */
 export function getDefaultHubStack(): HubStack {
   return {
     floors: [
@@ -217,6 +261,7 @@ export function getDefaultHubStack(): HubStack {
       makeResearchFloor(),
       makeArchiveFloor(),
       makeObservatoryFloor(),
+      makeGalleryFloor(),  // Phase 47: floor index 9
     ],
   }
 }

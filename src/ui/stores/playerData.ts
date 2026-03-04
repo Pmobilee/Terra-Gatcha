@@ -11,6 +11,7 @@ function singletonWritable<T>(key: string, initial: T): Writable<T> {
 }
 import type { AgeRating, MineralTier, PlayerSave, ReviewState } from '../../data/types'
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'
+import { getUnlockedPaintingIds } from './achievements'
 import { AGE_BRACKET_KEY } from '../../services/legalConstants'
 import { createReviewState, isDue, getMasteryLevel, reviewFact } from '../../services/sm2'
 import type { Cosmetic } from '../../data/cosmetics'
@@ -73,6 +74,8 @@ export function persistPlayer(): void {
   const updated: PlayerSave = {
     ...current,
     lastPlayedAt: Date.now(),
+    // Phase 47: Persist unlocked paintings from the achievement store
+    unlockedPaintings: getUnlockedPaintingIds(),
   }
 
   playerSave.set(updated)

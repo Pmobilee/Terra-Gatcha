@@ -91,7 +91,7 @@ export interface HubFloor {
   id: string
   name: string
   description: string
-  theme: 'sci-fi' | 'organic' | 'crystal' | 'observatory' | 'archive' | 'market' | 'industrial'
+  theme: 'sci-fi' | 'organic' | 'crystal' | 'observatory' | 'archive' | 'market' | 'industrial' | 'gallery'
   stackIndex: number
   bg: FloorBgTile[][]
   fg: FloorFgTile[][]

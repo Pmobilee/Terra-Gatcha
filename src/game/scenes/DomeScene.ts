@@ -54,6 +54,7 @@ const THEME_AMBIENT: Record<string, AmbientConfig> = {
   'archive':     { particleColor: 0xc8b478, particleCount: 8,  glowColor: 0xc8b478, glowAlpha: 0.25 },
   'market':      { particleColor: 0xffa050, particleCount: 14, glowColor: 0xffa050, glowAlpha: 0.3 },
   'industrial':  { particleColor: 0xff6432, particleCount: 10, glowColor: 0xff6432, glowAlpha: 0.3 },
+  'gallery':     { particleColor: 0xffe8a0, particleCount: 6,  glowColor: 0xffe8a0, glowAlpha: 0.2 },
 }
 
 /** Background tile fill colors. */
