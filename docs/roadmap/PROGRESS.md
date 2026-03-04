@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-13, 18 complete. Phase 12 (Interest & Personalization) fully implemented: interest settings UI, weighted fact spawning, behavioral learning signals, category lock (Focus Crystal), tutorial interest assessment, player archetype detection, engagement scoring. V2 roadmap (Phases 14-17, 19-25) remaining.
+Phases 0-13, 16, 18 complete. Phase 12 (Interest & Personalization) fully implemented: interest settings UI, weighted fact spawning, behavioral learning signals, category lock (Focus Crystal), tutorial interest assessment, player archetype detection, engagement scoring. Phase 16 (Fossil & Farming Expansion) fully implemented: crop fossil system, knowledge-gated revival mechanics, farm planting UI, fossil discovery events. V2 roadmap (Phases 14-15, 17, 19-25) remaining.
 
 ---
 
@@ -54,7 +54,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 ### Onboarding & Personality (Phases 14-16)
 - [ ] **Phase 14: Onboarding & Tutorial** — Backstory, GAIA intro, tutorial mine, progressive unlocks, reward front-loading → [`phases/PHASE-14-ONBOARDING-TUTORIAL.md`](phases/PHASE-14-ONBOARDING-TUTORIAL.md)
 - [ ] **Phase 15: GAIA Personality 2.0** — Post-dive reactions, idle popups, pet commentary, journey memory, mastery celebrations → [`phases/PHASE-15-GAIA-PERSONALITY-V2.md`](phases/PHASE-15-GAIA-PERSONALITY-V2.md)
-- [ ] **Phase 16: Fossil & Farming Expansion** — Crop fossils, knowledge-gated revival, farm planting → [`phases/PHASE-16-FOSSIL-FARMING-EXPANSION.md`](phases/PHASE-16-FOSSIL-FARMING-EXPANSION.md)
+- [x] **Phase 16: Fossil & Farming Expansion** — Crop fossils, knowledge-gated revival, farm planting → [`completed/PHASE-16-FOSSIL-FARMING-EXPANSION.md`](completed/PHASE-16-FOSSIL-FARMING-EXPANSION.md)
 
 ### Engagement & Tooling (Phases 17-18)
 - [ ] **Phase 17: Addictiveness Pass** — Gacha animations, sound design, session flow, streaks, weekly challenges, login calendar → [`phases/PHASE-17-ADDICTIVENESS-PASS.md`](phases/PHASE-17-ADDICTIVENESS-PASS.md)
