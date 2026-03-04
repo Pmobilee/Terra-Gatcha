@@ -36,6 +36,8 @@ import { AudioManager } from '../managers/AudioManager'
 import { BiomeGlowSystem } from '../systems/BiomeGlowSystem'
 import { AnimatedTileSystem } from '../systems/AnimatedTileSystem'
 import { ALL_BIOMES } from '../../data/biomes'
+import { getSpriteUrls } from '../spriteManifest'
+import { getSpriteResolution } from '../../ui/stores/settings'
 
 const TILE_SIZE = BALANCE.TILE_SIZE
 
@@ -152,6 +154,8 @@ export class MineScene extends Phaser.Scene {
   private glowSystem: BiomeGlowSystem | null = null
   /** Phase 9: Animated tile frame cycling system. */
   private animatedTileSystem: AnimatedTileSystem | null = null
+  /** Tracks whether LINEAR texture filters have been applied after the first sprite load. */
+  private _filtersApplied = false
 
   constructor() {
     super({ key: 'MineScene' })
@@ -210,9 +214,72 @@ export class MineScene extends Phaser.Scene {
   }
 
   /**
+   * Preload mine sprites on first entry. Skips if textures are already cached
+   * (e.g. layer transitions within the same dive).
+   */
+  preload(): void {
+    // Skip if already loaded (layer transitions reuse cached textures)
+    if (this.textures.exists('tile_dirt')) return
+
+    const width = this.cameras.main.width
+    const height = this.cameras.main.height
+
+    const progressBox = this.add.graphics()
+    progressBox.fillStyle(0x16213e, 0.8)
+    progressBox.fillRect(width / 2 - 160, height / 2 - 25, 320, 50)
+
+    const progressBar = this.add.graphics()
+    const loadingText = this.add.text(width / 2, height / 2 - 50, 'Preparing mine...', {
+      fontFamily: 'Courier New',
+      fontSize: '18px',
+      color: '#e94560',
+    })
+    loadingText.setOrigin(0.5, 0.5)
+
+    this.load.on('progress', (value: number) => {
+      progressBar.clear()
+      progressBar.fillStyle(0xe94560, 1)
+      progressBar.fillRect(width / 2 - 150, height / 2 - 15, 300 * value, 30)
+    })
+
+    this.load.on('complete', () => {
+      progressBar.destroy()
+      progressBox.destroy()
+      loadingText.destroy()
+    })
+
+    const resolution = getSpriteResolution()
+    const spriteUrls = getSpriteUrls(resolution)
+    for (const [key, url] of Object.entries(spriteUrls)) {
+      if (key === 'miner_sheet') continue
+      this.load.image(key, url)
+    }
+
+    const minerSheetKey = 'miner_sheet'
+    if (spriteUrls[minerSheetKey]) {
+      this.load.spritesheet(minerSheetKey, spriteUrls[minerSheetKey], {
+        frameWidth: resolution === 'high' ? 256 : 32,
+        frameHeight: resolution === 'high' ? 256 : 32,
+      })
+    }
+  }
+
+  /**
    * Creates mine state, camera, rendering layers, and input handlers.
    */
   create(): void {
+    // Apply LINEAR filter for hi-res sprites (first mine entry only)
+    if (getSpriteResolution() === 'high' && !this._filtersApplied) {
+      const texManager = this.textures
+      for (const key of Object.keys(getSpriteUrls('high'))) {
+        const texture = texManager.get(key)
+        if (texture) {
+          texture.setFilter(Phaser.Textures.FilterMode.LINEAR)
+        }
+      }
+      this._filtersApplied = true
+    }
+
     audioManager.unlock()
 
     // Initialize or reset tick system depending on whether this is a new dive or a new layer.

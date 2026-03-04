@@ -60,21 +60,17 @@ async function bootGame(): Promise<void> {
   const gameManager = GameManager.getInstance()
   gameManager.boot()
 
-  // When Phaser finishes booting, navigate to appropriate screen
-  const game = gameManager.getGame()
-  if (game) {
-    game.events.on('boot-complete', () => {
-      const isNewPlayer = save.stats.totalDivesCompleted === 0 && save.learnedFacts.length <= 6
-      // Phase 12: Route truly new players to interest assessment first
-      const hasConfiguredInterests = save.interestConfig?.categories?.some(c => c.weight > 0) ?? false
-      if (isNewPlayer && !hasConfiguredInterests) {
-        currentScreen.set('interestAssessment')
-      } else if (isNewPlayer) {
-        currentScreen.set('mainMenu')
-      } else {
-        currentScreen.set('base')
-      }
-    })
+  // BootScene has no preload, so boot completes synchronously.
+  // Navigate to appropriate screen immediately.
+  const isNewPlayer = save.stats.totalDivesCompleted === 0 && save.learnedFacts.length <= 6
+  // Phase 12: Route truly new players to interest assessment first
+  const hasConfiguredInterests = save.interestConfig?.categories?.some(c => c.weight > 0) ?? false
+  if (isNewPlayer && !hasConfiguredInterests) {
+    currentScreen.set('interestAssessment')
+  } else if (isNewPlayer) {
+    currentScreen.set('mainMenu')
+  } else {
+    currentScreen.set('base')
   }
 
   // Wait for DB to finish loading before seeding starter facts

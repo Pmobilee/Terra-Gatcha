@@ -35,12 +35,15 @@ class FactsDB {
    */
   async init(): Promise<void> {
     if (this.initialized) return
-    const SQL = await initSqlJs({ locateFile: () => sqlWasmUrl })
-    const response = await fetch('/facts.db')
-    if (!response.ok) {
-      throw new Error(`Failed to fetch /facts.db: ${response.status} ${response.statusText}`)
-    }
-    const buffer = await response.arrayBuffer()
+    const [SQL, buffer] = await Promise.all([
+      initSqlJs({ locateFile: () => sqlWasmUrl }),
+      fetch('/facts.db').then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch /facts.db: ${response.status} ${response.statusText}`)
+        }
+        return response.arrayBuffer()
+      }),
+    ])
     this.db = new SQL.Database(new Uint8Array(buffer))
     this.initialized = true
   }

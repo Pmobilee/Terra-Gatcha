@@ -159,6 +159,9 @@ export class DomeScene extends Phaser.Scene {
     this.initAllParticles()
     this.created = true
 
+    // Defer camera centering to next frame so Phaser RESIZE has resolved actual canvas size
+    this.time.delayedCall(0, () => this.centerCamera())
+
     // Recalculate camera zoom and centering whenever the canvas is resized
     this.scale.on('resize', (gameSize: Phaser.Structs.Size) => {
       this.cameras.main.setSize(gameSize.width, gameSize.height)
@@ -201,7 +204,10 @@ export class DomeScene extends Phaser.Scene {
     if (index === this.floorIndex) return
     this.floorIndex = index
     const cam = this.cameras.main
-    const zoom = cam.zoom || 1
+    if (cam.width <= 0 || cam.height <= 0) return
+    const zoom = Math.min(cam.width / FLOOR_CANVAS_W, cam.height / FLOOR_CANVAS_H)
+    if (zoom <= 0) return
+    cam.setZoom(zoom)
     const targetY = index * FLOOR_CANVAS_H - (cam.height / zoom - FLOOR_CANVAS_H) / 2
     const targetX = -(cam.width / zoom - FLOOR_CANVAS_W) / 2
     this.tweens.add({
@@ -374,7 +380,10 @@ export class DomeScene extends Phaser.Scene {
    */
   private centerCamera(): void {
     const cam = this.cameras.main
+    // Guard: skip if canvas dimensions are not yet resolved (RESIZE mode race)
+    if (cam.width <= 0 || cam.height <= 0) return
     const zoom = Math.min(cam.width / FLOOR_CANVAS_W, cam.height / FLOOR_CANVAS_H)
+    if (zoom <= 0) return
     cam.setZoom(zoom)
     const scrollX = -(cam.width / zoom - FLOOR_CANVAS_W) / 2
     const scrollY = this.floorIndex * FLOOR_CANVAS_H - (cam.height / zoom - FLOOR_CANVAS_H) / 2
