@@ -67,6 +67,12 @@ canvas {
   z-index: 10;
 }
 
+/* By default, overlay children are interactive — components that need
+   canvas passthrough (e.g. hub-view) explicitly opt out. */
+#ui-overlay > * {
+  pointer-events: auto;
+}
+
 /* Each component manages its own pointer-events individually */
 
 /* Pixel font for all buttons (DD-V2-268) */

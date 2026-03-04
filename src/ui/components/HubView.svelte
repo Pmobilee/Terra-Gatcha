@@ -108,6 +108,28 @@
     }
   }
 
+  function handleClick(e: MouseEvent): void {
+    // If the click target is the hub-view itself (not a child button/element),
+    // forward it to the Phaser canvas so DomeScene objects can receive it.
+    const target = e.target as HTMLElement
+    if (target.closest('button') || target.closest('[data-interactive]')) return
+
+    const canvas = document.querySelector('#game-container canvas') as HTMLCanvasElement | null
+    if (!canvas) return
+
+    // Re-dispatch the click as pointer events on the canvas
+    const opts = {
+      clientX: e.clientX,
+      clientY: e.clientY,
+      screenX: e.screenX,
+      screenY: e.screenY,
+      bubbles: true,
+      cancelable: true,
+    }
+    canvas.dispatchEvent(new PointerEvent('pointerdown', { ...opts, pointerId: 1 }))
+    canvas.dispatchEvent(new PointerEvent('pointerup', { ...opts, pointerId: 1 }))
+  }
+
   function handleFloorSelect(index: number): void {
     if (index >= 0 && index < unlockedFloors.length) {
       floorIndex = index
@@ -192,11 +214,13 @@
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
 <div
   class="hub-view"
   ontouchstart={handleTouchStart}
   ontouchend={handleTouchEnd}
   onwheel={handleWheel}
+  onclick={handleClick}
 >
   <!-- Resource bar at top -->
   <div class="hub-resource-bar">
@@ -236,8 +260,8 @@
     height: 100vh;
     position: relative;
     touch-action: none;
-    /* pointer-events passthrough to the Phaser canvas for object taps */
-    pointer-events: none;
+    /* Captures clicks to forward to Phaser canvas; child buttons handle their own events */
+    pointer-events: auto;
   }
 
   .hub-resource-bar {
