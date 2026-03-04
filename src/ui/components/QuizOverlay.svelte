@@ -7,6 +7,7 @@
   import { gaiaMood, highContrastQuiz } from '../stores/settings'
   import { GAIA_EXPRESSIONS, GAIA_NAME, getGaiaExpression } from '../../data/gaiaAvatar'
   import ReportModal from './ReportModal.svelte'
+  import FactArtwork from './FactArtwork.svelte'
   import { notifySuccess, notifyError, tapLight } from '../../services/hapticService'
   import KidWowStars from './KidWowStars.svelte'
   import { getWowScore } from '../../services/wowScore'
@@ -250,6 +251,12 @@
     {#if mode === 'layer'}
       <p class="layer-entrance-header">Depth Calibration</p>
       <p class="layer-entrance-hint">Depth calibration sequence — what do you recall?</p>
+    {/if}
+
+    {#if fact?.hasPixelArt}
+      <div class="fact-art-wrapper">
+        <FactArtwork factId={fact.id} size={96} />
+      </div>
     {/if}
 
     <p class="question">{fact.quizQuestion}</p>
@@ -773,6 +780,12 @@
   .report-fact-btn:hover {
     opacity: 1;
     color: var(--color-text);
+  }
+
+  .fact-art-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 12px;
   }
 
   /** Tap-to-continue button shown after a wrong answer */

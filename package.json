@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/build-facts-db.mjs && vite",
+    "prebuild": "node scripts/audit-fact-sprites.mjs --emit-manifest",
     "build": "node scripts/audit-assets.mjs && node scripts/build-facts-db.mjs && vite build",
+    "audit:sprites": "node scripts/audit-fact-sprites.mjs",
+    "audit:sprites:ci": "node scripts/audit-fact-sprites.mjs --fail-below=80",
     "build:facts": "node scripts/build-facts-db.mjs",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",

@@ -6,6 +6,9 @@
 import Fastify, { type FastifyRequest, type FastifyReply } from "fastify";
 import cors from "@fastify/cors";
 import jwt from "@fastify/jwt";
+import fastifyStatic from "@fastify/static";
+import * as path from "path";
+import { fileURLToPath } from "url";
 import { config, validateProductionConfig } from "./config.js";
 import { initSchema } from "./db/migrate.js";
 import { initFactsSchema } from "./db/facts-migrate.js";
@@ -95,6 +98,21 @@ export async function buildApp() {
   // ── JWT ─────────────────────────────────────────────────────────────────────
   await fastify.register(jwt, {
     secret: config.jwtSecret,
+  });
+
+  // ── Static asset serving (Phase 34: fact sprites with long-lived Cache-Control) ──
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  await fastify.register(fastifyStatic, {
+    root: path.join(__dirname, "../../../src/assets"),
+    prefix: "/assets/",
+    decorateReply: false,
+    setHeaders: (res, filePath: string) => {
+      if (filePath.includes(`${path.sep}sprites${path.sep}facts${path.sep}`)) {
+        // Fact sprites are content-addressed by stable fact ID.
+        // Safe to cache for 30 days.
+        res.setHeader("Cache-Control", "public, max-age=2592000, immutable");
+      }
+    },
   });
 
   // ── Content-Type parser ─────────────────────────────────────────────────────

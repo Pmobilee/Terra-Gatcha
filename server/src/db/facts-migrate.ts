@@ -202,6 +202,13 @@ export function initFactsSchema(): void {
       ON facts_processing_queue (fact_id);
   `);
 
+  // ── Phase 34: Add pixel_art_path column ─────────────────────────────────────
+  try {
+    factsDb.exec(`ALTER TABLE facts ADD COLUMN pixel_art_path TEXT`);
+  } catch {
+    // Column already exists — safe to ignore
+  }
+
   // ── Phase 32.1: New columns on facts ────────────────────────────────────────
   const newFactColumns: Array<[string, string]> = [
     // Difficulty tier enum — coarser than difficulty (1-5); used for biome gating

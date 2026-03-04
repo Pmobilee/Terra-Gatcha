@@ -122,6 +122,10 @@ export interface Fact {
   visualDescription?: string
   hasPixelArt?: boolean
   pixelArtStatus?: PixelArtStatus
+  /** Relative path of the approved 64×64 sprite served by the asset pipeline.
+   *  Null when the sprite has not yet been generated or approved.
+   *  e.g. "/assets/sprites/facts/fact_geol_001.png" */
+  pixelArtPath?: string | null
 }
 
 // ============================================================

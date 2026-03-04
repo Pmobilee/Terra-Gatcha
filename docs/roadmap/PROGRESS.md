@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 33, 37, 38, 39, 40, 41, 45, 47. Phase 45 (Kid Mode & Parental Controls): Kid Wow Score system (1-5 stars replacing SM-2 numbers in kid mode), session time limits with hard-stop overlay and 5-minute warning banner, parent PIN gate (SHA-256 hashed, Web Crypto API), weekly learning email reports (server aggregator, cron job, in-app preview), age-based fact content filtering, social feature suppression in kid mode, kid-friendly GAIA dialogue pools, COPPA analytics event allowlist, kidModeIapGuard wrapping all IAP purchase flows, ParentalControlsPanel with time/social/email settings, kid-theme CSS class for larger touch targets and gold accents. Next: Phase 35 (Mine Mechanics Completion) or Phase 36 (Combat System).
+Phases 0-27 complete plus Critical Fixes and V3 Phases 29, 31, 32, 33, 34, 37, 38, 39, 40, 41, 45, 47. Phase 34 (Pixel Art Per Fact): ComfyUI SDXL batch pipeline (fact_prompt_generator.py calling Claude API for FactImageSpec JSON, fact_batch_generate.py for sequential generation with resumable checkpoint), 3-gate sprite QC (dimension check, transparency gate, perceptual hash dedup), greyscale-to-color mastery progression (CSS filter mapping SM-2 repetitions 0-5+ to 5 visual stages), FactArtwork.svelte component with lazy loading and golden shimmer for mastery stage 4, factSpriteManifest.ts in-memory cache, FactSpriteLoader.ts Phaser preloader, build-time audit script (audit-fact-sprites.mjs) with PNG header dimension check and CI --fail-below flag, @fastify/static serving with 30-day Cache-Control for fact sprites, Vite assetFileNames config for stable sprite URLs. Next: Phase 43 (Cooperative Dives) or Phase 30 (Mining Juice) or Phase 35 (Mine Mechanics Completion).
 
 ---
 
@@ -95,7 +95,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 ### Content Factory (Phases 32-34)
 - [x] **Phase 32: Fact Content Scaling** — 3,000+ fact pipeline, automated LLM quality gates, distractor expansion, delta sync protocol, content cadence tooling → [`completed/PHASE-32-CONTENT-SCALING.md`](completed/PHASE-32-CONTENT-SCALING.md)
 - [x] **Phase 33: Biome Visual Diversity** — 25 unique tile sprite sets, 8-bit hero biome autotiling, per-biome fog colors, depth visual gradient, transition tilesets → [`completed/PHASE-33-BIOME-VISUAL-DIVERSITY.md`](completed/PHASE-33-BIOME-VISUAL-DIVERSITY.md)
-- [ ] **Phase 34: Pixel Art Per Fact** — ComfyUI batch pipeline, greyscale-to-color mastery progression, 3-gate sprite QC, resumable generation, build-time audit → [`phases/PHASE-34-PIXEL-ART-PER-FACT.md`](phases/PHASE-34-PIXEL-ART-PER-FACT.md)
+- [x] **Phase 34: Pixel Art Per Fact** — ComfyUI batch pipeline, greyscale-to-color mastery progression, 3-gate sprite QC, resumable generation, build-time audit → [`completed/PHASE-34-PIXEL-ART-PER-FACT.md`](completed/PHASE-34-PIXEL-ART-PER-FACT.md)
 
 ### Gameplay Expansion (Phases 35-37)
 - [ ] **Phase 35: Mine Mechanics Completion** — Quiz gates, quiz streak multipliers, offering altars, layer instability meter, recipe fragments, conditionally breakable blocks → [`phases/PHASE-35-MINE-MECHANICS-COMPLETION.md`](phases/PHASE-35-MINE-MECHANICS-COMPLETION.md)

@@ -87,6 +87,15 @@ export default defineConfig({
           phaser: ['phaser'],
           'sql-wasm': ['sql.js'],
         },
+        assetFileNames: (assetInfo) => {
+          // Preserve fact sprite filenames (no content hash) so URLs are stable
+          // across builds and match the manifest IDs.
+          if (assetInfo.name && assetInfo.name.startsWith('facts/')) {
+            return 'assets/sprites/facts/[name][extname]'
+          }
+          // All other assets use content hash for cache busting
+          return 'assets/[name]-[hash][extname]'
+        },
       },
     },
   },

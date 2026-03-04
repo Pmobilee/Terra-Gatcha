@@ -59,3 +59,11 @@ coverage/
 
 # Generated facts database
 public/facts.db
+
+# Phase 34: generated fact sprites (reproduced by pipeline)
+src/assets/sprites/facts/
+src/assets/sprites-hires/facts/
+src/assets/fact-sprite-manifest.json
+sprite-gen/output/facts/
+sprite-gen/scripts/fact_gen_state.json
+docs/audit/fact-sprite-coverage.json

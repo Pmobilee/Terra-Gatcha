@@ -659,7 +659,7 @@ export async function factsRoutes(fastify: FastifyInstance): Promise<void> {
           gaia_comments, gaia_wrong_comments, category_l1, category_l2,
           rarity, difficulty, difficulty_tier, fun_score, novelty_score,
           age_rating, sensitivity_level, has_pixel_art, image_url,
-          language, db_version, status, updated_at
+          pixel_art_path, language, db_version, status, updated_at
         FROM facts
         WHERE db_version > ? AND status IN ('approved', 'archived')`;
       const params: (string | number)[] = [since];
@@ -680,7 +680,15 @@ export async function factsRoutes(fastify: FastifyInstance): Promise<void> {
         .map((f) => f.id);
 
       // Active facts only (exclude archived from the facts payload)
-      const activeFacts = facts.filter((f) => f.status === "approved");
+      const activeFacts = facts
+        .filter((f) => f.status === "approved")
+        .map((row) => ({
+          ...row,
+          // Phase 34: derive pixelArtPath from has_pixel_art flag
+          pixelArtPath: row.has_pixel_art === 1
+            ? `/assets/sprites/facts/${row.id}.png`
+            : null,
+        }));
 
       // Latest db_version in this batch
       const maxVersion =
