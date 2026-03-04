@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-11, 13, 18 complete. Phase 10 (Dome Hub Redesign) fully implemented: multi-floor hub, DomeScene Phaser migration, cutaway layout, ambient particles, 27 sprites, daily briefing, GAIA report, knowledge tree growth, transitions, thought bubbles. Phase 8 (Mine Gameplay Overhaul) and Phase 9 (Biome Expansion) complete. V2 roadmap (Phases 12, 14-17, 19-25) remaining.
+Phases 0-13, 18 complete. Phase 12 (Interest & Personalization) fully implemented: interest settings UI, weighted fact spawning, behavioral learning signals, category lock (Focus Crystal), tutorial interest assessment, player archetype detection, engagement scoring. V2 roadmap (Phases 14-17, 19-25) remaining.
 
 ---
 
@@ -48,7 +48,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 11: Fact Content Engine** — Ingestion API, LLM pipeline, dashboard, pixel art generation, schema updates → [`completed/PHASE-11-FACT-CONTENT-ENGINE.md`](completed/PHASE-11-FACT-CONTENT-ENGINE.md)
 
 ### Personalization & Learning (Phases 12-13)
-- [ ] **Phase 12: Interest & Personalization** — Interest settings, weighted spawning, behavioral learning, category lock, archetypes → [`phases/PHASE-12-INTEREST-PERSONALIZATION.md`](phases/PHASE-12-INTEREST-PERSONALIZATION.md)
+- [x] **Phase 12: Interest & Personalization** — Interest settings, weighted spawning, behavioral learning, category lock, archetypes → [`completed/PHASE-12-INTEREST-PERSONALIZATION.md`](completed/PHASE-12-INTEREST-PERSONALIZATION.md)
 - [x] **Phase 13: Knowledge Tree 2.0** — Radial tree, 3-level LOD, sub-branches, tap-to-view, mastery coloring → [`completed/PHASE-13-KNOWLEDGE-TREE-V2.md`](completed/PHASE-13-KNOWLEDGE-TREE-V2.md)
 
 ### Onboarding & Personality (Phases 14-16)
