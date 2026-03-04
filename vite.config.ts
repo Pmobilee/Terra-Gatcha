@@ -30,9 +30,44 @@ function cspInjectPlugin(): Plugin {
   }
 }
 
+function structuredDataPlugin(): Plugin {
+  return {
+    name: 'structured-data-inject',
+    transformIndexHtml(html, ctx) {
+      // Only inject in production builds
+      if (ctx.server !== undefined) return html
+      const schema = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'VideoGame',
+        'name': 'Terra Gacha',
+        'url': 'https://terragacha.com/',
+        'description': 'A spaced-repetition mining roguelite set on far-future Earth.',
+        'genre': ['Educational', 'Roguelite', 'Puzzle'],
+        'gamePlatform': ['Web', 'Android', 'iOS'],
+        'applicationCategory': 'Game',
+        'operatingSystem': 'Any',
+        'offers': {
+          '@type': 'Offer',
+          'price': '0',
+          'priceCurrency': 'USD',
+          'availability': 'https://schema.org/InStock',
+        },
+        'author': {
+          '@type': 'Organization',
+          'name': 'Terra Gacha Team',
+        },
+      })
+      return html.replace(
+        '</head>',
+        `  <script type="application/ld+json">${schema}<\/script>\n  </head>`
+      )
+    },
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [svelte(), cspInjectPlugin()],
+  plugins: [svelte(), cspInjectPlugin(), structuredDataPlugin()],
   base: process.env.VITE_ASSET_BASE_URL || '/',
   server: {
     // Mobile testing on local network

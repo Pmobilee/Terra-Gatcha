@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terra Gacha — Offline</title>
+  <style>
+    :root { --bg: #1a1a2e; --text: #eee; --accent: #4ecca3; --dim: #999; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100dvh;
+      gap: 1.5rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 { font-size: clamp(1.5rem, 5vw, 2.5rem); color: var(--accent); letter-spacing: 2px; }
+    p { color: var(--dim); font-size: 0.95rem; max-width: 34ch; line-height: 1.6; }
+    .retry {
+      margin-top: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      background: transparent;
+      color: var(--accent);
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+    .retry:hover { background: rgba(78, 204, 163, 0.15); }
+    .signal { font-size: 3rem; }
+  </style>
+</head>
+<body>
+  <div class="signal">📡</div>
+  <h1>NO SIGNAL</h1>
+  <p>GAIA can't reach the surface. Check your connection and try again — your dive progress is safe.</p>
+  <button class="retry" onclick="window.location.reload()">Retry Connection</button>
+</body>
+</html>

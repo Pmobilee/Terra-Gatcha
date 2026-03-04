@@ -1,0 +1,28 @@
+# Immutable hashed assets — JS/CSS/images with content-hash filenames
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+# facts.db — updated occasionally, short TTL
+/facts.db
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# Service worker — must always be fresh
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
+# HTML shell — short TTL, allow stale while revalidating
+/
+  Cache-Control: public, max-age=300, stale-while-revalidate=3600
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/index.html
+  Cache-Control: public, max-age=300, stale-while-revalidate=3600
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/offline.html
+  Cache-Control: public, max-age=86400

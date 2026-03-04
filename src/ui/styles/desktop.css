@@ -60,3 +60,87 @@
     background: transparent;
   }
 }
+
+/* ── Wide Desktop (1440px) ───────────────────────────────── */
+@media (min-width: 1440px) {
+  .app-layout {
+    grid-template-columns: 520px 1fr;
+  }
+
+  #phaser-canvas-container {
+    max-width: 520px;
+  }
+
+  .side-panel {
+    padding: 2rem;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 1.5rem;
+  }
+
+  .side-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid #1f2937;
+    padding-bottom: 1rem;
+  }
+
+  .side-panel-footer {
+    border-top: 1px solid #1f2937;
+    padding-top: 1rem;
+    font-size: 0.8rem;
+    color: #6b7280;
+  }
+}
+
+/* ── Mouse hover states (pointer: fine = mouse/trackpad) ─── */
+@media (pointer: fine) {
+  button:hover {
+    filter: brightness(1.12);
+  }
+
+  .quiz-choice-btn:hover {
+    border-color: var(--color-accent);
+    background: rgba(233, 69, 96, 0.12);
+    transform: translateX(3px);
+  }
+
+  .hud-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Inventory slots show tooltip on hover */
+  .inventory-slot:hover .slot-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .slot-tooltip {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 140ms ease, transform 140ms ease;
+    pointer-events: none;
+  }
+}
+
+/* ── Safari / WebKit fixes ───────────────────────────────── */
+@supports (-webkit-touch-callout: none) {
+  /* Prevent rubber-band scroll on iOS Safari */
+  html, body {
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Safari does not support :has() for pointer detection on older versions */
+  /* Use the .touch-device class set by browserCompat.ts as a fallback */
+  body.touch-device .quiz-choice-btn:hover {
+    filter: none;
+    transform: none;
+  }
+
+  /* Fix 100vh miscalculation in Safari (uses dvh when available) */
+  .app-layout {
+    min-height: 100dvh;
+  }
+}

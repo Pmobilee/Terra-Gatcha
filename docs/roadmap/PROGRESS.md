@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes & Phase 32 (Content Scaling). Fact content pipeline hardened: schema expansion (9 new fact columns, 2 distractor columns, 3 indexes), Claude API batch generation with rate limiting, 3-stage LLM quality gate (factual plausibility, distractor adequacy, readability, answer clarity, overlap check), distractor expansion system (8+ per fact, 3 tiers), delta sync protocol (cursor-based, ETag, paged), weekly bundle release scheduler, coverage dashboard. V3 Phase 39 (Web Platform) is next.
+Phases 0-27 complete plus Critical Fixes, Phase 32 (Content Scaling), and Phase 39 (Web Platform). Web platform hardened: PWA optimization (manifest, service worker, offline fallback, install prompt analytics), desktop responsive design (side panel, context menu, hover states), keyboard shortcuts (10 bindings, rebindable, help overlay), SEO (Open Graph, JSON-LD, sitemap, robots), Cloudflare Pages deployment (wrangler, GitHub Actions), browser compat matrix, web performance budget (Core Web Vitals, bundle size checker). V3 Phase 40 (Internationalization) is next.
 
 ---
 
@@ -104,7 +104,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Platform & International (Phases 38-40)
 - [ ] **Phase 38: iOS App Store Launch** — Apple Developer setup, TestFlight, App Store submission, iOS-specific optimizations, review guidelines → [`phases/PHASE-38-IOS-LAUNCH.md`](phases/PHASE-38-IOS-LAUNCH.md)
-- [ ] **Phase 39: Web Platform Excellence** — PWA optimization, desktop responsive layouts, keyboard shortcuts, SEO, Cloudflare Pages deployment → [`phases/PHASE-39-WEB-PLATFORM.md`](phases/PHASE-39-WEB-PLATFORM.md)
+- [x] **Phase 39: Web Platform Excellence** — PWA optimization, desktop responsive layouts, keyboard shortcuts, SEO, Cloudflare Pages deployment → [`completed/PHASE-39-WEB-PLATFORM.md`](completed/PHASE-39-WEB-PLATFORM.md)
 - [ ] **Phase 40: Internationalization & Localization** — Multi-language UI, RTL support, locale-specific formatting, translation pipeline, content localization → [`phases/PHASE-40-INTERNATIONALIZATION.md`](phases/PHASE-40-INTERNATIONALIZATION.md)
 
 ### Growth & Analytics (Phases 41-43)

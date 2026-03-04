@@ -127,6 +127,18 @@ interface EngagementScoreChangeEvent {
   }
 }
 
+/** Fired when the user interacts with the PWA install prompt. */
+interface PwaInstallEvent {
+  name: 'pwa_install_prompted'
+  properties: { action: 'accepted' | 'installed' | 'dismissed' | 'banner_dismissed' }
+}
+
+/** Fired once per session with Core Web Vitals measurements. */
+interface WebVitalsEvent {
+  name: 'web_vitals'
+  properties: { lcp: number; fcp: number; cls: number; inp: number; ttfb: number }
+}
+
 /** Union of all supported analytics events. */
 export type AnalyticsEvent =
   | AppOpenEvent
@@ -140,6 +152,8 @@ export type AnalyticsEvent =
   | ChurnSignalEvent
   | EngagementScoreChangeEvent
   | MonetizationEvent
+  | PwaInstallEvent
+  | WebVitalsEvent
 
 // Re-export specific types used externally
 export type {

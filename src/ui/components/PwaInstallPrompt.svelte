@@ -1,6 +1,8 @@
 <script lang="ts">
   /** PWA "Add to Home Screen" prompt — shows after first dive on web (DD-V2-171) */
 
+  import { analyticsService } from '../../services/analyticsService'
+
   interface BeforeInstallPromptEvent extends Event {
     prompt(): Promise<void>
     userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
@@ -21,15 +23,18 @@
 
   async function install() {
     if (!deferredPrompt) return
+    analyticsService.track({ name: 'pwa_install_prompted', properties: { action: 'accepted' } })
     deferredPrompt.prompt()
     const { outcome } = await deferredPrompt.userChoice
-    if (outcome === 'accepted') {
-      console.log('[PWA] Install accepted')
-    }
+    analyticsService.track({
+      name: 'pwa_install_prompted',
+      properties: { action: outcome === 'accepted' ? 'installed' : 'dismissed' },
+    })
     deferredPrompt = null
   }
 
   function dismiss() {
+    analyticsService.track({ name: 'pwa_install_prompted', properties: { action: 'banner_dismissed' } })
     dismissed = true
     deferredPrompt = null
   }

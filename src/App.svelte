@@ -50,9 +50,12 @@
   import AgeSelection from './ui/components/AgeSelection.svelte'
   import MiniMap from './ui/components/MiniMap.svelte'
   import PwaInstallPrompt from './ui/components/PwaInstallPrompt.svelte'
+  import KeyboardShortcutHelp from './ui/components/KeyboardShortcutHelp.svelte'
+  import DesktopSidePanel from './ui/components/DesktopSidePanel.svelte'
   import RelicPickupOverlay from './ui/components/RelicPickupOverlay.svelte'
   import ResumeDiveModal from './ui/components/ResumeDiveModal.svelte'
   import GaiaToast from './ui/components/GaiaToast.svelte'
+  import { shortcutService } from './services/shortcutService'
   import { SaveManager } from './game/managers/SaveManager'
   import { collectFarmResources } from './services/saveService'
   import { calculateTotalPending } from './data/farm'
@@ -571,6 +574,35 @@
     gaiaMessage.set('Run abandoned. Some minerals were lost in the extraction.')
     setTimeout(() => gaiaMessage.set(null), 4000)
   }
+
+  // ============================================================
+  // KEYBOARD SHORTCUTS (Phase 39.3)
+  // ============================================================
+  $effect(() => {
+    if (!gameVisible) return
+
+    const handlers: Array<[Parameters<typeof shortcutService.on>[0], Parameters<typeof shortcutService.on>[1]]> = [
+      ['dive',    () => { if ($currentScreen === 'base') handleDive() }],
+      ['study',   () => { if ($currentScreen === 'base') handleStudy() }],
+      ['back',    () => {
+        if ($currentScreen === 'settings') handleBackFromSettings()
+        else if ($currentScreen === 'knowledgeTree') handleBackFromTree()
+      }],
+      ['surface', () => { if ($currentScreen === 'mining') handleSurface() }],
+      ['minimap', () => {
+        if ($currentScreen === 'mining') {
+          document.dispatchEvent(new CustomEvent('game:toggle-minimap'))
+        }
+      }],
+      ['quiz_1',  () => { if ($currentScreen === 'quiz') document.dispatchEvent(new CustomEvent('quiz:answer', { detail: 0 })) }],
+      ['quiz_2',  () => { if ($currentScreen === 'quiz') document.dispatchEvent(new CustomEvent('quiz:answer', { detail: 1 })) }],
+      ['quiz_3',  () => { if ($currentScreen === 'quiz') document.dispatchEvent(new CustomEvent('quiz:answer', { detail: 2 })) }],
+      ['quiz_4',  () => { if ($currentScreen === 'quiz') document.dispatchEvent(new CustomEvent('quiz:answer', { detail: 3 })) }],
+    ]
+
+    for (const [id, fn] of handlers) shortcutService.on(id, fn)
+    return () => { for (const [id, fn] of handlers) shortcutService.off(id, fn) }
+  })
 </script>
 
 <div id="game-container"></div>
@@ -871,6 +903,10 @@
 
   <DevPanel />
   <PwaInstallPrompt />
+  <KeyboardShortcutHelp />
+  {#if gameVisible}
+    <DesktopSidePanel />
+  {/if}
 
   {/if}
   <!-- /AUTH ROUTING LAYER -->

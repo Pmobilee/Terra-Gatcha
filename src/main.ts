@@ -10,8 +10,10 @@ import { BALANCE } from './data/balance'
 import { analyticsService } from './services/analyticsService'
 import { GameManager } from './game/GameManager'
 import { factsDB } from './services/factsDB'
-import { gameManagerStore } from './game/gameManagerRef'
+import { gameManagerStore, getGM } from './game/gameManagerRef'
 import { getSyncVersion, setSyncVersion } from './services/deltaSync'
+import { checkBrowserCompat, applyCompatPatches } from './services/browserCompat'
+import { perfService } from './services/perfService'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -71,6 +73,16 @@ function isWebGLSupported(): boolean {
     return false
   }
 }
+
+// Run browser compatibility checks and apply engine-specific patches
+const compatReport = checkBrowserCompat()
+applyCompatPatches(compatReport)
+if (!compatReport.isSupported) {
+  // Already handled by the WebGLFallback mount below
+}
+
+// Start Core Web Vitals collection
+perfService.observe()
 
 // Prevent long-press context menu on mobile
 document.addEventListener('contextmenu', (e) => e.preventDefault())
@@ -164,7 +176,17 @@ async function bootGame(): Promise<void> {
   })
 }
 
-bootGame()
+bootGame().then(() => {
+  // Handle PWA deep-link shortcuts (?action=dive, ?action=study)
+  const params = new URLSearchParams(window.location.search)
+  const action = params.get('action')
+  if (action === 'dive') {
+    // Wait one tick for game to be ready
+    setTimeout(() => getGM()?.goToDivePrep(), 100)
+  } else if (action === 'study') {
+    setTimeout(() => getGM()?.startStudySession(), 100)
+  }
+})
 
 // Register the Service Worker for offline asset caching.
 // This is an optional progressive enhancement — failure is silent so the game
