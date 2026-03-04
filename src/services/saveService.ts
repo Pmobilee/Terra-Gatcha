@@ -12,6 +12,9 @@ import { RECIPES, type Recipe } from '../data/recipes'
 import { PREMIUM_RECIPES, type PremiumMaterial } from '../data/premiumRecipes'
 import type { DailyDeal } from '../data/dailyDeals'
 import { calculateProduction, FARM_EXPANSION_COSTS, FARM_MAX_SLOTS } from '../data/farm'
+import { createDefaultInterestConfig } from '../data/interestConfig'
+import { DEFAULT_ARCHETYPE_DATA } from '../services/archetypeDetector'
+import { DEFAULT_ENGAGEMENT_DATA } from '../services/engagementScorer'
 
 export const SAVE_KEY = 'terra-gacha-save'
 export const SAVE_VERSION = 1
@@ -186,6 +189,19 @@ export function load(): PlayerSave | null {
     if (!parsedAny['hubState'] || typeof parsedAny['hubState'] !== 'object') {
       parsedAny['hubState'] = defaultHubSaveState()
     }
+    // Backward compatibility: Phase 12 — interest & personalization fields
+    if (!parsedAny['interestConfig'] || typeof parsedAny['interestConfig'] !== 'object') {
+      parsedAny['interestConfig'] = createDefaultInterestConfig()
+    }
+    if (!parsedAny['behavioralSignals'] || typeof parsedAny['behavioralSignals'] !== 'object') {
+      parsedAny['behavioralSignals'] = { perCategory: {}, lastRecalcDives: 0 }
+    }
+    if (!parsedAny['archetypeData'] || typeof parsedAny['archetypeData'] !== 'object') {
+      parsedAny['archetypeData'] = { ...DEFAULT_ARCHETYPE_DATA }
+    }
+    if (!parsedAny['engagementData'] || typeof parsedAny['engagementData'] !== 'object') {
+      parsedAny['engagementData'] = { ...DEFAULT_ENGAGEMENT_DATA }
+    }
     return parsed as PlayerSave
   } catch {
     return null
@@ -239,6 +255,10 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     activeTitle: null,
     stats: { ...EMPTY_STATS },
     hubState: defaultHubSaveState(),
+    interestConfig: createDefaultInterestConfig(),
+    behavioralSignals: { perCategory: {}, lastRecalcDives: 0 },
+    archetypeData: { ...DEFAULT_ARCHETYPE_DATA },
+    engagementData: { ...DEFAULT_ENGAGEMENT_DATA },
   }
 }
 

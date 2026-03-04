@@ -11,6 +11,7 @@
   } from '../stores/settings'
   import { GAIA_IDLE_QUIPS } from '../../data/gaiaDialogue'
   import { GAIA_NAME } from '../../data/gaiaAvatar'
+  import { currentScreen } from '../stores/gameState'
 
   interface Props {
     /** Called when the user taps the Back button. */
@@ -164,6 +165,25 @@
         <div class="gaia-preview" aria-label="Sample GAIA message">
           <span class="gaia-preview-icon" aria-hidden="true">💬</span>
           <span class="gaia-preview-text">"{sampleQuip}"</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LEARNING SETTINGS ===== -->
+    <section class="settings-section" aria-labelledby="learning-heading">
+      <h2 id="learning-heading" class="section-heading">Learning</h2>
+
+      <div class="settings-card">
+        <div class="setting-block">
+          <button
+            class="interest-link-btn"
+            onclick={() => currentScreen.set('interestSettings')}
+          >
+            Interest Settings &rarr;
+          </button>
+          <p style="font-size: 0.55rem; color: #888; margin: 4px 0 0 0;">
+            Choose what topics appear in your mine
+          </p>
         </div>
       </div>
     </section>
@@ -590,6 +610,23 @@
 
   .about-value.dim {
     color: var(--color-text-dim);
+  }
+
+  .interest-link-btn {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 16px;
+    background: #1a3a2e;
+    border: 1px solid #4ecca3;
+    border-radius: 8px;
+    color: #4ecca3;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.65rem;
+    cursor: pointer;
+    text-align: left;
+  }
+  .interest-link-btn:hover {
+    background: #2a4a3e;
   }
 
   /* ---- Responsive ---- */

@@ -82,3 +82,36 @@ gaiaChattiness.subscribe(v => {
     window.localStorage.setItem('gaia-chattiness', String(v))
   }
 })
+
+// =========================================================
+// Interest Configuration (Phase 12)
+// =========================================================
+
+import type { InterestConfig } from '../../data/interestConfig'
+import { createDefaultInterestConfig } from '../../data/interestConfig'
+import { playerSave, persistPlayer } from './playerData'
+
+/**
+ * Reactive Svelte store for the player's interest configuration.
+ * Derives its initial value from playerSave and persists changes back through it.
+ */
+export const interestConfig = writable<InterestConfig>(createDefaultInterestConfig())
+
+// Sync interestConfig from playerSave whenever playerSave changes.
+playerSave.subscribe(ps => {
+  if (ps?.interestConfig) {
+    interestConfig.set(ps.interestConfig)
+  }
+})
+
+/**
+ * Saves an updated InterestConfig to the player save and persists.
+ */
+export function saveInterestConfig(config: InterestConfig): void {
+  playerSave.update(current => {
+    if (!current) return current
+    return { ...current, interestConfig: config, lastPlayedAt: Date.now() }
+  })
+  persistPlayer()
+  interestConfig.set(config)
+}

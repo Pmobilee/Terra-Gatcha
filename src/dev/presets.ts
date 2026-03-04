@@ -4,6 +4,7 @@ import { FOSSIL_SPECIES } from '../data/fossils'
 import { defaultHubSaveState } from '../data/hubLayout'
 import { createReviewState } from '../services/sm2'
 import { SAVE_VERSION } from '../services/saveService'
+import { createDefaultInterestConfig } from '../data/interestConfig'
 
 // ============================================================
 // SCENARIO PRESET TYPES
@@ -127,6 +128,12 @@ export function BASE_SAVE(now: number): PlayerSave {
     titles: [],
     activeTitle: null,
     hubState: defaultHubSaveState(),
+
+    // Interest & personalization
+    interestConfig: createDefaultInterestConfig(),
+    behavioralSignals: { perCategory: {}, lastRecalcDives: 0 },
+    archetypeData: { detected: 'undetected', manualOverride: null, lastEvaluatedDate: null, detectedOnDay: null },
+    engagementData: { dailySnapshots: [], currentScore: 50, mode: 'normal' },
   }
 }
 

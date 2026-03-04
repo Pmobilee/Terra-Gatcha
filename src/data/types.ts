@@ -1,4 +1,8 @@
 import type { HubSaveState } from './hubLayout'
+import type { InterestConfig } from './interestConfig'
+import type { BehavioralSignals } from '../services/behavioralLearner'
+import type { ArchetypeData } from '../services/archetypeDetector'
+import type { EngagementData } from '../services/engagementScorer'
 
 // ============================================================
 // CONTENT TYPES
@@ -342,6 +346,16 @@ export interface PlayerSave {
 
   // Hub (Phase 10)
   hubState: HubSaveState
+
+  // Phase 12: Interest & Personalization
+  /** Player's interest and personalization settings. */
+  interestConfig: InterestConfig
+  /** Behavioral signals for opt-in interest inference. */
+  behavioralSignals: BehavioralSignals
+  /** Archetype detection state (DD-V2-172). */
+  archetypeData: ArchetypeData
+  /** Hidden engagement scoring for dynamic difficulty (DD-V2-163). */
+  engagementData: EngagementData
 }
 
 /** Player statistics */

@@ -43,6 +43,8 @@
   import Farm from './ui/components/Farm.svelte'
   import Settings from './ui/components/Settings.svelte'
   import GaiaReport from './ui/components/GaiaReport.svelte'
+  import InterestSettings from './ui/components/InterestSettings.svelte'
+  import InterestAssessment from './ui/components/InterestAssessment.svelte'
   import MiniMap from './ui/components/MiniMap.svelte'
   import RelicPickupOverlay from './ui/components/RelicPickupOverlay.svelte'
   import ResumeDiveModal from './ui/components/ResumeDiveModal.svelte'
@@ -514,6 +516,12 @@
 
   {:else if $currentScreen === 'gaiaReport'}
     <GaiaReport onBack={() => currentScreen.set('base')} />
+
+  {:else if $currentScreen === 'interestSettings'}
+    <InterestSettings onBack={() => currentScreen.set('settings')} />
+
+  {:else if $currentScreen === 'interestAssessment'}
+    <InterestAssessment />
 
   {:else if $currentScreen === 'sacrifice'}
     <div class="sacrifice-screen">
