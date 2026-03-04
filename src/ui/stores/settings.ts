@@ -209,6 +209,29 @@ reducedMotion.subscribe(v => {
 })
 
 // =========================================================
+// Analytics Consent (Phase 38 — ATT / iOS)
+// =========================================================
+
+function readAnalyticsEnabled(): boolean {
+  if (typeof window === 'undefined') return true
+  const stored = window.localStorage.getItem('setting_analyticsEnabled')
+  // Default true (opt-out model for non-iOS); ATTConsentPrompt overrides on iOS
+  return stored !== 'false'
+}
+
+/**
+ * Reactive store for analytics consent.
+ * Set to false when the ATT prompt is denied on iOS.
+ * AnalyticsService checks this before queuing events.
+ */
+export const analyticsEnabled = singletonWritable<boolean>('analyticsEnabled', readAnalyticsEnabled())
+analyticsEnabled.subscribe(v => {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('setting_analyticsEnabled', String(v))
+  }
+})
+
+// =========================================================
 // Interest Configuration (Phase 12)
 // =========================================================
 

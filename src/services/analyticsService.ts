@@ -7,6 +7,8 @@
 
 import { generateUUID } from '../utils/uuid'
 import { assignExperiment, type MonetizationEvent } from '../data/analyticsEvents'
+import { get } from 'svelte/store'
+import { analyticsEnabled } from '../ui/stores/settings'
 
 // ── Event type definitions ────────────────────────────────────────────────────
 
@@ -296,10 +298,15 @@ export class AnalyticsService {
   /**
    * Queue an analytics event for delivery.
    * Any PII fields found in the properties object are stripped before queueing.
+   * On iOS, this is gated behind ATT consent (analyticsEnabled store).
    *
    * @param event - A typed analytics event matching one of the AnalyticsEvent variants.
    */
   track(event: AnalyticsEvent): void {
+    // ATT consent gate (Phase 38): do not queue any event if analytics is disabled.
+    // This is set to false when the iOS App Tracking Transparency prompt is denied.
+    if (!get(analyticsEnabled)) return
+
     // Privacy: strip any PII fields that might have leaked in
     const props = event.properties as Record<string, unknown>
     for (const key of PII_FIELDS) {

@@ -2,6 +2,7 @@
 @import './ui/styles/accessibility.css';
 @import './ui/styles/rtl.css';
 
+/* ── Safe area foundation (Phase 38 — iOS Dynamic Island / notch support) ── */
 :root {
   --color-bg: #1a1a2e;
   --color-surface: #16213e;
@@ -13,6 +14,11 @@
   --color-warning: #ffd369;
   --font-pixel: 'Press Start 2P', 'Courier New', monospace;
   --font-body: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-right:  env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left, 0px);
 }
 
 * {
@@ -34,6 +40,12 @@ html, body {
   -webkit-touch-callout: none;
   user-select: none;
   touch-action: manipulation;
+
+  /* Prevent content from rendering under Dynamic Island / notch */
+  padding-top:    var(--safe-top);
+  padding-bottom: var(--safe-bottom);
+  padding-left:   var(--safe-left);
+  padding-right:  var(--safe-right);
 }
 
 #app {
@@ -55,6 +67,25 @@ html, body {
 canvas {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+}
+
+/* Override for fullscreen Phaser canvas — it must fill the ENTIRE screen
+   including under the notch. The HUD overlay handles its own safe padding. */
+canvas.phaser-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  padding: 0;
+}
+
+/* HUD elements must respect safe area */
+.hud-overlay {
+  padding-top:    max(8px, var(--safe-top));
+  padding-bottom: max(16px, var(--safe-bottom));
+  padding-left:   max(8px, var(--safe-left));
+  padding-right:  max(8px, var(--safe-right));
 }
 
 /* UI overlay container (Svelte components render here) */

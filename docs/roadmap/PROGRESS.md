@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-27 complete plus Critical Fixes and V3 Phases 32, 39, 40, 47. Achievement Gallery: 21 paintings across 4 tiers (bronze/silver/gold/platinum), event-driven unlock tracking, 6-phase reveal animation with tier-dependent timing, share card generation (OffscreenCanvas → Web Share API), gallery dome floor with painting frames, 42 placeholder sprites. V3 Phase 38 (iOS Launch) is next.
+Phases 0-27 complete plus Critical Fixes and V3 Phases 32, 38, 39, 40, 47. Phase 38 (iOS App Store Launch): iOS Capacitor config with safe area insets, haptic feedback service, ATT consent gate, Sign in with Apple button and server endpoint, TerraPassModal iOS subscription terms, crashAlerts job, Xcode config files (Info.plist, App.entitlements, ExportOptions.plist), App Store review compliance audit and privacy nutrition label. Next: Phase 23 (Live Ops & Seasons) or Phase 35 (Mine Mechanics).
 
 ---
 
@@ -103,7 +103,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [ ] **Phase 37: Advanced Pet System** — Dust Cat permanent pet, feeding/grooming mini-games, personality traits, companion synergies, legendary evolution → [`phases/PHASE-37-ADVANCED-PET-SYSTEM.md`](phases/PHASE-37-ADVANCED-PET-SYSTEM.md)
 
 ### Platform & International (Phases 38-40)
-- [ ] **Phase 38: iOS App Store Launch** — Apple Developer setup, TestFlight, App Store submission, iOS-specific optimizations, review guidelines → [`phases/PHASE-38-IOS-LAUNCH.md`](phases/PHASE-38-IOS-LAUNCH.md)
+- [x] **Phase 38: iOS App Store Launch** — Apple Developer setup, TestFlight, App Store submission, iOS-specific optimizations, review guidelines → [`completed/PHASE-38-IOS-LAUNCH.md`](completed/PHASE-38-IOS-LAUNCH.md)
 - [x] **Phase 39: Web Platform Excellence** — PWA optimization, desktop responsive layouts, keyboard shortcuts, SEO, Cloudflare Pages deployment → [`completed/PHASE-39-WEB-PLATFORM.md`](completed/PHASE-39-WEB-PLATFORM.md)
 - [x] **Phase 40: Internationalization & Localization** — Multi-language UI, RTL support, locale-specific formatting, translation pipeline, content localization → [`completed/PHASE-40-INTERNATIONALIZATION.md`](completed/PHASE-40-INTERNATIONALIZATION.md)
 

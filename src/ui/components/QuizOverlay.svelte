@@ -7,6 +7,7 @@
   import { gaiaMood, highContrastQuiz } from '../stores/settings'
   import { GAIA_EXPRESSIONS, GAIA_NAME, getGaiaExpression } from '../../data/gaiaAvatar'
   import ReportModal from './ReportModal.svelte'
+  import { notifySuccess, notifyError, tapLight } from '../../services/hapticService'
 
   // GAIA sprite imports for reaction bubble
   import gaiaNeutralImg from '../../assets/sprites/dome/gaia_neutral.png'
@@ -136,14 +137,21 @@
   async function handleAnswer(answer: string): Promise<void> {
     if (showResult) return
 
+    // Haptic feedback on answer selection (Phase 38)
+    await tapLight()
+
     selectedAnswer = answer
     isCorrect = answer === fact.correctAnswer
     showResult = true
 
     if (isCorrect) {
       audioManager.playSound('quiz_correct')
+      // Haptic success notification on correct answer (Phase 38)
+      await notifySuccess()
     } else {
       audioManager.playSound('quiz_wrong')
+      // Haptic error notification on wrong answer (Phase 38)
+      await notifyError()
     }
 
     if (!isCorrect && mode === 'gate') {

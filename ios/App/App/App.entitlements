@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- Sign in with Apple (required by Guideline 4.8 when any third-party login exists) -->
+  <key>com.apple.developer.applesignin</key>
+  <array>
+    <string>Default</string>
+  </array>
+
+  <!-- Push Notifications (production environment — for O2 regen and streak reminders) -->
+  <key>aps-environment</key>
+  <string>production</string>
+
+  <!-- Associated Domains for universal links (email deep-links, social share) -->
+  <key>com.apple.developer.associated-domains</key>
+  <array>
+    <string>applinks:terragacha.com</string>
+    <string>webcredentials:terragacha.com</string>
+  </array>
+</dict>
+</plist>

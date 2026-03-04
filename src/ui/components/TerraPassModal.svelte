@@ -22,6 +22,11 @@
   })
   let purchasing = $state(false)
 
+  /** Detect iOS Capacitor environment for showing required Apple subscription language */
+  const isIOS = typeof window !== 'undefined' &&
+    'Capacitor' in window &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent)
+
   const hasSubscription = $derived($playerSave ? isSubscriber($playerSave) : false)
   const subscriptionType = $derived($playerSave?.subscription?.type ?? null)
   const expiresAt = $derived($playerSave?.subscription?.expiresAt ?? null)
@@ -132,6 +137,17 @@
           {purchasing ? 'Processing...' : 'Subscribe'}
         </button>
       </div>
+    {/if}
+
+    {#if isIOS}
+      <!-- Required Apple subscription language (Guideline 3.1.2) -->
+      <p class="subscription-terms">
+        Payment will be charged to your Apple ID at confirmation. Terra Pass ($4.99/month)
+        auto-renews unless cancelled at least 24 hours before the renewal date. Manage or cancel
+        in Settings &gt; [Your Name] &gt; Subscriptions. No refunds for partial months.
+        <a href="https://terragacha.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> |
+        <a href="https://terragacha.com/terms" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+      </p>
     {/if}
   </div>
 </div>
@@ -313,4 +329,17 @@
   .subscribe-btn:disabled { opacity: 0.5; cursor: not-allowed; }
   .patron-btn { background: linear-gradient(135deg, #a78bfa, #7c3aed); }
   .grand-btn { background: linear-gradient(135deg, #e2b714, #d4a010); color: #1a1a2e; }
+  /* Required Apple subscription disclosure (Guideline 3.1.2) */
+  .subscription-terms {
+    margin-top: 16px;
+    font-size: 8px;
+    color: #6b7280;
+    font-family: var(--font-body, system-ui, sans-serif);
+    line-height: 1.5;
+    text-align: center;
+  }
+  .subscription-terms a {
+    color: #a78bfa;
+    text-decoration: underline;
+  }
 </style>

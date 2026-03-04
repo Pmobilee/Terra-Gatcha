@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- Bundle identity -->
+  <key>CFBundleDevelopmentRegion</key>
+  <string>en</string>
+
+  <key>CFBundleExecutable</key>
+  <string>$(EXECUTABLE_NAME)</string>
+
+  <key>CFBundleIdentifier</key>
+  <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+
+  <!-- Display name shown under the app icon -->
+  <key>CFBundleDisplayName</key>
+  <string>Terra Gacha</string>
+
+  <key>CFBundleName</key>
+  <string>App</string>
+
+  <key>CFBundlePackageType</key>
+  <string>APPL</string>
+
+  <!-- Version numbers — set in Xcode: General > Identity -->
+  <key>CFBundleShortVersionString</key>
+  <string>1.0.0</string>
+
+  <key>CFBundleVersion</key>
+  <string>1</string>
+
+  <!-- Minimum iOS version: 16.0 (Capacitor 8.x requirement) -->
+  <key>MinimumOSVersion</key>
+  <string>16.0</string>
+
+  <!-- URL scheme for deep links (email password reset, social share) -->
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleURLName</key>
+      <string>com.terragacha.app</string>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>com.terragacha.app</string>
+      </array>
+    </dict>
+  </array>
+
+  <!-- ── Privacy usage descriptions ──────────────────────────────────── -->
+
+  <!-- Camera — used for avatar capture (future phase; include now to avoid re-review) -->
+  <key>NSCameraUsageDescription</key>
+  <string>Terra Gacha uses your camera to set a profile photo.</string>
+
+  <!-- Photo Library — save screenshots, import avatar -->
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>Terra Gacha reads your photo library to set a profile photo.</string>
+
+  <!-- App Tracking Transparency — required before accessing IDFA -->
+  <key>NSUserTrackingUsageDescription</key>
+  <string>We use this to understand how players discover Terra Gacha so we can make it better. No personal data is sold.</string>
+
+  <!-- Notifications — used for O2 regen and streak reminders -->
+  <key>NSUserNotificationsUsageDescription</key>
+  <string>Terra Gacha sends reminders when your oxygen tanks are recharged and to keep your learning streak alive.</string>
+
+  <!-- ── Display configuration ──────────────────────────────────────── -->
+
+  <!-- Suppress iTunes file sharing (saves are cloud-synced, not user-accessible files) -->
+  <key>UIFileSharingEnabled</key>
+  <false/>
+
+  <!-- Status bar style -->
+  <key>UIStatusBarStyle</key>
+  <string>UIStatusBarStyleLightContent</string>
+
+  <!-- Allow status bar to be hidden (Capacitor handles this) -->
+  <key>UIStatusBarHidden</key>
+  <false/>
+
+  <!-- Supported orientations — portrait only for phones -->
+  <key>UISupportedInterfaceOrientations</key>
+  <array>
+    <string>UIInterfaceOrientationPortrait</string>
+  </array>
+
+  <!-- iPad supports all orientations for better landscape experience -->
+  <key>UISupportedInterfaceOrientations~ipad</key>
+  <array>
+    <string>UIInterfaceOrientationPortrait</string>
+    <string>UIInterfaceOrientationLandscapeLeft</string>
+    <string>UIInterfaceOrientationLandscapeRight</string>
+  </array>
+
+  <!-- ── WKWebView configuration ───────────────────────────────────── -->
+
+  <!-- Allow Capacitor WKWebView to load the bundled web assets -->
+  <key>WKAppBoundDomains</key>
+  <array>
+    <string>terragacha.com</string>
+  </array>
+
+  <!-- Main storyboard (Capacitor default) -->
+  <key>UIMainStoryboardFile</key>
+  <string>Main</string>
+
+  <!-- Launch storyboard (Capacitor default) -->
+  <key>UILaunchStoryboardName</key>
+  <string>LaunchScreen</string>
+
+  <!-- Required device capabilities -->
+  <key>UIRequiredDeviceCapabilities</key>
+  <array>
+    <string>armv7</string>
+  </array>
+</dict>
+</plist>

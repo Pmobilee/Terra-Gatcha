@@ -17,11 +17,16 @@ const config: CapacitorConfig = {
     },
     StatusBar: {
       style: 'DARK',
-      backgroundColor: '#0a0e1a'
+      backgroundColor: '#0a0e1a',
+      overlaysWebView: true,          // allows game canvas to render under status bar
     },
     Keyboard: {
       resize: 'body',
       style: 'dark',
+    },
+    Haptics: {
+      // Capacitor Haptics plugin — iOS UIImpactFeedbackGenerator
+      // No configuration needed; plugin is used via hapticService.ts
     },
   }
 };

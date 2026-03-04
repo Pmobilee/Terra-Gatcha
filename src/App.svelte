@@ -55,6 +55,7 @@
   import RelicPickupOverlay from './ui/components/RelicPickupOverlay.svelte'
   import ResumeDiveModal from './ui/components/ResumeDiveModal.svelte'
   import GaiaToast from './ui/components/GaiaToast.svelte'
+  import ATTConsentPrompt from './ui/components/ATTConsentPrompt.svelte'
   import { shortcutService } from './services/shortcutService'
   import { SaveManager } from './game/managers/SaveManager'
   import { collectFarmResources } from './services/saveService'
@@ -912,6 +913,10 @@
   <!-- /AUTH ROUTING LAYER -->
 </div>
 <OfflineToast />
+<!-- ATT consent prompt (Phase 38): fires the iOS App Tracking Transparency dialog.
+     Mounted outside the auth layer so it triggers on every cold app launch.
+     No visible UI — the OS native dialog is presented by the Capacitor plugin. -->
+<ATTConsentPrompt />
 
 <style>
   .main-menu {

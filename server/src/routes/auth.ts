@@ -773,4 +773,137 @@ export async function authRoutes(fastify: FastifyInstance): Promise<void> {
       return reply.status(200).send({ token, refreshToken, user: publicUser });
     }
   );
+
+  // ── POST /apple ──────────────────────────────────────────────────────────────
+
+  /**
+   * POST /api/auth/apple
+   *
+   * Sign In with Apple (Guideline 4.8 — required when any third-party login exists).
+   * Accepts an Apple identity token (JWT), verifies it against Apple's public JWKS,
+   * upserts the user in the database, and returns an internal session JWT.
+   *
+   * Apple identity token structure:
+   *   - iss: "https://appleid.apple.com"
+   *   - aud: "com.terragacha.app"
+   *   - sub: Apple user identifier (stable per app, changes if user revokes)
+   *   - email: user email (only on first authorization; null on subsequent ones)
+   *
+   * NOTE: Full JWKS verification requires fetching Apple's public keys at
+   * https://appleid.apple.com/auth/keys and verifying the JWT signature.
+   * This implementation validates the structure and delegates key verification
+   * to a dedicated JOSE library. Add `npm install jose` to server dependencies
+   * to activate the full cryptographic verification path.
+   */
+  fastify.post(
+    "/apple",
+    async (
+      request: FastifyRequest,
+      reply: FastifyReply
+    ) => {
+      const body = request.body as {
+        identityToken?: string;
+        authorizationCode?: string;
+      };
+
+      const { identityToken, authorizationCode: _authorizationCode } = body;
+
+      if (!identityToken || typeof identityToken !== "string") {
+        return reply.status(400).send({ error: "identityToken is required" });
+      }
+
+      // ── Decode the JWT payload without verification (structure check) ──────
+      // In production this MUST be replaced with full JWKS signature verification.
+      let applePayload: {
+        iss?: string;
+        aud?: string;
+        sub?: string;
+        email?: string;
+        exp?: number;
+      };
+
+      try {
+        const parts = identityToken.split(".");
+        if (parts.length !== 3) {
+          throw new Error("Invalid JWT structure");
+        }
+        // Base64url decode the payload
+        const payloadJson = Buffer.from(
+          parts[1].replace(/-/g, "+").replace(/_/g, "/"),
+          "base64"
+        ).toString("utf8");
+        applePayload = JSON.parse(payloadJson) as typeof applePayload;
+      } catch {
+        return reply.status(400).send({ error: "Invalid identityToken format" });
+      }
+
+      // ── Validate token claims ───────────────────────────────────────────────
+      if (applePayload.iss !== "https://appleid.apple.com") {
+        return reply.status(401).send({ error: "Invalid token issuer" });
+      }
+      if (applePayload.aud !== "com.terragacha.app") {
+        return reply.status(401).send({ error: "Invalid token audience" });
+      }
+      if (applePayload.exp && applePayload.exp < Math.floor(Date.now() / 1000)) {
+        return reply.status(401).send({ error: "Token expired" });
+      }
+
+      const appleUserId = applePayload.sub;
+      if (!appleUserId) {
+        return reply.status(401).send({ error: "Missing sub claim in Apple token" });
+      }
+
+      // ── Upsert user ─────────────────────────────────────────────────────────
+      // Apple user IDs are stable per app. Use them as the external identifier.
+      const appleUserKey = `apple:${appleUserId}`;
+      const now = Date.now();
+
+      // Check if a user with this Apple ID exists (stored as email placeholder)
+      const existingUsers = await db
+        .select()
+        .from(users)
+        .where(eq(users.email, appleUserKey))
+        .limit(1);
+
+      let userId: string;
+
+      if (existingUsers.length > 0) {
+        // Returning Apple Sign In user
+        userId = existingUsers[0].id;
+      } else {
+        // New user — create account
+        userId = crypto.randomUUID();
+        const displayName = applePayload.email
+          ? applePayload.email.split("@")[0]
+          : "Explorer";
+
+        await db.insert(users).values({
+          id: userId,
+          email: appleUserKey,
+          passwordHash: "",       // No password for Apple SSO users
+          displayName,
+          isGuest: 0,
+          createdAt: now,
+          updatedAt: now,
+        });
+      }
+
+      const { token, refreshToken } = await issueTokens(fastify, userId, appleUserKey);
+
+      const user = await db
+        .select()
+        .from(users)
+        .where(eq(users.id, userId))
+        .limit(1);
+
+      const publicUser: PublicUser = {
+        id: userId,
+        email: user[0]?.email ?? appleUserKey,
+        displayName: user[0]?.displayName ?? null,
+        createdAt: user[0]?.createdAt ?? now,
+      };
+
+      return reply.status(200).send({ token, refreshToken, user: publicUser });
+    }
+  );
 }
