@@ -83,16 +83,15 @@
   /** Which profile screen is shown. null = proceed to auth/game. */
   type ProfileScreen = 'select' | 'create' | 'manage' | null
 
-  /**
-   * Initialises the profile screen state.
-   * If profiles exist → show select. If not → show create.
-   */
+  /** If a profile is already active from a previous session, skip the profile gate. */
+  const hasActiveProfile = profileService.getActiveId() !== null
+
   let profileScreen = $state<ProfileScreen>(
-    profileService.hasProfiles() ? 'select' : 'create',
+    hasActiveProfile ? null : (profileService.hasProfiles() ? 'select' : 'create'),
   )
 
   /** Whether the player has passed the profile gate and entered the game layer. */
-  let profileGateCleared = $state(false)
+  let profileGateCleared = $state(hasActiveProfile)
 
   function handleProfileSelect(id: string): void {
     profileStore.setActive(id)
@@ -285,7 +284,7 @@
   function handleAgeSelected(ageRating: import('./data/types').AgeRating): void {
     playerSave.update(s => {
       if (!s) return s
-      return { ...s, ageRating }
+      return { ...s, ageRating, tutorialComplete: true }
     })
     import('./ui/stores/playerData').then(m => m.persistPlayer())
     // After age selection, go to main menu which starts the dive prep
