@@ -1197,7 +1197,7 @@ export class GameManager {
     }
 
     // Store dive results for the summary screen
-    diveResults.set({
+    const diveResultsData = {
       dustCollected: mineralTotals.dust ?? 0,
       shardsCollected: mineralTotals.shard ?? 0,
       crystalsCollected: mineralTotals.crystal ?? 0,
@@ -1210,7 +1210,15 @@ export class GameManager {
       streakDay: get(playerSave)?.stats.currentStreak ?? 0,
       streakBonus: streakBonus > 0,
       relicsCollected: results.collectedRelics ?? [],
-    })
+    }
+    diveResults.set(diveResultsData)
+
+    // Fire GAIA post-dive reaction commentary (Phase 15.1).
+    // Skip the rare-mineral GAIA toast above if we fire a post-dive reaction,
+    // so we only skip if neither essence nor geode were found (the rare-mineral
+    // comments already set gaiaMessage above; post-dive reaction overwrites after delay).
+    const lastBiome = get(currentBiomeId) ?? 'limestone_caves'
+    this.gaiaManager.firePostDiveReaction(diveResultsData, lastBiome)
 
     // Stop the mine scene
     this.game?.scene.stop('MineScene')
@@ -1403,6 +1411,14 @@ export class GameManager {
    */
   getQuizManager(): QuizManager {
     return this.quizManager
+  }
+
+  /**
+   * Returns the GaiaManager instance.
+   * Used by HubView to start/stop the idle thought bubble timer (Phase 15.2).
+   */
+  getGaiaManager(): GaiaManager {
+    return this.gaiaManager
   }
 
   /**

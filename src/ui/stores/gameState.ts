@@ -254,3 +254,25 @@ export const companionBadgeFlash = writable<boolean>(false)
 export const tickCount = writable(0)
 /** Ticks since last layer entry — reset on layer change */
 export const layerTickCount = writable(0)
+
+// =========================================================
+// Phase 15.2 — GAIA Idle Thought Bubbles
+// =========================================================
+
+/**
+ * A GAIA thought bubble shown as a floating card in the dome/base view.
+ * Set to non-null to display; null to hide.
+ */
+export interface GaiaThoughtBubble {
+  /** The text to display in the bubble. */
+  text: string
+  /** Expression id referencing a key in GAIA_EXPRESSIONS. */
+  expressionId: string
+  /** Optional action type: study-related actions show a CTA and fire an event. */
+  action?: 'study_due' | 'study_near_mastery' | 'study_interest' | 'dismiss'
+  /** Optional payload for the action (e.g. factId for study actions). */
+  actionData?: string
+}
+
+/** Active GAIA thought bubble for the dome/base view. Null means no bubble is shown. */
+export const gaiaThoughtBubble = writable<GaiaThoughtBubble | null>(null)

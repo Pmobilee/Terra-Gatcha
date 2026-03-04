@@ -158,6 +158,12 @@ export class DomeScene extends Phaser.Scene {
     this.setupInput()
     this.initAllParticles()
     this.created = true
+
+    // Recalculate camera zoom and centering whenever the canvas is resized
+    this.scale.on('resize', (gameSize: Phaser.Structs.Size) => {
+      this.cameras.main.setSize(gameSize.width, gameSize.height)
+      this.centerCamera()
+    })
   }
 
   /** Animate particles every frame. */
@@ -194,9 +200,14 @@ export class DomeScene extends Phaser.Scene {
     if (!this.created) return
     if (index === this.floorIndex) return
     this.floorIndex = index
+    const cam = this.cameras.main
+    const zoom = cam.zoom || 1
+    const targetY = index * FLOOR_CANVAS_H - (cam.height / zoom - FLOOR_CANVAS_H) / 2
+    const targetX = -(cam.width / zoom - FLOOR_CANVAS_W) / 2
     this.tweens.add({
-      targets: this.cameras.main,
-      scrollY: index * FLOOR_CANVAS_H,
+      targets: cam,
+      scrollX: targetX,
+      scrollY: targetY,
       duration: 400,
       ease: 'Cubic.Out',
     })
@@ -254,14 +265,10 @@ export class DomeScene extends Phaser.Scene {
    * Resets camera zoom/position to the current floor, then fades in.
    */
   async playReturnTransition(): Promise<void> {
-    // Restore camera zoom before fading in
-    const cam = this.cameras.main
-    const scaleX = cam.width  / FLOOR_CANVAS_W
-    const scaleY = cam.height / FLOOR_CANVAS_H
-    const scale  = Math.min(scaleX, scaleY)
-    cam.setZoom(scale)
-    cam.setScroll(0, this.floorIndex * FLOOR_CANVAS_H)
+    // Restore camera zoom and centered position before fading in
+    this.centerCamera()
 
+    const cam = this.cameras.main
     cam.fadeIn(400, 0, 0, 0)
     await new Promise<void>(resolve => {
       cam.once('camerafadeincomplete', () => resolve())
@@ -361,6 +368,20 @@ export class DomeScene extends Phaser.Scene {
   }
 
   /**
+   * Calculate zoom and scroll so the current floor is centered in the viewport.
+   * Called from renderAllFloors(), goToFloor(), and the resize handler so that
+   * any change in canvas size is immediately reflected without a full re-render.
+   */
+  private centerCamera(): void {
+    const cam = this.cameras.main
+    const zoom = Math.min(cam.width / FLOOR_CANVAS_W, cam.height / FLOOR_CANVAS_H)
+    cam.setZoom(zoom)
+    const scrollX = -(cam.width / zoom - FLOOR_CANVAS_W) / 2
+    const scrollY = this.floorIndex * FLOOR_CANVAS_H - (cam.height / zoom - FLOOR_CANVAS_H) / 2
+    cam.setScroll(scrollX, scrollY)
+  }
+
+  /**
    * Phase 10.11 — Full re-render of ALL unlocked floors stacked vertically.
    * Each floor renders at a world-Y offset of floorIndex * FLOOR_CANVAS_H.
    * Camera zoom is set to fit the floor width; scrollY centers on current floor.
@@ -380,14 +401,8 @@ export class DomeScene extends Phaser.Scene {
     const unlocked = this.getUnlockedFloors()
     if (unlocked.length === 0) return
 
-    // Camera: zoom to fit floor width, set world bounds to full stacked height
-    const cam = this.cameras.main
-    const scaleX = cam.width  / FLOOR_CANVAS_W
-    const scaleY = cam.height / FLOOR_CANVAS_H
-    const scale  = Math.min(scaleX, scaleY)
-    cam.setZoom(scale)
-    // Scroll to current floor
-    cam.setScroll(0, this.floorIndex * FLOOR_CANVAS_H)
+    // Camera: zoom to fit, centered on current floor
+    this.centerCamera()
 
     // Render each unlocked floor at its vertical world offset
     for (let fi = 0; fi < unlocked.length; fi++) {

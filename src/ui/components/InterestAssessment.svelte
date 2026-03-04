@@ -191,6 +191,7 @@
     font-family: 'Press Start 2P', monospace;
     z-index: 200;
     overflow-y: auto;
+    pointer-events: auto;
   }
   .content {
     max-width: 400px;

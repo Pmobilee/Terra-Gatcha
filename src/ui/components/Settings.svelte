@@ -6,6 +6,7 @@
     setSpriteResolution,
     gaiaMood,
     gaiaChattiness,
+    showExplanations,
     type GaiaMood,
     type SpriteResolution,
   } from '../stores/settings'
@@ -165,6 +166,20 @@
         <div class="gaia-preview" aria-label="Sample GAIA message">
           <span class="gaia-preview-icon" aria-hidden="true">💬</span>
           <span class="gaia-preview-text">"{sampleQuip}"</span>
+        </div>
+
+        <!-- Show explanations after quiz -->
+        <div class="setting-row">
+          <div class="setting-info">
+            <span class="setting-label">Show explanations after quiz</span>
+            <span class="setting-desc">GAIA explains wrong answers to help retention</span>
+          </div>
+          <input
+            type="checkbox"
+            class="setting-checkbox"
+            bind:checked={$showExplanations}
+            aria-label="Show explanations after quiz"
+          />
         </div>
       </div>
     </section>
@@ -414,6 +429,15 @@
   .mono {
     font-family: monospace;
     letter-spacing: 0.05em;
+  }
+
+  /* ---- Checkbox ---- */
+  .setting-checkbox {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    accent-color: var(--color-primary);
+    cursor: pointer;
   }
 
   /* ---- Toggle button ---- */

@@ -128,6 +128,7 @@
     justify-content: center;
     z-index: 9000;
     padding: 16px;
+    pointer-events: auto;
   }
 
   .modal {

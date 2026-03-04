@@ -84,6 +84,27 @@ gaiaChattiness.subscribe(v => {
 })
 
 // =========================================================
+// Quiz Explanation Setting (Phase 15.6)
+// =========================================================
+
+function readShowExplanations(): boolean {
+  if (typeof window === 'undefined') return true
+  const stored = window.localStorage.getItem('show-explanations')
+  return stored !== 'false'
+}
+
+/**
+ * Reactive Svelte store controlling whether GAIA shows explanations after quiz failures.
+ * Defaults to true. Persisted to localStorage automatically.
+ */
+export const showExplanations = writable<boolean>(readShowExplanations())
+showExplanations.subscribe(v => {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem('show-explanations', String(v))
+  }
+})
+
+// =========================================================
 // Interest Configuration (Phase 12)
 // =========================================================
 

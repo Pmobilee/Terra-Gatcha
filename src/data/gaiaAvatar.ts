@@ -48,6 +48,14 @@ const EXPRESSION_MAP: Record<string, string> = {
   quiz_correct:    'happy',
   quiz_wrong:      'thinking', // overridden below for snarky mood
   idle:            'neutral',  // overridden below for snarky mood
+  pet_comment:     'happy',
+  dive_return:         'happy',
+  postDiveReaction:    'happy',
+  postDiveShallow:     'neutral',
+  postDiveDeep:        'excited',
+  postDiveFreeGift:    'surprised',
+  postDiveBiomeTeaser: 'thinking',
+  memory:              'thinking',
 }
 
 /**

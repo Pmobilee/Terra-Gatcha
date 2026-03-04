@@ -10,6 +10,7 @@
   import type { Fact } from '../../data/types'
   import { GameManager } from '../../game/GameManager'
   import { hubEvents } from '../../game/hubEvents'
+  import GaiaThoughtBubble from './GaiaThoughtBubble.svelte'
 
   interface Props {
     onDive: () => void
@@ -154,10 +155,26 @@
 
     // Listen for object taps emitted by DomeScene
     hubEvents.on('objectTap', handleObjectTap)
+
+    // Phase 15.5: Fire return engagement greeting before idle bubbles start.
+    // This takes priority over the idle bubble timer so the welcome message
+    // is the first thing the player sees when they open or return to the app.
+    gm.getGaiaManager().fireReturnEngagement()
+
+    // Start GAIA idle thought bubble timer (Phase 15.2)
+    gm.getGaiaManager().startIdleBubbleTimer()
+
+    // Phase 15.4: Fire a journey memory comment after a short delay so the
+    // player has time to see the dome before GAIA references their history.
+    setTimeout(() => {
+      gm.getGaiaManager().fireJourneyMemory()
+    }, 2000)
   })
 
   onDestroy(() => {
     hubEvents.off('objectTap', handleObjectTap)
+    // Stop GAIA thought bubble timer on cleanup (Phase 15.2)
+    gm.getGaiaManager().stopIdleBubbleTimer()
     // Do NOT stop DomeScene here — GameManager.startDive() / stopDome() handles that
     // so we don't flicker when navigating to other hub sub-screens.
   })
@@ -196,6 +213,9 @@
     currentIndex={floorIndex}
     onFloorSelect={handleFloorSelect}
   />
+
+  <!-- Phase 15.2: GAIA idle thought bubbles -->
+  <GaiaThoughtBubble />
 </div>
 
 <style>

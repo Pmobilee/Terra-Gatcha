@@ -118,6 +118,8 @@ export function sellFact(factId: string, mineralReward: number): void {
  *   behavioral learning signal tracking (DD-V2-118).
  */
 export function updateReviewState(factId: string, correct: boolean, factCategory?: string): void {
+  let masteryEvent: { factId: string; masteryNumber: number } | null = null
+
   playerSave.update((save) => {
     if (!save) {
       return save
@@ -132,6 +134,19 @@ export function updateReviewState(factId: string, correct: boolean, factCategory
         if (newState.interval >= 14) {
           updatedSignals = recordFastMastery(updatedSignals, factCategory)
         }
+      }
+    }
+
+    // Phase 15.6: Check if this answer crosses the mastery threshold
+    const existingState = save.reviewStates.find(s => s.factId === factId)
+    if (existingState && getMasteryLevel(existingState) !== 'mastered') {
+      const newState = reviewFact(existingState, correct)
+      if (getMasteryLevel(newState) === 'mastered') {
+        // Count how many facts will be mastered after this update (including this one)
+        const alreadyMastered = save.reviewStates.filter(
+          s => s.factId !== factId && getMasteryLevel(s) === 'mastered',
+        ).length
+        masteryEvent = { factId, masteryNumber: alreadyMastered + 1 }
       }
     }
 
@@ -150,6 +165,13 @@ export function updateReviewState(factId: string, correct: boolean, factCategory
   })
 
   persistPlayer()
+
+  // Phase 15.6: Dispatch mastery event outside the store update to avoid side effects
+  if (masteryEvent) {
+    document.dispatchEvent(
+      new CustomEvent('game:fact-mastered', { detail: masteryEvent }),
+    )
+  }
 }
 
 /**

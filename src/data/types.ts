@@ -356,6 +356,10 @@ export interface PlayerSave {
   archetypeData: ArchetypeData
   /** Hidden engagement scoring for dynamic difficulty (DD-V2-163). */
   engagementData: EngagementData
+
+  // Phase 15.1: Post-Dive Reactions
+  /** Biome ID of the most recently completed dive, used for post-dive GAIA commentary. */
+  lastDiveBiome?: string
 }
 
 /** Player statistics */

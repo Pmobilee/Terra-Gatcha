@@ -204,6 +204,7 @@
     font-family: 'Press Start 2P', monospace;
     z-index: 200;
     overflow: hidden;
+    pointer-events: auto;
   }
   .header {
     display: flex;
