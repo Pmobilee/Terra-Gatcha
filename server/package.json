@@ -13,7 +13,8 @@
     "typecheck": "tsc --noEmit",
     "dashboard": "tsx src/dashboard/index.ts",
     "sprite-daemon": "tsx src/scripts/sprite-gen-daemon.ts",
-    "pipeline": "tsx src/workers/pipelineWorker.ts"
+    "pipeline": "tsx src/workers/pipelineWorker.ts",
+    "smoke-test": "npx tsx scripts/smoke-test.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.78.0",

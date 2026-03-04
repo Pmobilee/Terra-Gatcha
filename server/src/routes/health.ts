@@ -1,23 +1,24 @@
 /**
- * Health check route for the Terra Gacha server.
- * Returns basic liveness information; used by Docker healthcheck and
- * monitoring systems to verify the server is running.
+ * Health check routes for the Terra Gacha server.
+ * Returns liveness and readiness information; used by Docker healthcheck and
+ * monitoring systems to verify the server and its integrations are running.
  */
 
 import type { FastifyInstance } from "fastify";
+import { config } from "../config.js";
 
 const SERVER_START_TIME = Date.now();
 const SERVER_VERSION = "1.0.0";
 
 /**
- * Register the health check route on the Fastify instance.
+ * Register health check routes on the Fastify instance.
  *
  * @param fastify - The Fastify application instance.
  */
 export async function healthRoutes(fastify: FastifyInstance): Promise<void> {
   /**
    * GET /health
-   * Returns server status, version, and uptime in seconds.
+   * Basic liveness check. Returns server status, version, and uptime in seconds.
    * No authentication required.
    */
   fastify.get(
@@ -44,4 +45,25 @@ export async function healthRoutes(fastify: FastifyInstance): Promise<void> {
       };
     }
   );
+
+  /**
+   * GET /health/ready
+   * Readiness check that reports whether each third-party integration is configured.
+   * Returns 200 when all integrations are ready, 206 when any are missing config.
+   * No authentication required.
+   */
+  fastify.get("/health/ready", async (_request, reply) => {
+    const integrations = {
+      revenuecat: Boolean(config.revenuecatApiKey),
+      resend: Boolean(config.resendApiKey),
+      fcm: Boolean(config.fcmProjectId && config.fcmPrivateKey),
+      azureTts: Boolean(config.azureSpeechKey),
+    };
+    const allReady = Object.values(integrations).every(Boolean);
+    return reply.status(allReady ? 200 : 206).send({
+      status: allReady ? "ready" : "partial",
+      integrations,
+      environment: config.nodeEnv,
+    });
+  });
 }

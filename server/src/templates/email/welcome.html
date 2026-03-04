@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Terra Gacha</title>
+  <style>
+    body { font-family: 'Courier New', monospace; background: #1a1a2e; color: #e0e0e0; margin: 0; padding: 20px; }
+    .container { max-width: 500px; margin: 0 auto; background: #16213e; border-radius: 8px; padding: 30px; border: 1px solid #0f3460; }
+    .header { text-align: center; margin-bottom: 20px; }
+    .header h1 { color: #e94560; font-size: 18px; margin: 0; }
+    .header p { color: #a0a0a0; font-size: 12px; }
+    .gaia-message { background: #0f3460; border-radius: 6px; padding: 20px; margin: 20px 0; border-left: 3px solid #e94560; }
+    .gaia-message p { line-height: 1.6; margin: 0 0 10px; }
+    .gaia-message p:last-child { margin-bottom: 0; }
+    .gaia-avatar { display: inline-block; width: 40px; height: 40px; background: #e94560; border-radius: 50%; text-align: center; line-height: 40px; font-size: 20px; margin-right: 10px; vertical-align: middle; }
+    .gaia-name { vertical-align: middle; color: #e94560; font-weight: bold; }
+    .highlight { color: #e94560; font-weight: bold; }
+    .steps { margin: 20px 0; }
+    .step { display: flex; align-items: flex-start; margin-bottom: 12px; }
+    .step-num { background: #e94560; color: white; width: 22px; height: 22px; border-radius: 50%; text-align: center; line-height: 22px; font-size: 12px; font-weight: bold; flex-shrink: 0; margin-right: 10px; margin-top: 2px; }
+    .step-text { font-size: 13px; line-height: 1.5; }
+    .cta { display: block; text-align: center; background: #e94560; color: white; text-decoration: none; padding: 12px 24px; border-radius: 6px; margin: 20px auto; font-weight: bold; font-size: 14px; }
+    .footer { text-align: center; font-size: 10px; color: #666; margin-top: 20px; }
+    .footer a { color: #e94560; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Terra Gacha</h1>
+      <p>Your dome awaits, {{playerName}}</p>
+    </div>
+    <div class="gaia-message">
+      <p><span class="gaia-avatar">G</span> <span class="gaia-name">GAIA</span></p>
+      <p>Welcome, <span class="highlight">{{playerName}}</span>. I have been expecting you.</p>
+      <p>Your ship has made landfall. The dome is operational. I have prepared an orientation — your first dive awaits beneath the surface.</p>
+      <p>The earth holds many secrets. Together, we will uncover them.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>Dive into the mine</strong> — excavate minerals and discover relics from Earth's past.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text"><strong>Answer GAIA's quizzes</strong> — every correct answer grows your Knowledge Tree.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text"><strong>Expand the dome</strong> — build labs, a farm, a zoo, and more with your minerals.</div>
+      </div>
+    </div>
+    <a href="https://terra-gacha.app/play" class="cta">Enter the Dome</a>
+    <div class="footer">
+      <p>You received this because you created a Terra Gacha account.</p>
+      <p><a href="{{unsubscribeUrl}}">Unsubscribe</a> — we'll miss you, but we understand.</p>
+    </div>
+  </div>
+</body>
+</html>

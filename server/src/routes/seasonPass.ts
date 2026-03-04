@@ -5,9 +5,9 @@
 
 import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
 
-export default async function seasonPassRoutes(fastify: FastifyInstance) {
-  /** GET /api/season/current — returns current season definition */
-  fastify.get('/api/season/current', async (_request: FastifyRequest, _reply: FastifyReply) => {
+export async function seasonPassRoutes(fastify: FastifyInstance): Promise<void> {
+  /** GET /current — returns current season definition */
+  fastify.get('/current', async (_request: FastifyRequest, _reply: FastifyReply) => {
     return {
       id: 'season_1_deep_time',
       name: 'Knowledge Expedition: Deep Time',

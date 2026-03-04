@@ -1,5 +1,39 @@
 import { FastifyInstance } from 'fastify'
-import { getDisplayDropRates, validateDropRates } from '../../../src/game/systems/artifactDrop'
+
+/**
+ * Artifact drop rate tiers with displayed probabilities (DD-V2-174).
+ * Defined inline to avoid importing from the client source tree.
+ */
+interface DropRateTier {
+  rarity: string
+  displayRate: string
+  actualRate: number
+  pityThreshold: number
+}
+
+const DROP_RATES: DropRateTier[] = [
+  { rarity: 'common',    displayRate: '45%',   actualRate: 0.45,  pityThreshold: 0   },
+  { rarity: 'uncommon',  displayRate: '30%',   actualRate: 0.30,  pityThreshold: 0   },
+  { rarity: 'rare',      displayRate: '15%',   actualRate: 0.15,  pityThreshold: 20  },
+  { rarity: 'epic',      displayRate: '7%',    actualRate: 0.07,  pityThreshold: 35  },
+  { rarity: 'legendary', displayRate: '2.5%',  actualRate: 0.025, pityThreshold: 50  },
+  { rarity: 'mythic',    displayRate: '0.5%',  actualRate: 0.005, pityThreshold: 100 },
+]
+
+/** Returns drop rates formatted for public display. */
+function getDisplayDropRates(): { rarity: string; displayRate: string; pityThreshold: number }[] {
+  return DROP_RATES.map(({ rarity, displayRate, pityThreshold }) => ({
+    rarity,
+    displayRate,
+    pityThreshold,
+  }))
+}
+
+/** Validates that the sum of actual rates is approximately 1.0. */
+function validateDropRates(): { valid: boolean; sum: number } {
+  const sum = DROP_RATES.reduce((acc, t) => acc + t.actualRate, 0)
+  return { valid: Math.abs(sum - 1.0) < 0.001, sum }
+}
 
 /**
  * Compliance endpoints for gacha ethics (DD-V2-174).

@@ -10,6 +10,13 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=3000
+    secrets:
+      - jwt_secret
+      - revenuecat_api_key
+      - revenuecat_webhook_secret
+      - resend_api_key
+      - fcm_private_key
+      - azure_speech_key
     restart: unless-stopped
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:3000/health']
@@ -17,3 +24,24 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
+
+# Docker secrets are created externally via:
+#   docker secret create jwt_secret <(echo "your-64-char-random-secret")
+#   docker secret create revenuecat_api_key <(echo "appl_...")
+#   docker secret create revenuecat_webhook_secret <(echo "rc_whsec_...")
+#   docker secret create resend_api_key <(echo "re_...")
+#   docker secret create fcm_private_key ./path/to/fcm-key.pem
+#   docker secret create azure_speech_key <(echo "your-azure-key")
+secrets:
+  jwt_secret:
+    external: true
+  revenuecat_api_key:
+    external: true
+  revenuecat_webhook_secret:
+    external: true
+  resend_api_key:
+    external: true
+  fcm_private_key:
+    external: true
+  azure_speech_key:
+    external: true

@@ -17,6 +17,7 @@ import { config } from "../config.js";
 import { requireAuth, getAuthUser } from "../middleware/auth.js";
 import type { AuthResponse, PublicUser } from "../types/index.js";
 import { anonymizeLeaderboardEntries } from "../services/dataDeletion.js";
+import { sendEmail } from "../services/emailService.js";
 
 // ── Password helpers ──────────────────────────────────────────────────────────
 
@@ -309,6 +310,16 @@ export async function authRoutes(fastify: FastifyInstance): Promise<void> {
         createdAt: now,
       };
 
+      // Send welcome email (non-fatal — never blocks registration)
+      sendEmail({
+        to: email.toLowerCase(),
+        subject: "Welcome to Terra Gacha",
+        template: "welcome",
+        variables: { playerName: trimmedDisplay ?? email.split("@")[0] ?? "Explorer" },
+      }).catch((err: unknown) =>
+        fastify.log.warn(err, "Welcome email failed (non-fatal)")
+      );
+
       return reply.status(201).send({ token, refreshToken, user: publicUser });
     }
   );
@@ -530,8 +541,7 @@ export async function authRoutes(fastify: FastifyInstance): Promise<void> {
           // In development, log the reset URL instead of sending email
           console.log(`[auth] Password reset URL for ${user.email}: ${resetUrl}`);
         }
-        // In production a real email would be dispatched here using
-        // config.smtpHost / smtpUser / smtpPass / fromEmail.
+        // In production a real email would be dispatched here via Resend.
       }
 
       // Always 202 — never reveal whether the email exists

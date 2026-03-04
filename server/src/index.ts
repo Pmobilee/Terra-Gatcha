@@ -6,7 +6,7 @@
 import Fastify, { type FastifyRequest, type FastifyReply } from "fastify";
 import cors from "@fastify/cors";
 import jwt from "@fastify/jwt";
-import { config } from "./config.js";
+import { config, validateProductionConfig } from "./config.js";
 import { initSchema } from "./db/migrate.js";
 import { initFactsSchema } from "./db/facts-migrate.js";
 import { healthRoutes } from "./routes/health.js";
@@ -21,6 +21,11 @@ import { seasonRoutes } from "./routes/seasons.js";
 import { notificationRoutes } from "./routes/notifications.js";
 import { ugcRoutes } from "./routes/ugc.js";
 import { emailRoutes } from "./routes/email.js";
+import { audioRoutes } from "./routes/audio.js";
+import { iapRoutes } from "./routes/iap.js";
+import { patronRoutes } from "./routes/patrons.js";
+import { seasonPassRoutes } from "./routes/seasonPass.js";
+import { subscriptionRoutes } from "./routes/subscriptions.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -172,6 +177,13 @@ export async function buildApp() {
     await scoped.register(emailRoutes, { prefix: "/api/email" });
   }, {});
 
+  // Phase 26: Production backend routes
+  await fastify.register(audioRoutes,        { prefix: "/api/audio" });
+  await fastify.register(iapRoutes,          { prefix: "/api/iap" });
+  await fastify.register(patronRoutes,       { prefix: "/api/patrons" });
+  await fastify.register(seasonPassRoutes,   { prefix: "/api/season-pass" });
+  await fastify.register(subscriptionRoutes, { prefix: "/api/subscriptions" });
+
   // ── 404 handler ─────────────────────────────────────────────────────────────
   fastify.setNotFoundHandler((_request, reply) => {
     reply.status(404).send({ error: "Route not found", statusCode: 404 });
@@ -184,9 +196,21 @@ export async function buildApp() {
  * Start the server by building the app and binding to the configured port.
  */
 async function start(): Promise<void> {
+  // Validate production-critical environment variables before starting
+  validateProductionConfig();
+
   // Bootstrap the database schema (idempotent)
   initSchema();
   initFactsSchema();
+
+  // Schedule win-back cron: initial run after 30s warmup, then daily
+  const { runWinBackCron } = await import('./jobs/winBackCron.js');
+  setTimeout(() => runWinBackCron().catch(console.error), 30_000);
+  setInterval(() => {
+    runWinBackCron().catch((err: unknown) =>
+      console.error('[Cron] Win-back failed:', err)
+    );
+  }, 86_400_000);
 
   const app = await buildApp();
 

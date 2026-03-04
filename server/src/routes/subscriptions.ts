@@ -9,9 +9,9 @@ import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
 const MINIMUM_FACTS_REQUIRED = 3000
 const CURRENT_FACT_COUNT = 522 // Updated by content pipeline
 
-export default async function subscriptionRoutes(fastify: FastifyInstance) {
-  /** GET /api/subscriptions/status — returns subscription availability and current state */
-  fastify.get('/api/subscriptions/status', async (_request: FastifyRequest, _reply: FastifyReply) => {
+export async function subscriptionRoutes(fastify: FastifyInstance): Promise<void> {
+  /** GET /status — returns subscription availability and current state */
+  fastify.get('/status', async (_request: FastifyRequest, _reply: FastifyReply) => {
     const factsReady = CURRENT_FACT_COUNT
     const available = factsReady >= MINIMUM_FACTS_REQUIRED
 
@@ -27,8 +27,8 @@ export default async function subscriptionRoutes(fastify: FastifyInstance) {
     }
   })
 
-  /** POST /api/subscriptions/verify — RevenueCat webhook handler */
-  fastify.post('/api/subscriptions/verify', async (_request: FastifyRequest, reply: FastifyReply) => {
+  /** POST /verify — RevenueCat webhook handler */
+  fastify.post('/verify', async (_request: FastifyRequest, reply: FastifyReply) => {
     // Content volume gate check
     if (CURRENT_FACT_COUNT < MINIMUM_FACTS_REQUIRED) {
       return reply.status(503).send({
@@ -38,18 +38,14 @@ export default async function subscriptionRoutes(fastify: FastifyInstance) {
       })
     }
 
-    // In production, this would validate RevenueCat webhook signature
-    // and update the user's subscription record in the database
-    // const body = request.body as Record<string, unknown>
-
     return {
       valid: true,
       message: 'Subscription verified (stub — production will validate via RevenueCat)',
     }
   })
 
-  /** POST /api/subscriptions/record-cosmetic — records monthly cosmetic grant */
-  fastify.post('/api/subscriptions/record-cosmetic', async (_request: FastifyRequest, _reply: FastifyReply) => {
+  /** POST /record-cosmetic — records monthly cosmetic grant */
+  fastify.post('/record-cosmetic', async (_request: FastifyRequest, _reply: FastifyReply) => {
     // Monthly cosmetic grant logic
     return { granted: false, message: 'Monthly cosmetic grant (stub)' }
   })

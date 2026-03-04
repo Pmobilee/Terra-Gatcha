@@ -5,6 +5,7 @@
  */
 
 import "dotenv/config";
+import { readFileSync } from "fs";
 
 /** Parsed and validated server configuration. */
 export interface Config {
@@ -36,18 +37,28 @@ export interface Config {
   rateLimitMax: number;
   /** Rate-limit window duration in milliseconds (default 60000). */
   rateLimitWindow: number;
-  /** SMTP host for sending password reset emails (optional). */
-  smtpHost?: string;
-  /** SMTP port for sending password reset emails (optional). */
-  smtpPort?: number;
-  /** SMTP username / API key (optional). */
-  smtpUser?: string;
-  /** SMTP password / API secret (optional). */
-  smtpPass?: string;
   /** From email address for outbound mail (optional). */
   fromEmail?: string;
   /** Base URL used when constructing password reset links (default: localhost). */
   passwordResetBaseUrl: string;
+  /** RevenueCat server API key for receipt verification. */
+  revenuecatApiKey: string;
+  /** RevenueCat S2S webhook shared secret (Authorization header value). */
+  revenuecatWebhookSecret: string;
+  /** Resend API key for transactional email delivery. */
+  resendApiKey: string;
+  /** Base URL for email unsubscribe links. */
+  emailUnsubscribeBaseUrl: string;
+  /** Firebase Cloud Messaging project ID. */
+  fcmProjectId: string;
+  /** FCM service account client email. */
+  fcmClientEmail: string;
+  /** FCM service account private key (PEM, newlines as \n). */
+  fcmPrivateKey: string;
+  /** Azure Cognitive Services TTS subscription key. */
+  azureSpeechKey: string;
+  /** Azure region for the TTS endpoint (e.g. "eastus"). */
+  azureSpeechRegion: string;
 }
 
 /**
@@ -88,6 +99,24 @@ function envMaybe(key: string): string | undefined {
   return value !== undefined && value !== "" ? value : undefined;
 }
 
+/**
+ * Read an env var, falling back to a Docker secret file at /run/secrets/<secretName>.
+ * Returns empty string if neither source is available (dev mode).
+ *
+ * @param envKey - The environment variable name to check first.
+ * @param secretName - The Docker secret name (filename under /run/secrets/).
+ * @returns The resolved string value, or empty string if unavailable.
+ */
+function readDockerSecret(envKey: string, secretName: string): string {
+  const fromEnv = process.env[envKey];
+  if (fromEnv) return fromEnv;
+  try {
+    return readFileSync(`/run/secrets/${secretName}`, "utf-8").trim();
+  } catch {
+    return "";
+  }
+}
+
 const rawCors = env("CORS_ORIGIN", "http://localhost:5173");
 
 /** Singleton configuration object populated from environment variables. */
@@ -110,15 +139,64 @@ export const config: Config = {
   ),
   rateLimitMax: parseInt(env("RATE_LIMIT_MAX", "20"), 10),
   rateLimitWindow: parseInt(env("RATE_LIMIT_WINDOW_MS", "60000"), 10),
-  smtpHost: envMaybe("SMTP_HOST"),
-  smtpPort: envMaybe("SMTP_PORT") !== undefined
-    ? parseInt(process.env["SMTP_PORT"]!, 10)
-    : undefined,
-  smtpUser: envMaybe("SMTP_USER"),
-  smtpPass: envMaybe("SMTP_PASS"),
   fromEmail: envMaybe("FROM_EMAIL"),
   passwordResetBaseUrl: env(
     "PASSWORD_RESET_BASE_URL",
     "http://localhost:5173/reset-password"
   ),
+  // ── Monetisation (RevenueCat) ───────────────────────────────────────────────
+  revenuecatApiKey: readDockerSecret(
+    "REVENUECAT_API_KEY",
+    "revenuecat_api_key"
+  ),
+  revenuecatWebhookSecret: readDockerSecret(
+    "REVENUECAT_WEBHOOK_SECRET",
+    "revenuecat_webhook_secret"
+  ),
+  // ── Email (Resend) ──────────────────────────────────────────────────────────
+  resendApiKey: readDockerSecret("RESEND_API_KEY", "resend_api_key"),
+  emailUnsubscribeBaseUrl: env(
+    "EMAIL_UNSUBSCRIBE_BASE_URL",
+    "http://localhost:3001/api/email/unsubscribe"
+  ),
+  // ── Push Notifications (FCM) ────────────────────────────────────────────────
+  fcmProjectId: envOptional("FCM_PROJECT_ID", ""),
+  fcmClientEmail: envOptional("FCM_CLIENT_EMAIL", ""),
+  fcmPrivateKey: readDockerSecret("FCM_PRIVATE_KEY", "fcm_private_key"),
+  // ── TTS (Azure Cognitive Services) ─────────────────────────────────────────
+  azureSpeechKey: readDockerSecret("AZURE_SPEECH_KEY", "azure_speech_key"),
+  azureSpeechRegion: envOptional("AZURE_SPEECH_REGION", "eastus"),
 };
+
+/**
+ * Validate production-critical environment variables at boot.
+ * Call this inside start() before buildApp().
+ * Exits the process with a descriptive error on failure.
+ */
+export function validateProductionConfig(): void {
+  if (!config.isProduction) return;
+
+  const required: [keyof Config, string][] = [
+    ["jwtSecret", "JWT_SECRET (min 64 chars, random)"],
+    ["adminApiKey", "ADMIN_API_KEY"],
+    ["revenuecatApiKey", "REVENUECAT_API_KEY"],
+    ["revenuecatWebhookSecret", "REVENUECAT_WEBHOOK_SECRET"],
+    ["resendApiKey", "RESEND_API_KEY"],
+  ];
+
+  const missing = required.filter(([key]) => !config[key]);
+  if (missing.length > 0) {
+    console.error(
+      "[Config] FATAL: Missing required production environment variables:"
+    );
+    for (const [, label] of missing) console.error(`  - ${label}`);
+    process.exit(1);
+  }
+
+  if (config.jwtSecret.length < 64) {
+    console.error(
+      "[Config] FATAL: JWT_SECRET must be at least 64 characters in production"
+    );
+    process.exit(1);
+  }
+}

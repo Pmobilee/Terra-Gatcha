@@ -1,5 +1,24 @@
-/** Email template types */
-export type EmailTemplate = 'gaia_letter' | 'season_announcement' | 'weekly_digest' | 'win_back'
+/**
+ * Email service using Resend REST API for transactional email delivery.
+ * Falls back to console.log in development when RESEND_API_KEY is not set.
+ * DD-V2-160: Win-back email campaigns.
+ */
+
+import { config } from '../config.js'
+import { readFileSync } from 'fs'
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const RESEND_API = 'https://api.resend.com/emails'
+
+/** Email template identifiers */
+export type EmailTemplate =
+  | 'gaia_letter'
+  | 'season_announcement'
+  | 'weekly_digest'
+  | 'win_back'
+  | 'welcome'
 
 export interface EmailPayload {
   to: string
@@ -9,19 +28,87 @@ export interface EmailPayload {
 }
 
 /**
- * Send an email (stub — in production, integrate with SendGrid/SES/Resend)
+ * Load an HTML template file and interpolate {{variable}} placeholders.
+ *
+ * @param template - The template identifier.
+ * @param variables - Key-value pairs to substitute into the template.
+ * @returns Rendered HTML string.
  */
-export async function sendEmail(payload: EmailPayload): Promise<{ sent: boolean; messageId?: string }> {
-  // Production: integrate with email provider
-  // For now, log the email payload
-  console.log(`[EmailService] Would send ${payload.template} to ${payload.to}: ${payload.subject}`)
-  return { sent: true, messageId: `msg-${Date.now()}` }
+function renderTemplate(
+  template: EmailTemplate,
+  variables: Record<string, string | number>
+): string {
+  const name = template.replace(/_/g, '-')
+  const filePath = join(__dirname, '..', 'templates', 'email', `${name}.html`)
+  let html = readFileSync(filePath, 'utf-8')
+  for (const [key, value] of Object.entries(variables)) {
+    html = html.replaceAll(`{{${key}}}`, String(value))
+  }
+  return html
 }
 
 /**
- * Build GAIA Letter email for win-back (DD-V2-160)
+ * Send a transactional email via Resend REST API.
+ * Falls back to console.log in development when RESEND_API_KEY is not set.
+ *
+ * @param payload - Email content and recipient details.
+ * @returns Object with sent status and optional message ID.
  */
-export function buildGaiaLetterEmail(playerName: string, daysSince: number, factsCount: number, treeGrowth: string): EmailPayload {
+export async function sendEmail(
+  payload: EmailPayload
+): Promise<{ sent: boolean; messageId?: string }> {
+  if (!config.resendApiKey) {
+    console.log(
+      `[EmailService] DEV — would send "${payload.subject}" to ${payload.to}`
+    )
+    console.log('[EmailService] Variables:', payload.variables)
+    return { sent: true, messageId: `dev-${Date.now()}` }
+  }
+
+  const unsubscribeUrl = `${config.emailUnsubscribeBaseUrl}?token=PLACEHOLDER_TOKEN`
+  const html = renderTemplate(payload.template, {
+    ...payload.variables,
+    unsubscribeUrl,
+  })
+
+  const res = await fetch(RESEND_API, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${config.resendApiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: config.fromEmail ?? 'GAIA <gaia@terra-gacha.app>',
+      to: [payload.to],
+      subject: payload.subject,
+      html,
+    }),
+  })
+
+  if (!res.ok) {
+    const text = await res.text()
+    throw new Error(`Resend error ${res.status}: ${text}`)
+  }
+
+  const data = (await res.json()) as { id: string }
+  return { sent: true, messageId: data.id }
+}
+
+/**
+ * Build GAIA Letter email for win-back campaign (DD-V2-160).
+ *
+ * @param playerName - The player's display name.
+ * @param daysSince - Days since the player was last active.
+ * @param factsCount - Number of facts the player has learned.
+ * @param treeGrowth - Description of passive tree growth (e.g. "a few new leaves").
+ * @returns EmailPayload ready to pass to sendEmail.
+ */
+export function buildGaiaLetterEmail(
+  playerName: string,
+  daysSince: number,
+  factsCount: number,
+  treeGrowth: string
+): EmailPayload {
   return {
     to: '', // Filled by caller
     subject: `GAIA has a message for you, ${playerName}`,
@@ -31,21 +118,31 @@ export function buildGaiaLetterEmail(playerName: string, daysSince: number, fact
       daysSince,
       factsCount,
       treeGrowth,
-      gaiaMessage: daysSince > 30
-        ? `It's been ${daysSince} days. The dome is still here. Your tree still stands at ${factsCount} facts. No pressure — but I've been cataloguing some interesting specimens.`
-        : `${daysSince} days since your last dive. The Knowledge Tree added a few leaves on its own — ${treeGrowth}. Come see.`
-    }
+      gaiaMessage:
+        daysSince > 30
+          ? `It's been ${daysSince} days. The dome is still here. Your tree still stands at ${factsCount} facts. No pressure — but I've been cataloguing some interesting specimens.`
+          : `${daysSince} days since your last dive. The Knowledge Tree added a few leaves on its own — ${treeGrowth}. Come see.`,
+    },
   }
 }
 
 /**
- * Build season announcement email
+ * Build season announcement email.
+ *
+ * @param seasonName - Name of the new season.
+ * @param tagline - Short tagline for the season.
+ * @param startDate - ISO date string for the season start.
+ * @returns EmailPayload ready to pass to sendEmail.
  */
-export function buildSeasonAnnouncementEmail(seasonName: string, tagline: string, startDate: string): EmailPayload {
+export function buildSeasonAnnouncementEmail(
+  seasonName: string,
+  tagline: string,
+  startDate: string
+): EmailPayload {
   return {
     to: '',
     subject: `New Season: ${seasonName}`,
     template: 'season_announcement',
-    variables: { seasonName, tagline, startDate }
+    variables: { seasonName, tagline, startDate },
   }
 }

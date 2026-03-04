@@ -5,9 +5,9 @@
 
 import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
 
-export default async function patronRoutes(fastify: FastifyInstance) {
-  /** GET /api/patrons/wall — returns opted-in patron display names */
-  fastify.get('/api/patrons/wall', async (_request: FastifyRequest, _reply: FastifyReply) => {
+export async function patronRoutes(fastify: FastifyInstance): Promise<void> {
+  /** GET /wall — returns opted-in patron display names */
+  fastify.get('/wall', async (_request: FastifyRequest, _reply: FastifyReply) => {
     // In production, this queries the patrons table for opted-in display names
     // Stub returns empty list for now
     return {
