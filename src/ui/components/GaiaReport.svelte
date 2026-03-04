@@ -2,6 +2,7 @@
   import { playerSave } from '../stores/playerData'
   import RadarChart from './RadarChart.svelte'
   import SparklineChart from './SparklineChart.svelte'
+  import { getEffectiveArchetype } from '../../services/archetypeDetector'
 
   interface Props {
     onBack: () => void
@@ -10,6 +11,24 @@
   const { onBack }: Props = $props()
 
   const save = $derived($playerSave)
+
+  const ARCHETYPE_ICONS: Record<string, string> = {
+    explorer: 'E',
+    scholar: 'S',
+    collector: 'C',
+    sprinter: 'R',
+  }
+
+  const ARCHETYPE_DESCRIPTIONS: Record<string, string> = {
+    explorer: 'You love going deep and discovering new biomes.',
+    scholar: 'You focus on mastering knowledge above all.',
+    collector: 'You aim to collect every fact and fossil.',
+    sprinter: 'You play fast and furious, racking up dives.',
+  }
+
+  const archetype = $derived(
+    save?.archetypeData ? getEffectiveArchetype(save.archetypeData) : 'undetected'
+  )
 
   // Summary stats
   const totalLearned = $derived(save?.learnedFacts.length ?? 0)
@@ -169,6 +188,20 @@
       </div>
     </div>
 
+    <!-- Archetype display -->
+    {#if archetype !== 'undetected'}
+      <section class="archetype-section">
+        <h3>Your Archetype</h3>
+        <div class="archetype-badge">
+          <span class="archetype-icon">{ARCHETYPE_ICONS[archetype]}</span>
+          <div class="archetype-info">
+            <span class="archetype-name">{archetype.charAt(0).toUpperCase() + archetype.slice(1)}</span>
+            <span class="archetype-desc">{ARCHETYPE_DESCRIPTIONS[archetype]}</span>
+          </div>
+        </div>
+      </section>
+    {/if}
+
     <!-- Radar chart -->
     <div class="chart-section">
       <h2 class="section-title">Category Mastery</h2>
@@ -271,6 +304,49 @@
     margin: 0;
   }
   .summary-sig { color: #4ecca3; font-size: 7px; }
+  .archetype-section {
+    background: #12122a;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 12px;
+  }
+  .archetype-section h3 {
+    font-size: 0.65rem;
+    color: #4ecca3;
+    margin: 0 0 8px 0;
+  }
+  .archetype-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .archetype-icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4ecca3;
+    background: #1a3a2e;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+  }
+  .archetype-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .archetype-name {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #e0e0e0;
+  }
+  .archetype-desc {
+    font-size: 0.5rem;
+    color: #888;
+    line-height: 1.3;
+  }
   .share-btn {
     padding: 12px;
     background: rgba(78, 204, 163, 0.15);

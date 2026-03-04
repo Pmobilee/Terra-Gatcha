@@ -64,9 +64,16 @@ async function bootGame(): Promise<void> {
   const game = gameManager.getGame()
   if (game) {
     game.events.on('boot-complete', () => {
-      // Show main menu for first-time players, skip to base for returning players
       const isNewPlayer = save.stats.totalDivesCompleted === 0 && save.learnedFacts.length <= 6
-      currentScreen.set(isNewPlayer ? 'mainMenu' : 'base')
+      // Phase 12: Route truly new players to interest assessment first
+      const hasConfiguredInterests = save.interestConfig?.categories?.some(c => c.weight > 0) ?? false
+      if (isNewPlayer && !hasConfiguredInterests) {
+        currentScreen.set('interestAssessment')
+      } else if (isNewPlayer) {
+        currentScreen.set('mainMenu')
+      } else {
+        currentScreen.set('base')
+      }
     })
   }
 

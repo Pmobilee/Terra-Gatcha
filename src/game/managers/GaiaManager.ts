@@ -5,6 +5,7 @@ import { gaiaMood, gaiaChattiness } from '../../ui/stores/settings'
 import { getGaiaLine, GAIA_TRIGGERS } from '../../data/gaiaDialogue'
 import { getGaiaExpression } from '../../data/gaiaAvatar'
 import { PREMIUM_MATERIALS, type PremiumMaterial } from '../../data/premiumRecipes'
+import { getEffectiveArchetype, ARCHETYPE_GAIA_EMPHASIS } from '../../services/archetypeDetector'
 
 /**
  * Manages GAIA (ship AI) commentary and premium material awards.
@@ -42,6 +43,42 @@ export class GaiaManager {
     const expr = getGaiaExpression(trigger, mood)
     gaiaExpression.set(expr.id)
     gaiaMessage.set(text)
+  }
+
+  /**
+   * Returns a short archetype-themed prefix for GAIA commentary.
+   * Returns empty string if archetype is undetected.
+   */
+  getArchetypePrefix(): string {
+    const save = get(playerSave)
+    if (!save?.archetypeData) return ''
+    const archetype = getEffectiveArchetype(save.archetypeData)
+    if (archetype === 'undetected') return ''
+    const emphasis = ARCHETYPE_GAIA_EMPHASIS[archetype]
+    const prefixes: Record<string, string[]> = {
+      discovery: ['Explorer\'s log: ', 'New territory! ', 'Chart this: '],
+      mastery: ['Scholar\'s note: ', 'Study tip: ', 'Knowledge check: '],
+      completionist: ['Collection update: ', 'Catalog entry: ', 'Archive: '],
+      streak: ['Speed run! ', 'Quick note: ', 'On the move: '],
+      neutral: [''],
+    }
+    const options = prefixes[emphasis] ?? ['']
+    return options[Math.floor(Math.random() * options.length)]
+  }
+
+  /**
+   * Emits a GAIA line with optional archetype-themed prefix, respecting chattiness.
+   * Used for general commentary where archetype flavor adds personality.
+   */
+  archetypeGaia(lines: string[], trigger = 'idle'): void {
+    const chattiness = get(gaiaChattiness)
+    if (Math.random() * 10 >= chattiness) return
+    const prefix = this.getArchetypePrefix()
+    const msg = lines[Math.floor(Math.random() * lines.length)]
+    const mood = get(gaiaMood)
+    const expr = getGaiaExpression(trigger, mood)
+    gaiaExpression.set(expr.id)
+    gaiaMessage.set(prefix + msg)
   }
 
   /**

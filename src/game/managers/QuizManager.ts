@@ -213,7 +213,7 @@ export class QuizManager {
   handleQuizAnswer(correct: boolean): void {
     const quiz = get(activeQuiz)
     if (quiz) {
-      updateReviewState(quiz.fact.id, correct)
+      updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
       if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
         this.applyConsistencyPenalty(quiz.fact.id)
       }
@@ -225,7 +225,7 @@ export class QuizManager {
   handleOxygenQuizAnswer(correct: boolean): void {
     const quiz = get(activeQuiz)
     if (quiz) {
-      updateReviewState(quiz.fact.id, correct)
+      updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
       if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
         this.applyConsistencyPenalty(quiz.fact.id)
       }
@@ -244,7 +244,7 @@ export class QuizManager {
   handleArtifactQuizAnswer(correct: boolean): void {
     const quiz = get(activeQuiz)
     if (quiz) {
-      updateReviewState(quiz.fact.id, correct)
+      updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
     }
     // Check if more questions remain by inspecting gateProgress
     const moreQuestionsRemain = quiz?.gateProgress != null && quiz.gateProgress.remaining > 0
@@ -273,7 +273,7 @@ export class QuizManager {
   handleRandomQuizAnswer(correct: boolean): void {
     const quiz = get(activeQuiz)
     if (quiz) {
-      updateReviewState(quiz.fact.id, correct)
+      updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
       if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
         this.applyConsistencyPenalty(quiz.fact.id)
       }
@@ -297,7 +297,7 @@ export class QuizManager {
   handleLayerQuizAnswer(correct: boolean): void {
     const quiz = get(activeQuiz)
     if (quiz) {
-      updateReviewState(quiz.fact.id, correct)
+      updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
       if (!correct && this.isConsistencyViolation(quiz.fact.id, false)) {
         this.applyConsistencyPenalty(quiz.fact.id)
       }

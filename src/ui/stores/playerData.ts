@@ -8,6 +8,7 @@ import { BALANCE } from '../../data/balance'
 import { evaluateArchetype } from '../../services/archetypeDetector'
 import { updateEngagementAfterDive, getEngagementGaiaComment } from '../../services/engagementScorer'
 import { gaiaMessage } from '../stores/gameState'
+import { recordFastMastery } from '../../services/behavioralLearner'
 
 /** The active player save data. */
 export const playerSave = writable<PlayerSave | null>(null)
@@ -107,14 +108,31 @@ export function sellFact(factId: string, mineralReward: number): void {
 
 /**
  * Updates SM-2 review state and quiz stats after one answer.
+ * If factCategory is provided and behavioral learning is enabled, records fast mastery
+ * signals when the fact's interval crosses the 14-day threshold for the first time.
  *
  * @param factId - Fact identifier whose review state should change.
  * @param correct - Whether the submitted answer was correct.
+ * @param factCategory - Optional top-level category of the fact (e.g. 'Language').
+ *   Pass this from callers that already have the fact object to enable Phase 12
+ *   behavioral learning signal tracking (DD-V2-118).
  */
-export function updateReviewState(factId: string, correct: boolean): void {
+export function updateReviewState(factId: string, correct: boolean, factCategory?: string): void {
   playerSave.update((save) => {
     if (!save) {
       return save
+    }
+
+    // Phase 12: Check for fast mastery (interval crossing 14-day threshold)
+    let updatedSignals = save.behavioralSignals ?? { perCategory: {}, lastRecalcDives: 0 }
+    if (correct && factCategory && save.interestConfig?.behavioralLearningEnabled) {
+      const oldState = save.reviewStates.find(s => s.factId === factId)
+      if (oldState && oldState.interval < 14) {
+        const newState = reviewFact(oldState, correct)
+        if (newState.interval >= 14) {
+          updatedSignals = recordFastMastery(updatedSignals, factCategory)
+        }
+      }
     }
 
     return {
@@ -122,6 +140,7 @@ export function updateReviewState(factId: string, correct: boolean): void {
       reviewStates: save.reviewStates.map((state) =>
         state.factId === factId ? reviewFact(state, correct) : state,
       ),
+      behavioralSignals: updatedSignals,
       stats: {
         ...save.stats,
         totalQuizCorrect: correct ? save.stats.totalQuizCorrect + 1 : save.stats.totalQuizCorrect,
