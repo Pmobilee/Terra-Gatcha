@@ -25,6 +25,21 @@ export const FARM_PRODUCTION: Record<string, FarmProduction> = {
   archaeopteryx:{ mineralTier: 'crystal', amountPerHour: 0.3 },
   // Legendary: crystal at decent rate
   trex:         { mineralTier: 'crystal', amountPerHour: 1 },
+  // ─── Crop Fossils (Phase 16.1) ────────────────────────────────
+  // Common: high dust (crops have no companion-dive bonus to compensate)
+  ancient_wheat:   { mineralTier: 'dust',    amountPerHour: 15 },
+  lotus_fossil:    { mineralTier: 'dust',    amountPerHour: 12 },
+  cave_mushroom:   { mineralTier: 'dust',    amountPerHour: 18 },
+  // Uncommon: shards
+  ancient_rice:    { mineralTier: 'shard',   amountPerHour: 2.5 },
+  giant_fern:      { mineralTier: 'shard',   amountPerHour: 2 },
+  amber_orchid:    { mineralTier: 'shard',   amountPerHour: 3 },
+  // Rare: crystals
+  ancient_corn:    { mineralTier: 'crystal', amountPerHour: 0.6 },
+  petrified_vine:  { mineralTier: 'crystal', amountPerHour: 0.5 },
+  star_moss:       { mineralTier: 'crystal', amountPerHour: 0.4 },
+  // Legendary
+  world_tree_seed: { mineralTier: 'crystal', amountPerHour: 1.2 },
 }
 
 /**

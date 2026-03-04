@@ -29,6 +29,19 @@
     Object.values(fossils).filter(f => f.revived).length
   )
 
+  // ─── Tab state (Phase 16.1) ────────────────────────────────
+  let activeTab = $state<'animals' | 'crops'>('animals')
+
+  const animalSpecies = $derived(FOSSIL_SPECIES.filter(s => !s.isCrop))
+  const cropSpecies   = $derived(FOSSIL_SPECIES.filter(s =>  s.isCrop))
+
+  const visibleSpecies = $derived(
+    (activeTab === 'animals' ? animalSpecies : cropSpecies).map(species => {
+      const state = fossils[species.id]
+      return { species, state: state ?? null }
+    })
+  )
+
   function getRarityColor(rarity: string): string {
     switch (rarity) {
       case 'common': return '#9ca3af'
@@ -109,6 +122,30 @@
     </div>
   </div>
 
+  <!-- Tab row (Phase 16.1) -->
+  <div class="tab-row" role="tablist" aria-label="Fossil type tabs">
+    <button
+      class="tab-btn"
+      class:tab-active={activeTab === 'animals'}
+      role="tab"
+      aria-selected={activeTab === 'animals'}
+      type="button"
+      onclick={() => { activeTab = 'animals' }}
+    >
+      Animals ({animalSpecies.length})
+    </button>
+    <button
+      class="tab-btn"
+      class:tab-active={activeTab === 'crops'}
+      role="tab"
+      aria-selected={activeTab === 'crops'}
+      type="button"
+      onclick={() => { activeTab = 'crops' }}
+    >
+      Crops ({cropSpecies.length})
+    </button>
+  </div>
+
   {#if discoveredCount === 0}
     <div class="gallery-empty-state" aria-label="No fossils discovered yet">
       <p class="gallery-empty-text">No fossils collected yet. Mine below 35% depth to discover fossil nodes!</p>
@@ -116,7 +153,7 @@
   {/if}
 
   <div class="species-grid">
-    {#each speciesWithState as { species, state }}
+    {#each visibleSpecies as { species, state }}
       {@const discovered = state !== null}
       {@const complete = state !== null && state.fragmentsFound >= state.fragmentsNeeded}
       {@const revived = state?.revived ?? false}
@@ -190,7 +227,9 @@
         {#if revived}
           {@const isActive = activeCompanionId === species.id}
           <div class="revival-section">
-            {#if isActive}
+            {#if species.isCrop}
+              <div class="active-badge crop-badge">Revived Crop</div>
+            {:else if isActive}
               <div class="active-badge">Active Companion</div>
               {#if species.companionBonus}
                 <div class="companion-bonus">{species.companionBonus}</div>
@@ -562,5 +601,43 @@
     .species-icon {
       font-size: 1.8rem;
     }
+  }
+
+  /* ─── Tabs (Phase 16.1) ─── */
+  .tab-row {
+    display: flex;
+    gap: 4px;
+    padding: 8px 12px;
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .tab-btn {
+    flex: 1;
+    border: 1px solid rgba(212, 165, 116, 0.3);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--color-text-dim);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .tab-active {
+    background: rgba(212, 165, 116, 0.2);
+    color: #d4a574;
+    border-color: rgba(212, 165, 116, 0.6);
+  }
+
+  .tab-btn:active {
+    transform: translateY(1px);
+  }
+
+  .crop-badge {
+    background: color-mix(in srgb, #3cb371 30%, var(--color-surface) 70%) !important;
+    color: #3cb371 !important;
   }
 </style>

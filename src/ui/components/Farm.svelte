@@ -36,7 +36,7 @@
       farm.slots.filter((s): s is FarmSlot => s !== null).map(s => s.speciesId),
     )
     return FOSSIL_SPECIES.filter(
-      sp => fossilsRecord[sp.id]?.revived && !placedIds.has(sp.id),
+      sp => !sp.isCrop && fossilsRecord[sp.id]?.revived && !placedIds.has(sp.id),
     )
   })
 
