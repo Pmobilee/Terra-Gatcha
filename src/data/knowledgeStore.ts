@@ -11,6 +11,7 @@ export type KnowledgeEffect =
   | { type: 'dust_per_correct'; value: number }        // Bonus dust per nailed field scan
   | { type: 'review_extension'; days: number }         // Extend review intervals by N days
   | { type: 'category_boost'; category: string; value: number } // Boost specific category mastery speed
+  | { type: 'category_lock' }                          // Lock mine to a single category
 
 /** Requirement that must be met before an item becomes purchasable */
 export interface KnowledgeUnlockRequirement {
@@ -143,6 +144,17 @@ export const KNOWLEDGE_ITEMS: KnowledgeItem[] = [
     cost: 100,
     maxPurchases: 1,
     unlockRequirement: { type: 'streak', value: 7 },
+  },
+  {
+    id: 'category_lock',
+    name: 'Focus Crystal',
+    description: 'Lock your mine to a single subject. Perfect for dedicated study.',
+    icon: '🔒',
+    category: 'powerup',
+    cost: 150,
+    effect: { type: 'category_lock' },
+    maxPurchases: 1,
+    unlockRequirement: { type: 'mastered_facts', value: 5 },
   },
 ]
 

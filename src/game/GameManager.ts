@@ -60,6 +60,8 @@ import { RECIPES } from '../data/recipes'
 import { save as savePlayer, applyMineralDecay } from '../services/saveService'
 import type { OxygenState } from './systems/OxygenSystem'
 import { type Biome, pickBiome, generateBiomeSequence } from '../data/biomes'
+import { generateInterestBiasedBiomeSequence, selectWeightedFact } from '../services/interestSpawner'
+import type { InterestConfig } from '../data/interestConfig'
 import { seededRandom } from './systems/MineGenerator'
 import { BootScene } from './scenes/BootScene'
 import { MineScene } from './scenes/MineScene'
@@ -452,7 +454,7 @@ export class GameManager {
         ? { x: data.gateX, y: data.gateY }
         : null
       // Pick a random fact for each gate question (not the same stored factId every time)
-      const fact = factsDB.getRandomOne()
+      const fact = this.getInterestWeightedFact()
       if (fact) {
         const choices = getQuizChoices(fact)
         activeQuiz.set({
@@ -547,7 +549,7 @@ export class GameManager {
     )
 
     events.on('random-quiz', () => {
-      const fact = factsDB.getRandomOne()
+      const fact = this.getInterestWeightedFact()
       if (fact) {
         const choices = getQuizChoices(fact)
         activeQuiz.set({ fact, choices, source: 'random' })
@@ -576,7 +578,7 @@ export class GameManager {
     })
 
     events.on('layer-entrance-quiz', (_data: { layer: number }) => {
-      const fact = factsDB.getRandomOne()
+      const fact = this.getInterestWeightedFact()
       if (fact) {
         const choices = getQuizChoices(fact)
         activeQuiz.set({ fact, choices, source: 'layer' })
@@ -826,6 +828,24 @@ export class GameManager {
     return scene as MineScene | null
   }
 
+  /**
+   * Selects a random fact with interest-weighted bias.
+   * Falls back to factsDB.getRandomOne() if no interest config.
+   */
+  private getInterestWeightedFact(): Fact | null {
+    const ps = get(playerSave)
+    const interestConfig: InterestConfig | undefined = ps?.interestConfig
+    if (!interestConfig || !interestConfig.categories.some(c => c.weight > 0)) {
+      return factsDB.getRandomOne()
+    }
+    const allFacts = factsDB.getAll()
+    if (allFacts.length === 0) return null
+    const pool = allFacts.map(f => ({ id: f.id, category: f.category }))
+    const selectedId = selectWeightedFact(pool, interestConfig, () => Math.random())
+    if (!selectedId) return factsDB.getRandomOne()
+    return factsDB.getById(selectedId) ?? factsDB.getRandomOne()
+  }
+
   /** Get the DomeScene instance (null if game not booted) */
   getDomeScene(): DomeScene | null {
     if (!this.game) return null
@@ -1014,7 +1034,10 @@ export class GameManager {
 
     // Generate a shuffled biome sequence for the entire run, seeded by the dive seed.
     const biomeRng = seededRandom(this.diveSeed ^ 0xb10e5)
-    this.biomeSequence = generateBiomeSequence(biomeRng, BALANCE.MAX_LAYERS)
+    const ps = get(playerSave)
+    this.biomeSequence = ps?.interestConfig?.categories?.some((c: { weight: number }) => c.weight > 0)
+      ? generateInterestBiasedBiomeSequence(biomeRng, BALANCE.MAX_LAYERS, ps.interestConfig)
+      : generateBiomeSequence(biomeRng, BALANCE.MAX_LAYERS)
     const layer0Biome = this.biomeSequence[0]
     currentBiomeStore.set(layer0Biome.name)
     currentBiomeId.set(layer0Biome.id)

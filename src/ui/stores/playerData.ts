@@ -5,6 +5,9 @@ import { createReviewState, isDue, getMasteryLevel, reviewFact } from '../../ser
 import type { Cosmetic } from '../../data/cosmetics'
 import { calculateKnowledgePoints } from '../../data/knowledgeStore'
 import { BALANCE } from '../../data/balance'
+import { evaluateArchetype } from '../../services/archetypeDetector'
+import { updateEngagementAfterDive, getEngagementGaiaComment } from '../../services/engagementScorer'
+import { gaiaMessage } from '../stores/gameState'
 
 /** The active player save data. */
 export const playerSave = writable<PlayerSave | null>(null)
@@ -299,6 +302,40 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
 
     const highestClaimed = claimedMilestones.length > 0 ? Math.max(...claimedMilestones) : 0
 
+    const updatedStats = {
+      ...save.stats,
+      totalDivesCompleted: newDiveCount,
+      totalBlocksMined: save.stats.totalBlocksMined + blocksMined,
+      deepestLayerReached:
+        deepestLayer > save.stats.deepestLayerReached
+          ? deepestLayer
+          : save.stats.deepestLayerReached,
+      currentStreak: newStreak,
+      bestStreak: Math.max(save.stats.bestStreak, newStreak),
+    }
+
+    // Phase 12: Evaluate archetype (weekly re-eval)
+    const todayStr = today
+    const updatedArchetype = evaluateArchetype(
+      { stats: updatedStats, fossils: save.fossils ?? {} },
+      save.archetypeData ?? { detected: 'undetected', manualOverride: null, lastEvaluatedDate: null, detectedOnDay: null },
+      todayStr,
+    )
+
+    // Phase 12: Update engagement score
+    const diveAccuracy = updatedStats.totalQuizCorrect / Math.max(1, updatedStats.totalQuizCorrect + updatedStats.totalQuizWrong)
+    const previousMode = save.engagementData?.mode ?? 'normal'
+    const updatedEngagement = updateEngagementAfterDive(
+      save.engagementData ?? { dailySnapshots: [], currentScore: 50, mode: 'normal' },
+      todayStr,
+      diveAccuracy,
+      deepestLayer,
+    )
+    const gaiaComment = getEngagementGaiaComment(previousMode, updatedEngagement.mode)
+    if (gaiaComment) {
+      gaiaMessage.set(gaiaComment)
+    }
+
     return {
       ...save,
       lastDiveDate: today,
@@ -309,17 +346,9 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
       minerals: updatedMinerals,
       oxygen: updatedOxygen,
       unlockedRooms: updatedRooms,
-      stats: {
-        ...save.stats,
-        totalDivesCompleted: newDiveCount,
-        totalBlocksMined: save.stats.totalBlocksMined + blocksMined,
-        deepestLayerReached:
-          deepestLayer > save.stats.deepestLayerReached
-            ? deepestLayer
-            : save.stats.deepestLayerReached,
-        currentStreak: newStreak,
-        bestStreak: Math.max(save.stats.bestStreak, newStreak),
-      },
+      archetypeData: updatedArchetype,
+      engagementData: updatedEngagement,
+      stats: updatedStats,
     }
   })
 
