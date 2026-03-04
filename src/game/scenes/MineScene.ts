@@ -7,6 +7,7 @@ import { type CompanionEffect } from '../../data/fossils'
 import { Player } from '../entities/Player'
 import { canMine, mineBlock } from '../systems/MiningSystem'
 import { MinerAnimController } from '../systems/AnimationSystem'
+import { GearOverlaySystem } from '../systems/GearOverlaySystem'
 import { isAutotiledBlock, getAutotileGroup, bitmaskToSpriteKey, computeAllVariants, invalidateNeighborVariants } from '../systems/AutotileSystem'
 import { generateMine, generateTutorialMine, revealAround, seededRandom } from '../systems/MineGenerator'
 import {
@@ -99,6 +100,7 @@ export class MineScene extends Phaser.Scene {
   private overlayGraphics!: Phaser.GameObjects.Graphics
   private playerSprite!: Phaser.GameObjects.Sprite
   private animController!: MinerAnimController
+  private gearOverlay: GearOverlaySystem | null = null
   private playerVisualX: number = 0
   private playerVisualY: number = 0
   private readonly MOVE_LERP = 0.25
@@ -264,8 +266,8 @@ export class MineScene extends Phaser.Scene {
     const minerSheetKey = 'miner_sheet'
     if (spriteUrls[minerSheetKey]) {
       this.load.spritesheet(minerSheetKey, spriteUrls[minerSheetKey], {
-        frameWidth: resolution === 'high' ? 256 : 32,
-        frameHeight: resolution === 'high' ? 256 : 32,
+        frameWidth:  resolution === 'high' ? 256 : 32,
+        frameHeight: resolution === 'high' ? 384 : 48,   // 48px height (2:3 ratio for 32×48 frames)
       })
     }
   }
@@ -352,23 +354,43 @@ export class MineScene extends Phaser.Scene {
     this.overlayGraphics.setDepth(7)
 
     const startPx = startX * TILE_SIZE + TILE_SIZE * 0.5
-    const startPy = startY * TILE_SIZE + TILE_SIZE * 0.5
+    const startPy = startY * TILE_SIZE + TILE_SIZE          // bottom of the tile, not center
+
     // Use sprite sheet if available, otherwise fall back to static image
     if (this.textures.exists('miner_sheet')) {
       this.playerSprite = this.add.sprite(startPx, startPy, 'miner_sheet', 0)
     } else {
       this.playerSprite = this.add.sprite(startPx, startPy, 'miner_idle')
     }
-    this.playerSprite.setDisplaySize(TILE_SIZE, TILE_SIZE)
+
+    // Anchor at feet (bottom-center) so character's feet align with the tile grid
+    this.playerSprite.setOrigin(0.5, 1.0)
+
+    // Display at tile width; height is 1.5× to accommodate the 32×48 frame
+    this.playerSprite.setDisplaySize(TILE_SIZE, TILE_SIZE * 1.5)  // 32×48 at 32px tile size
     this.playerSprite.setDepth(10)
+
+    // Visual tracking variables use the BOTTOM of the tile as the Y reference
     this.playerVisualX = startPx
-    this.playerVisualY = startPy
+    this.playerVisualY = startY * TILE_SIZE + TILE_SIZE   // bottom of tile
 
     // Set up animation controller
     this.animController = new MinerAnimController(this.playerSprite)
     if (this.textures.exists('miner_sheet')) {
       this.animController.registerAnims(this)
       this.animController.setIdle()
+      this.setupMineSwingFrameEvent()
+    }
+
+    // Set up gear overlay system
+    this.gearOverlay = new GearOverlaySystem(this)
+    this.gearOverlay.init()
+    this.gearOverlay.setPickaxeTier(this.pickaxeTierIndex)
+    // Companion badge: use the companion ID from the player's active companion (from save)
+    this.gearOverlay.setCompanionBadge(this.companionEffect ? 'active' : null)
+    // Set relic glow when relics are equipped (use 'common' as default since Relic type doesn't track tier)
+    if (this.collectedRelics.length > 0) {
+      this.gearOverlay.setRelicGlow('common')
     }
 
     // Initialize particle system with per-block-type emitters
@@ -386,7 +408,14 @@ export class MineScene extends Phaser.Scene {
     const worldWidth = this.gridWidth * TILE_SIZE
     const worldHeight = this.gridHeight * TILE_SIZE
     setupCamera(this.cameras.main, worldWidth, worldHeight, TILE_SIZE)
-    this.cameras.main.startFollow(this.playerSprite, true, 0.12, 0.12)
+    this.cameras.main.startFollow(
+      this.playerSprite,
+      true,    // roundPixels
+      0.12,    // lerpX
+      0.12,    // lerpY
+      0,       // offsetX
+      -(TILE_SIZE * 0.75)   // offsetY: shift camera up by 0.75 tiles to center on torso
+    )
     this.pinchZoom = new PinchZoomController(this.cameras.main, this.input)
 
     // Phase 31: Initialize camera sequencer for artifact reveals and descent
@@ -509,6 +538,8 @@ export class MineScene extends Phaser.Scene {
     }
     // Phase 31: Update shimmer overlays for high-rarity ArtifactNode tiles
     this.blockShimmer?.update(this.time.now)
+    // Phase 29: Update gear overlays to follow player
+    this.gearOverlay?.update(this.playerVisualX, this.playerVisualY, this.time.now)
     this.redrawAll()
   }
 
@@ -1107,14 +1138,23 @@ export class MineScene extends Phaser.Scene {
 
   private drawPlayer(): void {
     const targetX = this.player.gridX * TILE_SIZE + TILE_SIZE * 0.5
-    const targetY = this.player.gridY * TILE_SIZE + TILE_SIZE * 0.5
+    const targetY = this.player.gridY * TILE_SIZE + TILE_SIZE   // bottom of target tile
+
     // Lerp visual position toward logical position for smooth movement
     this.playerVisualX += (targetX - this.playerVisualX) * this.MOVE_LERP
     this.playerVisualY += (targetY - this.playerVisualY) * this.MOVE_LERP
+
     // Snap if within 1px to avoid floating-point drift
     if (Math.abs(this.playerVisualX - targetX) < 1) this.playerVisualX = targetX
     if (Math.abs(this.playerVisualY - targetY) < 1) this.playerVisualY = targetY
+
     this.playerSprite.setPosition(this.playerVisualX, this.playerVisualY)
+
+    // If visual position has snapped to logical position (movement is done), return to idle
+    const atTarget = this.playerVisualX === targetX && this.playerVisualY === targetY
+    if (atTarget && !this.animController?.isPlayingMineAnim) {
+      this.animController?.setIdle()
+    }
   }
 
   private spawnBreakParticles(px: number, py: number, blockType: BlockType): void {
@@ -1441,6 +1481,7 @@ export class MineScene extends Phaser.Scene {
     ) {
       targetCell.hardness = 1
       this.companionFlash = true
+      this.gearOverlay?.flashCompanionBadge()   // Phase 29: flash badge on companion trigger
       this.game.events.emit('companion-triggered', { effect: 'instant_break' })
     }
 
@@ -1603,6 +1644,7 @@ export class MineScene extends Phaser.Scene {
           if (this.companionEffect?.type === 'mineral_rate' && this.rng() < this.companionEffect.value) {
             mineralAmount += 1
             this.companionFlash = true
+            this.gearOverlay?.flashCompanionBadge()   // Phase 29: flash badge on companion trigger
             this.game.events.emit('companion-triggered', { effect: 'mineral_rate' })
           }
           // mineral_magnet relic: after collecting, auto-collect adjacent MineralNodes
@@ -1771,10 +1813,17 @@ export class MineScene extends Phaser.Scene {
             }
             this.game.events.emit('relic-found', { relic })
             audioManager.playSound('collect')
+            // Phase 29: Update relic glow overlay when a new relic is collected
+            if (this.gearOverlay) {
+              // Show glow when any relic is equipped (tier info not on Relic type)
+              this.gearOverlay.setRelicGlow('common')
+            }
           }
           break
         }
         case BlockType.DescentShaft: {
+          // Phase 29: Start fall animation before descent
+          this.animController?.startFall()
           // Phase 31.5: Animate descent before showing the layer entrance quiz.
           this.isPaused = true
           this.triggerDescentAnimation(() => {
@@ -2480,6 +2529,8 @@ export class MineScene extends Phaser.Scene {
         // Keep count in activeUpgrades for display purposes
         this.activeUpgrades.set(upgrade, this.pickaxeTierIndex)
         const tier = BALANCE.PICKAXE_TIERS[this.pickaxeTierIndex]
+        // Phase 29: Update gear overlay when pickaxe tier changes
+        this.gearOverlay?.setPickaxeTier(this.pickaxeTierIndex)
         this.game.events.emit('pickaxe-upgraded', {
           tierIndex: this.pickaxeTierIndex,
           tierName: tier.name,
@@ -2968,6 +3019,7 @@ export class MineScene extends Phaser.Scene {
    * Emits a game event so GameManager can drain O2 and trigger GAIA commentary. (Phase 8.3)
    */
   private handleLavaContact(): void {
+    this.animController?.setHurt()    // Phase 29: trigger hurt flash animation
     this.game.events.emit('hazard-lava-contact')
   }
 
@@ -2976,6 +3028,7 @@ export class MineScene extends Phaser.Scene {
    * Emits a game event so GameManager can drain O2 per tick. (Phase 8.3)
    */
   private handleGasContact(): void {
+    this.animController?.setHurt()    // Phase 29: trigger hurt flash animation
     this.game.events.emit('hazard-gas-contact')
   }
 
@@ -3173,6 +3226,58 @@ export class MineScene extends Phaser.Scene {
   }
 
   /**
+   * Registers per-frame animation listeners that emit 'mineSwingFrame' at peak impact.
+   * Called once from create() after animController.registerAnims().
+   * The 'mineSwingFrame' event signals particle emitters and screen shake to trigger.
+   *
+   * Design (DD-V2-249): damage is applied on input; this event is for visual feedback only.
+   */
+  private setupMineSwingFrameEvent(): void {
+    // Frame 3 of the mine strip is the "impact moment" (pickaxe fully extended)
+    const SWING_FRAME_INDEX_IN_STRIP = 3
+
+    this.playerSprite.on(
+      Phaser.Animations.Events.ANIMATION_UPDATE,
+      (
+        _anim: Phaser.Animations.Animation,
+        frame: Phaser.Animations.AnimationFrame,
+        _sprite: Phaser.GameObjects.Sprite
+      ) => {
+        // Check if this is a mine animation (starts at frame 28, 34, or 40)
+        const globalFrame = frame.index  // 0-based global index in the sheet
+        const mineDownSwingFrame  = 28 + SWING_FRAME_INDEX_IN_STRIP   // = 31
+        const mineLeftSwingFrame  = 34 + SWING_FRAME_INDEX_IN_STRIP   // = 37
+        const mineRightSwingFrame = 40 + SWING_FRAME_INDEX_IN_STRIP   // = 43
+
+        if (
+          globalFrame === mineDownSwingFrame ||
+          globalFrame === mineLeftSwingFrame ||
+          globalFrame === mineRightSwingFrame
+        ) {
+          this.game.events.emit('mineSwingFrame', {
+            playerX: this.player.gridX,
+            playerY: this.player.gridY,
+            facing: this.playerFacing,
+            state: this.animController?.state,
+          })
+        }
+      }
+    )
+
+    // Listen for the mineSwingFrame event to emit swing dust particles
+    this.game.events.on('mineSwingFrame', (data: {
+      playerX: number, playerY: number, facing: string, state: string
+    }) => {
+      // Emit a small dust burst at the face of the block being swung at
+      const blockX = data.playerX + (data.facing === 'left' ? -1 : data.facing === 'right' ? 1 : 0)
+      const blockY = data.playerY + (data.facing === 'down' ? 1 : data.facing === 'up' ? -1 : 0)
+      const worldPx = blockX * TILE_SIZE + TILE_SIZE * 0.5
+      const worldPy = blockY * TILE_SIZE + TILE_SIZE * 0.5
+      this.particles?.emitSwingDust(worldPx, worldPy, data.facing as 'left' | 'right' | 'up' | 'down')
+    })
+  }
+
+  /**
    * Scene shutdown — clean up systems that hold references to Phaser objects.
    * Registered via this.events.on('shutdown', ...) in create().
    */
@@ -3188,5 +3293,9 @@ export class MineScene extends Phaser.Scene {
     this.glowSystem = null
     this.animatedTileSystem?.reset()
     this.animatedTileSystem = null
+    // Phase 29: Tear down gear overlays and mineSwingFrame listener
+    this.gearOverlay?.destroy()
+    this.gearOverlay = null
+    this.game.events.off('mineSwingFrame')
   }
 }

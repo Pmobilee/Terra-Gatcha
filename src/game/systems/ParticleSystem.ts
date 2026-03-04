@@ -565,6 +565,42 @@ export class ParticleSystem {
   }
 
   // ----------------------------------------------------------
+  // SWING DUST (Phase 29)
+  // ----------------------------------------------------------
+
+  /**
+   * Emit a small directional dust burst at the point of pickaxe contact.
+   * Called on the mineSwingFrame animation event (frame 3 of mine strips).
+   *
+   * @param wx      - World X of the block face center
+   * @param wy      - World Y of the block face center
+   * @param facing  - Direction the miner is swinging
+   */
+  emitSwingDust(wx: number, wy: number, facing: 'left' | 'right' | 'up' | 'down'): void {
+    const angle = facing === 'left' ? 180 : facing === 'right' ? 0 : facing === 'up' ? 270 : 90
+
+    // Small grey-brown dust puff, 5 particles
+    const texKey = PARTICLE_TEX_PREFIX + '4'
+    this.ensureTexture(texKey, 4)
+    const emitter = this.scene.add.particles(wx, wy, texKey, {
+      speed: { min: 15, max: 35 },
+      angle: { min: angle - 30, max: angle + 30 },
+      scale: { start: 0.6, end: 0 },
+      lifespan: 220,
+      quantity: 5,
+      tint: 0xbbaa88,
+      stopAfter: 5,
+      gravityY: 40,
+      alpha: { start: 1, end: 0 },
+    })
+    emitter.setDepth(200)
+    // Auto-destroy after lifespan completes
+    this.scene.time.delayedCall(500, () => {
+      emitter.destroy()
+    })
+  }
+
+  // ----------------------------------------------------------
   // CLEANUP
   // ----------------------------------------------------------
 
