@@ -520,4 +520,146 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
       }
     },
   },
+  // ----------------------------------------------------------
+  // 10. MID DIVE — mid-game player with active companion
+  // ----------------------------------------------------------
+  {
+    id: 'mid_dive',
+    label: 'Mid Dive',
+    description: 'Mid-game player with active companion, 15 facts, good mineral reserves.',
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(15)
+      const trilobiteSpecies = FOSSIL_SPECIES.find(s => s.id === 'trilobite')!
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 800, shard: 25, crystal: 3, geode: 0, essence: 0 },
+        unlockedRooms: ['command', 'lab', 'workshop'],
+        fossils: {
+          trilobite: {
+            speciesId: 'trilobite',
+            fragmentsFound: trilobiteSpecies.fragmentsNeeded,
+            fragmentsNeeded: trilobiteSpecies.fragmentsNeeded,
+            revived: true,
+            revivedAt: now - 7 * 24 * 3600_000,
+          },
+        },
+        activeCompanion: 'trilobite',
+        tutorialComplete: true,
+        diveCount: 8,
+        stats: {
+          totalBlocksMined: 600,
+          totalDivesCompleted: 8,
+          deepestLayerReached: 8,
+          totalFactsLearned: 15,
+          totalFactsSold: 0,
+          totalQuizCorrect: 35,
+          totalQuizWrong: 5,
+          currentStreak: 4,
+          bestStreak: 6,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 11. QUIZ DUE — facts with overdue reviews
+  // ----------------------------------------------------------
+  {
+    id: 'quiz_due',
+    label: 'Quiz Due',
+    description: '30 facts with overdue reviews — tests quiz prompts and study screen.',
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(30)
+      // Make all reviews overdue by setting nextReviewAt to 1 day ago
+      for (const state of reviewStates) {
+        state.nextReviewAt = now - 86_400_000
+        state.interval = 1
+      }
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 1500, shard: 50, crystal: 10, geode: 0, essence: 0 },
+        unlockedRooms: ['command', 'lab', 'workshop'],
+        tutorialComplete: true,
+        diveCount: 15,
+        stats: {
+          totalBlocksMined: 1200,
+          totalDivesCompleted: 15,
+          deepestLayerReached: 10,
+          totalFactsLearned: 30,
+          totalFactsSold: 0,
+          totalQuizCorrect: 80,
+          totalQuizWrong: 10,
+          currentStreak: 5,
+          bestStreak: 8,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 12. RICH PLAYER — max resources for testing purchases/crafting
+  // ----------------------------------------------------------
+  {
+    id: 'rich_player',
+    label: 'Rich Player',
+    description: 'Max resources for testing crafting, purchases, and store UI.',
+    buildSave(now) {
+      const { learnedFacts, reviewStates } = makeLearnedFacts(50)
+      const allRoomIds = BALANCE.DOME_ROOMS.map(r => r.id)
+      return {
+        ...BASE_SAVE(now),
+        learnedFacts,
+        reviewStates,
+        minerals: { dust: 99_999, shard: 5000, crystal: 500, geode: 100, essence: 20 },
+        knowledgePoints: 10_000,
+        unlockedRooms: allRoomIds as string[],
+        premiumMaterials: {
+          star_dust: 50,
+          void_crystal: 25,
+          ancient_essence: 15,
+        },
+        tutorialComplete: true,
+        diveCount: 50,
+        stats: {
+          totalBlocksMined: 20_000,
+          totalDivesCompleted: 50,
+          deepestLayerReached: 20,
+          totalFactsLearned: 50,
+          totalFactsSold: 5,
+          totalQuizCorrect: 350,
+          totalQuizWrong: 20,
+          currentStreak: 20,
+          bestStreak: 30,
+          totalSessions: 0,
+          zeroDiveSessions: 0,
+        },
+      }
+    },
+  },
+
+  // ----------------------------------------------------------
+  // 13. FIRST BOOT — absolute fresh state, tests onboarding
+  // ----------------------------------------------------------
+  {
+    id: 'first_boot',
+    label: 'First Boot',
+    description: 'Absolute first boot — tests onboarding, age gate, tutorial.',
+    buildSave(now) {
+      return {
+        ...BASE_SAVE(now),
+        tutorialComplete: false,
+        diveCount: 0,
+        oxygen: 0,
+        minerals: { dust: 0, shard: 0, crystal: 0, geode: 0, essence: 0 },
+      }
+    },
+  },
 ] as const
