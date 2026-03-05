@@ -327,6 +327,17 @@ export function load(): PlayerSave | null {
     if (!Array.isArray(parsedAny['authoredHints'])) {
       parsedAny['authoredHints'] = []
     }
+    // Phase 59: Artifact Analyzer — migrate pendingArtifacts from string[] to PendingArtifact[]
+    // and initialize new fields
+    if (!Array.isArray(parsedAny['lastStudySessionTimestamps'])) {
+      parsedAny['lastStudySessionTimestamps'] = []
+    }
+    if (typeof parsedAny['upgradeTokens'] !== 'number') {
+      parsedAny['upgradeTokens'] = 0
+    }
+    if (typeof parsedAny['hasSeenStudyNudge'] !== 'boolean') {
+      parsedAny['hasSeenStudyNudge'] = false
+    }
     return parsed as PlayerSave
   } catch {
     return null

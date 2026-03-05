@@ -147,6 +147,15 @@ export class StudyManager {
       }
     }
 
+    // Track study session timestamp for study score calculation
+    playerSave.update(s => {
+      if (!s) return s
+      const now = Date.now()
+      const sevenDaysAgo = now - 7 * 24 * 60 * 60 * 1000
+      const timestamps = [...(s.lastStudySessionTimestamps ?? []), now].filter(t => t > sevenDaysAgo)
+      return { ...s, lastStudySessionTimestamps: timestamps }
+    })
+
     // Persist after potential ritual field update
     persistPlayer()
 
@@ -183,8 +192,8 @@ export class StudyManager {
       return
     }
 
-    const factId = pending[0]
-    const fact = factsDB.getById(factId)
+    const artifact = pending[0]
+    const fact = factsDB.getById(artifact.factId)
     if (fact) {
       activeFact.set(fact)
       currentScreen.set('factReveal')
@@ -200,7 +209,7 @@ export class StudyManager {
     const fact = get(activeFact)
     if (fact) {
       addLearnedFact(fact.id)
-      pendingArtifacts.update(arr => arr.filter(id => id !== fact.id))
+      pendingArtifacts.update(arr => arr.filter(a => a.factId !== fact.id))
     }
     activeFact.set(null)
     this.reviewNextArtifact()
@@ -216,7 +225,7 @@ export class StudyManager {
       }
       const reward = sellValues[fact.rarity] ?? 5
       addMinerals('dust', reward)
-      pendingArtifacts.update(arr => arr.filter(id => id !== fact.id))
+      pendingArtifacts.update(arr => arr.filter(a => a.factId !== fact.id))
     }
     activeFact.set(null)
     this.reviewNextArtifact()

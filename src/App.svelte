@@ -22,7 +22,7 @@
     decisionScreenState,
   } from './ui/stores/gameState'
   import { playerSave } from './ui/stores/playerData'
-  import type { Fact } from './data/types'
+  import type { Fact, PendingArtifact } from './data/types'
 
   // Components
   import HUD from './ui/components/HUD.svelte'
@@ -30,6 +30,7 @@
   import BackpackOverlay from './ui/components/BackpackOverlay.svelte'
   import RunStatsOverlay from './ui/components/RunStatsOverlay.svelte'
   import FactReveal from './ui/components/FactReveal.svelte'
+  import ArtifactAnalyzer from './ui/components/ArtifactAnalyzer.svelte'
   import DivePrepScreen from './ui/components/DivePrepScreen.svelte'
   import BaseView from './ui/components/BaseView.svelte'
   import HubView from './ui/components/HubView.svelte'
@@ -335,6 +336,35 @@
     currentScreen.set('mining')
   }
 
+  // Artifact analyzer state
+  let currentAnalyzerArtifact = $state<PendingArtifact | null>(null)
+
+  /** Start the artifact analyzer flow with the first pending artifact. */
+  function startAnalyzerFlow(): void {
+    const pending = get(pendingArtifacts)
+    if (pending.length > 0) {
+      currentAnalyzerArtifact = pending[0]
+      currentScreen.set('factReveal')
+    }
+  }
+
+  /** Advance to the next artifact in the analyzer queue. */
+  function handleAnalyzerNext(): void {
+    const pending = get(pendingArtifacts)
+    if (pending.length > 0) {
+      currentAnalyzerArtifact = pending[0]
+    } else {
+      currentAnalyzerArtifact = null
+      currentScreen.set('base')
+    }
+  }
+
+  /** All artifacts analyzed — return to base. */
+  function handleAnalyzerDone(): void {
+    currentAnalyzerArtifact = null
+    currentScreen.set('base')
+  }
+
   // Quiz mode tracking
   let quizMode = $state<'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'combat' | 'artifact_boost'>('gate')
 
@@ -408,7 +438,7 @@
   })
 
   function handleReviewArtifact(): void {
-    getGM()?.reviewNextArtifact()
+    startAnalyzerFlow()
   }
 
   function handleViewKnowledgeTree(): void {
@@ -622,7 +652,7 @@
     diveResults.set(null)
     const pending = get(pendingArtifacts)
     if (pending.length > 0) {
-      getGM()?.reviewNextArtifact()
+      startAnalyzerFlow()
     } else {
       getGM()?.goToBase()
     }
@@ -952,7 +982,14 @@
     />
 
   {:else if $currentScreen === 'factReveal'}
-    {#if $activeFact}
+    {#if currentAnalyzerArtifact}
+      <ArtifactAnalyzer
+        artifact={currentAnalyzerArtifact}
+        remainingCount={$pendingArtifacts.length - 1}
+        onNext={handleAnalyzerNext}
+        onDone={handleAnalyzerDone}
+      />
+    {:else if $activeFact}
       <FactReveal
         fact={$activeFact}
         onLearn={handleLearnFact}

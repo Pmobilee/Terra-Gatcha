@@ -1,6 +1,6 @@
 import { writable, derived } from 'svelte/store'
 import type { Writable, Readable } from 'svelte/store'
-import type { BackpackItemState, Fact, InventorySlot, Relic, ReviewState } from '../../data/types'
+import type { BackpackItemState, Fact, InventorySlot, PendingArtifact, Relic, ReviewState } from '../../data/types'
 import type { RelicSynergy, RelicDefinition } from '../../data/relics'
 import type { CompanionEffect } from '../../data/fossils'
 import { getO2DepthMultiplier } from '../../data/balance'
@@ -234,7 +234,7 @@ export const activeQuiz = singletonWritable<{
 export const activeFact = singletonWritable<Fact | null>('activeFact', null)
 
 // Pending artifacts to review at base (accumulated during dive)
-export const pendingArtifacts = singletonWritable<string[]>('pendingArtifacts', [])
+export const pendingArtifacts = singletonWritable<PendingArtifact[]>('pendingArtifacts', [])
 
 // Active in-run upgrades collected from upgrade crates
 export const activeUpgrades = singletonWritable<Record<string, number>>('activeUpgrades', {})

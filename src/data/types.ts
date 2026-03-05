@@ -64,6 +64,13 @@ export const CATEGORIES = [
 /** Artifact rarity tier */
 export type Rarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'mythic'
 
+/** A pending artifact awaiting analysis in the Artifact Lab. */
+export interface PendingArtifact {
+  factId: string
+  rarity: Rarity
+  minedAt: number
+}
+
 /** A single learnable fact/word in the database */
 export interface Fact {
   id: string
@@ -722,6 +729,14 @@ export interface PlayerSave {
   guildChampionWins?: number
   /** Phase 42.3: Whether the player has the Pioneer Pack (used for pioneer badge). */
   isPioneer?: boolean
+
+  // Phase 59: Artifact Analyzer
+  /** Timestamps of recent study sessions (pruned to last 7 days). */
+  lastStudySessionTimestamps?: number[]
+  /** Upgrade tokens earned from artifact cracking. */
+  upgradeTokens?: number
+  /** Whether the player has seen the study nudge tutorial. */
+  hasSeenStudyNudge?: boolean
 
   // Phase 53: Learning Sparks
   /** Learning Sparks currency — earned through mastery milestones, used in Knowledge Store. */

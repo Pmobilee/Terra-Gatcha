@@ -808,6 +808,21 @@ export const GAIA_TRIGGERS = {
     { text: 'I ran out of stress subroutines watching that. Do better.', mood: 'snarky' },
     { text: 'Breathe. You made it. Barely.', mood: 'calm' },
   ] satisfies GaiaLine[],
+
+  /** Phase 59: Study nudge — shown when study score is low and artifacts are pending. */
+  studyNudge: [
+    { text: 'Your overdue reviews are piling up. The artifacts can sense it...', mood: 'calm' },
+    { text: 'A quick study session would sharpen the analyzer precision!', mood: 'enthusiastic' },
+    { text: 'Knowledge is the fuel that powers this lab. When did you last review?', mood: 'calm' },
+    { text: "I've noticed your study streak slipping. The crystals grow dim...", mood: 'calm' },
+    { text: 'Study tip: even 5 minutes of review can boost your artifact rewards!', mood: 'enthusiastic' },
+    { text: 'The analyzer resonates with knowledge. More study = better loot.', mood: 'any' },
+  ] satisfies GaiaLine[],
+
+  /** Phase 59: First-time artifact analyzer tutorial. */
+  studyNudgeFirstTime: [
+    { text: 'Welcome to the Artifact Analyzer! Your study habits affect the quality of rewards. Keep reviewing to get better drops!', mood: 'enthusiastic' },
+  ] satisfies GaiaLine[],
 } as const
 
 /**

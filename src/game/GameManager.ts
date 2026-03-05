@@ -3,7 +3,7 @@ import Phaser from 'phaser'
 import { get } from 'svelte/store'
 import { BALANCE, getLayerGridSize, BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE, AUTO_BALANCE_DEATH_THRESHOLD } from '../data/balance'
 import { audioManager } from '../services/audioService'
-import type { Fact, FossilState, InventorySlot, MineralTier, Relic, BackpackItemState } from '../data/types'
+import type { Fact, FossilState, InventorySlot, MineralTier, PendingArtifact, Relic, BackpackItemState } from '../data/types'
 import { pickFossilDrop, getActiveCompanionEffect, getSpeciesById, type CompanionEffect } from '../data/fossils'
 import { PREMIUM_MATERIALS, type PremiumMaterial } from '../data/premiumRecipes'
 import { pickRandomDisc } from '../data/dataDiscs'
@@ -756,7 +756,7 @@ export class GameManager {
 
     // Process in-pack inventory (subject to forced-surface loss penalty)
     const mineralTotals: Record<string, number> = { dust: 0, shard: 0, crystal: 0, geode: 0, essence: 0 }
-    const artifactFactIds: string[] = []
+    const artifactItems: PendingArtifact[] = []
 
     for (const slot of results.inventory) {
       if (slot.type === 'mineral' && slot.mineralAmount) {
@@ -764,7 +764,7 @@ export class GameManager {
         mineralTotals[tier] = (mineralTotals[tier] ?? 0) + slot.mineralAmount
       }
       if (slot.type === 'artifact' && slot.factId) {
-        artifactFactIds.push(slot.factId)
+        artifactItems.push({ factId: slot.factId, rarity: slot.artifactRarity ?? 'common', minedAt: Date.now() })
       }
     }
 
@@ -780,10 +780,10 @@ export class GameManager {
         mineralTotals[tier] = Math.floor(mineralTotals[tier] * (1 - lossRatio))
       }
       // Remove ~30% of in-pack artifacts
-      const numToLose = Math.floor(artifactFactIds.length * lossRatio)
+      const numToLose = Math.floor(artifactItems.length * lossRatio)
       for (let i = 0; i < numToLose; i++) {
-        const idx = Math.floor(Math.random() * artifactFactIds.length)
-        artifactFactIds.splice(idx, 1)
+        const idx = Math.floor(Math.random() * artifactItems.length)
+        artifactItems.splice(idx, 1)
       }
     }
     // Phase 14: Show GAIA rescue message for tutorial first depletion
@@ -798,7 +798,7 @@ export class GameManager {
         mineralTotals[tier] = (mineralTotals[tier] ?? 0) + slot.mineralAmount
       }
       if (slot.type === 'artifact' && slot.factId) {
-        artifactFactIds.push(slot.factId)
+        artifactItems.push({ factId: slot.factId, rarity: slot.artifactRarity ?? 'common', minedAt: Date.now() })
       }
     }
 
@@ -818,8 +818,8 @@ export class GameManager {
     }
 
     // Queue artifacts for review at base
-    if (artifactFactIds.length > 0) {
-      pendingArtifacts.update(existing => [...existing, ...artifactFactIds])
+    if (artifactItems.length > 0) {
+      pendingArtifacts.update(existing => [...existing, ...artifactItems])
     }
 
     // Record dive stats
@@ -891,7 +891,7 @@ export class GameManager {
       crystalsCollected: mineralTotals.crystal ?? 0,
       geodesCollected: mineralTotals.geode ?? 0,
       essenceCollected: mineralTotals.essence ?? 0,
-      artifactsFound: artifactFactIds.length,
+      artifactsFound: artifactItems.length,
       blocksMined: results.blocksMinedThisRun,
       maxDepth: this.maxDepthThisRun,
       forced,
@@ -900,7 +900,7 @@ export class GameManager {
       relicsCollected: results.collectedRelics ?? [],
       layerCompleted: this.currentLayer,
       canDiveDeeper: !forced && this.currentLayer < BALANCE.MAX_LAYERS - 1,
-      artifactNames: artifactFactIds.map(id => factsDB.getById(id)?.statement ?? id),
+      artifactNames: artifactItems.map(a => factsDB.getById(a.factId)?.statement ?? a.factId),
       relicNames: (results.collectedRelics ?? []).map(r => r.name),
       factsLearnedCount: this.newFactsThisDive,
       layersReached: this.currentLayer,
@@ -1522,7 +1522,7 @@ export class GameManager {
     }
 
     // Add a pending artifact with the guaranteed rarity
-    pendingArtifacts.update(existing => [...existing, `altar_${guaranteedRarity}_${Date.now()}`])
+    pendingArtifacts.update(existing => [...existing, { factId: `altar_${guaranteedRarity}_${Date.now()}`, rarity: guaranteedRarity as import('../data/types').Rarity, minedAt: Date.now() }])
 
     gaiaMessage.set(`Sacrifice accepted. A ${guaranteedRarity} relic emerges from the stone.`)
 
