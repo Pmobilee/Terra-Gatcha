@@ -31,14 +31,18 @@ export function getMasteryStage(factId: string): MasteryStage {
   return 4
 }
 
-/** Returns the CSS filter string for the given mastery stage. */
+/**
+ * Returns the CSS filter string for the given mastery stage.
+ * Phase 57.4: Updated greyscale-to-color progression:
+ *   0 = fully grey, 1 = partial color, 2 = nearly full, 3 = full, 4 = vivid golden
+ */
 export function masteryFilter(stage: MasteryStage): string {
   switch (stage) {
-    case 0: return 'grayscale(1) brightness(0.7)'
-    case 1: return 'grayscale(0.6) sepia(0.8) brightness(0.85)'
-    case 2: return 'grayscale(0.4) saturate(0.6)'
-    case 3: return 'saturate(1.2) brightness(1.05)'
-    case 4: return 'saturate(1.3) brightness(1.1)'  // base; shimmer added via overlay
+    case 0: return 'grayscale(1)'
+    case 1: return 'grayscale(0.6) saturate(0.5)'
+    case 2: return 'grayscale(0.1) saturate(1.2)'
+    case 3: return 'grayscale(0) saturate(1.5)'
+    case 4: return 'grayscale(0) saturate(1.5) brightness(1.1)'  // base; shimmer added via overlay
   }
 }
 

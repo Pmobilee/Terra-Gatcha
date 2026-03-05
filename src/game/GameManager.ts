@@ -1007,8 +1007,52 @@ export class GameManager {
     }, 2500)
   }
 
+  /**
+   * Phase 57.3: "Barely Made It" — player ran out of oxygen near the exit.
+   * Skip sacrifice, flash red border, camera shake, GAIA toast, surface with full loot.
+   * @internal
+   */
+  private triggerBarelyMadeIt(scene: MineScene): void {
+    // Red border flash (8px stroke, fading over 1.2s)
+    const cam = scene.cameras?.main
+    if (cam) {
+      cam.shake(300, 0.008)
+      cam.flash(1200, 255, 40, 40, false, (_cam: Phaser.Cameras.Scene2D.Camera, progress: number) => {
+        // Flash callback used to signal visual feedback; Phaser handles the fade
+        if (progress >= 1) { /* flash complete */ }
+      })
+    }
+
+    // GAIA toast — pick a random "barely made it" line
+    const lines = [
+      'Phew! I thought I was about to lose my favorite miner.',
+      'That was close. Too close. I need a moment.',
+      "You cut that extremely fine. Please don't do that to me again.",
+      'Barely! You are going to give GAIA an anxiety malfunction.',
+    ]
+    const msg = lines[Math.floor(Math.random() * lines.length)]
+    gaiaExpression.set('worried')
+    gaiaMessage.set(msg)
+
+    // Surface with full loot after 800ms delay
+    setTimeout(() => {
+      this.endDive(false) // not forced — player keeps all loot
+    }, 800)
+  }
+
   /** @internal Handle oxygen depletion — show sacrifice overlay if player has items (Phase 51). */
   handleOxygenDepleted(): void {
+    // Phase 57.3: "Barely Made It" — if within threshold blocks of exit, skip sacrifice
+    const scene = this.getMineScene()
+    if (scene) {
+      const playerY = scene.player.gridY
+      if (playerY <= BALANCE.BARELY_MADE_IT_THRESHOLD) {
+        // Close enough to exit — trigger barely-made-it sequence
+        this.triggerBarelyMadeIt(scene)
+        return
+      }
+    }
+
     this.onPlayerDeath()
 
     const inv = get(inventory)

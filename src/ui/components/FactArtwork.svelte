@@ -2,6 +2,7 @@
   /**
    * FactArtwork — displays a fact's pixel-art sprite with mastery-state visual treatment.
    * Handles lazy loading, fallback placeholder, and the Stage 4 shimmer animation.
+   * Phase 57.4: Greyscale-to-color progression with smooth filter transitions.
    *
    * Props:
    *   factId    — database fact ID used to resolve sprite URL
@@ -14,26 +15,30 @@
   import { getFactSpriteManifest } from '../../services/factSpriteManifest'
   import type { MasteryStage } from '../stores/factSprites'
 
-  export let factId: string
-  export let size: number = 64
-  export let showLabel: boolean = false
+  interface Props {
+    factId: string
+    size?: number
+    showLabel?: boolean
+  }
 
-  let stage: MasteryStage = 0
-  let available = false
-  let loaded    = false
+  let { factId, size = 64, showLabel = false }: Props = $props()
 
-  $: spriteUrl = `/assets/sprites/facts/${factId}.png`
-  $: filter    = masteryFilter(stage)
-  $: label     = masteryLabel(stage)
-  $: isGolden  = stage === 4
+  let stage = $state<MasteryStage>(0)
+  let available = $state(false)
+  let loaded = $state(false)
+
+  const spriteUrl = $derived(`/assets/sprites/facts/${factId}.png`)
+  const filter = $derived(masteryFilter(stage))
+  const label = $derived(masteryLabel(stage))
+  const isGolden = $derived(stage === 4)
 
   onMount(async () => {
-    stage      = getMasteryStage(factId)
-    const mf   = await getFactSpriteManifest()
-    available  = mf.has(factId)
+    stage = getMasteryStage(factId)
+    const mf = await getFactSpriteManifest()
+    available = mf.has(factId)
   })
 
-  function onLoad()  { loaded = true }
+  function onLoad(): void { loaded = true }
 </script>
 
 <div
@@ -49,7 +54,7 @@
       width={size}
       height={size}
       style="filter: {filter}; image-rendering: pixelated;"
-      on:load={onLoad}
+      onload={onLoad}
       class:hidden={!loaded}
     />
     {#if isGolden && loaded}
@@ -88,6 +93,7 @@
     display: block;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
+    transition: filter 0.5s ease;
   }
 
   .hidden { display: none; }

@@ -798,6 +798,16 @@ export const GAIA_TRIGGERS = {
    * DD-V2-161: the idol timer triggers philosophical reflection.
    */
   philosophicalIdle: PEER_DIALOGUE_POOL satisfies GaiaLine[],
+
+  /** Phase 57.3: "Barely Made It" — oxygen depleted within 5 blocks of exit. */
+  barelyMadeIt: [
+    { text: 'Phew! I thought I was about to lose my favorite miner.', mood: 'any' },
+    { text: 'That was close. Too close. I need a moment.', mood: 'any' },
+    { text: "You cut that extremely fine. Please don't do that to me again.", mood: 'any' },
+    { text: 'Barely! You are going to give GAIA an anxiety malfunction.', mood: 'any' },
+    { text: 'I ran out of stress subroutines watching that. Do better.', mood: 'snarky' },
+    { text: 'Breathe. You made it. Barely.', mood: 'calm' },
+  ] satisfies GaiaLine[],
 } as const
 
 /**

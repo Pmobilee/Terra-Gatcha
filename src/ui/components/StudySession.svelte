@@ -33,6 +33,14 @@
   let correctCount = $state(0)
   let isDone = $state(false)
 
+  // ── Phase 57.2: Tree shimmer on correct answer ────────────
+  let lastAnswerCorrect = $state(false)
+
+  function onCorrectAnswer(): void {
+    lastAnswerCorrect = true
+    setTimeout(() => { lastAnswerCorrect = false }, 800)
+  }
+
   // ── Derived helpers ─────────────────────────────────────────
   const currentFact = $derived(queue[cardIndex] ?? null)
   const totalCards = $derived(queue.length)
@@ -105,7 +113,10 @@
   async function rate(correct: boolean): Promise<void> {
     if (!currentFact) return
     audioManager.playSound(correct ? 'quiz_correct' : 'quiz_wrong')
-    if (correct) correctCount++
+    if (correct) {
+      correctCount++
+      onCorrectAnswer()
+    }
     onAnswer(currentFact.id, correct)
 
     // Brief visual pause before transitioning
@@ -145,6 +156,9 @@
 
   <!-- ── BREATHING GUIDE ────────────────────────────────────────── -->
   <div class="breathing-guide" aria-hidden="true"></div>
+
+  <!-- ── TREE SILHOUETTE (Phase 57.2) ────────────────────────────── -->
+  <div class="tree-silhouette" class:shimmer={lastAnswerCorrect} aria-hidden="true"></div>
 
   <!-- ── SIZE SELECTOR ───────────────────────────────────────── -->
   {#if sessionSize === null}
@@ -361,7 +375,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(160deg, #0a0a1a 0%, #12122a 50%, #1a1a2e 100%);
+    background: radial-gradient(ellipse at 50% 110%, #1a2a4a 0%, #0a1525 70%);
     font-family: 'Courier New', monospace;
     padding: 1rem;
     overflow-y: auto;
@@ -402,6 +416,40 @@
     50%  { transform: translateY(-50vh) translateX(12px); }
     90%  { opacity: 0.8; }
     100% { transform: translateY(-105vh) translateX(-8px); opacity: 0; }
+  }
+
+  /* ── Tree silhouette (Phase 57.2) ────────────────────────────── */
+  .tree-silhouette {
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+    width: 120px;
+    height: 55%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.3;
+    background:
+      /* Trunk */
+      linear-gradient(to top, #0d1a2d 0%, #0d1a2d 40%, transparent 40%) no-repeat center bottom / 12px 100%,
+      /* Lower canopy */
+      radial-gradient(ellipse 60px 50px at 50% 55%, #0d1a2d 60%, transparent 61%),
+      /* Middle canopy */
+      radial-gradient(ellipse 50px 45px at 55% 42%, #0d1a2d 60%, transparent 61%),
+      /* Upper canopy */
+      radial-gradient(ellipse 35px 40px at 48% 28%, #0d1a2d 60%, transparent 61%),
+      /* Top tuft */
+      radial-gradient(ellipse 20px 25px at 50% 15%, #0d1a2d 60%, transparent 61%);
+    transition: opacity 0.3s ease;
+  }
+
+  .tree-silhouette.shimmer {
+    animation: leaf-shimmer 0.8s ease-out;
+  }
+
+  @keyframes leaf-shimmer {
+    0%   { opacity: 0.3; filter: brightness(1); }
+    30%  { opacity: 0.7; filter: brightness(1.8) hue-rotate(30deg); }
+    100% { opacity: 0.3; filter: brightness(1); }
   }
 
   /* ── Breathing guide ─────────────────────────────────────────── */

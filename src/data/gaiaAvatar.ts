@@ -56,6 +56,10 @@ const EXPRESSION_MAP: Record<string, string> = {
   postDiveFreeGift:    'surprised',
   postDiveBiomeTeaser: 'thinking',
   memory:              'thinking',
+  barely_made_it:      'worried',
+  barelyMadeIt:        'worried',
+  branch_completion:   'excited',
+  branchCompletion:    'excited',
 }
 
 /**

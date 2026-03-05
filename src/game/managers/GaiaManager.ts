@@ -50,6 +50,8 @@ export class GaiaManager {
           fact.statement.slice(0, 50),
           detail.masteryNumber,
         )
+        // Phase 57.5: Trigger proud expression on fact mastery
+        this.onFactMastered()
       }
     })
   }
@@ -707,6 +709,9 @@ export class GaiaManager {
     const text = getGaiaLine(trigger, mood, { explanation: truncated })
     gaiaExpression.set(expressionId)
     gaiaMessage.set(text)
+
+    // Phase 57.5: Trigger concerned expression on repeated wrong answers
+    this.onRepeatedWrongAnswer(count)
   }
 
   /**
@@ -868,5 +873,54 @@ export class GaiaManager {
       default:
         return null
     }
+  }
+
+  // =========================================================
+  // Phase 57.5 — GAIA Avatar Micro-Expressions
+  // =========================================================
+
+  /**
+   * Set a temporary GAIA expression that auto-reverts to 'idle' after the given duration.
+   *
+   * @param expr      - Expression id (e.g. 'excited', 'proud', 'concerned', 'celebrate')
+   * @param durationMs - How long to hold the expression before reverting to idle
+   */
+  setGaiaExpression(expr: string, durationMs: number): void {
+    gaiaExpression.set(expr)
+    setTimeout(() => gaiaExpression.set('neutral'), durationMs)
+  }
+
+  /**
+   * Trigger 'excited' expression when an artifact is ingested/appraised.
+   * Call from StudyManager or wherever artifact appraisal completes.
+   */
+  onArtifactIngestion(): void {
+    this.setGaiaExpression('excited', 2000)
+  }
+
+  /**
+   * Trigger 'proud' expression when a fact reaches mastery.
+   * Called from the fact-mastered event listener.
+   */
+  onFactMastered(): void {
+    this.setGaiaExpression('proud', 3000)
+  }
+
+  /**
+   * Trigger 'concerned' expression when the player gets 3+ wrong answers on a fact.
+   *
+   * @param wrongCount - Number of wrong answers for this fact in the current session
+   */
+  onRepeatedWrongAnswer(wrongCount: number): void {
+    if (wrongCount >= 3) {
+      this.setGaiaExpression('worried', 2500)
+    }
+  }
+
+  /**
+   * Trigger 'celebrate' expression when a knowledge branch is completed.
+   */
+  onBranchCompletion(): void {
+    this.setGaiaExpression('surprised', 4000)
   }
 }
