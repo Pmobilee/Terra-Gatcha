@@ -91,6 +91,7 @@ node tests/e2e/03-save-resume.cjs
 
 - **ALWAYS capture diagnostics** — screenshots alone miss silent JS failures
 - **ALWAYS verify before ending a session** — run at least `01-app-loads.cjs`
+- **ALWAYS run unit tests after logic changes** — `npx vitest run` (215+ tests); typecheck alone is not enough
 - **data-testid selectors**: `btn-dive`, `btn-enter-mine`, `btn-surface`, `quiz-answer-0`..`quiz-answer-3`, `btn-age-adult`, `hud-o2-bar`
 - Full reference: see `memory/playwright-workflow.md` in the auto-memory directory
 
@@ -162,8 +163,16 @@ When generating sprites, delegate to a sub-agent with these instructions:
 - Security policies and practices → `docs/SECURITY.md`
 - Quick lookup index → `docs/CONTEXT_INDEX.md`
 
+## Svelte MCP — MANDATORY for Component Work
+The `mcp__svelte__*` MCP server provides official Svelte 5 documentation. Use it proactively:
+- **Before writing any `.svelte` component**: call `mcp__svelte__list-sections` to find relevant docs
+- **When using runes** (`$state`, `$derived`, `$effect`, `$props`): fetch the relevant section first
+- **When hitting a Svelte error**: check the MCP before guessing — see also `memory/svelte-bugs.md`
+- Key sections: `svelte/$state`, `svelte/$derived`, `svelte/$effect`, `svelte/basic-markup`, `svelte/each`
+
 ## Commands
 - `npm run dev` — Start dev server (port 5173)
 - `npm run build` — Production build
 - `npm run typecheck` — Run TypeScript/Svelte type checking
 - `npm run check` — Full type check (app + node configs)
+- `npx vitest run` — Run 215+ unit tests (run after any logic/data changes)

@@ -67,3 +67,6 @@ src/assets/fact-sprite-manifest.json
 sprite-gen/output/facts/
 sprite-gen/scripts/fact_gen_state.json
 docs/audit/fact-sprite-coverage.json
+
+# Playwright MCP screenshots (dev tooling, not source)
+.playwright-mcp/
