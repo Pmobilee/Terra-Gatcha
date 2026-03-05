@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phase 55 (Economy Depth) COMPLETE. Duplicate artifact mixing with local state (60/30/10 rarity roll), compression tax display in MineralConverter, 3-slot daily deals (consumable 20% off, special, 7-day featured with Day 7 pity), Premium Materializer golden glow and PREMIUM badge. 0 typecheck errors, build clean.
+Phase 56 (Social & Live-Ops Foundation) COMPLETE. Fact of the Day panel in HubView, guestbook entry flagging, trade soulbound guards and daily limit display, guild XP display, SeasonLeaderboard component, server seasonInfo route with hardcoded Season 01. 0 typecheck errors, build clean.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -151,7 +151,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 - [x] **Phase 54: Mine Atmosphere** — Ambient environmental storytelling (65+ biome flavor texts), Quote Stones with 40+ entries and GAIA reactions, readable cavern wall texts (25+ entries), WallText block type, scanner constants → [`completed/PHASE-54-MINE-ATMOSPHERE.md`](completed/PHASE-54-MINE-ATMOSPHERE.md)
 
 ### Social & Live-Ops (Phase 56)
-- [ ] **Phase 56: Social & Live-Ops Foundation** — Fact of the Day (server-selected daily, Hub panel), dome guestbook completion, fact trading anti-exploitation guards, guild knowledge-focus and XP pool, seasonal event framework → [`phases/PHASE-56-SOCIAL-LIVEOPS.md`](phases/PHASE-56-SOCIAL-LIVEOPS.md)
+- [x] **Phase 56: Social & Live-Ops Foundation** — Fact of the Day (server-selected daily, Hub panel), dome guestbook completion, fact trading anti-exploitation guards, guild knowledge-focus and XP pool, seasonal event framework → [`completed/PHASE-56-SOCIAL-LIVEOPS.md`](completed/PHASE-56-SOCIAL-LIVEOPS.md)
 
 ### Visual Polish (Phase 57)
 - [ ] **Phase 57: Visual & Feel Polish Pass** — Miner progressive dirt tint, study session atmospheric dome scene, "barely made it" mechanic (resolve Q-D4), greyscale-to-color fact image wiring, GAIA avatar micro-expressions → [`phases/PHASE-57-VISUAL-POLISH.md`](phases/PHASE-57-VISUAL-POLISH.md)
