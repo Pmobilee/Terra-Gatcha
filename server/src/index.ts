@@ -45,6 +45,7 @@ import { partnerPortalRoutes } from "./routes/partnerPortal.js";
 import { webhookRoutes } from "./routes/webhooks.js";
 import { factOfDayRoutes } from "./routes/factOfDay.js";
 import { seasonInfoRoutes } from "./routes/seasonInfo.js";
+import { adminFactsRoutes } from "./routes/adminFacts.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -138,6 +139,29 @@ export async function buildApp() {
       error: err.message ?? "Internal Server Error",
       statusCode,
     });
+  });
+
+  // ── Basic Auth for /admin HTML dashboard routes ─────────────────────────────
+  fastify.addHook("onRequest", async (request: FastifyRequest, reply: FastifyReply) => {
+    if (!request.url.startsWith("/admin")) return;
+    const authHeader = request.headers.authorization ?? "";
+    const [scheme, credentials] = authHeader.split(" ");
+    if (scheme !== "Basic" || !credentials) {
+      reply.header("WWW-Authenticate", 'Basic realm="Terra Gacha Admin"');
+      return reply.status(401).send("Unauthorized");
+    }
+    const decoded = Buffer.from(credentials, "base64").toString();
+    const colonIndex = decoded.indexOf(":");
+    if (colonIndex < 0) {
+      return reply.status(403).send("Forbidden");
+    }
+    const username = decoded.slice(0, colonIndex);
+    const password = decoded.slice(colonIndex + 1);
+    const validUser = process.env.ADMIN_USERNAME ?? "admin";
+    const validPass = process.env.ADMIN_PASSWORD ?? "changeme";
+    if (username !== validUser || password !== validPass) {
+      return reply.status(403).send("Forbidden");
+    }
   });
 
   // ── Routes ──────────────────────────────────────────────────────────────────
@@ -253,6 +277,9 @@ export async function buildApp() {
 
   // Webhook subscription management
   await fastify.register(webhookRoutes, { prefix: '/api/webhooks' });
+
+  // Phase 58: Admin Facts HTML dashboard (Basic Auth protected)
+  await fastify.register(adminFactsRoutes);
 
   // Phase 56: Fact of the Day (public, no prefix — route includes /api/v1)
   await fastify.register(factOfDayRoutes);

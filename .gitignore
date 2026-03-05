@@ -70,3 +70,8 @@ docs/audit/fact-sprite-coverage.json
 
 # Playwright MCP screenshots (dev tooling, not source)
 .playwright-mcp/
+
+# Phase 58: Generated audit reports
+scripts/fact-audit-report.json
+scripts/fact-audit-report.md
+scripts/distractor-expansion-queue.json
