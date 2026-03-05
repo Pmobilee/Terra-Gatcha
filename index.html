@@ -46,6 +46,22 @@
   </head>
   <body>
     <div id="app"></div>
+    <script>
+      // Emergency SW cleanup: the cache-first SW cached stale JS modules in dev.
+      // This inline script runs before any module imports, ensuring the SW is
+      // removed and caches purged so fresh code is always fetched.
+      // Safe in production: the SW re-registers itself via main.ts.
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          regs.forEach(function(r) { r.unregister(); });
+        });
+        if (typeof caches !== 'undefined') {
+          caches.keys().then(function(names) {
+            names.forEach(function(n) { caches.delete(n); });
+          });
+        }
+      }
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
