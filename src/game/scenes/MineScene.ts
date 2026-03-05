@@ -469,6 +469,9 @@ export class MineScene extends Phaser.Scene {
       0,       // offsetX
       -(TILE_SIZE * 0.75)   // offsetY: shift camera up by 0.75 tiles to center on torso
     )
+    // Immediately snap camera to player spawn so the initial redrawAll() renders the correct area.
+    // Without this, the camera retains scroll from the previous layer and the first frame is blank.
+    this.cameras.main.centerOn(startPx, startPy - TILE_SIZE * 0.75)
     this.pinchZoom = new PinchZoomController(this.cameras.main, this.input)
 
     // Phase 31: Initialize camera sequencer for artifact reveals and descent
@@ -588,6 +591,10 @@ export class MineScene extends Phaser.Scene {
 
     // Handle landmark-specific entry effects (toasts, hazard activation). (DD-V2-055)
     this.handleLandmarkEntry()
+
+    // On layer transitions the camera was faded to black by triggerDescentAnimation().
+    // Fade it back in so the new layer is visible. Also apply on layer 0 for a clean intro.
+    this.cameras.main.fadeIn(DESCENT_ANIM.fadeInDurationMs, 0, 0, 0)
   }
 
   // =========================================================
