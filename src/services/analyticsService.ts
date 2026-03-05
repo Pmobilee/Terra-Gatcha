@@ -8,7 +8,6 @@
 import { generateUUID } from '../utils/uuid'
 import { assignExperiment, type MonetizationEvent, type PrestigeEvent } from '../data/analyticsEvents'
 import { get } from 'svelte/store'
-import { analyticsEnabled } from '../ui/stores/settings'
 import { playerSave } from '../ui/stores/playerData'
 import { EXPERIMENTS } from '../data/experiments'
 import { assignVariant } from '../utils/experimentBucket'
@@ -374,8 +373,8 @@ export class AnalyticsService {
    */
   track(event: AnalyticsEvent): void {
     // ATT consent gate (Phase 38): do not queue any event if analytics is disabled.
-    // This is set to false when the iOS App Tracking Transparency prompt is denied.
-    if (!get(analyticsEnabled)) return
+    // Read directly from localStorage to avoid circular import: analyticsService → settings → playerData → analyticsService
+    if (window.localStorage.getItem('setting_analyticsEnabled') === 'false') return
 
     // COPPA compliance (Phase 45): in kid mode, only allow a small set of events.
     if (isKidMode() && !KID_ALLOWED_EVENTS.has(event.name)) return

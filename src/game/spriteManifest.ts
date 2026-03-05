@@ -1,17 +1,11 @@
 import type { SpriteResolution } from '../ui/stores/settings';
+import { HIGH_RES_KEYS, LOW_RES_KEYS } from '../data/spriteKeys';
 
+const BASE = (import.meta.env.VITE_ASSET_BASE_URL ?? '') as string;
 
-// Low-res sprite URLs (32px)
-const lowResSprites = import.meta.glob<string>(
-  '../assets/sprites/**/*.png',
-  { eager: true, query: '?url', import: 'default' }
-);
-
-// High-res sprite URLs (256px)
-const highResSprites = import.meta.glob<string>(
-  '../assets/sprites-hires/**/*.png',
-  { eager: true, query: '?url', import: 'default' }
-);
+function buildUrl(resolution: SpriteResolution, subpath: string): string {
+  return `${BASE}/assets/${resolution === 'high' ? 'sprites-hires' : 'sprites'}/${subpath}`;
+}
 
 /**
  * Returns the CDN-relative URLs for a biome's packed texture atlas.
@@ -24,10 +18,9 @@ const highResSprites = import.meta.glob<string>(
  * @returns Object with json and image URL paths
  */
 export function getBiomeAtlasUrl(biomeId: string): { json: string; image: string } {
-  const base = import.meta.env.VITE_ASSET_BASE_URL ?? ''
   return {
-    json:  `${base}/assets/atlases/mine_atlas_${biomeId}.json`,
-    image: `${base}/assets/atlases/mine_atlas_${biomeId}.webp`,
+    json:  `${BASE}/assets/atlases/mine_atlas_${biomeId}.json`,
+    image: `${BASE}/assets/atlases/mine_atlas_${biomeId}.webp`,
   }
 }
 
@@ -56,20 +49,43 @@ export function supportsWebP(): boolean {
 
 /**
  * Get sprite URLs for the specified resolution.
- * Extracts sprite keys from filenames and returns a mapping of key → URL.
+ * Returns a mapping of sprite key → public URL.
  * @param resolution - The desired sprite resolution ('low' or 'high')
  * @returns A record mapping sprite keys to their URL strings
  */
 export function getSpriteUrls(resolution: SpriteResolution): Record<string, string> {
-  const spriteMap = resolution === 'high' ? highResSprites : lowResSprites;
+  return getSpriteUrlsForBiome(resolution, null);
+}
+
+/**
+ * Get sprite URLs filtered to only include shared sprites plus the specified biome's tiles.
+ * Biome tile subpaths contain 'biomes/' and are named like: tiles/biomes/tectonic_scar_rock_07.png
+ * Non-biome sprites (dome, characters, items, icons, ui, autotile, block_*, crack_*, etc.) are always included.
+ *
+ * @param resolution - 'low' or 'high'
+ * @param biomeId - The biome ID to include tiles for (e.g. 'tectonic_scar'), or null for all biomes
+ * @param secondaryBiomeId - Optional secondary biome ID for dual-biome blended layers
+ */
+export function getSpriteUrlsForBiome(
+  resolution: SpriteResolution,
+  biomeId: string | null,
+  secondaryBiomeId?: string | null
+): Record<string, string> {
+  const keys = resolution === 'high' ? HIGH_RES_KEYS : LOW_RES_KEYS;
   const result: Record<string, string> = {};
 
-  for (const [path, url] of Object.entries(spriteMap)) {
-    // Extract filename without extension
-    // e.g., '../assets/sprites/tiles/tile_dirt.png' → 'tile_dirt'
-    const filename = path.split('/').pop() || '';
-    const spriteKey = filename.replace(/\.png$/, '');
-    result[spriteKey] = url;
+  for (const [key, subpath] of Object.entries(keys)) {
+    // Biome-specific tiles live under tiles/biomes/
+    if (subpath.includes('biomes/') && biomeId !== null) {
+      const filename = subpath.split('/').pop()!;
+      const matchesPrimary = filename.startsWith(biomeId + '_') || filename === biomeId + '.png';
+      const matchesSecondary = secondaryBiomeId
+        ? (filename.startsWith(secondaryBiomeId + '_') || filename === secondaryBiomeId + '.png')
+        : false;
+      if (!matchesPrimary && !matchesSecondary) continue;
+    }
+
+    result[key] = buildUrl(resolution, subpath);
   }
 
   return result;

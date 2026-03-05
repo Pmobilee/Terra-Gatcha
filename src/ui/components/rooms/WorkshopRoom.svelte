@@ -4,10 +4,10 @@
   import MineralConverter from '../MineralConverter.svelte'
 
   // Resource icon sprites
-  import iconDust from '../../../assets/sprites/icons/icon_dust.png'
-  import iconShard from '../../../assets/sprites/icons/icon_shard.png'
-  import iconCrystal from '../../../assets/sprites/icons/icon_crystal.png'
-  import iconGeode from '../../../assets/sprites/icons/icon_geode.png'
+  const iconDust = '/assets/sprites/icons/icon_dust.png'
+  const iconShard = '/assets/sprites/icons/icon_shard.png'
+  const iconCrystal = '/assets/sprites/icons/icon_crystal.png'
+  const iconGeode = '/assets/sprites/icons/icon_geode.png'
 
   interface Props {
     onMaterializer?: () => void

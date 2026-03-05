@@ -46,7 +46,7 @@ import { AudioManager } from '../managers/AudioManager'
 import { BiomeGlowSystem } from '../systems/BiomeGlowSystem'
 import { AnimatedTileSystem } from '../systems/AnimatedTileSystem'
 import { ALL_BIOMES } from '../../data/biomes'
-import { getSpriteUrls } from '../spriteManifest'
+import { getSpriteUrls, getSpriteUrlsForBiome } from '../spriteManifest'
 import { getSpriteResolution } from '../../ui/stores/settings'
 import { GameManager } from '../GameManager'
 import { BOSS_LAYER_MAP, createBoss } from '../entities/Boss'
@@ -301,7 +301,7 @@ export class MineScene extends Phaser.Scene {
     })
 
     const resolution = getSpriteResolution()
-    const spriteUrls = getSpriteUrls(resolution)
+    const spriteUrls = getSpriteUrlsForBiome(resolution, this.currentBiome?.id ?? null, this.secondaryBiome?.id)
     for (const [key, url] of Object.entries(spriteUrls)) {
       if (key === 'miner_sheet') continue
       this.load.image(key, url)
@@ -323,7 +323,7 @@ export class MineScene extends Phaser.Scene {
     // Apply LINEAR filter for hi-res sprites (first mine entry only)
     if (getSpriteResolution() === 'high' && !this._filtersApplied) {
       const texManager = this.textures
-      for (const key of Object.keys(getSpriteUrls('high'))) {
+      for (const key of Object.keys(getSpriteUrlsForBiome('high', this.currentBiome?.id ?? null))) {
         const texture = texManager.get(key)
         if (texture) {
           texture.setFilter(Phaser.Textures.FilterMode.LINEAR)

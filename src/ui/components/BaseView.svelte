@@ -11,12 +11,12 @@
   import { BALANCE } from '../../data/balance'
 
   // GAIA sprite imports for all expression states
-  import gaiaNeutralImg from '../../assets/sprites/dome/gaia_neutral.png'
-  import gaiaHappyImg from '../../assets/sprites/dome/gaia_happy.png'
-  import gaiaThinkingImg from '../../assets/sprites/dome/gaia_thinking.png'
-  import gaiaSnarkyImg from '../../assets/sprites/dome/gaia_snarky.png'
-  import gaiaSurprisedImg from '../../assets/sprites/dome/gaia_surprised.png'
-  import gaiaCalmImg from '../../assets/sprites/dome/gaia_calm.png'
+  const gaiaNeutralImg = '/assets/sprites/dome/gaia_neutral.png'
+  const gaiaHappyImg = '/assets/sprites/dome/gaia_happy.png'
+  const gaiaThinkingImg = '/assets/sprites/dome/gaia_thinking.png'
+  const gaiaSnarkyImg = '/assets/sprites/dome/gaia_snarky.png'
+  const gaiaSurprisedImg = '/assets/sprites/dome/gaia_surprised.png'
+  const gaiaCalmImg = '/assets/sprites/dome/gaia_calm.png'
 
   /** Map expression IDs to sprite image URLs */
   const GAIA_SPRITE_MAP: Record<string, string> = {

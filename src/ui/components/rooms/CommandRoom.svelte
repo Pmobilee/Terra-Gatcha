@@ -4,12 +4,12 @@
   import { parentalStore } from '../../stores/parentalStore'
 
   // Resource icon sprites
-  import iconOxygen from '../../../assets/sprites/icons/icon_oxygen.png'
-  import iconDust from '../../../assets/sprites/icons/icon_dust.png'
-  import iconShard from '../../../assets/sprites/icons/icon_shard.png'
-  import iconCrystal from '../../../assets/sprites/icons/icon_crystal.png'
-  import iconGeode from '../../../assets/sprites/icons/icon_geode.png'
-  import iconEssence from '../../../assets/sprites/icons/icon_essence.png'
+  const iconOxygen = '/assets/sprites/icons/icon_oxygen.png'
+  const iconDust = '/assets/sprites/icons/icon_dust.png'
+  const iconShard = '/assets/sprites/icons/icon_shard.png'
+  const iconCrystal = '/assets/sprites/icons/icon_crystal.png'
+  const iconGeode = '/assets/sprites/icons/icon_geode.png'
+  const iconEssence = '/assets/sprites/icons/icon_essence.png'
   import { pendingArtifacts } from '../../stores/gameState'
   import { audioManager } from '../../../services/audioService'
   import { BALANCE } from '../../../data/balance'
