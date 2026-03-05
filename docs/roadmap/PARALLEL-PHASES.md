@@ -349,5 +349,5 @@ Parallel agents burn through the budget in minutes and halt all progress.
 | 21 | W5 | **44** | Teacher Dashboard | [x] |
 | 22 | W5 | **48** | Prestige & Endgame | [x] |
 | 23 | W5 | **28** | Performance & Optimization | [x] |
-| 24 | W6 | **46** | Learning Effectiveness Research | [ ] |
+| 24 | W6 | **46** | Learning Effectiveness Research | [x] |
 | 25 | W6 | **50** | Open Content Ecosystem | [ ] |

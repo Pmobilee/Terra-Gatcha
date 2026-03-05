@@ -2,6 +2,7 @@
   import { playerSave } from '../stores/playerData'
   import RadarChart from './RadarChart.svelte'
   import SparklineChart from './SparklineChart.svelte'
+  import LearningInsightsTab from './LearningInsightsTab.svelte'
   import { getEffectiveArchetype } from '../../services/archetypeDetector'
 
   interface Props {
@@ -9,6 +10,12 @@
   }
 
   const { onBack }: Props = $props()
+
+  /** Active tab: 'report' (default) or 'learning'. */
+  let activeTab = $state<'report' | 'learning'>('report')
+
+  /** Placeholder category map — in production populated from the facts DB. */
+  const factCategoryMap = new Map<string, string>()
 
   const save = $derived($playerSave)
 
@@ -157,6 +164,31 @@
     <h1 class="report-title">G.A.I.A. LEARNING REPORT</h1>
   </div>
 
+  <!-- Tab bar -->
+  <div class="tab-bar" role="tablist">
+    <button
+      class="tab-btn"
+      class:active={activeTab === 'report'}
+      onclick={() => activeTab = 'report'}
+      aria-selected={activeTab === 'report'}
+      role="tab"
+    >
+      Overview
+    </button>
+    <button
+      class="tab-btn"
+      class:active={activeTab === 'learning'}
+      onclick={() => activeTab = 'learning'}
+      aria-selected={activeTab === 'learning'}
+      role="tab"
+    >
+      My Learning
+    </button>
+  </div>
+
+  {#if activeTab === 'learning'}
+    <LearningInsightsTab factCategories={factCategoryMap} />
+  {:else}
   <div class="report-scroll">
     <p class="since">Explorer since: {createdDate()}</p>
 
@@ -229,6 +261,7 @@
     <!-- Share button -->
     <button class="share-btn" onclick={handleShare}>Share My Progress</button>
   </div>
+  {/if}
 </div>
 
 <style>
@@ -248,6 +281,31 @@
     padding: 12px 16px;
     border-bottom: 1px solid #222;
     gap: 12px;
+  }
+  .tab-bar {
+    display: flex;
+    border-bottom: 1px solid #222;
+    background: #0a0a1a;
+    flex-shrink: 0;
+  }
+  .tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #666;
+    font-family: inherit;
+    font-size: 8px;
+    cursor: pointer;
+    padding: 8px 4px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab-btn.active {
+    color: #4ecca3;
+    border-bottom-color: #4ecca3;
+  }
+  .tab-btn:hover:not(.active) {
+    color: #aaa;
   }
   .back-btn {
     background: none;

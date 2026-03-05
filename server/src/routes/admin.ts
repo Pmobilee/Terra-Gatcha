@@ -43,6 +43,11 @@ import { computePlayerSegments } from "../analytics/playerSegments.js";
 import { computeRetention } from "../analytics/retention.js";
 import type { ComputationSummary } from "../analytics/leaderboards.js";
 import { factsDb } from "../db/facts-db.js";
+import {
+  issuePartnerKey,
+  revokePartnerKey,
+  listPartnerKeys,
+} from "../services/partnerKeyService.js";
 
 // ── Response types ─────────────────────────────────────────────────────────────
 
@@ -741,4 +746,57 @@ td,th{border:1px solid #ccc;padding:8px;text-align:left}tr:nth-child(even){backg
     dashboardCache = { html, expiresAt: Date.now() + 5 * 60_000 }
     return reply.type('text/html').send(html)
   })
+
+  // ── Phase 46: Research partner key management ──────────────────────────────
+
+  /**
+   * POST /api/admin/research-keys
+   * Issue a new partner API key. Requires internal admin authorization.
+   *
+   * Body: { institutionName: string, contactEmail: string }
+   * Returns: { rawKey, id, expiresAt }
+   */
+  fastify.post(
+    '/research-keys',
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { institutionName, contactEmail } = request.body as {
+        institutionName?: string
+        contactEmail?: string
+      }
+      if (!institutionName || !contactEmail) {
+        return reply.status(400).send({ error: 'institutionName and contactEmail are required' })
+      }
+      const { rawKey, record } = issuePartnerKey(institutionName, contactEmail)
+      return reply.status(201).send({
+        rawKey,               // Transmit once to the partner; not recoverable
+        id:        record.id,
+        expiresAt: new Date(record.expiresAt).toISOString(),
+      })
+    }
+  )
+
+  /**
+   * DELETE /api/admin/research-keys/:id
+   * Revoke a research API key by ID.
+   */
+  fastify.delete(
+    '/research-keys/:id',
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const { id } = request.params as { id: string }
+      const revoked = revokePartnerKey(id)
+      if (!revoked) return reply.status(404).send({ error: 'Key not found' })
+      return reply.send({ revoked: true })
+    }
+  )
+
+  /**
+   * GET /api/admin/research-keys
+   * List all issued research API keys (without raw key or key hash).
+   */
+  fastify.get(
+    '/research-keys',
+    async (_request: FastifyRequest, reply: FastifyReply) => {
+      return reply.send({ keys: listPartnerKeys() })
+    }
+  )
 }

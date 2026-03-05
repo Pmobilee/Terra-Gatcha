@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phases 0-28 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 49. Phase 28 (Performance & Optimization): device tier detection (low-end/mid/flagship) with quality presets; DirtyRectTracker for O(changed_tiles) rendering; TextureAtlasLRU for 3-atlas GPU memory cap (DD-V2-189); fog RenderTexture (single texture, dirty-rect updates); LootPopSystem 50-instance object pool; sql.js lazy dynamic import (-300 KB initial bundle); BiomeParticleManager uses device quality preset budget; gpuMemoryService (GMAN_webgl_memory extension); Settings Performance section with quality preset selector; DevPanel live perf overlay (FPS, draw calls, GPU MB, JS heap, dirty tiles, save KB); vite.config.ts manualChunks function splits dev/social/seasons into lazy chunks; npm run analyze script; BASELINE.md performance metrics doc; 0 typecheck errors. Next: Phase 46 (Learning Effectiveness Research).
+Phases 0-28 complete plus Critical Fixes and V3 Phases 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 49. Phase 46 (Learning Effectiveness Research): k-anonymity (k≥5) + Laplace differential privacy pipeline; research data export endpoint (CSV/JSON) with API key guard; public /metrics endpoint with 7-point retention curve and 7-category transfer learning; GAIA Report "My Learning" tab (LearningInsightsTab.svelte) with mastery stats, category bars, retention predictions, and memory health; partner key issuance/revocation service (SHA-256 hashed, 100 req/hr rate limit); admin research key management routes (POST/GET/DELETE /api/admin/research-keys); annual effectiveness report generator (reportGenerator.ts + annualReportJob.ts CLI); 0 typecheck errors. Next: Phase 50 (Open Content Ecosystem).
 
 ---
 
@@ -115,7 +115,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 ### Education (Phases 44-46)
 - [x] **Phase 44: Teacher Dashboard** — Standalone Vite app, educator verification, class codes, aggregate analytics, homework category lock → [`completed/PHASE-44-TEACHER-DASHBOARD.md`](completed/PHASE-44-TEACHER-DASHBOARD.md)
 - [x] **Phase 45: Kid Mode & Parental Controls** — Kid Wow Score, session time limits, parent PIN, weekly learning emails, COPPA enforcement → [`completed/PHASE-45-KID-MODE-PARENTAL.md`](completed/PHASE-45-KID-MODE-PARENTAL.md)
-- [ ] **Phase 46: Learning Effectiveness Research** — Anonymization pipeline, academic partnerships, annual reports, GAIA's Report tab, CSV export → [`phases/PHASE-46-LEARNING-EFFECTIVENESS.md`](phases/PHASE-46-LEARNING-EFFECTIVENESS.md)
+- [x] **Phase 46: Learning Effectiveness Research** — Anonymization pipeline, academic partnerships, annual reports, GAIA's Report tab, CSV export → [`completed/PHASE-46-LEARNING-EFFECTIVENESS.md`](completed/PHASE-46-LEARNING-EFFECTIVENESS.md)
 
 ### Endgame & Mastery (Phases 47-49)
 - [x] **Phase 47: Achievement Gallery** — 7th dome room, 20 milestone paintings, achievement tracking, paint-reveal animation, share to device gallery → [`completed/PHASE-47-ACHIEVEMENT-GALLERY.md`](completed/PHASE-47-ACHIEVEMENT-GALLERY.md)
