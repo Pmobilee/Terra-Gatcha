@@ -173,6 +173,37 @@
     return Math.min(overdueMs / (7 * 24 * 60 * 60 * 1000), 1.0)
   }
 
+  /**
+   * Discrete wilt stages for clearer visual feedback.
+   * 0 = healthy, 1 = slight droop (1-3 days), 2 = yellowing (4-7 days), 3 = grey/dead (7+ days)
+   */
+  function getWiltStage(rs: ReviewState | undefined): 0 | 1 | 2 | 3 {
+    if (!rs) return 0
+    const nowMs = Date.now()
+    const overdueMs = nowMs - rs.nextReviewAt
+    if (overdueMs <= 0) return 0
+    const overdueDays = overdueMs / (1000 * 60 * 60 * 24)
+    if (overdueDays < 1) return 0
+    if (overdueDays <= 3) return 1
+    if (overdueDays <= 7) return 2
+    return 3
+  }
+
+  const WILT_COLORS: Record<0 | 1 | 2 | 3, string> = {
+    0: '',            // Use normal mastery color
+    1: '#c8a83c',     // Slight amber
+    2: '#b8952a',     // Yellow-amber
+    3: '#888888',     // Grey/dead
+  }
+
+  /** Badge color based on branch completion ratio */
+  function branchBadgeColor(ratio: number): string {
+    if (ratio >= 1) return '#ffd700'
+    if (ratio >= 0.5) return '#4ecca3'
+    if (ratio >= 0.25) return '#5a9060'
+    return '#555570'
+  }
+
   /** De Casteljau cubic bezier point at parameter t */
   function cubicBezierPoint(
     sx: number, sy: number, c1x: number, c1y: number,
@@ -647,6 +678,29 @@
             ? `${branch.leafCount}/${branch.totalCount} (${Math.round(branch.completionRatio * 100)}%)`
             : `${branch.leafCount} learned`}
         </text>
+        <!-- Phase 53: Completion percentage badge -->
+        {@const pct = Math.round(branch.completionRatio * 100)}
+        {#if branch.totalCount > 0}
+          <rect
+            x={branch.labelX - (branch.config.side === 'left' ? 30 : -4)}
+            y={branch.labelY + 18}
+            width={pct >= 100 ? 28 : 24}
+            height={14}
+            rx={7}
+            fill={pct >= 100 ? '#ffd700' : branchBadgeColor(branch.completionRatio)}
+            opacity={0.85}
+          />
+          <text
+            x={branch.labelX - (branch.config.side === 'left' ? 30 : -4) + (pct >= 100 ? 14 : 12)}
+            y={branch.labelY + 28}
+            text-anchor="middle"
+            font-size="8"
+            font-weight="bold"
+            fill={pct >= 100 ? '#000' : '#fff'}
+          >
+            {pct >= 100 ? '★' : `${pct}%`}
+          </text>
+        {/if}
       {:else}
         <text
           x={branch.labelX} y={branch.labelY + 13}
@@ -808,20 +862,26 @@
                 {@const isKnown = leaf.mastery === 'known'}
                 {@const isRecent = recentlyReviewed.has(leaf.factId)}
                 {@const severity = overdueSeverity(reviewStateMap.get(leaf.factId))}
-                {@const leafColor = severity > 0
-                  ? lerpColor(MASTERY_COLOR[leaf.mastery], '#a09060', severity * 0.5)
-                  : MASTERY_COLOR[leaf.mastery]}
+                {@const wiltStage = getWiltStage(reviewStateMap.get(leaf.factId))}
+                {@const leafColor = wiltStage === 3
+                  ? '#888888'
+                  : wiltStage === 2
+                    ? lerpColor(MASTERY_COLOR[leaf.mastery], '#b8952a', 0.7)
+                    : severity > 0
+                      ? lerpColor(MASTERY_COLOR[leaf.mastery], '#c8a83c', severity * 0.5)
+                      : MASTERY_COLOR[leaf.mastery]}
 
                 <!-- Droop line for overdue -->
                 {#if severity > 0}
                   <line
                     x1={leaf.x} y1={leaf.y + 5}
                     x2={leaf.x + (seededRand(leaf.factId, 99) - 0.5) * 3}
-                    y2={leaf.y + 5 + 4 + severity * 8}
+                    y2={leaf.y + 5 + (wiltStage === 1 ? 6 : wiltStage === 2 ? 12 : wiltStage === 3 ? 18 : 4 + severity * 8)}
                     stroke={leafColor}
-                    stroke-width="1.5"
+                    stroke-width={wiltStage >= 2 ? '2' : '1.5'}
                     stroke-linecap="round"
                     opacity={0.3 + severity * 0.5}
+                    stroke-dasharray={wiltStage === 3 ? '2 2' : 'none'}
                   />
                 {/if}
 
@@ -831,7 +891,7 @@
                   fill={leafColor}
                   opacity={leaf.due && leaf.mastery !== 'new' ? 0.45 : 0.92}
                   filter={isMastered ? 'url(#mastered-glow)' : isKnown ? 'url(#known-glow)' : 'none'}
-                  class="{isMastered ? 'leaf-mastered' : ''}{isRecent ? ' leaf-recent' : ''}"
+                  class="{isMastered ? 'leaf-mastered' : ''}{isRecent ? ' leaf-recent' : ''}{wiltStage > 0 ? ` wilt-stage-${wiltStage}` : ''}"
                   data-fact-id={leaf.factId}
                   style="cursor: pointer"
                   onclick={() => onLeafTap(leaf.factId)}
@@ -917,5 +977,26 @@
 
   :global(.leaf-recent) {
     animation: leaf-recent-pulse 1.5s ease-in-out 3;
+  }
+
+  :global(.wilt-stage-1) {
+    transform: rotate(-8deg);
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  :global(.wilt-stage-2) {
+    transform: rotate(-15deg);
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0.7 !important;
+  }
+
+  :global(.wilt-stage-3) {
+    transform: rotate(-25deg);
+    transform-box: fill-box;
+    transform-origin: center;
+    opacity: 0.5 !important;
+    stroke-dasharray: 2 2;
   }
 </style>

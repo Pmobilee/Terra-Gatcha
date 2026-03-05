@@ -16,7 +16,7 @@ import { AGE_BRACKET_KEY } from '../../services/legalConstants'
 import { createReviewState, isDue, getMasteryLevel, reviewFact } from '../../services/sm2'
 import type { Cosmetic } from '../../data/cosmetics'
 import { calculateKnowledgePoints } from '../../data/knowledgeStore'
-import { BALANCE } from '../../data/balance'
+import { BALANCE, LEARNING_SPARKS_PER_MILESTONE } from '../../data/balance'
 import { evaluateArchetype } from '../../services/archetypeDetector'
 import { updateEngagementAfterDive, getEngagementGaiaComment } from '../../services/engagementScorer'
 import { gaiaMessage } from '../stores/gameState'
@@ -900,5 +900,97 @@ export function claimEveningReviewBonus(save: PlayerSave): PlayerSave {
     ...save,
     lastEveningReview: todayIso,
     oxygen: save.oxygen + BALANCE.EVENING_REVIEW_O2_BONUS,
+  }
+}
+
+// =========================================================
+// Phase 53: Learning Sparks
+// =========================================================
+
+/**
+ * Returns the ISO date (YYYY-MM-DD) of the Monday starting the current week.
+ */
+function getCurrentIsoWeekStart(): string {
+  const now = new Date()
+  const day = now.getDay() // 0=Sun, 1=Mon, ...
+  const diff = day === 0 ? 6 : day - 1 // Days since Monday
+  const monday = new Date(now)
+  monday.setDate(monday.getDate() - diff)
+  return monday.toISOString().slice(0, 10)
+}
+
+/**
+ * Checks if a fact's mastery level has crossed a threshold and awards Learning Sparks.
+ * Call after every SM-2 update.
+ */
+export function awardLearningSparkIfMilestone(
+  save: PlayerSave,
+  prevState: ReviewState | undefined,
+  newState: ReviewState,
+): PlayerSave {
+  if (!prevState) return save
+
+  let sparksToAdd = 0
+  const prevLevel = getMasteryLevel(prevState)
+  const newLevel = getMasteryLevel(newState)
+
+  if (prevLevel !== 'familiar' && prevLevel !== 'known' && prevLevel !== 'mastered' &&
+      (newLevel === 'familiar' || newLevel === 'known' || newLevel === 'mastered')) {
+    sparksToAdd += LEARNING_SPARKS_PER_MILESTONE.fact_familiar
+  }
+  if (prevLevel !== 'known' && prevLevel !== 'mastered' &&
+      (newLevel === 'known' || newLevel === 'mastered')) {
+    sparksToAdd += LEARNING_SPARKS_PER_MILESTONE.fact_known
+  }
+  if (prevLevel !== 'mastered' && newLevel === 'mastered') {
+    sparksToAdd += LEARNING_SPARKS_PER_MILESTONE.fact_mastered
+  }
+
+  if (sparksToAdd === 0) return save
+
+  const weekStart = getCurrentIsoWeekStart()
+  const sameWeek = save.sparkWeekStart === weekStart
+  return {
+    ...save,
+    learningSparks: (save.learningSparks ?? 0) + sparksToAdd,
+    sparkEarnedThisWeek: sameWeek ? (save.sparkEarnedThisWeek ?? 0) + sparksToAdd : sparksToAdd,
+    sparkWeekStart: weekStart,
+  }
+}
+
+/**
+ * Awards branch milestone Learning Sparks if a branch just crossed 25%, 50%, or 100%.
+ */
+export function awardBranchMilestone(
+  save: PlayerSave,
+  category: string,
+  completionPercent: number,
+): PlayerSave {
+  const awarded = save.awardedBranchMilestones ?? []
+  let sparksToAdd = 0
+  const newMilestones: string[] = []
+
+  for (const [threshold, sparks] of [
+    [25, LEARNING_SPARKS_PER_MILESTONE.branch_25_pct],
+    [50, LEARNING_SPARKS_PER_MILESTONE.branch_50_pct],
+    [100, LEARNING_SPARKS_PER_MILESTONE.branch_100_pct],
+  ] as const) {
+    const key = `${category}:${threshold}`
+    if (completionPercent >= threshold && !awarded.includes(key)) {
+      sparksToAdd += sparks
+      newMilestones.push(key)
+    }
+  }
+
+  if (sparksToAdd === 0) return save
+
+  const weekStart = getCurrentIsoWeekStart()
+  const sameWeek = save.sparkWeekStart === weekStart
+  return {
+    ...save,
+    learningSparks: (save.learningSparks ?? 0) + sparksToAdd,
+    sparkEarnedThisWeek: sameWeek ? (save.sparkEarnedThisWeek ?? 0) + sparksToAdd : sparksToAdd,
+    sparkWeekStart: weekStart,
+    awardedBranchMilestones: [...awarded, ...newMilestones],
   }
 }

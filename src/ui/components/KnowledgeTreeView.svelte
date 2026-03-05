@@ -147,6 +147,17 @@
     return save.reviewStates.filter((rs) => isDue(rs)).length
   })
 
+  // Phase 53: Wilting leaf count (overdue facts needing attention)
+  const wiltingCount = $derived.by(() => {
+    const save = $playerSave
+    if (!save) return 0
+    const now = Date.now()
+    return save.reviewStates.filter(rs => {
+      const overdueMs = now - rs.nextReviewAt
+      return overdueMs > 24 * 60 * 60 * 1000 // > 1 day overdue
+    }).length
+  })
+
   const categoriesUnlocked = $derived.by(() => {
     const save = $playerSave
     if (!save || save.learnedFacts.length === 0) return 0
@@ -213,6 +224,14 @@
           {PILL_LABELS[cat] ?? cat}
         </button>
       {/each}
+    </div>
+  {/if}
+
+  <!-- Phase 53: Wilting summary -->
+  {#if wiltingCount > 0 && lod.level === 'forest'}
+    <div class="wilt-summary">
+      <span class="wilt-icon">🍂</span>
+      <span class="wilt-text">{wiltingCount} {wiltingCount === 1 ? 'leaf needs' : 'leaves need'} attention</span>
     </div>
   {/if}
 
@@ -705,5 +724,26 @@
     .back-button { min-width: 64px; font-size: 0.82rem; }
     .pill-row { padding: 5px 8px; gap: 4px 5px; flex-wrap: nowrap; }
     .cat-pill { height: 24px; font-size: 0.68rem; padding: 0 8px; }
+  }
+  /* Phase 53: Wilt summary */
+  .wilt-summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(200, 168, 60, 0.15);
+    border-bottom: 1px solid rgba(200, 168, 60, 0.3);
+    font-size: 0.78rem;
+    color: #c8a83c;
+    cursor: pointer;
+  }
+
+  .wilt-icon {
+    font-size: 14px;
+  }
+
+  .wilt-text {
+    font-family: 'Courier New', monospace;
   }
 </style>

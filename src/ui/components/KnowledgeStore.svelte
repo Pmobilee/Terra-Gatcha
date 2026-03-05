@@ -21,6 +21,10 @@
   /** Current knowledge points balance from the store */
   const kp = $derived($playerSave?.knowledgePoints ?? 0)
 
+  /** Learning Sparks balance */
+  const sparks = $derived($playerSave?.learningSparks ?? 0)
+  const sparksThisWeek = $derived($playerSave?.sparkEarnedThisWeek ?? 0)
+
   /** Set of purchased item IDs */
   const purchasedIds = $derived(new Set($playerSave?.purchasedKnowledgeItems ?? []))
 
@@ -124,11 +128,16 @@
       <span class="kp-value">{kp}</span>
       <span class="kp-label">KP</span>
     </div>
+    <div class="spark-display" aria-label="Learning Sparks balance">
+      <span class="spark-icon" aria-hidden="true">⚡</span>
+      <span class="spark-value">{sparks}</span>
+      <span class="spark-label">Sparks</span>
+    </div>
   </div>
 
   <!-- KP explanation -->
   <p class="kp-hint">
-    Earn KP by learning facts, mastering knowledge, and answering quizzes correctly
+    Earn KP by learning facts & quizzes. Earn ⚡Sparks through mastery milestones (+{sparksThisWeek} this week)
   </p>
 
   <!-- Tabs -->
@@ -481,6 +490,34 @@
 
   .buy-btn:disabled {
     cursor: not-allowed;
+  }
+
+  /* Phase 53: Learning Sparks display */
+  .spark-display {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: rgba(255, 200, 50, 0.12);
+    border: 1px solid rgba(255, 200, 50, 0.3);
+    border-radius: 8px;
+  }
+
+  .spark-icon {
+    font-size: 14px;
+  }
+
+  .spark-value {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: #ffc832;
+    font-weight: bold;
+  }
+
+  .spark-label {
+    font-size: 9px;
+    color: #cca020;
+    text-transform: uppercase;
   }
 
   /* ---- Responsive ---- */

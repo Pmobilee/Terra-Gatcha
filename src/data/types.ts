@@ -715,6 +715,16 @@ export interface PlayerSave {
   guildChampionWins?: number
   /** Phase 42.3: Whether the player has the Pioneer Pack (used for pioneer badge). */
   isPioneer?: boolean
+
+  // Phase 53: Learning Sparks
+  /** Learning Sparks currency — earned through mastery milestones, used in Knowledge Store. */
+  learningSparks?: number
+  /** How many Sparks have been earned since the start of the current ISO week (Mon-Sun). */
+  sparkEarnedThisWeek?: number
+  /** ISO date string (YYYY-MM-DD) of the Monday that started the current Spark week. */
+  sparkWeekStart?: string
+  /** Branch milestones already awarded (prevents double-award). e.g. ["Natural Sciences:25", "History:100"] */
+  awardedBranchMilestones?: string[]
 }
 
 /** Player statistics */

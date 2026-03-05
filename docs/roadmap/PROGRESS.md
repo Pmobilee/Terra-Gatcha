@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phase 52 (Learning Depth) COMPLETE. Morning/evening review O2 bonus rewards players for reviewing facts outside of dives. 3-question layer entrance challenge gates deeper layers behind knowledge checks. Artifact rarity boost quiz lets players answer questions to upgrade artifact rarity on discovery. GAIA mnemonic hints appear when players struggle with specific facts. SM-2 consistency ease penalty wired into the review system. 0 typecheck errors, build clean.
+Phase 53 (Knowledge Tree Vitality) COMPLETE. Leaf wilting visuals with 3 decay stages tied to SM-2 review state. Branch completion percentage badges. Learning Sparks currency earned via mastery milestones. Branch gameplay bonuses at 25% completion thresholds. 0 typecheck errors, build clean.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -145,7 +145,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Learning Systems (Phases 52, 53)
 - [x] **Phase 52: Learning Depth** — Morning/evening quiz oxygen bonus, 3-question layer entrance challenge, artifact rarity boost quiz, GAIA mnemonic on struggle, SM-2 consistency penalty exact wiring → [`completed/PHASE-52-LEARNING-DEPTH.md`](completed/PHASE-52-LEARNING-DEPTH.md)
-- [ ] **Phase 53: Knowledge Tree Vitality** — Leaf wilting/decay (3 visual stages), branch completion percentage badges, Learning Sparks currency, branch gameplay bonuses at 25% completion → [`phases/PHASE-53-KNOWLEDGE-TREE-VITALITY.md`](phases/PHASE-53-KNOWLEDGE-TREE-VITALITY.md)
+- [x] **Phase 53: Knowledge Tree Vitality** — Leaf wilting/decay (3 visual stages), branch completion percentage badges, Learning Sparks currency, branch gameplay bonuses at 25% completion → [`completed/PHASE-53-KNOWLEDGE-TREE-VITALITY.md`](completed/PHASE-53-KNOWLEDGE-TREE-VITALITY.md)
 
 ### Mine & Atmosphere (Phase 54)
 - [ ] **Phase 54: Mine Atmosphere** — Ambient environmental storytelling (60+ biome flavor texts), Quote Stones with content library, readable cavern wall texts, scanner sonar pulse animation, artifact scan-without-mine → [`phases/PHASE-54-MINE-ATMOSPHERE.md`](phases/PHASE-54-MINE-ATMOSPHERE.md)

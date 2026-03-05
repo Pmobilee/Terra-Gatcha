@@ -679,6 +679,23 @@ export const REFERRAL_ATTRIBUTION_DAYS = 30
 /** Maximum qualifying referrals per player per calendar year (anti-fraud cap). */
 export const REFERRAL_MAX_PER_YEAR = 10
 
+// === PHASE 53: LEARNING SPARKS ===
+
+export const LEARNING_SPARKS_PER_MILESTONE = {
+  /** Fact reaches 'familiar' mastery. */
+  fact_familiar: 1,
+  /** Fact reaches 'known' mastery. */
+  fact_known: 3,
+  /** Fact reaches 'mastered' mastery. */
+  fact_mastered: 5,
+  /** Branch reaches 25% explored. */
+  branch_25_pct: 10,
+  /** Branch reaches 50% explored. */
+  branch_50_pct: 20,
+  /** Branch reaches 100% explored. */
+  branch_100_pct: 25,
+} as const
+
 // === PHASE 42: ASO — REVIEW PROMPT TRIGGERS ===
 
 /** Review prompt trigger thresholds. All must be met before the prompt fires. */
