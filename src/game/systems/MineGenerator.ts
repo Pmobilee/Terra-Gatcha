@@ -904,6 +904,26 @@ export function generateMine(
     }
   }
 
+  // ---- Phase 48.4: Challenge Gate blocks ----
+  // Spawn up to 2 ChallengeGate blocks per layer when oneIndexedLayer >= CHALLENGE_GATE_LAYER_THRESHOLD.
+  if (oneIndexedLayer >= BALANCE.CHALLENGE_GATE_LAYER_THRESHOLD) {
+    let gatesPlaced = 0
+    const gateMinDepth = Math.floor(height * 0.3)
+    for (let y = gateMinDepth; y < height && gatesPlaced < 2; y++) {
+      for (let x = 0; x < width && gatesPlaced < 2; x++) {
+        const cell = grid[y][x]
+        if (cell.type !== BlockType.Stone && cell.type !== BlockType.HardRock) continue
+        // ~2% density per eligible cell, capped at 2 per layer
+        if (rng() < 0.02) {
+          cell.type = BlockType.ChallengeGate
+          cell.hardness = 3
+          cell.maxHardness = 3
+          gatesPlaced++
+        }
+      }
+    }
+  }
+
   flagTransitionZones(grid, !!secondaryBiome, transitionBandWidth)
 
   return { grid, spawnX, spawnY, biome, secondaryBiome }

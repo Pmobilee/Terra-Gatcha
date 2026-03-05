@@ -298,6 +298,31 @@ export function load(): PlayerSave | null {
     if (!Array.isArray(parsedAny['defeatedBosses'])) {
       parsedAny['defeatedBosses'] = []
     }
+    // Phase 48: Prestige & Endgame migration
+    if (typeof parsedAny['prestigeLevel'] !== 'number') {
+      parsedAny['prestigeLevel'] = 0
+    }
+    if (!Array.isArray(parsedAny['prestigedAt'])) {
+      parsedAny['prestigedAt'] = []
+    }
+    if (typeof parsedAny['lifetimeMasteredFacts'] !== 'number') {
+      parsedAny['lifetimeMasteredFacts'] = 0
+    }
+    if (!Array.isArray(parsedAny['completedBiomes'])) {
+      parsedAny['completedBiomes'] = []
+    }
+    if (typeof parsedAny['challengeModeActive'] !== 'boolean') {
+      parsedAny['challengeModeActive'] = false
+    }
+    if (typeof parsedAny['challengeStreak'] !== 'number') {
+      parsedAny['challengeStreak'] = 0
+    }
+    if (typeof parsedAny['mentorPrestigePoints'] !== 'number') {
+      parsedAny['mentorPrestigePoints'] = 0
+    }
+    if (!Array.isArray(parsedAny['authoredHints'])) {
+      parsedAny['authoredHints'] = []
+    }
     return parsed as PlayerSave
   } catch {
     return null

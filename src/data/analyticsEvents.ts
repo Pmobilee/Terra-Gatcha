@@ -34,6 +34,12 @@ export type SocialEvent =
   | { name: 'guild_challenge_contributed'; properties: { challengeType: string; contribution: number } }
   | { name: 'referral_link_shared'; properties: { platform: 'copy' | 'native_share' } }
 
+/** Prestige & Endgame analytics events — Phase 48 */
+export type PrestigeEvent =
+  | { name: 'prestige_triggered'; properties: { new_level: number; lifetime_mastered: number } }
+  | { name: 'challenge_mode_result'; properties: { mode: 'speed' | 'no_hint' | 'reverse'; correct: boolean; streak: number } }
+  | { name: 'biome_completed'; properties: { biome_id: string } }
+
 /** Co-op analytics events — Phase 43 */
 export type CoopEvent =
   | { name: 'coop_dive_started'; properties: { role: 'miner' | 'scholar'; matchType: 'friend' | 'code' | 'quickmatch' } }

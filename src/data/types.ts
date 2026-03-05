@@ -177,6 +177,7 @@ export enum BlockType {
   OfferingAltar = 28,       // Sacrifice altar — guaranteed rare drop (Phase 35.3)
   LockedBlock = 29,          // Tier/tool locked hard rock (Phase 35.6)
   RecipeFragmentNode = 30,  // Collectible recipe fragment (Phase 35.5)
+  ChallengeGate = 31,       // Post-mastery challenge block (Phase 48.4)
   Unbreakable = 99,
 }
 
@@ -609,6 +610,26 @@ export interface PlayerSave {
   referredBy?: string
   /** Total number of referral reward grants this player has received. */
   referralRewardsEarned?: number
+
+  // Phase 48: Prestige & Endgame
+  /** Current prestige level (0 = never prestiged). Permanent, never resets. */
+  prestigeLevel?: number
+  /** Unix timestamps of each prestige event. Length equals prestigeLevel. */
+  prestigedAt?: number[]
+  /** Total facts ever mastered across all prestige resets (cumulative lifetime counter). */
+  lifetimeMasteredFacts?: number
+  /** Which biomes the player has reached 100% fact mastery for. */
+  completedBiomes?: string[]
+  /** Whether challenge mode is currently active for the session. */
+  challengeModeActive?: boolean
+  /** Current challenge mode streak (resets on wrong answer). */
+  challengeStreak?: number
+  /** Total prestige points earned from mentoring. */
+  mentorPrestigePoints?: number
+  /** Fact IDs for which the player has authored a mentor hint. */
+  authoredHints?: string[]
+  /** Unix timestamp when omniscient status was first achieved. */
+  omniscientUnlockedAt?: number
 
   // Language Learning (FIX-8)
   /** BCP-47 language code of the target language for vocabulary facts (e.g. "ja"). null = no language selected. */

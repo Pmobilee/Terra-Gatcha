@@ -6,7 +6,7 @@
  */
 
 import { generateUUID } from '../utils/uuid'
-import { assignExperiment, type MonetizationEvent } from '../data/analyticsEvents'
+import { assignExperiment, type MonetizationEvent, type PrestigeEvent } from '../data/analyticsEvents'
 import { get } from 'svelte/store'
 import { analyticsEnabled } from '../ui/stores/settings'
 import { playerSave } from '../ui/stores/playerData'
@@ -211,6 +211,7 @@ export type AnalyticsEvent =
   | ReferralLinkSharedEvent
   | ReferralConvertedEvent
   | BadgeSharedEvent
+  | PrestigeEvent
 
 // Re-export specific types used externally
 export type {

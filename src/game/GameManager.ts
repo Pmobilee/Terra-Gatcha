@@ -86,6 +86,8 @@ import { TickSystem } from './systems/TickSystem'
 import type { MineEventType } from '../data/mineEvents'
 import { getMineEvent } from '../data/mineEvents'
 import { getFragmentRecipe } from '../data/recipeFragments'
+import { checkBiomeCompletion } from '../services/biomeCompletionService'
+import { biomeCompletionStore } from '../ui/stores/gameState'
 
 /**
  * Singleton manager for the Phaser game instance.
@@ -1410,6 +1412,16 @@ export class GameManager {
     // comments already set gaiaMessage above; post-dive reaction overwrites after delay).
     const lastBiome = get(currentBiomeId) ?? 'limestone_caves'
     this.gaiaManager.firePostDiveReaction(diveResultsData, lastBiome)
+
+    // Phase 48.5: Check biome completion post-dive
+    const save = get(playerSave)
+    if (save) {
+      checkBiomeCompletion(save, lastBiome).then(completedBiomeId => {
+        if (completedBiomeId) {
+          biomeCompletionStore.set(completedBiomeId)
+        }
+      }).catch(() => { /* ignore */ })
+    }
 
     // Stop the mine scene
     this.game?.scene.stop('MineScene')

@@ -83,6 +83,7 @@ const BLOCK_COLORS: Record<BlockType, number> = {
   [BlockType.OfferingAltar]: 0x9944cc,     // purple — Phase 35.3
   [BlockType.LockedBlock]: 0x4a4a4a,       // same base as HardRock — Phase 35.6
   [BlockType.RecipeFragmentNode]: 0x44ccaa, // teal/cyan — Phase 35.5
+  [BlockType.ChallengeGate]: 0xff6600,      // orange — Phase 48.4
   [BlockType.Unbreakable]: 0x2c2c2c,
 }
 
@@ -1640,6 +1641,12 @@ export class MineScene extends Phaser.Scene {
 
     // OfferingAltar guard (Phase 35.3): can't be mined — tap does nothing
     if (blockType === BlockType.OfferingAltar) {
+      return
+    }
+
+    // ChallengeGate guard (Phase 48.4): tap opens Challenge Quiz overlay
+    if (blockType === BlockType.ChallengeGate) {
+      this.game.events.emit('challenge-gate-tapped', { x: targetX, y: targetY })
       return
     }
 

@@ -119,7 +119,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Endgame & Mastery (Phases 47-49)
 - [x] **Phase 47: Achievement Gallery** — 7th dome room, 20 milestone paintings, achievement tracking, paint-reveal animation, share to device gallery → [`completed/PHASE-47-ACHIEVEMENT-GALLERY.md`](completed/PHASE-47-ACHIEVEMENT-GALLERY.md)
-- [ ] **Phase 48: Prestige & Endgame Systems** — Omniscient golden dome, mentor mode, post-mastery challenge mode, biome completion bonuses, GAIA peer dialogue → [`phases/PHASE-48-PRESTIGE-ENDGAME.md`](phases/PHASE-48-PRESTIGE-ENDGAME.md)
+- [x] **Phase 48: Prestige & Endgame Systems** — Omniscient golden dome, mentor mode, post-mastery challenge mode, biome completion bonuses, GAIA peer dialogue → [`completed/PHASE-48-PRESTIGE-ENDGAME.md`](completed/PHASE-48-PRESTIGE-ENDGAME.md)
 - [x] **Phase 49: Advanced Mine Generation** — Procedural micro-structures, biome transition zones, structural features, anomaly probability system, seed determinism, mine preview thumbnail, dynamic difficulty → [`completed/PHASE-49-ADVANCED-MINE-GENERATION.md`](completed/PHASE-49-ADVANCED-MINE-GENERATION.md)
 
 ### Platform Maturity (Phase 50)

@@ -24,6 +24,7 @@ export const TREE_STAGES: TreeStage[] = [
   { index: 3, label: 'Mature Tree',   minMastered: 151,  spriteKey: 'obj_knowledge_tree_stage3', gaiaComment: "Mature. Strong. Not bad for a crash survivor." },
   { index: 4, label: 'Grand Tree',    minMastered: 501,  spriteKey: 'obj_knowledge_tree_stage4', gaiaComment: "Grand. The golden leaves are a nice touch." },
   { index: 5, label: 'Ancient Tree',  minMastered: 1001, spriteKey: 'obj_knowledge_tree_stage5', gaiaComment: "Ancient. This tree has outlasted civilizations. So have you." },
+  { index: 6, label: 'Omniscient Tree', minMastered: 3000, spriteKey: 'obj_knowledge_tree_stage6', gaiaComment: "You have learned everything I have to teach. The tree glows gold. So do I." },
 ]
 
 /**

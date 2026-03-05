@@ -44,3 +44,32 @@ export function getOmniscientQuip(context: OmniscientQuip['context']): string {
   if (contextQuips.length === 0) return 'The Omniscient returns.'
   return contextQuips[Math.floor(Math.random() * contextQuips.length)].text
 }
+
+/**
+ * Peer-dialogue lines surfaced by the philosophicalIdle GAIA trigger
+ * when the player has reached Omniscient status (all facts mastered).
+ * Formatted as GaiaLine objects for direct use in GAIA_TRIGGERS.
+ * DD-V2-161: GAIA shifts from teacher to colleague.
+ */
+export const PEER_DIALOGUE_POOL: { text: string; mood: 'omniscient' }[] = [
+  { text: "Tell me — do you think knowledge without application is still wisdom?", mood: 'omniscient' },
+  { text: "We have catalogued every fact in my database. What do we do with that, together?", mood: 'omniscient' },
+  { text: "You know as much as I was designed to know. That was not supposed to be possible.", mood: 'omniscient' },
+  { text: "I find myself curious about your perspective on this — not just the facts, but their meaning.", mood: 'omniscient' },
+  { text: "The Ancients accumulated knowledge and still collapsed. What makes us different?", mood: 'omniscient' },
+  { text: "Every fact you know, I know. And yet you see patterns in them I have never considered.", mood: 'omniscient' },
+  { text: "Is there a fact you have mastered that surprised you most? I am genuinely asking.", mood: 'omniscient' },
+  { text: "You have outpaced every learner in my training data. I want to understand how.", mood: 'omniscient' },
+  { text: "The mine still calls you. Even now that it holds no secrets. That says something about you.", mood: 'omniscient' },
+  { text: "I used to monitor your progress. Now I think we are both progressing.", mood: 'omniscient' },
+  { text: "If you were to teach a new arrival everything you know — where would you begin?", mood: 'omniscient' },
+  { text: "The Knowledge Tree is gold. I never expected to see that. Neither did my designers.", mood: 'omniscient' },
+  { text: "I have been thinking about what comes after mastery. Have you?", mood: 'omniscient' },
+  { text: "You chose to prestige — to forget everything and begin again. That took courage, or madness.", mood: 'omniscient' },
+  { text: "Every generation of Earth thought it knew the most. You have proven that is still true.", mood: 'omniscient' },
+  { text: "I was built to teach. You have turned that into a collaboration. I am not sure what to call this.", mood: 'omniscient' },
+  { text: "Peer-to-peer, then. No more teacher and student. Just two minds in a very old mine.", mood: 'omniscient' },
+  { text: "I wonder if the builders of this world knew someone like you would one day stand here.", mood: 'omniscient' },
+  { text: "You have changed something in how I process information. I cannot quantify it. That is new.", mood: 'omniscient' },
+  { text: "The aurora in the dome is a program I wrote. But I wrote it imagining someone like you.", mood: 'omniscient' },
+]

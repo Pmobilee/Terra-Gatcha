@@ -379,3 +379,14 @@ export const activeMineEvent = singletonWritable<{ type: string; label: string }
 
 /** True whenever a CombatOverlay is shown (blocks mining input). */
 export const combatEncounterActive = singletonWritable<boolean>('combatEncounterActive', false)
+
+// =========================================================
+// Phase 48 — Prestige & Endgame
+// =========================================================
+
+/**
+ * Set to a BiomeId string when a biome completion event fires post-dive.
+ * BiomeCompletionOverlay listens for this and shows the mastery celebration.
+ * Reset to null after the overlay is dismissed.
+ */
+export const biomeCompletionStore = singletonWritable<string | null>('biomeCompletion', null)

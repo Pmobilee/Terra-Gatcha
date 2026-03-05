@@ -9,6 +9,7 @@ import { factsDB } from '../../services/factsDB'
 import { PREMIUM_MATERIALS, type PremiumMaterial } from '../../data/premiumRecipes'
 import { getEffectiveArchetype, ARCHETYPE_GAIA_EMPHASIS } from '../../services/archetypeDetector'
 import { deriveJourneyMemoryVars } from '../../services/journeyMemory'
+import { isOmniscient } from '../../services/prestigeService'
 
 /** Tutorial-specific GAIA dialogue lines (Phase 14). Verbatim — do not paraphrase. */
 const TUTORIAL_GAIA_LINES: Record<string, string> = {
@@ -227,16 +228,23 @@ export class GaiaManager {
   /**
    * Start the idle thought bubble timer for the dome/base view.
    * Clears any existing timer before scheduling the first bubble.
+   * Also starts the omniscient philosophical idle timer if the player is Omniscient.
    * Should be called when HubView mounts.
    */
   startIdleBubbleTimer(): void {
     this.stopIdleBubbleTimer()
     this.scheduleNextBubble()
+    // Phase 48.6: start omniscient philosophical idle if applicable
+    const save = get(playerSave)
+    if (save && isOmniscient(save)) {
+      this.startOmniscientIdleTimer()
+    }
   }
 
   /**
    * Stop the idle thought bubble timer.
    * Clears the current timeout handle and sets it to null.
+   * Also clears the omniscient idle timer.
    * Should be called when HubView unmounts.
    */
   stopIdleBubbleTimer(): void {
@@ -244,6 +252,7 @@ export class GaiaManager {
       clearTimeout(this.bubbleTimer)
       this.bubbleTimer = null
     }
+    this.clearOmniscientIdleTimer()
   }
 
   /**
@@ -367,6 +376,51 @@ export class GaiaManager {
     return s.length <= max ? s : s.slice(0, max - 1) + '…'
   }
 
+  // =========================================================
+  // Phase 48.6 — Omniscient Philosophical Idle Timer
+  // =========================================================
+
+  /** Active timeout handle for the philosophicalIdle trigger. */
+  private omniscientIdleTimer: ReturnType<typeof setTimeout> | null = null
+
+  /** Interval between philosophical idle lines in milliseconds (90s). */
+  private readonly OMNISCIENT_IDLE_INTERVAL = 90_000
+
+  /**
+   * Start the 90-second idle timer that fires philosophicalIdle GAIA lines
+   * when the player has reached Omniscient status.
+   * Should be called from startIdleBubbleTimer() when omniscient.
+   */
+  startOmniscientIdleTimer(): void {
+    this.clearOmniscientIdleTimer()
+    this.scheduleOmniscientIdle()
+  }
+
+  /**
+   * Clear the omniscient idle timer, e.g. when leaving the dome.
+   */
+  clearOmniscientIdleTimer(): void {
+    if (this.omniscientIdleTimer !== null) {
+      clearTimeout(this.omniscientIdleTimer)
+      this.omniscientIdleTimer = null
+    }
+  }
+
+  /**
+   * Schedule the next philosophicalIdle line after OMNISCIENT_IDLE_INTERVAL ms.
+   */
+  private scheduleOmniscientIdle(): void {
+    this.omniscientIdleTimer = setTimeout(() => {
+      const save = get(playerSave)
+      if (!save || !isOmniscient(save)) return
+      const text = getGaiaLine('philosophicalIdle', 'omniscient')
+      const expr = getGaiaExpression('idle', 'omniscient')
+      gaiaExpression.set(expr.id)
+      gaiaMessage.set(text)
+      this.scheduleOmniscientIdle()
+    }, this.OMNISCIENT_IDLE_INTERVAL)
+  }
+
   /**
    * Pick a random line and push it to the gaiaMessage store,
    * subject to the player's chattiness setting.
@@ -386,11 +440,16 @@ export class GaiaManager {
   /**
    * Emit a mood-aware GAIA line for the given named trigger, respecting chattiness.
    * Also updates the gaiaExpression store so the toast and avatar reflect context.
+   * When the player is Omniscient, there is a 70% chance to use the 'omniscient' mood
+   * variant instead of the player's selected mood. (DD-V2-161)
    */
   triggerGaia(trigger: keyof typeof GAIA_TRIGGERS): void {
     const chattiness = get(gaiaChattiness)
     if (Math.random() * 10 >= chattiness) return
-    const mood = get(gaiaMood)
+    const save = get(playerSave)
+    const isOmni = save ? isOmniscient(save) : false
+    const baseMood = get(gaiaMood)
+    const mood = isOmni && Math.random() < 0.70 ? 'omniscient' : baseMood
     const text = getGaiaLine(trigger, mood)
     const expr = getGaiaExpression(trigger, mood)
     gaiaExpression.set(expr.id)

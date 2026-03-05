@@ -14,6 +14,10 @@
   import PaintRevealOverlay from './PaintRevealOverlay.svelte'
   import AchievementGalleryView from './AchievementGalleryView.svelte'
   import { pendingReveal } from '../stores/achievements'
+  import PrestigeScreen from './PrestigeScreen.svelte'
+  import PrestigeBadge from './PrestigeBadge.svelte'
+  import OmniscientReveal from './OmniscientReveal.svelte'
+  import { isEligibleForPrestige, isOmniscient } from '../../services/prestigeService'
 
   interface Props {
     onDive: () => void
@@ -73,6 +77,7 @@
     const dome = gm?.getDomeScene()
     if (dome) {
       dome.setHubState(unlockedIds, floorTiers, masteredCount)
+      dome.setOmniscient(omniscientStatus)
     }
   })
 
@@ -146,6 +151,13 @@
 
   // Upgrade panel state
   let showUpgradePanel = $state(false)
+
+  // Phase 48: Prestige & Endgame
+  let showPrestigeScreen = $state(false)
+
+  const prestigeLevel = $derived($playerSave?.prestigeLevel ?? 0)
+  const prestigeEligible = $derived($playerSave ? isEligibleForPrestige($playerSave) : false)
+  const omniscientStatus = $derived($playerSave ? isOmniscient($playerSave) : false)
 
   function handleUpgrade(floorId: string, targetTier: FloorUpgradeTier): void {
     upgradeFloor(floorId, targetTier)
@@ -258,6 +270,34 @@
   {#if $pendingReveal}
     <PaintRevealOverlay />
   {/if}
+
+  <!-- Phase 48: Prestige badge and button -->
+  {#if prestigeLevel > 0}
+    <div class="prestige-badge-row">
+      <PrestigeBadge level={prestigeLevel} />
+    </div>
+  {/if}
+
+  {#if prestigeEligible}
+    <button
+      type="button"
+      class="prestige-btn"
+      onclick={() => { showPrestigeScreen = true }}
+      aria-label="Open Prestige screen"
+    >
+      PRESTIGE
+    </button>
+  {/if}
+
+  <!-- Phase 48: Prestige screen overlay -->
+  {#if showPrestigeScreen}
+    <PrestigeScreen onClose={() => { showPrestigeScreen = false }} />
+  {/if}
+
+  <!-- Phase 48: Omniscient reveal (one-time) -->
+  {#if omniscientStatus && !$playerSave?.omniscientUnlockedAt}
+    <OmniscientReveal onDone={() => { /* store updated inside component */ }} />
+  {/if}
 </div>
 
 <style>
@@ -333,5 +373,39 @@
   .settings-btn:hover {
     color: #fff;
     background: rgba(20, 20, 50, 0.95);
+  }
+
+  /* Phase 48: Prestige elements */
+  .prestige-badge-row {
+    pointer-events: auto;
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 42;
+  }
+
+  .prestige-btn {
+    pointer-events: auto;
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ffd700, #ff8c00);
+    border: none;
+    border-radius: 6px;
+    color: #0a0a1a;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    padding: 8px 18px;
+    cursor: pointer;
+    z-index: 42;
+    animation: prestige-pulse 2s ease-in-out infinite;
+    min-height: 32px;
+  }
+
+  @keyframes prestige-pulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.4); }
+    50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.9); }
   }
 </style>

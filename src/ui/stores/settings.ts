@@ -54,9 +54,9 @@ export const spriteResolution = singletonWritable<SpriteResolution>('spriteResol
 // =========================================================
 
 /** GAIA companion personality mode. */
-export type GaiaMood = 'snarky' | 'enthusiastic' | 'calm'
+export type GaiaMood = 'snarky' | 'enthusiastic' | 'calm' | 'omniscient'
 
-const VALID_MOODS: GaiaMood[] = ['snarky', 'enthusiastic', 'calm']
+const VALID_MOODS: GaiaMood[] = ['snarky', 'enthusiastic', 'calm', 'omniscient']
 
 function readGaiaMood(): GaiaMood {
   if (typeof window === 'undefined') return 'enthusiastic'

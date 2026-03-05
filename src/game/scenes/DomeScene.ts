@@ -801,6 +801,89 @@ export class DomeScene extends Phaser.Scene {
   }
 
   // =========================================================
+  // Phase 48.2 — Omniscient Golden Dome
+  // =========================================================
+
+  /** Active aurora particle emitter when omniscient mode is on. */
+  private auroraEmitter: Phaser.GameObjects.Particles.ParticleEmitter | null = null
+
+  /** Golden tint overlay graphics object. */
+  private goldenTintOverlay: Phaser.GameObjects.Graphics | null = null
+
+  /**
+   * Activate or deactivate the Omniscient Golden Dome visual.
+   * When enabled: adds a golden tint overlay and starts a particle aurora.
+   * When disabled: removes both effects.
+   *
+   * @param value - True to activate omniscient visuals; false to deactivate.
+   */
+  setOmniscient(value: boolean): void {
+    if (value) {
+      this.activateOmniscientVisuals()
+    } else {
+      this.deactivateOmniscientVisuals()
+    }
+  }
+
+  /**
+   * Activates the golden tint overlay and aurora particle emitter.
+   * Idempotent — calling twice is safe.
+   */
+  private activateOmniscientVisuals(): void {
+    const cam = this.cameras.main
+    const width = cam.width
+    const height = cam.height
+
+    // Golden tint overlay (subtle, semi-transparent)
+    if (!this.goldenTintOverlay) {
+      this.goldenTintOverlay = this.add.graphics()
+      this.goldenTintOverlay.setScrollFactor(0)
+      this.goldenTintOverlay.setDepth(50)
+      this.goldenTintOverlay.fillStyle(0xffd700, 0.06)
+      this.goldenTintOverlay.fillRect(0, 0, width, height)
+    }
+
+    // Aurora particle emitter (2 particles/sec, max 30, golden hue)
+    if (!this.auroraEmitter) {
+      const graphics = this.add.graphics()
+      graphics.fillStyle(0xffd700, 1)
+      graphics.fillCircle(4, 4, 4)
+      graphics.generateTexture('aurora_particle', 8, 8)
+      graphics.destroy()
+
+      this.auroraEmitter = this.add.particles(0, 0, 'aurora_particle', {
+        x: { min: 0, max: width },
+        y: { min: -10, max: height * 0.3 },
+        alpha: { start: 0.7, end: 0 },
+        scale: { start: 0.4, end: 1.5 },
+        tint: [0xffd700, 0xffaa00, 0xffffff],
+        lifespan: 3000,
+        frequency: 500,  // 2 per second
+        maxParticles: 30,
+        gravityY: -20,
+        speedY: { min: 10, max: 40 },
+        speedX: { min: -15, max: 15 },
+      })
+      this.auroraEmitter.setScrollFactor(0)
+      this.auroraEmitter.setDepth(49)
+    }
+  }
+
+  /**
+   * Removes the golden tint overlay and destroys the aurora particle emitter.
+   */
+  private deactivateOmniscientVisuals(): void {
+    if (this.goldenTintOverlay) {
+      this.goldenTintOverlay.destroy()
+      this.goldenTintOverlay = null
+    }
+    if (this.auroraEmitter) {
+      this.auroraEmitter.destroy()
+      this.auroraEmitter = null
+    }
+  }
+
+  // =========================================================
   // Utilities
   // =========================================================
 

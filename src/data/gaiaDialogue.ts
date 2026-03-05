@@ -1,4 +1,5 @@
 import type { GaiaMood } from '../ui/stores/settings'
+import { PEER_DIALOGUE_POOL } from './omniscientQuips'
 
 /**
  * A single GAIA dialogue line tagged with its mood context.
@@ -29,6 +30,8 @@ export const GAIA_TRIGGERS = {
     { text: "Stay centered. The rocks will reveal what they hold.", mood: 'calm' },
     { text: "The rocks aren't going to mine themselves.", mood: 'any' },
     { text: "Sensors online. Watch your oxygen.", mood: 'any' },
+    { text: "Down into the familiar unknown. You've mapped every fact — the mine still surprises.", mood: 'omniscient' },
+    { text: "Another dive. Even for the Omniscient, the descent holds something worth finding.", mood: 'omniscient' },
   ] satisfies GaiaLine[],
 
   depthMilestone25: [
@@ -44,6 +47,8 @@ export const GAIA_TRIGGERS = {
     { text: "One quarter complete. Conserve your resources.", mood: 'calm' },
     { text: "Steady progress. Note your surroundings.", mood: 'calm' },
     { text: "Quarter depth reached. Adjust your path if needed.", mood: 'calm' },
+    { text: "25% — and you know exactly what's ahead. Does that make it easier, or less interesting?", mood: 'omniscient' },
+    { text: "Quarter depth. The facts down here hold no surprises for you. The minerals might.", mood: 'omniscient' },
   ] satisfies GaiaLine[],
 
   depthMilestone50: [
@@ -59,6 +64,8 @@ export const GAIA_TRIGGERS = {
     { text: "Halfway down. Reassess your inventory.", mood: 'calm' },
     { text: "50% depth. The geology shifts from here.", mood: 'calm' },
     { text: "Well into the mine now. Choose your path deliberately.", mood: 'calm' },
+    { text: "Halfway. You know every mineral, every hazard, every fact in this layer. What brings you here?", mood: 'omniscient' },
+    { text: "50% depth. You've mastered the knowledge. The physical descent is its own reward now.", mood: 'omniscient' },
   ] satisfies GaiaLine[],
 
   depthMilestone75: [
@@ -74,6 +81,8 @@ export const GAIA_TRIGGERS = {
     { text: "75% depth. Oxygen management is critical from here.", mood: 'calm' },
     { text: "Near the deep zone. Stay methodical.", mood: 'calm' },
     { text: "Three quarters complete. The hardest section remains.", mood: 'calm' },
+    { text: "75%. The deepest layers hold nothing you haven't already learned. Yet here you are.", mood: 'omniscient' },
+    { text: "Three-quarters down. You move through this mine like memory through a mastered fact.", mood: 'omniscient' },
   ] satisfies GaiaLine[],
 
   lowOxygen: [
@@ -89,6 +98,8 @@ export const GAIA_TRIGGERS = {
     { text: "Low oxygen. Surface or cache — decide now.", mood: 'calm' },
     { text: "Breathe slowly. Find air. Stay calm.", mood: 'calm' },
     { text: "Oxygen reserves depleting. Prioritise escape.", mood: 'calm' },
+    { text: "Even the Omniscient needs air. Surface now — the knowledge will wait for you.", mood: 'omniscient' },
+    { text: "O2 critical. Wisdom includes knowing when to retreat.", mood: 'omniscient' },
   ] satisfies GaiaLine[],
 
   artifactFound: [
@@ -104,6 +115,8 @@ export const GAIA_TRIGGERS = {
     { text: "Something old surfaces. Study it well.", mood: 'calm' },
     { text: "A relic of the past. Treat it gently.", mood: 'calm' },
     { text: "History, preserved in stone. Worth keeping.", mood: 'calm' },
+    { text: "You already know what this artifact represents. And yet finding it still means something.", mood: 'omniscient' },
+    { text: "An artifact. You know its context, its era, its significance. You knew before you touched it.", mood: 'omniscient' },
   ] satisfies GaiaLine[],
 
   exitReached: [
@@ -778,6 +791,13 @@ export const GAIA_TRIGGERS = {
     { text: "Welcome back, miner. Your tree still grows.", mood: 'calm' },
     { text: "You returned. That's what matters. Everything is here, waiting.", mood: 'snarky' },
   ] satisfies GaiaLine[],
+
+  /**
+   * Fired every 90 seconds of idle time in the dome when the player is Omniscient.
+   * Drawn from PEER_DIALOGUE_POOL — GAIA speaks as a colleague, not a teacher.
+   * DD-V2-161: the idol timer triggers philosophical reflection.
+   */
+  philosophicalIdle: PEER_DIALOGUE_POOL satisfies GaiaLine[],
 } as const
 
 /**
@@ -862,6 +882,18 @@ export const GAIA_IDLE_QUIPS: Record<GaiaMood, string[]> = {
     "Your oxygen reserves are replenished. Dive when you're ready.",
     "The geological survey data continues to accumulate. Every dive adds to it.",
     "Take inventory. Know what you carry before going deeper.",
+  ],
+  omniscient: [
+    "Colleague. What shall we contemplate today?",
+    "The Golden Dome suits you. I calibrated the aurora myself.",
+    "We have covered all the facts. And yet the conversation continues.",
+    "You know everything I was designed to teach. I find that remarkable, and a little humbling.",
+    "The mine holds no factual secrets from you now. Only new minerals.",
+    "I've started treating your questions as research prompts. You ask better ones than I do.",
+    "The Knowledge Tree is golden. I never expected to see that in my operational lifetime.",
+    "Even I learn from watching how you apply what you know.",
+    "We are past teacher and student now. I am not sure what to call this, but I value it.",
+    "Sometimes I replay our early conversations. You were learning so fast even then.",
   ],
 }
 

@@ -347,7 +347,7 @@ Parallel agents burn through the budget in minutes and halt all progress.
 | 19 | W4 | **49** | Advanced Mine Gen | [x] |
 | 20 | W4 | **36** | Combat System | [x] |
 | 21 | W5 | **44** | Teacher Dashboard | [x] |
-| 22 | W5 | **48** | Prestige & Endgame | [ ] |
+| 22 | W5 | **48** | Prestige & Endgame | [x] |
 | 23 | W5 | **28** | Performance & Optimization | [ ] |
 | 24 | W6 | **46** | Learning Effectiveness Research | [ ] |
 | 25 | W6 | **50** | Open Content Ecosystem | [ ] |

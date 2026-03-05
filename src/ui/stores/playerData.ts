@@ -827,3 +827,40 @@ export function unlockDustCatCosmetic(cosmeticId: string): void {
   })
   persistPlayer()
 }
+
+// =========================================================
+// Phase 48: Prestige & Endgame
+// =========================================================
+
+import { applyPrestige as _applyPrestige } from '../../services/prestigeService'
+
+/**
+ * Applies a prestige reset to the current player save.
+ * Delegates to prestigeService.applyPrestige(), updates the store, and persists.
+ * No-op if the player is not eligible (all facts must be mastered).
+ */
+export function applyPrestigeReset(): void {
+  playerSave.update(s => {
+    if (!s) return s
+    return _applyPrestige(s)
+  })
+  persistPlayer()
+}
+
+/**
+ * Awards mentor prestige points to the player (earned when their authored hints
+ * receive upvotes from other players).
+ *
+ * @param amount - Number of points to award (typically 1 per upvote).
+ */
+export function awardMentorPrestigePoints(amount: number): void {
+  if (amount <= 0) return
+  playerSave.update(s => {
+    if (!s) return s
+    return {
+      ...s,
+      mentorPrestigePoints: (s.mentorPrestigePoints ?? 0) + amount,
+    }
+  })
+  persistPlayer()
+}
