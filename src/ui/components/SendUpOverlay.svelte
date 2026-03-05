@@ -1,19 +1,20 @@
 <script lang="ts">
   import type { InventorySlot, MineralTier, Rarity } from '../../data/types'
-  import { BALANCE } from '../../data/balance'
+  import { BALANCE, getSendUpSlots } from '../../data/balance'
 
   interface Props {
     slots: InventorySlot[]
+    currentLayer: number
     onConfirm: (selectedItems: InventorySlot[]) => void
     onSkip: () => void
   }
 
-  let { slots, onConfirm, onSkip }: Props = $props()
+  let { slots, currentLayer, onConfirm, onSkip }: Props = $props()
 
   /** Indices of slots the player has selected to send up. */
   let selectedIndices = $state<Set<number>>(new Set())
 
-  const MAX_ITEMS = BALANCE.SEND_UP_MAX_ITEMS
+  const maxItems = $derived(getSendUpSlots(currentLayer))
 
   const RARITY_COLORS: Record<Rarity, string> = {
     common: '#9e9e9e',
@@ -47,7 +48,7 @@
     const next = new Set(selectedIndices)
     if (next.has(index)) {
       next.delete(index)
-    } else if (next.size < MAX_ITEMS) {
+    } else if (next.size < maxItems) {
       next.add(index)
     }
     selectedIndices = next
@@ -65,7 +66,7 @@
 <section class="sendUp-overlay" aria-label="Send-up station">
   <header class="title-bar">
     <h2>Send-Up Station</h2>
-    <p class="subtitle">Secure up to {MAX_ITEMS} items — they cannot be lost on forced surface</p>
+    <p class="subtitle">Secure up to {maxItems} items from Layer {currentLayer}</p>
   </header>
 
   <div class="slot-grid">
@@ -82,7 +83,7 @@
           class:rarity-legendary={slot.type === 'artifact' && slot.artifactRarity === 'legendary'}
           class:rarity-mythic={slot.type === 'artifact' && slot.artifactRarity === 'mythic'}
           class:selected={selectedIndices.has(index)}
-          class:disabled={!selectedIndices.has(index) && selectedCount >= MAX_ITEMS}
+          class:disabled={!selectedIndices.has(index) && selectedCount >= maxItems}
           type="button"
           onclick={() => handleSlotTap(index)}
           aria-label={`Select slot ${index + 1} for send-up`}
@@ -112,7 +113,7 @@
   </div>
 
   <div class="counter">
-    {selectedCount} / {MAX_ITEMS} selected
+    {selectedCount} / {maxItems} selected
   </div>
 
   <footer class="actions">

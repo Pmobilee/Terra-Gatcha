@@ -141,6 +141,17 @@ export const RECIPES: Recipe[] = [
     maxCrafts: 0,
     unlockAfterDives: 0,
   },
+  {
+    id: 'rescue_beacon',
+    name: 'Rescue Beacon',
+    description: 'Emergency extraction — surface with all loot intact (1 per dive)',
+    icon: '🔆',
+    category: 'consumable',
+    cost: { crystal: 200, geode: 2 },
+    effect: undefined,
+    maxCrafts: 0,
+    unlockAfterDives: 5,
+  },
 ]
 
 /** Look up a recipe by its ID. Returns undefined if not found. */

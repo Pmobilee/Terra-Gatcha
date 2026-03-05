@@ -248,8 +248,20 @@ export interface InventorySlot {
   type: 'mineral' | 'artifact' | 'fossil' | 'empty'
   mineralTier?: MineralTier
   mineralAmount?: number      // Stack count
+  stackLimit?: number
   artifactRarity?: Rarity
   factId?: string
+}
+
+/** Snapshot of a single backpack slot for sacrifice/decision-screen display */
+export interface BackpackItemState {
+  slotIndex: number
+  type: 'mineral' | 'artifact' | 'fossil' | 'empty'
+  displayName: string
+  rarity?: Rarity
+  mineralTier?: MineralTier
+  stackCurrent?: number
+  stackLimit?: number
 }
 
 // ============================================================

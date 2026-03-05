@@ -4,7 +4,7 @@
  */
 import { get } from 'svelte/store'
 import { BALANCE } from '../../data/balance'
-import { BlockType, type InventorySlot, type MineralTier, type RunUpgrade } from '../../data/types'
+import { BlockType, type InventorySlot, type MineralTier, type RunUpgrade, type BackpackItemState } from '../../data/types'
 import { canMine, mineBlock } from '../systems/MiningSystem'
 import { revealAround } from '../systems/MineGenerator'
 import {
@@ -23,7 +23,7 @@ import { ALL_CONSUMABLE_IDS, CONSUMABLE_DEFS, type ConsumableId } from '../../da
 import {
   activeConsumables, addConsumableToDive, useConsumableFromDive,
   shieldActive, instabilityLevel, instabilityCollapsing, instabilityCountdown,
-  gaiaMessage,
+  gaiaMessage, decisionScreenState, currentScreen, inventory,
 } from '../../ui/stores/gameState'
 import { LANDMARK_TEMPLATES, COMPLETION_EVENTS, getLandmarkIdForLayer } from '../../data/landmarks'
 import { BOSS_LAYER_MAP, createBoss } from '../entities/Boss'
@@ -369,6 +369,9 @@ export function handleMoveOrMine(scene: MineScene, targetX: number, targetY: num
           mineralAmount,
         }
         const added = addToInventory(scene, mineralSlot)
+        if (!added) {
+          triggerDecisionScreen(scene, mineralSlot)
+        }
         scene.game.events.emit('mineral-collected', {
           ...mineResult.content,
           mineralAmount,
@@ -837,6 +840,77 @@ export function getMaxStackSize(tier: MineralTier): number {
 }
 
 /**
+ * Triggers the Decision Screen ("The Cloth") when backpack is full and a new item is found.
+ * Pauses mining input and shows the overlay. (Phase 51)
+ */
+function triggerDecisionScreen(scene: MineScene, newItemSlot: InventorySlot): void {
+  const inv = scene.inventory
+
+  const newItem: BackpackItemState = {
+    slotIndex: -1,
+    type: newItemSlot.type,
+    displayName: newItemSlot.type === 'mineral'
+      ? (newItemSlot.mineralTier ? newItemSlot.mineralTier.charAt(0).toUpperCase() + newItemSlot.mineralTier.slice(1) : 'Mineral')
+      : newItemSlot.type === 'artifact'
+        ? `${newItemSlot.artifactRarity ? newItemSlot.artifactRarity.charAt(0).toUpperCase() + newItemSlot.artifactRarity.slice(1) : 'Common'} Artifact`
+        : 'Fossil',
+    rarity: newItemSlot.artifactRarity,
+    mineralTier: newItemSlot.mineralTier,
+    stackCurrent: newItemSlot.mineralAmount,
+  }
+
+  const existingItems: BackpackItemState[] = inv
+    .map((slot, i) => ({
+      slotIndex: i,
+      type: slot.type,
+      displayName: slot.type === 'mineral'
+        ? (slot.mineralTier ? slot.mineralTier.charAt(0).toUpperCase() + slot.mineralTier.slice(1) : 'Mineral')
+        : slot.type === 'artifact'
+          ? `${slot.artifactRarity ? slot.artifactRarity.charAt(0).toUpperCase() + slot.artifactRarity.slice(1) : 'Common'} Artifact`
+          : slot.type === 'fossil' ? 'Fossil' : '',
+      rarity: slot.artifactRarity,
+      mineralTier: slot.mineralTier,
+      stackCurrent: slot.mineralAmount,
+    }))
+    .filter(item => item.type !== 'empty')
+
+  // Pause input
+  scene.isPaused = true
+
+  // Activate decision screen
+  decisionScreenState.set({
+    active: true,
+    newItem,
+    existingItems,
+    selectedEvictIndex: null,
+  })
+  currentScreen.set('decision')
+
+  // Listen for decision confirmation
+  const handleDecision = (e: Event) => {
+    window.removeEventListener('decision-confirmed', handleDecision)
+    const detail = (e as CustomEvent).detail as { action: 'take' | 'leave'; evictIndex?: number }
+
+    if (detail.action === 'take' && detail.evictIndex !== undefined) {
+      // Swap: put new item in the evicted slot
+      const evictedItem = existingItems[detail.evictIndex]
+      if (evictedItem) {
+        scene.inventory[evictedItem.slotIndex] = newItemSlot
+      }
+    }
+    // If 'leave', new item is discarded (nothing to do)
+
+    // Resume input and return to mining
+    scene.isPaused = false
+    currentScreen.set('mining')
+
+    // Sync inventory to store
+    inventory.set([...scene.inventory])
+  }
+  window.addEventListener('decision-confirmed', handleDecision)
+}
+
+/**
  * Auto-collects MineralNode blocks within mineral_magnet relic radius around (originX, originY).
  * The companion magnet_range effect adds extra tiles to the base relic radius.
  * Called after manually mining a MineralNode.
@@ -1199,6 +1273,9 @@ export function useBomb(scene: MineScene): void {
             mineralAmount: content?.mineralAmount,
           }
           const added = addToInventory(scene, mineralSlot)
+          if (!added) {
+            triggerDecisionScreen(scene, mineralSlot)
+          }
           scene.game.events.emit('mineral-collected', { ...content, addedToInventory: added })
           break
         }
@@ -1209,6 +1286,9 @@ export function useBomb(scene: MineScene): void {
             factId: content?.factId,
           }
           const added = addToInventory(scene, artifactSlot)
+          if (!added) {
+            triggerDecisionScreen(scene, artifactSlot)
+          }
           if (content?.factId) {
             scene.artifactsFound.push(content.factId)
           }

@@ -25,11 +25,13 @@
       case 'shield_charge': return '🛡️'
       case 'drill_charge': return '⛏️'
       case 'sonar_pulse': return '📡'
+      case 'rescue_beacon': return '🔆'
       default: return '?'
     }
   }
 
   let showSurfaceConfirm = $state(false)
+  let showBeaconConfirm = $state(false)
 
   let upgradeToast = $state<string | null>(null)
   let toastTimeout: ReturnType<typeof setTimeout> | null = null
@@ -43,6 +45,7 @@
   }
 
   const bombCount = $derived(($activeUpgrades['bomb'] ?? 0))
+  const hasBeacon = $derived($activeConsumables.some(s => s.id === 'rescue_beacon'))
 
   // Scanner tier colors: basic=gray, enhanced=green, advanced=blue, deep=purple
   const SCANNER_TIER_COLORS = ['#888888', '#44cc66', '#4488ff', '#aa44ff'] as const
@@ -99,6 +102,19 @@
 
   function handleOpenRunStats(): void {
     onOpenRunStats?.()
+  }
+
+  function handleBeaconActivate(): void {
+    showBeaconConfirm = !showBeaconConfirm
+  }
+
+  function confirmBeacon(): void {
+    showBeaconConfirm = false
+    window.dispatchEvent(new CustomEvent('rescue-beacon-activated'))
+  }
+
+  function cancelBeacon(): void {
+    showBeaconConfirm = false
   }
 </script>
 
@@ -231,6 +247,27 @@
       <span class="bomb-icon">B</span>
       <span class="bomb-count">{bombCount}</span>
     </button>
+  {/if}
+
+  {#if hasBeacon}
+    {#if showBeaconConfirm}
+      <div class="beacon-confirm">
+        <span class="beacon-confirm-text">Activate Beacon?</span>
+        <span class="beacon-confirm-sub">All loot preserved</span>
+        <button class="beacon-yes" type="button" onclick={confirmBeacon}>Yes</button>
+        <button class="beacon-no" type="button" onclick={cancelBeacon}>No</button>
+      </div>
+    {:else}
+      <button
+        class="beacon-btn"
+        type="button"
+        onclick={handleBeaconActivate}
+        aria-label="Activate Rescue Beacon"
+        title="Emergency extraction — keep all loot"
+      >
+        <span class="beacon-icon">🔆</span>
+      </button>
+    {/if}
   {/if}
 
   {#if $activeConsumables.length > 0}
@@ -659,6 +696,16 @@
       left: 0.55rem;
       bottom: 0.55rem;
     }
+
+    .beacon-btn {
+      left: 0.55rem;
+      bottom: 4.2rem;
+    }
+
+    .beacon-confirm {
+      left: 0.55rem;
+      bottom: 4.2rem;
+    }
   }
 
   .upgrade-toast {
@@ -763,5 +810,83 @@
   .consumable-count {
     font-size: 11px;
     opacity: 0.8;
+  }
+
+  .beacon-btn {
+    position: absolute;
+    pointer-events: auto;
+    left: 0.75rem;
+    bottom: 4.5rem;
+    border: 2px solid #ffd369;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    background: color-mix(in srgb, #ffd369 25%, var(--color-surface) 75%);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    touch-action: manipulation;
+    animation: beacon-glow 2s ease-in-out infinite;
+  }
+
+  .beacon-btn:active {
+    transform: translateY(1px);
+  }
+
+  @keyframes beacon-glow {
+    0%, 100% { box-shadow: 0 0 4px rgba(255, 211, 105, 0.3); }
+    50% { box-shadow: 0 0 12px rgba(255, 211, 105, 0.7); }
+  }
+
+  .beacon-confirm {
+    position: absolute;
+    left: 0.75rem;
+    bottom: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    pointer-events: auto;
+    background: color-mix(in srgb, var(--color-surface) 90%, #ffd369 10%);
+    border: 1px solid rgba(255, 211, 105, 0.5);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+
+  .beacon-confirm-text {
+    color: #ffd369;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .beacon-confirm-sub {
+    color: var(--color-text-dim, #8b8b8b);
+    font-size: 0.7rem;
+  }
+
+  .beacon-yes,
+  .beacon-no {
+    min-height: 36px;
+    min-width: 36px;
+    border: 1px solid color-mix(in srgb, var(--color-text) 25%, var(--color-surface) 75%);
+    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    font-family: inherit;
+    font-size: 0.82rem;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  .beacon-yes {
+    background: color-mix(in srgb, #ffd369 35%, var(--color-surface) 65%);
+    color: var(--color-text);
+  }
+
+  .beacon-no {
+    background: var(--color-surface);
+    color: var(--color-text-dim);
   }
 </style>

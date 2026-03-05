@@ -506,6 +506,44 @@ export const LOOT_LOSS_RATE_DEEP = 0.30       // L11-20: 30% of un-banked minera
 // ---- Send-Up Pod (DD-V2-053) ----
 export const SEND_UP_TICK_COST = 5
 
+// ---- Phase 51: Sacrifice Thresholds (DD-021) ----
+/** Fraction of filled backpack slots that must be sacrificed at each layer depth (0-based index). */
+export const SACRIFICE_THRESHOLD_BY_LAYER: Record<number, number> = {
+  0: 0.20, 1: 0.25, 2: 0.30, 3: 0.35, 4: 0.40,
+  5: 0.50, 6: 0.60, 7: 0.70, 8: 0.75,
+}
+export const SACRIFICE_THRESHOLD_MAX = 0.80
+
+// ---- Phase 51: Send-Up Slots by Layer (DD-039) ----
+/** Max items a player can send to the surface from a given 1-based layer index. */
+export const SEND_UP_SLOTS_BY_LAYER: Record<number, number> = {
+  1: 1, 2: 2, 3: 3, 4: 4,
+}
+export const SEND_UP_SLOTS_MAX = 4
+
+/** Returns the number of send-up slots available at the given 1-based layer index. */
+export function getSendUpSlots(layer: number): number {
+  return SEND_UP_SLOTS_BY_LAYER[layer] ?? SEND_UP_SLOTS_MAX
+}
+
+// ---- Phase 51: Backpack Stacking Limits (DD-037) ----
+/** Maximum number of a given mineral tier that fits in a single backpack slot. */
+export const MINERAL_STACK_LIMITS: Record<string, number> = {
+  dust: 50, shard: 20, crystal: 5, geode: 2, essence: 1,
+}
+
+/** Number of backpack SLOTS an artifact of a given rarity occupies. */
+export const ARTIFACT_SLOT_COST: Record<string, number> = {
+  common: 1, uncommon: 1, rare: 2, epic: 2, legendary: 3, mythic: 3,
+}
+
+/** Number of backpack slots a fossil fragment occupies. */
+export const FOSSIL_SLOT_COST = 3
+
+// ---- Phase 51: Rescue Beacon Cost (DD-038) ----
+export const RESCUE_BEACON_COST_CRYSTAL = 200
+export const RESCUE_BEACON_COST_GEODE = 2
+
 /** O2 tank size per layer. Deep layers have larger tanks. */
 export const O2_TANK_SIZE_BY_LAYER: Record<number, number> = {
   1: 100, 2: 100, 3: 100, 4: 100, 5: 100,

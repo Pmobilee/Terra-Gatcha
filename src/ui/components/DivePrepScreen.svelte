@@ -186,6 +186,7 @@
       shield_charge: '🛡️',
       drill_charge: '🔩',
       sonar_pulse: '📡',
+      rescue_beacon: '🔆',
     }
     return id ? (icons[id as ConsumableId] ?? '?') : '＋'
   }

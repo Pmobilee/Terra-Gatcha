@@ -17,6 +17,9 @@
     equippedRelicsV2,
     quizStreak,
     descentOverlayState,
+    currentLayer,
+    sacrificeState,
+    decisionScreenState,
   } from './ui/stores/gameState'
   import { playerSave } from './ui/stores/playerData'
   import type { Fact } from './data/types'
@@ -60,6 +63,8 @@
   import ATTConsentPrompt from './ui/components/ATTConsentPrompt.svelte'
   import DescentOverlay from './ui/components/DescentOverlay.svelte'
   import StreakFeedback from './ui/components/StreakFeedback.svelte'
+  import SacrificeOverlay from './ui/components/SacrificeOverlay.svelte'
+  import DecisionScreen from './ui/components/DecisionScreen.svelte'
   import { shortcutService } from './services/shortcutService'
   import { SaveManager } from './game/managers/SaveManager'
   import { collectFarmResources, save as persistSave } from './services/saveService'
@@ -929,12 +934,21 @@
       onClose={handleCloseRunStats}
     />
 
-  {:else if $currentScreen === 'factReveal' && $activeFact}
-    <FactReveal
-      fact={$activeFact}
-      onLearn={handleLearnFact}
-      onSell={handleSellFact}
-    />
+  {:else if $currentScreen === 'factReveal'}
+    {#if $activeFact}
+      <FactReveal
+        fact={$activeFact}
+        onLearn={handleLearnFact}
+        onSell={handleSellFact}
+      />
+    {:else}
+      <div class="empty-screen">
+        <p class="empty-icon">🔬</p>
+        <p class="empty-title">Artifact Lab</p>
+        <p class="empty-message">No artifacts waiting for review. Find more during your next dive!</p>
+        <button class="btn-back" type="button" onclick={() => currentScreen.set('base')}>← Back to Hub</button>
+      </div>
+    {/if}
 
   {:else if $currentScreen === 'knowledgeTree'}
     <KnowledgeTreeView
@@ -990,54 +1004,16 @@
     <InterestAssessment />
 
   {:else if $currentScreen === 'sacrifice' && !$activeAltar}
-    <div class="sacrifice-screen">
-      <h2 class="sacrifice-title">Oxygen Depleted!</h2>
-      <p class="sacrifice-subtitle">You've been rescued, but at a cost...</p>
+    <SacrificeOverlay />
 
-      {#if $diveResults}
-        <div class="sacrifice-summary">
-          {#if $diveResults.forced}
-            <p class="loss-notice">30% of in-pack items lost</p>
-          {:else}
-            <p class="insured-notice">Insured — no loss!</p>
-          {/if}
-          <div class="sacrifice-loot">
-            {#if $diveResults.dustCollected > 0}
-              <span class="loot-item">Dust: {$diveResults.dustCollected}</span>
-            {/if}
-            {#if $diveResults.shardsCollected > 0}
-              <span class="loot-item">Shards: {$diveResults.shardsCollected}</span>
-            {/if}
-            {#if $diveResults.crystalsCollected > 0}
-              <span class="loot-item">Crystals: {$diveResults.crystalsCollected}</span>
-            {/if}
-            {#if $diveResults.geodesCollected > 0}
-              <span class="loot-item geode">Geodes: {$diveResults.geodesCollected}</span>
-            {/if}
-            {#if $diveResults.essenceCollected > 0}
-              <span class="loot-item essence">Essence: {$diveResults.essenceCollected}</span>
-            {/if}
-            {#if $diveResults.dustCollected + $diveResults.shardsCollected + $diveResults.crystalsCollected + $diveResults.geodesCollected + $diveResults.essenceCollected === 0}
-              <span class="loot-item dim">Nothing recovered...</span>
-            {/if}
-          </div>
-          {#if $diveResults.blocksMined > 0}
-            <p class="blocks-stat">Blocks mined: {$diveResults.blocksMined}</p>
-          {/if}
-        </div>
-      {:else}
-        <p class="sacrifice-fallback">Your items have been salvaged with losses.</p>
-      {/if}
-
-      <button class="sacrifice-btn" type="button" onclick={() => currentScreen.set('base')}>
-        Return to Base
-      </button>
-    </div>
+  {:else if $currentScreen === 'decision'}
+    <DecisionScreen />
   {/if}
 
   {#if $showSendUp}
     <SendUpOverlay
       slots={$inventory}
+      currentLayer={$currentLayer}
       onConfirm={handleSendUpConfirm}
       onSkip={handleSendUpSkip}
     />
@@ -1162,103 +1138,48 @@
     background: color-mix(in srgb, var(--color-success) 40%, var(--color-surface) 60%);
   }
 
-  .sacrifice-screen {
-    position: fixed;
+  .empty-screen {
+    position: absolute;
     inset: 0;
-    pointer-events: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    background: var(--color-bg);
-    z-index: 30;
-    font-family: 'Courier New', monospace;
-    padding: 1.5rem;
-  }
-
-  .sacrifice-title {
-    font-size: clamp(1.8rem, 6vw, 2.5rem);
-    color: #ff6b6b;
-  }
-
-  .sacrifice-subtitle {
-    color: var(--color-text-dim);
-    font-size: 1rem;
-  }
-
-  .sacrifice-summary {
-    border: 1px solid rgba(255, 107, 107, 0.3);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-    background: rgba(255, 107, 107, 0.06);
-    width: min(100%, 22rem);
+    background: #1a1a2e;
+    color: #e0e0e0;
+    font-family: 'Press Start 2P', monospace;
     text-align: center;
+    padding: 2rem;
+    z-index: 10;
   }
-
-  .loss-notice {
-    color: #ff6b6b;
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin-bottom: 0.75rem;
+  .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
   }
-
-  .insured-notice {
-    color: var(--color-success);
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin-bottom: 0.75rem;
+  .empty-title {
+    font-size: 1.2rem;
+    color: #4ecca3;
+    margin-bottom: 1rem;
   }
-
-  .sacrifice-loot {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
+  .empty-message {
+    font-size: 0.7rem;
+    line-height: 1.6;
+    color: #aaa;
+    max-width: 300px;
+    margin-bottom: 2rem;
   }
-
-  .loot-item {
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 6px;
-    padding: 0.3rem 0.6rem;
-    font-size: 0.85rem;
-    color: var(--color-text);
-  }
-
-  .loot-item.dim {
-    color: var(--color-text-dim);
-    font-style: italic;
-  }
-
-  .loot-item.geode {
-    color: #b388ff;
-  }
-
-  .loot-item.essence {
-    color: #ffd700;
-  }
-
-  .blocks-stat {
-    color: var(--color-text-dim);
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
-  }
-
-  .sacrifice-fallback {
-    color: var(--color-text-dim);
-  }
-
-  .sacrifice-btn {
-    min-height: 48px;
-    border: 2px solid color-mix(in srgb, var(--color-primary) 75%, white 25%);
-    border-radius: 14px;
-    padding: 0.85rem 2rem;
-    background: color-mix(in srgb, var(--color-primary) 40%, var(--color-bg) 60%);
-    color: var(--color-text);
-    font: inherit;
-    font-size: 1.05rem;
-    font-weight: 700;
+  .btn-back {
+    background: #2a2a4a;
+    color: #4ecca3;
+    border: 2px solid #4ecca3;
+    padding: 0.6rem 1.2rem;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.65rem;
     cursor: pointer;
-    margin-top: 0.5rem;
+    border-radius: 4px;
+  }
+  .btn-back:hover {
+    background: #4ecca3;
+    color: #1a1a2e;
   }
 </style>

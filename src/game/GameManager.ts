@@ -3,7 +3,7 @@ import Phaser from 'phaser'
 import { get } from 'svelte/store'
 import { BALANCE, getLayerGridSize, BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE, AUTO_BALANCE_DEATH_THRESHOLD } from '../data/balance'
 import { audioManager } from '../services/audioService'
-import type { Fact, FossilState, InventorySlot, MineralTier, Relic } from '../data/types'
+import type { Fact, FossilState, InventorySlot, MineralTier, Relic, BackpackItemState } from '../data/types'
 import { pickFossilDrop, getActiveCompanionEffect, getSpeciesById, type CompanionEffect } from '../data/fossils'
 import { PREMIUM_MATERIALS, type PremiumMaterial } from '../data/premiumRecipes'
 import { pickRandomDisc } from '../data/dataDiscs'
@@ -45,6 +45,8 @@ import {
   descentOverlayState,
   activeAltar,
   activeMineEvent,
+  sacrificeState,
+  useConsumableFromDive,
 } from '../ui/stores/gameState'
 import {
   playerSave,
@@ -82,7 +84,7 @@ import { DIVE_SAVE_VERSION } from '../data/saveState'
 import { encounterManager } from './managers/EncounterManager'
 import type { Boss } from './entities/Boss'
 import type { Creature } from './entities/Creature'
-import { LOOT_LOSS_RATE_SHALLOW, LOOT_LOSS_RATE_MID, LOOT_LOSS_RATE_DEEP, SEND_UP_TICK_COST } from '../data/balance'
+import { LOOT_LOSS_RATE_SHALLOW, LOOT_LOSS_RATE_MID, LOOT_LOSS_RATE_DEEP, SEND_UP_TICK_COST, SACRIFICE_THRESHOLD_BY_LAYER, SACRIFICE_THRESHOLD_MAX } from '../data/balance'
 import { TickSystem } from './systems/TickSystem'
 import type { MineEventType } from '../data/mineEvents'
 import { getMineEvent } from '../data/mineEvents'
@@ -269,6 +271,7 @@ export class GameManager {
 
   /** Destroy the game instance (cleanup) */
   destroy(): void {
+    window.removeEventListener('rescue-beacon-activated', this.handleRescueBeacon)
     if (this.game) {
       this.game.events.removeAllListeners()
       this.game.destroy(true)
@@ -284,6 +287,7 @@ export class GameManager {
   private setupEventBridge(): void {
     if (!this.game) return
     wireEventBridge(this, this.game.events)
+    window.addEventListener('rescue-beacon-activated', this.handleRescueBeacon)
   }
 
   /**
@@ -1002,11 +1006,75 @@ export class GameManager {
     }, 2500)
   }
 
-  /** @internal Handle oxygen depletion — forced surface */
+  /** @internal Handle oxygen depletion — show sacrifice overlay if player has items (Phase 51). */
   handleOxygenDepleted(): void {
     this.onPlayerDeath()
-    this.applyLootLoss(this.currentLayer)
-    this.endDive(true)
+
+    const inv = get(inventory)
+    const filled = inv.filter(s => s.type !== 'empty')
+
+    // No items → ascend freely, no sacrifice needed
+    if (filled.length === 0) {
+      this.endDive(true)
+      return
+    }
+
+    // Build BackpackItemState snapshots for the sacrifice overlay
+    const items: BackpackItemState[] = inv
+      .map((slot, i) => ({
+        slotIndex: i,
+        type: slot.type,
+        displayName: slot.type === 'mineral'
+          ? (slot.mineralTier ? slot.mineralTier.charAt(0).toUpperCase() + slot.mineralTier.slice(1) : 'Mineral')
+          : slot.type === 'artifact'
+            ? `${slot.artifactRarity ? slot.artifactRarity.charAt(0).toUpperCase() + slot.artifactRarity.slice(1) : 'Common'} Artifact`
+            : slot.type === 'fossil' ? 'Fossil' : '',
+        rarity: slot.artifactRarity,
+        mineralTier: slot.mineralTier,
+        stackCurrent: slot.mineralAmount,
+      }))
+      .filter(item => item.type !== 'empty')
+
+    // Compute required drop count based on layer depth
+    const layerIdx = Math.min(this.currentLayer, 8)
+    const threshold = SACRIFICE_THRESHOLD_BY_LAYER[layerIdx] ?? SACRIFICE_THRESHOLD_MAX
+    const requiredDropCount = Math.min(Math.ceil(items.length * threshold), items.length)
+
+    // Activate sacrifice overlay
+    sacrificeState.set({
+      active: true,
+      items,
+      requiredDropCount,
+      markedForDrop: new Set(),
+    })
+    currentScreen.set('sacrifice')
+
+    // Listen for sacrifice confirmation
+    const handleSacrificeConfirmed = (e: Event) => {
+      window.removeEventListener('sacrifice-confirmed', handleSacrificeConfirmed)
+      const detail = (e as CustomEvent).detail as { markedIndices: number[] }
+
+      // Remove sacrificed items from inventory
+      const markedSlotIndices = new Set(detail.markedIndices.map(i => items[i]?.slotIndex).filter((i): i is number => i !== undefined))
+      inventory.update(slots =>
+        slots.map((slot, idx) => markedSlotIndices.has(idx) ? { type: 'empty' as const } : slot)
+      )
+
+      this.endDive(true)
+    }
+    window.addEventListener('sacrifice-confirmed', handleSacrificeConfirmed)
+  }
+
+  /** @internal Handle rescue beacon activation — surface with full loot (Phase 51). */
+  private handleRescueBeacon = (): void => {
+    // Consume the beacon from active consumables
+    useConsumableFromDive('rescue_beacon')
+
+    // Surface with NO loot loss — don't call applyLootLoss
+    this.endDive(false)
+
+    gaiaMessage.set('Rescue Beacon activated! All loot preserved.')
+    setTimeout(() => gaiaMessage.set(null), 4000)
   }
 
   /** Track player death for auto-balance easing. Called when O2 reaches 0. */

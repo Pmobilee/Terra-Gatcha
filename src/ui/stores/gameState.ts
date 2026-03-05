@@ -1,6 +1,6 @@
 import { writable, derived } from 'svelte/store'
 import type { Writable, Readable } from 'svelte/store'
-import type { Fact, InventorySlot, Relic, ReviewState } from '../../data/types'
+import type { BackpackItemState, Fact, InventorySlot, Relic, ReviewState } from '../../data/types'
 import type { RelicSynergy, RelicDefinition } from '../../data/relics'
 import type { CompanionEffect } from '../../data/fossils'
 import { getO2DepthMultiplier } from '../../data/balance'
@@ -129,6 +129,7 @@ export type Screen =
   | 'backpack'
   | 'runStats'
   | 'sacrifice'
+  | 'decision'
   | 'diveResults'
   | 'knowledgeTree'
   | 'studySession'
@@ -252,6 +253,36 @@ export const studyReviewStates = singletonWritable<ReviewState[]>('studyReviewSt
 
 // Send-up station overlay — true while the player is selecting items to send up
 export const showSendUp = singletonWritable<boolean>('showSendUp', false)
+
+// Phase 51: Sacrifice overlay state (oxygen depletion choice)
+export interface SacrificeState {
+  active: boolean
+  items: BackpackItemState[]
+  requiredDropCount: number
+  markedForDrop: Set<number>
+}
+
+export const sacrificeState = singletonWritable<SacrificeState>('sacrificeState', {
+  active: false,
+  items: [],
+  requiredDropCount: 0,
+  markedForDrop: new Set(),
+})
+
+// Phase 51: Decision screen state (full-backpack item choice — "The Cloth")
+export interface DecisionScreenState {
+  active: boolean
+  newItem: BackpackItemState
+  existingItems: BackpackItemState[]
+  selectedEvictIndex: number | null
+}
+
+export const decisionScreenState = singletonWritable<DecisionScreenState>('decisionScreenState', {
+  active: false,
+  newItem: { slotIndex: -1, type: 'empty', displayName: '' },
+  existingItems: [],
+  selectedEvictIndex: null,
+})
 
 // Relics active during the current dive run
 export const activeRelics = singletonWritable<Relic[]>('activeRelics', [])

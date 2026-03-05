@@ -95,6 +95,9 @@
       {#if $tempBackpackSlots > 0}
         <span class="temp-indicator">Temp: +{$tempBackpackSlots}</span>
       {/if}
+      {#if filledCount >= totalCount}
+        <span class="full-indicator">FULL</span>
+      {/if}
     </div>
     <button class="close-button" type="button" aria-label="Close backpack" onclick={onClose}>X</button>
   </header>
@@ -181,6 +184,23 @@
     border-radius: 4px;
     padding: 1px 6px;
     letter-spacing: 0.5px;
+  }
+
+  .full-indicator {
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #ff4444;
+    background: rgba(255, 68, 68, 0.15);
+    border: 1px solid rgba(255, 68, 68, 0.5);
+    border-radius: 4px;
+    padding: 1px 6px;
+    letter-spacing: 1px;
+    animation: pulse-full 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-full {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
   }
 
   .close-button {

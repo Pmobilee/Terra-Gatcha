@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-ALL 50 PHASES COMPLETE. Phase 50 (Open Content Ecosystem): public versioned Fact API (/api/v1/facts, /facts/:id, /facts/random, /categories, /stats, /license) with three-tier API key system (free/institutional/enterprise), SHA-256 hashed keys, per-minute + daily quota enforcement; community UGC submission pipeline with auto-filter, community voting, appeals workflow; educational partner portal with institution registration, admin approval, institutional key issuance, content configuration; CC BY 4.0 / CC BY-NC 4.0 licensing framework with per-fact attribution metadata; webhook system with HMAC-SHA256 signing, exponential backoff retry, 5 subscriptions/key; self-contained embed widget (packages/widget/embed.html); TypeScript SDK (packages/sdk/index.ts); 14-page API docs (docs/api/); 0 typecheck errors client + server.
+Phase 51 (Core Loot Loop Fidelity) COMPLETE. SacrificeOverlay replaces flat 30% loot penalty — players manually choose items to sacrifice on oxygen depletion (depth-scaled thresholds from 20% at L1 to 75% at L8+). DecisionScreen ("The Cloth") appears when backpack is full during mining — swap new item with existing or leave it behind. Send-up slots now depth-scaled (1 at L1, up to 4 at L4+). Backpack shows "FULL" indicator when at capacity. Rescue Beacon consumable: 200 Crystal + 2 Geode craft cost, one per dive, emergency extraction with zero loot loss; dedicated HUD button with confirmation dialog. Balance constants: SACRIFICE_THRESHOLD_BY_LAYER, SEND_UP_SLOTS_BY_LAYER, MINERAL_STACK_LIMITS, ARTIFACT_SLOT_COST, FOSSIL_SLOT_COST. 0 typecheck errors, build clean.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -140,7 +140,7 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 Each phase below links to its detailed implementation document in `docs/roadmap/phases/`.
 
 ### Loot & Economy (Phases 51, 55)
-- [ ] **Phase 51: Core Loot Loop Fidelity** — Sacrifice choice screen (depth-scaled), "The Cloth" decision overlay, send-up slot scaling, backpack stack limits per tier, Rescue Beacon consumable → [`phases/PHASE-51-CORE-LOOT-FIDELITY.md`](phases/PHASE-51-CORE-LOOT-FIDELITY.md)
+- [x] **Phase 51: Core Loot Loop Fidelity** — Sacrifice choice screen (depth-scaled), "The Cloth" decision overlay, send-up slot scaling, backpack stack limits per tier, Rescue Beacon consumable → [`completed/PHASE-51-CORE-LOOT-FIDELITY.md`](completed/PHASE-51-CORE-LOOT-FIDELITY.md)
 - [ ] **Phase 55: Economy Depth** — Duplicate artifact mixing (gacha rarity roll), mineral compression tax, Rescue Beacon crafting cost, structured 3-slot daily deals, Premium Materializer distinction → [`phases/PHASE-55-ECONOMY-DEPTH.md`](phases/PHASE-55-ECONOMY-DEPTH.md)
 
 ### Learning Systems (Phases 52, 53)
@@ -158,6 +158,9 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ### Content Quality (Phase 58)
 - [ ] **Phase 58: Content & Data Quality** — Scale facts to 1,000, distractor pool audit and expansion to 25 per fact, source field population, fact content admin dashboard (/admin/facts), content quality audit report → [`phases/PHASE-58-CONTENT-QUALITY.md`](phases/PHASE-58-CONTENT-QUALITY.md)
+
+### Core Loop Rework (Phase 59)
+- [ ] **Phase 59: Artifact Analyzer** — Artifacts become mystery containers cracked open in Artifact Lab. Rewards: facts, dust, consumables, fossils, upgrade tokens, junk. Study score (SM-2 habits) shifts loot table — diligent learners get better rewards, neglectful players get junk + GAIA nudges. 5-stage cracking animation. Badge count on Artifact Lab. → [`phases/PHASE-59-ARTIFACT-ANALYZER.md`](phases/PHASE-59-ARTIFACT-ANALYZER.md)
 
 ---
 

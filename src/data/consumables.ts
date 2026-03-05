@@ -1,7 +1,7 @@
 /**
  * Consumable tool definitions. (DD-V2-064)
  */
-export type ConsumableId = 'bomb' | 'flare' | 'shield_charge' | 'drill_charge' | 'sonar_pulse'
+export type ConsumableId = 'bomb' | 'flare' | 'shield_charge' | 'drill_charge' | 'sonar_pulse' | 'rescue_beacon'
 
 export interface ConsumableDefinition {
   id: ConsumableId
@@ -42,10 +42,16 @@ export const CONSUMABLE_DEFS: Record<ConsumableId, ConsumableDefinition> = {
     description: 'Reveals minerals within 10 tiles.',
     maxStack: 2,
   },
+  rescue_beacon: {
+    id: 'rescue_beacon',
+    label: 'Rescue Beacon',
+    description: 'Emergency extraction with zero loot loss.',
+    maxStack: 1,
+  },
 }
 
 /** Total consumable slots across all types */
 export const CONSUMABLE_CARRY_LIMIT = 5
 
 /** All consumable IDs for random drops */
-export const ALL_CONSUMABLE_IDS: ConsumableId[] = ['bomb', 'flare', 'shield_charge', 'drill_charge', 'sonar_pulse']
+export const ALL_CONSUMABLE_IDS: ConsumableId[] = ['bomb', 'flare', 'shield_charge', 'drill_charge', 'sonar_pulse', 'rescue_beacon']
