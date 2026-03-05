@@ -80,6 +80,16 @@ canvas.phaser-canvas {
   padding: 0;
 }
 
+/* Desktop: constrain canvas to exclude the fixed 420px DesktopSidePanel */
+@media (min-width: 1200px) and (pointer: fine) {
+  #game-container {
+    width: calc(100vw - 420px);
+  }
+  canvas.phaser-canvas {
+    width: calc(100vw - 420px) !important;
+  }
+}
+
 /* HUD elements must respect safe area */
 .hud-overlay {
   padding-top:    max(8px, var(--safe-top));

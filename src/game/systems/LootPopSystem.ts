@@ -167,7 +167,7 @@ export class LootPopSystem {
     // Land destination — slightly below the rise peak (gravity effect)
     const landY = riseY + 10
 
-    // Phase 1: Rise — Quad.Out upward arc (250ms)
+    // Phase 1: Rise — Quad.Out upward arc (150ms)
     this.scene.tweens.add({
       targets: sprite,
       x: arcX,
@@ -175,53 +175,66 @@ export class LootPopSystem {
       scaleX: 1.1,
       scaleY: 0.9,
       ease: 'Quad.Out',
-      duration: 250,
+      duration: 150,
       onComplete: () => {
-        // Phase 2: Fall — Quad.In gravity fall (150ms)
+        // Phase 2: Fall — Quad.In gravity fall (80ms)
         this.scene.tweens.add({
           targets: sprite,
           y: landY,
           scaleX: 1.0,
           scaleY: 1.0,
           ease: 'Quad.In',
-          duration: 150,
+          duration: 80,
           onComplete: () => {
-            // Phase 3: Squash — horizontal squash on impact (40ms)
+            // Phase 3: Squash — horizontal squash on impact (20ms)
             this.scene.tweens.add({
               targets: sprite,
               scaleX: 1.4,
               scaleY: 0.6,
               ease: 'Quad.Out',
-              duration: 40,
+              duration: 20,
               onComplete: () => {
-                // Phase 4: Bounce — Sine.Out upward bounce (60ms)
+                // Phase 4: Bounce — Sine.Out upward bounce (35ms)
                 this.scene.tweens.add({
                   targets: sprite,
                   y: landY - 6,
                   scaleX: 0.9,
                   scaleY: 1.1,
                   ease: 'Sine.Out',
-                  duration: 60,
+                  duration: 35,
                   onComplete: () => {
-                    // Phase 5: Settle — Quad.In back to rest (60ms)
+                    // Phase 5: Settle — Quad.In back to rest (35ms)
                     this.scene.tweens.add({
                       targets: sprite,
                       y: landY,
                       scaleX: 1.0,
                       scaleY: 1.0,
                       ease: 'Quad.In',
-                      duration: 60,
+                      duration: 35,
                       onComplete: () => {
                         onBounceSettled?.()
 
-                        // Phase 6: Vacuum — Quad.In magnetic pull to player (350ms)
+                        // Phase 6: Vacuum — Quad.In magnetic pull to inventory (top-right, 200ms)
+                        const cam = this.scene.cameras.main
+                        let vacTargetX: number
+                        let vacTargetY: number
+                        if (cam) {
+                          const screenTargetX = cam.width - 30  // top-right area (inventory)
+                          const screenTargetY = 16
+                          vacTargetX = cam.scrollX + screenTargetX / cam.zoom
+                          vacTargetY = cam.scrollY + screenTargetY / cam.zoom
+                        } else {
+                          vacTargetX = targetX
+                          vacTargetY = targetY
+                        }
+
                         this.scene.tweens.add({
                           targets: sprite,
-                          x: targetX,
-                          y: targetY,
+                          x: vacTargetX,
+                          y: vacTargetY,
                           scale: 0,
                           ease: 'Quad.In',
-                          duration: 350,
+                          duration: 200,
                           onComplete: () => {
                             this._removePop(sprite)
                             onComplete?.()

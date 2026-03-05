@@ -174,6 +174,27 @@
 
   let authScreen = $state<AuthScreen>(null)
 
+  // ── DEV BYPASS — stripped in production builds (import.meta.env.DEV is false in prod) ──
+  if (import.meta.env.DEV && typeof window !== 'undefined') {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('skipOnboarding') === 'true') {
+      if (!localStorage.getItem(AGE_BRACKET_KEY)) localStorage.setItem(AGE_BRACKET_KEY, 'teen')
+      localStorage.setItem('terra_guest_mode', 'true')
+    }
+    const presetId = params.get('devpreset')
+    if (presetId) {
+      import('./dev/presets').then(({ SCENARIO_PRESETS }) => {
+        const preset = SCENARIO_PRESETS.find((p: { id: string }) => p.id === presetId)
+        if (preset) {
+          const builtSave = preset.buildSave(Date.now())
+          SaveManager.save(builtSave)
+          playerSave.set(builtSave)
+          currentScreen.set('base')
+        }
+      })
+    }
+  }
+
   // ── Guest mode tracking — reactive state for Svelte reactivity ──
   let isGuestMode = $state(
     typeof localStorage !== 'undefined'

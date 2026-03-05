@@ -1,6 +1,6 @@
 # Terra Gacha — Progress Tracker & Roadmap
 
-Last updated: 2026-03-06 (Phase 51 emergency plan added)
+Last updated: 2026-03-06
 
 ## How This Roadmap Works
 
@@ -17,6 +17,8 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 ## Current State
 
 ALL 50 PHASES COMPLETE. Phase 50 (Open Content Ecosystem): public versioned Fact API (/api/v1/facts, /facts/:id, /facts/random, /categories, /stats, /license) with three-tier API key system (free/institutional/enterprise), SHA-256 hashed keys, per-minute + daily quota enforcement; community UGC submission pipeline with auto-filter, community voting, appeals workflow; educational partner portal with institution registration, admin approval, institutional key issuance, content configuration; CC BY 4.0 / CC BY-NC 4.0 licensing framework with per-fact attribution metadata; webhook system with HMAC-SHA256 signing, exponential backoff retry, 5 subscriptions/key; self-contained embed widget (packages/widget/embed.html); TypeScript SDK (packages/sdk/index.ts); 14-page API docs (docs/api/); 0 typecheck errors client + server.
+
+V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
 ---
 
@@ -127,6 +129,32 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ---
 
+## V4 Roadmap — Phases 51-58
+
+Each phase below links to its detailed implementation document in `docs/roadmap/phases/`.
+
+### Loot & Economy (Phases 51, 55)
+- [ ] **Phase 51: Core Loot Loop Fidelity** — Sacrifice choice screen (depth-scaled), "The Cloth" decision overlay, send-up slot scaling, backpack stack limits per tier, Rescue Beacon consumable → [`phases/PHASE-51-CORE-LOOT-FIDELITY.md`](phases/PHASE-51-CORE-LOOT-FIDELITY.md)
+- [ ] **Phase 55: Economy Depth** — Duplicate artifact mixing (gacha rarity roll), mineral compression tax, Rescue Beacon crafting cost, structured 3-slot daily deals, Premium Materializer distinction → [`phases/PHASE-55-ECONOMY-DEPTH.md`](phases/PHASE-55-ECONOMY-DEPTH.md)
+
+### Learning Systems (Phases 52, 53)
+- [ ] **Phase 52: Learning Depth** — Morning/evening quiz oxygen bonus, 3-question layer entrance challenge, artifact rarity boost quiz, GAIA mnemonic on struggle, SM-2 consistency penalty exact wiring → [`phases/PHASE-52-LEARNING-DEPTH.md`](phases/PHASE-52-LEARNING-DEPTH.md)
+- [ ] **Phase 53: Knowledge Tree Vitality** — Leaf wilting/decay (3 visual stages), branch completion percentage badges, Learning Sparks currency, branch gameplay bonuses at 25% completion → [`phases/PHASE-53-KNOWLEDGE-TREE-VITALITY.md`](phases/PHASE-53-KNOWLEDGE-TREE-VITALITY.md)
+
+### Mine & Atmosphere (Phase 54)
+- [ ] **Phase 54: Mine Atmosphere** — Ambient environmental storytelling (60+ biome flavor texts), Quote Stones with content library, readable cavern wall texts, scanner sonar pulse animation, artifact scan-without-mine → [`phases/PHASE-54-MINE-ATMOSPHERE.md`](phases/PHASE-54-MINE-ATMOSPHERE.md)
+
+### Social & Live-Ops (Phase 56)
+- [ ] **Phase 56: Social & Live-Ops Foundation** — Fact of the Day (server-selected daily, Hub panel), dome guestbook completion, fact trading anti-exploitation guards, guild knowledge-focus and XP pool, seasonal event framework → [`phases/PHASE-56-SOCIAL-LIVEOPS.md`](phases/PHASE-56-SOCIAL-LIVEOPS.md)
+
+### Visual Polish (Phase 57)
+- [ ] **Phase 57: Visual & Feel Polish Pass** — Miner progressive dirt tint, study session atmospheric dome scene, "barely made it" mechanic (resolve Q-D4), greyscale-to-color fact image wiring, GAIA avatar micro-expressions → [`phases/PHASE-57-VISUAL-POLISH.md`](phases/PHASE-57-VISUAL-POLISH.md)
+
+### Content Quality (Phase 58)
+- [ ] **Phase 58: Content & Data Quality** — Scale facts to 1,000, distractor pool audit and expansion to 25 per fact, source field population, fact content admin dashboard (/admin/facts), content quality audit report → [`phases/PHASE-58-CONTENT-QUALITY.md`](phases/PHASE-58-CONTENT-QUALITY.md)
+
+---
+
 ## EMERGENCY — Phase 51: Critical UX & Gameplay Fixes
 
 **Status**: NOT STARTED — Must be done before any sharing/testing
@@ -155,16 +183,18 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 ## Open Design Questions
 
 ### Economy & Balance
-- **Q-E1**: Mineral conversion tax ratio (needs playtesting)
-- **Q-E2**: Rescue beacon cost (needs playtesting)
+- **Q-E1**: Mineral conversion tax ratio — ANSWERED (Phase 55): 5% compression loss tax; see `MINERAL_COMPRESSION_TAX: 0.05` in balance.ts
+- **Q-E2**: Rescue beacon cost — ANSWERED (Phase 51 + 55): 200 Crystal + 2 Geode; see balance.ts `RESCUE_BEACON_COST_*`
+- **Q-E3**: Daily deal structure — ANSWERED (Phase 55): 3 fixed slots (consumable 20% off, cosmetic standard, 7-day featured with Day-7 pity Rare+)
+- **Q-E4**: Learning Sparks currency — ANSWERED (Phase 53): earned via mastery milestones; see `LEARNING_SPARKS_PER_MILESTONE` in balance.ts
 - **Q-D2**: Backpack starting size — PARTIALLY ANSWERED (DD-V2-061): starting 6 slots, max 14 with upgrades, auto-compress at 50:1; final numbers need playtesting validation
 - **Q-D3**: Oxygen cost per action — ANSWERED (DD-V2-061): depth decay system with 1.0× at layer 1, 1.5× at layer 10, 2.5× at layer 20, linear interpolation between milestones; see Phase 8.5
-- **Q-D4**: "Barely made it" mechanic
+- **Q-D4**: "Barely made it" mechanic — ANSWERED (Phase 57): within 5 blocks of exit → red border flash + full loot preserved; `BARELY_MADE_IT_THRESHOLD: 5` in balance.ts
 
 ### Social & Meta
-- **Q-S1**: Guild/faction structure
-- **Q-S2**: Season/battle pass design
-- **Q-S3**: Fact trading anti-exploitation
+- **Q-S1**: Guild/faction structure — ANSWERED (Phase 56): knowledge-area guilds (max 50 members), primary focus category, collective guild XP pool, branch completion leaderboard
+- **Q-S2**: Season/battle pass design — ANSWERED (Phase 56): 6-week server-driven seasons, boosted category, time-limited cosmetics, seasonal leaderboard
+- **Q-S3**: Fact trading anti-exploitation — ANSWERED (Phase 56): 3 trades/day limit, mastery guard (cannot receive Mastered-level facts), soulbound restriction, server-side validation
 
 ### Learning System
 - **Q-L1**: Prevent "only study Geology" meta (partially addressed by interest system)

@@ -605,6 +605,12 @@
     transform: translateY(1px);
   }
 
+  @media (min-width: 1200px) and (pointer: fine) {
+    .hud {
+      right: 420px;
+    }
+  }
+
   @media (max-width: 480px) {
     .top-row {
       top: 0.55rem;

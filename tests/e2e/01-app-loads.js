@@ -4,6 +4,7 @@
  * Requires: dev server running at http://localhost:5173
  */
 const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
+const attachDiagnostics = require('./lib/diagnostics')
 
 ;(async () => {
   const browser = await chromium.launch({
@@ -13,9 +14,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   const page = await browser.newPage()
   await page.setViewportSize({ width: 390, height: 844 })
-
-  const errors = []
-  page.on('pageerror', err => errors.push(err.message))
+  const diagnostics = attachDiagnostics(page)
 
   await page.goto('http://localhost:5173')
 
@@ -23,11 +22,17 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
   await page.waitForTimeout(5000)
   await page.screenshot({ path: '/tmp/e2e-01-loaded.png' })
 
+  const report = await diagnostics.report()
+
   await browser.close()
 
-  if (errors.length > 0) {
+  // Print diagnostic report
+  console.log('=== Diagnostic Report ===')
+  console.log(JSON.stringify(report, null, 2))
+
+  if (report.pageErrors.length > 0) {
     console.error('FAIL: Page errors detected:')
-    errors.forEach(e => console.error(' -', e))
+    report.pageErrors.forEach(e => console.error(' -', e))
     process.exit(1)
   }
 

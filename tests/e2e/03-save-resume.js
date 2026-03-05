@@ -4,6 +4,7 @@
  * Requires: dev server running at http://localhost:5173
  */
 const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
+const attachDiagnostics = require('./lib/diagnostics')
 
 ;(async () => {
   const browser = await chromium.launch({
@@ -13,8 +14,9 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   const page = await browser.newPage()
   await page.setViewportSize({ width: 390, height: 844 })
+  const diagnostics = attachDiagnostics(page)
 
-  await page.goto('http://localhost:5173')
+  await page.goto('http://localhost:5173?skipOnboarding=true')
   await page.waitForTimeout(3000)
 
   // Check whether localStorage is accessible and check for save data
@@ -39,6 +41,10 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
   }
 
   await page.screenshot({ path: '/tmp/e2e-03-save-state.png' })
+
+  const report = await diagnostics.report()
+  console.log('=== Diagnostic Report ===')
+  console.log(JSON.stringify(report, null, 2))
 
   await browser.close()
   console.log('PASS: Save/resume check completed')

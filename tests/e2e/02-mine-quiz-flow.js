@@ -4,6 +4,7 @@
  * Requires: dev server running at http://localhost:5173
  */
 const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
+const attachDiagnostics = require('./lib/diagnostics')
 
 ;(async () => {
   const browser = await chromium.launch({
@@ -13,24 +14,13 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   const page = await browser.newPage()
   await page.setViewportSize({ width: 390, height: 844 })
+  const diagnostics = attachDiagnostics(page)
 
-  // Forward browser console errors for debugging
-  page.on('console', msg => {
-    if (msg.type() === 'error') console.error('[browser]', msg.text())
-  })
-
-  await page.goto('http://localhost:5173')
+  await page.goto('http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial')
   await page.waitForTimeout(3000)
 
-  // Handle age gate if present
-  const ageButton = page.locator('button:has-text("18+"), button:has-text("Adult")')
-  if (await ageButton.first().isVisible({ timeout: 2000 }).catch(() => false)) {
-    await ageButton.first().click()
-    await page.waitForTimeout(1000)
-  }
-
   // Navigate to dive screen — try multiple button labels
-  const diveButton = page.locator('button:has-text("Dive"), button:has-text("Enter Mine")')
+  const diveButton = page.locator('[data-testid="btn-dive"], button:has-text("Dive"), button:has-text("Enter Mine")')
   const diveVisible = await diveButton.first().waitFor({ timeout: 10000 }).then(() => true).catch(() => false)
 
   if (diveVisible) {
@@ -59,7 +49,7 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
 
   // Wait for quiz to appear
   const quizContainer = page.locator(
-    '[data-testid="quiz-overlay"], .quiz-overlay, button:has-text("A)"), button:has-text("B)")',
+    '[data-testid="quiz-overlay"], .quiz-overlay, [data-testid^="quiz-answer-"]',
   )
   const quizVisible = await quizContainer.first()
     .waitFor({ timeout: 8000 })
@@ -75,6 +65,10 @@ const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
   } else {
     console.log('INFO: No quiz triggered (probabilistic) — not a failure')
   }
+
+  const report = await diagnostics.report()
+  console.log('=== Diagnostic Report ===')
+  console.log(JSON.stringify(report, null, 2))
 
   await browser.close()
   console.log('PASS: Mine dive flow completed')
