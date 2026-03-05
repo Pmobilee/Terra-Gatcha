@@ -1,10 +1,10 @@
 /**
  * E2E test: Mine dive and quiz flow.
- * Run with: node tests/e2e/02-mine-quiz-flow.js
+ * Run with: node tests/e2e/02-mine-quiz-flow.cjs
  * Requires: dev server running at http://localhost:5173
  */
 const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
-const attachDiagnostics = require('./lib/diagnostics')
+const attachDiagnostics = require('./lib/diagnostics.cjs')
 
 ;(async () => {
   const browser = await chromium.launch({

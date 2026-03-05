@@ -1,3 +1,4 @@
+/** SIZE BUDGET: MineScene orchestrator — 3,693 lines. Target: split to <800 lines. Extract MineTileRenderer, MineInputController, MineBlockInteractor. */
 import Phaser from 'phaser'
 import { get } from 'svelte/store'
 import { BALANCE } from '../../data/balance'

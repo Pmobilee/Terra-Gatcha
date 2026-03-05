@@ -1,3 +1,4 @@
+/** SIZE BUDGET: GameManager orchestrator — 1,960 lines. Target: split to <700 lines. Extract DiveSessionManager, GameEventHandlers. */
 import Phaser from 'phaser'
 import { get } from 'svelte/store'
 import { BALANCE, getLayerGridSize, BASE_LAVA_HAZARD_DAMAGE, BASE_GAS_HAZARD_DAMAGE, AUTO_BALANCE_DEATH_THRESHOLD } from '../data/balance'

@@ -62,7 +62,7 @@
   import StreakFeedback from './ui/components/StreakFeedback.svelte'
   import { shortcutService } from './services/shortcutService'
   import { SaveManager } from './game/managers/SaveManager'
-  import { collectFarmResources } from './services/saveService'
+  import { collectFarmResources, save as persistSave } from './services/saveService'
   import { calculateTotalPending } from './data/farm'
   import { gaiaMessage } from './ui/stores/gameState'
   import { generateBiomeSequence } from './data/biomes'
@@ -119,12 +119,13 @@
   /** If a profile is already active from a previous session, skip the profile gate. */
   const hasActiveProfile = profileService.getActiveId() !== null
 
+  const _devSkipOnboarding = import.meta.env.DEV && typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('skipOnboarding') === 'true'
   let profileScreen = $state<ProfileScreen>(
-    hasActiveProfile ? null : (profileService.hasProfiles() ? 'select' : 'create'),
+    (hasActiveProfile || _devSkipOnboarding) ? null : (profileService.hasProfiles() ? 'select' : 'create'),
   )
 
   /** Whether the player has passed the profile gate and entered the game layer. */
-  let profileGateCleared = $state(hasActiveProfile)
+  let profileGateCleared = $state(hasActiveProfile || _devSkipOnboarding)
 
   function handleProfileSelect(id: string): void {
     profileStore.setActive(id)
@@ -187,7 +188,7 @@
         const preset = SCENARIO_PRESETS.find((p: { id: string }) => p.id === presetId)
         if (preset) {
           const builtSave = preset.buildSave(Date.now())
-          SaveManager.save(builtSave)
+          persistSave(builtSave)
           playerSave.set(builtSave)
           currentScreen.set('base')
         }

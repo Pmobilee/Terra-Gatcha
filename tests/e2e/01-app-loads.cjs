@@ -1,10 +1,10 @@
 /**
  * E2E smoke test: App loads without JavaScript errors.
- * Run with: node tests/e2e/01-app-loads.js
+ * Run with: node tests/e2e/01-app-loads.cjs
  * Requires: dev server running at http://localhost:5173
  */
 const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
-const attachDiagnostics = require('./lib/diagnostics')
+const attachDiagnostics = require('./lib/diagnostics.cjs')
 
 ;(async () => {
   const browser = await chromium.launch({

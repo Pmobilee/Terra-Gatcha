@@ -1,10 +1,10 @@
 /**
  * E2E test: Save/resume — verifies localStorage save mechanics.
- * Run with: node tests/e2e/03-save-resume.js
+ * Run with: node tests/e2e/03-save-resume.cjs
  * Requires: dev server running at http://localhost:5173
  */
 const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
-const attachDiagnostics = require('./lib/diagnostics')
+const attachDiagnostics = require('./lib/diagnostics.cjs')
 
 ;(async () => {
   const browser = await chromium.launch({

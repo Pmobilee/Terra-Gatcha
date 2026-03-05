@@ -333,7 +333,7 @@
       </span>
     </div>
 
-    <button class="enter-btn" type="button" onclick={startDive} disabled={!canDive}>
+    <button class="enter-btn" type="button" onclick={startDive} disabled={!canDive} data-testid="btn-enter-mine">
       {#if !hasTanks}
         No Tanks
       {:else if !$loadoutReady}

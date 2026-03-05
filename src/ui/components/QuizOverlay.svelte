@@ -274,6 +274,7 @@
           disabled={showResult}
           aria-label="Choice {i + 1}: {choice}"
           onclick={() => void handleAnswer(choice)}
+          data-testid="quiz-answer-{i}"
         >
           <span class="key-badge" aria-hidden="true">{i + 1}</span>
           <span class="choice-text">{choice}</span>

@@ -62,33 +62,36 @@ docs/              — Project documentation (LLM-optimized)
 - This conserves Opus budget for architecture and creative decisions where it matters most
 
 ## Visual Testing with Playwright — MANDATORY
-- **ALWAYS take screenshots after every visual/UI change** before considering work done
-- **ALWAYS take a screenshot before ending a session** to confirm the game is in a working visual state
-- The MCP Playwright tool DOES NOT WORK in this environment (sandbox restriction) — use the Bash Node.js script approach below
-- When debugging visual bugs, screenshot FIRST to see the actual problem, then after each fix attempt
-- **Template** (write to `/tmp/ss.js` and run with `node /tmp/ss.js`):
-```js
-const { chromium } = require('/root/terra-miner/node_modules/playwright-core')
-;(async () => {
-  const browser = await chromium.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    executablePath: '/opt/google/chrome/chrome'
-  })
-  const page = await browser.newPage()
-  await page.setViewportSize({ width: 800, height: 600 })
-  await page.goto('http://localhost:5173')
-  await page.waitForSelector('button:has-text("Dive")', { timeout: 15000 })
-  await page.screenshot({ path: '/tmp/ss-base.png' })
-  // Navigate to mine:
-  await page.click('button:has-text("Dive")')
-  await page.waitForTimeout(1500)
-  await page.click('button:has-text("Enter Mine")')
-  await page.waitForTimeout(3000)
-  await page.screenshot({ path: '/tmp/ss-mine.png' })
-  await browser.close()
-})()
+
+Two tools available — use the right one for the job:
+
+### 1. MCP Playwright (interactive — use during development)
+- Use `mcp__playwright__browser_navigate`, `mcp__playwright__browser_snapshot`, `mcp__playwright__browser_take_screenshot` etc.
+- Persistent browser session, no scripts needed — call tools directly
+- Best for: live debugging, visual inspection, clicking through flows interactively
+- Dev bypass: always navigate with `?skipOnboarding=true&devpreset=post_tutorial`
+
+**Standard debug sequence:**
+1. `mcp__playwright__browser_navigate` → `http://localhost:5173?skipOnboarding=true&devpreset=post_tutorial`
+2. `mcp__playwright__browser_snapshot` → inspect DOM / find errors
+3. `mcp__playwright__browser_take_screenshot` → visual check
+4. `mcp__playwright__browser_console_messages` → check JS errors
+
+### 2. E2E Scripts (automated — use for CI and end-of-session verification)
+- Scripts in `tests/e2e/` — run with `node tests/e2e/01-app-loads.cjs`
+- Captures full diagnostic report: console errors, page errors, runtime JS state
+- Best for: regression checks, CI/CD pipelines, end-of-session verification
+
+**Run all E2E checks:**
+```bash
+node tests/e2e/01-app-loads.cjs
+node tests/e2e/02-mine-quiz-flow.cjs
+node tests/e2e/03-save-resume.cjs
 ```
-- Then read `/tmp/ss-mine.png` with the Read tool to visually inspect the result
+
+- **ALWAYS capture diagnostics** — screenshots alone miss silent JS failures
+- **ALWAYS verify before ending a session** — run at least `01-app-loads.cjs`
+- **data-testid selectors**: `btn-dive`, `btn-enter-mine`, `btn-surface`, `quiz-answer-0`..`quiz-answer-3`, `btn-age-adult`, `hud-o2-bar`
 - Full reference: see `memory/playwright-workflow.md` in the auto-memory directory
 
 ## Roadmap Workflow — MANDATORY

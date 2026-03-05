@@ -118,7 +118,7 @@
           </span>
         {/if}
       </div>
-      <div class="oxygen-track" aria-hidden="true">
+      <div class="oxygen-track" aria-hidden="true" data-testid="hud-o2-bar">
         <div class="oxygen-fill {oxygenTone}" style={`width: ${oxygenPercent}%`}></div>
       </div>
       {#if Object.keys($activeUpgrades).filter(u => u !== 'bomb').length > 0}
@@ -197,6 +197,7 @@
       onclick={handleSurface}
       disabled={$pastPointOfNoReturn}
       aria-disabled={$pastPointOfNoReturn}
+      data-testid="btn-surface"
     >
       {$pastPointOfNoReturn ? '🚫 Too Deep' : '↑ Surface'}
     </button>

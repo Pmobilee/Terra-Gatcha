@@ -60,6 +60,7 @@
         class="bracket-btn bracket-btn--primary"
         type="button"
         onclick={() => handleSelect('adult')}
+        data-testid="btn-age-adult"
       >
         <span class="bracket-label">18+</span>
         <span class="bracket-desc">All content unlocked</span>

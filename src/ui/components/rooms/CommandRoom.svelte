@@ -236,7 +236,7 @@
 </div>
 
 <div class="card dive-card" aria-label="Dive actions">
-  <button class="action-button dive-button" type="button" onclick={handleDive}>
+  <button class="action-button dive-button" type="button" onclick={handleDive} data-testid="btn-dive">
     <span>Dive</span>
     <span class="dive-arrow" aria-hidden="true">&#8595;</span>
   </button>
