@@ -295,13 +295,19 @@ class FactsDB {
     newFactsThisDive?: number
     interestWeights?: Record<string, number>
     maxNewPerDive?: number
+    excludeIds?: string[]
   }): Fact | null {
     const MAX_NEW_PER_DIVE = opts.maxNewPerDive ?? 4
     const MAX_LOW_MASTERY_BEFORE_SLOWDOWN = 10
     const now = Date.now()
 
+    // IDs to exclude from selection (recently asked / recently failed)
+    const excludeSet = new Set(opts.excludeIds ?? [])
+
     // Identify which facts are "due" for review
-    const dueFacts = opts.reviewStates.filter(rs => rs.nextReviewAt <= now)
+    const dueFacts = opts.reviewStates
+      .filter(rs => rs.nextReviewAt <= now)
+      .filter(rs => !excludeSet.has(rs.factId))
 
     // If there are due review facts, prefer them
     if (dueFacts.length > 0) {
@@ -320,7 +326,7 @@ class FactsDB {
     // Try to pick from unlocked-but-not-yet-seen facts (revisit known)
     const learnedSet = new Set(opts.learnedFacts)
     const unlockedIds = opts.unlockedFactIds ?? []
-    const unlockedNotLearned = unlockedIds.filter(id => !learnedSet.has(id))
+    const unlockedNotLearned = unlockedIds.filter(id => !learnedSet.has(id) && !excludeSet.has(id))
     if (unlockedNotLearned.length > 0) {
       const pick = unlockedNotLearned[Math.floor(Math.random() * unlockedNotLearned.length)]
       const fact = this.getById(pick)
@@ -330,9 +336,9 @@ class FactsDB {
     // Introduce a new fact if: not slowdown mode AND under per-dive cap
     if (!slowdownActive && newFactsThisDive < MAX_NEW_PER_DIVE) {
       // Exclude already-learned and already-unlocked facts
-      const excludeSet = new Set([...opts.learnedFacts, ...unlockedIds])
+      const newFactExcludeSet = new Set([...opts.learnedFacts, ...unlockedIds, ...excludeSet])
       const allFacts = this.getAll()
-      const candidates = allFacts.filter(f => !excludeSet.has(f.id))
+      const candidates = allFacts.filter(f => !newFactExcludeSet.has(f.id))
 
       if (candidates.length > 0) {
         // Apply interest weights if provided
@@ -355,9 +361,15 @@ class FactsDB {
     }
 
     // Fallback: any learned fact that has a review state
-    const anyLearned = opts.learnedFacts
+    const anyLearned = opts.learnedFacts.filter(id => !excludeSet.has(id))
     if (anyLearned.length > 0) {
       const pick = anyLearned[Math.floor(Math.random() * anyLearned.length)]
+      return this.getById(pick)
+    }
+
+    // Ultimate fallback (ignores excludeSet to guarantee a result)
+    if (opts.learnedFacts.length > 0) {
+      const pick = opts.learnedFacts[Math.floor(Math.random() * opts.learnedFacts.length)]
       return this.getById(pick)
     }
 

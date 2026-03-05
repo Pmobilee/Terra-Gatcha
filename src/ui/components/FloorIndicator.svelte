@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { HubFloor } from '../../data/hubLayout'
+  import { currentScreen } from '../stores/gameState'
 
   interface Props {
     floors: HubFloor[]
@@ -9,8 +10,12 @@
   }
 
   const { floors, unlockedIds, currentIndex, onFloorSelect }: Props = $props()
+
+  /** Only show floor dots when on the base/dome screen. */
+  const visible = $derived($currentScreen === 'base')
 </script>
 
+{#if visible}
 <nav class="floor-indicator" aria-label="Hub floor navigation">
   <span class="floor-label">{floors[currentIndex]?.name ?? ''}</span>
   <div class="pips">
@@ -32,6 +37,7 @@
     {/each}
   </div>
 </nav>
+{/if}
 
 <style>
   .floor-indicator {

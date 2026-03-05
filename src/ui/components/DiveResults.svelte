@@ -7,9 +7,10 @@
 
   interface Props {
     onContinue: () => void
+    onDiveDeeper?: () => void
   }
 
-  let { onContinue }: Props = $props()
+  let { onContinue, onDiveDeeper }: Props = $props()
 
   /** Whether the share card modal is open. */
   let showShareCard = $state(false)
@@ -68,60 +69,46 @@
       {$diveResults?.forced ? 'Oxygen Depleted!' : 'Dive Complete!'}
     </h2>
 
-    {#if $diveResults?.forced}
-      <p class="warning-text">30% of loot was lost in the scramble to surface.</p>
-    {/if}
-
-    <div class="stats">
-      <div class="stat-row">
-        <span class="stat-label">Max Depth</span>
-        <span class="stat-value">{$diveResults?.maxDepth ?? 0}</span>
+    <div class="loot-card">
+      <h3 class="loot-title">Loot Secured</h3>
+      {#if $diveResults?.lootLostToForce}
+        <p class="loot-warning">Run cut short — 30% of minerals lost</p>
+      {:else if !$diveResults?.forced}
+        <p class="loot-safe">Safe return — all loot secured</p>
+      {/if}
+      <div class="loot-grid">
+        {#if ($diveResults?.dustCollected ?? 0) > 0}
+          <div class="loot-item">+{$diveResults?.dustCollected} Dust</div>
+        {/if}
+        {#if ($diveResults?.shardsCollected ?? 0) > 0}
+          <div class="loot-item shard-value">+{$diveResults?.shardsCollected} Shards</div>
+        {/if}
+        {#if ($diveResults?.crystalsCollected ?? 0) > 0}
+          <div class="loot-item crystal-value">+{$diveResults?.crystalsCollected} Crystals</div>
+        {/if}
+        {#if ($diveResults?.geodesCollected ?? 0) > 0}
+          <div class="loot-item geode-value">+{$diveResults?.geodesCollected} Geodes</div>
+        {/if}
+        {#if ($diveResults?.essenceCollected ?? 0) > 0}
+          <div class="loot-item essence-value">+{$diveResults?.essenceCollected} Essence</div>
+        {/if}
+        {#if ($diveResults?.artifactNames?.length ?? 0) > 0}
+          <div class="loot-item">{$diveResults?.artifactNames?.length} Artifact(s)</div>
+        {/if}
+        {#if ($diveResults?.relicNames?.length ?? 0) > 0}
+          <div class="loot-item">{$diveResults?.relicNames?.length} Relic(s)</div>
+        {/if}
       </div>
-      <div class="stat-row">
-        <span class="stat-label">Blocks Mined</span>
-        <span class="stat-value">{$diveResults?.blocksMined ?? 0}</span>
-      </div>
-      <div class="stat-row">
-        <span class="stat-label">Dust Collected</span>
-        <span class="stat-value">{$diveResults?.dustCollected ?? 0}</span>
-      </div>
-      {#if ($diveResults?.shardsCollected ?? 0) > 0}
-        <div class="stat-row">
-          <span class="stat-label">Shards Collected</span>
-          <span class="stat-value shard-value">{$diveResults?.shardsCollected ?? 0}</span>
-        </div>
-      {/if}
-      {#if ($diveResults?.crystalsCollected ?? 0) > 0}
-        <div class="stat-row">
-          <span class="stat-label">Crystals Collected</span>
-          <span class="stat-value crystal-value">{$diveResults?.crystalsCollected ?? 0}</span>
-        </div>
-      {/if}
-      {#if ($diveResults?.geodesCollected ?? 0) > 0}
-        <div class="stat-row">
-          <span class="stat-label">Geodes Collected</span>
-          <span class="stat-value geode-value">{$diveResults?.geodesCollected ?? 0}</span>
-        </div>
-      {/if}
-      {#if ($diveResults?.essenceCollected ?? 0) > 0}
-        <div class="stat-row">
-          <span class="stat-label">Essence Collected</span>
-          <span class="stat-value essence-value">{$diveResults?.essenceCollected ?? 0}</span>
-        </div>
-      {/if}
-      <div class="stat-row">
-        <span class="stat-label">Artifacts Found</span>
-        <span class="stat-value">{$diveResults?.artifactsFound ?? 0}</span>
+      <div class="run-stats">
+        <span>Blocks mined: {$diveResults?.blocksMined ?? 0}</span>
+        <span>Depth: Layer {($diveResults?.layersReached ?? 0) + 1}</span>
       </div>
       {#if ($diveResults?.streakDay ?? 0) > 0}
-        <div class="stat-row streak-row">
-          <span class="stat-label">Streak</span>
-          <span class="stat-value streak-value">
-            {$diveResults?.streakDay} day{($diveResults?.streakDay ?? 0) > 1 ? 's' : ''}
-            {#if $diveResults?.streakBonus}
-              +1 tank!
-            {/if}
-          </span>
+        <div class="streak-info">
+          Streak: {$diveResults?.streakDay} day{($diveResults?.streakDay ?? 0) > 1 ? 's' : ''}
+          {#if $diveResults?.streakBonus}
+            — +1 tank!
+          {/if}
         </div>
       {/if}
     </div>
@@ -145,9 +132,20 @@
       </button>
     {/if}
 
-    <button class="continue-btn" type="button" onclick={onContinue}>
-      Continue
-    </button>
+    <div class="cta-row">
+      {#if $diveResults?.canDiveDeeper && onDiveDeeper}
+        <button class="continue-btn secondary" type="button" onclick={onContinue}>
+          Return to Dome
+        </button>
+        <button class="continue-btn primary" type="button" onclick={onDiveDeeper}>
+          Dive Deeper
+        </button>
+      {:else}
+        <button class="continue-btn" type="button" onclick={onContinue}>
+          Continue
+        </button>
+      {/if}
+    </div>
   </div>
 </div>
 
@@ -193,36 +191,52 @@
     color: var(--color-warning);
   }
 
-  .warning-text {
-    color: var(--color-accent);
-    font-size: 0.9rem;
-    margin: 0;
-  }
-
-  .stats {
+  .loot-card {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 30%, var(--color-surface) 70%);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--color-bg) 60%, var(--color-surface) 40%);
   }
 
-  .stat-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid color-mix(in srgb, var(--color-text) 15%, var(--color-surface) 85%);
-    border-radius: 8px;
-    background: color-mix(in srgb, var(--color-bg) 50%, var(--color-surface) 50%);
-  }
-
-  .stat-label {
-    color: var(--color-text-dim);
-    font-size: 0.95rem;
-  }
-
-  .stat-value {
+  .loot-title {
+    margin: 0;
+    font-size: 1.1rem;
     color: var(--color-success);
-    font-weight: 700;
-    font-size: 1rem;
+  }
+
+  .loot-warning {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    font-style: italic;
+  }
+
+  .loot-safe {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--color-success);
+    font-style: italic;
+    opacity: 0.8;
+  }
+
+  .loot-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.8rem;
+    justify-content: center;
+  }
+
+  .loot-item {
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--color-surface) 70%, var(--color-bg) 30%);
+    border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent 90%);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-success);
   }
 
   .shard-value {
@@ -242,12 +256,25 @@
     text-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
   }
 
-  .streak-row {
-    border-color: color-mix(in srgb, var(--color-warning) 30%, var(--color-surface) 70%);
+  .run-stats {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    padding-top: 0.3rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent 90%);
   }
 
-  .streak-value {
-    color: var(--color-warning) !important;
+  .streak-info {
+    font-size: 0.85rem;
+    color: var(--color-warning);
+    font-weight: 600;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
   }
 
   .continue-btn {
@@ -262,6 +289,21 @@
     font-weight: 700;
     cursor: pointer;
     transition: transform 120ms ease;
+  }
+
+  .continue-btn.secondary {
+    flex: 1;
+    background: color-mix(in srgb, var(--color-text-dim) 15%, var(--color-surface) 85%);
+    border-color: var(--color-text-dim);
+    font-size: 0.95rem;
+  }
+
+  .continue-btn.primary {
+    flex: 1;
+    background: color-mix(in srgb, var(--color-success) 30%, var(--color-surface) 70%);
+    border-color: var(--color-success);
+    color: var(--color-success);
+    font-size: 1.05rem;
   }
 
   .continue-btn:active {

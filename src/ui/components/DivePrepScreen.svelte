@@ -11,6 +11,7 @@
     currentLayer,
     layerTierLabel,
   } from '../stores/gameState'
+  import { playerSave } from '../stores/playerData'
   import MinePreviewThumbnail from './MinePreviewThumbnail.svelte'
   import { minePreviewDataUrl } from '../../game/systems/MinePreview'
   import { generateMine, seededRandom } from '../../game/systems/MineGenerator'
@@ -103,6 +104,19 @@
     { id: 'reinforced_pick', name: 'Reinforced Pick', damage: '×1.5 dmg', icon: '🪨' },
   ]
 
+  /** Pickaxes the player actually owns. */
+  const ownedPickaxes = $derived(
+    PICKAXE_OPTIONS.filter(p =>
+      ($playerSave?.ownedPickaxes ?? ['standard_pick']).includes(p.id)
+    )
+  )
+
+  let pickaxeDropdownOpen = $state(false)
+
+  const currentPickaxe = $derived(
+    PICKAXE_OPTIONS.find(p => p.id === $selectedLoadout.pickaxeId) ?? PICKAXE_OPTIONS[0]
+  )
+
   function selectPickaxe(id: string): void {
     selectedLoadout.update(l => ({ ...l, pickaxeId: id }))
   }
@@ -111,13 +125,43 @@
   const CONSUMABLE_OPTIONS = Object.values(CONSUMABLE_DEFS)
   type SlotIndex = 0 | 1 | 2
 
+  /** Consumable types the player actually owns (quantity > 0). */
+  const ownedConsumableOptions = $derived(
+    CONSUMABLE_OPTIONS.filter(c => {
+      const owned = $playerSave?.consumables ?? {}
+      return (owned[c.id] ?? 0) > 0
+    })
+  )
+
   function cycleConsumableSlot(slot: SlotIndex): void {
     selectedLoadout.update(l => {
       const slots = [...l.consumableSlots] as [string | null, string | null, string | null]
+      // Build remaining availability from owned quantities
+      const owned: Record<string, number> = {}
+      const playerConsumables = $playerSave?.consumables ?? {}
+      for (const opt of ownedConsumableOptions) {
+        owned[opt.id] = playerConsumables[opt.id] ?? 0
+      }
+      // Deduct quantities allocated to other slots
+      for (let i = 0; i < 3; i++) {
+        if (i !== slot && slots[i]) {
+          owned[slots[i]!] = Math.max(0, (owned[slots[i]!] ?? 0) - 1)
+        }
+      }
+      const available = ownedConsumableOptions.filter(c => (owned[c.id] ?? 0) > 0)
+      if (available.length === 0) {
+        slots[slot] = null
+        return { ...l, consumableSlots: slots }
+      }
       const currentId = slots[slot]
-      const currentIdx = currentId ? CONSUMABLE_OPTIONS.findIndex(c => c.id === currentId) : -1
-      const nextIdx = (currentIdx + 1) % (CONSUMABLE_OPTIONS.length + 1)
-      slots[slot] = nextIdx < CONSUMABLE_OPTIONS.length ? CONSUMABLE_OPTIONS[nextIdx].id : null
+      const currentIdx = currentId ? available.findIndex(c => c.id === currentId) : -1
+      if (currentIdx === available.length - 1) {
+        slots[slot] = null
+      } else if (currentIdx === -1) {
+        slots[slot] = available[0].id
+      } else {
+        slots[slot] = available[currentIdx + 1].id
+      }
       return { ...l, consumableSlots: slots }
     })
   }
@@ -164,10 +208,8 @@
     return '#78909c'
   }
 
-  // Use vault relics; fall back to the full catalogue when vault is empty (dev/demo)
-  const displayRelics = $derived(
-    $relicVault.length > 0 ? $relicVault : RELIC_CATALOGUE
-  )
+  // Only show relics the player has actually found
+  const displayRelics = $derived($relicVault)
 
   // ── Difficulty display ────────────────────────────────────────────────────
   const displayLayer = $derived($currentLayer + 1)
@@ -239,51 +281,61 @@
     <!-- ── Pickaxe selection ──────────────────────────────────────────── -->
     <div class="loadout-section" aria-label="Pickaxe selection">
       <p class="section-label">Pickaxe <span class="required-badge">Required</span></p>
-      <div class="pickaxe-grid">
-        {#each PICKAXE_OPTIONS as pick}
-          {@const isSelected = $selectedLoadout.pickaxeId === pick.id}
-          <button
-            class={`pickaxe-btn${isSelected ? ' selected' : ''}`}
-            type="button"
-            onclick={() => selectPickaxe(pick.id)}
-            aria-pressed={isSelected}
-            aria-label={`Select ${pick.name}`}
-          >
-            <span class="pick-icon">{pick.icon}</span>
-            <span class="pick-name">{pick.name}</span>
-            <span class="pick-damage">{pick.damage}</span>
-          </button>
-        {/each}
+      <div class="gear-slot-wrap">
+        <button class="gear-slot-btn" type="button"
+          onclick={() => { pickaxeDropdownOpen = !pickaxeDropdownOpen }}>
+          <span class="pick-icon">{currentPickaxe.icon}</span>
+          <span class="gear-slot-name">{currentPickaxe.name}</span>
+          <span class="gear-slot-damage">{currentPickaxe.damage}</span>
+          <span class="gear-slot-arrow">{pickaxeDropdownOpen ? '▲' : '▼'}</span>
+        </button>
+        {#if pickaxeDropdownOpen}
+          <div class="gear-dropdown">
+            {#each ownedPickaxes as pick}
+              <button class="gear-option" class:selected={$selectedLoadout.pickaxeId === pick.id}
+                type="button" onclick={() => { selectPickaxe(pick.id); pickaxeDropdownOpen = false }}>
+                <span class="pick-icon">{pick.icon}</span>
+                <span class="gear-option-name">{pick.name}</span>
+                <span class="gear-option-damage">{pick.damage}</span>
+                {#if $selectedLoadout.pickaxeId === pick.id}<span class="gear-check">✓</span>{/if}
+              </button>
+            {/each}
+          </div>
+        {/if}
       </div>
     </div>
 
     <!-- ── Consumable slots ───────────────────────────────────────────── -->
     <div class="loadout-section" aria-label="Consumable loadout">
       <p class="section-label">Consumables <span class="section-hint">(tap to cycle)</span></p>
-      <div class="consumable-slots">
-        {#each [0, 1, 2] as slot}
-          {@const slotId = $selectedLoadout.consumableSlots[slot as SlotIndex]}
-          <div class="consumable-slot-wrap">
-            <button
-              class={`consumable-btn${slotId ? ' filled' : ''}`}
-              type="button"
-              onclick={() => cycleConsumableSlot(slot as SlotIndex)}
-              aria-label={`Consumable slot ${slot + 1}: ${consumableLabel(slotId)}. Tap to cycle.`}
-            >
-              <span class="cons-icon">{consumableIcon(slotId)}</span>
-            </button>
-            {#if slotId}
+      {#if ownedConsumableOptions.length === 0}
+        <p class="empty-hint">Find consumables while mining to equip them here.</p>
+      {:else}
+        <div class="consumable-slots">
+          {#each [0, 1, 2] as slot}
+            {@const slotId = $selectedLoadout.consumableSlots[slot as SlotIndex]}
+            <div class="consumable-slot-wrap">
               <button
-                class="clear-slot"
+                class={`consumable-btn${slotId ? ' filled' : ''}`}
                 type="button"
-                onclick={() => clearConsumableSlot(slot as SlotIndex)}
-                aria-label={`Clear slot ${slot + 1}`}
-              >×</button>
-            {/if}
-            <span class="cons-label">{consumableLabel(slotId)}</span>
-          </div>
-        {/each}
-      </div>
+                onclick={() => cycleConsumableSlot(slot as SlotIndex)}
+                aria-label={`Consumable slot ${slot + 1}: ${consumableLabel(slotId)}. Tap to cycle.`}
+              >
+                <span class="cons-icon">{consumableIcon(slotId)}</span>
+              </button>
+              {#if slotId}
+                <button
+                  class="clear-slot"
+                  type="button"
+                  onclick={() => clearConsumableSlot(slot as SlotIndex)}
+                  aria-label={`Clear slot ${slot + 1}`}
+                >×</button>
+              {/if}
+              <span class="cons-label">{consumableLabel(slotId)}</span>
+            </div>
+          {/each}
+        </div>
+      {/if}
     </div>
 
     <!-- ── Relic vault ────────────────────────────────────────────────── -->
@@ -542,49 +594,103 @@
     font-weight: 700;
   }
 
-  /* Pickaxe */
-  .pickaxe-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+  /* Pickaxe — gear-slot dropdown */
+  .gear-slot-wrap {
+    position: relative;
   }
 
-  .pickaxe-btn {
-    min-height: 56px;
+  .gear-slot-btn {
+    width: 100%;
+    min-height: 52px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 0.2rem;
-    border: 1px solid color-mix(in srgb, var(--color-text-dim) 30%, transparent 70%);
+    gap: 0.5rem;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 50%, transparent 50%);
     border-radius: 10px;
-    background: color-mix(in srgb, var(--color-surface) 80%, black 20%);
+    background: color-mix(in srgb, var(--color-primary) 12%, var(--color-surface) 88%);
     color: var(--color-text);
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
     font: inherit;
     transition: border-color 120ms ease, background 120ms ease;
   }
 
-  .pickaxe-btn.selected {
-    border-color: var(--color-primary);
-    background: color-mix(in srgb, var(--color-primary) 18%, var(--color-surface) 82%);
-    box-shadow: 0 0 0 1px var(--color-primary);
+  .gear-slot-name {
+    font-size: 0.85rem;
+    font-weight: 700;
+    flex: 1;
+    text-align: left;
+  }
+
+  .gear-slot-damage {
+    font-size: 0.72rem;
+    color: var(--color-text-dim);
+  }
+
+  .gear-slot-arrow {
+    font-size: 0.7rem;
+    color: var(--color-text-dim);
+    margin-left: 0.25rem;
+  }
+
+  .gear-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 10;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 40%, transparent 60%);
+    border-radius: 10px;
+    background: var(--color-surface);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+
+  .gear-option {
+    width: 100%;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-text-dim) 15%, transparent 85%);
+    background: transparent;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    font: inherit;
+    transition: background 80ms ease;
+  }
+
+  .gear-option:last-child {
+    border-bottom: none;
+  }
+
+  .gear-option:hover,
+  .gear-option.selected {
+    background: color-mix(in srgb, var(--color-primary) 15%, transparent 85%);
+  }
+
+  .gear-option-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    flex: 1;
+    text-align: left;
+  }
+
+  .gear-option-damage {
+    font-size: 0.72rem;
+    color: var(--color-text-dim);
+  }
+
+  .gear-check {
+    color: var(--color-success);
+    font-size: 0.9rem;
+    font-weight: 700;
   }
 
   .pick-icon {
     font-size: 1.4rem;
-  }
-
-  .pick-name {
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--color-text);
-  }
-
-  .pick-damage {
-    font-size: 0.72rem;
-    color: var(--color-text-dim);
   }
 
   /* Consumables */

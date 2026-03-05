@@ -23,6 +23,7 @@
     onDive: () => void
     onStudy?: () => void
     onReviewArtifact?: () => void
+    onGaiaReport?: () => void
     onViewTree?: () => void
     onMaterializer?: () => void
     onPremiumMaterializer?: () => void
@@ -37,7 +38,7 @@
   }
 
   const {
-    onDive, onStudy, onReviewArtifact, onViewTree,
+    onDive, onStudy, onReviewArtifact, onGaiaReport, onViewTree,
     onMaterializer, onPremiumMaterializer, onCosmetics,
     onKnowledgeStore, onFossils, onZoo, onStreakPanel,
     onFarm, onSettings,
@@ -137,8 +138,10 @@
       case 'streakPanel':         onStreakPanel?.(); break
       case 'farm':                onFarm?.(); break
       case 'studySession':        onStudy?.(); break
+      case 'reviewArtifact':      onReviewArtifact?.(); break
       case 'settings':            onSettings?.(); break
-      case 'command':             onStudy?.(); break // GAIA terminal -> study for now
+      case 'command':             onGaiaReport?.(); break
+      case 'gaiaReport':          onGaiaReport?.(); break
       // Phase 47: Achievement Gallery
       case 'galleryPainting':
       case 'galleryOverview':     showGallery = true; break
@@ -354,7 +357,7 @@
     pointer-events: auto;
     position: absolute;
     top: 0;
-    right: 0;
+    right: 48px;
     background: rgba(10, 10, 30, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 0 0 0 6px;

@@ -168,6 +168,13 @@ export interface DiveResults {
   streakDay?: number     // Current streak day count after this dive
   streakBonus?: boolean  // Whether a bonus oxygen tank was awarded
   relicsCollected?: Relic[]  // Relics picked up during this dive
+  layerCompleted: number       // 0-indexed layer that was just finished
+  canDiveDeeper: boolean       // false if forced exit OR on max layer
+  artifactNames: string[]      // fact titles of artifacts found
+  relicNames: string[]         // names of relics found this run
+  factsLearnedCount: number    // new facts added this dive
+  layersReached: number        // how many layers completed
+  lootLostToForce: boolean     // true if forced exit caused loot loss
 }
 export const diveResults = singletonWritable<DiveResults | null>('diveResults', null)
 

@@ -1487,8 +1487,13 @@ export class MineScene extends Phaser.Scene {
    * Registered via this.events.on('shutdown', ...) in create().
    */
   private handleShutdown(): void {
+    // Guard: remove this listener immediately so it doesn't fire twice on stop→start→stop
+    this.events.off('shutdown', this.handleShutdown, this)
+
     this.hazardSystem?.clearAll()
     TickSystem.getInstance().unregister('hazard-system')
+    TickSystem.getInstance().unregister('instability')
+    TickSystem.getInstance().unregister('mine-events')
     this.lootPop?.destroy()
     this.biomeParticles?.destroyAll()
     this.biomeParticles = null

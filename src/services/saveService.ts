@@ -284,6 +284,10 @@ export function load(): PlayerSave | null {
     if (!parsedAny['consumables'] || typeof parsedAny['consumables'] !== 'object') {
       parsedAny['consumables'] = {}
     }
+    // Phase 51: Owned pickaxes migration
+    if (!Array.isArray(parsedAny['ownedPickaxes'])) {
+      parsedAny['ownedPickaxes'] = ['standard_pick']
+    }
     // Phase 21: Oxygen regen migration
     if (parsedAny['lastRegenAt'] === undefined) {
       parsedAny['lastRegenAt'] = Date.now()

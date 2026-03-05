@@ -1,7 +1,11 @@
 <script lang="ts">
   import { playerSave } from '../stores/playerData'
   import { authStore } from '../stores/authStore'
+  import { currentScreen, currentLayer, tickCount } from '../stores/gameState'
   import { derived } from 'svelte/store'
+
+  /** Whether the player is currently mining. */
+  const isMining = $derived($currentScreen === 'mining')
 
   /** Number of facts due for review right now. */
   const dueCount = derived(playerSave, (save) => {
@@ -29,40 +33,57 @@
 </script>
 
 <aside class="desktop-side-panel" aria-label="Session overview">
-  <div class="panel-player">
-    <span class="panel-avatar">⛏</span>
-    <div class="panel-info">
-      <span class="panel-name">{$displayName}</span>
-      <span class="panel-streak">
-        {$currentStreak} day streak
-      </span>
+  {#if isMining}
+    <div class="panel-player">
+      <span class="panel-avatar">⛏</span>
+      <div class="panel-info">
+        <span class="panel-name">Mining</span>
+        <span class="panel-streak">Layer {($currentLayer ?? 0) + 1}</span>
+      </div>
     </div>
-  </div>
 
-  <div class="panel-stats">
-    <div class="stat-row">
-      <span class="stat-label">Facts Mastered</span>
-      <span class="stat-value">{$totalMastered}</span>
+    <div class="panel-stats">
+      <div class="stat-row">
+        <span class="stat-label">Blocks Mined</span>
+        <span class="stat-value">{$tickCount ?? 0}</span>
+      </div>
     </div>
-    <div class="stat-row due-row" data-urgency={$dueUrgency}>
-      <span class="stat-label">Due for Review</span>
-      <span class="stat-value due-count">{$dueCount}</span>
+  {:else}
+    <div class="panel-player">
+      <span class="panel-avatar">⛏</span>
+      <div class="panel-info">
+        <span class="panel-name">{$displayName}</span>
+        <span class="panel-streak">
+          {$currentStreak} day streak
+        </span>
+      </div>
     </div>
-  </div>
 
-  <div class="panel-shortcuts">
-    <details>
-      <summary class="shortcuts-summary">Keyboard Shortcuts</summary>
-      <dl class="shortcuts-list">
-        <div><dt>D</dt><dd>Dive / Enter Mine</dd></div>
-        <div><dt>S</dt><dd>Study Queue</dd></div>
-        <div><dt>Esc</dt><dd>Back / Close</dd></div>
-        <div><dt>1–4</dt><dd>Quiz answers</dd></div>
-        <div><dt>M</dt><dd>Toggle mini-map</dd></div>
-        <div><dt>?</dt><dd>Shortcut help overlay</dd></div>
-      </dl>
-    </details>
-  </div>
+    <div class="panel-stats">
+      <div class="stat-row">
+        <span class="stat-label">Facts Mastered</span>
+        <span class="stat-value">{$totalMastered}</span>
+      </div>
+      <div class="stat-row due-row" data-urgency={$dueUrgency}>
+        <span class="stat-label">Due for Review</span>
+        <span class="stat-value due-count">{$dueCount}</span>
+      </div>
+    </div>
+
+    <div class="panel-shortcuts">
+      <details>
+        <summary class="shortcuts-summary">Keyboard Shortcuts</summary>
+        <dl class="shortcuts-list">
+          <div><dt>D</dt><dd>Dive / Enter Mine</dd></div>
+          <div><dt>S</dt><dd>Study Queue</dd></div>
+          <div><dt>Esc</dt><dd>Back / Close</dd></div>
+          <div><dt>1–4</dt><dd>Quiz answers</dd></div>
+          <div><dt>M</dt><dd>Toggle mini-map</dd></div>
+          <div><dt>?</dt><dd>Shortcut help overlay</dd></div>
+        </dl>
+      </details>
+    </div>
+  {/if}
 </aside>
 
 <style>

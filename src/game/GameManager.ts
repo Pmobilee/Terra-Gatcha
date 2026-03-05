@@ -121,6 +121,10 @@ export class GameManager {
   private companionEffect: CompanionEffect | null = null
   /** Count of new (previously unseen) facts shown in the current dive session. Reset per dive. (FIX-9) */
   private newFactsThisDive = 0
+  /** @internal ID of the last fact asked in a quiz this dive — excluded from next selection. */
+  public lastAskedFactId: string | null = null
+  /** @internal IDs of facts the player answered incorrectly this dive — excluded from selection. */
+  private recentlyFailedFactIds: Set<string> = new Set()
   /** Whether O2 drain is paused (during quiz overlays). (DD-V2-085) */
   private o2Paused = false
   /** Number of completed dives at the start of this session — used to detect zero-dive sessions. */
@@ -305,6 +309,7 @@ export class GameManager {
 
     this.currentLayer = nextLayer
     currentLayerStore.set(nextLayer)
+    this.recentlyFailedFactIds = new Set()
     this.onLayerAdvance()
 
     // Derive a deterministic seed for this layer.
@@ -412,12 +417,19 @@ export class GameManager {
         }
       }
 
+      // Build exclude list: last asked fact + recently failed facts (avoid repeats)
+      const excludeIds = [
+        ...(this.lastAskedFactId ? [this.lastAskedFactId] : []),
+        ...Array.from(this.recentlyFailedFactIds),
+      ]
+
       const fact = factsDB.getPacedFact({
         learnedFacts: ps.learnedFacts,
         reviewStates: ps.reviewStates,
         unlockedFactIds: ps.unlockedFactIds,
         newFactsThisDive: this.newFactsThisDive,
         interestWeights,
+        excludeIds,
       })
 
       if (fact) {
@@ -426,6 +438,7 @@ export class GameManager {
         if (isNew) {
           this.newFactsThisDive++
         }
+        this.lastAskedFactId = fact.id
         return fact
       }
     }
@@ -623,6 +636,8 @@ export class GameManager {
     this.inventoryManager.sentUpItems = []
     this.fossilRng = seededRandom(this.diveSeed ^ 0xf055111)
     this.newFactsThisDive = 0  // reset new-fact counter for pacing (FIX-9)
+    this.lastAskedFactId = null
+    this.recentlyFailedFactIds = new Set()
     currentLayerStore.set(0)
 
     // Generate a shuffled biome sequence for the entire run, seeded by the dive seed.
@@ -782,6 +797,9 @@ export class GameManager {
       }
     }
 
+    // Capture whether loot was lost before resetting flags
+    const lootLostToForce = forced && !this.currentDiveInsured && !isTutorialFirstDepletion
+
     // Reset accumulator now that we've consumed it.
     this.inventoryManager.sentUpItems = []
     // Reset dive insurance flag for the next dive.
@@ -875,6 +893,13 @@ export class GameManager {
       streakDay: get(playerSave)?.stats.currentStreak ?? 0,
       streakBonus: streakBonus > 0,
       relicsCollected: results.collectedRelics ?? [],
+      layerCompleted: this.currentLayer,
+      canDiveDeeper: !forced && this.currentLayer < BALANCE.MAX_LAYERS - 1,
+      artifactNames: artifactFactIds.map(id => factsDB.getById(id)?.statement ?? id),
+      relicNames: (results.collectedRelics ?? []).map(r => r.name),
+      factsLearnedCount: this.newFactsThisDive,
+      layersReached: this.currentLayer,
+      lootLostToForce,
     }
     diveResults.set(diveResultsData)
 
@@ -900,6 +925,80 @@ export class GameManager {
 
     // Navigate to dive results summary
     currentScreen.set('diveResults')
+  }
+
+  /**
+   * Continue to the next mine layer from the dive results screen.
+   * Similar to handleDescentShaft but starts fresh (full O2, empty inventory).
+   * @internal
+   */
+  public continueToNextLayer(): void {
+    if (!this.game) return
+    const dr = get(diveResults)
+    if (!dr || !dr.canDiveDeeper) return
+
+    const nextLayer = dr.layerCompleted + 1
+    this.currentLayer = nextLayer
+    currentLayerStore.set(nextLayer)
+    this.onLayerAdvance()
+
+    // Generate seed for next layer
+    const layerSeed = (this.diveSeed + nextLayer * 1000) >>> 0
+
+    // Pick biome for next layer
+    let nextBiome: Biome
+    if (this.biomeSequence.length > nextLayer) {
+      nextBiome = this.biomeSequence[nextLayer]
+    } else {
+      const biomeRng = seededRandom(layerSeed ^ 0xb10e5)
+      nextBiome = pickBiome(biomeRng, nextLayer)
+    }
+    currentBiomeStore.set(nextBiome.name)
+    currentBiomeId.set(nextBiome.id)
+
+    // Phase 49.2: Optionally assign a secondary biome for this layer (15% chance).
+    const layerBlendRng = seededRandom(layerSeed ^ 0x49b10e5)
+    let nextSecondaryBiome: Biome | undefined = undefined
+    if (layerBlendRng() < BALANCE.DUAL_BIOME_CHANCE) {
+      const candidates = ALL_BIOMES.filter(b =>
+        b.id !== nextBiome.id &&
+        (b.tier === nextBiome.tier ||
+          (nextBiome.tier === 'shallow' && b.tier === 'mid') ||
+          (nextBiome.tier === 'mid' && (b.tier === 'shallow' || b.tier === 'deep'))
+        )
+      )
+      if (candidates.length > 0) {
+        nextSecondaryBiome = candidates[Math.floor(layerBlendRng() * candidates.length)]
+      }
+    }
+
+    // Reset new-fact counter for pacing
+    this.newFactsThisDive = 0
+
+    diveResults.set(null)
+    this.game.scene.stop('MineScene')
+    this.game.scene.start('MineScene', {
+      seed: layerSeed,
+      oxygenTanks: BALANCE.STARTING_OXYGEN_TANKS,
+      inventorySlots: BALANCE.STARTING_INVENTORY_SLOTS,
+      facts: factsDB.getAllIds(),
+      layer: nextLayer,
+      inventory: [],
+      blocksMinedThisRun: 0,
+      artifactsFound: [],
+      biome: nextBiome,
+      secondaryBiome: nextSecondaryBiome,
+      companionEffect: this.companionEffect,
+    })
+    currentScreen.set('mining')
+
+    // GAIA layer entry comment
+    setTimeout(() => {
+      this.triggerGaia('mineEntry')
+    }, 1500)
+    setTimeout(() => {
+      gaiaMessage.set(`Welcome to ${nextBiome.name}. ${nextBiome.description}`)
+    }, 2500)
   }
 
   /** @internal Handle oxygen depletion — forced surface */
@@ -1039,32 +1138,55 @@ export class GameManager {
 
   /** Handle a quiz answer during mining (gate mode) */
   handleQuizAnswer(correct: boolean): void {
+    this.trackFailedQuizFact(correct)
     this.quizManager.handleQuizAnswer(correct)
   }
 
   /** Handle an oxygen quiz answer */
   handleOxygenQuizAnswer(correct: boolean): void {
+    this.trackFailedQuizFact(correct)
     this.quizManager.handleOxygenQuizAnswer(correct)
   }
 
   /** Handle an artifact quiz answer */
   handleArtifactQuizAnswer(correct: boolean): void {
+    this.trackFailedQuizFact(correct)
     this.quizManager.handleArtifactQuizAnswer(correct)
   }
 
   /** Handle a random (pop quiz) answer while mining */
   handleRandomQuizAnswer(correct: boolean): void {
+    this.trackFailedQuizFact(correct)
     this.quizManager.handleRandomQuizAnswer(correct)
   }
 
   /** Handle a layer entrance quiz answer */
   handleLayerQuizAnswer(correct: boolean): void {
+    this.trackFailedQuizFact(correct)
     this.quizManager.handleLayerQuizAnswer(correct)
   }
 
   /** Handle a combat encounter quiz answer (Phase 36). */
   handleCombatQuizAnswer(correct: boolean): void {
+    this.trackFailedQuizFact(correct)
     this.quizManager.handleCombatQuizAnswer(correct)
+  }
+
+  /**
+   * Tracks incorrectly answered quiz facts so they are excluded from
+   * immediate re-selection. Reads activeQuiz before QuizManager clears it.
+   * @internal
+   */
+  private trackFailedQuizFact(correct: boolean): void {
+    if (correct) return
+    const quiz = get(activeQuiz)
+    if (!quiz) return
+    this.recentlyFailedFactIds.add(quiz.fact.id)
+    // Keep the set bounded to avoid unbounded growth
+    if (this.recentlyFailedFactIds.size > 5) {
+      const first = this.recentlyFailedFactIds.values().next().value
+      if (first) this.recentlyFailedFactIds.delete(first)
+    }
   }
 
   // =========================================================

@@ -479,6 +479,10 @@
     currentScreen.set('base')
   }
 
+  function handleViewGaiaReport(): void {
+    currentScreen.set('gaiaReport')
+  }
+
   // Settings handlers
   function handleViewSettings(): void {
     currentScreen.set('settings')
@@ -832,6 +836,7 @@
       onDive={handleDive}
       onStudy={handleStudy}
       onReviewArtifact={handleReviewArtifact}
+      onGaiaReport={handleViewGaiaReport}
       onViewTree={handleViewKnowledgeTree}
       onMaterializer={handleViewMaterializer}
       onPremiumMaterializer={handleViewPremiumMaterializer}
@@ -938,7 +943,7 @@
     />
 
   {:else if $currentScreen === 'diveResults'}
-    <DiveResults onContinue={handleDiveResultsContinue} />
+    <DiveResults onContinue={handleDiveResultsContinue} onDiveDeeper={() => getGM()?.continueToNextLayer()} />
 
   {:else if $currentScreen === 'studySession'}
     <StudySession

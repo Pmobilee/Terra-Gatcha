@@ -555,6 +555,8 @@ export interface PlayerSave {
   weeklyChallenge?: { weekStartIso: string; stats: Record<string, number> }
   /** Consumable items (bomb, flare, shield, etc.) */
   consumables?: Record<string, number>
+  /** Pickaxe IDs the player has acquired. Defaults to ['standard_pick']. */
+  ownedPickaxes?: string[]
   // Phase 21: Monetization
   /** Unix timestamp of last oxygen regen calculation */
   lastRegenAt?: number
