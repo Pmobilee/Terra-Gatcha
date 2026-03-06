@@ -63,8 +63,6 @@ interface OverlaySpec {
   scale: number
   /** Alpha transparency of the overlay */
   alpha: number
-  /** Optional fallback sprite key to use as overlay when overlay_* sprites don't exist */
-  fallbackKey?: string
 }
 
 /** Maps block types to their overlay specs. Blocks not listed render normally (no overlay). */
@@ -73,39 +71,34 @@ const OVERLAY_SPECS: Partial<Record<BlockType, OverlaySpec | ((cell: MineCell) =
     const tier = cell.content?.mineralType ?? 'dust'
     const prefix = `overlay_mineral_${tier}`
     const scale = tier === 'essence' ? 0.85 : tier === 'geode' ? 0.75 : tier === 'crystal' ? 0.65 : tier === 'shard' ? 0.55 : 0.45
-    const fallbackKey = tier === 'essence' ? 'block_mineral_essence'
-      : tier === 'geode' ? 'block_mineral_geode'
-      : tier === 'crystal' ? 'block_mineral_crystal'
-      : tier === 'shard' ? 'block_mineral_shard'
-      : 'block_mineral_dust'
-    return { keyPrefix: prefix, variants: 5, scale, alpha: 1.0, fallbackKey }
+    return { keyPrefix: prefix, variants: 5, scale, alpha: 1.0 }
   },
   [BlockType.ArtifactNode]: (cell: MineCell) => {
     const rarity = cell.content?.artifactRarity ?? 'common'
     const prefix = rarity === 'rare' || rarity === 'legendary' ? 'overlay_artifact_rare'
       : rarity === 'uncommon' ? 'overlay_artifact_uncommon'
       : 'overlay_artifact_common'
-    return { keyPrefix: prefix, variants: 5, scale: 0.75, alpha: 1.0, fallbackKey: 'block_artifact' }
+    return { keyPrefix: prefix, variants: 5, scale: 0.75, alpha: 1.0 }
   },
-  [BlockType.LavaBlock]: { keyPrefix: 'overlay_lava_seep', variants: 5, scale: 0.7, alpha: 0.9, fallbackKey: 'block_lava' },
-  [BlockType.GasPocket]: { keyPrefix: 'overlay_gas_wisp', variants: 5, scale: 0.6, alpha: 0.85, fallbackKey: 'block_gas' },
-  [BlockType.UnstableGround]: { keyPrefix: 'overlay_unstable', variants: 5, scale: 0.6, alpha: 0.8, fallbackKey: 'block_unstable' },
-  [BlockType.FossilNode]: { keyPrefix: 'overlay_fossil', variants: 5, scale: 0.7, alpha: 1.0, fallbackKey: 'block_fossil' },
-  [BlockType.DataDisc]: { keyPrefix: 'overlay_data_disc', variants: 5, scale: 0.6, alpha: 1.0, fallbackKey: 'block_data_disc' },
-  [BlockType.OxygenCache]: { keyPrefix: 'overlay_oxygen_cache', variants: 5, scale: 0.6, alpha: 1.0, fallbackKey: 'block_oxygen_cache' },
-  [BlockType.OxygenTank]: { keyPrefix: 'overlay_oxygen_tank', variants: 5, scale: 0.65, alpha: 1.0, fallbackKey: 'block_oxygen_tank' },
+  [BlockType.LavaBlock]: { keyPrefix: 'overlay_lava_seep', variants: 5, scale: 0.7, alpha: 0.9 },
+  [BlockType.GasPocket]: { keyPrefix: 'overlay_gas_wisp', variants: 5, scale: 0.6, alpha: 0.85 },
+  [BlockType.UnstableGround]: { keyPrefix: 'overlay_unstable', variants: 5, scale: 0.6, alpha: 0.8 },
+  [BlockType.FossilNode]: { keyPrefix: 'overlay_fossil', variants: 5, scale: 0.7, alpha: 1.0 },
+  [BlockType.DataDisc]: { keyPrefix: 'overlay_data_disc', variants: 5, scale: 0.6, alpha: 1.0 },
+  [BlockType.OxygenCache]: { keyPrefix: 'overlay_oxygen_cache', variants: 5, scale: 0.6, alpha: 1.0 },
+  [BlockType.OxygenTank]: { keyPrefix: 'overlay_oxygen_tank', variants: 5, scale: 0.65, alpha: 1.0 },
   [BlockType.Chest]: { keyPrefix: 'overlay_chest', variants: 5, scale: 0.75, alpha: 1.0 },
-  [BlockType.ExitLadder]: { keyPrefix: 'overlay_exit_ladder', variants: 5, scale: 0.85, alpha: 1.0, fallbackKey: 'block_exit_ladder' },
-  [BlockType.DescentShaft]: { keyPrefix: 'overlay_descent_shaft', variants: 5, scale: 0.85, alpha: 1.0, fallbackKey: 'block_descent_shaft' },
-  [BlockType.QuizGate]: { keyPrefix: 'overlay_quiz_gate', variants: 5, scale: 0.8, alpha: 1.0, fallbackKey: 'block_quiz_gate' },
-  [BlockType.SendUpStation]: { keyPrefix: 'overlay_send_up', variants: 5, scale: 0.7, alpha: 1.0, fallbackKey: 'block_send_up' },
-  [BlockType.UpgradeCrate]: { keyPrefix: 'overlay_upgrade_crate', variants: 5, scale: 0.7, alpha: 1.0, fallbackKey: 'block_upgrade_crate' },
-  [BlockType.QuoteStone]: { keyPrefix: 'overlay_quote_stone', variants: 5, scale: 0.55, alpha: 0.9, fallbackKey: 'block_quote_stone' },
+  [BlockType.ExitLadder]: { keyPrefix: 'overlay_exit_ladder', variants: 5, scale: 0.85, alpha: 1.0 },
+  [BlockType.DescentShaft]: { keyPrefix: 'overlay_descent_shaft', variants: 5, scale: 0.85, alpha: 1.0 },
+  [BlockType.QuizGate]: { keyPrefix: 'overlay_quiz_gate', variants: 5, scale: 0.8, alpha: 1.0 },
+  [BlockType.SendUpStation]: { keyPrefix: 'overlay_send_up', variants: 5, scale: 0.7, alpha: 1.0 },
+  [BlockType.UpgradeCrate]: { keyPrefix: 'overlay_upgrade_crate', variants: 5, scale: 0.7, alpha: 1.0 },
+  [BlockType.QuoteStone]: { keyPrefix: 'overlay_quote_stone', variants: 5, scale: 0.55, alpha: 0.9 },
   [BlockType.WallText]: { keyPrefix: 'overlay_wall_text', variants: 5, scale: 0.6, alpha: 0.9 },
   [BlockType.Tablet]: { keyPrefix: 'overlay_tablet', variants: 5, scale: 0.6, alpha: 1.0 },
   [BlockType.OfferingAltar]: { keyPrefix: 'overlay_offering_altar', variants: 5, scale: 0.8, alpha: 1.0 },
   [BlockType.LockedBlock]: { keyPrefix: 'overlay_locked', variants: 5, scale: 0.7, alpha: 1.0 },
-  [BlockType.RelicShrine]: { keyPrefix: 'overlay_relic_shrine', variants: 5, scale: 0.8, alpha: 1.0, fallbackKey: 'block_relic_shrine' },
+  [BlockType.RelicShrine]: { keyPrefix: 'overlay_relic_shrine', variants: 5, scale: 0.8, alpha: 1.0 },
   [BlockType.RecipeFragmentNode]: { keyPrefix: 'overlay_recipe_frag', variants: 5, scale: 0.65, alpha: 1.0 },
 }
 
@@ -132,13 +125,7 @@ function tryRenderOverlay(scene: MineScene, cell: MineCell, tileX: number, tileY
   const variant = overlayVariant(tileX, tileY, spec.variants)
   const overlayKey = `${spec.keyPrefix}_${String(variant).padStart(2, '0')}`
 
-  // Determine the actual overlay texture key: dedicated overlay sprite, or fallback block sprite
-  const hasDedicatedOverlay = scene.textures.exists(overlayKey)
-  const useOverlayKey = hasDedicatedOverlay ? overlayKey
-    : spec.fallbackKey && scene.textures.exists(spec.fallbackKey) ? spec.fallbackKey
-    : null
-
-  if (!useOverlayKey) return false
+  if (!scene.textures.exists(overlayKey)) return false
 
   const cx = px + TILE_SIZE * 0.5
   const cy = py + TILE_SIZE * 0.5
@@ -156,13 +143,10 @@ function tryRenderOverlay(scene: MineScene, cell: MineCell, tileX: number, tileY
   }
 
   // Step 2: Render overlay on top
-  // Fallback block sprites are full-tile images — render at near-full size (0.92)
-  // Dedicated overlay sprites use their configured scale (typically smaller)
-  const effectiveScale = hasDedicatedOverlay ? spec.scale : Math.max(spec.scale, 0.92)
-  const overlaySprite = getPooledSprite(scene, useOverlayKey, cx, cy)
+  const overlaySprite = getPooledSprite(scene, overlayKey, cx, cy)
   overlaySprite.setDepth(5.5)
   overlaySprite.setAlpha(spec.alpha)
-  const displaySize = TILE_SIZE * effectiveScale
+  const displaySize = TILE_SIZE * spec.scale
   overlaySprite.setDisplaySize(displaySize, displaySize)
 
   return true
@@ -491,27 +475,28 @@ export function drawBlockPattern(scene: MineScene, cell: MineCell, tileX: number
 
 /**
  * Renders a sprite-based crack overlay on a damaged block.
- * Replaces the old procedural crack drawing with 4 damage stages.
+ * Replaces the old procedural crack drawing with 10 non-linear damage stages.
  */
 export function drawCrackOverlay(scene: MineScene, cell: MineCell, tileX: number, tileY: number, px: number, py: number): void {
   if (cell.maxHardness <= 0 || cell.hardness <= 0 || cell.hardness >= cell.maxHardness) return
 
   const damagePercent = 1 - cell.hardness / cell.maxHardness
-  if (damagePercent < 0.25) return
+  if (damagePercent < 0.20) return
 
   const cx = px + TILE_SIZE * 0.5
   const cy = py + TILE_SIZE * 0.5
 
-  let crackKey: string
-  if (damagePercent < 0.50) {
-    crackKey = 'crack_stage1'
-  } else if (damagePercent < 0.75) {
-    crackKey = 'crack_stage2'
-  } else if (damagePercent < 0.90) {
-    crackKey = 'crack_stage3'
-  } else {
-    crackKey = 'crack_stage4'
+  // Non-linear damage thresholds for 10 crack stages
+  const CRACK_THRESHOLDS = [0.20, 0.35, 0.50, 0.55, 0.60, 0.65, 0.70, 0.80, 0.90, 0.95]
+
+  // Find the appropriate stage
+  let stage = 0
+  for (let i = 0; i < CRACK_THRESHOLDS.length; i++) {
+    if (damagePercent >= CRACK_THRESHOLDS[i]) stage = i + 1
   }
+  if (stage === 0) return // Not enough damage for cracks
+
+  const crackKey = `overlay_crack_${String(stage).padStart(2, '0')}`
 
   if (!scene.textures.exists(crackKey)) {
     drawLegacyCracks(scene, px, py, tileX, tileY, damagePercent)
