@@ -42,6 +42,7 @@
   import Materializer from './ui/components/Materializer.svelte'
   import PremiumMaterializer from './ui/components/PremiumMaterializer.svelte'
   import CosmeticsShop from './ui/components/CosmeticsShop.svelte'
+  import Decorator from './ui/components/Decorator.svelte'
   import KnowledgeStore from './ui/components/KnowledgeStore.svelte'
   import FossilGallery from './ui/components/FossilGallery.svelte'
   import Zoo from './ui/components/Zoo.svelte'
@@ -434,10 +435,10 @@
   let studySessionCorrectCount = $state(0)
   let studySessionTotal = $state(0)
 
-  function handleStudyCardAnswer(factId: string, correct: boolean): void {
-    if (correct) studySessionCorrectCount++
+  function handleStudyCardAnswer(factId: string, quality: number): void {
+    if (quality >= 3) studySessionCorrectCount++
     studySessionTotal++
-    getGM()?.handleStudyCardAnswer(factId, correct)
+    getGM()?.handleStudyCardAnswer(factId, quality)
   }
 
   function handleStudyComplete(): void {
@@ -487,6 +488,14 @@
   }
 
   function handleBackFromCosmeticsShop(): void {
+    currentScreen.set('base')
+  }
+
+  function handleViewDecorator(): void {
+    currentScreen.set('decorator')
+  }
+
+  function handleBackFromDecorator(): void {
     currentScreen.set('base')
   }
 
@@ -910,6 +919,7 @@
       onZoo={handleViewZoo}
       onStreakPanel={handleViewStreakPanel}
       onFarm={handleViewFarm}
+      onDecorator={handleViewDecorator}
       onSettings={handleViewSettings}
       facts={cachedFacts}
     />
@@ -1040,6 +1050,9 @@
 
   {:else if $currentScreen === 'cosmeticsShop'}
     <CosmeticsShop onBack={handleBackFromCosmeticsShop} />
+
+  {:else if $currentScreen === 'decorator'}
+    <Decorator onBack={handleBackFromDecorator} />
 
   {:else if $currentScreen === 'knowledgeStore'}
     <KnowledgeStore onBack={handleBackFromKnowledgeStore} />

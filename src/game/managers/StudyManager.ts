@@ -96,13 +96,13 @@ export class StudyManager {
 
   /**
    * Handle a single card answer from the StudySession component.
-   * Updates SM-2 review state with quality 4 (correct) or 1 (incorrect).
+   * Updates SM-2 review state with the player's self-rated quality grade.
    *
    * @param factId - The fact that was answered.
-   * @param correct - Whether the player self-rated as correct.
+   * @param quality - SM-2 quality grade (1=Again, 3=Good, 5=Easy).
    */
-  handleStudyCardAnswer(factId: string, correct: boolean): void {
-    updateReviewState(factId, correct)
+  handleStudyCardAnswer(factId: string, quality: number): void {
+    updateReviewState(factId, quality)
   }
 
   /**

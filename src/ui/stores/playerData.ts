@@ -187,12 +187,13 @@ export function sellFact(factId: string, mineralReward: number): void {
  * signals when the fact's interval crosses the 14-day threshold for the first time.
  *
  * @param factId - Fact identifier whose review state should change.
- * @param correct - Whether the submitted answer was correct.
+ * @param correctOrQuality - Boolean (correct/incorrect) or numeric SM-2 quality 0-5.
  * @param factCategory - Optional top-level category of the fact (e.g. 'Language').
  *   Pass this from callers that already have the fact object to enable Phase 12
  *   behavioral learning signal tracking (DD-V2-118).
  */
-export function updateReviewState(factId: string, correct: boolean, factCategory?: string): void {
+export function updateReviewState(factId: string, correctOrQuality: boolean | number, factCategory?: string): void {
+  const correct = typeof correctOrQuality === 'boolean' ? correctOrQuality : correctOrQuality >= 3
   let masteryEvent: { factId: string; masteryNumber: number } | null = null
 
   playerSave.update((save) => {
@@ -205,7 +206,7 @@ export function updateReviewState(factId: string, correct: boolean, factCategory
     if (correct && factCategory && save.interestConfig?.behavioralLearningEnabled) {
       const oldState = save.reviewStates.find(s => s.factId === factId)
       if (oldState && oldState.interval < 14) {
-        const newState = reviewFact(oldState, correct)
+        const newState = reviewFact(oldState, correctOrQuality)
         if (newState.interval >= 14) {
           updatedSignals = recordFastMastery(updatedSignals, factCategory)
         }
@@ -215,7 +216,7 @@ export function updateReviewState(factId: string, correct: boolean, factCategory
     // Phase 15.6: Check if this answer crosses the mastery threshold
     const existingState = save.reviewStates.find(s => s.factId === factId)
     if (existingState && getMasteryLevel(existingState) !== 'mastered') {
-      const newState = reviewFact(existingState, correct)
+      const newState = reviewFact(existingState, correctOrQuality)
       if (getMasteryLevel(newState) === 'mastered') {
         // Count how many facts will be mastered after this update (including this one)
         const alreadyMastered = save.reviewStates.filter(
@@ -228,7 +229,7 @@ export function updateReviewState(factId: string, correct: boolean, factCategory
     return {
       ...save,
       reviewStates: save.reviewStates.map((state) =>
-        state.factId === factId ? reviewFact(state, correct) : state,
+        state.factId === factId ? reviewFact(state, correctOrQuality) : state,
       ),
       behavioralSignals: updatedSignals,
       stats: {

@@ -10,7 +10,7 @@
   interface Props {
     facts: Fact[]
     reviewStates: ReviewState[]
-    onAnswer: (factId: string, correct: boolean) => void
+    onAnswer: (factId: string, quality: number) => void
     onComplete: () => void
   }
 
@@ -110,14 +110,15 @@
   }
 
   /** Player self-rates and advances to the next card. */
-  async function rate(correct: boolean): Promise<void> {
+  async function rate(quality: number): Promise<void> {
     if (!currentFact) return
+    const correct = quality >= 3
     audioManager.playSound(correct ? 'quiz_correct' : 'quiz_wrong')
     if (correct) {
       correctCount++
       onCorrectAnswer()
     }
-    onAnswer(currentFact.id, correct)
+    onAnswer(currentFact.id, quality)
 
     // Brief visual pause before transitioning
     await new Promise<void>(r => setTimeout(r, 300))
@@ -339,24 +340,23 @@
     <!-- Self-rating buttons (only after flip) -->
     {#if isFlipped}
       <div class="rating-buttons">
-        <button
-          class="rating-btn rating-btn--wrong"
-          type="button"
-          onclick={() => void rate(false)}
-        >
-          Didn't get it
+        <button class="rating-btn rating-btn--again" type="button" onclick={() => void rate(1)}>
+          <span class="rating-label">Again</span>
+          <span class="rating-sub">Forgot</span>
         </button>
-        <button
-          class="rating-btn rating-btn--correct"
-          type="button"
-          onclick={() => void rate(true)}
-        >
-          Got it
+        <button class="rating-btn rating-btn--good" type="button" onclick={() => void rate(3)}>
+          <span class="rating-label">Good</span>
+          <span class="rating-sub">Correct</span>
+        </button>
+        <button class="rating-btn rating-btn--easy" type="button" onclick={() => void rate(5)}>
+          <span class="rating-label">Easy</span>
+          <span class="rating-sub">Effortless</span>
         </button>
       </div>
     {:else}
       <!-- Placeholder to prevent layout shift -->
       <div class="rating-buttons rating-buttons--hidden" aria-hidden="true">
+        <div class="rating-btn-placeholder"></div>
         <div class="rating-btn-placeholder"></div>
         <div class="rating-btn-placeholder"></div>
       </div>
@@ -723,7 +723,7 @@
   .card {
     position: relative;
     width: 100%;
-    min-height: 300px;
+    min-height: min(300px, 50vh);
     transform-style: preserve-3d;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
@@ -766,6 +766,8 @@
     box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.55),
       0 0 15px rgba(78, 204, 163, 0.12);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .card-category {
@@ -870,22 +872,36 @@
     transform: scale(0.97);
   }
 
-  .rating-btn--wrong {
-    background: color-mix(in srgb, var(--color-accent) 55%, #0d0d1a 45%);
+  .rating-btn--again {
+    background: color-mix(in srgb, #e74c3c 55%, #0d0d1a 45%);
     color: #fff;
   }
+  .rating-btn--again:hover { filter: brightness(1.1); }
 
-  .rating-btn--wrong:hover {
-    filter: brightness(1.1);
-  }
-
-  .rating-btn--correct {
+  .rating-btn--good {
     background: var(--color-success);
     color: #0b231a;
   }
+  .rating-btn--good:hover { filter: brightness(1.05); }
 
-  .rating-btn--correct:hover {
-    filter: brightness(1.05);
+  .rating-btn--easy {
+    background: color-mix(in srgb, #f59e0b 55%, #0d0d1a 45%);
+    color: #fff;
+  }
+  .rating-btn--easy:hover { filter: brightness(1.1); }
+
+  .rating-label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .rating-sub {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 400;
+    opacity: 0.7;
+    margin-top: 2px;
   }
 
   .rating-btn-placeholder {

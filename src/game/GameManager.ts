@@ -1365,8 +1365,8 @@ export class GameManager {
   /**
    * Handle a single card answer from the StudySession component.
    */
-  handleStudyCardAnswer(factId: string, correct: boolean): void {
-    this.studyManager.handleStudyCardAnswer(factId, correct)
+  handleStudyCardAnswer(factId: string, quality: number): void {
+    this.studyManager.handleStudyCardAnswer(factId, quality)
   }
 
   /**
