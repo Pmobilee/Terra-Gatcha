@@ -6,11 +6,12 @@
   import { calculateTotalPending } from '../../../data/farm'
 
   interface Props {
+    onBack?: () => void
     onCosmetics?: () => void
     onFarm?: () => void
   }
 
-  let { onCosmetics, onFarm }: Props = $props()
+  let { onBack, onCosmetics, onFarm }: Props = $props()
 
   const farmPending = $derived.by(() => {
     const save = $playerSave
@@ -81,6 +82,9 @@
 </script>
 
 <!-- ========== MARKET ========== -->
+{#if onBack}
+  <button class="back-btn" type="button" onclick={onBack}>← Back</button>
+{/if}
 <div class="card room-header-card">
   <div class="room-header-info">
     <span class="room-header-icon" aria-hidden="true">🏪</span>
@@ -167,6 +171,17 @@
 </div>
 
 <style>
+  .back-btn {
+    background: none;
+    border: 1px solid var(--border-color, #444);
+    color: var(--text-primary, #e0e0e0);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    align-self: flex-start;
+    margin-bottom: 0.5rem;
+  }
   .card {
     background: var(--color-surface);
     border-radius: 12px;

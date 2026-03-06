@@ -152,6 +152,10 @@ export type Screen =
   | 'tutorialMine'
   | 'quote_stone'
   | 'cavern_text'
+  | 'museum'
+  | 'market'
+  | 'archive'
+  | 'observatory'
 
 export const currentScreen = singletonWritable<Screen>('currentScreen', 'mainMenu')
 

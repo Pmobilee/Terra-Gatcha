@@ -3,11 +3,12 @@
   import { audioManager } from '../../../services/audioService'
 
   interface Props {
+    onBack?: () => void
     onFossils?: () => void
     onZoo?: () => void
   }
 
-  let { onFossils, onZoo }: Props = $props()
+  let { onBack, onFossils, onZoo }: Props = $props()
 
   const fossilsRecord = $derived($playerSave?.fossils ?? {})
   const discoveredFossilCount = $derived(Object.keys(fossilsRecord).length)
@@ -25,6 +26,9 @@
 </script>
 
 <!-- ========== MUSEUM ========== -->
+{#if onBack}
+  <button class="back-btn" type="button" onclick={onBack}>← Back</button>
+{/if}
 <div class="card room-header-card">
   <div class="room-header-info">
     <span class="room-header-icon" aria-hidden="true">🏛️</span>
@@ -73,6 +77,17 @@
 </div>
 
 <style>
+  .back-btn {
+    background: none;
+    border: 1px solid var(--border-color, #444);
+    color: var(--text-primary, #e0e0e0);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    align-self: flex-start;
+    margin-bottom: 0.5rem;
+  }
   .card {
     background: var(--color-surface);
     border-radius: 12px;

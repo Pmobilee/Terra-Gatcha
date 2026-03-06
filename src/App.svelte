@@ -50,6 +50,10 @@
   import Farm from './ui/components/Farm.svelte'
   import Settings from './ui/components/Settings.svelte'
   import GaiaReport from './ui/components/GaiaReport.svelte'
+  import PlaceholderRoom from './ui/components/PlaceholderRoom.svelte'
+  import MuseumRoom from './ui/components/rooms/MuseumRoom.svelte'
+  import MarketRoom from './ui/components/rooms/MarketRoom.svelte'
+  import ArchiveRoom from './ui/components/rooms/ArchiveRoom.svelte'
   import InterestSettings from './ui/components/InterestSettings.svelte'
   import InterestAssessment from './ui/components/InterestAssessment.svelte'
   import OnboardingCutscene from './ui/components/OnboardingCutscene.svelte'
@@ -505,6 +509,38 @@
     currentScreen.set('base')
   }
 
+  function handleViewMuseum(): void {
+    currentScreen.set('museum')
+  }
+
+  function handleBackFromMuseum(): void {
+    currentScreen.set('base')
+  }
+
+  function handleViewMarket(): void {
+    currentScreen.set('market')
+  }
+
+  function handleBackFromMarket(): void {
+    currentScreen.set('base')
+  }
+
+  function handleViewArchive(): void {
+    currentScreen.set('archive')
+  }
+
+  function handleBackFromArchive(): void {
+    currentScreen.set('base')
+  }
+
+  function handleViewObservatory(): void {
+    currentScreen.set('observatory')
+  }
+
+  function handleBackFromObservatory(): void {
+    currentScreen.set('base')
+  }
+
   function handleViewKnowledgeStore(): void {
     currentScreen.set('knowledgeStore')
   }
@@ -927,6 +963,10 @@
       onFarm={handleViewFarm}
       onDecorator={handleViewDecorator}
       onSettings={handleViewSettings}
+      onMuseum={handleViewMuseum}
+      onMarket={handleViewMarket}
+      onArchive={handleViewArchive}
+      onObservatory={handleViewObservatory}
       facts={cachedFacts}
     />
     <GaiaToast />
@@ -1080,6 +1120,31 @@
 
   {:else if $currentScreen === 'gaiaReport'}
     <GaiaReport onBack={() => currentScreen.set('base')} />
+
+  {:else if $currentScreen === 'museum'}
+    <MuseumRoom
+      onBack={handleBackFromMuseum}
+      onFossils={handleViewFossils}
+      onZoo={handleViewZoo}
+    />
+  {:else if $currentScreen === 'market'}
+    <MarketRoom
+      onBack={handleBackFromMarket}
+      onCosmetics={handleViewCosmeticsShop}
+      onFarm={handleViewFarm}
+    />
+  {:else if $currentScreen === 'archive'}
+    <ArchiveRoom
+      onBack={handleBackFromArchive}
+      onViewTree={handleViewKnowledgeTree}
+      facts={cachedFacts}
+    />
+  {:else if $currentScreen === 'observatory'}
+    <PlaceholderRoom
+      title="Observatory"
+      description="Star maps and telescopes are being calibrated. Check back after the next update!"
+      onBack={handleBackFromObservatory}
+    />
 
   {:else if $currentScreen === 'interestSettings'}
     <InterestSettings onBack={() => currentScreen.set('settings')} />

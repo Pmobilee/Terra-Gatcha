@@ -50,7 +50,7 @@ function makeStarterFloor(): HubFloor {
     objects: [
       { id: 'dive_hatch', spriteKey: '', label: 'Mine Entrance', action: 'dive', gridX: 39, gridY: 37, gridW: 18, gridH: 8, interactive: true },
       { id: 'artifact_lab', spriteKey: '', label: 'Artifact Lab', action: 'reviewArtifact', gridX: 5, gridY: 33, gridW: 14, gridH: 12, interactive: true },
-      { id: 'workbench', spriteKey: '', label: 'Materializer', action: 'workshop', gridX: 60, gridY: 33, gridW: 12, gridH: 12, interactive: true },
+      { id: 'workbench', spriteKey: '', label: 'Materializer', action: 'materializer', gridX: 60, gridY: 33, gridW: 12, gridH: 12, interactive: true },
       { id: 'gaia_terminal', spriteKey: '', label: 'G.A.I.A. Terminal', action: 'command', gridX: 78, gridY: 31, gridW: 10, gridH: 14, interactive: true },
     ],
     unlockRequirements: null,
@@ -252,16 +252,16 @@ function makeGalleryFloor(): HubFloor {
 export function getDefaultHubStack(): HubStack {
   return {
     floors: [
-      makeStarterFloor(),
-      makeStudyFloor(),
-      makeFarmFloor(),
-      makeWorkshopFloor(),
-      makeZooFloor(),
-      makeCollectionFloor(),
-      makeMarketFloor(),
-      makeResearchFloor(),
-      makeObservatoryFloor(),
       makeGalleryFloor(),
+      makeObservatoryFloor(),
+      makeResearchFloor(),
+      makeMarketFloor(),
+      makeCollectionFloor(),
+      makeZooFloor(),
+      makeWorkshopFloor(),
+      makeFarmFloor(),
+      makeStudyFloor(),
+      makeStarterFloor(),
     ],
   }
 }

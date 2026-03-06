@@ -35,6 +35,10 @@
     onFarm?: () => void
     onDecorator?: () => void
     onSettings?: () => void
+    onMuseum?: () => void
+    onMarket?: () => void
+    onArchive?: () => void
+    onObservatory?: () => void
     facts?: Fact[]
   }
 
@@ -43,6 +47,7 @@
     onMaterializer, onPremiumMaterializer, onCosmetics,
     onKnowledgeStore, onFossils, onZoo, onStreakPanel,
     onFarm, onDecorator, onSettings,
+    onMuseum, onMarket, onArchive, onObservatory,
   }: Props = $props()
 
   const hubStack = getDefaultHubStack()
@@ -73,7 +78,7 @@
     hubStack.floors.filter(f => unlockedIds.includes(f.id))
   )
 
-  let floorIndex = $state(0)
+  let floorIndex = $state(9)
 
   // Sync floor index to the shared store
   $effect(() => {
@@ -166,6 +171,13 @@
       // Phase 47: Achievement Gallery
       case 'galleryPainting':
       case 'galleryOverview':     showGallery = true; break
+      case 'museum':              onMuseum?.(); break
+      case 'market':              onMarket?.(); break
+      case 'wallpaperShop':       onDecorator?.(); break
+      case 'archive':             onArchive?.(); break
+      case 'research':            onObservatory?.(); break
+      case 'dataDisc':            onArchive?.(); break
+      case 'observatory':         onObservatory?.(); break
       default: break
     }
   }
@@ -237,6 +249,18 @@
         masteredCount,
         floorIndex,
       })
+
+      // Deferred sync: push latest Svelte state once DomeScene.create() finishes.
+      // Covers the race where the $effect fires while the scene is still in preload.
+      const syncInterval = setInterval(() => {
+        const dome = gm.getDomeScene()
+        if (dome && (dome as any).created) {
+          clearInterval(syncInterval)
+          dome.setHubState(unlockedIds, floorTiers, masteredCount)
+          dome.goToFloor(floorIndex)
+        }
+      }, 50)
+      setTimeout(() => clearInterval(syncInterval), 5000)
 
       // Listen for object taps emitted by DomeScene
       hubEvents.on('objectTap', handleObjectTap)
