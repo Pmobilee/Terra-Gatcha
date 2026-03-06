@@ -293,6 +293,7 @@
           </p>
         </div>
 
+        <!-- hidden until implemented
         <div class="setting-row coming-soon-row">
           <div class="setting-info">
             <span class="setting-label">Language Learning</span>
@@ -308,10 +309,11 @@
           </div>
           <span class="coming-soon-badge">Coming Soon</span>
         </div>
+        -->
       </div>
     </section>
 
-    <!-- ===== NOTIFICATIONS ===== -->
+    <!-- hidden until implemented
     <section class="settings-section" aria-labelledby="notif-heading">
       <h2 id="notif-heading" class="section-heading">Notifications</h2>
 
@@ -333,6 +335,7 @@
         </div>
       </div>
     </section>
+    -->
 
     <!-- ===== AUDIO SETTINGS (Phase 17.2) ===== -->
     <section class="settings-section" aria-labelledby="audio-heading">
@@ -590,7 +593,7 @@
       <div class="settings-card">
         <div class="about-row">
           <span class="about-label">Version</span>
-          <span class="about-value">Terra Miner v0.1.0-alpha</span>
+          <span class="about-value">Terra Gacha v0.1.0-alpha</span>
         </div>
         <div class="about-row">
           <span class="about-label">Build</span>

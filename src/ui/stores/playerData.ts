@@ -489,6 +489,72 @@ export function recordDiveComplete(deepestLayer: number, blocksMined: number): v
 }
 
 /**
+ * Finds and claims any streak milestones that the player has earned but not yet claimed.
+ * Awards the appropriate rewards (minerals, titles, oxygen) retroactively.
+ *
+ * @returns The number of milestones claimed.
+ */
+export function claimUnclaimedMilestones(): number {
+  const current = get(playerSave)
+  if (!current) return 0
+
+  const currentStreak = current.stats.currentStreak
+  const alreadyClaimed = current.claimedMilestones ?? []
+  const unclaimed = BALANCE.STREAK_MILESTONES.filter(
+    m => currentStreak >= m.days && !alreadyClaimed.includes(m.days)
+  )
+
+  if (unclaimed.length === 0) return 0
+
+  playerSave.update(save => {
+    if (!save) return save
+
+    const claimedMilestones = [...(save.claimedMilestones ?? [])]
+    let minerals = { ...save.minerals }
+    let oxygen = save.oxygen
+    const titles = [...(save.titles ?? [])]
+
+    for (const milestone of unclaimed) {
+      claimedMilestones.push(milestone.days)
+      if (milestone.reward === 'dust_bonus') {
+        minerals = { ...minerals, dust: minerals.dust + milestone.value }
+      } else if (milestone.reward === 'shard_bonus') {
+        minerals = { ...minerals, shard: minerals.shard + milestone.value }
+      } else if (milestone.reward === 'crystal_bonus') {
+        minerals = { ...minerals, crystal: minerals.crystal + milestone.value }
+      } else if (milestone.reward === 'geode_bonus') {
+        minerals = { ...minerals, geode: minerals.geode + milestone.value }
+      } else if (milestone.reward === 'essence_bonus') {
+        minerals = { ...minerals, essence: minerals.essence + milestone.value }
+      } else if (milestone.reward === 'oxygen_bonus') {
+        oxygen = oxygen + milestone.value
+      } else if (milestone.reward === 'title') {
+        if (milestone.title && !titles.includes(milestone.title)) {
+          titles.push(milestone.title)
+        }
+        if (!titles.includes(milestone.name)) {
+          titles.push(milestone.name)
+        }
+      }
+    }
+
+    const highestClaimed = claimedMilestones.length > 0 ? Math.max(...claimedMilestones) : 0
+
+    return {
+      ...save,
+      claimedMilestones,
+      lastStreakMilestone: highestClaimed,
+      titles,
+      minerals,
+      oxygen,
+    }
+  })
+
+  persistPlayer()
+  return unclaimed.length
+}
+
+/**
  * Consumes one streak freeze to protect the current streak for the next missed day.
  *
  * @returns `true` if a freeze was available and consumed, `false` otherwise.

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { BALANCE } from '../../data/balance'
-  import { playerSave, useStreakFreeze, purchaseStreakFreeze, setActiveTitle } from '../stores/playerData'
+  import { playerSave, useStreakFreeze, purchaseStreakFreeze, setActiveTitle, claimUnclaimedMilestones } from '../stores/playerData'
   import { audioManager } from '../../services/audioService'
 
   interface Props {
@@ -91,6 +91,10 @@
     const sel = (e.target as HTMLSelectElement).value
     setActiveTitle(sel === '' ? null : sel)
   }
+
+  $effect(() => {
+    claimUnclaimedMilestones()
+  })
 </script>
 
 <section class="streak-panel" aria-label="Streak Panel">

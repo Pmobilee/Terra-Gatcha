@@ -1,7 +1,7 @@
 /**
  * audioService.ts
  *
- * Programmatic audio for Terra Miner using the Web Audio API.
+ * Programmatic audio for Terra Gacha using the Web Audio API.
  * All sounds are synthesized on the fly — no external audio files needed.
  *
  * Usage:
@@ -10,7 +10,7 @@
  *   audioManager.playSound('mine_dirt')
  */
 
-/** Valid sound names for the Terra Miner audio catalog. */
+/** Valid sound names for the Terra Gacha audio catalog. */
 export type SoundName =
   | 'mine_dirt'
   | 'mine_rock'
@@ -439,5 +439,5 @@ class AudioManager {
 // Singleton export
 // ---------------------------------------------------------------------------
 
-/** Singleton AudioManager instance for the Terra Miner game. */
+/** Singleton AudioManager instance for the Terra Gacha game. */
 export const audioManager = new AudioManager()

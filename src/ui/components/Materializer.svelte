@@ -11,6 +11,8 @@
   import type { FloorUpgradeTier } from '../../data/hubLayout'
   import { currentFloorIndex } from '../stores/gameState'
   import { getDefaultHubStack } from '../../data/hubFloors'
+  import { BALANCE } from '../../data/balance'
+  import { getUpgradeDef, canUpgrade } from '../../data/hubUpgrades'
 
   interface Props {
     onBack: () => void
@@ -113,6 +115,14 @@
   const unlockedFloors = $derived(hubStack.floors.filter(f => unlockedIds.includes(f.id)))
   const currentFloorId = $derived(unlockedFloors[$currentFloorIndex]?.id ?? 'starter')
   const currentFloorTier = $derived((floorTiers[currentFloorId] ?? 0) as FloorUpgradeTier)
+  const isMaxTier = $derived(currentFloorTier >= 3)
+  const currentTierInfo = $derived(BALANCE.DOME_TIER_INFO[currentFloorTier] ?? BALANCE.DOME_TIER_INFO[0])
+  const nextTierNum = $derived((currentFloorTier + 1) as FloorUpgradeTier)
+  const nextTierInfo = $derived(currentFloorTier < 3 ? BALANCE.DOME_TIER_INFO[currentFloorTier + 1] : null)
+  const nextUpgradeDef = $derived(getUpgradeDef(currentFloorId, nextTierNum))
+  const nextUpgradeCheck = $derived(
+    $playerSave && !isMaxTier ? canUpgrade(currentFloorId, nextTierNum, $playerSave) : { allowed: false, reason: 'Max Tier Reached' }
+  )
 
   function handleUpgrade(floorId: string, targetTier: FloorUpgradeTier): void {
     upgradeFloor(floorId, targetTier)
@@ -343,16 +353,47 @@
   {#if activeTab === 'dome'}
   <!-- Dome Upgrades Section -->
   <section class="dome-upgrades-section">
-    <h3 class="section-heading">🏗️ Dome Upgrades</h3>
+    <h3 class="section-heading">Dome Upgrades</h3>
     <div class="upgrade-info-row">
       <span class="upgrade-floor-name">{unlockedFloors[$currentFloorIndex]?.name ?? 'Starter Hub'}</span>
-      <span class="upgrade-tier-badge">Tier {currentFloorTier}</span>
+      <span class="upgrade-tier-badge">Tier {currentFloorTier}/3</span>
     </div>
-    <p class="upgrade-desc">Improve dome floors to unlock new rooms and machines.</p>
-    <button class="upgrade-floor-btn" type="button" onclick={() => { audioManager.playSound('button_click'); showUpgradePanel = true }}>
-      Upgrade Current Floor
-      <span class="arrow" aria-hidden="true">→</span>
-    </button>
+    <p class="tier-description">{currentTierInfo.description}</p>
+
+    <!-- Tier progression indicator -->
+    <div class="tier-progress-bar">
+      {#each [0, 1, 2, 3] as t}
+        <div class="tier-pip" class:tier-pip-filled={t <= currentFloorTier} class:tier-pip-next={t === currentFloorTier + 1 && !isMaxTier}></div>
+      {/each}
+    </div>
+
+    {#if !isMaxTier && nextTierInfo && nextUpgradeDef}
+      <div class="next-tier-preview">
+        <span class="next-tier-label">Next: {nextUpgradeDef.label} (Tier {nextTierNum})</span>
+        <span class="next-tier-desc">{nextTierInfo.description}</span>
+        <div class="next-tier-costs">
+          <span class="next-tier-cost-item">💎 {nextUpgradeDef.dustCost} dust</span>
+          {#each nextUpgradeDef.premiumCosts as pc}
+            <span class="next-tier-cost-item">✦ {pc.count}x {pc.materialId}</span>
+          {/each}
+          <span class="next-tier-cost-item">📚 {nextUpgradeDef.minFactsMastered} mastered facts</span>
+        </div>
+      </div>
+      <button
+        class="upgrade-floor-btn"
+        type="button"
+        disabled={!nextUpgradeCheck.allowed}
+        onclick={() => { audioManager.playSound('button_click'); showUpgradePanel = true }}
+      >
+        {nextUpgradeCheck.allowed ? 'Upgrade Current Floor' : nextUpgradeCheck.reason}
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </button>
+    {:else}
+      <div class="max-tier-banner">
+        <span class="max-tier-icon" aria-hidden="true">&#10003;</span>
+        <span class="max-tier-text">Max Tier Reached</span>
+      </div>
+    {/if}
   </section>
   {/if}
 
@@ -836,11 +877,100 @@
     background: color-mix(in srgb, var(--color-warning, #f0a030) 15%, transparent);
   }
 
-  .upgrade-desc {
+  .tier-description {
+    color: var(--color-text-dim, #8888a0);
+    font-size: 0.82rem;
+    margin: 0 0 12px;
+    line-height: 1.4;
+  }
+
+  .tier-progress-bar {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+
+  .tier-pip {
+    flex: 1;
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .tier-pip-filled {
+    background: var(--color-accent, #4ecca3);
+    border-color: var(--color-accent, #4ecca3);
+  }
+
+  .tier-pip-next {
+    border-color: var(--color-accent, #4ecca3);
+    animation: pip-pulse 1.5s ease infinite;
+  }
+
+  @keyframes pip-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .next-tier-preview {
+    background: color-mix(in srgb, var(--color-bg, #0a0e1a) 50%, var(--color-surface, #1e1e3a) 50%);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(78, 204, 163, 0.2);
+  }
+
+  .next-tier-label {
+    display: block;
+    color: var(--color-warning, #f0a030);
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .next-tier-desc {
+    display: block;
     color: var(--color-text-dim, #8888a0);
     font-size: 0.78rem;
-    margin: 0 0 10px;
-    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .next-tier-costs {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .next-tier-cost-item {
+    color: var(--color-text-dim, #8888a0);
+    font-size: 0.78rem;
+  }
+
+  .max-tier-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    background: color-mix(in srgb, var(--color-accent, #4ecca3) 15%, var(--color-surface, #1e1e3a) 85%);
+    border: 1px solid var(--color-accent, #4ecca3);
+    border-radius: 10px;
+    margin-top: 4px;
+  }
+
+  .max-tier-icon {
+    color: var(--color-accent, #4ecca3);
+    font-size: 1.2rem;
+    font-weight: 900;
+  }
+
+  .max-tier-text {
+    color: var(--color-accent, #4ecca3);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
   }
 
   .upgrade-floor-btn {
@@ -860,7 +990,14 @@
     padding: 0 16px;
   }
 
-  .upgrade-floor-btn:active {
+  .upgrade-floor-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--color-text-dim, #8888a0);
+    background: color-mix(in srgb, var(--color-text-dim, #8888a0) 10%, var(--color-surface, #1e1e3a) 90%);
+  }
+
+  .upgrade-floor-btn:active:not(:disabled) {
     transform: translateY(1px);
   }
 

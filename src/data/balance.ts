@@ -454,6 +454,14 @@ export const BALANCE = {
   DIRT_TINT_THRESHOLD_3: 100,
   BARELY_MADE_IT_THRESHOLD: 5,
 
+  // === DOME TIER DESCRIPTIONS ===
+  DOME_TIER_INFO: [
+    { tier: 0, label: 'Basic', description: 'Basic facilities, 3 objects', objectCount: 3 },
+    { tier: 1, label: 'Expanded', description: 'Expanded rooms, 5 objects', objectCount: 5 },
+    { tier: 2, label: 'Full Workshop', description: 'Full workshop, 8 objects', objectCount: 8 },
+    { tier: 3, label: 'Maximum', description: 'Maximum capacity, 12 objects', objectCount: 12 },
+  ] as const,
+
   // === PHASE 55: ECONOMY DEPTH ===
   MIX_MIN_CARDS: 3,
   MIX_FEE_DUST: 100,

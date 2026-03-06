@@ -117,6 +117,9 @@
     return days
   })
 
+  /** Count of non-zero days in the 30-day activity data. */
+  const activityDataPointCount = $derived(last30Days().filter(v => v > 0).length)
+
   // Weekly summary
   const weeklySummary = $derived((): string => {
     if (!save) return ''
@@ -274,9 +277,15 @@
     <!-- Sparkline -->
     <div class="chart-section">
       <h2 class="section-title">30-Day Activity</h2>
-      <div class="chart-center">
-        <SparklineChart dailyActivity={last30Days()} width={320} height={60} />
-      </div>
+      {#if activityDataPointCount < 3}
+        <p class="chart-empty-state">
+          No activity data yet. Keep diving and studying to see your trends here!
+        </p>
+      {:else}
+        <div class="chart-center">
+          <SparklineChart dailyActivity={last30Days()} width={320} height={60} />
+        </div>
+      {/if}
     </div>
 
     <!-- Weekly summary -->
@@ -381,6 +390,18 @@
   .section-title { color: #4ecca3; font-size: 9px; margin: 0 0 12px; }
   .chart-center { display: flex; justify-content: center; }
   .chart-caption { color: #555; font-size: 7px; margin: 8px 0 0; }
+  .chart-empty-state {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 8px;
+    text-align: center;
+    line-height: 1.6;
+    padding: 16px 12px;
+    margin: 0;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .summary-section { text-align: center; }
   .summary-text {
     color: #aaa;

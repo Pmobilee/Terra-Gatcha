@@ -98,18 +98,24 @@
     <!-- Retention predictions -->
     <section class="section">
       <h3 class="section-title">Predicted Retention</h3>
-      <p class="section-desc">
-        Based on your average memory strength (ease factor {insights.avgEaseFactor.toFixed(2)}),
-        here's how well you're likely to remember mastered facts over time:
-      </p>
-      <div class="prediction-grid">
-        {#each insights.retentionPredictions as pred}
-          <div class="pred-card">
-            <span class="pred-pct">{pct(pred.predictedRetention)}</span>
-            <span class="pred-label">in {pred.daysOut} days</span>
-          </div>
-        {/each}
-      </div>
+      {#if insights.masteredCount === 0}
+        <p class="retention-empty-state">
+          Master some facts to see retention predictions. Start by appraising artifacts in the Artifact Lab!
+        </p>
+      {:else}
+        <p class="section-desc">
+          Based on your average memory strength (ease factor {insights.avgEaseFactor.toFixed(2)}),
+          here's how well you're likely to remember mastered facts over time:
+        </p>
+        <div class="prediction-grid">
+          {#each insights.retentionPredictions as pred}
+            <div class="pred-card">
+              <span class="pred-pct">{pct(pred.predictedRetention)}</span>
+              <span class="pred-label">in {pred.daysOut} days</span>
+            </div>
+          {/each}
+        </div>
+      {/if}
     </section>
 
     <!-- SM-2 stats -->
@@ -210,4 +216,11 @@
   }
   .health-value { color: #a8e6b0; }
   .health-value.warn { color: #f2c94c; }
+  .retention-empty-state {
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    padding: 16px 12px;
+    margin: 0;
+    line-height: 1.5;
+  }
 </style>
