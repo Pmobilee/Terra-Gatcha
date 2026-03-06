@@ -173,7 +173,7 @@ export class FactPackService {
       const env = (import.meta as unknown as Record<string, Record<string, string>>).env
       if (env?.VITE_API_BASE_URL) return env.VITE_API_BASE_URL
     }
-    return 'http://localhost:3001'
+    return `${window.location.protocol}//${window.location.hostname}:3001`
   }
 }
 

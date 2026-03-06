@@ -35,7 +35,7 @@ class FeatureFlagService {
    */
   async bootstrap(): Promise<void> {
     try {
-      const apiBase = (import.meta as unknown as Record<string, Record<string, string>>).env?.VITE_API_BASE_URL ?? 'http://localhost:3001'
+      const apiBase = (import.meta as unknown as Record<string, Record<string, string>>).env?.VITE_API_BASE_URL ?? `${window.location.protocol}//${window.location.hostname}:3001`
       const token = localStorage.getItem('terra_auth_token')
       const res = await fetch(`${apiBase}/api/flags`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {},

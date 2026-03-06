@@ -117,7 +117,7 @@ export function getLocalUser(): { id: string; email: string; displayName: string
 }
 
 /** Check if the backend API is reachable (quick health check with timeout). */
-export async function isBackendReachable(baseUrl: string = 'http://localhost:3001/api'): Promise<boolean> {
+export async function isBackendReachable(baseUrl: string = `${window.location.protocol}//${window.location.hostname}:3001/api`): Promise<boolean> {
   try {
     const controller = new AbortController()
     const timeout = setTimeout(() => controller.abort(), 2000)

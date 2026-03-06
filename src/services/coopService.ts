@@ -12,7 +12,7 @@ import type { WSMessage } from './wsClient'
 const BASE = () =>
   (typeof import.meta !== 'undefined' && (import.meta as { env?: { VITE_API_URL?: string } }).env?.VITE_API_URL
     ? ((import.meta as { env?: { VITE_API_URL?: string } }).env!.VITE_API_URL as string)
-    : 'http://localhost:3001/api'
+    : `${window.location.protocol}//${window.location.hostname}:3001/api`
   ).replace(/\/$/, '')
 
 const AUTH = () => localStorage.getItem('terra_auth_token') ?? ''

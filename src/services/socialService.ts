@@ -237,7 +237,7 @@ function _resolveBaseUrl(): string {
     typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_URL
       ? (import.meta.env.VITE_API_URL as string)
       : null
-  return (envUrl ?? 'http://localhost:3001/api').replace(/\/$/, '')
+  return (envUrl ?? `${window.location.protocol}//${window.location.hostname}:3001/api`).replace(/\/$/, '')
 }
 
 /** Reads the stored access token from localStorage (mirrors apiClient internals). */

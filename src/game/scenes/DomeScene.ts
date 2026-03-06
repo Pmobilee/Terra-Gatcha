@@ -117,6 +117,7 @@ export class DomeScene extends Phaser.Scene {
 
   /** Live particle state array — covers all unlocked floors. */
   private particleData: ParticleState[] = []
+  private debugText: Phaser.GameObjects.Text | null = null
 
   // ---- Camera drag scrolling ----
   private dragStartY = 0
@@ -178,6 +179,15 @@ export class DomeScene extends Phaser.Scene {
     this.initAllParticles()
     this.created = true
 
+    // Temporary debug overlay for mobile diagnosis
+    this.debugText = this.add.text(10, 10, '', {
+      fontSize: '14px',
+      fontFamily: 'monospace',
+      color: '#ff0',
+      backgroundColor: '#000a',
+      padding: { x: 6, y: 4 },
+    }).setScrollFactor(0).setDepth(999)
+
     // Defer camera centering to ensure Phaser RESIZE has resolved actual canvas size.
     // Multiple retries handle Safari's lazy layout timing.
     this.time.delayedCall(0, () => this.centerCamera())
@@ -192,6 +202,23 @@ export class DomeScene extends Phaser.Scene {
   /** Animate particles every frame. */
   update(_time: number, delta: number): void {
     this.updateParticles(delta)
+
+    // Update debug overlay
+    if (this.debugText) {
+      const cam = this.cameras.main
+      const unlocked = this.getUnlockedFloors()
+      this.debugText.setText([
+        `cam: ${Math.round(cam.width)}x${Math.round(cam.height)}`,
+        `zoom: ${cam.zoom.toFixed(3)}`,
+        `scroll: ${Math.round(cam.scrollX)},${Math.round(cam.scrollY)}`,
+        `bounds: ${cam.getBounds().width}x${cam.getBounds().height}`,
+        `floors: ${unlocked.length}/${this.floors.length}`,
+        `floorIdx: ${this.floorIndex}`,
+        `canvas: ${this.scale.width}x${this.scale.height}`,
+        `renderer: ${this.game.renderer.type === 1 ? 'Canvas' : 'WebGL'}`,
+        `particles: ${this.particleData.length}`,
+      ].join('\n'))
+    }
   }
 
   // =========================================================

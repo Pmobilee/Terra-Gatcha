@@ -14,7 +14,9 @@ import type { PlayerSave } from '../data/types'
 // CONSTANTS
 // ============================================================
 
-const DEFAULT_BASE_URL = 'http://localhost:3001/api'
+const DEFAULT_BASE_URL = typeof window !== 'undefined'
+  ? `${window.location.protocol}//${window.location.hostname}:3001/api`
+  : 'http://localhost:3001/api'
 const TOKEN_KEY = 'terra_auth_token'
 const REFRESH_TOKEN_KEY = 'terra_refresh_token'
 
