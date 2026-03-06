@@ -1,7 +1,7 @@
 <script lang="ts">
   import { get } from 'svelte/store'
   import { untrack, onDestroy } from 'svelte'
-  import { getGM } from './game/gameManagerRef'
+  import { getGM, gameManagerStore } from './game/gameManagerRef'
   import {
     currentScreen,
     activeQuiz,
@@ -305,12 +305,32 @@
   // Cache getFacts() — avoids full SQL scan on every re-render
   let cachedFacts = $state<Fact[]>([])
 
+  // Subscribe to gameManagerStore so the effect re-runs when GM becomes available
+  let gmReady = $state<boolean>(false)
+  const unsubGM = gameManagerStore.subscribe((gm) => { gmReady = !!gm })
+  onDestroy(unsubGM)
+
+  // Tick counter to retry loading facts after factsDB initializes (loads async in parallel with Phaser)
+  let factsRetryTick = $state(0)
+
   $effect(() => {
-    if (untrack(() => cachedFacts.length) === 0) {
+    // Read gmReady + factsRetryTick to create reactive dependencies
+    const _tick = factsRetryTick
+    if (gmReady && untrack(() => cachedFacts.length) === 0) {
       try {
         const gm = getGM()
-        if (gm) cachedFacts = gm.getFacts()
-      } catch { /* DB not ready yet */ }
+        if (gm) {
+          const facts = gm.getFacts()
+          if (facts.length > 0) {
+            cachedFacts = facts
+          } else {
+            // DB not ready yet — schedule a retry
+            setTimeout(() => { factsRetryTick++ }, 500)
+          }
+        }
+      } catch { /* DB not ready yet — schedule a retry */
+        setTimeout(() => { factsRetryTick++ }, 500)
+      }
     }
   })
 
@@ -361,11 +381,6 @@
     }
   }
 
-  /** All artifacts analyzed — return to base. */
-  function handleAnalyzerDone(): void {
-    currentAnalyzerArtifact = null
-    currentScreen.set('base')
-  }
 
   // Quiz mode tracking
   let quizMode = $state<'gate' | 'oxygen' | 'study' | 'artifact' | 'random' | 'layer' | 'combat' | 'artifact_boost'>('gate')
@@ -652,12 +667,7 @@
   // Dive results actions
   function handleDiveResultsContinue(): void {
     diveResults.set(null)
-    const pending = get(pendingArtifacts)
-    if (pending.length > 0) {
-      startAnalyzerFlow()
-    } else {
-      getGM()?.goToBase()
-    }
+    getGM()?.goToBase()
   }
 
   // Track quiz mode from the activeQuiz source field
@@ -987,9 +997,8 @@
     {#if currentAnalyzerArtifact}
       <ArtifactAnalyzer
         artifact={currentAnalyzerArtifact}
-        remainingCount={$pendingArtifacts.length - 1}
+        remainingCount={$pendingArtifacts.length}
         onNext={handleAnalyzerNext}
-        onDone={handleAnalyzerDone}
       />
     {:else if $activeFact}
       <FactReveal

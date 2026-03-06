@@ -55,6 +55,16 @@
     { category: 'Technology',      angle:  80, trunkT: 0.50, length: 140, side: 'right' },
   ]
 
+  /** Abbreviated labels for categories that are too long to fit */
+  const BRANCH_LABELS: Record<string, string> = {
+    'Natural Sciences': 'Nat. Sciences',
+  }
+
+  /** Get display label for a category (abbreviated if needed) */
+  function branchLabel(category: string): string {
+    return BRANCH_LABELS[category] ?? category
+  }
+
   // ─── Mastery colors (DD-V2-098: greyscale → orange/autumn → green) ────────
   type MasteryLevel = 'new' | 'learning' | 'familiar' | 'known' | 'mastered'
 
@@ -245,7 +255,13 @@
 
       const side = endX > parent.endX ? 'right' : 'left'
       const labelAnchor = side === 'right' ? 'start' : 'end'
-      const labelX = endX + (side === 'right' ? 6 : -6)
+      const SUB_LABEL_MARGIN = 60
+      let labelX = endX + (side === 'right' ? 6 : -6)
+      if (side === 'left') {
+        labelX = Math.max(SUB_LABEL_MARGIN, labelX)
+      } else {
+        labelX = Math.min(VW - SUB_LABEL_MARGIN, labelX)
+      }
       const labelY = endY - 6
 
       const data = factsPerSub.get(sub) ?? { learned: [], total: 0, unlearnedFacts: [] }
@@ -340,8 +356,14 @@
       const cp2X = startX + dx * 0.65
       const cp2Y = startY + dy * 0.6
 
+      const LABEL_MARGIN = 80
       const labelOffsetX = config.side === 'left' ? -10 : 10
-      const labelX = endX + labelOffsetX
+      let labelX = endX + labelOffsetX
+      if (config.side === 'left') {
+        labelX = Math.max(LABEL_MARGIN, labelX)
+      } else {
+        labelX = Math.min(VW - LABEL_MARGIN, labelX)
+      }
       const labelY = endY - 10
       const labelAnchor = config.side === 'left' ? 'end' : 'start'
 
@@ -663,7 +685,7 @@
         fill={branch.hasLeaves ? '#c8c8d8' : '#555570'}
         letter-spacing="0.5"
       >
-        {branch.category}
+        {branchLabel(branch.category)}
       </text>
 
       <!-- Completion percentage / count -->
@@ -749,7 +771,7 @@
         letter-spacing="0.5"
         opacity={isOtherBranch ? 0.2 : 1}
       >
-        {branch.category}
+        {branchLabel(branch.category)}
       </text>
       {#if branch.leafCount > 0}
         <text

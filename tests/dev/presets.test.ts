@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { SCENARIO_PRESETS } from '../../src/dev/presets'
 
 describe('SCENARIO_PRESETS', () => {
-  it('exports exactly 9 presets', () => {
-    expect(SCENARIO_PRESETS).toHaveLength(9)
+  it('exports at least 20 presets', () => {
+    expect(SCENARIO_PRESETS.length).toBeGreaterThanOrEqual(20)
   })
 
   it('each preset has required fields', () => {

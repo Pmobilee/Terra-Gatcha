@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phase 59 (Artifact Analyzer) COMPLETE. ALL V4 PHASES DONE (51-59). Mystery loot system with study score (0.0-1.0), weighted loot tables per rarity tier, 5-stage cracking animation, PendingArtifact type rework with migration, GAIA study nudges. 0 typecheck errors, build clean. 592 TypeScript/Svelte files.
+Phase 60 (Critical Data Pipeline) COMPLETE — fixed Knowledge Tree category display (cachedFacts race condition), GAIA radar chart (wrong category names → canonical 7), mastery counters (aligned to getMasteryLevel, fixed preset intervals), My Learning tab (populated factCategoryMap from factsDB), branch label clipping (clamping + abbreviations). Next: Phase 61 (Dome Floor Navigation). ALL V4 PHASES DONE (51-59). 593 TypeScript/Svelte files, 0 typecheck errors.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -164,28 +164,26 @@ Each phase below links to its detailed implementation document in `docs/roadmap/
 
 ---
 
-## EMERGENCY — Phase 51: Critical UX & Gameplay Fixes
+## V5 Roadmap — Phases 60-68 (Playtest Fix Phases)
 
-**Status**: NOT STARTED — Must be done before any sharing/testing
+Full findings document: [`PLAYTEST-FINDINGS-V5.md`](PLAYTEST-FINDINGS-V5.md)
 
-- [ ] **Phase 51: Emergency UX & Gameplay Fixes** — 13 critical bugs from playtesting: dive-deeper flow, mine restart responsiveness, consumable/relic/pickaxe gating, artifact→facts pipeline, loot summary screen, dome completeness, settings/DEV button overlap, floor dots, context sidebar, SM-2 mine contribution, quiz repeat prevention → [`phases/PHASE-51-EMERGENCY-UX-FIXES.md`](phases/PHASE-51-EMERGENCY-UX-FIXES.md)
+### Critical Fixes (Phases 60-61)
+- [x] **Phase 60: Critical Data Pipeline Fixes** — Fact→category mapping broken across Knowledge Tree, GAIA radar, mastery counter, My Learning tab (C2, C3, H5, M9) → [`completed/PHASE-60-DATA-PIPELINE-FIXES.md`](completed/PHASE-60-DATA-PIPELINE-FIXES.md)
+- [ ] **Phase 61: Dome Floor Navigation Fix** — All floor buttons always disabled regardless of unlocked rooms (C1) → [`phases/PHASE-61-DOME-FLOOR-NAV.md`](phases/PHASE-61-DOME-FLOOR-NAV.md)
 
-### Phase 51 Sub-steps
-| Sub-step | Issue | Status |
-|----------|-------|--------|
-| 51.1 | "Continue" after dive goes to dome; need "Dive Deeper" CTA | ☐ |
-| 51.2 | Re-entering mine after dome visit: unresponsive empty scene | ☐ |
-| 51.3 | Consumables shown without ownership (all types freely available) | ☐ |
-| 51.4 | Relics shown without finding them (RELIC_CATALOGUE fallback) | ☐ |
-| 51.5 | Pickaxe UI shows all tiers; should be owned-only dropdown | ☐ |
-| 51.6 | Artifact mined but never appears in facts/knowledge base | ☐ |
-| 51.7 | Can select same consumable ×N without owning N copies | ☐ |
-| 51.8 | No loot summary screen shown on mine exit | ☐ |
-| 51.9 | Dome missing study/artifact/upgrade rooms; GAIA not clickable | ☐ |
-| 51.10 | Settings button hidden behind DEV button | ☐ |
-| 51.11 | Floor indicator dots stuck as full-screen overlay | ☐ |
-| 51.12 | Sidebar shows review stats during mine (should show mine stats) | ☐ |
-| 51.13 | Wrong quiz answer: next question can be the same fact | ☐ |
+### High Priority (Phases 62-64)
+- [ ] **Phase 62: Dome Visual Polish** — Green placeholder tiles, label truncation, emoji icons replacing pixel art (H1, H2, M1, M2) → [`phases/PHASE-62-DOME-VISUAL-POLISH.md`](phases/PHASE-62-DOME-VISUAL-POLISH.md)
+- [ ] **Phase 63: Dive Prep & Results UX** — Pickaxe auto-select, free dust exploit, O2 display issues, dive results polish (C4, C5, H6, M4, M5, L1) → [`phases/PHASE-63-DIVE-PREP-RESULTS.md`](phases/PHASE-63-DIVE-PREP-RESULTS.md)
+- [ ] **Phase 64: Study Session & Quiz Polish** — Card layout overlap, 2-button vs 3-button grading inconsistency (H4, H7) → [`phases/PHASE-64-STUDY-QUIZ-POLISH.md`](phases/PHASE-64-STUDY-QUIZ-POLISH.md)
+
+### Medium Priority (Phases 65-66)
+- [ ] **Phase 65: Mine Scene Improvements** — Missing sprite frames, block visibility issues, DEV button overlap (H3, M11, H8) → [`phases/PHASE-65-MINE-SCENE.md`](phases/PHASE-65-MINE-SCENE.md)
+- [ ] **Phase 66: Settings & Reports Polish** — Dome upgrades tab, streak claiming, Coming Soon labels, report screen polish (M6, M7, M10, L4, L3, L5) → [`phases/PHASE-66-SETTINGS-REPORTS.md`](phases/PHASE-66-SETTINGS-REPORTS.md)
+
+### Low Priority (Phases 67-68)
+- [ ] **Phase 67: Onboarding Polish** — Backstory placeholder text, scroll indicators (M3, L2) → [`phases/PHASE-67-ONBOARDING-POLISH.md`](phases/PHASE-67-ONBOARDING-POLISH.md)
+- [ ] **Phase 68: Devpreset Expansion** — 5 new presets: has_pending_artifacts, all_floors_unlocked, streak_just_claimed, heavy_review_overdue, first_dive_returning → [`phases/PHASE-68-DEVPRESET-EXPANSION.md`](phases/PHASE-68-DEVPRESET-EXPANSION.md)
 
 ---
 

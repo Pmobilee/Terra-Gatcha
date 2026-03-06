@@ -166,13 +166,26 @@ const PRESET_FACT_IDS = [
   'nsci-001', 'nsci-002', 'nsci-003', 'nsci-004', 'nsci-005',
 ]
 
-function makeLearnedFacts(count: number): { learnedFacts: string[]; reviewStates: ReturnType<typeof createReviewState>[] } {
+function makeLearnedFacts(count: number, mature = false): { learnedFacts: string[]; reviewStates: ReturnType<typeof createReviewState>[] } {
   const learnedFacts: string[] = []
   const reviewStates = []
+  const now = Date.now()
   for (let i = 0; i < count && i < PRESET_FACT_IDS.length; i++) {
     const id = PRESET_FACT_IDS[i]
     learnedFacts.push(id)
-    reviewStates.push(createReviewState(id))
+    if (mature) {
+      // Create a realistic mature review state (interval > 60 = mastered)
+      reviewStates.push({
+        ...createReviewState(id),
+        interval: 90 + Math.floor(Math.random() * 60),
+        repetitions: 8 + Math.floor(Math.random() * 4),
+        easeFactor: 2.5 + Math.random() * 0.3,
+        lastReviewAt: now - 7 * 24 * 60 * 60 * 1000,
+        nextReviewAt: now + 30 * 24 * 60 * 60 * 1000,
+      })
+    } else {
+      reviewStates.push(createReviewState(id))
+    }
   }
   return { learnedFacts, reviewStates }
 }
@@ -282,6 +295,10 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
     description: '25 facts, 2400 dust, 80 shards, 15 crystals, 3 rooms, 240 KP.',
     buildSave(now) {
       const { learnedFacts, reviewStates } = makeLearnedFacts(25)
+      // Make first 5 review states mature for realistic mid-game data
+      for (let i = 0; i < 5 && i < reviewStates.length; i++) {
+        reviewStates[i] = { ...reviewStates[i], interval: 75, repetitions: 7, easeFactor: 2.6 }
+      }
       return {
         ...BASE_SAVE(now),
         learnedFacts,
@@ -314,7 +331,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
     label: 'Endgame (All Rooms)',
     description: '80 facts, 18 000 dust, all rooms unlocked, 2800 KP, titles, premium materials.',
     buildSave(now) {
-      const { learnedFacts, reviewStates } = makeLearnedFacts(80)
+      const { learnedFacts, reviewStates } = makeLearnedFacts(80, true)
       const allRoomIds = BALANCE.DOME_ROOMS.map(r => r.id)
       return {
         ...BASE_SAVE(now),

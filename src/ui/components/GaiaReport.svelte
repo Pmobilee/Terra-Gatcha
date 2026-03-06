@@ -4,6 +4,9 @@
   import SparklineChart from './SparklineChart.svelte'
   import LearningInsightsTab from './LearningInsightsTab.svelte'
   import { getEffectiveArchetype } from '../../services/archetypeDetector'
+  import { getMasteryLevel } from '../../services/sm2'
+  import { CATEGORIES } from '../../data/types'
+  import { factsDB } from '../../services/factsDB'
 
   interface Props {
     onBack: () => void
@@ -14,8 +17,18 @@
   /** Active tab: 'report' (default) or 'learning'. */
   let activeTab = $state<'report' | 'learning'>('report')
 
-  /** Placeholder category map — in production populated from the facts DB. */
-  const factCategoryMap = new Map<string, string>()
+  /** Category map populated from factsDB for each learned fact. */
+  const factCategoryMap = $derived.by((): Map<string, string> => {
+    const map = new Map<string, string>()
+    if (!factsDB.isReady()) return map
+    const s = $playerSave
+    if (!s) return map
+    for (const rs of s.reviewStates) {
+      const fact = factsDB.getById(rs.factId)
+      if (fact) map.set(fact.id, fact.category[0])
+    }
+    return map
+  })
 
   const save = $derived($playerSave)
 
@@ -40,7 +53,7 @@
   // Summary stats
   const totalLearned = $derived(save?.learnedFacts.length ?? 0)
   const totalMastered = $derived(
-    save?.reviewStates.filter(rs => rs.repetitions >= 6).length ?? 0
+    save?.reviewStates.filter(rs => getMasteryLevel(rs) === 'mastered').length ?? 0
   )
   const accuracyRate = $derived((): number => {
     if (!save) return 0
@@ -56,17 +69,32 @@
     return new Date(save.createdAt).toLocaleDateString()
   })
 
-  // Category breakdown for radar chart
-  const categories = ['Biology', 'History', 'Geology', 'Language', 'Physics', 'Culture']
-
-  // Radar values: ratio of mastered facts across categories (approximated)
+  // Category breakdown for radar chart — uses canonical CATEGORIES from types.ts
   const radarValues = $derived((): number[] => {
-    if (!save || totalMastered === 0) return categories.map(() => 0)
-    // Distribute mastered facts roughly equally for now
-    // In future this would query the facts DB by category
-    const perCat = totalMastered / categories.length
-    const maxPerCat = Math.max(1, Math.ceil(totalLearned / categories.length))
-    return categories.map(() => Math.min(1, perCat / maxPerCat))
+    if (!save || !factsDB.isReady()) return CATEGORIES.map(() => 0)
+    // Count mastered facts per category
+    const masteredPerCat = new Map<string, number>()
+    const learnedPerCat = new Map<string, number>()
+    for (const cat of CATEGORIES) {
+      masteredPerCat.set(cat, 0)
+      learnedPerCat.set(cat, 0)
+    }
+    for (const rs of save.reviewStates) {
+      const fact = factsDB.getById(rs.factId)
+      if (!fact) continue
+      const cat = fact.category[0]
+      if (!learnedPerCat.has(cat)) continue
+      learnedPerCat.set(cat, (learnedPerCat.get(cat) ?? 0) + 1)
+      if (getMasteryLevel(rs) === 'mastered') {
+        masteredPerCat.set(cat, (masteredPerCat.get(cat) ?? 0) + 1)
+      }
+    }
+    // Return ratio of mastered / learned per category (0 if no learned facts in category)
+    return [...CATEGORIES].map(cat => {
+      const learned = learnedPerCat.get(cat) ?? 0
+      if (learned === 0) return 0
+      return (masteredPerCat.get(cat) ?? 0) / learned
+    })
   })
 
   // 30-day activity sparkline — uses lastReviewAt field from ReviewState
@@ -97,7 +125,7 @@
       return rs.repetitions >= 1 && rs.lastReviewAt > weekAgo
     }).length
     const thisWeekMastered = save.reviewStates.filter(rs => {
-      return rs.repetitions >= 6 && rs.lastReviewAt > weekAgo
+      return getMasteryLevel(rs) === 'mastered' && rs.lastReviewAt > weekAgo
     }).length
     const depthMsg = save.stats.deepestLayerReached >= 10
       ? `You've reached the mid-depths — the rarest minerals await below.`
@@ -238,7 +266,7 @@
     <div class="chart-section">
       <h2 class="section-title">Category Mastery</h2>
       <div class="chart-center">
-        <RadarChart labels={categories} values={radarValues()} size={260} />
+        <RadarChart labels={[...CATEGORIES]} values={radarValues()} size={260} />
       </div>
       <p class="chart-caption">Relative mastery by category</p>
     </div>

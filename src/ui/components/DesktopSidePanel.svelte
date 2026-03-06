@@ -3,6 +3,7 @@
   import { authStore } from '../stores/authStore'
   import { currentScreen, currentLayer, tickCount } from '../stores/gameState'
   import { derived } from 'svelte/store'
+  import { getMasteryLevel } from '../../services/sm2'
 
   /** Whether the player is currently mining. */
   const isMining = $derived($currentScreen === 'mining')
@@ -27,7 +28,7 @@
   const totalMastered = derived(playerSave, (save) => {
     if (!save) return 0
     return (save.reviewStates ?? []).filter(
-      (rs) => rs && rs.interval !== undefined && rs.interval >= 21
+      (rs) => rs && getMasteryLevel(rs) === 'mastered'
     ).length
   })
 </script>
