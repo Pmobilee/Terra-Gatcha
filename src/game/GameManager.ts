@@ -196,7 +196,7 @@ export class GameManager {
     this.quizManager.encounterManagerRef = encounterManager
 
     const config: Phaser.Types.Core.GameConfig = {
-      type: Phaser.WEBGL,   // Force WebGL (DD-V2-190)
+      type: Phaser.AUTO,    // AUTO: prefer WebGL, fall back to Canvas (mobile compat)
       parent: 'game-container',
       width: window.innerWidth,
       height: window.innerHeight,
