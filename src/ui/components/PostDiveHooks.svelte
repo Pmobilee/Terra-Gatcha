@@ -35,7 +35,7 @@
 
     {#if nearMasteryCount > 0}
       <div class="hook-item">
-        <span class="hook-icon">[~]</span>
+        <span class="hook-icon mastery">✦</span>
         <span class="hook-text">
           {nearMasteryCount} fact{nearMasteryCount !== 1 ? 's' : ''} close to mastery — a few more reviews and they're permanent
         </span>
@@ -44,16 +44,16 @@
 
     {#if roomProgress}
       <div class="hook-item">
-        <span class="hook-icon">[+]</span>
+        <span class="hook-icon progress">▲</span>
         <span class="hook-text">
-          {roomProgress.progress}% to next room unlock ({roomProgress.current}/{roomProgress.target} dives)
+          {roomProgress.progress}% progress toward next room — {roomProgress.target - roomProgress.current} dive{(roomProgress.target - roomProgress.current) !== 1 ? 's' : ''} to go
         </span>
       </div>
     {/if}
 
     {#if deepestLayer > 0 && deepestLayer < 20}
       <div class="hook-item">
-        <span class="hook-icon">[v]</span>
+        <span class="hook-icon depth">▼</span>
         <span class="hook-text">
           Deepest reach: Layer {deepestLayer} — deeper layers hold rarer artifacts
         </span>
@@ -98,6 +98,10 @@
     font-family: 'Courier New', monospace;
     font-weight: 700;
   }
+
+  .hook-icon.mastery { color: #f59e0b; }
+  .hook-icon.progress { color: #4ade80; }
+  .hook-icon.depth { color: #60a5fa; }
 
   .hook-text {
     color: var(--color-text, #fff);

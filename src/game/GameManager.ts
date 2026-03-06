@@ -825,8 +825,10 @@ export class GameManager {
       persistPlayer()
     }
 
-    // Record dive stats
-    recordDiveComplete(0, results.blocksMinedThisRun)
+    // Only count dive if player actually mined something — prevents free-dive exploit
+    if (results.blocksMinedThisRun > 0) {
+      recordDiveComplete(this.maxDepthThisRun, results.blocksMinedThisRun)
+    }
 
     // Phase 47: Check achievements after dive completion
     import('../services/achievementService').then(m => m.achievementService.onDiveComplete()).catch(() => {})

@@ -16,7 +16,7 @@ Terra Gacha is a mobile-first 2D pixel-art mining roguelite where each dive fuel
 
 ## Current State
 
-Phase 61 (Dome Floor Navigation) COMPLETE — fixed dual ID namespace disconnect between legacy unlockedRooms and hubState.unlockedFloorIds. Added room-to-floor mapping, merged HubView derivation, updated all 16 presets with hubState, added save migration, synced auto-unlock logic. All 10 floor pips now correctly enabled/disabled per unlock state. Next: Phase 63 (Dive Prep & Results UX). ALL V4 PHASES DONE (51-59). 593 TypeScript/Svelte files, 0 typecheck errors.
+Phase 63 (Dive Prep & Results UX) COMPLETE — 6 fixes: auto-select pickaxe when single option, free-dive exploit guard (skip recordDiveComplete when 0 blocks), "No Oxygen Tanks!" warning for 0 tanks, PostDiveHooks icons (Unicode ✦▲▼), progress countdown text, tank button labels. Next: Phase 64 (Study Session & Quiz Polish). ALL V4 PHASES DONE (51-59). 593 TypeScript/Svelte files, 0 typecheck errors.
 
 V4 Roadmap (Phases 51–58) planned 2026-03-06: 8 phases targeting loot loop fidelity (sacrifice agency, decision screen, backpack stacking), learning depth (morning/evening rituals, layer challenges, rarity quizzes), knowledge tree vitality (wilting, sparks, branch bonuses), mine atmosphere (ambient stories, quote stones, scanner pulse), economy depth (mixing, compression tax, daily deals), social foundation (fact of day, guilds, seasons), visual polish (dirt tint, barely-made-it, GAIA expressions), and content quality (1,000 facts, distractor expansion, admin dashboard).
 
@@ -173,7 +173,7 @@ Full findings document: [`PLAYTEST-FINDINGS-V5.md`](PLAYTEST-FINDINGS-V5.md)
 - [x] **Phase 61: Dome Floor Navigation Fix** — All floor buttons always disabled regardless of unlocked rooms (C1) → [`completed/PHASE-61-DOME-FLOOR-NAV.md`](completed/PHASE-61-DOME-FLOOR-NAV.md)
 
 ### High Priority (Phases 63-64)
-- [ ] **Phase 63: Dive Prep & Results UX** — Pickaxe auto-select, free dust exploit, O2 display issues, dive results polish (C4, C5, H6, M4, M5, L1) → [`phases/PHASE-63-DIVE-PREP-RESULTS.md`](phases/PHASE-63-DIVE-PREP-RESULTS.md)
+- [x] **Phase 63: Dive Prep & Results UX** — Pickaxe auto-select, free dust exploit, O2 display issues, dive results polish (C4, C5, H6, M4, M5, L1) → [`completed/PHASE-63-DIVE-PREP-RESULTS.md`](completed/PHASE-63-DIVE-PREP-RESULTS.md)
 - [ ] **Phase 64: Study Session & Quiz Polish** — Card layout overlap, 2-button vs 3-button grading inconsistency (H4, H7) → [`phases/PHASE-64-STUDY-QUIZ-POLISH.md`](phases/PHASE-64-STUDY-QUIZ-POLISH.md)
 
 ### Medium Priority (Phase 66)

@@ -111,6 +111,13 @@
     )
   )
 
+  // Auto-select pickaxe if only one available
+  $effect(() => {
+    if (ownedPickaxes.length === 1 && $selectedLoadout.pickaxeId === null) {
+      selectPickaxe(ownedPickaxes[0].id)
+    }
+  })
+
   let pickaxeDropdownOpen = $state(false)
 
   const currentPickaxe = $derived(
@@ -250,14 +257,20 @@
             disabled={!isEnabled}
             aria-label={`Allocate ${tankCount} tank${tankCount > 1 ? 's' : ''}`}
             aria-pressed={tankCount === selectedTanks}
-          ></button>
+          >{tankCount}</button>
         {/each}
       </div>
 
       <button class="stepper" type="button" onclick={increaseTanks} disabled={!canIncrease}>+</button>
     </div>
 
-    <p class="oxygen-estimate">Estimated Oxygen: {estimatedOxygen} O2</p>
+    <p class="oxygen-estimate">
+      {#if !hasTanks}
+        <span class="no-tanks-warning">No Oxygen Tanks!</span>
+      {:else}
+        Estimated Oxygen: {estimatedOxygen} O₂
+      {/if}
+    </p>
     <p class={`dive-estimate ${diveTone}`}>{diveLabel}</p>
 
     <!-- Phase 49.6: Mine preview thumbnail -->
@@ -474,16 +487,32 @@
     border-radius: 999px;
     background: color-mix(in srgb, #5dade2 80%, black 20%);
     transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text-dim, #aaa);
+    font-family: 'Courier New', monospace;
   }
 
   .tank-icon.selected {
     box-shadow: 0 0 0 2px color-mix(in srgb, #5dade2 30%, white 70%), 0 0 14px #5dade2;
     transform: translateY(-1px);
+    color: var(--color-text, #fff);
   }
 
   .oxygen-estimate {
     color: var(--color-text);
     font-size: 1.05rem;
+  }
+
+  .no-tanks-warning {
+    color: var(--color-accent, #ff6b6b);
+    font-weight: 700;
+    animation: pulse-warn 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-warn {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
   }
 
   .dive-estimate {
