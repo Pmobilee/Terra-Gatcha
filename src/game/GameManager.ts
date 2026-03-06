@@ -736,7 +736,7 @@ export class GameManager {
   }
 
   /** End the current dive and process results */
-  endDive(forced: boolean = false): void {
+  endDive(forced: boolean = false, voluntary: boolean = false): void {
     // Clear mid-dive auto-save on dive end (DD-V2-053)
     SaveManager.clear()
 
@@ -902,7 +902,7 @@ export class GameManager {
       streakBonus: streakBonus > 0,
       relicsCollected: results.collectedRelics ?? [],
       layerCompleted: this.currentLayer,
-      canDiveDeeper: !forced && this.currentLayer < BALANCE.MAX_LAYERS - 1,
+      canDiveDeeper: !forced && !voluntary && this.currentLayer < BALANCE.MAX_LAYERS - 1,
       artifactNames: artifactItems.map(a => factsDB.getById(a.factId)?.statement ?? a.factId),
       relicNames: (results.collectedRelics ?? []).map(r => r.name),
       factsLearnedCount: this.newFactsThisDive,

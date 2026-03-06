@@ -557,7 +557,7 @@
 
   // Mining HUD actions
   function handleSurface(): void {
-    getGM()?.endDive(false)
+    getGM()?.endDive(false, true)
   }
 
   function handleOpenBackpack(): void {
