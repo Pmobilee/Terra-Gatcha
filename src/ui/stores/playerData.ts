@@ -26,9 +26,9 @@ export const ROOM_TO_FLOOR_MAP: Record<string, string> = {
   command: 'starter',
   lab: 'starter',      // lab actions live on starter floor
   workshop: 'workshop',
-  museum: 'museum',
+  museum: 'collection',
   market: 'market',
-  archive: 'archive',
+  archive: 'research',
 }
 
 /**

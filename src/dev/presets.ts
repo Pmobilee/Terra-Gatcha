@@ -8,7 +8,7 @@ import { SAVE_VERSION } from '../services/saveService'
 import { createDefaultInterestConfig } from '../data/interestConfig'
 
 /** All 10 canonical floor IDs from hubFloors.ts */
-const ALL_FLOOR_IDS = ['starter', 'farm', 'workshop', 'zoo', 'museum', 'market', 'research', 'archive', 'observatory', 'gallery'] as const
+const ALL_FLOOR_IDS = ['starter', 'study', 'farm', 'workshop', 'zoo', 'collection', 'market', 'research', 'observatory', 'gallery'] as const
 
 // ============================================================
 // SCENARIO PRESET TYPES
@@ -310,7 +310,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 2400, shard: 80, crystal: 15, geode: 0, essence: 0 },
         knowledgePoints: 240,
         unlockedRooms: ['command', 'lab', 'workshop', 'museum'],
-        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop', 'museum'], floorTiers: { starter: 1, workshop: 0, museum: 0 } },
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'workshop', 'collection'], floorTiers: { starter: 1, study: 0, workshop: 0, collection: 0 } },
         stats: {
           totalBlocksMined: 1800,
           totalDivesCompleted: 18,
@@ -809,7 +809,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 5000, shard: 150, crystal: 30, geode: 5, essence: 0 },
         knowledgePoints: 800,
         unlockedRooms: ['command', 'lab', 'workshop', 'museum', 'farm', 'zoo'],
-        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop', 'museum', 'farm', 'zoo'], floorTiers: { starter: 1, workshop: 1, museum: 0, farm: 1, zoo: 0 } },
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'farm', 'workshop', 'zoo', 'collection'], floorTiers: { starter: 1, study: 0, farm: 1, workshop: 1, zoo: 0, collection: 0 } },
         fossils: {
           trilobite: {
             speciesId: 'trilobite',
@@ -957,7 +957,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         reviewStates,
         minerals: { dust: 3000, shard: 80, crystal: 15, geode: 0, essence: 0 },
         unlockedRooms: ['command', 'lab', 'workshop', 'museum'],
-        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop', 'museum'], floorTiers: { starter: 1, workshop: 0, museum: 0 } },
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'workshop', 'collection'], floorTiers: { starter: 1, study: 0, workshop: 0, collection: 0 } },
         tutorialComplete: true,
         diveCount: 25,
         selectedInterests: ['Generalist'],
@@ -1173,7 +1173,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
         minerals: { dust: 5000, shard: 120, crystal: 20, geode: 3, essence: 0 },
         knowledgePoints: 1500,
         unlockedRooms: ['command', 'lab', 'workshop', 'museum', 'market'],
-        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'workshop', 'museum', 'market'], floorTiers: { starter: 1, workshop: 0, museum: 0, market: 0 } },
+        hubState: { ...defaultHubSaveState(), unlockedFloorIds: ['starter', 'study', 'farm', 'workshop', 'collection', 'market'], floorTiers: { starter: 1, study: 0, farm: 0, workshop: 0, collection: 0, market: 0 } },
         tutorialComplete: true,
         diveCount: 45,
         stats: {

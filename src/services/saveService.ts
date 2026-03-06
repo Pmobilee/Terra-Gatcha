@@ -238,7 +238,7 @@ export function load(): PlayerSave | null {
       if (rooms && rooms.length > 1 && currentFloors.length <= 1) {
         const roomToFloor: Record<string, string> = {
           command: 'starter', lab: 'starter', workshop: 'workshop',
-          museum: 'museum', market: 'market', archive: 'archive',
+          museum: 'collection', market: 'market', archive: 'research',
         }
         const migrated = new Set<string>(currentFloors)
         for (const roomId of rooms) {
@@ -246,14 +246,22 @@ export function load(): PlayerSave | null {
           if (floorId) migrated.add(floorId)
         }
         hs['unlockedFloorIds'] = [...migrated]
-        // Initialize floor tiers for newly migrated floors
-        if (!hs['floorTiers'] || typeof hs['floorTiers'] !== 'object') {
-          hs['floorTiers'] = {}
-        }
-        const tiers = hs['floorTiers'] as Record<string, number>
-        for (const fId of hs['unlockedFloorIds'] as string[]) {
-          if (!(fId in tiers)) tiers[fId] = 0
-        }
+      }
+      // Migrate renamed floor IDs (dome overhaul)
+      const floorIdRenames: Record<string, string> = { museum: 'collection', archive: 'research' }
+      const currentFloorIds = hs['unlockedFloorIds'] as string[]
+      hs['unlockedFloorIds'] = currentFloorIds.map((id: string) => floorIdRenames[id] ?? id)
+      // Migrate floorTiers keys
+      if (!hs['floorTiers'] || typeof hs['floorTiers'] !== 'object') {
+        hs['floorTiers'] = {}
+      }
+      const tiers = hs['floorTiers'] as Record<string, number>
+      for (const [oldId, newId] of Object.entries(floorIdRenames)) {
+        if (oldId in tiers) { tiers[newId] = tiers[oldId]; delete tiers[oldId] }
+      }
+      // Initialize floor tiers for newly migrated floors
+      for (const fId of hs['unlockedFloorIds'] as string[]) {
+        if (!(fId in tiers)) tiers[fId] = 0
       }
     }
     // Backward compatibility: Phase 12 — interest & personalization fields

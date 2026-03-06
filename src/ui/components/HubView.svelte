@@ -57,7 +57,7 @@
     for (const roomId of legacyRooms) {
       const mapped: Record<string, string> = {
         command: 'starter', lab: 'starter', workshop: 'workshop',
-        museum: 'museum', market: 'market', archive: 'archive',
+        museum: 'collection', market: 'market', archive: 'research',
       }
       if (mapped[roomId]) merged.add(mapped[roomId])
     }
@@ -89,19 +89,24 @@
 
   // Keep DomeScene in sync when player save or floor index changes
   $effect(() => {
+    const ids = unlockedIds
+    const tiers = floorTiers
+    const mastered = masteredCount
+    const omni = omniscientStatus
     const gm = getGM()
     const dome = gm?.getDomeScene()
     if (dome) {
-      dome.setHubState(unlockedIds, floorTiers, masteredCount)
-      dome.setOmniscient(omniscientStatus)
+      dome.setHubState(ids, tiers, mastered)
+      dome.setOmniscient(omni)
     }
   })
 
   $effect(() => {
+    const idx = floorIndex
     const gm = getGM()
     const dome = gm?.getDomeScene()
     if (dome) {
-      dome.goToFloor(floorIndex)
+      dome.goToFloor(idx)
     }
   })
 

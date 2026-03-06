@@ -141,9 +141,9 @@ export function fillRect<T>(
 /** Returns default HubSaveState for new players. */
 export function defaultHubSaveState(): HubSaveState {
   return {
-    unlockedFloorIds: ['starter'],
+    unlockedFloorIds: ['starter', 'study', 'farm', 'workshop', 'zoo', 'collection', 'market', 'research', 'observatory', 'gallery'],
     activeWallpapers: {},
-    floorTiers: { starter: 0 },
+    floorTiers: { starter: 0, study: 0, farm: 0, workshop: 0, zoo: 0, collection: 0, market: 0, research: 0, observatory: 0, gallery: 0 },
     lastBriefingDate: null,
   }
 }
