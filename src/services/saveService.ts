@@ -379,6 +379,34 @@ export function load(): PlayerSave | null {
     if (typeof parsedAny['hasSeenStudyNudge'] !== 'boolean') {
       parsedAny['hasSeenStudyNudge'] = false
     }
+    // Anki-faithful SM-2 migration — backfill new ReviewState fields
+    if (Array.isArray(parsedAny['reviewStates'])) {
+      for (const rs of parsedAny['reviewStates'] as Record<string, unknown>[]) {
+        if (typeof rs['cardState'] !== 'string') {
+          // Infer card state from existing data
+          if ((rs['interval'] as number) === 0 && (rs['repetitions'] as number) === 0) {
+            rs['cardState'] = 'new'
+          } else if ((rs['interval'] as number) <= 1 && (rs['repetitions'] as number) <= 2) {
+            rs['cardState'] = 'learning'
+          } else {
+            rs['cardState'] = 'review'
+          }
+        }
+        if (typeof rs['learningStep'] !== 'number') {
+          rs['learningStep'] = 0
+        }
+        if (typeof rs['lapseCount'] !== 'number') {
+          rs['lapseCount'] = 0
+        }
+        if (typeof rs['isLeech'] !== 'boolean') {
+          rs['isLeech'] = false
+        }
+      }
+    }
+    if (typeof parsedAny['hasCompletedInitialStudy'] !== 'boolean') {
+      // Existing players have already studied, so default to true
+      parsedAny['hasCompletedInitialStudy'] = true
+    }
     return parsed as PlayerSave
   } catch {
     return null
@@ -436,6 +464,7 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     engagementData: { ...DEFAULT_ENGAGEMENT_DATA },
     // Phase 14: Onboarding & Tutorial
     tutorialComplete: false,
+    hasCompletedInitialStudy: false,
     selectedInterests: [],
     interestWeights: {},
     diveCount: 0,

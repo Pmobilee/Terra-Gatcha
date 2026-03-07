@@ -101,6 +101,7 @@ export default defineConfig({
     hmr: {
       host: '100.74.153.81',
       port: 5173,
+      overlay: false,
     },
   },
   build: {

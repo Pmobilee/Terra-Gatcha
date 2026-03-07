@@ -20,6 +20,16 @@
   let reward = $state<ArtifactReward | null>(null)
   let showFactChoice = $state(false)
 
+  // Reset internal state when artifact prop changes (new artifact to analyze)
+  $effect(() => {
+    // Read artifact to create dependency
+    const _id = artifact.factId
+    // Reset to stage 1 for the new artifact
+    stage = 1
+    reward = null
+    showFactChoice = false
+  })
+
   const RARITY_COLORS: Record<Rarity, string> = {
     common: '#b0b0b0',
     uncommon: '#4ade80',

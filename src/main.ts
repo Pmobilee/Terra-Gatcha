@@ -6,9 +6,6 @@ import { mount } from 'svelte'
 import { initPlayer, playerSave } from './ui/stores/playerData'
 import { currentScreen, pendingArtifacts } from './ui/stores/gameState'
 import { get } from 'svelte/store'
-import { BALANCE } from './data/balance'
-import { analyticsService } from './services/analyticsService'
-import { GameManager } from './game/GameManager'
 import { factsDB } from './services/factsDB'
 import { gameManagerStore, getGM } from './game/gameManagerRef'
 import { getSyncVersion, setSyncVersion } from './services/deltaSync'
@@ -104,6 +101,7 @@ if (!isWebGLSupported()) {
 const app = mount(App, {
   target: document.getElementById('app')!,
 })
+document.getElementById('splash')?.remove()
 
 // Initialize player save data
 const save = initPlayer('teen')
@@ -120,13 +118,6 @@ pendingArtifacts.set(save.pendingArtifacts ?? [])
   }
 }
 
-// Ensure oxygen tanks are available (replenish if 0)
-playerSave.update(s => {
-  if (!s) return s
-  const oxygen = s.oxygen <= 0 ? BALANCE.STARTING_OXYGEN_TANKS : s.oxygen
-  return { ...s, oxygen }
-})
-
 async function bootGame(): Promise<void> {
   // Initialize i18n before rendering any UI (loads locale JSON, sets dir attribute)
   await initI18n()
@@ -137,6 +128,9 @@ async function bootGame(): Promise<void> {
     console.warn('FactsDB init failed, continuing without database:', err)
   })
 
+  // Lazy-load Phaser + GameManager (keeps 1.2MB Phaser out of critical path)
+  const { GameManager } = await import('./game/GameManager')
+
   // Boot Phaser engine immediately (parallel with DB load)
   // IMPORTANT: boot() must be called BEFORE setting the store. Setting the store
   // fires Svelte subscribers synchronously (e.g. HubView calls gm.getGaiaManager()),
@@ -144,6 +138,14 @@ async function bootGame(): Promise<void> {
   const gameManager = GameManager.getInstance()
   gameManager.boot()
   gameManagerStore.set(gameManager)
+
+  // Ensure oxygen tanks are available (replenish if 0)
+  const { BALANCE } = await import('./data/balance')
+  playerSave.update(s => {
+    if (!s) return s
+    const oxygen = s.oxygen <= 0 ? BALANCE.STARTING_OXYGEN_TANKS : s.oxygen
+    return { ...s, oxygen }
+  })
 
   // BootScene has no preload, so boot completes synchronously.
   // Navigate to appropriate screen immediately.
@@ -189,6 +191,7 @@ async function bootGame(): Promise<void> {
 
   // Track app_open analytics event (Phase 19.7)
   const currentSave = get(playerSave)
+  const { analyticsService } = await import('./services/analyticsService')
   analyticsService.track({
     name: 'app_open',
     properties: {

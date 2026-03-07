@@ -16,7 +16,8 @@ import type { AgeRating, MineralTier, PendingArtifact, PlayerSave, ReviewState }
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'
 import { getUnlockedPaintingIds } from './achievements'
 import { AGE_BRACKET_KEY } from '../../services/legalConstants'
-import { createReviewState, isDue, getMasteryLevel, reviewFact } from '../../services/sm2'
+import { createReviewState, isDue, getMasteryLevel, reviewFact, reviewCard } from '../../services/sm2'
+import type { AnkiButton } from '../../services/sm2'
 import type { Cosmetic } from '../../data/cosmetics'
 import { calculateKnowledgePoints } from '../../data/knowledgeStore'
 import { BALANCE, LEARNING_SPARKS_PER_MILESTONE } from '../../data/balance'
@@ -266,6 +267,114 @@ export function getDueReviews(): ReviewState[] {
   }
 
   return save.reviewStates.filter((state) => isDue(state))
+}
+
+/**
+ * Updates SM-2 review state using Anki-faithful button press.
+ *
+ * @param factId - Fact identifier whose review state should change.
+ * @param button - Anki button: 'again', 'hard', 'good', or 'easy'.
+ * @param factCategory - Optional top-level category for behavioral learning.
+ */
+export function updateReviewStateByButton(factId: string, button: AnkiButton, factCategory?: string): void {
+  let masteryEvent: { factId: string; masteryNumber: number } | null = null
+
+  playerSave.update((save) => {
+    if (!save) return save
+
+    const existingState = save.reviewStates.find(s => s.factId === factId)
+    if (!existingState) return save
+
+    const newState = reviewCard(existingState, button)
+    const correct = button !== 'again'
+
+    // Phase 12: Check for fast mastery (interval crossing 14-day threshold)
+    let updatedSignals = save.behavioralSignals ?? { perCategory: {}, lastRecalcDives: 0 }
+    if (correct && factCategory && save.interestConfig?.behavioralLearningEnabled) {
+      if (existingState.interval < 14 && newState.interval >= 14) {
+        updatedSignals = recordFastMastery(updatedSignals, factCategory)
+      }
+    }
+
+    // Phase 15.6: Check if this answer crosses the mastery threshold
+    if (getMasteryLevel(existingState) !== 'mastered' && getMasteryLevel(newState) === 'mastered') {
+      const alreadyMastered = save.reviewStates.filter(
+        s => s.factId !== factId && getMasteryLevel(s) === 'mastered',
+      ).length
+      masteryEvent = { factId, masteryNumber: alreadyMastered + 1 }
+    }
+
+    return {
+      ...save,
+      reviewStates: save.reviewStates.map((state) =>
+        state.factId === factId ? newState : state,
+      ),
+      behavioralSignals: updatedSignals,
+      stats: {
+        ...save.stats,
+        totalQuizCorrect: correct ? save.stats.totalQuizCorrect + 1 : save.stats.totalQuizCorrect,
+        totalQuizWrong: correct ? save.stats.totalQuizWrong : save.stats.totalQuizWrong + 1,
+      },
+    }
+  })
+
+  persistPlayer()
+
+  if (masteryEvent) {
+    document.dispatchEvent(
+      new CustomEvent('game:fact-mastered', { detail: masteryEvent }),
+    )
+  }
+}
+
+/**
+ * Returns review states in 'review' state that are currently due.
+ * Used for mine quiz filtering — only graduated review cards appear in mines.
+ */
+export function getReviewDueCards(): ReviewState[] {
+  const save = get(playerSave)
+  if (!save) return []
+  return save.reviewStates.filter((state) => state.cardState === 'review' && isDue(state))
+}
+
+/**
+ * Returns cards in 'learning' or 'relearning' state that are currently due.
+ * Used for study session queue ordering.
+ */
+export function getLearningDueCards(): ReviewState[] {
+  const save = get(playerSave)
+  if (!save) return []
+  return save.reviewStates.filter(
+    (state) => (state.cardState === 'learning' || state.cardState === 'relearning') && isDue(state),
+  )
+}
+
+/**
+ * Seeds initial facts for a new player. Each fact starts in 'new' state.
+ * Called during onboarding after interest selection.
+ */
+export function seedStartingFacts(factIds: string[]): void {
+  playerSave.update((save) => {
+    if (!save) return save
+
+    const newFacts = factIds.filter(id => !save.learnedFacts.includes(id))
+    if (newFacts.length === 0) return save
+
+    return {
+      ...save,
+      learnedFacts: [...save.learnedFacts, ...newFacts],
+      reviewStates: [
+        ...save.reviewStates,
+        ...newFacts.map(id => createReviewState(id)),
+      ],
+      stats: {
+        ...save.stats,
+        totalFactsLearned: save.stats.totalFactsLearned + newFacts.length,
+      },
+    }
+  })
+
+  persistPlayer()
 }
 
 /**

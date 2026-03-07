@@ -1365,8 +1365,8 @@ export class GameManager {
   /**
    * Handle a single card answer from the StudySession component.
    */
-  handleStudyCardAnswer(factId: string, quality: number): void {
-    this.studyManager.handleStudyCardAnswer(factId, quality)
+  handleStudyCardAnswer(factId: string, button: import('../services/sm2').AnkiButton): void {
+    this.studyManager.handleStudyCardAnswer(factId, button)
   }
 
   /**

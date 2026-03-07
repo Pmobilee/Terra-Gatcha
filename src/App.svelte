@@ -24,55 +24,24 @@
   import { playerSave } from './ui/stores/playerData'
   import type { Fact, PendingArtifact } from './data/types'
 
-  // Components
+  // Eagerly imported components (critical path / always visible)
   import HUD from './ui/components/HUD.svelte'
   import QuizOverlay from './ui/components/QuizOverlay.svelte'
-  import BackpackOverlay from './ui/components/BackpackOverlay.svelte'
-  import RunStatsOverlay from './ui/components/RunStatsOverlay.svelte'
-  import FactReveal from './ui/components/FactReveal.svelte'
-  import ArtifactAnalyzer from './ui/components/ArtifactAnalyzer.svelte'
   import DivePrepScreen from './ui/components/DivePrepScreen.svelte'
   import BaseView from './ui/components/BaseView.svelte'
   import HubView from './ui/components/HubView.svelte'
-  import DiveResults from './ui/components/DiveResults.svelte'
   import DevPanel from './ui/components/DevPanel.svelte'
-  import KnowledgeTreeView from './ui/components/KnowledgeTreeView.svelte'
-  import StudySession from './ui/components/StudySession.svelte'
-  import SendUpOverlay from './ui/components/SendUpOverlay.svelte'
-  import Materializer from './ui/components/Materializer.svelte'
-  import PremiumMaterializer from './ui/components/PremiumMaterializer.svelte'
-  import CosmeticsShop from './ui/components/CosmeticsShop.svelte'
-  import Decorator from './ui/components/Decorator.svelte'
-  import KnowledgeStore from './ui/components/KnowledgeStore.svelte'
-  import FossilGallery from './ui/components/FossilGallery.svelte'
-  import Zoo from './ui/components/Zoo.svelte'
-  import StreakPanel from './ui/components/StreakPanel.svelte'
-  import Farm from './ui/components/Farm.svelte'
-  import Settings from './ui/components/Settings.svelte'
-  import GaiaReport from './ui/components/GaiaReport.svelte'
-  import PlaceholderRoom from './ui/components/PlaceholderRoom.svelte'
-  import MuseumRoom from './ui/components/rooms/MuseumRoom.svelte'
-  import MarketRoom from './ui/components/rooms/MarketRoom.svelte'
-  import ArchiveRoom from './ui/components/rooms/ArchiveRoom.svelte'
-  import InterestSettings from './ui/components/InterestSettings.svelte'
-  import InterestAssessment from './ui/components/InterestAssessment.svelte'
-  import OnboardingCutscene from './ui/components/OnboardingCutscene.svelte'
-  import GaiaIntro from './ui/components/GaiaIntro.svelte'
-  import AgeSelection from './ui/components/AgeSelection.svelte'
-  import MiniMap from './ui/components/MiniMap.svelte'
+  import GaiaToast from './ui/components/GaiaToast.svelte'
+  import OfflineToast from './ui/components/OfflineToast.svelte'
+  import ATTConsentPrompt from './ui/components/ATTConsentPrompt.svelte'
   import PwaInstallPrompt from './ui/components/PwaInstallPrompt.svelte'
   import KeyboardShortcutHelp from './ui/components/KeyboardShortcutHelp.svelte'
-  import DesktopSidePanel from './ui/components/DesktopSidePanel.svelte'
-  import RelicPickupOverlay from './ui/components/RelicPickupOverlay.svelte'
-  import ResumeDiveModal from './ui/components/ResumeDiveModal.svelte'
-  import GaiaToast from './ui/components/GaiaToast.svelte'
-  import ATTConsentPrompt from './ui/components/ATTConsentPrompt.svelte'
-  import DescentOverlay from './ui/components/DescentOverlay.svelte'
-  import StreakFeedback from './ui/components/StreakFeedback.svelte'
-  import SacrificeOverlay from './ui/components/SacrificeOverlay.svelte'
-  import DecisionScreen from './ui/components/DecisionScreen.svelte'
-  import QuoteStoneModal from './ui/components/QuoteStoneModal.svelte'
-  import CavernTextModal from './ui/components/CavernTextModal.svelte'
+  // Phase 35: Mine Mechanics HUD (unconditionally rendered, self-conditional)
+  import QuizStreakBadge from './ui/components/QuizStreakBadge.svelte'
+  import InstabilityMeter from './ui/components/InstabilityMeter.svelte'
+  import MineEventOverlay from './ui/components/MineEventOverlay.svelte'
+  import AltarSacrificeOverlay from './ui/components/AltarSacrificeOverlay.svelte'
+
   import { quoteStoneModalEntry, cavernTextModalEntry } from './ui/stores/gameState'
   import { shortcutService } from './services/shortcutService'
   import { SaveManager } from './game/managers/SaveManager'
@@ -82,31 +51,12 @@
   import { generateBiomeSequence } from './data/biomes'
   import { seededRandom } from './game/systems/MineGenerator'
   import { authStore } from './ui/stores/authStore'
-  import LoginView from './ui/components/auth/LoginView.svelte'
-  import RegisterView from './ui/components/auth/RegisterView.svelte'
-  import ForgotPasswordView from './ui/components/auth/ForgotPasswordView.svelte'
-  import ProfileView from './ui/components/auth/ProfileView.svelte'
-  import OfflineToast from './ui/components/OfflineToast.svelte'
-  import AgeGate from './ui/components/legal/AgeGate.svelte'
   import { AGE_BRACKET_KEY, type AgeBracket } from './services/legalConstants'
-  import PrivacyPolicy from './ui/components/legal/PrivacyPolicy.svelte'
-  import TermsOfService from './ui/components/legal/TermsOfService.svelte'
   import { profileService } from './services/profileService'
   import { profileStore } from './ui/stores/profileStore'
   import type { PlayerProfile } from './data/profileTypes'
-  import ProfileSelectView from './ui/components/profiles/ProfileSelectView.svelte'
-  import ProfileCreateView from './ui/components/profiles/ProfileCreateView.svelte'
-  import ProfileManageView from './ui/components/profiles/ProfileManageView.svelte'
-  // Phase 35: Mine Mechanics HUD
-  import QuizStreakBadge from './ui/components/QuizStreakBadge.svelte'
-  import InstabilityMeter from './ui/components/InstabilityMeter.svelte'
-  import MineEventOverlay from './ui/components/MineEventOverlay.svelte'
-  import AltarSacrificeOverlay from './ui/components/AltarSacrificeOverlay.svelte'
   import { activeAltar } from './ui/stores/gameState'
   // Phase 36: Combat System
-  import CombatOverlay from './ui/components/CombatOverlay.svelte'
-  import BossIntroOverlay from './ui/components/BossIntroOverlay.svelte'
-  import TheDeepUnlockOverlay from './ui/components/TheDeepUnlockOverlay.svelte'
   import { combatState } from './ui/stores/combatState'
 
   // Phase 42: Deep link listener
@@ -115,12 +65,9 @@
   // Phase 45: Kid Mode
   import { sessionTimer, type SessionTimerState } from './services/sessionTimer'
   import { parentalStore } from './ui/stores/parentalStore'
-  import TimeUpOverlay from './ui/components/TimeUpOverlay.svelte'
-  import SessionWarningBanner from './ui/components/SessionWarningBanner.svelte'
   import './app-kid-theme.css'
 
   // Phase 44: Teacher Dashboard — in-game classroom integration
-  import AnnouncementBanner from './ui/components/AnnouncementBanner.svelte'
   import { syncAllClassroomData } from './services/classroomService'
 
   // ============================================================
@@ -417,9 +364,38 @@
       if (!s) return s
       return { ...s, selectedInterests: interests, interestWeights: weights, targetLanguage, tutorialComplete: true }
     })
-    import('./ui/stores/playerData').then(m => m.persistPlayer())
-    // Skip AgeSelection — age bracket was already captured by AgeGate (legal compliance step).
-    currentScreen.set('mainMenu')
+    import('./ui/stores/playerData').then(m => {
+      m.persistPlayer()
+
+      // Seed 5 starting facts from selected interest categories
+      import('./services/factsDB').then(({ factsDB }) => {
+        if (!factsDB.isReady()) {
+          currentScreen.set('mainMenu')
+          return
+        }
+
+        import('./data/balance').then(({ SM2_STARTING_FACTS_COUNT }) => {
+          const allFacts = factsDB.getAll()
+          // Filter facts matching selected interest categories
+          const matchingFacts = allFacts.filter(f => {
+            const topCategory = f.category[0] ?? ''
+            return Object.keys(weights).some(k => topCategory.toLowerCase().includes(k.toLowerCase()))
+          })
+
+          // Pick random facts from matching pool (or all facts as fallback)
+          const pool = matchingFacts.length >= SM2_STARTING_FACTS_COUNT ? matchingFacts : allFacts
+          const shuffled = pool.sort(() => Math.random() - 0.5)
+          const seedFacts = shuffled.slice(0, SM2_STARTING_FACTS_COUNT).map(f => f.id)
+
+          if (seedFacts.length > 0) {
+            m.seedStartingFacts(seedFacts)
+            currentScreen.set('studySession')
+          } else {
+            currentScreen.set('mainMenu')
+          }
+        })
+      })
+    })
   }
 
   function handleAgeSelected(ageRating: import('./data/types').AgeRating): void {
@@ -445,10 +421,10 @@
   let studySessionCorrectCount = $state(0)
   let studySessionTotal = $state(0)
 
-  function handleStudyCardAnswer(factId: string, quality: number): void {
-    if (quality >= 3) studySessionCorrectCount++
+  function handleStudyCardAnswer(factId: string, button: import('./services/sm2').AnkiButton): void {
+    if (button !== 'again') studySessionCorrectCount++
     studySessionTotal++
-    getGM()?.handleStudyCardAnswer(factId, quality)
+    getGM()?.handleStudyCardAnswer(factId, button)
   }
 
   function handleStudyComplete(): void {
@@ -869,75 +845,103 @@
        AGE GATE — shown on first-ever launch, before everything else
        ============================================================ -->
   {#if showAgeGate}
-    <AgeGate onSelect={handleAgeGateSelect} />
+    {#await import('./ui/components/legal/AgeGate.svelte') then { default: AgeGate }}
+      <AgeGate onSelect={handleAgeGateSelect} />
+    {/await}
 
   <!-- ============================================================
        PROFILE ROUTING LAYER (Phase 19.6) — shown after age gate,
        before auth, to select or create a player profile
        ============================================================ -->
   {:else if profileScreen === 'select'}
-    <ProfileSelectView
-      profiles={$profileStore}
-      onSelect={handleProfileSelect}
-      onAddProfile={handleAddProfile}
-      onManageProfiles={handleManageProfiles}
-    />
+    {#await import('./ui/components/profiles/ProfileSelectView.svelte') then { default: ProfileSelectView }}
+      <ProfileSelectView
+        profiles={$profileStore}
+        onSelect={handleProfileSelect}
+        onAddProfile={handleAddProfile}
+        onManageProfiles={handleManageProfiles}
+      />
+    {/await}
   {:else if profileScreen === 'create'}
-    <ProfileCreateView
-      onCreated={handleProfileCreated}
-      onBack={handleBackFromCreate}
-    />
+    {#await import('./ui/components/profiles/ProfileCreateView.svelte') then { default: ProfileCreateView }}
+      <ProfileCreateView
+        onCreated={handleProfileCreated}
+        onBack={handleBackFromCreate}
+      />
+    {/await}
   {:else if profileScreen === 'manage'}
-    <ProfileManageView
-      onBack={handleBackFromManage}
-      onProfileDeleted={handleProfileDeleted}
-    />
+    {#await import('./ui/components/profiles/ProfileManageView.svelte') then { default: ProfileManageView }}
+      <ProfileManageView
+        onBack={handleBackFromManage}
+        onProfileDeleted={handleProfileDeleted}
+      />
+    {/await}
 
   <!-- ============================================================
        AUTH ROUTING LAYER — overlays the entire game when visible
        ============================================================ -->
   {:else if authScreen === 'login'}
-    <LoginView
-      onLogin={handleAuthLogin}
-      onRegister={handleAuthGoRegister}
-      onForgotPassword={handleAuthGoForgot}
-      onGuest={handleAuthGuest}
-    />
+    {#await import('./ui/components/auth/LoginView.svelte') then { default: LoginView }}
+      <LoginView
+        onLogin={handleAuthLogin}
+        onRegister={handleAuthGoRegister}
+        onForgotPassword={handleAuthGoForgot}
+        onGuest={handleAuthGuest}
+      />
+    {/await}
   {:else if authScreen === 'register'}
-    <RegisterView
-      onRegisterSuccess={handleAuthLogin}
-      onBack={handleAuthBack}
-      onViewPrivacy={handleViewPrivacy}
-      onViewTerms={handleViewTerms}
-    />
+    {#await import('./ui/components/auth/RegisterView.svelte') then { default: RegisterView }}
+      <RegisterView
+        onRegisterSuccess={handleAuthLogin}
+        onBack={handleAuthBack}
+        onViewPrivacy={handleViewPrivacy}
+        onViewTerms={handleViewTerms}
+      />
+    {/await}
   {:else if authScreen === 'forgot'}
-    <ForgotPasswordView
-      onBack={handleAuthBack}
-    />
+    {#await import('./ui/components/auth/ForgotPasswordView.svelte') then { default: ForgotPasswordView }}
+      <ForgotPasswordView
+        onBack={handleAuthBack}
+      />
+    {/await}
   {:else if authScreen === 'profile'}
-    <ProfileView
-      onLogout={handleProfileLogout}
-      onBack={() => { authScreen = null }}
-    />
+    {#await import('./ui/components/auth/ProfileView.svelte') then { default: ProfileView }}
+      <ProfileView
+        onLogout={handleProfileLogout}
+        onBack={() => { authScreen = null }}
+      />
+    {/await}
   {:else if authScreen === 'privacy'}
-    <PrivacyPolicy onBack={() => { authScreen = 'register' }} />
+    {#await import('./ui/components/legal/PrivacyPolicy.svelte') then { default: PrivacyPolicy }}
+      <PrivacyPolicy onBack={() => { authScreen = 'register' }} />
+    {/await}
   {:else if authScreen === 'terms'}
-    <TermsOfService onBack={() => { authScreen = 'register' }} />
+    {#await import('./ui/components/legal/TermsOfService.svelte') then { default: TermsOfService }}
+      <TermsOfService onBack={() => { authScreen = 'register' }} />
+    {/await}
   {:else}
     <!-- Game is visible — normal screen routing below -->
 
   {#if showResumeModal}
-    <ResumeDiveModal onResume={handleResumeDive} onAbandon={handleAbandonDive} />
+    {#await import('./ui/components/ResumeDiveModal.svelte') then { default: ResumeDiveModal }}
+      <ResumeDiveModal onResume={handleResumeDive} onAbandon={handleAbandonDive} />
+    {/await}
   {/if}
 
   {#if $currentScreen === 'cutscene'}
-    <OnboardingCutscene onComplete={handleCutsceneComplete} />
+    {#await import('./ui/components/OnboardingCutscene.svelte') then { default: OnboardingCutscene }}
+      <OnboardingCutscene onComplete={handleCutsceneComplete} />
+    {/await}
 
   {:else if $currentScreen === 'onboarding'}
-    <GaiaIntro onComplete={handleGaiaIntroComplete} />
+    {#await import('./ui/components/GaiaIntro.svelte') then { default: GaiaIntro }}
+      <GaiaIntro onComplete={handleGaiaIntroComplete} />
+    {/await}
 
   {:else if $currentScreen === 'ageSelection'}
-    <AgeSelection onComplete={handleAgeSelected} />
+    {#await import('./ui/components/AgeSelection.svelte') then { default: AgeSelection }}
+      <AgeSelection onComplete={handleAgeSelected} />
+    {/await}
 
   {:else if $currentScreen === 'mainMenu'}
     <div class="main-menu">
@@ -988,17 +992,23 @@
       onUseBomb={handleUseBomb}
       onUseConsumable={handleUseConsumable}
     />
-    <MiniMap />
-    <DescentOverlay
-      visible={$descentOverlayState.visible}
-      fromLayer={$descentOverlayState.fromLayer}
-      toLayer={$descentOverlayState.toLayer}
-      biomeName={$descentOverlayState.biomeName}
-      onAnimComplete={() => descentOverlayState.update(s => ({ ...s, visible: false }))}
-    />
+    {#await import('./ui/components/MiniMap.svelte') then { default: MiniMap }}
+      <MiniMap />
+    {/await}
+    {#await import('./ui/components/DescentOverlay.svelte') then { default: DescentOverlay }}
+      <DescentOverlay
+        visible={$descentOverlayState.visible}
+        fromLayer={$descentOverlayState.fromLayer}
+        toLayer={$descentOverlayState.toLayer}
+        biomeName={$descentOverlayState.biomeName}
+        onAnimComplete={() => descentOverlayState.update(s => ({ ...s, visible: false }))}
+      />
+    {/await}
     {#if $quizStreak.count >= 3}
       <div style="position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); z-index: 120; pointer-events: none;">
-        <StreakFeedback streakCount={$quizStreak.count} multiplier={$quizStreak.multiplier} />
+        {#await import('./ui/components/StreakFeedback.svelte') then { default: StreakFeedback }}
+          <StreakFeedback streakCount={$quizStreak.count} multiplier={$quizStreak.multiplier} />
+        {/await}
       </div>
     {/if}
 
@@ -1030,11 +1040,13 @@
       onUseBomb={handleUseBomb}
       onUseConsumable={handleUseConsumable}
     />
-    <BackpackOverlay
-      slots={$inventory}
-      onClose={handleCloseBackpack}
-      onDropItem={handleDropItem}
-    />
+    {#await import('./ui/components/BackpackOverlay.svelte') then { default: BackpackOverlay }}
+      <BackpackOverlay
+        slots={$inventory}
+        onClose={handleCloseBackpack}
+        onDropItem={handleDropItem}
+      />
+    {/await}
 
   {:else if $currentScreen === 'runStats'}
     <HUD
@@ -1044,24 +1056,30 @@
       onUseBomb={handleUseBomb}
       onUseConsumable={handleUseConsumable}
     />
-    <RunStatsOverlay
-      blocksMined={$blocksMinedLive}
-      onClose={handleCloseRunStats}
-    />
+    {#await import('./ui/components/RunStatsOverlay.svelte') then { default: RunStatsOverlay }}
+      <RunStatsOverlay
+        blocksMined={$blocksMinedLive}
+        onClose={handleCloseRunStats}
+      />
+    {/await}
 
   {:else if $currentScreen === 'factReveal'}
     {#if currentAnalyzerArtifact}
-      <ArtifactAnalyzer
-        artifact={currentAnalyzerArtifact}
-        remainingCount={$pendingArtifacts.length}
-        onNext={handleAnalyzerNext}
-      />
+      {#await import('./ui/components/ArtifactAnalyzer.svelte') then { default: ArtifactAnalyzer }}
+        <ArtifactAnalyzer
+          artifact={currentAnalyzerArtifact}
+          remainingCount={$pendingArtifacts.length}
+          onNext={handleAnalyzerNext}
+        />
+      {/await}
     {:else if $activeFact}
-      <FactReveal
-        fact={$activeFact}
-        onLearn={handleLearnFact}
-        onSell={handleSellFact}
-      />
+      {#await import('./ui/components/FactReveal.svelte') then { default: FactReveal }}
+        <FactReveal
+          fact={$activeFact}
+          onLearn={handleLearnFact}
+          onSell={handleSellFact}
+        />
+      {/await}
     {:else}
       <div class="empty-screen">
         <p class="empty-icon">🔬</p>
@@ -1072,128 +1090,182 @@
     {/if}
 
   {:else if $currentScreen === 'knowledgeTree'}
-    <KnowledgeTreeView
-      facts={cachedFacts}
-      onBack={handleBackFromTree}
-    />
+    {#await import('./ui/components/KnowledgeTreeView.svelte') then { default: KnowledgeTreeView }}
+      <KnowledgeTreeView
+        facts={cachedFacts}
+        onBack={handleBackFromTree}
+      />
+    {/await}
 
   {:else if $currentScreen === 'diveResults'}
-    <DiveResults onContinue={handleDiveResultsContinue} onDiveDeeper={() => getGM()?.continueToNextLayer()} />
+    {#await import('./ui/components/DiveResults.svelte') then { default: DiveResults }}
+      <DiveResults onContinue={handleDiveResultsContinue} onDiveDeeper={() => getGM()?.continueToNextLayer()} />
+    {/await}
 
   {:else if $currentScreen === 'studySession'}
-    <StudySession
-      facts={$studyFacts}
-      reviewStates={$studyReviewStates}
-      onAnswer={handleStudyCardAnswer}
-      onComplete={handleStudyComplete}
-    />
+    {#await import('./ui/components/StudySession.svelte') then { default: StudySession }}
+      <StudySession
+        facts={$studyFacts}
+        reviewStates={$studyReviewStates}
+        onAnswer={handleStudyCardAnswer}
+        onComplete={handleStudyComplete}
+      />
+    {/await}
 
   {:else if $currentScreen === 'materializer'}
-    <Materializer onBack={handleBackFromMaterializer} />
+    {#await import('./ui/components/Materializer.svelte') then { default: Materializer }}
+      <Materializer onBack={handleBackFromMaterializer} />
+    {/await}
 
   {:else if $currentScreen === 'premiumMaterializer'}
-    <PremiumMaterializer onBack={handleBackFromPremiumMaterializer} />
+    {#await import('./ui/components/PremiumMaterializer.svelte') then { default: PremiumMaterializer }}
+      <PremiumMaterializer onBack={handleBackFromPremiumMaterializer} />
+    {/await}
 
   {:else if $currentScreen === 'cosmeticsShop'}
-    <CosmeticsShop onBack={handleBackFromCosmeticsShop} />
+    {#await import('./ui/components/CosmeticsShop.svelte') then { default: CosmeticsShop }}
+      <CosmeticsShop onBack={handleBackFromCosmeticsShop} />
+    {/await}
 
   {:else if $currentScreen === 'decorator'}
-    <Decorator onBack={handleBackFromDecorator} />
+    {#await import('./ui/components/Decorator.svelte') then { default: Decorator }}
+      <Decorator onBack={handleBackFromDecorator} />
+    {/await}
 
   {:else if $currentScreen === 'knowledgeStore'}
-    <KnowledgeStore onBack={handleBackFromKnowledgeStore} />
+    {#await import('./ui/components/KnowledgeStore.svelte') then { default: KnowledgeStore }}
+      <KnowledgeStore onBack={handleBackFromKnowledgeStore} />
+    {/await}
 
   {:else if $currentScreen === 'fossilGallery'}
-    <FossilGallery onBack={handleBackFromFossils} />
+    {#await import('./ui/components/FossilGallery.svelte') then { default: FossilGallery }}
+      <FossilGallery onBack={handleBackFromFossils} />
+    {/await}
 
   {:else if $currentScreen === 'zoo'}
-    <Zoo onBack={handleBackFromZoo} />
+    {#await import('./ui/components/Zoo.svelte') then { default: Zoo }}
+      <Zoo onBack={handleBackFromZoo} />
+    {/await}
 
   {:else if $currentScreen === 'streakPanel'}
-    <StreakPanel onBack={handleBackFromStreakPanel} />
+    {#await import('./ui/components/StreakPanel.svelte') then { default: StreakPanel }}
+      <StreakPanel onBack={handleBackFromStreakPanel} />
+    {/await}
 
   {:else if $currentScreen === 'farm'}
-    <Farm onBack={handleBackFromFarm} />
+    {#await import('./ui/components/Farm.svelte') then { default: Farm }}
+      <Farm onBack={handleBackFromFarm} />
+    {/await}
 
   {:else if $currentScreen === 'settings'}
-    <Settings onBack={handleBackFromSettings} onViewProfile={handleViewProfile} onLogout={handleSettingsLogout} />
+    {#await import('./ui/components/Settings.svelte') then { default: Settings }}
+      <Settings onBack={handleBackFromSettings} onViewProfile={handleViewProfile} onLogout={handleSettingsLogout} />
+    {/await}
 
   {:else if $currentScreen === 'gaiaReport'}
-    <GaiaReport onBack={() => currentScreen.set('base')} />
+    {#await import('./ui/components/GaiaReport.svelte') then { default: GaiaReport }}
+      <GaiaReport onBack={() => currentScreen.set('base')} />
+    {/await}
 
   {:else if $currentScreen === 'museum'}
-    <MuseumRoom
-      onBack={handleBackFromMuseum}
-      onFossils={handleViewFossils}
-      onZoo={handleViewZoo}
-    />
+    {#await import('./ui/components/rooms/MuseumRoom.svelte') then { default: MuseumRoom }}
+      <MuseumRoom
+        onBack={handleBackFromMuseum}
+        onFossils={handleViewFossils}
+        onZoo={handleViewZoo}
+      />
+    {/await}
   {:else if $currentScreen === 'market'}
-    <MarketRoom
-      onBack={handleBackFromMarket}
-      onCosmetics={handleViewCosmeticsShop}
-      onFarm={handleViewFarm}
-    />
+    {#await import('./ui/components/rooms/MarketRoom.svelte') then { default: MarketRoom }}
+      <MarketRoom
+        onBack={handleBackFromMarket}
+        onCosmetics={handleViewCosmeticsShop}
+        onFarm={handleViewFarm}
+      />
+    {/await}
   {:else if $currentScreen === 'archive'}
-    <ArchiveRoom
-      onBack={handleBackFromArchive}
-      onViewTree={handleViewKnowledgeTree}
-      facts={cachedFacts}
-    />
+    {#await import('./ui/components/rooms/ArchiveRoom.svelte') then { default: ArchiveRoom }}
+      <ArchiveRoom
+        onBack={handleBackFromArchive}
+        onViewTree={handleViewKnowledgeTree}
+        facts={cachedFacts}
+      />
+    {/await}
   {:else if $currentScreen === 'observatory'}
-    <PlaceholderRoom
-      title="Observatory"
-      description="Star maps and telescopes are being calibrated. Check back after the next update!"
-      onBack={handleBackFromObservatory}
-    />
+    {#await import('./ui/components/PlaceholderRoom.svelte') then { default: PlaceholderRoom }}
+      <PlaceholderRoom
+        title="Observatory"
+        description="Star maps and telescopes are being calibrated. Check back after the next update!"
+        onBack={handleBackFromObservatory}
+      />
+    {/await}
 
   {:else if $currentScreen === 'interestSettings'}
-    <InterestSettings onBack={() => currentScreen.set('settings')} />
+    {#await import('./ui/components/InterestSettings.svelte') then { default: InterestSettings }}
+      <InterestSettings onBack={() => currentScreen.set('settings')} />
+    {/await}
 
   {:else if $currentScreen === 'interestAssessment'}
-    <InterestAssessment />
+    {#await import('./ui/components/InterestAssessment.svelte') then { default: InterestAssessment }}
+      <InterestAssessment />
+    {/await}
 
   {:else if $currentScreen === 'sacrifice' && !$activeAltar}
-    <SacrificeOverlay />
+    {#await import('./ui/components/SacrificeOverlay.svelte') then { default: SacrificeOverlay }}
+      <SacrificeOverlay />
+    {/await}
 
   {:else if $currentScreen === 'decision'}
-    <DecisionScreen />
+    {#await import('./ui/components/DecisionScreen.svelte') then { default: DecisionScreen }}
+      <DecisionScreen />
+    {/await}
   {/if}
 
   {#if $currentScreen === 'quote_stone' && quoteStoneEntry}
-    <QuoteStoneModal entry={quoteStoneEntry} onClose={closeQuoteStoneModal} />
+    {#await import('./ui/components/QuoteStoneModal.svelte') then { default: QuoteStoneModal }}
+      <QuoteStoneModal entry={quoteStoneEntry} onClose={closeQuoteStoneModal} />
+    {/await}
   {/if}
 
   {#if $currentScreen === 'cavern_text' && cavernTextEntry}
-    <CavernTextModal entry={cavernTextEntry} onClose={closeCavernTextModal} />
+    {#await import('./ui/components/CavernTextModal.svelte') then { default: CavernTextModal }}
+      <CavernTextModal entry={cavernTextEntry} onClose={closeCavernTextModal} />
+    {/await}
   {/if}
 
   {#if $showSendUp}
-    <SendUpOverlay
-      slots={$inventory}
-      currentLayer={$currentLayer}
-      onConfirm={handleSendUpConfirm}
-      onSkip={handleSendUpSkip}
-    />
+    {#await import('./ui/components/SendUpOverlay.svelte') then { default: SendUpOverlay }}
+      <SendUpOverlay
+        slots={$inventory}
+        currentLayer={$currentLayer}
+        onConfirm={handleSendUpConfirm}
+        onSkip={handleSendUpSkip}
+      />
+    {/await}
   {/if}
 
   {#if $pendingRelicPickup}
-    <RelicPickupOverlay
-      relic={$pendingRelicPickup}
-      onAccept={() => {
-        const relic = $pendingRelicPickup
-        if (relic) {
-          equippedRelicsV2.update(relics => relics.length < 3 ? [...relics, relic] : relics)
-        }
-        pendingRelicPickup.set(null)
-      }}
-      onDecline={() => pendingRelicPickup.set(null)}
-    />
+    {#await import('./ui/components/RelicPickupOverlay.svelte') then { default: RelicPickupOverlay }}
+      <RelicPickupOverlay
+        relic={$pendingRelicPickup}
+        onAccept={() => {
+          const relic = $pendingRelicPickup
+          if (relic) {
+            equippedRelicsV2.update(relics => relics.length < 3 ? [...relics, relic] : relics)
+          }
+          pendingRelicPickup.set(null)
+        }}
+        onDecline={() => pendingRelicPickup.set(null)}
+      />
+    {/await}
   {/if}
 
   <!-- Phase 44: Teacher announcement banner (student-facing, dismissable) -->
   {#if gameVisible}
     <div style="position: fixed; top: 8px; left: 50%; transform: translateX(-50%); width: min(90vw, 480px); z-index: 300; pointer-events: auto;">
-      <AnnouncementBanner />
+      {#await import('./ui/components/AnnouncementBanner.svelte') then { default: AnnouncementBanner }}
+        <AnnouncementBanner />
+      {/await}
     </div>
   {/if}
 
@@ -1205,35 +1277,47 @@
 
   <!-- Phase 36: Combat overlays -->
   {#if $combatState.active && $combatState.encounterType === 'boss' && showBossIntro && $combatState.creature}
-    <BossIntroOverlay
-      boss={$combatState.creature as import('./game/entities/Boss').Boss}
-      onDismiss={() => { showBossIntro = false }}
-    />
+    {#await import('./ui/components/BossIntroOverlay.svelte') then { default: BossIntroOverlay }}
+      <BossIntroOverlay
+        boss={$combatState.creature as import('./game/entities/Boss').Boss}
+        onDismiss={() => { showBossIntro = false }}
+      />
+    {/await}
   {:else if $combatState.active}
-    <CombatOverlay />
+    {#await import('./ui/components/CombatOverlay.svelte') then { default: CombatOverlay }}
+      <CombatOverlay />
+    {/await}
   {/if}
   {#if $currentScreen === 'the-deep-unlock'}
-    <TheDeepUnlockOverlay onProceed={() => currentScreen.set('mining')} />
+    {#await import('./ui/components/TheDeepUnlockOverlay.svelte') then { default: TheDeepUnlockOverlay }}
+      <TheDeepUnlockOverlay onProceed={() => currentScreen.set('mining')} />
+    {/await}
   {/if}
 
   <DevPanel />
   <PwaInstallPrompt />
   <KeyboardShortcutHelp />
   {#if gameVisible}
-    <DesktopSidePanel />
+    {#await import('./ui/components/DesktopSidePanel.svelte') then { default: DesktopSidePanel }}
+      <DesktopSidePanel />
+    {/await}
   {/if}
 
   <!-- Phase 45: Session warning banner (5 min remaining) -->
   {#if showWarningBanner && !timerState.hardStopped}
-    <SessionWarningBanner
-      minutesRemaining={Math.ceil((timerState.limitSeconds - timerState.secondsToday) / 60)}
-      onDismiss={() => { showWarningBanner = false }}
-    />
+    {#await import('./ui/components/SessionWarningBanner.svelte') then { default: SessionWarningBanner }}
+      <SessionWarningBanner
+        minutesRemaining={Math.ceil((timerState.limitSeconds - timerState.secondsToday) / 60)}
+        onDismiss={() => { showWarningBanner = false }}
+      />
+    {/await}
   {/if}
 
   <!-- Phase 45: Time-up hard stop overlay -->
   {#if timerState.hardStopped}
-    <TimeUpOverlay secondsPlayed={timerState.secondsToday} />
+    {#await import('./ui/components/TimeUpOverlay.svelte') then { default: TimeUpOverlay }}
+      <TimeUpOverlay secondsPlayed={timerState.secondsToday} />
+    {/await}
   {/if}
 
   {/if}

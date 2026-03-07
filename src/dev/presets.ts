@@ -1,4 +1,4 @@
-import type { PlayerSave, PendingArtifact } from '../data/types'
+import type { PlayerSave, PendingArtifact, ReviewState } from '../data/types'
 import type { Screen } from '../ui/stores/gameState'
 import { BALANCE } from '../data/balance'
 import { FOSSIL_SPECIES } from '../data/fossils'
@@ -143,6 +143,7 @@ export function BASE_SAVE(now: number): PlayerSave {
 
     // Phase 14: Onboarding & Tutorial
     tutorialComplete: false,
+    hasCompletedInitialStudy: false,
     selectedInterests: [],
     interestWeights: {},
     diveCount: 0,
@@ -169,9 +170,9 @@ const PRESET_FACT_IDS = [
   'nsci-001', 'nsci-002', 'nsci-003', 'nsci-004', 'nsci-005',
 ]
 
-function makeLearnedFacts(count: number, mature = false): { learnedFacts: string[]; reviewStates: ReturnType<typeof createReviewState>[] } {
+function makeLearnedFacts(count: number, mature = false): { learnedFacts: string[]; reviewStates: ReviewState[] } {
   const learnedFacts: string[] = []
-  const reviewStates = []
+  const reviewStates: ReviewState[] = []
   const now = Date.now()
   for (let i = 0; i < count && i < PRESET_FACT_IDS.length; i++) {
     const id = PRESET_FACT_IDS[i]
@@ -180,6 +181,7 @@ function makeLearnedFacts(count: number, mature = false): { learnedFacts: string
       // Create a realistic mature review state (interval > 60 = mastered)
       reviewStates.push({
         ...createReviewState(id),
+        cardState: 'review',
         interval: 90 + Math.floor(Math.random() * 60),
         repetitions: 8 + Math.floor(Math.random() * 4),
         easeFactor: 2.5 + Math.random() * 0.3,
@@ -301,7 +303,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
       const { learnedFacts, reviewStates } = makeLearnedFacts(25)
       // Make first 5 review states mature for realistic mid-game data
       for (let i = 0; i < 5 && i < reviewStates.length; i++) {
-        reviewStates[i] = { ...reviewStates[i], interval: 75, repetitions: 7, easeFactor: 2.6 }
+        reviewStates[i] = { ...reviewStates[i], cardState: 'review', interval: 75, repetitions: 7, easeFactor: 2.6 }
       }
       return {
         ...BASE_SAVE(now),
@@ -614,6 +616,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
       const { learnedFacts, reviewStates } = makeLearnedFacts(30)
       // Make all reviews overdue by setting nextReviewAt to 1 day ago
       for (const state of reviewStates) {
+        state.cardState = 'review'
         state.nextReviewAt = now - 86_400_000
         state.interval = 1
       }
@@ -947,6 +950,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
       const { learnedFacts, reviewStates } = makeLearnedFacts(50)
       // Make all reviews overdue by 2 days with non-trivial interval/repetitions
       for (const state of reviewStates) {
+        state.cardState = 'review'
         state.nextReviewAt = now - 2 * 86_400_000
         state.interval = 3
         state.repetitions = 2
@@ -1162,6 +1166,7 @@ export const SCENARIO_PRESETS: readonly ScenarioPreset[] = [
       // Make ALL review states 7 days overdue
       const sevenDaysAgo = now - 7 * 86_400_000
       for (const state of reviewStates) {
+        state.cardState = 'review'
         state.nextReviewAt = sevenDaysAgo
         state.interval = 5
         state.repetitions = 3

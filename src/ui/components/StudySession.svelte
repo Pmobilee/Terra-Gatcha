@@ -1,5 +1,7 @@
 <script lang="ts">
   import type { Fact, ReviewState } from '../../data/types'
+  import type { AnkiButton } from '../../services/sm2'
+  import { getButtonIntervals } from '../../services/sm2'
   import { audioManager } from '../../services/audioService'
   import KnowledgeTree from './KnowledgeTree.svelte'
   import { initialLOD } from './tree/TreeLOD'
@@ -10,7 +12,7 @@
   interface Props {
     facts: Fact[]
     reviewStates: ReviewState[]
-    onAnswer: (factId: string, quality: number) => void
+    onAnswer: (factId: string, button: AnkiButton) => void
     onComplete: () => void
   }
 
@@ -81,6 +83,22 @@
     return CATEGORY_COLORS[top] ?? '#9ca3af'
   }
 
+  // ── 4-button order ─────────────────────────────────────────
+  const buttonOrder: { key: AnkiButton; label: string }[] = [
+    { key: 'again', label: 'Again' },
+    { key: 'hard', label: 'Hard' },
+    { key: 'good', label: 'Good' },
+    { key: 'easy', label: 'Easy' },
+  ]
+
+  // ── Interval previews derived from current card's review state ──
+  const intervals = $derived.by(() => {
+    if (!currentFact) return { again: '', hard: '', good: '', easy: '' }
+    const rs = reviewStates.find(r => r.factId === currentFact.id)
+    if (!rs) return { again: '1m', hard: '1m', good: '1d', easy: '4d' }
+    return getButtonIntervals(rs)
+  })
+
   // ── Handlers ────────────────────────────────────────────────
 
   /** Choose session size and build the card queue. */
@@ -110,15 +128,15 @@
   }
 
   /** Player self-rates and advances to the next card. */
-  async function rate(quality: number): Promise<void> {
+  async function rate(button: AnkiButton): Promise<void> {
     if (!currentFact) return
-    const correct = quality >= 3
+    const correct = button !== 'again'
     audioManager.playSound(correct ? 'quiz_correct' : 'quiz_wrong')
     if (correct) {
       correctCount++
       onCorrectAnswer()
     }
-    onAnswer(currentFact.id, quality)
+    onAnswer(currentFact.id, button)
 
     // Brief visual pause before transitioning
     await new Promise<void>(r => setTimeout(r, 300))
@@ -312,6 +330,9 @@
             class="card-category"
             style="color: {getCategoryColor(currentFact.category)};"
           >{currentFact.category.join(' › ')}</p>
+          <div class="card-sprite" aria-hidden="true">
+            <span class="card-sprite-label">sprite</span>
+          </div>
           <p class="card-question">{currentFact.quizQuestion}</p>
           <p class="tap-hint">Tap card or press Reveal</p>
           <button
@@ -323,15 +344,25 @@
           </button>
         </div>
 
-        <!-- Back (answer + explanation) -->
+        <!-- Back (answer + details) -->
         <div class="card-face card-back">
           <p
             class="card-category"
             style="color: {getCategoryColor(currentFact.category)};"
           >{currentFact.category.join(' › ')}</p>
           <p class="card-answer">{currentFact.correctAnswer}</p>
-          {#if currentFact.explanation}
-            <p class="card-explanation">{currentFact.explanation}</p>
+          {#if currentFact.explanation || currentFact.mnemonic || currentFact.gaiaComment}
+            <div class="card-details">
+              {#if currentFact.explanation}
+                <p class="detail-explanation">{currentFact.explanation}</p>
+              {/if}
+              {#if currentFact.mnemonic}
+                <p class="detail-mnemonic">{currentFact.mnemonic}</p>
+              {/if}
+              {#if currentFact.gaiaComment}
+                <p class="detail-gaia">{currentFact.gaiaComment}</p>
+              {/if}
+            </div>
           {/if}
         </div>
       </div>
@@ -340,22 +371,17 @@
     <!-- Self-rating buttons (only after flip) -->
     {#if isFlipped}
       <div class="rating-buttons">
-        <button class="rating-btn rating-btn--again" type="button" onclick={() => void rate(1)}>
-          <span class="rating-label">Again</span>
-          <span class="rating-sub">Forgot</span>
-        </button>
-        <button class="rating-btn rating-btn--good" type="button" onclick={() => void rate(3)}>
-          <span class="rating-label">Good</span>
-          <span class="rating-sub">Correct</span>
-        </button>
-        <button class="rating-btn rating-btn--easy" type="button" onclick={() => void rate(5)}>
-          <span class="rating-label">Easy</span>
-          <span class="rating-sub">Effortless</span>
-        </button>
+        {#each buttonOrder as btn}
+          <button class="rating-btn rating-btn--{btn.key}" type="button" onclick={() => void rate(btn.key)}>
+            <span class="rating-label">{btn.label}</span>
+            <span class="rating-interval">{intervals[btn.key]}</span>
+          </button>
+        {/each}
       </div>
     {:else}
       <!-- Placeholder to prevent layout shift -->
       <div class="rating-buttons rating-buttons--hidden" aria-hidden="true">
+        <div class="rating-btn-placeholder"></div>
         <div class="rating-btn-placeholder"></div>
         <div class="rating-btn-placeholder"></div>
         <div class="rating-btn-placeholder"></div>
@@ -780,6 +806,26 @@
     font-weight: 600;
   }
 
+  /* ── Sprite placeholder ──────────────────────────────────────── */
+  .card-sprite {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    border: 2px dashed rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .card-sprite-label {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.15);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
   .card-question {
     color: var(--color-warning);
     font-size: clamp(1rem, 3vw, 1.2rem);
@@ -831,14 +877,49 @@
     letter-spacing: 0.5px;
   }
 
-  .card-explanation {
+  /* ── Scrollable detail box ───────────────────────────────────── */
+  .card-details {
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.75rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .detail-explanation {
     color: #8a8aa0;
     font-size: 0.85rem;
     text-align: center;
     line-height: 1.55;
     margin: 0;
+  }
+
+  .detail-mnemonic {
+    color: #a78bfa;
     font-style: italic;
-    max-width: 320px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin: 0;
+    text-align: center;
+  }
+
+  .detail-gaia {
+    color: #4ecca3;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin: 0;
+    text-align: center;
+  }
+
+  .detail-gaia::before {
+    content: 'GAIA: ';
+    font-weight: 700;
+    opacity: 0.7;
   }
 
   /* ── Rating buttons ──────────────────────────────────────────── */
@@ -878,6 +959,12 @@
   }
   .rating-btn--again:hover { filter: brightness(1.1); }
 
+  .rating-btn--hard {
+    background: color-mix(in srgb, #f59e0b 55%, #0d0d1a 45%);
+    color: #fff;
+  }
+  .rating-btn--hard:hover { filter: brightness(1.1); }
+
   .rating-btn--good {
     background: var(--color-success);
     color: #0b231a;
@@ -885,7 +972,7 @@
   .rating-btn--good:hover { filter: brightness(1.05); }
 
   .rating-btn--easy {
-    background: color-mix(in srgb, #f59e0b 55%, #0d0d1a 45%);
+    background: color-mix(in srgb, #60a5fa 55%, #0d0d1a 45%);
     color: #fff;
   }
   .rating-btn--easy:hover { filter: brightness(1.1); }
@@ -896,7 +983,7 @@
     font-weight: 700;
   }
 
-  .rating-sub {
+  .rating-interval {
     display: block;
     font-size: 0.7rem;
     font-weight: 400;

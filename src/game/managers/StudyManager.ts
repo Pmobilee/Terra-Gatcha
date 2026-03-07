@@ -12,11 +12,13 @@ import {
   persistPlayer,
   addLearnedFact,
   updateReviewState,
+  updateReviewStateByButton,
   addMinerals,
   savePendingArtifacts,
   getDueReviews,
   syncKnowledgePoints,
 } from '../../ui/stores/playerData'
+import type { AnkiButton } from '../../services/sm2'
 import { BALANCE } from '../../data/balance'
 import { factsDB } from '../../services/factsDB'
 import type { Fact } from '../../data/types'
@@ -96,13 +98,13 @@ export class StudyManager {
 
   /**
    * Handle a single card answer from the StudySession component.
-   * Updates SM-2 review state with the player's self-rated quality grade.
+   * Updates SM-2 review state using the Anki-faithful button press.
    *
    * @param factId - The fact that was answered.
-   * @param quality - SM-2 quality grade (1=Again, 3=Good, 5=Easy).
+   * @param button - Anki button: 'again', 'hard', 'good', or 'easy'.
    */
-  handleStudyCardAnswer(factId: string, quality: number): void {
-    updateReviewState(factId, quality)
+  handleStudyCardAnswer(factId: string, button: AnkiButton): void {
+    updateReviewStateByButton(factId, button)
   }
 
   /**
@@ -163,12 +165,17 @@ export class StudyManager {
     }
 
     // Track study session timestamp for study score calculation
+    // Also mark initial study as complete if this was the first study session
     playerSave.update(s => {
       if (!s) return s
       const now = Date.now()
       const sevenDaysAgo = now - 7 * 24 * 60 * 60 * 1000
       const timestamps = [...(s.lastStudySessionTimestamps ?? []), now].filter(t => t > sevenDaysAgo)
-      return { ...s, lastStudySessionTimestamps: timestamps }
+      return {
+        ...s,
+        lastStudySessionTimestamps: timestamps,
+        hasCompletedInitialStudy: true,
+      }
     })
 
     // Persist after potential ritual field update

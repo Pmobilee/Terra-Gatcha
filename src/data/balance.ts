@@ -116,6 +116,12 @@ export const BALANCE = {
   // === SM-2 DEFAULTS ===
   SM2_INITIAL_EASE: 2.5,
   SM2_MIN_EASE: 1.3,
+  SM2_LEARNING_STEPS: [1, 10] as number[],
+  SM2_RELEARNING_STEPS: [10] as number[],
+  SM2_GRADUATING_INTERVAL: 1,
+  SM2_EASY_INTERVAL: 4,
+  SM2_LAPSE_NEW_INTERVAL_PCT: 0.70,
+  SM2_LEECH_THRESHOLD: 8,
 
   // === VISIBILITY ===
   FOG_REVEAL_RADIUS: 1,              // Penumbra ring width around revealed open space
@@ -522,6 +528,18 @@ export function getLayerGridSize(layer: number): [number, number] {
   if (layer <= 15) return [30, 30];
   return [40, 40];
 }
+
+// Anki-faithful learning step constants
+export const SM2_LEARNING_STEPS = [1, 10]          // minutes (Anki default: 1m, 10m)
+export const SM2_RELEARNING_STEPS = [10]            // minutes (Anki default: 10m)
+export const SM2_GRADUATING_INTERVAL = 1            // days — interval when Good on final learning step
+export const SM2_EASY_INTERVAL = 4                  // days — interval when Easy during learning
+export const SM2_LAPSE_NEW_INTERVAL_PCT = 0.70      // 70% of old interval preserved after lapse
+export const SM2_LEECH_THRESHOLD = 8                // lapses before leech flag
+export const SM2_HARD_INTERVAL_MULTIPLIER = 1.2     // Hard button: interval * 1.2
+export const SM2_EASY_BONUS_MULTIPLIER = 1.3        // Easy button: interval * ease * 1.3
+export const SM2_STARTING_FACTS_COUNT = 5           // facts seeded for new players
+export const SM2_DAILY_NEW_LIMIT = 10               // max new cards introduced per day/session
 
 // ---- SM-2 Tuning Constants (DD-V2-085, DD-V2-095) ----
 export const SM2_SECOND_INTERVAL_DAYS = 3          // second interval: 3 days (default SM-2 = 6)

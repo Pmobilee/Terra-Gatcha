@@ -2,14 +2,15 @@ import { BALANCE } from '../data/balance'
 import type { Fact, ReviewState } from '../data/types'
 
 /**
- * Selects the next quiz fact based on due reviews and fallback randomness.
+ * Selects the next quiz fact from review-due cards only.
  *
- * Facts with review states due now are prioritized; otherwise a random fact is
- * selected from the provided list.
+ * Only cards in the 'review' state (not 'new', 'learning', or 'relearning')
+ * are considered. New/learning cards stay in StudySession. Returns null when
+ * no review cards are due.
  *
  * @param facts - Candidate facts available for quizzing.
  * @param reviewStates - Review states associated with learned facts.
- * @returns The selected fact, or null when no facts are available.
+ * @returns The selected fact, or null when no review cards are due.
  */
 export function selectQuestion(facts: Fact[], reviewStates: ReviewState[]): Fact | null {
   if (facts.length === 0) {
@@ -22,14 +23,16 @@ export function selectQuestion(facts: Fact[], reviewStates: ReviewState[]): Fact
   let earliestDueState: ReviewState | null = null
 
   for (const state of reviewStates) {
+    // Only select cards in 'review' state — new/learning cards stay in StudySession
+    if (state.cardState !== 'review') {
+      continue
+    }
     if (state.nextReviewAt > now) {
       continue
     }
-
     if (!factById.has(state.factId)) {
       continue
     }
-
     if (earliestDueState === null || state.nextReviewAt < earliestDueState.nextReviewAt) {
       earliestDueState = state
     }
@@ -39,7 +42,8 @@ export function selectQuestion(facts: Fact[], reviewStates: ReviewState[]): Fact
     return factById.get(earliestDueState.factId) ?? null
   }
 
-  return facts[Math.floor(Math.random() * facts.length)]
+  // No review cards due — return null instead of random fallback
+  return null
 }
 
 /**

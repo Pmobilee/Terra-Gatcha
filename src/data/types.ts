@@ -139,16 +139,23 @@ export interface Fact {
 // SM-2 SPACED REPETITION
 // ============================================================
 
-/** SM-2 review state for a single fact */
+/** Anki-faithful card state machine */
+export type CardState = 'new' | 'learning' | 'review' | 'relearning'
+
+/** SM-2 review state for a single fact (Anki-faithful) */
 export interface ReviewState {
   factId: string
-  easeFactor: number          // Starts 2.5, min 1.3
-  interval: number            // Days until next review
-  repetitions: number         // Consecutive correct answers
-  nextReviewAt: number        // Unix timestamp (ms)
-  lastReviewAt: number        // Unix timestamp (ms)
-  quality: number             // Last response quality (0-5)
-  /** Context in which the fact was last reviewed. Used for DD-V2-097 consistency penalty. */
+  cardState: CardState          // Anki card state machine
+  easeFactor: number            // Starts 2.5, min 1.3
+  interval: number              // Days until next review (for review cards)
+  repetitions: number           // Consecutive correct answers in review state
+  nextReviewAt: number          // Unix timestamp (ms)
+  lastReviewAt: number          // Unix timestamp (ms)
+  quality: number               // Last response quality (0-5)
+  learningStep: number          // Current step index in learning/relearning (0-based)
+  lapseCount: number            // Total times card has lapsed
+  isLeech: boolean              // Flagged after SM2_LEECH_THRESHOLD lapses
+  /** Context in which the fact was last reviewed. */
   lastReviewContext?: 'study' | 'mine' | 'ritual'
   /** Cumulative number of times this fact has been answered incorrectly (never resets). */
   wrongCount?: number
@@ -557,6 +564,8 @@ export interface PlayerSave {
   // Phase 14: Onboarding & Tutorial
   /** Whether the player has completed the tutorial flow. */
   tutorialComplete: boolean
+  /** Whether the player has completed their initial study session (5 seed facts). */
+  hasCompletedInitialStudy: boolean
   /** Which interests the player selected during onboarding (e.g. ['Historian', 'Linguist']). */
   selectedInterests: string[]
   /** Category weighting from interest selection (category → multiplier). */
