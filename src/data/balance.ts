@@ -480,6 +480,10 @@ export const BALANCE = {
   ACTIVATION_CAP_PER_MASTERED: 1,  // +1 cap per N mastered
   ACTIVATION_CAP_MASTERED_DIVISOR: 5,  // per 5 mastered cards
   ACTIVATION_CAP_MAX: 20,         // Hard ceiling
+
+  // === WORKLOAD MANAGEMENT ===
+  NEW_CARDS_PER_SESSION: 3,          // Max new cards introduced per study session
+  NEW_CARD_THROTTLE_RATIO: 3,       // Suppress new cards if dueReviews > ratio × newCardsToday
 } as const
 
 /**
@@ -548,6 +552,8 @@ export const ACTIVATION_CAP_BASE = BALANCE.ACTIVATION_CAP_BASE
 export const ACTIVATION_CAP_PER_MASTERED = BALANCE.ACTIVATION_CAP_PER_MASTERED
 export const ACTIVATION_CAP_MASTERED_DIVISOR = BALANCE.ACTIVATION_CAP_MASTERED_DIVISOR
 export const ACTIVATION_CAP_MAX = BALANCE.ACTIVATION_CAP_MAX
+export const NEW_CARDS_PER_SESSION = BALANCE.NEW_CARDS_PER_SESSION
+export const NEW_CARD_THROTTLE_RATIO = BALANCE.NEW_CARD_THROTTLE_RATIO
 export const SM2_STARTING_FACTS_COUNT = 5           // facts seeded for new players
 export const SM2_DAILY_NEW_LIMIT = 10               // max new cards introduced per day/session
 

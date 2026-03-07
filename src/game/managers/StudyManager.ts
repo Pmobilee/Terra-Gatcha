@@ -17,11 +17,13 @@ import {
   savePendingArtifacts,
   getDueReviews,
   syncKnowledgePoints,
+  shouldShowNewCards,
+  incrementNewCardCount,
 } from '../../ui/stores/playerData'
 import type { AnkiButton } from '../../services/sm2'
-import { BALANCE } from '../../data/balance'
+import { BALANCE, NEW_CARDS_PER_SESSION } from '../../data/balance'
 import { factsDB } from '../../services/factsDB'
-import type { Fact } from '../../data/types'
+import type { Fact, ReviewState } from '../../data/types'
 
 /**
  * Manages study sessions, artifact review flows, and the legacy study-answer handler.
@@ -46,50 +48,96 @@ export class StudyManager {
 
   /**
    * Start a dedicated card-flip study session at base.
-   * Gathers due-review facts (or random learned facts as fallback),
-   * populates the studyFacts/studyReviewStates stores, and navigates
-   * to the 'studySession' screen — handled by StudySession.svelte.
+   * Gathers cards by priority: review-due, then learning/relearning, then
+   * new (throttled by daily limit and backlog). Populates the
+   * studyFacts/studyReviewStates stores, and navigates to the
+   * 'studySession' screen — handled by StudySession.svelte.
    */
   startStudySession(): void {
     const save = get(playerSave)
     if (!save) return
 
-    // Gather due reviews
-    const dueReviews = getDueReviews()
-
-    const facts: Fact[] = []
     if (!factsDB.isReady()) {
       console.warn('[StudyManager] FactsDB not ready — retrying init')
       factsDB.init().then(() => {
-        // Retry after init completes
         this.startStudySession()
       }).catch(() => {
         console.error('[StudyManager] FactsDB init failed — cannot start study session')
-        // Show session with empty facts so user sees an error state
         studyFacts.set([])
         studyReviewStates.set([])
         currentScreen.set('studySession')
       })
       return
     }
-    for (const review of dueReviews) {
-      const fact = factsDB.getById(review.factId)
-      if (fact) facts.push(fact)
-    }
 
-    // Fallback: pick random learned facts when nothing is due
-    if (facts.length === 0 && save.learnedFacts.length > 0) {
-      const shuffled = [...save.learnedFacts].sort(() => Math.random() - 0.5)
-      for (const id of shuffled) {
-        const fact = factsDB.getById(id)
-        if (fact) facts.push(fact)
+    const now = Date.now()
+
+    // ── Gather cards by priority ────────────────────────────────
+    // Priority order: review-due → relearning/learning → new (throttled)
+
+    // 1. Review-due cards (cardState === 'review', nextReviewAt <= now)
+    const reviewDue: { fact: Fact; state: ReviewState }[] = []
+    for (const rs of save.reviewStates) {
+      if (rs.cardState === 'review' && rs.nextReviewAt <= now) {
+        const fact = factsDB.getById(rs.factId)
+        if (fact) reviewDue.push({ fact, state: rs })
       }
     }
+    // Sort: earliest due first
+    reviewDue.sort((a, b) => a.state.nextReviewAt - b.state.nextReviewAt)
 
-    // Collect matching review states
-    const reviewStates = save.reviewStates.filter(rs =>
-      facts.some(f => f.id === rs.factId)
-    )
+    // 2. Learning/relearning cards (in-progress, due for next step)
+    const learningDue: { fact: Fact; state: ReviewState }[] = []
+    for (const rs of save.reviewStates) {
+      if ((rs.cardState === 'learning' || rs.cardState === 'relearning') && rs.nextReviewAt <= now) {
+        const fact = factsDB.getById(rs.factId)
+        if (fact) learningDue.push({ fact, state: rs })
+      }
+    }
+    // Shuffle learning cards
+    learningDue.sort(() => Math.random() - 0.5)
+
+    // 3. New cards (throttled by daily limit + backlog)
+    const newCards: { fact: Fact; state: ReviewState }[] = []
+    if (shouldShowNewCards()) {
+      for (const rs of save.reviewStates) {
+        if (rs.cardState === 'new') {
+          const fact = factsDB.getById(rs.factId)
+          if (fact) newCards.push({ fact, state: rs })
+        }
+      }
+      // Shuffle and cap at daily limit
+      newCards.sort(() => Math.random() - 0.5)
+      const today = new Date().toISOString().slice(0, 10)
+      const alreadyStudied = save.lastNewCardDate === today ? save.newCardsStudiedToday : 0
+      const remaining = Math.max(0, NEW_CARDS_PER_SESSION - alreadyStudied)
+      newCards.splice(remaining)
+    }
+
+    // ── Build ordered queue ─────────────────────────────────────
+    // Review-due first, then learning/relearning, then new cards last
+    const orderedCards = [...reviewDue, ...learningDue, ...newCards]
+
+    const facts = orderedCards.map(c => c.fact)
+    const reviewStates = orderedCards.map(c => c.state)
+
+    // Fallback: if nothing is due and player has learned facts, show review-ahead
+    if (facts.length === 0 && save.learnedFacts.length > 0) {
+      const shuffled = [...save.learnedFacts].sort(() => Math.random() - 0.5)
+      const fallbackFacts: Fact[] = []
+      for (const id of shuffled) {
+        const fact = factsDB.getById(id)
+        if (fact) fallbackFacts.push(fact)
+      }
+      // Collect matching review states for these
+      const allStates = save.reviewStates.filter(rs =>
+        fallbackFacts.some(f => f.id === rs.factId)
+      )
+      studyFacts.set(fallbackFacts)
+      studyReviewStates.set(allStates)
+      currentScreen.set('studySession')
+      return
+    }
 
     studyFacts.set(facts)
     studyReviewStates.set(reviewStates)
@@ -99,11 +147,21 @@ export class StudyManager {
   /**
    * Handle a single card answer from the StudySession component.
    * Updates SM-2 review state using the Anki-faithful button press.
+   * Tracks new card introductions for daily throttle.
    *
    * @param factId - The fact that was answered.
    * @param button - Anki button: 'again', 'okay', or 'good'.
    */
   handleStudyCardAnswer(factId: string, button: AnkiButton): void {
+    // Track new cards studied for daily throttle
+    const save = get(playerSave)
+    if (save) {
+      const state = save.reviewStates.find(r => r.factId === factId)
+      if (state && state.cardState === 'new') {
+        incrementNewCardCount()
+      }
+    }
+
     updateReviewStateByButton(factId, button)
   }
 

@@ -19,7 +19,7 @@
   let { facts, reviewStates, onAnswer, onComplete }: Props = $props()
 
   // ── Session size selection ──────────────────────────────────
-  type SessionSize = 5 | 10 | 'all'
+  type SessionSize = 5 | 10 | 20
   let sessionSize = $state<SessionSize | null>(null)
 
   // ── Card queue (set once sessionSize is chosen) ─────────────
@@ -107,8 +107,7 @@
   function chooseSize(size: SessionSize): void {
     audioManager.playSound('button_click')
     sessionSize = size
-    const cap = size === 'all' ? facts.length : size
-    queue = facts.slice(0, cap)
+    queue = facts.slice(0, size)
     cardIndex = 0
     isFlipped = false
     correctCount = 0
@@ -231,13 +230,13 @@
           <span class="size-label">Standard session</span>
         </button>
         <button
-          class="size-btn size-btn--all"
+          class="size-btn"
           type="button"
           disabled={facts.length === 0}
-          onclick={() => chooseSize('all')}
+          onclick={() => chooseSize(20)}
         >
-          <span class="size-number">{facts.length}</span>
-          <span class="size-label">All due</span>
+          <span class="size-number">20</span>
+          <span class="size-label">Deep session</span>
         </button>
       </div>
 
@@ -590,21 +589,6 @@
   .size-btn:disabled {
     opacity: 0.4;
     cursor: default;
-  }
-
-  .size-btn--all {
-    border-color: rgba(255, 211, 105, 0.35);
-    background: rgba(40, 35, 20, 0.55);
-  }
-
-  .size-btn--all:hover:not(:disabled) {
-    border-color: rgba(255, 211, 105, 0.65);
-    background: rgba(60, 50, 20, 0.65);
-    box-shadow: 0 0 18px rgba(255, 211, 105, 0.18);
-  }
-
-  .size-btn--all:active:not(:disabled) {
-    background: rgba(70, 60, 20, 0.75);
   }
 
   .size-number {

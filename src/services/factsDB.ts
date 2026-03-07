@@ -164,6 +164,25 @@ class FactsDB {
   }
 
   /**
+   * Returns facts matching any of the given top-level categories.
+   * Useful for interest-curated seed facts during onboarding.
+   *
+   * @param categories - Array of category names (e.g., ['History', 'Language'])
+   * @param limit - Maximum facts to return
+   */
+  getByCategory(categories: string[], limit: number): Fact[] {
+    if (categories.length === 0) return []
+    const all = this.getAll()
+    const matching = all.filter(f => {
+      const topCategory = f.category[0] ?? ''
+      return categories.includes(topCategory)
+    })
+    // Shuffle and take up to limit
+    const shuffled = [...matching].sort(() => Math.random() - 0.5)
+    return shuffled.slice(0, limit)
+  }
+
+  /**
    * Returns a random selection of facts, automatically filtered by the age
    * bracket stored in localStorage (set by the AgeGate on first launch).
    * @param count Number of facts to return (default 1).

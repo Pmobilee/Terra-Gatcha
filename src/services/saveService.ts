@@ -300,6 +300,10 @@ export function load(): PlayerSave | null {
     if (typeof parsedAny['studySessionsCompleted'] !== 'number') {
       parsedAny['studySessionsCompleted'] = 0
     }
+    // Backward compatibility: ensure workload tracking fields exist
+    if (typeof parsedAny['newCardsStudiedToday'] !== 'number') {
+      parsedAny['newCardsStudiedToday'] = 0
+    }
     // Backward compatibility: Phase 17 — Addictiveness Pass fields
     if (typeof parsedAny['loginCalendarDay'] !== 'number') {
       parsedAny['loginCalendarDay'] = 1
@@ -476,6 +480,7 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     tutorialStep: 0,
     activeFossil: null,
     studySessionsCompleted: 0,
+    newCardsStudiedToday: 0,
     // Phase 17: Addictiveness Pass
     loginCalendarDay: 1,
     loginCalendarLastClaimed: 0,

@@ -579,6 +579,10 @@ export interface PlayerSave {
   activeFossil: string | null
   /** Number of study sessions completed (for first-session bonus oxygen). */
   studySessionsCompleted: number
+  /** Number of new cards introduced today (resets daily). */
+  newCardsStudiedToday: number
+  /** ISO date string of last day new cards were introduced. */
+  lastNewCardDate?: string
 
   // Phase 17: Addictiveness Pass
   /** Current login calendar day (1-7), wraps after Day 7 is claimed. */

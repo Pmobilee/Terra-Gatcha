@@ -20,7 +20,7 @@ import { createReviewState, isDue, isMastered, getMasteryLevel, reviewFact, revi
 import type { AnkiButton } from '../../services/sm2'
 import type { Cosmetic } from '../../data/cosmetics'
 import { calculateKnowledgePoints } from '../../data/knowledgeStore'
-import { BALANCE, LEARNING_SPARKS_PER_MILESTONE, ACTIVATION_CAP_BASE, ACTIVATION_CAP_MASTERED_DIVISOR, ACTIVATION_CAP_MAX } from '../../data/balance'
+import { BALANCE, LEARNING_SPARKS_PER_MILESTONE, ACTIVATION_CAP_BASE, ACTIVATION_CAP_MASTERED_DIVISOR, ACTIVATION_CAP_MAX, NEW_CARDS_PER_SESSION, NEW_CARD_THROTTLE_RATIO } from '../../data/balance'
 import { evaluateArchetype } from '../../services/archetypeDetector'
 import { updateEngagementAfterDive, getEngagementGaiaComment } from '../../services/engagementScorer'
 import { defaultHubSaveState } from '../../data/hubLayout'
@@ -531,6 +531,50 @@ export function seedStartingFacts(factIds: string[]): void {
     }
   })
 
+  persistPlayer()
+}
+
+/**
+ * Returns whether the study session should include new cards.
+ * False if: daily limit reached, or review backlog too high.
+ */
+export function shouldShowNewCards(): boolean {
+  const ps = get(playerSave)
+  if (!ps) return false
+
+  // Reset daily counter if it's a new day
+  const today = new Date().toISOString().slice(0, 10)
+  if (ps.lastNewCardDate !== today) {
+    return true // New day, allow new cards
+  }
+
+  // Daily limit check
+  if (ps.newCardsStudiedToday >= NEW_CARDS_PER_SESSION) return false
+
+  // Backlog check: if due reviews > ratio × new cards today, suppress
+  const dueCount = ps.reviewStates.filter(r =>
+    r.cardState === 'review' && r.nextReviewAt <= Date.now()
+  ).length
+  if (dueCount > NEW_CARD_THROTTLE_RATIO * Math.max(1, ps.newCardsStudiedToday)) return false
+
+  return true
+}
+
+/**
+ * Increments the daily new card counter.
+ * Resets if it's a new day.
+ */
+export function incrementNewCardCount(): void {
+  const today = new Date().toISOString().slice(0, 10)
+  playerSave.update(s => {
+    if (!s) return s
+    const isNewDay = s.lastNewCardDate !== today
+    return {
+      ...s,
+      newCardsStudiedToday: isNewDay ? 1 : s.newCardsStudiedToday + 1,
+      lastNewCardDate: today,
+    }
+  })
   persistPlayer()
 }
 
