@@ -109,11 +109,15 @@ export interface MineSceneData {
   difficultyProfile?: DifficultyProfile
   /** Active fossil companion effect for this dive (null/absent = no companion). */
   companionEffect?: CompanionEffect | null
+  /** Original dive max O2 (preserved across layers for accurate HUD display). */
+  diveMaxO2?: number
 }
 
 export class MineScene extends Phaser.Scene {
   /** @internal */ public seed = 0
   /** @internal */ public oxygenTanks: number = BALANCE.STARTING_OXYGEN_TANKS
+  /** @internal Original dive max O2 — preserved across layers so the HUD doesn't reset. */
+  public diveMaxO2 = 0
   /** @internal */ public grid: MineCell[][] = []
   /** @internal */ public player!: Player
   /** @internal */ public oxygenState!: OxygenState
@@ -220,6 +224,7 @@ export class MineScene extends Phaser.Scene {
     this.itemSpritePoolIndex = 0
     this.seed = data.seed ?? (Date.now() >>> 0)
     this.oxygenTanks = data.oxygenTanks ?? BALANCE.STARTING_OXYGEN_TANKS
+    this.diveMaxO2 = data.diveMaxO2 ?? 0
     this.inventorySlots = data.inventorySlots ?? BALANCE.STARTING_INVENTORY_SLOTS
     this.facts = data.facts ?? []
     this.currentLayer = data.layer ?? 0
@@ -383,7 +388,7 @@ export class MineScene extends Phaser.Scene {
     }
     this.gridHeight = this.grid.length
     this.gridWidth = this.gridHeight > 0 ? this.grid[0].length : 0
-    this.oxygenState = createOxygenState(this.oxygenTanks)
+    this.oxygenState = createOxygenState(this.oxygenTanks, this.diveMaxO2 || undefined)
     // On layer descents, inventory is pre-loaded via init(); only reset on fresh layer-0 starts.
     if (this.currentLayer === 0) {
       this.inventory = Array.from({ length: this.inventorySlots }, () => ({ type: 'empty' as const }))

@@ -8,13 +8,15 @@ export type OxygenState = {
 
 /**
  * Creates a fresh oxygen state from the number of tanks for a dive.
+ * @param maxCapacity Optional override for the max O2 capacity (used on layer
+ *   descent so the HUD keeps showing the original dive max instead of resetting).
  */
-export function createOxygenState(tanks: number): OxygenState {
+export function createOxygenState(tanks: number, maxCapacity?: number): OxygenState {
   const totalOxygen = tanks * BALANCE.OXYGEN_PER_TANK
 
   return {
     current: totalOxygen,
-    max: totalOxygen,
+    max: maxCapacity ?? totalOxygen,
   }
 }
 

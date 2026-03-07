@@ -64,6 +64,8 @@ export function wireEventBridge(gm: GameManager, events: Phaser.Events.EventEmit
       inventory.set(
         Array.from({ length: data.inventorySlots }, () => ({ type: 'empty' as const }))
       )
+      // Capture the original dive max O2 so layer descents preserve it in the HUD.
+      gm.diveMaxO2 = data.oxygen.max
     }
   })
 
@@ -78,7 +80,6 @@ export function wireEventBridge(gm: GameManager, events: Phaser.Events.EventEmit
 
   events.on('depth-changed', (depth: number) => {
     currentDepth.set(depth)
-    if (depth > gm.maxDepthThisRun) gm.maxDepthThisRun = depth
 
     // Derive grid height from current layer so depth milestones scale correctly.
     const [, gridHeight] = getLayerGridSize(gm.currentLayer + 1)

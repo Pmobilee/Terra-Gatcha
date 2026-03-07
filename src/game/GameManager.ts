@@ -103,6 +103,8 @@ export class GameManager {
   private static instance: GameManager
   private game: Phaser.Game | null = null
   /** @internal */ maxDepthThisRun = 0
+  /** @internal Original max O2 for the entire dive (doesn't shrink on layer descent). */
+  diveMaxO2 = 0
   /** @internal */ gaiaDepthMilestones = new Set<number>()
   /** @internal Zero-based index of the current mine layer within the active dive. */
   currentLayer = 0
@@ -313,6 +315,7 @@ export class GameManager {
 
     this.currentLayer = nextLayer
     currentLayerStore.set(nextLayer)
+    if (nextLayer > this.maxDepthThisRun) this.maxDepthThisRun = nextLayer
     this.recentlyFailedFactIds = new Set()
     this.onLayerAdvance()
 
@@ -386,6 +389,7 @@ export class GameManager {
       biome: nextBiome,
       secondaryBiome: nextSecondaryBiome,
       companionEffect: this.companionEffect,
+      diveMaxO2: this.diveMaxO2,
     })
 
     currentScreen.set('mining')
@@ -612,6 +616,7 @@ export class GameManager {
     shieldActive.set(false)
     this.runRelics = []
     this.maxDepthThisRun = 0
+    this.diveMaxO2 = 0
     this.o2Paused = false
     this.quizManager.resetForDive()
     this.gaiaDepthMilestones.clear()
