@@ -273,7 +273,7 @@ export function getDueReviews(): ReviewState[] {
  * Updates SM-2 review state using Anki-faithful button press.
  *
  * @param factId - Fact identifier whose review state should change.
- * @param button - Anki button: 'again', 'hard', 'good', or 'easy'.
+ * @param button - Anki button: 'again', 'okay', or 'good'.
  * @param factCategory - Optional top-level category for behavioral learning.
  */
 export function updateReviewStateByButton(factId: string, button: AnkiButton, factCategory?: string): void {

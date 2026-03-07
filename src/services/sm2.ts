@@ -10,14 +10,13 @@ import {
   SM2_EASY_INTERVAL,
   SM2_LAPSE_NEW_INTERVAL_PCT,
   SM2_LEECH_THRESHOLD,
-  SM2_HARD_INTERVAL_MULTIPLIER,
   SM2_EASY_BONUS_MULTIPLIER,
 } from '../data/balance'
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
 const MS_PER_MIN = 60 * 1000
 
-export type AnkiButton = 'again' | 'hard' | 'good' | 'easy'
+export type AnkiButton = 'again' | 'okay' | 'good'
 
 /**
  * Creates an initial review state for a new fact.
@@ -43,8 +42,8 @@ export function createReviewState(factId: string): ReviewState {
  * Core Anki-faithful review function. Applies one button press and returns new immutable state.
  *
  * Card state transitions:
- * - new/learning: Again→step0, Hard→repeat(1.5x), Good→next step (graduate on last), Easy→graduate immediately
- * - review: Again→lapse(relearning), Hard→interval*1.2(ease-15%), Good→interval*ease, Easy→interval*ease*1.3(ease+15%)
+ * - new/learning: Again→step0, Okay→next step (graduate on last), Good→graduate immediately
+ * - review: Again→lapse(relearning), Okay→interval*ease, Good→interval*ease*1.3(ease+15%)
  * - relearning: Same as learning but graduation preserves 70% of old interval
  */
 export function reviewCard(state: ReviewState, button: AnkiButton): ReviewState {
@@ -86,19 +85,7 @@ function handleLearning(
         lastReviewAt: now,
       }
     }
-    case 'hard': {
-      // Repeat current step with 1.5x delay
-      const currentStep = Math.min(state.learningStep, steps.length - 1)
-      const delay = Math.round((steps[currentStep] ?? 1) * 1.5)
-      return {
-        ...state,
-        cardState: isRelearning ? 'relearning' : 'learning',
-        quality: 2,
-        nextReviewAt: now + delay * MS_PER_MIN,
-        lastReviewAt: now,
-      }
-    }
-    case 'good': {
+    case 'okay': {
       const nextStep = state.learningStep + 1
       if (nextStep >= steps.length) {
         // Graduate!
@@ -115,7 +102,7 @@ function handleLearning(
         lastReviewAt: now,
       }
     }
-    case 'easy': {
+    case 'good': {
       // Graduate immediately with easy interval
       return graduateEasy(state, now, isRelearning)
     }
@@ -182,20 +169,7 @@ function handleReview(state: ReviewState, button: AnkiButton, now: number): Revi
         lastReviewAt: now,
       }
     }
-    case 'hard': {
-      const newInterval = Math.max(state.interval + 1, Math.round(state.interval * SM2_HARD_INTERVAL_MULTIPLIER))
-      const newEase = Math.max(state.easeFactor - 0.15, BALANCE.SM2_MIN_EASE)
-      return {
-        ...state,
-        interval: newInterval,
-        easeFactor: newEase,
-        repetitions: state.repetitions + 1,
-        quality: 2,
-        nextReviewAt: now + newInterval * MS_PER_DAY,
-        lastReviewAt: now,
-      }
-    }
-    case 'good': {
+    case 'okay': {
       const newInterval = Math.max(state.interval + 1, Math.round(state.interval * state.easeFactor))
       return {
         ...state,
@@ -206,7 +180,7 @@ function handleReview(state: ReviewState, button: AnkiButton, now: number): Revi
         lastReviewAt: now,
       }
     }
-    case 'easy': {
+    case 'good': {
       const newInterval = Math.max(state.interval + 1, Math.round(state.interval * state.easeFactor * SM2_EASY_BONUS_MULTIPLIER))
       const newEase = state.easeFactor + 0.15
       return {
@@ -247,51 +221,46 @@ export function getButtonIntervals(state: ReviewState): Record<AnkiButton, strin
     const isLastStep = nextStep >= steps.length
 
     const againDelay = steps[0] ?? 1
-    const hardDelay = Math.round((steps[currentStep] ?? 1) * 1.5)
 
-    const goodLabel = isLastStep
+    const okayLabel = isLastStep
       ? formatDays(isRelearning ? Math.max(1, Math.round(state.interval * SM2_LAPSE_NEW_INTERVAL_PCT)) : SM2_GRADUATING_INTERVAL)
       : formatMinutes(steps[nextStep] ?? 10)
 
-    const easyInterval = isRelearning
+    const goodInterval = isRelearning
       ? Math.max(SM2_EASY_INTERVAL, Math.round(state.interval * SM2_LAPSE_NEW_INTERVAL_PCT))
       : SM2_EASY_INTERVAL
 
     return {
       again: formatMinutes(againDelay),
-      hard: formatMinutes(hardDelay),
-      good: goodLabel,
-      easy: formatDays(easyInterval),
+      okay: okayLabel,
+      good: formatDays(goodInterval),
     }
   }
 
   // Review state
-  const hardInterval = Math.max(state.interval + 1, Math.round(state.interval * SM2_HARD_INTERVAL_MULTIPLIER))
-  const goodInterval = Math.max(state.interval + 1, Math.round(state.interval * state.easeFactor))
-  const easyInterval = Math.max(state.interval + 1, Math.round(state.interval * state.easeFactor * SM2_EASY_BONUS_MULTIPLIER))
+  const okayInterval = Math.max(state.interval + 1, Math.round(state.interval * state.easeFactor))
+  const goodInterval = Math.max(state.interval + 1, Math.round(state.interval * state.easeFactor * SM2_EASY_BONUS_MULTIPLIER))
   const relearningDelay = SM2_RELEARNING_STEPS[0] ?? 10
 
   return {
     again: formatMinutes(relearningDelay),
-    hard: formatDays(hardInterval),
+    okay: formatDays(okayInterval),
     good: formatDays(goodInterval),
-    easy: formatDays(easyInterval),
   }
 }
 
 /**
  * Backward-compatible wrapper. Maps boolean/number quality to AnkiButton.
- * - true → 'good', false → 'again'
- * - 5 → 'easy', 4 → 'good', 3 → 'good', 2 → 'hard', 1 → 'again', 0 → 'again'
+ * - true → 'okay', false → 'again'
+ * - 5 → 'good', 3-4 → 'okay', 0-2 → 'again'
  */
 export function reviewFact(state: ReviewState, correctOrQuality: boolean | number): ReviewState {
   let button: AnkiButton
   if (typeof correctOrQuality === 'boolean') {
-    button = correctOrQuality ? 'good' : 'again'
+    button = correctOrQuality ? 'okay' : 'again'
   } else {
-    if (correctOrQuality >= 5) button = 'easy'
-    else if (correctOrQuality >= 3) button = 'good'
-    else if (correctOrQuality >= 2) button = 'hard'
+    if (correctOrQuality >= 5) button = 'good'
+    else if (correctOrQuality >= 3) button = 'okay'
     else button = 'again'
   }
   return reviewCard(state, button)

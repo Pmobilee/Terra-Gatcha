@@ -101,7 +101,7 @@ export class StudyManager {
    * Updates SM-2 review state using the Anki-faithful button press.
    *
    * @param factId - The fact that was answered.
-   * @param button - Anki button: 'again', 'hard', 'good', or 'easy'.
+   * @param button - Anki button: 'again', 'okay', or 'good'.
    */
   handleStudyCardAnswer(factId: string, button: AnkiButton): void {
     updateReviewStateByButton(factId, button)

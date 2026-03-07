@@ -33,6 +33,11 @@
   let correctCount = $state(0)
   let isDone = $state(false)
 
+  // ── Again re-queue (session loop) ─────────────────────────
+  let againCounts = $state<Map<string, number>>(new Map())
+  const MAX_AGAIN_REQUEUES = 2
+  let originalTotal = $state(0)
+
   // ── Phase 57.2: Tree shimmer on correct answer ────────────
   let lastAnswerCorrect = $state(false)
 
@@ -44,12 +49,12 @@
   // ── Derived helpers ─────────────────────────────────────────
   const currentFact = $derived(queue[cardIndex] ?? null)
   const totalCards = $derived(queue.length)
-  const progressLabel = $derived(`${cardIndex + 1} / ${totalCards}`)
-  const progressPct = $derived(totalCards > 0 ? ((cardIndex) / totalCards) * 100 : 0)
+  const progressLabel = $derived(`${Math.min(cardIndex + 1, originalTotal)} / ${originalTotal}`)
+  const progressPct = $derived(originalTotal > 0 ? Math.min(((cardIndex) / originalTotal) * 100, 100) : 0)
   const progressOver50 = $derived(progressPct > 50)
 
-  const allCorrect = $derived(isDone && correctCount === totalCards)
-  const mostlyCorrect = $derived(isDone && !allCorrect && correctCount / totalCards > 0.7)
+  const allCorrect = $derived(isDone && correctCount === originalTotal)
+  const mostlyCorrect = $derived(isDone && !allCorrect && correctCount / originalTotal > 0.7)
 
   const summaryMessage = $derived.by(() => {
     if (!isDone) return ''
@@ -81,19 +86,18 @@
     return CATEGORY_COLORS[top] ?? '#9ca3af'
   }
 
-  // ── 4-button order ─────────────────────────────────────────
+  // ── 3-button order ─────────────────────────────────────────
   const buttonOrder: { key: AnkiButton; label: string }[] = [
     { key: 'again', label: 'Again' },
-    { key: 'hard', label: 'Hard' },
+    { key: 'okay', label: 'Okay' },
     { key: 'good', label: 'Good' },
-    { key: 'easy', label: 'Easy' },
   ]
 
   // ── Interval previews derived from current card's review state ──
   const intervals = $derived.by(() => {
-    if (!currentFact) return { again: '', hard: '', good: '', easy: '' }
+    if (!currentFact) return { again: '', okay: '', good: '' }
     const rs = reviewStates.find(r => r.factId === currentFact.id)
-    if (!rs) return { again: '1m', hard: '1m', good: '1d', easy: '4d' }
+    if (!rs) return { again: '1m', okay: '1d', good: '4d' }
     return getButtonIntervals(rs)
   })
 
@@ -109,6 +113,8 @@
     isFlipped = false
     correctCount = 0
     isDone = false
+    againCounts = new Map()
+    originalTotal = queue.length
   }
 
   /** Flip the card to reveal the answer. */
@@ -128,6 +134,15 @@
       onCorrectAnswer()
     }
     onAnswer(currentFact.id, button)
+
+    // Re-queue Again cards at the end (max MAX_AGAIN_REQUEUES times per card)
+    if (button === 'again') {
+      const count = againCounts.get(currentFact.id) ?? 0
+      if (count < MAX_AGAIN_REQUEUES) {
+        queue = [...queue, currentFact]
+        againCounts.set(currentFact.id, count + 1)
+      }
+    }
 
     // Brief visual pause before transitioning
     await new Promise<void>(r => setTimeout(r, 300))
@@ -256,7 +271,7 @@
       <div class="score-display">
         <span class="score-correct">{correctCount}</span>
         <span class="score-sep">/</span>
-        <span class="score-total">{totalCards}</span>
+        <span class="score-total">{originalTotal}</span>
       </div>
       <p class="score-label">locked in</p>
       <p class="summary-message">{summaryMessage}</p>
@@ -359,7 +374,6 @@
     {:else}
       <!-- Placeholder to prevent layout shift -->
       <div class="rating-buttons rating-buttons--hidden" aria-hidden="true">
-        <div class="rating-btn-placeholder"></div>
         <div class="rating-btn-placeholder"></div>
         <div class="rating-btn-placeholder"></div>
         <div class="rating-btn-placeholder"></div>
@@ -920,23 +934,18 @@
   }
   .rating-btn--again:hover { filter: brightness(1.1); }
 
-  .rating-btn--hard {
-    background: color-mix(in srgb, #f59e0b 55%, #0d0d1a 45%);
-    color: #fff;
-  }
-  .rating-btn--hard:hover { filter: brightness(1.1); }
-
-  .rating-btn--good {
+  .rating-btn--okay {
     background: var(--color-success);
     color: #0b231a;
+    flex: 1.3;
   }
-  .rating-btn--good:hover { filter: brightness(1.05); }
+  .rating-btn--okay:hover { filter: brightness(1.05); }
 
-  .rating-btn--easy {
+  .rating-btn--good {
     background: color-mix(in srgb, #60a5fa 55%, #0d0d1a 45%);
     color: #fff;
   }
-  .rating-btn--easy:hover { filter: brightness(1.1); }
+  .rating-btn--good:hover { filter: brightness(1.1); }
 
   .rating-label {
     display: block;

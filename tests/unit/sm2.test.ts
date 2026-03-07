@@ -26,11 +26,11 @@ const MS_PER_DAY = 24 * 60 * 60 * 1000
 const MS_PER_MIN = 60 * 1000
 const NOW = 1_700_000_000_000
 
-/** Advance a new card through learning steps to reach review state via 'good'. */
+/** Advance a new card through learning steps to reach review state via 'okay'. */
 function advanceToReview(factId = 'f'): import('../../src/data/types').ReviewState {
   let s = createReviewState(factId)
-  s = reviewCard(s, 'good') // step 0 -> step 1
-  s = reviewCard(s, 'good') // step 1 (final) -> graduate to review
+  s = reviewCard(s, 'okay') // step 0 -> step 1
+  s = reviewCard(s, 'okay') // step 1 (final) -> graduate to review
   return s
 }
 
@@ -84,46 +84,37 @@ describe('reviewCard — learning state transitions (new/learning)', () => {
     expect(next.nextReviewAt).toBe(NOW + SM2_LEARNING_STEPS[0] * MS_PER_MIN)
   })
 
-  it('Hard stays in learning at same step with delay = step * 1.5', () => {
+  it('Okay on step 0 advances to step 1 with delay = LEARNING_STEPS[1]', () => {
     const s = createReviewState('f')
-    const next = reviewCard(s, 'hard')
-    expect(next.cardState).toBe('learning')
-    expect(next.learningStep).toBe(0) // same step
-    const expectedDelay = Math.round(SM2_LEARNING_STEPS[0] * 1.5)
-    expect(next.nextReviewAt).toBe(NOW + expectedDelay * MS_PER_MIN)
-  })
-
-  it('Good on step 0 advances to step 1 with delay = LEARNING_STEPS[1]', () => {
-    const s = createReviewState('f')
-    const next = reviewCard(s, 'good')
+    const next = reviewCard(s, 'okay')
     expect(next.cardState).toBe('learning')
     expect(next.learningStep).toBe(1)
     expect(next.nextReviewAt).toBe(NOW + SM2_LEARNING_STEPS[1] * MS_PER_MIN)
   })
 
-  it('Good on final step graduates to review with interval = GRADUATING_INTERVAL', () => {
+  it('Okay on final step graduates to review with interval = GRADUATING_INTERVAL', () => {
     let s = createReviewState('f')
-    s = reviewCard(s, 'good') // step 0 -> step 1
-    const graduated = reviewCard(s, 'good') // step 1 (final) -> graduate
+    s = reviewCard(s, 'okay') // step 0 -> step 1
+    const graduated = reviewCard(s, 'okay') // step 1 (final) -> graduate
     expect(graduated.cardState).toBe('review')
     expect(graduated.interval).toBe(SM2_GRADUATING_INTERVAL)
     expect(graduated.nextReviewAt).toBe(NOW + SM2_GRADUATING_INTERVAL * MS_PER_DAY)
     expect(graduated.learningStep).toBe(0) // reset on graduation
   })
 
-  it('Easy from any step graduates to review with interval = EASY_INTERVAL', () => {
+  it('Good from any step graduates to review with interval = EASY_INTERVAL', () => {
     const s = createReviewState('f')
-    const graduated = reviewCard(s, 'easy')
+    const graduated = reviewCard(s, 'good')
     expect(graduated.cardState).toBe('review')
     expect(graduated.interval).toBe(SM2_EASY_INTERVAL)
     expect(graduated.nextReviewAt).toBe(NOW + SM2_EASY_INTERVAL * MS_PER_DAY)
     expect(graduated.easeFactor).toBeGreaterThanOrEqual(BALANCE.SM2_INITIAL_EASE + 0.15)
   })
 
-  it('Easy from step 1 also graduates immediately', () => {
+  it('Good from step 1 also graduates immediately', () => {
     let s = createReviewState('f')
-    s = reviewCard(s, 'good') // advance to step 1
-    const graduated = reviewCard(s, 'easy')
+    s = reviewCard(s, 'okay') // advance to step 1
+    const graduated = reviewCard(s, 'good')
     expect(graduated.cardState).toBe('review')
     expect(graduated.interval).toBe(SM2_EASY_INTERVAL)
   })
@@ -148,19 +139,9 @@ describe('reviewCard — review state transitions', () => {
     expect(next.nextReviewAt).toBe(NOW + SM2_RELEARNING_STEPS[0] * MS_PER_MIN)
   })
 
-  it('Hard stays review, interval * 1.2, ease -0.15', () => {
+  it('Okay stays review, interval * ease', () => {
     const s = advanceToReview()
-    const prevEase = s.easeFactor
-    const next = reviewCard(s, 'hard')
-    expect(next.cardState).toBe('review')
-    const expectedInterval = Math.max(s.interval + 1, Math.round(s.interval * 1.2))
-    expect(next.interval).toBe(expectedInterval)
-    expect(next.easeFactor).toBeCloseTo(Math.max(prevEase - 0.15, BALANCE.SM2_MIN_EASE), 5)
-  })
-
-  it('Good stays review, interval * ease', () => {
-    const s = advanceToReview()
-    const next = reviewCard(s, 'good')
+    const next = reviewCard(s, 'okay')
     expect(next.cardState).toBe('review')
     const expectedInterval = Math.max(s.interval + 1, Math.round(s.interval * s.easeFactor))
     expect(next.interval).toBe(expectedInterval)
@@ -168,9 +149,9 @@ describe('reviewCard — review state transitions', () => {
     expect(next.easeFactor).toBe(s.easeFactor)
   })
 
-  it('Easy stays review, interval * ease * 1.3, ease +0.15', () => {
+  it('Good stays review, interval * ease * 1.3, ease +0.15', () => {
     const s = advanceToReview()
-    const next = reviewCard(s, 'easy')
+    const next = reviewCard(s, 'good')
     expect(next.cardState).toBe('review')
     const expectedInterval = Math.max(s.interval + 1, Math.round(s.interval * s.easeFactor * 1.3))
     expect(next.interval).toBe(expectedInterval)
@@ -179,7 +160,7 @@ describe('reviewCard — review state transitions', () => {
 
   it('All review intervals are at least 1 day longer than previous', () => {
     const s = advanceToReview()
-    for (const btn of ['hard', 'good', 'easy'] as AnkiButton[]) {
+    for (const btn of ['okay', 'good'] as AnkiButton[]) {
       const next = reviewCard(s, btn)
       expect(next.interval).toBeGreaterThanOrEqual(s.interval + 1)
     }
@@ -201,23 +182,23 @@ describe('reviewCard — relearning state', () => {
     expect(next.learningStep).toBe(0)
   })
 
-  it('Good on final relearning step graduates back to review with interval = max(1, old * 0.7)', () => {
+  it('Okay on final relearning step graduates back to review with interval = max(1, old * 0.7)', () => {
     const reviewed = advanceToReview()
     // Give it a meaningful interval first
     const withInterval = { ...reviewed, interval: 10 }
     const lapsed = reviewCard(withInterval, 'again') // -> relearning, interval still 10
     // SM2_RELEARNING_STEPS has only 1 step [10], so step 0 is already final
-    const graduated = reviewCard(lapsed, 'good')
+    const graduated = reviewCard(lapsed, 'okay')
     expect(graduated.cardState).toBe('review')
     const expectedInterval = Math.max(1, Math.round(lapsed.interval * SM2_LAPSE_NEW_INTERVAL_PCT))
     expect(graduated.interval).toBe(expectedInterval)
   })
 
-  it('Easy from relearning graduates with max(EASY_INTERVAL, old * 0.7)', () => {
+  it('Good from relearning graduates with max(EASY_INTERVAL, old * 0.7)', () => {
     const reviewed = advanceToReview()
     const withInterval = { ...reviewed, interval: 10 }
     const lapsed = reviewCard(withInterval, 'again') // -> relearning
-    const graduated = reviewCard(lapsed, 'easy')
+    const graduated = reviewCard(lapsed, 'good')
     expect(graduated.cardState).toBe('review')
     const expectedInterval = Math.max(SM2_EASY_INTERVAL, Math.round(lapsed.interval * SM2_LAPSE_NEW_INTERVAL_PCT))
     expect(graduated.interval).toBe(expectedInterval)
@@ -237,12 +218,12 @@ describe('reviewCard — leech detection', () => {
       // Lapse (again in review -> relearning)
       s = reviewCard(s, 'again')
       // Graduate back to review so we can lapse again
-      s = reviewCard(s, 'good')
+      s = reviewCard(s, 'okay')
     }
     // The last lapse should have triggered leech
     // We need to check after the again that crossed the threshold
     // Re-do: lapse one more time to check the flag (it was set on the threshold lapse)
-    // Actually the loop already crossed the threshold. The state after last good has isLeech from the again.
+    // Actually the loop already crossed the threshold. The state after last okay has isLeech from the again.
     // Let's verify by re-checking: lapse count should equal threshold
     expect(s.lapseCount).toBe(SM2_LEECH_THRESHOLD)
     expect(s.isLeech).toBe(true)
@@ -252,7 +233,7 @@ describe('reviewCard — leech detection', () => {
     let s = advanceToReview()
     for (let i = 0; i < SM2_LEECH_THRESHOLD - 1; i++) {
       s = reviewCard(s, 'again')
-      s = reviewCard(s, 'good')
+      s = reviewCard(s, 'okay')
     }
     expect(s.lapseCount).toBe(SM2_LEECH_THRESHOLD - 1)
     expect(s.isLeech).toBe(false)
@@ -270,7 +251,7 @@ describe('reviewCard — ease floor', () => {
     let s = advanceToReview()
     for (let i = 0; i < 30; i++) {
       s = reviewCard(s, 'again') // lapse -> relearning (ease -0.20)
-      s = reviewCard(s, 'good')  // graduate back to review
+      s = reviewCard(s, 'okay')  // graduate back to review
     }
     expect(s.easeFactor).toBeGreaterThanOrEqual(BALANCE.SM2_MIN_EASE)
     expect(s.easeFactor).toBeCloseTo(BALANCE.SM2_MIN_EASE, 5)
@@ -281,34 +262,35 @@ describe('reviewCard — ease floor', () => {
 // getButtonIntervals
 // ---------------------------------------------------------------------------
 describe('getButtonIntervals', () => {
-  it('learning state returns minute-based strings for again/hard', () => {
+  it('learning state returns minute-based string for again', () => {
     const s = createReviewState('f')
     const intervals = getButtonIntervals(s)
     // again = LEARNING_STEPS[0] = 1 minute
     expect(intervals.again).toBe('1m')
-    // hard = round(LEARNING_STEPS[0] * 1.5) = 2 minutes
-    expect(intervals.hard).toBe('2m')
+    // 3 buttons only
+    expect(Object.keys(intervals)).toHaveLength(3)
   })
 
-  it('learning state on last step shows day for good (graduation)', () => {
+  it('learning state on last step shows day for okay (graduation)', () => {
     let s = createReviewState('f')
-    s = reviewCard(s, 'good') // now on step 1 (final step)
+    s = reviewCard(s, 'okay') // now on step 1 (final step)
     const intervals = getButtonIntervals(s)
-    // good on last step = GRADUATING_INTERVAL days
-    expect(intervals.good).toBe(`${SM2_GRADUATING_INTERVAL}d`)
-    // easy = EASY_INTERVAL days
-    expect(intervals.easy).toBe(`${SM2_EASY_INTERVAL}d`)
+    // okay on last step = GRADUATING_INTERVAL days
+    expect(intervals.okay).toBe(`${SM2_GRADUATING_INTERVAL}d`)
+    // good = EASY_INTERVAL days
+    expect(intervals.good).toBe(`${SM2_EASY_INTERVAL}d`)
   })
 
-  it('review state returns minute for again (relearning) and days for hard/good/easy', () => {
+  it('review state returns minute for again (relearning) and days for okay/good', () => {
     const s = advanceToReview()
     const intervals = getButtonIntervals(s)
     // again = first relearning step in minutes
     expect(intervals.again).toBe(`${SM2_RELEARNING_STEPS[0]}m`)
-    // hard/good/easy are day-based
-    expect(intervals.hard).toMatch(/^\d+d$/)
+    // okay/good are day-based
+    expect(intervals.okay).toMatch(/^\d+d$/)
     expect(intervals.good).toMatch(/^\d+d$/)
-    expect(intervals.easy).toMatch(/^\d+d$/)
+    // 3 buttons only
+    expect(Object.keys(intervals)).toHaveLength(3)
   })
 })
 
@@ -319,10 +301,10 @@ describe('reviewFact — backward compatibility', () => {
   beforeEach(() => { vi.useFakeTimers({ now: NOW }) })
   afterEach(() => { vi.useRealTimers() })
 
-  it('true maps to "good" button behavior', () => {
+  it('true maps to "okay" button behavior', () => {
     const s = createReviewState('f')
     const viaFact = reviewFact(s, true)
-    const viaCard = reviewCard(s, 'good')
+    const viaCard = reviewCard(s, 'okay')
     expect(viaFact.cardState).toBe(viaCard.cardState)
     expect(viaFact.learningStep).toBe(viaCard.learningStep)
     expect(viaFact.interval).toBe(viaCard.interval)
@@ -336,25 +318,25 @@ describe('reviewFact — backward compatibility', () => {
     expect(viaFact.learningStep).toBe(viaCard.learningStep)
   })
 
-  it('5 maps to "easy"', () => {
+  it('5 maps to "good"', () => {
     const s = createReviewState('f')
     const viaFact = reviewFact(s, 5)
-    const viaCard = reviewCard(s, 'easy')
+    const viaCard = reviewCard(s, 'good')
     expect(viaFact.cardState).toBe(viaCard.cardState)
     expect(viaFact.interval).toBe(viaCard.interval)
   })
 
-  it('3 maps to "good"', () => {
+  it('3 maps to "okay"', () => {
     const s = createReviewState('f')
     const viaFact = reviewFact(s, 3)
-    const viaCard = reviewCard(s, 'good')
+    const viaCard = reviewCard(s, 'okay')
     expect(viaFact.learningStep).toBe(viaCard.learningStep)
   })
 
-  it('2 maps to "hard"', () => {
+  it('2 maps to "again"', () => {
     const s = createReviewState('f')
     const viaFact = reviewFact(s, 2)
-    const viaCard = reviewCard(s, 'hard')
+    const viaCard = reviewCard(s, 'again')
     expect(viaFact.cardState).toBe(viaCard.cardState)
     expect(viaFact.learningStep).toBe(viaCard.learningStep)
   })
@@ -380,7 +362,7 @@ describe('isDue', () => {
   it('returns false when nextReviewAt is in the future', () => {
     vi.useFakeTimers({ now: NOW })
     const s = createReviewState('f')
-    const next = reviewCard(s, 'good')
+    const next = reviewCard(s, 'okay')
     expect(isDue(next)).toBe(false)
     vi.useRealTimers()
   })
@@ -388,7 +370,7 @@ describe('isDue', () => {
   it('returns true when nextReviewAt has passed', () => {
     vi.useFakeTimers({ now: NOW })
     const s = createReviewState('f')
-    const next = reviewCard(s, 'good') // nextReviewAt = NOW + 10 minutes
+    const next = reviewCard(s, 'okay') // nextReviewAt = NOW + 10 minutes
     vi.setSystemTime(NOW + 2 * MS_PER_DAY) // well past due
     expect(isDue(next)).toBe(true)
     vi.useRealTimers()

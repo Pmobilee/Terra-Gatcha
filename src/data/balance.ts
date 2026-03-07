@@ -536,8 +536,7 @@ export const SM2_GRADUATING_INTERVAL = 1            // days — interval when Go
 export const SM2_EASY_INTERVAL = 4                  // days — interval when Easy during learning
 export const SM2_LAPSE_NEW_INTERVAL_PCT = 0.70      // 70% of old interval preserved after lapse
 export const SM2_LEECH_THRESHOLD = 8                // lapses before leech flag
-export const SM2_HARD_INTERVAL_MULTIPLIER = 1.2     // Hard button: interval * 1.2
-export const SM2_EASY_BONUS_MULTIPLIER = 1.3        // Easy button: interval * ease * 1.3
+export const SM2_EASY_BONUS_MULTIPLIER = 1.3        // Good button: interval * ease * 1.3
 export const SM2_STARTING_FACTS_COUNT = 5           // facts seeded for new players
 export const SM2_DAILY_NEW_LIMIT = 10               // max new cards introduced per day/session
 
