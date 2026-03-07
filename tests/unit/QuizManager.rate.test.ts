@@ -20,6 +20,7 @@ vi.mock('../../src/ui/stores/gameState', () => ({
   activeQuiz: { subscribe: vi.fn(), set: vi.fn() },
   gaiaMessage: { subscribe: vi.fn(), set: vi.fn() },
   currentLayer: { subscribe: vi.fn() },
+  quizStreak: { subscribe: vi.fn(), set: vi.fn(), update: vi.fn() },
 }))
 
 vi.mock('../../src/ui/stores/playerData', () => ({

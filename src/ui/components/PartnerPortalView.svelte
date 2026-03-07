@@ -367,7 +367,7 @@
     margin-bottom: 14px;
     font-weight: bold;
   }
-  input, select, textarea {
+  input, select {
     display: block;
     width: 100%;
     background: #0f3460;
@@ -421,7 +421,6 @@
     font-family: monospace;
     font-size: 12px;
   }
-  .dashboard {}
   .dash-header {
     display: flex;
     justify-content: space-between;

@@ -33,8 +33,9 @@ export interface CombatUIState {
  */
 function makeCombatState(): ReturnType<typeof writable<CombatUIState>> {
   const sym = Symbol.for('terra:combatState')
-  if (!(globalThis as any)[sym]) {
-    ;(globalThis as any)[sym] = writable<CombatUIState>({
+  const singletonRegistry = globalThis as typeof globalThis & Record<symbol, unknown>
+  if (!(sym in singletonRegistry)) {
+    singletonRegistry[sym] = writable<CombatUIState>({
       active: false,
       encounterType: 'creature',
       creature: null,
@@ -51,7 +52,7 @@ function makeCombatState(): ReturnType<typeof writable<CombatUIState>> {
       companionXpEarned: 0,
     })
   }
-  return (globalThis as any)[sym]
+  return singletonRegistry[sym] as ReturnType<typeof writable<CombatUIState>>
 }
 
 export const combatState = makeCombatState()

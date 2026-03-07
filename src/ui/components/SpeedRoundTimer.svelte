@@ -12,7 +12,7 @@
 
   const { totalSeconds, onTimeout, onTick }: Props = $props()
 
-  let remaining = $state(totalSeconds)
+  let remaining = $state(0)
   let intervalId: ReturnType<typeof setInterval> | null = null
 
   const fraction = $derived(remaining / totalSeconds)
@@ -23,6 +23,7 @@
   )
 
   onMount(() => {
+    remaining = totalSeconds
     intervalId = setInterval(() => {
       remaining = Math.max(0, remaining - 1)
       onTick?.(remaining)

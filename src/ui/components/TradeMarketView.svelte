@@ -221,7 +221,9 @@
   role="dialog"
   aria-modal="true"
   aria-label="Trade Marketplace"
+  tabindex="-1"
   onclick={handleBackdropClick}
+  onkeydown={(e) => { if (e.key === 'Escape') onClose() }}
 >
   <div class="modal" role="document">
     <!-- Header -->
@@ -647,6 +649,7 @@
     margin: 0;
     overflow: hidden;
     display: -webkit-box;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }

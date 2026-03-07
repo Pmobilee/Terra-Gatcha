@@ -63,7 +63,8 @@ export class EventBus {
     event: K,
     ...args: GameEventMap[K] extends void ? [] : [GameEventMap[K]]
   ): void {
-    queueMicrotask(() => this.emit(event, ...(args as any)))
+    const emitArgs = args as GameEventMap[K] extends void ? [] : [GameEventMap[K]]
+    queueMicrotask(() => this.emit(event, ...emitArgs))
   }
 
   /** Removes all handlers — call on game teardown. */

@@ -14,21 +14,24 @@ import type { BiomeId } from '../../data/biomes'
 // =========================================================
 
 /** Ensure writable store singletons survive module re-evaluation from code-split chunks. */
+const singletonRegistry = globalThis as typeof globalThis & Record<symbol, unknown>
+
+/** Ensure writable store singletons survive module re-evaluation from code-split chunks. */
 function singletonWritable<T>(key: string, initial: T): Writable<T> {
   const sym = Symbol.for('terra:' + key)
-  if (!(globalThis as any)[sym]) {
-    (globalThis as any)[sym] = writable<T>(initial)
+  if (!(sym in singletonRegistry)) {
+    singletonRegistry[sym] = writable<T>(initial)
   }
-  return (globalThis as any)[sym] as Writable<T>
+  return singletonRegistry[sym] as Writable<T>
 }
 
 /** Ensure derived store singletons survive module re-evaluation from code-split chunks. */
-function singletonDerived<T>(key: string, deps: any, fn: any): Readable<T> {
+function singletonDerived<T, S>(key: string, deps: Readable<S>, fn: (value: S) => T): Readable<T> {
   const sym = Symbol.for('terra:' + key)
-  if (!(globalThis as any)[sym]) {
-    (globalThis as any)[sym] = derived<any, T>(deps, fn)
+  if (!(sym in singletonRegistry)) {
+    singletonRegistry[sym] = derived(deps, fn)
   }
-  return (globalThis as any)[sym] as Readable<T>
+  return singletonRegistry[sym] as Readable<T>
 }
 
 // =========================================================
@@ -57,7 +60,7 @@ export const selectedLoadout = singletonWritable<DiveLoadout>('selectedLoadout',
  * True when the minimum viable loadout is filled (pickaxe selected).
  * Used to gate the "Enter Mine" button on the DivePrepScreen.
  */
-export const loadoutReady = singletonDerived<boolean>('loadoutReady', selectedLoadout, (loadout: DiveLoadout): boolean => {
+export const loadoutReady = singletonDerived('loadoutReady', selectedLoadout, (loadout: DiveLoadout): boolean => {
   return loadout.pickaxeId !== null
 })
 
@@ -196,7 +199,7 @@ export const currentLayer = singletonWritable<number>('currentLayer', 0)
  * Tier label derived from the current layer (0-based → 1-based display).
  * Shallow = L1-5, Mid = L6-10, Deep = L11-15, Extreme = L16-20.
  */
-export const layerTierLabel = singletonDerived<string>('layerTierLabel', currentLayer, (layer: number): string => {
+export const layerTierLabel = singletonDerived('layerTierLabel', currentLayer, (layer: number): string => {
   const l = layer + 1  // convert from 0-based to 1-based for display
   if (l <= 5)  return 'Shallow'
   if (l <= 10) return 'Mid'
@@ -208,7 +211,7 @@ export const layerTierLabel = singletonDerived<string>('layerTierLabel', current
  * O2 cost multiplier derived from the current layer (0-based).
  * Layer 0 = 1.0×, Layer 9 ≈ 1.5×, Layer 19 = 2.5×. (DD-V2-061)
  */
-export const o2DepthMultiplier = singletonDerived<number>('o2DepthMultiplier', currentLayer, (layer: number) =>
+export const o2DepthMultiplier = singletonDerived('o2DepthMultiplier', currentLayer, (layer: number) =>
   getO2DepthMultiplier(layer)
 )
 

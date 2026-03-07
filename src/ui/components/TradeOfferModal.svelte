@@ -171,7 +171,9 @@
   role="dialog"
   aria-modal="true"
   aria-label="Trade Offer"
+  tabindex="-1"
   onclick={handleBackdropClick}
+  onkeydown={(e) => { if (e.key === 'Escape') onClose() }}
 >
   <div class="modal" role="document">
     <!-- Header -->
@@ -311,7 +313,9 @@
     role="dialog"
     aria-modal="true"
     aria-label="Select card to offer"
+    tabindex="-1"
     onclick={(e) => { if (e.target === e.currentTarget) showMyPicker = false }}
+    onkeydown={(e) => { if (e.key === 'Escape') showMyPicker = false }}
   >
     <div class="picker-panel">
       <div class="picker-header">
@@ -354,7 +358,9 @@
     role="dialog"
     aria-modal="true"
     aria-label="Select card to request"
+    tabindex="-1"
     onclick={(e) => { if (e.target === e.currentTarget) showReceiverPicker = false }}
+    onkeydown={(e) => { if (e.key === 'Escape') showReceiverPicker = false }}
   >
     <div class="picker-panel">
       <div class="picker-header">
@@ -392,7 +398,9 @@
     role="dialog"
     aria-modal="true"
     aria-label="Confirm trade offer"
+    tabindex="-1"
     onclick={(e) => { if (e.target === e.currentTarget) showConfirm = false }}
+    onkeydown={(e) => { if (e.key === 'Escape') showConfirm = false }}
   >
     <div class="confirm-panel">
       <h3 class="picker-title">Confirm Trade Offer</h3>
@@ -566,6 +574,7 @@
     min-width: 0;
     overflow: hidden;
     display: -webkit-box;
+    line-clamp: 2;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }

@@ -154,7 +154,9 @@
   role="dialog"
   aria-modal="true"
   aria-label="Referral"
+  tabindex="-1"
   onclick={handleBackdropClick}
+  onkeydown={(e) => { if (e.key === 'Escape') onClose() }}
 >
   <div class="modal" role="document">
     <!-- Header -->

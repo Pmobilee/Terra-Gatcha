@@ -19,8 +19,8 @@
 </script>
 
 {#if unlocked}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <!-- svelte-ignore a11y-interactive-supports-focus -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
+  <!-- svelte-ignore a11y_interactive_supports_focus -->
   <div
     class="happiness-meter"
     role="button"

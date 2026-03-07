@@ -37,8 +37,14 @@
 </script>
 
 <div class="calendar-overlay" role="dialog" aria-modal="true" aria-label="Login Calendar">
-  <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
-  <div class="calendar-backdrop" onclick={onClose}></div>
+  <div
+    class="calendar-backdrop"
+    role="button"
+    aria-label="Close login calendar"
+    tabindex="0"
+    onclick={onClose}
+    onkeydown={(e) => { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') onClose() }}
+  ></div>
   <div class="calendar-card">
     <h2 class="calendar-title">Daily Login</h2>
     <div class="days-grid">

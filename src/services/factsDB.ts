@@ -76,10 +76,11 @@ class FactsDB {
    */
   static getInstance(): FactsDB {
     const sym = Symbol.for('terra:factsDB')
-    if (!(globalThis as any)[sym]) {
-      (globalThis as any)[sym] = new FactsDB()
+    const singletonRegistry = globalThis as typeof globalThis & Record<symbol, unknown>
+    if (!(sym in singletonRegistry)) {
+      singletonRegistry[sym] = new FactsDB()
     }
-    return (globalThis as any)[sym] as FactsDB
+    return singletonRegistry[sym] as FactsDB
   }
 
   /**

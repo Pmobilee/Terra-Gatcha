@@ -267,5 +267,4 @@
     margin-bottom: 8px;
   }
 
-  .step2 { }
 </style>

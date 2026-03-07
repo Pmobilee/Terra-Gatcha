@@ -128,7 +128,9 @@
   role="dialog"
   aria-modal="true"
   aria-label="Duplicate Mixing"
+  tabindex="-1"
   onclick={handleBackdropClick}
+  onkeydown={(e) => { if (e.key === 'Escape') onClose() }}
 >
   <div class="modal" role="document">
     <!-- Header -->
@@ -261,7 +263,9 @@
     role="dialog"
     aria-modal="true"
     aria-label="Select duplicate cards to mix"
+    tabindex="-1"
     onclick={(e) => { if (e.target === e.currentTarget) showPicker = false }}
+    onkeydown={(e) => { if (e.key === 'Escape') showPicker = false }}
   >
     <div class="picker-panel">
       <div class="picker-header">
@@ -465,6 +469,7 @@
     margin: 0;
     overflow: hidden;
     display: -webkit-box;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }

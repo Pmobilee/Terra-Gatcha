@@ -4,8 +4,8 @@ import { TickSystem } from '../../src/game/systems/TickSystem'
 
 /** Reset the singleton between tests so each test starts fresh. */
 function freshTick(): TickSystem {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ;(TickSystem as any).instance = undefined
+  const singleton = TickSystem as unknown as { instance: TickSystem | undefined }
+  singleton.instance = undefined
   return TickSystem.getInstance()
 }
 

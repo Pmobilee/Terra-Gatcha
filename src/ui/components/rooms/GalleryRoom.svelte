@@ -24,8 +24,14 @@
   </div>
 
   {#if selectedPainting}
-    <div class="painting-detail" on:click={closeDetail} role="button" tabindex="0" on:keydown={(e) => e.key === 'Escape' && closeDetail()}>
-      <div class="detail-card" on:click|stopPropagation>
+    <div
+      class="painting-detail"
+      on:click={(e) => { if (e.target === e.currentTarget) closeDetail() }}
+      role="button"
+      tabindex="0"
+      on:keydown={(e) => e.key === 'Escape' && closeDetail()}
+    >
+      <div class="detail-card">
         <div class="painting-frame {selectedPainting.rarity}">
           <div class="painting-image" style="background-image: url(/sprites/{selectedPainting.spriteKey}.png)"></div>
         </div>

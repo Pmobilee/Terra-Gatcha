@@ -108,16 +108,17 @@
 
     {#each config.categories.filter(c => c.weight > 0) as entry}
       <div class="slider-group">
-        <label class="slider-label">
+        <div class="slider-label" id="slider-label-{entry.category}">
           {entry.category}
           <span class="weight-value">{entry.weight}%</span>
-        </label>
+        </div>
         <input
           type="range"
           min="1"
           max="100"
           value={entry.weight}
           oninput={(e) => setWeight(entry.category, parseInt(e.currentTarget.value))}
+          aria-labelledby="slider-label-{entry.category}"
           class="weight-slider"
         />
         <div class="slider-labels">

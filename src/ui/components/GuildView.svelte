@@ -32,7 +32,7 @@
 
   // Mock: whether the player has a guild (would come from player save)
   let hasGuild = $state(false)
-  let activeTab = $state<Tab>(hasGuild ? 'my-guild' : 'find-guilds')
+  let activeTab = $state<Tab>('find-guilds')
 
   // My guild data
   let myGuild = $state<GuildInfo | null>(null)
@@ -204,7 +204,9 @@
   role="dialog"
   aria-modal="true"
   aria-label="Guild"
+  tabindex="-1"
   onclick={handleBackdropClick}
+  onkeydown={(e) => { if (e.key === 'Escape') onClose() }}
 >
   <div class="modal" role="document">
     <!-- Header -->
@@ -690,6 +692,7 @@
     line-height: 1.4;
     overflow: hidden;
     display: -webkit-box;
+    line-clamp: 2;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
   }

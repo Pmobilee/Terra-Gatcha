@@ -616,10 +616,6 @@
     line-height: 1;
   }
 
-  .star-filled {
-    /* color injected via style attribute */
-  }
-
   /* ===================== Description ===================== */
   .species-desc {
     color: var(--color-text-dim);

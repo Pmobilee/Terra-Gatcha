@@ -26,7 +26,14 @@
   }
 </script>
 
-<div class="reward-overlay" on:click={handleReveal} role="dialog" aria-label="Season Reward">
+<div
+  class="reward-overlay"
+  on:click={handleReveal}
+  on:keydown={(e) => { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') handleReveal() }}
+  role="dialog"
+  aria-label="Season Reward"
+  tabindex="-1"
+>
   <div class="reward-container" class:revealed>
     {#if !revealed}
       <div class="reward-chest">

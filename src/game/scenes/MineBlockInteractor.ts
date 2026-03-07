@@ -122,7 +122,7 @@ export function handleMoveOrMine(scene: MineScene, targetX: number, targetY: num
         const ctEntry = CAVERN_TEXTS.find(ct => ct.id === textId)
         if (ctEntry) {
           cavernTextModalEntry.set(ctEntry)
-          currentScreen.set('cavern_text' as any)
+          currentScreen.set('cavern_text')
         }
       }
     }
@@ -421,7 +421,7 @@ export function handleMoveOrMine(scene: MineScene, targetX: number, targetY: num
         const artifactSynergyEffects = scene.getActiveSynergyEffects()
         const save = get(playerSave)
         const dueReviewCount = save ? save.reviewStates.filter(
-          (rs: any) => rs.repetitions > 0 && (rs.lastReviewAt + rs.interval * 24 * 60 * 60 * 1000) < Date.now()
+          rs => rs.repetitions > 0 && (rs.lastReviewAt + rs.interval * 24 * 60 * 60 * 1000) < Date.now()
         ).length : 0
         const unlearnedFactCount = scene.facts.length - (save?.learnedFacts?.length ?? 0)
         const score = save ? computeStudyScore(save) : 0.5
@@ -603,7 +603,7 @@ export function handleMoveOrMine(scene: MineScene, targetX: number, targetY: num
           : QUOTE_STONES[Math.floor(scene.rng() * QUOTE_STONES.length)]
         if (entry) {
           quoteStoneModalEntry.set(entry)
-          currentScreen.set('quote_stone' as any)
+          currentScreen.set('quote_stone')
         }
         break
       }

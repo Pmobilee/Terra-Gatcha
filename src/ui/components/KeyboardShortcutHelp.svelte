@@ -13,9 +13,16 @@
 </script>
 
 {#if visible}
-  <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
-  <div class="overlay-backdrop" onclick={hide} role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
-    <div class="overlay-card" onclick={(e) => e.stopPropagation()} role="presentation">
+  <div
+    class="overlay-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Keyboard shortcuts"
+    tabindex="-1"
+    onclick={(e) => { if (e.target === e.currentTarget) hide() }}
+    onkeydown={(e) => { if (e.key === 'Escape') hide() }}
+  >
+    <div class="overlay-card" role="document">
       <h2 class="overlay-title">Keyboard Shortcuts</h2>
       <dl class="bindings-grid">
         {#each bindings as b (b.id)}

@@ -2,12 +2,15 @@ import { get, writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 
 /** Ensure writable store singletons survive module re-evaluation from code-split chunks. */
+const singletonRegistry = globalThis as typeof globalThis & Record<symbol, unknown>
+
+/** Ensure writable store singletons survive module re-evaluation from code-split chunks. */
 function singletonWritable<T>(key: string, initial: T): Writable<T> {
   const sym = Symbol.for('terra:' + key)
-  if (!(globalThis as any)[sym]) {
-    (globalThis as any)[sym] = writable<T>(initial)
+  if (!(sym in singletonRegistry)) {
+    singletonRegistry[sym] = writable<T>(initial)
   }
-  return (globalThis as any)[sym] as Writable<T>
+  return singletonRegistry[sym] as Writable<T>
 }
 import type { AgeRating, MineralTier, PendingArtifact, PlayerSave, ReviewState } from '../../data/types'
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'

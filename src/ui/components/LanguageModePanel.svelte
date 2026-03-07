@@ -45,7 +45,7 @@
     <p class="panel-desc">Focus your learning on a specific language. All quizzes and artifacts will prioritize language facts.</p>
 
     <div class="language-select">
-      <label class="field-label">Language</label>
+      <p class="field-label">Language</p>
       <div class="language-options">
         {#each languages as lang}
           <button
@@ -62,7 +62,7 @@
     </div>
 
     <div class="level-select">
-      <label class="field-label">Level</label>
+      <p class="field-label">Level</p>
       <div class="level-options">
         {#each availableLevels as level}
           <button

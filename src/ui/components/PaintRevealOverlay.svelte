@@ -135,14 +135,14 @@
 </script>
 
 {#if reveal && tierVisuals}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
   <div
     class="reveal-overlay"
     role="dialog"
     aria-label="Achievement unlocked: {reveal.painting.title}"
+    tabindex="-1"
     style="opacity: {overlayOpacity}"
     onclick={dismiss}
+    onkeydown={(e) => { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') dismiss() }}
   >
     <!-- Painting display area -->
     <div class="painting-frame" style="border-color: {tierVisuals.borderColor}; box-shadow: 0 0 40px {glowOpacity > 0.5 ? tierVisuals.glowColor : 'transparent'}">

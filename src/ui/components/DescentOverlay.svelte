@@ -11,7 +11,7 @@
 
   let { visible, fromLayer, toLayer, biomeName, onAnimComplete }: Props = $props()
 
-  let displayLayer = $state(fromLayer)
+  let displayLayer = $state(0)
   let showBiomeName = $state(false)
   let fading = $state(false)
 

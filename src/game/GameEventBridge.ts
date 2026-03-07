@@ -413,7 +413,7 @@ export function wireEventBridge(gm: GameManager, events: Phaser.Events.EventEmit
 
     const choices = getQuizChoices(fact)
     const currentQ = layerChallengeTotal - layerChallengeRemaining + 1
-    const mnemonicInfo = gm.quizManager.getMnemonicInfo(fact.id, (fact as any).mnemonic)
+    const mnemonicInfo = gm.quizManager.getMnemonicInfo(fact.id, fact.mnemonic)
 
     activeQuiz.set({
       fact,

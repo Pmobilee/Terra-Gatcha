@@ -10,7 +10,14 @@
 </script>
 
 <div class="cavern-text-modal" role="dialog" aria-label="Cavern Text">
-  <div class="backdrop" onclick={onClose}></div>
+  <div
+    class="backdrop"
+    role="button"
+    aria-label="Close cavern text"
+    tabindex="0"
+    onclick={onClose}
+    onkeydown={(e) => { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') onClose() }}
+  ></div>
   <div class="parchment">
     <div class="text-type-label">{entry.textType.toUpperCase()}</div>
     <h3>{entry.title}</h3>

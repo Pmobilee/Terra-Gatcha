@@ -10,7 +10,14 @@
 </script>
 
 <div class="quote-stone-modal" role="dialog" aria-label="Quote Stone">
-  <div class="backdrop" onclick={onClose}></div>
+  <div
+    class="backdrop"
+    role="button"
+    aria-label="Close quote stone"
+    tabindex="0"
+    onclick={onClose}
+    onkeydown={(e) => { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') onClose() }}
+  ></div>
   <div class="modal-content">
     <div class="category-badge">{entry.category.toUpperCase()}</div>
     <blockquote>"{entry.quote}"</blockquote>

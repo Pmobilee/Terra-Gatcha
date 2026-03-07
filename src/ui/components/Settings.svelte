@@ -1050,24 +1050,6 @@
     background: #2a4a3e;
   }
 
-  /* ---- Coming Soon rows ---- */
-  .coming-soon-row {
-    opacity: 0.65;
-    pointer-events: none;
-  }
-
-  .coming-soon-badge {
-    font-size: 0.6rem;
-    font-family: monospace;
-    background: rgba(255, 200, 80, 0.15);
-    border: 1px solid rgba(255, 200, 80, 0.4);
-    color: #f0b84c;
-    padding: 2px 6px;
-    border-radius: 4px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
   /* ---- Language row ---- */
   .language-row {
     width: 100%;

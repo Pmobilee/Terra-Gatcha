@@ -68,16 +68,18 @@ describe('CompanionManager — with companion', () => {
     expect(mgr.getEffectiveStage()).toBe(1)
   })
 
-  it('applyTemporaryUpgrade increments effective stage (max cap 2)', () => {
+  it('applyTemporaryUpgrade increments effective stage (max cap 3)', () => {
     const states = [makeCompanionState(firstCompanion.id, 0)]
     mgr.setCompanion(firstCompanion.id, states)
     mgr.applyTemporaryUpgrade()
     expect(mgr.getEffectiveStage()).toBe(1)
     mgr.applyTemporaryUpgrade()
     expect(mgr.getEffectiveStage()).toBe(2)
-    // Cannot exceed 2
     mgr.applyTemporaryUpgrade()
-    expect(mgr.getEffectiveStage()).toBe(2)
+    expect(mgr.getEffectiveStage()).toBe(3)
+    // Cannot exceed 3
+    mgr.applyTemporaryUpgrade()
+    expect(mgr.getEffectiveStage()).toBe(3)
   })
 
   it('tempStageBonus resets when setCompanion is called again', () => {
@@ -115,8 +117,8 @@ describe('CompanionManager — with companion', () => {
 describe('CompanionManager.canEvolve (static)', () => {
   const secondCompanion = COMPANION_CATALOGUE[1]
 
-  it('returns false when stage is already 2', () => {
-    const state = makeCompanionState(secondCompanion.id, 2)
+  it('returns false when stage is already 3', () => {
+    const state = makeCompanionState(secondCompanion.id, 3)
     expect(CompanionManager.canEvolve(state, 999, 999)).toBe(false)
   })
 
@@ -159,8 +161,8 @@ describe('CompanionManager.evolve (static)', () => {
     expect(state.currentStage).toBe(1)
   })
 
-  it('throws when already at stage 2', () => {
-    const state = makeCompanionState(thirdCompanion.id, 2)
+  it('throws when already at stage 3', () => {
+    const state = makeCompanionState(thirdCompanion.id, 3)
     expect(() => CompanionManager.evolve(state)).toThrow()
   })
 })

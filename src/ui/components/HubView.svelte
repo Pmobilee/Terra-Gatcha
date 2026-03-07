@@ -226,7 +226,7 @@
       // Covers the race where the $effect fires while the scene is still in preload.
       const syncInterval = setInterval(() => {
         const dome = gm.getDomeScene()
-        if (dome && (dome as any).created) {
+        if (dome && dome.scene.isActive()) {
           clearInterval(syncInterval)
           dome.setHubState(unlockedIds, floorTiers, masteredCount)
           dome.goToFloor(floorIndex)

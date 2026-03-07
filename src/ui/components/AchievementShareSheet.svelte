@@ -19,10 +19,15 @@
   }
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="sheet-backdrop" onclick={onClose} role="presentation">
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <div class="sheet" onclick={(e) => e.stopPropagation()} role="dialog" aria-label="Share painting">
+<div
+  class="sheet-backdrop"
+  onclick={(e) => { if (e.target === e.currentTarget) onClose() }}
+  onkeydown={(e) => { if (e.key === 'Escape') onClose() }}
+  role="button"
+  aria-label="Close share sheet"
+  tabindex="0"
+>
+  <div class="sheet" role="dialog" aria-label="Share painting" tabindex="-1">
     <h2 class="sheet-title" style="color: {visuals.badgeColor}">Share Achievement</h2>
 
     <img

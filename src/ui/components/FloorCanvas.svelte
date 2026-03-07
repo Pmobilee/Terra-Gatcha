@@ -298,7 +298,6 @@
   height={FLOOR_CANVAS_H * FLOOR_RENDER_SCALE}
   class="floor-canvas"
   onclick={handleClick}
-  role="img"
   aria-label={`${floor.name} floor`}
 ></canvas>
 

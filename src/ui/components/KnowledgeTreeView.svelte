@@ -290,7 +290,9 @@
     {@const currentIndex = currentSubBranchFacts.findIndex(f => f.id === detailFact.id)}
     <div class="fact-card-overlay"
          role="dialog" aria-modal="true" aria-label="Fact detail"
-         onclick={(e) => { if (e.target === e.currentTarget) closeDetail() }}>
+         tabindex="-1"
+         onclick={(e) => { if (e.target === e.currentTarget) closeDetail() }}
+         onkeydown={(e) => { if (e.key === 'Escape') closeDetail() }}>
       <div class="fact-card">
         <header class="card-header">
           <span class="mastery-badge" style="color: {

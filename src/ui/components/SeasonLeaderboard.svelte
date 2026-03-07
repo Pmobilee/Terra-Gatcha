@@ -23,7 +23,8 @@
 
   let entries = $state<LeaderboardEntry[]>([])
   let loading = $state(true)
-  let displaySeasonName = $state(propSeasonName ?? 'Current Season')
+  const fallbackSeasonName = $derived(propSeasonName ?? 'Current Season')
+  let displaySeasonName = $state('Current Season')
   let seasonEndDate = $state('')
 
   $effect(() => {
@@ -45,7 +46,7 @@
           endDate?: string
         }
         entries = data.entries ?? []
-        displaySeasonName = data.seasonName ?? propSeasonName ?? 'Current Season'
+        displaySeasonName = data.seasonName ?? fallbackSeasonName
         seasonEndDate = data.endDate ?? ''
       }
     } catch {
@@ -54,20 +55,24 @@
     loading = false
   }
 
+  $effect(() => {
+    displaySeasonName = fallbackSeasonName
+  })
+
   /** Backdrop click to close. */
   function handleBackdropClick(e: MouseEvent): void {
     if (e.target === e.currentTarget) onClose()
   }
 </script>
 
-<!-- svelte-ignore a11y_click_events_have_key_events -->
-<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
   class="backdrop"
   role="dialog"
   aria-modal="true"
   aria-label="Season Leaderboard"
+  tabindex="-1"
   onclick={handleBackdropClick}
+  onkeydown={(e) => { if (e.key === 'Escape') onClose() }}
 >
   <div class="panel" role="document">
     <!-- Header -->

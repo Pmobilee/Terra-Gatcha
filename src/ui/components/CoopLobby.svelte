@@ -53,7 +53,7 @@
   loadLobby()
 </script>
 
-<div class="lobby-overlay" role="dialog" aria-label="Co-op Lobby">
+<div class="lobby-overlay" role="dialog" aria-label="Co-op Lobby for {playerName}">
   <div class="lobby-panel">
     <div class="lobby-header">
       <h2>Co-op Dive</h2>

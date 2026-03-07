@@ -7,13 +7,20 @@
   }
   let { onClose }: Props = $props()
 
+  type PioneerPackExtras = {
+    hasPioneerPack?: boolean
+    pioneerPackDismissed?: boolean
+    installDate?: number
+    tankBank?: number
+    purchasedProducts?: string[]
+  }
+
   const PIONEER_WINDOW_MS = 7 * 24 * 60 * 60 * 1000 // 7 days
 
   const isVisible = $derived(() => {
     const save = $playerSave
     if (!save) return false
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const s = save as any
+    const s = save as typeof save & PioneerPackExtras
     if (s.hasPioneerPack) return false
     if (s.pioneerPackDismissed) return false
     const installDate = s.installDate ?? save.createdAt
@@ -23,8 +30,7 @@
   const daysRemaining = $derived(() => {
     const save = $playerSave
     if (!save) return 0
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const s = save as any
+    const s = save as typeof save & PioneerPackExtras
     const installDate = s.installDate ?? save.createdAt
     const elapsed = Date.now() - installDate
     return Math.max(0, Math.ceil((PIONEER_WINDOW_MS - elapsed) / (24 * 60 * 60 * 1000)))
@@ -41,8 +47,7 @@
     if (result.success) {
       playerSave.update(s => {
         if (!s) return s
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const extra = s as any
+        const extra = s as typeof s & PioneerPackExtras
         return {
           ...s,
           hasPioneerPack: true,
@@ -66,8 +71,7 @@
   function handleDismiss() {
     playerSave.update(s => {
       if (!s) return s
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      return { ...s, pioneerPackDismissed: true } as any
+      return { ...s, pioneerPackDismissed: true }
     })
     persistPlayer()
     onClose()

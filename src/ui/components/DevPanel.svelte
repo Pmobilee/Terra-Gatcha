@@ -500,8 +500,14 @@
 
 <!-- Backdrop -->
 {#if open}
-  <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
-  <div class="dev-backdrop" onclick={toggle}></div>
+  <div
+    class="dev-backdrop"
+    role="button"
+    aria-label="Close dev panel"
+    tabindex="0"
+    onclick={toggle}
+    onkeydown={(e) => { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') toggle() }}
+  ></div>
 
   <!-- Panel -->
   <div class="dev-panel" role="complementary" aria-label="Developer Panel">
