@@ -296,7 +296,7 @@
       </div>
     {/if}
 
-    <p class="question">{fact.quizQuestion}</p>
+    <p class="question" data-testid="quiz-question">{fact.quizQuestion}</p>
 
     {#if mode === 'gate'}
       <p class="attempts">Attempts: {attemptsRemaining}/{totalAttempts}</p>
@@ -326,14 +326,14 @@
     {/if}
 
     {#if showResult}
-      <p class={`result-text ${resultClass}`}>{resultText}</p>
+      <p class={`result-text ${resultClass}`} data-testid="quiz-result-text">{resultText}</p>
     {/if}
 
     {#if showResult && isCorrect !== null}
       <div class="gaia-reaction" class:gaia-reaction-correct={isCorrect} class:gaia-reaction-wrong={!isCorrect} role="note" aria-label="GAIA reaction">
         <img class="gaia-reaction-sprite" src={gaiaReactionSpriteUrl} alt={`G.A.I.A. ${gaiaReactionExpressionId}`} width="28" height="28" />
         <span class="gaia-reaction-name">{GAIA_NAME}</span>
-        <span class="gaia-reaction-text">
+        <span class="gaia-reaction-text" data-testid="gaia-reaction-text">
           {#if isCorrect}
             {["Great work!", "Nailed it!", "Excellent!", "Well done!"][Math.floor(Math.random() * 4)]}
           {:else}
@@ -344,13 +344,13 @@
     {/if}
 
     {#if showResult && isCorrect === false && isConsistencyPenalty}
-      <p class="consistency-penalty-warning">Consistency penalty! You knew this one. -{BALANCE.CONSISTENCY_PENALTY_O2} O2</p>
+      <p class="consistency-penalty-warning" data-testid="quiz-consistency-warning">Consistency penalty! You knew this one. -{BALANCE.CONSISTENCY_PENALTY_O2} O2</p>
     {/if}
 
     {#if showMemoryTip}
       <div class="memory-tip" role="note" aria-label="Memory Tip">
         <span class="memory-tip-label">💡 Memory Tip:</span>
-        <span class="memory-tip-text">{memoryTipText}</span>
+        <span class="memory-tip-text" data-testid="quiz-memory-tip">{memoryTipText}</span>
       </div>
     {/if}
 

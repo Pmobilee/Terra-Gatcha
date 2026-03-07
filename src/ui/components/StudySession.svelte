@@ -313,7 +313,7 @@
           {/if}
         </div>
       </div>
-      <span class="progress-label">{progressLabel}</span>
+      <span class="progress-label" data-testid="study-progress">{progressLabel}</span>
     </div>
 
     <!-- Card scene -->
@@ -327,7 +327,7 @@
           onclick={() => void revealCard()}
           onkeydown={e => { if (e.key === 'Enter' || e.key === ' ') void revealCard() }}
         >
-          <p class="card-question">{currentFact.quizQuestion}</p>
+          <p class="card-question" data-testid="study-card-question">{currentFact.quizQuestion}</p>
           <p class="tap-hint">Tap card or press Reveal</p>
           <button
             class="reveal-btn"
@@ -339,20 +339,20 @@
         </div>
       {:else}
         <div class="card-face card-back">
-          <p class="card-answer">{currentFact.correctAnswer}</p>
+          <p class="card-answer" data-testid="study-card-answer">{currentFact.correctAnswer}</p>
           <div class="card-sprite" aria-hidden="true">
             <span class="card-sprite-label">sprite</span>
           </div>
           {#if currentFact.explanation || currentFact.mnemonic || currentFact.gaiaComment}
             <div class="card-details">
               {#if currentFact.explanation}
-                <p class="detail-explanation">{currentFact.explanation}</p>
+                <p class="detail-explanation" data-testid="study-explanation">{currentFact.explanation}</p>
               {/if}
               {#if currentFact.mnemonic}
-                <p class="detail-mnemonic">{currentFact.mnemonic}</p>
+                <p class="detail-mnemonic" data-testid="study-mnemonic">{currentFact.mnemonic}</p>
               {/if}
               {#if currentFact.gaiaComment}
-                <p class="detail-gaia">{currentFact.gaiaComment}</p>
+                <p class="detail-gaia" data-testid="study-gaia-comment">{currentFact.gaiaComment}</p>
               {/if}
             </div>
           {/if}

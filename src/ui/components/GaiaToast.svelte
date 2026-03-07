@@ -59,7 +59,7 @@
     <img class="gaia-avatar" src={gaiaSpriteUrl} alt={`G.A.I.A. ${currentExpressionId}`} width="28" height="28" />
     <div class="gaia-body">
       <span class="gaia-prefix">{GAIA_NAME}:</span>
-      <span class="gaia-text">{currentMessage}</span>
+      <span class="gaia-text" data-testid="gaia-toast-text">{currentMessage}</span>
     </div>
   </div>
 {/if}

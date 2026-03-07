@@ -89,7 +89,7 @@
     </div>
 
     <!-- Main message text -->
-    <p class="bubble-text">{currentBubble.text}</p>
+    <p class="bubble-text" data-testid="gaia-bubble-text">{currentBubble.text}</p>
 
     <!-- CTA for study actions -->
     {#if isStudyAction}

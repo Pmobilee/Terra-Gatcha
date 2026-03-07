@@ -4,6 +4,8 @@
  * DEV MODE ONLY — never included in production builds.
  */
 
+import { initPlaytestAPI } from './playtestAPI'
+
 export interface TerraDebugSnapshot {
   currentScreen: string;
   timestamp: number;
@@ -145,4 +147,7 @@ export function initDebugBridge(): void {
   });
 
   terraLog('state-change', 'Debug bridge initialized');
+
+  // Initialize the playtest gameplay API (window.__terraPlay)
+  initPlaytestAPI();
 }
