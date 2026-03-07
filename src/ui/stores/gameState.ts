@@ -236,6 +236,10 @@ export const activeQuiz = singletonWritable<{
   mnemonic?: string
   /** Layer challenge progress: current question number and total. */
   layerChallengeProgress?: { current: number; total: number }
+  /** Whether this is a review-ahead quiz (not yet due, reduced interval credit). */
+  isReviewAhead?: boolean
+  /** Proportion of elapsed/scheduled interval, for scaling review-ahead credit. */
+  proportion?: number
 } | null>('activeQuiz', null)
 
 // Fact reveal state

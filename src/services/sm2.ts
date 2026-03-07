@@ -197,6 +197,51 @@ function handleReview(state: ReviewState, button: AnkiButton, now: number): Revi
 }
 
 /**
+ * Review a card early (before its due date) with Anki's sliding-scale interval credit.
+ * The earlier the review relative to the scheduled interval, the less credit given.
+ *
+ * @param state - Current review state (must be in 'review' cardState)
+ * @param button - Rating button pressed
+ * @param proportion - Elapsed time since last review / scheduled interval (0.0 to 1.0+)
+ * @returns Updated review state with reduced interval gain for early reviews
+ */
+export function reviewCardEarly(state: ReviewState, button: AnkiButton, proportion: number): ReviewState {
+  // For non-review cards, just use normal review
+  if (state.cardState !== 'review') {
+    return reviewCard(state, button)
+  }
+
+  // Clamp proportion to [0, 1]
+  const p = Math.max(0, Math.min(1, proportion))
+
+  // Scale factor: proportion < 0.25 -> ~10% credit, proportion >= 0.9 -> ~100% credit
+  // Linear interpolation between 0.1 and 1.0 over the 0.25..0.9 range
+  let scaleFactor: number
+  if (p >= 0.9) {
+    scaleFactor = 1.0
+  } else if (p < 0.25) {
+    scaleFactor = 0.1
+  } else {
+    scaleFactor = 0.1 + (p - 0.25) / (0.9 - 0.25) * 0.9
+  }
+
+  // Get what the normal review would produce
+  const normalResult = reviewCard(state, button)
+
+  // Scale the interval gain (but never below the current interval)
+  const normalGain = normalResult.interval - state.interval
+  const scaledGain = Math.max(0, Math.round(normalGain * scaleFactor))
+  const scaledInterval = Math.max(state.interval, state.interval + scaledGain)
+
+  const now = Date.now()
+  return {
+    ...normalResult,
+    interval: scaledInterval,
+    nextReviewAt: now + scaledInterval * 24 * 60 * 60 * 1000,
+  }
+}
+
+/**
  * Returns human-readable interval previews for each button.
  * Shows what interval would result from pressing each button.
  */

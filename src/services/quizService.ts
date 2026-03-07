@@ -47,6 +47,108 @@ export function selectQuestion(facts: Fact[], reviewStates: ReviewState[]): Fact
 }
 
 /**
+ * Selects a not-yet-due review card for review-ahead quizzing.
+ * Prefers cards closest to being due (smallest time until due).
+ * Returns the fact and the proportion of elapsed time vs scheduled interval.
+ *
+ * @returns Object with fact and proportion, or null if no review-ahead candidates
+ */
+export function selectReviewAheadQuestion(
+  facts: Fact[],
+  reviewStates: ReviewState[],
+): { fact: Fact; proportion: number } | null {
+  if (facts.length === 0) return null
+
+  const now = Date.now()
+  const factById = new Map(facts.map((fact) => [fact.id, fact]))
+
+  let bestState: ReviewState | null = null
+  let bestTimeToDue = Infinity
+
+  for (const state of reviewStates) {
+    // Only review-ahead for cards in 'review' state that are NOT yet due
+    if (state.cardState !== 'review') continue
+    if (state.nextReviewAt <= now) continue  // already due -- use selectQuestion instead
+    if (!factById.has(state.factId)) continue
+
+    const timeToDue = state.nextReviewAt - now
+    if (timeToDue < bestTimeToDue) {
+      bestTimeToDue = timeToDue
+      bestState = state
+    }
+  }
+
+  if (!bestState) return null
+
+  // Calculate proportion: elapsed since last review / scheduled interval
+  const elapsed = now - bestState.lastReviewAt
+  const scheduledMs = bestState.interval * 24 * 60 * 60 * 1000
+  const proportion = scheduledMs > 0 ? elapsed / scheduledMs : 0
+
+  const fact = factById.get(bestState.factId)
+  if (!fact) return null
+
+  return { fact, proportion }
+}
+
+/**
+ * Selects a review-due card weighted by ease factor relative to mine depth.
+ * Shallow levels prefer high-ease (easy) cards, deep levels prefer low-ease (hard) cards.
+ *
+ * @param facts - Candidate facts
+ * @param reviewStates - Current review states
+ * @param depthRatio - Current depth as 0.0 (surface) to 1.0 (deepest)
+ * @returns Selected fact or null
+ */
+export function selectDifficultyWeightedQuestion(
+  facts: Fact[],
+  reviewStates: ReviewState[],
+  depthRatio: number,
+): Fact | null {
+  if (facts.length === 0) return null
+
+  const now = Date.now()
+  const factById = new Map(facts.map((fact) => [fact.id, fact]))
+
+  // Collect review-due cards with their ease factors
+  const candidates: { fact: Fact; ease: number }[] = []
+
+  for (const state of reviewStates) {
+    if (state.cardState !== 'review') continue
+    if (state.nextReviewAt > now) continue
+    const fact = factById.get(state.factId)
+    if (!fact) continue
+    candidates.push({ fact, ease: state.easeFactor })
+  }
+
+  if (candidates.length === 0) return null
+  if (candidates.length < 3) {
+    // Too few candidates for meaningful weighting -- pick earliest due (fallback)
+    return selectQuestion(facts, reviewStates)
+  }
+
+  // Weight by depth:
+  // shallow (< 0.3): weight = ease (high ease -> high weight -> easy questions)
+  // deep (> 0.7): weight = 3.0 - ease (low ease -> high weight -> hard questions)
+  // mid: weight = 1.0 (uniform)
+  const weights = candidates.map(c => {
+    if (depthRatio < 0.3) return c.ease
+    if (depthRatio > 0.7) return Math.max(0.1, 3.0 - c.ease)
+    return 1.0
+  })
+
+  // Weighted random selection
+  const totalWeight = weights.reduce((sum, w) => sum + w, 0)
+  let roll = Math.random() * totalWeight
+  for (let i = 0; i < candidates.length; i++) {
+    roll -= weights[i]
+    if (roll <= 0) return candidates[i].fact
+  }
+
+  return candidates[candidates.length - 1].fact
+}
+
+/**
  * Builds shuffled multiple-choice answers for a quiz fact.
  *
  * The resulting array contains the correct answer and a random subset of

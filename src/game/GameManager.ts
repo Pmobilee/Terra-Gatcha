@@ -62,7 +62,7 @@ import {
   deductMinerals,
   savePendingArtifacts,
 } from '../ui/stores/playerData'
-import { getQuizChoices, selectQuestion } from '../services/quizService'
+import { getQuizChoices, selectQuestion, selectReviewAheadQuestion, selectDifficultyWeightedQuestion } from '../services/quizService'
 import { factsDB } from '../services/factsDB'
 import { RECIPES } from '../data/recipes'
 import { save as savePlayer } from '../services/saveService'
@@ -400,12 +400,12 @@ export class GameManager {
   }
 
   /**
-   * Selects a review-due fact for mine quizzes (Anki-faithful).
-   * Only returns facts the player has already learned and that are due for review.
-   * Returns null when no review cards are due — callers skip the quiz gracefully.
-   * @internal
+   * Selects a fact for mine quizzes using depth-aware difficulty weighting.
+   * Cascade: difficulty-weighted due -> any due -> review-ahead -> null.
+   *
+   * @returns Object with fact, isReviewAhead flag, and proportion (for early review credit)
    */
-  getInterestWeightedFact(): Fact | null {
+  getInterestWeightedFact(): { fact: Fact; isReviewAhead: boolean; proportion: number } | null {
     const ps = get(playerSave)
     if (!ps) return null
 
@@ -415,14 +415,32 @@ export class GameManager {
       ...Array.from(this.recentlyFailedFactIds),
     ]
 
-    // Only pick from review-due learned facts (Anki-faithful: no new facts in mines)
     const candidateFacts = allFacts.filter(f => !excludeIds.includes(f.id))
-    const fact = selectQuestion(candidateFacts, ps.reviewStates)
+    const depthRatio = BALANCE.MAX_LAYERS > 0 ? this.currentLayer / BALANCE.MAX_LAYERS : 0
 
-    if (fact) {
-      this.lastAskedFactId = fact.id
+    // 1. Try difficulty-weighted selection (due cards, weighted by ease + depth)
+    const weightedFact = selectDifficultyWeightedQuestion(candidateFacts, ps.reviewStates, depthRatio)
+    if (weightedFact) {
+      this.lastAskedFactId = weightedFact.id
+      return { fact: weightedFact, isReviewAhead: false, proportion: 1 }
     }
-    return fact
+
+    // 2. Try any due card (unweighted fallback)
+    const dueFact = selectQuestion(candidateFacts, ps.reviewStates)
+    if (dueFact) {
+      this.lastAskedFactId = dueFact.id
+      return { fact: dueFact, isReviewAhead: false, proportion: 1 }
+    }
+
+    // 3. Try review-ahead (not-yet-due card, closest to due date)
+    const ahead = selectReviewAheadQuestion(candidateFacts, ps.reviewStates)
+    if (ahead) {
+      this.lastAskedFactId = ahead.fact.id
+      return { fact: ahead.fact, isReviewAhead: true, proportion: ahead.proportion }
+    }
+
+    // 4. No cards available
+    return null
   }
 
   /** Get the DomeScene instance (null if game not booted) */

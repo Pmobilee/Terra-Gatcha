@@ -258,13 +258,16 @@ export function wireEventBridge(gm: GameManager, events: Phaser.Events.EventEmit
     // Initialize gate retry attempts for this gate encounter
     qm.resetGateAttempts()
     // Pick a random fact for each gate question (not the same stored factId every time)
-    const fact = gm.getInterestWeightedFact()
-    if (fact) {
+    const result = gm.getInterestWeightedFact()
+    if (result) {
+      const { fact, isReviewAhead, proportion } = result
       const choices = getQuizChoices(fact)
       activeQuiz.set({
         fact,
         choices,
         source: 'gate',
+        isReviewAhead,
+        proportion,
         gateProgress: (data.gateRemaining !== undefined)
           ? { remaining: data.gateRemaining, total: data.gateTotal ?? data.gateRemaining }
           : undefined,
@@ -353,12 +356,17 @@ export function wireEventBridge(gm: GameManager, events: Phaser.Events.EventEmit
   )
 
   events.on('random-quiz', () => {
-    const fact = gm.getInterestWeightedFact()
-    if (fact) {
+    const result = gm.getInterestWeightedFact()
+    if (result) {
+      const { fact, isReviewAhead, proportion } = result
       const choices = getQuizChoices(fact)
-      activeQuiz.set({ fact, choices, source: 'random' })
+      activeQuiz.set({ fact, choices, source: 'random', isReviewAhead, proportion })
       currentScreen.set('quiz')
-      gaiaMessage.set("Scanner ping! Residual data detected — answer to earn bonus minerals.")
+      if (isReviewAhead) {
+        gaiaMessage.set("Early recall check — partial credit logged.")
+      } else {
+        gaiaMessage.set("Scanner ping! Residual data detected — answer to earn bonus minerals.")
+      }
     } else {
       // No fact available — resume without quiz
       const scene = gm.getMineScene()
@@ -404,13 +412,14 @@ export function wireEventBridge(gm: GameManager, events: Phaser.Events.EventEmit
       return
     }
 
-    const fact = gm.getInterestWeightedFact()
-    if (!fact) {
+    const result = gm.getInterestWeightedFact()
+    if (!result) {
       layerChallengeRemaining = 0
       presentNextLayerQuestion()
       return
     }
 
+    const { fact, isReviewAhead, proportion } = result
     const choices = getQuizChoices(fact)
     const currentQ = layerChallengeTotal - layerChallengeRemaining + 1
     const mnemonicInfo = gm.quizManager.getMnemonicInfo(fact.id, fact.mnemonic)
@@ -419,6 +428,8 @@ export function wireEventBridge(gm: GameManager, events: Phaser.Events.EventEmit
       fact,
       choices,
       source: 'layer',
+      isReviewAhead,
+      proportion,
       layerChallengeProgress: { current: currentQ, total: layerChallengeTotal },
       ...mnemonicInfo,
     })

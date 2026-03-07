@@ -16,7 +16,7 @@ import type { AgeRating, MineralTier, PendingArtifact, PlayerSave, ReviewState }
 import { createNewPlayer, load, save as saveFn } from '../../services/saveService'
 import { getUnlockedPaintingIds } from './achievements'
 import { AGE_BRACKET_KEY } from '../../services/legalConstants'
-import { createReviewState, isDue, getMasteryLevel, reviewFact, reviewCard } from '../../services/sm2'
+import { createReviewState, isDue, getMasteryLevel, reviewFact, reviewCard, reviewCardEarly } from '../../services/sm2'
 import type { AnkiButton } from '../../services/sm2'
 import type { Cosmetic } from '../../data/cosmetics'
 import { calculateKnowledgePoints } from '../../data/knowledgeStore'
@@ -252,6 +252,43 @@ export function updateReviewState(factId: string, correctOrQuality: boolean | nu
       new CustomEvent('game:fact-mastered', { detail: masteryEvent }),
     )
   }
+}
+
+/**
+ * Updates a fact's review state using early-review scaling.
+ * Used for review-ahead quizzes in mines where the card isn't due yet.
+ *
+ * @param factId - Fact to update
+ * @param correct - Whether the answer was correct
+ * @param proportion - Elapsed/scheduled interval ratio (0-1)
+ */
+export function updateReviewStateEarly(factId: string, correct: boolean, proportion: number): void {
+  const ps = get(playerSave)
+  if (!ps) return
+
+  const existingState = ps.reviewStates.find(r => r.factId === factId)
+  if (!existingState) return
+
+  const button: AnkiButton = correct ? 'okay' : 'again'
+  const newState = reviewCardEarly(existingState, button, proportion)
+
+  const newReviewStates = ps.reviewStates.map(r =>
+    r.factId === factId ? newState : r,
+  )
+
+  playerSave.update(s => {
+    if (!s) return s
+    return {
+      ...s,
+      reviewStates: newReviewStates,
+      stats: {
+        ...s.stats,
+        totalQuizCorrect: correct ? s.stats.totalQuizCorrect + 1 : s.stats.totalQuizCorrect,
+        totalQuizWrong: correct ? s.stats.totalQuizWrong : s.stats.totalQuizWrong + 1,
+      },
+    }
+  })
+  persistPlayer()
 }
 
 /**

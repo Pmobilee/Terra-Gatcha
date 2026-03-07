@@ -6,7 +6,7 @@ import {
   currentLayer,
   quizStreak,
 } from '../../ui/stores/gameState'
-import { playerSave, updateReviewState } from '../../ui/stores/playerData'
+import { playerSave, updateReviewState, updateReviewStateEarly } from '../../ui/stores/playerData'
 import {
   BALANCE,
   QUIZ_BASE_RATE,
@@ -36,6 +36,10 @@ type ActiveQuizValue = {
   mnemonic?: string
   /** Layer challenge progress: current question number and total. */
   layerChallengeProgress?: { current: number; total: number }
+  /** Whether this is a review-ahead quiz (not yet due, reduced interval credit). */
+  isReviewAhead?: boolean
+  /** Proportion of elapsed/scheduled interval, for scaling review-ahead credit. */
+  proportion?: number
 }
 
 /**
@@ -394,7 +398,11 @@ export class QuizManager {
       const quiz = get(activeQuiz)
       if (quiz) {
         this.trackQuizAnswered(quiz, correct)
-        updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        if (quiz.isReviewAhead && quiz.proportion !== undefined) {
+          updateReviewStateEarly(quiz.fact.id, correct, quiz.proportion)
+        } else {
+          updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        }
         this.updateReviewContext(quiz.fact.id, 'mine')
         if (!correct) {
           this.incrementWrongCount(quiz.fact.id)
@@ -501,7 +509,11 @@ export class QuizManager {
       const quiz = get(activeQuiz)
       if (quiz) {
         this.trackQuizAnswered(quiz, correct)
-        updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        if (quiz.isReviewAhead && quiz.proportion !== undefined) {
+          updateReviewStateEarly(quiz.fact.id, correct, quiz.proportion)
+        } else {
+          updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        }
         this.updateReviewContext(quiz.fact.id, 'mine')
         if (!correct) {
           this.incrementWrongCount(quiz.fact.id)
@@ -561,7 +573,11 @@ export class QuizManager {
       const quiz = get(activeQuiz)
       if (quiz) {
         this.trackQuizAnswered(quiz, correct)
-        updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        if (quiz.isReviewAhead && quiz.proportion !== undefined) {
+          updateReviewStateEarly(quiz.fact.id, correct, quiz.proportion)
+        } else {
+          updateReviewState(quiz.fact.id, correct, quiz.fact.category[0])
+        }
         this.updateReviewContext(quiz.fact.id, 'mine')
         if (!correct) {
           this.incrementWrongCount(quiz.fact.id)

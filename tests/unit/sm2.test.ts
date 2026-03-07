@@ -3,6 +3,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import {
   createReviewState,
   reviewCard,
+  reviewCardEarly,
   reviewFact,
   isDue,
   isMastered,
@@ -478,5 +479,53 @@ describe('getMasteryLevel', () => {
   it('phrase interval 35 returns "mastered"', () => {
     const s = { ...createReviewState('f'), cardState: 'review' as const, interval: 35 }
     expect(getMasteryLevel(s, 'phrase')).toBe('mastered')
+  })
+})
+
+// ---------------------------------------------------------------------------
+// reviewCardEarly
+// ---------------------------------------------------------------------------
+describe('reviewCardEarly', () => {
+  beforeEach(() => { vi.useFakeTimers({ now: NOW }) })
+  afterEach(() => { vi.useRealTimers() })
+
+  it('gives full credit when proportion >= 0.9', () => {
+    const s = { ...advanceToReview(), interval: 10 }
+    const normal = reviewCard(s, 'okay')
+    const early = reviewCardEarly(s, 'okay', 0.95)
+    expect(early.interval).toBe(normal.interval)
+  })
+
+  it('gives minimal credit when proportion < 0.25', () => {
+    const s = { ...advanceToReview(), interval: 10 }
+    const normal = reviewCard(s, 'okay')
+    const early = reviewCardEarly(s, 'okay', 0.1)
+    const normalGain = normal.interval - s.interval
+    const earlyGain = early.interval - s.interval
+    // Should be ~10% of normal gain
+    expect(earlyGain).toBeLessThanOrEqual(Math.ceil(normalGain * 0.15))
+    expect(earlyGain).toBeGreaterThanOrEqual(0)
+  })
+
+  it('gives partial credit at proportion 0.5', () => {
+    const s = { ...advanceToReview(), interval: 10 }
+    const normal = reviewCard(s, 'okay')
+    const early = reviewCardEarly(s, 'okay', 0.5)
+    expect(early.interval).toBeGreaterThan(s.interval)
+    expect(early.interval).toBeLessThan(normal.interval)
+  })
+
+  it('never reduces interval below current', () => {
+    const s = { ...advanceToReview(), interval: 10 }
+    const early = reviewCardEarly(s, 'okay', 0.01)
+    expect(early.interval).toBeGreaterThanOrEqual(s.interval)
+  })
+
+  it('falls back to normal reviewCard for non-review states', () => {
+    const s = createReviewState('f')
+    const normal = reviewCard(s, 'okay')
+    const early = reviewCardEarly(s, 'okay', 0.5)
+    expect(early.cardState).toBe(normal.cardState)
+    expect(early.interval).toBe(normal.interval)
   })
 })
