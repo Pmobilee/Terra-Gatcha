@@ -8,7 +8,7 @@
 
 ## P0 — Core Prototype (first playable)
 
-- [ ] **CR-01 Card Foundation** — Card entity, types (Strike/Shield/Surge/Void/Wild), deck manager, 50 facts mapped to cards → `docs/roadmap/phases/CR-01-CARD-FOUNDATION.md`
+- [x] **CR-01 Card Foundation** — Card entity, types, deck manager, domain resolver, card factory, run pool builder → `docs/roadmap/completed/CR-01-CARD-FOUNDATION.md`
 - [ ] **CR-02 Encounter Engine** — Turn-based encounter loop, enemy system (HP, telegraphed intents, attack patterns), basic enemy roster → `docs/roadmap/phases/CR-02-ENCOUNTER-ENGINE.md`
 - [ ] **CR-03 Combat Scene** — Phaser scene with split-stage portrait layout (top 55% display, bottom 45% interaction), enemy sprites, HP bars, intent icons → `docs/roadmap/phases/CR-03-COMBAT-SCENE.md`
 - [ ] **CR-04 Card Hand UI** — Fanned arc hand, two-step play (tap to select → answer to activate), card animations (launch, fizzle, dissolve), answer buttons → `docs/roadmap/phases/CR-04-CARD-HAND-UI.md`
