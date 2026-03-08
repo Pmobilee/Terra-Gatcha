@@ -1,0 +1,1788 @@
+{
+  "q": 9,
+  "title": "Consistency Penalty Cross-System",
+  "preset": "many_reviews_due",
+  "startedAt": "2026-03-08T02:56:58.041Z",
+  "endedAt": "2026-03-08T02:57:43.856Z",
+  "studiedIds": [
+    "cult-001",
+    "cult-002",
+    "cult-003",
+    "cult-004",
+    "cult-005"
+  ],
+  "matched": null,
+  "success": {
+    "consistencyTriggered": false,
+    "o2PenaltyObserved": false,
+    "warningShown": false,
+    "easePenaltyApplied": false
+  },
+  "logs": [
+    {
+      "ts": "2026-03-08T02:56:58.641Z",
+      "label": "startStudy(5)",
+      "screen": "study",
+      "look": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study screen opened (size 5)"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:56:59.138Z",
+      "label": "gm.startStudySession()",
+      "screen": "studySession",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "called startStudySession"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:00.105Z",
+      "label": "chooseSize(5)",
+      "screen": "studySession",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "size selected"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:01.152Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (1 / 5)\n\nCURRENT CARD:\n  Front: Why does the Mona Lisa have no eyebrows?\n  Category: Culture › Art › Renaissance Painting\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:02.304Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (1 / 5)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:02.573Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (2 / 5)\n\nCURRENT CARD:\n  Front: What physical condition did Beethoven have when he composed his Ninth Symphony?\n  Category: Culture › Music › Classical Composers\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:03.678Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (2 / 5)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:03.984Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (3 / 5)\n\nCURRENT CARD:\n  Front: What did ancient Greeks believe different musical modes could do to people?\n  Category: Culture › Music › Ancient Music Theory\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:05.157Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (3 / 5)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:05.422Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (4 / 5)\n\nCURRENT CARD:\n  Front: What did Odin sacrifice to gain wisdom from the Well of Wisdom?\n  Category: Culture › Mythology › Norse Myths\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:06.566Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (4 / 5)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:06.837Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (5 / 5)\n\nCURRENT CARD:\n  Front: In Japanese New Year food tradition, why do shrimp symbolize longevity?\n  Category: Culture › Traditions › Food Symbolism\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:07.976Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (5 / 5)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:09.229Z",
+      "label": "endStudy()",
+      "screen": "base",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study ended. Screen: base"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:10.835Z",
+      "label": "startDive(1)",
+      "screen": "mining",
+      "look": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Dive started with 1 tank(s). Screen: mining",
+        "state": {
+          "screen": "mining"
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:10.966Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:11.320Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About ten thousand tonnes\n  - 2 About the weight of a mountain\n  - 3 About a hundred million tonnes\n  - 4 About a billion tonnes\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:11.617Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About ten thousand tonnes\n  - 2 About the weight of a mountain\n  - 3 About a hundred million tonnes\n  - 4 About a billion tonnes\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:12.042Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Mount Logan\n  - 2 Mauna Kea\n  - 3 Kangchenjunga\n  - 4 Mont Blanc\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:12.335Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Mount Logan\n  - 2 Mauna Kea\n  - 3 Kangchenjunga\n  - 4 Mont Blanc\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:12.677Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Silicon droplets\n  - 2 Platinum crystals\n  - 3 Zinc droplets\n  - 4 Diamond rain\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:12.947Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Silicon droplets\n  - 2 Platinum crystals\n  - 3 Zinc droplets\n  - 4 Diamond rain\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:13.292Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 One — it is colourblind\n  - 2 Six\n  - 3 Thirty-two\n  - 4 Sixteen\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:13.573Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 One — it is colourblind\n  - 2 Six\n  - 3 Thirty-two\n  - 4 Sixteen\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:13.992Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Yes — the wall appears as a white line in winter when snow contrasts it\n  - 2 Yes — it glows slightly in infrared satellite imagery, making it visible\n  - 3 No — the Nile River is visible but not the Wall\n  - 4 No — it is far too narrow to see without optical aids\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:14.284Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Yes — the wall appears as a white line in winter when snow contrasts it\n  - 2 Yes — it glows slightly in infrared satellite imagery, making it visible\n  - 3 No — the Nile River is visible but not the Wall\n  - 4 No — it is far too narrow to see without optical aids\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:14.623Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 A train arriving at a station\n  - 2 Workers operating dangerous machinery at close range\n  - 3 Acrobats who appeared to leap from the screen into the room\n  - 4 A giant spider shown in extreme close-up\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:14.904Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 A train arriving at a station\n  - 2 Workers operating dangerous machinery at close range\n  - 3 Acrobats who appeared to leap from the screen into the room\n  - 4 A giant spider shown in extreme close-up\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:15.246Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 A natural antibiotic called honeylin\n  - 2 Natural alcohol produced during fermentation\n  - 3 High fructose content alone makes it shelf-stable\n  - 4 Low water content, high acidity, and hydrogen peroxide production\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:15.531Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 A natural antibiotic called honeylin\n  - 2 Natural alcohol produced during fermentation\n  - 3 High fructose content alone makes it shelf-stable\n  - 4 Low water content, high acidity, and hydrogen peroxide production\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:15.885Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The Wood Wide Web\n  - 2 The Root Relay System\n  - 3 The Forest Highway\n  - 4 The Carbon Web\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:16.183Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The Wood Wide Web\n  - 2 The Root Relay System\n  - 3 The Forest Highway\n  - 4 The Carbon Web\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:16.516Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 As a cold, bitter, spicy drink mixed with chili peppers and water\n  - 2 Mixed with honey and served hot as a royal dessert\n  - 3 Dissolved in warm water with vanilla and served to guests\n  - 4 Ground into a powder and inhaled in religious ceremonies\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:16.783Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 As a cold, bitter, spicy drink mixed with chili peppers and water\n  - 2 Mixed with honey and served hot as a royal dessert\n  - 3 Dissolved in warm water with vanilla and served to guests\n  - 4 Ground into a powder and inhaled in religious ceremonies\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:17.121Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 20\n  - 2 11\n  - 3 26\n  - 4 15\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:17.394Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 20\n  - 2 11\n  - 3 26\n  - 4 15\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:17.731Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Oxford and the Aztec Empire are contemporaneous within 50 years\n  - 2 Both were established in the 13th century\n  - 3 Oxford began teaching in the 14th century\n  - 4 Oxford University — by over two centuries\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:18.039Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Oxford and the Aztec Empire are contemporaneous within 50 years\n  - 2 Both were established in the 13th century\n  - 3 Oxford began teaching in the 14th century\n  - 4 Oxford University — by over two centuries\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:18.382Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 12\n  - 2 11\n  - 3 25\n  - 4 21\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:18.669Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 12\n  - 2 11\n  - 3 25\n  - 4 21\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:18.998Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 A submarine emerging from underwater directly at the viewers\n  - 2 A volcanic eruption that appeared to pour lava into the theater\n  - 3 A train arriving at a station\n  - 4 A speeding automobile driving directly at the camera\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:19.308Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 A submarine emerging from underwater directly at the viewers\n  - 2 A volcanic eruption that appeared to pour lava into the theater\n  - 3 A train arriving at a station\n  - 4 A speeding automobile driving directly at the camera\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:19.612Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 18\n  - 2 24\n  - 3 2\n  - 4 11\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:19.859Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 18\n  - 2 24\n  - 3 2\n  - 4 11\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:20.225Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About 10 billion kilometres\n  - 2 About a million kilometres\n  - 3 To Saturn and back\n  - 4 Far enough to reach Pluto and back multiple times\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:20.551Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About 10 billion kilometres\n  - 2 About a million kilometres\n  - 3 To Saturn and back\n  - 4 Far enough to reach Pluto and back multiple times\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:20.896Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 25%\n  - 2 20%\n  - 3 4%\n  - 4 10%\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:21.189Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 25%\n  - 2 20%\n  - 3 4%\n  - 4 10%\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:21.560Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About 153 cm — smaller even than the British propaganda claimed\n  - 2 About 168–170 cm — close to the average for a French man of his time\n  - 3 About 155 cm — short by any historical measurement\n  - 4 About 174 cm — tall enough to stand out among officers\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:21.829Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About 153 cm — smaller even than the British propaganda claimed\n  - 2 About 168–170 cm — close to the average for a French man of his time\n  - 3 About 155 cm — short by any historical measurement\n  - 4 About 174 cm — tall enough to stand out among officers\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:22.178Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About the height of the Eiffel Tower\n  - 2 Enough to fill the distance between Earth and Mars\n  - 3 From the Earth to the Moon six times\n  - 4 Far enough to reach Pluto and back multiple times\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:22.457Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About the height of the Eiffel Tower\n  - 2 Enough to fill the distance between Earth and Mars\n  - 3 From the Earth to the Moon six times\n  - 4 Far enough to reach Pluto and back multiple times\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:22.798Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The number of atoms is incalculable\n  - 2 There are more chess games than possible Go games\n  - 3 There are more atoms than possible chess games\n  - 4 There are more possible chess games than atoms\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:23.079Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The number of atoms is incalculable\n  - 2 There are more chess games than possible Go games\n  - 3 There are more atoms than possible chess games\n  - 4 There are more possible chess games than atoms\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:23.411Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About a billion tonnes\n  - 2 About the weight of a cruise ship\n  - 3 Exactly the same as a teaspoon of water\n  - 4 About the weight of a mountain\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:23.688Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About a billion tonnes\n  - 2 About the weight of a cruise ship\n  - 3 Exactly the same as a teaspoon of water\n  - 4 About the weight of a mountain\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:24.016Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 6%\n  - 2 60%\n  - 3 30%\n  - 4 20%\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:24.282Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 6%\n  - 2 60%\n  - 3 30%\n  - 4 20%\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:24.615Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The Sonoran Desert\n  - 2 The Syrian Desert\n  - 3 The Sahara\n  - 4 The Karakum Desert\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:24.895Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The Sonoran Desert\n  - 2 The Syrian Desert\n  - 3 The Sahara\n  - 4 The Karakum Desert\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:25.225Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 11\n  - 2 10\n  - 3 12\n  - 4 8\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:25.506Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 11\n  - 2 10\n  - 3 12\n  - 4 8\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:25.860Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The Great Sandy Desert\n  - 2 The Negev Desert\n  - 3 The Namib Desert\n  - 4 The Sahara\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:26.155Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The Great Sandy Desert\n  - 2 The Negev Desert\n  - 3 The Namib Desert\n  - 4 The Sahara\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:26.493Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About 158 cm — below average even for his era\n  - 2 About 168–170 cm — close to the average for a French man of his time\n  - 3 About 152 cm — definitively short by any standard\n  - 4 About 155 cm — shorter than most of his generals\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:26.781Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About 158 cm — below average even for his era\n  - 2 About 168–170 cm — close to the average for a French man of his time\n  - 3 About 152 cm — definitively short by any standard\n  - 4 About 155 cm — shorter than most of his generals\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:27.118Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Diamond rain\n  - 2 Liquid oxygen rain\n  - 3 Silicon droplets\n  - 4 Helium sleet\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:27.410Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Diamond rain\n  - 2 Liquid oxygen rain\n  - 3 Silicon droplets\n  - 4 Helium sleet\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:27.754Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Fermented with tropical fruit into a sweet wine\n  - 2 Mixed with honey and served hot as a royal dessert\n  - 3 As a cold, bitter, spicy drink mixed with chili peppers and water\n  - 4 Dried and smoked like tobacco for ceremonial purposes\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:28.042Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Fermented with tropical fruit into a sweet wine\n  - 2 Mixed with honey and served hot as a royal dessert\n  - 3 As a cold, bitter, spicy drink mixed with chili peppers and water\n  - 4 Dried and smoked like tobacco for ceremonial purposes\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:28.383Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Nothing — they simply pause all metabolism\n  - 2 Specialized lipids that prevent ice crystal formation\n  - 3 Trehalose, a sugar that forms a protective glass-like matrix\n  - 4 A polysaccharide gel that coats their organs\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:28.671Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Nothing — they simply pause all metabolism\n  - 2 Specialized lipids that prevent ice crystal formation\n  - 3 Trehalose, a sugar that forms a protective glass-like matrix\n  - 4 A polysaccharide gel that coats their organs\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:29.011Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 20%\n  - 2 30%\n  - 3 45%\n  - 4 40%\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:29.285Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 20%\n  - 2 30%\n  - 3 45%\n  - 4 40%\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:29.660Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 A specially trained team of acrobats from North Africa\n  - 2 Members of the fire brigade who also handled large ropes\n  - 3 Sailors from the Roman navy\n  - 4 A rotating team of all Roman tradesmen on a civic duty schedule\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:29.983Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 A specially trained team of acrobats from North Africa\n  - 2 Members of the fire brigade who also handled large ropes\n  - 3 Sailors from the Roman navy\n  - 4 A rotating team of all Roman tradesmen on a civic duty schedule\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:30.362Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 By order of the Roman Emperor Diocletian\n  - 2 By Arab invaders in 641 AD\n  - 3 In one catastrophic event that history has misremembered\n  - 4 Gradually, through multiple incidents over several centuries\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:30.665Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 By order of the Roman Emperor Diocletian\n  - 2 By Arab invaders in 641 AD\n  - 3 In one catastrophic event that history has misremembered\n  - 4 Gradually, through multiple incidents over several centuries\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:31.006Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The Kyzylkum Desert\n  - 2 The Gibson Desert\n  - 3 The Sahara\n  - 4 The Tanami Desert\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:31.315Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The Kyzylkum Desert\n  - 2 The Gibson Desert\n  - 3 The Sahara\n  - 4 The Tanami Desert\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:31.604Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The Trans-Siberian Railway\n  - 2 The Three Gorges Dam\n  - 3 The Great Wall of China\n  - 4 The Statue of Liberty\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:31.885Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The Trans-Siberian Railway\n  - 2 The Three Gorges Dam\n  - 3 The Great Wall of China\n  - 4 The Statue of Liberty\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:32.159Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 12%\n  - 2 20%\n  - 3 13%\n  - 4 60%\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:32.433Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 12%\n  - 2 20%\n  - 3 13%\n  - 4 60%\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:32.849Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Seven\n  - 2 It varies by species of mantis shrimp\n  - 3 Forty\n  - 4 Sixteen\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:33.121Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Seven\n  - 2 It varies by species of mantis shrimp\n  - 3 Forty\n  - 4 Sixteen\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:33.580Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Mauna Kea\n  - 2 Mount Logan\n  - 3 Mount Whitney\n  - 4 Dhaulagiri\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:33.919Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Mauna Kea\n  - 2 Mount Logan\n  - 3 Mount Whitney\n  - 4 Dhaulagiri\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:34.264Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Liquid neon\n  - 2 Frozen nitrogen flakes\n  - 3 Diamond rain\n  - 4 Helium sleet\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:34.562Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Liquid neon\n  - 2 Frozen nitrogen flakes\n  - 3 Diamond rain\n  - 4 Helium sleet\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:34.897Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 A man sneezing directly at the camera toward the audience\n  - 2 A bullfight with a charging bull appearing to leap from the screen\n  - 3 A train arriving at a station\n  - 4 Firefighters spraying a hose that seemed to wet the front row\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:35.170Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 A man sneezing directly at the camera toward the audience\n  - 2 A bullfight with a charging bull appearing to leap from the screen\n  - 3 A train arriving at a station\n  - 4 Firefighters spraying a hose that seemed to wet the front row\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:35.507Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 To the edge of the Milky Way\n  - 2 Enough to wrap around the equator 500 times\n  - 3 Across the Milky Way galaxy\n  - 4 Far enough to reach Pluto and back multiple times\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:35.793Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 To the edge of the Milky Way\n  - 2 Enough to wrap around the equator 500 times\n  - 3 Across the Milky Way galaxy\n  - 4 Far enough to reach Pluto and back multiple times\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:36.130Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The Sahara\n  - 2 The Sonoran Desert\n  - 3 The Dasht-e Kavir\n  - 4 The Karakum Desert\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:36.414Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 The Sahara\n  - 2 The Sonoran Desert\n  - 3 The Dasht-e Kavir\n  - 4 The Karakum Desert\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:36.753Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Eaten raw as whole cacao beans with sea salt\n  - 2 As a cold, bitter, spicy drink mixed with chili peppers and water\n  - 3 Ground and mixed into clay pottery as a sacred glaze\n  - 4 Mixed with animal blood in warrior initiation rituals\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:37.044Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Eaten raw as whole cacao beans with sea salt\n  - 2 As a cold, bitter, spicy drink mixed with chili peppers and water\n  - 3 Ground and mixed into clay pottery as a sacred glaze\n  - 4 Mixed with animal blood in warrior initiation rituals\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:37.403Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About 172 cm — slightly above average for French men\n  - 2 About 167 cm — shorter than French average by a small amount\n  - 3 About 168–170 cm — close to the average for a French man of his time\n  - 4 About 177 cm — average for a French officer of noble birth\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:37.734Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About 172 cm — slightly above average for French men\n  - 2 About 167 cm — shorter than French average by a small amount\n  - 3 About 168–170 cm — close to the average for a French man of his time\n  - 4 About 177 cm — average for a French officer of noble birth\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:38.012Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Lightning is hotter only in the upper atmosphere\n  - 2 The Sun is about fifteen times hotter\n  - 3 The Sun's photosphere is about 30,000 K\n  - 4 Lightning is about five times hotter\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:38.292Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Lightning is hotter only in the upper atmosphere\n  - 2 The Sun is about fifteen times hotter\n  - 3 The Sun's photosphere is about 30,000 K\n  - 4 Lightning is about five times hotter\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:38.646Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About a million tonnes\n  - 2 About ten thousand tonnes\n  - 3 About a thousand tonnes\n  - 4 About a billion tonnes\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:38.931Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About a million tonnes\n  - 2 About ten thousand tonnes\n  - 3 About a thousand tonnes\n  - 4 About a billion tonnes\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:39.289Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About 176 cm — above average for a man of his era\n  - 2 About 177 cm — average for a French officer of noble birth\n  - 3 About 168–170 cm — close to the average for a French man of his time\n  - 4 About 174 cm — tall enough to stand out among officers\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:39.615Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About 176 cm — above average for a man of his era\n  - 2 About 177 cm — average for a French officer of noble birth\n  - 3 About 168–170 cm — close to the average for a French man of his time\n  - 4 About 174 cm — tall enough to stand out among officers\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:39.967Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Oxford University — by over two centuries\n  - 2 Both were founded in the same decade\n  - 3 Oxford University was established in the 15th century\n  - 4 Oxford and the Aztec Empire are contemporaneous within 50 years\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:40.246Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Oxford University — by over two centuries\n  - 2 Both were founded in the same decade\n  - 3 Oxford University was established in the 15th century\n  - 4 Oxford and the Aztec Empire are contemporaneous within 50 years\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:40.594Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About 600 km/h near the poles only\n  - 2 Up to 2,100 km/h — faster than sound on Earth\n  - 3 About 1,000 km/h\n  - 4 Neptune's winds are the slowest of all gas giants\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:40.874Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 About 600 km/h near the poles only\n  - 2 Up to 2,100 km/h — faster than sound on Earth\n  - 3 About 1,000 km/h\n  - 4 Neptune's winds are the slowest of all gas giants\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:41.225Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Chess games outnumber atoms by exactly ten\n  - 2 There are more atoms than possible chess games\n  - 3 There are more possible chess games than atoms\n  - 4 There are more chess games than possible Go games\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:41.507Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Chess games outnumber atoms by exactly ten\n  - 2 There are more atoms than possible chess games\n  - 3 There are more possible chess games than atoms\n  - 4 There are more chess games than possible Go games\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:41.846Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Mont Blanc\n  - 2 Mount Kenya\n  - 3 Mauna Kea\n  - 4 Mount Whitney\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:42.149Z",
+      "label": "forceQuiz()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Mont Blanc\n  - 2 Mount Kenya\n  - 3 Mauna Kea\n  - 4 Mount Whitney\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "forceQuiz emitted"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:42.499Z",
+      "label": "answerQuizCorrectly()",
+      "screen": "quiz",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Diamond rain\n  - 2 Frozen nitrogen flakes\n  - 3 Compressed hydrogen droplets\n  - 4 Sulphur ice pellets\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Correct index unknown"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:57:43.856Z",
+      "label": "endDive()",
+      "screen": "diveResults",
+      "look": "SCREEN: quiz\n\nAVAILABLE ACTIONS:\n  - 1 Diamond rain\n  - 2 Frozen nitrogen flakes\n  - 3 Compressed hydrogen droplets\n  - 4 Sulphur ice pellets\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Dive ended. Screen: diveResults"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    }
+  ]
+}

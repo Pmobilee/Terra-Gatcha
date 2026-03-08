@@ -381,8 +381,8 @@ describe('isMastered', () => {
     expect(SM2_MASTERY_INTERVAL_GENERAL).toBe(60)
   })
 
-  it('vocab mastery threshold is SM2_MASTERY_INTERVAL_VOCAB (30 days)', () => {
-    expect(SM2_MASTERY_INTERVAL_VOCAB).toBe(30)
+  it('vocab mastery threshold is SM2_MASTERY_INTERVAL_VOCAB (40 days)', () => {
+    expect(SM2_MASTERY_INTERVAL_VOCAB).toBe(40)
   })
 
   it('requires cardState="review" — learning card with high interval is NOT mastered', () => {
@@ -400,19 +400,19 @@ describe('isMastered', () => {
     expect(isMastered(s, 'fact')).toBe(true)
   })
 
-  it('vocab mastered at interval 30 days (lower threshold)', () => {
-    const s = { ...createReviewState('f'), interval: 30, cardState: 'review' as const }
+  it('vocab mastered at interval 40 days (lower threshold)', () => {
+    const s = { ...createReviewState('f'), interval: 40, cardState: 'review' as const }
     expect(isMastered(s, 'vocabulary')).toBe(true)
     expect(isMastered(s, 'fact')).toBe(false)
   })
 
-  it('phrase uses vocab threshold (30 days)', () => {
-    const s = { ...createReviewState('f'), interval: 30, cardState: 'review' as const }
+  it('phrase uses vocab threshold (40 days)', () => {
+    const s = { ...createReviewState('f'), interval: 40, cardState: 'review' as const }
     expect(isMastered(s, 'phrase')).toBe(true)
   })
 
-  it('grammar uses vocab threshold (30 days)', () => {
-    const s = { ...createReviewState('f'), interval: 30, cardState: 'review' as const }
+  it('grammar uses vocab threshold (40 days)', () => {
+    const s = { ...createReviewState('f'), interval: 40, cardState: 'review' as const }
     expect(isMastered(s, 'grammar')).toBe(true)
   })
 })

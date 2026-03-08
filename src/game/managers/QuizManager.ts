@@ -15,6 +15,8 @@ import {
   QUIZ_FATIGUE_PENALTY_PER_QUIZ,
   QUIZ_FATIGUE_THRESHOLD,
   QUIZ_MIN_RATE,
+  QUIZ_BURST_THRESHOLD,
+  QUIZ_BURST_COOLDOWN_MULTIPLIER,
   STREAK_VISUAL,
 } from '../../data/balance'
 import type { MineScene } from '../scenes/MineScene'
@@ -89,6 +91,7 @@ export class QuizManager {
   private blocksSinceLastQuiz = 0
   private totalBlocksThisDive = 0
   private quizzesThisDive = 0
+  private recentQuizBlocks: number[] = []  // block counts when recent quizzes triggered
   private failureCounts: Map<string, number> = new Map()
 
   // =========================================================
@@ -128,6 +131,14 @@ export class QuizManager {
     if (this.totalBlocksThisDive < QUIZ_FIRST_TRIGGER_AFTER_BLOCKS) return false
     if (this.blocksSinceLastQuiz < QUIZ_COOLDOWN_BLOCKS) return false
 
+    // Burst protection: if N quizzes occurred within a small window, extend cooldown
+    const burstWindow = QUIZ_COOLDOWN_BLOCKS * 2
+    const recentBursts = this.recentQuizBlocks.filter(b => this.totalBlocksThisDive - b < burstWindow)
+    if (recentBursts.length >= QUIZ_BURST_THRESHOLD) {
+      const extendedCooldown = Math.floor(QUIZ_COOLDOWN_BLOCKS * QUIZ_BURST_COOLDOWN_MULTIPLIER)
+      if (this.blocksSinceLastQuiz < extendedCooldown) return false
+    }
+
     const excessQuizzes = Math.max(0, this.quizzesThisDive - QUIZ_FATIGUE_THRESHOLD)
     const effectiveRate = Math.max(
       QUIZ_MIN_RATE,
@@ -137,6 +148,7 @@ export class QuizManager {
     if (Math.random() < effectiveRate) {
       this.blocksSinceLastQuiz = 0
       this.quizzesThisDive++
+      this.recentQuizBlocks.push(this.totalBlocksThisDive)
       return true
     }
     return false
@@ -147,10 +159,33 @@ export class QuizManager {
     this.blocksSinceLastQuiz = 0
     this.totalBlocksThisDive = 0
     this.quizzesThisDive = 0
+    this.recentQuizBlocks = []
     this.failureCounts.clear()
     // Phase 31.6: reset streak on new dive
     this.consecutiveCorrect = 0
     quizStreak.set({ count: 0, multiplier: 1.0 })
+  }
+
+  /**
+   * Updates the consecutive correct streak and returns the dust multiplier.
+   * Called from multiple quiz answer handlers to count toward streaks.
+   */
+  private updateStreak(correct: boolean): number {
+    let dustMultiplier = 1.0
+    if (correct) {
+      this.consecutiveCorrect++
+      if (this.consecutiveCorrect >= STREAK_VISUAL.TIER_3_COUNT) {
+        dustMultiplier = STREAK_VISUAL.multiplier_3
+      } else if (this.consecutiveCorrect >= STREAK_VISUAL.TIER_2_COUNT) {
+        dustMultiplier = STREAK_VISUAL.multiplier_2
+      } else if (this.consecutiveCorrect >= STREAK_VISUAL.TIER_1_COUNT) {
+        dustMultiplier = STREAK_VISUAL.multiplier_1
+      }
+    } else {
+      this.consecutiveCorrect = 0
+    }
+    quizStreak.set({ count: this.consecutiveCorrect, multiplier: dustMultiplier })
+    return dustMultiplier
   }
 
   /**
@@ -476,6 +511,10 @@ export class QuizManager {
           this.incrementWrongCount(quiz.fact.id)
         }
       }
+
+      // Streak tracking: artifact quizzes count toward streaks
+      this.updateStreak(correct)
+
       // Check if more questions remain by inspecting gateProgress
       const moreQuestionsRemain = quiz?.gateProgress != null && quiz.gateProgress.remaining > 0
       activeQuiz.set(null)
@@ -526,26 +565,8 @@ export class QuizManager {
         }
       }
 
-      // Phase 31.6: streak tracking
-      let dustMultiplier = 1.0
-      if (correct) {
-        this.consecutiveCorrect++
-        if (this.consecutiveCorrect >= STREAK_VISUAL.TIER_3_COUNT) {
-          dustMultiplier = STREAK_VISUAL.multiplier_3
-          quizStreak.set({ count: this.consecutiveCorrect, multiplier: dustMultiplier })
-        } else if (this.consecutiveCorrect >= STREAK_VISUAL.TIER_2_COUNT) {
-          dustMultiplier = STREAK_VISUAL.multiplier_2
-          quizStreak.set({ count: this.consecutiveCorrect, multiplier: dustMultiplier })
-        } else if (this.consecutiveCorrect >= STREAK_VISUAL.TIER_1_COUNT) {
-          dustMultiplier = STREAK_VISUAL.multiplier_1
-          quizStreak.set({ count: this.consecutiveCorrect, multiplier: dustMultiplier })
-        } else {
-          quizStreak.set({ count: this.consecutiveCorrect, multiplier: 1.0 })
-        }
-      } else {
-        this.consecutiveCorrect = 0
-        quizStreak.set({ count: 0, multiplier: 1.0 })
-      }
+      // Phase 31.6: streak tracking (now uses shared helper)
+      const dustMultiplier = this.updateStreak(correct)
 
       activeQuiz.set(null)
       const scene = this.getMineScene()
@@ -589,6 +610,9 @@ export class QuizManager {
           this.applyConsistencyEasePenalty(quiz.fact.id)
         }
       }
+
+      // Streak tracking: layer entrance quizzes count toward streaks
+      this.updateStreak(correct)
 
       // Phase 52: Multi-question layer challenge — dispatch event to GameEventBridge
       if (this.layerChallengeActive) {

@@ -598,8 +598,20 @@ export class GameManager {
       if (updatedSave) savePlayer(updatedSave)
     }
 
-    // Get fact IDs for mine generation
-    const factIds = factsDB.getAllIds()
+    // Filter out facts the player already knows, has pending, or sold
+    const saveForFactPool = get(playerSave)
+    const excludeFactSet = new Set([
+      ...(saveForFactPool?.learnedFacts ?? []),
+      ...(saveForFactPool?.discoveredFacts ?? []),
+      ...(saveForFactPool?.soldFacts ?? []),
+      ...get(pendingArtifacts).map(a => a.factId),
+    ])
+    const factIds = factsDB.getAllIds().filter(id => !excludeFactSet.has(id))
+    // Shuffle to avoid sequential assignment bias
+    for (let i = factIds.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [factIds[i], factIds[j]] = [factIds[j], factIds[i]]
+    }
 
     // Reset run-scoped stores
     activeUpgrades.set({})

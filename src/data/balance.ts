@@ -95,7 +95,7 @@ export const BALANCE = {
 
   // === LAYER ENTRANCE ===
   LAYER_ENTRANCE_QUESTIONS: 3,       // Questions to answer before descending
-  LAYER_ENTRANCE_WRONG_O2_COST: 10,  // O2 penalty for wrong answer
+  LAYER_ENTRANCE_WRONG_O2_COST: 7,   // O2 penalty for wrong answer (tuned down from 10, playtest 002)
 
   // === QUIZ ===
   QUIZ_DISTRACTORS_SHOWN: 3,         // 3 wrong + 1 correct = 4 choices
@@ -109,7 +109,7 @@ export const BALANCE = {
   RANDOM_QUIZ_MIN_BLOCKS: 5,         // Don't trigger until this many blocks mined
 
   // === CONSISTENCY PENALTY ===
-  CONSISTENCY_PENALTY_O2: 8,      // Extra O2 cost for inconsistent answer (knew it before, got it wrong now)
+  CONSISTENCY_PENALTY_O2: 6,      // Extra O2 cost for inconsistent answer (tuned down from 8, playtest 002)
   CONSISTENCY_PENALTY_DUST: -5,   // Lose 5 dust during dive mineral tracking (future use)
   CONSISTENCY_MIN_REPS: 1,        // Penalize facts with 1+ successful reps (graduated to review)
 
@@ -519,6 +519,18 @@ export function getAdaptiveArtifactQuizChance(
 }
 
 /**
+ * Compute adaptive new card limit based on review backlog.
+ * Low backlog = more new cards (up to 5), high backlog = fewer (down to 2).
+ * Replaces static NEW_CARDS_PER_SESSION in study flows.
+ */
+export function getAdaptiveNewCardLimit(dueReviewCount: number): number {
+  const base = BALANCE.NEW_CARDS_PER_SESSION // 3
+  if (dueReviewCount <= 5) return Math.min(base + 2, 5)   // low backlog: up to 5
+  if (dueReviewCount >= 15) return Math.max(base - 1, 2)  // high backlog: down to 2
+  return base                                               // normal: 3
+}
+
+/**
  * Returns the O2 cost multiplier for the given layer (0-indexed).
  * Layer 0 = 1.0×, Layer 9 ≈ 1.5×, Layer 19 = 2.5×. Linear interpolation. (DD-V2-061)
  */
@@ -559,10 +571,10 @@ export const SM2_DAILY_NEW_LIMIT = 10               // max new cards introduced 
 
 // ---- SM-2 Tuning Constants (DD-V2-085, DD-V2-095) ----
 export const SM2_SECOND_INTERVAL_DAYS = 3          // second interval: 3 days (default SM-2 = 6)
-export const SM2_CONSISTENCY_PENALTY_O2 = 5        // O2 drained when lapsing a mature fact
+export const SM2_CONSISTENCY_PENALTY_O2 = BALANCE.CONSISTENCY_PENALTY_O2  // O2 drained when lapsing a mature fact (unified with BALANCE)
 export const SM2_CONSISTENCY_PENALTY_REPS_MIN = 4  // minimum reps before penalty applies
 export const SM2_MASTERY_INTERVAL_GENERAL = 60     // days — general fact mastered threshold
-export const SM2_MASTERY_INTERVAL_VOCAB = 30       // days — vocab fact mastered threshold
+export const SM2_MASTERY_INTERVAL_VOCAB = 40       // days — vocab fact mastered threshold (raised from 30, playtest 002)
 
 // ---- Quiz Rate System (DD-V2-060, DD-V2-085) ----
 export const QUIZ_BASE_RATE = 0.08
@@ -573,6 +585,8 @@ export const QUIZ_FATIGUE_THRESHOLD = 5
 export const QUIZ_MIN_RATE = 0.02
 export const QUIZ_DISCOVERY_O2_REWARD = 5
 export const QUIZ_REVIEW_O2_PENALTY = 8
+export const QUIZ_BURST_THRESHOLD = 3              // quizzes within burst window triggers extended cooldown
+export const QUIZ_BURST_COOLDOWN_MULTIPLIER = 2.0  // multiply normal cooldown after burst
 
 // ---- Consumable Drop Chance (DD-V2-064) ----
 export const CONSUMABLE_DROP_CHANCE = 0.04  // 4% chance per block broken

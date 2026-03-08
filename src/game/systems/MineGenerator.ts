@@ -272,13 +272,8 @@ export function generateMine(
   let factCursor = 0
 
   const nextFactId = (): string | undefined => {
-    if (facts.length === 0) {
-      return undefined
-    }
-
-    const factId = facts[factCursor % facts.length]
-    factCursor += 1
-    return factId
+    if (factCursor >= facts.length) return undefined
+    return facts[factCursor++]
   }
 
   // Apply biome mineral multiplier and optional difficulty profile multiplier.

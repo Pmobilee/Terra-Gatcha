@@ -1062,12 +1062,11 @@
     {/await}
 
   {:else if $currentScreen === 'factReveal'}
-    {#if currentAnalyzerArtifact}
-      {#await import('./ui/components/ArtifactAnalyzer.svelte') then { default: ArtifactAnalyzer }}
-        <ArtifactAnalyzer
-          artifact={currentAnalyzerArtifact}
-          remainingCount={$pendingArtifacts.length}
-          onNext={handleAnalyzerNext}
+    {#if $pendingArtifacts.length > 0}
+      {#await import('./ui/components/ArtifactGrid.svelte') then { default: ArtifactGrid }}
+        <ArtifactGrid
+          artifacts={$pendingArtifacts}
+          onDone={() => { currentScreen.set('base') }}
         />
       {/await}
     {:else if $activeFact}

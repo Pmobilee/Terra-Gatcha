@@ -1,0 +1,1846 @@
+{
+  "q": 7,
+  "title": "The Completionist - Full Game Loop",
+  "preset": "mid_game_3_rooms",
+  "startedAt": "2026-03-07T17:45:26.413Z",
+  "endedAt": "2026-03-07T17:46:33.690Z",
+  "baseLook": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+  "dive1": {
+    "style": "speed",
+    "targetBlocks": 25,
+    "blocks": 25,
+    "quizzes": 0,
+    "correct": 0,
+    "wrong": 0,
+    "o2Remaining": 56,
+    "dustBefore": 2400,
+    "dustAfter": 2400,
+    "dustDelta": 0,
+    "inventoryBefore": 0,
+    "inventoryAfter": 6,
+    "inventoryDelta": 6,
+    "sessionSummary": {
+      "eventCount": 1,
+      "typeCounts": {
+        "state-change": 1
+      },
+      "durationMs": 0,
+      "durationMin": 0,
+      "firstEvent": "state-change",
+      "lastEvent": "state-change"
+    }
+  },
+  "summaryAfterDive1": {
+    "eventCount": 1,
+    "typeCounts": {
+      "state-change": 1
+    },
+    "durationMs": 0,
+    "durationMin": 0,
+    "firstEvent": "state-change",
+    "lastEvent": "state-change"
+  },
+  "studyInit": {
+    "method": "gm-fallback",
+    "startViaApi": {
+      "ts": "2026-03-07T17:45:54.647Z",
+      "label": "startStudy(10)",
+      "screen": "study",
+      "look": "SCREEN: diveResults\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study screen opened (size 10)"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    "cardPresent": true,
+    "firstCard": {
+      "question": "Why does the Mona Lisa have no eyebrows?",
+      "answer": null,
+      "explanation": null,
+      "mnemonic": null,
+      "gaiaComment": null,
+      "progress": "1 / 10",
+      "category": "Culture › Art › Renaissance Painting"
+    },
+    "queuePreview": [
+      {
+        "id": "cult-001",
+        "question": "Why does the Mona Lisa have no eyebrows?",
+        "type": "fact",
+        "difficulty": 2
+      },
+      {
+        "id": "cult-002",
+        "question": "What physical condition did Beethoven have when he composed his Ninth Symphony?",
+        "type": "fact",
+        "difficulty": 1
+      },
+      {
+        "id": "cult-003",
+        "question": "What did ancient Greeks believe different musical modes could do to people?",
+        "type": "fact",
+        "difficulty": 3
+      },
+      {
+        "id": "cult-004",
+        "question": "What did Odin sacrifice to gain wisdom from the Well of Wisdom?",
+        "type": "fact",
+        "difficulty": 2
+      },
+      {
+        "id": "cult-005",
+        "question": "In Japanese New Year food tradition, why do shrimp symbolize longevity?",
+        "type": "fact",
+        "difficulty": 3
+      },
+      {
+        "id": "cult-006",
+        "question": "What saved the Eiffel Tower from being demolished in 1909?",
+        "type": "fact",
+        "difficulty": 2
+      },
+      {
+        "id": "geo-005",
+        "question": "Which desert is the world's largest hot desert?",
+        "type": "fact",
+        "difficulty": 1
+      },
+      {
+        "id": "lsci-002",
+        "question": "What combination of properties makes honey resistant to spoilage?",
+        "type": "fact",
+        "difficulty": 3
+      }
+    ]
+  },
+  "studied": 10,
+  "domeTour": [
+    {
+      "room": "command",
+      "look": "SCREEN: command\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized"
+    },
+    {
+      "room": "lab",
+      "look": "SCREEN: lab\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized"
+    },
+    {
+      "room": "workshop",
+      "look": "SCREEN: workshop\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized"
+    }
+  ],
+  "dive2": {
+    "style": "explore",
+    "targetBlocks": 25,
+    "blocks": 25,
+    "quizzes": 0,
+    "correct": 0,
+    "wrong": 0,
+    "o2Remaining": 100,
+    "dustBefore": 2400,
+    "dustAfter": 2400,
+    "dustDelta": 0,
+    "inventoryBefore": 6,
+    "inventoryAfter": 6,
+    "inventoryDelta": 0,
+    "sessionSummary": {
+      "eventCount": 1,
+      "typeCounts": {
+        "state-change": 1
+      },
+      "durationMs": 0,
+      "durationMin": 0,
+      "firstEvent": "state-change",
+      "lastEvent": "state-change"
+    }
+  },
+  "finalSummary": {
+    "eventCount": 1,
+    "typeCounts": {
+      "state-change": 1
+    },
+    "durationMs": 0,
+    "durationMin": 0,
+    "firstEvent": "state-change",
+    "lastEvent": "state-change"
+  },
+  "apiCalls": 119,
+  "cohesionScore": 8,
+  "success": {
+    "phasesCompleted": true,
+    "canStateMostFunPhase": true,
+    "dive2HasVariation": true,
+    "under80ApiCalls": false
+  },
+  "logs": [
+    {
+      "ts": "2026-03-07T17:45:31.983Z",
+      "label": "startDive(1)",
+      "screen": "mining",
+      "look": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Dive started with 1 tank(s). Screen: mining",
+        "state": {
+          "screen": "mining"
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:33.456Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 2,
+          "o2": 100,
+          "depth": 2
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:34.285Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 3,
+          "o2": 99,
+          "depth": 3
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:35.066Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 4,
+          "o2": 98,
+          "depth": 4
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:35.826Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 5,
+          "o2": 97,
+          "depth": 5
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:36.676Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 6,
+          "o2": 96,
+          "depth": 6
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:37.505Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 7,
+          "o2": 95,
+          "depth": 7
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:38.337Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 8,
+          "o2": 94,
+          "depth": 8
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:39.165Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 9,
+          "o2": 93,
+          "depth": 9
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:40.023Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 9,
+          "o2": 91,
+          "depth": 9
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:40.726Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 10,
+          "o2": 89,
+          "depth": 10
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:41.481Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 10,
+          "o2": 87,
+          "depth": 10
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:42.144Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 11,
+          "o2": 85,
+          "depth": 11
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:43.048Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 11,
+          "o2": 83,
+          "depth": 11
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:43.811Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 12,
+          "o2": 81,
+          "depth": 12
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:44.672Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 12,
+          "o2": 79,
+          "depth": 12
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:45.454Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 13,
+          "o2": 77,
+          "depth": 13
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:46.221Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 13,
+          "o2": 75,
+          "depth": 13
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:47.000Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 14,
+          "o2": 73,
+          "depth": 14
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:47.735Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 14,
+          "o2": 71,
+          "depth": 14
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:48.553Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 15,
+          "o2": 69,
+          "depth": 15
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:49.219Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 15,
+          "o2": 67,
+          "depth": 15
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:50.069Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 16,
+          "o2": 65,
+          "depth": 16
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:50.835Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 16,
+          "o2": 62,
+          "depth": 16
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:51.632Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 16,
+          "o2": 59,
+          "depth": 16
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:52.518Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 17,
+          "o2": 56,
+          "depth": 17
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:53.837Z",
+      "label": "endDive()",
+      "screen": "diveResults",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Dive ended. Screen: diveResults"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:54.647Z",
+      "label": "startStudy(10)",
+      "screen": "study",
+      "look": "SCREEN: diveResults\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study screen opened (size 10)"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:55.067Z",
+      "label": "gm.startStudySession()",
+      "screen": "studySession",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Called gm.startStudySession()"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:55.985Z",
+      "label": "clickSessionSize(10)",
+      "screen": "studySession",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Clicked size button index 1"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:56.916Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (1 / 10)\n\nCURRENT CARD:\n  Front: Why does the Mona Lisa have no eyebrows?\n  Category: Culture › Art › Renaissance Painting\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:57.739Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (1 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:57.749Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (2 / 10)\n\nCURRENT CARD:\n  Front: What physical condition did Beethoven have when he composed his Ninth Symphony?\n  Category: Culture › Music › Classical Composers\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:58.554Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (2 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:58.562Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (3 / 10)\n\nCURRENT CARD:\n  Front: What did ancient Greeks believe different musical modes could do to people?\n  Category: Culture › Music › Ancient Music Theory\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:59.366Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (3 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:45:59.370Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (4 / 10)\n\nCURRENT CARD:\n  Front: What did Odin sacrifice to gain wisdom from the Well of Wisdom?\n  Category: Culture › Mythology › Norse Myths\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:00.176Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (4 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:00.179Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (5 / 10)\n\nCURRENT CARD:\n  Front: In Japanese New Year food tradition, why do shrimp symbolize longevity?\n  Category: Culture › Traditions › Food Symbolism\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:00.983Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (5 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:00.987Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (6 / 10)\n\nCURRENT CARD:\n  Front: What saved the Eiffel Tower from being demolished in 1909?\n  Category: Culture › Architecture › Iconic Structures\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:01.796Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (6 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:01.799Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (7 / 10)\n\nCURRENT CARD:\n  Front: Which desert is the world's largest hot desert?\n  Category: Geography › Deserts › Scale\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:02.604Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (7 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:02.613Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (8 / 10)\n\nCURRENT CARD:\n  Front: What combination of properties makes honey resistant to spoilage?\n  Category: Life Sciences › Biology › Food Science\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:03.418Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (8 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:03.426Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (9 / 10)\n\nCURRENT CARD:\n  Front: Which famous human-made structure is often falsely claimed to be visible from space?\n  Category: Geography › Landmarks › Myths\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:04.232Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (9 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:04.235Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD:\n  Front: What are the underground fungal networks connecting forest trees sometimes called?\n  Category: Life Sciences › Ecology › Forest Biology\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:05.042Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:06.233Z",
+      "label": "endStudy()",
+      "screen": "base",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study ended. Screen: base"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:06.587Z",
+      "label": "enterRoom(command)",
+      "screen": "command",
+      "look": "SCREEN: base (Hub)\nO2: 56  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Entered room: command",
+        "state": {
+          "screen": "command"
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:07.787Z",
+      "label": "exitRoom()",
+      "screen": "base",
+      "look": "SCREEN: command\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Returned to base"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:08.120Z",
+      "label": "enterRoom(lab)",
+      "screen": "lab",
+      "look": "SCREEN: base (Hub)\nO2: 56  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Entered room: lab",
+        "state": {
+          "screen": "lab"
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:09.135Z",
+      "label": "exitRoom()",
+      "screen": "base",
+      "look": "SCREEN: lab\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Returned to base"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:09.534Z",
+      "label": "enterRoom(workshop)",
+      "screen": "workshop",
+      "look": "SCREEN: base (Hub)\nO2: 56  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Entered room: workshop",
+        "state": {
+          "screen": "workshop"
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:11.175Z",
+      "label": "exitRoom()",
+      "screen": "base",
+      "look": "SCREEN: workshop\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Returned to base"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:12.806Z",
+      "label": "startDive(1)",
+      "screen": "mining",
+      "look": "SCREEN: base (Hub)\nO2: 56  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Dive started with 1 tank(s). Screen: mining",
+        "state": {
+          "screen": "mining"
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:14.149Z",
+      "label": "mineBlock(left)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined left",
+        "state": {
+          "playerX": 9,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:14.873Z",
+      "label": "mineBlock(right)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined right",
+        "state": {
+          "playerX": 10,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:15.575Z",
+      "label": "mineBlock(up)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined up",
+        "state": {
+          "playerX": 10,
+          "playerY": 0,
+          "o2": 100,
+          "depth": 0
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:16.194Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:16.887Z",
+      "label": "mineBlock(left)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined left",
+        "state": {
+          "playerX": 9,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:17.637Z",
+      "label": "mineBlock(right)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined right",
+        "state": {
+          "playerX": 10,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:18.401Z",
+      "label": "mineBlock(up)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined up",
+        "state": {
+          "playerX": 10,
+          "playerY": 0,
+          "o2": 100,
+          "depth": 0
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:19.187Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:19.939Z",
+      "label": "mineBlock(left)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined left",
+        "state": {
+          "playerX": 9,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:20.627Z",
+      "label": "mineBlock(right)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined right",
+        "state": {
+          "playerX": 10,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:21.378Z",
+      "label": "mineBlock(up)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined up",
+        "state": {
+          "playerX": 10,
+          "playerY": 0,
+          "o2": 100,
+          "depth": 0
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:22.057Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:22.837Z",
+      "label": "mineBlock(left)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined left",
+        "state": {
+          "playerX": 9,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:23.749Z",
+      "label": "mineBlock(right)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined right",
+        "state": {
+          "playerX": 10,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:24.569Z",
+      "label": "mineBlock(up)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined up",
+        "state": {
+          "playerX": 10,
+          "playerY": 0,
+          "o2": 100,
+          "depth": 0
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:25.312Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:26.059Z",
+      "label": "mineBlock(left)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined left",
+        "state": {
+          "playerX": 9,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:26.879Z",
+      "label": "mineBlock(right)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined right",
+        "state": {
+          "playerX": 10,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:27.627Z",
+      "label": "mineBlock(up)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined up",
+        "state": {
+          "playerX": 10,
+          "playerY": 0,
+          "o2": 100,
+          "depth": 0
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:28.395Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:29.140Z",
+      "label": "mineBlock(left)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined left",
+        "state": {
+          "playerX": 9,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:29.870Z",
+      "label": "mineBlock(right)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined right",
+        "state": {
+          "playerX": 10,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:30.596Z",
+      "label": "mineBlock(up)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined up",
+        "state": {
+          "playerX": 10,
+          "playerY": 0,
+          "o2": 100,
+          "depth": 0
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:31.347Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:32.099Z",
+      "label": "mineBlock(left)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined left",
+        "state": {
+          "playerX": 9,
+          "playerY": 1,
+          "o2": 100,
+          "depth": 1
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:33.381Z",
+      "label": "endDive()",
+      "screen": "diveResults",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Dive ended. Screen: diveResults"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,540 @@
+{
+  "q": 8,
+  "title": "The Stress Tester - Edge Cases & Rapid Actions",
+  "preset": "post_tutorial",
+  "startedAt": "2026-03-07T17:46:33.810Z",
+  "endedAt": "2026-03-07T17:47:10.886Z",
+  "matrix": [
+    {
+      "action": "mineBlock(down) when not in mine",
+      "expected": "Returns ok:false clear error",
+      "actual": {
+        "ok": false,
+        "message": "Invalid direction: down"
+      },
+      "pass": true
+    },
+    {
+      "action": "answerQuiz(0) when no quiz",
+      "expected": "Returns ok:false",
+      "actual": {
+        "ok": false,
+        "message": "Quiz answer button 0 not found"
+      },
+      "pass": true
+    },
+    {
+      "action": "gradeCard(good) when not in study",
+      "expected": "Returns ok:false",
+      "actual": {
+        "ok": false,
+        "message": "Rating button 'good' not found"
+      },
+      "pass": true
+    },
+    {
+      "action": "navigate(invalidScreen)",
+      "expected": "Clear failure message or no-op",
+      "actual": {
+        "ok": true,
+        "message": "Navigated to totally-not-a-real-screen"
+      },
+      "pass": true
+    },
+    {
+      "action": "mineBlock('diagonal')",
+      "expected": "Returns ok:false invalid direction",
+      "actual": {
+        "ok": false,
+        "message": "Invalid direction: diagonal"
+      },
+      "pass": true
+    }
+  ],
+  "studyInit": {
+    "method": "gm-fallback",
+    "startViaApi": {
+      "ts": "2026-03-07T17:46:44.385Z",
+      "label": "startStudy(5)",
+      "screen": "study",
+      "look": "SCREEN: diveResults\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study screen opened (size 5)"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    "cardPresent": true,
+    "firstCard": {
+      "question": "What physical condition did Beethoven have when he composed his Ninth Symphony?",
+      "answer": null,
+      "explanation": null,
+      "mnemonic": null,
+      "gaiaComment": null,
+      "progress": "1 / 5",
+      "category": "Culture › Music › Classical Composers"
+    },
+    "queuePreview": [
+      {
+        "id": "cult-002",
+        "question": "What physical condition did Beethoven have when he composed his Ninth Symphony?",
+        "type": "fact",
+        "difficulty": 1
+      },
+      {
+        "id": "cult-003",
+        "question": "What did ancient Greeks believe different musical modes could do to people?",
+        "type": "fact",
+        "difficulty": 3
+      },
+      {
+        "id": "cult-004",
+        "question": "What did Odin sacrifice to gain wisdom from the Well of Wisdom?",
+        "type": "fact",
+        "difficulty": 2
+      },
+      {
+        "id": "cult-001",
+        "question": "Why does the Mona Lisa have no eyebrows?",
+        "type": "fact",
+        "difficulty": 2
+      },
+      {
+        "id": "cult-005",
+        "question": "In Japanese New Year food tradition, why do shrimp symbolize longevity?",
+        "type": "fact",
+        "difficulty": 3
+      }
+    ]
+  },
+  "gradedOne": true,
+  "rapidLooks": [
+    "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [er...",
+    "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [er...",
+    "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [er...",
+    "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [er...",
+    "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [er...",
+    "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [er...",
+    "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [er...",
+    "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [er...",
+    "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [er...",
+    "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [er..."
+  ],
+  "fastForwardResults": {
+    "zero": {
+      "ok": true,
+      "message": "Fast-forwarded 0 hours"
+    },
+    "negative": {
+      "ok": true,
+      "message": "Fast-forwarded -1 hours"
+    },
+    "huge": {
+      "ok": true,
+      "message": "Fast-forwarded 99999 hours"
+    }
+  },
+  "getQuizNoActive": null,
+  "postLook": "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [error] Unhandled rejection: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n\n  - [error] Uncaught TypeE...",
+  "sanityMine": {
+    "ok": false,
+    "message": "Error: Cannot read properties of undefined (reading 'play')"
+  },
+  "robustness": {
+    "passCount": 5,
+    "totalChecks": 5,
+    "allInvalidReturnedObject": true,
+    "messagesDescriptive": true,
+    "noHangObserved": true,
+    "remainsFunctional": true
+  },
+  "logs": [
+    {
+      "ts": "2026-03-07T17:46:38.502Z",
+      "label": "mineBlock(down) when not in mine",
+      "screen": "base",
+      "look": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Invalid direction: down"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:38.611Z",
+      "label": "answerQuiz(0) when no quiz",
+      "screen": "base",
+      "look": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Quiz answer button 0 not found"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:38.721Z",
+      "label": "gradeCard(good) when not in study",
+      "screen": "base",
+      "look": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": false,
+        "message": "Rating button 'good' not found"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:39.179Z",
+      "label": "navigate(invalidScreen)",
+      "screen": "totally-not-a-real-screen",
+      "look": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Navigated to totally-not-a-real-screen"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:40.827Z",
+      "label": "startDive(1)",
+      "screen": "mining",
+      "look": "SCREEN: totally-not-a-real-screen\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Dive started with 1 tank(s). Screen: mining",
+        "state": {
+          "screen": "mining"
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:41.465Z",
+      "label": "mineBlock(down)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined down",
+        "state": {
+          "playerX": 10,
+          "playerY": 2,
+          "o2": 100,
+          "depth": 2
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:42.041Z",
+      "label": "mineBlock(right)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined right",
+        "state": {
+          "playerX": 11,
+          "playerY": 2,
+          "o2": 100,
+          "depth": 2
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:42.695Z",
+      "label": "mineBlock(left)",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Moved/mined left",
+        "state": {
+          "playerX": 10,
+          "playerY": 2,
+          "o2": 100,
+          "depth": 2
+        }
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: gaia-toast-text"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:43.881Z",
+      "label": "endDive()",
+      "screen": "diveResults",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Dive ended. Screen: diveResults"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:44.385Z",
+      "label": "startStudy(5)",
+      "screen": "study",
+      "look": "SCREEN: diveResults\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study screen opened (size 5)"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:44.798Z",
+      "label": "gm.startStudySession()",
+      "screen": "studySession",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Called gm.startStudySession()"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:45.711Z",
+      "label": "clickSessionSize(5)",
+      "screen": "studySession",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Clicked size button index 0"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:46.623Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (1 / 5)\n\nCURRENT CARD:\n  Front: What physical condition did Beethoven have when he composed his Ninth Symphony?\n  Category: Culture › Music › Classical Composers\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:47.430Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (1 / 5)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:47.735Z",
+      "label": "endStudy()",
+      "screen": "base",
+      "look": "SCREEN: study (2 / 5)\n\nCURRENT CARD:\n  Front: What did ancient Greeks believe different musical modes could do to people?\n  Category: Culture › Music › Ancient Music Theory\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study ended. Screen: base"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:48.653Z",
+      "label": "fastForward(0)",
+      "screen": "base",
+      "look": "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [error] Unhandled rejection: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n",
+      "result": {
+        "ok": true,
+        "message": "Fast-forwarded 0 hours"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:50.284Z",
+      "label": "fastForward(-1)",
+      "screen": "base",
+      "look": "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [error] Unhandled rejection: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n\n  - [error] Uncaught TypeError: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n",
+      "result": {
+        "ok": true,
+        "message": "Fast-forwarded -1 hours"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:52.352Z",
+      "label": "fastForward(99999)",
+      "screen": "base",
+      "look": "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [error] Unhandled rejection: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n\n  - [error] Uncaught TypeError: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n",
+      "result": {
+        "ok": true,
+        "message": "Fast-forwarded 99999 hours"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:55.076Z",
+      "label": "mineBlock('diagonal')",
+      "screen": "base",
+      "look": "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [error] Unhandled rejection: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n\n  - [error] Uncaught TypeError: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n",
+      "result": {
+        "ok": false,
+        "message": "Invalid direction: diagonal"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:46:58.180Z",
+      "label": "navigate(base)",
+      "screen": "base",
+      "look": "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [error] Unhandled rejection: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n\n  - [error] Uncaught TypeError: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n",
+      "result": {
+        "ok": true,
+        "message": "Navigated to base"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:47:02.701Z",
+      "label": "startDive(1)-sanity",
+      "screen": "mining",
+      "look": "SCREEN: base (Hub)\nO2: 100  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [error] Unhandled rejection: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n\n  - [error] Uncaught TypeError: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n",
+      "result": {
+        "ok": true,
+        "message": "Dive started with 1 tank(s). Screen: mining",
+        "state": {
+          "screen": "mining"
+        }
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:47:06.414Z",
+      "label": "mineBlock(down)-sanity",
+      "screen": "mining",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [error] Unhandled rejection: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n\n  - [error] Uncaught TypeError: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n",
+      "result": {
+        "ok": false,
+        "message": "Error: Cannot read properties of undefined (reading 'play')"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:47:10.886Z",
+      "label": "endDive()-sanity",
+      "screen": "diveResults",
+      "look": "SCREEN: mining\n\nAVAILABLE ACTIONS:\n  - ↑ Surface\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized\n  - [error] Unhandled rejection: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n\n  - [error] Uncaught TypeError: Cannot read properties of null (reading 'gl')\n\n\tin $effect\n\tin HubView.svelte\n\tin App.svelte\n\tin undefined\n",
+      "result": {
+        "ok": true,
+        "message": "Dive ended. Screen: diveResults"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    }
+  ]
+}

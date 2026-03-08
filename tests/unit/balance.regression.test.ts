@@ -10,6 +10,7 @@ import {
   SM2_MASTERY_INTERVAL_VOCAB,
   getO2DepthMultiplier,
   getLayerGridSize,
+  getAdaptiveNewCardLimit,
 } from '../../src/data/balance'
 
 describe('BALANCE constants — regression guard', () => {
@@ -48,8 +49,8 @@ describe('BALANCE constants — regression guard', () => {
     expect(SM2_MASTERY_INTERVAL_GENERAL).toBe(60)
   })
 
-  it('SM2_MASTERY_INTERVAL_VOCAB is 30 days', () => {
-    expect(SM2_MASTERY_INTERVAL_VOCAB).toBe(30)
+  it('SM2_MASTERY_INTERVAL_VOCAB is 40 days', () => {
+    expect(SM2_MASTERY_INTERVAL_VOCAB).toBe(40)
   })
 
   it('QUIZ_FIRST_TRIGGER_AFTER_BLOCKS is positive', () => {
@@ -116,5 +117,22 @@ describe('getLayerGridSize', () => {
     for (let l = 16; l <= 20; l++) {
       expect(getLayerGridSize(l)).toEqual([40, 40])
     }
+  })
+})
+
+describe('getAdaptiveNewCardLimit', () => {
+  it('returns 5 when backlog is low (≤ 5)', () => {
+    expect(getAdaptiveNewCardLimit(0)).toBe(5)
+    expect(getAdaptiveNewCardLimit(5)).toBe(5)
+  })
+
+  it('returns 3 (base) for moderate backlog', () => {
+    expect(getAdaptiveNewCardLimit(6)).toBe(3)
+    expect(getAdaptiveNewCardLimit(14)).toBe(3)
+  })
+
+  it('returns 2 when backlog is high (≥ 15)', () => {
+    expect(getAdaptiveNewCardLimit(15)).toBe(2)
+    expect(getAdaptiveNewCardLimit(50)).toBe(2)
   })
 })

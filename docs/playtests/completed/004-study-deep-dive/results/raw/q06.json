@@ -1,0 +1,921 @@
+{
+  "q": 6,
+  "title": "Category Interleaving Quality",
+  "preset": "many_reviews_due",
+  "startedAt": "2026-03-08T02:55:27.869Z",
+  "endedAt": "2026-03-08T02:56:00.097Z",
+  "sequence": [
+    {
+      "index": 1,
+      "factId": "cult-001",
+      "category": "Culture › Art › Renaissance Painting",
+      "type": "fact",
+      "question": "Why does the Mona Lisa have no eyebrows?"
+    },
+    {
+      "index": 2,
+      "factId": "cult-002",
+      "category": "Culture › Music › Classical Composers",
+      "type": "fact",
+      "question": "What physical condition did Beethoven have when he composed his Ninth Symphony?"
+    },
+    {
+      "index": 3,
+      "factId": "cult-003",
+      "category": "Culture › Music › Ancient Music Theory",
+      "type": "fact",
+      "question": "What did ancient Greeks believe different musical modes could do to people?"
+    },
+    {
+      "index": 4,
+      "factId": "cult-004",
+      "category": "Culture › Mythology › Norse Myths",
+      "type": "fact",
+      "question": "What did Odin sacrifice to gain wisdom from the Well of Wisdom?"
+    },
+    {
+      "index": 5,
+      "factId": "cult-005",
+      "category": "Culture › Traditions › Food Symbolism",
+      "type": "fact",
+      "question": "In Japanese New Year food tradition, why do shrimp symbolize longevity?"
+    },
+    {
+      "index": 6,
+      "factId": "cult-006",
+      "category": "Culture › Architecture › Iconic Structures",
+      "type": "fact",
+      "question": "What saved the Eiffel Tower from being demolished in 1909?"
+    },
+    {
+      "index": 7,
+      "factId": "cult-007",
+      "category": "Culture › Literature › Science Fiction Origins",
+      "type": "fact",
+      "question": "What unusual weather event forced Mary Shelley indoors and helped inspire Frankenstein?"
+    },
+    {
+      "index": 8,
+      "factId": "cult-008",
+      "category": "Culture › Food › Culinary History",
+      "type": "fact",
+      "question": "How did Aztecs originally consume chocolate?"
+    },
+    {
+      "index": 9,
+      "factId": "cult-009",
+      "category": "Culture › Architecture › Ancient Rome",
+      "type": "fact",
+      "question": "Who operated the retractable shade covering of the ancient Roman Colosseum?"
+    },
+    {
+      "index": 10,
+      "factId": "cult-010",
+      "category": "Culture › Film › Cinema History",
+      "type": "fact",
+      "question": "What was the subject of one of the first films shown to a paying audience, which reportedly caused viewers to panic?"
+    },
+    {
+      "index": 11,
+      "factId": "geo-001",
+      "category": "Geography › Countries › Time Zones",
+      "type": "fact",
+      "question": "How many time zones does Russia span?"
+    },
+    {
+      "index": 12,
+      "factId": "geo-002",
+      "category": "Geography › Landmarks › Myths",
+      "type": "fact",
+      "question": "Which famous human-made structure is often falsely claimed to be visible from space?"
+    },
+    {
+      "index": 13,
+      "factId": "geo-003",
+      "category": "Geography › Rivers › Hydrology",
+      "type": "fact",
+      "question": "Approximately what percentage of all freshwater discharged into Earth's oceans comes from the Amazon River?"
+    },
+    {
+      "index": 14,
+      "factId": "geo-004",
+      "category": "Geography › Mountains › Measurement",
+      "type": "fact",
+      "question": "Which mountain is tallest when measured from its oceanic base to its summit?"
+    },
+    {
+      "index": 15,
+      "factId": "geo-005",
+      "category": "Geography › Deserts › Scale",
+      "type": "fact",
+      "question": "Which desert is the world's largest hot desert?"
+    },
+    {
+      "index": 16,
+      "factId": "lsci-001",
+      "category": "Life Sciences › Biology › Extremophiles",
+      "type": "fact",
+      "question": "What do tardigrades replace their cellular water with to survive extreme conditions?"
+    },
+    {
+      "index": 17,
+      "factId": "lsci-002",
+      "category": "Life Sciences › Biology › Food Science",
+      "type": "fact",
+      "question": "What combination of properties makes honey resistant to spoilage?"
+    },
+    {
+      "index": 18,
+      "factId": "lsci-003",
+      "category": "Life Sciences › Biology › Genetics",
+      "type": "fact",
+      "question": "Approximately how far would all the DNA in a human body stretch if uncoiled?"
+    },
+    {
+      "index": 19,
+      "factId": "lsci-004",
+      "category": "Life Sciences › Ecology › Forest Biology",
+      "type": "fact",
+      "question": "What are the underground fungal networks connecting forest trees sometimes called?"
+    },
+    {
+      "index": 20,
+      "factId": "lsci-005",
+      "category": "Life Sciences › Marine Biology › Crustaceans",
+      "type": "fact",
+      "question": "How many types of colour receptors does a mantis shrimp have?"
+    }
+  ],
+  "distribution": {
+    "Culture › Art › Renaissance Painting": 1,
+    "Culture › Music › Classical Composers": 1,
+    "Culture › Music › Ancient Music Theory": 1,
+    "Culture › Mythology › Norse Myths": 1,
+    "Culture › Traditions › Food Symbolism": 1,
+    "Culture › Architecture › Iconic Structures": 1,
+    "Culture › Literature › Science Fiction Origins": 1,
+    "Culture › Food › Culinary History": 1,
+    "Culture › Architecture › Ancient Rome": 1,
+    "Culture › Film › Cinema History": 1,
+    "Geography › Countries › Time Zones": 1,
+    "Geography › Landmarks › Myths": 1,
+    "Geography › Rivers › Hydrology": 1,
+    "Geography › Mountains › Measurement": 1,
+    "Geography › Deserts › Scale": 1,
+    "Life Sciences › Biology › Extremophiles": 1,
+    "Life Sciences › Biology › Food Science": 1,
+    "Life Sciences › Biology › Genetics": 1,
+    "Life Sciences › Ecology › Forest Biology": 1,
+    "Life Sciences › Marine Biology › Crustaceans": 1
+  },
+  "maxConsecutive": 1,
+  "jarringTransitions": 18,
+  "focusRating": 4,
+  "success": {
+    "noFiveStreak": true,
+    "spreadReasonable": true,
+    "notChaotic": true
+  },
+  "logs": [
+    {
+      "ts": "2026-03-08T02:55:28.479Z",
+      "label": "startStudy(20)",
+      "screen": "study",
+      "look": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study screen opened (size 20)"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:28.925Z",
+      "label": "gm.startStudySession()",
+      "screen": "studySession",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "called startStudySession"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:29.930Z",
+      "label": "chooseSize(20)",
+      "screen": "studySession",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "size selected"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:30.976Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (1 / 20)\n\nCURRENT CARD:\n  Front: Why does the Mona Lisa have no eyebrows?\n  Category: Culture › Art › Renaissance Painting\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:32.109Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (1 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:32.379Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (2 / 20)\n\nCURRENT CARD:\n  Front: What physical condition did Beethoven have when he composed his Ninth Symphony?\n  Category: Culture › Music › Classical Composers\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:33.525Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (2 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:33.794Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (3 / 20)\n\nCURRENT CARD:\n  Front: What did ancient Greeks believe different musical modes could do to people?\n  Category: Culture › Music › Ancient Music Theory\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:34.970Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (3 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:35.232Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (4 / 20)\n\nCURRENT CARD:\n  Front: What did Odin sacrifice to gain wisdom from the Well of Wisdom?\n  Category: Culture › Mythology › Norse Myths\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:36.364Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (4 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:36.643Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (5 / 20)\n\nCURRENT CARD:\n  Front: In Japanese New Year food tradition, why do shrimp symbolize longevity?\n  Category: Culture › Traditions › Food Symbolism\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:37.797Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (5 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:38.070Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (6 / 20)\n\nCURRENT CARD:\n  Front: What saved the Eiffel Tower from being demolished in 1909?\n  Category: Culture › Architecture › Iconic Structures\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:39.232Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (6 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:39.518Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (7 / 20)\n\nCURRENT CARD:\n  Front: What unusual weather event forced Mary Shelley indoors and helped inspire Frankenstein?\n  Category: Culture › Literature › Science Fiction Origins\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:40.719Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (7 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:40.982Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (8 / 20)\n\nCURRENT CARD:\n  Front: How did Aztecs originally consume chocolate?\n  Category: Culture › Food › Culinary History\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:42.145Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (8 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:42.447Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (9 / 20)\n\nCURRENT CARD:\n  Front: Who operated the retractable shade covering of the ancient Roman Colosseum?\n  Category: Culture › Architecture › Ancient Rome\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:43.645Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (9 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:43.938Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 20)\n\nCURRENT CARD:\n  Front: What was the subject of one of the first films shown to a paying audience, which reportedly caused viewers to panic?\n  Category: Culture › Film › Cinema History\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:45.085Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:45.367Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (11 / 20)\n\nCURRENT CARD:\n  Front: How many time zones does Russia span?\n  Category: Geography › Countries › Time Zones\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:46.512Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (11 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:46.768Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (12 / 20)\n\nCURRENT CARD:\n  Front: Which famous human-made structure is often falsely claimed to be visible from space?\n  Category: Geography › Landmarks › Myths\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:47.881Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (12 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:48.173Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (13 / 20)\n\nCURRENT CARD:\n  Front: Approximately what percentage of all freshwater discharged into Earth's oceans comes from the Amazon River?\n  Category: Geography › Rivers › Hydrology\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:49.306Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (13 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:49.578Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (14 / 20)\n\nCURRENT CARD:\n  Front: Which mountain is tallest when measured from its oceanic base to its summit?\n  Category: Geography › Mountains › Measurement\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:50.751Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (14 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:51.021Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (15 / 20)\n\nCURRENT CARD:\n  Front: Which desert is the world's largest hot desert?\n  Category: Geography › Deserts › Scale\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:52.159Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (15 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:52.427Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (16 / 20)\n\nCURRENT CARD:\n  Front: What do tardigrades replace their cellular water with to survive extreme conditions?\n  Category: Life Sciences › Biology › Extremophiles\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:53.540Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (16 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:53.797Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (17 / 20)\n\nCURRENT CARD:\n  Front: What combination of properties makes honey resistant to spoilage?\n  Category: Life Sciences › Biology › Food Science\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:54.929Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (17 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:55.159Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (18 / 20)\n\nCURRENT CARD:\n  Front: Approximately how far would all the DNA in a human body stretch if uncoiled?\n  Category: Life Sciences › Biology › Genetics\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:56.230Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (18 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:56.480Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (19 / 20)\n\nCURRENT CARD:\n  Front: What are the underground fungal networks connecting forest trees sometimes called?\n  Category: Life Sciences › Ecology › Forest Biology\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:57.603Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (19 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:57.859Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (20 / 20)\n\nCURRENT CARD:\n  Front: How many types of colour receptors does a mantis shrimp have?\n  Category: Life Sciences › Marine Biology › Crustaceans\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:55:58.915Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (20 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:56:00.096Z",
+      "label": "endStudy()",
+      "screen": "base",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study ended. Screen: base"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    }
+  ]
+}

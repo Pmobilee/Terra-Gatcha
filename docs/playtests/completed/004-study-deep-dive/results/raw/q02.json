@@ -1,0 +1,119 @@
+{
+  "q": 2,
+  "title": "Activation Cap Ceiling",
+  "preset": "many_reviews_due",
+  "startedAt": "2026-03-08T02:53:36.676Z",
+  "endedAt": "2026-03-08T02:53:37.940Z",
+  "capA": 5,
+  "usedA": 5,
+  "capUi": {
+    "statValues": [
+      "34",
+      "30",
+      "5/5",
+      "0",
+      "0",
+      "30"
+    ],
+    "capInfo": null
+  },
+  "activateAtCap": {
+    "ok": true,
+    "disabled": true,
+    "label": "Cap reached"
+  },
+  "learnedBefore": 30,
+  "learnedAfterCapAttempt": 30,
+  "capB": 7,
+  "activateAfterBoost": {
+    "ok": true,
+    "disabled": false,
+    "label": "Activate"
+  },
+  "learnedAfterBoost": 31,
+  "success": {
+    "capMessageShown": true,
+    "formulaWorks": true,
+    "blockedAtCap": true,
+    "activationWorksAfterIncrease": true
+  },
+  "logs": [
+    {
+      "ts": "2026-03-08T02:53:37.539Z",
+      "label": "navigate(studyStation)",
+      "screen": "studyStation",
+      "look": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Navigated to studyStation"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:37.634Z",
+      "label": "openDiscoveredTab",
+      "screen": "studyStation",
+      "look": "SCREEN: studyStation\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "opened discovered tab"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:37.693Z",
+      "label": "activateAtCapAttempt",
+      "screen": "studyStation",
+      "look": "SCREEN: studyStation\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "disabled": true,
+        "label": "Cap reached"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:37.823Z",
+      "label": "openDiscoveredTabAgain",
+      "screen": "studyStation",
+      "look": "SCREEN: studyStation\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "opened discovered tab"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:37.901Z",
+      "label": "activateAfterCapIncrease",
+      "screen": "studyStation",
+      "look": "SCREEN: studyStation\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "disabled": false,
+        "label": "Activate"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    }
+  ]
+}

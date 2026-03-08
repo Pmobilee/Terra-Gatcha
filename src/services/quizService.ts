@@ -127,14 +127,12 @@ export function selectDifficultyWeightedQuestion(
     return selectQuestion(facts, reviewStates)
   }
 
-  // Weight by depth:
-  // shallow (< 0.3): weight = ease (high ease -> high weight -> easy questions)
-  // deep (> 0.7): weight = 3.0 - ease (low ease -> high weight -> hard questions)
-  // mid: weight = 1.0 (uniform)
+  // Exponential depth weighting: shallow = easy bias, deep = hard bias.
+  // depthExponent ranges from 0.3 (shallow, strong easy bias) to 3.0 (deep, strong hard bias)
+  const depthExponent = 0.3 + depthRatio * 2.7
   const weights = candidates.map(c => {
-    if (depthRatio < 0.3) return c.ease
-    if (depthRatio > 0.7) return Math.max(0.1, 3.0 - c.ease)
-    return 1.0
+    const normalizedDifficulty = Math.max(0.1, (3.0 - c.ease) / 2.0) // 0..1, higher = harder
+    return Math.pow(normalizedDifficulty, depthExponent)
   })
 
   // Weighted random selection

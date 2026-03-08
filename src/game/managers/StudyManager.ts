@@ -22,7 +22,7 @@ import {
   updateDailyStreak,
 } from '../../ui/stores/playerData'
 import type { AnkiButton } from '../../services/sm2'
-import { BALANCE, NEW_CARDS_PER_SESSION } from '../../data/balance'
+import { BALANCE, getAdaptiveNewCardLimit } from '../../data/balance'
 import { factsDB } from '../../services/factsDB'
 import type { Fact, ReviewState } from '../../data/types'
 
@@ -111,7 +111,11 @@ export class StudyManager {
       newCards.sort(() => Math.random() - 0.5)
       const today = new Date().toISOString().slice(0, 10)
       const alreadyStudied = save.lastNewCardDate === today ? save.newCardsStudiedToday : 0
-      const remaining = Math.max(0, NEW_CARDS_PER_SESSION - alreadyStudied)
+      const dueReviewCount = save.reviewStates.filter(rs =>
+        rs.cardState === 'review' && rs.nextReviewAt <= Date.now()
+      ).length
+      const adaptiveLimit = getAdaptiveNewCardLimit(dueReviewCount)
+      const remaining = Math.max(0, adaptiveLimit - alreadyStudied)
       newCards.splice(remaining)
     }
 

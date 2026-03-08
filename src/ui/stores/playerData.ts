@@ -20,7 +20,7 @@ import { createReviewState, isDue, isMastered, getMasteryLevel, reviewFact, revi
 import type { AnkiButton } from '../../services/sm2'
 import type { Cosmetic } from '../../data/cosmetics'
 import { calculateKnowledgePoints } from '../../data/knowledgeStore'
-import { BALANCE, LEARNING_SPARKS_PER_MILESTONE, ACTIVATION_CAP_BASE, ACTIVATION_CAP_MASTERED_DIVISOR, ACTIVATION_CAP_MAX, NEW_CARDS_PER_SESSION, NEW_CARD_THROTTLE_RATIO } from '../../data/balance'
+import { BALANCE, LEARNING_SPARKS_PER_MILESTONE, ACTIVATION_CAP_BASE, ACTIVATION_CAP_MASTERED_DIVISOR, ACTIVATION_CAP_MAX, NEW_CARD_THROTTLE_RATIO, getAdaptiveNewCardLimit } from '../../data/balance'
 import { evaluateArchetype } from '../../services/archetypeDetector'
 import { updateEngagementAfterDive, getEngagementGaiaComment } from '../../services/engagementScorer'
 import { defaultHubSaveState } from '../../data/hubLayout'
@@ -548,13 +548,14 @@ export function shouldShowNewCards(): boolean {
     return true // New day, allow new cards
   }
 
-  // Daily limit check
-  if (ps.newCardsStudiedToday >= NEW_CARDS_PER_SESSION) return false
-
-  // Backlog check: if due reviews > ratio × new cards today, suppress
+  // Daily limit check (adaptive based on review backlog)
   const dueCount = ps.reviewStates.filter(r =>
     r.cardState === 'review' && r.nextReviewAt <= Date.now()
   ).length
+  const adaptiveLimit = getAdaptiveNewCardLimit(dueCount)
+  if (ps.newCardsStudiedToday >= adaptiveLimit) return false
+
+  // Backlog check: if due reviews > ratio × new cards today, suppress
   if (dueCount > NEW_CARD_THROTTLE_RATIO * Math.max(1, ps.newCardsStudiedToday)) return false
 
   return true

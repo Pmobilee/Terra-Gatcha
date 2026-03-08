@@ -1,0 +1,1207 @@
+{
+  "q": 2,
+  "title": "The Study Skeptic - Card Quality Audit",
+  "preset": "many_reviews_due",
+  "startedAt": "2026-03-07T17:41:59.880Z",
+  "endedAt": "2026-03-07T17:42:37.946Z",
+  "studyInit": {
+    "method": "gm-fallback",
+    "startViaApi": {
+      "ts": "2026-03-07T17:42:04.377Z",
+      "label": "startStudy(20)",
+      "screen": "study",
+      "look": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study screen opened (size 20)"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    "cardPresent": true,
+    "firstCard": {
+      "question": "Why does the Mona Lisa have no eyebrows?",
+      "answer": null,
+      "explanation": null,
+      "mnemonic": null,
+      "gaiaComment": null,
+      "progress": "1 / 20",
+      "category": "Culture › Art › Renaissance Painting"
+    },
+    "queuePreview": [
+      {
+        "id": "cult-001",
+        "question": "Why does the Mona Lisa have no eyebrows?",
+        "type": "fact",
+        "difficulty": 2
+      },
+      {
+        "id": "cult-002",
+        "question": "What physical condition did Beethoven have when he composed his Ninth Symphony?",
+        "type": "fact",
+        "difficulty": 1
+      },
+      {
+        "id": "cult-003",
+        "question": "What did ancient Greeks believe different musical modes could do to people?",
+        "type": "fact",
+        "difficulty": 3
+      },
+      {
+        "id": "cult-004",
+        "question": "What did Odin sacrifice to gain wisdom from the Well of Wisdom?",
+        "type": "fact",
+        "difficulty": 2
+      },
+      {
+        "id": "cult-005",
+        "question": "In Japanese New Year food tradition, why do shrimp symbolize longevity?",
+        "type": "fact",
+        "difficulty": 3
+      },
+      {
+        "id": "cult-006",
+        "question": "What saved the Eiffel Tower from being demolished in 1909?",
+        "type": "fact",
+        "difficulty": 2
+      },
+      {
+        "id": "cult-007",
+        "question": "What unusual weather event forced Mary Shelley indoors and helped inspire Frankenstein?",
+        "type": "fact",
+        "difficulty": 3
+      },
+      {
+        "id": "cult-008",
+        "question": "How did Aztecs originally consume chocolate?",
+        "type": "fact",
+        "difficulty": 2
+      }
+    ]
+  },
+  "cards": [
+    {
+      "index": 1,
+      "question": "Why does the Mona Lisa have no eyebrows?",
+      "category": "Culture › Art › Renaissance Painting",
+      "guess": "Likely concept-related answer to: Why does the Mona Lisa have no eyebrows?...",
+      "answer": "Shaved eyebrows were fashionable in Renaissance Florence",
+      "explanation": "In 15th-century Florence, plucked or shaved eyebrows were considered a mark of high social status and beauty. Leonardo da Vinci painted Lisa Gherardini according to the fashion of her time. Many viewers across centuries interpreted the missing brows as intentional artistic ambiguity rather than period-accurate style.",
+      "mnemonic": null,
+      "gaia": "She has no eyebrows because shaved brows were fashionable. Five centuries of 'mysterious' was just trend-following.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 2,
+      "question": "What physical condition did Beethoven have when he composed his Ninth Symphony?",
+      "category": "Culture › Music › Classical Composers",
+      "guess": "Likely concept-related answer to: What physical condition did Beethoven have when ...",
+      "answer": "He was completely deaf",
+      "explanation": "By the time Beethoven completed the Ninth Symphony in 1824, he had been profoundly deaf for over a decade. At its Vienna premiere, he stood on stage conducting from memory while the actual conductor led the orchestra. When the audience gave a thunderous standing ovation, Beethoven had to be turned around by a soloist because he couldn't hear the applause.",
+      "mnemonic": null,
+      "gaia": "Beethoven composed the Ninth Symphony deaf. Had to be turned around to see the standing ovation he couldn't hear.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 3,
+      "question": "What did ancient Greeks believe different musical modes could do to people?",
+      "category": "Culture › Music › Ancient Music Theory",
+      "guess": "Likely concept-related answer to: What did ancient Greeks believe different musica...",
+      "answer": "Change their moral character and emotional state",
+      "explanation": "Greek music theory included the concept of 'ethos,' meaning that each musical mode (Dorian, Phrygian, Lydian, etc.) had a specific emotional and moral effect on listeners. The Dorian mode was considered noble and warlike, while the Lydian was considered soft and effeminate. Plato argued in 'The Republic' that the state should control which modes citizens could hear to maintain civic virtue.",
+      "mnemonic": null,
+      "gaia": "Plato wanted to ban musical scales that made citizens lazy. Ancient Greece had content moderation.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 4,
+      "question": "What did Odin sacrifice to gain wisdom from the Well of Wisdom?",
+      "category": "Culture › Mythology › Norse Myths",
+      "guess": "Likely concept-related answer to: What did Odin sacrifice to gain wisdom from the ...",
+      "answer": "One of his eyes",
+      "explanation": "According to Norse mythology, Odin gave his eye to the giant Mimir in exchange for a drink from the Well of Wisdom. Later, seeking the runes (the Norse writing system), he stabbed himself with his spear and hung upside down from Yggdrasil, the world tree, for nine days and nights with no food or water. At the end, the runes revealed themselves to him. The Norse valued self-sacrifice for knowledge above almost all other virtues.",
+      "mnemonic": null,
+      "gaia": "Odin gave an eye for wisdom, then hung himself from a tree for nine days to learn writing. Knowledge has a price.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 5,
+      "question": "In Japanese New Year food tradition, why do shrimp symbolize longevity?",
+      "category": "Culture › Traditions › Food Symbolism",
+      "guess": "Likely concept-related answer to: In Japanese New Year food tradition, why do shri...",
+      "answer": "They curl like the bent back of an elderly person",
+      "explanation": "Osechi Ryori is the traditional Japanese New Year cuisine served in stacked lacquer boxes called 'jubako.' The tradition dates back over a millennium, originating in Heian-period court culture. Each food item carries symbolic meaning: datemaki (rolled omelette) symbolizes scholarship, konbu seaweed represents joy ('yorokobu'), and lotus root's holes symbolize an unobstructed view of the future.",
+      "mnemonic": null,
+      "gaia": "Every ingredient in Osechi Ryori is a coded wish. Shrimp curl like old people's backs, so they mean longevity. Edible symbolism.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 6,
+      "question": "What saved the Eiffel Tower from being demolished in 1909?",
+      "category": "Culture › Architecture › Iconic Structures",
+      "guess": "Likely concept-related answer to: What saved the Eiffel Tower from being demolishe...",
+      "answer": "It was being used as a vital radio antenna",
+      "explanation": "When Gustave Eiffel built his tower for the 1889 World's Fair, Parisians mostly hated it, calling it an 'iron monster' and the 'blight of Paris.' It was granted a 20-year permit, set to be demolished in 1909. Eiffel strategically allowed military and meteorological researchers to use it as a radio transmitter, making it indispensable. In 1909, the French military extended its lease indefinitely, saving it from destruction.",
+      "mnemonic": null,
+      "gaia": "Parisians called the Eiffel Tower an iron monster. It was saved by radio signals. The most visited monument on Earth almost wasn't.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 7,
+      "question": "What unusual weather event forced Mary Shelley indoors and helped inspire Frankenstein?",
+      "category": "Culture › Literature › Science Fiction Origins",
+      "guess": "Likely concept-related answer to: What unusual weather event forced Mary Shelley i...",
+      "answer": "A volcanic eruption had caused an abnormally cold, dark summer across Europe",
+      "explanation": "In the summer of 1816, the eruption of Mount Tambora in Indonesia had caused 'The Year Without a Summer,' blanketing Europe in ash and cold. Mary Godwin (later Shelley), Percy Shelley, Lord Byron, and John Polidori were trapped indoors at Villa Diodati in Switzerland. Byron proposed a ghost story contest. Mary, then 18, conceived her story after a waking dream about a scientist animating dead matter. Published in 1818, 'Frankenstein' is widely regarded as the first true science fiction novel.",
+      "mnemonic": null,
+      "gaia": "A teenager stranded indoors during a volcanic winter invented science fiction. We owe Tambora a thank-you.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 8,
+      "question": "How did Aztecs originally consume chocolate?",
+      "category": "Culture › Food › Culinary History",
+      "guess": "Likely concept-related answer to: How did Aztecs originally consume chocolate?...",
+      "answer": "As a cold, bitter, spicy drink mixed with chili peppers and water",
+      "explanation": "Mesoamerican civilizations including the Olmec, Maya, and Aztec consumed cacao as 'xocolatl,' a cold frothy drink made with water, chili peppers, cornmeal, and cacao paste. It was used in religious rituals, as currency, and as an energy drink for warriors. When cacao reached Europe in the 1500s, Spanish colonizers began sweetening it with sugar, which transformed it into the sweet treat we know today. Cacao beans were so valuable the Aztecs used them as currency.",
+      "mnemonic": null,
+      "gaia": "The Aztecs drank chocolate cold, bitter, and spiced with chili. Your candy bar would horrify them.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 9,
+      "question": "Who operated the retractable shade covering of the ancient Roman Colosseum?",
+      "category": "Culture › Architecture › Ancient Rome",
+      "guess": "Likely concept-related answer to: Who operated the retractable shade covering of t...",
+      "answer": "Sailors from the Roman navy",
+      "explanation": "The Flavian Amphitheatre (Colosseum), completed in 80 CE, featured a massive awning system called the velarium that could shade up to two-thirds of the 50,000-seat arena. It was made of linen and operated through a complex system of ropes, winches, and masts built into the upper rim. Because of the extreme complexity of rigging required, the Roman Emperor assigned a detachment of sailors from the Misenum fleet — the same fleet that patrolled the Mediterranean — to operate it permanently.",
+      "mnemonic": null,
+      "gaia": "The Colosseum had a retractable fabric shade roof, operated by the Roman navy. Two thousand years ago. Let that sink in.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 10,
+      "question": "What was the subject of one of the first films shown to a paying audience, which reportedly caused viewers to panic?",
+      "category": "Culture › Film › Cinema History",
+      "guess": "Likely concept-related answer to: What was the subject of one of the first films s...",
+      "answer": "A train arriving at a station",
+      "explanation": "On December 28, 1895, the Lumière brothers — Auguste and Louis — screened ten short films at the Grand Café in Paris, including 'La Sortie de l'Usine Lumière à Lyon' (Workers Leaving the Lumière Factory). Audiences were reportedly terrified by 'L'Arrivée d'un train en gare de La Ciotat' (Train Arriving at a Station), with legend holding that people fled thinking a real train would burst through the screen. While historians debate how widespread the panic was, contemporary accounts confirm genuine audience shock and alarm at the moving images.",
+      "mnemonic": null,
+      "gaia": "The first film audience panicked at a moving image of a train. Forty-six seconds. Cinema's origin story is a mass scare.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 11,
+      "question": "How many time zones does Russia span?",
+      "category": "Geography › Countries › Time Zones",
+      "guess": "Likely concept-related answer to: How many time zones does Russia span?...",
+      "answer": "11",
+      "explanation": "Russia stretches approximately 9,000 kilometers from its western border to its eastern tip at Cape Dezhnev. This means the country spans nearly half the globe's longitude. At its widest, a single transcontinental phone call within Russia could bridge nearly a full day's worth of time difference.",
+      "mnemonic": null,
+      "gaia": "Eleven time zones. Russia is so wide that calling across it covers almost a full day. One country, one border, eleven sunsets.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 12,
+      "question": "Which famous human-made structure is often falsely claimed to be visible from space?",
+      "category": "Geography › Landmarks › Myths",
+      "guess": "Likely concept-related answer to: Which famous human-made structure is often false...",
+      "answer": "The Great Wall of China",
+      "explanation": "The Great Wall averages about 4–5 meters wide, far too narrow to resolve from low Earth orbit without optical aids. Multiple astronauts, including Chinese taikonaut Yang Liwei, have confirmed they could not see it. The myth likely persists because the wall is so long — over 21,000 kilometers — that people assume length translates to visibility.",
+      "mnemonic": null,
+      "gaia": "The Great Wall is not visible from space with the naked eye. Still worth building, apparently.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 13,
+      "question": "Approximately what percentage of all freshwater discharged into Earth's oceans comes from the Amazon River?",
+      "category": "Geography › Rivers › Hydrology",
+      "guess": "Likely concept-related answer to: Approximately what percentage of all freshwater ...",
+      "answer": "20%",
+      "explanation": "The Amazon accounts for roughly 20% of all freshwater discharged into Earth's oceans. Its basin covers 40% of South America and receives some of the heaviest rainfall on the planet. At its mouth, the river is so wide and powerful that ocean salinity is measurably diluted hundreds of kilometers offshore.",
+      "mnemonic": null,
+      "gaia": "The Amazon pumps 20% of all freshwater into the ocean. Its plume extends 400 kilometers into the Atlantic. It's barely trying.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 14,
+      "question": "Which mountain is tallest when measured from its oceanic base to its summit?",
+      "category": "Geography › Mountains › Measurement",
+      "guess": "Likely concept-related answer to: Which mountain is tallest when measured from its...",
+      "answer": "Mauna Kea",
+      "explanation": "Everest stands 8,849 meters above sea level, making it the highest point on Earth's surface. However, Mauna Kea's volcanic base sits on the Pacific Ocean floor, giving it a total height of about 10,210 meters from base to summit. The distinction matters: 'tallest' versus 'highest' are geographically different measurements.",
+      "mnemonic": null,
+      "gaia": "Mauna Kea is taller than Everest — most of it is just underwater. Measurement is everything.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 15,
+      "question": "Which desert is the world's largest hot desert?",
+      "category": "Geography › Deserts › Scale",
+      "guess": "Likely concept-related answer to: Which desert is the world's largest hot desert?...",
+      "answer": "The Sahara",
+      "explanation": "The Sahara covers approximately 9.2 million square kilometers, making it the world's largest hot desert. The contiguous United States covers about 8 million square kilometers. While the Sahara dominates popular imagination as an endless sea of sand, only about 25% of it is actually sand dunes — most is rocky plateau and gravel plains.",
+      "mnemonic": null,
+      "gaia": "The Sahara is the size of the contiguous United States. And 75% of it is rocks, not sand. Your mental image is wrong.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 16,
+      "question": "What do tardigrades replace their cellular water with to survive extreme conditions?",
+      "category": "Life Sciences › Biology › Extremophiles",
+      "guess": "Likely concept-related answer to: What do tardigrades replace their cellular water...",
+      "answer": "Trehalose, a sugar that forms a protective glass-like matrix",
+      "explanation": "In their cryptobiotic tun state, tardigrades replace water in their cells with a sugar called trehalose, which forms a glass-like matrix that preserves their cellular machinery. They can survive radiation doses thousands of times lethal to humans and rehydrate after decades of dormancy.",
+      "mnemonic": null,
+      "gaia": "Tardigrades survived open space for 10 days. No oxygen, radiation, vacuum. They just napped through it.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 17,
+      "question": "What combination of properties makes honey resistant to spoilage?",
+      "category": "Life Sciences › Biology › Food Science",
+      "guess": "Likely concept-related answer to: What combination of properties makes honey resis...",
+      "answer": "Low water content, high acidity, and hydrogen peroxide production",
+      "explanation": "Honey's chemistry prevents spoilage: it has very low water content (below 20%), high acidity (pH 3.5–4.5), and bees add glucose oxidase which produces hydrogen peroxide. Together, these create an environment hostile to bacteria and fungi. Properly sealed honey is indefinitely shelf-stable.",
+      "mnemonic": null,
+      "gaia": "Three-thousand-year-old honey that's still edible. Someone in 1922 tasted it and lived. Commitment.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 18,
+      "question": "Approximately how far would all the DNA in a human body stretch if uncoiled?",
+      "category": "Life Sciences › Biology › Genetics",
+      "guess": "Likely concept-related answer to: Approximately how far would all the DNA in a hum...",
+      "answer": "Far enough to reach Pluto and back multiple times",
+      "explanation": "Human DNA is coiled extraordinarily tightly inside cell nuclei using proteins called histones. The 46 chromosomes in each cell contain about 3 billion base pairs. Despite their tiny size, cells achieve this by supercoiling the DNA into chromatin fibres, fitting 2 metres into a space 0.006 mm across.",
+      "mnemonic": null,
+      "gaia": "Your DNA, uncoiled, reaches Pluto and back six times. All crammed into cells you can't see without a microscope.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 19,
+      "question": "What are the underground fungal networks connecting forest trees sometimes called?",
+      "category": "Life Sciences › Ecology › Forest Biology",
+      "guess": "Likely concept-related answer to: What are the underground fungal networks connect...",
+      "answer": "The Wood Wide Web",
+      "explanation": "Mycorrhizal fungi form symbiotic relationships with tree roots, extending their reach dramatically. In exchange for sugars from photosynthesis, fungi provide water and minerals. Research by Suzanne Simard showed carbon-isotope labelled sugars moving between trees, proving active transfer through the network.",
+      "mnemonic": null,
+      "gaia": "Trees share nutrients through fungal networks. Forests cooperate. Still more functional than most cities.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": [
+        "Occluded interactive elements: study-progress"
+      ]
+    },
+    {
+      "index": 20,
+      "question": "How many types of colour receptors does a mantis shrimp have?",
+      "category": "Life Sciences › Marine Biology › Crustaceans",
+      "guess": "Likely concept-related answer to: How many types of colour receptors does a mantis...",
+      "answer": "Sixteen",
+      "explanation": "The mantis shrimp's dactyl clubs can strike at 23 m/s. The cavitation bubbles this creates collapse with enough force to stun or kill prey even on a miss. Its 16 photoreceptor types allow it to see ultraviolet, visible, and infrared light simultaneously, likely to process colour information rapidly rather than with enhanced discrimination.",
+      "mnemonic": null,
+      "gaia": "Sixteen color receptors. Sixteen. We have three and still can't agree on whether that dress was gold or blue.",
+      "grade": "good",
+      "gradeResult": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validateIssues": []
+    }
+  ],
+  "metrics": {
+    "totalCardsReviewed": 20,
+    "grades": {
+      "again": 0,
+      "okay": 0,
+      "good": 20
+    },
+    "missingExplanation": 0,
+    "unclearQuestions": 0,
+    "missingAnswer": 0,
+    "validateIssues": [
+      "Occluded interactive elements: study-progress"
+    ]
+  },
+  "success": {
+    "allCardsHaveQuestionAndAnswer": true,
+    "explanationCoverage80Pct": true,
+    "noUndefinedNaN": true,
+    "gradedEachCard": true
+  },
+  "logs": [
+    {
+      "ts": "2026-03-07T17:42:04.377Z",
+      "label": "startStudy(20)",
+      "screen": "study",
+      "look": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study screen opened (size 20)"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:04.876Z",
+      "label": "gm.startStudySession()",
+      "screen": "studySession",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Called gm.startStudySession()"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:05.853Z",
+      "label": "clickSessionSize(20)",
+      "screen": "studySession",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Clicked size button index 2"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:06.871Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (1 / 20)\n\nCURRENT CARD:\n  Front: Why does the Mona Lisa have no eyebrows?\n  Category: Culture › Art › Renaissance Painting\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:08.093Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (1 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:08.365Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (2 / 20)\n\nCURRENT CARD:\n  Front: What physical condition did Beethoven have when he composed his Ninth Symphony?\n  Category: Culture › Music › Classical Composers\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:09.578Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (2 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:09.875Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (3 / 20)\n\nCURRENT CARD:\n  Front: What did ancient Greeks believe different musical modes could do to people?\n  Category: Culture › Music › Ancient Music Theory\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:11.132Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (3 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:11.418Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (4 / 20)\n\nCURRENT CARD:\n  Front: What did Odin sacrifice to gain wisdom from the Well of Wisdom?\n  Category: Culture › Mythology › Norse Myths\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:12.649Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (4 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:12.955Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (5 / 20)\n\nCURRENT CARD:\n  Front: In Japanese New Year food tradition, why do shrimp symbolize longevity?\n  Category: Culture › Traditions › Food Symbolism\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:14.180Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (5 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:14.479Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (6 / 20)\n\nCURRENT CARD:\n  Front: What saved the Eiffel Tower from being demolished in 1909?\n  Category: Culture › Architecture › Iconic Structures\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:15.741Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (6 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:16.046Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (7 / 20)\n\nCURRENT CARD:\n  Front: What unusual weather event forced Mary Shelley indoors and helped inspire Frankenstein?\n  Category: Culture › Literature › Science Fiction Origins\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:17.253Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (7 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:17.546Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (8 / 20)\n\nCURRENT CARD:\n  Front: How did Aztecs originally consume chocolate?\n  Category: Culture › Food › Culinary History\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:18.758Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (8 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:19.059Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (9 / 20)\n\nCURRENT CARD:\n  Front: Who operated the retractable shade covering of the ancient Roman Colosseum?\n  Category: Culture › Architecture › Ancient Rome\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:20.318Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (9 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:20.632Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 20)\n\nCURRENT CARD:\n  Front: What was the subject of one of the first films shown to a paying audience, which reportedly caused viewers to panic?\n  Category: Culture › Film › Cinema History\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:21.866Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:22.159Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (11 / 20)\n\nCURRENT CARD:\n  Front: How many time zones does Russia span?\n  Category: Geography › Countries › Time Zones\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:23.338Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (11 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:23.630Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (12 / 20)\n\nCURRENT CARD:\n  Front: Which famous human-made structure is often falsely claimed to be visible from space?\n  Category: Geography › Landmarks › Myths\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:24.846Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (12 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:25.125Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (13 / 20)\n\nCURRENT CARD:\n  Front: Approximately what percentage of all freshwater discharged into Earth's oceans comes from the Amazon River?\n  Category: Geography › Rivers › Hydrology\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:26.329Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (13 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:26.610Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (14 / 20)\n\nCURRENT CARD:\n  Front: Which mountain is tallest when measured from its oceanic base to its summit?\n  Category: Geography › Mountains › Measurement\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:27.820Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (14 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:28.123Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (15 / 20)\n\nCURRENT CARD:\n  Front: Which desert is the world's largest hot desert?\n  Category: Geography › Deserts › Scale\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:29.316Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (15 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:29.583Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (16 / 20)\n\nCURRENT CARD:\n  Front: What do tardigrades replace their cellular water with to survive extreme conditions?\n  Category: Life Sciences › Biology › Extremophiles\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:30.811Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (16 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:31.081Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (17 / 20)\n\nCURRENT CARD:\n  Front: What combination of properties makes honey resistant to spoilage?\n  Category: Life Sciences › Biology › Food Science\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:32.314Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (17 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:32.546Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (18 / 20)\n\nCURRENT CARD:\n  Front: Approximately how far would all the DNA in a human body stretch if uncoiled?\n  Category: Life Sciences › Biology › Genetics\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:33.768Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (18 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:34.122Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (19 / 20)\n\nCURRENT CARD:\n  Front: What are the underground fungal networks connecting forest trees sometimes called?\n  Category: Life Sciences › Ecology › Forest Biology\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:35.320Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (19 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:35.603Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (20 / 20)\n\nCURRENT CARD:\n  Front: How many types of colour receptors does a mantis shrimp have?\n  Category: Life Sciences › Marine Biology › Crustaceans\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Reveal clicked"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:36.781Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (20 / 20)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-07T17:42:37.946Z",
+      "label": "endStudy()",
+      "screen": "base",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study ended. Screen: base"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    }
+  ]
+}

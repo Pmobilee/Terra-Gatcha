@@ -307,6 +307,86 @@ Every AI worker MUST follow this protocol when playtesting:
 [PASS/FAIL/INCONCLUSIVE per criterion with explanation]
 ```
 
+## 0.6 Known API Issues & Workarounds (Batches 001-003)
+
+These are confirmed issues discovered through playtesting. Workers MUST apply these workarounds.
+
+### API Bugs (unfixed as of batch 003)
+
+| Issue | Workaround | Severity |
+|-------|-----------|----------|
+| `navigate('invalid_screen')` returns `ok:true` | Always check `getScreen()` after navigation to confirm you're on the expected screen | HIGH |
+| `startStudy(size)` may not start a playable session | After calling `startStudy()`, verify with `getStudyCard()` — if null, try clicking the study size button via DOM: `document.querySelector('[data-testid="btn-study-10"]')?.click()` | HIGH |
+| `fastForward()` + SM-2 intervals may flatten | After `fastForward()`, always re-read `getSave()` to verify interval separation is preserved. If intervals regressed, note it as a known issue — don't report as a new bug | HIGH |
+| `fastForward(-1)` accepted (no validation) | Always pass positive hours. Don't rely on the API to reject bad input | LOW |
+| `getSessionSummary()` returns low-fidelity data | `eventCount` is often 1. Supplement with manual tracking: count actions yourself in your script | MEDIUM |
+
+### False Positives — DO NOT Report These
+
+| Pattern | Why It's Not a Bug |
+|---------|-------------------|
+| `validateScreen()` reports `gaia-toast-text` as occluded | GAIA toasts are transient overlays — occlusion is normal during fade-in/out |
+| `validateScreen()` reports `study-progress` as occluded | Progress bar may be behind card flip animation — timing artifact |
+| Session duration = 0ms in metrics | API executes instantly — this measures API speed, not human play time. Only flag if the session truly didn't happen |
+| No quiz in 15 blocks of mining | At 4% chance per block (`RANDOM_QUIZ_CHANCE: 0.04`), there's a 54% chance of zero quizzes in 15 blocks. Mine 30+ blocks for reliable quiz encounters |
+
+### Quiz Triggering Math
+
+Workers frequently expect quizzes to appear within a short mining window. Here's the actual probability:
+
+| Blocks Mined | P(at least 1 quiz) | Recommendation |
+|-------------|-------------------|----------------|
+| 10 | 34% | Too few — unreliable |
+| 15 | 46% | Coin flip — don't count on it |
+| 25 | 64% | Reasonable for 1 quiz |
+| 40 | 80% | Good for quiz-dependent tests |
+| 60 | 91% | Use this for quiz-critical protocols |
+
+**For quiz-dependent tests**: Mine at least 40 blocks, or use `QUIZ_FIRST_TRIGGER_AFTER_BLOCKS` (10) + patience. The first quiz can't appear before 10 blocks due to the cooldown. After that, there's also a `QUIZ_COOLDOWN_BLOCKS` (15) gap between quizzes.
+
+### Study Session Sizes
+
+When calling `startStudy(size)`:
+- `'quick'` = 5 cards
+- `'normal'` = 10 cards
+- `'full'` = 20 cards
+
+If size is omitted, it defaults to 10. The session ends automatically when all cards (including re-queued Again cards) are graded.
+
+### Preset Recommendations by Test Type
+
+| Test Type | Best Preset | Why |
+|-----------|------------|-----|
+| Study/review testing | `many_reviews_due` | 50+ facts with varied SM-2 states, many overdue |
+| Mining + quiz | `quiz_due` or `many_reviews_due` | Ensures facts exist for quiz selection |
+| New player experience | `post_tutorial` or `new_player` | Clean state, minimal facts |
+| Dome exploration | `mid_game_3_rooms` or `five_rooms` | Multiple rooms unlocked |
+| Economy testing | `rich_player` | High resource counts |
+| Streak testing | `max_streak` or `streak_about_to_break` | Specific streak states |
+| Active dive | `mid_dive_active` | Already mid-dive, skip dive start |
+| SM-2 time travel | `many_reviews_due` + `fastForward()` | Varied intervals to observe drift |
+
+### Codex/Headless Worker Constraints
+
+- Workers do NOT have MCP Playwright tools — must write `.cjs` scripts
+- Workers do NOT have access to `/playthrough` or other Claude Code skills
+- Scripts MUST use `require('/root/terra-miner/node_modules/playwright-core')` (absolute path)
+- Chrome at `/opt/google/chrome/chrome`
+- Always `waitForTimeout(3000-5000)` after page navigation — the API needs time to initialize
+- Write reports to `docs/playtests/active/{batch}/results/` NOT to `/tmp/`
+- Use the harness at `tests/e2e/lib/playtest-harness.cjs` when possible — it handles browser launch, preset loading, and API readiness waiting
+
+### Report Quality Guidelines
+
+Based on batch 001-002 output quality:
+- **DON'T** produce metric-only reports with just PASS/FAIL tables — these miss the point
+- **DO** write 2-3 paragraph narratives describing what happened and how it felt
+- **DO** note moments of confusion, frustration, satisfaction, or surprise
+- **DO** distinguish between API limitations and actual game bugs
+- **DON'T** report known false positives (see tables above)
+- **DO** include the raw JSON data alongside the narrative
+- **DO** use the Emotional Arc section — it's the most unique value AI playtesting adds
+
 ---
 
 ## 1. Execution Model

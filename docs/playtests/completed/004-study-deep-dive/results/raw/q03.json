@@ -1,0 +1,781 @@
+{
+  "q": 3,
+  "title": "Re-Queue Frustration Test",
+  "preset": "many_reviews_due",
+  "startedAt": "2026-03-08T02:53:42.222Z",
+  "endedAt": "2026-03-08T02:54:08.083Z",
+  "initialQueue": [
+    {
+      "id": "cult-001",
+      "question": "Why does the Mona Lisa have no eyebrows?",
+      "category": "Culture",
+      "type": "fact",
+      "cardState": "review",
+      "interval": 3,
+      "lapseCount": 0,
+      "wrongCount": 0
+    },
+    {
+      "id": "cult-002",
+      "question": "What physical condition did Beethoven have when he composed his Ninth Symphony?",
+      "category": "Culture",
+      "type": "fact",
+      "cardState": "review",
+      "interval": 3,
+      "lapseCount": 0,
+      "wrongCount": 0
+    },
+    {
+      "id": "cult-003",
+      "question": "What did ancient Greeks believe different musical modes could do to people?",
+      "category": "Culture",
+      "type": "fact",
+      "cardState": "review",
+      "interval": 3,
+      "lapseCount": 0,
+      "wrongCount": 0
+    },
+    {
+      "id": "cult-004",
+      "question": "What did Odin sacrifice to gain wisdom from the Well of Wisdom?",
+      "category": "Culture",
+      "type": "fact",
+      "cardState": "review",
+      "interval": 3,
+      "lapseCount": 0,
+      "wrongCount": 0
+    },
+    {
+      "id": "cult-005",
+      "question": "In Japanese New Year food tradition, why do shrimp symbolize longevity?",
+      "category": "Culture",
+      "type": "fact",
+      "cardState": "review",
+      "interval": 3,
+      "lapseCount": 0,
+      "wrongCount": 0
+    },
+    {
+      "id": "cult-006",
+      "question": "What saved the Eiffel Tower from being demolished in 1909?",
+      "category": "Culture",
+      "type": "fact",
+      "cardState": "review",
+      "interval": 3,
+      "lapseCount": 0,
+      "wrongCount": 0
+    },
+    {
+      "id": "cult-007",
+      "question": "What unusual weather event forced Mary Shelley indoors and helped inspire Frankenstein?",
+      "category": "Culture",
+      "type": "fact",
+      "cardState": "review",
+      "interval": 3,
+      "lapseCount": 0,
+      "wrongCount": 0
+    },
+    {
+      "id": "cult-008",
+      "question": "How did Aztecs originally consume chocolate?",
+      "category": "Culture",
+      "type": "fact",
+      "cardState": "review",
+      "interval": 3,
+      "lapseCount": 0,
+      "wrongCount": 0
+    },
+    {
+      "id": "cult-009",
+      "question": "Who operated the retractable shade covering of the ancient Roman Colosseum?",
+      "category": "Culture",
+      "type": "fact",
+      "cardState": "review",
+      "interval": 3,
+      "lapseCount": 0,
+      "wrongCount": 0
+    },
+    {
+      "id": "cult-010",
+      "question": "What was the subject of one of the first films shown to a paying audience, which reportedly caused viewers to panic?",
+      "category": "Culture",
+      "type": "fact",
+      "cardState": "review",
+      "interval": 3,
+      "lapseCount": 0,
+      "wrongCount": 0
+    }
+  ],
+  "timeline": [
+    {
+      "index": 1,
+      "question": "Why does the Mona Lisa have no eyebrows?",
+      "countForCard": 1,
+      "grade": "again"
+    },
+    {
+      "index": 2,
+      "question": "What physical condition did Beethoven have when he composed his Ninth Symphony?",
+      "countForCard": 1,
+      "grade": "again"
+    },
+    {
+      "index": 3,
+      "question": "What did ancient Greeks believe different musical modes could do to people?",
+      "countForCard": 1,
+      "grade": "again"
+    },
+    {
+      "index": 4,
+      "question": "What did Odin sacrifice to gain wisdom from the Well of Wisdom?",
+      "countForCard": 1,
+      "grade": "again"
+    },
+    {
+      "index": 5,
+      "question": "In Japanese New Year food tradition, why do shrimp symbolize longevity?",
+      "countForCard": 1,
+      "grade": "again"
+    },
+    {
+      "index": 6,
+      "question": "What saved the Eiffel Tower from being demolished in 1909?",
+      "countForCard": 1,
+      "grade": "good"
+    },
+    {
+      "index": 7,
+      "question": "What unusual weather event forced Mary Shelley indoors and helped inspire Frankenstein?",
+      "countForCard": 1,
+      "grade": "good"
+    },
+    {
+      "index": 8,
+      "question": "How did Aztecs originally consume chocolate?",
+      "countForCard": 1,
+      "grade": "good"
+    },
+    {
+      "index": 9,
+      "question": "Who operated the retractable shade covering of the ancient Roman Colosseum?",
+      "countForCard": 1,
+      "grade": "good"
+    },
+    {
+      "index": 10,
+      "question": "What was the subject of one of the first films shown to a paying audience, which reportedly caused viewers to panic?",
+      "countForCard": 1,
+      "grade": "good"
+    },
+    {
+      "index": 11,
+      "question": "Why does the Mona Lisa have no eyebrows?",
+      "countForCard": 2,
+      "grade": "good"
+    },
+    {
+      "index": 12,
+      "question": "What physical condition did Beethoven have when he composed his Ninth Symphony?",
+      "countForCard": 2,
+      "grade": "good"
+    },
+    {
+      "index": 13,
+      "question": "What did ancient Greeks believe different musical modes could do to people?",
+      "countForCard": 2,
+      "grade": "good"
+    },
+    {
+      "index": 14,
+      "question": "What did Odin sacrifice to gain wisdom from the Well of Wisdom?",
+      "countForCard": 2,
+      "grade": "good"
+    },
+    {
+      "index": 15,
+      "question": "In Japanese New Year food tradition, why do shrimp symbolize longevity?",
+      "countForCard": 2,
+      "grade": "good"
+    }
+  ],
+  "totalSeen": 15,
+  "maxAppearances": 2,
+  "helpfulness": 4,
+  "success": {
+    "maxTwoRequeues": true,
+    "sessionReasonableLength": true,
+    "notTedious": true
+  },
+  "logs": [
+    {
+      "ts": "2026-03-08T02:53:42.832Z",
+      "label": "startStudy(10)",
+      "screen": "study",
+      "look": "SCREEN: base (Hub)\nO2: 0  DUST: ?  STREAK: ? days\n\nNOTIFICATIONS: none\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study screen opened (size 10)"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:43.372Z",
+      "label": "gm.startStudySession()",
+      "screen": "studySession",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "called startStudySession"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:44.357Z",
+      "label": "chooseSize(10)",
+      "screen": "studySession",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "size selected"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:45.401Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (1 / 10)\n\nCURRENT CARD:\n  Front: Why does the Mona Lisa have no eyebrows?\n  Category: Culture › Art › Renaissance Painting\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:46.588Z",
+      "label": "gradeCard(again)",
+      "screen": "studySession",
+      "look": "SCREEN: study (1 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'again'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:46.904Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (2 / 10)\n\nCURRENT CARD:\n  Front: What physical condition did Beethoven have when he composed his Ninth Symphony?\n  Category: Culture › Music › Classical Composers\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:48.044Z",
+      "label": "gradeCard(again)",
+      "screen": "studySession",
+      "look": "SCREEN: study (2 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'again'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:48.315Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (3 / 10)\n\nCURRENT CARD:\n  Front: What did ancient Greeks believe different musical modes could do to people?\n  Category: Culture › Music › Ancient Music Theory\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:49.431Z",
+      "label": "gradeCard(again)",
+      "screen": "studySession",
+      "look": "SCREEN: study (3 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'again'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:49.699Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (4 / 10)\n\nCURRENT CARD:\n  Front: What did Odin sacrifice to gain wisdom from the Well of Wisdom?\n  Category: Culture › Mythology › Norse Myths\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:50.888Z",
+      "label": "gradeCard(again)",
+      "screen": "studySession",
+      "look": "SCREEN: study (4 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'again'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:51.169Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (5 / 10)\n\nCURRENT CARD:\n  Front: In Japanese New Year food tradition, why do shrimp symbolize longevity?\n  Category: Culture › Traditions › Food Symbolism\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:52.339Z",
+      "label": "gradeCard(again)",
+      "screen": "studySession",
+      "look": "SCREEN: study (5 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'again'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:52.624Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (6 / 10)\n\nCURRENT CARD:\n  Front: What saved the Eiffel Tower from being demolished in 1909?\n  Category: Culture › Architecture › Iconic Structures\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:53.790Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (6 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:54.081Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (7 / 10)\n\nCURRENT CARD:\n  Front: What unusual weather event forced Mary Shelley indoors and helped inspire Frankenstein?\n  Category: Culture › Literature › Science Fiction Origins\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:55.226Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (7 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:55.476Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (8 / 10)\n\nCURRENT CARD:\n  Front: How did Aztecs originally consume chocolate?\n  Category: Culture › Food › Culinary History\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:56.627Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (8 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:56.897Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (9 / 10)\n\nCURRENT CARD:\n  Front: Who operated the retractable shade covering of the ancient Roman Colosseum?\n  Category: Culture › Architecture › Ancient Rome\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:58.009Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (9 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:58.275Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD:\n  Front: What was the subject of one of the first films shown to a paying audience, which reportedly caused viewers to panic?\n  Category: Culture › Film › Cinema History\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:59.385Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:53:59.654Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD:\n  Front: Why does the Mona Lisa have no eyebrows?\n  Category: Culture › Art › Renaissance Painting\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:54:00.789Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:54:01.167Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD:\n  Front: What physical condition did Beethoven have when he composed his Ninth Symphony?\n  Category: Culture › Music › Classical Composers\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:54:02.345Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:54:02.632Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD:\n  Front: What did ancient Greeks believe different musical modes could do to people?\n  Category: Culture › Music › Ancient Music Theory\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:54:03.730Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:54:03.995Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD:\n  Front: What did Odin sacrifice to gain wisdom from the Well of Wisdom?\n  Category: Culture › Mythology › Norse Myths\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:54:05.184Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:54:05.476Z",
+      "label": "revealCard",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD:\n  Front: In Japanese New Year food tradition, why do shrimp symbolize longevity?\n  Category: Culture › Traditions › Food Symbolism\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "revealed"
+      },
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Occluded interactive elements: study-progress"
+        ]
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:54:06.591Z",
+      "label": "gradeCard(good)",
+      "screen": "studySession",
+      "look": "SCREEN: study (10 / 10)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Graded card as 'good'"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    },
+    {
+      "ts": "2026-03-08T02:54:08.083Z",
+      "label": "endStudy()",
+      "screen": "base",
+      "look": "SCREEN: study (?)\n\nCURRENT CARD: (not visible)\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "result": {
+        "ok": true,
+        "message": "Study ended. Screen: base"
+      },
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "error": null
+    }
+  ]
+}
