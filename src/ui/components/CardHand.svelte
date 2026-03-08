@@ -5,11 +5,12 @@
     cards: Card[]
     selectedIndex: number | null
     disabled: boolean
+    cardAnimations?: Record<string, 'launch' | 'fizzle' | null>
     onselectcard: (index: number) => void
     ondeselectcard: () => void
   }
 
-  let { cards, selectedIndex, disabled, onselectcard, ondeselectcard }: Props = $props()
+  let { cards, selectedIndex, disabled, cardAnimations, onselectcard, ondeselectcard }: Props = $props()
 
   /** Domain color mapping */
   const DOMAIN_COLORS: Record<FactDomain, string> = {
@@ -95,12 +96,15 @@
     {@const domainColor = DOMAIN_COLORS[card.domain]}
     {@const icon = TYPE_ICONS[card.cardType]}
     {@const effectVal = getEffectValue(card)}
+    {@const cardAnim = cardAnimations?.[card.id] ?? null}
 
     <button
       class="card-in-hand"
       class:card-selected={isSelected}
       class:card-dimmed={isOther}
       class:tier-2={card.tier >= 2}
+      class:card-launch={cardAnim === 'launch'}
+      class:card-fizzle={cardAnim === 'fizzle'}
       style="
         transform: translateX({xOffset}px) translateY({isOther ? 20 : -arcOffset}px) rotate({isSelected ? 0 : rotation}deg);
         border-color: {domainColor};
@@ -205,5 +209,24 @@
       opacity: 0;
       transform: translateX(0) translateY(60px) rotate(0deg);
     }
+  }
+
+  .card-launch {
+    animation: cardLaunch 300ms ease-in forwards;
+    pointer-events: none;
+  }
+  @keyframes cardLaunch {
+    0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+    60%  { opacity: 1; }
+    100% { transform: translateY(-600px) rotate(12deg) scale(0.4); opacity: 0; }
+  }
+
+  .card-fizzle {
+    animation: cardFizzle 400ms ease-out forwards;
+    pointer-events: none;
+  }
+  @keyframes cardFizzle {
+    0%   { transform: translateY(0) scale(1); opacity: 0.4; filter: grayscale(0.5); }
+    100% { transform: translateY(100px) scale(0.8); opacity: 0; filter: grayscale(1); }
   }
 </style>

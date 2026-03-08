@@ -11,8 +11,8 @@
 - [x] **CR-01 Card Foundation** — Card entity, types, deck manager, domain resolver, card factory, run pool builder → `docs/roadmap/completed/CR-01-CARD-FOUNDATION.md`
 - [x] **CR-02 Encounter Engine** — Turn-based encounter loop, enemy system, status effects, card resolution, rewards → `docs/roadmap/completed/CR-02-ENCOUNTER-ENGINE.md`
 - [x] **CR-03 Combat Scene** — Phaser split-stage display zone, enemy placeholder, HP bars, intent telegraph → `docs/roadmap/completed/CR-03-COMBAT-SCENE.md`
-- [ ] **CR-04 Card Hand UI** — Fanned arc hand, two-step play (tap to select → answer to activate), card animations (launch, fizzle, dissolve), answer buttons → `docs/roadmap/phases/CR-04-CARD-HAND-UI.md`
-- [ ] **CR-05 Game Juice** — Correct/wrong answer feedback stack (haptics, screen flash, damage numbers, combo counter, sound stubs), enemy hit reactions → `docs/roadmap/phases/CR-05-GAME-JUICE.md`
+- [x] **CR-04 Card Hand UI** — Fanned arc hand, two-step play, expanded card with quiz, timer bar → `docs/roadmap/completed/CR-04-CARD-HAND-UI.md`
+- [x] **CR-05 Game Juice** — Haptics, screen flash, damage numbers, card launch/fizzle, particle burst, sound stubs → `docs/roadmap/completed/CR-05-GAME-JUICE.md`
 - [ ] **CR-06 Knowledge Combo** — Consecutive correct answer multiplier (1.0x→2.0x), combo visuals, card ordering strategy, perfect turn celebration → `docs/roadmap/phases/CR-06-KNOWLEDGE-COMBO.md`
 - [ ] **CR-07 Room Selection** — 3-door choice between encounters, room types (combat/mystery/rest/treasure/shop), floor progression, boss encounter at floor end → `docs/roadmap/phases/CR-07-ROOM-SELECTION.md`
 

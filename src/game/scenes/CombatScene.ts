@@ -67,6 +67,8 @@ export class CombatScene extends Phaser.Scene {
   private intentText!: Phaser.GameObjects.Text
   private floorCounterText!: Phaser.GameObjects.Text
   private relicContainer!: Phaser.GameObjects.Container
+  private flashRect!: Phaser.GameObjects.Rectangle
+  private particles!: Phaser.GameObjects.Particles.ParticleEmitter
 
   // ── State ────────────────────────────────────────────────
   private currentEnemyHP = 0
@@ -164,6 +166,35 @@ export class CombatScene extends Phaser.Scene {
 
     // ── Relic tray container ──────────────────────────────
     this.relicContainer = this.add.container(w / 2, this.displayH * RELIC_TRAY_Y_PCT)
+
+    // ── Screen flash overlay (full display zone, max depth) ─
+    this.flashRect = this.add.rectangle(
+      this.cameras.main.centerX,
+      this.cameras.main.height * DISPLAY_ZONE_HEIGHT_PCT / 2,
+      this.cameras.main.width,
+      this.cameras.main.height * DISPLAY_ZONE_HEIGHT_PCT,
+      0xFFFFFF, 0
+    )
+    this.flashRect.setDepth(999)
+
+    // ── Particle emitter (procedural texture) ───────────
+    const gfx = this.make.graphics({ x: 0, y: 0 })
+    gfx.fillStyle(0xFFFFFF)
+    gfx.fillRect(0, 0, 4, 4)
+    gfx.generateTexture('particle', 4, 4)
+    gfx.destroy()
+
+    this.particles = this.add.particles(0, 0, 'particle', {
+      speed: { min: 100, max: 200 },
+      angle: { min: 0, max: 360 },
+      scale: { start: 0.5, end: 0 },
+      alpha: { start: 1, end: 0 },
+      lifespan: 300,
+      gravityY: 50,
+      emitting: false,
+      maxParticles: 50,
+    })
+    this.particles.setDepth(998)
 
     // ── Scene lifecycle events ────────────────────────────
     this.events.on('shutdown', this.onShutdown, this)
@@ -318,6 +349,24 @@ export class CombatScene extends Phaser.Scene {
         onComplete: () => particle.destroy(),
       })
     }
+  }
+
+  /** Flash the display zone white. */
+  playScreenFlash(intensity: number = 0.3): void {
+    this.flashRect.setAlpha(intensity)
+    this.tweens.add({
+      targets: this.flashRect,
+      alpha: 0,
+      duration: 150,
+      ease: 'Power2'
+    })
+  }
+
+  /** Burst particles at a position. */
+  burstParticles(count: number, x: number, y: number, tint: number = 0xFFD700): void {
+    if (!this.particles) return
+    this.particles.setParticleTint(tint)
+    this.particles.explode(count, x, y)
   }
 
   // ═════════════════════════════════════════════════════════

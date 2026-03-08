@@ -4,6 +4,9 @@
   import { FLOOR_TIMER } from '../../data/balance'
   import CardHand from './CardHand.svelte'
   import CardExpanded from './CardExpanded.svelte'
+  import DamageNumber from './DamageNumber.svelte'
+  import ComboCounter from './ComboCounter.svelte'
+  import { juiceManager } from '../../services/juiceManager'
 
   interface Props {
     turnState: TurnState | null
@@ -16,6 +19,29 @@
 
   let selectedIndex = $state<number | null>(null)
   let answeredThisTurn = $state(0)
+  let damageNumbers = $state<Array<{id: number, value: string, isCritical: boolean}>>([])
+  let cardAnimations = $state<Record<string, 'launch' | 'fizzle' | null>>({})
+  let comboCount = $derived(turnState?.comboCount ?? 0)
+  let damageIdCounter = $state(0)
+
+  /** Remove a damage number by id after its animation completes. */
+  function removeDamageNumber(id: number): void {
+    damageNumbers = damageNumbers.filter(dn => dn.id !== id)
+  }
+
+  /** Spawn a floating damage number. */
+  function spawnDamageNumber(value: string, isCritical: boolean): void {
+    const id = damageIdCounter++
+    damageNumbers = [...damageNumbers, { id, value, isCritical }]
+  }
+
+  // Wire juiceManager callbacks on mount
+  $effect(() => {
+    juiceManager.setCallbacks({
+      onDamageNumber: (value, isCritical) => spawnDamageNumber(value, isCritical),
+    })
+    return () => juiceManager.clearCallbacks()
+  })
 
   /** Cards currently in hand from turn state. */
   let handCards = $derived<Card[]>(turnState?.deck.hand ?? [])
@@ -106,6 +132,26 @@
   function handleAnswer(answerIndex: number, isCorrect: boolean, speedBonus: boolean): void {
     if (!selectedCard) return
     const cardId = selectedCard.id
+    const effectVal = Math.round(selectedCard.baseEffectValue * selectedCard.effectMultiplier)
+    const effectLabel = `${selectedCard.cardType.toUpperCase()} ${effectVal}`
+
+    // Set card animation
+    cardAnimations = { ...cardAnimations, [cardId]: isCorrect ? 'launch' : 'fizzle' }
+    // Clear animation after it finishes
+    setTimeout(() => {
+      cardAnimations = { ...cardAnimations, [cardId]: null }
+    }, isCorrect ? 300 : 400)
+
+    // Fire juice effects
+    const nextCombo = isCorrect ? (turnState?.comboCount ?? 0) + 1 : 0
+    juiceManager.fire({
+      type: isCorrect ? 'correct' : 'wrong',
+      damage: isCorrect ? effectVal : 0,
+      isCritical: speedBonus,
+      comboCount: nextCombo,
+      effectLabel: isCorrect ? effectLabel : undefined,
+    })
+
     onplaycard(cardId, isCorrect, speedBonus)
     answeredThisTurn += 1
     selectedIndex = null
@@ -150,9 +196,18 @@
       />
     {/if}
 
+    <!-- Damage Numbers -->
+    {#each damageNumbers as dn (dn.id)}
+      <DamageNumber value={dn.value} isCritical={dn.isCritical} onComplete={() => removeDamageNumber(dn.id)} />
+    {/each}
+
+    <!-- Combo Counter -->
+    <ComboCounter count={comboCount} />
+
     <CardHand
       cards={handCards}
       {selectedIndex}
+      {cardAnimations}
       disabled={turnState.phase !== 'player_action'}
       onselectcard={handleSelect}
       ondeselectcard={handleDeselect}
