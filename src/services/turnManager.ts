@@ -3,7 +3,7 @@
 // Manages the draw → play → enemy → end turn cycle.
 // NO Phaser, Svelte, or DOM imports.
 
-import type { Card, CardRunState, CardType } from '../data/card-types';
+import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
 import type { EnemyInstance } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
 import type { PlayerCombatState } from './playerCombatState';
@@ -57,6 +57,8 @@ export interface TurnState {
   buffNextCard: number;
   /** The card type of the last card played (for wild resolution). */
   lastCardType?: CardType;
+  /** Active passive effects from Tier 3 mastered cards. */
+  activePassives: PassiveEffect[];
   /** Encounter result (null while in progress). */
   result: EncounterResult;
   /** Log of events for the current turn. */
@@ -124,6 +126,7 @@ export function startEncounter(
     isPerfectTurn: false,
     buffNextCard: 0,
     lastCardType: undefined,
+    activePassives: [],
     result: null,
     turnLog: [],
   };
@@ -233,6 +236,12 @@ export function playCardAction(
     };
   }
 
+  // Compute passive bonuses from Tier 3 mastered cards
+  const passiveBonuses: Partial<Record<CardType, number>> = {};
+  for (const p of turnState.activePassives) {
+    passiveBonuses[p.cardType] = (passiveBonuses[p.cardType] ?? 0) + p.value;
+  }
+
   // Resolve the card effect
   const effect = resolveCardEffect(
     card,
@@ -242,6 +251,7 @@ export function playCardAction(
     speedBonus,
     turnState.buffNextCard,
     turnState.lastCardType,
+    passiveBonuses,
   );
 
   // Apply results
@@ -463,6 +473,18 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
       message: `Enemy took ${enemyTick.poisonDamage} poison damage`,
       value: enemyTick.poisonDamage,
     });
+  }
+
+  // 4b. Apply passive heal/regen effects at turn boundary
+  for (const passive of turnState.activePassives) {
+    if (passive.cardType === 'heal' || passive.cardType === 'regen') {
+      healPlayer(playerState, passive.value);
+      turnState.turnLog.push({
+        type: 'status_tick',
+        message: `Mastered ${passive.cardType} passive healed ${passive.value} HP`,
+        value: passive.value,
+      });
+    }
   }
 
   // 5. Reset turn state

@@ -350,11 +350,30 @@ export function updateReviewState(factId: string, correctOrQuality: boolean | nu
       }
     }
 
+    const existingIdx = save.reviewStates.findIndex(s => s.factId === factId)
+    let updatedReviewStates: ReviewState[]
+
+    if (existingIdx >= 0) {
+      // Update existing review state
+      updatedReviewStates = save.reviewStates.map((state) =>
+        state.factId === factId ? reviewFact(state, correctOrQuality) : state,
+      )
+    } else {
+      // Create new review state and apply the review
+      const newState = createReviewState(factId)
+      const reviewedState = reviewFact(newState, correctOrQuality)
+      updatedReviewStates = [...save.reviewStates, reviewedState]
+    }
+
+    // Ensure factId is in learnedFacts
+    const updatedLearnedFacts = save.learnedFacts.includes(factId)
+      ? save.learnedFacts
+      : [...save.learnedFacts, factId]
+
     return {
       ...save,
-      reviewStates: save.reviewStates.map((state) =>
-        state.factId === factId ? reviewFact(state, correctOrQuality) : state,
-      ),
+      reviewStates: updatedReviewStates,
+      learnedFacts: updatedLearnedFacts,
       behavioralSignals: updatedSignals,
       stats: {
         ...save.stats,

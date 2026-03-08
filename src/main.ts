@@ -14,15 +14,13 @@ if (rtlLocales.has(storedLocale)) {
   import('./ui/styles/rtl.css')
 }
 
-import App from './App.svelte'
+import CardApp from './CardApp.svelte'
 import WebGLFallback from './ui/components/WebGLFallback.svelte'
 import { mount } from 'svelte'
 import { initPlayer, playerSave } from './ui/stores/playerData'
 import { currentScreen, pendingArtifacts } from './ui/stores/gameState'
 import { get } from 'svelte/store'
 import { factsDB } from './services/factsDB'
-import { gameManagerStore, getGM } from './game/gameManagerRef'
-import { getSyncVersion, setSyncVersion } from './services/deltaSync'
 import { initI18n } from './i18n/index'
 
 /**
@@ -108,7 +106,7 @@ if (!isWebGLSupported()) {
 }
 
 // Mount Svelte UI overlay
-const app = mount(App, {
+const app = mount(CardApp, {
   target: document.getElementById('app')!,
 })
 document.getElementById('splash')?.remove()
@@ -123,91 +121,34 @@ async function bootGame(): Promise<void> {
   // Initialize i18n before rendering any UI (loads locale JSON, sets dir attribute)
   await initI18n()
 
-  // Phase 47: Initialize achievement gallery state from saved data (deferred — doesn't affect first paint)
-  const [{ initAchievements }, { achievementService }] = await Promise.all([
-    import('./ui/stores/achievements'),
-    import('./services/achievementService'),
-  ])
-  const currentSaveForAchievements = get(playerSave)
-  if (currentSaveForAchievements) {
-    initAchievements(currentSaveForAchievements.unlockedPaintings ?? [])
-    achievementService.init()
-  }
-
-  // Start DB init in background — don't block Phaser boot
+  // Start DB init in background — don't block game boot
   const dbPromise = factsDB.init().catch(err => {
     console.error('FactsDB init failed:', err)
     console.warn('FactsDB init failed, continuing without database:', err)
   })
 
-  // Lazy-load Phaser + GameManager (keeps 1.2MB Phaser out of critical path)
-  const { GameManager } = await import('./game/GameManager')
+  // Lazy-load CardGameManager
+  const { CardGameManager } = await import('./game/CardGameManager')
 
-  // Boot Phaser engine immediately (parallel with DB load)
-  // IMPORTANT: boot() must be called BEFORE setting the store. Setting the store
-  // fires Svelte subscribers synchronously (e.g. HubView calls gm.getGaiaManager()),
-  // which will crash if boot() hasn't initialized the sub-managers yet.
-  const gameManager = GameManager.getInstance()
+  // Boot game engine
+  const gameManager = CardGameManager.getInstance()
   gameManager.boot()
-  gameManagerStore.set(gameManager)
 
-  // Ensure oxygen tanks are available (replenish if 0)
-  const { BALANCE } = await import('./data/balance')
-  playerSave.update(s => {
-    if (!s) return s
-    const oxygen = s.oxygen <= 0 ? BALANCE.STARTING_OXYGEN_TANKS : s.oxygen
-    return { ...s, oxygen }
-  })
-
-  // BootScene has no preload, so boot completes synchronously.
-  // Navigate to appropriate screen immediately.
-  // Phase 14: Route through tutorial flow for new players.
-  // Skip screen routing when a dev preset is active; App.svelte's async
-  // preset loader sets the intended screen once the preset save is applied.
+  // Navigate to main menu (skip when a dev preset is active)
   const urlParams = new URLSearchParams(window.location.search)
   const hasDevPreset = import.meta.env.DEV && urlParams.get('devpreset')
   if (!hasDevPreset) {
-    if (!save.tutorialComplete) {
-      // Brand new player — start the onboarding cutscene
-      currentScreen.set('cutscene')
-    } else {
-      currentScreen.set('base')
-    }
+    currentScreen.set('mainMenu')
   }
 
   // Wait for DB to finish loading
   await dbPromise
 
-  // Phase 32.5: Background delta sync — fetch new/updated facts from server
-  // This is fire-and-forget; the local cache remains valid even if offline.
-  try {
-    const since = getSyncVersion()
-    const resp = await fetch(`/api/facts/delta?since=${since}&limit=500`, {
-      headers: { Accept: 'application/json' },
-    })
-    if (resp.ok) {
-      const delta = await resp.json() as {
-        facts: unknown[]
-        deletedIds: string[]
-        latestVersion: number
-        hasMore: boolean
-      }
-      if (delta.latestVersion > since) {
-        setSyncVersion(delta.latestVersion)
-        if (delta.facts.length > 0) {
-          console.log(`[deltaSync] ${delta.facts.length} new facts synced (version ${delta.latestVersion})`)
-        }
-      }
-    }
-  } catch {
-    // Offline — continue with cached facts
-  }
-
-  // Hide splash screen now that the game is fully initialized (DD-V2 Sub-Phase 20.1)
+  // Hide splash screen now that the game is fully initialized
   const splashScreen = await setupCapacitor()
   if (splashScreen) await splashScreen.hide()
 
-  // Track app_open analytics event (Phase 19.7)
+  // Track app_open analytics event
   const currentSave = get(playerSave)
   const { analyticsService } = await import('./services/analyticsService')
   analyticsService.track({
@@ -223,17 +164,7 @@ async function bootGame(): Promise<void> {
   })
 }
 
-bootGame().then(() => {
-  // Handle PWA deep-link shortcuts (?action=dive, ?action=study)
-  const params = new URLSearchParams(window.location.search)
-  const action = params.get('action')
-  if (action === 'dive') {
-    // Wait one tick for game to be ready
-    setTimeout(() => getGM()?.goToDivePrep(), 100)
-  } else if (action === 'study') {
-    setTimeout(() => getGM()?.startStudySession(), 100)
-  }
-})
+bootGame()
 
 // Service Worker management.
 // In dev mode, actively unregister any stale SW and clear caches — the cache-first

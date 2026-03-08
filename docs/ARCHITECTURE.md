@@ -7,15 +7,15 @@ Every card is a fact. Learning IS gameplay.
 ```
 Tech Stack: Vite 7 + Svelte 5 + TypeScript 5.9 + Phaser 3 + Capacitor (Android/iOS)
 Three game systems: Card Combat, Deck Building, Run Progression
-Data: sql.js fact database (522 facts, expandable to 20,000+)
+Data: sql.js fact database (723 facts, expandable to 20,000+)
 Persistence: localStorage (profile-namespaced), optional cloud sync
 ```
 
 Primary boot path:
 
 1. `src/main.ts` mounts Svelte app, initializes player save.
-2. `GameManager.boot()` creates Phaser game with `BootScene` and `CombatScene`.
-3. `GameEventBridge` wires Phaser events into Svelte stores.
+2. `CardGameManager.boot()` creates Phaser game with `BootScene` and `CombatScene`.
+3. `encounterBridge.ts` wires game flow controller into deck/enemy/turn systems and CombatScene display.
 4. `factsDB.init()` loads `public/facts.db` in parallel for quiz/card content.
 
 ## 2. Layer Architecture
@@ -42,7 +42,7 @@ Primary boot path:
 
 ### Phaser Layer
 
-- `CombatScene` — **TO BUILD** — renders enemy sprite, card play animations, damage numbers, particle effects, screen shake
+- `CombatScene` — renders enemy sprite, HP bars, intent telegraph, hit/death animations, damage particles, screen flash, floor info
 - Sprite pool of 5 pre-created card sprites, repositioned per turn (no create/destroy)
 - Particle cap: 50 concurrent max on mobile; correct answer burst = 30 particles, 300ms lifespan
 - GPU-accelerated tweens for all card animations (not CSS)
@@ -54,7 +54,7 @@ Primary boot path:
 - **Top 55% of screen** (display zone): enemy, HP bars, intent telegraph, floor counter, passive relics
 - All interactive elements below the screen midpoint (thumb-reachable)
 - Touch targets: 48x48dp minimum, cards 60x80dp, answer buttons full-width 56dp height
-- Screen routing via `currentScreen` store in `App.svelte`
+- Screen routing via `currentScreen` store in `CardApp.svelte`
 
 ### Service Layer
 
@@ -79,8 +79,8 @@ Located in `src/data/`:
 - `types.ts` — PlayerSave, fact types (extend with card types)
 - `balance.ts` — tuning constants (retune for card effect values)
 - `saveState.ts` — run state shape (replace DiveSaveState with RunSaveState)
-- Enemy definitions — **TO BUILD**
-- Card type mappings — **TO BUILD**
+- Enemy definitions — `src/data/enemies.ts`
+- Card type mappings — `src/data/card-types.ts`
 
 ## 3. Retained Systems
 
@@ -101,35 +101,59 @@ These systems transfer from the mining codebase with minimal changes:
 | Particle system | `ParticleSystem.ts` | 80% — adapt for card effects |
 | Screen shake | `ScreenShakeSystem.ts` | 100% |
 
-## 4. New Systems to Build
+## 4. Systems Architecture
 
-### P0 — Core (Prototype)
+### Implemented (P0)
+
+| System | File(s) | Status |
+|--------|---------|--------|
+| Card entity & types | `src/data/card-types.ts` | Built |
+| Card factory | `src/services/cardFactory.ts` | Built |
+| Domain resolver | `src/services/domainResolver.ts` | Built |
+| Deck manager | `src/services/deckManager.ts` | Built |
+| Run pool builder | `src/services/runPoolBuilder.ts` | Built |
+| Turn manager | `src/services/turnManager.ts` | Built |
+| Enemy manager | `src/services/enemyManager.ts` | Built |
+| Floor manager | `src/services/floorManager.ts` | Built |
+| Game flow controller | `src/services/gameFlowController.ts` | Built |
+| Encounter bridge | `src/services/encounterBridge.ts` | Built |
+| Run manager | `src/services/runManager.ts` | Built |
+| Juice manager | `src/services/juiceManager.ts` | Built |
+| CombatScene | `src/game/scenes/CombatScene.ts` | Built |
+| CardGameManager | `src/game/CardGameManager.ts` | Built |
+| CardApp (root) | `src/CardApp.svelte` | Built |
+| Card hand UI | `src/ui/components/CardHand.svelte` | Built |
+| Card expanded UI | `src/ui/components/CardExpanded.svelte` | Built |
+| Card combat overlay | `src/ui/components/CardCombatOverlay.svelte` | Built |
+| Combo counter | `src/ui/components/ComboCounter.svelte` | Built |
+| Damage numbers | `src/ui/components/DamageNumber.svelte` | Built |
+| Domain selection | `src/ui/components/DomainSelection.svelte` | Built |
+| Room selection overlay | `src/ui/components/RoomSelectionOverlay.svelte` | Built |
+| Rest room overlay | `src/ui/components/RestRoomOverlay.svelte` | Built |
+| Mystery event overlay | `src/ui/components/MysteryEventOverlay.svelte` | Built |
+| Run end overlay | `src/ui/components/RunEndOverlay.svelte` | Built |
+| Enemy templates | `src/data/enemies.ts` | Built |
+| Balance constants | `src/data/balance.ts` (extended) | Built |
+
+### Implemented (P0.5 — Mastery Tiers)
+
+| System | File(s) | Status |
+|--------|---------|--------|
+| PassiveEffect type | `src/data/card-types.ts` | Built |
+| Tier 3 passive constants | `src/data/balance.ts` (`TIER3_PASSIVE_VALUE`) | Built |
+| Passive tracking in TurnState | `src/services/turnManager.ts` (`activePassives`) | Built |
+| Passive bonus injection | `src/services/cardEffectResolver.ts` (`passiveBonuses` param) | Built |
+| Tier 3 extraction & SM-2 wiring | `src/services/encounterBridge.ts` | Built |
+
+### Planned (P1)
 
 | System | Description | Planned Location |
 |--------|-------------|------------------|
-| Card entity | Card type, effect value, tier, fact binding | `src/game/card/Card.ts` |
-| DeckManager | Draw pile, discard pile, shuffle, hand draw (5 cards) | `src/game/card/DeckManager.ts` |
-| Hand manager | Hand of 5, tap-to-select, answer-to-play flow | `src/game/card/Hand.ts` |
-| CardRenderer | Svelte component for card visuals | `src/ui/components/CardRenderer.svelte` |
-| Encounter engine | Turn loop: player plays cards → enemy attacks → repeat | `src/game/combat/Encounter.ts` |
-| Enemy system | Types, HP, attack patterns, telegraphed intents | `src/game/combat/Enemy.ts` |
-| CombatScene | Phaser scene for encounter rendering | `src/game/scenes/CombatScene.ts` |
-| RunManager | Floor progression, room selection, run lifecycle | `src/game/run/RunManager.ts` |
-| RunPoolBuilder | Build 120-fact pool from domain selection (40/30/30 split) | `src/game/run/RunPoolBuilder.ts` |
-| DomainSelector | Run-start domain pick UI | `src/ui/components/DomainSelector.svelte` |
-| FloorMap | 3-choice room selection between encounters | `src/ui/components/FloorMap.svelte` |
-| Card reward screen | Pick 1 of 3 cards after encounters | `src/ui/components/CardReward.svelte` |
-
-### P1 — First Update
-
-| System | Description | Planned Location |
-|--------|-------------|------------------|
-| MasteryManager | Tier 1→2→3 evolution, passive tracking | `src/game/meta/MasteryManager.ts` |
+| MasteryManager | Tier 1→2→3 evolution, tier-up ceremony UI | `src/services/masteryManager.ts` |
 | Cash-out screen | Surface-or-continue risk/reward at segment checkpoints | `src/ui/components/CashOut.svelte` |
 | Knowledge Library | Fact collection/mastery view | `src/ui/components/KnowledgeLibrary.svelte` |
-| StreakTracker | Daily streak logic | `src/game/meta/StreakTracker.ts` |
-| Knowledge Combo | Consecutive correct answers → multiplier | `src/game/combat/ComboTracker.ts` |
-| Canary system | Adaptive difficulty (per-player, per-domain) | `src/game/meta/CanarySystem.ts` |
+| StreakTracker | Daily streak logic | `src/services/streakTracker.ts` |
+| Canary system | Adaptive difficulty (per-player, per-domain) | `src/services/canarySystem.ts` |
 
 ### P2+ — Post-Launch
 
@@ -152,11 +176,11 @@ Domain Selection (pick primary + secondary domain)
   → Floor 1 begins
 
 Combat Loop (per encounter):
-  1. Draw 5 cards from draw pile
+  1. Draw 5 cards from draw pile (Tier 3 extracted as passives)
   2. Player taps card → question appears (3 answer options)
-  3. Correct → card effect activates (damage/heal/shield), SM-2 quality update
+  3. Correct → card effect activates (damage/heal/shield + passive bonuses), SM-2 update via encounterBridge
      Wrong → card fizzles (gentle dissolve), correct answer shown 2s, SM-2 update
-  4. Enemy turn → telegraphed attack executes
+  4. Enemy turn → telegraphed attack executes, passive heal/regen applied at turn boundary
   5. Repeat until enemy HP = 0 or player HP = 0
 
 Between Encounters:
@@ -210,7 +234,7 @@ Run state serialization target: <50KB (SM-2 data for 500 facts ≈ 25KB).
 Two buses:
 
 - **Global**: `src/events/EventBus.ts` — typed payloads in `src/events/types.ts`. Supports `emit`, `emitAsync`, `on`, `off`, `clear`. Will extend with card combat events (`card-played`, `card-fizzled`, `encounter-won`, `floor-cleared`, `run-ended`).
-- **Phaser bridge**: `GameEventBridge.ts` wires Phaser scene events into Svelte stores.
+- **Encounter bridge**: `encounterBridge.ts` wires game flow controller into deck/enemy/turn systems and CombatScene display.
 
 ## 10. Save/Load Architecture
 
@@ -223,77 +247,109 @@ Two buses:
 
 ## 11. Directory Structure
 
-### Current (exists)
+### Current
 
 ```
 src/
+  CardApp.svelte           — Root component (replaces App.svelte)
   game/
-    scenes/          BootScene, MineScene (stub), DomeScene (stub)
-    managers/        QuizManager, StudyManager, SaveManager, AudioManager,
-                     RelicManager, CelebrationManager, GaiaManager,
-                     AchievementManager, InventoryManager, CombatManager,
-                     CompanionManager, EncounterManager
-    systems/         ParticleSystem, ScreenShakeSystem, SessionTracker,
-                     CameraSystem, AnimationSystem, TextureAtlasLRU, ...
-    entities/        Player, Boss, Creature
+    CardGameManager.ts     — Minimal Phaser boot (~80 lines)
+    scenes/
+      BootScene.ts         — Asset loading
+      CombatScene.ts       — Phaser combat display zone (top 55%)
+    managers/              QuizManager, StudyManager, SaveManager, AudioManager,
+                           RelicManager, CelebrationManager, GaiaManager,
+                           AchievementManager, InventoryManager, CombatManager,
+                           CompanionManager, EncounterManager
+    systems/               ParticleSystem, ScreenShakeSystem, SessionTracker,
+                           CameraSystem, AnimationSystem, TextureAtlasLRU, ...
+    entities/              Player, Boss, Creature
+  services/
+    encounterBridge.ts     — Wires flow → deck → enemy → turns → display
+    gameFlowController.ts  — Screen routing + run lifecycle
+    turnManager.ts         — Turn-based encounter logic
+    deckManager.ts         — Draw/discard/shuffle/exhaust
+    cardFactory.ts         — Creates Card from Fact + ReviewState
+    runPoolBuilder.ts      — Builds 120-fact run pool (40/30/30 split)
+    enemyManager.ts        — Creates enemies, floor scaling, intent rolling
+    floorManager.ts        — Floor/room/boss generation
+    runManager.ts          — Run stats recording
+    juiceManager.ts        — Game juice effects (haptics, sounds, particles)
+    domainResolver.ts      — Maps fact categories to card domains/types
+    factsDB.ts, saveService.ts, sm2.ts, quizService.ts, audioService.ts, ...
   ui/
-    components/      150+ Svelte components (HUD, QuizOverlay, Settings, ...)
-    stores/          gameState, playerData, settings
-  services/          factsDB, saveService, sm2, quizService, audioService, ...
-  data/              types, balance, biomes, relics, saveState, ...
-  events/            EventBus, types
-  dev/               presets, debug bridge
-  _archived-mining/  ~38 mining-specific files (stubs at original paths)
-```
-
-### Planned (to build)
-
-```
-src/
-  game/
-    card/            Card.ts, DeckManager.ts, Hand.ts
-    combat/          Encounter.ts, Enemy.ts, ComboTracker.ts
-    run/             RunManager.ts, RunPoolBuilder.ts
-    meta/            MasteryManager.ts, StreakTracker.ts, CanarySystem.ts
-    scenes/          CombatScene.ts (new)
-  ui/
-    components/      CardRenderer.svelte, DomainSelector.svelte,
-                     FloorMap.svelte, CashOut.svelte, CardReward.svelte,
-                     KnowledgeLibrary.svelte
+    components/
+      CardCombatOverlay.svelte  — Bottom 45% interaction zone
+      CardHand.svelte           — Fanned card hand
+      CardExpanded.svelte       — Expanded card with quiz
+      ComboCounter.svelte       — Knowledge combo display
+      DamageNumber.svelte       — Floating damage numbers
+      DomainSelection.svelte    — Run-start domain picker
+      RoomSelectionOverlay.svelte — 3-door room chooser
+      RestRoomOverlay.svelte    — Rest site (heal/upgrade)
+      MysteryEventOverlay.svelte — Random event resolution
+      RunEndOverlay.svelte      — Post-run summary
+      + 150 other Svelte components (HUD, QuizOverlay, Settings, ...)
+    stores/                gameState, playerData, settings
   data/
-    enemies/         Enemy stat definitions
+    card-types.ts          — Card, CardRunState, CardType, FactDomain types
+    enemies.ts             — Enemy template definitions
+    balance.ts             — (extended with card combat constants)
+    types.ts, biomes.ts, relics.ts, saveState.ts, ...
+  events/                  EventBus, types
+  dev/                     presets, debug bridge
+  _archived-mining/        ~38 mining-specific files (stubs at original paths)
+```
+
+### Planned (P1+)
+
+```
+src/
+  services/
+    masteryManager.ts      — Tier 1→2→3 evolution, tier-up ceremony
+    streakTracker.ts       — Daily streak logic
+    canarySystem.ts        — Adaptive difficulty
+  ui/
+    components/
+      CashOut.svelte       — Surface-or-continue risk/reward
+      KnowledgeLibrary.svelte — Fact collection/mastery view
 ```
 
 ## 12. Dependency Graph
 
 ```
-App.svelte
-  → ui/stores/* (currentScreen, playerData, settings)
-  → game/gameManagerRef → GameManager
+CardApp.svelte
+  → ui/stores/* (currentScreen, playerData)
+  → services/gameFlowController (screen transitions, run state)
+  → services/encounterBridge (combat handlers)
 
-GameManager
-  → scenes/CombatScene (TO BUILD)
-  → managers/* (retained: Quiz, Study, Save, Audio, Relic, Gaia, Achievement)
-  → services/factsDB, services/saveService
-  → stores/gameState, stores/playerData
+CardGameManager (globalThis symbol registry)
+  → scenes/BootScene, scenes/CombatScene
 
-CombatScene (TO BUILD)
-  → card/DeckManager → card/Hand
-  → combat/Encounter → combat/Enemy
-  → run/RunManager
+encounterBridge
+  → CardGameManager (via globalThis[Symbol.for('terra:cardGameManager')])
+  → services/turnManager
+  → services/deckManager + runPoolBuilder + cardFactory
+  → services/enemyManager
+  → services/runManager
+  → services/gameFlowController (activeRunState, onEncounterComplete)
+  → ui/stores/playerData (updateReviewState — SM-2 wiring)
+  → data/balance (TIER3_PASSIVE_VALUE — passive extraction)
 
-RunManager (TO BUILD)
-  → run/RunPoolBuilder → services/factsDB + services/sm2
-  → emits floor/room events → GameEventBridge → stores
+gameFlowController
+  → services/floorManager (room generation)
+  → ui/stores/gameState (currentScreen)
+  → data/balance (run parameters)
 
-GameEventBridge
-  → consumes Phaser events
-  → updates stores, calls managers/services
+CardCombatOverlay.svelte
+  → services/factsDB (real quiz questions)
+  → services/juiceManager (damage numbers, effects)
+  → encounterBridge stores (activeTurnState)
 
 playerData / saveService
   → data/types (PlayerSave)
   → localStorage (profile-namespaced keys)
 
 factsDB
-  → public/facts.db (built by scripts/build-facts-db.mjs)
+  → public/facts.db (built by scripts/build-facts-db.mjs from src/data/seed/)
 ```

@@ -207,7 +207,14 @@
 >
   <!-- Card header -->
   <div class="card-header" style="background: {domainColor};">
-    <span class="header-domain">{domainName}</span>
+    <span class="header-domain">
+      {domainName}
+      {#if card.tier >= 2}
+        <span class="tier-stars" class:tier-2={card.tier === 2} class:tier-3={card.tier === 3}>
+          {card.tier === 2 ? '★★' : '★★★'}
+        </span>
+      {/if}
+    </span>
     <span class="header-icon">{typeIcon}</span>
   </div>
 
@@ -303,6 +310,17 @@
 
   .header-icon {
     font-size: 16px;
+  }
+
+  .tier-stars {
+    font-size: 12px;
+    margin-left: 6px;
+  }
+  .tier-stars.tier-2 {
+    color: #C0C0C0;
+  }
+  .tier-stars.tier-3 {
+    color: #FFD700;
   }
 
   .card-effect-desc {

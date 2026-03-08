@@ -89,3 +89,18 @@ export interface DeckStats {
   exhaustedCount: number;
   handSize: number;
 }
+
+// === Passive Effect ===
+// Tier 3 mastered cards become passive buffs instead of hand cards
+
+/** A passive buff derived from a Tier 3 mastered card. */
+export interface PassiveEffect {
+  /** The factId of the source mastered card. */
+  sourceFactId: string;
+  /** The card type that determines the passive bonus. */
+  cardType: CardType;
+  /** The domain of the source card. */
+  domain: FactDomain;
+  /** The bonus value. */
+  value: number;
+}

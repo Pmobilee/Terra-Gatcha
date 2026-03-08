@@ -102,7 +102,8 @@
       class="card-in-hand"
       class:card-selected={isSelected}
       class:card-dimmed={isOther}
-      class:tier-2={card.tier >= 2}
+      class:tier-2={card.tier === 2}
+      class:tier-3={card.tier === 3}
       class:card-launch={cardAnim === 'launch'}
       class:card-fizzle={cardAnim === 'fizzle'}
       style="
@@ -177,6 +178,11 @@
     box-shadow: 0 0 8px rgba(192, 192, 192, 0.6);
   }
 
+  .tier-3 {
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+    border-color: #FFD700 !important;
+  }
+
   .card-domain-stripe {
     width: 100%;
     height: 4px;
@@ -199,9 +205,16 @@
   .card-tier-badge {
     font-size: 10px;
     font-weight: 600;
-    color: #C0C0C0;
     margin-top: auto;
     margin-bottom: 4px;
+  }
+
+  .tier-2 .card-tier-badge {
+    color: #C0C0C0;
+  }
+
+  .tier-3 .card-tier-badge {
+    color: #FFD700;
   }
 
   @keyframes card-fan-in {

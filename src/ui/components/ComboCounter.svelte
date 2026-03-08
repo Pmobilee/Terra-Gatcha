@@ -8,20 +8,24 @@
 
   let displayText = $derived(count >= 5 ? 'PERFECT!' : count >= 2 ? `${count}x` : '')
   let visible = $derived(count >= 2)
+  // Track previous count without causing effect loops
   let animKey = $state(0)
-  let prevCount = $state(0)
   let showBreak = $state(false)
 
-  // Trigger bounce animation on count change; detect combo break
+  // Use a closure variable (not $state) for previous count to avoid reactive loops
+  let _prevCount = 0
+
   $effect(() => {
-    if (count >= 2) {
-      animKey++
+    const c = count  // Read count reactively
+    // Use untrack for the writes to avoid re-triggering
+    if (c >= 2 && c !== _prevCount) {
+      animKey = animKey + 1
     }
-    if (prevCount > 1 && count === 0) {
+    if (_prevCount > 1 && c === 0) {
       showBreak = true
       setTimeout(() => { showBreak = false }, 200)
     }
-    prevCount = count
+    _prevCount = c
   })
 
   /** Generate particle positions for the enhanced particle ring. */

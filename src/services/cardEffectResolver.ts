@@ -61,6 +61,7 @@ export function isCardBlocked(card: Card, enemy: EnemyInstance): boolean {
  * @param speedBonus - Speed bonus multiplier (1.0 if no bonus, 1.5 if earned).
  * @param buffNextCard - Percentage buff from a previous buff card (0 if none).
  * @param lastCardType - The type of the last card played (for wild cards).
+ * @param passiveBonuses - Optional flat bonuses from Tier 3 passive effects, keyed by card type.
  * @returns The resolved card effect result.
  */
 export function resolveCardEffect(
@@ -71,6 +72,7 @@ export function resolveCardEffect(
   speedBonus: number,
   buffNextCard: number,
   lastCardType?: CardType,
+  passiveBonuses?: Partial<Record<CardType, number>>,
 ): CardEffectResult {
   const result: CardEffectResult = {
     effectType: card.cardType,
@@ -115,7 +117,7 @@ export function resolveCardEffect(
   // Apply effect based on type
   switch (effectiveType) {
     case 'attack': {
-      let damage = finalValue;
+      let damage = finalValue + (passiveBonuses?.attack ?? 0);
       if (isVulnerable(enemy.statusEffects)) {
         damage = Math.round(damage * 1.5);
       }
@@ -124,22 +126,23 @@ export function resolveCardEffect(
       break;
     }
     case 'shield': {
-      result.shieldApplied = finalValue;
+      result.shieldApplied = finalValue + (passiveBonuses?.shield ?? 0);
       break;
     }
     case 'heal': {
-      result.healApplied = Math.min(finalValue, playerState.maxHP - playerState.hp);
+      const healVal = finalValue + (passiveBonuses?.heal ?? 0);
+      result.healApplied = Math.min(healVal, playerState.maxHP - playerState.hp);
       break;
     }
     case 'buff': {
-      // Buff returns finalValue as percentage for next card
-      // No status effect — the turn manager tracks buffNextCard
-      result.finalValue = finalValue;
+      // Buff returns finalValue as percentage for next card, plus passive buff bonus
+      result.finalValue = finalValue + (passiveBonuses?.buff ?? 0);
       break;
     }
     case 'debuff': {
-      // Apply weakness (2 turns, floor(finalValue/2))
-      const weaknessValue = Math.floor(finalValue / 2);
+      // Apply weakness (2 turns, floor(debuffFinal/2)) with passive bonus
+      const debuffFinal = finalValue + (passiveBonuses?.debuff ?? 0);
+      const weaknessValue = Math.floor(debuffFinal / 2);
       if (weaknessValue > 0) {
         result.statusesApplied.push({
           type: 'weakness',
@@ -147,8 +150,8 @@ export function resolveCardEffect(
           turnsRemaining: 2,
         });
       }
-      // Also apply vulnerable if finalValue >= 5
-      if (finalValue >= 5) {
+      // Also apply vulnerable if debuffFinal >= 5
+      if (debuffFinal >= 5) {
         result.statusesApplied.push({
           type: 'vulnerable',
           value: 1,
@@ -158,8 +161,9 @@ export function resolveCardEffect(
       break;
     }
     case 'regen': {
-      // Regen status (3 turns, ceil(finalValue/3) per turn)
-      const regenPerTurn = Math.ceil(finalValue / 3);
+      // Regen status (3 turns, ceil(regenFinal/3) per turn) with passive bonus
+      const regenFinal = finalValue + (passiveBonuses?.regen ?? 0);
+      const regenPerTurn = Math.ceil(regenFinal / 3);
       if (regenPerTurn > 0) {
         result.statusesApplied.push({
           type: 'regen',
@@ -170,7 +174,8 @@ export function resolveCardEffect(
       break;
     }
     case 'utility': {
-      result.extraCardsDrawn = 1;
+      // Utility draws extra cards; passive bonus adds more draws (capped at draw pile)
+      result.extraCardsDrawn = 1 + (passiveBonuses?.utility ?? 0);
       break;
     }
     case 'wild': {

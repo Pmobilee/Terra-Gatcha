@@ -6,7 +6,9 @@
   import CardExpanded from './CardExpanded.svelte'
   import DamageNumber from './DamageNumber.svelte'
   import ComboCounter from './ComboCounter.svelte'
+  import PassiveEffectBar from './PassiveEffectBar.svelte'
   import { juiceManager } from '../../services/juiceManager'
+  import { factsDB } from '../../services/factsDB'
 
   interface Props {
     turnState: TurnState | null
@@ -23,6 +25,7 @@
   let cardAnimations = $state<Record<string, 'launch' | 'fizzle' | null>>({})
   let comboCount = $derived(turnState?.comboCount ?? 0)
   let isPerfectTurn = $derived(turnState?.isPerfectTurn ?? false)
+  let activePassives = $derived(turnState?.activePassives ?? [])
   let damageIdCounter = $state(0)
 
   /** Remove a damage number by id after its animation completes. */
@@ -67,43 +70,49 @@
   )
 
   /**
-   * Generate placeholder question and answers for a card.
-   * This will be replaced with real quiz data when wired to the quiz system.
+   * Build quiz data for a card using real facts from the database.
+   * Falls back to placeholder text if the fact can't be loaded.
    */
-  function getPlaceholderQuiz(card: Card): { question: string; answers: string[]; correctAnswer: string } {
-    const correct = `Answer for ${card.factId}`
-    const distractors = [
-      `Wrong A for ${card.factId}`,
-      `Wrong B for ${card.factId}`,
-    ]
-    // For tier 2, add more distractors (5 total answers)
-    if (card.tier >= 2) {
-      distractors.push(`Wrong C for ${card.factId}`)
-      distractors.push(`Wrong D for ${card.factId}`)
+  function getQuizForCard(card: Card): { question: string; answers: string[]; correctAnswer: string } {
+    const fact = factsDB.isReady() ? factsDB.getById(card.factId) : null
+
+    if (!fact) {
+      // Fallback when DB isn't ready or fact not found
+      return {
+        question: `Question for ${card.factId}`,
+        answers: [`Answer`, `Wrong A`, `Wrong B`],
+        correctAnswer: `Answer`,
+      }
     }
 
-    // Shuffle answers with correct in random position
-    const allAnswers = [...distractors, correct]
-    for (let i = allAnswers.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [allAnswers[i], allAnswers[j]] = [allAnswers[j], allAnswers[i]]
-    }
+    // Pick distractor count based on tier: T1=2, T2=3, T3=4
+    const distractorCount = card.tier === 1 ? 2 : card.tier === 2 ? 3 : 4
+
+    // Shuffle and take a subset of distractors
+    const shuffledDistractors = [...fact.distractors].sort(() => Math.random() - 0.5)
+    const picked = shuffledDistractors.slice(0, Math.min(distractorCount, shuffledDistractors.length))
+
+    // Insert correct answer at random position
+    const allAnswers = [...picked]
+    const insertIdx = Math.floor(Math.random() * (allAnswers.length + 1))
+    allAnswers.splice(insertIdx, 0, fact.correctAnswer)
 
     return {
-      question: `What is the answer to fact ${card.factId}?`,
+      question: fact.quizQuestion,
       answers: allAnswers,
-      correctAnswer: correct,
+      correctAnswer: fact.correctAnswer,
     }
   }
 
-  /** Placeholder quiz data for the selected card. */
-  let quizData = $derived(selectedCard ? getPlaceholderQuiz(selectedCard) : null)
+  /** Quiz data for the selected card, sourced from factsDB. */
+  let quizData = $derived(selectedCard ? getQuizForCard(selectedCard) : null)
 
-  // Reset state when turn changes
+  // Reset state when turn number changes (new turn drawn)
+  let _lastTurnNumber = 0
   $effect(() => {
-    if (turnState) {
-      // Track turn number to detect new turns
-      const _tn = turnState.turnNumber
+    const tn = turnState?.turnNumber ?? 0
+    if (tn !== _lastTurnNumber) {
+      _lastTurnNumber = tn
       selectedIndex = null
       answeredThisTurn = 0
     }
@@ -177,6 +186,9 @@
     <!-- Empty state when no combat is active -->
     <div class="empty-state">Waiting for encounter...</div>
   {:else}
+    <!-- Passive effects from Tier 3 mastered cards -->
+    <PassiveEffectBar passives={activePassives} />
+
     <!-- Backdrop for cancel when card is expanded -->
     {#if selectedIndex !== null && selectedCard && quizData}
       <button

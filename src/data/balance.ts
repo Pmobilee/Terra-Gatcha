@@ -850,6 +850,18 @@ export const TIER_MULTIPLIER: Record<number, number> = {
   3: 0,
 };
 
+/** Passive bonus values for Tier 3 mastered cards by card type. */
+export const TIER3_PASSIVE_VALUE: Record<string, number> = {
+  attack: 1,    // +1 flat damage to all attacks
+  shield: 1,    // +1 flat block to all shields
+  heal: 1,      // +1 HP healed at turn start
+  utility: 1,   // +1 extra card drawn at turn start (capped)
+  buff: 2,      // +2% to next card buff baseline
+  debuff: 1,    // +1 to debuff potency
+  regen: 1,     // +1 regen at turn start
+  wild: 1,      // +1 to wild card effect
+};
+
 // Difficulty-proportional power: lower ease = harder card = higher multiplier
 // Sorted ascending by maxEase. First match wins.
 export const EASE_POWER: Array<{ maxEase: number; multiplier: number }> = [

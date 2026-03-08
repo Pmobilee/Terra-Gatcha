@@ -62,6 +62,32 @@ docs/RESEARCH/     — Design specs and research (source of truth for game desig
 - After workers complete, the orchestrator verifies (typecheck, build, visual test) and commits
 - This conserves Opus budget for architecture and creative decisions where it matters most
 
+## Game Design Documentation — MANDATORY
+
+Every code change that touches gameplay MUST have corresponding documentation updates. This is non-negotiable.
+
+### What Triggers a Doc Update
+- **Addition**: New mechanic, card type, enemy, status effect, UI element, screen, or system → add to `docs/GAME_DESIGN.md` AND `docs/ARCHITECTURE.md`
+- **Change**: Modified balance values, altered mechanic behavior, changed UX flow, updated card effects → update the relevant sections in `docs/GAME_DESIGN.md`
+- **Deletion**: Removed feature, deprecated system, dead code cleanup → remove from docs, do NOT leave stale references
+- **Any change to data files** (`src/data/balance.ts`, `src/data/card-types.ts`, enemy definitions, fact DB) → update `docs/GAME_DESIGN.md` balance/data sections
+
+### Which Docs to Update
+| Change Type | `GAME_DESIGN.md` | `ARCHITECTURE.md` | `PROGRESS.md` | Phase Doc |
+|---|---|---|---|---|
+| New mechanic/system | YES | YES | if phase-related | YES |
+| Balance tweak | YES | — | — | — |
+| New UI component | YES (if player-facing) | YES | if phase-related | YES |
+| Bug fix changing behavior | YES (if it changes documented behavior) | — | — | — |
+| File restructure | — | YES | — | — |
+| Phase completion | — | — | YES | Move to completed/ |
+
+### Enforcement
+- The orchestrator MUST verify docs are current after EVERY worker task completes
+- Workers MUST include doc updates in the same task as code changes — never as a separate follow-up
+- If a worker's PR/task does not update docs where required, the orchestrator MUST spawn a follow-up worker to fix it before the task is considered done
+- Stale docs are treated as bugs — they have the same priority as broken tests
+
 ## Visual Testing with Playwright — MANDATORY
 
 Two tools available — use the right one for the job:
@@ -152,8 +178,9 @@ Never skip to step 3 — guessing at fixes without evidence wastes cycles and cr
 2. Orchestrator reads the detailed phase doc from `docs/roadmap/phases/`
 3. Orchestrator spawns coding workers with the phase doc content as their spec
 4. Workers implement, orchestrator verifies (typecheck, build, Playwright screenshots, acceptance criteria)
-5. On completion: orchestrator checks off the phase in PROGRESS.md, moves the phase doc to `docs/roadmap/completed/`
-6. Push to remote after every completed phase
+5. Orchestrator verifies ALL doc files (`GAME_DESIGN.md`, `ARCHITECTURE.md`, phase doc) accurately reflect the implemented state — spawns doc-fix worker if not
+6. On completion: orchestrator checks off the phase in PROGRESS.md, moves the phase doc to `docs/roadmap/completed/`
+7. Push to remote after every completed phase
 
 ### Active Work Tracking
 - `docs/roadmap/in-progress/` contains docs for phases currently being actively worked on (moved from `phases/` when work begins)
@@ -168,6 +195,7 @@ Never skip to step 3 — guessing at fixes without evidence wastes cycles and cr
 - Always provide sub-agents with full context: file paths, expected behavior, verification commands
 - Parallelize independent sub-agent tasks whenever possible
 - The orchestrator must NEVER edit files directly — always delegate via Agent tool
+- **EVERY worker task prompt MUST include**: "Update `docs/GAME_DESIGN.md` and `docs/ARCHITECTURE.md` if your changes affect gameplay, balance, systems, or file structure. Stale docs = bugs."
 
 ## Specialized Task Patterns
 ### Security Audit
