@@ -1,8 +1,9 @@
 import type { Fact, ReviewState } from '../data/types';
-import type { Card, CardTier } from '../data/card-types';
-import { resolveDomain, resolveCardType } from './domainResolver';
+import type { Card, CardTier, CardType } from '../data/card-types';
+import { resolveDomain } from './domainResolver';
 import { BASE_EFFECT, EASE_POWER } from '../data/balance';
 import { getCardTier, qualifiesForMasteryTrial } from './tierDerivation';
+import { deriveCardTypeForFactId } from './cardTypeAllocator';
 
 let _cardIdCounter = 0;
 
@@ -57,15 +58,20 @@ export function computeEffectMultiplier(reviewState: ReviewState | undefined): n
 }
 
 /**
- * Creates a Card entity from a Fact and its optional SM-2 ReviewState.
+ * Creates a Card entity from a Fact and its optional review state.
  *
  * @param fact - The source fact from the facts DB.
- * @param reviewState - The player's SM-2 state for this fact, or undefined if new.
+ * @param reviewState - The player's review state for this fact, or undefined if new.
+ * @param cardTypeOverride - Optional explicit card type assigned by run pool builder.
  * @returns A fully initialized Card ready for deck insertion.
  */
-export function createCard(fact: Fact, reviewState: ReviewState | undefined): Card {
+export function createCard(
+  fact: Fact,
+  reviewState: ReviewState | undefined,
+  cardTypeOverride?: CardType,
+): Card {
   const domain = resolveDomain(fact);
-  const cardType = resolveCardType(domain);
+  const cardType = cardTypeOverride ?? deriveCardTypeForFactId(fact.id);
   const tier = computeTier(reviewState);
   const baseEffectValue = BASE_EFFECT[cardType] ?? 0;
   const effectMultiplier = computeEffectMultiplier(reviewState);

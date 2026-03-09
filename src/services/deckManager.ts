@@ -50,7 +50,9 @@ export function createDeck(pool: Card[]): CardRunState {
  * @returns The array of cards drawn (same references as in deck.hand).
  */
 export function drawHand(deck: CardRunState, count?: number): Card[] {
-  const toDraw = count ?? HAND_SIZE;
+  const requested = count ?? HAND_SIZE;
+  const availableSpace = Math.max(0, HAND_SIZE - deck.hand.length);
+  const toDraw = Math.max(0, Math.min(requested, availableSpace));
   const drawn: Card[] = [];
   const mechanicsInHand = new Set(deck.hand.map((card) => card.mechanicId).filter(Boolean) as string[]);
 

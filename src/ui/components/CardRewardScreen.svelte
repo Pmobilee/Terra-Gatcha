@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Card, CardType, FactDomain } from '../../data/card-types'
+  import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
 
   interface Props {
     options: Card[]
@@ -56,7 +57,7 @@
       <button
         class="reward-card"
         class:selected={selected?.id === card.id}
-        style="--domain-color: {DOMAIN_COLORS[card.domain]};"
+        style="--domain-color: {DOMAIN_COLORS[card.domain]}; --frame-image: url('{card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType)}');"
         onclick={() => selectCard(card)}
       >
         <div class="top">
@@ -66,6 +67,7 @@
         <div class="name">{card.mechanicName ?? card.cardType}</div>
         <div class="value">{Math.round(card.baseEffectValue * card.effectMultiplier)}</div>
         <div class="domain">{card.domain}</div>
+        <img class="domain-icon" src={getDomainIconPath(card.domain)} alt={`${card.domain} icon`} />
         {#if tierLabel(card.tier)}
           <div class="tier">{tierLabel(card.tier)}</div>
         {/if}
@@ -115,7 +117,10 @@
   .reward-card {
     border: 2px solid var(--domain-color);
     border-radius: 12px;
-    background: #1a2332;
+    background:
+      linear-gradient(rgba(18, 26, 38, 0.88), rgba(18, 26, 38, 0.92)),
+      var(--frame-image) center / cover no-repeat,
+      #1a2332;
     color: inherit;
     padding: 10px;
     min-height: 170px;
@@ -159,6 +164,14 @@
     text-transform: capitalize;
   }
 
+  .domain-icon {
+    margin-top: 6px;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+
   .tier {
     margin-top: 6px;
     font-size: 11px;
@@ -193,4 +206,3 @@
     }
   }
 </style>
-

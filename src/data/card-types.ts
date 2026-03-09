@@ -1,5 +1,5 @@
 // === Card Type ===
-// Maps to combat roles derived from knowledge domains
+// Combat role used by card effects.
 
 export type CardType = 'attack' | 'shield' | 'heal' | 'utility' | 'buff' | 'debuff' | 'regen' | 'wild';
 
@@ -7,20 +7,6 @@ export type CardType = 'attack' | 'shield' | 'heal' | 'utility' | 'buff' | 'debu
 // Normalized domain categories derived from the existing fact.category[] hierarchy
 
 export type FactDomain = 'science' | 'history' | 'geography' | 'language' | 'math' | 'arts' | 'medicine' | 'technology';
-
-// === Domain → CardType Mapping ===
-// Each knowledge domain produces a specific card combat role
-
-export const DOMAIN_CARD_TYPE: Record<FactDomain, CardType> = {
-  science:    'attack',
-  history:    'shield',
-  geography:  'utility',
-  language:   'buff',
-  math:       'debuff',
-  arts:       'heal',
-  medicine:   'regen',
-  technology: 'wild',
-};
 
 // === Card Tier ===
 // Derived from SM-2 review state progression
@@ -35,7 +21,7 @@ export interface Card {
   id: string;
   /** Links to the source Fact in the facts DB */
   factId: string;
-  /** Combat role, derived from domain */
+  /** Combat role, assigned from weighted distribution (independent of domain) */
   cardType: CardType;
   /** Knowledge domain, derived from fact.category */
   domain: FactDomain;

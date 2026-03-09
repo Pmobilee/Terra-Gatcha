@@ -1,6 +1,7 @@
 // === Turn Manager ===
 // Core encounter loop for card combat.
 
+import { get } from 'svelte/store';
 import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
 import type { EnemyInstance } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
@@ -21,6 +22,7 @@ import { applyDamageToEnemy, executeEnemyIntent, rollNextIntent, tickEnemyStatus
 import { applyStatusEffect } from '../data/statusEffects';
 import { COMBO_MULTIPLIERS, PLAYER_START_HP, START_AP_PER_TURN, MAX_AP_PER_TURN } from '../data/balance';
 import { MECHANICS_BY_TYPE } from '../data/mechanics';
+import { difficultyMode } from './cardPreferences';
 
 export type TurnPhase = 'draw' | 'player_action' | 'enemy_turn' | 'turn_end' | 'encounter_end';
 
@@ -66,6 +68,8 @@ export interface TurnState {
   foresightTurnsRemaining: number;
   persistentShield: number;
   triggeredRelicId: string | null;
+  canaryEnemyDamageMultiplier: number;
+  canaryQuestionBias: -1 | 0 | 1;
   result: EncounterResult;
   turnLog: TurnLogEntry[];
 }
@@ -130,6 +134,57 @@ function transmuteRandomHandCard(turnState: TurnState): void {
   };
 }
 
+function createNoEffect(card: Card): CardEffectResult {
+  return {
+    effectType: card.cardType,
+    rawValue: 0,
+    finalValue: 0,
+    targetHit: false,
+    damageDealt: 0,
+    shieldApplied: 0,
+    healApplied: 0,
+    statusesApplied: [],
+    extraCardsDrawn: 0,
+    enemyDefeated: false,
+    mechanicId: card.mechanicId,
+    mechanicName: card.mechanicName,
+  };
+}
+
+function applyExplorerPartialEffect(turnState: TurnState, card: Card): CardEffectResult {
+  const value = Math.max(0, Math.round(card.baseEffectValue * card.effectMultiplier * 0.5));
+  const effect: CardEffectResult = {
+    effectType: card.cardType,
+    rawValue: value,
+    finalValue: value,
+    targetHit: true,
+    damageDealt: 0,
+    shieldApplied: 0,
+    healApplied: 0,
+    statusesApplied: [],
+    extraCardsDrawn: 0,
+    enemyDefeated: false,
+    mechanicId: card.mechanicId,
+    mechanicName: card.mechanicName,
+  };
+
+  if (card.cardType === 'attack' || card.cardType === 'wild') {
+    if (value > 0) {
+      const damageResult = applyDamageToEnemy(turnState.enemy, value);
+      effect.damageDealt = value;
+      effect.enemyDefeated = damageResult.defeated;
+    }
+  } else if (card.cardType === 'shield') {
+    applyShield(turnState.playerState, value);
+    effect.shieldApplied = value;
+  } else if (card.cardType === 'heal' || card.cardType === 'regen') {
+    healPlayer(turnState.playerState, value);
+    effect.healApplied = value;
+  }
+
+  return effect;
+}
+
 export function startEncounter(
   deck: CardRunState,
   enemy: EnemyInstance,
@@ -170,6 +225,8 @@ export function startEncounter(
     foresightTurnsRemaining: 0,
     persistentShield: 0,
     triggeredRelicId: null,
+    canaryEnemyDamageMultiplier: 1,
+    canaryQuestionBias: 0,
     result: null,
     turnLog: [],
   };
@@ -184,6 +241,33 @@ export function playCardAction(
   answeredCorrectly: boolean,
   speedBonusEarned: boolean,
 ): PlayCardResult {
+  if (turnState.phase !== 'player_action' || turnState.result !== null) {
+    const fallbackCard = turnState.deck.hand.find((card) => card.id === cardId);
+    const effect = fallbackCard ? createNoEffect(fallbackCard) : {
+      effectType: 'attack' as CardType,
+      rawValue: 0,
+      finalValue: 0,
+      targetHit: false,
+      damageDealt: 0,
+      shieldApplied: 0,
+      healApplied: 0,
+      statusesApplied: [],
+      extraCardsDrawn: 0,
+      enemyDefeated: false,
+      mechanicId: undefined,
+      mechanicName: undefined,
+    };
+    return {
+      effect,
+      comboCount: turnState.comboCount,
+      enemyDefeated: false,
+      fizzled: false,
+      blocked: true,
+      isPerfectTurn: turnState.isPerfectTurn,
+      turnState,
+    };
+  }
+
   turnState.activeRelicIds = buildActiveRelicIds(turnState.activeRelics);
   turnState.baseComboCount = turnState.activeRelicIds.has('combo_master') ? 1 : 0;
   if (turnState.comboCount < turnState.baseComboCount) turnState.comboCount = turnState.baseComboCount;
@@ -194,20 +278,7 @@ export function playCardAction(
 
   const apCost = Math.max(1, cardInHand.apCost ?? 1);
   if (turnState.apCurrent < apCost) {
-    const blockedEffect: CardEffectResult = {
-      effectType: cardInHand.cardType,
-      rawValue: 0,
-      finalValue: 0,
-      targetHit: false,
-      damageDealt: 0,
-      shieldApplied: 0,
-      healApplied: 0,
-      statusesApplied: [],
-      extraCardsDrawn: 0,
-      enemyDefeated: false,
-      mechanicId: cardInHand.mechanicId,
-      mechanicName: cardInHand.mechanicName,
-    };
+    const blockedEffect: CardEffectResult = createNoEffect(cardInHand);
     turnState.turnLog.push({
       type: 'blocked',
       message: `Not enough AP (${apCost} required)`,
@@ -231,20 +302,7 @@ export function playCardAction(
   if (isCardBlocked(card, enemy)) {
     turnState.cardsPlayedThisTurn += 1;
     turnState.isPerfectTurn = false;
-    const blockedEffect: CardEffectResult = {
-      effectType: card.cardType,
-      rawValue: 0,
-      finalValue: 0,
-      targetHit: false,
-      damageDealt: 0,
-      shieldApplied: 0,
-      healApplied: 0,
-      statusesApplied: [],
-      extraCardsDrawn: 0,
-      enemyDefeated: false,
-      mechanicId: card.mechanicId,
-      mechanicName: card.mechanicName,
-    };
+    const blockedEffect: CardEffectResult = createNoEffect(card);
     turnState.turnLog.push({
       type: 'blocked',
       message: `${card.cardType} card blocked by enemy immunity`,
@@ -262,6 +320,41 @@ export function playCardAction(
   }
 
   if (!answeredCorrectly) {
+    const mode = get(difficultyMode);
+    if (mode === 'explorer') {
+      turnState.apCurrent = Math.min(turnState.apMax, turnState.apCurrent + apCost);
+      const partialEffect = applyExplorerPartialEffect(turnState, card);
+      turnState.comboCount = turnState.baseComboCount;
+      turnState.cardsPlayedThisTurn += 1;
+      turnState.isPerfectTurn = false;
+      turnState.turnLog.push({
+        type: 'play',
+        message: 'Explorer mode: partial effect on wrong answer',
+        cardId,
+        value: partialEffect.finalValue,
+      });
+
+      if (partialEffect.enemyDefeated) {
+        turnState.result = 'victory';
+        turnState.phase = 'encounter_end';
+        turnState.turnLog.push({ type: 'victory', message: 'Enemy defeated!' });
+      }
+
+      return {
+        effect: partialEffect,
+        comboCount: turnState.comboCount,
+        enemyDefeated: partialEffect.enemyDefeated,
+        fizzled: false,
+        blocked: false,
+        isPerfectTurn: false,
+        turnState,
+      };
+    }
+
+    if (mode === 'scholar') {
+      turnState.playerState.hp = Math.max(0, turnState.playerState.hp - 3);
+    }
+
     turnState.comboCount = turnState.baseComboCount;
     turnState.cardsPlayedThisTurn += 1;
     turnState.isPerfectTurn = false;
@@ -272,18 +365,8 @@ export function playCardAction(
     });
 
     const fizzledEffect: CardEffectResult = {
-      effectType: card.cardType,
-      rawValue: 0,
-      finalValue: 0,
+      ...createNoEffect(card),
       targetHit: true,
-      damageDealt: 0,
-      shieldApplied: 0,
-      healApplied: 0,
-      statusesApplied: [],
-      extraCardsDrawn: 0,
-      enemyDefeated: false,
-      mechanicId: card.mechanicId,
-      mechanicName: card.mechanicName,
     };
 
     return {
@@ -426,6 +509,7 @@ export function playCardAction(
 }
 
 export function skipCard(turnState: TurnState, cardId: string): TurnState {
+  if (turnState.phase !== 'player_action' || turnState.result !== null) return turnState;
   deckPlayCard(turnState.deck, cardId);
   turnState.skippedCardsThisEncounter += 1;
   turnState.turnLog.push({
@@ -437,6 +521,16 @@ export function skipCard(turnState: TurnState, cardId: string): TurnState {
 }
 
 export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
+  if (turnState.phase !== 'player_action' || turnState.result !== null) {
+    return {
+      damageDealt: 0,
+      effectsApplied: [],
+      playerDefeated: turnState.playerState.hp <= 0,
+      nextEnemyIntent: turnState.enemy.nextIntent.telegraph,
+      turnState,
+    };
+  }
+
   turnState.activeRelicIds = buildActiveRelicIds(turnState.activeRelics);
   const { playerState, enemy, deck } = turnState;
 
@@ -458,6 +552,19 @@ export function endPlayerTurn(turnState: TurnState): EnemyTurnResult {
 
   if (intentResult.damage > 0) {
     let incomingDamage = intentResult.damage;
+    if (turnState.turnNumber >= 15) {
+      const enrageBonus = (turnState.turnNumber - 14) * 3;
+      incomingDamage += enrageBonus;
+    }
+    const mode = get(difficultyMode);
+    if (mode === 'explorer') {
+      incomingDamage = Math.round(incomingDamage * 0.7);
+    } else if (mode === 'scholar') {
+      incomingDamage = Math.round(incomingDamage * 1.2);
+    }
+
+    incomingDamage = Math.max(0, Math.round(incomingDamage * (turnState.canaryEnemyDamageMultiplier ?? 1)));
+
     if (turnState.activeRelicIds.has('glass_cannon')) {
       incomingDamage = Math.round(incomingDamage * 1.10);
       turnState.triggeredRelicId = 'glass_cannon';

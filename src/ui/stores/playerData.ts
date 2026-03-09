@@ -19,6 +19,7 @@ function getUnlockedPaintingIds(): string[] { return [] }
 import { AGE_BRACKET_KEY } from '../../services/legalConstants'
 import { createReviewState, isDue, isMastered, getMasteryLevel, reviewFact, reviewCard, reviewCardEarly } from '../../services/sm2'
 import type { AnkiButton } from '../../services/sm2'
+import { migrateReviewState as migrateToFsrsState, reviewFact as reviewFactFsrs } from '../../services/fsrsScheduler'
 // cosmetics.ts and knowledgeStore.ts archived — inline stubs
 type Cosmetic = { id: string; name: string; price: number; category: string; cost: Partial<Record<string, number>> }
 function calculateKnowledgePoints(_stats: unknown, _mastered: number): number { return 0 }
@@ -461,7 +462,17 @@ export function getDueReviews(): ReviewState[] {
  * @param button - Anki button: 'again', 'okay', or 'good'.
  * @param factCategory - Optional top-level category for behavioral learning.
  */
-export function updateReviewStateByButton(factId: string, button: AnkiButton, factCategory?: string): void {
+export interface ReviewUpdateMeta {
+  responseTimeMs?: number
+  variantIndex?: number
+}
+
+export function updateReviewStateByButton(
+  factId: string,
+  button: AnkiButton,
+  factCategory?: string,
+  meta?: ReviewUpdateMeta,
+): void {
   let masteryEvent: { factId: string; masteryNumber: number } | null = null
 
   playerSave.update((save) => {
@@ -470,7 +481,13 @@ export function updateReviewStateByButton(factId: string, button: AnkiButton, fa
     const existingState = save.reviewStates.find(s => s.factId === factId)
     if (!existingState) return save
 
-    const newState = reviewCard(existingState, button)
+    const migrated = migrateToFsrsState(existingState)
+    const newState = reviewFactFsrs(
+      migrated,
+      button !== 'again',
+      meta?.responseTimeMs ?? 0,
+      meta?.variantIndex,
+    )
     const correct = button !== 'again'
 
     // Phase 12: Check for fast mastery (interval crossing 14-day threshold)

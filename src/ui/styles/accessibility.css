@@ -1,13 +1,18 @@
-/* Accessibility overrides — Phase 20.5 (DD-V2-178) */
+/* Accessibility overrides — card roguelite accessibility baseline. */
 
 /* ── Scalable text ─────────────────────────────────────── */
 :root {
+  --text-scale: 1;
   /* Base scales with system font-size settings */
   font-size: clamp(14px, 4vw, 18px);
 }
 
 body, input, button, select, textarea {
-  font-size: max(0.75rem, 12px);
+  font-size: max(calc(0.75rem * var(--text-scale)), 12px);
+}
+
+h1, h2, h3, h4, p, span, label, li, strong {
+  font-size: calc(1em * var(--text-scale));
 }
 
 /* ── High-contrast quiz mode ───────────────────────────── */
@@ -32,6 +37,24 @@ body, input, button, select, textarea {
   border-color: #cc0000 !important;
 }
 
+.high-contrast {
+  --color-bg: #000000;
+  --color-surface: #000000;
+  --color-text: #ffffff;
+  --color-text-dim: #d1d5db;
+}
+
+body.high-contrast {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+.high-contrast button,
+.high-contrast [role="button"] {
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
 /* ── Reduced motion ────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -50,8 +73,8 @@ body, input, button, select, textarea {
 
 /* ── Minimum touch targets ─────────────────────────────── */
 button, [role="button"], a[href] {
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 48px;
+  min-height: 48px;
 }
 
 /* ── Focus indicators ──────────────────────────────────── */

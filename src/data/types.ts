@@ -178,11 +178,34 @@ export interface ReviewState {
   passedMasteryTrial?: boolean
   /** FSRS retrievability used for relic dormancy checks. */
   retrievability?: number
+  /** FSRS difficulty (1-10), lower is easier recall. */
+  difficulty?: number
+  /** Next due timestamp mirror for FSRS wrappers. */
+  due?: number
+  /** Last review timestamp mirror for FSRS wrappers. */
+  lastReview?: number
+  /** Total successful review reps (FSRS mirror). */
+  reps?: number
+  /** Total lapses (FSRS mirror). */
+  lapses?: number
+  /** Current FSRS state label for compatibility. */
+  state?: 'new' | 'learning' | 'review' | 'relearning'
   /** Timestamp (ms) when fact entered mastery/relic state. */
   masteredAt?: number
   /** Relic assigned when this fact graduated to Tier 3. */
   graduatedRelicId?: string | null
+  /** Last question variant index used for this fact (anti-repeat). */
+  lastVariantIndex?: number
+  /** Lifetime analytics for encounter answers. */
+  totalAttempts?: number
+  totalCorrect?: number
+  averageResponseTimeMs?: number
+  /** Tier transition log for library detail view. */
+  tierHistory?: Array<{ from: '1' | '2a' | '2b' | '3'; to: '1' | '2a' | '2b' | '3'; date: number }>
 }
+
+/** Forward-compatible alias used by card-roguelite systems after FSRS migration. */
+export type PlayerFactState = ReviewState
 
 // ============================================================
 // MINE / RUN TYPES

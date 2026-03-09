@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { currentScreen } from './ui/stores/gameState'
   import {
     activeCardRewardOptions,
@@ -24,12 +25,15 @@
     handleEndTurn,
     handlePlayCard,
     handleSkipCard,
+    handleUseHint,
     startEncounterForRoom,
   } from './services/encounterBridge'
   import type { FactDomain } from './data/card-types'
   import type { MysteryEffect } from './services/floorManager'
   import { get } from 'svelte/store'
   import { healPlayer } from './services/runManager'
+  import { isSlowReader } from './services/cardPreferences'
+  import { unlockCardAudio } from './services/cardAudioManager'
 
   import DomainSelection from './ui/components/DomainSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
@@ -39,13 +43,34 @@
   import RunEndScreen from './ui/components/RunEndScreen.svelte'
   import CardRewardScreen from './ui/components/CardRewardScreen.svelte'
   import RetreatOrDelve from './ui/components/RetreatOrDelve.svelte'
+  import DungeonEntrance from './ui/components/DungeonEntrance.svelte'
+  import SettingsPanel from './ui/components/SettingsPanel.svelte'
+  import KnowledgeLibrary from './ui/components/KnowledgeLibrary.svelte'
 
   function handleStartRun(): void {
     startNewRun()
   }
 
+  function handleOpenLibrary(): void {
+    currentScreen.set('library')
+  }
+
+  function handleOpenSettings(): void {
+    currentScreen.set('settings')
+  }
+
+  function handleBackToMenu(): void {
+    currentScreen.set('mainMenu')
+  }
+
   function handleDomainsChosen(primary: FactDomain, secondary: FactDomain): void {
     onDomainsSelected(primary, secondary)
+    startEncounterForRoom()
+  }
+
+  function handleOnboardingBegin(slowReader: boolean): void {
+    isSlowReader.set(slowReader)
+    onDomainsSelected('science', 'history')
     startEncounterForRoom()
   }
 
@@ -94,6 +119,26 @@
     if (floor < 9) return 'The Abyss'
     return 'Endless Depths'
   }
+
+  function handleUserInteraction(): void {
+    unlockCardAudio()
+  }
+
+  onMount(() => {
+    const onInteraction = (): void => {
+      handleUserInteraction()
+      window.removeEventListener('pointerdown', onInteraction)
+      window.removeEventListener('keydown', onInteraction)
+    }
+
+    window.addEventListener('pointerdown', onInteraction, { once: true })
+    window.addEventListener('keydown', onInteraction, { once: true })
+
+    return () => {
+      window.removeEventListener('pointerdown', onInteraction)
+      window.removeEventListener('keydown', onInteraction)
+    }
+  })
 </script>
 
 <div class="card-app" data-screen={$currentScreen}>
@@ -110,6 +155,12 @@
       <button class="start-btn" data-testid="btn-start-run" onclick={handleStartRun}>
         Start Run
       </button>
+      <button class="menu-btn menu-btn-secondary" onclick={handleOpenLibrary}>
+        Knowledge Library
+      </button>
+      <button class="menu-btn menu-btn-secondary" onclick={handleOpenSettings}>
+        Settings
+      </button>
     </div>
   {/if}
 
@@ -117,12 +168,18 @@
     <DomainSelection onstart={handleDomainsChosen} onback={returnToMenu} />
   {/if}
 
+  {#if $currentScreen === 'onboarding'}
+    <DungeonEntrance onbegin={handleOnboardingBegin} />
+  {/if}
+
   {#if $currentScreen === 'combat'}
     <CardCombatOverlay
       turnState={$activeTurnState}
+      activeBounties={$activeRunState?.bounties ?? []}
       onplaycard={handlePlayCard}
       onskipcard={handleSkipCard}
       onendturn={handleEndTurn}
+      onusehint={handleUseHint}
     />
   {/if}
 
@@ -192,15 +249,30 @@
         result={end.result}
         floorReached={end.floorReached}
         factsAnswered={end.factsAnswered}
+        correctAnswers={end.correctAnswers}
         accuracy={end.accuracy}
         bestCombo={end.bestCombo}
         cardsEarned={end.cardsEarned}
+        newFactsLearned={end.newFactsLearned}
+        factsMastered={end.factsMastered}
+        encountersWon={end.encountersWon}
+        encountersTotal={end.encountersTotal}
+        completedBounties={end.completedBounties}
+        runDurationMs={end.runDurationMs}
         rewardMultiplier={end.rewardMultiplier}
         currencyEarned={end.currencyEarned}
         onplayagain={playAgain}
         onhome={returnToMenu}
       />
     {/if}
+  {/if}
+
+  {#if $currentScreen === 'library'}
+    <KnowledgeLibrary onback={handleBackToMenu} />
+  {/if}
+
+  {#if $currentScreen === 'settings'}
+    <SettingsPanel onback={handleBackToMenu} />
   {/if}
 </div>
 
@@ -276,5 +348,27 @@
 
   .start-btn:active {
     transform: scale(0.97);
+  }
+
+  .menu-btn {
+    width: 220px;
+    height: 52px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.2s;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: calc(14px * var(--text-scale, 1));
+  }
+
+  .menu-btn-secondary {
+    background: #2d333b;
+    color: #f8fafc;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.35);
+  }
+
+  .menu-btn-secondary:hover {
+    transform: scale(1.02);
   }
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Card, FactDomain, CardType } from '../../data/card-types'
+  import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
 
   interface Props {
     cards: Card[]
@@ -70,10 +71,8 @@
 
   function handleCardClick(index: number): void {
     if (disabled) return
-    if (selectedIndex !== null) return
     const card = cards[index]
     if (!card) return
-    if (!hasEnoughAp(card)) return
     onselectcard(index)
   }
 </script>
@@ -87,6 +86,8 @@
     {@const xOffset = getXOffset(i, cards.length)}
     {@const domainColor = DOMAIN_COLORS[card.domain]}
     {@const icon = TYPE_ICONS[card.cardType]}
+    {@const framePath = card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType)}
+    {@const domainIconPath = getDomainIconPath(card.domain)}
     {@const effectVal = getEffectValue(card)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
     {@const tierBadge = getTierBadge(card)}
@@ -108,13 +109,15 @@
       style="
         transform: translateX({xOffset}px) translateY({isOther ? 20 : -arcOffset}px) rotate({isSelected ? 0 : rotation}deg);
         border-color: {domainColor};
+        --frame-image: url('{framePath}');
         animation-delay: {i * 50}ms;
       "
       data-testid="card-hand-{i}"
-      disabled={disabled || isOther || insufficientAp}
+      disabled={disabled || isOther}
       onclick={() => handleCardClick(i)}
     >
       <div class="card-domain-stripe" style="background: {domainColor};"></div>
+      <img class="card-domain-icon" src={domainIconPath} alt={`${card.domain} icon`} />
       <div class="card-type-icon">{icon}</div>
       <div class="card-effect-value">{effectVal}</div>
       <div class="ap-cost">{apCost} AP</div>
@@ -150,7 +153,10 @@
     position: absolute;
     width: 65px;
     height: 100px;
-    background: #1e2d3d;
+    background-color: #1e2d3d;
+    background-image: var(--frame-image);
+    background-size: cover;
+    background-position: center;
     border: 2px solid;
     border-radius: 8px;
     cursor: pointer;
@@ -215,6 +221,14 @@
     width: 100%;
     height: 4px;
     flex-shrink: 0;
+  }
+
+  .card-domain-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    margin-top: 4px;
   }
 
   .card-type-icon {

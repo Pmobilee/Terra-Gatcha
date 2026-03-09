@@ -38,6 +38,7 @@ export type Screen =
   | 'base'
   | 'combat'
   | 'domainSelection'
+  | 'library'
   | 'roomSelection'
   | 'mysteryEvent'
   | 'restRoom'

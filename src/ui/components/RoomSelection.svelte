@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { RoomOption } from '../../services/floorManager'
+  import { getDoorSpritePath } from '../utils/domainAssets'
 
   interface Props {
     options: RoomOption[]
@@ -60,7 +61,12 @@
         data-testid="room-choice-{i}"
         onclick={() => handleTap(i)}
       >
-        <span class="room-icon">{option.icon}</span>
+        <img
+          class="door-sprite"
+          src={getDoorSpritePath(option.type)}
+          alt={`${option.label} door`}
+          loading="lazy"
+        />
         <span class="room-label">{option.label}</span>
         <span class="room-detail">{option.detail}</span>
       </button>
@@ -72,7 +78,10 @@
   .room-selection-overlay {
     position: fixed;
     inset: 0;
-    background: #0D1117;
+    background:
+      linear-gradient(rgba(11, 17, 24, 0.5), rgba(11, 17, 24, 0.8)),
+      url('/assets/backgrounds/rooms/bg_room_selection.png') center / cover no-repeat,
+      #0D1117;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -157,8 +166,11 @@
     transform: scale(1.05);
   }
 
-  .room-icon {
-    font-size: 32px;
+  .door-sprite {
+    width: 80px;
+    height: 98px;
+    object-fit: contain;
+    image-rendering: pixelated;
   }
 
   .room-label {

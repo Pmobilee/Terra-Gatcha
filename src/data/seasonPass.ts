@@ -84,7 +84,5 @@ export function computeSeasonPoints(factsLearned: number, fossilsFound: number, 
 
 /** Get claimable milestone index (0-based) for a given points total on a track */
 export function getClaimableMilestones(points: number, track: SeasonReward[], claimed: number[]): number[] {
-  return track
-    .filter((r, i) => points >= r.points && !claimed.includes(i))
-    .map((_, i) => i)
+  return track.flatMap((r, i) => (points >= r.points && !claimed.includes(i)) ? [i] : [])
 }

@@ -4,6 +4,7 @@ import { factsDB } from './factsDB';
 import { createCard, resetCardIdCounter } from './cardFactory';
 import { DEFAULT_POOL_SIZE, POOL_PRIMARY_PCT, POOL_SECONDARY_PCT } from '../data/balance';
 import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
+import { assignTypesToCards } from './cardTypeAllocator';
 
 const DOMAIN_TO_CATEGORY: Record<FactDomain, string[]> = {
   science: ['Natural Sciences'],
@@ -115,6 +116,7 @@ export function buildRunPool(
 
   pool = pool.slice(0, poolSize);
   pool = pool.filter((card) => card.tier !== '3');
+  pool = assignTypesToCards(pool);
   pool = applyMechanics(pool);
 
   return shuffle(pool);

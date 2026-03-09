@@ -1,6 +1,6 @@
 import type { Fact } from '../data/types';
 import type { FactDomain, CardType } from '../data/card-types';
-import { DOMAIN_CARD_TYPE } from '../data/card-types';
+import { pickWeightedType } from './cardTypeAllocator';
 
 /** Top-level category string → FactDomain mapping */
 const CATEGORY_TO_DOMAIN: Record<string, FactDomain> = {
@@ -54,11 +54,9 @@ export function resolveDomain(fact: Fact): FactDomain {
 }
 
 /**
- * Returns the CardType associated with a given FactDomain.
- *
- * @param domain - The knowledge domain.
- * @returns The combat card type for this domain.
+ * Legacy helper retained for compatibility.
+ * Card type is no longer derived from domain; we return a deterministic weighted type.
  */
 export function resolveCardType(domain: FactDomain): CardType {
-  return DOMAIN_CARD_TYPE[domain];
+  return pickWeightedType(`domain:${domain}`);
 }

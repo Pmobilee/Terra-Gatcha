@@ -11,8 +11,8 @@ const strict = process.argv.includes('--strict')
 
 // --- Collect all sprite files ---
 const SPRITE_DIRS = [
-  join(ROOT, 'src/assets/sprites'),
-  join(ROOT, 'src/assets/sprites-hires'),
+  join(ROOT, 'public/assets/sprites'),
+  join(ROOT, 'public/assets/sprites-hires'),
 ]
 
 /** @type {Set<string>} All sprite basenames (without extension) that exist on disk */

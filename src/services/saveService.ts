@@ -20,7 +20,7 @@ import { profileService } from '../services/profileService'
  * Active profile saves use the profile-namespaced key from profileService.getSaveKey().
  */
 export const SAVE_KEY = 'terra-gacha-save'
-export const SAVE_VERSION = 1
+export const SAVE_VERSION = 2
 
 // ============================================================
 // SAVE DURABILITY — APP BACKGROUND LISTENER (19.12)
@@ -411,6 +411,39 @@ export function load(): PlayerSave | null {
         if (typeof rs['isLeech'] !== 'boolean') {
           rs['isLeech'] = false
         }
+        if (typeof rs['difficulty'] !== 'number') {
+          rs['difficulty'] = 5
+        }
+        if (typeof rs['due'] !== 'number') {
+          rs['due'] = (rs['nextReviewAt'] as number) ?? Date.now()
+        }
+        if (typeof rs['lastReview'] !== 'number') {
+          rs['lastReview'] = (rs['lastReviewAt'] as number) ?? 0
+        }
+        if (typeof rs['reps'] !== 'number') {
+          rs['reps'] = (rs['repetitions'] as number) ?? 0
+        }
+        if (typeof rs['lapses'] !== 'number') {
+          rs['lapses'] = (rs['lapseCount'] as number) ?? 0
+        }
+        if (typeof rs['state'] !== 'string') {
+          rs['state'] = rs['cardState'] === 'suspended' ? 'review' : rs['cardState']
+        }
+        if (typeof rs['lastVariantIndex'] !== 'number') {
+          rs['lastVariantIndex'] = -1
+        }
+        if (typeof rs['totalAttempts'] !== 'number') {
+          rs['totalAttempts'] = 0
+        }
+        if (typeof rs['totalCorrect'] !== 'number') {
+          rs['totalCorrect'] = 0
+        }
+        if (typeof rs['averageResponseTimeMs'] !== 'number') {
+          rs['averageResponseTimeMs'] = 0
+        }
+        if (!Array.isArray(rs['tierHistory'])) {
+          rs['tierHistory'] = []
+        }
       }
     }
     if (typeof parsedAny['hasCompletedInitialStudy'] !== 'boolean') {
@@ -520,4 +553,3 @@ export function deleteSave(): void {
 // updateStreakOnLogin — all mining-era functions removed.
 // See src/_archived-mining/ for reference.
 // ============================================================
-

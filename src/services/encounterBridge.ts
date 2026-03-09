@@ -11,7 +11,7 @@ import { createEnemy } from './enemyManager';
 import { ENEMY_TEMPLATES } from '../data/enemies';
 import { activeRunState, onEncounterComplete } from './gameFlowController';
 import { getBossForFloor, pickCombatEnemy, isBossFloor } from './floorManager';
-import type { Card, CardRunState, PassiveEffect } from '../data/card-types';
+import type { Card, CardRunState, CardType, PassiveEffect } from '../data/card-types';
 import { recordCardPlay } from './runManager';
 import {
   applyEchoStabilityBonus,
@@ -21,12 +21,16 @@ import {
   setGraduatedRelicId,
   updateReviewStateByButton,
 } from '../ui/stores/playerData';
-import { ECHO, TIER3_PASSIVE, DORMANCY_THRESHOLD } from '../data/balance';
+import { ECHO, TIER3_PASSIVE, DORMANCY_THRESHOLD, HINTS_PER_ENCOUNTER } from '../data/balance';
 import type { CombatScene } from '../game/scenes/CombatScene';
 import { factsDB } from './factsDB';
-import { resolveDomain, resolveCardType } from './domainResolver';
+import { deriveCardTypeForFactId } from './cardTypeAllocator';
 import type { ActiveRelic } from '../data/passiveRelics';
 import { assignRelicOnGraduation, buildActiveRelics, checkRelicDormancy } from './relicManager';
+import { onboardingState } from './cardPreferences';
+import { updateBounties } from './bountyManager';
+import { getCardTier } from './tierDerivation';
+import { playCardAudio } from './cardAudioManager';
 
 function getCombatScene(): CombatScene | null {
   try {
@@ -56,12 +60,12 @@ let activeDeck: CardRunState | null = null;
 let activeRunPool: Card[] = [];
 let activeRelics: ActiveRelic[] = [];
 
-function factCardTypeResolver(factId: string): ReturnType<typeof resolveCardType> | null {
+function factCardTypeResolver(factId: string): CardType | null {
   const inPool = activeRunPool.find((card) => card.factId === factId);
   if (inPool) return inPool.cardType;
   const fact = factsDB.getById(factId);
   if (!fact) return null;
-  return resolveCardType(resolveDomain(fact));
+  return deriveCardTypeForFactId(fact.id);
 }
 
 function buildPassiveEffectsFromRelics(relics: ActiveRelic[]): PassiveEffect[] {
@@ -97,6 +101,7 @@ function syncCombatScene(turnState: TurnState): void {
       turnState.enemy.template.category,
       turnState.enemy.currentHP,
       turnState.enemy.maxHP,
+      turnState.enemy.template.id,
     );
     scene.setEnemyIntent(
       turnState.enemy.nextIntent.telegraph,
@@ -144,7 +149,12 @@ export function startEncounterForRoom(enemyId?: string): void {
     if (isBossFloor(run.floor.currentFloor)) {
       templateId = getBossForFloor(run.floor.currentFloor) ?? pickCombatEnemy(run.floor.currentFloor);
     } else {
-      templateId = pickCombatEnemy(run.floor.currentFloor);
+      if (run.canary.mode === 'challenge' && Math.random() < 0.35) {
+        const eliteCandidates = ENEMY_TEMPLATES.filter((enemyTemplate) => enemyTemplate.category === 'elite');
+        templateId = eliteCandidates[Math.floor(Math.random() * eliteCandidates.length)]?.id ?? pickCombatEnemy(run.floor.currentFloor);
+      } else {
+        templateId = pickCombatEnemy(run.floor.currentFloor);
+      }
     }
   }
 
@@ -153,6 +163,7 @@ export function startEncounterForRoom(enemyId?: string): void {
 
   const enemy = createEnemy(template, run.floor.currentFloor);
   const turnState = startEncounter(activeDeck, enemy, run.playerMaxHp);
+  activeDeck.hintsRemaining = HINTS_PER_ENCOUNTER;
   turnState.playerState.hp = run.playerHp;
   turnState.activeRelics = activeRelics;
   turnState.activeRelicIds = new Set(
@@ -161,6 +172,14 @@ export function startEncounterForRoom(enemyId?: string): void {
   turnState.baseComboCount = turnState.activeRelicIds.has('combo_master') ? 1 : 0;
   turnState.comboCount = turnState.baseComboCount;
   turnState.baseDrawCount = turnState.activeRelicIds.has('quick_draw') ? 6 : 5;
+  turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier;
+  turnState.canaryQuestionBias = run.canary.questionBias;
+
+  const onboarding = get(onboardingState);
+  if (!onboarding.hasCompletedOnboarding && run.floor.currentFloor === 1 && run.floor.currentEncounter <= 2) {
+    turnState.apMax = 2;
+    turnState.apCurrent = Math.min(turnState.apCurrent, 2);
+  }
 
   // Encounter-start relic hooks.
   if (turnState.activeRelicIds.has('iron_skin')) {
@@ -175,6 +194,12 @@ export function startEncounterForRoom(enemyId?: string): void {
 
   activeTurnState.set(turnState);
   syncCombatScene(turnState);
+
+  // Encounter start sound + draw swooshes.
+  playCardAudio('turn-chime');
+  turnState.deck.hand.forEach((_, index) => {
+    setTimeout(() => playCardAudio('card-draw'), index * 90);
+  });
 }
 
 function createEchoCardFrom(card: Card): Card {
@@ -221,27 +246,76 @@ function maybeApplyMasteryOutcome(card: Card, wasCorrect: boolean): void {
   recomputeActiveRelics();
 }
 
-export function handlePlayCard(cardId: string, correct: boolean, speedBonus: boolean): void {
+export function handlePlayCard(
+  cardId: string,
+  correct: boolean,
+  speedBonus: boolean,
+  responseTimeMs?: number,
+  variantIndex?: number,
+): void {
   const turnState = get(activeTurnState);
   if (!turnState) return;
 
   const playedCard = turnState.deck.hand.find((card) => card.id === cardId);
+  const previousReviewState = playedCard?.factId ? getReviewStateByFactId(playedCard.factId) : undefined;
+  const previousTier = previousReviewState ? getCardTier(previousReviewState) : null;
   const result = playCardAction(turnState, cardId, correct, speedBonus);
   const run = get(activeRunState);
 
-  if (run) {
+  if (run && playedCard) {
     recordCardPlay(run, correct, result.comboCount);
+
+    if (correct) {
+      run.bounties = updateBounties(run.bounties, {
+        type: 'card_correct',
+        domain: playedCard.domain,
+        responseTimeMs,
+        comboCount: result.comboCount,
+      });
+    }
+
+    if (result.comboCount >= 4) {
+      run.bounties = updateBounties(run.bounties, {
+        type: 'combo_reached',
+        combo: result.comboCount,
+      });
+    }
+
+    if (result.turnState.isPerfectTurn && result.turnState.cardsPlayedThisTurn === 3) {
+      run.bounties = updateBounties(run.bounties, { type: 'perfect_turn' });
+    }
+
     run.playerHp = result.turnState.playerState.hp;
+    result.turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier;
+    result.turnState.canaryQuestionBias = run.canary.questionBias;
     activeRunState.set(run);
   }
 
   if (playedCard?.factId) {
     const button = !correct ? 'again' : speedBonus ? 'good' : 'okay';
-    updateReviewStateByButton(playedCard.factId, button);
+    updateReviewStateByButton(playedCard.factId, button, undefined, {
+      responseTimeMs,
+      variantIndex,
+    });
 
     if (playedCard.isEcho && correct) {
       applyEchoStabilityBonus(playedCard.factId, ECHO.FSRS_STABILITY_BONUS);
     }
+
+    const updatedReviewState = getReviewStateByFactId(playedCard.factId);
+    if (run && updatedReviewState) {
+      if ((previousReviewState?.totalAttempts ?? 0) === 0 && (updatedReviewState.totalAttempts ?? 0) > 0) {
+        run.newFactsLearned += 1;
+      }
+
+      const nextTier = getCardTier(updatedReviewState);
+      if (previousTier !== '3' && nextTier === '3') {
+        run.factsMastered += 1;
+      }
+
+      activeRunState.set(run);
+    }
+
     maybeApplyMasteryOutcome(playedCard, correct);
     maybeGenerateEcho(playedCard, correct);
   }
@@ -250,9 +324,23 @@ export function handlePlayCard(cardId: string, correct: boolean, speedBonus: boo
 
   const scene = getCombatScene();
   if (scene) {
+    if (result.effect.damageDealt > 0 && !result.enemyDefeated) {
+      scene.playEnemyHitAnimation();
+    }
+
+    if (correct) {
+      if (playedCard?.cardType === 'attack') scene.playPlayerAttackAnimation();
+      else if (playedCard?.cardType === 'shield') scene.playPlayerBlockAnimation();
+      else scene.playPlayerCastAnimation();
+    }
+
     scene.updateEnemyHP(result.turnState.enemy.currentHP, true);
     scene.updatePlayerHP(result.turnState.playerState.hp, result.turnState.playerState.maxHP, true);
-    if (result.enemyDefeated) scene.playEnemyDeathAnimation();
+    if (result.enemyDefeated) {
+      playCardAudio('enemy-death');
+      scene.playEnemyDeathAnimation();
+      scene.playPlayerVictoryAnimation();
+    }
   }
 
   if (result.enemyDefeated) {
@@ -277,6 +365,14 @@ export function handleSkipCard(cardId: string): void {
   activeTurnState.set({ ...turnState });
 }
 
+export function handleUseHint(): void {
+  const turnState = get(activeTurnState);
+  if (!turnState) return;
+  if (turnState.deck.hintsRemaining <= 0) return;
+  turnState.deck.hintsRemaining -= 1;
+  activeTurnState.set({ ...turnState });
+}
+
 export function handleEndTurn(): void {
   const turnState = get(activeTurnState);
   if (!turnState) return;
@@ -292,12 +388,23 @@ export function handleEndTurn(): void {
 
   const scene = getCombatScene();
   if (scene) {
+    if (result.damageDealt > 0) {
+      scene.playEnemyAttackAnimation();
+      scene.playPlayerDamageFlash();
+    }
     scene.updatePlayerHP(result.turnState.playerState.hp, result.turnState.playerState.maxHP, true);
     scene.updateEnemyHP(result.turnState.enemy.currentHP, true);
     scene.setEnemyIntent(
       result.turnState.enemy.nextIntent.telegraph,
       result.turnState.enemy.nextIntent.value > 0 ? result.turnState.enemy.nextIntent.value : undefined,
     );
+    if (result.playerDefeated) {
+      scene.playPlayerDefeatAnimation();
+    }
+  }
+
+  if (!result.playerDefeated) {
+    playCardAudio('turn-chime');
   }
 
   if (result.playerDefeated) {
@@ -310,7 +417,7 @@ export function handleEndTurn(): void {
 }
 
 export function getRunPoolCards(): Card[] {
-  return activeRunPool;
+  return [...activeRunPool];
 }
 
 export function getActiveDeckFactIds(): Set<string> {

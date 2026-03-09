@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { FactDomain } from '../../data/card-types'
+  import { getDomainIconPath } from '../utils/domainAssets'
 
   interface Props {
     onstart: (primary: FactDomain, secondary: FactDomain) => void
@@ -11,20 +12,20 @@
   interface DomainInfo {
     id: FactDomain
     name: string
-    icon: string
+    fallbackIcon: string
     color: string
     unlocked: boolean
   }
 
   const DOMAINS: DomainInfo[] = [
-    { id: 'science', name: 'Science & Nature', icon: '\u2694\uFE0F', color: '#E74C3C', unlocked: true },
-    { id: 'history', name: 'History & Culture', icon: '\uD83D\uDEE1\uFE0F', color: '#3498DB', unlocked: true },
-    { id: 'language', name: 'Language & Vocab', icon: '\uD83D\uDC9A', color: '#2ECC71', unlocked: true },
-    { id: 'geography', name: 'Geography & World', icon: '\u2B50', color: '#F1C40F', unlocked: false },
-    { id: 'math', name: 'Math & Logic', icon: '\u2B06\uFE0F', color: '#9B59B6', unlocked: false },
-    { id: 'arts', name: 'Arts & Literature', icon: '\u2B07\uFE0F', color: '#E67E22', unlocked: false },
-    { id: 'medicine', name: 'Medicine & Health', icon: '\u2795', color: '#1ABC9C', unlocked: false },
-    { id: 'technology', name: 'Technology', icon: '\uD83D\uDC8E', color: '#95A5A6', unlocked: false },
+    { id: 'science', name: 'Science & Nature', fallbackIcon: '\u2694\uFE0F', color: '#E74C3C', unlocked: true },
+    { id: 'history', name: 'History & Culture', fallbackIcon: '\uD83D\uDEE1\uFE0F', color: '#3498DB', unlocked: true },
+    { id: 'language', name: 'Language & Vocab', fallbackIcon: '\uD83D\uDC9A', color: '#2ECC71', unlocked: true },
+    { id: 'geography', name: 'Geography & World', fallbackIcon: '\u2B50', color: '#F1C40F', unlocked: false },
+    { id: 'math', name: 'Math & Logic', fallbackIcon: '\u2B06\uFE0F', color: '#9B59B6', unlocked: false },
+    { id: 'arts', name: 'Arts & Literature', fallbackIcon: '\u2B07\uFE0F', color: '#E67E22', unlocked: false },
+    { id: 'medicine', name: 'Medicine & Health', fallbackIcon: '\u2795', color: '#1ABC9C', unlocked: false },
+    { id: 'technology', name: 'Technology', fallbackIcon: '\uD83D\uDC8E', color: '#95A5A6', unlocked: false },
   ]
 
   let primaryDomain = $state<FactDomain | null>(null)
@@ -90,7 +91,10 @@
         onclick={() => handleDomainTap(domain)}
         disabled={!domain.unlocked}
       >
-        <span class="domain-icon">{domain.icon}</span>
+        <div class="domain-icon-wrap">
+          <img class="domain-icon-img" src={getDomainIconPath(domain.id)} alt={`${domain.name} icon`} />
+          <span class="domain-icon-fallback">{domain.fallbackIcon}</span>
+        </div>
         <span class="domain-name">{domain.name}</span>
         {#if !domain.unlocked}
           <span class="locked-label">Locked</span>
@@ -191,8 +195,32 @@
     border-width: 2px;
   }
 
-  .domain-icon {
+  .domain-icon-wrap {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    position: relative;
+  }
+
+  .domain-icon-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+
+  .domain-icon-fallback {
+    position: absolute;
+    inset: 0;
+    display: none;
+    place-items: center;
     font-size: 24px;
+  }
+
+  .domain-icon-img[src=''],
+  .domain-icon-img:not([src]) {
+    display: none;
   }
 
   .domain-name {

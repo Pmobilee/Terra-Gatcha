@@ -1,22 +1,88 @@
 <script lang="ts">
+  import { shareRunSummaryCard } from '../../services/runShareService'
+
   interface Props {
     result: 'victory' | 'defeat' | 'retreat'
     floorReached: number
     factsAnswered: number
+    correctAnswers: number
     accuracy: number
     bestCombo: number
     cardsEarned: number
+    newFactsLearned: number
+    factsMastered: number
+    encountersWon: number
+    encountersTotal: number
+    completedBounties: string[]
+    runDurationMs?: number
     rewardMultiplier: number
     currencyEarned: number
     onplayagain: () => void
     onhome: () => void
   }
 
-  let { result, floorReached, factsAnswered, accuracy, bestCombo, cardsEarned, rewardMultiplier, currencyEarned, onplayagain, onhome }: Props = $props()
+  let {
+    result,
+    floorReached,
+    factsAnswered,
+    correctAnswers,
+    accuracy,
+    bestCombo,
+    cardsEarned,
+    newFactsLearned,
+    factsMastered,
+    encountersWon,
+    encountersTotal,
+    completedBounties,
+    runDurationMs = 0,
+    rewardMultiplier,
+    currencyEarned,
+    onplayagain,
+    onhome,
+  }: Props = $props()
 
   let isVictory = $derived(result === 'victory' || result === 'retreat')
   let headerText = $derived(result === 'retreat' ? 'SAFE RETREAT' : isVictory ? 'EXPEDITION COMPLETE' : 'EXPEDITION FAILED')
   let headerColor = $derived(isVictory ? '#F1C40F' : '#E74C3C')
+  let shareStatus = $state<'idle' | 'sharing' | 'done' | 'error'>('idle')
+
+  function formatDuration(ms: number): string {
+    const totalSeconds = Math.max(0, Math.floor(ms / 1000))
+    const minutes = Math.floor(totalSeconds / 60)
+    const seconds = totalSeconds % 60
+    return `${minutes}m ${String(seconds).padStart(2, '0')}s`
+  }
+
+  async function handleShare(): Promise<void> {
+    shareStatus = 'sharing'
+    try {
+      await shareRunSummaryCard({
+        result,
+        floorReached,
+        factsAnswered,
+        correctAnswers,
+        accuracy,
+        bestCombo,
+        cardsEarned,
+        newFactsLearned,
+        factsMastered,
+        encountersWon,
+        encountersTotal,
+        completedBounties,
+        duration: runDurationMs,
+        runDurationMs,
+        rewardMultiplier,
+        currencyEarned,
+      })
+      shareStatus = 'done'
+    } catch {
+      shareStatus = 'error'
+    } finally {
+      setTimeout(() => {
+        shareStatus = 'idle'
+      }, 1500)
+    }
+  }
 </script>
 
 <div class="run-end-overlay">
@@ -36,6 +102,10 @@
       <span class="stat-value">{accuracy}%</span>
     </div>
     <div class="stat-row">
+      <span class="stat-label">Correct Answers</span>
+      <span class="stat-value">{correctAnswers}</span>
+    </div>
+    <div class="stat-row">
       <span class="stat-label">Best Combo</span>
       <span class="stat-value">{bestCombo}x</span>
     </div>
@@ -51,9 +121,41 @@
       <span class="stat-label">Currency Earned</span>
       <span class="stat-value">{currencyEarned}</span>
     </div>
+    <div class="stat-row">
+      <span class="stat-label">New Facts Learned</span>
+      <span class="stat-value">{newFactsLearned}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Facts Mastered</span>
+      <span class="stat-value">{factsMastered}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Encounters</span>
+      <span class="stat-value">{encountersWon}/{encountersTotal}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Run Time</span>
+      <span class="stat-value">{formatDuration(runDurationMs)}</span>
+    </div>
+    {#if completedBounties.length > 0}
+      <div class="bounty-list">
+        <strong>Bounties Cleared</strong>
+        {#each completedBounties as bounty}
+          <span class="bounty-item">{bounty}</span>
+        {/each}
+      </div>
+    {/if}
   </div>
 
   <div class="btn-row">
+    <button
+      class="btn btn-share"
+      data-testid="btn-share-run"
+      onclick={handleShare}
+      disabled={shareStatus === 'sharing'}
+    >
+      {shareStatus === 'sharing' ? 'Sharing...' : shareStatus === 'done' ? 'Shared' : shareStatus === 'error' ? 'Retry Share' : 'Share'}
+    </button>
     <button
       class="btn btn-play-again"
       data-testid="btn-play-again"
@@ -123,7 +225,9 @@
 
   .btn-row {
     display: flex;
-    gap: 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .btn {
@@ -149,5 +253,29 @@
   .btn-home {
     background: #2D333B;
     color: #8B949E;
+  }
+
+  .btn-share {
+    background: #1d4ed8;
+    color: #e2e8f0;
+  }
+
+  .bounty-list {
+    background: rgba(241, 196, 15, 0.08);
+    border: 1px solid rgba(241, 196, 15, 0.4);
+    border-radius: 8px;
+    padding: 8px 10px;
+    display: grid;
+    gap: 4px;
+  }
+
+  .bounty-list strong {
+    color: #f4d35e;
+    font-size: 12px;
+  }
+
+  .bounty-item {
+    font-size: 11px;
+    color: #e7f0ff;
   }
 </style>

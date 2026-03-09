@@ -1,4 +1,5 @@
 import { tapMedium, tapHeavy, notifyWarning } from './hapticService'
+import { playCardAudio, type CardAudioCue } from './cardAudioManager'
 
 /** Sound event types for future audio integration */
 export type JuiceSoundEvent =
@@ -14,9 +15,8 @@ export type JuiceSoundEvent =
 
 /** Emit a sound event. Currently no-op; wire to audioService in CR-17. */
 export function emitSound(event: JuiceSoundEvent): void {
-  if (import.meta.env.DEV) {
-    console.debug(`[juice:sound] ${event}`)
-  }
+  const cue = event as CardAudioCue
+  playCardAudio(cue)
 }
 
 export interface JuiceEvent {

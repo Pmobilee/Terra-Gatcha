@@ -22,6 +22,8 @@ import { currentScreen } from './ui/stores/gameState'
 import { get } from 'svelte/store'
 import { factsDB } from './services/factsDB'
 import { initI18n } from './i18n/index'
+import { initAccessibilityManager } from './services/accessibilityManager'
+import { initCardAudio } from './services/cardAudioManager'
 
 /**
  * Sets up Capacitor-specific integrations: Android hardware back button handling
@@ -110,6 +112,10 @@ const app = mount(CardApp, {
   target: document.getElementById('app')!,
 })
 document.getElementById('splash')?.remove()
+
+// Initialize global accessibility + audio settings before user interaction.
+initAccessibilityManager()
+initCardAudio()
 
 // Initialize player save data
 const save = initPlayer('teen')

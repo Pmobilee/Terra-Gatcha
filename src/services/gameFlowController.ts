@@ -19,6 +19,10 @@ import type { Card, FactDomain } from '../data/card-types';
 import { DEATH_PENALTY } from '../data/balance';
 import { generateCardRewardOptions } from './rewardGenerator';
 import { addRewardCardToActiveDeck, getActiveDeckFactIds, getRunPoolCards } from './encounterBridge';
+import { onboardingState, incrementRunsCompleted, markOnboardingComplete } from './cardPreferences';
+import { updateBounties } from './bountyManager';
+import { resetCanaryFloor } from './canaryService';
+import { recordDiveComplete } from '../ui/stores/playerData';
 
 export type GameFlowState =
   | 'idle'
@@ -44,12 +48,28 @@ let pendingFloorCompleted = false;
 let pendingClearedFloor = 0;
 
 export function startNewRun(): void {
+  const onboarding = get(onboardingState);
+  if (!onboarding.hasCompletedOnboarding) {
+    gameFlowState.set('idle');
+    currentScreen.set('onboarding');
+    return;
+  }
   gameFlowState.set('domainSelection');
   currentScreen.set('domainSelection');
 }
 
+function markRunCompleted(): void {
+  const onboarding = get(onboardingState);
+  incrementRunsCompleted();
+  if (!onboarding.hasCompletedOnboarding) {
+    markOnboardingComplete();
+  }
+}
+
 export function onDomainsSelected(primary: FactDomain, secondary: FactDomain): void {
-  activeRunState.set(createRunState(primary, secondary));
+  const run = createRunState(primary, secondary);
+  run.bounties = updateBounties(run.bounties, { type: 'floor_reached', floor: run.floor.currentFloor });
+  activeRunState.set(run);
   gameFlowState.set('combat');
   currentScreen.set('combat');
 }
@@ -67,6 +87,8 @@ function proceedAfterReward(): void {
     }
 
     advanceFloor(run.floor);
+    run.canary = resetCanaryFloor(run.canary);
+    run.bounties = updateBounties(run.bounties, { type: 'floor_reached', floor: run.floor.currentFloor });
     activeRunState.set(run);
   }
 
@@ -100,7 +122,19 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   const run = get(activeRunState);
   if (!run) return;
 
+  run.encountersTotal += 1;
+  if (result === 'victory') {
+    run.encountersWon += 1;
+    run.bounties = updateBounties(run.bounties, {
+      type: 'encounter_won',
+      flawless: run.currentEncounterWrongAnswers === 0,
+    });
+    run.currentEncounterWrongAnswers = 0;
+  }
+
   if (result === 'defeat') {
+    recordDiveComplete(run.floor.currentFloor, run.factsAnswered);
+    markRunCompleted();
     const endData = endRun(run, 'defeat');
     activeRunEndData.set(endData);
     gameFlowState.set('runEnd');
@@ -132,6 +166,8 @@ export function onCardRewardSkipped(): void {
 export function onRetreat(): void {
   const run = get(activeRunState);
   if (!run) return;
+  recordDiveComplete(run.floor.currentFloor, run.factsAnswered);
+  markRunCompleted();
   const endData = endRun(run, 'retreat');
   activeRunEndData.set(endData);
   gameFlowState.set('runEnd');
@@ -142,6 +178,8 @@ export function onDelve(): void {
   const run = get(activeRunState);
   if (!run) return;
   advanceFloor(run.floor);
+  run.canary = resetCanaryFloor(run.canary);
+  run.bounties = updateBounties(run.bounties, { type: 'floor_reached', floor: run.floor.currentFloor });
   activeRunState.set(run);
   activeRoomOptions.set(generateRoomOptions(run.floor.currentFloor));
   gameFlowState.set('roomSelection');

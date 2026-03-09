@@ -2,10 +2,9 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { resolveDomain, resolveCardType } from '../../src/services/domainResolver';
 import { createCard, computeTier, computeEffectMultiplier, resetCardIdCounter } from '../../src/services/cardFactory';
 import { createDeck, drawHand, playCard, discardCard, exhaustCard, reshuffleDiscard, getDeckStats } from '../../src/services/deckManager';
-import { DOMAIN_CARD_TYPE } from '../../src/data/card-types';
 import { HAND_SIZE } from '../../src/data/balance';
 import type { Fact, ReviewState } from '../../src/data/types';
-import type { Card, FactDomain } from '../../src/data/card-types';
+import type { Card, CardType, FactDomain } from '../../src/data/card-types';
 
 // ── Helpers ──
 
@@ -97,18 +96,13 @@ describe('domainResolver', () => {
   });
 
   describe('resolveCardType', () => {
-    it('returns attack for science', () => {
-      expect(resolveCardType('science')).toBe('attack');
+    it('returns a deterministic type for the same domain input', () => {
+      expect(resolveCardType('science')).toBe(resolveCardType('science'));
     });
 
-    it('returns shield for history', () => {
-      expect(resolveCardType('history')).toBe('shield');
-    });
-
-    it('matches DOMAIN_CARD_TYPE for all domains', () => {
-      for (const [domain, cardType] of Object.entries(DOMAIN_CARD_TYPE)) {
-        expect(resolveCardType(domain as FactDomain)).toBe(cardType);
-      }
+    it('returns a valid card type', () => {
+      const allTypes: CardType[] = ['attack', 'shield', 'heal', 'utility', 'buff', 'debuff', 'regen', 'wild'];
+      expect(allTypes).toContain(resolveCardType('history'));
     });
   });
 });
@@ -168,8 +162,8 @@ describe('cardFactory', () => {
   });
 
   describe('createCard', () => {
-    it('creates a science/attack card from Natural Sciences fact', () => {
-      const card = createCard(makeFact({ category: ['Natural Sciences'] }), undefined);
+    it('creates a card with domain derived from fact and explicit combat type', () => {
+      const card = createCard(makeFact({ category: ['Natural Sciences'] }), undefined, 'attack');
       expect(card.domain).toBe('science');
       expect(card.cardType).toBe('attack');
       expect(card.tier).toBe('1');
@@ -183,7 +177,7 @@ describe('cardFactory', () => {
     });
 
     it('keeps baseEffectValue independent of tier and marks mastery trials', () => {
-      const t1 = createCard(makeFact({ category: ['Natural Sciences'] }), undefined);
+      const t1 = createCard(makeFact({ category: ['Natural Sciences'] }), undefined, 'attack');
       expect(t1.baseEffectValue).toBe(8);
       expect(t1.tier).toBe('1');
 
@@ -191,6 +185,7 @@ describe('cardFactory', () => {
       const t2bTrial = createCard(
         makeFact({ category: ['Natural Sciences'] }),
         makeReviewState({ stability: 30, consecutiveCorrect: 7, passedMasteryTrial: false }),
+        'attack',
       );
       expect(t2bTrial.baseEffectValue).toBe(8);
       expect(t2bTrial.tier).toBe('2b');
@@ -200,6 +195,7 @@ describe('cardFactory', () => {
       const t3 = createCard(
         makeFact({ category: ['Natural Sciences'] }),
         makeReviewState({ stability: 30, consecutiveCorrect: 7, passedMasteryTrial: true }),
+        'attack',
       );
       expect(t3.baseEffectValue).toBe(8);
       expect(t3.tier).toBe('3');
@@ -255,13 +251,13 @@ describe('deckManager', () => {
     });
 
     it('reshuffles discard when draw pile empties', () => {
-      // Draw all cards into hand, then discard them all
-      for (let i = 0; i < POOL_SIZE; i++) {
-        drawHand(deck, 1);
-      }
-      // Move all to discard
-      while (deck.hand.length > 0) {
-        playCard(deck, deck.hand[0].id);
+      while (deck.drawPile.length > 0 || deck.hand.length > 0) {
+        if (deck.hand.length === 0) {
+          drawHand(deck, HAND_SIZE);
+        }
+        while (deck.hand.length > 0) {
+          playCard(deck, deck.hand[0].id);
+        }
       }
       expect(deck.drawPile.length).toBe(0);
       expect(deck.discardPile.length).toBe(POOL_SIZE);
@@ -274,12 +270,13 @@ describe('deckManager', () => {
     });
 
     it('returns fewer cards if both piles are exhausted', () => {
-      // Exhaust everything
-      for (let i = 0; i < POOL_SIZE; i++) {
-        drawHand(deck, 1);
-      }
-      while (deck.hand.length > 0) {
-        exhaustCard(deck, deck.hand[0].id);
+      while (deck.drawPile.length > 0 || deck.hand.length > 0) {
+        if (deck.hand.length === 0) {
+          drawHand(deck, HAND_SIZE);
+        }
+        while (deck.hand.length > 0) {
+          exhaustCard(deck, deck.hand[0].id);
+        }
       }
       expect(deck.drawPile.length).toBe(0);
       expect(deck.discardPile.length).toBe(0);

@@ -12,6 +12,7 @@ import {
   SM2_LEECH_THRESHOLD,
   SM2_EASY_BONUS_MULTIPLIER,
 } from '../data/balance'
+import { mapEaseToFSRSDifficulty } from './fsrsScheduler'
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
 const MS_PER_MIN = 60 * 1000
@@ -23,6 +24,7 @@ export type AnkiButton = 'again' | 'okay' | 'good'
  * Card starts in 'new' state — must be studied before it enters review rotation.
  */
 export function createReviewState(factId: string): ReviewState {
+  const now = Date.now()
   return {
     factId,
     cardState: 'new',
@@ -41,6 +43,17 @@ export function createReviewState(factId: string): ReviewState {
     retrievability: 1,
     masteredAt: 0,
     graduatedRelicId: null,
+    difficulty: mapEaseToFSRSDifficulty(BALANCE.SM2_INITIAL_EASE),
+    due: now,
+    lastReview: 0,
+    reps: 0,
+    lapses: 0,
+    state: 'new',
+    lastVariantIndex: -1,
+    totalAttempts: 0,
+    totalCorrect: 0,
+    averageResponseTimeMs: 0,
+    tierHistory: [],
   }
 }
 
@@ -69,6 +82,17 @@ function finalizeReviewState(
     retrievability,
     masteredAt,
     graduatedRelicId: previous.graduatedRelicId ?? null,
+    difficulty: mapEaseToFSRSDifficulty(updated.easeFactor ?? previous.easeFactor),
+    due: updated.nextReviewAt,
+    lastReview: updated.lastReviewAt,
+    reps: updated.repetitions,
+    lapses: updated.lapseCount,
+    state: updated.cardState === 'suspended' ? 'review' : (updated.cardState as 'new' | 'learning' | 'review' | 'relearning'),
+    lastVariantIndex: previous.lastVariantIndex ?? -1,
+    totalAttempts: previous.totalAttempts ?? 0,
+    totalCorrect: previous.totalCorrect ?? 0,
+    averageResponseTimeMs: previous.averageResponseTimeMs ?? 0,
+    tierHistory: previous.tierHistory ?? [],
   }
 }
 

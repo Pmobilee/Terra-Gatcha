@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onDestroy } from 'svelte'
   import type { Card, FactDomain, CardType } from '../../data/card-types'
+  import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
 
   interface Props {
     card: Card
@@ -8,14 +9,19 @@
     answers: string[]
     correctAnswer: string
     timerDuration: number
+    timerEnabled?: boolean
     comboCount: number
     hintsRemaining: number
     speedBonusThreshold?: number
-    timerColorVariant?: 'default' | 'gold'
+    timerColorVariant?: 'default' | 'gold' | 'slowReader'
     showMasteryTrialHeader?: boolean
+    highlightHint?: boolean
+    allowCancel?: boolean
+    skipLabel?: string
     onanswer: (answerIndex: number, isCorrect: boolean, speedBonus: boolean) => void
     onskip: () => void
     oncancel: () => void
+    onusehint?: () => void
   }
 
   let {
@@ -24,14 +30,19 @@
     answers,
     correctAnswer,
     timerDuration,
+    timerEnabled = true,
     comboCount,
     hintsRemaining,
     speedBonusThreshold = 0.25,
     timerColorVariant = 'default',
     showMasteryTrialHeader = false,
+    highlightHint = false,
+    allowCancel = true,
+    skipLabel = 'Skip',
     onanswer,
     onskip,
     oncancel,
+    onusehint = () => {},
   }: Props = $props()
 
   const DOMAIN_COLORS: Record<FactDomain, string> = {
@@ -86,13 +97,20 @@
   let domainName = $derived(DOMAIN_NAMES[card.domain])
   let typeIcon = $derived(TYPE_ICONS[card.cardType])
   let tierLabel = $derived(card.tier === '1' ? '' : card.tier.toUpperCase())
+  let framePath = $derived(card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType))
+  let domainIconPath = $derived(getDomainIconPath(card.domain))
 
   let startTime = $state(Date.now())
   let elapsed = $state(0)
-  let timerFraction = $derived(Math.max(0, 1 - elapsed / (timerDuration * 1000)))
+  let timerTotalMs = $state(1000)
+  let timerFraction = $derived(Math.max(0, 1 - elapsed / timerTotalMs))
+  let secondsRemaining = $derived(Math.max(0, Math.ceil((timerTotalMs - elapsed) / 1000)))
   let timerColor = $derived(() => {
     if (timerColorVariant === 'gold') {
       return timerFraction > 0.5 ? '#D4AF37' : timerFraction > 0.25 ? '#F1C40F' : '#E67E22'
+    }
+    if (timerColorVariant === 'slowReader') {
+      return timerFraction > 0.5 ? '#D88D24' : timerFraction > 0.25 ? '#F0B44D' : '#B86A0F'
     }
     return timerFraction > 0.5 ? '#27AE60' : timerFraction > 0.25 ? '#F1C40F' : '#E74C3C'
   })
@@ -103,6 +121,10 @@
   let showSpeedBonus = $state(false)
   let timerExpired = $state(false)
   let touchStartY = $state<number | null>(null)
+  let showHintMenu = $state(false)
+  let hintUsed = $state(false)
+  let firstLetterHint = $state<string | null>(null)
+  let eliminatedIndices = $state<Set<number>>(new Set())
 
   let rafId: number | undefined
   let feedbackTimeoutId: ReturnType<typeof setTimeout> | undefined
@@ -110,9 +132,9 @@
   let speedBonusTimeoutId: ReturnType<typeof setTimeout> | undefined
 
   function timerTick(): void {
-    if (answersDisabled || timerExpired) return
+    if (!timerEnabled || answersDisabled || timerExpired) return
     elapsed = Date.now() - startTime
-    if (elapsed >= timerDuration * 1000) {
+    if (elapsed >= timerTotalMs) {
       timerExpired = true
       answersDisabled = true
       onskip()
@@ -122,10 +144,17 @@
   }
 
   $effect(() => {
+    timerTotalMs = Math.max(1000, timerDuration * 1000)
     startTime = Date.now()
     elapsed = 0
     timerExpired = false
-    rafId = requestAnimationFrame(timerTick)
+    showHintMenu = false
+    hintUsed = false
+    firstLetterHint = null
+    eliminatedIndices = new Set()
+    if (timerEnabled) {
+      rafId = requestAnimationFrame(timerTick)
+    }
     return () => {
       if (rafId !== undefined) cancelAnimationFrame(rafId)
       if (feedbackTimeoutId !== undefined) clearTimeout(feedbackTimeoutId)
@@ -135,12 +164,14 @@
   })
 
   function handleAnswer(index: number): void {
-    if (answersDisabled) return
+    if (answersDisabled || eliminatedIndices.has(index)) return
     answersDisabled = true
     selectedAnswerIndex = index
 
     const isCorrect = answers[index] === correctAnswer
-    const speedBonus = elapsed < (timerDuration * 1000 * speedBonusThreshold)
+    const speedBonus = timerEnabled
+      ? elapsed < (timerTotalMs * speedBonusThreshold)
+      : false
     if (isCorrect && speedBonus) {
       showSpeedBonus = true
       speedBonusTimeoutId = setTimeout(() => {
@@ -162,6 +193,7 @@
   }
 
   function getAnswerClass(index: number): string {
+    if (eliminatedIndices.has(index)) return 'answer-eliminated'
     if (selectedAnswerIndex === null) return ''
     const isCorrect = answers[index] === correctAnswer
     if (index === selectedAnswerIndex) {
@@ -178,6 +210,7 @@
   }
 
   function handleTouchMove(e: TouchEvent): void {
+    if (!allowCancel) return
     if (touchStartY === null) return
     const deltaY = e.touches[0].clientY - touchStartY
     if (deltaY > 40) {
@@ -190,6 +223,33 @@
     touchStartY = null
   }
 
+  function toggleHintMenu(): void {
+    if (answersDisabled || hintsRemaining <= 0 || hintUsed) return
+    showHintMenu = !showHintMenu
+  }
+
+  function applyHint(type: 'eliminate' | 'time_boost' | 'first_letter'): void {
+    if (hintUsed || answersDisabled || hintsRemaining <= 0) return
+
+    if (type === 'eliminate') {
+      const wrongIndices = answers
+        .map((answer, index) => ({ answer, index }))
+        .filter((entry) => entry.answer !== correctAnswer && !eliminatedIndices.has(entry.index))
+      if (wrongIndices.length > 0) {
+        const removeIndex = wrongIndices[Math.floor(Math.random() * wrongIndices.length)].index
+        eliminatedIndices = new Set([...eliminatedIndices, removeIndex])
+      }
+    } else if (type === 'time_boost') {
+      timerTotalMs += 5000
+    } else {
+      firstLetterHint = correctAnswer[0] ?? null
+    }
+
+    hintUsed = true
+    showHintMenu = false
+    onusehint()
+  }
+
   onDestroy(() => {
     if (rafId !== undefined) cancelAnimationFrame(rafId)
     if (feedbackTimeoutId !== undefined) clearTimeout(feedbackTimeoutId)
@@ -200,6 +260,7 @@
 
 <div
   class="card-expanded"
+  style={`--card-frame-image: url('${framePath}')`}
   ontouchstart={handleTouchStart}
   ontouchmove={handleTouchMove}
   ontouchend={handleTouchEnd}
@@ -213,6 +274,7 @@
 
   <div class="card-header" style="background: {domainColor};">
     <span class="header-domain">
+      <img class="header-domain-icon" src={domainIconPath} alt={`${domainName} icon`} />
       {domainName}
       {#if tierLabel}
         <span class="tier-stars">{tierLabel}</span>
@@ -223,13 +285,16 @@
 
   <div class="card-effect-desc">{effectDescription}</div>
   <div class="card-question">{question}</div>
+  {#if firstLetterHint}
+    <div class="first-letter-hint">Starts with: {firstLetterHint}</div>
+  {/if}
 
   <div class="card-answers">
     {#each answers as answer, i}
       <button
         class="answer-btn {getAnswerClass(i)}"
         data-testid="quiz-answer-{i}"
-        disabled={answersDisabled}
+        disabled={answersDisabled || eliminatedIndices.has(i)}
         onclick={() => handleAnswer(i)}
       >
         {answer}
@@ -241,19 +306,35 @@
     <div class="speed-bonus-badge">SPEED BONUS</div>
   {/if}
 
-  <div class="timer-bar-container">
-    <div
-      class="timer-bar-fill"
-      style="width: {timerFraction * 100}%; background: {timerColor};"
-    ></div>
-  </div>
+  {#if timerEnabled}
+    <div class="timer-bar-container">
+      <div
+        class="timer-bar-fill"
+        style="width: {timerFraction * 100}%; background: {timerColor};"
+      ></div>
+      <span class="timer-seconds">{secondsRemaining}s</span>
+    </div>
+  {/if}
 
   <div class="action-row">
-    <button class="action-btn skip-btn" onclick={onskip} disabled={answersDisabled}>Skip</button>
-    <button class="action-btn hint-btn" disabled={answersDisabled || hintsRemaining <= 0}>
+    <button class="action-btn skip-btn" onclick={onskip} disabled={answersDisabled}>{skipLabel}</button>
+    <button
+      class="action-btn hint-btn"
+      class:hint-highlight={highlightHint && !answersDisabled && hintsRemaining > 0 && !hintUsed}
+      onclick={toggleHintMenu}
+      disabled={answersDisabled || hintsRemaining <= 0 || hintUsed}
+    >
       Hint ({hintsRemaining})
     </button>
   </div>
+
+  {#if showHintMenu}
+    <div class="hint-menu">
+      <button class="hint-item" onclick={() => applyHint('eliminate')}>Remove Wrong</button>
+      <button class="hint-item" onclick={() => applyHint('time_boost')}>+5 Seconds</button>
+      <button class="hint-item" onclick={() => applyHint('first_letter')}>First Letter</button>
+    </div>
+  {/if}
 
   {#if comboCount > 0}
     <div class="combo-indicator">Combo x{comboCount}</div>
@@ -268,7 +349,10 @@
     transform: translateX(-50%);
     width: 320px;
     max-width: calc(100vw - 24px);
-    background: #1a2332;
+    background:
+      linear-gradient(rgba(14, 20, 30, 0.86), rgba(14, 20, 30, 0.9)),
+      var(--card-frame-image) center / cover no-repeat,
+      #1a2332;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
@@ -310,6 +394,16 @@
     font-size: 14px;
     font-weight: 600;
     color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .header-domain-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    image-rendering: pixelated;
   }
 
   .header-icon {
@@ -333,6 +427,12 @@
     color: #f8fafc;
     line-height: 1.35;
     padding: 8px 12px 10px;
+  }
+
+  .first-letter-hint {
+    margin: 0 12px 8px;
+    font-size: 12px;
+    color: #facc15;
   }
 
   .card-answers {
@@ -367,6 +467,11 @@
     box-shadow: inset 0 0 0 1px rgba(234, 179, 8, 0.8);
   }
 
+  .answer-btn.answer-eliminated {
+    opacity: 0.35;
+    text-decoration: line-through;
+  }
+
   .speed-bonus-badge {
     position: absolute;
     right: 12px;
@@ -380,6 +485,7 @@
   }
 
   .timer-bar-container {
+    position: relative;
     height: 8px;
     background: #334155;
   }
@@ -387,6 +493,14 @@
   .timer-bar-fill {
     height: 100%;
     transition: width 80ms linear;
+  }
+
+  .timer-seconds {
+    position: absolute;
+    right: 8px;
+    top: -18px;
+    font-size: 10px;
+    color: #e2e8f0;
   }
 
   .action-row {
@@ -397,7 +511,7 @@
   }
 
   .action-btn {
-    min-height: 44px;
+    min-height: 48px;
     border: none;
     border-radius: 10px;
     font-weight: 700;
@@ -413,6 +527,10 @@
     color: #fff;
   }
 
+  .hint-btn.hint-highlight {
+    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.8), 0 0 14px rgba(250, 204, 21, 0.35);
+  }
+
   .hint-btn:disabled {
     opacity: 0.45;
   }
@@ -422,5 +540,21 @@
     color: #facc15;
     font-size: 12px;
     padding: 0 0 10px;
+  }
+
+  .hint-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 0 12px 10px;
+  }
+
+  .hint-item {
+    min-height: 40px;
+    border: 1px solid #4b5563;
+    border-radius: 8px;
+    background: #111827;
+    color: #f8fafc;
+    font-size: 11px;
   }
 </style>
