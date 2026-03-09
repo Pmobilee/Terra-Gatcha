@@ -19,6 +19,38 @@
       "About 1 meter tall, like a large dog",
       "The size of a small car"
     ],
+    "variants": [
+      {
+        "question": "What was the approximate size of a real Velociraptor?",
+        "type": "forward",
+        "correctAnswer": "About turkey-sized, roughly 60-70 cm tall",
+        "distractors": ["About 2 meters tall at the hip", "The size of a Bengal tiger", "About 4 meters tall like in movies"]
+      },
+      {
+        "question": "Which dinosaur was roughly turkey-sized, weighing only 15-20 kg?",
+        "type": "reverse",
+        "correctAnswer": "Velociraptor",
+        "distractors": ["Tyrannosaurus rex", "Deinonychus", "Utahraptor"]
+      },
+      {
+        "question": "Which statement about Velociraptor is NOT true?",
+        "type": "negative",
+        "correctAnswer": "It stood about 2 meters tall at the hip",
+        "distractors": ["It was roughly the size of a large turkey", "It weighed approximately 15-20 kg", "Jurassic Park based its raptors on a larger relative"]
+      },
+      {
+        "question": "A paleontologist explains that the Jurassic Park raptors were actually modeled after ___, a larger relative of Velociraptor.",
+        "type": "fill_blank",
+        "correctAnswer": "Deinonychus",
+        "distractors": ["Utahraptor", "Allosaurus", "Compsognathus"]
+      },
+      {
+        "question": "Velociraptor was approximately the same size as a human adult.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -46,6 +78,32 @@
       "Tracks showing feather drag marks",
       "Preserved amber specimens with feather fragments",
       "Microscopic analysis of tooth enamel patterns"
+    ],
+    "variants": [
+      {
+        "question": "What fossil feature directly proves Velociraptor had feathers?",
+        "type": "forward",
+        "correctAnswer": "Quill knobs on its forearm bones",
+        "distractors": ["Preserved feather impressions near skulls", "DNA comparison to modern birds", "Amber-encased feather fragments"]
+      },
+      {
+        "question": "Quill knobs found on forearm bones are direct evidence of what trait in Velociraptor?",
+        "type": "reverse",
+        "correctAnswer": "The presence of feathers",
+        "distractors": ["The ability to fly", "A venomous bite mechanism", "Warm-blooded metabolism"]
+      },
+      {
+        "question": "Which is NOT true about Velociraptor's feathers?",
+        "type": "negative",
+        "correctAnswer": "The feathers were large enough for powered flight",
+        "distractors": ["Quill knobs were found on forearm bones", "Feathers may have been used for display or insulation", "A 2007 study provided direct fossil evidence"]
+      },
+      {
+        "question": "Velociraptor's quill knobs are identical to structures found on the bones of modern ___.",
+        "type": "fill_blank",
+        "correctAnswer": "Birds like eagles",
+        "distractors": ["Reptiles like lizards", "Mammals like bats", "Amphibians like frogs"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -75,6 +133,38 @@
       "Their tooth structure proves they only ate prey killed by groups",
       "Migration patterns found in trackways confirm group behavior"
     ],
+    "variants": [
+      {
+        "question": "What is the current scientific consensus on whether raptors hunted in packs?",
+        "type": "forward",
+        "correctAnswer": "It remains debated — evidence is ambiguous",
+        "distractors": ["Pack hunting is confirmed by multiple studies", "They were strictly solitary hunters", "Fossils prove cooperative attacks"]
+      },
+      {
+        "question": "The finding of multiple dromaeosaurids near the same prey could indicate what, other than pack hunting?",
+        "type": "reverse",
+        "correctAnswer": "Mob scavenging at a shared carcass",
+        "distractors": ["Territorial combat between rivals", "A mass extinction event", "Parental feeding behavior"]
+      },
+      {
+        "question": "Which is NOT true about the raptor pack-hunting debate?",
+        "type": "negative",
+        "correctAnswer": "Brain scans have confirmed they were social hunters",
+        "distractors": ["Multiple raptors have been found near the same prey", "Crocodiles also gather at carcasses without being pack hunters", "The evidence is scientifically ambiguous"]
+      },
+      {
+        "question": "Modern animals like ___ and Komodo dragons also gather at carcasses despite being solitary, complicating the pack-hunting hypothesis.",
+        "type": "fill_blank",
+        "correctAnswer": "Crocodiles",
+        "distractors": ["Wolves", "Lions", "Dolphins"]
+      },
+      {
+        "question": "Fossil evidence conclusively proves that Velociraptors hunted in coordinated packs.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -102,6 +192,32 @@
       "To make room for enlarged organs",
       "Because their muscles needed more attachment surface area",
       "So they could flatten themselves to chase prey into burrows"
+    ],
+    "variants": [
+      {
+        "question": "What advantage did hollow bones give raptors?",
+        "type": "forward",
+        "correctAnswer": "Reduced weight for greater speed and agility",
+        "distractors": ["Extra oxygen storage for sprinting", "Better buoyancy for river crossings", "Temperature regulation in cold climates"]
+      },
+      {
+        "question": "Pneumatized bones filled with air pockets are a feature shared by raptors and which modern animals?",
+        "type": "reverse",
+        "correctAnswer": "Modern birds",
+        "distractors": ["Modern reptiles", "Marine mammals", "Large primates"]
+      },
+      {
+        "question": "Which is NOT true about raptor hollow bones?",
+        "type": "negative",
+        "correctAnswer": "They were stronger than solid bones",
+        "distractors": ["They were connected to the respiratory system", "They reduced overall skeleton weight", "They are also found in modern birds"]
+      },
+      {
+        "question": "Raptor bones were ___, meaning they were filled with air pockets connected to the respiratory system.",
+        "type": "fill_blank",
+        "correctAnswer": "Pneumatized",
+        "distractors": ["Calcified", "Ossified", "Crystallized"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -131,6 +247,32 @@
       "Crushing the shells of turtles and eggs",
       "Climbing cliffs to find nesting sites"
     ],
+    "variants": [
+      {
+        "question": "How did Velociraptor actually use its enlarged sickle claw?",
+        "type": "forward",
+        "correctAnswer": "For gripping and pinning prey like a grappling hook",
+        "distractors": ["For slashing open prey in a single kick", "For digging burrows in sandy ground", "For scraping bark to find insects"]
+      },
+      {
+        "question": "A 2011 study found that the cross-section of Velociraptor's sickle claw most closely matched the claws of which modern animals?",
+        "type": "reverse",
+        "correctAnswer": "Modern birds of prey (climbing claws)",
+        "distractors": ["Modern bears (digging claws)", "Modern cats (retractable claws)", "Modern lizards (gripping pads)"]
+      },
+      {
+        "question": "The sickle claw dragged along the ground as Velociraptor walked.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "question": "A museum exhibit describes the Velociraptor claw as functioning most like a ___ for holding down struggling prey.",
+        "type": "context",
+        "correctAnswer": "Grappling hook",
+        "distractors": ["Serrated knife", "Hydraulic press", "Battering ram"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -158,6 +300,32 @@
       "A brain showing no difference from other theropods",
       "Evidence of color vision superior to any modern animal",
       "A simple reptilian brain with no complex cognition"
+    ],
+    "variants": [
+      {
+        "question": "What did brain scans reveal about Velociraptor's sensory capabilities?",
+        "type": "forward",
+        "correctAnswer": "Large olfactory bulbs indicating excellent smell",
+        "distractors": ["Tiny smell centers favoring vision instead", "Enlarged hearing centers for echolocation", "A simple reptilian brain with no specialization"]
+      },
+      {
+        "question": "Enlarged olfactory bulbs and large cerebral hemispheres in Velociraptor's brain suggest what kind of hunting strategy?",
+        "type": "reverse",
+        "correctAnswer": "Sophisticated scent-tracking combined with complex behavior",
+        "distractors": ["Pure ambush hunting using only vision", "Sound-based echolocation like bats", "Random foraging with no strategy"]
+      },
+      {
+        "question": "Which is NOT true about Velociraptor's brain?",
+        "type": "negative",
+        "correctAnswer": "It was identical to modern crocodilian brains",
+        "distractors": ["It had proportionally large cerebral hemispheres", "Its olfactory bulbs were notably large", "Its shape was very similar to modern birds"]
+      },
+      {
+        "question": "Velociraptor's brain had a shape most similar to that of modern crocodiles.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -187,6 +355,32 @@
       "Temperature-neutral, unaffected by ambient conditions",
       "Warm-blooded only during reproductive seasons"
     ],
+    "variants": [
+      {
+        "question": "What type of metabolism did Velociraptor have?",
+        "type": "forward",
+        "correctAnswer": "Endothermic (warm-blooded), like birds and mammals",
+        "distractors": ["Ectothermic (cold-blooded), like modern lizards", "Variable, depending on the season", "Cold-blooded at rest, warm during activity"]
+      },
+      {
+        "question": "The ability to maintain a constant body temperature regardless of external conditions is called what, and Velociraptor possessed this trait?",
+        "type": "reverse",
+        "correctAnswer": "Endothermy (warm-bloodedness)",
+        "distractors": ["Ectothermy (cold-bloodedness)", "Poikilothermy (variable temperature)", "Heterothermy (mixed regulation)"]
+      },
+      {
+        "question": "Velociraptor's feathers, bone growth patterns, and metabolic rate all point to it being ___.",
+        "type": "fill_blank",
+        "correctAnswer": "Warm-blooded (endothermic)",
+        "distractors": ["Cold-blooded (ectothermic)", "Temperature-neutral", "Seasonally warm-blooded"]
+      },
+      {
+        "question": "A wildlife documentary shows a Velociraptor hunting actively in the cool evening air. This is plausible because Velociraptor was warm-blooded and could sustain activity regardless of external temperature.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -214,6 +408,32 @@
       "In Antarctica, under ice sheets",
       "In Russia, near the Ural Mountains",
       "In Southeast Asia, particularly Thailand and Vietnam"
+    ],
+    "variants": [
+      {
+        "question": "In which geographic region have all known Velociraptor fossils been discovered?",
+        "type": "forward",
+        "correctAnswer": "Mongolia and China (the Gobi Desert region)",
+        "distractors": ["North America (Montana and Wyoming)", "South America (primarily Argentina)", "Africa (Tanzania and Madagascar)"]
+      },
+      {
+        "question": "The Gobi Desert region of Mongolia and China is the exclusive fossil location for which famous dinosaur?",
+        "type": "reverse",
+        "correctAnswer": "Velociraptor",
+        "distractors": ["Tyrannosaurus rex", "Triceratops", "Stegosaurus"]
+      },
+      {
+        "question": "During the Late Cretaceous, Velociraptor's habitat was a ___ environment, not a tropical jungle.",
+        "type": "fill_blank",
+        "correctAnswer": "Semi-arid desert with sand dunes",
+        "distractors": ["Dense tropical rainforest", "Frozen tundra landscape", "Temperate coastal wetland"]
+      },
+      {
+        "question": "Velociraptor fossils have been found on multiple continents including North America.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
     ],
     "category": [
       "Life Sciences",
@@ -244,6 +464,32 @@
       "Sleeping in groups, stacked for warmth",
       "On its back with all four limbs in the air"
     ],
+    "variants": [
+      {
+        "question": "What sleeping posture did Velociraptor likely adopt?",
+        "type": "forward",
+        "correctAnswer": "Head tucked under a feathered forelimb, bird-style",
+        "distractors": ["Lying flat on its side like a lizard", "Curled in a ball like a modern cat", "Standing upright while resting against trees"]
+      },
+      {
+        "question": "A fossil of an oviraptorid preserved with its head tucked under a forelimb provides evidence for what behavior in raptor-like dinosaurs?",
+        "type": "reverse",
+        "correctAnswer": "Bird-like sleeping posture",
+        "distractors": ["Aggressive defensive display", "Underwater hunting technique", "Egg-laying behavior only"]
+      },
+      {
+        "question": "Which is NOT true about Velociraptor's inferred sleeping behavior?",
+        "type": "negative",
+        "correctAnswer": "It slept lying flat on its side like a lizard",
+        "distractors": ["It tucked its head under a forelimb", "The posture is similar to modern bird sleeping", "The posture would have helped conserve body heat"]
+      },
+      {
+        "question": "During a dig in Mongolia, a paleontologist finds a raptor-like dinosaur preserved in a brooding position over eggs. This posture is consistent with ___ sleeping behavior seen in modern birds.",
+        "type": "context",
+        "correctAnswer": "Head-tucked, heat-conserving",
+        "distractors": ["Standing upright and alert", "Fully sprawled and relaxed", "Buried underground defensive"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -271,6 +517,32 @@
       "It is the first fossil ever found with preserved raptor brain tissue",
       "It shows two Velociraptors fighting each other over territory",
       "It is the oldest known dromaeosaurid specimen ever discovered"
+    ],
+    "variants": [
+      {
+        "question": "What does the famous 'Fighting Dinosaurs' fossil depict?",
+        "type": "forward",
+        "correctAnswer": "Velociraptor and Protoceratops locked in combat at death",
+        "distractors": ["The largest raptor fossil ever found", "Two Velociraptors fighting over territory", "A raptor with perfectly preserved feathers"]
+      },
+      {
+        "question": "The fossil showing a Velociraptor's sickle claw embedded in a Protoceratops's throat was discovered in which country?",
+        "type": "reverse",
+        "correctAnswer": "Mongolia, in 1971",
+        "distractors": ["United States, in 1995", "China, in 2004", "Argentina, in 1988"]
+      },
+      {
+        "question": "Both animals in the 'Fighting Dinosaurs' fossil were most likely buried by a collapsing ___.",
+        "type": "fill_blank",
+        "correctAnswer": "Sand dune",
+        "distractors": ["Volcanic mudflow", "River flash flood", "Earthquake landslide"]
+      },
+      {
+        "question": "The 'Fighting Dinosaurs' fossil is currently housed in the Mongolian Academy of Sciences.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences"

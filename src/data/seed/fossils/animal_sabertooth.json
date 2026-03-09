@@ -19,6 +19,32 @@
       "Because the saber teeth were on the lower jaw, unlike in tigers",
       "Because it only had one saber tooth, not two like depicted"
     ],
+    "variants": [
+      {
+        "question": "Why is the name 'saber-toothed tiger' incorrect for Smilodon?",
+        "type": "forward",
+        "correctAnswer": "It belongs to an extinct subfamily, unrelated to tigers",
+        "distractors": ["It was actually a dog-like carnivore", "Its teeth weren't saber-shaped", "It was a bear-cat hybrid species"]
+      },
+      {
+        "question": "Smilodon belongs to which entirely extinct subfamily of carnivores?",
+        "type": "reverse",
+        "correctAnswer": "Machairodontinae",
+        "distractors": ["Pantherinae", "Felinae", "Caninae"]
+      },
+      {
+        "question": "Which is NOT true about Smilodon's classification?",
+        "type": "negative",
+        "correctAnswer": "It is a close relative of modern tigers",
+        "distractors": ["It belongs to an entirely extinct subfamily", "Saber-tooth adaptations evolved in multiple unrelated lineages", "The correct common name is saber-toothed cat"]
+      },
+      {
+        "question": "The saber-tooth adaptation (elongated canines) evolved independently in marsupials, creodonts, and nimravids — a case of ___.",
+        "type": "fill_blank",
+        "correctAnswer": "Convergent evolution",
+        "distractors": ["Direct ancestry", "Genetic mutation", "Artificial selection"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -46,6 +72,38 @@
       "One confirmed species and three disputed subspecies",
       "Six species, three of which were herbivorous",
       "Exactly four species, all the same size"
+    ],
+    "variants": [
+      {
+        "question": "How many recognized species of Smilodon existed?",
+        "type": "forward",
+        "correctAnswer": "Three: S. gracilis, S. fatalis, and S. populator",
+        "distractors": ["Only one with regional size variations", "Five, including two aquatic forms", "Two — one African and one American"]
+      },
+      {
+        "question": "Which Smilodon species was the largest known felid, weighing up to 400 kg?",
+        "type": "reverse",
+        "correctAnswer": "Smilodon populator",
+        "distractors": ["Smilodon fatalis", "Smilodon gracilis", "Smilodon maximus"]
+      },
+      {
+        "question": "Which is NOT true about Smilodon species?",
+        "type": "negative",
+        "correctAnswer": "All three species lived in the same region at the same time",
+        "distractors": ["S. gracilis was about 100 kg, jaguar-sized", "S. fatalis was the most commonly depicted species", "S. populator was a South American specialist"]
+      },
+      {
+        "question": "S. fatalis weighed 160-280 kg and is comparable in size to a large ___.",
+        "type": "fill_blank",
+        "correctAnswer": "Lion",
+        "distractors": ["House cat", "Wolf", "Rabbit"]
+      },
+      {
+        "question": "Smilodon populator, the largest species, was exclusively found in South America.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -75,6 +133,32 @@
       "About 3 meters — as tall as the animal itself",
       "About 70 centimeters — larger than any bone in the animal's leg"
     ],
+    "variants": [
+      {
+        "question": "What was the maximum length of Smilodon's saber teeth?",
+        "type": "forward",
+        "correctAnswer": "Up to 28 centimeters (crown length only)",
+        "distractors": ["About 5 cm similar to a lion", "About 50 cm or half a meter", "About 10 cm slightly larger than a tiger's"]
+      },
+      {
+        "question": "Serrated teeth up to 28 cm long that were oval in cross-section and relatively fragile belong to which prehistoric predator?",
+        "type": "reverse",
+        "correctAnswer": "Smilodon (saber-toothed cat)",
+        "distractors": ["Tyrannosaurus rex", "Megalodon", "Dunkleosteus"]
+      },
+      {
+        "question": "Which is NOT true about Smilodon's saber teeth?",
+        "type": "negative",
+        "correctAnswer": "They were extremely durable and resistant to breaking",
+        "distractors": ["They were serrated on both edges", "They were oval in cross-section", "They could reach 28 cm in crown length"]
+      },
+      {
+        "question": "Smilodon's teeth were serrated on both edges like a ___, designed for cutting through soft tissue.",
+        "type": "fill_blank",
+        "correctAnswer": "Steak knife",
+        "distractors": ["Saw blade", "Chisel", "Hammer"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -102,6 +186,32 @@
       "By biting the legs to cripple prey, then waiting for it to weaken",
       "By using the teeth as a shovel to uncover burrowing animals",
       "By locking teeth into prey and swinging its body to deliver the killing force"
+    ],
+    "variants": [
+      {
+        "question": "What was Smilodon's likely hunting strategy?",
+        "type": "forward",
+        "correctAnswer": "Ambush, pin with forelimbs, then precise killing bite",
+        "distractors": ["Charge and swipe upward with saber teeth", "Bite through bone to reach marrow", "Chase prey at high speeds over long distances"]
+      },
+      {
+        "question": "Extremely powerful shoulders and forelimbs combined with fragile saber teeth suggest what type of predator?",
+        "type": "reverse",
+        "correctAnswer": "An ambush predator that pinned prey before biting",
+        "distractors": ["A pursuit predator that ran down prey", "A scavenger that only ate dead animals", "A constrictor that crushed prey"]
+      },
+      {
+        "question": "Smilodon's killing bite targeted the ___ or neck to sever blood vessels, unlike lions which bite to suffocate.",
+        "type": "fill_blank",
+        "correctAnswer": "Throat",
+        "distractors": ["Spine", "Skull", "Abdomen"]
+      },
+      {
+        "question": "Smilodon's saber teeth were strong enough to be used while wrestling with struggling prey.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -131,6 +241,32 @@
       "Exclusively prehistoric insects and small reptiles",
       "Giant birds and their eggs from coastal cliff nests"
     ],
+    "variants": [
+      {
+        "question": "What type of prey did Smilodon primarily hunt?",
+        "type": "forward",
+        "correctAnswer": "Ice Age megafauna: mammoths, mastodons, giant sloths, bison",
+        "distractors": ["Mainly small animals like rabbits and rodents", "Exclusively fish from rivers", "Only other carnivores and scavenged kills"]
+      },
+      {
+        "question": "Isotopic signatures from La Brea tar pit Smilodon bones are consistent with a diet of what?",
+        "type": "reverse",
+        "correctAnswer": "Megaherbivores (mammoths, mastodons, giant sloths)",
+        "distractors": ["Small mammals and rodents only", "Fish and marine organisms", "Insects and small reptiles"]
+      },
+      {
+        "question": "Which is NOT an animal Smilodon typically preyed upon?",
+        "type": "negative",
+        "correctAnswer": "Fish from rivers and coastal areas",
+        "distractors": ["Woolly mammoths", "Giant ground sloths", "American bison"]
+      },
+      {
+        "question": "A paleontologist examining Smilodon remains from the La Brea tar pits finds isotopic signatures in its bones. These chemical traces reveal that Smilodon's diet consisted primarily of large ___.",
+        "type": "context",
+        "correctAnswer": "Megaherbivores like mammoths and mastodons",
+        "distractors": ["Fish and aquatic organisms", "Small burrowing mammals", "Insects and grubs"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -158,6 +294,32 @@
       "Around 2,000 BCE, during the Bronze Age warming period",
       "About 500,000 years ago when grasslands replaced forests",
       "It never went fully extinct — small populations still exist in remote areas"
+    ],
+    "variants": [
+      {
+        "question": "When and why did Smilodon go extinct?",
+        "type": "forward",
+        "correctAnswer": "About 10,000 years ago when megafauna prey disappeared",
+        "distractors": ["65 million years ago with the dinosaurs", "About 1 million years ago from global cooling", "About 100,000 years ago from wolf competition"]
+      },
+      {
+        "question": "The extinction of mammoths, mastodons, and giant sloths at the end of the Pleistocene directly caused the extinction of which predator?",
+        "type": "reverse",
+        "correctAnswer": "Smilodon (saber-toothed cat)",
+        "distractors": ["Velociraptor", "Cave bear", "Dire wolf only"]
+      },
+      {
+        "question": "Which is NOT a factor in Smilodon's extinction?",
+        "type": "negative",
+        "correctAnswer": "An asteroid impact 65 million years ago",
+        "distractors": ["The end of the last Ice Age changed habitats", "Megafauna prey went extinct", "Human hunters may have contributed to prey scarcity"]
+      },
+      {
+        "question": "Smilodon was a prey ___, meaning it was so adapted to hunting megafauna that it couldn't switch to smaller prey.",
+        "type": "fill_blank",
+        "correctAnswer": "Specialist",
+        "distractors": ["Generalist", "Opportunist", "Parasite"]
+      }
     ],
     "category": [
       "Life Sciences",
@@ -188,6 +350,32 @@
       "That they were long-lived and simply had time to heal injuries naturally",
       "That females never hunted and therefore had no hunting-related injuries"
     ],
+    "variants": [
+      {
+        "question": "What does evidence of healed severe injuries in Smilodon suggest about its behavior?",
+        "type": "forward",
+        "correctAnswer": "Social group living with food-sharing for injured members",
+        "distractors": ["Remarkable regenerative healing abilities", "They hibernated during winter to heal", "They used medicinal plants on wounds"]
+      },
+      {
+        "question": "Healed broken limbs, dislocated hips, and skull fractures in La Brea Smilodon specimens provide indirect evidence for what social behavior?",
+        "type": "reverse",
+        "correctAnswer": "Group food-sharing that sustained injured individuals",
+        "distractors": ["Solitary hibernation during recovery periods", "Mineral bath healing at natural hot springs", "Self-medication using specific plant species"]
+      },
+      {
+        "question": "Which is NOT true about the healed injury evidence in Smilodon?",
+        "type": "negative",
+        "correctAnswer": "Injuries healed because of unique regenerative abilities",
+        "distractors": ["Broken limbs and skull fractures were found healed", "Recovery sometimes took years", "This evidence suggests social group living"]
+      },
+      {
+        "question": "The social care hypothesis for Smilodon is similar to behavior observed in modern ___ and wolves, where healthy group members share food.",
+        "type": "fill_blank",
+        "correctAnswer": "Lions",
+        "distractors": ["Eagles", "Bears", "Crocodiles"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -215,6 +403,32 @@
       "Because the asphalt preserved only Smilodon, rejecting all other species",
       "Because the area was a gladiatorial arena where groups of Smilodon fought",
       "Because the deposits are artificial — fossils were collected from across California"
+    ],
+    "variants": [
+      {
+        "question": "Why are there so many predator fossils at the La Brea tar pits?",
+        "type": "forward",
+        "correctAnswer": "Prey stuck in asphalt drew predators who also got trapped",
+        "distractors": ["Humans deliberately buried animals there", "A volcanic eruption killed everything at once", "It was a predator breeding ground"]
+      },
+      {
+        "question": "Over 166,000 bones from thousands of individuals of which Ice Age predator have been found at the La Brea tar pits?",
+        "type": "reverse",
+        "correctAnswer": "Smilodon (saber-toothed cat)",
+        "distractors": ["Dire wolf only", "American lion only", "Short-faced bear only"]
+      },
+      {
+        "question": "The La Brea tar pits have been trapping animals for approximately ___ years.",
+        "type": "fill_blank",
+        "correctAnswer": "50,000",
+        "distractors": ["500", "5 million", "1,000"]
+      },
+      {
+        "question": "The La Brea tar pits contain a disproportionate number of predator fossils compared to herbivores because predators came to feed on trapped prey.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences",
@@ -245,6 +459,32 @@
       "That it walked upright occasionally and a tail would interfere",
       "That tail length in fossil cats cannot be determined from skeletal evidence"
     ],
+    "variants": [
+      {
+        "question": "What does Smilodon's short, stubby tail reveal about its hunting strategy?",
+        "type": "forward",
+        "correctAnswer": "It was an ambush predator, not a high-speed pursuit hunter",
+        "distractors": ["It swam frequently and needed less drag", "It climbed trees for hunting advantages", "It lived in open areas where tails were unnecessary"]
+      },
+      {
+        "question": "An ambush hunting strategy rather than pursuit hunting is supported by what physical feature of Smilodon?",
+        "type": "reverse",
+        "correctAnswer": "Its extremely short, stubby tail (like a bobcat)",
+        "distractors": ["Its exceptionally long legs", "Its lightweight hollow bones", "Its enormous ear structures"]
+      },
+      {
+        "question": "Which is NOT true about Smilodon's tail?",
+        "type": "negative",
+        "correctAnswer": "It had a long tail used for balance during chases",
+        "distractors": ["It was short and stubby like a bobcat", "The short tail is consistent with ambush hunting", "Long-tailed cats use tails for balance during pursuit"]
+      },
+      {
+        "question": "Smilodon's body was built more like a modern bear than a cheetah — stocky, powerful, and designed for short bursts of explosive force rather than sustained speed.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -272,6 +512,32 @@
       "Homotherium lived in Africa while Smilodon was strictly American",
       "Homotherium had four saber teeth while Smilodon had only two",
       "Homotherium is actually just another name for the same genus as Smilodon"
+    ],
+    "variants": [
+      {
+        "question": "How did Homotherium (the scimitar cat) differ from Smilodon in build and hunting style?",
+        "type": "forward",
+        "correctAnswer": "Longer legs, shorter sabers — pursuit vs. ambush style",
+        "distractors": ["Strictly aquatic while Smilodon was terrestrial", "Three times the size of Smilodon", "A herbivore that resembled a predator"]
+      },
+      {
+        "question": "Both Smilodon and Homotherium coexisted in North America hunting the same megafauna. This is an example of what ecological concept?",
+        "type": "reverse",
+        "correctAnswer": "Ecological partitioning (same prey, different strategies)",
+        "distractors": ["Competitive exclusion (one displaces the other)", "Mutualistic symbiosis (they helped each other)", "Convergent evolution (unrelated species looking alike)"]
+      },
+      {
+        "question": "Which is NOT true about Homotherium compared to Smilodon?",
+        "type": "negative",
+        "correctAnswer": "It was strictly aquatic and hunted marine prey",
+        "distractors": ["It had longer legs than Smilodon", "It was likely a pursuit predator like hyenas", "It had shorter but still enlarged saber teeth"]
+      },
+      {
+        "question": "Homotherium's hunting style was likely similar to modern ___, using pursuit and endurance rather than ambush.",
+        "type": "fill_blank",
+        "correctAnswer": "Hyenas",
+        "distractors": ["Crocodiles", "Spiders", "Chameleons"]
+      }
     ],
     "category": [
       "Life Sciences"

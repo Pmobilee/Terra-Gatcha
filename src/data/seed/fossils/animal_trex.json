@@ -19,6 +19,32 @@
       "They were used for balance while running at full speed",
       "They were too small to have any meaningful muscle attached"
     ],
+    "variants": [
+      {
+        "question": "How strong were T. rex arms despite their short size?",
+        "type": "forward",
+        "correctAnswer": "Each could exert forces of roughly 200 kg",
+        "distractors": ["They were completely vestigial with no strength", "They could lift about 5 kg at most", "They were decorative with zero muscle"]
+      },
+      {
+        "question": "Robust muscle attachment scars on bones and the ability to exert 200 kg of force are evidence that T. rex arms were what?",
+        "type": "reverse",
+        "correctAnswer": "Functional and actively used, not vestigial",
+        "distractors": ["Purely decorative display structures", "Leftover from a larger ancestor", "Used only during swimming"]
+      },
+      {
+        "question": "Which is NOT a proposed function of T. rex arms?",
+        "type": "negative",
+        "correctAnswer": "Swimming across deep rivers and lakes",
+        "distractors": ["Holding prey close during biting", "Assisting in rising from the ground", "Gripping a mate during reproduction"]
+      },
+      {
+        "question": "T. rex arms had ___ on the bone, indicating powerful muscles were attached.",
+        "type": "fill_blank",
+        "correctAnswer": "Robust muscle attachment scars",
+        "distractors": ["Smooth polished surfaces", "Hollow air chambers", "Cartilage growth plates"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -46,6 +72,38 @@
       "It had infrared vision for hunting in the dark",
       "Its vision was identical to modern crocodilians",
       "Its eye sockets suggest it could not focus on close-up objects"
+    ],
+    "variants": [
+      {
+        "question": "How wide was T. rex's binocular visual overlap compared to modern birds of prey?",
+        "type": "forward",
+        "correctAnswer": "About 55 degrees — wider than any living hawk or eagle",
+        "distractors": ["About 10 degrees — much narrower than hawks", "Identical to modern eagles at 45 degrees", "No binocular overlap — eyes faced sideways"]
+      },
+      {
+        "question": "Forward-facing eyes with approximately 55 degrees of binocular overlap gave T. rex what advantage?",
+        "type": "reverse",
+        "correctAnswer": "Precise depth perception for judging attack distances",
+        "distractors": ["360-degree panoramic awareness", "Infrared night vision capability", "Ability to see underwater clearly"]
+      },
+      {
+        "question": "Which is NOT true about T. rex's vision?",
+        "type": "negative",
+        "correctAnswer": "Its eyes were tiny relative to its skull size",
+        "distractors": ["Its binocular overlap was about 55 degrees", "It had an exceptionally large optic lobe", "Its eyes were estimated at 12-14 cm in diameter"]
+      },
+      {
+        "question": "T. rex's eyes were estimated to be about ___ in diameter, contributing to extraordinary visual acuity.",
+        "type": "fill_blank",
+        "correctAnswer": "12-14 centimeters",
+        "distractors": ["1-2 centimeters", "30-40 centimeters", "5-6 millimeters"]
+      },
+      {
+        "question": "T. rex likely had better depth perception than modern hawks and eagles.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -75,6 +133,32 @@
       "About 500 grams per year — extremely slow warm-blooded growth",
       "Exactly the same growth rate from birth to death"
     ],
+    "variants": [
+      {
+        "question": "What was T. rex's daily growth rate during its peak teenage years?",
+        "type": "forward",
+        "correctAnswer": "About 2.2 kg per day (roughly 600 kg per year)",
+        "distractors": ["About 1 gram per day like a reptile", "About 100 kg per day", "About 50 grams per day like a chicken"]
+      },
+      {
+        "question": "A growth rate of approximately 2.2 kg per day between ages 14 and 18, revealed by bone growth rings, belongs to which dinosaur?",
+        "type": "reverse",
+        "correctAnswer": "Tyrannosaurus rex",
+        "distractors": ["Brachiosaurus", "Triceratops", "Stegosaurus"]
+      },
+      {
+        "question": "A paleontologist studies bone growth rings in a T. rex femur, similar to ___ in trees, to determine its growth rate.",
+        "type": "fill_blank",
+        "correctAnswer": "Annual growth rings",
+        "distractors": ["DNA sequences", "Chemical isotopes", "Fossilized blood cells"]
+      },
+      {
+        "question": "After age 18, T. rex growth slowed dramatically, with adults reaching about 8,000-9,000 kg.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -102,6 +186,32 @@
       "About 10 years — they hit old age quickly like most large dinosaurs",
       "Over 1,000 years — age is impossible to determine from fossils",
       "About 65 years — they lived as long as their era lasted"
+    ],
+    "variants": [
+      {
+        "question": "What was the maximum documented lifespan of a T. rex?",
+        "type": "forward",
+        "correctAnswer": "About 28 years, based on bone growth ring analysis",
+        "distractors": ["About 100 years like large tortoises", "About 5 years due to massive size", "Over 200 years with slow metabolism"]
+      },
+      {
+        "question": "The tyrannosaur specimen named Sue, one of the most complete T. rex fossils ever found, died at approximately what age?",
+        "type": "reverse",
+        "correctAnswer": "About 28 years old",
+        "distractors": ["About 65 years old", "About 100 years old", "About 5 years old"]
+      },
+      {
+        "question": "Which is NOT true about T. rex lifespan?",
+        "type": "negative",
+        "correctAnswer": "They typically lived over 100 years like tortoises",
+        "distractors": ["Maximum documented age is about 28 years", "Most individuals died younger than the maximum", "Their explosive growth rate may have accelerated aging"]
+      },
+      {
+        "question": "T. rex reached sexual maturity at around age ___, roughly halfway through its maximum lifespan.",
+        "type": "fill_blank",
+        "correctAnswer": "15-20",
+        "distractors": ["1-2", "5-6", "25-30"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -131,6 +241,32 @@
       "Only female T. rex had feathers, used for nest insulation",
       "Feather evidence in T. rex fossils has been completely debunked"
     ],
+    "variants": [
+      {
+        "question": "What is the current scientific view on T. rex feathers at different life stages?",
+        "type": "forward",
+        "correctAnswer": "Juveniles likely feathered; adults mostly scaly with patches",
+        "distractors": ["No feathers at any life stage", "Fully feathered at all ages like a bird", "Only crested feathers like a cockatoo"]
+      },
+      {
+        "question": "The loss of feathers and replacement by scales as T. rex grew larger is analogous to what trait in modern mammals?",
+        "type": "reverse",
+        "correctAnswer": "Elephants having less hair than small mammals",
+        "distractors": ["Cats shedding fur seasonally", "Whales losing all hair underwater", "Dogs growing thicker winter coats"]
+      },
+      {
+        "question": "Which is NOT true about T. rex feather evidence?",
+        "type": "negative",
+        "correctAnswer": "DNA analysis has confirmed T. rex was fully featherless",
+        "distractors": ["Adult skin impressions show large scales", "Related juvenile tyrannosaurids show feather evidence", "Hatchlings likely had downy feathers for insulation"]
+      },
+      {
+        "question": "Juvenile T. rex likely had down-like feathers because small animals lose ___ more quickly and need more insulation.",
+        "type": "fill_blank",
+        "correctAnswer": "Body heat",
+        "distractors": ["Blood volume", "Bone density", "Skin moisture"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -158,6 +294,32 @@
       "Its olfactory system was designed only for detecting other T. rex",
       "Smell analysis is impossible because no T. rex nose tissue has survived",
       "Its smell centers were smaller than a modern house cat's"
+    ],
+    "variants": [
+      {
+        "question": "How did T. rex's sense of smell compare to other dinosaurs?",
+        "type": "forward",
+        "correctAnswer": "Its olfactory bulbs were the largest of any known dinosaur",
+        "distractors": ["Its sense of smell was weaker than most reptiles", "It was average for a large predatory dinosaur", "It had no dedicated smell-processing brain region"]
+      },
+      {
+        "question": "Proportionally the largest olfactory bulbs of any known dinosaur belong to which species?",
+        "type": "reverse",
+        "correctAnswer": "Tyrannosaurus rex",
+        "distractors": ["Velociraptor", "Spinosaurus", "Allosaurus"]
+      },
+      {
+        "question": "Which is NOT a proposed use of T. rex's exceptional sense of smell?",
+        "type": "negative",
+        "correctAnswer": "Detecting predators approaching from behind",
+        "distractors": ["Locating carcasses from great distances", "Tracking prey through dense vegetation", "Detecting rivals or potential mates"]
+      },
+      {
+        "question": "T. rex's extraordinary sense of smell supports the hypothesis that it may have engaged in ___ behavior in addition to active hunting.",
+        "type": "context",
+        "correctAnswer": "Scavenging",
+        "distractors": ["Herbivorous", "Burrowing", "Aquatic"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -187,6 +349,32 @@
       "Its lips were fused shut except when biting",
       "Evidence proves its mouth was always open — jaws couldn't fully close"
     ],
+    "variants": [
+      {
+        "question": "What did a 2023 study conclude about T. rex's mouth appearance?",
+        "type": "forward",
+        "correctAnswer": "It likely had lips covering its teeth, like a monitor lizard",
+        "distractors": ["Teeth were permanently exposed like a crocodile", "It had a keratinous beak instead of teeth", "Its jaw could unhinge like a snake"]
+      },
+      {
+        "question": "The finding that T. rex teeth were proportionally small relative to jaw size — a pattern seen in lipped reptiles — suggests what about its appearance?",
+        "type": "reverse",
+        "correctAnswer": "T. rex had lips covering its teeth when its mouth was closed",
+        "distractors": ["Its teeth were always visible like a crocodile", "It had no external teeth at all", "Its jaw was locked permanently open"]
+      },
+      {
+        "question": "Which is NOT evidence supporting T. rex having lips?",
+        "type": "negative",
+        "correctAnswer": "T. rex had crocodile-like dentin-protection adaptations",
+        "distractors": ["Teeth were proportionally small relative to jaw size", "Exposed teeth need protection from drying out", "The tooth-to-jaw ratio matches lipped lizards"]
+      },
+      {
+        "question": "Lips on T. rex would have served the important function of keeping its teeth ___ and protected.",
+        "type": "fill_blank",
+        "correctAnswer": "Moist",
+        "distractors": ["Sharp", "Hidden", "Warm"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -214,6 +402,32 @@
       "It replaced teeth daily, like a shark",
       "Only the front teeth replaced — the back teeth were permanent",
       "Tooth replacement is impossible to determine from fossil evidence"
+    ],
+    "variants": [
+      {
+        "question": "How often did T. rex replace each of its teeth?",
+        "type": "forward",
+        "correctAnswer": "Every 1-2 years, continuously throughout its life",
+        "distractors": ["Once, getting a permanent set like humans", "Daily, like a modern shark", "Never — each tooth lasted its entire life"]
+      },
+      {
+        "question": "The term 'polyphyodont' describes what dental trait that T. rex shared with most reptiles?",
+        "type": "reverse",
+        "correctAnswer": "Continuous tooth replacement throughout life",
+        "distractors": ["Having multiple rows of teeth at once", "Teeth that grow longer with age", "Self-sharpening tooth enamel"]
+      },
+      {
+        "question": "T. rex teeth were primarily designed for ___ rather than slicing.",
+        "type": "fill_blank",
+        "correctAnswer": "Bone-crushing",
+        "distractors": ["Precise cutting", "Filter feeding", "Grinding vegetation"]
+      },
+      {
+        "question": "Including replacement teeth developing in the jawbone, a T. rex had hundreds of teeth in various stages of growth at any given time.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -243,6 +457,32 @@
       "It only ate aquatic prey — fish and marine reptiles",
       "The debate was definitively settled in 2018 as a pure predator"
     ],
+    "variants": [
+      {
+        "question": "What is the current consensus on T. rex's feeding strategy?",
+        "type": "forward",
+        "correctAnswer": "Opportunistic predator-scavenger, like lions and bears",
+        "distractors": ["Exclusively an active predator", "Exclusively a scavenger of carcasses", "Primarily a filter feeder"]
+      },
+      {
+        "question": "Healed bite marks on hadrosaur bones provide direct evidence for what aspect of T. rex behavior?",
+        "type": "reverse",
+        "correctAnswer": "That it actively hunted live prey (not just scavenging)",
+        "distractors": ["That it was strictly a scavenger", "That it was a herbivore", "That it was cannibalistic"]
+      },
+      {
+        "question": "Which is NOT an argument used in the T. rex feeding behavior debate?",
+        "type": "negative",
+        "correctAnswer": "Stomach contents prove it only ate plants",
+        "distractors": ["Its exceptional sense of smell could locate carcasses", "Healed bite marks on prey bones prove live attacks", "Jack Horner proposed it was primarily a scavenger"]
+      },
+      {
+        "question": "Paleontologist ___ famously proposed that T. rex was primarily a scavenger rather than a hunter.",
+        "type": "fill_blank",
+        "correctAnswer": "Jack Horner",
+        "distractors": ["Mary Anning", "Robert Bakker", "Stephen Jay Gould"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -270,6 +510,32 @@
       "It was warm-blooded only in the brain — the rest of its body was cold",
       "Studies confirm it had a slower metabolism than any living animal",
       "It was more cold-blooded than lizards, which is why it needed no food for months"
+    ],
+    "variants": [
+      {
+        "question": "What type of metabolism did T. rex have based on bone chemistry evidence?",
+        "type": "forward",
+        "correctAnswer": "Warm-blooded (endothermic), more bird-like than reptilian",
+        "distractors": ["Cold-blooded like all reptiles", "A unique metabolism unlike any animal", "Identical to modern crocodiles"]
+      },
+      {
+        "question": "An explosive growth rate of 600 kg/year during teenage years is impossible with what type of metabolism?",
+        "type": "reverse",
+        "correctAnswer": "A cold-blooded (reptilian) metabolic rate",
+        "distractors": ["A warm-blooded (avian) metabolic rate", "An endothermic metabolic rate", "A high-energy mammalian rate"]
+      },
+      {
+        "question": "T. rex's metabolism was most similar to which modern animals?",
+        "type": "context",
+        "correctAnswer": "Ostriches and emus (large birds)",
+        "distractors": ["Komodo dragons and crocodiles", "Tuna and swordfish", "Wolves and bears"]
+      },
+      {
+        "question": "T. rex belongs to the coelurosaur group, which is the same dinosaur group that gave rise to modern birds.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences"

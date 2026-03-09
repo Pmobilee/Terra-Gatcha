@@ -19,6 +19,32 @@
       "Pyrite",
       "Aragonite"
     ],
+    "variants": [
+      {
+        "question": "What unique mineral composed the lenses of trilobite eyes?",
+        "type": "forward",
+        "correctAnswer": "Calcite (calcium carbonate)",
+        "distractors": ["Quartz (silicon dioxide)", "Obsidian (volcanic glass)", "Pyrite (iron sulfide)"]
+      },
+      {
+        "question": "Calcite crystal lenses oriented to minimize optical distortion are a unique feature of which ancient animal group?",
+        "type": "reverse",
+        "correctAnswer": "Trilobites",
+        "distractors": ["Ammonites", "Eurypterids", "Nautiloids"]
+      },
+      {
+        "question": "Trilobite eye lenses were each made from a single ___ crystal, oriented to minimize optical distortion.",
+        "type": "fill_blank",
+        "correctAnswer": "Calcite",
+        "distractors": ["Quartz", "Diamond", "Feldspar"]
+      },
+      {
+        "question": "Several modern animal species also have mineralized calcite crystal eyes like trilobites.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
+    ],
     "category": [
       "Life Sciences",
       "Natural Sciences"
@@ -48,6 +74,32 @@
       "Fewer than 100",
       "About 10 million"
     ],
+    "variants": [
+      {
+        "question": "How many trilobite species have been formally described by scientists?",
+        "type": "forward",
+        "correctAnswer": "More than 20,000 species",
+        "distractors": ["About 500 species", "Fewer than 200 species", "Around 50,000 species"]
+      },
+      {
+        "question": "Which Paleozoic marine arthropod group had over 20,000 formally described species?",
+        "type": "reverse",
+        "correctAnswer": "Trilobites",
+        "distractors": ["Eurypterids (sea scorpions)", "Ammonites", "Brachiopods"]
+      },
+      {
+        "question": "Which is NOT true about trilobite diversity?",
+        "type": "negative",
+        "correctAnswer": "They were limited to a single ocean environment",
+        "distractors": ["Over 20,000 species have been described", "They adapted to almost every marine niche", "Many more species likely existed without leaving fossils"]
+      },
+      {
+        "question": "Trilobites lived in every ocean environment from shallow reefs to deep ___ plains.",
+        "type": "fill_blank",
+        "correctAnswer": "Abyssal",
+        "distractors": ["Coastal", "Tropical", "Polar"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -75,6 +127,32 @@
       "Because they buried themselves in sediment when they died",
       "Because volcanic activity preserved them in great numbers",
       "Because they lived in areas with perfect fossilization conditions"
+    ],
+    "variants": [
+      {
+        "question": "Why are trilobite fossils more common than the actual number of animals that lived?",
+        "type": "forward",
+        "correctAnswer": "Each trilobite molted many times, leaving dozens of shells",
+        "distractors": ["They reproduced extremely rapidly", "They lived in enormous colonies", "Volcanic activity preserved them uniquely"]
+      },
+      {
+        "question": "The process of periodically shedding an old exoskeleton and growing a larger one explains why trilobite fossils are so abundant. What is this process called?",
+        "type": "reverse",
+        "correctAnswer": "Molting",
+        "distractors": ["Metamorphosis", "Regeneration", "Fossilization"]
+      },
+      {
+        "question": "Most trilobite fossils represent ___ rather than the remains of dead animals.",
+        "type": "fill_blank",
+        "correctAnswer": "Shed (molted) exoskeletons",
+        "distractors": ["Fossilized eggs", "Preserved soft tissue", "Mineral replacements"]
+      },
+      {
+        "question": "A paleontologist studying a site finds 50 trilobite fossils. This likely represents far fewer than 50 individual animals due to molting producing multiple shells per trilobite.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -104,6 +182,32 @@
       "Drifting in the open ocean at great depths",
       "In hydrothermal vent communities"
     ],
+    "variants": [
+      {
+        "question": "What type of habitat did most trilobite species occupy?",
+        "type": "forward",
+        "correctAnswer": "Benthic (on or near the ocean floor)",
+        "distractors": ["Pelagic (open ocean surface)", "Freshwater rivers and lakes", "Hydrothermal vent communities"]
+      },
+      {
+        "question": "Organisms that live on or just above the seafloor are described as 'benthic.' Which ancient arthropod group was predominantly benthic?",
+        "type": "reverse",
+        "correctAnswer": "Trilobites",
+        "distractors": ["Ammonites", "Graptolites", "Belemnites"]
+      },
+      {
+        "question": "Which is NOT true about trilobite habitats?",
+        "type": "negative",
+        "correctAnswer": "They lived primarily in freshwater rivers",
+        "distractors": ["Most were bottom-dwelling seafloor crawlers", "Some species could swim in the water column", "Many filtered organic material from sediment"]
+      },
+      {
+        "question": "While the classic trilobite was a seafloor crawler, some species could actually ___ or float in the water column.",
+        "type": "fill_blank",
+        "correctAnswer": "Swim",
+        "distractors": ["Burrow", "Fly", "Hibernate"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -131,6 +235,32 @@
       "About 1 million years",
       "About 600 years",
       "About 20 million years"
+    ],
+    "variants": [
+      {
+        "question": "How long did trilobites exist on Earth before going extinct?",
+        "type": "forward",
+        "correctAnswer": "Approximately 300 million years",
+        "distractors": ["About 10 million years", "About 65 million years", "About 1 billion years"]
+      },
+      {
+        "question": "Which marine arthropod group survived for approximately 300 million years — nearly twice as long as the dinosaurs?",
+        "type": "reverse",
+        "correctAnswer": "Trilobites",
+        "distractors": ["Ammonites", "Eurypterids", "Crinoids"]
+      },
+      {
+        "question": "Trilobites first appeared during the ___ Explosion, about 521 million years ago.",
+        "type": "fill_blank",
+        "correctAnswer": "Cambrian",
+        "distractors": ["Ordovician", "Devonian", "Jurassic"]
+      },
+      {
+        "question": "Non-avian dinosaurs existed for about 165 million years, meaning trilobites lasted nearly twice as long.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences",
@@ -161,6 +291,32 @@
       "The Ediacaran extinction",
       "A large asteroid impact in the Carboniferous"
     ],
+    "variants": [
+      {
+        "question": "Which mass extinction event ended the 300-million-year reign of trilobites?",
+        "type": "forward",
+        "correctAnswer": "The Permian-Triassic extinction ('The Great Dying')",
+        "distractors": ["The Cretaceous-Paleogene extinction", "The Ordovician-Silurian extinction", "The Triassic-Jurassic extinction"]
+      },
+      {
+        "question": "The Permian-Triassic extinction wiped out 96% of marine species. Which ancient arthropod group, despite surviving earlier extinction events, finally succumbed?",
+        "type": "reverse",
+        "correctAnswer": "Trilobites",
+        "distractors": ["Horseshoe crabs", "Nautiloids", "Jellyfish"]
+      },
+      {
+        "question": "Which is NOT true about the Permian-Triassic extinction?",
+        "type": "negative",
+        "correctAnswer": "It was caused by a large asteroid impact",
+        "distractors": ["It killed approximately 96% of marine species", "It is sometimes called 'The Great Dying'", "It was linked to massive volcanic eruptions in Siberia"]
+      },
+      {
+        "question": "The Permian-Triassic extinction was caused by massive volcanic eruptions in ___ that triggered runaway climate change.",
+        "type": "fill_blank",
+        "correctAnswer": "Siberia",
+        "distractors": ["Hawaii", "Iceland", "Indonesia"]
+      }
+    ],
     "category": [
       "Life Sciences",
       "Earth Sciences"
@@ -190,6 +346,32 @@
       "Asaphus at 55 centimeters",
       "Phacops at 15 centimeters"
     ],
+    "variants": [
+      {
+        "question": "What is the largest trilobite ever discovered, and how long was it?",
+        "type": "forward",
+        "correctAnswer": "Isotelus rex, measuring 72 centimeters",
+        "distractors": ["Paradoxides at 2 meters", "Olenellus at 1 meter", "Trinucleus at 90 centimeters"]
+      },
+      {
+        "question": "At 72 centimeters long, the largest trilobite ever found was discovered in which modern country?",
+        "type": "reverse",
+        "correctAnswer": "Canada (Manitoba)",
+        "distractors": ["United States (Montana)", "Morocco (Atlas Mountains)", "China (Yunnan Province)"]
+      },
+      {
+        "question": "Which is NOT true about Isotelus rex?",
+        "type": "negative",
+        "correctAnswer": "It was a tiny species less than 1 cm long",
+        "distractors": ["It measured 72 centimeters long", "It lived during the Ordovician period", "It was found in what is now Canada"]
+      },
+      {
+        "question": "While Isotelus rex was 72 cm long, most trilobite species were much smaller — ranging from a few ___ to a few centimeters.",
+        "type": "fill_blank",
+        "correctAnswer": "Millimeters",
+        "distractors": ["Meters", "Decimeters", "Kilometers"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -217,6 +399,32 @@
       "About 15 millimeters",
       "Around 50 millimeters",
       "Approximately 7 centimeters"
+    ],
+    "variants": [
+      {
+        "question": "What was the minimum size of the smallest trilobite species?",
+        "type": "forward",
+        "correctAnswer": "Less than 1 millimeter long",
+        "distractors": ["About 5 centimeters", "Approximately 10 millimeters", "Around 2 centimeters"]
+      },
+      {
+        "question": "Acanthopleurella stipulae, at less than 1 mm long, represents what extreme among trilobite species?",
+        "type": "reverse",
+        "correctAnswer": "The smallest known trilobite species",
+        "distractors": ["The oldest known trilobite species", "The deepest-dwelling trilobite species", "The most venomous trilobite species"]
+      },
+      {
+        "question": "The size range across trilobite species spans more than ___ orders of magnitude.",
+        "type": "fill_blank",
+        "correctAnswer": "Four",
+        "distractors": ["Two", "Ten", "One"]
+      },
+      {
+        "question": "The smallest trilobites were visible to the naked eye at about 5 centimeters long.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -246,6 +454,32 @@
       "Their three-stage molting cycle",
       "Their diet of three food types"
     ],
+    "variants": [
+      {
+        "question": "What does the name 'trilobite' (meaning 'three-lobed') actually refer to?",
+        "type": "forward",
+        "correctAnswer": "Three lengthwise lobes: one axial, two pleural",
+        "distractors": ["Three body sections (head, thorax, tail)", "Three pairs of walking legs", "Three compound eye segments"]
+      },
+      {
+        "question": "The cephalon, thorax, and pygidium are the three body sections of which ancient animal group?",
+        "type": "reverse",
+        "correctAnswer": "Trilobites",
+        "distractors": ["Ammonites", "Eurypterids", "Conodonts"]
+      },
+      {
+        "question": "Which is NOT one of the three lengthwise lobes that give trilobites their name?",
+        "type": "negative",
+        "correctAnswer": "The dorsal lobe",
+        "distractors": ["The axial lobe (center)", "The left pleural lobe", "The right pleural lobe"]
+      },
+      {
+        "question": "The trilobite's ___ (head shield) contained the eyes, mouth, and sensory organs.",
+        "type": "fill_blank",
+        "correctAnswer": "Cephalon",
+        "distractors": ["Thorax", "Pygidium", "Pleura"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -273,6 +507,38 @@
       "Storing eggs during reproduction",
       "Filtering plankton from the water",
       "Communicating with other trilobites"
+    ],
+    "variants": [
+      {
+        "question": "What function did trilobite exopodites serve?",
+        "type": "forward",
+        "correctAnswer": "Respiration (breathing) as feathery gill-like structures",
+        "distractors": ["Digging into sediment for food", "Injecting venom into prey", "Producing bioluminescent light"]
+      },
+      {
+        "question": "The term 'biramous' describes trilobite limbs that had two branches. What were the two branches used for?",
+        "type": "reverse",
+        "correctAnswer": "Walking (inner branch) and respiration (outer gill branch)",
+        "distractors": ["Eating and swimming", "Fighting and mating display", "Burrowing and sensing chemicals"]
+      },
+      {
+        "question": "Which is NOT true about trilobite limbs?",
+        "type": "negative",
+        "correctAnswer": "They had a single unbranched limb type",
+        "distractors": ["Limbs were biramous (two-branched)", "Exopodites were feathery gill-like structures", "Modern horseshoe crabs have a similar arrangement"]
+      },
+      {
+        "question": "Trilobite limbs combined locomotion and ___ in the same appendage — a primitive arthropod trait.",
+        "type": "fill_blank",
+        "correctAnswer": "Respiration",
+        "distractors": ["Reproduction", "Digestion", "Vision"]
+      },
+      {
+        "question": "Modern horseshoe crabs have a limb arrangement similar to the biramous limbs of trilobites.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences"

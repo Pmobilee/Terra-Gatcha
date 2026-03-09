@@ -19,6 +19,32 @@
       "About 8 meters, twice a great white's length",
       "Over 40 meters, the true size hidden by governments"
     ],
+    "variants": [
+      {
+        "question": "What is the scientifically accepted maximum length of Megalodon?",
+        "type": "forward",
+        "correctAnswer": "Approximately 15-18 meters",
+        "distractors": ["Up to 30 meters like a blue whale", "About 5 meters like a great white", "Over 25 meters confirmed by fossils"]
+      },
+      {
+        "question": "Which prehistoric shark reached approximately 15-18 meters in length and weighed 50-100 tonnes?",
+        "type": "reverse",
+        "correctAnswer": "Megalodon (Otodus megalodon)",
+        "distractors": ["Cretoxyrhina mantelli", "Helicoprion davisii", "Ptychodus mortoni"]
+      },
+      {
+        "question": "Which is NOT true about Megalodon's size?",
+        "type": "negative",
+        "correctAnswer": "It reliably reached over 20 meters in length",
+        "distractors": ["It was roughly three times longer than a great white", "Earlier size estimates used outdated scaling methods", "Its body mass is estimated at 50-100 tonnes"]
+      },
+      {
+        "question": "Earlier estimates of Megalodon exceeding 20 meters were based on ___ scaling methods now considered inaccurate.",
+        "type": "fill_blank",
+        "correctAnswer": "Outdated tooth-to-body ratio",
+        "distractors": ["Advanced computer modeling", "Direct skeletal measurement", "Genetic analysis techniques"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -46,6 +72,32 @@
       "Over 1 meter — as long as a human leg",
       "About 10 meters — a common Internet claim",
       "About 25 centimeters, the size of a large kitchen knife"
+    ],
+    "variants": [
+      {
+        "question": "What was the maximum confirmed length of a Megalodon tooth?",
+        "type": "forward",
+        "correctAnswer": "About 18 centimeters (size of a human hand)",
+        "distractors": ["About 5 cm like a great white's teeth", "Over 50 cm like a human forearm", "About 30 cm like a standard ruler"]
+      },
+      {
+        "question": "Serrated teeth reaching 18 centimeters long are the primary fossil evidence for which prehistoric shark?",
+        "type": "reverse",
+        "correctAnswer": "Megalodon (Otodus megalodon)",
+        "distractors": ["Great white shark ancestor", "Helicoprion buzzsaw shark", "Dunkleosteus armored fish"]
+      },
+      {
+        "question": "Megalodon teeth are the primary fossil evidence because shark skeletons are made of ___, which rarely fossilizes.",
+        "type": "fill_blank",
+        "correctAnswer": "Cartilage",
+        "distractors": ["Calcium", "Keratin", "Chitin"]
+      },
+      {
+        "question": "Megalodon teeth are extremely rare and have only been found at a single site in Morocco.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -75,6 +127,38 @@
       "About 3 times stronger — enough to crack coconuts",
       "Unmeasurable because no complete jaw has been found"
     ],
+    "variants": [
+      {
+        "question": "How powerful was Megalodon's bite compared to other animals?",
+        "type": "forward",
+        "correctAnswer": "Up to 182,000 Newtons — the strongest of any known animal",
+        "distractors": ["About the same as a great white shark", "Twice as strong as a saltwater crocodile", "Weaker than a Tyrannosaurus rex"]
+      },
+      {
+        "question": "An estimated bite force of up to 182,000 Newtons belongs to which prehistoric predator?",
+        "type": "reverse",
+        "correctAnswer": "Megalodon",
+        "distractors": ["Tyrannosaurus rex", "Dunkleosteus", "Mosasaurus"]
+      },
+      {
+        "question": "Which is NOT true about Megalodon's bite force?",
+        "type": "negative",
+        "correctAnswer": "It was weaker than a saltwater crocodile's bite",
+        "distractors": ["It could crush whale bones and cartilage", "Fossil whale bones show matching bite marks", "A great white bites at roughly 18,000 Newtons"]
+      },
+      {
+        "question": "A marine biologist finds whale bones with massive bite marks. The force needed to make these marks — up to 182,000 Newtons — points to ___ as the predator.",
+        "type": "context",
+        "correctAnswer": "Megalodon",
+        "distractors": ["A great white shark", "A saltwater crocodile", "A sperm whale"]
+      },
+      {
+        "question": "A human bite force is approximately 1,000 Newtons, while Megalodon's was up to 182,000 Newtons.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -102,6 +186,32 @@
       "It was colder than surrounding water, an adaptation for deep diving",
       "Its temperature varied by body region — warm head, cold tail",
       "Temperature regulation is impossible to determine from fossil evidence"
+    ],
+    "variants": [
+      {
+        "question": "What type of body temperature regulation did Megalodon likely have?",
+        "type": "forward",
+        "correctAnswer": "Regional endothermy (warm-blooded), unlike most sharks",
+        "distractors": ["Fully cold-blooded like all other sharks", "Completely warm-blooded like a marine mammal", "No temperature regulation whatsoever"]
+      },
+      {
+        "question": "Tooth isotope analysis suggesting body temperatures warmer than surrounding ocean water provides evidence for what trait in Megalodon?",
+        "type": "reverse",
+        "correctAnswer": "Regional endothermy (warm-bloodedness)",
+        "distractors": ["Deep-diving cold adaptation", "Seasonal temperature switching", "Complete ectothermy"]
+      },
+      {
+        "question": "Which is NOT true about Megalodon's thermoregulation?",
+        "type": "negative",
+        "correctAnswer": "It was fully cold-blooded like whale sharks",
+        "distractors": ["Modern great whites share a similar trait", "Warm blood gave it speed advantages", "Tooth isotopes suggest elevated body temperature"]
+      },
+      {
+        "question": "Megalodon's warm blood (regional endothermy) is a trait shared today by ___ and mako sharks.",
+        "type": "fill_blank",
+        "correctAnswer": "Great white sharks",
+        "distractors": ["Whale sharks", "Nurse sharks", "Hammerhead sharks"]
+      }
     ],
     "category": [
       "Life Sciences"
@@ -131,6 +241,32 @@
       "It bit the whale's tail first, then waited for it to drown",
       "Evidence shows it swam alongside whales and took single large bites"
     ],
+    "variants": [
+      {
+        "question": "What hunting strategy does fossil evidence suggest Megalodon used against whales?",
+        "type": "forward",
+        "correctAnswer": "Targeted the ribcage and organs for maximum calories",
+        "distractors": ["Swallowed whales whole without biting", "Herded whales into shallow water first", "Only hunted juvenile whales"]
+      },
+      {
+        "question": "Bite marks concentrated on the ribcage and thoracic region of fossil whales indicate what about Megalodon's hunting approach?",
+        "type": "reverse",
+        "correctAnswer": "It strategically targeted calorie-dense organs",
+        "distractors": ["It bit randomly in a feeding frenzy", "It only scavenged already-dead whales", "It was a filter feeder, not a predator"]
+      },
+      {
+        "question": "Which is NOT supported by fossil bite-mark evidence about Megalodon's hunting?",
+        "type": "negative",
+        "correctAnswer": "It swallowed whales whole without biting bones",
+        "distractors": ["It targeted the ribcage and thoracic region", "Evidence shows tail-biting to disable prey", "It aimed for calorie-dense organs like heart and lungs"]
+      },
+      {
+        "question": "Fossil evidence shows Megalodon sometimes bit the ___ first to disable a whale's propulsion before attacking the body.",
+        "type": "fill_blank",
+        "correctAnswer": "Tail",
+        "distractors": ["Head", "Fins", "Blowhole"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -158,6 +294,32 @@
       "Competition with giant squid drove it to deeper, food-scarce waters",
       "Solar radiation increases poisoned its shallow-water nurseries",
       "It ate itself into extinction by overhunting all available prey"
+    ],
+    "variants": [
+      {
+        "question": "What is the leading hypothesis for Megalodon's extinction about 3.6 million years ago?",
+        "type": "forward",
+        "correctAnswer": "Ocean cooling and prey migration to colder waters",
+        "distractors": ["An asteroid impact killed it suddenly", "Humans hunted it to extinction", "Disease spread through its populations"]
+      },
+      {
+        "question": "Global ocean cooling during the Pliocene epoch is thought to have caused the extinction of which apex ocean predator?",
+        "type": "reverse",
+        "correctAnswer": "Megalodon",
+        "distractors": ["Mosasaurus", "Liopleurodon", "Basilosaurus"]
+      },
+      {
+        "question": "Which is NOT a factor in Megalodon's extinction?",
+        "type": "negative",
+        "correctAnswer": "Hunting by early humans 3.6 million years ago",
+        "distractors": ["Global ocean cooling during the Pliocene", "Migration of baleen whales to polar waters", "Competition from great white sharks"]
+      },
+      {
+        "question": "Megalodon went extinct approximately 65 million years ago alongside the dinosaurs.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
     ],
     "category": [
       "Life Sciences",
@@ -188,6 +350,32 @@
       "Rhincodon — the whale shark genus",
       "Sphyrna — the hammerhead shark genus"
     ],
+    "variants": [
+      {
+        "question": "What genus does Megalodon belong to under modern classification?",
+        "type": "forward",
+        "correctAnswer": "Otodus, in its own distinct family",
+        "distractors": ["Carcharodon, same as great whites", "Isurus, the mako shark genus", "Galeocerdo, the tiger shark genus"]
+      },
+      {
+        "question": "The reclassification from Carcharodon megalodon to Otodus megalodon revealed what about Megalodon's relationship to great whites?",
+        "type": "reverse",
+        "correctAnswer": "They are not closely related — in separate families",
+        "distractors": ["They are direct ancestors of great whites", "They are the same species at different ages", "Great whites evolved from Megalodon"]
+      },
+      {
+        "question": "The similar tooth shapes between Megalodon and great whites are an example of ___.",
+        "type": "fill_blank",
+        "correctAnswer": "Convergent evolution",
+        "distractors": ["Direct ancestry", "Coevolution", "Genetic drift"]
+      },
+      {
+        "question": "The great white shark is more closely related to mako sharks than to Megalodon.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -215,6 +403,32 @@
       "Because all known Megalodon fossils are fakes or misidentified",
       "Because its skeleton was entirely made of fat, which never fossilizes",
       "Because volcanic activity destroyed all Megalodon fossil sites"
+    ],
+    "variants": [
+      {
+        "question": "Why do scientists rely almost entirely on teeth to study Megalodon?",
+        "type": "forward",
+        "correctAnswer": "Shark skeletons are cartilage that rarely fossilizes",
+        "distractors": ["Megalodon fossils are extremely rare worldwide", "Deep-sea pressure destroyed most remains", "Scavengers consumed all non-tooth remains"]
+      },
+      {
+        "question": "The fact that shark skeletons are made of cartilage rather than bone creates what challenge for studying Megalodon?",
+        "type": "reverse",
+        "correctAnswer": "Nearly complete body reconstruction is impossible",
+        "distractors": ["Teeth cannot be reliably dated", "DNA cannot be extracted from teeth", "Species identification is unreliable"]
+      },
+      {
+        "question": "Early museum ___ of Megalodon's jaw were significantly oversized because researchers overestimated its tooth count.",
+        "type": "fill_blank",
+        "correctAnswer": "Reconstructions",
+        "distractors": ["Photographs", "Excavations", "Classifications"]
+      },
+      {
+        "question": "Megalodon's teeth are made of enamel, one of the hardest biological materials, which is why they fossilize readily.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
     ],
     "category": [
       "Life Sciences",
@@ -245,6 +459,32 @@
       "Small teeth are from the lower jaw only — adults had only large upper teeth",
       "These sites show where Megalodon came to die, not to breed"
     ],
+    "variants": [
+      {
+        "question": "What does the discovery of small Megalodon teeth in shallow-water sediments indicate?",
+        "type": "forward",
+        "correctAnswer": "Megalodon used warm shallow coastal nurseries for its young",
+        "distractors": ["Juveniles lived in freshwater rivers first", "A dwarf Megalodon species existed separately", "Juveniles lived in deep ocean away from adults"]
+      },
+      {
+        "question": "The loss of warm shallow coastal nursery grounds due to global cooling likely contributed to the decline of which species?",
+        "type": "reverse",
+        "correctAnswer": "Megalodon",
+        "distractors": ["Great white shark", "Blue whale", "Giant sea turtle"]
+      },
+      {
+        "question": "Juvenile Megalodon teeth have been found in shallow-water sediments in the U.S., Spain, Panama, and ___.",
+        "type": "fill_blank",
+        "correctAnswer": "Namibia",
+        "distractors": ["Australia", "Japan", "Iceland"]
+      },
+      {
+        "question": "A marine paleontologist discovers a concentration of small shark teeth in ancient shallow-water deposits near a coastline. This pattern of nursery use matches the behavior of many modern shark species, suggesting Megalodon raised its young in similar habitats.",
+        "type": "true_false",
+        "correctAnswer": "True",
+        "distractors": ["False"]
+      }
+    ],
     "category": [
       "Life Sciences"
     ],
@@ -272,6 +512,32 @@
       "Because a single Megalodon had thousands of teeth all at once in a comb-like structure",
       "Because the deep ocean is covered in Megalodon teeth from a mass die-off",
       "Because fossilized teeth are the same age as the shark, not millions of years old"
+    ],
+    "variants": [
+      {
+        "question": "Why are Megalodon teeth among the most commonly found marine fossils?",
+        "type": "forward",
+        "correctAnswer": "20 million years of existence plus constant tooth shedding",
+        "distractors": ["They are artificially manufactured fakes", "They all came from a single mass die-off event", "Each Megalodon had thousands of teeth simultaneously"]
+      },
+      {
+        "question": "The abundance of which fossil type on beaches in the Carolinas, Maryland, and Morocco is due to 20 million years of continuous tooth shedding?",
+        "type": "reverse",
+        "correctAnswer": "Megalodon teeth",
+        "distractors": ["Ammonite shells", "Trilobite exoskeletons", "Dinosaur bone fragments"]
+      },
+      {
+        "question": "Which is NOT true about Megalodon tooth fossils?",
+        "type": "negative",
+        "correctAnswer": "They are extremely rare and nearly impossible to find",
+        "distractors": ["They can be found on beaches after storms", "Small specimens are widely affordable", "Sharks shed and regrew teeth throughout their lives"]
+      },
+      {
+        "question": "After a major storm, a beachcomber in North Carolina finds several dark, serrated fossils washed up on shore. These are most likely ___ teeth, among the most common marine megafossils.",
+        "type": "context",
+        "correctAnswer": "Megalodon",
+        "distractors": ["Great white shark", "Mosasaurus", "Plesiosaur"]
+      }
     ],
     "category": [
       "Life Sciences",
