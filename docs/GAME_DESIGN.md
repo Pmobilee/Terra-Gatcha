@@ -61,6 +61,27 @@ ENEMY TURN:
   9. Next turn begins
 ```
 
+### Fact-Card Shuffling (Per-Draw Randomization)
+
+Card slots (type + mechanic + base effect) and facts (the questions to answer) are paired RANDOMLY each time a hand is drawn. The deck tracks card slots and facts as separate pools.
+
+**Why:** Without shuffling, a known fact permanently bonded to a powerful mechanic (e.g., Heavy Strike 14 dmg) becomes a guaranteed nuke. Shuffling ensures every hand is unpredictable — you can't rely on always knowing the answer to your best card.
+
+**How it works:**
+1. At run start, `buildRunPool()` creates card SLOTS (type + mechanic) and a separate fact pool
+2. Each `drawHand()` call draws N card slots from the draw pile
+3. N facts are drawn from the fact pool (excluding cooldown facts)
+4. Slots and facts are paired randomly
+5. Tier multiplier (1.0x/1.3x/1.6x) follows the FACT, not the slot — mastered facts are still more powerful regardless of which card type they land on
+
+**Applies to:** All cards (knowledge AND vocabulary).
+
+### Encounter Cooldown
+
+Facts answered in an encounter enter a 3-encounter cooldown. They cannot appear in the next 3 encounters, preventing the same fact from being used to one-shot consecutive enemies.
+
+**Edge case:** If cooldown would exhaust the fact pool (available facts < hand size), cooldown reduces to 1 encounter. If available < 3, cooldown is disabled for that draw.
+
 ### The Commit-Before-Reveal Rule (CRITICAL)
 
 Research: Roediger & Karpicke (2006) — retrieval practice = 87% retention vs 44% for restudying. Kornell et al. (2009) — even failed retrieval beats passive viewing. Richland et al. (2009) — "preview without commitment" = LESS learning than committed attempts.
@@ -1075,6 +1096,24 @@ interface RunCard {
   baseEffectValue: number;
 }
 ```
+
+### Question Variant Requirements
+
+**Knowledge facts:** Minimum 4 variants, target 6-8. Variant types:
+- **Forward**: Direct question → correct answer (e.g., "What causes oil formation?")
+- **Reverse**: Answer/description → identify the subject (e.g., "Heat and pressure on organic matter over millions of years produces...")
+- **Negative**: "Which is NOT..." → identify the false option (e.g., "Which is NOT a factor in oil formation?")
+- **Context**: Scenario/context paragraph → identify the relevant fact (e.g., "Petroleum geologists study the transformation of ancient organic material. This process requires...")
+- **Fill-blank**: Statement with key term blanked (e.g., "Oil is formed from ___ under heat and pressure over millions of years")
+- **True/false**: Statement that may be subtly wrong (e.g., "Oil is formed from volcanic activity under the ocean" → False)
+
+**Distractor quality rules:**
+- All options must be similar length (within 20% character count)
+- All options must be similarly specific (no "obviously detailed" correct answer)
+- Distractors must be plausible to someone who doesn't know the answer
+- For negative variants, the distractors ARE correct facts (the wrong answer is the one that IS true)
+
+**Vocabulary facts:** Exempt from variant expansion. The existing forward/reverse/fill-blank system is sufficient because answer options are always similar-length words.
 
 ### Age Gating
 

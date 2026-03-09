@@ -212,6 +212,19 @@ Depends on: AR-12 (cloud save), AR-13 (deployed build). Estimated: Medium.
 
 ---
 
+### HOTFIX: Combat Improvements (Fact-Card Shuffling + Cooldown + Variants)
+**Playtesting-driven fixes to card draw, fact repetition, and question variety.**
+
+- [ ] Fact-card shuffling: decouple facts from card slots, pair randomly each draw
+- [ ] Encounter cooldown: 3-encounter cooldown on answered facts
+- [ ] Variant expansion: knowledge facts minimum 4 variants (forward/reverse/negative/context/fill-blank/true-false)
+- [ ] Distractor quality: similar-length options, no "obviously correct" patterns
+- [ ] Vocab cards exempted from variant expansion (existing system sufficient)
+
+Priority: IMMEDIATE. Does not depend on any other phase. See `docs/roadmap/AGENT-PROMPT-COMBAT-IMPROVEMENTS.md`.
+
+---
+
 ## Post-Soft-Launch: Content at Scale
 
 ### AR-15: Content Source Registry & Wikidata Query Library
