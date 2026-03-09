@@ -518,6 +518,61 @@ app.post('/api/batch/stop', (req, res) => {
   res.json({ ok: true, ...batchController.getStatus() });
 });
 
+// Force quit: interrupt ComfyUI + clear queue + stop batch + revert generating cards
+app.post('/api/force-quit', async (req, res) => {
+  // 1. Stop batch controller
+  batchController.stop();
+
+  let comfyStatus = { interrupted: false, cleared: false, deleted: [] };
+
+  try {
+    // 2. Get current ComfyUI queue state to find running/pending prompt IDs
+    const queueRes = await fetch('http://localhost:8188/queue');
+    if (queueRes.ok) {
+      const queue = await queueRes.json();
+      const runningIds = (queue.queue_running || []).map(item => item[1]);
+      const pendingIds = (queue.queue_pending || []).map(item => item[1]);
+      const allIds = [...runningIds, ...pendingIds];
+
+      // 3. Send interrupt (works between node executions)
+      await fetch('http://localhost:8188/interrupt', { method: 'POST' }).catch(() => {});
+      comfyStatus.interrupted = true;
+
+      // 4. Delete all queued items explicitly by prompt_id
+      if (allIds.length > 0) {
+        await fetch('http://localhost:8188/queue', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ delete: allIds }),
+        }).catch(() => {});
+        comfyStatus.deleted = allIds;
+      }
+
+      // 5. Also clear pending queue as belt-and-suspenders
+      await fetch('http://localhost:8188/queue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ clear: true }),
+      }).catch(() => {});
+      comfyStatus.cleared = true;
+
+      // 6. Send interrupt again after delete (catches edge case where
+      //    new node started between our queue read and delete)
+      await fetch('http://localhost:8188/interrupt', { method: 'POST' }).catch(() => {});
+    }
+  } catch (e) {
+    console.warn('Could not communicate with ComfyUI:', e.message);
+  }
+
+  // 7. Revert all 'generating' cards back to 'pending'
+  const generating = db.prepare("SELECT fact_id FROM cardbacks WHERE status = 'generating'").all();
+  for (const row of generating) {
+    stmtRevertPending.run(row.fact_id);
+  }
+
+  res.json({ ok: true, reverted: generating.length, comfy: comfyStatus, ...batchController.getStatus() });
+});
+
 // Batch status (SSE stream)
 app.get('/api/batch/status', (req, res) => {
   res.setHeader('Content-Type', 'text/event-stream');

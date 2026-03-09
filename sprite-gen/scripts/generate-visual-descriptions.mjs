@@ -9,6 +9,9 @@
  *   node generate-visual-descriptions.mjs --limit 10         # Process at most 10
  *   node generate-visual-descriptions.mjs --file vocab-n3    # Only process matching file
  *   node generate-visual-descriptions.mjs --reset            # Clear checkpoint and start fresh
+ *   node generate-visual-descriptions.mjs --language ja    # Japanese cultural theming
+ *   node generate-visual-descriptions.mjs --language es    # Spanish cultural theming
+ *   node generate-visual-descriptions.mjs --language fr    # French cultural theming
  */
 
 import { readFile, writeFile, readdir, stat } from 'node:fs/promises';
@@ -47,6 +50,12 @@ let FILE_FILTER = null;
 const fileIdx = args.indexOf('--file');
 if (fileIdx !== -1 && args[fileIdx + 1]) {
   FILE_FILTER = args[fileIdx + 1];
+}
+
+let LANGUAGE = null;
+const langIdx = args.indexOf('--language');
+if (langIdx !== -1 && args[langIdx + 1]) {
+  LANGUAGE = args[langIdx + 1];
 }
 
 // ---------------------------------------------------------------------------
@@ -95,6 +104,62 @@ Rules:
 - Subject fills 80% of frame with breathing room at edges
 
 Return ONLY the visual description string. No JSON, no quotes, no explanation.`;
+
+const LANGUAGE_PROMPTS = {
+  ja: `
+
+CRITICAL — CULTURAL THEMING (Japanese vocabulary):
+Every scene MUST be unmistakably set in Japan. Use feudal, Edo-period, or traditional Japanese settings.
+
+REQUIRED ELEMENTS (use at least 2 per description):
+- Architecture: torii gates, pagodas, tatami rooms, shoji screens, castle towns, wooden bridges, thatched roofs
+- Nature: bamboo forests, cherry blossoms, koi ponds, zen rock gardens, misty mountains, rice paddies
+- Cultural: tea ceremonies, calligraphy brushes, paper lanterns, shrine bells, incense, silk kimonos
+- People: samurai, monks, merchants, artisans, fishermen (all stylized pixel art, no realistic faces)
+- Settings: moonlit temple roofs, bustling Edo markets, mountain hot springs, coastal fishing villages
+
+COLOR PALETTE: Ukiyo-e influence — deep indigos, warm ambers, cherry blossom pink, moss green, twilight purple, lantern gold.
+
+CRITICAL RULE: The scene must ILLUSTRATE THE MEANING of the word using Japanese cultural elements.
+- "to calculate" → A merchant in a lantern-lit Edo shop carefully moving beads on a soroban abacus
+- "to endure" → A samurai kneeling motionless in falling snow before a weathered temple gate
+- "to translate" → A scholar in a candlelit room surrounded by scrolls, brush poised between kanji and foreign text
+- "to export" → A bustling harbor with workers loading silk-wrapped crates onto a wooden trading vessel at sunrise
+
+BAD examples (REJECT these patterns):
+- Generic fantasy with no Japanese elements
+- Just "a person doing X" with no cultural setting
+- Glowing orbs, magic portals, generic wizards — these belong to general facts, NOT vocab cards
+- Offensive stereotypes or modern settings (no neon, no anime tropes)`,
+
+  es: `
+
+CRITICAL — CULTURAL THEMING (Spanish vocabulary):
+Every scene MUST be unmistakably set in Spain or Latin America.
+
+REQUIRED ELEMENTS (use at least 2 per description):
+- Architecture: terracotta plazas, haciendas, Moorish arches, colonial churches, adobe walls
+- Nature: agave fields, jungle cenotes, olive groves, volcanic landscapes, desert mesas
+- Cultural: flamenco dancers, guitar players, bull arenas, mercados, Day of the Dead altars
+- People: matadors, conquistadors, artisans, farmers, musicians (stylized pixel art)
+- Settings: sun-drenched courtyards, candlelit cantinas, Mediterranean harbors, Aztec temple ruins
+
+COLOR PALETTE: Warm sunset tones — burnt orange, terracotta red, golden yellow, turquoise, deep crimson.`,
+
+  fr: `
+
+CRITICAL — CULTURAL THEMING (French vocabulary):
+Every scene MUST be unmistakably set in France or French-speaking regions.
+
+REQUIRED ELEMENTS (use at least 2 per description):
+- Architecture: cobblestone cafés, cathedral stained glass, château gardens, wrought-iron balconies
+- Nature: lavender fields, vineyard hillsides, misty river bridges, poplar-lined roads
+- Cultural: patisserie windows, wine barrels, beret-wearing painters, bookshop stalls along the Seine
+- People: bakers, artists, musketeers, vineyard workers (stylized pixel art)
+- Settings: Parisian rooftops at dusk, Provençal markets, candlelit bistros, fog-wrapped lighthouses
+
+COLOR PALETTE: Soft pastels — powder blue, dusty rose, cream, sage green, warm gold, violet twilight.`,
+};
 
 // ---------------------------------------------------------------------------
 // Checkpoint
@@ -166,7 +231,7 @@ async function generateDescription(fact) {
   const body = {
     model: MODEL,
     max_tokens: MAX_TOKENS,
-    system: SYSTEM_PROMPT,
+    system: SYSTEM_PROMPT + (LANGUAGE && LANGUAGE_PROMPTS[LANGUAGE] ? LANGUAGE_PROMPTS[LANGUAGE] : ''),
     messages: [{ role: 'user', content: userPrompt }],
   };
 
@@ -222,6 +287,7 @@ async function main() {
   if (LIMIT < Infinity) console.log(`  Limit: ${LIMIT}`);
   if (FILE_FILTER) console.log(`  File filter: ${FILE_FILTER}`);
   if (RESET) console.log('  Checkpoint reset');
+  if (LANGUAGE) console.log(`  Language: ${LANGUAGE}`);
   console.log();
 
   // Discover JSON files

@@ -122,6 +122,19 @@
   }
   .btn-stop:hover { background: #5a2a2a; }
 
+  .btn-force-quit {
+    background: #6a1a1a;
+    color: #ff4444;
+    border: 1px solid #8a2a2a;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  .btn-force-quit:hover { background: #7a2a2a; }
+  .btn-force-quit:disabled { opacity: 0.5; cursor: not-allowed; }
+
   .batch-progress {
     display: none;
     flex: 1;
@@ -493,6 +506,7 @@
   <div class="batch-controls">
     <button class="btn-generate-missing" id="btn-generate-missing">Generate Missing</button>
     <button class="btn-stop" id="btn-stop">Stop</button>
+    <button class="btn-force-quit" id="btn-force-quit">Force Quit All</button>
     <div class="batch-progress" id="batch-progress">
       <div class="progress-bar-container">
         <div class="progress-bar-fill" id="progress-bar-fill"></div>
@@ -998,6 +1012,29 @@
         batchProgress.classList.remove('active');
       }, 3000);
     };
+  });
+
+  // --- Force Quit ---
+  const btnForceQuit = document.getElementById('btn-force-quit');
+  btnForceQuit.addEventListener('click', async function() {
+    btnForceQuit.disabled = true;
+    btnForceQuit.textContent = 'Killing...';
+    try {
+      await api('/api/force-quit', { method: 'POST' });
+    } catch (e) {
+      console.error('Force quit failed:', e);
+    }
+    closeBatchSSE();
+    resetBatchUI();
+    progressText.textContent = 'Force stopped';
+    batchProgress.classList.add('active');
+    setTimeout(function() {
+      batchProgress.classList.remove('active');
+    }, 3000);
+    btnForceQuit.textContent = 'Force Quit All';
+    btnForceQuit.disabled = false;
+    // Reload everything
+    await Promise.all([loadCards(), loadStats()]);
   });
 
   // --- Batch Stop ---

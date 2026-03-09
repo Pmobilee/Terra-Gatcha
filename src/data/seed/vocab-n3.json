@@ -28,7 +28,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とどける",
-    "visualDescription": "A cheerful mail carrier handing a glowing golden package to someone at a cozy wooden doorstep, warm lantern light spilling across the scene"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-002",
@@ -59,7 +59,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とどく",
-    "visualDescription": "A gleaming letter soaring through a twilight sky and landing perfectly in an open mailbox at the end of a cobblestone path"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-003",
@@ -90,7 +90,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あつめる",
-    "visualDescription": "A treasure hunter gathering sparkling colorful gems into an overflowing wooden chest in a torch-lit cavern"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-004",
@@ -121,7 +121,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あつまる",
-    "visualDescription": "A crowd of diverse adventurers converging at a glowing campfire in the center of a moonlit forest clearing"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-005",
@@ -152,7 +152,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "つたえる",
-    "visualDescription": "A messenger bird carrying a scroll with glowing runes, flying between two tall castle towers at sunset"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-006",
@@ -183,7 +183,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きめる",
-    "visualDescription": "A determined warrior slamming a gauntleted fist onto a stone table, choosing between three glowing magical weapons laid before them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-007",
@@ -214,7 +214,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きまる",
-    "visualDescription": "A massive stone gavel striking a crystal anvil, sending out shockwaves of golden light as a verdict is sealed"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-008",
@@ -245,7 +245,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かえる",
-    "visualDescription": "A skilled alchemist pouring a vibrant blue potion into a bubbling cauldron, transforming its contents from red to brilliant purple"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-009",
@@ -276,7 +276,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かわる",
-    "visualDescription": "A caterpillar mid-transformation inside a glowing cocoon, half butterfly wings already unfurling in iridescent colors"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-010",
@@ -307,7 +307,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "くらべる",
-    "visualDescription": "Two ornate swords laid side by side on a velvet cloth, a magnifying glass hovering between them highlighting their differences"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-011",
@@ -338,7 +338,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "そだてる",
-    "visualDescription": "A gentle gardener kneeling beside a tiny glowing sapling, carefully watering it as magical sparkles rise from the soil"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-012",
@@ -369,7 +369,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たすける",
-    "visualDescription": "A bold knight reaching down from horseback to pull a villager out of rising floodwaters, golden light around their clasped hands"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-013",
@@ -400,7 +400,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "すすむ",
-    "visualDescription": "An explorer striding confidently through a dense forest, parting hanging vines to reveal a glowing path ahead"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-014",
@@ -431,7 +431,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とおす",
-    "visualDescription": "A gatekeeper pulling open a massive iron gate, letting a beam of brilliant white light pour through the widening gap"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-015",
@@ -462,7 +462,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とおる",
-    "visualDescription": "A lone traveler walking through a shimmering translucent archway carved into a mossy cliff face, emerging into golden light"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-016",
@@ -493,7 +493,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "つづける",
-    "visualDescription": "A determined blacksmith hammering a sword on an anvil, sparks flying in a continuous rhythmic stream through the night"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-017",
@@ -524,7 +524,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "つづく",
-    "visualDescription": "An endless road stretching through rolling green hills toward a distant horizon, with wildflowers blooming along its unbroken path"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-018",
@@ -555,7 +555,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "のこす",
-    "visualDescription": "A noble figure placing a sealed treasure chest into a hidden alcove behind a stone wall, preserving it for future discovery"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-019",
@@ -586,7 +586,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "のこる",
-    "visualDescription": "A single ancient tree standing alone in a vast empty field after a storm, its roots firmly anchored in the earth"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-020",
@@ -617,7 +617,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "えらぶ",
-    "visualDescription": "A hand reaching into a display of three glowing orbs—red, blue, and green—fingers closing around the brilliant blue one"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-021",
@@ -648,7 +648,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "さがす",
-    "visualDescription": "A detective with a glowing magnifying glass examining footprints in soft earth, lantern light revealing a trail into misty woods"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-022",
@@ -679,7 +679,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "うける",
-    "visualDescription": "A student sitting at an ancient desk receiving a glowing scroll from a hooded examiner in a grand stone hall"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-023",
@@ -710,7 +710,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かんじる",
-    "visualDescription": "A person standing in a field of flowers with closed eyes, colorful aura waves radiating outward as they sense a gentle breeze"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-024",
@@ -741,7 +741,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かんがえる",
-    "visualDescription": "A scholar sitting cross-legged on a mountain peak, surrounded by floating books and glowing thought bubbles against a starry sky"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-025",
@@ -772,7 +772,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しらべる",
-    "visualDescription": "A researcher peering through a large telescope at a constellation map, taking notes in a leather-bound journal by candlelight"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-026",
@@ -803,7 +803,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おこす",
-    "visualDescription": "A wizard tapping a sleeping stone golem with a glowing staff, cracks of golden light spreading across its body as it stirs"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-027",
@@ -834,7 +834,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おこる",
-    "visualDescription": "A volcano erupting with brilliant orange lava against a dark sky, the ground cracking open with fiery energy beneath"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-028",
@@ -865,7 +865,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "なおす",
-    "visualDescription": "A clockmaker carefully adjusting tiny golden gears inside an ornate pocket watch with delicate tweezers, sparks of magic flying"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-029",
@@ -896,7 +896,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "はらう",
-    "visualDescription": "A merchant sliding a stack of gleaming gold coins across a polished wooden counter toward a satisfied shopkeeper"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-030",
@@ -927,7 +927,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "つれる",
-    "visualDescription": "A guide extending a hand to a companion, leading them across a narrow stone bridge over a misty chasm"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-031",
@@ -958,7 +958,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "のせる",
-    "visualDescription": "A dragon lowering its wing to create a ramp, letting a small knight climb aboard for a ride through the clouds"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-032",
@@ -989,7 +989,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おろす",
-    "visualDescription": "A crane operator carefully lowering a heavy crate from a tall ship deck down to the wooden dock below"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-033",
@@ -1020,7 +1020,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かりる",
-    "visualDescription": "A young adventurer receiving a glowing enchanted sword from a wise librarian across an ancient wooden counter"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-034",
@@ -1051,7 +1051,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かす",
-    "visualDescription": "A generous shopkeeper sliding a shining golden key across the counter to a grateful traveler in a cozy lamp-lit store"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-035",
@@ -1082,7 +1082,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かえす",
-    "visualDescription": "A knight kneeling before a throne, extending both hands to return a borrowed crown to its rightful owner"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-036",
@@ -1113,7 +1113,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "まにあう",
-    "visualDescription": "A sprinter diving across a finish line just as a giant hourglass drops its final grain of sand, golden sparks erupting"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-037",
@@ -1144,7 +1144,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "むかう",
-    "visualDescription": "A ship sailing full speed toward a glowing lighthouse on a rocky shore, its prow cutting through midnight-blue waves"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-038",
@@ -1175,7 +1175,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "むく",
-    "visualDescription": "A sunflower turning its face toward a brilliant golden sun rising above a dewy meadow at dawn"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-039",
@@ -1206,7 +1206,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "わる",
-    "visualDescription": "A warrior bringing down a heavy hammer onto a crystalline sphere, shattering it into dozens of sparkling fragments"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-040",
@@ -1237,7 +1237,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "われる",
-    "visualDescription": "A porcelain vase toppling off a marble pedestal, frozen mid-shatter with glowing cracks spreading across its surface"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-041",
@@ -1268,7 +1268,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たおれる",
-    "visualDescription": "A tall stone tower crumbling and collapsing into a cloud of dust, massive blocks tumbling in slow motion against an orange sky"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-042",
@@ -1299,7 +1299,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かたづける",
-    "visualDescription": "A cheerful housekeeper sweeping scattered items into neat stacks on wooden shelves in a sunlit cottage room"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-043",
@@ -1330,7 +1330,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "すぎる",
-    "visualDescription": "A clock with golden hands spinning rapidly past midnight, calendar pages flying away in a swirl of wind and light"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-044",
@@ -1361,7 +1361,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "なれる",
-    "visualDescription": "A young apprentice confidently wielding a blacksmith hammer, muscle memory guiding each practiced swing onto red-hot metal"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-045",
@@ -1392,7 +1392,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "まちがえる",
-    "visualDescription": "A flustered wizard holding a potion that has turned the wrong color, purple smoke billowing from a bubbling cauldron"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-046",
@@ -1423,7 +1423,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "こまる",
-    "visualDescription": "A traveler sitting on a rock at a dead end with head in hands, surrounded by impassable thorny brambles on all sides"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-047",
@@ -1454,7 +1454,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "にる",
-    "visualDescription": "Two foxes sitting side by side on a hill, their identical silhouettes mirrored against a full moon rising behind them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-048",
@@ -1485,7 +1485,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たりる",
-    "visualDescription": "A perfectly full water barrel with its surface just reaching the brim, a single drop creating a satisfying ripple"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-049",
@@ -1516,7 +1516,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ちがう",
-    "visualDescription": "Two paths diverging sharply in opposite directions through a forest, one sunlit and one shadowed, clearly distinct from each other"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-050",
@@ -1547,7 +1547,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "わかれる",
-    "visualDescription": "Two travelers clasping hands at a fork in the road before turning to walk in opposite directions under a twilight sky"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-051",
@@ -1578,7 +1578,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "まよう",
-    "visualDescription": "A lone traveler standing at a foggy crossroads with multiple winding paths disappearing into thick swirling mist"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-052",
@@ -1609,7 +1609,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あきらめる",
-    "visualDescription": "A warrior planting their broken sword in the ground and walking away from a battlefield, shoulders slumped under a grey sky"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-053",
@@ -1640,7 +1640,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "いわう",
-    "visualDescription": "A grand banquet hall decorated with colorful banners and streamers, a towering cake glowing with magical candles at the center"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-054",
@@ -1671,7 +1671,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おこる",
-    "visualDescription": "A furious warrior surrounded by crackling red lightning, fists clenched and eyes blazing with fiery energy in a dark arena"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-055",
@@ -1702,7 +1702,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おどろく",
-    "visualDescription": "A startled cat leaping three feet in the air with fur standing on end, eyes wide as saucers in a cozy kitchen"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-056",
@@ -1733,7 +1733,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "なく",
-    "visualDescription": "A lone figure sitting by a rain-streaked window, a single glowing tear rolling down their cheek reflecting candlelight"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-057",
@@ -1764,7 +1764,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "わらう",
-    "visualDescription": "A group of friends around a campfire throwing their heads back in joyful laughter, warm golden light on their faces"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-058",
@@ -1795,7 +1795,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "さけぶ",
-    "visualDescription": "A warrior on a cliff edge shouting into a vast canyon, visible sound waves rippling outward through the misty air"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-059",
@@ -1826,7 +1826,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ねむる",
-    "visualDescription": "A peaceful figure curled up in a hammock under a starry sky, a crescent moon casting soft silver light through the trees"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-060",
@@ -1857,7 +1857,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "さめる",
-    "visualDescription": "A person sitting up in bed as morning sunlight streams through curtains, stretching their arms wide with bright alert eyes"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-061",
@@ -1888,7 +1888,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おぼえる",
-    "visualDescription": "A student pressing a glowing book against their forehead, streams of luminous letters flowing from the pages into their mind"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-062",
@@ -1919,7 +1919,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "わすれる",
-    "visualDescription": "A trail of glowing memories dissolving into sparkling dust and drifting away on a gentle breeze through an open window"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-063",
@@ -1950,7 +1950,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おもいだす",
-    "visualDescription": "A glowing photograph emerging from a dusty old chest, projecting vivid scenes of the past into the air like a hologram"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-064",
@@ -1981,7 +1981,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しんじる",
-    "visualDescription": "A knight placing their hand over their heart while looking up at a towering beacon of pure white light in the sky"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-065",
@@ -2012,7 +2012,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ゆるす",
-    "visualDescription": "A judge lowering a heavy gavel gently, releasing a burst of soft white doves that fly upward through a grand courtroom"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-066",
@@ -2043,7 +2043,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ことわる",
-    "visualDescription": "A stern gatekeeper holding up a flat palm and shaking their head, blocking entry to a glowing doorway behind them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-067",
@@ -2074,7 +2074,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "さそう",
-    "visualDescription": "A friendly figure extending a hand with a warm smile, beckoning someone toward a lively festival with glowing lanterns behind them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-068",
@@ -2105,7 +2105,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あやまる",
-    "visualDescription": "A person bowing deeply before another, holding out a small bouquet of white flowers as a peace offering in gentle rain"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-069",
@@ -2136,7 +2136,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ほめる",
-    "visualDescription": "A mentor placing a golden laurel wreath on a beaming student head, rays of warm light cascading around them both"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-070",
@@ -2167,7 +2167,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しかる",
-    "visualDescription": "A stern teacher pointing a finger at a sheepish student, lightning-like energy crackling from their authoritative stance"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-071",
@@ -2198,7 +2198,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぬすむ",
-    "visualDescription": "A masked thief tiptoeing through a moonlit museum, reaching for a glowing diamond displayed under a glass dome"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-072",
@@ -2229,7 +2229,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "すてる",
-    "visualDescription": "A figure tossing a worn-out cloak off a cliff edge, watching it flutter and disappear into the misty void below"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-073",
@@ -2260,7 +2260,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ひろう",
-    "visualDescription": "A child bending down on a beach to pick up a beautiful iridescent seashell glowing faintly in the wet sand"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-074",
@@ -2291,7 +2291,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ならぶ",
-    "visualDescription": "A row of soldiers standing shoulder to shoulder in perfect formation, their polished armor gleaming under a midday sun"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-075",
@@ -2322,7 +2322,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ならべる",
-    "visualDescription": "A careful merchant setting out colorful glass bottles in a precise row on a wooden market stall shelf at dawn"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-076",
@@ -2353,7 +2353,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "わく",
-    "visualDescription": "A cast-iron kettle sitting over crackling flames, steam rising energetically as bubbles dance across the water surface"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-077",
@@ -2384,7 +2384,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "わかす",
-    "visualDescription": "A cook holding a large pot over a roaring hearth fire, the water inside churning into a vigorous rolling boil"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-078",
@@ -2415,7 +2415,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かわく",
-    "visualDescription": "Clothes hanging on a line between two trees, fluttering in a warm desert breeze under a blazing orange sun"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-079",
@@ -2446,7 +2446,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぬれる",
-    "visualDescription": "A traveler caught in a sudden downpour, their cloak completely soaked and dripping as rain sheets down around them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-080",
@@ -2477,7 +2477,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "やく",
-    "visualDescription": "A chef flipping a sizzling steak over bright orange coals on a stone grill, aromatic smoke curling upward into torchlight"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-081",
@@ -2508,7 +2508,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "けいけん",
-    "visualDescription": "A weathered adventurer sitting by a campfire, their face lined with wisdom as trophies and souvenirs surround them from many journeys"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-082",
@@ -2539,7 +2539,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かんけい",
-    "visualDescription": "Two hands clasped together forming a bridge between two floating islands, golden threads of connection winding around their interlocked fingers"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-083",
@@ -2570,7 +2570,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しゅうかん",
-    "visualDescription": "A monk performing the same graceful kata at sunrise, their worn footprints visible in the stone floor from years of daily practice"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-084",
@@ -2601,7 +2601,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きかい",
-    "visualDescription": "A golden door appearing in a brick wall that was previously solid, shimmering with possibility and radiating warm inviting light"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-085",
@@ -2632,7 +2632,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じゅんび",
-    "visualDescription": "A blacksmith laying out all their tools in neat rows beside a cold forge, materials stacked and ready before the work begins"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-086",
@@ -2663,7 +2663,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "よてい",
-    "visualDescription": "A large wall calendar covered in colorful pins and string connecting dates, with a quill hovering over tomorrow marked entry"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-087",
@@ -2694,7 +2694,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "けいかく",
-    "visualDescription": "An architect unrolling a massive blueprint across a drafting table, the drawn building glowing and rising as a tiny 3D model"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-088",
@@ -2725,7 +2725,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぎじゅつ",
-    "visualDescription": "A master craftsman operating an intricate clockwork device with dozens of spinning gears, each one precisely engineered and gleaming"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-089",
@@ -2756,7 +2756,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "さんぎょう",
-    "visualDescription": "A bustling factory district with smoke stacks and conveyor belts, workers moving purposefully among massive machinery under electric lights"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-090",
@@ -2787,7 +2787,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "せいじ",
-    "visualDescription": "A grand parliament chamber with figures debating at podiums, banners and seals adorning marble walls behind a central voting platform"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-091",
@@ -2818,7 +2818,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "けいざい",
-    "visualDescription": "A massive set of golden scales balancing coins on one side and goods on the other, merchants trading in a vibrant bazaar"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-092",
@@ -2849,7 +2849,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しゃかい",
-    "visualDescription": "A bird eye view of a thriving medieval town with interconnected streets, market squares, houses, and people going about daily lives"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-093",
@@ -2880,7 +2880,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぶんか",
-    "visualDescription": "A museum hall displaying paintings, sculptures, musical instruments, and pottery from around the world, each exhibit glowing with its own light"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-094",
@@ -2911,7 +2911,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かんきょう",
-    "visualDescription": "A lush green forest with crystal-clear streams, colorful wildlife, and a bright rainbow arching over untouched natural landscape"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-095",
@@ -2942,7 +2942,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じょうけん",
-    "visualDescription": "A scroll unfurling to reveal a checklist of requirements, each item marked with a glowing seal of approval or a red cross"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-096",
@@ -2973,7 +2973,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "げんいん",
-    "visualDescription": "A detective examining a web of connected clues on a cork board, red string linking evidence to a central glowing question mark"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-097",
@@ -3004,7 +3004,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "けっか",
-    "visualDescription": "A scoreboard lighting up with final numbers in a grand arena, confetti falling as the outcome is revealed to a waiting crowd"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-098",
@@ -3035,7 +3035,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "えいきょう",
-    "visualDescription": "A single stone dropped into still water creating ever-expanding concentric ripples that reach and move distant floating leaves"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-099",
@@ -3066,7 +3066,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ほうほう",
-    "visualDescription": "A signpost at a crossroads with multiple directional arrows, each labeled path leading through a different colorful landscape"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-100",
@@ -3097,7 +3097,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "もくてき",
-    "visualDescription": "An archer drawing back a bow with intense focus, aiming at a glowing bullseye target mounted far across a misty field"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-101",
@@ -3128,7 +3128,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "いみ",
-    "visualDescription": "An ancient scroll unrolling to reveal a glowing symbol radiating beams of golden light in a dim candlelit library"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-102",
@@ -3159,7 +3159,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "りゆう",
-    "visualDescription": "A philosopher standing before a chalkboard covered in branching flowcharts and arrows, all converging on a single illuminated answer"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-103",
@@ -3190,7 +3190,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じじつ",
-    "visualDescription": "A crystal-clear magnifying glass hovering over an open book, revealing hidden golden text that pulses with undeniable truth"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-104",
@@ -3221,7 +3221,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ばんぐみ",
-    "visualDescription": "A vintage radio sitting on a wooden shelf, projecting colorful holographic scenes of a puppet show into a cozy living room"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-105",
@@ -3252,7 +3252,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "けしき",
-    "visualDescription": "A sweeping mountain panorama with snow-capped peaks, emerald valleys, and a winding river reflecting a brilliant sunset sky"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-106",
@@ -3283,7 +3283,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しぜん",
-    "visualDescription": "A pristine wilderness scene with towering ancient trees, a deer drinking from a sparkling brook, and butterflies dancing in sunbeams"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-107",
@@ -3314,7 +3314,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きおん",
-    "visualDescription": "A giant ornate thermometer mounted on a stone wall, mercury glowing red as heat waves shimmer off sun-baked cobblestones"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-108",
@@ -3345,7 +3345,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きせつ",
-    "visualDescription": "Four quadrants showing the same tree in spring blossoms, summer green, autumn gold, and winter snow, cycling through the year"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-109",
@@ -3376,7 +3376,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "こうつう",
-    "visualDescription": "A busy intersection where horse-drawn carts, bicycles, and pedestrians navigate bridges and roads connecting different parts of a vibrant city"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-110",
@@ -3407,7 +3407,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じこ",
-    "visualDescription": "A shattered wagon wheel lying on a cobblestone road, cargo scattered around it with concerned onlookers gathering at the scene"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-111",
@@ -3438,7 +3438,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ひがい",
-    "visualDescription": "A farmhouse with a collapsed roof and broken fences after a storm, debris scattered across what was once a tidy yard"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-112",
@@ -3469,7 +3469,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じしん",
-    "visualDescription": "The ground splitting open with jagged cracks, buildings swaying and tiles falling as powerful tremors shake a medieval town"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-113",
@@ -3500,7 +3500,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たいふう",
-    "visualDescription": "A massive swirling storm with fierce spiral winds bending palm trees nearly horizontal, rain lashing a coastal village sideways"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-114",
@@ -3531,7 +3531,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じんこう",
-    "visualDescription": "An aerial view of a sprawling city packed with tiny houses, streets teeming with thousands of miniature people moving in all directions"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-115",
@@ -3562,7 +3562,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "わりあい",
-    "visualDescription": "A pie chart made of glowing crystal segments, each slice a different jewel-toned color representing different proportions of a whole"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-116",
@@ -3593,7 +3593,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "へいきん",
-    "visualDescription": "A perfectly balanced seesaw with identical weights on both sides, hovering motionless at exact center in a peaceful garden"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-117",
@@ -3624,7 +3624,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しゅうにゅう",
-    "visualDescription": "A treasure chest opening to reveal a stream of gold coins flowing in like a river, piling up in a glowing mound"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-118",
@@ -3655,7 +3655,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ひよう",
-    "visualDescription": "A merchant frowning at a long unfurling receipt, stacks of spent coins scattered across a cluttered accounting desk"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-119",
@@ -3686,7 +3686,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "りえき",
-    "visualDescription": "A smiling trader counting a tall stack of gleaming coins on a desk, their ledger showing upward-trending green arrows"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-120",
@@ -3717,7 +3717,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "こうか",
-    "visualDescription": "A potion bottle glowing with swirling energy, the moment its cork pops off releasing a burst of sparkling healing magic"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-121",
@@ -3748,7 +3748,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "せいど",
-    "visualDescription": "A grand stone building with pillars and an engraved rulebook on a pedestal, gears and mechanisms visible within its transparent walls"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-122",
@@ -3779,7 +3779,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きそく",
-    "visualDescription": "A heavy leather-bound book of laws chained to a stone pedestal, its pages glowing with golden inscribed commandments"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-123",
@@ -3810,7 +3810,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "けんり",
-    "visualDescription": "A figure holding up a glowing golden badge shaped like a shield, standing tall at a podium before an attentive assembly"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-124",
@@ -3841,7 +3841,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぎむ",
-    "visualDescription": "A knight shouldering a heavy stone tablet inscribed with duties, marching resolutely forward despite the weight pressing down on them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-125",
@@ -3872,7 +3872,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "せきにん",
-    "visualDescription": "A captain standing at the helm of a ship in a storm, hands firmly on the wheel, crew looking to them for guidance"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-126",
@@ -3903,7 +3903,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "いんしょう",
-    "visualDescription": "A painter stepping back from a canvas to see the whole picture, a lightbulb glowing above their head in sudden understanding"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-127",
@@ -3934,7 +3934,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たいど",
-    "visualDescription": "A royal guard standing at perfect attention with impeccable posture, chin up and shoulders squared beside an ornate palace gate"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-128",
@@ -3965,7 +3965,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "せいかく",
-    "visualDescription": "A kaleidoscope showing a person silhouette filled with different colored facets representing various traits—bold red, calm blue, warm gold"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-129",
@@ -3996,7 +3996,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "のうりょく",
-    "visualDescription": "A glowing figure effortlessly juggling six different magical orbs, each representing a different skill, all orbiting in perfect harmony"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-130",
@@ -4027,7 +4027,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "さいのう",
-    "visualDescription": "A young musician playing a violin with eyes closed, golden musical notes spiraling upward and transforming into glowing birds in flight"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-131",
@@ -4058,7 +4058,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "どりょく",
-    "visualDescription": "A determined climber pulling themselves up a steep cliff face hand over hand, sweat gleaming, summit just within reach above"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-132",
@@ -4089,7 +4089,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "せいこう",
-    "visualDescription": "A victorious warrior raising a gleaming sword triumphantly atop a conquered fortress, golden banners unfurling in the wind behind them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-133",
@@ -4120,7 +4120,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しっぱい",
-    "visualDescription": "A toppled tower of wooden blocks scattered across a table, a builder staring at the mess with a determined look to rebuild"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-134",
@@ -4151,7 +4151,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きぼう",
-    "visualDescription": "A child releasing a glowing paper lantern into a starry night sky, watching it drift upward alongside hundreds of others"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-135",
@@ -4182,7 +4182,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "もくひょう",
-    "visualDescription": "A mountain climber gazing up at a distant peak marked with a glowing flag, charting their route on a worn map"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-136",
@@ -4213,7 +4213,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ゆめ",
-    "visualDescription": "A sleeping figure surrounded by a swirling dreamscape of floating castles, flying whales, and impossible staircases in soft purple hues"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-137",
@@ -4244,7 +4244,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きおく",
-    "visualDescription": "A glass jar filled with glowing orbs of light, each containing a tiny scene from the past visible through the crystal walls"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-138",
@@ -4275,7 +4275,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かんじょう",
-    "visualDescription": "A heart-shaped crystal pulsing with shifting colors—fiery red, ocean blue, sunny yellow—each hue flowing into the next like liquid"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-139",
@@ -4306,7 +4306,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ひょうじょう",
-    "visualDescription": "A theatrical mask split down the middle, one half showing joy with a bright smile and the other showing sorrow with a tear"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-140",
@@ -4337,7 +4337,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "えがお",
-    "visualDescription": "A radiant face beaming with pure joy, eyes crinkled with happiness, warm golden light emanating outward like sunshine from their smile"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-141",
@@ -4368,7 +4368,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きびしい",
-    "visualDescription": "A stern drill instructor standing rigid with arms crossed, an icy wind howling around them on a barren training ground at dawn"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-142",
@@ -4399,7 +4399,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "はげしい",
-    "visualDescription": "A thunderstorm raging over a churning sea, massive waves crashing against rocks as lightning splits the sky with blinding intensity"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-143",
@@ -4430,7 +4430,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "はずかしい",
-    "visualDescription": "A figure with bright red cheeks covering their face with both hands, peeking through fingers as a spotlight shines directly on them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-144",
@@ -4461,7 +4461,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "なつかしい",
-    "visualDescription": "A person holding an old faded photograph of a childhood home, the image glowing warmly as autumn leaves drift past a window"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-145",
@@ -4492,7 +4492,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "めずらしい",
-    "visualDescription": "A glowing unicorn standing in a moonlit forest clearing, a wide-eyed observer peering from behind a tree at the extraordinary sight"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-146",
@@ -4523,7 +4523,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "すばらしい",
-    "visualDescription": "A breathtaking crystal palace perched on a cloud, its spires catching rainbow light, a viewer standing awestruck on a hilltop below"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-147",
@@ -4554,7 +4554,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ただしい",
-    "visualDescription": "A perfectly balanced scale with a glowing green checkmark hovering above it, set on a judge bench in a marble courtroom"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-148",
@@ -4585,7 +4585,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "くわしい",
-    "visualDescription": "A scholar surrounded by open encyclopedias and detailed maps, pointing precisely at a tiny detail with confident expertise under lamplight"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-149",
@@ -4616,7 +4616,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "したしい",
-    "visualDescription": "Two friends walking arm in arm down a lantern-lit cobblestone street, sharing a warm laugh on a cool autumn evening"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-150",
@@ -4647,7 +4647,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "まずしい",
-    "visualDescription": "A small figure in tattered clothing sitting on a bare wooden floor in an empty room, a single dim candle their only light"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-151",
@@ -4678,7 +4678,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "くるしい",
-    "visualDescription": "A figure struggling to climb a steep hill while carrying an enormous boulder on their back, sweat pouring and muscles straining"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-152",
@@ -4709,7 +4709,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かなしい",
-    "visualDescription": "A lone figure sitting on a bench in the rain without an umbrella, wilted flowers drooping beside them under a grey sky"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-153",
@@ -4740,7 +4740,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "うれしい",
-    "visualDescription": "A person leaping into the air with arms spread wide, a burst of golden confetti and warm light radiating from their joyful pose"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-154",
@@ -4771,7 +4771,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "やさしい",
-    "visualDescription": "A gentle healer kneeling beside an injured bird, carefully wrapping its wing with soft cloth and a warm reassuring smile"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-155",
@@ -4802,7 +4802,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "うつくしい",
-    "visualDescription": "A majestic swan gliding across a perfectly still lake at sunset, its reflection creating a flawless mirror image in rose-gold water"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-156",
@@ -4833,7 +4833,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おもしろい",
-    "visualDescription": "A jester performing an absurd balancing act on a unicycle while juggling flaming torches, the audience doubled over with amusement"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-157",
@@ -4864,7 +4864,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "くらい",
-    "visualDescription": "A narrow alley shrouded in deep shadow, a single flickering lantern barely illuminating the cobblestones in a pool of faint amber light"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-158",
@@ -4895,7 +4895,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あかるい",
-    "visualDescription": "A room flooded with brilliant morning sunlight streaming through large windows, dust motes dancing like gold sparkles in the warm beams"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-159",
@@ -4926,7 +4926,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ふかい",
-    "visualDescription": "A diver descending into a dark ocean trench, the water shifting from turquoise to midnight blue as they sink into the abyss"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-160",
@@ -4957,7 +4957,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あさい",
-    "visualDescription": "A child wading through a crystal-clear shallow stream, the sandy bottom perfectly visible beneath barely ankle-deep sparkling water"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-161",
@@ -4988,7 +4988,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ふとい",
-    "visualDescription": "A massive ancient oak tree with an enormously wide trunk, its girth so broad that three people could not link arms around it"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-162",
@@ -5019,7 +5019,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ほそい",
-    "visualDescription": "A delicate silver needle balancing on a fingertip, impossibly thin and gleaming, with a single silk thread trailing from its eye"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-163",
@@ -5050,7 +5050,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ていねいな",
-    "visualDescription": "A butler in immaculate attire carefully arranging teacups on a silver tray with precise graceful movements in an elegant parlor"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-164",
@@ -5081,7 +5081,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たいせつな",
-    "visualDescription": "A pair of hands cradling a tiny glowing crystal heart as if it were the most precious thing in the world"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-165",
@@ -5112,7 +5112,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ひつような",
-    "visualDescription": "A missing puzzle piece hovering above a nearly complete jigsaw, the gap glowing urgently showing it is the essential final piece"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-166",
@@ -5143,7 +5143,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じゅうような",
-    "visualDescription": "A massive golden key floating above a locked vault door, radiating importance with beams of light converging on the keyhole below"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-167",
@@ -5174,7 +5174,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ふくざつな",
-    "visualDescription": "A tangled mass of colorful wires, gears, and pipes woven together in an impossible knot inside a transparent mechanical device"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-168",
@@ -5205,7 +5205,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かんたんな",
-    "visualDescription": "A child effortlessly solving a wooden block puzzle with one hand, the pieces clicking into place smoothly with a satisfied grin"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-169",
@@ -5236,7 +5236,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じゆうな",
-    "visualDescription": "A bird soaring out of an opened gilded cage into a vast open sky, wings spread wide against brilliant blue and white clouds"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-170",
@@ -5267,7 +5267,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あんぜんな",
-    "visualDescription": "A sturdy stone fortress surrounded by a shimmering protective dome of blue energy, villagers resting peacefully inside its walls"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-171",
@@ -5298,7 +5298,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きけんな",
-    "visualDescription": "A crumbling rope bridge swaying over a lava-filled chasm, loose planks falling into the fiery depths below with each gust of wind"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-172",
@@ -5329,7 +5329,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しずかな",
-    "visualDescription": "A serene zen garden with raked white sand, smooth stones, and a still reflecting pool surrounded by softly rustling bamboo"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-173",
@@ -5360,7 +5360,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "さかんな",
-    "visualDescription": "A packed marketplace overflowing with shoppers, vendors shouting enthusiastically, colorful banners flying and every stall busy with eager customers"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-174",
@@ -5391,7 +5391,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ゆたかな",
-    "visualDescription": "A cornucopia overflowing with golden wheat, ripe fruits, jewels, and flowers spilling abundance across a harvest festival table"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-175",
@@ -5422,7 +5422,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たしかな",
-    "visualDescription": "A compass whose needle points steadily north without wavering, encased in a sturdy brass housing that gleams with quiet reliability"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-176",
@@ -5453,7 +5453,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かならず",
-    "visualDescription": "A stone pillar standing unshaken amid a violent storm, rain and wind battering everything else while it remains absolutely immovable"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-177",
@@ -5484,7 +5484,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "やはり",
-    "visualDescription": "A fortune teller turning over a tarot card that reveals exactly the predicted image, a knowing nod confirming what was expected"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-178",
@@ -5515,7 +5515,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "けっして",
-    "visualDescription": "A massive iron door sealed with heavy chains and a glowing lock, an absolute barrier that nothing could ever pass through"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-179",
@@ -5546,7 +5546,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ちょくせつ",
-    "visualDescription": "Two people standing face to face with nothing between them, a straight golden beam of light connecting them with no intermediary"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-180",
@@ -5577,7 +5577,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しだいに",
-    "visualDescription": "A sand dune slowly shifting grain by grain in a gentle breeze, its shape visibly different from one hour to the next"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-181",
@@ -5608,7 +5608,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "だんだん",
-    "visualDescription": "A tiny snowball rolling downhill, growing steadily larger with each rotation until it becomes a massive boulder of snow at the bottom"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-182",
@@ -5639,7 +5639,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きゅうに",
-    "visualDescription": "A lightning bolt striking the ground without warning in a clear field, the sudden flash illuminating everything in stark white for an instant"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-183",
@@ -5670,7 +5670,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とつぜん",
-    "visualDescription": "A trapdoor snapping open beneath someone feet without any warning, the floor vanishing in a split second into darkness below"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-184",
@@ -5701,7 +5701,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とくに",
-    "visualDescription": "A single red rose standing out vividly among a sea of white flowers, dramatically highlighted by a spotlight from above"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-185",
@@ -5732,7 +5732,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じつは",
-    "visualDescription": "A magician pulling back a curtain to reveal the hidden mechanism behind their trick, gears and pulleys exposed in plain sight"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-186",
@@ -5763,7 +5763,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たしかに",
-    "visualDescription": "A sage nodding slowly while holding up a perfectly clear crystal that confirms the truth, light refracting into a focused beam"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-187",
@@ -5794,7 +5794,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "まったく",
-    "visualDescription": "An empty room swept completely clean, not a single speck of dust remaining, bare walls and bare floor in total emptiness"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-188",
@@ -5825,7 +5825,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ほとんど",
-    "visualDescription": "A jar of sand nearly full to the brim, only a thin sliver of space remaining at the very top before it overflows"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-189",
@@ -5856,7 +5856,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かなり",
-    "visualDescription": "A weightlifter straining under a barbell loaded with far more plates than expected, surprised expression showing it is heavier than it looks"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-190",
@@ -5887,7 +5887,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じゅうぶん",
-    "visualDescription": "A water glass filled exactly to the perfect level, not a drop more or less needed, steam rising contentedly from its warm surface"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-191",
@@ -5918,7 +5918,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たしょう",
-    "visualDescription": "A single pinch of exotic spice being sprinkled into a large cauldron of stew, just enough to subtly change the color"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-192",
@@ -5949,7 +5949,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たまに",
-    "visualDescription": "A shooting star streaking across an otherwise empty night sky, a rare brief flash that a lone stargazer almost missed"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-193",
@@ -5980,7 +5980,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "つねに",
-    "visualDescription": "A lighthouse beam rotating endlessly through fog and darkness, its light sweeping the same path without pause day and night"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-194",
@@ -6011,7 +6011,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ふたたび",
-    "visualDescription": "A phoenix rising from its own ashes for a second time, wings blazing with renewed fire as the cycle begins once more"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-195",
@@ -6042,7 +6042,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たがいに",
-    "visualDescription": "Two warriors standing back to back with shields raised, defending each other against attacks coming from all directions in perfect sync"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-196",
@@ -6073,7 +6073,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おもわず",
-    "visualDescription": "A person flinching and catching a falling vase by pure reflex, their hand shooting out before their brain registered the danger"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-197",
@@ -6104,7 +6104,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "やがて",
-    "visualDescription": "A distant sunrise slowly brightening the horizon, the first golden rays creeping across a sleeping village as dawn inevitably approaches"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-198",
@@ -6135,7 +6135,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ようやく",
-    "visualDescription": "A marathon runner collapsing across the finish line after a grueling race, tears of relief streaming as the long struggle finally ends"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-199",
@@ -6166,7 +6166,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "すくなくとも",
-    "visualDescription": "A tiny mouse standing defiantly on a weighing scale, the needle barely moving but still registering its presence as the minimum"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-200",
@@ -6197,7 +6197,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "むしろ",
-    "visualDescription": "A person turning away from a pile of gold coins to pick up a simple but beautifully crafted wooden flute instead"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-201",
@@ -6228,7 +6228,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ふえる",
-    "visualDescription": "A golden bar graph with glowing columns rising higher and higher against a dark backdrop, coins multiplying around its base"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-202",
@@ -6259,7 +6259,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "へる",
-    "visualDescription": "A sand hourglass with bright blue sand trickling downward as the upper chamber slowly empties in warm amber light"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-203",
@@ -6290,7 +6290,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "やくだつ",
-    "visualDescription": "A radiant Swiss army knife unfolded to reveal dozens of gleaming tools, each one sparkling with usefulness against a velvet background"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-204",
@@ -6321,7 +6321,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "もうしこむ",
-    "visualDescription": "A determined figure sliding a crisp parchment scroll through an ornate golden submission window at an official desk"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-205",
@@ -6352,7 +6352,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とりかえる",
-    "visualDescription": "Two merchants exchanging glowing objects across a wooden market counter, one handing a ruby as the other offers an emerald"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-206",
@@ -6383,7 +6383,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とまる",
-    "visualDescription": "A cozy traveler settling into a warm bed at a rustic lantern-lit inn with moonlight streaming through the window"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-207",
@@ -6414,7 +6414,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かわかす",
-    "visualDescription": "A person hanging freshly washed colorful clothes on a sun-drenched clothesline with warm golden rays and a gentle breeze"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-208",
@@ -6445,7 +6445,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "さわぐ",
-    "visualDescription": "A rowdy crowd cheering and banging pots and pans together at a wild celebration with confetti flying everywhere"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-209",
@@ -6476,7 +6476,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "なやむ",
-    "visualDescription": "A figure sitting on a park bench with storm clouds swirling above their head, clutching their temples in deep troubled thought"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-210",
@@ -6507,7 +6507,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あずける",
-    "visualDescription": "A person carefully placing a precious golden key into an ornate safe deposit box inside a grand marble vault"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-211",
@@ -6538,7 +6538,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かざる",
-    "visualDescription": "A festive room bursting with colorful streamers, paper lanterns, and sparkling garlands draped around every surface"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-212",
@@ -6569,7 +6569,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "みがく",
-    "visualDescription": "A craftsman buffing a magnificent silver shield until it gleams like a mirror, sparks of light reflecting in every direction"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-213",
@@ -6600,7 +6600,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "まぜる",
-    "visualDescription": "A chef vigorously stirring a bubbling cauldron where red, blue, and green liquids swirl together into a brilliant purple"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-214",
@@ -6631,7 +6631,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "つつむ",
-    "visualDescription": "A person carefully wrapping a shimmering gift in elegant golden paper, folding each corner with precise delicate hands"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-215",
@@ -6662,7 +6662,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ふく",
-    "visualDescription": "A mighty wind spirit with puffed cheeks sending a powerful gust that bends trees and scatters autumn leaves across the sky"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-216",
@@ -6693,7 +6693,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おす",
-    "visualDescription": "A strong warrior pressing both hands against a massive stone door, muscles straining as the ancient door slowly slides open"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-217",
@@ -6724,7 +6724,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ひく",
-    "visualDescription": "A figure tugging a heavy iron chain attached to a rising drawbridge, pulling with all their might over a castle moat"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-218",
@@ -6755,7 +6755,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "なげる",
-    "visualDescription": "A baseball pitcher in mid-windup hurling a blazing fireball that trails orange sparks across a stadium under bright lights"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-219",
@@ -6786,7 +6786,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かえる",
-    "visualDescription": "A stagehand swapping a red curtain for a blue one on a grand theater stage, transforming the entire scene instantly"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-220",
@@ -6817,7 +6817,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "のりかえる",
-    "visualDescription": "A passenger leaping from one moving train car to another at a busy junction, with the old train pulling away behind them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-221",
@@ -6848,7 +6848,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とおりすぎる",
-    "visualDescription": "A speeding horse and rider galloping past a signpost on a dusty road, the sign already shrinking in the distance behind them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-222",
@@ -6879,7 +6879,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おいかける",
-    "visualDescription": "A determined hunter sprinting through a dense forest after a glowing golden fox darting between the shadowy trees ahead"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-223",
@@ -6910,7 +6910,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "みつかる",
-    "visualDescription": "A long-lost treasure chest emerging from beneath sand dunes as wind sweeps away the final layer, jewels glinting in sunlight"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-224",
@@ -6941,7 +6941,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "みつける",
-    "visualDescription": "An explorer pointing excitedly at a glowing ancient artifact half-buried in mossy ruins, torch illuminating the discovery"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-225",
@@ -6972,7 +6972,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あきる",
-    "visualDescription": "A person pushing away a plate of once-beloved candy with a weary expression, surrounded by mountains of identical sweets"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-226",
@@ -7003,7 +7003,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "にあう",
-    "visualDescription": "A person twirling in a perfectly tailored sparkling gown that complements their features, surrounded by admiring glances in a ballroom"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-227",
@@ -7034,7 +7034,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きづく",
-    "visualDescription": "A figure with a bright golden lightbulb materializing above their head, eyes wide with sudden inspiration in a dim workshop"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-228",
@@ -7065,7 +7065,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おもいつく",
-    "visualDescription": "A glowing bright lightbulb floating above a thinker's head in a cluttered inventor's workshop, illuminating scattered blueprints"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-229",
@@ -7096,7 +7096,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "もどる",
-    "visualDescription": "A traveler walking back through a glowing portal toward their cozy cottage home, the familiar chimney smoke visible ahead"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-230",
@@ -7127,7 +7127,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かなう",
-    "visualDescription": "A radiant shooting star arcing across a night sky as a child watches with clasped hands, wish sparkles trailing behind"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-231",
@@ -7158,7 +7158,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おちつく",
-    "visualDescription": "A meditating figure sitting beneath a cherry blossom tree with petals gently falling around them, perfectly still pond reflecting the scene"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-232",
@@ -7189,7 +7189,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "こうふんする",
-    "visualDescription": "A fan leaping out of their seat at a sports arena, face flushed with joy, fists pumping as fireworks explode overhead"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-233",
@@ -7220,7 +7220,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "れんらくする",
-    "visualDescription": "A carrier pigeon delivering a glowing scroll to a recipient at a castle tower window, magical sparks trailing from the message"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-234",
@@ -7251,7 +7251,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しょうかいする",
-    "visualDescription": "A host gesturing warmly between two people who are shaking hands for the first time in an elegant reception hall"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-235",
@@ -7282,7 +7282,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "さんかする",
-    "visualDescription": "An eager runner joining a vibrant marathon crowd at the starting line, pinning on a numbered bib with determination"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-236",
@@ -7313,7 +7313,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "はんたいする",
-    "visualDescription": "A defiant figure standing firm with a raised red protest sign in front of a massive stone wall, wind blowing their cloak"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-237",
@@ -7344,7 +7344,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "さんせいする",
-    "visualDescription": "Two delegates shaking hands across a polished conference table with matching green checkmarks floating above their heads"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-238",
@@ -7375,7 +7375,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "そうだんする",
-    "visualDescription": "Two friends leaning toward each other across a quiet cafe table, speaking in hushed tones with concerned caring expressions"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-239",
@@ -7406,7 +7406,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "がまんする",
-    "visualDescription": "A stoic monk sitting calmly on hot coals with closed eyes, steam rising around them while maintaining perfect composure"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-240",
@@ -7437,7 +7437,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ちゅういする",
-    "visualDescription": "A night watchman holding up a bright lantern and peering carefully around a dark corner with alert focused eyes"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-241",
@@ -7468,7 +7468,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かんどうする",
-    "visualDescription": "A person wiping tears of joy while watching a breathtaking golden sunset paint the sky from a mountain overlook"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-242",
@@ -7499,7 +7499,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "りようする",
-    "visualDescription": "A resourceful inventor operating a complex brass machine with many gears and levers, efficiently producing golden widgets"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-243",
@@ -7530,7 +7530,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ゆしゅつする",
-    "visualDescription": "A merchant loading crates of colorful goods onto a grand sailing ship at a bustling harbor dock, bound for distant lands"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-244",
@@ -7561,7 +7561,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ゆにゅうする",
-    "visualDescription": "A harbor crane lifting exotic crates from a foreign ship onto a busy dock, workers inspecting incoming treasures eagerly"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-245",
@@ -7592,7 +7592,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "けいさんする",
-    "visualDescription": "A scholar furiously working an ornate golden abacus with beads flying back and forth, numbers floating in the air around them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-246",
@@ -7623,7 +7623,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ほんやくする",
-    "visualDescription": "A robed linguist holding two glowing books side by side, magical streams of text flowing between them and transforming mid-air"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-247",
@@ -7654,7 +7654,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あんきする",
-    "visualDescription": "A student with closed eyes absorbing glowing words that float off a book and sink into their forehead like golden light"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-248",
@@ -7685,7 +7685,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ふくしゅうする",
-    "visualDescription": "A student sitting at a desk surrounded by floating open textbooks, methodically checking off items on a glowing study checklist"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-249",
@@ -7716,7 +7716,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "よやくする",
-    "visualDescription": "A guest writing their name in an elegant golden reservation book at a fancy restaurant podium with candlelight flickering nearby"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-250",
@@ -7747,7 +7747,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じゅんびする",
-    "visualDescription": "A knight laying out armor, sword, and provisions on a wooden table the night before a grand quest, everything precisely arranged"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-251",
@@ -7778,7 +7778,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "いどうする",
-    "visualDescription": "A caravan of colorful wagons rolling across a vast golden prairie toward distant purple mountains on the horizon"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-252",
@@ -7809,7 +7809,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とうちゃくする",
-    "visualDescription": "A grand steam locomotive pulling into a station with billowing white clouds, a welcoming crowd waving on the platform"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-253",
@@ -7840,7 +7840,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しゅっぱつする",
-    "visualDescription": "An airship lifting off from a towering launch pad with flames roaring beneath it, passengers waving farewell from the gondola"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-254",
@@ -7871,7 +7871,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "えんきする",
-    "visualDescription": "A large ornate clock with its hands being physically pushed backward by a robed figure, calendar pages fluttering into the future"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-255",
@@ -7902,7 +7902,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ちゅうしする",
-    "visualDescription": "A red stamp slamming down on a document with the word CANCELLED, ink splattering dramatically across the page"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-256",
@@ -7933,7 +7933,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かんせいする",
-    "visualDescription": "A sculptor stepping back to admire a perfectly finished marble statue gleaming under golden spotlight, chisel set aside triumphantly"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-257",
@@ -7964,7 +7964,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "やける",
-    "visualDescription": "A loaf of bread turning golden brown in a roaring brick oven, warm orange flames licking around the crusty edges"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-258",
@@ -7995,7 +7995,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "こわす",
-    "visualDescription": "A warrior swinging a massive hammer into a stone wall, chunks of rock exploding outward in a dramatic shower of debris"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-259",
@@ -8026,7 +8026,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "こわれる",
-    "visualDescription": "A cracked and crumbling clockwork robot slumped on the ground with gears spilling out and springs popping loose everywhere"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-260",
@@ -8057,7 +8057,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "よごす",
-    "visualDescription": "A mischievous child flinging mud at a pristine white castle wall, brown splatters spreading across the once-clean surface"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-261",
@@ -8088,7 +8088,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "よごれる",
-    "visualDescription": "A white shirt hanging on a clothesline slowly turning brown as muddy rain falls on it from a dark stormy sky"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-262",
@@ -8119,7 +8119,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "うえる",
-    "visualDescription": "A gardener kneeling in rich dark soil, carefully placing a tiny glowing seedling into the earth with gentle nurturing hands"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-263",
@@ -8150,7 +8150,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "そだつ",
-    "visualDescription": "A time-lapse scene of a tiny sapling growing rapidly into a towering magnificent oak tree with spreading green branches"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-264",
@@ -8181,7 +8181,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "そめる",
-    "visualDescription": "A craftsperson dipping pure white fabric into a vat of vibrant indigo dye, the cloth transforming into deep rich blue"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-265",
@@ -8212,7 +8212,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぬう",
-    "visualDescription": "A tailor threading a gleaming silver needle through layers of colorful silk fabric, creating an intricate floral pattern stitch by stitch"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-266",
@@ -8243,7 +8243,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "くむ",
-    "visualDescription": "A team of workers fitting together massive puzzle-like steel beams to construct a towering bridge, sparks flying from rivets"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-267",
@@ -8274,7 +8274,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "だく",
-    "visualDescription": "A parent tenderly holding a sleeping infant wrapped in a soft blanket, warm golden light surrounding the peaceful embrace"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-268",
@@ -8305,7 +8305,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "なでる",
-    "visualDescription": "A gentle hand softly stroking a fluffy sleeping cat curled up on a velvet cushion, the cat purring contentedly"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-269",
@@ -8336,7 +8336,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "にぎる",
-    "visualDescription": "A blacksmith gripping a red-hot iron rod with heavy tongs over a blazing forge, muscles taut with focused effort"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-270",
@@ -8367,7 +8367,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ふる",
-    "visualDescription": "A royal figure waving a flowing crimson banner back and forth from a castle rampart, the fabric rippling in the wind"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-271",
@@ -8398,7 +8398,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "なる",
-    "visualDescription": "A massive bronze bell swinging in a stone tower, visible sound waves radiating outward across a misty mountain village"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-272",
@@ -8429,7 +8429,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ひかる",
-    "visualDescription": "A brilliant crystal orb pulsing with inner light in a dark cavern, casting rainbow rays across the wet stone walls"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-273",
@@ -8460,7 +8460,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ゆれる",
-    "visualDescription": "A chandelier swinging dramatically in a grand ballroom during an earthquake, crystal pendants tinkling and light dancing wildly"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-274",
@@ -8491,7 +8491,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とける",
-    "visualDescription": "A colorful ice cream cone slowly turning to liquid in the summer sun, bright drips running down a waffle cone"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-275",
@@ -8522,7 +8522,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "こおる",
-    "visualDescription": "A pond surface crystallizing into intricate ice patterns as winter breath sweeps across, trapping autumn leaves beneath the frost"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-276",
@@ -8553,7 +8553,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "くさる",
-    "visualDescription": "A once-grand wooden ship hull covered in green decay, planks crumbling and barnacles spreading across the abandoned vessel"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-277",
@@ -8584,7 +8584,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かれる",
-    "visualDescription": "A dried brown flower drooping in a cracked clay pot, petals curling and falling to the dusty windowsill below"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-278",
@@ -8615,7 +8615,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たたく",
-    "visualDescription": "A blacksmith bringing a heavy hammer down on a red-hot anvil with explosive sparks flying in every direction"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-279",
@@ -8646,7 +8646,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "つぶす",
-    "visualDescription": "A giant foot stomping down on a ripe watermelon, red and green pieces bursting outward in a dramatic explosion"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-280",
@@ -8677,7 +8677,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ちる",
-    "visualDescription": "A thousand pink cherry blossom petals swirling through the air like snow, carried by a spring breeze across a temple garden"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-281",
@@ -8708,7 +8708,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じょうたい",
-    "visualDescription": "A complex steampunk machine with dozens of spinning gears, glowing gauges, and flickering readouts displaying its operating condition"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-282",
@@ -8739,7 +8739,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ほうしん",
-    "visualDescription": "A compass rose carved into an ancient stone tablet with a glowing golden arrow pointing decisively in one direction"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-283",
@@ -8770,7 +8770,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ざいりょう",
-    "visualDescription": "A wooden table overflowing with raw crafting ingredients: colorful powders, gleaming metals, rough fabrics, and crystal shards"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-284",
@@ -8801,7 +8801,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "どうぐ",
-    "visualDescription": "A well-organized workshop pegboard displaying an array of gleaming hand tools: hammers, wrenches, pliers, and screwdrivers neatly arranged"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-285",
@@ -8832,7 +8832,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きかい",
-    "visualDescription": "A massive industrial machine with spinning gears, pumping pistons, and steam vents working together in a busy factory hall"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-286",
@@ -8863,7 +8863,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "せいひん",
-    "visualDescription": "A gleaming new gadget sitting on a factory conveyor belt surrounded by quality inspection stamps and a proud manufacturer's seal"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-287",
@@ -8894,7 +8894,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しょうひん",
-    "visualDescription": "A colorful market stall overflowing with neatly displayed merchandise: fabrics, pottery, spices, and trinkets catching the morning light"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-288",
@@ -8925,7 +8925,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しなもの",
-    "visualDescription": "An elegant display case in a shop window showcasing fine porcelain, polished silverware, and delicate glass figurines on velvet"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-289",
@@ -8956,7 +8956,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "にもつ",
-    "visualDescription": "A towering stack of suitcases, boxes, and wrapped parcels piled high on a luggage cart at a bustling train station"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-290",
@@ -8987,7 +8987,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "くうき",
-    "visualDescription": "Visible swirling currents of wind carrying autumn leaves, dust motes, and dandelion seeds through a sunlit forest clearing"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-291",
@@ -9018,7 +9018,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おんど",
-    "visualDescription": "A giant glass thermometer mounted on a wall showing bright red mercury rising past colorful temperature markings"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-292",
@@ -9049,7 +9049,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しつど",
-    "visualDescription": "Thick tropical mist clinging to lush green jungle foliage, water droplets visible on every leaf surface glistening in filtered light"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-293",
@@ -9080,7 +9080,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おせん",
-    "visualDescription": "A once-clear river now murky and dark with industrial waste, dead fish floating near pipes dumping colored sludge"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-294",
@@ -9111,7 +9111,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ねんだい",
-    "visualDescription": "A timeline wall showing distinct decades with changing fashions, technologies, and architectural styles progressing from left to right"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-295",
@@ -9142,7 +9142,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じだい",
-    "visualDescription": "A grand stone archway looking through layers of time periods stacked behind each other: medieval, renaissance, industrial, and modern"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-296",
@@ -9173,7 +9173,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "れきし",
-    "visualDescription": "An ancient scroll unfurling to reveal illuminated illustrations of battles, kingdoms rising, and civilizations across centuries of recorded events"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-297",
@@ -9204,7 +9204,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "でんとう",
-    "visualDescription": "Elder craftspeople passing down a glowing ancestral artifact to younger apprentices in an ancient candlelit ceremonial hall"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-298",
@@ -9235,7 +9235,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しゅうきょう",
-    "visualDescription": "A grand stained glass window depicting spiritual symbols from many faiths radiating light into a hushed stone sanctuary"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-299",
@@ -9266,7 +9266,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きょういく",
-    "visualDescription": "A wise teacher at a glowing chalkboard guiding eager students through complex diagrams, books and globes surrounding the bright classroom"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-300",
@@ -9297,7 +9297,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "けんきゅう",
-    "visualDescription": "A scientist peering through a magnifying glass at a glowing specimen on a lab bench surrounded by notebooks and instruments"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-301",
@@ -9328,7 +9328,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ちょうさ",
-    "visualDescription": "A detective pinning photographs and clues to a corkboard with red string connecting evidence across a dimly lit office"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-302",
@@ -9359,7 +9359,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ほうこく",
-    "visualDescription": "A formal official presenting a thick leather-bound document with charts and findings to attentive listeners in a grand chamber"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-303",
@@ -9390,7 +9390,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きじ",
-    "visualDescription": "A fresh newspaper hot off the printing press with bold headlines and dramatic photographs, ink still glistening on the page"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-304",
@@ -9421,7 +9421,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じょうほう",
-    "visualDescription": "Streams of glowing data flowing through a network of illuminated crystal nodes in a vast magical information nexus chamber"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-305",
@@ -9452,7 +9452,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ちしき",
-    "visualDescription": "A towering library shelf stretching to the ceiling, filled with glowing books whose spines radiate golden light of accumulated wisdom"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-306",
@@ -9483,7 +9483,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "こうどう",
-    "visualDescription": "A hero in mid-leap across rooftops at sunset, cape flowing behind them, body captured in dynamic purposeful motion"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-307",
@@ -9514,7 +9514,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じゆう",
-    "visualDescription": "A bird soaring out of an open golden cage into a vast blue sky with no boundaries stretching to the horizon"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-308",
@@ -9545,7 +9545,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "へいわ",
-    "visualDescription": "A white dove descending over a tranquil meadow where former enemies lay down their weapons among blooming wildflowers"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-309",
@@ -9576,7 +9576,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "こうふく",
-    "visualDescription": "A joyful family gathered around a warm glowing hearth, sharing laughter and food in a cozy cottage filled with golden light"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-310",
@@ -9607,7 +9607,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "はんざい",
-    "visualDescription": "A shadowy figure sneaking through a dark alley with a stolen jewel, police lanterns flickering in pursuit behind them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-311",
@@ -9638,7 +9638,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かいけつ",
-    "visualDescription": "A glowing golden key being inserted into a complex mechanical lock, tumblers clicking into place as the puzzle door opens"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-312",
@@ -9669,7 +9669,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "もんだい",
-    "visualDescription": "A tangled knot of glowing threads with one strand being carefully pulled to unravel the whole complex mess on a workbench"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-313",
@@ -9700,7 +9700,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しつもん",
-    "visualDescription": "A student raising their hand eagerly in a classroom, a bright glowing question mark hovering above their head"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-314",
@@ -9731,7 +9731,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "こたえ",
-    "visualDescription": "A wise owl perched on a podium presenting a glowing scroll that unfurls to reveal a clear definitive answer"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-315",
@@ -9762,7 +9762,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "いけん",
-    "visualDescription": "A figure standing at a podium passionately gesturing with raised hand, colorful speech bubbles of different viewpoints floating upward"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-316",
@@ -9793,7 +9793,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かんそう",
-    "visualDescription": "A person emerging from a theater with wide eyes and a thoughtful expression, vivid scene fragments still swirling around their head"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-317",
@@ -9824,7 +9824,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "はんのう",
-    "visualDescription": "A crowd of spectators gasping in unison with wide eyes and dropped jaws at a dramatic unexpected event on stage"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-318",
@@ -9855,7 +9855,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じょうしき",
-    "visualDescription": "A wise elder owl wearing spectacles and sitting among everyday objects, each one labeled with an obvious practical truth tag"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-319",
@@ -9886,7 +9886,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "そうぞう",
-    "visualDescription": "A dreamer lying on a grassy hill gazing at clouds that morph into fantastical castles, dragons, and flying ships overhead"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-320",
@@ -9917,7 +9917,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かんしゃ",
-    "visualDescription": "A person bowing deeply while offering a beautifully wrapped gift with both hands, warm golden light radiating from the gesture"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-321",
@@ -9948,7 +9948,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "やくそく",
-    "visualDescription": "Two figures clasping hands firmly while making a solemn vow beneath a glowing golden seal floating between them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-322",
@@ -9979,7 +9979,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あいさつ",
-    "visualDescription": "Two friends meeting warmly at a doorway, one bowing while the other waves cheerfully with bright welcoming smiles"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-323",
@@ -10010,7 +10010,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "れいぎ",
-    "visualDescription": "An elegantly dressed figure demonstrating perfect posture and graceful table manners at a formal candlelit banquet setting"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-324",
@@ -10041,7 +10041,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "めいわく",
-    "visualDescription": "A frustrated person covering their ears while a neighbor plays impossibly loud drums, sound waves cracking the walls between them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-325",
@@ -10072,7 +10072,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "うわさ",
-    "visualDescription": "Two shadowy figures whispering behind cupped hands while pointing at a distant person, dark speech bubbles floating secretively"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-326",
@@ -10103,7 +10103,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じょうだん",
-    "visualDescription": "A court jester juggling colorful balls while balanced on a unicycle, the entire royal court erupting in hearty laughter"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-327",
@@ -10134,7 +10134,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しゅみ",
-    "visualDescription": "A painter joyfully working at a sunlit easel surrounded by brushes, palettes, and half-finished vibrant canvases in a cozy studio"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-328",
@@ -10165,7 +10165,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "せわ",
-    "visualDescription": "A kind nurse gently tending to a bandaged patient in a warm bright room, adjusting pillows and offering water with care"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-329",
@@ -10196,7 +10196,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "るす",
-    "visualDescription": "A dark empty house with a single light left on in the window, the mailbox overflowing and garden slightly overgrown"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-330",
@@ -10227,7 +10227,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぜいたく",
-    "visualDescription": "A lavish golden throne room with silk curtains, crystal chandeliers, jeweled goblets, and platters of exotic fruit overflowing a banquet table"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-331",
@@ -10258,7 +10258,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "わがまま",
-    "visualDescription": "A spoiled child stomping their foot and crossing their arms defiantly while pointing at a toy they demand in a shop"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-332",
@@ -10289,7 +10289,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "つごう",
-    "visualDescription": "A person checking a complex schedule board with interconnected timelines, finding the one green slot where everything aligns perfectly"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-333",
@@ -10320,7 +10320,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ようじ",
-    "visualDescription": "A busy person rushing through town with a long checklist of tasks, carrying packages while heading toward the next stop"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-334",
@@ -10351,7 +10351,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たいくつ",
-    "visualDescription": "A person slumped in a chair staring at a blank wall, a clock on the wall whose hands barely seem to move"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-335",
@@ -10382,7 +10382,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぐうぜん",
-    "visualDescription": "Two strangers bumping into each other at exactly the same spot where they first met years ago, recognition dawning on both faces"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-336",
@@ -10413,7 +10413,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ゆうき",
-    "visualDescription": "A small knight standing bravely before an enormous dragon, sword raised high despite trembling legs, glowing with inner golden resolve"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-337",
@@ -10444,7 +10444,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ごかい",
-    "visualDescription": "Two people looking at the same painting but seeing completely different images, confused thought bubbles showing opposite interpretations"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-338",
@@ -10475,7 +10475,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ひょうばん",
-    "visualDescription": "A performer taking a bow on a grand stage as a massive crowd holds up glowing star-shaped rating signs in admiration"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-339",
@@ -10506,7 +10506,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "めんせつ",
-    "visualDescription": "A nervous candidate sitting across from stern interviewers at a polished desk, portfolio open and sweat beading on their forehead"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-340",
@@ -10537,7 +10537,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きゅうりょう",
-    "visualDescription": "A worker happily receiving a bulging coin purse from their employer at the end of the week, golden coins spilling over"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-341",
@@ -10568,7 +10568,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とどけ",
-    "visualDescription": "A messenger handing an official sealed scroll with a wax crest to a recipient at a grand ornate doorway"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-342",
@@ -10599,7 +10599,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かんばん",
-    "visualDescription": "A brightly painted wooden shop sign hanging from iron brackets over a cobblestone street, swinging gently in the breeze"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-343",
@@ -10630,7 +10630,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "やちん",
-    "visualDescription": "A tenant counting out golden coins onto a landlord's palm in front of a cozy apartment doorway each month"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-344",
@@ -10661,7 +10661,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "こうさてん",
-    "visualDescription": "A bustling four-way street crossing with colorful traffic flowing in every direction, buildings towering at each corner under bright lights"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-345",
@@ -10692,7 +10692,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ふみきり",
-    "visualDescription": "Red and white striped barriers lowering across a road as a steam train approaches with flashing warning lights and bells ringing"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-346",
@@ -10723,7 +10723,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ちゅうしゃじょう",
-    "visualDescription": "Rows of neatly parked colorful carriages filling a cobblestone lot with a wooden ticket booth at the entrance"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-347",
@@ -10754,7 +10754,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しめきり",
-    "visualDescription": "A dramatic hourglass with its last grains of red sand about to fall, an urgent document pinned beneath it"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-348",
@@ -10785,7 +10785,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "てつづき",
-    "visualDescription": "A person carefully filling out forms at an official counter, stamping documents and organizing papers into neat labeled folders"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-349",
@@ -10816,7 +10816,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "みまい",
-    "visualDescription": "A kind visitor bringing flowers and fruit to a friend resting in a hospital bed, warm sunlight streaming through the window"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-350",
@@ -10847,7 +10847,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "みやげ",
-    "visualDescription": "A traveler presenting a beautifully wrapped regional gift box tied with a ribbon to a delighted friend back home"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-351",
@@ -10878,7 +10878,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "せいかくな",
-    "visualDescription": "A master archer splitting an arrow perfectly down the center of a bullseye target from an incredible distance with laser precision"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-352",
@@ -10909,7 +10909,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "てきとうな",
-    "visualDescription": "A puzzle piece clicking perfectly into the last empty spot of a jigsaw, completing a beautiful landscape image with satisfying precision"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-353",
@@ -10940,7 +10940,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たんじゅんな",
-    "visualDescription": "A single clean geometric shape on a white background: one perfect red circle with nothing else, embodying pure simplicity"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-354",
@@ -10971,7 +10971,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おだやかな",
-    "visualDescription": "A serene lake at dawn with perfectly still water reflecting pink clouds, a lone heron standing motionless at the misty shore"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-355",
@@ -11002,7 +11002,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ふしぎな",
-    "visualDescription": "A floating island with upside-down waterfalls and glowing mushrooms defying gravity, a bewildered explorer staring in wonder at the impossible scene"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-356",
@@ -11033,7 +11033,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "すてきな",
-    "visualDescription": "A breathtaking ballroom with crystal chandeliers casting rainbow light on dancers in magnificent flowing gowns spinning across a marble floor"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-357",
@@ -11064,7 +11064,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "りっぱな",
-    "visualDescription": "A noble knight in gleaming ceremonial armor standing before a cheering crowd, golden medals adorning their chest catching the sunlight"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-358",
@@ -11095,7 +11095,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "じみな",
-    "visualDescription": "A person in simple earth-toned clothes tending a quiet garden, blending harmoniously into the natural muted landscape around them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-359",
@@ -11126,7 +11126,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "はでな",
-    "visualDescription": "A dazzling peacock with fully spread iridescent tail feathers strutting across a stage under brilliant multicolored spotlight beams"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-360",
@@ -11157,7 +11157,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "らんぼうな",
-    "visualDescription": "A raging bull charging through a china shop, horns tossing tables and shelves as delicate porcelain shatters in every direction"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-361",
@@ -11188,7 +11188,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しんけんな",
-    "visualDescription": "A focused samurai kneeling with closed eyes before a gleaming katana, intense concentration visible in every rigid muscle of their posture"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-362",
@@ -11219,7 +11219,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ねっしんな",
-    "visualDescription": "A scholar burning the midnight oil with intense focus, surrounded by towering stacks of books and furiously writing notes by candlelight"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-363",
@@ -11250,7 +11250,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "とくいな",
-    "visualDescription": "A master chef effortlessly flipping a perfect golden crepe high into the air with one hand, kitchen sparking with confident energy"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-364",
@@ -11281,7 +11281,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "にがてな",
-    "visualDescription": "A nervous person fumbling and dropping juggling balls repeatedly, face red with embarrassment as the balls scatter across the stage floor"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-365",
@@ -11312,7 +11312,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ゆうめいな",
-    "visualDescription": "A grand red carpet leading to a dazzling celebrity surrounded by flashing cameras and cheering fans behind velvet ropes at a premiere"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-366",
@@ -11343,7 +11343,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あきらかな",
-    "visualDescription": "A bright spotlight cutting through darkness to illuminate a single obvious truth written in golden letters on a stone tablet"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-367",
@@ -11374,7 +11374,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "きゅうな",
-    "visualDescription": "A cliff face dropping away sharply beneath a hiker's feet, the ground vanishing into fog with no warning at the steep edge"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-368",
@@ -11405,7 +11405,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "こまかい",
-    "visualDescription": "A jeweler examining a tiny intricate pocket watch through a magnifying loupe, revealing hundreds of minuscule perfectly crafted gears inside"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-369",
@@ -11436,7 +11436,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "やわらかい",
-    "visualDescription": "A fluffy cloud-like pillow being squeezed gently, yielding and bouncing back into shape with a soft cotton-candy texture"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-370",
@@ -11467,7 +11467,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "かたい",
-    "visualDescription": "An immovable iron anvil sitting solidly on a stone floor, a hammer bouncing off its unyielding dark surface with a clang"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-371",
@@ -11498,7 +11498,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "するどい",
-    "visualDescription": "A gleaming razor-thin katana slicing cleanly through a falling silk ribbon, the two halves drifting apart in slow motion"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-372",
@@ -11529,7 +11529,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "にぶい",
-    "visualDescription": "A rusty butter knife failing to cut through soft bread, the dull edge mashing rather than slicing the yielding loaf"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-373",
@@ -11560,7 +11560,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あたたかい",
-    "visualDescription": "A person wrapping their hands around a steaming ceramic mug by a crackling fireplace, warm amber glow filling the cozy room"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-374",
@@ -11591,7 +11591,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "すずしい",
-    "visualDescription": "A refreshing mountain breeze carrying snowflake sparkles past a hiker on a green alpine meadow under a bright blue sky"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-375",
@@ -11622,7 +11622,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "むしあつい",
-    "visualDescription": "A person wilting in oppressive tropical heat, clothes clinging with humidity as steam rises from the rain-soaked jungle pavement around them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-376",
@@ -11653,7 +11653,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ねむい",
-    "visualDescription": "A drowsy cat curled on a warm windowsill with heavy half-closed eyes, afternoon sunbeams making their eyelids flutter and droop"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-377",
@@ -11684,7 +11684,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "あやしい",
-    "visualDescription": "A shadowy figure in a long dark coat lurking behind a lamppost on a foggy street, eyes glinting suspiciously from the shadows"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-378",
@@ -11715,7 +11715,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おそろしい",
-    "visualDescription": "A massive snarling dragon looming over a tiny village, flames reflected in the terrified wide eyes of fleeing villagers below"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-379",
@@ -11746,7 +11746,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "すなおな",
-    "visualDescription": "A gentle child honestly returning a found wallet to its owner with an innocent straightforward smile, no hesitation in their actions"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-380",
@@ -11777,7 +11777,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "おさない",
-    "visualDescription": "A wide-eyed toddler looking up at the enormous world around them with innocent wonder, everything towering impossibly tall above them"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-381",
@@ -11808,7 +11808,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "やっと",
-    "visualDescription": "A marathon runner breaking through the finish line tape with arms raised in triumph after an exhaustingly long and grueling race"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-382",
@@ -11839,7 +11839,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぜひ",
-    "visualDescription": "A passionate speaker pounding a podium with conviction, a giant glowing exclamation mark punctuating their emphatic heartfelt recommendation"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-383",
@@ -11870,7 +11870,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "いつのまにか",
-    "visualDescription": "A person suddenly noticing gray hairs in the mirror with shock, time having passed without their awareness while they were busy"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-384",
@@ -11901,7 +11901,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "わざわざ",
-    "visualDescription": "A traveler deliberately walking miles out of their way to hand-deliver a small package to a remote cottage on a distant hill"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-385",
@@ -11932,7 +11932,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "いちおう",
-    "visualDescription": "A cautious adventurer packing an umbrella, rope, and extra supplies into their bag while muttering preparations for unlikely scenarios just in case"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-386",
@@ -11963,7 +11963,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "まさか",
-    "visualDescription": "A person staggering back with jaw dropped and hands raised in total disbelief at an impossible sight before their eyes"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-387",
@@ -11994,7 +11994,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "さすが",
-    "visualDescription": "A crowd nodding in admiration as a master craftsman produces yet another flawless work, living up to their legendary reputation perfectly"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-388",
@@ -12025,7 +12025,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "たまたま",
-    "visualDescription": "Two old friends accidentally bumping into each other at a random foreign market stall, both equally shocked by the unlikely encounter"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-389",
@@ -12056,7 +12056,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぴったり",
-    "visualDescription": "A glass slipper fitting perfectly onto a foot with a magical golden glow, confirming the exact precise match with a sparkle"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-390",
@@ -12087,7 +12087,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "そっと",
-    "visualDescription": "A careful hand gently placing a sleeping baby into a crib with feather-light touch, barely disturbing the peaceful quiet of the nursery"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-391",
@@ -12118,7 +12118,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぐっすり",
-    "visualDescription": "A person sprawled blissfully in a deep peaceful sleep on a cloud-soft bed, a full moon casting silver light through the window"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-392",
@@ -12149,7 +12149,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぶらぶら",
-    "visualDescription": "A relaxed wanderer ambling through a colorful street market with no destination in mind, casually browsing stalls and enjoying the atmosphere"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-393",
@@ -12180,7 +12180,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "ぺらぺら",
-    "visualDescription": "A confident speaker addressing a foreign audience in their native language with perfect flowing pronunciation, listeners nodding in impressed understanding"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-394",
@@ -12211,7 +12211,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "にこにこ",
-    "visualDescription": "A beaming grandparent with crinkled eyes and the warmest possible smile, radiating pure joy while looking at a family photo album"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-395",
@@ -12242,7 +12242,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "どきどき",
-    "visualDescription": "A person clutching their chest with a racing heart while opening a mysterious locked treasure box, anticipation visible in their trembling hands"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-396",
@@ -12273,7 +12273,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "わくわく",
-    "visualDescription": "A child bouncing with uncontainable excitement on Christmas morning, eyes sparkling at the mountain of colorful wrapped presents under the tree"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-397",
@@ -12304,7 +12304,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "のんびり",
-    "visualDescription": "A person lounging in a hammock between two palm trees on a quiet tropical beach, watching clouds drift by with zero urgency"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-398",
@@ -12335,7 +12335,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "しっかり",
-    "visualDescription": "A solid oak tree standing unwavering in a fierce storm, deep roots gripping the earth while everything else bends around it"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-399",
@@ -12366,7 +12366,7 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "うっかり",
-    "visualDescription": "A distracted person walking straight into a glass door while reading their phone, papers and belongings scattering in the clumsy collision"
+    "visualDescription": null
   },
   {
     "id": "ja-n3-400",
@@ -12397,6 +12397,6 @@
     "ageRating": "kid",
     "language": "ja",
     "pronunciation": "がっかり",
-    "visualDescription": "A deflated balloon slowly sinking to the ground at an empty fairground, representing the hollow feeling of unmet expectations and letdown"
+    "visualDescription": null
   }
 ]
