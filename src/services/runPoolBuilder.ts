@@ -7,15 +7,32 @@ import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
 import { assignTypesToCards } from './cardTypeAllocator';
 
 const DOMAIN_TO_CATEGORY: Record<FactDomain, string[]> = {
-  science: ['Natural Sciences'],
+  general_knowledge: ['General Knowledge', 'Technology', 'Mathematics', 'Math'],
+  natural_sciences: ['Natural Sciences', 'Science'],
+  space_astronomy: ['Space & Astronomy'],
   history: ['History'],
   geography: ['Geography'],
   language: ['Language'],
-  math: ['Natural Sciences'],
-  arts: ['Culture'],
-  medicine: ['Life Sciences'],
-  technology: ['Technology'],
+  mythology_folklore: ['Mythology & Folklore'],
+  animals_wildlife: ['Animals & Wildlife'],
+  human_body_health: ['Human Body & Health', 'Life Sciences', 'Medicine', 'Health'],
+  food_cuisine: ['Food & World Cuisine'],
+  art_architecture: ['Art & Architecture', 'Culture', 'Arts'],
+  // Legacy IDs kept for save compatibility.
+  science: ['Natural Sciences', 'Science'],
+  math: ['General Knowledge', 'Mathematics', 'Math'],
+  arts: ['Art & Architecture', 'Culture', 'Arts'],
+  medicine: ['Human Body & Health', 'Life Sciences', 'Medicine', 'Health'],
+  technology: ['General Knowledge', 'Technology'],
 };
+
+const FALLBACK_DOMAIN_ORDER: FactDomain[] = [
+  'general_knowledge',
+  'natural_sciences',
+  'history',
+  'geography',
+  'language',
+];
 
 function shuffle<T>(arr: T[]): T[] {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -104,20 +121,55 @@ export function buildRunPool(
   const stateByFactId = new Map<string, ReviewState>();
   for (const state of allReviewStates) stateByFactId.set(state.factId, state);
 
-  function getFactsForDomain(domain: FactDomain, limit: number): Fact[] {
-    return factsDB.getByCategory(DOMAIN_TO_CATEGORY[domain] ?? [], limit);
+  function normalizeDomain(domain: FactDomain): FactDomain {
+    if (DOMAIN_TO_CATEGORY[domain]) return domain;
+    return 'general_knowledge';
+  }
+
+  function collectDomainFacts(domain: FactDomain, limit: number, excludedFactIds: Set<string>): Fact[] {
+    const normalized = normalizeDomain(domain);
+    const categories = DOMAIN_TO_CATEGORY[normalized] ?? DOMAIN_TO_CATEGORY.general_knowledge;
+    const selected: Fact[] = [];
+    const addedIds = new Set<string>();
+
+    const pushUnique = (fact: Fact) => {
+      if (excludedFactIds.has(fact.id) || addedIds.has(fact.id)) return;
+      selected.push(fact);
+      addedIds.add(fact.id);
+    };
+
+    for (const fact of factsDB.getByCategory(categories, limit + 40)) {
+      if (selected.length >= limit) break;
+      pushUnique(fact);
+    }
+
+    if (selected.length >= limit) return selected.slice(0, limit);
+
+    const fallbackDomains = FALLBACK_DOMAIN_ORDER
+      .filter((candidate) => candidate !== normalized)
+      .map((candidate) => DOMAIN_TO_CATEGORY[candidate] ?? []);
+
+    for (const fallbackCategories of fallbackDomains) {
+      const needed = limit - selected.length;
+      if (needed <= 0) break;
+      for (const fact of factsDB.getByCategory(fallbackCategories, needed + 30)) {
+        if (selected.length >= limit) break;
+        pushUnique(fact);
+      }
+    }
+
+    return selected.slice(0, limit);
   }
 
   function factsToCards(facts: Fact[]): Card[] {
     return facts.map((fact) => createCard(fact, stateByFactId.get(fact.id)));
   }
 
-  const primaryFacts = getFactsForDomain(primaryDomain, primaryTarget);
+  const primaryFacts = collectDomainFacts(primaryDomain, primaryTarget, new Set<string>());
   const usedFactIds = new Set(primaryFacts.map((fact) => fact.id));
   const primaryCards = factsToCards(primaryFacts);
 
-  const secondaryFacts = getFactsForDomain(secondaryDomain, secondaryTarget + 20)
-    .filter((fact) => !usedFactIds.has(fact.id))
+  const secondaryFacts = collectDomainFacts(secondaryDomain, secondaryTarget, usedFactIds)
     .slice(0, secondaryTarget);
   for (const fact of secondaryFacts) usedFactIds.add(fact.id);
   const secondaryCards = factsToCards(secondaryFacts);

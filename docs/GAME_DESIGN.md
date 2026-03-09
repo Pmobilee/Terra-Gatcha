@@ -1383,6 +1383,13 @@ No commercial game currently combines spaced repetition with card roguelite mech
 
 ---
 
+## 31. Future Todo (Post-Launch)
+
+- **Reintroduce Knowledge Tree UI (exploration mode):**
+  Bring back a dedicated tree-view progression screen that visualizes category/subcategory mastery across all 11 domains, with zoom levels (forest -> branch -> leaf), overdue-state visual cues, and tap-through fact detail. This is currently not part of the primary run loop and should return only after launch-critical stability/content pipeline work is complete.
+
+---
+
 ## Appendix A: Glossary for Coding Agents
 
 | Term | Definition |

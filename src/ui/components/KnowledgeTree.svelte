@@ -46,18 +46,29 @@
   }
 
   const BRANCH_CONFIGS: BranchConfig[] = [
-    { category: 'Language',        angle: -30, trunkT: 0.05, length: 160, side: 'left'  },
-    { category: 'Life Sciences',   angle: -55, trunkT: 0.22, length: 155, side: 'left'  },
-    { category: 'History',         angle: -75, trunkT: 0.42, length: 145, side: 'left'  },
-    { category: 'Culture',         angle: -88, trunkT: 0.62, length: 130, side: 'left'  },
-    { category: 'Natural Sciences',angle:  30, trunkT: 0.10, length: 160, side: 'right' },
-    { category: 'Geography',       angle:  55, trunkT: 0.28, length: 155, side: 'right' },
-    { category: 'Technology',      angle:  80, trunkT: 0.50, length: 140, side: 'right' },
+    { category: 'Language',              angle: -24, trunkT: 0.06, length: 148, side: 'left'  },
+    { category: 'Human Body & Health',   angle: -38, trunkT: 0.15, length: 148, side: 'left'  },
+    { category: 'Animals & Wildlife',    angle: -52, trunkT: 0.24, length: 148, side: 'left'  },
+    { category: 'Mythology & Folklore',  angle: -66, trunkT: 0.33, length: 148, side: 'left'  },
+    { category: 'History',               angle: -80, trunkT: 0.42, length: 142, side: 'left'  },
+    { category: 'Art & Architecture',    angle: -92, trunkT: 0.51, length: 138, side: 'left'  },
+    { category: 'General Knowledge',     angle:  22, trunkT: 0.10, length: 154, side: 'right' },
+    { category: 'Natural Sciences',      angle:  36, trunkT: 0.19, length: 154, side: 'right' },
+    { category: 'Space & Astronomy',     angle:  50, trunkT: 0.28, length: 152, side: 'right' },
+    { category: 'Geography',             angle:  66, trunkT: 0.39, length: 146, side: 'right' },
+    { category: 'Food & World Cuisine',  angle:  82, trunkT: 0.50, length: 140, side: 'right' },
   ]
 
   /** Abbreviated labels for categories that are too long to fit */
   const BRANCH_LABELS: Record<string, string> = {
+    'General Knowledge': 'General',
     'Natural Sciences': 'Nat. Sciences',
+    'Space & Astronomy': 'Space',
+    'Mythology & Folklore': 'Myth',
+    'Animals & Wildlife': 'Animals',
+    'Human Body & Health': 'Health',
+    'Food & World Cuisine': 'Cuisine',
+    'Art & Architecture': 'Art',
   }
 
   /** Get display label for a category (abbreviated if needed) */

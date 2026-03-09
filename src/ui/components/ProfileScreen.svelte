@@ -1,6 +1,7 @@
 <script lang="ts">
   import { playerSave } from '../stores/playerData'
   import { activeProfile } from '../stores/profileStore'
+  import { getDomainMetadata } from '../../data/domainMetadata'
 
   interface Props {
     onBack: () => void
@@ -23,7 +24,11 @@
   )
 
   function labelDomain(id: string): string {
-    return id.charAt(0).toUpperCase() + id.slice(1)
+    try {
+      return getDomainMetadata(id as import('../../data/card-types').FactDomain).displayName
+    } catch {
+      return id.charAt(0).toUpperCase() + id.slice(1).replaceAll('_', ' ')
+    }
   }
 </script>
 

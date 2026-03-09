@@ -6,7 +6,49 @@ export type CardType = 'attack' | 'shield' | 'heal' | 'utility' | 'buff' | 'debu
 // === Fact Domain ===
 // Normalized domain categories derived from the existing fact.category[] hierarchy
 
-export type FactDomain = 'science' | 'history' | 'geography' | 'language' | 'math' | 'arts' | 'medicine' | 'technology';
+export const CANONICAL_FACT_DOMAINS = [
+  'general_knowledge',
+  'natural_sciences',
+  'space_astronomy',
+  'geography',
+  'history',
+  'mythology_folklore',
+  'animals_wildlife',
+  'human_body_health',
+  'food_cuisine',
+  'art_architecture',
+  'language',
+] as const;
+
+export type CanonicalFactDomain = typeof CANONICAL_FACT_DOMAINS[number];
+
+/**
+ * Legacy domains retained for save compatibility and incremental migration.
+ */
+export type LegacyFactDomain = 'science' | 'math' | 'arts' | 'medicine' | 'technology';
+
+export type FactDomain = CanonicalFactDomain | LegacyFactDomain;
+
+export const FACT_DOMAINS = [
+  ...CANONICAL_FACT_DOMAINS,
+  'science',
+  'math',
+  'arts',
+  'medicine',
+  'technology',
+] as const;
+
+const LEGACY_DOMAIN_NORMALIZATION: Record<LegacyFactDomain, CanonicalFactDomain> = {
+  science: 'natural_sciences',
+  math: 'general_knowledge',
+  arts: 'art_architecture',
+  medicine: 'human_body_health',
+  technology: 'general_knowledge',
+};
+
+export function normalizeFactDomain(domain: FactDomain): CanonicalFactDomain {
+  return (LEGACY_DOMAIN_NORMALIZATION[domain as LegacyFactDomain] ?? domain) as CanonicalFactDomain;
+}
 
 // === Card Tier ===
 // Derived from SM-2 review state progression

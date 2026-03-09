@@ -1,4 +1,6 @@
 import type { CardTier, FactDomain } from '../data/card-types'
+import { getAllDomainMetadata } from '../data/domainMetadata'
+import { normalizeFactDomain } from '../data/card-types'
 import type { Fact, ReviewState } from '../data/types'
 import { resolveDomain } from './domainResolver'
 import { getCardTier } from './tierDerivation'
@@ -53,8 +55,12 @@ export function buildDomainSummaries(facts: Fact[], reviewStates: ReviewState[])
   const stateByFact = new Map(reviewStates.map((state) => [state.factId, state]))
 
   const domainMap = new Map<FactDomain, Fact[]>()
+  for (const domain of getAllDomainMetadata()) {
+    domainMap.set(domain.id, [])
+  }
+
   for (const fact of facts) {
-    const domain = resolveDomain(fact)
+    const domain = normalizeFactDomain(resolveDomain(fact))
     const current = domainMap.get(domain)
     if (current) current.push(fact)
     else domainMap.set(domain, [fact])
@@ -85,7 +91,8 @@ export function buildDomainSummaries(facts: Fact[], reviewStates: ReviewState[])
     })
   }
 
-  return summaries.sort((a, b) => a.domain.localeCompare(b.domain))
+  const domainOrder = new Map<string, number>(getAllDomainMetadata().map((domain, index) => [domain.id, index]))
+  return summaries.sort((a, b) => (domainOrder.get(a.domain) ?? 999) - (domainOrder.get(b.domain) ?? 999))
 }
 
 export function buildDomainEntries(
@@ -98,7 +105,7 @@ export function buildDomainEntries(
   const stateByFact = new Map(reviewStates.map((state) => [state.factId, state]))
 
   const entries = facts
-    .filter((fact) => resolveDomain(fact) === domain)
+    .filter((fact) => normalizeFactDomain(resolveDomain(fact)) === normalizeFactDomain(domain))
     .map((fact) => toEntry(fact, stateByFact.get(fact.id) ?? null))
     .filter((entry) => filter === 'all' || entry.tier === filter)
 

@@ -12,10 +12,10 @@
     historian:       [{ category: 'History', weight: 80 }],
     geologist:       [{ category: 'Natural Sciences', weight: 70 }, { category: 'Geography', weight: 40 }],
     language_learner: [{ category: 'Language', weight: 90 }],
-    biologist:       [{ category: 'Life Sciences', weight: 80 }],
-    technologist:    [{ category: 'Technology', weight: 80 }],
+    biologist:       [{ category: 'Animals & Wildlife', weight: 80 }, { category: 'Human Body & Health', weight: 35 }],
+    technologist:    [{ category: 'General Knowledge', weight: 80 }],
     geographer:      [{ category: 'Geography', weight: 80 }],
-    anthropologist:  [{ category: 'Culture', weight: 75 }, { category: 'History', weight: 40 }],
+    anthropologist:  [{ category: 'Art & Architecture', weight: 75 }, { category: 'History', weight: 40 }],
     eclectic:        [],
   }
 
@@ -23,10 +23,10 @@
     { id: 'historian', label: 'Historian', icon: 'Hi', hint: 'Ancient civilizations, events, people' },
     { id: 'geologist', label: 'Geologist', icon: 'Ge', hint: 'Rocks, minerals, plate tectonics' },
     { id: 'language_learner', label: 'Language Learner', icon: 'Aa', hint: 'Vocabulary, grammar, phrases' },
-    { id: 'biologist', label: 'Biologist', icon: 'LS', hint: 'Life, ecosystems, evolution' },
-    { id: 'technologist', label: 'Technologist', icon: 'Te', hint: 'Innovation, inventions, computing' },
+    { id: 'biologist', label: 'Biologist', icon: 'AW', hint: 'Animals, body systems, ecosystems' },
+    { id: 'technologist', label: 'Technologist', icon: 'GK', hint: 'Innovation, inventions, world records' },
     { id: 'geographer', label: 'Geographer', icon: 'Ge', hint: 'Places, maps, climate' },
-    { id: 'anthropologist', label: 'Anthropologist', icon: 'Cu', hint: 'Culture, society, traditions' },
+    { id: 'anthropologist', label: 'Anthropologist', icon: 'AA', hint: 'Art, architecture, society, traditions' },
     { id: 'eclectic', label: 'Eclectic', icon: '**', hint: 'A bit of everything' },
   ]
 

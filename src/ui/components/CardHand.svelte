@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Card, FactDomain, CardType } from '../../data/card-types'
+  import { getDomainMetadata } from '../../data/domainMetadata'
   import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
   import { getCardbackUrl, hasCardback } from '../utils/cardbackManifest'
   import { getMechanicAnimClass, getTypeFallbackAnimClass, type CardAnimPhase } from '../utils/mechanicAnimations'
@@ -16,17 +17,6 @@
   }
 
   let { cards, animatingCards = [], selectedIndex, disabled, apCurrent, cardAnimations, onselectcard }: Props = $props()
-
-  const DOMAIN_COLORS: Record<FactDomain, string> = {
-    science: '#E74C3C',
-    history: '#3498DB',
-    geography: '#F1C40F',
-    language: '#2ECC71',
-    math: '#9B59B6',
-    arts: '#E67E22',
-    medicine: '#1ABC9C',
-    technology: '#95A5A6',
-  }
 
   const TYPE_ICONS: Record<CardType, string> = {
     attack: '⚔',
@@ -97,6 +87,10 @@
     return Math.max(1, card.apCost ?? 1) <= apCurrent
   }
 
+  function getDomainColor(domain: FactDomain): string {
+    return getDomainMetadata(domain).colorTint
+  }
+
   let touchStartY: number | null = null
   let dragOffsetY = $state(0)
   let isDragging = $state(false)
@@ -163,7 +157,7 @@
     {@const rotation = getRotation(i, cards.length)}
     {@const arcOffset = getArcOffset(i, cards.length)}
     {@const xOffset = getXOffset(i, cards.length)}
-    {@const domainColor = DOMAIN_COLORS[card.domain]}
+    {@const domainColor = getDomainColor(card.domain)}
     {@const icon = TYPE_ICONS[card.cardType]}
     {@const framePath = card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType)}
     {@const domainIconPath = getDomainIconPath(card.domain)}
@@ -251,7 +245,7 @@
     {@const mechAnimClass = getMechanicAnimClass(card.mechanicId) || getTypeFallbackAnimClass(card.cardType)}
     {@const isRevealing = cardAnim === 'reveal'}
     {@const isMechanic = cardAnim === 'mechanic'}
-    {@const domainColor = DOMAIN_COLORS[card.domain]}
+    {@const domainColor = getDomainColor(card.domain)}
     {@const framePath = card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType)}
     {@const domainIconPath = getDomainIconPath(card.domain)}
     {@const effectVal = getEffectValue(card)}

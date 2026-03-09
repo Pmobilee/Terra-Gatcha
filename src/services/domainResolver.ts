@@ -4,29 +4,36 @@ import { pickWeightedType } from './cardTypeAllocator';
 
 /** Top-level category string → FactDomain mapping */
 const CATEGORY_TO_DOMAIN: Record<string, FactDomain> = {
-  'Language':          'language',
-  'Natural Sciences':  'science',
-  'Life Sciences':     'medicine',
-  'History':           'history',
-  'Geography':         'geography',
-  'Technology':        'technology',
-  'Culture':           'arts',
-  // Extended mappings for categoryL1 / sub-categories that may appear
-  'Mathematics':       'math',
-  'Math':              'math',
-  'Science':           'science',
-  'Arts':              'arts',
-  'Medicine':          'medicine',
-  'Health':            'medicine',
+  'Language': 'language',
+  'General Knowledge': 'general_knowledge',
+  'Natural Sciences': 'natural_sciences',
+  'Space & Astronomy': 'space_astronomy',
+  'Geography': 'geography',
+  'History': 'history',
+  'Mythology & Folklore': 'mythology_folklore',
+  'Animals & Wildlife': 'animals_wildlife',
+  'Human Body & Health': 'human_body_health',
+  'Food & World Cuisine': 'food_cuisine',
+  'Art & Architecture': 'art_architecture',
+  // Legacy compatibility
+  'Life Sciences': 'human_body_health',
+  'Technology': 'general_knowledge',
+  'Culture': 'art_architecture',
+  'Mathematics': 'general_knowledge',
+  'Math': 'general_knowledge',
+  'Science': 'natural_sciences',
+  'Arts': 'art_architecture',
+  'Medicine': 'human_body_health',
+  'Health': 'human_body_health',
 };
 
-const DEFAULT_DOMAIN: FactDomain = 'science';
+const DEFAULT_DOMAIN: FactDomain = 'general_knowledge';
 
 /**
  * Resolves a Fact's knowledge domain from its category hierarchy.
  *
  * Checks `fact.category[0]` (primary top-level category), then `fact.categoryL1`,
- * then falls back to 'science'.
+ * then falls back to `general_knowledge`.
  *
  * @param fact - The fact to resolve a domain for.
  * @returns The resolved FactDomain.

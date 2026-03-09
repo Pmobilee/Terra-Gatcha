@@ -63,14 +63,38 @@ export type AgeRating = 'kid' | 'teen' | 'adult'
 
 /** Top-level fact categories */
 export const CATEGORIES = [
-  'Language',
+  'General Knowledge',
   'Natural Sciences',
-  'Life Sciences',
-  'History',
+  'Space & Astronomy',
   'Geography',
-  'Technology',
-  'Culture',
+  'History',
+  'Mythology & Folklore',
+  'Animals & Wildlife',
+  'Human Body & Health',
+  'Food & World Cuisine',
+  'Art & Architecture',
+  'Language',
 ] as const
+
+/** Human-readable content domain, based on top-level category labels. */
+export type FactDomain = typeof CATEGORIES[number]
+
+export function isFactDomain(value: unknown): value is FactDomain {
+  return typeof value === 'string' && CATEGORIES.includes(value as FactDomain)
+}
+
+/** Metadata used by category-first UIs and domain configuration screens. */
+export interface DomainMetadata {
+  id: FactDomain
+  displayName: string
+  shortName: string
+  colorTint: string
+  icon: string
+  description: string
+  ageDefault: AgeRating
+}
+
+export type DomainMetadataMap = Record<FactDomain, DomainMetadata>
 
 /** Artifact rarity tier */
 export type Rarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'mythic'

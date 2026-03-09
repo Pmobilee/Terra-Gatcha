@@ -14,13 +14,17 @@
 
   // Known subcategories per category (hardcoded for now, could be derived from facts DB)
   const SUBCATEGORIES: Record<string, string[]> = {
+    'General Knowledge': ['Inventions', 'Records', 'Firsts', 'Institutions'],
     'Language': ['Japanese', 'English', 'Spanish', 'French', 'German'],
-    'Natural Sciences': ['Physics', 'Chemistry', 'Astronomy', 'Geology'],
-    'Life Sciences': ['Biology', 'Ecology', 'Anatomy', 'Botany'],
+    'Natural Sciences': ['Physics', 'Chemistry', 'Geology', 'Materials'],
+    'Space & Astronomy': ['Planets', 'Missions', 'Stars', 'Astronauts'],
     'History': ['Ancient', 'Medieval', 'Modern', 'World Wars'],
     'Geography': ['Countries', 'Capitals', 'Oceans', 'Mountains'],
-    'Technology': ['Computing', 'Engineering', 'Space', 'Inventions'],
-    'Culture': ['Art', 'Music', 'Literature', 'Film', 'Food'],
+    'Mythology & Folklore': ['Deities', 'Creatures', 'Legends', 'Origins'],
+    'Animals & Wildlife': ['Species', 'Habitats', 'Behavior', 'Conservation'],
+    'Human Body & Health': ['Anatomy', 'Physiology', 'Medicine', 'Nutrition'],
+    'Food & World Cuisine': ['Ingredients', 'Dishes', 'Techniques', 'Nutrition'],
+    'Art & Architecture': ['Paintings', 'Sculpture', 'Movements', 'Landmarks'],
   }
 
   function selectCategory(cat: string) {

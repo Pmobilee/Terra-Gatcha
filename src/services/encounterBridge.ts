@@ -129,7 +129,7 @@ function buildPassiveEffectsFromRelics(relics: ActiveRelic[]): PassiveEffect[] {
     .map((relic) => ({
       sourceFactId: relic.sourceFactId,
       cardType: relic.definition.graduationType[0] ?? 'attack',
-      domain: 'science',
+      domain: 'natural_sciences',
       value: TIER3_PASSIVE[relic.definition.graduationType[0] ?? 'attack'] ?? 1,
     }));
 }

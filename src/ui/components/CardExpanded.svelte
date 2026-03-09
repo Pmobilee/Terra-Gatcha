@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onDestroy } from 'svelte'
   import type { Card, FactDomain, CardType } from '../../data/card-types'
+  import { getDomainMetadata } from '../../data/domainMetadata'
   import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
 
   interface Props {
@@ -45,28 +46,6 @@
     onusehint = () => {},
   }: Props = $props()
 
-  const DOMAIN_COLORS: Record<FactDomain, string> = {
-    science: '#E74C3C',
-    history: '#3498DB',
-    geography: '#F1C40F',
-    language: '#2ECC71',
-    math: '#9B59B6',
-    arts: '#E67E22',
-    medicine: '#1ABC9C',
-    technology: '#95A5A6',
-  }
-
-  const DOMAIN_NAMES: Record<FactDomain, string> = {
-    science: 'Science',
-    history: 'History',
-    geography: 'Geography',
-    language: 'Language',
-    math: 'Math',
-    arts: 'Arts',
-    medicine: 'Medicine',
-    technology: 'Technology',
-  }
-
   const TYPE_ICONS: Record<CardType, string> = {
     attack: '⚔',
     shield: '🛡',
@@ -93,8 +72,8 @@
   let effectDescription = $derived(
     EFFECT_DESCRIPTIONS[card.cardType].replace('N', String(effectValue)),
   )
-  let domainColor = $derived(DOMAIN_COLORS[card.domain])
-  let domainName = $derived(DOMAIN_NAMES[card.domain])
+  let domainColor = $derived(getDomainMetadata(card.domain).colorTint)
+  let domainName = $derived(getDomainMetadata(card.domain).displayName)
   let typeIcon = $derived(TYPE_ICONS[card.cardType])
   let tierLabel = $derived(card.tier === '1' ? '' : card.tier.toUpperCase())
   let framePath = $derived(card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType))

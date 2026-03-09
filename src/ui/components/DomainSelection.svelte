@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { FactDomain } from '../../data/card-types'
+  import { getAllDomainMetadata } from '../../data/domainMetadata'
   import { getDomainIconPath } from '../utils/domainAssets'
 
   interface Props {
@@ -9,51 +10,38 @@
 
   let { onstart, onback }: Props = $props()
 
-  interface DomainInfo {
-    id: FactDomain
-    name: string
-    fallbackIcon: string
-    color: string
-    unlocked: boolean
-  }
-
-  const DOMAINS: DomainInfo[] = [
-    { id: 'science', name: 'Science & Nature', fallbackIcon: '\u2694\uFE0F', color: '#E74C3C', unlocked: true },
-    { id: 'history', name: 'History & Culture', fallbackIcon: '\uD83D\uDEE1\uFE0F', color: '#3498DB', unlocked: true },
-    { id: 'language', name: 'Language & Vocab', fallbackIcon: '\uD83D\uDC9A', color: '#2ECC71', unlocked: true },
-    { id: 'geography', name: 'Geography & World', fallbackIcon: '\u2B50', color: '#F1C40F', unlocked: false },
-    { id: 'math', name: 'Math & Logic', fallbackIcon: '\u2B06\uFE0F', color: '#9B59B6', unlocked: false },
-    { id: 'arts', name: 'Arts & Literature', fallbackIcon: '\u2B07\uFE0F', color: '#E67E22', unlocked: false },
-    { id: 'medicine', name: 'Medicine & Health', fallbackIcon: '\u2795', color: '#1ABC9C', unlocked: false },
-    { id: 'technology', name: 'Technology', fallbackIcon: '\uD83D\uDC8E', color: '#95A5A6', unlocked: false },
-  ]
+  const DOMAINS = getAllDomainMetadata().map((domain) => ({
+    id: domain.id,
+    name: domain.displayName,
+    shortName: domain.shortName,
+    icon: domain.icon,
+    color: domain.colorTint,
+    unlocked: !domain.comingSoon,
+    comingSoon: domain.comingSoon === true,
+  }))
 
   let primaryDomain = $state<FactDomain | null>(null)
   let secondaryDomain = $state<FactDomain | null>(null)
 
   let canStart = $derived(primaryDomain !== null && secondaryDomain !== null)
 
-  function handleDomainTap(domain: DomainInfo): void {
+  function handleDomainTap(domain: (typeof DOMAINS)[number]): void {
     if (!domain.unlocked) return
 
     if (primaryDomain === domain.id) {
-      // Deselect primary
       primaryDomain = null
       return
     }
     if (secondaryDomain === domain.id) {
-      // Deselect secondary
       secondaryDomain = null
       return
     }
 
-    // Select: primary first, then secondary
     if (primaryDomain === null) {
       primaryDomain = domain.id
     } else if (secondaryDomain === null) {
       secondaryDomain = domain.id
     }
-    // Both already selected — ignore tap on third domain
   }
 
   function handleStart(): void {
@@ -62,13 +50,13 @@
     }
   }
 
-  function getBorderColor(domain: DomainInfo): string {
-    if (primaryDomain === domain.id) return '#F1C40F' // gold
-    if (secondaryDomain === domain.id) return '#BDC3C7' // silver
-    return 'transparent'
+  function getBorderColor(domain: (typeof DOMAINS)[number]): string {
+    if (primaryDomain === domain.id) return '#FCD34D'
+    if (secondaryDomain === domain.id) return '#CBD5E1'
+    return 'rgba(148, 163, 184, 0.4)'
   }
 
-  function getSelectionLabel(domain: DomainInfo): string {
+  function getSelectionLabel(domain: (typeof DOMAINS)[number]): string {
     if (primaryDomain === domain.id) return 'PRIMARY'
     if (secondaryDomain === domain.id) return 'SECONDARY'
     return ''
@@ -79,7 +67,7 @@
   <button class="back-btn" onclick={onback}>&larr; Back</button>
 
   <h1 class="title">Choose Your Domains</h1>
-  <p class="subtitle">Primary (40% cards) &mdash; Secondary (30% cards)</p>
+  <p class="subtitle">Primary (40% cards) and Secondary (30% cards)</p>
 
   <div class="domain-grid">
     {#each DOMAINS as domain (domain.id)}
@@ -91,16 +79,16 @@
         onclick={() => handleDomainTap(domain)}
         disabled={!domain.unlocked}
       >
-        <div class="domain-icon-wrap">
-          <img class="domain-icon-img" src={getDomainIconPath(domain.id)} alt={`${domain.name} icon`} />
-          <span class="domain-icon-fallback">{domain.fallbackIcon}</span>
+        <div class="domain-icon-wrap" aria-hidden="true">
+          <img class="domain-icon-img" src={getDomainIconPath(domain.id)} alt="" />
+          <span class="domain-icon-fallback">{domain.icon}</span>
         </div>
-        <span class="domain-name">{domain.name}</span>
-        {#if !domain.unlocked}
-          <span class="locked-label">Locked</span>
+        <span class="domain-name">{domain.shortName}</span>
+        {#if domain.comingSoon}
+          <span class="locked-label">Coming Soon</span>
         {/if}
         {#if getSelectionLabel(domain)}
-          <span class="selection-label" style="color: {primaryDomain === domain.id ? '#F1C40F' : '#BDC3C7'}">{getSelectionLabel(domain)}</span>
+          <span class="selection-label">{getSelectionLabel(domain)}</span>
         {/if}
       </button>
     {/each}
@@ -121,7 +109,7 @@
   .domain-selection-overlay {
     position: fixed;
     inset: 0;
-    background: #0D1117;
+    background: #0d1117;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -136,41 +124,42 @@
     left: 16px;
     background: none;
     border: none;
-    color: #8B949E;
+    color: #8b949e;
     font-size: 16px;
     cursor: pointer;
     padding: 8px;
+    min-height: 44px;
   }
 
   .title {
     font-size: 20px;
-    color: #E6EDF3;
+    color: #e6edf3;
     margin: 16px 0 4px;
     text-align: center;
   }
 
   .subtitle {
     font-size: 14px;
-    color: #8B949E;
+    color: #8b949e;
     margin: 0 0 24px;
     text-align: center;
   }
 
   .domain-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
     width: 100%;
-    max-width: 340px;
+    max-width: 520px;
     margin-bottom: 24px;
   }
 
   .domain-card {
     width: 100%;
-    height: 80px;
-    background: #1E2D3D;
-    border: 2px solid transparent;
-    border-radius: 8px;
+    min-height: 88px;
+    background: #1e2d3d;
+    border: 2px solid rgba(148, 163, 184, 0.4);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -183,29 +172,25 @@
   }
 
   .domain-card:not(.locked):hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
 
   .domain-card.locked {
-    opacity: 0.4;
+    opacity: 0.5;
     cursor: not-allowed;
   }
 
-  .domain-card.selected {
-    border-width: 2px;
-  }
-
   .domain-icon-wrap {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     display: grid;
     place-items: center;
     position: relative;
   }
 
   .domain-icon-img {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
     image-rendering: pixelated;
   }
@@ -213,43 +198,40 @@
   .domain-icon-fallback {
     position: absolute;
     inset: 0;
-    display: none;
+    display: grid;
     place-items: center;
-    font-size: 24px;
-  }
-
-  .domain-icon-img[src=''],
-  .domain-icon-img:not([src]) {
-    display: none;
+    font-size: 18px;
   }
 
   .domain-name {
     font-size: 12px;
-    color: #E6EDF3;
+    color: #e6edf3;
     text-align: center;
     line-height: 1.2;
+    font-weight: 600;
   }
 
   .locked-label {
     font-size: 10px;
-    color: #8B949E;
+    color: #94a3b8;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
   }
 
   .selection-label {
     position: absolute;
     top: 4px;
     right: 6px;
-    font-size: 8px;
+    font-size: 9px;
+    color: #e2e8f0;
     font-weight: 700;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
   }
 
   .start-btn {
-    width: 200px;
+    width: 220px;
     height: 56px;
-    background: #27AE60;
+    background: #16a34a;
     border: none;
     border-radius: 12px;
     color: #fff;
@@ -264,8 +246,14 @@
   }
 
   .start-btn.disabled {
-    background: #2D333B;
-    color: #484F58;
+    background: #2d333b;
+    color: #6b7280;
     cursor: not-allowed;
+  }
+
+  @media (min-width: 720px) {
+    .domain-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 </style>

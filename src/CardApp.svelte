@@ -122,7 +122,7 @@
 
   function handleOnboardingBegin(slowReader: boolean): void {
     isSlowReader.set(slowReader)
-    onDomainsSelected('science', 'history')
+    onDomainsSelected('natural_sciences', 'history')
     onArchetypeSelected('balanced')
     startEncounterForRoom()
   }

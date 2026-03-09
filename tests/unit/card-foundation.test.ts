@@ -51,7 +51,7 @@ function makeCards(n: number): Card[] {
     id: `card_${i + 1}`,
     factId: `fact_${i + 1}`,
     cardType: 'attack' as const,
-    domain: 'science' as FactDomain,
+    domain: 'natural_sciences' as FactDomain,
     tier: '1' as const,
     baseEffectValue: 8,
     effectMultiplier: 1.0,
@@ -62,8 +62,8 @@ function makeCards(n: number): Card[] {
 
 describe('domainResolver', () => {
   describe('resolveDomain', () => {
-    it('maps "Natural Sciences" to science', () => {
-      expect(resolveDomain(makeFact({ category: ['Natural Sciences', 'Chemistry'] }))).toBe('science');
+    it('maps "Natural Sciences" to natural_sciences', () => {
+      expect(resolveDomain(makeFact({ category: ['Natural Sciences', 'Chemistry'] }))).toBe('natural_sciences');
     });
 
     it('maps "History" to history', () => {
@@ -74,30 +74,30 @@ describe('domainResolver', () => {
       expect(resolveDomain(makeFact({ category: ['Language', 'Japanese', 'N3'] }))).toBe('language');
     });
 
-    it('maps "Life Sciences" to medicine', () => {
-      expect(resolveDomain(makeFact({ category: ['Life Sciences', 'Biology'] }))).toBe('medicine');
+    it('maps "Life Sciences" to human_body_health', () => {
+      expect(resolveDomain(makeFact({ category: ['Life Sciences', 'Biology'] }))).toBe('human_body_health');
     });
 
-    it('maps "Culture" to arts', () => {
-      expect(resolveDomain(makeFact({ category: ['Culture', 'Music'] }))).toBe('arts');
+    it('maps "Culture" to art_architecture', () => {
+      expect(resolveDomain(makeFact({ category: ['Culture', 'Music'] }))).toBe('art_architecture');
     });
 
-    it('maps "Technology" to technology', () => {
-      expect(resolveDomain(makeFact({ category: ['Technology', 'AI'] }))).toBe('technology');
+    it('maps "Technology" to general_knowledge', () => {
+      expect(resolveDomain(makeFact({ category: ['Technology', 'AI'] }))).toBe('general_knowledge');
     });
 
     it('maps "Geography" to geography', () => {
       expect(resolveDomain(makeFact({ category: ['Geography', 'Europe'] }))).toBe('geography');
     });
 
-    it('falls back to science for unknown categories', () => {
-      expect(resolveDomain(makeFact({ category: ['Unknown'] }))).toBe('science');
+    it('falls back to general_knowledge for unknown categories', () => {
+      expect(resolveDomain(makeFact({ category: ['Unknown'] }))).toBe('general_knowledge');
     });
   });
 
   describe('resolveCardType', () => {
     it('returns a deterministic type for the same domain input', () => {
-      expect(resolveCardType('science')).toBe(resolveCardType('science'));
+      expect(resolveCardType('natural_sciences')).toBe(resolveCardType('natural_sciences'));
     });
 
     it('returns a valid card type', () => {
@@ -164,7 +164,7 @@ describe('cardFactory', () => {
   describe('createCard', () => {
     it('creates a card with domain derived from fact and explicit combat type', () => {
       const card = createCard(makeFact({ category: ['Natural Sciences'] }), undefined, 'attack');
-      expect(card.domain).toBe('science');
+      expect(card.domain).toBe('natural_sciences');
       expect(card.cardType).toBe('attack');
       expect(card.tier).toBe('1');
       expect(card.effectMultiplier).toBe(1.0);

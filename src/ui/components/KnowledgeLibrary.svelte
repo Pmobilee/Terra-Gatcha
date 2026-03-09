@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import type { FactDomain } from '../../data/card-types'
+  import { getDomainMetadata } from '../../data/domainMetadata'
   import type { Fact } from '../../data/types'
   import { factsDB } from '../../services/factsDB'
   import {
@@ -49,14 +50,7 @@
   )
 
   function labelDomain(domain: FactDomain): string {
-    if (domain === 'science') return 'Science'
-    if (domain === 'history') return 'History'
-    if (domain === 'geography') return 'Geography'
-    if (domain === 'language') return 'Language'
-    if (domain === 'math') return 'Math'
-    if (domain === 'arts') return 'Arts'
-    if (domain === 'medicine') return 'Medicine'
-    return 'Technology'
+    return getDomainMetadata(domain).displayName
   }
 
   function progressColor(percent: number): string {
@@ -136,7 +130,7 @@
   {:else if selectedEntry}
     <section class="detail-card">
       <h3>{selectedEntry.fact.statement}</h3>
-      <p class="detail-domain">{labelDomain(selectedDomain ?? 'science')}</p>
+      <p class="detail-domain">{labelDomain(selectedDomain ?? 'natural_sciences')}</p>
 
       <div class="detail-grid">
         <div><strong>Tier:</strong> {selectedEntry.tier}</div>
@@ -226,7 +220,7 @@
         {#each domainSummaries as summary}
           <button class="domain-card" onclick={() => (selectedDomain = summary.domain)}>
             <div class="domain-row">
-              <strong>{labelDomain(summary.domain)}</strong>
+              <strong>{getDomainMetadata(summary.domain).shortName}</strong>
               <span>{summary.tier3Count}/{summary.totalFacts}</span>
             </div>
             <div class="progress-bg">
