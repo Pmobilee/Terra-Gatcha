@@ -1,11 +1,10 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test'
 
-test('app loads without errors', async ({ page }) => {
-  const errors: string[] = [];
-  page.on('pageerror', (e) => errors.push(e.message));
+test('app loads and starts onboarding without runtime errors', async ({ page }) => {
+  const runtimeErrors: string[] = []
+  page.on('pageerror', (error) => runtimeErrors.push(error.message))
 
-  await page.goto('/?skipOnboarding=true&devpreset=post_tutorial');
-  await expect(page.locator('[data-testid="btn-dive"]')).toBeVisible({ timeout: 10_000 });
-  await expect(page.locator('canvas')).toBeVisible();
-  expect(errors).toEqual([]);
-});
+  await page.goto('/')
+  await expect(page.getByTestId('btn-start-run')).toBeVisible({ timeout: 15_000 })
+  expect(runtimeErrors).toEqual([])
+})

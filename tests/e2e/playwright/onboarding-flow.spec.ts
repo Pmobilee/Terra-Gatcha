@@ -2,6 +2,8 @@ import { expect, test } from '@playwright/test'
 
 test('onboarding enters combat', async ({ page }) => {
   await page.goto('/')
+  await expect(page.getByTestId('btn-start-run')).toBeVisible({ timeout: 15_000 })
+  await page.waitForTimeout(1200)
   await page.getByTestId('btn-start-run').click()
 
   await expect(page.getByRole('button', { name: 'ENTER THE DEPTHS' })).toBeVisible()

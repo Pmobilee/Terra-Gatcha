@@ -15,7 +15,7 @@
 
 **Deck building redesigned.** Card rewards now use type-selection (player picks card TYPE, random fact assigned). Archetype selection at run start. See GAME_DESIGN.md §7. AR-09 implements this.
 
-**Next up:** Finish remaining AR-11 content regeneration (API-key dependent), close the remaining AR-13 gates (full suite + dead-code cleanup + deployment + Capacitor verification), then ship AR-14 public deploy and first-week top-issue fixes.
+**Next up:** Finish remaining AR-11 content regeneration (API-key dependent), close the remaining AR-13 non-live gate (dead-code cleanup), then continue AR-14 analytics/feedback iteration. Go-live tasks are deferred to the back of this roadmap.
 
 ---
 
@@ -179,14 +179,14 @@ Depends on: AR-08 (Settings accessible). Estimated: Medium-Large. **Status: Comp
 **Everything needed for Malaysia soft launch (web-first, Capacitor native later).**
 
 - [x] Performance audit: 60fps combat, <3s cold start, <150MB memory
-- [ ] Full Playwright E2E test suite (hub, run flow, type selection, FSRS, combos, relics, save/load)
+- [x] Full Playwright E2E test suite (hub, run flow, type selection, FSRS, combos, relics, save/load)
 - [ ] Dead code cleanup (archive mining-era code, remove unused social nav entries)
 - [x] PWA configuration (manifest, service worker, offline, app icons)
-- [ ] Web deployment (Vercel/Netlify)
 - [x] Error tracking (Sentry or equivalent)
 - [x] Share image generator verification
 - [x] Responsive layout on common mobile screen sizes
-- [ ] Capacitor native builds (Android + iOS) — stretch goal
+
+Verification notes (March 9, 2026): `npx playwright test tests/e2e/playwright --workers=1` passes (12/12). `npm run audit:perf` passes with cold start ~358ms and JS heap ~8.6MB.
 
 Depends on: AR-08, AR-09. Estimated: Medium.
 → [Spec](phases/AR-13-LAUNCH-READINESS.md)
@@ -196,14 +196,12 @@ Depends on: AR-08, AR-09. Estimated: Medium.
 ### AR-14: Soft Launch & Analytics
 **Ship to limited market, measure everything, iterate.**
 
-- [ ] Deploy web build to public URL
 - [x] Instrument 10+ critical funnels (onboarding, runs, answers, domains, cash-out, deaths, tiers, bounties, streaks, shares)
 - [x] A/B test experiments: Slow Reader default, 3 vs 4 AP, starter deck 15 vs 18
 - [x] Malaysia geo-targeting or invite codes
 - [x] In-app feedback button in Settings
 - [x] Weekly analytics dashboard
 - [x] Weekly analytics review checklist documented
-- [ ] Fix top 5 issues from first-week data
 
 Weekly runbook: `docs/roadmap/AR-14-WEEKLY-ANALYTICS-RUNBOOK.md`
 
@@ -386,3 +384,14 @@ These features exist as implemented Svelte components / services but are current
 | IAP Service | iapService.ts | Built ✓ | AR-21 |
 | Daily Deals | dailyDeals.ts | Built ✓ | AR-21 |
 | Gacha System | GachaReveal.svelte | Built ✓ | AR-21 |
+
+---
+
+## Deferred Go-Live (Moved To Back)
+
+These tasks were intentionally moved to the end so the team can finish non-live implementation work first.
+
+- [ ] AR-13: Web deployment (Vercel/Netlify)
+- [ ] AR-13: Capacitor native builds (Android + iOS)
+- [ ] AR-14: Deploy web build to public URL
+- [ ] AR-14: Fix top 5 issues from first-week live data

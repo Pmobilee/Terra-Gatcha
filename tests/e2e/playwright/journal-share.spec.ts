@@ -23,8 +23,8 @@ test('journal exposes share action when a run summary exists', async ({ page }) 
   })
 
   await page.goto('/')
-  await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('button', { name: 'Journal' }).click()
+  await page.getByRole('button', { name: 'View Summary' }).click()
 
-  await expect(page.getByRole('heading', { name: "Adventurer's Journal" })).toBeVisible()
+  await expect(page.getByRole('heading', { name: /Adventurer.s Journal/ })).toBeVisible()
   await expect(page.getByTestId('btn-share-run-journal')).toBeVisible()
 })
