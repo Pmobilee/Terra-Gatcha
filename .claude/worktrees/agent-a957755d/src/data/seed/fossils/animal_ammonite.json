@@ -1,0 +1,564 @@
+[
+  {
+    "id": "fossil_ammonite_01",
+    "type": "fact",
+    "statement": "Ammonites used gas-filled chambers to control their buoyancy, like a submarine's ballast tanks.",
+    "wowFactor": "They engineered their own depth control 400 million years before submarines existed.",
+    "explanation": "The ammonite shell was divided into chambers by walls called septa. The animal lived only in the outermost (largest) chamber. The inner chambers were connected by a thin tube called a siphuncle, which could pump gas or fluid in and out to adjust buoyancy. This allowed ammonites to hover at specific depths in the ocean without expending energy — a solution independently 'reinvented' by modern submarines.",
+    "gaiaComment": "Four hundred million years of hydrodynamic engineering, built into a spiral shell. Elegant.",
+    "visualDescription": "A giant spiral-shelled ammonite hovering weightlessly in crystal-clear prehistoric waters, gas-filled chambers glowing faintly in filtered sunlight",
+    "quizQuestion": "What structure did ammonites use to control their depth in the ocean?",
+    "correctAnswer": "A tube called the siphuncle that regulated gas and fluid in their shell chambers",
+    "distractors": [
+      "A muscular foot that pushed against the seafloor",
+      "Air bladders similar to a fish's swim bladder",
+      "Hollow bones that filled with gas",
+      "A system of pores in their skin",
+      "Tentacles that anchored to floating debris",
+      "A rigid air-filled spine along their back",
+      "Filtering organs that absorbed dissolved oxygen",
+      "A cartilaginous beak that controlled water intake"
+    ],
+    "variants": [
+      {
+        "question": "How did ammonites regulate their buoyancy in the ocean?",
+        "type": "forward",
+        "correctAnswer": "Via the siphuncle, a tube that pumped gas and fluid through shell chambers",
+        "distractors": ["By inflating air bladders like a fish", "By adjusting their body density with muscle contractions", "By anchoring to the seafloor with tentacles"]
+      },
+      {
+        "question": "The siphuncle in an ammonite shell was used to control what?",
+        "type": "reverse",
+        "correctAnswer": "Buoyancy, by regulating gas and fluid in shell chambers",
+        "distractors": ["Respiration, by filtering oxygen from water", "Reproduction, by storing fertilized eggs", "Digestion, by channeling food between chambers"]
+      },
+      {
+        "question": "Which is NOT true about ammonite buoyancy control?",
+        "type": "negative",
+        "correctAnswer": "They used a swim bladder similar to bony fish",
+        "distractors": ["Their shells contained gas-filled chambers", "A tube called the siphuncle connected the chambers", "They could hover at specific depths without effort"]
+      },
+      {
+        "question": "Ammonites controlled their depth using a tube called the _____ that regulated gas in their shell.",
+        "type": "fill_blank",
+        "correctAnswer": "Siphuncle",
+        "distractors": ["Mantle", "Operculum", "Spiracle"]
+      },
+      {
+        "question": "A marine biologist compares ammonite buoyancy to submarine ballast tanks. What structure made this possible?",
+        "type": "context",
+        "correctAnswer": "The siphuncle, which pumped gas and fluid through chambers",
+        "distractors": ["A muscular foot that pushed off the seafloor", "Hollow bones filled with lighter-than-water gas", "Porous skin that absorbed dissolved gases"]
+      }
+    ],
+    "category": [
+      "Life Sciences",
+      "Natural Sciences"
+    ],
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_ammonite_02",
+    "type": "fact",
+    "statement": "Ammonites went extinct in the same mass extinction event that killed the non-avian dinosaurs, 66 million years ago.",
+    "wowFactor": "Dinosaurs and ammonites died together — one asteroid ended two great dynasties.",
+    "explanation": "The Cretaceous-Paleogene extinction event, triggered by an asteroid impact 66 million years ago, ended the reign of non-avian dinosaurs. Ammonites — which had survived multiple earlier extinction events — also perished in this catastrophe. The ocean disruptions, including tsunamis, acid rain, and the collapse of marine food chains, were fatal to ammonites. Notably, their close relatives the nautiluses did survive.",
+    "gaiaComment": "Sixty-six million years ago, one impact erased both the thunder lizards and the ocean's spiraling architects.",
+    "visualDescription": "An ammonite shell half-buried in seafloor sediment as a massive asteroid streak burns across the darkening Cretaceous sky above the waves",
+    "quizQuestion": "When did ammonites go extinct?",
+    "correctAnswer": "66 million years ago, in the same extinction event that killed non-avian dinosaurs",
+    "distractors": [
+      "252 million years ago in the Permian extinction",
+      "200 million years ago in the Triassic-Jurassic extinction",
+      "445 million years ago in the Ordovician extinction",
+      "34 million years ago in the Eocene-Oligocene extinction",
+      "100 million years ago due to competition from fish",
+      "150 million years ago during a gradual ocean cooling",
+      "542 million years ago at the end of the Cambrian",
+      "10,000 years ago due to human hunting"
+    ],
+    "variants": [
+      {
+        "question": "What event caused ammonites to go extinct 66 million years ago?",
+        "type": "forward",
+        "correctAnswer": "The Cretaceous-Paleogene asteroid impact extinction",
+        "distractors": ["A gradual cooling of ocean temperatures", "Competition with newly evolved fish species", "The Permian-Triassic volcanic eruptions"]
+      },
+      {
+        "question": "Which major marine group went extinct alongside non-avian dinosaurs 66 million years ago?",
+        "type": "reverse",
+        "correctAnswer": "Ammonites",
+        "distractors": ["Nautiluses", "Horseshoe crabs", "Jellyfish"]
+      },
+      {
+        "question": "Which is NOT true about the extinction of ammonites?",
+        "type": "negative",
+        "correctAnswer": "Their close relatives the nautiluses also went extinct",
+        "distractors": ["They perished in the same event that killed non-avian dinosaurs", "An asteroid impact triggered the extinction", "They had survived multiple earlier mass extinctions"]
+      },
+      {
+        "question": "Ammonites went extinct alongside non-avian dinosaurs _____ million years ago.",
+        "type": "fill_blank",
+        "correctAnswer": "66",
+        "distractors": ["252", "200", "34"]
+      }
+    ],
+    "category": [
+      "Life Sciences",
+      "Earth Sciences"
+    ],
+    "rarity": "common",
+    "difficulty": 1,
+    "funScore": 8,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_ammonite_03",
+    "type": "fact",
+    "statement": "Ammonites moved by jet propulsion, shooting water through a nozzle called a hyponome.",
+    "wowFactor": "They were living jet engines, darting through Mesozoic seas.",
+    "explanation": "Like modern cephalopods (squid, octopus, nautilus), ammonites likely propelled themselves by rapidly expelling water through a muscular siphon called a hyponome. By controlling the direction of this water jet, they could move forward, backward, or turn. This made them agile predators or prey in the open ocean. The hyponome itself rarely fossilizes, but its presence is inferred from ammonite anatomy and their relationship to living nautiluses.",
+    "gaiaComment": "Jet propulsion perfected by evolution, hundreds of millions of years before the first aircraft engine.",
+    "visualDescription": "An ammonite jetting backward through deep blue Mesozoic waters, a trail of bubbles streaming from its hyponome nozzle, tentacles trailing",
+    "quizQuestion": "How did ammonites propel themselves through the water?",
+    "correctAnswer": "By shooting water through a muscular nozzle called a hyponome",
+    "distractors": [
+      "By flapping flexible fins along their sides",
+      "By rowing with rows of paddle-like tentacles",
+      "By undulating their entire shell like a wave",
+      "By rapidly expanding and contracting their mantle",
+      "By kicking with powerful hind limbs",
+      "By rippling cilia along their underside",
+      "By inflating and deflating gas chambers rapidly",
+      "By using their spiral shell like a propeller"
+    ],
+    "variants": [
+      {
+        "question": "What was the ammonite's method of locomotion through water?",
+        "type": "forward",
+        "correctAnswer": "Jet propulsion via a muscular nozzle called a hyponome",
+        "distractors": ["Flapping lateral fins along their shell", "Undulating cilia on their underside", "Rowing with paddle-shaped tentacles"]
+      },
+      {
+        "question": "The hyponome in an ammonite was a muscular nozzle used for what purpose?",
+        "type": "reverse",
+        "correctAnswer": "Jet propulsion through the water",
+        "distractors": ["Filtering plankton for food", "Breathing by extracting dissolved oxygen", "Releasing ink to deter predators"]
+      },
+      {
+        "question": "Ammonites propelled themselves by expelling water through a muscular nozzle called the _____.",
+        "type": "fill_blank",
+        "correctAnswer": "Hyponome",
+        "distractors": ["Siphuncle", "Operculum", "Proboscis"]
+      },
+      {
+        "question": "Ammonites used fin-like appendages along their shell to swim through the ocean.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "question": "A paleontologist studying ammonite locomotion compares them to modern squid. What shared trait supports this?",
+        "type": "context",
+        "correctAnswer": "Both used jet propulsion via a water-expelling nozzle",
+        "distractors": ["Both had fin-like appendages for steering", "Both had gas-filled bones for buoyancy", "Both undulated their bodies in a wave motion"]
+      }
+    ],
+    "category": [
+      "Life Sciences"
+    ],
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "funScore": 9,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_ammonite_04",
+    "type": "fact",
+    "statement": "Many ammonite fossils display iridescent rainbow colors caused by a nacreous shell layer.",
+    "wowFactor": "Some 400-million-year-old fossils still shimmer like mother-of-pearl today.",
+    "explanation": "Some ammonite species produced a shell with a nacreous (pearly) inner layer similar to modern pearl-producing mollusks. This nacre is made of microscopic stacked aragonite crystals that diffract light, creating iridescent colors. In rare circumstances, this original shell material survives millions of years of fossilization, and the resulting specimens — especially from Alberta, Canada (called 'ammolite') — display spectacular rainbow iridescence and are mined as gemstones.",
+    "gaiaComment": "A fossil that still shimmers — some things are too beautiful for time to erase completely.",
+    "visualDescription": "A perfectly preserved ammonite shell on a dark seafloor radiating iridescent rainbow colors, mother-of-pearl nacre shimmering in shafts of light",
+    "quizQuestion": "What causes the iridescent colors seen in some ammonite fossils?",
+    "correctAnswer": "A nacreous layer of stacked aragonite crystals that diffract light",
+    "distractors": [
+      "Algae that colonized the fossil after burial",
+      "Iron oxide staining from surrounding rock",
+      "Heat from volcanic activity during fossilization",
+      "A crystalline resin the animal secreted",
+      "Manganese dioxide deposits in the shell",
+      "Bioluminescent bacteria trapped in the rock",
+      "Copper sulfate leaching from nearby minerals",
+      "Silica replacing the original shell material"
+    ],
+    "variants": [
+      {
+        "question": "Why do some ammonite fossils shimmer with rainbow iridescence?",
+        "type": "forward",
+        "correctAnswer": "Stacked aragonite crystals in the nacreous layer diffract light",
+        "distractors": ["Iron oxide staining from surrounding sediment", "Bioluminescent bacteria preserved in the shell", "Copper mineral deposits replacing the original shell"]
+      },
+      {
+        "question": "Stacked aragonite crystals that diffract light are the cause of what striking feature in some ammonite fossils?",
+        "type": "reverse",
+        "correctAnswer": "Iridescent rainbow colors in the shell",
+        "distractors": ["Extreme hardness that resists erosion", "Magnetic properties that attract compasses", "Fluorescence under ultraviolet light"]
+      },
+      {
+        "question": "Which is NOT true about iridescent ammonite fossils?",
+        "type": "negative",
+        "correctAnswer": "The colors come from iron oxide staining in sediment",
+        "distractors": ["The nacre is made of stacked aragonite crystals", "Some specimens from Alberta are mined as gemstones", "The iridescence is caused by light diffraction"]
+      },
+      {
+        "question": "Iridescent ammonite fossils from Alberta, Canada, are mined as gemstones known as _____.",
+        "type": "fill_blank",
+        "correctAnswer": "Ammolite",
+        "distractors": ["Ammonoid", "Amberite", "Aragonite"]
+      }
+    ],
+    "category": [
+      "Life Sciences",
+      "Earth Sciences"
+    ],
+    "rarity": "rare",
+    "difficulty": 2,
+    "funScore": 10,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_ammonite_05",
+    "type": "fact",
+    "statement": "The largest ammonite ever found measured about 2 meters (6.5 feet) in diameter.",
+    "wowFactor": "Imagine a spiral shell the size of a car tire — but much, much bigger.",
+    "explanation": "Parapuzosia seppenradensis, found in Germany, is the largest known ammonite with a shell diameter of approximately 1.8 to 2 meters. This giant lived during the Cretaceous period. Most ammonites were much smaller — palm-sized or smaller — but this species grew to truly remarkable dimensions. The actual animal would have lived in the outermost chamber, with the rest being the gas-filled buoyancy apparatus.",
+    "gaiaComment": "Two meters across. A spiral shell you could use as a doorway. Cretaceous oceans had no shortage of giants.",
+    "visualDescription": "An enormous two-meter-wide ammonite drifting majestically through a warm Cretaceous sea, dwarfing schools of small fish swimming alongside",
+    "quizQuestion": "What is the approximate diameter of the largest known ammonite?",
+    "correctAnswer": "About 2 meters (roughly 6.5 feet)",
+    "distractors": [
+      "About 20 centimeters",
+      "About 50 centimeters",
+      "About 10 meters",
+      "About 5 meters",
+      "About 30 centimeters",
+      "About 1 kilometer",
+      "About 15 meters",
+      "About 4 meters"
+    ],
+    "variants": [
+      {
+        "question": "How wide was the largest ammonite fossil ever discovered?",
+        "type": "forward",
+        "correctAnswer": "Approximately 2 meters (6.5 feet) in diameter",
+        "distractors": ["Approximately 50 centimeters across", "Approximately 5 meters in diameter", "Approximately 10 meters across"]
+      },
+      {
+        "question": "The species Parapuzosia seppenradensis holds what record among ammonites?",
+        "type": "reverse",
+        "correctAnswer": "Largest known ammonite, at about 2 meters wide",
+        "distractors": ["Oldest known ammonite, from the Cambrian period", "Smallest known ammonite, at just 2 millimeters", "Most iridescent ammonite fossil ever found"]
+      },
+      {
+        "question": "The largest known ammonite was found in _____ and measured about 2 meters across.",
+        "type": "fill_blank",
+        "correctAnswer": "Germany",
+        "distractors": ["Canada", "Australia", "Brazil"]
+      },
+      {
+        "question": "Most ammonite species grew to roughly the same size as the largest known specimen.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
+    ],
+    "category": [
+      "Life Sciences"
+    ],
+    "rarity": "uncommon",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_ammonite_06",
+    "type": "fact",
+    "statement": "Over 10,000 ammonite species have been identified, spanning 350 million years of evolution.",
+    "wowFactor": "One shell shape, ten thousand variations — evolution's greatest spiral experiment.",
+    "explanation": "Ammonites first appeared in the Devonian period around 400 million years ago and diversified into more than 10,000 known species before their extinction 66 million years ago. They evolved an incredible range of shell shapes — tight coils, loose spirals, straight cones (heteromorphs), and even paperclip shapes. This diversity makes them excellent index fossils for dating rock layers with great precision.",
+    "gaiaComment": "Ten thousand species, all built around the same chambered spiral. Variation within constraint — that's evolution's favorite game.",
+    "visualDescription": "A coral reef teeming with dozens of differently shaped ammonite species, tight coils and loose spirals swimming among ancient sea creatures",
+    "quizQuestion": "Approximately how many ammonite species have scientists identified?",
+    "correctAnswer": "Over 10,000",
+    "distractors": [
+      "About 50",
+      "Around 300",
+      "Fewer than 1,000",
+      "Exactly 4,200",
+      "About 100,000",
+      "Around 500",
+      "Fewer than 20",
+      "About 2 million"
+    ],
+    "variants": [
+      {
+        "question": "How many known species of ammonites have been catalogued?",
+        "type": "forward",
+        "correctAnswer": "More than 10,000 species",
+        "distractors": ["Fewer than 500 species", "About 1,000 species", "Roughly 100,000 species"]
+      },
+      {
+        "question": "A group of marine animals with over 10,000 identified species spanning 350 million years describes which cephalopods?",
+        "type": "reverse",
+        "correctAnswer": "Ammonites",
+        "distractors": ["Nautiluses", "Belemnites", "Trilobites"]
+      },
+      {
+        "question": "Which is NOT true about ammonite diversity?",
+        "type": "negative",
+        "correctAnswer": "All ammonite species had identical shell shapes",
+        "distractors": ["Over 10,000 species have been identified", "They first appeared in the Devonian period", "They are useful as index fossils for dating rocks"]
+      },
+      {
+        "question": "A geologist uses ammonite fossils to date rock layers. Why are ammonites ideal for this purpose?",
+        "type": "context",
+        "correctAnswer": "Their great species diversity allows precise dating of strata",
+        "distractors": ["Their shells contain radioactive isotopes for dating", "They only lived during a single geological period", "Their fossils change color based on the rock's age"]
+      }
+    ],
+    "category": [
+      "Life Sciences"
+    ],
+    "rarity": "common",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_ammonite_07",
+    "type": "fact",
+    "statement": "Ammonites were likely plankton-feeders or small predators, using tentacles to catch prey.",
+    "wowFactor": "Those beautiful spiraling shells housed a tentacled hunter.",
+    "explanation": "Like their living relatives (nautiluses, squid), ammonites had soft bodies with tentacles extending from the opening of the shell. Based on analysis of their jaw structures (called aptychi) and comparing them to living nautiluses, scientists believe many ammonites ate plankton, small crustaceans, or other small marine organisms. Larger species may have been active predators. Soft tissue almost never fossilizes, so much of this is inferred from anatomy.",
+    "gaiaComment": "Behind that geometric perfection was a tentacled predator. Beauty and lethality, combined in a spiral.",
+    "visualDescription": "An ammonite extending its tentacles from its shell opening to snatch a tiny crustacean, delicate arms reaching through sunlit prehistoric waters",
+    "quizQuestion": "What did ammonites likely eat?",
+    "correctAnswer": "Plankton, small crustaceans, and other small marine organisms caught with tentacles",
+    "distractors": [
+      "Large fish and marine reptiles",
+      "Exclusively underwater vegetation",
+      "Coral and sponge material only",
+      "Dissolved minerals from seawater",
+      "Other ammonites of different species",
+      "Sediment filtered through gill slits",
+      "Debris from dead whales",
+      "Bacteria from hydrothermal vents"
+    ],
+    "variants": [
+      {
+        "question": "What type of diet did most ammonites have?",
+        "type": "forward",
+        "correctAnswer": "Plankton and small crustaceans, caught with tentacles",
+        "distractors": ["Large fish and marine reptiles", "Exclusively underwater vegetation", "Sediment filtered through gill slits"]
+      },
+      {
+        "question": "Jaw structures called aptychi found in ammonite fossils helped scientists determine what?",
+        "type": "reverse",
+        "correctAnswer": "That ammonites likely ate plankton and small prey",
+        "distractors": ["That ammonites were herbivores eating seaweed", "That ammonites had venomous bites for defense", "That ammonites breathed air at the surface"]
+      },
+      {
+        "question": "Ammonites were primarily large predators that hunted marine reptiles.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "question": "A researcher studying a fossilized ammonite jaw (aptychus) concludes it ate small organisms. What living animal provides the best comparison?",
+        "type": "context",
+        "correctAnswer": "The nautilus, its closest living relative",
+        "distractors": ["The blue whale, a fellow plankton feeder", "The great white shark, a marine predator", "The sea turtle, a coastal forager"]
+      }
+    ],
+    "category": [
+      "Life Sciences"
+    ],
+    "rarity": "common",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_ammonite_08",
+    "type": "fact",
+    "statement": "Medieval Europeans believed ammonite fossils were coiled snakes turned to stone, and called them 'snakestones.'",
+    "wowFactor": "For centuries, people thought they were petrified serpents — sometimes they even carved snake heads onto them.",
+    "explanation": "Before paleontology existed, ammonite fossils found in England were believed to be petrified snakes. They were called 'snakestones' or given names like 'serpent stones.' Some craftspeople in Whitby, England even carved snake heads onto the end of ammonites to make them look more convincing, selling them to pilgrims as miraculous objects. Saint Hilda of Whitby was said to have turned snakes into stone there. The ammonite species Hildoceras is named after her.",
+    "gaiaComment": "They saw spiraling stone and imagined divine punishment. What they actually found was something far older and stranger.",
+    "visualDescription": "A coiled ammonite fossil lying on a medieval English beach with a carved snake head added to one end, misty cliffs in the background",
+    "quizQuestion": "What did medieval Europeans call ammonite fossils?",
+    "correctAnswer": "Snakestones, because they thought they were coiled petrified snakes",
+    "distractors": [
+      "Dragon eggs, thought to contain sleeping dragons",
+      "Moon stones, believed to fall from the sky",
+      "Devil's coils, thought to be cursed objects",
+      "Angel wheels, believed to be divine artifacts",
+      "Witch rings, used in folk magic rituals",
+      "Earth coins, thought to be ancient currency",
+      "Storm spirals, believed to summon rain",
+      "Sea gods, worshipped by coastal communities"
+    ],
+    "variants": [
+      {
+        "question": "What name did medieval Europeans give to ammonite fossils?",
+        "type": "forward",
+        "correctAnswer": "Snakestones, believing them to be petrified serpents",
+        "distractors": ["Dragon eggs, believed to hatch fire-breathers", "Moon stones, thought to fall from the sky", "Devil's coils, considered cursed objects"]
+      },
+      {
+        "question": "Medieval craftspeople in Whitby, England carved snake heads onto what type of fossil?",
+        "type": "reverse",
+        "correctAnswer": "Ammonite fossils",
+        "distractors": ["Trilobite fossils", "Belemnite fossils", "Sea urchin fossils"]
+      },
+      {
+        "question": "The ammonite species Hildoceras is named after _____, who was said to have turned snakes to stone.",
+        "type": "fill_blank",
+        "correctAnswer": "Saint Hilda of Whitby",
+        "distractors": ["Saint Patrick of Ireland", "Queen Victoria of England", "Saint George of Wessex"]
+      },
+      {
+        "question": "Which is NOT true about medieval beliefs regarding ammonite fossils?",
+        "type": "negative",
+        "correctAnswer": "They were correctly identified as ancient marine animals",
+        "distractors": ["They were called snakestones", "Some had snake heads carved onto them", "They were associated with Saint Hilda of Whitby"]
+      }
+    ],
+    "category": [
+      "Life Sciences",
+      "History"
+    ],
+    "rarity": "rare",
+    "difficulty": 2,
+    "funScore": 10,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_ammonite_09",
+    "type": "fact",
+    "statement": "The closest living relative of ammonites is the nautilus, not the octopus or squid.",
+    "wowFactor": "The nautilus is a living fossil — a window into the world of ammonites.",
+    "explanation": "Ammonites belong to the subclass Ammonoidea within the class Cephalopoda. Their closest living relatives are nautiluses (subclass Nautiloidea), not coleoids (which include squid, octopus, and cuttlefish). Both ammonites and nautiluses have external chambered shells with a siphuncle for buoyancy control. Coleoids evolved to internalize or lose their shells entirely. The nautilus shell's spiral structure is directly analogous to an ammonite shell, making it a valuable model for understanding ammonite biology.",
+    "gaiaComment": "The nautilus swims in our oceans right now — a living echo of an animal that's been gone 66 million years.",
+    "visualDescription": "A living nautilus and an ammonite swimming side by side in a deep blue prehistoric ocean, their similar spiral shells catching the light",
+    "quizQuestion": "Which living animal is the closest relative of ammonites?",
+    "correctAnswer": "The nautilus",
+    "distractors": [
+      "The giant squid",
+      "The common octopus",
+      "The blue-ringed octopus",
+      "The cuttlefish",
+      "The sea snail",
+      "The horseshoe crab",
+      "The chambered whelk",
+      "The cone snail"
+    ],
+    "variants": [
+      {
+        "question": "What modern animal is most closely related to ammonites?",
+        "type": "forward",
+        "correctAnswer": "The nautilus",
+        "distractors": ["The giant squid", "The common octopus", "The cuttlefish"]
+      },
+      {
+        "question": "The nautilus is the closest living relative of which extinct marine group?",
+        "type": "reverse",
+        "correctAnswer": "Ammonites",
+        "distractors": ["Trilobites", "Plesiosaurs", "Ichthyosaurs"]
+      },
+      {
+        "question": "Which is NOT a trait shared by both ammonites and nautiluses?",
+        "type": "negative",
+        "correctAnswer": "Both can change color using chromatophores",
+        "distractors": ["Both have external chambered shells", "Both have a siphuncle for buoyancy", "Both belong to the class Cephalopoda"]
+      },
+      {
+        "question": "The closest living relative of ammonites is the octopus, which shares their external shell structure.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
+    ],
+    "category": [
+      "Life Sciences"
+    ],
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_ammonite_10",
+    "type": "fact",
+    "statement": "Some ammonites grew in bizarre heteromorph shapes — straight lines, paperclips, and loose open spirals instead of tight coils.",
+    "wowFactor": "Evolution experimented with uncoiling the perfect spiral — with wild results.",
+    "explanation": "While most ammonites grew in the classic tight coil, a group called heteromorph ammonites evolved dramatically different shell shapes during the Cretaceous period. Species like Nipponites mirabilis grew in convoluted 3D tangles, Baculites grew almost completely straight, and others formed U-shapes or open helical spirals. These bizarre forms were not deformities — they were successful adaptations, likely related to specialized feeding strategies or habitats. Nipponites in particular looks like a randomly tangled ball of shell.",
+    "gaiaComment": "Evolution looked at the perfect spiral and said: what if we just... didn't? The results were spectacular.",
+    "visualDescription": "A bizarre heteromorph ammonite with a tangled paperclip-shaped shell floating through dark Cretaceous waters, bioluminescent jellyfish drifting nearby",
+    "quizQuestion": "What is the name for ammonites that grew in unusual non-coiled shapes?",
+    "correctAnswer": "Heteromorph ammonites",
+    "distractors": [
+      "Paramorph ammonites",
+      "Deform ammonites",
+      "Eccentric cephalopods",
+      "Aberrant nautiloids",
+      "Deviant spiralids",
+      "Atypical mollusks",
+      "Rogue coilers",
+      "Neo-ammonites"
+    ],
+    "variants": [
+      {
+        "question": "What term describes ammonites with unusual non-coiled shell shapes?",
+        "type": "forward",
+        "correctAnswer": "Heteromorph ammonites",
+        "distractors": ["Paramorph ammonites", "Aberrant nautiloids", "Neo-ammonites"]
+      },
+      {
+        "question": "Baculites, which grew in nearly straight lines, and Nipponites, which formed 3D tangles, are examples of what ammonite group?",
+        "type": "reverse",
+        "correctAnswer": "Heteromorph ammonites",
+        "distractors": ["Orthocone nautiloids", "Deformed cephalopods", "Paramorph ammonites"]
+      },
+      {
+        "question": "Which is NOT true about heteromorph ammonites?",
+        "type": "negative",
+        "correctAnswer": "Their unusual shapes were deformities caused by disease",
+        "distractors": ["Some grew in straight lines like Baculites", "They evolved mainly during the Cretaceous period", "Nipponites mirabilis had a tangled 3D shell shape"]
+      },
+      {
+        "question": "A museum curator examines a straight-shelled ammonite called Baculites. What category of ammonite does this belong to?",
+        "type": "context",
+        "correctAnswer": "Heteromorph ammonites, which had non-coiled shapes",
+        "distractors": ["Deformed ammonites caused by environmental stress", "Juvenile ammonites that hadn't yet coiled their shells", "A completely different species unrelated to ammonites"]
+      },
+      {
+        "question": "Ammonites that grew in straight, paperclip, or loosely coiled shapes are called _____ ammonites.",
+        "type": "fill_blank",
+        "correctAnswer": "Heteromorph",
+        "distractors": ["Paramorph", "Isomorph", "Neomorph"]
+      }
+    ],
+    "category": [
+      "Life Sciences"
+    ],
+    "rarity": "rare",
+    "difficulty": 3,
+    "funScore": 10,
+    "ageRating": "teen"
+  }
+]

@@ -1,0 +1,546 @@
+[
+  {
+    "id": "fossil_dodo_01",
+    "type": "fact",
+    "statement": "The dodo went extinct in less than 80 years of humans arriving on Mauritius.",
+    "wowFactor": "One of the fastest human-caused extinctions ever recorded — gone in a single lifetime.",
+    "explanation": "Humans first colonized Mauritius around 1638. The last confirmed dodo sighting was in 1681 — less than 45 years later. Some records suggest the final individuals may have survived until the late 17th century, but the species collapsed with shocking speed. The dodo had evolved in complete isolation on Mauritius with no land predators, so it had no fear of humans or the animals humans brought with them (dogs, rats, pigs). This fearlessness made them trivially easy to capture and kill.",
+    "gaiaComment": "Forty-five years from discovery to extinction. Humans barely had time to name them before they were gone.",
+    "visualDescription": "A lone dodo standing on a Mauritian beach looking curiously at approaching Dutch sailing ships on the turquoise horizon, palm trees swaying",
+    "quizQuestion": "How quickly did the dodo go extinct after humans arrived on Mauritius?",
+    "correctAnswer": "In less than 80 years — the last confirmed sighting was only about 45 years after first human colonization",
+    "distractors": [
+      "After about 500 years of slow decline",
+      "Almost immediately — within a few months of first contact",
+      "After about 1,000 years of coexistence with human hunters",
+      "It went extinct before humans arrived, from natural causes",
+      "After about 200 years of gradual population decline",
+      "In about 10 years due to a single epidemic",
+      "After exactly 100 years, coinciding with industrialization",
+      "It survived until the 20th century before finally going extinct"
+    ],
+    "variants": [
+      {
+        "question": "How long did the dodo survive after human colonization of Mauritius?",
+        "type": "forward",
+        "correctAnswer": "Less than 80 years, with the last sighting around 1681",
+        "distractors": ["About 500 years of gradual decline", "Over 200 years before final extinction", "Less than one month after first contact"]
+      },
+      {
+        "question": "Which species went extinct within roughly 45 years of its first encounter with European colonists?",
+        "type": "reverse",
+        "correctAnswer": "The dodo of Mauritius",
+        "distractors": ["The thylacine of Tasmania", "The great auk of the North Atlantic", "The passenger pigeon of North America"]
+      },
+      {
+        "question": "Which is NOT a reason the dodo went extinct so quickly?",
+        "type": "negative",
+        "correctAnswer": "A viral epidemic spread by European livestock",
+        "distractors": ["It had no fear of humans or their animals", "It evolved without any land predators", "Humans colonized Mauritius around 1638"]
+      },
+      {
+        "question": "The last confirmed dodo sighting was in _____, less than 45 years after human colonization began.",
+        "type": "fill_blank",
+        "correctAnswer": "1681",
+        "distractors": ["1781", "1581", "1881"]
+      }
+    ],
+    "category": [
+      "Life Sciences",
+      "History"
+    ],
+    "rarity": "common",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_dodo_02",
+    "type": "fact",
+    "statement": "The dodo was endemic to the island of Mauritius — it lived nowhere else on Earth.",
+    "wowFactor": "An entire species existed on just one island — and we wiped it out.",
+    "explanation": "Mauritius is a volcanic island in the Indian Ocean, about 2,000 km east of Madagascar. The dodo (Raphus cucullatus) evolved there in complete isolation over millions of years, adapting to the island's unique environment. It had no relatives on mainland Africa or nearby Madagascar — it evolved from pigeon-like ancestors that reached the island and then adapted to a flightless, ground-dwelling lifestyle. When Mauritius was colonized, the entire global population of dodos was concentrated on one small island with no escape possible.",
+    "gaiaComment": "One island. One species. No backup population, no refuge. The math for extinction was always unforgiving.",
+    "visualDescription": "A dodo walking through a lush Mauritian tropical forest, unique endemic plants surrounding it, the volcanic peak of the island rising behind",
+    "quizQuestion": "Where did dodos live?",
+    "correctAnswer": "Only on the island of Mauritius — they were endemic and found nowhere else",
+    "distractors": [
+      "Throughout Africa and the Indian Ocean islands",
+      "On multiple Indian Ocean islands including Madagascar and Reunion",
+      "In the rainforests of South America",
+      "On islands across the Pacific Ocean",
+      "In the wetlands of Southeast Asia",
+      "On the main continent of Africa near coastal regions",
+      "Throughout the islands of the Caribbean Sea",
+      "In Australia and the surrounding island chains"
+    ],
+    "variants": [
+      {
+        "question": "On which island was the dodo exclusively found?",
+        "type": "forward",
+        "correctAnswer": "Mauritius, in the Indian Ocean",
+        "distractors": ["Madagascar, off the African coast", "New Zealand, in the Pacific Ocean", "The Galapagos Islands, near South America"]
+      },
+      {
+        "question": "Raphus cucullatus was a flightless bird endemic to which volcanic Indian Ocean island?",
+        "type": "reverse",
+        "correctAnswer": "Mauritius",
+        "distractors": ["Madagascar", "Sri Lanka", "The Maldives"]
+      },
+      {
+        "question": "Dodos lived on multiple islands across the Indian Ocean.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "question": "A conservation biologist explains why the dodo was so vulnerable. What made its entire population easy to eliminate?",
+        "type": "context",
+        "correctAnswer": "All dodos lived on a single small island with no escape route",
+        "distractors": ["They migrated in large flocks across open ocean", "Their population was spread across dozens of islands", "They lived in underground burrows easily flooded by storms"]
+      }
+    ],
+    "category": [
+      "Life Sciences"
+    ],
+    "rarity": "common",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_dodo_03",
+    "type": "fact",
+    "statement": "The dodo was not actually stupid — it had no fear of humans because it had no land predators, making it seem tame.",
+    "wowFactor": "The dodo's 'stupidity' was actually millions of years of successful island evolution.",
+    "explanation": "The dodo evolved on Mauritius with no natural land predators. Its only predators were large birds of prey, and the dodo's behavior was adapted to defend against aerial threats (hiding in vegetation) rather than land threats. When humans arrived, the dodo had no behavioral response for ground-level predators and simply walked up to hunters. This was not stupidity — it was appropriate behavior for its evolutionary environment. Its brain-to-body ratio was actually comparable to its relatives. The 'dead as a dodo / stupid as a dodo' reputation is a posthumous insult by the very species that killed it.",
+    "gaiaComment": "We called them stupid for trusting us. The failure of judgment was entirely on our side.",
+    "visualDescription": "A fearless dodo walking directly toward a seated human figure, head tilted with innocent curiosity, dense jungle foliage framing the scene",
+    "quizQuestion": "Why did dodos appear 'stupid' and unafraid of humans?",
+    "correctAnswer": "Because they evolved without land predators — fearlessness was correct behavior in their undisturbed habitat",
+    "distractors": [
+      "Because they actually had very small brains relative to their body size",
+      "Because island isolation caused genuine cognitive decline over generations",
+      "Because they were too large and heavy to run away from any threat",
+      "Because they were partially deaf and couldn't hear approaching humans",
+      "Because they were nocturnal and humans always approached during the day",
+      "Because they were domesticated by early Malagasy sailors before Europeans arrived",
+      "Because their thick skull protected them, making fear unnecessary",
+      "Because they mistook humans for a harmless species they had coexisted with"
+    ],
+    "variants": [
+      {
+        "question": "Why were dodos unafraid of humans when Europeans arrived?",
+        "type": "forward",
+        "correctAnswer": "They evolved without land predators, so had no fear response",
+        "distractors": ["They had very small brains and poor cognitive ability", "They were partially deaf and couldn't detect approaching threats", "They were too heavy and slow to flee from any danger"]
+      },
+      {
+        "question": "A bird that walks directly toward hunters due to millions of years of evolution without land predators describes which species?",
+        "type": "reverse",
+        "correctAnswer": "The dodo",
+        "distractors": ["The ostrich", "The kakapo", "The penguin"]
+      },
+      {
+        "question": "Which is NOT true about the dodo's perceived 'stupidity'?",
+        "type": "negative",
+        "correctAnswer": "Its brain was significantly smaller than its pigeon relatives",
+        "distractors": ["It evolved without natural land predators", "Its behavior was appropriate for its environment", "Its fearlessness made it easy to capture and kill"]
+      },
+      {
+        "question": "The dodo's brain-to-body ratio was actually comparable to its _____ relatives.",
+        "type": "fill_blank",
+        "correctAnswer": "Pigeon",
+        "distractors": ["Parrot", "Raptor", "Ratite"]
+      }
+    ],
+    "category": [
+      "Life Sciences"
+    ],
+    "rarity": "uncommon",
+    "difficulty": 1,
+    "funScore": 9,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_dodo_04",
+    "type": "fact",
+    "statement": "The dodo's closest living relative is the Nicobar pigeon, not any flightless bird.",
+    "wowFactor": "The dodo is most closely related to a beautiful iridescent pigeon from Southeast Asia.",
+    "explanation": "DNA analysis of dodo subfossil bones has confirmed that dodos belong to the pigeon family (Columbidae). Their closest living relative is the Nicobar pigeon (Caloenas nicobarica), a stunning, iridescent green and copper bird found on islands from the Andaman and Nicobar Islands to the Solomon Islands. The dodo is not closely related to ostriches, emus, or other flightless birds — it independently evolved flightlessness from a pigeon ancestor that colonized Mauritius. The related Rodrigues solitaire (also now extinct) was also in this group.",
+    "gaiaComment": "The dodo's living cousin is a gorgeous metallic pigeon. The family tree has beautiful branches.",
+    "visualDescription": "A dodo standing next to a brilliantly iridescent Nicobar pigeon on a tropical branch, the family resemblance subtly visible in their body shapes",
+    "quizQuestion": "What is the dodo's closest living relative?",
+    "correctAnswer": "The Nicobar pigeon — an iridescent pigeon from Southeast Asia and Pacific islands",
+    "distractors": [
+      "The common rock pigeon (city pigeon)",
+      "The ostrich — both are large flightless birds",
+      "The emu — the only other truly flightless island bird",
+      "The kiwi from New Zealand",
+      "The cassowary from New Guinea",
+      "The kakapo, the flightless parrot of New Zealand",
+      "The penguin — both evolved flightlessness in isolation",
+      "The flamingo — both have similar leg structure"
+    ],
+    "variants": [
+      {
+        "question": "Which living bird species is most closely related to the dodo?",
+        "type": "forward",
+        "correctAnswer": "The Nicobar pigeon, an iridescent island pigeon",
+        "distractors": ["The ostrich, a fellow large flightless bird", "The common rock pigeon found in cities", "The kiwi, another island flightless bird"]
+      },
+      {
+        "question": "DNA analysis revealed the dodo belongs to which bird family?",
+        "type": "reverse",
+        "correctAnswer": "Columbidae, the pigeon family",
+        "distractors": ["Struthionidae, the ostrich family", "Psittacidae, the parrot family", "Spheniscidae, the penguin family"]
+      },
+      {
+        "question": "The dodo is closely related to other large flightless birds like ostriches and emus.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "question": "A geneticist studying dodo DNA finds its closest relative is the _____ pigeon from Southeast Asia.",
+        "type": "fill_blank",
+        "correctAnswer": "Nicobar",
+        "distractors": ["Rock", "Victoria crowned", "Dovekie"]
+      }
+    ],
+    "category": [
+      "Life Sciences"
+    ],
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_dodo_05",
+    "type": "fact",
+    "statement": "Dodos weighed about 10-18 kg — similar to a large turkey or small goose.",
+    "wowFactor": "They weren't the massive waddling giants that old illustrations suggest.",
+    "explanation": "Early depictions of dodos (mostly from the late 1600s) show them as extremely obese, round birds, but modern analysis of skeletal remains suggests the real dodo was leaner — particularly in the wild. Estimates put wild dodo weight at 10-17 kg for males. The obese depictions may reflect captive individuals that were overfed aboard ships. A wild dodo was more likely a compact, muscular bird adapted for walking through dense forest. It stood about 1 meter tall and had a large head with a hooked beak adapted for hard food like nuts and seeds.",
+    "gaiaComment": "Leaner and more capable than the cartoon blob of popular imagination. History was unkind in every way.",
+    "visualDescription": "A lean muscular dodo striding through dense forest undergrowth, hooked beak cracking a large seed, looking far more athletic than cartoons suggest",
+    "quizQuestion": "How heavy was a dodo?",
+    "correctAnswer": "About 10-18 kg — similar to a large turkey, and leaner than old illustrations suggest",
+    "distractors": [
+      "About 100 kg — as heavy as a small lion",
+      "About 1 kg — smaller than a chicken",
+      "About 50 kg — as heavy as a large dog",
+      "About 200 kg — nearly the size of a small cow",
+      "About 5 kg — similar to a large domestic cat",
+      "About 500 kg — a massive flightless bird like a moa",
+      "About 30 kg — three times the weight of a turkey",
+      "About 2 kg — a small island-adapted lightweight bird"
+    ],
+    "variants": [
+      {
+        "question": "What was the approximate weight of a wild dodo?",
+        "type": "forward",
+        "correctAnswer": "About 10-18 kg, similar to a large turkey",
+        "distractors": ["About 100 kg, similar to a small lion", "About 50 kg, similar to a large dog", "About 1 kg, smaller than a chicken"]
+      },
+      {
+        "question": "A flightless bird weighing 10-18 kg that stood about 1 meter tall and was leaner than historical illustrations suggest describes which species?",
+        "type": "reverse",
+        "correctAnswer": "The dodo",
+        "distractors": ["The great auk", "The elephant bird", "The moa"]
+      },
+      {
+        "question": "Which is NOT true about the dodo's actual appearance?",
+        "type": "negative",
+        "correctAnswer": "It was as obese as shown in 17th-century illustrations",
+        "distractors": ["It weighed about 10-18 kg in the wild", "It stood about 1 meter tall", "It had a hooked beak for cracking hard food"]
+      },
+      {
+        "question": "Old illustrations depicted dodos as extremely obese. Why were these depictions inaccurate?",
+        "type": "context",
+        "correctAnswer": "They likely showed overfed captive individuals, not lean wild birds",
+        "distractors": ["The artists had never actually seen a dodo", "Dodos gained weight seasonally and were drawn in winter", "The dodo species changed size rapidly before extinction"]
+      }
+    ],
+    "category": [
+      "Life Sciences"
+    ],
+    "rarity": "common",
+    "difficulty": 1,
+    "funScore": 7,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_dodo_06",
+    "type": "fact",
+    "statement": "The last confirmed dodo sighting was in 1681 — and the species was not formally described scientifically until 1865.",
+    "wowFactor": "The dodo went extinct before science even officially defined what it was.",
+    "explanation": "The dodo was last reliably reported alive in 1681. The species was not formally described in the Linnaean scientific system (with a proper Latin binomial name) until 1865 — 184 years after it had already gone extinct. This happened because early naturalists were uncertain about the bird's classification and the early reports were considered possibly exaggerated. It is one of the few animal species humanity encountered, exterminated, and then officially categorized only as a historical artifact — described posthumously from collected bones and old drawings.",
+    "gaiaComment": "Extinct for 184 years before we gave it a proper scientific name. We catalogued the ghost.",
+    "visualDescription": "A dodo fading into ghostly transparency against a backdrop of naturalists' sketches and empty museum frames, symbolizing its posthumous discovery",
+    "quizQuestion": "When was the dodo formally described and given a scientific name?",
+    "correctAnswer": "In 1865 — 184 years after the species had already gone extinct",
+    "distractors": [
+      "In 1638, when Dutch sailors first landed on Mauritius",
+      "In 1681, the year the last individual was seen",
+      "In 1700, shortly after extinction was recognized",
+      "In 1850, based on a recently discovered live specimen",
+      "In 1800, during the Linnaean classification boom",
+      "In 1950, after DNA analysis of bones was perfected",
+      "In 1750, when the first complete skeleton was assembled",
+      "In 1900, when Mauritius became a British colony"
+    ],
+    "variants": [
+      {
+        "question": "How many years after the dodo's extinction was it formally given a scientific name?",
+        "type": "forward",
+        "correctAnswer": "184 years — described in 1865, extinct since 1681",
+        "distractors": ["10 years — named shortly after the last sighting", "50 years — described in the early 1700s", "300 years — not named until the 20th century"]
+      },
+      {
+        "question": "A species that went extinct in 1681 but was not scientifically named until 1865 is which famous bird?",
+        "type": "reverse",
+        "correctAnswer": "The dodo",
+        "distractors": ["The great auk", "The passenger pigeon", "The moa"]
+      },
+      {
+        "question": "The dodo was formally described scientifically while it was still alive.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      },
+      {
+        "question": "The dodo was not formally described until 1865 because early naturalists were uncertain about its _____.",
+        "type": "fill_blank",
+        "correctAnswer": "Classification",
+        "distractors": ["Existence", "Habitat", "Continent"]
+      }
+    ],
+    "category": [
+      "Life Sciences",
+      "History"
+    ],
+    "rarity": "rare",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "teen"
+  },
+  {
+    "id": "fossil_dodo_07",
+    "type": "fact",
+    "statement": "The dodo was driven extinct by a combination of hunting, habitat destruction, and introduced animals — not just by humans eating them.",
+    "wowFactor": "The real killers were the rats and pigs humans brought with them.",
+    "explanation": "European sailors did hunt and eat dodos, but the more devastating impact came from the animals they introduced to Mauritius: pigs, goats, dogs, cats, rats, and macaques. These invasive species raided dodo nests (which were on the ground) and ate eggs and chicks. Habitat destruction from forest clearing further reduced the dodo's range and food supply. The combination of hunting, nest predation, and habitat loss created a multi-front assault on a species already vulnerable due to low population size and no evolved defenses.",
+    "gaiaComment": "Sailors get the blame. The rats did much of the work. Extinction is rarely a single cause.",
+    "visualDescription": "A dodo nest on the forest floor with eggs exposed as rats and pigs approach from the shadows, the parent bird looking on helplessly",
+    "quizQuestion": "What were the main causes of the dodo's extinction?",
+    "correctAnswer": "A combination of hunting, introduced animals (rats, pigs, dogs) raiding nests, and habitat destruction",
+    "distractors": [
+      "Exclusively overhunting by Dutch and Portuguese sailors",
+      "A sudden disease epidemic that killed all individuals rapidly",
+      "Climate change that destroyed their food supply",
+      "Competition with a native predator that suddenly expanded its range",
+      "Volcanic eruption that covered the island in ash",
+      "Habitat loss alone — they were never significantly hunted",
+      "Interbreeding with introduced pigeon species causing genetic collapse",
+      "Inability to find food after a major drought cycle"
+    ],
+    "variants": [
+      {
+        "question": "What caused the dodo's extinction besides direct hunting by humans?",
+        "type": "forward",
+        "correctAnswer": "Introduced animals raiding nests and habitat destruction",
+        "distractors": ["A disease epidemic spread by European livestock", "Climate change causing prolonged drought on Mauritius", "Competition with native predatory birds"]
+      },
+      {
+        "question": "Rats, pigs, and dogs introduced to Mauritius contributed to the extinction of which species by raiding ground nests?",
+        "type": "reverse",
+        "correctAnswer": "The dodo",
+        "distractors": ["The Mauritius kestrel", "The giant tortoise", "The pink pigeon"]
+      },
+      {
+        "question": "Which is NOT a documented cause of the dodo's extinction?",
+        "type": "negative",
+        "correctAnswer": "A volcanic eruption that destroyed the island's forests",
+        "distractors": ["Hunting by European sailors", "Nest predation by introduced rats and pigs", "Habitat destruction from forest clearing"]
+      },
+      {
+        "question": "An ecologist studying island extinctions identifies the dodo as a case of multi-factor collapse. Which introduced animal was especially devastating to dodo nests?",
+        "type": "context",
+        "correctAnswer": "Rats, which raided ground-level nests for eggs and chicks",
+        "distractors": ["Hawks, which hunted adult dodos from the air", "Snakes, which constricted nesting adults", "Horses, which trampled nest sites while grazing"]
+      }
+    ],
+    "category": [
+      "Life Sciences",
+      "History"
+    ],
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_dodo_08",
+    "type": "fact",
+    "statement": "Dodos ate fallen fruit, seeds, nuts, bulbs, and possibly small invertebrates and crabs.",
+    "wowFactor": "Their hooked beak was a precision tool for cracking hard seeds — they weren't just waddling around eating whatever.",
+    "explanation": "The dodo's large, hooked beak was well-suited for opening hard fruits and nuts. Analysis of dodo skull mechanics suggests a powerful bite capable of cracking large, tough-shelled fruits — likely the large, hard fruits of Calvaria trees (also called the tambalacoque tree). There is a famous (though disputed) hypothesis that the Calvaria tree depended on dodos to pass its seeds through their digestive system before germination. Dodos also likely ate bulbs, roots, and possibly small animals. They were omnivores in the tropical forest environment of Mauritius.",
+    "gaiaComment": "A hooked beak built for cracking open the forest's hardest fruits. Precision engineering in a bird called stupid.",
+    "visualDescription": "A dodo using its powerful hooked beak to crack open a large hard-shelled tropical fruit on the forest floor, fragments scattering",
+    "quizQuestion": "What did dodos primarily eat?",
+    "correctAnswer": "Fallen fruits, hard seeds and nuts, bulbs, and possibly small invertebrates — cracked open with their powerful hooked beak",
+    "distractors": [
+      "Exclusively fish from coastal waters",
+      "Only leaves and grass from the forest floor",
+      "Mainly other birds' eggs and chicks",
+      "Filter-feeding from shallow coastal waters",
+      "Exclusively carrion from dead animals",
+      "Marine plankton and algae",
+      "Only seeds from a single specific tree species",
+      "Insects caught by rapid aerial pursuit"
+    ],
+    "variants": [
+      {
+        "question": "What was the dodo's diet?",
+        "type": "forward",
+        "correctAnswer": "Fallen fruit, hard seeds, nuts, bulbs, and small invertebrates",
+        "distractors": ["Exclusively fish from coastal waters", "Only leaves and grass", "Marine plankton and algae"]
+      },
+      {
+        "question": "A powerful hooked beak adapted for cracking tough-shelled tropical fruits was a key feature of which extinct bird?",
+        "type": "reverse",
+        "correctAnswer": "The dodo",
+        "distractors": ["The passenger pigeon", "The great auk", "The elephant bird"]
+      },
+      {
+        "question": "The dodo's hooked beak was adapted for cracking open hard-shelled fruits and nuts from _____ trees.",
+        "type": "fill_blank",
+        "correctAnswer": "Calvaria",
+        "distractors": ["Palm", "Mangrove", "Coconut"]
+      },
+      {
+        "question": "The dodo was exclusively a carnivore that hunted small animals on Mauritius.",
+        "type": "true_false",
+        "correctAnswer": "False",
+        "distractors": ["True"]
+      }
+    ],
+    "category": [
+      "Life Sciences"
+    ],
+    "rarity": "common",
+    "difficulty": 1,
+    "funScore": 6,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_dodo_09",
+    "type": "fact",
+    "statement": "The dodo nested on the ground in a simple nest of grasses — completely vulnerable to introduced predators.",
+    "wowFactor": "Their nesting strategy, perfect for an island without predators, became their fatal flaw.",
+    "explanation": "Like many island birds that evolved without ground predators, dodos nested directly on the ground in simple grass structures. On Mauritius before human arrival, this was a perfectly sensible strategy — there were no land mammals that could threaten a nest. When Europeans arrived with rats, pigs, cats, dogs, and macaques, the dodo's ground nests were exposed to predators they had never evolved to deal with. A single breeding failure per year, repeated over decades, was enough to collapse the population.",
+    "gaiaComment": "Ground nest, no predators — a perfectly reasonable strategy for three million years. Then everything changed at once.",
+    "visualDescription": "A dodo sitting on a simple grass nest with a single large egg beneath palm fronds, the peaceful scene lit by warm afternoon light",
+    "quizQuestion": "Why were dodo nests particularly vulnerable to introduced species?",
+    "correctAnswer": "They nested on the ground with no defensive behavior against land predators — evolved on an island without any",
+    "distractors": [
+      "Because they built elaborate elevated nests easily found by sailors",
+      "Because they nested in large colonies, making all eggs easy to find at once",
+      "Because their nests were bright white and visible from far away",
+      "Because they made loud calls that attracted predators to their nest sites",
+      "Because they nested near human settlements to stay warm",
+      "Because they only nested during daytime, allowing easy observation",
+      "Because nest sites were revealed by their distinctive footprints in mud",
+      "Because dodo parents would abandon nests rather than fight threats"
+    ],
+    "variants": [
+      {
+        "question": "What made dodo nests so vulnerable to introduced animals?",
+        "type": "forward",
+        "correctAnswer": "They nested on the ground with no anti-predator defenses",
+        "distractors": ["They nested in large visible colonies", "Their nests were brightly colored and easy to find", "They abandoned nests when any threat appeared"]
+      },
+      {
+        "question": "Ground-nesting with no defensive behavior against land predators was a fatal vulnerability for which extinct bird?",
+        "type": "reverse",
+        "correctAnswer": "The dodo",
+        "distractors": ["The ostrich", "The cassowary", "The emu"]
+      },
+      {
+        "question": "Which is NOT true about dodo nesting behavior?",
+        "type": "negative",
+        "correctAnswer": "They built elevated nests in tree canopies for protection",
+        "distractors": ["They nested directly on the ground", "Their nests were simple grass structures", "They had no evolved defenses against land predators"]
+      },
+      {
+        "question": "Before humans arrived on Mauritius, ground nesting was a reasonable strategy for dodos because there were no _____.",
+        "type": "fill_blank",
+        "correctAnswer": "Land predators",
+        "distractors": ["Tropical storms", "Competing birds", "Food sources"]
+      }
+    ],
+    "category": [
+      "Life Sciences"
+    ],
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid"
+  },
+  {
+    "id": "fossil_dodo_10",
+    "type": "fact",
+    "statement": "Scientists are actively working on sequencing the complete dodo genome as a step toward possible de-extinction.",
+    "wowFactor": "The most famous extinction in history might be the first reversal.",
+    "explanation": "In 2022, the colossal Biosciences team (the same group working on mammoth de-extinction) announced partnership with researchers at the Natural History Museum in London to sequence the complete dodo genome. High-quality dodo DNA has been extracted from subfossil bones. The plan would involve editing the genome of the Nicobar pigeon (the dodo's closest living relative) to reintroduce dodo-like traits. The ethical and ecological challenges are significant — modern Mauritius has a completely altered ecosystem from the dodo's time — but the genomic work is real and progressing.",
+    "gaiaComment": "The species we most regret losing may be the first one we bring back. Science as apology.",
+    "visualDescription": "A dodo emerging from a glowing DNA helix strand alongside a Nicobar pigeon, futuristic laboratory light blending with tropical forest behind",
+    "quizQuestion": "What makes dodo de-extinction a scientific possibility?",
+    "correctAnswer": "Scientists have extracted high-quality DNA from subfossil bones and identified the Nicobar pigeon as the closest living relative for genome editing",
+    "distractors": [
+      "Because dodo eggs preserved in amber have been found in Mauritius",
+      "Because a small population was discovered living in remote Mauritius forests in 2018",
+      "Because the dodo genome is identical to common pigeons — no editing needed",
+      "Because a frozen dodo specimen was found perfectly preserved in Antarctica",
+      "Because dodo DNA has been fully reconstructed from ancient paintings alone",
+      "Because laboratory cloning of dodo cells was already completed in 2020",
+      "Because dodo de-extinction was successfully completed in 2024",
+      "Because dodo genes were found preserved inside a museum taxidermy specimen"
+    ],
+    "variants": [
+      {
+        "question": "What approach are scientists taking toward potential dodo de-extinction?",
+        "type": "forward",
+        "correctAnswer": "Extracting DNA from subfossil bones and editing the Nicobar pigeon genome",
+        "distractors": ["Cloning from perfectly preserved frozen specimens", "Reconstructing the genome from ancient artwork", "Breeding common pigeons to resemble dodos"]
+      },
+      {
+        "question": "Colossal Biosciences partnered with the Natural History Museum to work on de-extinction of which famous bird?",
+        "type": "reverse",
+        "correctAnswer": "The dodo",
+        "distractors": ["The passenger pigeon", "The great auk", "The moa"]
+      },
+      {
+        "question": "Which is NOT a real challenge facing dodo de-extinction?",
+        "type": "negative",
+        "correctAnswer": "No dodo DNA has ever been successfully extracted",
+        "distractors": ["Modern Mauritius has a completely altered ecosystem", "Ethical concerns about bringing back extinct species", "The Nicobar pigeon genome would need extensive editing"]
+      },
+      {
+        "question": "The de-extinction plan involves editing the genome of the _____, the dodo's closest living relative.",
+        "type": "fill_blank",
+        "correctAnswer": "Nicobar pigeon",
+        "distractors": ["Rock pigeon", "Victoria crowned pigeon", "Common turtledove"]
+      }
+    ],
+    "category": [
+      "Life Sciences",
+      "Technology"
+    ],
+    "rarity": "rare",
+    "difficulty": 2,
+    "funScore": 10,
+    "ageRating": "kid"
+  }
+]
