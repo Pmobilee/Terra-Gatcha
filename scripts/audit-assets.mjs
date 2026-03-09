@@ -42,6 +42,8 @@ function getAllSourceFiles(baseDir) {
   const entries = readdirSync(baseDir, { recursive: true })
   for (const entry of entries) {
     const e = typeof entry === 'string' ? entry : entry.toString()
+    // Ignore archived mining code from legacy versions during launch-readiness audits.
+    if (e.includes('_archived-mining/')) continue
     if (e.endsWith('.ts') || e.endsWith('.svelte')) {
       files.push(join(baseDir, e))
     }

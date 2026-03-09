@@ -5,7 +5,6 @@
  */
 
 import type { FastifyInstance } from 'fastify'
-import type { SocketStream } from '@fastify/websocket'
 import {
   getRoom,
   broadcast,
@@ -31,8 +30,7 @@ const activeSyncLoops = new Set<string>()
  * GET /coop/ws/:roomId?playerId=X upgrades to a WebSocket connection.
  */
 export async function coopWsRoutes(app: FastifyInstance): Promise<void> {
-  app.get('/coop/ws/:roomId', { websocket: true }, (connection: SocketStream, req) => {
-    const ws = connection.socket   // underlying ws.WebSocket instance
+  app.get('/coop/ws/:roomId', { websocket: true }, (ws, req) => {
     const { roomId } = req.params as { roomId: string }
     const playerId = (req.query as { playerId?: string }).playerId ?? ''
 
@@ -76,7 +74,7 @@ export async function coopWsRoutes(app: FastifyInstance): Promise<void> {
 
     // Heartbeat.
     const pingInterval = setInterval(() => {
-      if (ws.readyState === ws.OPEN) {
+      if (ws.readyState === 1) {
         ws.ping()
       }
     }, HEARTBEAT_INTERVAL_MS)
