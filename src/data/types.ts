@@ -82,6 +82,17 @@ export interface PendingArtifact {
   minedAt: number
 }
 
+/** Valid question variant types */
+export type VariantType = 'forward' | 'reverse' | 'negative' | 'context' | 'fill_blank' | 'true_false'
+
+/** An alternative question phrasing for a fact */
+export interface QuestionVariant {
+  question: string
+  type: VariantType
+  correctAnswer: string
+  distractors: string[]       // 2-3 plausible wrong answers
+}
+
 /** A single learnable fact/word in the database */
 export interface Fact {
   id: string
@@ -97,6 +108,7 @@ export interface Fact {
   quizQuestion: string
   correctAnswer: string
   distractors: string[]       // 8-25 plausible wrong answers
+  variants?: QuestionVariant[] // Alternative question phrasings for variety
 
   // Classification
   category: string[]          // Hierarchical: ["Language", "Japanese", "N3"]
