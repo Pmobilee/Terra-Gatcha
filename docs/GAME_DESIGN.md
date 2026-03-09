@@ -160,7 +160,8 @@ Domains provide: content organization, visual identity (color tint), Knowledge L
 **Original domains (content exists):**
 - General Knowledge — broad trivia, cross-domain surprising facts
 - Natural Sciences — biology, chemistry, physics, earth science
-- Geography — countries, capitals, landmarks, flags, demographics
+- Geography — countries, capitals, landmarks, demographics
+  - **Flags of the World** — Geography sub-domain: 200+ sovereign state flags as pixel art quiz cards
 - History — events, figures, dates, civilizations, wars, inventions
 
 **New knowledge domains (AR-16):**
@@ -176,6 +177,8 @@ Domains provide: content organization, visual identity (color tint), Knowledge L
 - Spanish (CEFR A1–C2)
 - French (CEFR A1–C2)
 - German (CEFR A1–C2)
+- Dutch (CEFR A1–C2)
+- Czech (CEFR A1–C2)
 - Korean (TOPIK 1–6)
 - Mandarin Chinese (HSK 1–6)
 
@@ -904,6 +907,8 @@ Vocabulary card visuals MUST be culturally themed to the target language. This c
 | Spanish (es) | Mediterranean / Latin American | Terracotta plazas, flamenco stages, agave fields, Aztec temples, jungle cenotes, haciendas | Warm sunset tones, vibrant reds/oranges/golds |
 | French (fr) | Belle Époque / Provincial France | Cobblestone cafés, lavender fields, cathedral stained glass, misty bridges, vineyard hillsides | Soft pastels, romantic lighting, art nouveau touches |
 | German (de) | Central European / Gothic | Half-timbered towns, Black Forest paths, clockwork workshops, medieval guild halls, Alpine passes | Dark greens, amber, mechanical/precise composition |
+| Dutch (nl) | Dutch Golden Age / Lowlands | Windmills, tulip fields, canal houses, Delft blue pottery, trading ships, dike landscapes | Cool blues, warm oranges, clean geometric composition |
+| Czech (cs) | Bohemian / Central European | Prague castle spires, medieval clock towers, forest trails through Bohemian hills, stained glass windows, cobblestone lanes, beer hall scenes | Rich amber, deep forest green, gothic architectural details |
 | Korean (ko) | Joseon Dynasty / Modern Seoul | Hanok villages, palace courtyards, mountain temples, neon-lit streets, ceramic workshops | Bold primary colors, clean geometric composition |
 | Mandarin (zh) | Imperial China / Wuxia | Misty mountain peaks, tea houses, silk roads, dragon murals, floating lantern festivals | Ink wash influence, jade/crimson/gold palette |
 
@@ -1143,22 +1148,35 @@ All fact content must come from sources with licenses that permit commercial use
 - GPL-licensed datasets — viral copyleft
 - Unlicensed / unknown — assume all rights reserved
 
-### Primary Data Sources
+### Primary Data Sources (Verified & Commercial-Safe)
 
 | Source | License | Use Case | Domains |
 |--------|---------|----------|---------|
-| Wikidata SPARQL | CC0 | Structured facts (countries, elements, species, etc.) | All knowledge domains |
-| NASA Open APIs | US Gov (PD) | Space imagery, mission data, astronomy facts | Space & Astronomy |
-| OpenStax (CC-BY books) | CC-BY 4.0 | Textbook-quality science, anatomy, history | Sciences, Human Body, History |
-| PubChem (NIH) | CC0 | Chemical compound data | Natural Sciences |
-| GBIF | CC0 | Species occurrence and taxonomy | Animals & Wildlife |
-| USDA FoodData Central | US Gov (PD) | Nutritional data, food composition | Food & World Cuisine |
-| Metropolitan Museum API | CC0 | Artwork metadata, artist information | Art & Architecture |
-| Art Institute of Chicago API | CC0 | Artwork metadata and images | Art & Architecture |
-| World Bank Open Data | CC-BY 4.0 | Demographics, economics | Geography |
-| Smithsonian Open Access | CC0 | 4.7M+ items across all domains | Cross-domain |
-| JMdict/EDRDG | Custom (commercial OK) | Japanese vocabulary, readings, meanings | Japanese |
-| Tatoeba | CC-BY 2.0 | Example sentences per language | All languages |
+| Wikidata SPARQL | CC0 | Universal backbone — structured facts across ALL domains | All 10 |
+| CIA World Factbook (factbook.json) | CC0 | 266 countries × 200 fields | Geography, General Knowledge |
+| Nobel Prize API | CC0 | 660+ prizes, laureates, motivations | General Knowledge, History |
+| NASA Open APIs | US Gov (PD) | APOD, NeoWs, Mars Rover, mission data | Space & Astronomy |
+| NASA Exoplanet Archive | US Gov (PD) | 6,128+ confirmed exoplanets (use selectively) | Space & Astronomy |
+| PubChem (NIH) | US Gov (PD) | 119M compounds — use notable subset only | Natural Sciences |
+| NIST Physical Constants | US Gov (PD) | 350+ fundamental constants | Natural Sciences |
+| Frictionless Periodic Table | CC0 | 118 elements with properties | Natural Sciences |
+| ITIS | US Gov (PD) | 839K taxonomic names — filter to recognizable species | Animals & Wildlife |
+| GBIF | CC0/CC-BY (filter!) | 2.5B+ occurrences — MUST exclude CC-BY-NC (~18%) | Animals & Wildlife |
+| USDA FoodData Central | CC0 | 400K+ foods, 117 nutrients per item | Food, Human Body |
+| Met Museum Open Access | CC0 | 470K+ artworks spanning 5,000 years | Art & Architecture |
+| Art Institute of Chicago | CC0 | 131K+ artworks | Art & Architecture |
+| Rijksmuseum | CC0 | 800K+ objects | Art & Architecture |
+| Getty Vocabularies | ODC-By 1.0 | 77K art concepts, 380K artists, 2.4M places | Art & Architecture |
+| Smithsonian Open Access | CC0 | 5.1M+ items cross-domain | Cross-domain |
+| OpenStax CC-BY textbooks | CC-BY 4.0 | Biology, A&P, Chemistry, Physics, History, Psychology | Sciences, Health, History |
+| World Bank Open Data | CC-BY 4.0 | 16K indicators, 200+ economies | Geography |
+| GeoNames | CC-BY 4.0 | 25M geographical names | Geography |
+| MANTO (Mythlab) | CC-BY 4.0 | 5,400 Greek mythology entities | Mythology |
+| FactGrid Roscher | CC0 | 15K+ mythology entities | Mythology |
+| Leipzig Corpora | CC-BY 4.0 | Frequency-ranked word lists (270+ languages) | Languages (ES/FR/DE/KO) |
+| Tatoeba | CC-BY 2.0 FR | Bilingual sentence pairs | All languages |
+| JMdict/EDRDG | CC-BY-SA 4.0 (commercial OK) | 214K+ Japanese dictionary entries | Japanese |
+| complete-hsk-vocabulary | MIT | HSK 2.0 + 3.0 vocabulary (11K+ words) | Mandarin Chinese |
 
 ### Haiku-Powered Question Generation
 
@@ -1188,6 +1206,20 @@ Wikidata SPARQL query → structured JSON
 
 **Haiku does NOT replace human verification.** Every generated fact enters the pipeline with `verifiedAt: null` and must be reviewed before production. See §27 Content Accuracy.
 
+### Quality Over Volume
+
+Raw source data volumes far exceed what makes good quiz content. Per-domain generation caps prevent flooding the database with obscure facts nobody finds interesting:
+
+- Total target: ~78,000 knowledge facts + ~50,000 vocabulary entries
+- Space: 5K facts (notable objects, missions, astronauts — not all 6,128 exoplanets)
+- Animals: 10K facts (recognizable species with common names — not 839K taxonomic entries)
+- Art: 10K facts (famous works and artists — not 470K anonymous museum records)
+- Each generated fact must score funScore ≥ 4 (on 1-10 scale) or be auto-rejected
+
+### Language Data Gaps
+
+Spanish, French, German, Dutch, Czech, and Korean lack commercially safe bilingual dictionaries (most are CC-BY-SA). The workaround: use Leipzig Corpora frequency lists (CC-BY 4.0) + Haiku-generated translations to create original CC0 bilingual data. Korean is the worst gap and may require commissioned data. See `docs/roadmap/phases/AR-18-VOCABULARY-EXPANSION.md` for full analysis.
+
 ### Wikipedia as Verification Layer
 
 Wikipedia is CC-BY-SA, which creates ShareAlike ambiguity for derivative works. Therefore:
@@ -1195,6 +1227,22 @@ Wikipedia is CC-BY-SA, which creates ShareAlike ambiguity for derivative works. 
 - `sourceName` points to the actual data source (Wikidata, NASA, OpenStax, etc.)
 - Facts are generated from CC0/CC-BY structured data, then accuracy is cross-referenced against Wikipedia
 - This sidesteps ShareAlike entirely while maintaining verification rigor
+
+### Anki Community Decks as Pedagogical Word Lists
+
+For language vocabulary, popular Anki shared decks provide superior word curation compared to raw frequency lists. Decks with tens of thousands of downloads represent years of community refinement on which words matter most for learners.
+
+**Extraction rules (STRICT — legal compliance):**
+- Extract ONLY target-language words from .apkg files
+- Discard ALL English translations, examples, mnemonics, and metadata
+- Haiku generates 100% fresh translations, level assignments, and example sentences
+- Output is original CC0 data — no copyrightable expression is copied
+- Reference decks stored in `data/reference/anki-decks/` and gitignored
+
+**Languages using Anki extraction pipeline:** Korean, Spanish, French, German, Dutch, Czech
+**Languages NOT needing Anki extraction:** Japanese (JMdict), Mandarin (complete-hsk-vocabulary MIT repo)
+
+This specifically solves the Korean vocabulary gap identified in the content source research.
 
 ---
 

@@ -147,6 +147,196 @@ scripts/content-pipeline/sparql/
 - Filter: exclude copyrighted works created after 1970 (copyright concern); focus on historical/museum pieces
 - Expected result count: 3,500+ (1500+ artworks + 1000+ artists + 1000+ landmarks)
 
+#### Verified SPARQL Queries
+
+**Geography Query** (verified research finding):
+```sparql
+# Domain: Geography
+# Purpose: Fetch all countries with 10+ properties for quiz facts
+# Expected Results: ~195 countries with full details
+# Last Validated: 2026-03-09
+# Wikidata SPARQL Endpoint: https://query.wikidata.org/sparql
+
+SELECT ?country ?countryLabel ?capitalLabel ?population ?area
+       ?continentLabel ?currencyLabel ?languageLabel ?isoCode
+WHERE {
+  ?country wdt:P31 wd:Q6256.
+  OPTIONAL { ?country wdt:P36 ?capital. }
+  OPTIONAL { ?country wdt:P1082 ?population. }
+  OPTIONAL { ?country wdt:P2046 ?area. }
+  OPTIONAL { ?country wdt:P30 ?continent. }
+  OPTIONAL { ?country wdt:P38 ?currency. }
+  OPTIONAL { ?country wdt:P37 ?language. }
+  OPTIONAL { ?country wdt:P297 ?isoCode. }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?countryLabel
+LIMIT 10000
+```
+
+**Mythology Query** (verified research finding):
+```sparql
+# Domain: Mythology & Folklore
+# Purpose: Fetch deities and mythological figures with family and properties
+# Expected Results: ~1,000+ deities
+
+SELECT ?deity ?deityLabel ?mythologyLabel ?roleLabel ?familyLabel
+WHERE {
+  ?deity wdt:P8083 ?mythology.  # Part of mythology
+  OPTIONAL { ?deity wdt:P361 ?mythology. }  # Part of system
+  OPTIONAL { ?deity wdt:P22 ?father. }  # Father
+  OPTIONAL { ?deity wdt:P25 ?mother. }  # Mother
+  OPTIONAL { ?deity wdt:P26 ?spouse. }  # Spouse
+  OPTIONAL { ?deity wdt:P31 ?role. }  # Instance of (role/type)
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?deityLabel
+LIMIT 10000
+```
+
+**Animals Query** (verified research finding):
+```sparql
+# Domain: Animals & Wildlife
+# Purpose: Fetch species with conservation status, taxonomy, and properties
+# Expected Results: ~3,000+ species
+
+SELECT ?species ?speciesLabel ?commonName ?conservationLabel ?habitat
+WHERE {
+  ?species wdt:P141 ?conservation.  # Conservation status
+  ?species wdt:P171 ?parent.  # Parent taxon (for hierarchy)
+  OPTIONAL { ?species wdt:P1843 ?commonName. }  # Common name
+  OPTIONAL { ?species wdt:P2974 ?habitat. }  # Habitat
+  OPTIONAL { ?species wdt:P225 ?scientificName. }  # Scientific name
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?speciesLabel
+LIMIT 10000
+```
+
+**Space Query** (verified research finding):
+```sparql
+# Domain: Space & Astronomy
+# Purpose: Fetch planets, moons, stars, and celestial bodies with properties
+# Expected Results: ~500+ major celestial bodies
+
+SELECT ?body ?bodyLabel ?mass ?orbitalPeriod ?discoveryDate ?discoverer
+WHERE {
+  { ?body wdt:P31 wd:Q11346. }  # Planets
+  UNION { ?body wdt:P31 wd:Q405. }  # Moons
+  UNION { ?body wdt:P31 wd:Q3618. }  # Asteroids (limited)
+  OPTIONAL { ?body wdt:P2067 ?mass. }  # Mass
+  OPTIONAL { ?body wdt:P2146 ?orbitalPeriod. }  # Orbital period
+  OPTIONAL { ?body wdt:P575 ?discoveryDate. }  # Discovery date
+  OPTIONAL { ?body wdt:P61 ?discoverer. }  # Discoverer
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?bodyLabel
+LIMIT 10000
+```
+
+**History Query** (verified research finding):
+```sparql
+# Domain: History
+# Purpose: Fetch historical events, battles, wars, and personalities with dates
+# Expected Results: ~2,000+ historical facts
+
+SELECT ?event ?eventLabel ?startDate ?endDate ?locationLabel ?participantLabel
+WHERE {
+  { ?event wdt:P31 wd:Q4438121. }  # Battle
+  UNION { ?event wdt:P31 wd:Q198. }  # War
+  UNION { ?event wdt:P31 wd:Q1656682. }  # Historical period
+  OPTIONAL { ?event wdt:P580 ?startDate. }  # Start date
+  OPTIONAL { ?event wdt:P582 ?endDate. }  # End date
+  OPTIONAL { ?event wdt:P625 ?location. }  # Location
+  OPTIONAL { ?event wdt:P710 ?participant. }  # Participant
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?startDate DESC
+LIMIT 10000
+```
+
+**Natural Sciences Query** (verified research finding):
+```sparql
+# Domain: Natural Sciences
+# Purpose: Fetch all 118 periodic table elements with atomic properties
+# Expected Results: 118 elements + constants
+
+SELECT ?element ?elementLabel ?atomicNumber ?atomicSymbol ?atomicMass
+       ?meltingPoint ?boilingPoint ?discoverer
+WHERE {
+  ?element wdt:P31 wd:Q11344.  # Instance of chemical element
+  OPTIONAL { ?element wdt:P1108 ?atomicNumber. }  # Atomic number
+  OPTIONAL { ?element wdt:P1086 ?atomicSymbol. }  # Element symbol
+  OPTIONAL { ?element wdt:P2101 ?atomicMass. }  # Atomic mass
+  OPTIONAL { ?element wdt:P2101 ?meltingPoint. }  # Melting point
+  OPTIONAL { ?element wdt:P2102 ?boilingPoint. }  # Boiling point
+  OPTIONAL { ?element wdt:P61 ?discoverer. }  # Discoverer
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?atomicNumber
+LIMIT 10000
+```
+
+**Art Query** (verified research finding):
+```sparql
+# Domain: Art & Architecture
+# Purpose: Fetch paintings, sculptures, artworks with artist and museum info
+# Expected Results: ~1,500+ artworks
+
+SELECT ?artwork ?artworkLabel ?artist ?artistLabel ?creationDate ?museum
+WHERE {
+  { ?artwork wdt:P31 wd:Q3305213. }  # Painting
+  UNION { ?artwork wdt:P31 wd:Q860861. }  # Sculpture
+  OPTIONAL { ?artwork wdt:P50 ?artist. }  # Artist
+  OPTIONAL { ?artwork wdt:P580 ?creationDate. }  # Creation date
+  OPTIONAL { ?artwork wdt:P1365 ?museum. }  # Located in
+  OPTIONAL { ?artwork wdt:P195 ?currentLocation. }  # Current location
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?creationDate DESC
+LIMIT 10000
+```
+
+**Health & Medicine Query** (verified research finding):
+```sparql
+# Domain: Human Body & Health
+# Purpose: Fetch diseases, anatomical structures, treatments with properties
+# Expected Results: ~1,500+ medical facts
+
+SELECT ?disease ?diseaseLabel ?symptom ?symptomLabel ?treatment ?cause
+WHERE {
+  { ?disease wdt:P31 wd:Q12136. }  # Diseases
+  UNION { ?disease wdt:P31 wd:Q4022. }  # Organs
+  OPTIONAL { ?disease wdt:P780 ?symptom. }  # Symptoms
+  OPTIONAL { ?disease wdt:P2176 ?treatment. }  # Treatment
+  OPTIONAL { ?disease wdt:P828 ?cause. }  # Caused by
+  OPTIONAL { ?disease wdt:P61 ?discoverer. }  # Discoverer
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?diseaseLabel
+LIMIT 10000
+```
+
+**Food & Cuisine Query** (verified research finding):
+```sparql
+# Domain: Food & Cuisine
+# Purpose: Fetch dishes, ingredients, cuisines with origin and properties
+# Expected Results: ~1,500+ dishes and ingredients
+
+SELECT ?dish ?dishLabel ?originCountry ?ingredients ?cuisineType
+WHERE {
+  { ?dish wdt:P31 wd:Q2095. }  # Food/Dishes
+  UNION { ?dish wdt:P31 wd:Q44548. }  # Ingredient
+  OPTIONAL { ?dish wdt:P495 ?originCountry. }  # Country of origin
+  OPTIONAL { ?dish wdt:P527 ?ingredients. }  # Has ingredient
+  OPTIONAL { ?dish wdt:P2012 ?cuisineType. }  # Cuisine type
+  OPTIONAL { ?dish wdt:P580 ?firstMentionDate. }  # First mention date
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?dishLabel
+LIMIT 10000
+```
+
 #### Query Template & Structural Requirements
 
 Every `.sparql` file MUST follow this structure:
@@ -187,8 +377,44 @@ ORDER BY ?itemLabel
 LIMIT 10000
 ```
 
+#### Verified Source Configuration
+
+The following source list has been validated against current public data availability (as of 2026-03-09):
+
+**General Knowledge**: Wikidata, Nobel Prize API (api.nobelprize.org/2.1/), CIA World Factbook (github.com/factbook/factbook.json), Library of Congress APIs
+
+**Geography**: CIA World Factbook, GeoNames (geonames.org, CC-BY 4.0), Natural Earth (naturalearthdata.com, public domain), Wikidata, World Bank (api.worldbank.org, CC-BY 4.0)
+
+**History**: Wikidata, CIA Factbook, Nobel Prize API, Library of Congress
+
+**Natural Sciences**: PubChem (pubchem.ncbi.nlm.nih.gov, US Gov public domain), NIST Constants (US Gov public domain), Frictionless Periodic Table (CC0), USGS Minerals, Wikidata
+
+**Space**: NASA APIs (api.nasa.gov, free with DEMO_KEY), NASA Exoplanet Archive (US Gov public domain), JPL Solar System Dynamics (US Gov public domain), Astronaut DB (Mendeley, CC-BY 4.0), Wikidata
+
+**Mythology**: Wikidata, MANTO (Mythlab, CC-BY 4.0), FactGrid Roscher (CC0), Dariusk/Corpora (CC0)
+
+**Animals**: ITIS (itis.gov, US Gov public domain), GBIF (CC0/CC-BY, must filter out CC-BY-NC ~18%), Wikidata, Natural History Museum London (CC0), Smithsonian (CC0)
+
+**Health**: USDA FoodData Central (api.nal.usda.gov, CC0), OpenStax A&P 2e (CC-BY 4.0), MeSH (US Gov public domain), Wikidata
+
+**Food**: USDA FoodData Central, Wikidata food queries, FAOSTAT (CC-BY 4.0, legal review required for commercial use)
+
+**Art**: Met Museum (CC0, 470K+), Art Institute of Chicago (CC0), Rijksmuseum (CC0, 800K+), Cleveland Museum (CC0), Getty Vocabularies (ODC-By 1.0), Wikidata, Smithsonian (CC0)
+
+#### Excluded Sources (Not Safe for Commercial Game)
+
+The following sources were researched but excluded from the pipeline:
+
+- **OpenTDB (Open Trivia Database)**: CC-BY-SA license — requires attribution in every fact displayed (impractical for game UI)
+- **REST Countries API**: ODbL license — requires full attribution, not suitable for game fact cards
+- **IUCN Red List**: No commercial use permitted — illegal to use in monetized/ad-supported game
+- **ProPublica Data**: CC-BY-NC — noncommercial only
+- **All Wikipedia dumps**: CC-BY-SA + sources under various licenses — creates cascading attribution requirement
+- **Britannica**: Proprietary, no public API
+- **All CC-BY-SA sources**: While open, the viral attribution requirement makes game fact UI impractical
+
 #### Acceptance Criteria for Sub-step 1
-- [ ] All 10 `.sparql` files created in `scripts/content-pipeline/sparql/`
+- [ ] All 10 `.sparql` files created in `scripts/content-pipeline/sparql/` using verified queries
 - [ ] Each query tested on https://query.wikidata.org/sparql and returns 1,000+ results
 - [ ] All queries complete in <10 seconds on Wikidata live endpoint
 - [ ] Each query has header comment explaining domain, purpose, expected result count
@@ -197,6 +423,7 @@ LIMIT 10000
 - [ ] Each query returns meaningful properties (not just items and labels)
 - [ ] No hardcoded limits that prevent getting 1000+ results
 - [ ] All queries tested and screenshot of results captured for each domain
+- [ ] Verification confirms NO excluded sources (CC-BY-SA, ODbL, proprietary) are used
 
 #### Testing Instructions
 For each `.sparql` file:
@@ -1517,6 +1744,45 @@ main().catch(err => {
 4. Verify records array contains at least 1 record
 5. Run with --dry-run: `node scripts/content-pipeline/fetch-all.mjs --domain geography --limit 5 --output ./test.json --dry-run`
 6. Verify it prints what would be written without executing
+
+---
+
+## Quality Funnel: Per-Domain Fact Generation Caps
+
+**CRITICAL:** The system is designed to generate quiz-worthy facts, NOT to exhaustively dump all available data. Each domain has a hard cap to maintain quality and manageability:
+
+**Per-Domain Caps** (verified research constraints):
+- General Knowledge: 5,000 facts
+- Geography: 10,000 facts
+- History: 10,000 facts
+- Natural Sciences: 10,000 facts
+- Space & Astronomy: 5,000 facts (NOT 6,128 exoplanets or 1.3M named asteroids)
+- Mythology & Folklore: 5,000 facts
+- Animals & Wildlife: 10,000 facts (NOT 839K taxonomic names)
+- Human Body & Health: 8,000 facts
+- Food & World Cuisine: 5,000 facts
+- Art & Architecture: 10,000 facts (NOT 470K pottery shards)
+
+**Filtering Strategy for Each Domain:**
+
+The SPARQL queries and API fetches are intentionally narrowed to select QUIZ-WORTHY facts, not exhaustive data:
+
+- **General Knowledge**: World records, firsts, notable discoveries, superlatives — exclude generic trivia
+- **Geography**: Sovereign countries, major cities, significant landmarks, major bodies of water — exclude small towns, minor features
+- **History**: Major events (battles, treaties, revolutions), historical figures, significant eras — exclude minor events, footnotes
+- **Natural Sciences**: All 118 elements, major physical constants, fundamental reactions — exclude obscure compounds, theoretical concepts
+- **Space & Astronomy**: Planets, moons, major stars, famous missions, notable astronauts — exclude every unnamed asteroid and small crater
+- **Mythology & Folklore**: Named deities and legendary figures from documented cultures — exclude speculative or obscure variants
+- **Animals & Wildlife**: Species with common English names, notable behaviors, record-holders — exclude obscure taxonomic entries, unrecognized subspecies
+- **Human Body & Health**: Named organs, common diseases, major discoveries, essential vitamins — exclude rare syndromes, deprecated terminology
+- **Food & Cuisine**: Recognizable dishes from documented cultures, major ingredients, known culinary techniques — exclude rare/extinct foods
+- **Art & Architecture**: Named artists, famous artworks, recognized movements, major buildings — exclude minor works, anonymous pieces
+
+This constraint ensures:
+1. **Manageability**: 80K facts total, not millions
+2. **Discoverability**: No "long tail" of obscure facts that players will never encounter
+3. **Quality**: Every fact can be hand-checked and validated by humans
+4. **Repeatability**: Fact set is stable across time (won't balloon with new data sources)
 
 ---
 

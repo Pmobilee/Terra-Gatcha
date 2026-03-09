@@ -1313,6 +1313,138 @@ In components that display domains, reference the icon file or use emoji:
 
 ---
 
+### Sub-step 9: Add Flags of the World Quiz Pack
+
+#### Objective
+Add a "Flags of the World" quiz pack as a sub-domain of Geography. This is extremely popular with quiz game players and generates high engagement.
+
+#### Implementation Details
+
+**9.1 — Data Source: Wikidata SPARQL Query**
+
+Use Wikidata SPARQL endpoint (CC0 licensed) to fetch all sovereign states with flag metadata:
+
+```sparql
+SELECT ?country ?countryLabel ?flagImage ?isoCode ?continentLabel ?capitalLabel ?population
+WHERE {
+  ?country wdt:P31 wd:Q6256.
+  ?country wdt:P41 ?flagImage.
+  OPTIONAL { ?country wdt:P297 ?isoCode. }
+  OPTIONAL { ?country wdt:P30 ?continent. }
+  OPTIONAL { ?country wdt:P36 ?capital. }
+  OPTIONAL { ?country wdt:P1082 ?population. }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+```
+
+Expected results: 190+ sovereign states with flag images, ISO codes, and metadata.
+
+**9.2 — Card Generation: Multiple Quiz Variants**
+
+Each country becomes a Fact with 2-4 quiz variants:
+
+- **Variant 1 (Visual → Name):** Show flag pixel art → "Which country's flag is this?" → 4 country options
+- **Variant 2 (Name → Description):** "What colors appear on the flag of [country]?" → color options
+- **Variant 3 (Name → Visual):** "Which flag belongs to [country]?" → 4 flag pixel art options (image quiz)
+- **Variant 4 (Trivia):** "Which country has a [unique feature] on its flag?" (e.g., "a dragon", "a maple leaf")
+
+Store in `src/data/seed/facts-flags.json` using the standard Fact schema.
+
+**9.3 — Pixel Art Generation**
+
+Generate 64x64 pixel art versions of ~200 national flags using ComfyUI SDXL + pixel art LoRA:
+
+- Flags are government symbols and generally NOT copyrightable
+- Our pixel art renditions are original creative works
+- Store at `public/assets/flags/` with naming: `flag-{iso-code}.png`
+- Simple geometric designs work well as pixel art
+- Target: complete pixel art for at least 50 countries (top priority set) during this phase
+
+**9.4 — Difficulty Mapping**
+
+Assign difficulty levels based on country familiarity:
+
+- **Easy (1):** Major countries everyone knows (USA, UK, Japan, France, Brazil, Germany, Canada, Australia, Italy, etc.) — ~30 countries
+- **Medium (2-3):** Mid-tier countries (Portugal, Thailand, Egypt, Greece, Netherlands, India, Mexico, etc.) — ~100 countries
+- **Hard (4-5):** Small nations, similar-looking flags (Chad/Romania, Monaco/Indonesia, etc.) — ~60 countries
+
+**9.5 — Category Assignment**
+
+Each flag fact must have:
+
+```typescript
+{
+  "category": ["Geography", "Flags"],
+  "domain": "geography",
+  "subdomain": "flags",
+  ...otherFields
+}
+```
+
+These will show as a filterable sub-category in the Knowledge Library: Geography > Flags.
+
+**9.6 — Content Pipeline**
+
+Create a content pipeline script to automate SPARQL query, image download, and fact generation:
+
+- NEW: `scripts/content-pipeline/fetch/fetch-flags.mjs` — Wikidata SPARQL query + flag image download
+- Script should output `src/data/seed/facts-flags.json` in standard Fact schema
+- Include error handling for missing images or invalid ISO codes
+- Log summary: total countries fetched, images downloaded, facts generated
+
+#### Files to Create/Modify
+
+**NEW:**
+- `scripts/content-pipeline/fetch/fetch-flags.mjs` — Wikidata SPARQL query and flag image download pipeline
+- `src/data/seed/facts-flags.json` — Generated flag quiz facts in Fact schema
+- `public/assets/flags/` — Directory for pixel art flag sprites (at least 50 countries)
+
+**EDIT:**
+- `src/data/domainMetadata.ts` — Add 'flags' as Geography subdomain
+- `docs/GAME_DESIGN.md` — Document Flags of the World as Geography sub-domain
+
+#### Acceptance Criteria for Sub-step 9
+
+- [ ] SPARQL query returns 190+ sovereign states with flag images
+- [ ] `scripts/content-pipeline/fetch/fetch-flags.mjs` runs without errors and generates `facts-flags.json`
+- [ ] Each country has 2-4 quiz variants in the facts file
+- [ ] Difficulty distribution: ~30 easy, ~100 medium, ~60 hard
+- [ ] `src/data/domainMetadata.ts` includes 'flags' as Geography subdomain with metadata
+- [ ] Pixel art generated for at least 50 countries (stored at `public/assets/flags/flag-{iso}.png`)
+- [ ] All flags are 64x64 PNG with transparent background
+- [ ] Flags filterable in Knowledge Library under Geography > Flags (visual test)
+- [ ] Fact schema validation: `npx vitest run` passes for fact structure tests
+- [ ] No console errors when loading flag facts in game
+
+#### Testing Instructions
+
+1. Run the fetch script:
+   ```bash
+   node scripts/content-pipeline/fetch/fetch-flags.mjs
+   ```
+   Verify: `src/data/seed/facts-flags.json` is created with 190+ facts
+
+2. Validate fact structure:
+   ```bash
+   npx vitest run -- facts-flags
+   ```
+   Verify: All facts have required fields (question, answers, category, domain, subdomain, difficulty)
+
+3. Visual test in-game:
+   ```bash
+   npm run dev
+   # Navigate to Knowledge Library
+   # Filter by Geography > Flags
+   # Verify flags appear with questions and pixel art
+   ```
+
+4. Verify pixel art:
+   - Check `public/assets/flags/` directory for at least 50 `.png` files
+   - Spot-check: `flag-us.png`, `flag-gb.png`, `flag-jp.png` exist and render correctly
+   - All PNGs are 64x64 with transparent background
+
+---
+
 ## Acceptance Criteria (Overall Phase)
 
 All sub-steps must be completed and verified:
@@ -1325,6 +1457,7 @@ All sub-steps must be completed and verified:
 - [ ] **Sub-step 6:** Seed facts reclassified, no old category names remain
 - [ ] **Sub-step 7:** Run pool builder handles small/empty domains gracefully
 - [ ] **Sub-step 8:** Domain icons created and rendering
+- [ ] **Sub-step 9:** Flags of the World quiz pack content pipeline and facts generated (190+ countries, 50+ pixel art sprites)
 
 ---
 
@@ -1356,11 +1489,15 @@ All sub-steps must be completed and verified:
 - Domain selection UI component(s) in `src/ui/`
 - Knowledge Library/fact browser component(s) in `src/ui/`
 - Run pool builder service in `src/services/`
-- `docs/GAME_DESIGN.md` — domain list and descriptions
+- `src/data/domainMetadata.ts` — add 'flags' as Geography subdomain (Sub-step 9)
+- `docs/GAME_DESIGN.md` — domain list and descriptions, add Flags of the World (Sub-step 9)
 
 **NEW:**
 - `src/data/domainMetadata.ts` — metadata registry
 - `src/assets/icons/domains/` — 11 SVG icon files (or use emoji)
+- `scripts/content-pipeline/fetch/fetch-flags.mjs` — Wikidata SPARQL query and flag image download (Sub-step 9)
+- `src/data/seed/facts-flags.json` — Flags of the World quiz facts (Sub-step 9)
+- `public/assets/flags/` — Pixel art flag sprites (at least 50 countries, Sub-step 9)
 - (Optional) Test files verifying domain logic
 
 **NOT MODIFIED:**

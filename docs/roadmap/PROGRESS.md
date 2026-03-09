@@ -242,6 +242,7 @@ Depends on: None — can start immediately. Estimated: Medium. No API keys requi
 - [ ] Update Knowledge Library filters for new domains
 - [ ] Add domain icons/sprites for new categories
 - [ ] Update age rating logic — ensure each new domain has appropriate content flags
+- [ ] Flags of the World quiz pack: Wikidata SPARQL for 200+ sovereign state flags, pixel art generation, Geography sub-domain
 
 Depends on: None — can start immediately. Estimated: Medium. No API keys required.
 → [Spec](phases/AR-16-DOMAIN-EXPANSION.md)
@@ -267,15 +268,17 @@ Depends on: AR-15 (needs source data). Estimated: Large. **REQUIRES Anthropic AP
 
 ---
 
-### AR-18: Vocabulary Expansion — 6 Languages
-**Import and process vocabulary data for all 6 target languages from JMdict, CEFR frequency lists, and open lexical databases.**
+### AR-18: Vocabulary Expansion — 8 Languages
+**Import and process vocabulary data for all 8 target languages from JMdict, CEFR frequency lists, and open lexical databases.**
 
 - [ ] JMdict full import: complete JLPT N5–N1 vocabulary (currently only N3 exists)
-- [ ] CEFR vocabulary import scripts for: Spanish (A1–C2), French (A1–C2), German (A1–C2)
-- [ ] TOPIK vocabulary import for Korean (levels 1–6)
+- [ ] CEFR vocabulary import scripts for: Spanish (A1–C2), French (A1–C2), German (A1–C2), Dutch (A1–C2), Czech (A1–C2)
+- [ ] Korean vocabulary via Anki extraction + Haiku enrichment (solves Korean data gap)
 - [ ] HSK vocabulary import for Mandarin Chinese (levels 1–6)
 - [ ] Per-language schema extensions (reading field, romanization, example sentences)
 - [ ] Language-themed visual description generation using cultural themes from GAME_DESIGN.md §22
+- [ ] Anki deck word list extraction: parse .apkg files for Korean/Spanish/French/German/Dutch/Czech, extract target-language words only
+- [ ] Haiku enrichment pipeline: generate fresh translations + CEFR/TOPIK levels from extracted word lists (creates CC0 data)
 - [ ] Tatoeba example sentence matching: link sentences to vocabulary entries
 - [ ] Difficulty mapping: JLPT/CEFR/HSK/TOPIK level → game difficulty (1–5)
 - [ ] Language selection UI updates (support 6 languages in onboarding + settings)

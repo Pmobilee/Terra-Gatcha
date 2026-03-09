@@ -448,11 +448,50 @@ Visual themes: paintings, sculptures, buildings, architecture styles, artist stu
 
 ---
 
+### 3. Quality Funnel for Batch Processor
+
+**CRITICAL QUALITY GATES** (verified research findings):
+
+The batch processor MUST implement these quality filters to prevent low-quality facts from entering the game:
+
+**Gate 1: Interestingness Filter**
+- Haiku rates each generated fact on a `funScore` (1-10)
+- Facts scoring below 4 are auto-rejected and logged
+- Target average funScore: 6.5-7.0 across all domains
+- Rejects typically indicate: generic facts, obvious trivia, no "wow" factor
+
+**Gate 2: Recognizability Filter**
+- For animals, art, space domains: subject must have a common English name
+- If the entity is obscure beyond specialist knowledge (e.g., unnamed crater, extinct dialect), SKIP it
+- Example: "Crater Apenninus-4729" → REJECT; "Crater Tycho" → ACCEPT
+- Example: "Rare fern species Polystichum subsp. variant-47" → REJECT; "Fern Bracken" → ACCEPT
+
+**Gate 3: Duplicate Concept Filter**
+- Do NOT generate 50 questions about different paintings by the same artist
+- Hard caps per entity:
+  - Artists: max 3-5 facts per artist
+  - Historical figures: max 3-5 facts per person
+  - Species genus: max 1-2 facts per genus
+- Example: Da Vinci gets 5 facts total; Monet gets 5; not 50 paintings each
+
+**Gate 4: Domain Generation Caps** (enforced at batch level)
+- Stop generation when domain cap is reached (see AR-15 for caps)
+- General Knowledge: 5,000 max
+- Geography: 10,000 max
+- ... (see AR-15 for full list)
+- Enforce in batch processor: if cap reached, exit loop and report "Domain cap reached"
+
+**Gate 5: Difficulty Distribution Enforcement**
+- Target 20% of facts at each difficulty level (1-5)
+- Reject batches where any single difficulty level exceeds 40% of facts
+- Example: If batch is 60% difficulty 1, too easy → FLAG and suggest regeneration
+- Rebalancing strategy: regenerate low-difficulty batches with harder prompts
+
 ### 3. Batch Processor Script
 
 **File(s)**: `scripts/content-pipeline/generate/batch-generate.mjs`
 
-**Objective**: Read raw source data, invoke Haiku client for each record, validate outputs, write results to file, with support for progress tracking, resumable runs, and error recovery.
+**Objective**: Read raw source data, invoke Haiku client for each record, validate outputs against quality gates, write results to file, with support for progress tracking, resumable runs, and error recovery.
 
 **CLI Interface**:
 
@@ -999,6 +1038,84 @@ node sample.mjs --domain geography --review
   - `HAIKU_RATE_LIMIT` — optional (default: 50 req/min)
   - `HAIKU_RETRIES` — optional (default: 3)
 - **Disk space**: Plan for ~1GB of generated JSONL files for 100K+ facts
+
+---
+
+## European Language Vocabulary Generation
+
+**IMPORTANT NOTE**: AR-17's Haiku fact generation engine will ALSO be used to generate translations and CEFR levels for European language vocabulary. This is a secondary but critical use case.
+
+### Bilingual Vocabulary Pipeline
+
+AR-17's batch processor can be repurposed for vocabulary translation:
+
+**Input**: Leipzig Corpora frequency list (CC-BY 4.0)
+- Available for: Spanish, French, German, Portuguese
+- Top 10,000 words per language are freely available
+- Source: wortschatz.uni-leipzig.de
+
+**Generation Process**:
+1. Load Leipzig top-10K words for target language
+2. For each word, prompt Haiku:
+   ```
+   Provide:
+   1. English translation
+   2. Part of speech (noun/verb/adjective/etc.)
+   3. CEFR level (A1-C2)
+
+   Format as JSON: { word, translation, partOfSpeech, cefr }
+   ```
+3. Validate output (required fields, valid CEFR level)
+4. Output is ORIGINAL content (CC0) owned by the game, not derivative
+
+**Critical Advantage**: This approach is commercially safe because:
+- Input (Leipzig list) is CC-BY 4.0
+- Haiku transformation creates ORIGINAL work (our copyright)
+- We are NOT republishing copyrighted bilingual dictionaries
+- Similar approach used by language learning apps (Duolingo, Babbel, etc.)
+
+**Language Scope** (for AR-17 implementation):
+- Spanish: ~10,000 vocabulary items
+- French: ~10,000 vocabulary items
+- German: ~10,000 vocabulary items
+- Portuguese: ~5,000 vocabulary items (lower priority)
+
+**Generic Implementation**: Workers should build the Haiku translation pipeline to be GENERIC (not language-specific), so it works for:
+- Any language with a Leipzig Corpora list
+- Any language with a frequency-ordered word list
+- Future expansion to other languages (Japanese, Korean, Mandarin, etc.)
+
+### Korean Vocabulary Gap (Critical Note)
+
+Korean is a priority language for the game but has a critical licensing gap:
+
+**Options** (in priority order):
+
+1. **Legal Review of TOPIK Vocabulary** (~5,750 words)
+   - TOPIK (Test of Proficiency in Korean) publishes official vocabulary lists
+   - Maintained by Korean government (NIKL — National Institute of Korean Language)
+   - Licensing status unclear; needs legal review before use
+   - If approved: perfect vocabulary set, frequency-ordered by proficiency level
+
+2. **Commission Original Korean-English Word List**
+   - Contract with Korean linguists to create original vocabulary list
+   - Output owned by us (CC0)
+   - Estimated cost: $500-2000 for 5K words
+   - Timeline: 2-4 weeks
+
+3. **Extract from Tatoeba Korean-English Pairs**
+   - Tatoeba has 6,394 Korean-English sentence pairs
+   - Can extract vocabulary from sentence pairs
+   - Very limited; only covers ~1,500 unique words
+   - Useful as supplementary source, not primary
+
+4. **Haiku-Generated Korean Vocabulary**
+   - If Korean language frequency lists exist (e.g., corpus from Korean linguistic institutes)
+   - Generate Haiku translations + CEFR levels
+   - Same process as European languages
+   - Requires finding/purchasing a Korean frequency list first
+
+**Recommendation for AR-17 implementation**: Build the pipeline to be generic so that Korean vocabulary can be added later (option 1, 2, or 4) without rework.
 
 ---
 
