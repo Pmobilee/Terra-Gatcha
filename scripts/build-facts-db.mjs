@@ -79,6 +79,7 @@ CREATE TABLE IF NOT EXISTS facts (
   visual_description TEXT,
   has_pixel_art     INTEGER DEFAULT 0,
   pixel_art_status  TEXT    DEFAULT 'none',
+  variants          TEXT,
   db_version        INTEGER DEFAULT 0
 );
 CREATE INDEX IF NOT EXISTS idx_facts_type       ON facts(type);
@@ -147,6 +148,7 @@ function factToRow(fact) {
     fact.visualDescription     ?? null,
     fact.hasPixelArt           ? 1 : 0,
     fact.pixelArtStatus        ?? 'none',
+    fact.variants              ? JSON.stringify(fact.variants) : null,
     fact.dbVersion             ?? 0,
   ];
 }
@@ -211,7 +213,7 @@ async function main() {
       novelty_score, sensitivity_level, sensitivity_note,
       content_volatility, source_url, verified_at, in_game_reports,
       related_facts, tags, image_prompt, visual_description,
-      has_pixel_art, pixel_art_status, db_version
+      has_pixel_art, pixel_art_status, variants, db_version
     ) VALUES (
       ?, ?, ?, ?, ?, ?,
       ?, ?, ?, ?,
@@ -224,7 +226,7 @@ async function main() {
       ?, ?, ?,
       ?, ?, ?, ?,
       ?, ?, ?, ?,
-      ?, ?, ?
+      ?, ?, ?, ?
     )
   `);
 

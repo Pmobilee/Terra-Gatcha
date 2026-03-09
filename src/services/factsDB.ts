@@ -531,6 +531,7 @@ class FactsDB {
       exampleSentence: optStr('example_sentence'),
       imageUrl:        optStr('image_url'),
       mnemonic:        optStr('mnemonic'),
+      variants: row['variants'] ? JSON.parse(String(row['variants'])) : undefined,
     }
   }
 }
