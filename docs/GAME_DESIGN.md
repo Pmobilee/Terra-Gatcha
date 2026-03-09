@@ -382,9 +382,48 @@ After each encounter, choose from 3 doors:
 - Rest, Treasure, Shop always clearly labeled
 - Each floor guarantees at least 1 combat option (prevents heal-stacking to avoid all facts)
 
+### Deck Building Strategy
+
+**Starter Deck Size:** Runs begin with a lean deck of ~15 cards (down from 20). This creates meaningful choice around each reward and prevents the hand from becoming too bloated.
+
+**Deck Evolution:** Players grow their deck after each encounter victory by choosing a card TYPE to add. Additionally, players can visit Shop rooms to:
+- **Buy cards** with gold currency (add specific cards to deck)
+- **Sell/remove cards** (thin the deck, gain currency)
+
+This gives players three levers for deck building:
+1. **Type selection after encounters** — Strategic reward choices
+2. **Card purchasing at shops** — Intentional insertions
+3. **Card removal/selling at shops** — Pruning weak cards
+
+Combined, these create STS-style deck building agency: "I'm thinning junk and doubling down on my shield strategy" is a legitimate play pattern.
+
+### Card Reward System
+
+After an encounter victory, the player receives a card reward. Rather than being offered 3 random cards (random fact + random type), the player now chooses a CARD TYPE they want to add to their deck, and a random fact from the encounter's pool is assigned to that type.
+
+**The Flow:**
+1. Encounter ends (player victory)
+2. Reward screen shows 3 card TYPE options (e.g., "Attack," "Shield," "Heal," "Buff," "Debuff," "Utility")
+3. Player taps the type they want
+4. A random undrawn fact from the encounter's ~120-fact pool is assigned to that type → new card added to deck
+5. Deck strategy is now legible: "I'm building a shield-heavy deck" becomes a real choice
+
+**Type Option Curation:**
+The 3 types shown are weighted strategically, not purely random:
+- Always include at least 1 Attack option and 1 defensive option (Shield or Heal)
+- The third slot rotates between Buff, Debuff, Utility, Wild, or Regen
+- Rare mechanics (Thorns, Overclock, Multi-Hit variants) can appear as special call-outs within a type
+- All options remain equally clickable — curation is for visual variety, not hard gating
+
+**Why This Works for Learning:**
+Players still engage with diverse facts because fact assignment is random. Choosing "Attack" doesn't mean you know what fact you'll get — you might get a Science fact, a History fact, or an Art fact. But now players control their *mechanical deck identity* independent of *educational domain coverage*. Players can build intentionally while still seeing a full breadth of facts.
+
+**Anti-Exploitation Note:**
+Card type selection does not let players avoid any domain. A player building an all-Attack deck still sees facts from every domain they've engaged with during the run. Type selection affects combat strategy, not educational scope.
+
 ### Encounter Termination
 
-1. Enemy HP ≤ 0 → Victory + rewards
+1. Enemy HP ≤ 0 → Victory + card reward (type selection screen)
 2. Player HP ≤ 0 → Defeat, run ends with retreat penalties
 3. Turn 15+ → Enemy +3 dmg/turn (soft enrage)
 
@@ -560,9 +599,9 @@ Run 2:  Domain selection unlocks.
 
 First encounter: 2 AP. Full 3 AP from encounter 3.
 
-### Calibration Deep Scan — Design Status: NEEDS RESEARCH
+### Calibration Deep Scan — Design Status: RESOLVED (Option B)
 
-The original spec proposes a standalone 20-question placement test after Run 1. The core problem it solves is real, but the solution may not be the right one. This section documents the problem space, existing systems that already partially address it, candidate approaches, and open research questions.
+**Selected approach: Gameplay-Inferred Calibration (accelerated FSRS gains during early runs 1-3).**
 
 #### The Problem: Bored Expert / Cold Start
 
@@ -570,63 +609,58 @@ A player who already knows 80% of general-knowledge facts will spend their first
 
 The inverse problem also matters: a player who knows very little gets overwhelmed by too many wrong answers early, feels dumb, and churns. The Canary system (§21) handles this side via invisible difficulty reduction, but the cold-start calibration question applies to both directions.
 
-#### Existing Systems That Already Calibrate
+#### Solution: Accelerated FSRS During Early Runs
 
-Two systems already adjust to player knowledge during gameplay:
+Instead of a separate placement test (immersion-breaking) or accepting slow calibration, FSRS gains are boosted during runs 1-3. This allows the system to calibrate 2-3x faster from normal gameplay without breaking immersion.
 
-1. **FSRS (§26)** — Tracks per-fact difficulty, stability, and retrievability. A fact answered correctly gets higher stability → longer interval → faster tier promotion. After ~2-3 correct answers, a well-known fact reaches Tier 2a (stability ≥5d + 3 consecutive correct). This means FSRS self-calibrates within 2-3 encounters per fact — but only for facts the player has actually seen.
+**Mechanics:**
 
-2. **Canary System (§21)** — Adjusts game difficulty (not educational rigor) based on per-floor performance. 3+ wrong/floor → easier facts, -15% enemy damage. 5+ correct streak → harder facts, elite variants. This smooths the gameplay experience but doesn't accelerate tier promotion for known facts.
+1. **Correct + Fast Response (Runs 1-3 only):** Answer a question correctly AND within 50% of the allotted timer → count as 2 consecutive correct answers instead of 1. This doubled stability gain accelerates promotion to Tier 2a (5d+ stability).
 
-**Gap:** Neither system proactively tests unseen facts. A player may know 80% of a domain's facts, but until each fact appears in a run, FSRS can't know that. With 723 facts and ~80-120 seen per run, full calibration takes 6-9 runs. The question is whether this matters enough to justify a separate calibration flow.
+2. **Run Accuracy Bonus (Runs 1-3):** Achieve 80%+ accuracy across the entire run → all correctly-answered facts receive a flat stability bonus of +2 days. This ensures even medium-difficulty facts tier up faster if the player demonstrates broad knowledge.
 
-#### Candidate Approaches
+3. **First-Encounter Stability Boost:** First time a new fact is answered correctly → start FSRS stability at 2 days instead of default 1 day. Makes one successful answer meaningful rather than requiring multiple correct answers to show progress.
 
-**Option A: Standalone Deep Scan (original spec)**
-After Run 1, offer an optional 20-question rapid-fire test (no card frames, no timer, no combat). Correct → fact placed at Tier 2a (stability=5, consecutiveCorrect=3). Wrong → stays Tier 1, no penalty.
+4. **Domain-Specific Acceleration (Domain Unlock at Run 2):** When a player selects a new domain for the first time (starting at Run 2), the first run in that domain applies all three accelerated gains.
 
-- *Pro:* Directly solves cold-start for tested facts. Fast (20 questions ≈ 2 minutes). Familiar pattern from language apps (Duolingo placement test).
-- *Con:* Immersion break — feels like a school exam, not a game. Domain selection doesn't unlock until Run 2, so what domain do you test? High skip rate likely (optional tests get ~20-30% engagement in mobile). Only calibrates 20 of potentially hundreds of facts. Engineering cost for a one-time-use screen.
+**Why This Works:**
+- Zero immersion break — the dungeon IS the placement test
+- No skip problem (gains are invisible, baked into normal play)
+- Works for every domain, not just the first
+- No new UI screens required
+- Still requires 2-3 runs to fully calibrate (faster, not instant), which matches the game's "shallow floors are easier" narrative
 
-**Option B: Gameplay-Inferred Calibration (accelerated FSRS)**
-No separate test. Instead, boost FSRS gains during early runs (runs 1-3) so the system calibrates faster from normal play.
+**Note on Convergence:** If early-run playtesting reveals convergence is still too slow (e.g., Tier 1 cards vs early enemies feels too weak even with accelerated gains), Option C (in-run domain probe with narrative framing) can be implemented as a fallback without architectural changes.
 
-Possible mechanics:
-- Correct + fast response (under 50% of allotted time) → count as 2 consecutive correct instead of 1 (doubled stability gain)
-- 80%+ run accuracy → all correctly-answered facts get a flat stability bonus (+2 days)
-- First-time correct on a new fact → start stability at 2d instead of default 1d
-- Could be domain-specific: when a player first picks a new domain, the first run in that domain uses accelerated gains
+### Run-Start Archetype Selection — Deck Strategy Layer
 
-- *Pro:* Zero immersion break — the dungeon IS the placement test. No skip problem (it's invisible). Works for every domain, not just the first. No extra UI to build.
-- *Con:* Still takes 2-3 runs to fully calibrate (just faster, not instant). Doesn't help with facts the player hasn't seen yet. May need tuning to avoid over-promoting facts that were lucky guesses.
+**Availability:** Unlocks at Run 2 (same timing as domain selection). At run start, before the first encounter, players select a preferred **Deck Archetype Bias**. This is a SOFT preference, not a hard constraint.
 
-**Option C: In-Run Domain Probe**
-When a player selects a new domain for the first time, the first encounter of that run is a "calibration encounter" — slightly different from normal combat. Present 5-8 rapid questions from the domain (no card effects, no AP cost, just answer). Results seed FSRS state for those facts. Then normal combat begins.
+**Archetype Options:**
 
-- *Pro:* Domain-aware (tests the domain the player just chose). Stays in the game world (it's an encounter, not a menu). Shorter than 20 questions. Only triggers once per domain.
-- *Con:* Still somewhat test-like. Delays getting to real combat. Needs clear narrative framing ("The dungeon tests your knowledge before you enter...").
+| Archetype | Description | Card Type Bias | Play Feel |
+|-----------|-------------|-----------------|-----------|
+| Balanced | Equal distribution across all types (default) | Even across all types | Flexible, adaptable |
+| Aggressive | Prioritizes damage output and tempo | +3 Attack, +2 Buff, -2 Shield, -2 Heal | Fast, offensive |
+| Defensive | Prioritizes survival and damage mitigation | +3 Shield, +2 Heal, -2 Attack, -2 Debuff | Durable, reactive |
+| Control | Prioritizes disruption and enemy manipulation | +3 Debuff, +2 Utility, -2 Attack, -1 Heal | Strategic, puzzle-like |
+| Hybrid | Custom blend (pick 2-3 preferred types) | Player-selected weighting | Highly personalized |
 
-**Option D: Cut Entirely**
-Trust FSRS + Canary to handle calibration organically. Accept that the first 2-3 runs per domain are a warm-up period. Many successful roguelites have early runs that feel easier — this could be a feature, not a bug ("the shallow floors are easy, the depths are where it gets real").
+**How It Works:**
 
-- *Pro:* Zero engineering cost. No design risk. Simplest solution.
-- *Con:* Bored experts may churn in runs 1-3 before the system catches up. No mitigation for cold-start.
+1. Player selects an archetype at run start (simple UI: 5 icons, select 1, or "Custom" for Hybrid)
+2. This archetype is stored as a soft preference for the run
+3. When the 3 card TYPE options appear after each encounter, they are weighted toward the chosen archetype, but NOT exclusively
+4. Example: If "Aggressive" is chosen, the reward screen might show [Attack, Attack, Buff] most of the time, but occasionally show other types (Shield, Heal, Debuff) to avoid forced homogeneity
 
-#### Open Research Questions
+**Why This Matters:**
 
-1. **How fast does FSRS actually calibrate?** Model the math: if a player sees 80 unique facts in Run 1 and gets 70 correct, how many are at Tier 2a by Run 2? By Run 3? Is the gap between "no calibration" and "perfect calibration" actually noticeable in terms of card power and combat feel?
+- **Deck identity:** Players can now say "I'm playing an Aggressive deck" and feel agency over their build
+- **Educational coverage preserved:** Even though types are weighted, facts are still randomly assigned regardless of type choice. A player building all-Attack still sees diverse subjects.
+- **Replayability:** Choosing a different archetype creates a different run experience without changing the underlying learning content
+- **Progressive strategy depth:** New players can pick "Balanced" and learn the game. Experienced players can commit to "Defensive" and optimize around durability passives (Iron Skin, Retaliation, Fortress)
 
-2. **What do Duolingo/Anki/Memrise do?** Duolingo's placement test is mandatory and well-studied. Anki has no placement — users import decks at their level. Memrise lets users mark known words. What's the engagement data on optional vs mandatory placement? What's the churn difference for users who skip vs complete?
-
-3. **Does card power matter enough early?** Tier 1 cards are weaker, but early enemies are also weak (Canary ensures this). If the power curve is balanced so that Tier 1 cards vs Floor 1-3 enemies feels fine, the cold-start problem may be a non-issue from a gameplay perspective — it only matters educationally (seeing easy questions is boring). But is "boring" the same as "churn-inducing" when the combat itself is engaging?
-
-4. **Domain-specific calibration timing** — Since domain selection unlocks at Run 2, any calibration for a specific domain can't happen until then. Should calibration be per-domain (triggered on first selection) rather than a one-time global event? This changes the UX significantly.
-
-5. **Could the run pool builder handle this?** Instead of a separate calibration step, could RunPoolBuilder intelligently front-load "probe facts" (diverse difficulty within a domain) in early runs, then use the results to seed FSRS for similar facts the player hasn't seen? E.g., if a player aces 5 geography-capital questions, infer they likely know other geography-capital facts and boost those too.
-
-#### Decision Needed
-
-Research the questions above, then pick one of Options A-D (or a hybrid). The implementation is blocked on this decision. Key criteria: player retention impact (does cold-start actually cause churn?), engineering cost vs value, and alignment with the "learning IS gameplay" philosophy (a separate test contradicts this).
+**Fallback:** If a player wants to override the archetype preference mid-run, they can always pick whatever type is offered. The archetype is a suggestion, not a lock.
 
 ---
 
@@ -823,6 +857,45 @@ interface LanguageLevel {
   unlockCriteria: { previousLevelMastery: number; };  // e.g. 80%
 }
 ```
+
+### Card Back Visual Descriptions — Language-Themed Requirement
+
+Every fact and vocabulary card has a `visualDescription` field used as the prompt for pixel art card back generation (via ComfyUI + SDXL). These descriptions must follow strict rules:
+
+**General Rules (all cards):**
+- Describe a CONCRETE visual scene, not an abstract concept
+- ONE clear focal subject embodying the fact/word meaning
+- 20-40 words, vivid colors, dramatic lighting, pixel-art-friendly composition
+- Subject fills 80% of frame with breathing room at edges
+- No text, labels, numbers, UI elements, realistic human faces, political symbols, violence beyond fantasy, sexual content
+
+**Language-Specific Theming (CRITICAL):**
+Vocabulary card visuals MUST be culturally themed to the target language. This creates visual cohesion within a language pack and makes cards feel intentional rather than generic.
+
+| Language | Visual Theme | Setting Examples | Style Notes |
+|----------|-------------|-----------------|-------------|
+| Japanese (ja) | Feudal Japan / Yokai folklore | Torii gates, bamboo forests, tatami rooms, castle towns, onsen, shrine paths, paper lanterns, zen gardens | Ukiyo-e color palette influence, cherry blossoms, moonlit scenes |
+| Spanish (es) | Mediterranean / Latin American | Terracotta plazas, flamenco stages, agave fields, Aztec temples, jungle cenotes, haciendas | Warm sunset tones, vibrant reds/oranges/golds |
+| French (fr) | Belle Époque / Provincial France | Cobblestone cafés, lavender fields, cathedral stained glass, misty bridges, vineyard hillsides | Soft pastels, romantic lighting, art nouveau touches |
+| German (de) | Central European / Gothic | Half-timbered towns, Black Forest paths, clockwork workshops, medieval guild halls, Alpine passes | Dark greens, amber, mechanical/precise composition |
+| Korean (ko) | Joseon Dynasty / Modern Seoul | Hanok villages, palace courtyards, mountain temples, neon-lit streets, ceramic workshops | Bold primary colors, clean geometric composition |
+| Mandarin (zh) | Imperial China / Wuxia | Misty mountain peaks, tea houses, silk roads, dragon murals, floating lantern festivals | Ink wash influence, jade/crimson/gold palette |
+
+**Example — Japanese vocabulary:**
+- Bad: "A hand reaching into a display of three glowing orbs" (generic fantasy, no cultural identity)
+- Good: "A samurai kneeling in a moonlit zen garden, reaching toward a stone lantern with patient resolve" (for 我慢する — to endure/be patient)
+- Good: "A merchant in a bustling Edo-period market carefully weighing golden coins on a wooden abacus" (for 計算する — to calculate)
+
+**Example — Spanish vocabulary:**
+- Good: "A matador gracefully dodging a charging bull in a sun-drenched arena, cape streaming behind" (for esquivar — to dodge)
+
+**Anti-Patterns (NEVER do these):**
+- Generic fantasy scenes with no cultural connection
+- Literal translations of the word (e.g., "a person eating" for 食べる — too boring)
+- Stereotypical/offensive cultural depictions
+- Scenes that could apply to any language
+
+**Source field requirement:** Every fact MUST have a `sourceName` field citing where the fact was verified. Wikipedia is preferred. Unverified facts must NOT enter production.
 
 ---
 
@@ -1061,4 +1134,5 @@ No commercial game currently combines spaced repetition with card roguelite mech
 | Bounty Quest | Optional per-run bonus objective with rewards. |
 | Lore Discovery | Narrative milestone at 10/25/50/100 mastered facts. |
 | Canary | Invisible adaptive difficulty system. Adjusts game, never educational rigor. |
-| Deep Scan | Optional calibration system after first run. Design under review — may be replaced by accelerated FSRS gains during early runs. |
+| Accelerated FSRS | Calibration system during runs 1-3. Boosted gains on correct fast responses and high accuracy runs accelerate tier promotion and cold-start calibration. |
+| Archetype Bias | Run-start deck strategy preference (Balanced/Aggressive/Defensive/Control/Hybrid). Soft weighting on card type rewards. |
