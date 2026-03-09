@@ -71,6 +71,7 @@ CREATE TABLE IF NOT EXISTS facts (
   sensitivity_note  TEXT,
   content_volatility TEXT   DEFAULT 'timeless',
   source_url        TEXT,
+  verified_at       TEXT,
   in_game_reports   INTEGER DEFAULT 0,
   related_facts     TEXT,
   tags              TEXT,
@@ -138,6 +139,7 @@ function factToRow(fact) {
     fact.sensitivityNote       ?? null,
     fact.contentVolatility     ?? 'timeless',
     fact.sourceUrl             ?? null,
+    fact.verifiedAt            ?? null,
     fact.inGameReports         ?? 0,
     fact.relatedFacts          ? JSON.stringify(fact.relatedFacts)          : null,
     fact.tags                  ? JSON.stringify(fact.tags)                  : null,
@@ -207,7 +209,7 @@ async function main() {
       acceptable_answers, distractor_count,
       category_l1, category_l2, category_l3,
       novelty_score, sensitivity_level, sensitivity_note,
-      content_volatility, source_url, in_game_reports,
+      content_volatility, source_url, verified_at, in_game_reports,
       related_facts, tags, image_prompt, visual_description,
       has_pixel_art, pixel_art_status, db_version
     ) VALUES (
@@ -220,7 +222,7 @@ async function main() {
       ?, ?,
       ?, ?, ?,
       ?, ?, ?,
-      ?, ?, ?,
+      ?, ?, ?, ?,
       ?, ?, ?, ?,
       ?, ?, ?
     )

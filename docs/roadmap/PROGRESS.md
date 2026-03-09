@@ -15,7 +15,7 @@
 
 **Deck building redesigned.** Card rewards now use type-selection (player picks card TYPE, random fact assigned). Archetype selection at run start. See GAME_DESIGN.md §7. AR-09 implements this.
 
-**Next up:** AR-09 (Strategic Deck Building) → AR-10 (Calibration) can run in parallel with AR-11 (Content Pipeline). Then AR-12 (Auth) → AR-13 (Launch Readiness) → AR-14 (Soft Launch).
+**Next up:** Finish remaining AR-11 content regeneration (API-key dependent), complete AR-13 launch readiness gates, then close remaining AR-14 launch operations.
 
 ---
 
@@ -43,11 +43,11 @@ Knowledge Library with domain filters, Lore Discovery milestones, fact detail vi
 
 ## In Progress
 
-### AR-04: Onboarding + Difficulty Modes (3/4 done)
+### AR-04: Onboarding + Difficulty Modes (4/4 done)
 
 - [x] **60-second onboarding** — Dungeon entrance, Slow Reader question, first encounter with 2 AP, contextual tooltips. Domain selection unlocks on Run 2.
 - [x] **Difficulty modes** — Explorer (no timer, wrong=50% effect, enemies -30%), Standard (current), Scholar (-2s/tier, wrong=fizzle+3 self-damage, enemies +20%).
-- [ ] **Calibration system** — Design RESOLVED (Option B: accelerated FSRS). Implementation deferred to AR-10.
+- [x] **Calibration system** — Implemented in AR-10 (early-run boost, run accuracy bonus, first-correct floor, probe ordering).
 - [x] **Hint system** — 1 Scholar's Insight per encounter: remove 1 wrong answer, +5s timer, or reveal first letter.
 
 → [Spec](phases/AR-04-ONBOARDING.md)
@@ -82,38 +82,38 @@ Note: AR-07 is being superseded by AR-13 which has a broader scope including web
 - [x] Run start flow preserved (domain selection → archetype → run)
 
 Depends on: None. Estimated: Medium. **Status: Completed (March 9, 2026).**
-→ [Spec](phases/AR-08-HUB-NAVIGATION.md)
+→ [Spec](completed/AR-08-HUB-NAVIGATION.md)
 
 ---
 
 ### AR-09: Strategic Deck Building (Card Type Selection)
 **Replace random card rewards with type-selection for strategic deck building.** Players choose card TYPE after encounters (Attack/Shield/Heal/etc.), random fact assigned. Starter deck reduced to 15. Archetype selection at run start weights type options.
 
-- [ ] Card reward screen redesign: 3 TYPE options instead of 3 random cards
-- [ ] Type-to-fact random assignment on selection
-- [ ] Starter deck reduced from 20 to 15 cards
-- [ ] Archetype selection UI at run start (Balanced/Aggressive/Defensive/Control/Hybrid)
-- [ ] Archetype weighting logic for reward type options
-- [ ] Card selling/removal at shop rooms
-- [ ] Balance pass: starter deck composition, type distribution
+- [x] Card reward screen redesign: 3 TYPE options instead of 3 random cards
+- [x] Type-to-fact random assignment on selection
+- [x] Starter deck reduced from 20 to 15 cards
+- [x] Archetype selection UI at run start (Balanced/Aggressive/Defensive/Control/Hybrid)
+- [x] Archetype weighting logic for reward type options
+- [x] Card selling/removal at shop rooms
+- [x] Balance pass: starter deck composition, type distribution
 
-Depends on: None. Estimated: Medium.
-→ [Spec](phases/AR-09-STRATEGIC-DECK-BUILDING.md)
+Depends on: None. Estimated: Medium. **Status: Completed (March 9, 2026).**
+→ [Spec](completed/AR-09-STRATEGIC-DECK-BUILDING.md)
 
 ---
 
 ### AR-10: Calibration & Cold Start Resolution
 **Implement accelerated FSRS gains during early runs (Option B).** Finishes the last item from AR-04.
 
-- [ ] Early run boost: correct + fast (under 50% timer) = 2x stability gain during runs 1-3
-- [ ] Run accuracy bonus: 80%+ = flat +2d stability to all correct facts
-- [ ] First-time correct starts at 2d stability instead of 1d
-- [ ] Domain-specific acceleration on first selection of new domain
-- [ ] RunPoolBuilder probe mode: diverse-difficulty front-loading in first run per domain
-- [ ] Runs-per-domain tracking in player profile
+- [x] Early run boost: correct + fast (under 50% timer) = 2x stability gain during runs 1-3
+- [x] Run accuracy bonus: 80%+ = flat +2d stability to all correct facts
+- [x] First-time correct starts at 2d stability instead of 1d
+- [x] Domain-specific acceleration on first selection of new domain
+- [x] RunPoolBuilder probe mode: diverse-difficulty front-loading in first run per domain
+- [x] Runs-per-domain tracking in player profile
 
-Depends on: AR-02 (done). Estimated: Small-Medium.
-→ [Spec](phases/AR-10-CALIBRATION-COLD-START.md)
+Depends on: AR-02 (done). Estimated: Small-Medium. **Status: Completed (March 9, 2026).**
+→ [Spec](completed/AR-10-CALIBRATION-COLD-START.md)
 
 ---
 
@@ -121,38 +121,38 @@ Depends on: AR-02 (done). Estimated: Small-Medium.
 **Build the full content production pipeline: Claude CLI fact generation → validation → ingestion → language-themed visual description generation → card back art.** This is the engine that scales from 122 facts to 10K+ per domain.
 
 **Part A: Claude CLI Fact Generation Setup**
-- [ ] System prompts for fact generation per domain (Science, History, Geography, etc.)
-- [ ] System prompts for vocabulary generation per language (Japanese, Spanish, French, etc.)
-- [ ] Source citation requirement: every fact MUST have a `sourceName` (Wikipedia preferred)
+- [x] System prompts for fact generation per domain (Science, History, Geography, etc.)
+- [x] System prompts for vocabulary generation per language (Japanese, Spanish, French, etc.)
+- [x] Source citation requirement: every fact MUST have a `sourceName` (Wikipedia preferred)
 - [ ] Fact-checking validation: cross-reference generated facts against source
-- [ ] Output format: JSON matching seed data schema (all columns populated)
-- [ ] Distractor generation: 5+ plausible distractors per fact, close enough to challenge
-- [ ] Question variant generation: 3-4 variants per fact (forward, reverse, fill-blank, true/false)
+- [x] Output format: JSON matching seed data schema (all columns populated)
+- [x] Distractor generation: 5+ plausible distractors per fact, close enough to challenge
+- [x] Question variant generation: 3-4 variants per fact (forward, reverse, fill-blank, true/false)
 
 **Part B: Ingestion & Validation**
-- [ ] CLI tool for bulk fact ingestion from JSON
-- [ ] Schema validation (all required fields, variant count ≥ 2, distractor count ≥ 2)
-- [ ] Duplicate detection (fuzzy match on question text)
-- [ ] Domain coverage report (facts per domain, per difficulty, age rating distribution)
-- [ ] Distractor quality flagging (too easy / too similar to correct answer)
-- [ ] Migration to sql.js database (public/facts.db + seed-pack.json)
-- [ ] `verifiedAt` workflow: unverified → verified via CLI command
+- [x] CLI tool for bulk fact ingestion from JSON
+- [x] Schema validation (all required fields, variant count ≥ 2, distractor count ≥ 2)
+- [x] Duplicate detection (fuzzy match on question text)
+- [x] Domain coverage report (facts per domain, per difficulty, age rating distribution)
+- [x] Distractor quality flagging (too easy / too similar to correct answer)
+- [x] Migration to sql.js database (public/facts.db + seed-pack.json)
+- [x] `verifiedAt` workflow: unverified → verified via CLI command
 
 **Part C: Language-Themed Visual Description Generation**
 - [ ] Delete ALL existing vocab card visual descriptions (current ones are generic/bad)
-- [ ] New visual description system prompts PER LANGUAGE with cultural theming rules
-- [ ] Japanese: feudal Japan, torii gates, zen gardens, ukiyo-e palette, cherry blossoms
-- [ ] Spanish: Mediterranean/Latin American, terracotta, flamenco, warm sunset tones
-- [ ] French: Belle Époque, cobblestone cafés, lavender fields, romantic lighting
+- [x] New visual description system prompts PER LANGUAGE with cultural theming rules
+- [x] Japanese: feudal Japan, torii gates, zen gardens, ukiyo-e palette, cherry blossoms
+- [x] Spanish: Mediterranean/Latin American, terracotta, flamenco, warm sunset tones
+- [x] French: Belle Époque, cobblestone cafés, lavender fields, romantic lighting
 - [ ] (Additional languages follow same pattern — see GAME_DESIGN.md §22)
-- [ ] Anti-pattern detection: reject generic fantasy scenes with no cultural identity
-- [ ] Integration with existing `generate-visual-descriptions.mjs` pipeline
+- [x] Anti-pattern detection: reject generic fantasy scenes with no cultural identity
+- [x] Integration with existing `generate-visual-descriptions.mjs` pipeline
 - [ ] Regenerate all 400 Japanese N3 vocab visual descriptions with Japan-themed prompts
 
 **Part D: Documentation**
-- [ ] Document full pipeline so it can be run independently via Claude CLI
-- [ ] Example commands for each step (generate → validate → ingest → visual descriptions)
-- [ ] Quality checklist for reviewing generated content before approval
+- [x] Document full pipeline so it can be run independently via Claude CLI
+- [x] Example commands for each step (generate → validate → ingest → visual descriptions)
+- [x] Quality checklist for reviewing generated content before approval
 
 Depends on: None. Estimated: Large. **Can run in parallel with AR-08/09/10. CRITICAL PATH for content scaling.**
 → [Spec](phases/AR-11-CONTENT-PIPELINE.md)
@@ -162,16 +162,16 @@ Depends on: None. Estimated: Large. **Can run in parallel with AR-08/09/10. CRIT
 ### AR-12: Anonymous Auth & Cloud Save
 **Enable progress persistence across devices.** Anonymous device ID on first launch, optional account creation to claim profile, cloud save via Fastify backend.
 
-- [ ] Anonymous device-based identity (UUID, stored locally)
-- [ ] Optional email/password account creation
-- [ ] Cloud save endpoints: push/pull player state (FSRS, run history, unlocks)
-- [ ] Conflict resolution: prefer higher-progress state
-- [ ] Guest-to-account migration
-- [ ] Login UI in Settings (minimal, non-blocking)
-- [ ] Auto-sync on run completion, graceful offline fallback
+- [x] Anonymous device-based identity (UUID, stored locally)
+- [x] Optional email/password account creation
+- [x] Cloud save endpoints: push/pull player state (FSRS, run history, unlocks)
+- [x] Conflict resolution: prefer higher-progress state
+- [x] Guest-to-account migration
+- [x] Login UI in Settings (minimal, non-blocking)
+- [x] Auto-sync on run completion, graceful offline fallback
 
-Depends on: AR-08 (Settings accessible). Estimated: Medium-Large.
-→ [Spec](phases/AR-12-AUTH-CLOUD-SAVE.md)
+Depends on: AR-08 (Settings accessible). Estimated: Medium-Large. **Status: Completed (March 9, 2026).**
+→ [Spec](completed/AR-12-AUTH-CLOUD-SAVE.md)
 
 ---
 
@@ -197,11 +197,12 @@ Depends on: AR-08, AR-09. Estimated: Medium.
 **Ship to limited market, measure everything, iterate.**
 
 - [ ] Deploy web build to public URL
-- [ ] Instrument 10+ critical funnels (onboarding, runs, answers, domains, cash-out, deaths, tiers, bounties, streaks, shares)
-- [ ] A/B test experiments: Slow Reader default, 3 vs 4 AP, starter deck 15 vs 18
-- [ ] Malaysia geo-targeting or invite codes
-- [ ] In-app feedback button in Settings
+- [x] Instrument 10+ critical funnels (onboarding, runs, answers, domains, cash-out, deaths, tiers, bounties, streaks, shares)
+- [x] A/B test experiments: Slow Reader default, 3 vs 4 AP, starter deck 15 vs 18
+- [x] Malaysia geo-targeting or invite codes
+- [x] In-app feedback button in Settings
 - [ ] Weekly analytics dashboard
+- [x] Weekly analytics review checklist documented
 - [ ] Fix top 5 issues from first-week data
 
 Depends on: AR-12 (cloud save), AR-13 (deployed build). Estimated: Medium.
@@ -323,14 +324,14 @@ Depends on: AR-15, AR-16, AR-17, AR-18 ALL complete. Estimated: Large. **REQUIRE
 
 ```
 COMPLETED:
-  AR-01 ──┬── AR-02 ──┬── AR-04 (3/4) ── AR-05 ✓ ── AR-06 ✓
+  AR-01 ──┬── AR-02 ──┬── AR-04 ✓ ── AR-05 ✓ ── AR-06 ✓
           └── AR-03 ──┘
 
 PRE-LAUNCH (parallel tracks):
-  Track A: AR-08 ✓ (Hub) → AR-09 (Deck Building) ──→ AR-13 (Launch) → AR-14 (Soft Launch)
+  Track A: AR-08 ✓ (Hub) → AR-09 ✓ (Deck Building) ──→ AR-13 (Launch) → AR-14 (Soft Launch)
   Track B: AR-11 (Content Pipeline) ─────────────┘        ↑
-  Track C: AR-10 (Calibration) ──────────────────────────┘
-  Track D: AR-12 (Auth) ─────────────────────────────────→ AR-14
+  Track C: AR-10 ✓ (Calibration) ────────────────────────┘
+  Track D: AR-12 ✓ (Auth) ───────────────────────────────→ AR-14
 
 CONTENT AT SCALE (parallel where possible):
   AR-15 (Sources) ──┬── AR-17 (Haiku Engine) ──→ AR-19 (Bulk Gen & QA)

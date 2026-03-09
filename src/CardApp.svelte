@@ -10,15 +10,20 @@
     activeRoomOptions,
     activeRunEndData,
     activeRunState,
+    activeShopCards,
     getCurrentDelvePenalty,
+    onArchetypeSelected,
     onCardRewardSelected,
     onCardRewardSkipped,
+    onCardRewardReroll,
     onDelve,
     onDomainsSelected,
     onMysteryResolved,
     onRestResolved,
     onRetreat,
     onRoomSelected,
+    onShopDone,
+    onShopSell,
     playAgain,
     returnToMenu,
     startNewRun,
@@ -40,6 +45,7 @@
   import { lastRunSummary } from './services/hubState'
 
   import DomainSelection from './ui/components/DomainSelection.svelte'
+  import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
   import RoomSelection from './ui/components/RoomSelection.svelte'
   import MysteryEventOverlay from './ui/components/MysteryEventOverlay.svelte'
@@ -55,6 +61,7 @@
   import ProfileScreen from './ui/components/ProfileScreen.svelte'
   import JournalScreen from './ui/components/JournalScreen.svelte'
   import LeaderboardsScreen from './ui/components/LeaderboardsScreen.svelte'
+  import ShopRoomOverlay from './ui/components/ShopRoomOverlay.svelte'
 
   const NAV_VISIBLE_SCREENS = new Set<Screen>([
     'hub',
@@ -106,12 +113,17 @@
 
   function handleDomainsChosen(primary: FactDomain, secondary: FactDomain): void {
     onDomainsSelected(primary, secondary)
+  }
+
+  function handleArchetypeSelect(archetype: import('./services/runManager').RewardArchetype): void {
+    onArchetypeSelected(archetype)
     startEncounterForRoom()
   }
 
   function handleOnboardingBegin(slowReader: boolean): void {
     isSlowReader.set(slowReader)
     onDomainsSelected('science', 'history')
+    onArchetypeSelected('balanced')
     startEncounterForRoom()
   }
 
@@ -210,6 +222,10 @@
     <DomainSelection onstart={handleDomainsChosen} onback={returnToMenu} />
   {/if}
 
+  {#if $currentScreen === 'archetypeSelection'}
+    <ArchetypeSelection onselect={handleArchetypeSelect} onskip={() => handleArchetypeSelect('balanced')} />
+  {/if}
+
   {#if $currentScreen === 'onboarding'}
     <DungeonEntrance onbegin={handleOnboardingBegin} />
   {/if}
@@ -230,6 +246,16 @@
       options={$activeCardRewardOptions}
       onselect={handleRewardSelected}
       onskip={onCardRewardSkipped}
+      onreroll={onCardRewardReroll}
+    />
+  {/if}
+
+  {#if $currentScreen === 'shopRoom'}
+    <ShopRoomOverlay
+      cards={$activeShopCards}
+      currency={$activeRunState?.currency ?? 0}
+      onsell={onShopSell}
+      ondone={onShopDone}
     />
   {/if}
 

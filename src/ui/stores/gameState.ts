@@ -39,6 +39,7 @@ export type Screen =
   | 'base'
   | 'combat'
   | 'domainSelection'
+  | 'archetypeSelection'
   | 'library'
   | 'profile'
   | 'journal'
@@ -49,6 +50,7 @@ export type Screen =
   | 'runEnd'
   | 'cardReward'
   | 'retreatOrDelve'
+  | 'shopRoom'
   | 'onboarding'
   | 'ageSelection'
   | 'settings'
@@ -61,6 +63,7 @@ const VALID_SCREENS: Screen[] = [
   'base',
   'combat',
   'domainSelection',
+  'archetypeSelection',
   'library',
   'profile',
   'journal',
@@ -71,6 +74,7 @@ const VALID_SCREENS: Screen[] = [
   'runEnd',
   'cardReward',
   'retreatOrDelve',
+  'shopRoom',
   'onboarding',
   'ageSelection',
   'settings',

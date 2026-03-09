@@ -31,6 +31,7 @@ import { onboardingState } from './cardPreferences';
 import { updateBounties } from './bountyManager';
 import { getCardTier } from './tierDerivation';
 import { playCardAudio } from './cardAudioManager';
+import { analyticsService } from './analyticsService';
 
 /** Create a shallow copy of TurnState with fresh array references for Svelte reactivity. */
 function freshTurnState(ts: TurnState): TurnState {
@@ -72,6 +73,45 @@ export const activeTurnState = writable<TurnState | null>(null);
 let activeDeck: CardRunState | null = null;
 let activeRunPool: Card[] = [];
 let activeRelics: ActiveRelic[] = [];
+
+function buildStarterDeckFromRunPool(runPool: Card[], targetSize: number): Card[] {
+  const byType = new Map<CardType, Card[]>();
+  for (const card of runPool) {
+    if (!byType.has(card.cardType)) byType.set(card.cardType, []);
+    byType.get(card.cardType)!.push(card);
+  }
+
+  const size = Math.max(9, Math.min(targetSize, runPool.length));
+  const attackTarget = Math.max(1, Math.round(size * 0.4));
+  const shieldTarget = Math.max(1, Math.round(size * 0.33));
+  const healTarget = Math.max(1, size - attackTarget - shieldTarget);
+  const picked: Card[] = [];
+  const used = new Set<string>();
+
+  const take = (type: CardType, count: number): void => {
+    const bucket = byType.get(type) ?? [];
+    for (const card of bucket) {
+      if (picked.length >= size || count <= 0) break;
+      if (used.has(card.id)) continue;
+      picked.push(card);
+      used.add(card.id);
+      count -= 1;
+    }
+  };
+
+  take('attack', attackTarget);
+  take('shield', shieldTarget);
+  take('heal', healTarget);
+
+  for (const card of runPool) {
+    if (picked.length >= size) break;
+    if (used.has(card.id)) continue;
+    picked.push(card);
+    used.add(card.id);
+  }
+
+  return picked;
+}
 
 function factCardTypeResolver(factId: string): CardType | null {
   const inPool = activeRunPool.find((card) => card.factId === factId);
@@ -154,12 +194,15 @@ export function startEncounterForRoom(enemyId?: string): void {
       return;
     }
     const reviewStates = get(playerSave)?.reviewStates ?? [];
-    activeRunPool = buildRunPool(run.primaryDomain, run.secondaryDomain, reviewStates);
+    activeRunPool = buildRunPool(run.primaryDomain, run.secondaryDomain, reviewStates, {
+      probeRunNumber: run.primaryDomainRunNumber,
+      probeDomain: run.primaryDomain,
+    });
     if (activeRunPool.length === 0) {
       console.warn('[encounterBridge] Empty run pool — cannot start encounter');
       return;
     }
-    const starterDeck = activeRunPool.slice(0, 24);
+    const starterDeck = buildStarterDeckFromRunPool(activeRunPool, run.starterDeckSize);
     activeDeck = createDeck(starterDeck);
   }
 
@@ -186,6 +229,8 @@ export function startEncounterForRoom(enemyId?: string): void {
   const turnState = startEncounter(activeDeck, enemy, run.playerMaxHp);
   activeDeck.hintsRemaining = HINTS_PER_ENCOUNTER;
   turnState.playerState.hp = run.playerHp;
+  turnState.apMax = Math.max(2, run.startingAp);
+  turnState.apCurrent = Math.min(turnState.apCurrent, turnState.apMax);
   turnState.activeRelics = activeRelics;
   turnState.activeRelicIds = new Set(
     activeRelics.filter((relic) => !relic.isDormant).map((relic) => relic.definition.id),
@@ -284,7 +329,29 @@ export function handlePlayCard(
   const run = get(activeRunState);
 
   if (run && playedCard) {
-    recordCardPlay(run, correct, result.comboCount);
+    recordCardPlay(run, correct, result.comboCount, playedCard.factId);
+    analyticsService.track({
+      name: 'card_play',
+      properties: {
+        fact_id: playedCard.factId,
+        card_type: playedCard.cardType,
+        tier: playedCard.tier,
+        correct,
+        combo: result.comboCount,
+        response_time_ms: responseTimeMs ?? null,
+        floor: run.floor.currentFloor,
+        encounter: run.floor.currentEncounter,
+      },
+    });
+    analyticsService.track({
+      name: correct ? 'answer_correct' : 'answer_incorrect',
+      properties: {
+        fact_id: playedCard.factId,
+        card_type: playedCard.cardType,
+        response_time_ms: responseTimeMs ?? null,
+        floor: run.floor.currentFloor,
+      },
+    });
 
     if (correct) {
       run.bounties = updateBounties(run.bounties, {
@@ -317,6 +384,9 @@ export function handlePlayCard(
     updateReviewStateByButton(playedCard.factId, button, undefined, {
       responseTimeMs,
       variantIndex,
+      earlyBoostActive: run?.earlyBoostActive,
+      speedBonus,
+      runNumber: run?.primaryDomainRunNumber,
     });
 
     if (playedCard.isEcho && correct) {
@@ -332,6 +402,16 @@ export function handlePlayCard(
       const nextTier = getCardTier(updatedReviewState);
       if (previousTier !== '3' && nextTier === '3') {
         run.factsMastered += 1;
+      }
+      if (previousTier !== nextTier) {
+        analyticsService.track({
+          name: 'tier_upgrade',
+          properties: {
+            fact_id: playedCard.factId,
+            old_tier: previousTier ?? 'none',
+            new_tier: nextTier,
+          },
+        });
       }
 
       activeRunState.set(run);
@@ -441,6 +521,16 @@ export function getRunPoolCards(): Card[] {
   return [...activeRunPool];
 }
 
+export function getActiveDeckCards(): Card[] {
+  if (!activeDeck) return [];
+  return [
+    ...activeDeck.drawPile,
+    ...activeDeck.hand,
+    ...activeDeck.discardPile,
+    ...activeDeck.exhaustPile,
+  ];
+}
+
 export function getActiveDeckFactIds(): Set<string> {
   if (!activeDeck) return new Set<string>();
   const ids = new Set<string>();
@@ -457,6 +547,26 @@ export function addRewardCardToActiveDeck(card: Card): void {
     id: `reward_${Math.random().toString(36).slice(2, 10)}`,
   };
   addCardToDeck(activeDeck, cloned, 'top');
+}
+
+export function calculateCardSellPrice(card: Card): number {
+  if (card.tier === '3') return 3;
+  if (card.tier === '2a' || card.tier === '2b') return 2;
+  return 1;
+}
+
+export function sellCardFromActiveDeck(cardId: string): { soldCard: Card | null; gold: number } {
+  if (!activeDeck) return { soldCard: null, gold: 0 };
+  const piles: Card[][] = [activeDeck.drawPile, activeDeck.hand, activeDeck.discardPile, activeDeck.exhaustPile];
+
+  for (const pile of piles) {
+    const index = pile.findIndex((card) => card.id === cardId);
+    if (index === -1) continue;
+    const [soldCard] = pile.splice(index, 1);
+    return { soldCard, gold: calculateCardSellPrice(soldCard) };
+  }
+
+  return { soldCard: null, gold: 0 };
 }
 
 export function resetEncounterBridge(): void {

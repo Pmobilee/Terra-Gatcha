@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { generateCardRewardOptions } from '../../src/services/rewardGenerator'
+import {
+  generateCardRewardOptions,
+  generateCardRewardOptionsByType,
+  rerollRewardCardInType,
+} from '../../src/services/rewardGenerator'
 import type { Card } from '../../src/data/card-types'
 
 function card(partial: Partial<Card>): Card {
@@ -45,5 +49,37 @@ describe('rewardGenerator', () => {
     const options = generateCardRewardOptions(pool, new Set(), new Set(), 3)
     expect(options).toHaveLength(3)
     expect(options.every((c) => c.tier !== '3')).toBe(true)
+  })
+
+  it('builds type-based options with unique card types', () => {
+    const pool: Card[] = [
+      card({ id: 'a', factId: 'a', cardType: 'attack' }),
+      card({ id: 'b', factId: 'b', cardType: 'shield' }),
+      card({ id: 'c', factId: 'c', cardType: 'heal' }),
+      card({ id: 'd', factId: 'd', cardType: 'buff' }),
+      card({ id: 'e', factId: 'e', cardType: 'debuff' }),
+    ]
+
+    const options = generateCardRewardOptionsByType(pool, new Set(), new Set(), 'balanced')
+    expect(options.length).toBeGreaterThan(0)
+    expect(new Set(options.map((option) => option.cardType)).size).toBe(options.length)
+  })
+
+  it('rerolls fact inside selected type', () => {
+    const pool: Card[] = [
+      card({ id: 'a', factId: 'a', cardType: 'attack' }),
+      card({ id: 'b', factId: 'b', cardType: 'attack' }),
+      card({ id: 'c', factId: 'c', cardType: 'shield' }),
+      card({ id: 'd', factId: 'd', cardType: 'heal' }),
+    ]
+
+    const current = [
+      pool[0],
+      pool[2],
+      pool[3],
+    ]
+
+    const rerolled = rerollRewardCardInType(pool, new Set(), new Set(), current, 'attack')
+    expect(rerolled.find((option) => option.cardType === 'attack')?.factId).toBe('b')
   })
 })

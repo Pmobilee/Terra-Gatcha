@@ -1,5 +1,6 @@
 <script lang="ts">
   import { shareRunSummaryCard } from '../../services/runShareService'
+  import { analyticsService } from '../../services/analyticsService'
 
   interface Props {
     result: 'victory' | 'defeat' | 'retreat'
@@ -56,7 +57,7 @@
   async function handleShare(): Promise<void> {
     shareStatus = 'sharing'
     try {
-      await shareRunSummaryCard({
+      const method = await shareRunSummaryCard({
         result,
         floorReached,
         factsAnswered,
@@ -73,6 +74,15 @@
         runDurationMs,
         rewardMultiplier,
         currencyEarned,
+      })
+      analyticsService.track({
+        name: 'share_card_generated',
+        properties: {
+          template: 'dive_record',
+          platform: method,
+          facts_mastered: factsMastered,
+          tree_completion_pct: Math.max(0, Math.min(100, Math.round((accuracy + (factsMastered * 2)) / 2))),
+        },
       })
       shareStatus = 'done'
     } catch {

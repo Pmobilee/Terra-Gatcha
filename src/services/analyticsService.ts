@@ -1,6 +1,6 @@
 /**
  * Client-side analytics service.
- * Batches events locally and flushes them to the server every 10 seconds.
+ * Batches events locally and flushes them to the server every 30 seconds.
  * PII fields are stripped before any event is queued.
  * Events are persisted to localStorage so they survive page reloads.
  */
@@ -160,6 +160,198 @@ interface ShareCardGeneratedEvent {
   }
 }
 
+/** Arcane Recall run/deck funnel events (AR-14). */
+interface DomainSelectEvent {
+  name: 'domain_select'
+  properties: {
+    primary: string
+    secondary: string
+    archetype: string
+    run_number: number
+    starter_deck_size: number
+    starting_ap: number
+    early_boost_active: boolean
+  }
+}
+
+interface RunStartEvent {
+  name: 'run_start'
+  properties: {
+    domain_primary: string
+    domain_secondary: string
+    archetype: string
+    starting_ap: number
+    starter_deck_size: number
+    run_number: number
+  }
+}
+
+interface RunCompleteEvent {
+  name: 'run_complete'
+  properties: {
+    result: 'retreat' | 'defeat' | 'victory'
+    floor: number
+    accuracy: number
+    facts_answered: number
+    facts_correct: number
+    best_combo: number
+    cards_earned: number
+    bounties_completed: number
+  }
+}
+
+interface RunDeathEvent {
+  name: 'run_death'
+  properties: {
+    floor: number
+    cause: string
+    accuracy: number
+    encounters_won: number
+  }
+}
+
+interface CashOutEvent {
+  name: 'cash_out'
+  properties: {
+    floor: number
+    gold: number
+    accuracy?: number
+    reason?: string
+    decision?: string
+  }
+}
+
+interface CardRewardEvent {
+  name: 'card_reward'
+  properties: {
+    option_types: string[]
+    floor: number
+    encounter: number
+  }
+}
+
+interface CardRewardRerollEvent {
+  name: 'card_reward_reroll'
+  properties: {
+    card_type: string
+    floor: number
+    encounter: number
+  }
+}
+
+interface CardTypeSelectedEvent {
+  name: 'card_type_selected'
+  properties: {
+    card_type: string
+    fact_id: string
+    floor: number
+    encounter: number
+  }
+}
+
+interface ShopVisitEvent {
+  name: 'shop_visit'
+  properties: {
+    floor: number
+    options: number
+    currency: number
+  }
+}
+
+interface ShopSellEvent {
+  name: 'shop_sell'
+  properties: {
+    fact_id: string
+    card_type: string
+    tier: string
+    gold: number
+    floor: number
+  }
+}
+
+interface RoomSelectedEvent {
+  name: 'room_selected'
+  properties: {
+    room: string
+    floor: number
+    encounter: number
+  }
+}
+
+interface CardPlayEvent {
+  name: 'card_play'
+  properties: {
+    fact_id: string
+    card_type: string
+    tier: string
+    correct: boolean
+    combo: number
+    response_time_ms: number | null
+    floor: number
+    encounter: number
+  }
+}
+
+interface AnswerCorrectEvent {
+  name: 'answer_correct'
+  properties: {
+    fact_id: string
+    card_type: string
+    response_time_ms: number | null
+    floor: number
+  }
+}
+
+interface AnswerIncorrectEvent {
+  name: 'answer_incorrect'
+  properties: {
+    fact_id: string
+    card_type: string
+    response_time_ms: number | null
+    floor: number
+  }
+}
+
+interface TierUpgradeEvent {
+  name: 'tier_upgrade'
+  properties: {
+    fact_id: string
+    old_tier: string
+    new_tier: string
+  }
+}
+
+interface SettingsChangeEvent {
+  name: 'settings_change'
+  properties: {
+    setting: string
+    value: string | number | boolean
+  }
+}
+
+interface AccountCreatedEvent {
+  name: 'account_created'
+  properties: {
+    method: 'register' | 'login'
+    has_cloud_sync: boolean
+  }
+}
+
+interface FeedbackSubmittedEvent {
+  name: 'feedback_submitted'
+  properties: {
+    length: number
+  }
+}
+
+interface InviteCodeValidatedEvent {
+  name: 'invite_code_validated'
+  properties: {
+    code: string
+    accepted: boolean
+  }
+}
+
 /** Fired when the player shares their referral link from the ReferralModal. */
 interface ReferralLinkSharedEvent {
   name: 'referral_link_shared'
@@ -207,6 +399,25 @@ export type AnalyticsEvent =
   | WebVitalsEvent
   | ExperimentAssignedEvent
   | ShareCardGeneratedEvent
+  | DomainSelectEvent
+  | RunStartEvent
+  | RunCompleteEvent
+  | RunDeathEvent
+  | CashOutEvent
+  | CardRewardEvent
+  | CardRewardRerollEvent
+  | CardTypeSelectedEvent
+  | ShopVisitEvent
+  | ShopSellEvent
+  | RoomSelectedEvent
+  | CardPlayEvent
+  | AnswerCorrectEvent
+  | AnswerIncorrectEvent
+  | TierUpgradeEvent
+  | SettingsChangeEvent
+  | AccountCreatedEvent
+  | FeedbackSubmittedEvent
+  | InviteCodeValidatedEvent
   | ReferralLinkSharedEvent
   | ReferralConvertedEvent
   | BadgeSharedEvent
@@ -236,7 +447,8 @@ export function isKidMode(): boolean {
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
-const FLUSH_INTERVAL_MS = 10_000
+const FLUSH_INTERVAL_MS = 30_000
+const MAX_QUEUE_BEFORE_FLUSH = 50
 const QUEUE_KEY = 'terra_analytics_queue'
 const SESSION_KEY = 'terra_analytics_session'
 
@@ -386,6 +598,16 @@ export class AnalyticsService {
     }
     this.queue.push(event)
     this.saveQueue()
+
+    if (this.queue.length >= MAX_QUEUE_BEFORE_FLUSH) {
+      if (this.flushTimer) {
+        clearTimeout(this.flushTimer)
+        this.flushTimer = null
+      }
+      void this.flush()
+      return
+    }
+
     this.scheduleFlush()
   }
 

@@ -16,6 +16,9 @@
     unlockCardAudio,
     playCardAudio,
   } from '../../services/cardAudioManager'
+  import { analyticsService } from '../../services/analyticsService'
+  import AccountSettings from './AccountSettings.svelte'
+  import FeedbackButton from './FeedbackButton.svelte'
   import ParentalControlsPanel from './ParentalControlsPanel.svelte'
 
   interface Props {
@@ -38,6 +41,16 @@
     textSize.set(size)
     unlockCardAudio()
     playCardAudio('card-cast')
+  }
+
+  function trackSettingChange(setting: string, value: string | number | boolean): void {
+    analyticsService.track({
+      name: 'settings_change',
+      properties: {
+        setting,
+        value,
+      },
+    })
   }
 
   function formatDifficulty(mode: DifficultyMode): string {
@@ -91,17 +104,29 @@
 
       <label class="toggle-row">
         <span>High Contrast</span>
-        <input type="checkbox" bind:checked={$highContrastMode} />
+        <input
+          type="checkbox"
+          bind:checked={$highContrastMode}
+          onchange={(event) => trackSettingChange('highContrastMode', (event.currentTarget as HTMLInputElement).checked)}
+        />
       </label>
 
       <label class="toggle-row">
         <span>Reduce Motion</span>
-        <input type="checkbox" bind:checked={$reduceMotionMode} />
+        <input
+          type="checkbox"
+          bind:checked={$reduceMotionMode}
+          onchange={(event) => trackSettingChange('reduceMotionMode', (event.currentTarget as HTMLInputElement).checked)}
+        />
       </label>
 
       <label class="toggle-row">
         <span>Slow Reader (+3s)</span>
-        <input type="checkbox" bind:checked={$isSlowReader} />
+        <input
+          type="checkbox"
+          bind:checked={$isSlowReader}
+          onchange={(event) => trackSettingChange('slowReader', (event.currentTarget as HTMLInputElement).checked)}
+        />
       </label>
     </section>
 
@@ -109,26 +134,51 @@
       <h3>Audio</h3>
       <label class="toggle-row">
         <span>SFX Enabled</span>
-        <input type="checkbox" bind:checked={$sfxEnabled} />
+        <input
+          type="checkbox"
+          bind:checked={$sfxEnabled}
+          onchange={(event) => trackSettingChange('sfxEnabled', (event.currentTarget as HTMLInputElement).checked)}
+        />
       </label>
 
       <label class="slider-row">
         <span>SFX Volume</span>
-        <input type="range" min="0" max="1" step="0.05" bind:value={$sfxVolume} />
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.05"
+          bind:value={$sfxVolume}
+          onchange={(event) => trackSettingChange('sfxVolume', Number((event.currentTarget as HTMLInputElement).value))}
+        />
         <strong>{Math.round($sfxVolume * 100)}%</strong>
       </label>
 
       <label class="toggle-row">
         <span>Music Enabled</span>
-        <input type="checkbox" bind:checked={$musicEnabled} />
+        <input
+          type="checkbox"
+          bind:checked={$musicEnabled}
+          onchange={(event) => trackSettingChange('musicEnabled', (event.currentTarget as HTMLInputElement).checked)}
+        />
       </label>
 
       <label class="slider-row">
         <span>Music Volume</span>
-        <input type="range" min="0" max="1" step="0.05" bind:value={$musicVolume} />
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.05"
+          bind:value={$musicVolume}
+          onchange={(event) => trackSettingChange('musicVolume', Number((event.currentTarget as HTMLInputElement).value))}
+        />
         <strong>{Math.round($musicVolume * 100)}%</strong>
       </label>
     </section>
+
+    <AccountSettings />
+    <FeedbackButton />
 
     <section class="settings-section">
       <h3>Family</h3>

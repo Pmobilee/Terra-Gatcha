@@ -84,17 +84,63 @@ const BLOCKLIST = [
   /\btext\b.*\bsay/i, /\bwrite\b.*\btext/i, /\bletter.*\bspell/i,
 ];
 
+const GENERIC_FANTASY_PATTERNS = [
+  /\bglowing\s+orb(s)?\b/i,
+  /\bmagic\s+portal(s)?\b/i,
+  /\bmystic\s+rune(s)?\b/i,
+  /\bspell\s+circle(s)?\b/i,
+  /\barcane\s+sigil(s)?\b/i,
+];
+
+const OFFENSIVE_STEREOTYPE_PATTERNS = [
+  /\bexotic\s+orient(al)?\b/i,
+  /\bprimitive\s+tribe\b/i,
+  /\bbarbaric\b/i,
+  /\bsavage\b/i,
+];
+
 /**
  * Validate a generated visual description for content safety.
  * @param {string} text
+ * @param {object} [opts]
+ * @param {object} [opts.languageConfig]
+ * @param {string} [opts.language]
  * @returns {{ safe: boolean, reason?: string }}
  */
-function validateDescription(text) {
+function validateDescription(text, opts = {}) {
+  const trimmed = String(text ?? '').trim();
+  const words = trimmed.split(/\s+/).filter(Boolean);
+  const lower = trimmed.toLowerCase();
+
   for (const pattern of BLOCKLIST) {
-    if (pattern.test(text)) return { safe: false, reason: pattern.toString() };
+    if (pattern.test(trimmed)) return { safe: false, reason: pattern.toString() };
   }
-  if (text.length < 20) return { safe: false, reason: 'too short' };
-  if (text.length > 300) return { safe: false, reason: 'too long' };
+
+  for (const pattern of OFFENSIVE_STEREOTYPE_PATTERNS) {
+    if (pattern.test(trimmed)) return { safe: false, reason: 'offensive_stereotype' };
+  }
+
+  if (words.length < 15) return { safe: false, reason: 'too_short_words' };
+  if (trimmed.length > 300) return { safe: false, reason: 'too_long' };
+
+  const languageConfig = opts.languageConfig;
+  if (languageConfig) {
+    const markerKeywords = Array.isArray(languageConfig.elementKeywords)
+      ? languageConfig.elementKeywords
+      : [];
+    const hasCulturalMarker = markerKeywords.some((keyword) =>
+      lower.includes(String(keyword).toLowerCase()),
+    );
+    const hasGenericFantasyPattern = GENERIC_FANTASY_PATTERNS.some((pattern) => pattern.test(trimmed));
+
+    if (!hasCulturalMarker) {
+      return { safe: false, reason: `missing_cultural_marker:${opts.language ?? 'lang'}` };
+    }
+    if (hasGenericFantasyPattern) {
+      return { safe: false, reason: 'generic_fantasy_pattern' };
+    }
+  }
+
   return { safe: true };
 }
 
@@ -370,11 +416,29 @@ function selectBatchCategories(elementCategories, batchIndex) {
 const API_KEY = process.env.ANTHROPIC_API_KEY;
 
 /**
+ * Build single-mode system prompt.
+ * @param {object | null} config
+ * @returns {string}
+ */
+function buildSingleSystemPrompt(config) {
+  if (!config) return SYSTEM_PROMPT;
+
+  return `${SYSTEM_PROMPT}
+
+Language theming requirements (strict):
+- Scene must clearly reflect: ${config.baseTheme}
+- Palette cues: ${config.palette}
+- Include at least one culturally specific marker naturally in-scene (architecture, setting, object, flora/fauna, or craft detail).
+- Avoid generic fantasy motifs (glowing orbs, magic portals, abstract runes) unless explicitly grounded in the target culture.`;
+}
+
+/**
  * Call Claude API to generate a visual description for one fact.
  * @param {{ statement: string, category: string[], type: string }} fact
+ * @param {object | null} config
  * @returns {Promise<string>}
  */
-async function generateDescriptionSingle(fact) {
+async function generateDescriptionSingle(fact, config = null) {
   if (!API_KEY) throw new Error('ANTHROPIC_API_KEY environment variable is required');
 
   const userPrompt = [
@@ -386,7 +450,7 @@ async function generateDescriptionSingle(fact) {
   const body = {
     model: MODEL,
     max_tokens: MAX_TOKENS_SINGLE,
-    system: SYSTEM_PROMPT,
+    system: buildSingleSystemPrompt(config),
     messages: [{ role: 'user', content: userPrompt }],
   };
 
@@ -434,25 +498,37 @@ async function generateDescriptionSingle(fact) {
  * @returns {string}
  */
 function buildBatchSystemPrompt(config, selectedCategories, avoidList, count) {
-  let prompt = `You write visual scene descriptions for pixel art card illustrations in a fantasy card game called Arcane Recall.
+  let prompt = `You write visual scene descriptions for pixel art card illustrations in a fantasy card game.
 
-For each fact below, write ONE visual description (20-40 words) suitable as a prompt for generating pixel art.
+For each vocabulary word below, create a scene that DIRECTLY and OBVIOUSLY depicts the word's meaning.
+The viewer should be able to GUESS the word just by looking at the image.
 
-Rules:
-- Describe a CONCRETE visual scene, not an abstract concept
-- ONE clear focal subject that embodies the fact
-- No text, labels, numbers, or UI elements
+CRITICAL RULES:
+- The word's meaning must be the CENTRAL ACTION or STATE in the scene
+- Show the concept through clear body language, facial expressions, or obvious visual metaphor
+- The background setting is just flavor — the word meaning is the STAR
+- Include 1-2 distinctly ${config.baseTheme} visual elements (architecture, clothing, nature)
+- Vivid, colorful scenes with clear visual storytelling
+- Each description: 20-40 words, one sentence, concrete and vivid
+- No text, labels, numbers, or UI elements in the scene
 - No realistic human faces (stylized pixel art people OK)
-- No political symbols, religious controversy, or disputed territories
-- No violence beyond fantasy (no blood, no weapons pointed at viewer)
-- No sexual content
-- For vocabulary facts: illustrate the MEANING of the word, not the word itself
-- Vivid colors, dramatic lighting, pixel-art-friendly composition
+- No violence beyond fantasy, no sexual content
 
-CULTURAL SETTING: ${config.baseTheme}
-COLOR PALETTE: ${config.palette}
+GOOD examples (word meaning is immediately obvious):
+- "to deliver" → A smiling courier in traditional clothing hands a wrapped package to a grateful merchant at a market stall, cherry trees blooming overhead.
+- "to get angry" → A red-faced merchant slams his fist on a wooden counter, startling nearby cats, steam practically rising from his head in a bustling market.
+- "to celebrate" → Villagers in colorful yukatas dance around a decorated shrine, throwing confetti and raising cups, paper streamers and koi flags overhead.
+- "to increase" → Stacks of gold coins growing taller on a merchant's table, more coins pouring in from above, warm market scene with wooden shelves.
+- "investigation" → A detective-like figure with magnifying glass examines footprints on a garden path, lantern held close, scrolls of notes tucked under arm.
 
-AVAILABLE ELEMENTS (use 2-3 per description, vary across the batch):`;
+BAD examples (too metaphorical — viewer cannot guess the word):
+- "to give up" → "A lighthouse keeper gazes at sunset" (how is this giving up?)
+- "investigation" → "Storm-tossed fishing net on a dock" (this means nothing)
+- "meaning" → "Alpine shrine gate emerging from mist" (vague, no clear concept)
+
+COLOR PALETTE: ${config.palette}`;
+
+  prompt += `\n\nAVAILABLE CULTURAL ELEMENTS (use 1-2 per description to add ${config.baseTheme} flavor):`;
 
   for (const [category, items] of Object.entries(selectedCategories)) {
     prompt += `\n- ${category.charAt(0).toUpperCase() + category.slice(1)}: ${items.join(', ')}`;
@@ -474,7 +550,7 @@ AVAILABLE ELEMENTS (use 2-3 per description, vary across the batch):`;
  */
 function buildBatchUserPrompt(batchItems) {
   return batchItems
-    .map((item, i) => `${i + 1}. "${item.fact.statement}" | Setting: ${item.settingAnchor}`)
+    .map((item, i) => `${i + 1}. Word meaning: "${item.fact.statement}" | Background hint: ${item.settingAnchor}`)
     .join('\n');
 }
 
@@ -484,9 +560,10 @@ function buildBatchUserPrompt(batchItems) {
  * @param {object} config - Language config
  * @param {Record<string, string[]>} selectedCategories
  * @param {string[]} avoidList
+ * @param {object} validationOptions
  * @returns {Promise<(string|null)[]>} Array with descriptions or null for failed lines
  */
-async function generateDescriptionsBatch(batchItems, config, selectedCategories, avoidList) {
+async function generateDescriptionsBatch(batchItems, config, selectedCategories, avoidList, validationOptions) {
   if (!API_KEY) throw new Error('ANTHROPIC_API_KEY environment variable is required');
 
   const systemPrompt = buildBatchSystemPrompt(config, selectedCategories, avoidList, batchItems.length);
@@ -522,7 +599,7 @@ async function generateDescriptionsBatch(batchItems, config, selectedCategories,
       const json = await resp.json();
       const text = json.content?.[0]?.text?.trim();
       if (!text) throw new Error('Empty response from API');
-      return parseBatchResponse(text, batchItems.length);
+      return parseBatchResponse(text, batchItems.length, validationOptions);
     } catch (err) {
       lastError = err;
     }
@@ -763,9 +840,10 @@ async function processSingleMode(items, processed) {
  * @param {Set<string>} processed
  * @param {object} config - Language config
  * @param {Record<string, number>} settingAssignments
+ * @param {string} language
  * @returns {Promise<{ success: number, failed: number, unsafe: number, modifiedFiles: Set<string> }>}
  */
-async function processBatchMode(items, processed, config, settingAssignments) {
+async function processBatchMode(items, processed, config, settingAssignments, language) {
   /** @type {Map<string, any[]>} */
   const modifiedFiles = new Map();
   let success = 0;
@@ -811,7 +889,11 @@ async function processBatchMode(items, processed, config, settingAssignments) {
 
     try {
       const descriptions = await generateDescriptionsBatch(
-        batchWithSettings, config, selectedCategories, avoidList
+        batchWithSettings,
+        config,
+        selectedCategories,
+        avoidList,
+        { languageConfig: config, language },
       );
 
       // Process each result
@@ -824,8 +906,8 @@ async function processBatchMode(items, processed, config, settingAssignments) {
         if (!description) {
           console.log(`${prefix}: batch line failed, trying single fallback...`);
           try {
-            description = await generateDescriptionSingle(fact);
-            const validation = validateDescription(description);
+            description = await generateDescriptionSingle(fact, config);
+            const validation = validateDescription(description, { languageConfig: config, language });
             if (!validation.safe) {
               console.log(`${prefix}: UNSAFE (${validation.reason})`);
               unsafe++;
@@ -867,8 +949,8 @@ async function processBatchMode(items, processed, config, settingAssignments) {
         const prefix = `  [${batchStart + j + 1}/${items.length}] ${fact.id}`;
 
         try {
-          const description = await generateDescriptionSingle(fact);
-          const validation = validateDescription(description);
+          const description = await generateDescriptionSingle(fact, config);
+          const validation = validateDescription(description, { languageConfig: config, language });
 
           if (!validation.safe) {
             console.log(`${prefix}: UNSAFE (${validation.reason})`);
@@ -986,11 +1068,12 @@ async function main() {
   // Decide mode: batch (language + ≥10 facts) or single
   const useBatchMode = LANGUAGE && total >= 10;
   let result;
+  const languageConfig = LANGUAGE ? await loadLanguageConfig(LANGUAGE) : null;
 
   if (useBatchMode) {
     console.log(`Using BATCH mode (${BATCH_SIZE} facts/call, language: ${LANGUAGE})\n`);
 
-    const config = await loadLanguageConfig(LANGUAGE);
+    const config = languageConfig;
     const existingAssignments = await loadSettingAssignments();
     const factList = toProcess.map(m => m.fact);
     const assignments = assignSettings(factList, config.settings, existingAssignments);
@@ -1009,7 +1092,7 @@ async function main() {
       return;
     }
 
-    result = await processBatchMode(toProcess, processed, config, assignments);
+    result = await processBatchMode(toProcess, processed, config, assignments, LANGUAGE);
   } else {
     if (LANGUAGE) {
       console.log(`Using SINGLE mode (${total} facts < ${BATCH_SIZE} threshold for batch)\n`);
@@ -1027,7 +1110,7 @@ async function main() {
       return;
     }
 
-    result = await processSingleMode(toProcess, processed);
+    result = await processSingleMode(toProcess, processed, languageConfig, LANGUAGE);
   }
 
   console.log();

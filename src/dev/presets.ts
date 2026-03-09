@@ -66,9 +66,15 @@ export function BASE_SAVE(now: number): PlayerSave {
     version: SAVE_VERSION,
     factDbVersion: 0,
     playerId: 'dev-player',
+    deviceId: 'dev-device',
+    accountId: null,
+    accountEmail: null,
+    cloudSyncEnabled: true,
+    lastCloudSyncAt: 0,
     ageRating: 'teen',
     createdAt: now,
     lastPlayedAt: now,
+    domainRunCounts: {},
 
     // Resources
     oxygen: BALANCE.STARTING_OXYGEN_TANKS,

@@ -115,6 +115,12 @@ export class SyncService {
     return navigator.onLine
   }
 
+  /** Cloud sync toggle from PlayerSave; defaults to enabled for backward compatibility. */
+  private isCloudSyncEnabled(localSave?: PlayerSave | null): boolean {
+    const source = localSave ?? loadLocalSave()
+    return source?.cloudSyncEnabled !== false
+  }
+
   // ----------------------------------------------------------
   // AUTO-SYNC
   // ----------------------------------------------------------
@@ -130,6 +136,7 @@ export class SyncService {
    */
   async syncAfterSave(localSave: PlayerSave): Promise<void> {
     if (!apiClient.isLoggedIn()) return
+    if (!this.isCloudSyncEnabled(localSave)) return
 
     // If offline, persist the operation for later replay and return early.
     if (!this.isOnline) {
@@ -172,6 +179,7 @@ export class SyncService {
    */
   async pullFromCloud(): Promise<PlayerSave | null> {
     if (!apiClient.isLoggedIn()) return null
+    if (!this.isCloudSyncEnabled()) return null
     if (!this.isOnline) return null
 
     this._isSyncing = true
@@ -196,6 +204,7 @@ export class SyncService {
    */
   async pushToCloud(): Promise<void> {
     if (!apiClient.isLoggedIn()) return
+    if (!this.isCloudSyncEnabled()) return
     if (!this.isOnline) return
 
     const localSave = loadLocalSave()

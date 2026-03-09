@@ -17,6 +17,14 @@
   const bestFloor = $derived(stats?.deepestLayerReached ?? 0)
   const factsLearned = $derived(stats?.totalFactsLearned ?? 0)
   const masteredFacts = $derived((save?.reviewStates ?? []).filter((state) => (state.stability ?? state.interval ?? 0) >= 25).length)
+  const domainRuns = $derived(
+    Object.entries(save?.domainRunCounts ?? {})
+      .sort((a, b) => b[1] - a[1])
+  )
+
+  function labelDomain(id: string): string {
+    return id.charAt(0).toUpperCase() + id.slice(1)
+  }
 </script>
 
 <section class="profile-screen" aria-label="Profile">
@@ -41,6 +49,20 @@
     <div class="stat"><span>Best Streak</span><strong>{stats?.bestStreak ?? 0}</strong></div>
     <div class="stat"><span>Milestones</span><strong>{milestones}</strong></div>
   </div>
+
+  {#if domainRuns.length > 0}
+    <section class="domain-runs">
+      <h4>Runs Per Domain</h4>
+      <div class="domain-grid">
+        {#each domainRuns as [domain, count] (domain)}
+          <div class="domain-item">
+            <span>{labelDomain(domain)}</span>
+            <strong>{count}</strong>
+          </div>
+        {/each}
+      </div>
+    </section>
+  {/if}
 </section>
 
 <style>
@@ -131,5 +153,42 @@
   .stat strong {
     font-size: calc(22px * var(--text-scale, 1));
     color: #f8fafc;
+  }
+
+  .domain-runs {
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: rgba(15, 23, 42, 0.76);
+    padding: 10px;
+  }
+
+  .domain-runs h4 {
+    margin: 0 0 8px;
+    color: #93c5fd;
+    font-size: calc(12px * var(--text-scale, 1));
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .domain-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .domain-item {
+    border-radius: 8px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    background: rgba(2, 6, 23, 0.48);
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(12px * var(--text-scale, 1));
+  }
+
+  .domain-item strong {
+    color: #f8fafc;
+    font-size: calc(14px * var(--text-scale, 1));
   }
 </style>

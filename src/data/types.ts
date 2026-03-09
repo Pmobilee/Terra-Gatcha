@@ -107,6 +107,7 @@ export interface Fact {
 
   // Sourcing
   sourceName?: string
+  verifiedAt?: string | null
 
   // Language-specific (optional)
   language?: string           // e.g., "ja"
@@ -519,9 +520,21 @@ export interface PlayerSave {
   version: number             // Save format version (for migrations)
   factDbVersion: number       // Tracks last synced facts DB version for delta sync
   playerId: string
+  /** Anonymous device identity used for optional cloud save. */
+  deviceId?: string
+  /** Optional claimed account ID (set after login/register). */
+  accountId?: string | null
+  /** Optional account email for settings display. */
+  accountEmail?: string | null
+  /** Whether cloud sync is enabled for this profile. */
+  cloudSyncEnabled?: boolean
+  /** Last successful cloud sync timestamp (epoch ms). */
+  lastCloudSyncAt?: number
   ageRating: AgeRating
   createdAt: number
   lastPlayedAt: number
+  /** Per-domain run counters used for early FSRS boost windows. */
+  domainRunCounts: Record<string, number>
 
   // Resources
   oxygen: number              // Current stored oxygen tanks

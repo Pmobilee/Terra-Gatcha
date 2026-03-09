@@ -146,6 +146,21 @@ async function bootGame(): Promise<void> {
     currentScreen.set('hub')
   }
 
+  // Pull cloud save on launch for authenticated users, then merge locally.
+  try {
+    const { syncService } = await import('./services/syncService')
+    const remote = await syncService.pullFromCloud()
+    if (remote) {
+      const local = get(playerSave)
+      const merged = local ? syncService.fieldLevelMerge(local, remote) : remote
+      playerSave.set(merged)
+      const { save: persistRaw } = await import('./services/saveService')
+      persistRaw(merged)
+    }
+  } catch {
+    // Silent fallback to local state.
+  }
+
   // Wait for DB to finish loading
   await dbPromise
 

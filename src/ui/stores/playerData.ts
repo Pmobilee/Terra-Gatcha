@@ -20,6 +20,7 @@ import { AGE_BRACKET_KEY } from '../../services/legalConstants'
 import { createReviewState, isDue, isMastered, getMasteryLevel, reviewFact, reviewCard, reviewCardEarly } from '../../services/sm2'
 import type { AnkiButton } from '../../services/sm2'
 import { migrateReviewState as migrateToFsrsState, reviewFact as reviewFactFsrs } from '../../services/fsrsScheduler'
+import { applyStabilityBonusToFacts } from '../../services/runEarlyBoostController'
 // cosmetics.ts and knowledgeStore.ts archived — inline stubs
 type Cosmetic = { id: string; name: string; price: number; category: string; cost: Partial<Record<string, number>> }
 function calculateKnowledgePoints(_stats: unknown, _mastered: number): number { return 0 }
@@ -118,6 +119,11 @@ export function persistPlayer(): void {
 
   playerSave.set(updated)
   saveFn(updated)
+
+  // Cloud sync is debounced and no-ops when auth is unavailable or sync is disabled.
+  import('../../services/syncService')
+    .then((m) => m.syncService.syncAfterSave(updated))
+    .catch(() => {})
 }
 
 /**
@@ -465,6 +471,9 @@ export function getDueReviews(): ReviewState[] {
 export interface ReviewUpdateMeta {
   responseTimeMs?: number
   variantIndex?: number
+  earlyBoostActive?: boolean
+  speedBonus?: boolean
+  runNumber?: number
 }
 
 export function updateReviewStateByButton(
@@ -489,17 +498,50 @@ export function updateReviewStateByButton(
       meta?.variantIndex,
     )
     const correct = button !== 'again'
+    let boostedState = newState
+
+    // AR-10 calibration: early-run fast-answer boost (runs 1-3 per domain).
+    if (
+      correct &&
+      meta?.earlyBoostActive &&
+      (meta?.runNumber ?? Number.MAX_SAFE_INTEGER) <= 3 &&
+      meta?.speedBonus
+    ) {
+      const before = Math.max(0, migrated.stability ?? migrated.interval ?? 0)
+      const after = Math.max(0, newState.stability ?? newState.interval ?? 0)
+      const gain = Math.max(1, Math.round(Math.max(0.5, after - before)))
+
+      boostedState = {
+        ...boostedState,
+        stability: after + gain,
+        interval: Math.max(newState.interval, newState.interval + Math.max(1, Math.ceil(gain / 2))),
+        retrievability: Math.min(1, (newState.retrievability ?? 1) + 0.05),
+      }
+    }
+
+    // AR-10 calibration: first successful answer starts at least 2-day stability.
+    if (correct && (existingState.totalAttempts ?? 0) === 0) {
+      const stability = Math.max(0, boostedState.stability ?? boostedState.interval ?? 0)
+      if (stability < 2) {
+        boostedState = {
+          ...boostedState,
+          stability: 2,
+          interval: Math.max(boostedState.interval, 2),
+          retrievability: Math.min(1, (boostedState.retrievability ?? 1) + 0.03),
+        }
+      }
+    }
 
     // Phase 12: Check for fast mastery (interval crossing 14-day threshold)
     let updatedSignals = save.behavioralSignals ?? { perCategory: {}, lastRecalcDives: 0 }
     if (correct && factCategory && save.interestConfig?.behavioralLearningEnabled) {
-      if (existingState.interval < 14 && newState.interval >= 14) {
+      if (existingState.interval < 14 && boostedState.interval >= 14) {
         updatedSignals = recordFastMastery(updatedSignals, factCategory)
       }
     }
 
     // Phase 15.6: Check if this answer crosses the mastery threshold
-    if (getMasteryLevel(existingState) !== 'mastered' && getMasteryLevel(newState) === 'mastered') {
+    if (getMasteryLevel(existingState) !== 'mastered' && getMasteryLevel(boostedState) === 'mastered') {
       const alreadyMastered = save.reviewStates.filter(
         s => s.factId !== factId && getMasteryLevel(s) === 'mastered',
       ).length
@@ -509,7 +551,7 @@ export function updateReviewStateByButton(
     return {
       ...save,
       reviewStates: save.reviewStates.map((state) =>
-        state.factId === factId ? newState : state,
+        state.factId === factId ? boostedState : state,
       ),
       behavioralSignals: updatedSignals,
       stats: {
@@ -527,6 +569,26 @@ export function updateReviewStateByButton(
       new CustomEvent('game:fact-mastered', { detail: masteryEvent }),
     )
   }
+}
+
+/**
+ * Applies a flat post-run stability bonus to a batch of correctly-answered facts.
+ * Returns true when at least one fact state was updated.
+ */
+export function applyRunAccuracyBonus(factIds: Iterable<string>, bonusDays = 2): boolean {
+  let updated = false
+  playerSave.update((save) => {
+    if (!save) return save
+    const nextStates = applyStabilityBonusToFacts(save.reviewStates, factIds, bonusDays)
+    updated = nextStates !== save.reviewStates
+    if (!updated) return save
+    return {
+      ...save,
+      reviewStates: nextStates,
+    }
+  })
+  if (updated) persistPlayer()
+  return updated
 }
 
 /** Returns the current review state for a fact, if present. */

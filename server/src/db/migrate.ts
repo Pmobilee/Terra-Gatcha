@@ -71,6 +71,24 @@ export function initSchema(): void {
       created_at INTEGER NOT NULL
     );
 
+    CREATE TABLE IF NOT EXISTS feedback_entries (
+      id TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL,
+      account_id TEXT,
+      feedback_text TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'new',
+      created_at INTEGER NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS invite_codes (
+      code TEXT PRIMARY KEY,
+      enabled INTEGER NOT NULL DEFAULT 1,
+      max_uses INTEGER,
+      used_count INTEGER NOT NULL DEFAULT 0,
+      expires_at INTEGER,
+      created_at INTEGER NOT NULL
+    );
+
     CREATE TABLE IF NOT EXISTS password_reset_tokens (
       token TEXT PRIMARY KEY,
       user_id TEXT NOT NULL,
@@ -96,6 +114,10 @@ export function initSchema(): void {
     CREATE INDEX IF NOT EXISTS idx_refresh_tokens_expires_at ON refresh_tokens(expires_at);
     CREATE INDEX IF NOT EXISTS idx_analytics_events_session_id ON analytics_events(session_id);
     CREATE INDEX IF NOT EXISTS idx_analytics_events_event_name ON analytics_events(event_name);
+    CREATE INDEX IF NOT EXISTS idx_feedback_created_at ON feedback_entries(created_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_feedback_account_id ON feedback_entries(account_id);
+    CREATE INDEX IF NOT EXISTS idx_invite_enabled ON invite_codes(enabled);
+    CREATE INDEX IF NOT EXISTS idx_invite_expires_at ON invite_codes(expires_at);
     CREATE INDEX IF NOT EXISTS idx_password_reset_tokens_user_id ON password_reset_tokens(user_id);
     CREATE INDEX IF NOT EXISTS idx_fact_packs_category ON fact_packs(category);
 

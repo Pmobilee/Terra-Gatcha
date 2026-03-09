@@ -210,6 +210,25 @@ export function load(): PlayerSave | null {
     if (!('activeTitle' in parsedAny)) {
       parsedAny['activeTitle'] = null
     }
+    // Backward compatibility: run calibration + cloud profile metadata
+    if (!parsedAny['domainRunCounts'] || typeof parsedAny['domainRunCounts'] !== 'object') {
+      parsedAny['domainRunCounts'] = {}
+    }
+    if (typeof parsedAny['deviceId'] !== 'string' || parsedAny['deviceId'].length === 0) {
+      parsedAny['deviceId'] = generateUUID()
+    }
+    if (!('accountId' in parsedAny)) {
+      parsedAny['accountId'] = null
+    }
+    if (!('accountEmail' in parsedAny)) {
+      parsedAny['accountEmail'] = null
+    }
+    if (typeof parsedAny['cloudSyncEnabled'] !== 'boolean') {
+      parsedAny['cloudSyncEnabled'] = true
+    }
+    if (typeof parsedAny['lastCloudSyncAt'] !== 'number') {
+      parsedAny['lastCloudSyncAt'] = 0
+    }
     // Reset purchasedDeals if lastDealDate doesn't match today
     const todayStr = new Date().toISOString().split('T')[0]
     if (parsedAny['lastDealDate'] !== todayStr) {
@@ -467,9 +486,15 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     version: SAVE_VERSION,
     factDbVersion: 0,
     playerId: generateUUID(),
+    deviceId: generateUUID(),
+    accountId: null,
+    accountEmail: null,
+    cloudSyncEnabled: true,
+    lastCloudSyncAt: 0,
     ageRating,
     createdAt: now,
     lastPlayedAt: now,
+    domainRunCounts: {},
     oxygen: BALANCE.STARTING_OXYGEN_TANKS,
     minerals: { ...EMPTY_MINERALS },
     learnedFacts: [],

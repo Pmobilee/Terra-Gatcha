@@ -5,6 +5,7 @@ export type HubScreenName = Extract<Screen, 'hub' | 'library' | 'settings' | 'pr
 const RUN_LOCKED_SCREENS = new Set<Screen>([
   'combat',
   'cardReward',
+  'shopRoom',
   'roomSelection',
   'mysteryEvent',
   'restRoom',

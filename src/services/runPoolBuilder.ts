@@ -25,6 +25,38 @@ function shuffle<T>(arr: T[]): T[] {
   return arr;
 }
 
+function pickRandomSubset<T>(items: T[], count: number): T[] {
+  return shuffle([...items]).slice(0, Math.max(0, count));
+}
+
+function buildProbeOrdering(cards: Card[], domain: FactDomain): Card[] {
+  const domainCards = cards.filter((card) => card.domain === domain);
+  if (domainCards.length === 0) return [];
+
+  const easy: Card[] = [];
+  const medium: Card[] = [];
+  const hard: Card[] = [];
+
+  for (const card of domainCards) {
+    const fact = factsDB.getById(card.factId);
+    const difficulty = fact?.difficulty ?? 3;
+    if (difficulty <= 2) easy.push(card);
+    else if (difficulty >= 4) hard.push(card);
+    else medium.push(card);
+  }
+
+  const probe = [
+    ...pickRandomSubset(easy, 3),
+    ...pickRandomSubset(medium, 3),
+    ...pickRandomSubset(hard, 3),
+  ];
+
+  const used = new Set(probe.map((card) => card.id));
+  const wildcardCandidates = domainCards.filter((card) => !used.has(card.id));
+  const wildcard = pickRandomSubset(wildcardCandidates, 1);
+  return [...probe, ...wildcard].slice(0, 10);
+}
+
 function pickMechanic(
   cardType: CardType,
   mechanicCounts: Map<string, number>,
@@ -60,7 +92,7 @@ export function buildRunPool(
   primaryDomain: FactDomain,
   secondaryDomain: FactDomain,
   allReviewStates: ReviewState[],
-  options?: { poolSize?: number },
+  options?: { poolSize?: number; probeRunNumber?: number; probeDomain?: FactDomain },
 ): Card[] {
   const poolSize = options?.poolSize ?? DEFAULT_POOL_SIZE;
   resetCardIdCounter();
@@ -118,6 +150,14 @@ export function buildRunPool(
   pool = pool.filter((card) => card.tier !== '3');
   pool = assignTypesToCards(pool);
   pool = applyMechanics(pool);
+
+  if (options?.probeRunNumber === 1) {
+    const probeDomain = options.probeDomain ?? primaryDomain;
+    const probe = buildProbeOrdering(pool, probeDomain);
+    const probeIds = new Set(probe.map((card) => card.id));
+    const remaining = shuffle(pool.filter((card) => !probeIds.has(card.id)));
+    return [...probe, ...remaining];
+  }
 
   return shuffle(pool);
 }

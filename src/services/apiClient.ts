@@ -305,6 +305,17 @@ export class ApiClient {
    * @throws {ApiError} On network failure or server error.
    */
   async uploadSave(saveData: PlayerSave): Promise<void> {
+    try {
+      await this.fetchWithAuth('/saves', {
+        method: 'POST',
+        body: JSON.stringify({ saveData }),
+      })
+      return
+    } catch (err) {
+      if (!(err instanceof ApiError) || err.status !== 404) throw err
+    }
+
+    // Backward compatibility for older backend route names.
     await this.fetchWithAuth('/saves/upload', {
       method: 'POST',
       body: JSON.stringify({ save: saveData }),
@@ -318,13 +329,21 @@ export class ApiClient {
    * @throws {ApiError} On server error (but NOT on 404, which returns `null`).
    */
   async downloadSave(): Promise<PlayerSave | null> {
+    try {
+      const response = await this.fetchWithAuth('/saves', { method: 'GET' })
+      const data = (await response.json()) as { saveData?: PlayerSave; save?: PlayerSave }
+      return data.saveData ?? data.save ?? null
+    } catch (err) {
+      if (!(err instanceof ApiError)) throw err
+      if (err.status !== 404 && err.status !== 405) throw err
+    }
+
+    // Backward compatibility for older backend route names.
     let response: Response
     try {
       response = await this.fetchWithAuth('/saves/download', { method: 'GET' })
     } catch (err) {
-      if (err instanceof ApiError && err.status === 404) {
-        return null
-      }
+      if (err instanceof ApiError && err.status === 404) return null
       throw err
     }
 

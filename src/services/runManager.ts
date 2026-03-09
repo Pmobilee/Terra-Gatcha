@@ -12,10 +12,17 @@ import { selectRunBounties } from './bountyManager';
 import type { CanaryState } from './canaryService';
 import { createCanaryState, recordCanaryAnswer } from './canaryService';
 
+export type RewardArchetype = 'balanced' | 'aggressive' | 'defensive' | 'control' | 'hybrid';
+
 export interface RunState {
   isActive: boolean;
   primaryDomain: FactDomain;
   secondaryDomain: FactDomain;
+  selectedArchetype: RewardArchetype;
+  starterDeckSize: number;
+  startingAp: number;
+  primaryDomainRunNumber: number;
+  earlyBoostActive: boolean;
   floor: FloorState;
   playerHp: number;
   playerMaxHp: number;
@@ -36,6 +43,9 @@ export interface RunState {
   echoFactIds: Set<string>;
   echoCount: number;
   consumedRewardFactIds: Set<string>;
+  factsAnsweredCorrectly: Set<string>;
+  factsAnsweredIncorrectly: Set<string>;
+  runAccuracyBonusApplied: boolean;
 }
 
 export interface RunEndData {
@@ -57,12 +67,27 @@ export interface RunEndData {
   currencyEarned: number;
 }
 
-export function createRunState(primary: FactDomain, secondary: FactDomain): RunState {
+export function createRunState(
+  primary: FactDomain,
+  secondary: FactDomain,
+  options?: {
+    selectedArchetype?: RewardArchetype;
+    starterDeckSize?: number;
+    startingAp?: number;
+    primaryDomainRunNumber?: number;
+    earlyBoostActive?: boolean;
+  },
+): RunState {
   const bountyCount = Math.random() < 0.5 ? 1 : 2;
   return {
     isActive: true,
     primaryDomain: primary,
     secondaryDomain: secondary,
+    selectedArchetype: options?.selectedArchetype ?? 'balanced',
+    starterDeckSize: options?.starterDeckSize ?? 15,
+    startingAp: options?.startingAp ?? 3,
+    primaryDomainRunNumber: options?.primaryDomainRunNumber ?? 1,
+    earlyBoostActive: options?.earlyBoostActive ?? true,
     floor: createFloorState(),
     playerHp: PLAYER_START_HP,
     playerMaxHp: PLAYER_MAX_HP,
@@ -83,16 +108,32 @@ export function createRunState(primary: FactDomain, secondary: FactDomain): RunS
     echoFactIds: new Set<string>(),
     echoCount: 0,
     consumedRewardFactIds: new Set<string>(),
+    factsAnsweredCorrectly: new Set<string>(),
+    factsAnsweredIncorrectly: new Set<string>(),
+    runAccuracyBonusApplied: false,
   };
 }
 
-export function recordCardPlay(state: RunState, correct: boolean, comboCount: number): void {
+export function recordCardPlay(
+  state: RunState,
+  correct: boolean,
+  comboCount: number,
+  factId?: string,
+): void {
   state.factsAnswered += 1;
   if (correct) {
     state.factsCorrect += 1;
     state.cardsEarned += 1;
+    if (factId) {
+      state.factsAnsweredCorrectly.add(factId);
+      state.factsAnsweredIncorrectly.delete(factId);
+    }
   } else {
     state.currentEncounterWrongAnswers += 1;
+    if (factId) {
+      state.factsAnsweredIncorrectly.add(factId);
+      state.factsAnsweredCorrectly.delete(factId);
+    }
   }
   state.correctAnswers = state.factsCorrect;
   state.canary = recordCanaryAnswer(state.canary, correct);

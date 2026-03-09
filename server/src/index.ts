@@ -46,6 +46,8 @@ import { webhookRoutes } from "./routes/webhooks.js";
 import { factOfDayRoutes } from "./routes/factOfDay.js";
 import { seasonInfoRoutes } from "./routes/seasonInfo.js";
 import { adminFactsRoutes } from "./routes/adminFacts.js";
+import { feedbackRoutes } from "./routes/feedback.js";
+import { inviteRoutes } from "./routes/invite.js";
 
 // ── In-memory rate limiter ────────────────────────────────────────────────────
 
@@ -286,6 +288,10 @@ export async function buildApp() {
 
   // Phase 56: Season info + leaderboard (public v1 API)
   await fastify.register(seasonInfoRoutes, { prefix: '/api/v1' });
+
+  // AR-14: Soft-launch operational routes.
+  await fastify.register(feedbackRoutes, { prefix: '/api/feedback' });
+  await fastify.register(inviteRoutes, { prefix: '/api/invite' });
 
   // Phase 43: Co-op WebSocket + REST routes
   await fastify.register(websocket);

@@ -62,6 +62,26 @@ const ALLOWED_EVENTS = new Set([
   "referral_link_shared",
   "referral_converted",
   "badge_shared",
+  // Arcane Recall run/deck funnels (AR-14)
+  "domain_select",
+  "run_start",
+  "run_complete",
+  "run_death",
+  "cash_out",
+  "card_reward",
+  "card_reward_reroll",
+  "card_type_selected",
+  "shop_visit",
+  "shop_sell",
+  "room_selected",
+  "card_play",
+  "answer_correct",
+  "answer_incorrect",
+  "tier_upgrade",
+  "settings_change",
+  "account_created",
+  "feedback_submitted",
+  "invite_code_validated",
 ]);
 
 /** Property keys that must never appear in analytics payloads (PII). */
