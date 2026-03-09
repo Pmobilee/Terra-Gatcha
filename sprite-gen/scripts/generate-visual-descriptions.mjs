@@ -3,30 +3,43 @@
  * Generate visual descriptions for facts missing them.
  * Uses Claude API (requires ANTHROPIC_API_KEY in environment).
  *
+ * Supports two modes:
+ *   - Single mode: one API call per fact (default, or <10 facts with --language)
+ *   - Batch mode:  10 facts per API call with cultural theming (--language + ≥10 facts)
+ *
  * Usage:
  *   node generate-visual-descriptions.mjs                    # Process all missing
  *   node generate-visual-descriptions.mjs --dry-run          # Show what would be generated
  *   node generate-visual-descriptions.mjs --limit 10         # Process at most 10
  *   node generate-visual-descriptions.mjs --file vocab-n3    # Only process matching file
- *   node generate-visual-descriptions.mjs --reset            # Clear checkpoint and start fresh
- *   node generate-visual-descriptions.mjs --language ja    # Japanese cultural theming
- *   node generate-visual-descriptions.mjs --language es    # Spanish cultural theming
- *   node generate-visual-descriptions.mjs --language fr    # French cultural theming
+ *   node generate-visual-descriptions.mjs --reset            # Clear checkpoint, force regeneration
+ *   node generate-visual-descriptions.mjs --language ja      # Japanese cultural theming (batch)
+ *   node generate-visual-descriptions.mjs --analyze          # Print element frequency table
+ *   node generate-visual-descriptions.mjs --regenerate-all   # Null all existing descriptions first
  */
 
-import { readFile, writeFile, readdir, stat } from 'node:fs/promises';
+import { readFile, writeFile, readdir } from 'node:fs/promises';
 import { dirname, join, basename, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+// ---------------------------------------------------------------------------
+// Paths & constants
+// ---------------------------------------------------------------------------
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SEED_DIR = join(__dirname, '../../src/data/seed');
 const CHECKPOINT_PATH = join(__dirname, '.vd-checkpoint.json');
+const SETTINGS_PATH = join(__dirname, 'setting-assignments.json');
+const LANG_CONFIG_DIR = join(__dirname, 'language-configs');
 
 const API_URL = 'https://api.anthropic.com/v1/messages';
 const MODEL = 'claude-haiku-4-5-20251001';
-const MAX_TOKENS = 100;
+const BATCH_SIZE = 10;
+const MAX_TOKENS_BATCH = 1500;
+const MAX_TOKENS_SINGLE = 100;
 const RATE_LIMIT_MS = 500;
 const RETRY_DELAY_MS = 2000;
+const OVERUSE_THRESHOLD = 0.10; // 10%
 
 // ---------------------------------------------------------------------------
 // CLI args
@@ -35,6 +48,8 @@ const RETRY_DELAY_MS = 2000;
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');
 const RESET = args.includes('--reset');
+const ANALYZE = args.includes('--analyze');
+const REGENERATE_ALL = args.includes('--regenerate-all');
 
 let LIMIT = Infinity;
 const limitIdx = args.indexOf('--limit');
@@ -84,7 +99,7 @@ function validateDescription(text) {
 }
 
 // ---------------------------------------------------------------------------
-// System prompt
+// System prompt (single mode / no-language mode)
 // ---------------------------------------------------------------------------
 
 const SYSTEM_PROMPT = `You write visual scene descriptions for pixel art card illustrations in a fantasy card game called Arcane Recall.
@@ -105,71 +120,53 @@ Rules:
 
 Return ONLY the visual description string. No JSON, no quotes, no explanation.`;
 
-const LANGUAGE_PROMPTS = {
-  ja: `
+// ---------------------------------------------------------------------------
+// Seeded PRNG (mulberry32)
+// ---------------------------------------------------------------------------
 
-CRITICAL — CULTURAL THEMING (Japanese vocabulary):
-Every scene MUST be unmistakably set in Japan. Use feudal, Edo-period, or traditional Japanese settings.
+/**
+ * Create a seeded PRNG using the mulberry32 algorithm.
+ * @param {number} seed
+ * @returns {() => number} Returns values in [0, 1)
+ */
+function seededRandom(seed) {
+  let t = seed + 0x6D2B79F5;
+  return function () {
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
 
-REQUIRED ELEMENTS (use at least 2 per description):
-- Architecture: torii gates, pagodas, tatami rooms, shoji screens, castle towns, wooden bridges, thatched roofs
-- Nature: bamboo forests, cherry blossoms, koi ponds, zen rock gardens, misty mountains, rice paddies
-- Cultural: tea ceremonies, calligraphy brushes, paper lanterns, shrine bells, incense, silk kimonos
-- People: samurai, monks, merchants, artisans, fishermen (all stylized pixel art, no realistic faces)
-- Settings: moonlit temple roofs, bustling Edo markets, mountain hot springs, coastal fishing villages
+/**
+ * Simple string hash to derive a numeric seed from a fact ID.
+ * @param {string} str
+ * @returns {number}
+ */
+function hashString(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash + str.charCodeAt(i)) | 0;
+  }
+  return hash >>> 0;
+}
 
-COLOR PALETTE: Ukiyo-e influence — deep indigos, warm ambers, cherry blossom pink, moss green, twilight purple, lantern gold.
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
 
-CRITICAL RULE: The scene must ILLUSTRATE THE MEANING of the word using Japanese cultural elements.
-- "to calculate" → A merchant in a lantern-lit Edo shop carefully moving beads on a soroban abacus
-- "to endure" → A samurai kneeling motionless in falling snow before a weathered temple gate
-- "to translate" → A scholar in a candlelit room surrounded by scrolls, brush poised between kanji and foreign text
-- "to export" → A bustling harbor with workers loading silk-wrapped crates onto a wooden trading vessel at sunrise
-
-BAD examples (REJECT these patterns):
-- Generic fantasy with no Japanese elements
-- Just "a person doing X" with no cultural setting
-- Glowing orbs, magic portals, generic wizards — these belong to general facts, NOT vocab cards
-- Offensive stereotypes or modern settings (no neon, no anime tropes)`,
-
-  es: `
-
-CRITICAL — CULTURAL THEMING (Spanish vocabulary):
-Every scene MUST be unmistakably set in Spain or Latin America.
-
-REQUIRED ELEMENTS (use at least 2 per description):
-- Architecture: terracotta plazas, haciendas, Moorish arches, colonial churches, adobe walls
-- Nature: agave fields, jungle cenotes, olive groves, volcanic landscapes, desert mesas
-- Cultural: flamenco dancers, guitar players, bull arenas, mercados, Day of the Dead altars
-- People: matadors, conquistadors, artisans, farmers, musicians (stylized pixel art)
-- Settings: sun-drenched courtyards, candlelit cantinas, Mediterranean harbors, Aztec temple ruins
-
-COLOR PALETTE: Warm sunset tones — burnt orange, terracotta red, golden yellow, turquoise, deep crimson.`,
-
-  fr: `
-
-CRITICAL — CULTURAL THEMING (French vocabulary):
-Every scene MUST be unmistakably set in France or French-speaking regions.
-
-REQUIRED ELEMENTS (use at least 2 per description):
-- Architecture: cobblestone cafés, cathedral stained glass, château gardens, wrought-iron balconies
-- Nature: lavender fields, vineyard hillsides, misty river bridges, poplar-lined roads
-- Cultural: patisserie windows, wine barrels, beret-wearing painters, bookshop stalls along the Seine
-- People: bakers, artists, musketeers, vineyard workers (stylized pixel art)
-- Settings: Parisian rooftops at dusk, Provençal markets, candlelit bistros, fog-wrapped lighthouses
-
-COLOR PALETTE: Soft pastels — powder blue, dusty rose, cream, sage green, warm gold, violet twilight.`,
-};
+/** @param {number} ms */
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 // ---------------------------------------------------------------------------
 // Checkpoint
 // ---------------------------------------------------------------------------
 
-/** @returns {Set<string>} */
+/** @returns {Promise<Set<string>>} */
 async function loadCheckpoint() {
-  if (RESET) {
-    return new Set();
-  }
+  if (RESET) return new Set();
   try {
     const data = await readFile(CHECKPOINT_PATH, 'utf-8');
     return new Set(JSON.parse(data));
@@ -181,6 +178,25 @@ async function loadCheckpoint() {
 /** @param {Set<string>} processed */
 async function saveCheckpoint(processed) {
   await writeFile(CHECKPOINT_PATH, JSON.stringify([...processed], null, 2));
+}
+
+// ---------------------------------------------------------------------------
+// Setting assignments (persistent)
+// ---------------------------------------------------------------------------
+
+/** @returns {Promise<Record<string, number>>} */
+async function loadSettingAssignments() {
+  try {
+    const data = await readFile(SETTINGS_PATH, 'utf-8');
+    return JSON.parse(data);
+  } catch {
+    return {};
+  }
+}
+
+/** @param {Record<string, number>} assignments */
+async function saveSettingAssignments(assignments) {
+  await writeFile(SETTINGS_PATH, JSON.stringify(assignments, null, 2) + '\n');
 }
 
 // ---------------------------------------------------------------------------
@@ -207,7 +223,148 @@ async function findJsonFiles(dir) {
 }
 
 // ---------------------------------------------------------------------------
-// Claude API
+// Language config loading
+// ---------------------------------------------------------------------------
+
+/**
+ * Load a language config from ./language-configs/{lang}.json
+ * @param {string} lang
+ * @returns {Promise<object>}
+ */
+async function loadLanguageConfig(lang) {
+  const configPath = join(LANG_CONFIG_DIR, `${lang}.json`);
+  try {
+    const raw = await readFile(configPath, 'utf-8');
+    return JSON.parse(raw);
+  } catch (err) {
+    throw new Error(`Failed to load language config for "${lang}" at ${configPath}: ${err.message}`);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Setting assignment algorithm
+// ---------------------------------------------------------------------------
+
+/**
+ * Assign each fact to a setting index using seeded shuffle-and-deal.
+ * Existing assignments from disk are preserved; only new facts get assigned.
+ *
+ * @param {Array<{ id: string }>} facts
+ * @param {Array<{ anchor: string, zone: string }>} settings
+ * @param {Record<string, number>} existingAssignments
+ * @returns {Record<string, number>} Updated assignments map (factId -> settingIndex)
+ */
+function assignSettings(facts, settings, existingAssignments) {
+  const assignments = { ...existingAssignments };
+  const unassigned = facts.filter(f => !(f.id in assignments));
+
+  if (unassigned.length === 0) return assignments;
+
+  // Seed from hash of first unassigned fact ID
+  const seed = hashString(unassigned[0].id);
+  const rng = seededRandom(seed);
+
+  // Create enough copies of the settings indices to cover all unassigned facts
+  const copies = Math.ceil(unassigned.length / settings.length);
+  const pool = [];
+  for (let c = 0; c < copies; c++) {
+    for (let s = 0; s < settings.length; s++) {
+      pool.push(s);
+    }
+  }
+
+  // Fisher-Yates shuffle with seeded RNG
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+
+  // Zip: fact[i] -> pool[i]
+  for (let i = 0; i < unassigned.length; i++) {
+    assignments[unassigned[i].id] = pool[i];
+  }
+
+  return assignments;
+}
+
+// ---------------------------------------------------------------------------
+// Element frequency tracking
+// ---------------------------------------------------------------------------
+
+/**
+ * Count keyword frequencies across all descriptions.
+ * @param {string[]} descriptions
+ * @param {string[]} keywords
+ * @returns {Map<string, number>} keyword -> count
+ */
+function countKeywordFrequencies(descriptions, keywords) {
+  /** @type {Map<string, number>} */
+  const freq = new Map();
+  for (const kw of keywords) freq.set(kw, 0);
+
+  const lowerDescs = descriptions.map(d => d.toLowerCase());
+  for (const kw of keywords) {
+    const kwLower = kw.toLowerCase();
+    for (const desc of lowerDescs) {
+      if (desc.includes(kwLower)) {
+        freq.set(kw, freq.get(kw) + 1);
+      }
+    }
+  }
+  return freq;
+}
+
+/**
+ * Build an avoid list of overused elements.
+ * @param {string[]} descriptions - All descriptions generated so far
+ * @param {string[]} keywords - Element keywords to track
+ * @returns {string[]} Avoid list entries like "lantern (42/400)"
+ */
+function buildAvoidList(descriptions, keywords) {
+  if (descriptions.length === 0) return [];
+  const freq = countKeywordFrequencies(descriptions, keywords);
+  const threshold = Math.floor(descriptions.length * OVERUSE_THRESHOLD);
+  const avoid = [];
+  for (const [kw, count] of freq) {
+    if (count > threshold) {
+      avoid.push(`${kw} (${count}/${descriptions.length})`);
+    }
+  }
+  return avoid.sort((a, b) => {
+    const countA = parseInt(a.match(/\((\d+)\//)?.[1] || '0');
+    const countB = parseInt(b.match(/\((\d+)\//)?.[1] || '0');
+    return countB - countA;
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Batch category rotation
+// ---------------------------------------------------------------------------
+
+/**
+ * Select 3-4 element categories for a given batch index.
+ * @param {Record<string, string[]>} elementCategories
+ * @param {number} batchIndex
+ * @returns {Record<string, string[]>} Subset of categories
+ */
+function selectBatchCategories(elementCategories, batchIndex) {
+  const categoryNames = Object.keys(elementCategories);
+  const numCategories = categoryNames.length;
+  // Alternate between 3 and 4 categories
+  const pickCount = (batchIndex % 2 === 0) ? 3 : 4;
+  const startIdx = (batchIndex * 3) % numCategories;
+
+  const selected = {};
+  for (let i = 0; i < pickCount; i++) {
+    const idx = (startIdx + i) % numCategories;
+    const name = categoryNames[idx];
+    selected[name] = elementCategories[name];
+  }
+  return selected;
+}
+
+// ---------------------------------------------------------------------------
+// Claude API — single mode
 // ---------------------------------------------------------------------------
 
 const API_KEY = process.env.ANTHROPIC_API_KEY;
@@ -217,10 +374,8 @@ const API_KEY = process.env.ANTHROPIC_API_KEY;
  * @param {{ statement: string, category: string[], type: string }} fact
  * @returns {Promise<string>}
  */
-async function generateDescription(fact) {
-  if (!API_KEY) {
-    throw new Error('ANTHROPIC_API_KEY environment variable is required');
-  }
+async function generateDescriptionSingle(fact) {
+  if (!API_KEY) throw new Error('ANTHROPIC_API_KEY environment variable is required');
 
   const userPrompt = [
     `Fact: ${fact.statement}`,
@@ -230,8 +385,8 @@ async function generateDescription(fact) {
 
   const body = {
     model: MODEL,
-    max_tokens: MAX_TOKENS,
-    system: SYSTEM_PROMPT + (LANGUAGE && LANGUAGE_PROMPTS[LANGUAGE] ? LANGUAGE_PROMPTS[LANGUAGE] : ''),
+    max_tokens: MAX_TOKENS_SINGLE,
+    system: SYSTEM_PROMPT,
     messages: [{ role: 'user', content: userPrompt }],
   };
 
@@ -241,7 +396,6 @@ async function generateDescription(fact) {
       console.log(`  Retrying after ${RETRY_DELAY_MS}ms...`);
       await sleep(RETRY_DELAY_MS);
     }
-
     try {
       const resp = await fetch(API_URL, {
         method: 'POST',
@@ -252,29 +406,507 @@ async function generateDescription(fact) {
         },
         body: JSON.stringify(body),
       });
-
       if (!resp.ok) {
         const errText = await resp.text();
         throw new Error(`API ${resp.status}: ${errText}`);
       }
-
       const json = await resp.json();
       const text = json.content?.[0]?.text?.trim();
-      if (!text) {
-        throw new Error('Empty response from API');
-      }
+      if (!text) throw new Error('Empty response from API');
       return text;
     } catch (err) {
       lastError = err;
     }
   }
-
   throw lastError;
 }
 
-/** @param {number} ms */
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+// ---------------------------------------------------------------------------
+// Claude API — batch mode
+// ---------------------------------------------------------------------------
+
+/**
+ * Build the system prompt for a batch API call.
+ * @param {object} config - Language config
+ * @param {Record<string, string[]>} selectedCategories - Categories for this batch
+ * @param {string[]} avoidList - Overused element strings
+ * @param {number} count - Number of facts in the batch
+ * @returns {string}
+ */
+function buildBatchSystemPrompt(config, selectedCategories, avoidList, count) {
+  let prompt = `You write visual scene descriptions for pixel art card illustrations in a fantasy card game called Arcane Recall.
+
+For each fact below, write ONE visual description (20-40 words) suitable as a prompt for generating pixel art.
+
+Rules:
+- Describe a CONCRETE visual scene, not an abstract concept
+- ONE clear focal subject that embodies the fact
+- No text, labels, numbers, or UI elements
+- No realistic human faces (stylized pixel art people OK)
+- No political symbols, religious controversy, or disputed territories
+- No violence beyond fantasy (no blood, no weapons pointed at viewer)
+- No sexual content
+- For vocabulary facts: illustrate the MEANING of the word, not the word itself
+- Vivid colors, dramatic lighting, pixel-art-friendly composition
+
+CULTURAL SETTING: ${config.baseTheme}
+COLOR PALETTE: ${config.palette}
+
+AVAILABLE ELEMENTS (use 2-3 per description, vary across the batch):`;
+
+  for (const [category, items] of Object.entries(selectedCategories)) {
+    prompt += `\n- ${category.charAt(0).toUpperCase() + category.slice(1)}: ${items.join(', ')}`;
+  }
+
+  if (avoidList.length > 0) {
+    prompt += `\n\nAVOID these overused elements: ${avoidList.join(', ')}`;
+  }
+
+  prompt += `\n\nReturn EXACTLY ${count} lines, numbered 1-${count}. Each line is ONLY the description text (no quotes, no JSON).`;
+
+  return prompt;
+}
+
+/**
+ * Build the user prompt for a batch API call.
+ * @param {Array<{ fact: any, settingAnchor: string }>} batchItems
+ * @returns {string}
+ */
+function buildBatchUserPrompt(batchItems) {
+  return batchItems
+    .map((item, i) => `${i + 1}. "${item.fact.statement}" | Setting: ${item.settingAnchor}`)
+    .join('\n');
+}
+
+/**
+ * Call Claude API with a batch of facts, returning an array of descriptions.
+ * @param {Array<{ fact: any, settingAnchor: string }>} batchItems
+ * @param {object} config - Language config
+ * @param {Record<string, string[]>} selectedCategories
+ * @param {string[]} avoidList
+ * @returns {Promise<(string|null)[]>} Array with descriptions or null for failed lines
+ */
+async function generateDescriptionsBatch(batchItems, config, selectedCategories, avoidList) {
+  if (!API_KEY) throw new Error('ANTHROPIC_API_KEY environment variable is required');
+
+  const systemPrompt = buildBatchSystemPrompt(config, selectedCategories, avoidList, batchItems.length);
+  const userPrompt = buildBatchUserPrompt(batchItems);
+
+  const body = {
+    model: MODEL,
+    max_tokens: MAX_TOKENS_BATCH,
+    system: systemPrompt,
+    messages: [{ role: 'user', content: userPrompt }],
+  };
+
+  let lastError;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    if (attempt > 0) {
+      console.log(`  Retrying batch after ${RETRY_DELAY_MS}ms...`);
+      await sleep(RETRY_DELAY_MS);
+    }
+    try {
+      const resp = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': API_KEY,
+          'anthropic-version': '2023-06-01',
+        },
+        body: JSON.stringify(body),
+      });
+      if (!resp.ok) {
+        const errText = await resp.text();
+        throw new Error(`API ${resp.status}: ${errText}`);
+      }
+      const json = await resp.json();
+      const text = json.content?.[0]?.text?.trim();
+      if (!text) throw new Error('Empty response from API');
+      return parseBatchResponse(text, batchItems.length);
+    } catch (err) {
+      lastError = err;
+    }
+  }
+  throw lastError;
+}
+
+// ---------------------------------------------------------------------------
+// Batch response parsing
+// ---------------------------------------------------------------------------
+
+/**
+ * Parse a numbered-list batch response into individual descriptions.
+ * @param {string} text - Raw response text
+ * @param {number} expectedCount
+ * @returns {(string|null)[]} Array of descriptions; null for unparseable/invalid lines
+ */
+function parseBatchResponse(text, expectedCount) {
+  // Split by numbered lines: "1. ...", "2) ...", etc.
+  const lines = text.split(/^\d+[\.\)]\s*/m).filter(l => l.trim().length > 0);
+  const results = [];
+
+  for (let i = 0; i < expectedCount; i++) {
+    if (i < lines.length) {
+      const trimmed = lines[i].trim().replace(/^["']|["']$/g, '');
+      const validation = validateDescription(trimmed);
+      if (validation.safe && trimmed.length >= 20 && trimmed.length <= 300) {
+        results.push(trimmed);
+      } else {
+        results.push(null);
+      }
+    } else {
+      results.push(null);
+    }
+  }
+  return results;
+}
+
+// ---------------------------------------------------------------------------
+// --regenerate-all: null out existing visualDescriptions
+// ---------------------------------------------------------------------------
+
+/**
+ * Null out all visualDescription fields in the given files.
+ * @param {string[]} jsonFiles
+ * @returns {Promise<number>} Number of descriptions cleared
+ */
+async function nullAllDescriptions(jsonFiles) {
+  let cleared = 0;
+  for (const file of jsonFiles) {
+    const raw = await readFile(file, 'utf-8');
+    const facts = JSON.parse(raw);
+    if (!Array.isArray(facts)) continue;
+
+    let modified = false;
+    for (const fact of facts) {
+      if (fact.visualDescription) {
+        fact.visualDescription = null;
+        modified = true;
+        cleared++;
+      }
+    }
+    if (modified) {
+      await writeFile(file, JSON.stringify(facts, null, 2) + '\n');
+    }
+  }
+  return cleared;
+}
+
+// ---------------------------------------------------------------------------
+// --analyze: element frequency analysis
+// ---------------------------------------------------------------------------
+
+/**
+ * Run the analyze command: print element frequency and diversity stats.
+ * @param {string[]} jsonFiles
+ */
+async function runAnalyze(jsonFiles) {
+  // Load language config
+  if (!LANGUAGE) {
+    console.error('Error: --analyze requires --language to know which keywords to check');
+    process.exit(1);
+  }
+
+  const config = await loadLanguageConfig(LANGUAGE);
+  const keywords = config.elementKeywords || [];
+
+  // Collect all descriptions
+  const descriptions = [];
+  const allFacts = [];
+  for (const file of jsonFiles) {
+    const raw = await readFile(file, 'utf-8');
+    const facts = JSON.parse(raw);
+    if (!Array.isArray(facts)) continue;
+    for (const fact of facts) {
+      if (fact.visualDescription) {
+        descriptions.push(fact.visualDescription);
+      }
+      if (fact.id) allFacts.push(fact);
+    }
+  }
+
+  console.log(`\n=== Element Frequency Analysis (${LANGUAGE}) ===`);
+  console.log(`Total facts: ${allFacts.length}`);
+  console.log(`Facts with descriptions: ${descriptions.length}`);
+  console.log(`Facts without descriptions: ${allFacts.length - descriptions.length}\n`);
+
+  if (descriptions.length === 0) {
+    console.log('No descriptions to analyze.');
+    return;
+  }
+
+  // Keyword frequency table
+  const freq = countKeywordFrequencies(descriptions, keywords);
+  const sorted = [...freq.entries()].sort((a, b) => b[1] - a[1]);
+
+  const threshold = Math.floor(descriptions.length * OVERUSE_THRESHOLD);
+
+  console.log('--- Element Frequency Table ---');
+  console.log(`${'Keyword'.padEnd(25)} ${'Count'.padStart(6)} ${'%'.padStart(7)}  Status`);
+  console.log('-'.repeat(55));
+
+  let overused = 0;
+  let used = 0;
+  for (const [kw, count] of sorted) {
+    if (count === 0) continue;
+    used++;
+    const pct = ((count / descriptions.length) * 100).toFixed(1);
+    const status = count > threshold ? 'OVERUSED' : '';
+    if (count > threshold) overused++;
+    console.log(`${kw.padEnd(25)} ${String(count).padStart(6)} ${(pct + '%').padStart(7)}  ${status}`);
+  }
+
+  const unused = keywords.length - used;
+  console.log(`\nUsed keywords: ${used}/${keywords.length}`);
+  console.log(`Unused keywords: ${unused}`);
+  console.log(`Overused (>${(OVERUSE_THRESHOLD * 100).toFixed(0)}%): ${overused}`);
+
+  // Diversity score: % of used keywords under threshold
+  const underThreshold = used - overused;
+  const diversityScore = used > 0 ? ((underThreshold / used) * 100).toFixed(1) : '0.0';
+  console.log(`\nDiversity score: ${diversityScore}% (keywords under ${(OVERUSE_THRESHOLD * 100).toFixed(0)}% threshold)`);
+
+  // Zone distribution from setting assignments
+  try {
+    const assignments = await loadSettingAssignments();
+    const assignedCount = Object.keys(assignments).length;
+    if (assignedCount > 0 && config.settings) {
+      console.log(`\n--- Zone Distribution (${assignedCount} assignments) ---`);
+      /** @type {Map<string, number>} */
+      const zoneCounts = new Map();
+      for (const settingIdx of Object.values(assignments)) {
+        const setting = config.settings[settingIdx];
+        if (setting) {
+          const zone = setting.zone;
+          zoneCounts.set(zone, (zoneCounts.get(zone) || 0) + 1);
+        }
+      }
+      const sortedZones = [...zoneCounts.entries()].sort((a, b) => b[1] - a[1]);
+      for (const [zone, count] of sortedZones) {
+        const pct = ((count / assignedCount) * 100).toFixed(1);
+        console.log(`  ${zone.padEnd(15)} ${String(count).padStart(5)} (${pct}%)`);
+      }
+    }
+  } catch {
+    // No assignments file, skip
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Processing: single mode
+// ---------------------------------------------------------------------------
+
+/**
+ * Process facts one at a time (no language config or <10 facts).
+ * @param {Array<{ file: string, index: number, fact: any }>} items
+ * @param {Set<string>} processed
+ * @returns {Promise<{ success: number, failed: number, unsafe: number, modifiedFiles: Set<string> }>}
+ */
+async function processSingleMode(items, processed) {
+  /** @type {Map<string, any[]>} */
+  const modifiedFiles = new Map();
+  let success = 0;
+  let failed = 0;
+  let unsafe = 0;
+
+  for (let i = 0; i < items.length; i++) {
+    const { file, fact } = items[i];
+    const relFile = relative(SEED_DIR, file);
+    const prefix = `[${i + 1}/${items.length}] ${fact.id}`;
+
+    try {
+      const description = await generateDescriptionSingle(fact);
+      const validation = validateDescription(description);
+
+      if (!validation.safe) {
+        console.log(`${prefix}: UNSAFE (${validation.reason}) — "${description.substring(0, 60)}..."`);
+        unsafe++;
+        processed.add(fact.id);
+        await saveCheckpoint(processed);
+        continue;
+      }
+
+      // Load file data if not already cached
+      if (!modifiedFiles.has(file)) {
+        const raw = await readFile(file, 'utf-8');
+        modifiedFiles.set(file, JSON.parse(raw));
+      }
+
+      const fileData = modifiedFiles.get(file);
+      const targetFact = fileData.find(f => f.id === fact.id);
+      if (targetFact) targetFact.visualDescription = description;
+
+      await writeFile(file, JSON.stringify(fileData, null, 2) + '\n');
+      processed.add(fact.id);
+      await saveCheckpoint(processed);
+
+      success++;
+      console.log(`${prefix}: ${description.substring(0, 80)}${description.length > 80 ? '...' : ''}`);
+
+      if (i < items.length - 1) await sleep(RATE_LIMIT_MS);
+    } catch (err) {
+      failed++;
+      console.error(`${prefix}: ERROR — ${err.message}`);
+    }
+  }
+
+  return { success, failed, unsafe, modifiedFiles: new Set(modifiedFiles.keys()) };
+}
+
+// ---------------------------------------------------------------------------
+// Processing: batch mode
+// ---------------------------------------------------------------------------
+
+/**
+ * Process facts in batches of BATCH_SIZE with cultural theming.
+ * @param {Array<{ file: string, index: number, fact: any }>} items
+ * @param {Set<string>} processed
+ * @param {object} config - Language config
+ * @param {Record<string, number>} settingAssignments
+ * @returns {Promise<{ success: number, failed: number, unsafe: number, modifiedFiles: Set<string> }>}
+ */
+async function processBatchMode(items, processed, config, settingAssignments) {
+  /** @type {Map<string, any[]>} */
+  const modifiedFiles = new Map();
+  let success = 0;
+  let failed = 0;
+  let unsafe = 0;
+
+  // Track all descriptions generated so far (for frequency analysis)
+  const allDescriptions = [];
+
+  const keywords = config.elementKeywords || [];
+  const totalBatches = Math.ceil(items.length / BATCH_SIZE);
+
+  for (let batchIdx = 0; batchIdx < totalBatches; batchIdx++) {
+    const batchStart = batchIdx * BATCH_SIZE;
+    const batchEnd = Math.min(batchStart + BATCH_SIZE, items.length);
+    const batchItems = items.slice(batchStart, batchEnd);
+
+    console.log(`\n--- Batch ${batchIdx + 1}/${totalBatches} (${batchItems.length} facts) ---`);
+
+    // Select rotating categories for this batch
+    const selectedCategories = selectBatchCategories(config.elementCategories, batchIdx);
+    console.log(`  Categories: ${Object.keys(selectedCategories).join(', ')}`);
+
+    // Build avoid list from descriptions so far
+    const avoidList = buildAvoidList(allDescriptions, keywords);
+    if (avoidList.length > 0) {
+      console.log(`  Avoiding ${avoidList.length} overused elements`);
+    }
+
+    // Prepare batch items with setting anchors
+    const batchWithSettings = batchItems.map(item => {
+      const settingIdx = settingAssignments[item.fact.id] ?? 0;
+      const setting = config.settings[settingIdx] || config.settings[0];
+      return { fact: item.fact, settingAnchor: setting.anchor, file: item.file };
+    });
+
+    if (DRY_RUN) {
+      for (const item of batchWithSettings) {
+        console.log(`  ${item.fact.id}: "${item.fact.statement.substring(0, 50)}..." → ${item.settingAnchor}`);
+      }
+      continue;
+    }
+
+    try {
+      const descriptions = await generateDescriptionsBatch(
+        batchWithSettings, config, selectedCategories, avoidList
+      );
+
+      // Process each result
+      for (let j = 0; j < batchItems.length; j++) {
+        const { file, fact } = batchItems[j];
+        const prefix = `  [${batchStart + j + 1}/${items.length}] ${fact.id}`;
+        let description = descriptions[j];
+
+        // If batch line failed, try single-call fallback
+        if (!description) {
+          console.log(`${prefix}: batch line failed, trying single fallback...`);
+          try {
+            description = await generateDescriptionSingle(fact);
+            const validation = validateDescription(description);
+            if (!validation.safe) {
+              console.log(`${prefix}: UNSAFE (${validation.reason})`);
+              unsafe++;
+              processed.add(fact.id);
+              await saveCheckpoint(processed);
+              continue;
+            }
+          } catch (err) {
+            failed++;
+            console.error(`${prefix}: FALLBACK ERROR — ${err.message}`);
+            continue;
+          }
+          await sleep(RATE_LIMIT_MS);
+        }
+
+        // Load file data if not cached
+        if (!modifiedFiles.has(file)) {
+          const raw = await readFile(file, 'utf-8');
+          modifiedFiles.set(file, JSON.parse(raw));
+        }
+
+        const fileData = modifiedFiles.get(file);
+        const targetFact = fileData.find(f => f.id === fact.id);
+        if (targetFact) targetFact.visualDescription = description;
+
+        await writeFile(file, JSON.stringify(fileData, null, 2) + '\n');
+        processed.add(fact.id);
+        await saveCheckpoint(processed);
+
+        allDescriptions.push(description);
+        success++;
+        console.log(`${prefix}: ${description.substring(0, 80)}${description.length > 80 ? '...' : ''}`);
+      }
+    } catch (err) {
+      // Entire batch failed — fall back to single mode for this batch
+      console.error(`  Batch failed: ${err.message} — falling back to single mode`);
+      for (let j = 0; j < batchItems.length; j++) {
+        const { file, fact } = batchItems[j];
+        const prefix = `  [${batchStart + j + 1}/${items.length}] ${fact.id}`;
+
+        try {
+          const description = await generateDescriptionSingle(fact);
+          const validation = validateDescription(description);
+
+          if (!validation.safe) {
+            console.log(`${prefix}: UNSAFE (${validation.reason})`);
+            unsafe++;
+            processed.add(fact.id);
+            await saveCheckpoint(processed);
+            continue;
+          }
+
+          if (!modifiedFiles.has(file)) {
+            const raw = await readFile(file, 'utf-8');
+            modifiedFiles.set(file, JSON.parse(raw));
+          }
+
+          const fileData = modifiedFiles.get(file);
+          const targetFact = fileData.find(f => f.id === fact.id);
+          if (targetFact) targetFact.visualDescription = description;
+
+          await writeFile(file, JSON.stringify(fileData, null, 2) + '\n');
+          processed.add(fact.id);
+          await saveCheckpoint(processed);
+
+          allDescriptions.push(description);
+          success++;
+          console.log(`${prefix}: ${description.substring(0, 80)}${description.length > 80 ? '...' : ''}`);
+          await sleep(RATE_LIMIT_MS);
+        } catch (singleErr) {
+          failed++;
+          console.error(`${prefix}: ERROR — ${singleErr.message}`);
+        }
+      }
+    }
+
+    // Rate limit between batches
+    if (batchIdx < totalBatches - 1) await sleep(RATE_LIMIT_MS);
+  }
+
+  return { success, failed, unsafe, modifiedFiles: new Set(modifiedFiles.keys()) };
 }
 
 // ---------------------------------------------------------------------------
@@ -288,6 +920,8 @@ async function main() {
   if (FILE_FILTER) console.log(`  File filter: ${FILE_FILTER}`);
   if (RESET) console.log('  Checkpoint reset');
   if (LANGUAGE) console.log(`  Language: ${LANGUAGE}`);
+  if (ANALYZE) console.log('  Mode: ANALYZE (frequency analysis only)');
+  if (REGENERATE_ALL) console.log('  Mode: REGENERATE ALL (clearing existing descriptions)');
   console.log();
 
   // Discover JSON files
@@ -296,6 +930,18 @@ async function main() {
     jsonFiles = jsonFiles.filter(f => basename(f, '.json').includes(FILE_FILTER));
   }
   console.log(`Found ${jsonFiles.length} seed file(s)\n`);
+
+  // --analyze: just print stats and exit
+  if (ANALYZE) {
+    await runAnalyze(jsonFiles);
+    return;
+  }
+
+  // --regenerate-all: null out all existing descriptions
+  if (REGENERATE_ALL) {
+    const cleared = await nullAllDescriptions(jsonFiles);
+    console.log(`Cleared ${cleared} existing visual description(s)\n`);
+  }
 
   // Load checkpoint
   const processed = await loadCheckpoint();
@@ -335,79 +981,61 @@ async function main() {
     process.exit(1);
   }
 
-  // Track which files have been modified (file path -> parsed JSON array)
-  /** @type {Map<string, any[]>} */
-  const modifiedFiles = new Map();
+  const toProcess = missing.slice(0, total);
 
-  let successCount = 0;
-  let failCount = 0;
-  let skippedUnsafe = 0;
+  // Decide mode: batch (language + ≥10 facts) or single
+  const useBatchMode = LANGUAGE && total >= 10;
+  let result;
 
-  for (let i = 0; i < total; i++) {
-    const { file, index, fact } = missing[i];
-    const relFile = relative(SEED_DIR, file);
-    const prefix = `[${i + 1}/${total}] ${fact.id}`;
+  if (useBatchMode) {
+    console.log(`Using BATCH mode (${BATCH_SIZE} facts/call, language: ${LANGUAGE})\n`);
+
+    const config = await loadLanguageConfig(LANGUAGE);
+    const existingAssignments = await loadSettingAssignments();
+    const factList = toProcess.map(m => m.fact);
+    const assignments = assignSettings(factList, config.settings, existingAssignments);
+    await saveSettingAssignments(assignments);
+    console.log(`Setting assignments: ${Object.keys(assignments).length} total (${factList.length} new)\n`);
 
     if (DRY_RUN) {
-      console.log(`${prefix}: (${relFile}) "${fact.statement.substring(0, 60)}..."`);
-      continue;
+      // Dry-run preview for batch mode
+      for (let i = 0; i < toProcess.length; i++) {
+        const { fact } = toProcess[i];
+        const settingIdx = assignments[fact.id] ?? 0;
+        const setting = config.settings[settingIdx] || config.settings[0];
+        console.log(`[${i + 1}/${total}] ${fact.id}: "${fact.statement.substring(0, 50)}..." → ${setting.anchor} (${setting.zone})`);
+      }
+      console.log(`\nWould process: ${total} fact(s) in ${Math.ceil(total / BATCH_SIZE)} batch(es)`);
+      return;
     }
 
-    try {
-      const description = await generateDescription(fact);
-      const validation = validateDescription(description);
-
-      if (!validation.safe) {
-        console.log(`${prefix}: UNSAFE (${validation.reason}) — "${description.substring(0, 60)}..."`);
-        skippedUnsafe++;
-        // Still mark as processed so we don't retry unsafe content endlessly
-        processed.add(fact.id);
-        await saveCheckpoint(processed);
-        continue;
-      }
-
-      // Load file data if not already cached
-      if (!modifiedFiles.has(file)) {
-        const raw = await readFile(file, 'utf-8');
-        modifiedFiles.set(file, JSON.parse(raw));
-      }
-
-      // Update the fact in our cached data
-      const fileData = modifiedFiles.get(file);
-      const targetFact = fileData.find(f => f.id === fact.id);
-      if (targetFact) {
-        targetFact.visualDescription = description;
-      }
-
-      // Write back immediately so progress isn't lost on crash
-      await writeFile(file, JSON.stringify(fileData, null, 2) + '\n');
-
-      processed.add(fact.id);
-      await saveCheckpoint(processed);
-
-      successCount++;
-      console.log(`${prefix}: ${description.substring(0, 80)}${description.length > 80 ? '...' : ''}`);
-
-      // Rate limit
-      if (i < total - 1) {
-        await sleep(RATE_LIMIT_MS);
-      }
-    } catch (err) {
-      failCount++;
-      console.error(`${prefix}: ERROR — ${err.message}`);
+    result = await processBatchMode(toProcess, processed, config, assignments);
+  } else {
+    if (LANGUAGE) {
+      console.log(`Using SINGLE mode (${total} facts < ${BATCH_SIZE} threshold for batch)\n`);
+    } else {
+      console.log('Using SINGLE mode\n');
     }
+
+    if (DRY_RUN) {
+      for (let i = 0; i < toProcess.length; i++) {
+        const { file, fact } = toProcess[i];
+        const relFile = relative(SEED_DIR, file);
+        console.log(`[${i + 1}/${total}] ${fact.id}: (${relFile}) "${fact.statement.substring(0, 60)}..."`);
+      }
+      console.log(`\nWould process: ${total} fact(s)`);
+      return;
+    }
+
+    result = await processSingleMode(toProcess, processed);
   }
 
   console.log();
   console.log('=== Summary ===');
-  if (DRY_RUN) {
-    console.log(`Would process: ${total} fact(s)`);
-  } else {
-    console.log(`Success: ${successCount}`);
-    console.log(`Failed:  ${failCount}`);
-    console.log(`Unsafe:  ${skippedUnsafe}`);
-    console.log(`Files modified: ${modifiedFiles.size}`);
-  }
+  console.log(`Success: ${result.success}`);
+  console.log(`Failed:  ${result.failed}`);
+  console.log(`Unsafe:  ${result.unsafe}`);
+  console.log(`Files modified: ${result.modifiedFiles.size}`);
 }
 
 main().catch(err => {
