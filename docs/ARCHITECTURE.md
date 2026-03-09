@@ -45,7 +45,7 @@ Primary boot path:
 - `CombatScene` — renders enemy sprite, HP bars, intent telegraph, hit/death animations, damage particles, screen flash, floor info
 - Sprite pool of 5 pre-created card sprites, repositioned per turn (no create/destroy)
 - Particle cap: 50 concurrent max on mobile; correct answer burst = 30 particles, 300ms lifespan
-- GPU-accelerated tweens for all card animations (not CSS)
+- Scale mode: `Scale.ENVELOP` (fills viewport without gaps)
 - Pixel-art config: `pixelArt`, `roundPixels`, `antialias: false`
 
 ### Svelte UI Layer
@@ -60,6 +60,21 @@ Primary boot path:
 - Enemy intent badge (STS-style) displayed between AP and bounty strips; hidden during quiz
 - End Turn button: gold pulsing glow when no actions remain; confirmation popup if AP and playable cards available
 - Screen routing via `currentScreen` store in `CardApp.svelte`
+
+#### Card Animation State Machine
+
+After answering a quiz, cards go through a multi-phase CSS animation sequence. State: `CardAnimPhase = 'reveal' | 'mechanic' | 'launch' | 'fizzle' | null`.
+
+- **Reveal** (400ms): Card enlarges to ~1.8x, centers, CSS 3D `rotateY(180deg)` flip to show cardback art. Skipped if no cardback art available.
+- **Mechanic** (500ms): One of 31 mechanic-specific `@keyframes` animations plays (slash, glow, ripple, etc.). Juice effects fire here.
+- **Launch** (300ms): Card flies upward, removed from DOM.
+- **Fizzle** (400ms, wrong answers only): Shake + fade out.
+
+**Animation buffer pattern**: Cards are copied to an `animatingCards` array before logical removal from the hand. A separate `{#each animatingCards}` loop renders non-interactive copies with animation CSS classes. Cards are cleaned from the buffer after animation completes via `setTimeout`. This prevents cards from disappearing mid-animation when the hand state updates.
+
+**Cardback discovery**: `cardbackManifest.ts` uses `import.meta.glob` at build time to discover which facts have cardback WebP images in `/public/assets/cardbacks/lowres/`. Images are preloaded via Svelte `$effect` when cards enter the hand.
+
+**Reduced motion**: `@media (prefers-reduced-motion: reduce)` replaces flip + mechanic animations with a simple fade + color flash.
 
 ### Service Layer
 
@@ -124,6 +139,8 @@ These systems transfer from the mining codebase with minimal changes:
 | Encounter bridge | `src/services/encounterBridge.ts` | Built |
 | Run manager | `src/services/runManager.ts` | Built |
 | Juice manager | `src/services/juiceManager.ts` | Built |
+| Cardback manifest | `src/ui/utils/cardbackManifest.ts` | Built |
+| Mechanic animations | `src/ui/utils/mechanicAnimations.ts` | Built |
 | CombatScene | `src/game/scenes/CombatScene.ts` | Built |
 | CardGameManager | `src/game/CardGameManager.ts` | Built |
 | CardApp (root) | `src/CardApp.svelte` | Built |
@@ -232,7 +249,7 @@ Run state serialization target: <50KB (SM-2 data for 500 facts ≈ 25KB).
 | Frame rate | 60fps |
 | Run state size | <50KB |
 | Texture atlases in memory | 3 max (via TextureAtlasLRU) |
-| Card animations | Phaser tweens only (GPU-accelerated) |
+| Card animations | CSS 3D transforms + @keyframes (31 mechanic animations, GPU-accelerated via `will-change: transform`) |
 
 ## 9. Typed Event Bus
 
@@ -284,8 +301,8 @@ src/
     factsDB.ts, saveService.ts, sm2.ts, quizService.ts, audioService.ts, ...
   ui/
     components/
-      CardCombatOverlay.svelte  — Bottom 45% interaction zone, enemy intent badge, end turn button with gold pulse
-      CardHand.svelte           — Fanned arc hand (30° spread, 20px arc offset), green glow on playable cards, AP cost badges, tap-to-select + tap/swipe-to-cast, touch drag with opacity fade
+      CardCombatOverlay.svelte  — Bottom 45% interaction zone, enemy intent badge, end turn button with gold pulse, 3-phase card animation orchestration (reveal→mechanic→launch) via setTimeout chains and animatingCards buffer pattern
+      CardHand.svelte           — Fanned arc hand (30° spread, 20px arc offset), green glow on playable cards, AP cost badges, tap-to-select + tap/swipe-to-cast, touch drag with opacity fade, dual-face card DOM (front/back with backface-visibility), 31 @keyframes mechanic animations, animatingCards buffer rendering, cardback preloading, reduced-motion support
       CardExpanded.svelte       — Quiz panel positioned above card hand (fixed, bottom: calc(45vh - 20px)), no overlap with hand
       ComboCounter.svelte       — Knowledge combo display
       DamageNumber.svelte       — Floating damage numbers
@@ -295,6 +312,9 @@ src/
       MysteryEventOverlay.svelte — Random event resolution
       RunEndOverlay.svelte      — Post-run summary
       + 150 other Svelte components (HUD, QuizOverlay, Settings, ...)
+    utils/
+      cardbackManifest.ts    — Build-time manifest (import.meta.glob) for cardback WebP images; exports hasCardback(factId), getCardbackUrl(factId)
+      mechanicAnimations.ts  — Maps 31 mechanic IDs to CSS animation classes; exports timing constants (REVEAL_DURATION=400, MECHANIC_DURATION=500, LAUNCH_DURATION=300), CardAnimPhase type, getMechanicAnimClass(), getTypeFallbackAnimClass()
     stores/                gameState, playerData, settings
   data/
     card-types.ts          — Card, CardRunState, CardType, FactDomain types

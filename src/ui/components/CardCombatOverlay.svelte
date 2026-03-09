@@ -398,7 +398,6 @@
 
   function handleAnswer(answerIndex: number, isCorrect: boolean, speedBonus: boolean): void {
     if (!committedCard) return
-
     // Capture card data before animation (onplaycard will remove card from hand)
     const card = committedCard
     const cardId = card.id

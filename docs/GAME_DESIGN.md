@@ -779,14 +779,76 @@ Simplified display: shows "END TURN" only (no AP count). Turns gold with pulsing
 
 Research on operant conditioning: intensity of positive reinforcement directly correlates with behavior repetition rate. Correct answers create a dopamine loop tied to fact recall. Vampire Survivors creator explicitly referenced gambling psychology. Players WITH sound retain at 1.5-2x rate (mobile game postmortem data).
 
-### Correct Answer (all within 200ms)
+### Card Play Animation Sequence (Post-Answer)
+
+After answering a quiz, the played card goes through a multi-phase CSS animation sequence orchestrated by `CardCombatOverlay.svelte`. Cards are copied to an `animatingCards` buffer before logical removal from the hand, so exit-animating cards remain visible via a separate non-interactive `{#each}` loop.
+
+**Correct answer — with cardback art** (total ~1200ms):
+
+| Phase | Duration | What happens |
+|-------|----------|--------------|
+| Reveal | 400ms | Card enlarges to ~1.8x, centers on screen, flips via CSS 3D `rotateY(180deg)` to show unique cardback art (WebP from `/public/assets/cardbacks/lowres/`) |
+| Mechanic | 500ms | Mechanic-specific CSS animation plays on the revealed face (slash, glow, ripple, etc.). Juice effects (haptics, damage numbers, particles) fire during this phase |
+| Launch | 300ms | Card flies upward (`translateY(-120vh)`) and is removed from the DOM |
+
+**Correct answer — no cardback art** (total ~800ms): Skip flip, mechanic animation plays on card front, then launch.
+
+**Wrong answer** (total ~400ms): Fizzle animation — card shakes and fades out. No flip, no mechanic animation.
+
+**`prefers-reduced-motion`**: Simplified fade + color flash replaces flip and mechanic animations.
+
+Card DOM uses dual-face structure: front and back containers with `backface-visibility: hidden` and a shared `transform-style: preserve-3d` wrapper. Cardback availability is checked at runtime via `cardbackManifest.ts` (`import.meta.glob` build-time discovery).
+
+Animation state machine: `CardAnimPhase = 'reveal' | 'mechanic' | 'launch' | 'fizzle' | null`
+
+### 31 Mechanic-Specific Animations
+
+Each card mechanic has a unique CSS `@keyframes` animation that plays during the mechanic phase. Defined in `mechanicAnimations.ts`, rendered in `CardHand.svelte`.
+
+| Type | Mechanic | Animation |
+|------|----------|-----------|
+| Attack (red) | strike | Diagonal slash |
+| Attack | multi_hit | 3 staggered slashes |
+| Attack | heavy_strike | Crush + shake |
+| Attack | piercing | Center point glow |
+| Attack | reckless | Flame border + shake |
+| Attack | execute | Crosshair + pulse |
+| Shield (blue) | block | Crystal border |
+| Shield | thorns | Shimmer + spikes |
+| Shield | fortify | Ring pulses |
+| Shield | parry | Diagonal streak |
+| Shield | brace | Thick metallic border |
+| Heal (green) | restore | Green glow pulse |
+| Heal | cleanse | Rising sparkles |
+| Heal | overheal | Green-blue gradient |
+| Heal | lifetap | Red-to-green sweep |
+| Buff (gold) | empower | Golden streaks up |
+| Buff | quicken | Lightning flash |
+| Buff | double_strike | Twin arcs |
+| Buff | focus | Contracting rings |
+| Debuff (purple) | weaken | Dark ripple |
+| Debuff | expose | Crack lines |
+| Debuff | slow | Clock sweep |
+| Debuff | hex | Poison drip |
+| Utility (teal) | scout | Eye blink |
+| Utility | recycle | Circular arrow |
+| Utility | foresight | Card fan |
+| Utility | transmute | Hue-rotate |
+| Regen (nature) | sustained | Heartbeat pulse |
+| Regen | emergency | Red-green flash |
+| Regen | immunity | Golden bubble |
+| Wild (rainbow) | mirror | Chrome sweep |
+| Wild | adapt | Border morph |
+| Wild | overclock | Electric flashes |
+
+### Correct Answer Juice Stack (fires during mechanic phase)
 
 | # | Element | Detail |
 |---|---------|--------|
 | 1 | Haptic | Sharp pulse: `Haptics.impact({ style: ImpactStyle.Heavy })` |
 | 2 | Flash | White 30%, 150ms fade |
 | 3 | Numbers | Arc to enemy, bounce; gold=normal, red=crit (speed bonus) |
-| 4 | Card | Launch + streak trail + particle dissolve toward enemy |
+| 4 | Card | Mechanic animation → launch + streak trail toward enemy |
 | 5 | Enemy | 5px knockback, red flash, smooth HP drain |
 | 6 | Sound | Crisp impact (Wordle ding x fighting game punch) |
 | 7 | Combo | Escalating text + particles at 3+, burst at 5 |
@@ -796,11 +858,11 @@ Research on operant conditioning: intensity of positive reinforcement directly c
 | # | Element | Detail |
 |---|---------|--------|
 | 1 | Haptic | Gentle double-tap: `Haptics.notification({ type: NotificationType.Warning })` |
-| 2 | Card | Dim, crack, sand-dissolve downward |
+| 2 | Card | Fizzle: shake + fade out (400ms) |
 | 3 | Reveal | Blue highlight, 2s |
 | 4 | Sound | Soft low tone (not a buzzer) |
 | 5 | AP gem | Dim + crack |
-| 6 | Absence | No shake, no red flash, no damage numbers |
+| 6 | Absence | No shake, no red flash, no damage numbers, no flip |
 
 ### Other Haptics
 
