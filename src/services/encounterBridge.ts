@@ -254,7 +254,7 @@ export function startEncounterForRoom(enemyId?: string): boolean {
   turnState.baseComboCount = turnState.activeRelicIds.has('combo_master') ? 1 : 0;
   turnState.comboCount = turnState.baseComboCount;
   turnState.baseDrawCount = turnState.activeRelicIds.has('quick_draw') ? 6 : 5;
-  turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier;
+  turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier * (run.endlessEnemyDamageMultiplier ?? 1);
   turnState.canaryQuestionBias = run.canary.questionBias;
 
   const onboarding = get(onboardingState);
@@ -392,7 +392,7 @@ export function handlePlayCard(
     }
 
     run.playerHp = result.turnState.playerState.hp;
-    result.turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier;
+    result.turnState.canaryEnemyDamageMultiplier = run.canary.enemyDamageMultiplier * (run.endlessEnemyDamageMultiplier ?? 1);
     result.turnState.canaryQuestionBias = run.canary.questionBias;
     activeRunState.set(run);
   }

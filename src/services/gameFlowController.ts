@@ -168,6 +168,16 @@ function calculateEndlessDepthsScore(endData: RunEndData): number {
   return Math.round((depthFactor * 650) + (comboFactor * 180) + (accuracyFactor * 22))
 }
 
+function computeEndlessEnemyDamageMultiplier(floor: number): number {
+  const depthPast10 = Math.max(0, floor - 10)
+  // Endless balance pass: +3% enemy damage per floor after 10, capped at +75%.
+  return 1 + Math.min(0.75, depthPast10 * 0.03)
+}
+
+function applyEndlessDepthsScaling(run: RunState): void {
+  run.endlessEnemyDamageMultiplier = computeEndlessEnemyDamageMultiplier(run.floor.currentFloor)
+}
+
 export function startDailyExpeditionRun(): { ok: true } | { ok: false; reason: string } {
   const onboarding = get(onboardingState)
   if (!onboarding.hasCompletedOnboarding) {
@@ -235,6 +245,7 @@ export function startEndlessDepthsRun(): { ok: true } | { ok: false; reason: str
   run.floor.eventsPerFloor = 2
   run.floor.isBossFloor = isBossFloor(10)
   run.floor.bossDefeated = false
+  applyEndlessDepthsScaling(run)
   activeRunState.set(run)
 
   if (!startEncounterForRoom()) {
@@ -451,6 +462,9 @@ function proceedAfterReward(): void {
     }
 
     advanceFloor(run.floor);
+    if (activeRunMode === 'endless_depths') {
+      applyEndlessDepthsScaling(run)
+    }
     run.canary = resetCanaryFloor(run.canary);
     run.bounties = updateBounties(run.bounties, { type: 'floor_reached', floor: run.floor.currentFloor });
     activeRunState.set(run);
@@ -693,6 +707,9 @@ export function onDelve(): void {
     },
   });
   advanceFloor(run.floor);
+  if (activeRunMode === 'endless_depths') {
+    applyEndlessDepthsScaling(run)
+  }
   run.canary = resetCanaryFloor(run.canary);
   run.bounties = updateBounties(run.bounties, { type: 'floor_reached', floor: run.floor.currentFloor });
   activeRunState.set(run);

@@ -48,6 +48,7 @@ export interface RunState {
   factsAnsweredCorrectly: Set<string>;
   factsAnsweredIncorrectly: Set<string>;
   runAccuracyBonusApplied: boolean;
+  endlessEnemyDamageMultiplier: number;
 }
 
 export interface RunEndData {
@@ -113,6 +114,7 @@ export function createRunState(
     factsAnsweredCorrectly: new Set<string>(),
     factsAnsweredIncorrectly: new Set<string>(),
     runAccuracyBonusApplied: false,
+    endlessEnemyDamageMultiplier: 1,
   };
 }
 
