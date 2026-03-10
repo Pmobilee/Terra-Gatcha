@@ -2,7 +2,9 @@
   import type { DuelStats, DuelRecord } from '../../data/types'
   import { playerSave } from '../stores/playerData'
   import { authStore } from '../stores/authStore'
-  import { readAccessToken } from '../../services/authTokens'
+  import { duelService } from '../../services/duelService'
+  import { socialService } from '../../services/socialService'
+  import { ApiError } from '../../services/apiClient'
 
   // ============================================================
   // TYPES
@@ -98,31 +100,17 @@
   // DATA FETCHING
   // ============================================================
 
-  const baseUrl = (): string => {
-    const stored = localStorage.getItem('terra_api_base')
-    return stored ?? 'http://localhost:3001/api'
-  }
-
-  function authHeaders(): Record<string, string> {
-    const token = readAccessToken()
-    const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-    if (token) headers['Authorization'] = `Bearer ${token}`
-    return headers
-  }
-
   async function fetchFriends(): Promise<void> {
     friendsLoading = true
     friendsError = null
     try {
-      const res = await fetch(`${baseUrl()}/players/me/friends`, { headers: authHeaders() })
-      if (!res.ok) {
-        friendsError = `Could not load friends (${res.status})`
-        return
+      friends = await socialService.getFriends()
+    } catch (error) {
+      if (error instanceof ApiError && error.status > 0) {
+        friendsError = `Could not load friends (${error.status})`
+      } else {
+        friendsError = 'Network error loading friends.'
       }
-      const data = (await res.json()) as Friend[] | { friends?: Friend[] }
-      friends = Array.isArray(data) ? data : (Array.isArray(data.friends) ? data.friends : [])
-    } catch {
-      friendsError = 'Network error loading friends.'
     } finally {
       friendsLoading = false
     }
@@ -132,16 +120,14 @@
     pendingLoading = true
     pendingError = null
     try {
-      const res = await fetch(`${baseUrl()}/duels/pending`, { headers: authHeaders() })
-      if (!res.ok) {
-        pendingError = `Could not load duels (${res.status})`
-        return
-      }
-      const data = (await res.json()) as ApiDuelRecord[] | { duels?: ApiDuelRecord[] }
-      const rows = Array.isArray(data) ? data : (Array.isArray(data.duels) ? data.duels : [])
+      const rows = (await duelService.getPendingDuels()) as unknown as ApiDuelRecord[]
       pendingDuels = rows.map((duel) => mapApiDuelToUi(duel, $authStore.userId ?? ''))
-    } catch {
-      pendingError = 'Network error loading duels.'
+    } catch (error) {
+      if (error instanceof ApiError && error.status > 0) {
+        pendingError = `Could not load duels (${error.status})`
+      } else {
+        pendingError = 'Network error loading duels.'
+      }
     } finally {
       pendingLoading = false
     }
@@ -151,16 +137,14 @@
     historyLoading = true
     historyError = null
     try {
-      const res = await fetch(`${baseUrl()}/duels/history`, { headers: authHeaders() })
-      if (!res.ok) {
-        historyError = `Could not load history (${res.status})`
-        return
-      }
-      const data = (await res.json()) as ApiDuelRecord[] | { duels?: ApiDuelRecord[] }
-      const rows = Array.isArray(data) ? data : (Array.isArray(data.duels) ? data.duels : [])
+      const rows = (await duelService.getDuelHistory()) as unknown as ApiDuelRecord[]
       historyDuels = rows.map((duel) => mapApiDuelToUi(duel, $authStore.userId ?? ''))
-    } catch {
-      historyError = 'Network error loading history.'
+    } catch (error) {
+      if (error instanceof ApiError && error.status > 0) {
+        historyError = `Could not load history (${error.status})`
+      } else {
+        historyError = 'Network error loading history.'
+      }
     } finally {
       historyLoading = false
     }
@@ -175,21 +159,16 @@
     challenging = true
     challengeResult = null
     try {
-      const res = await fetch(`${baseUrl()}/duels/challenge`, {
-        method: 'POST',
-        headers: authHeaders(),
-        body: JSON.stringify({ opponentId: selectedFriendId, wagerDust: wager }),
-      })
-      if (!res.ok) {
-        const body = (await res.json()) as { message?: string }
-        challengeResult = `Failed: ${body.message ?? res.status}`
+      await duelService.challengeDuel(selectedFriendId, wager)
+      challengeResult = `Challenge sent to ${selectedFriend?.displayName ?? 'opponent'}!`
+      selectedFriendId = null
+      wager = 0
+    } catch (error) {
+      if (error instanceof ApiError && error.status > 0) {
+        challengeResult = `Failed: ${error.message}`
       } else {
-        challengeResult = `Challenge sent to ${selectedFriend?.displayName ?? 'opponent'}!`
-        selectedFriendId = null
-        wager = 0
+        challengeResult = 'Network error sending challenge.'
       }
-    } catch {
-      challengeResult = 'Network error sending challenge.'
     } finally {
       challenging = false
     }
@@ -198,13 +177,8 @@
   async function acceptDuel(duelId: string): Promise<void> {
     actioningDuelId = duelId
     try {
-      const res = await fetch(`${baseUrl()}/duels/${duelId}/accept`, {
-        method: 'POST',
-        headers: authHeaders(),
-      })
-      if (res.ok) {
-        pendingDuels = pendingDuels.filter(d => d.id !== duelId)
-      }
+      await duelService.acceptDuel(duelId)
+      pendingDuels = pendingDuels.filter(d => d.id !== duelId)
     } catch {
       // Silently fail — user can retry
     } finally {
@@ -215,13 +189,8 @@
   async function declineDuel(duelId: string): Promise<void> {
     actioningDuelId = duelId
     try {
-      const res = await fetch(`${baseUrl()}/duels/${duelId}/decline`, {
-        method: 'POST',
-        headers: authHeaders(),
-      })
-      if (res.ok) {
-        pendingDuels = pendingDuels.filter(d => d.id !== duelId)
-      }
+      await duelService.declineDuel(duelId)
+      pendingDuels = pendingDuels.filter(d => d.id !== duelId)
     } catch {
       // Silently fail
     } finally {
