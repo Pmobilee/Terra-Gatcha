@@ -7,7 +7,8 @@
 
 import { wsClient } from './wsClient'
 import type { WSMessage } from './wsClient'
-import { readAccessToken } from './authTokens'
+import { ApiError } from './apiClient'
+import { authedGet, authedPost } from './authedFetch'
 
 /** Resolve the API base URL from Vite environment or fall back to localhost. */
 const BASE = () =>
@@ -16,24 +17,14 @@ const BASE = () =>
     : `${window.location.protocol}//${window.location.hostname}:3001/api`
   ).replace(/\/$/, '')
 
-const AUTH = () => readAccessToken() ?? ''
-
 async function post<T>(path: string, body: object): Promise<T> {
-  const res = await fetch(`${BASE()}${path}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${AUTH()}` },
-    body: JSON.stringify(body),
-  })
-  if (!res.ok) throw new Error(await res.text())
-  return res.json() as Promise<T>
+  const response = await authedPost(path, body)
+  return response.json() as Promise<T>
 }
 
 async function get<T>(path: string): Promise<T> {
-  const res = await fetch(`${BASE()}${path}`, {
-    headers: { Authorization: `Bearer ${AUTH()}` },
-  })
-  if (!res.ok) throw new Error(await res.text())
-  return res.json() as Promise<T>
+  const response = await authedGet(path)
+  return response.json() as Promise<T>
 }
 
 /**
@@ -54,8 +45,9 @@ export async function joinLobby(roomId: string, playerId: string, playerName: st
 export async function findByCode(code: string): Promise<{ roomId: string; hostName: string } | null> {
   try {
     return await get<{ roomId: string; hostName: string }>(`/coop/lobby/code/${encodeURIComponent(code)}`)
-  } catch {
-    return null
+  } catch (error) {
+    if (error instanceof ApiError && error.status === 404) return null
+    throw error
   }
 }
 

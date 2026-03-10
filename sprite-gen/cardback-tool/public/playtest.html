@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recall Rogue — Playtest Dashboard</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 16px;
+  }
+
+  /* --- Header --- */
+  .header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    white-space: nowrap;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .stats-bar {
+    display: flex;
+    gap: 20px;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+  }
+
+  .stats-bar .stat-val {
+    color: #e2e8f0;
+    font-weight: 600;
+  }
+
+  .live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #22c55e;
+  }
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  .live-indicator.paused { color: #94a3b8; }
+  .live-indicator.paused .live-dot {
+    background: #94a3b8;
+    animation: none;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+    50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+  }
+
+  .btn {
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .btn:hover { background: #334155; border-color: #475569; }
+  .btn.active { background: #334155; border-color: #06b6d4; color: #06b6d4; }
+
+  /* --- Tabs --- */
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #334155;
+  }
+
+  .tab {
+    padding: 10px 24px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #94a3b8;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.15s, border-color 0.15s;
+    user-select: none;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .tab:hover { color: #e2e8f0; }
+  .tab.active { color: #06b6d4; border-bottom-color: #06b6d4; }
+
+  /* --- Filters --- */
+  .filter-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .filter-bar select {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: #e2e8f0;
+    font-size: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    min-width: 140px;
+  }
+
+  .filter-bar select:hover { border-color: #475569; }
+  .filter-bar select:focus { outline: none; border-color: #06b6d4; }
+
+  /* --- Table --- */
+  .table-wrap {
+    background: #1e293b;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  thead th {
+    background: #0f172a;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    color: #94a3b8;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #334155;
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    cursor: pointer;
+    transition: background 0.1s;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  tbody tr:hover { background: #334155; }
+
+  tbody td {
+    padding: 10px 14px;
+    font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.82rem;
+    vertical-align: top;
+  }
+
+  /* --- Severity Badges --- */
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .badge-critical { background: rgba(239,68,68,0.2); color: #ef4444; }
+  .badge-high { background: rgba(245,158,11,0.2); color: #f59e0b; }
+  .badge-medium { background: rgba(6,182,212,0.2); color: #06b6d4; }
+  .badge-low { background: rgba(156,163,175,0.2); color: #9ca3af; }
+  .badge-cosmetic { background: rgba(107,114,128,0.2); color: #6b7280; }
+
+  .badge-victory { background: rgba(34,197,94,0.15); color: #22c55e; }
+  .badge-defeat { background: rgba(239,68,68,0.15); color: #ef4444; }
+  .badge-cash_out { background: rgba(245,158,11,0.15); color: #f59e0b; }
+
+  .status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .status-open { background: rgba(239,68,68,0.15); color: #ef4444; }
+  .status-investigating { background: rgba(245,158,11,0.15); color: #f59e0b; }
+  .status-fixed { background: rgba(34,197,94,0.15); color: #22c55e; }
+  .status-wont_fix { background: rgba(107,114,128,0.15); color: #6b7280; }
+
+  /* --- Expanded Row --- */
+  .detail-row td {
+    padding: 0;
+    cursor: default;
+  }
+
+  .detail-row:hover { background: transparent; }
+
+  .detail-content {
+    padding: 16px 24px;
+    background: #0f172a;
+    border-top: 1px solid #334155;
+    border-bottom: 1px solid #334155;
+  }
+
+  .detail-content h4 {
+    font-size: 0.85rem;
+    color: #06b6d4;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .detail-content p, .detail-content li {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  .detail-content ul {
+    margin: 4px 0 12px 18px;
+  }
+
+  .detail-section {
+    margin-bottom: 14px;
+  }
+
+  .detail-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .evidence-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.78rem;
+  }
+
+  .evidence-card .label {
+    color: #64748b;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .evidence-card .value {
+    color: #e2e8f0;
+    font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace;
+    font-weight: 600;
+  }
+
+  /* --- Empty State --- */
+  .empty-state {
+    text-align: center;
+    padding: 60px 24px;
+    color: #64748b;
+  }
+
+  .empty-state .icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+    opacity: 0.4;
+  }
+
+  .empty-state p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .empty-state code {
+    background: #1e293b;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    color: #94a3b8;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 768px) {
+    .header { flex-direction: column; align-items: flex-start; }
+    .stats-bar { flex-wrap: wrap; gap: 12px; }
+    .filter-bar { flex-direction: column; }
+    .filter-bar select { width: 100%; }
+    table { font-size: 0.78rem; }
+    thead th, tbody td { padding: 8px 10px; }
+    .evidence-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Recall Rogue — Playtest Issue Leaderboard</h1>
+    <div class="header-right">
+      <div class="stats-bar">
+        <span>Playthroughs: <span class="stat-val" id="stat-playthroughs">0</span></span>
+        <span>Issues: <span class="stat-val" id="stat-issues">0</span></span>
+        <span>Updated: <span class="stat-val" id="stat-updated">--</span></span>
+      </div>
+      <div class="live-indicator" id="live-indicator">
+        <span class="live-dot"></span>
+        <span>LIVE</span>
+      </div>
+      <button class="btn active" id="btn-auto-refresh" onclick="toggleAutoRefresh()">Auto-refresh: ON</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" id="tab-issues" onclick="switchTab('issues')">Issues</button>
+    <button class="tab" id="tab-runs" onclick="switchTab('runs')">Runs</button>
+  </div>
+
+  <div id="panel-issues">
+    <div class="filter-bar">
+      <select id="filter-severity" onchange="renderIssues()">
+        <option value="all">All Severities</option>
+        <option value="critical">Critical</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+        <option value="cosmetic">Cosmetic</option>
+      </select>
+      <select id="filter-status" onchange="renderIssues()">
+        <option value="all">All Statuses</option>
+        <option value="open">Open</option>
+        <option value="investigating">Investigating</option>
+        <option value="fixed">Fixed</option>
+        <option value="wont_fix">Won't Fix</option>
+      </select>
+      <select id="filter-profile" onchange="renderIssues()">
+        <option value="all">All Profiles</option>
+      </select>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Severity</th>
+            <th>Title</th>
+            <th>Frequency</th>
+            <th>Score</th>
+            <th>Status</th>
+            <th>Profiles</th>
+          </tr>
+        </thead>
+        <tbody id="issues-body"></tbody>
+      </table>
+    </div>
+    <div class="empty-state" id="issues-empty" style="display:none;">
+      <div class="icon">&#128270;</div>
+      <p>No issues found. Run <code>/playtest-suite</code> to generate playtest data.</p>
+    </div>
+  </div>
+
+  <div id="panel-runs" style="display:none;">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Profile</th>
+            <th>Seed</th>
+            <th>Result</th>
+            <th>Floor</th>
+            <th>Encounters</th>
+            <th>Accuracy%</th>
+            <th>Max Combo</th>
+            <th>Speed Bonuses</th>
+            <th>Started At</th>
+          </tr>
+        </thead>
+        <tbody id="runs-body"></tbody>
+      </table>
+    </div>
+    <div class="empty-state" id="runs-empty" style="display:none;">
+      <div class="icon">&#127918;</div>
+      <p>No playtest runs found.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  let autoRefresh = true;
+  let refreshTimer = null;
+  let lastUpdatedAt = null;
+  let expandedIssueId = null;
+  let expandedRunId = null;
+
+  let leaderboardData = { updatedAt: null, totalPlaythroughs: 0, totalIssues: 0, issues: [] };
+  let logsData = [];
+  let reportsData = [];
+
+  async function fetchLeaderboard() {
+    try {
+      const res = await fetch('/api/playtest/leaderboard');
+      return await res.json();
+    } catch { return null; }
+  }
+
+  async function fetchLogs() {
+    try {
+      const res = await fetch('/api/playtest/logs');
+      return await res.json();
+    } catch { return null; }
+  }
+
+  async function fetchReports() {
+    try {
+      const res = await fetch('/api/playtest/reports');
+      return await res.json();
+    } catch { return null; }
+  }
+
+  async function refresh() {
+    const [lb, logs, reports] = await Promise.all([fetchLeaderboard(), fetchLogs(), fetchReports()]);
+
+    if (lb && lb.updatedAt !== lastUpdatedAt) {
+      lastUpdatedAt = lb.updatedAt;
+      leaderboardData = lb;
+      updateStats();
+      updateProfileFilter();
+      renderIssues();
+    } else if (lb && !lastUpdatedAt) {
+      leaderboardData = lb;
+      updateStats();
+      updateProfileFilter();
+      renderIssues();
+    }
+
+    if (logs) {
+      logsData = logs;
+      renderRuns();
+    }
+
+    if (reports) {
+      reportsData = reports;
+    }
+  }
+
+  function updateStats() {
+    document.getElementById('stat-playthroughs').textContent = leaderboardData.totalPlaythroughs ?? 0;
+    document.getElementById('stat-issues').textContent = leaderboardData.totalIssues ?? 0;
+    const ts = leaderboardData.updatedAt;
+    document.getElementById('stat-updated').textContent = ts ? formatTimestamp(ts) : '--';
+  }
+
+  function updateProfileFilter() {
+    const sel = document.getElementById('filter-profile');
+    const current = sel.value;
+    const profiles = new Set();
+    (leaderboardData.issues || []).forEach(issue => {
+      (issue.profiles || []).forEach(p => profiles.add(p));
+    });
+    const sorted = [...profiles].sort();
+    sel.innerHTML = '<option value="all">All Profiles</option>';
+    sorted.forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p;
+      opt.textContent = p;
+      sel.appendChild(opt);
+    });
+    sel.value = current;
+  }
+
+  function renderIssues() {
+    const sevFilter = document.getElementById('filter-severity').value;
+    const statusFilter = document.getElementById('filter-status').value;
+    const profileFilter = document.getElementById('filter-profile').value;
+
+    let issues = leaderboardData.issues || [];
+
+    if (sevFilter !== 'all') {
+      issues = issues.filter(i => i.severity === sevFilter);
+    }
+    if (statusFilter !== 'all') {
+      issues = issues.filter(i => i.status === statusFilter);
+    }
+    if (profileFilter !== 'all') {
+      issues = issues.filter(i => (i.profiles || []).includes(profileFilter));
+    }
+
+    const tbody = document.getElementById('issues-body');
+    const empty = document.getElementById('issues-empty');
+
+    if (issues.length === 0) {
+      tbody.innerHTML = '';
+      empty.style.display = 'block';
+      document.querySelector('#panel-issues .table-wrap').style.display = 'none';
+      return;
+    }
+
+    empty.style.display = 'none';
+    document.querySelector('#panel-issues .table-wrap').style.display = 'block';
+
+    let html = '';
+    issues.forEach((issue, idx) => {
+      const rank = idx + 1;
+      const sev = issue.severity || 'low';
+      const status = issue.status || 'open';
+      const profiles = (issue.profiles || []).join(', ') || '--';
+      const freq = issue.frequency ?? '--';
+      const score = typeof issue.score === 'number' ? issue.score.toFixed(1) : '--';
+      const isExpanded = expandedIssueId === issue.id;
+
+      html += '<tr onclick="toggleIssueDetail(\'' + escapeAttr(issue.id) + '\')" class="' + (isExpanded ? 'expanded-parent' : '') + '">';
+      html += '<td>' + rank + '</td>';
+      html += '<td><span class="badge badge-' + sev + '">' + sev + '</span></td>';
+      html += '<td style="color:#f1f5f9;font-family:system-ui,sans-serif;">' + escapeHtml(issue.title || 'Untitled') + '</td>';
+      html += '<td>' + freq + '</td>';
+      html += '<td>' + score + '</td>';
+      html += '<td><span class="status-badge status-' + status + '">' + formatStatus(status) + '</span></td>';
+      html += '<td style="color:#94a3b8;font-size:0.78rem;">' + escapeHtml(profiles) + '</td>';
+      html += '</tr>';
+
+      if (isExpanded) {
+        html += '<tr class="detail-row"><td colspan="7">';
+        html += buildIssueDetail(issue);
+        html += '</td></tr>';
+      }
+    });
+
+    tbody.innerHTML = html;
+  }
+
+  function buildIssueDetail(issue) {
+    let h = '<div class="detail-content">';
+
+    if (issue.description) {
+      h += '<div class="detail-section"><h4>Description</h4><p>' + escapeHtml(issue.description) + '</p></div>';
+    }
+
+    const evidence = issue.bestEvidence || issue.evidence;
+    if (evidence) {
+      h += '<div class="detail-section"><h4>Best Evidence</h4><div class="evidence-grid">';
+      if (evidence.floor != null) h += evidenceCard('Floor', evidence.floor);
+      if (evidence.encounter != null) h += evidenceCard('Encounter', evidence.encounter);
+      if (evidence.metric != null) h += evidenceCard('Metric', evidence.metric);
+      if (evidence.value != null) h += evidenceCard('Value', evidence.value);
+      if (evidence.expected != null) h += evidenceCard('Expected', evidence.expected);
+      if (evidence.playthroughId) h += evidenceCard('Run', evidence.playthroughId.substring(0, 8));
+      h += '</div></div>';
+    }
+
+    if (issue.reproductionSteps && issue.reproductionSteps.length > 0) {
+      h += '<div class="detail-section"><h4>Reproduction Steps</h4><ul>';
+      issue.reproductionSteps.forEach(step => {
+        h += '<li>' + escapeHtml(step) + '</li>';
+      });
+      h += '</ul></div>';
+    }
+
+    if (issue.suggestedFix) {
+      h += '<div class="detail-section"><h4>Suggested Fix</h4><p>' + escapeHtml(issue.suggestedFix) + '</p></div>';
+    }
+
+    h += '</div>';
+    return h;
+  }
+
+  function evidenceCard(label, value) {
+    return '<div class="evidence-card"><div class="label">' + escapeHtml(label) + '</div><div class="value">' + escapeHtml(String(value)) + '</div></div>';
+  }
+
+  function toggleIssueDetail(id) {
+    expandedIssueId = expandedIssueId === id ? null : id;
+    renderIssues();
+  }
+
+  function renderRuns() {
+    const tbody = document.getElementById('runs-body');
+    const empty = document.getElementById('runs-empty');
+
+    if (!logsData || logsData.length === 0) {
+      tbody.innerHTML = '';
+      empty.style.display = 'block';
+      document.querySelector('#panel-runs .table-wrap').style.display = 'none';
+      return;
+    }
+
+    empty.style.display = 'none';
+    document.querySelector('#panel-runs .table-wrap').style.display = 'block';
+
+    let html = '';
+    logsData.forEach(run => {
+      if (run.error) {
+        html += '<tr><td colspan="9" style="color:#ef4444;">' + escapeHtml(run.file) + ': ' + escapeHtml(run.error) + '</td></tr>';
+        return;
+      }
+
+      const result = run.result || '--';
+      const resultClass = result === 'victory' ? 'badge-victory' : result === 'defeat' ? 'badge-defeat' : result === 'cash_out' ? 'badge-cash_out' : '';
+      const accuracy = typeof run.overallAccuracy === 'number' ? (run.overallAccuracy * 100).toFixed(1) : '--';
+      const report = reportsData.find(r => r.playthroughId === run.id);
+      const isExpanded = expandedRunId === run.id;
+
+      html += '<tr onclick="toggleRunDetail(\'' + escapeAttr(run.id || run.file) + '\')">';
+      html += '<td>' + escapeHtml(run.profileId || '--') + '</td>';
+      html += '<td>' + escapeHtml(run.rngSeed != null ? String(run.rngSeed) : '--') + '</td>';
+      html += '<td><span class="badge ' + resultClass + '">' + escapeHtml(result) + '</span></td>';
+      html += '<td>' + (run.finalFloor ?? '--') + '</td>';
+      html += '<td>' + (run.totalEncounters ?? '--') + '</td>';
+      html += '<td>' + accuracy + '</td>';
+      html += '<td>' + (run.maxCombo ?? '--') + '</td>';
+      html += '<td>' + (run.speedBonuses ?? '--') + '</td>';
+      html += '<td style="color:#94a3b8;">' + formatTimestamp(run.startedAt) + '</td>';
+      html += '</tr>';
+
+      if (isExpanded) {
+        html += '<tr class="detail-row"><td colspan="9">';
+        html += '<div class="detail-content">';
+        if (report) {
+          html += '<h4>Analysis Report</h4>';
+          html += '<p>Issues found: <span style="color:#f59e0b;font-weight:600;">' + (report.issueCount ?? 0) + '</span></p>';
+          html += '<p style="margin-top:4px;">Analyzed: ' + formatTimestamp(report.analyzedAt) + '</p>';
+        } else {
+          html += '<p style="color:#64748b;">No analysis report for this run.</p>';
+        }
+        html += '</div>';
+        html += '</td></tr>';
+      }
+    });
+
+    tbody.innerHTML = html;
+  }
+
+  function toggleRunDetail(id) {
+    expandedRunId = expandedRunId === id ? null : id;
+    renderRuns();
+  }
+
+  function switchTab(tab) {
+    document.getElementById('tab-issues').classList.toggle('active', tab === 'issues');
+    document.getElementById('tab-runs').classList.toggle('active', tab === 'runs');
+    document.getElementById('panel-issues').style.display = tab === 'issues' ? 'block' : 'none';
+    document.getElementById('panel-runs').style.display = tab === 'runs' ? 'block' : 'none';
+  }
+
+  function toggleAutoRefresh() {
+    autoRefresh = !autoRefresh;
+    const btn = document.getElementById('btn-auto-refresh');
+    const indicator = document.getElementById('live-indicator');
+    if (autoRefresh) {
+      btn.textContent = 'Auto-refresh: ON';
+      btn.classList.add('active');
+      indicator.classList.remove('paused');
+      startAutoRefresh();
+    } else {
+      btn.textContent = 'Auto-refresh: OFF';
+      btn.classList.remove('active');
+      indicator.classList.add('paused');
+      stopAutoRefresh();
+    }
+  }
+
+  function startAutoRefresh() {
+    stopAutoRefresh();
+    refreshTimer = setInterval(refresh, 5000);
+  }
+
+  function stopAutoRefresh() {
+    if (refreshTimer) {
+      clearInterval(refreshTimer);
+      refreshTimer = null;
+    }
+  }
+
+  function formatTimestamp(ts) {
+    if (!ts) return '--';
+    try {
+      const d = new Date(ts);
+      if (isNaN(d.getTime())) return ts;
+      const now = new Date();
+      const diffMs = now - d;
+      if (diffMs < 60000) return 'just now';
+      if (diffMs < 3600000) return Math.floor(diffMs / 60000) + 'm ago';
+      if (diffMs < 86400000) return Math.floor(diffMs / 3600000) + 'h ago';
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' ' + d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+    } catch { return ts; }
+  }
+
+  function formatStatus(s) {
+    if (s === 'wont_fix') return "won't fix";
+    return (s || '').replace(/_/g, ' ');
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function escapeAttr(str) {
+    if (!str) return '';
+    return String(str).replace(/'/g, "\\'").replace(/"/g, '\\"');
+  }
+
+  // Initial load
+  refresh();
+  startAutoRefresh();
+</script>
+</body>
+</html>

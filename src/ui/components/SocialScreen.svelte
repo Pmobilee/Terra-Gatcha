@@ -17,8 +17,8 @@
     getScholarChallengeGlobalLeaderboard,
     type ScholarChallengeStatus,
   } from '../../services/scholarChallengeService'
+  import { createLobby } from '../../services/coopService'
   import { scoreSubmissionQueueStatus } from '../../services/scoreSubmissionQueue'
-  import { readAccessToken } from '../../services/authTokens'
   import WeeklyChallenge from './WeeklyChallenge.svelte'
   import CoopLobby from './CoopLobby.svelte'
   import DuelView from './DuelView.svelte'
@@ -89,33 +89,11 @@
     return `local-${stamp}-${random}`
   }
 
-  function apiBase(): string {
-    const stored = localStorage.getItem('terra_api_base')
-    return (stored ?? 'http://localhost:3001/api').replace(/\/$/, '')
-  }
-
-  function authHeaders(): Record<string, string> {
-    const token = readAccessToken()
-    const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-    if (token) headers.Authorization = `Bearer ${token}`
-    return headers
-  }
-
   async function createCoopLobby(): Promise<void> {
     try {
-      const response = await fetch(`${apiBase()}/coop/lobby/create`, {
-        method: 'POST',
-        headers: authHeaders(),
-        body: JSON.stringify({ hostId: playerId, hostName: playerName }),
-      })
-      if (!response.ok) throw new Error(`status ${response.status}`)
-      const data = await response.json() as { lobby?: { id?: string } }
-      if (data.lobby?.id) {
-        coopLobbyId = data.lobby.id
-        coopMessage = ''
-        return
-      }
-      throw new Error('missing lobby id')
+      const { roomId } = await createLobby(playerId, playerName)
+      coopLobbyId = roomId
+      coopMessage = ''
     } catch {
       coopLobbyId = makeLobbyId()
       coopMessage = 'Unable to create a cloud lobby, using local fallback ID.'

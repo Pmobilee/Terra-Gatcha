@@ -1,6 +1,7 @@
 <!-- Co-op Matchmaker — three-tab UI for starting a cooperative dive session.
      Supports Host (create lobby), Enter Code (join by 6-char code), and Quickmatch. -->
 <script lang="ts">
+  import { ApiError } from '../../services/apiClient'
   import { createLobby, joinLobby, findByCode, quickmatchJoin, quickmatchLeave } from '../../services/coopService'
   import { playerSave } from '../stores/playerData'
 
@@ -38,13 +39,17 @@
   async function handleCode(): Promise<void> {
     loading = true
     status = ''
-    const result = await findByCode(code.trim())
-    if (!result) { status = 'Code not found.'; loading = false; return }
     try {
+      const result = await findByCode(code.trim())
+      if (!result) { status = 'Code not found.'; return }
       await joinLobby(result.roomId, playerId, playerName)
       onRoomReady(result.roomId, 'scholar')
-    } catch {
-      status = 'Could not join room.'
+    } catch (error) {
+      if (error instanceof ApiError && error.status === 0) {
+        status = 'Could not reach server. Check your connection.'
+      } else {
+        status = 'Could not join room.'
+      }
     } finally {
       loading = false
     }
