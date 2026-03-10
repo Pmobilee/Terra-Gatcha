@@ -4,8 +4,8 @@
  * knowledge duels between friends (Phase 22).
  */
 
-import { ApiError } from './apiClient'
 import type { DuelRecord, DuelStats } from '../data/types'
+import { authedGet, authedPost } from './authedFetch'
 
 // Re-export for convenience
 export type { DuelRecord, DuelStats }
@@ -41,7 +41,7 @@ export const duelService = {
    * @throws {ApiError} 400 on invalid wager, 404 if opponent not found, 409 if duel already pending.
    */
   async challengeDuel(opponentId: string, wagerDust: number): Promise<{ duelId: string }> {
-    const response = await _authedPost('/duels/challenge', { opponentId, wagerDust })
+    const response = await authedPost('/duels/challenge', { opponentId, wagerDust })
     const data = (await response.json()) as { id?: string; duelId?: string }
     return { duelId: data.duelId ?? data.id ?? '' }
   },
@@ -55,7 +55,7 @@ export const duelService = {
    * @throws {ApiError} On network failure or server error.
    */
   async getPendingDuels(): Promise<DuelRecord[]> {
-    const response = await _authedGet('/duels/pending')
+    const response = await authedGet('/duels/pending')
     const data = (await response.json()) as DuelRecord[] | { duels?: DuelRecord[] }
     return Array.isArray(data) ? data : (data.duels ?? [])
   },
@@ -69,7 +69,7 @@ export const duelService = {
    * @throws {ApiError} 404 if duel not found, 409 if already accepted/declined.
    */
   async acceptDuel(duelId: string): Promise<void> {
-    await _authedPost(`/duels/${encodeURIComponent(duelId)}/accept`, {})
+    await authedPost(`/duels/${encodeURIComponent(duelId)}/accept`, {})
   },
 
   /**
@@ -80,7 +80,7 @@ export const duelService = {
    * @throws {ApiError} 404 if duel not found, 409 if duel is not in `'pending'` state.
    */
   async declineDuel(duelId: string): Promise<void> {
-    await _authedPost(`/duels/${encodeURIComponent(duelId)}/decline`, {})
+    await authedPost(`/duels/${encodeURIComponent(duelId)}/decline`, {})
   },
 
   /**
@@ -94,7 +94,7 @@ export const duelService = {
    *   409 if answers already submitted.
    */
   async submitAnswers(duelId: string, answers: DuelAnswer[]): Promise<void> {
-    await _authedPost(`/duels/${encodeURIComponent(duelId)}/submit-answers`, { answers })
+    await authedPost(`/duels/${encodeURIComponent(duelId)}/submit-answers`, { answers })
   },
 
   /**
@@ -106,7 +106,7 @@ export const duelService = {
    * @throws {ApiError} 404 if duel not found.
    */
   async getDuelResult(duelId: string): Promise<DuelRecord> {
-    const response = await _authedGet(`/duels/${encodeURIComponent(duelId)}/result`)
+    const response = await authedGet(`/duels/${encodeURIComponent(duelId)}/result`)
     return (await response.json()) as DuelRecord
   },
 
@@ -119,7 +119,7 @@ export const duelService = {
    */
   async getDuelHistory(limit: number = 20): Promise<DuelRecord[]> {
     const params = new URLSearchParams({ limit: String(Math.min(limit, 100)) })
-    const response = await _authedGet(`/duels/history?${params.toString()}`)
+    const response = await authedGet(`/duels/history?${params.toString()}`)
     const data = (await response.json()) as DuelRecord[] | { duels?: DuelRecord[] }
     return Array.isArray(data) ? data : (data.duels ?? [])
   },
@@ -131,7 +131,7 @@ export const duelService = {
    * @throws {ApiError} On network failure or server error.
    */
   async getDuelStats(): Promise<DuelStats> {
-    const response = await _authedGet('/duels/stats')
+    const response = await authedGet('/duels/stats')
     const raw = (await response.json()) as {
       wins?: number
       losses?: number
@@ -152,100 +152,4 @@ export const duelService = {
       longestWinStreak: 0,
     }
   },
-}
-
-// ============================================================
-// INTERNAL HELPERS
-// ============================================================
-
-/** Reads the backend base URL from environment or falls back to localhost. */
-function _resolveBaseUrl(): string {
-  const envUrl =
-    typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_URL
-      ? (import.meta.env.VITE_API_URL as string)
-      : null
-  return (envUrl ?? `${window.location.protocol}//${window.location.hostname}:3001/api`).replace(/\/$/, '')
-}
-
-/** Reads the stored access token from localStorage (mirrors apiClient internals). */
-function _readToken(): string | null {
-  try {
-    return localStorage.getItem('terra_auth_token')
-  } catch {
-    return null
-  }
-}
-
-/** Parses a user-friendly error message from a failed Response. */
-async function _extractErrorMessage(response: Response): Promise<string> {
-  try {
-    const body = (await response.json()) as { message?: string; error?: string }
-    return body.message ?? body.error ?? `Server error (${response.status})`
-  } catch {
-    return response.statusText || `Server error (${response.status})`
-  }
-}
-
-/**
- * Issues an authenticated GET request.
- * @internal
- */
-async function _authedGet(path: string): Promise<Response> {
-  const baseUrl = _resolveBaseUrl()
-  const token = _readToken()
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-  if (token !== null) {
-    headers['Authorization'] = `Bearer ${token}`
-  }
-
-  let response: Response
-  try {
-    response = await fetch(`${baseUrl}${path}`, { method: 'GET', headers })
-  } catch {
-    throw new ApiError(
-      'Unable to reach the server. Please check your internet connection.',
-      0,
-      'NETWORK_ERROR',
-    )
-  }
-
-  if (!response.ok) {
-    const message = await _extractErrorMessage(response)
-    throw new ApiError(message, response.status)
-  }
-  return response
-}
-
-/**
- * Issues an authenticated POST request with a JSON body.
- * @internal
- */
-async function _authedPost(path: string, body: object): Promise<Response> {
-  const baseUrl = _resolveBaseUrl()
-  const token = _readToken()
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-  if (token !== null) {
-    headers['Authorization'] = `Bearer ${token}`
-  }
-
-  let response: Response
-  try {
-    response = await fetch(`${baseUrl}${path}`, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(body),
-    })
-  } catch {
-    throw new ApiError(
-      'Unable to reach the server. Please check your internet connection.',
-      0,
-      'NETWORK_ERROR',
-    )
-  }
-
-  if (!response.ok) {
-    const message = await _extractErrorMessage(response)
-    throw new ApiError(message, response.status)
-  }
-  return response
 }

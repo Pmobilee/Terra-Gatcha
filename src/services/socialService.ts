@@ -4,7 +4,7 @@
  * guestbook, gifting, and friend management (Phase 22).
  */
 
-import { apiClient, ApiError } from './apiClient'
+import { authedGet, authedPost } from './authedFetch'
 import type { HubSnapshot, GuestbookEntry, GiftRecord } from '../data/types'
 
 // Re-export for convenience
@@ -41,7 +41,7 @@ export const socialService = {
    */
   async searchPlayers(query: string): Promise<PlayerSearchResult[]> {
     const params = new URLSearchParams({ q: query.trim() })
-    const response = await _authedGet(`/players/search?${params.toString()}`)
+    const response = await authedGet(`/players/search?${params.toString()}`)
     const data = (await response.json()) as PlayerSearchResult[] | { players?: PlayerSearchResult[] }
     if (Array.isArray(data)) return data
     return data.players ?? []
@@ -56,7 +56,7 @@ export const socialService = {
    * @throws {ApiError} 403 if hub is private, 404 if player not found.
    */
   async getHubSnapshot(playerId: string): Promise<HubSnapshot> {
-    const response = await _authedGet(`/players/${encodeURIComponent(playerId)}/hub-snapshot`)
+    const response = await authedGet(`/players/${encodeURIComponent(playerId)}/hub-snapshot`)
     const data = (await response.json()) as Record<string, unknown> | { snapshot?: Record<string, unknown> }
     const raw = ('snapshot' in data && data.snapshot && typeof data.snapshot === 'object')
       ? data.snapshot
@@ -73,7 +73,7 @@ export const socialService = {
    * @throws {ApiError} On validation failure, rate limit (429), or network error.
    */
   async postGuestbookEntry(playerId: string, message: string): Promise<void> {
-    await _authedPost(`/players/${encodeURIComponent(playerId)}/guestbook`, { message })
+    await authedPost(`/players/${encodeURIComponent(playerId)}/guestbook`, { message })
   },
 
   /**
@@ -82,7 +82,7 @@ export const socialService = {
    * @param entryId  - The guestbook entry ID to flag.
    */
   async flagGuestbookEntry(playerId: string, entryId: string): Promise<void> {
-    await _authedPost(`/players/${encodeURIComponent(playerId)}/guestbook/${encodeURIComponent(entryId)}/flag`, {})
+    await authedPost(`/players/${encodeURIComponent(playerId)}/guestbook/${encodeURIComponent(entryId)}/flag`, {})
   },
 
   /**
@@ -106,7 +106,7 @@ export const socialService = {
     const mappedPayload = type === 'minerals'
       ? { dust: Number((payload as { amount?: unknown }).amount ?? 0) }
       : payload
-    await _authedPost(`/players/${encodeURIComponent(playerId)}/gift`, { type, payload: mappedPayload })
+    await authedPost(`/players/${encodeURIComponent(playerId)}/gift`, { type, payload: mappedPayload })
   },
 
   /**
@@ -116,7 +116,7 @@ export const socialService = {
    * @throws {ApiError} On network failure or server error.
    */
   async getReceivedGifts(): Promise<GiftRecord[]> {
-    const response = await _authedGet(`/players/me/received-gifts`)
+    const response = await authedGet(`/players/me/received-gifts`)
     const data = (await response.json()) as Array<Record<string, unknown>> | { gifts?: Array<Record<string, unknown>> }
     const rows = Array.isArray(data) ? data : (data.gifts ?? [])
     return rows.map((gift) => {
@@ -148,7 +148,7 @@ export const socialService = {
    * @throws {ApiError} 404 if gift not found or already claimed.
    */
   async claimGift(giftId: string): Promise<void> {
-    await _authedPost(`/players/me/received-gifts/${encodeURIComponent(giftId)}/claim`, {})
+    await authedPost(`/players/me/received-gifts/${encodeURIComponent(giftId)}/claim`, {})
   },
 
   /**
@@ -159,7 +159,7 @@ export const socialService = {
    * @throws {ApiError} 409 if already friends, 404 if player not found.
    */
   async sendFriendRequest(playerId: string): Promise<void> {
-    await _authedPost(`/players/friends/request`, { playerId })
+    await authedPost(`/players/friends/request`, { playerId })
   },
 
   /**
@@ -169,117 +169,11 @@ export const socialService = {
    * @throws {ApiError} On network failure or server error.
    */
   async getFriends(): Promise<FriendEntry[]> {
-    const response = await _authedGet(`/players/me/friends`)
+    const response = await authedGet(`/players/me/friends`)
     const data = (await response.json()) as FriendEntry[] | { friends?: FriendEntry[] }
     if (Array.isArray(data)) return data
     return data.friends ?? []
   },
-}
-
-// ============================================================
-// INTERNAL HELPERS
-// ============================================================
-
-/**
- * Issues an authenticated GET request via the apiClient's internal fetch.
- * Wraps the private `fetchWithAuth` method by calling a known public method
- * that uses the same underlying mechanism.
- *
- * We access the underlying fetch mechanism by constructing a minimal URL
- * and relying on the apiClient singleton's token injection.
- *
- * @internal
- */
-async function _authedGet(path: string): Promise<Response> {
-  // apiClient exposes no public generic fetch, so we access the base URL and
-  // replicate its auth header logic using a thin wrapper.
-  const baseUrl = _resolveBaseUrl()
-  const token = _readToken()
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-  if (token !== null) {
-    headers['Authorization'] = `Bearer ${token}`
-  }
-
-  let response: Response
-  try {
-    response = await fetch(`${baseUrl}${path}`, { method: 'GET', headers })
-  } catch {
-    throw new ApiError(
-      'Unable to reach the server. Please check your internet connection.',
-      0,
-      'NETWORK_ERROR',
-    )
-  }
-
-  if (!response.ok) {
-    const message = await _extractErrorMessage(response)
-    throw new ApiError(message, response.status)
-  }
-  return response
-}
-
-/**
- * Issues an authenticated POST request with a JSON body.
- *
- * @internal
- */
-async function _authedPost(path: string, body: object): Promise<Response> {
-  const baseUrl = _resolveBaseUrl()
-  const token = _readToken()
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' }
-  if (token !== null) {
-    headers['Authorization'] = `Bearer ${token}`
-  }
-
-  let response: Response
-  try {
-    response = await fetch(`${baseUrl}${path}`, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(body),
-    })
-  } catch {
-    throw new ApiError(
-      'Unable to reach the server. Please check your internet connection.',
-      0,
-      'NETWORK_ERROR',
-    )
-  }
-
-  if (!response.ok) {
-    const message = await _extractErrorMessage(response)
-    throw new ApiError(message, response.status)
-  }
-  return response
-}
-
-/** Reads the backend base URL from environment or falls back to localhost. */
-function _resolveBaseUrl(): string {
-  // Vite exposes import.meta.env; fall back to localhost for dev/test.
-  const envUrl =
-    typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_URL
-      ? (import.meta.env.VITE_API_URL as string)
-      : null
-  return (envUrl ?? `${window.location.protocol}//${window.location.hostname}:3001/api`).replace(/\/$/, '')
-}
-
-/** Reads the stored access token from localStorage (mirrors apiClient internals). */
-function _readToken(): string | null {
-  try {
-    return localStorage.getItem('terra_auth_token')
-  } catch {
-    return null
-  }
-}
-
-/** Parses a user-friendly error message from a failed Response. */
-async function _extractErrorMessage(response: Response): Promise<string> {
-  try {
-    const body = (await response.json()) as { message?: string; error?: string }
-    return body.message ?? body.error ?? `Server error (${response.status})`
-  } catch {
-    return response.statusText || `Server error (${response.status})`
-  }
 }
 
 function _normalizeHubSnapshot(raw: Record<string, unknown>): HubSnapshot {
