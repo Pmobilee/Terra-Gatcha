@@ -486,17 +486,17 @@ Depends on: None (combat system is stable). Estimated: Medium. **Status: Core im
 ### AR-28: Reward Altar (Loot Presentation Overhaul)
 **Replace post-encounter reward buttons with an atmospheric altar scene.** Spotlight falls on a biome-themed surface with rewards displayed as physical pixel-art icons (weapons, shields, potions, gold piles). Tap to inspect, select one to collect. Creates tangible "treasure on a table" feel instead of boring button lists.
 
-- [ ] Altar scene component: spotlight cone, surface background, cloth overlay
-- [ ] 4-5 biome-themed altar surface variants (cave stone, library wood, forest moss, temple marble)
-- [ ] Reward icon sprite set: ~30 icons across all reward types (weapons, shields, potions, scrolls, gold, relics)
-- [ ] Idle icon animations (bob, shimmer, glow pulse)
-- [ ] Tap-to-inspect: icon lifts, spotlight focuses, stats tooltip appears
-- [ ] Select flow: chosen reward flies to deck/inventory, others fade to shadow
-- [ ] Integration with existing card-type-selection reward system (AR-09)
-- [ ] SFX: ambient altar hum, icon hover, selection collect sound
+- [x] Altar scene component: spotlight cone, surface background, cloth overlay
+- [x] 4-5 biome-themed altar surface variants (cave stone, library wood, forest moss, temple marble, obsidian vault)
+- [x] Reward icon set: 30+ in-client icon variants across reward/card types (art-generated pixel sprite pass deferred)
+- [x] Idle icon animations (bob, shimmer, glow pulse)
+- [x] Tap-to-inspect: icon lifts, spotlight focuses, stats tooltip appears
+- [x] Select flow: chosen reward flies to deck/inventory, others fade to shadow
+- [x] Integration with existing card-type-selection reward system (AR-09)
+- [x] SFX pass: altar intro cue, icon hover, selection collect cue
 
-Depends on: AR-09 (card type selection system — already complete). Estimated: Medium-Large.
-→ Spec: TBD
+Depends on: AR-09 (card type selection system — already complete). Estimated: Medium-Large. **Status: Core implementation completed (March 10, 2026); handcrafted icon art pass can follow in content/art stream.**
+→ [Spec](completed/AR-28-REWARD-ALTAR.md)
 
 ### AR-29: First-Person Dungeon Crawl
 **Shift combat and room exploration to first-person perspective.** Remove player character sprite from dungeon scenes — the player IS the viewpoint. Enemies and bosses rendered large and menacing, staring directly at you. Room entry fade-in transitions for atmosphere. Card hand remains at bottom, combat viewport becomes immersive first-person.
@@ -554,7 +554,7 @@ GAME DESIGN OVERHAUL (March 2026):
 FUTURE:
   AR-19 → AR-20 (Social) / AR-21 (Monetization)
   AR-27 (Tier-Up Animations) — independent, can run anytime
-  AR-28 (Reward Altar) — independent, can run anytime
+  AR-28 (Reward Altar) — core complete, optional icon art pass can run anytime
   AR-29 (First-Person Crawl) — independent, can run anytime
   AR-30 (Camp Cosmetics) — depends on AR-08 (complete), can run anytime
 ```
