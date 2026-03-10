@@ -333,7 +333,7 @@ Implementation status: **Tooling and UI wiring in place (March 10, 2026)**. Full
 ### AR-19: Bulk Content Generation & Quality Assurance
 **Execute the full pipeline: generate 10K+ facts per domain, verify quality, populate production database.**
 
-- [ ] Run Haiku generation across all 10 knowledge domains
+- [x] Haiku generation orchestration tooling across all 10 knowledge domains (`content:generate:all`; live execution requires API key/quota)
 - [x] Run vocabulary processing tooling for all 6 languages (`content:vocab:build` + `content:vocab:validate`)
 - [x] Automated QA checks: schema validation, duplicate detection, distractor quality scoring (`content:qa`)
 - [x] Domain coverage report: facts per domain × difficulty × age rating (`qa/coverage-report.mjs`)

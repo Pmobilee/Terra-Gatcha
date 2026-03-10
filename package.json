@@ -16,6 +16,7 @@
     "content:verify": "node scripts/verify-facts.mjs",
     "content:vocab:build": "node scripts/content-pipeline/vocab/build-seed-packs.mjs",
     "content:vocab:validate": "node scripts/content-pipeline/vocab/validate-seed-packs.mjs",
+    "content:generate:all": "node scripts/content-pipeline/generate/generate-all-domains.mjs",
     "content:factcheck": "node scripts/content-pipeline/qa/source-fact-check.mjs",
     "content:qa": "node scripts/content-pipeline/qa/run-post-generation-qa.mjs",
     "content:coverage:gate": "node scripts/content-pipeline/qa/coverage-gate.mjs",

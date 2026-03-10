@@ -40,6 +40,7 @@ Legacy names (`fetch-nasa-apod.mjs`, `fetch-gbif-species.mjs`, etc.) remain as w
 - `generate/validate-output.mjs` - schema + quality validation
 - `generate/estimate-cost.mjs` - token/cost estimate
 - `generate/sample.mjs` - small sample generation
+- `generate/generate-all-domains.mjs` - orchestrate multi-domain generation + validation
 
 Example:
 ```bash
@@ -50,6 +51,9 @@ node scripts/content-pipeline/generate/validate-output.mjs --input /tmp/geograph
 node scripts/content-pipeline/generate/batch-generate.mjs --input data/raw/geography.json --domain geography --output /tmp/geography.generated.jsonl --limit 20 --dry-run
 node scripts/content-pipeline/generate/validate-output.mjs --input /tmp/geography.generated.jsonl --strict
 node scripts/ingest-facts.mjs --source /tmp/geography.generated.jsonl --domain geography --dry-run --report /tmp/geography.ingest-report.json
+
+# All domains in one run (use --dry-run first, then remove it for production)
+npm run content:generate:all -- --dry-run --limit 50 --strict false
 ```
 
 ## Vocabulary pipeline (AR-18)
