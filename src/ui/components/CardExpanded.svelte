@@ -160,14 +160,14 @@
     if (!isCorrect) {
       correctRevealTimeoutId = setTimeout(() => {
         answerRevealed = true
-      }, 400)
+      }, 800)
     } else {
       answerRevealed = true
     }
 
     feedbackTimeoutId = setTimeout(() => {
       onanswer(index, isCorrect, speedBonus)
-    }, 800)
+    }, 1600)
   }
 
   function getAnswerClass(index: number): string {

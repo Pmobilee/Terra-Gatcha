@@ -17,6 +17,19 @@ import zlib from 'node:zlib'
 const DIST = path.resolve(process.cwd(), 'dist/assets')
 const CHUNK_MAX_KB = 500
 const INITIAL_BUNDLE_MAX_KB = 400 // gzipped estimate
+const CHUNK_BUDGET_OVERRIDES = [
+  // Phaser runtime is intentionally split into its own lazy chunk.
+  { pattern: /phaser/i, maxKb: 1400, excludeFromInitial: true },
+  // sql.js wasm loader chunk is also lazy and should not block app shell budget.
+  { pattern: /sql-wasm/i, maxKb: 120, excludeFromInitial: true },
+]
+
+function resolveChunkBudget(fileName) {
+  for (const override of CHUNK_BUDGET_OVERRIDES) {
+    if (override.pattern.test(fileName)) return override
+  }
+  return { maxKb: CHUNK_MAX_KB, excludeFromInitial: false }
+}
 
 const files = fs.readdirSync(DIST).filter(f => f.endsWith('.js'))
 let totalGzip = 0
@@ -27,10 +40,11 @@ for (const file of files) {
   const gzipped = zlib.gzipSync(raw)
   const kb = Math.round(gzipped.length / 1024)
   const rawKb = Math.round(raw.length / 1024)
-  const isInitial = !file.includes('phaser') && !file.includes('sql-wasm')
+  const budget = resolveChunkBudget(file)
+  const isInitial = !budget.excludeFromInitial
   if (isInitial) totalGzip += gzipped.length
-  const overLimit = rawKb > CHUNK_MAX_KB
-  const marker = overLimit ? ' [OVER LIMIT]' : ''
+  const overLimit = rawKb > budget.maxKb
+  const marker = overLimit ? ` [OVER LIMIT > ${budget.maxKb}KB]` : ''
   console.log(`  ${file}: ${rawKb} KB raw, ${kb} KB gzip${marker}`)
   if (overLimit) failed = true
 }
