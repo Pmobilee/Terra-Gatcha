@@ -138,13 +138,6 @@ async function bootGame(): Promise<void> {
     console.warn('FactsDB init failed, continuing without database:', err)
   })
 
-  // Lazy-load CardGameManager
-  const { CardGameManager } = await import('./game/CardGameManager')
-
-  // Boot game engine
-  const gameManager = CardGameManager.getInstance()
-  gameManager.boot()
-
   // Navigate to main menu (skip when a dev preset is active)
   const urlParams = new URLSearchParams(window.location.search)
   const hasDevPreset = import.meta.env.DEV && urlParams.get('devpreset')

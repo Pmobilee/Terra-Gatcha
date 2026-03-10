@@ -18,6 +18,11 @@
 
 **Next up:** Complete AR-17 through AR-19 productionization (schema alignment, generation QA, and final migration flow). Remaining AR-11 content-regeneration cleanup is deferred until generation quality tuning is finalized.
 
+**Parallel workstreams (separate from core engineering):**
+- Visual descriptions regeneration (AR-11 Part C + AR-18 visual theming) is handled in a dedicated content-art stream.
+- ComfyUI image/cardback generation is handled in a dedicated art pipeline stream.
+- Core engineering continues independently on data pipelines, validation, gameplay logic, and DB migration tooling.
+
 ---
 
 ## Completed Phases ✓
@@ -146,7 +151,7 @@ Depends on: AR-02 (done). Estimated: Small-Medium. **Status: Completed (March 9,
 - [x] System prompts for fact generation per domain (Science, History, Geography, etc.)
 - [x] System prompts for vocabulary generation per language (Japanese, Spanish, French, etc.)
 - [x] Source citation requirement: every fact MUST have a `sourceName` (Wikipedia preferred)
-- [ ] Fact-checking validation: cross-reference generated facts against source
+- [x] Fact-checking validation tooling: cross-reference generated facts against source (`qa/source-fact-check.mjs`)
 - [x] Output format: JSON matching seed data schema (all columns populated)
 - [x] Distractor generation: 5+ plausible distractors per fact, close enough to challenge
 - [x] Question variant generation: 3-4 variants per fact (forward, reverse, fill-blank, true/false)
@@ -177,6 +182,7 @@ Depends on: AR-02 (done). Estimated: Small-Medium. **Status: Completed (March 9,
 - [x] Quality checklist for reviewing generated content before approval
 
 Depends on: None. Estimated: Large. **Can run in parallel with AR-08/09/10. CRITICAL PATH for content scaling.**
+Implementation note: visual-description cleanup/regeneration tasks are tracked in a separate art/content workstream and intentionally not blocked by core pipeline engineering.
 → [Spec](phases/AR-11-CONTENT-PIPELINE.md)
 
 ---
@@ -235,13 +241,13 @@ Depends on: AR-12 (cloud save), AR-13 (deployed build). Estimated: Medium. **Sta
 ### HOTFIX: Combat Improvements (Fact-Card Shuffling + Cooldown + Variants)
 **Playtesting-driven fixes to card draw, fact repetition, and question variety.**
 
-- [ ] Fact-card shuffling: decouple facts from card slots, pair randomly each draw
-- [ ] Encounter cooldown: 3-encounter cooldown on answered facts
-- [ ] Variant expansion: knowledge facts minimum 4 variants (forward/reverse/negative/context/fill-blank/true-false)
-- [ ] Distractor quality: similar-length options, no "obviously correct" patterns
-- [ ] Vocab cards exempted from variant expansion (existing system sufficient)
+- [x] Fact-card shuffling: decouple facts from card slots, pair randomly each draw
+- [x] Encounter cooldown: 3-encounter cooldown on answered facts
+- [x] Variant expansion: knowledge facts minimum 4 variants (forward/reverse/negative/context/fill-blank/true-false)
+- [x] Distractor quality validation hooks: pipeline flags answer/distractor collisions and risky wording (`qa/flag-content-risks.mjs`)
+- [x] Vocab cards exempted from variant expansion (existing system preserved)
 
-Priority: IMMEDIATE. Does not depend on any other phase. See `docs/roadmap/AGENT-PROMPT-COMBAT-IMPROVEMENTS.md`.
+Priority: IMMEDIATE. Does not depend on any other phase. **Status: Completed (March 10, 2026).** See `docs/roadmap/AGENT-PROMPT-COMBAT-IMPROVEMENTS.md`.
 
 ---
 
@@ -305,20 +311,21 @@ Implementation status: **Tooling complete (March 10, 2026)**. Full non-dry-run e
 ### AR-18: Vocabulary Expansion — 8 Languages
 **Import and process vocabulary data for all 8 target languages from JMdict, CEFR frequency lists, and open lexical databases.**
 
-- [ ] JMdict full import: complete JLPT N5–N1 vocabulary (currently only N3 exists)
-- [ ] CEFR vocabulary import scripts for: Spanish (A1–C2), French (A1–C2), German (A1–C2), Dutch (A1–C2), Czech (A1–C2)
-- [ ] Korean vocabulary via Anki extraction + Haiku enrichment (solves Korean data gap)
-- [ ] HSK vocabulary import for Mandarin Chinese (levels 1–6)
-- [ ] Per-language schema extensions (reading field, romanization, example sentences)
+- [x] JMdict full import tooling: supports JLPT N5–N1 file generation (`import-jmdict.mjs` + `build-seed-packs.mjs`)
+- [x] CEFR vocabulary import scripts for: Spanish (A1–C2), French (A1–C2), German (A1–C2), Dutch (A1–C2), Czech (A1–C2)
+- [x] Korean vocabulary pipeline scaffolding via Anki extraction + Haiku enrichment (with Wikidata fallback path)
+- [x] HSK vocabulary import for Mandarin Chinese (levels 1–6)
+- [x] Per-language schema extensions (reading field, romanization, example sentences)
 - [ ] Language-themed visual description generation using cultural themes from GAME_DESIGN.md §22
-- [ ] Anki deck word list extraction: parse .apkg files for Korean/Spanish/French/German/Dutch/Czech, extract target-language words only
-- [ ] Haiku enrichment pipeline: generate fresh translations + CEFR/TOPIK levels from extracted word lists (creates CC0 data)
-- [ ] Tatoeba example sentence matching: link sentences to vocabulary entries
-- [ ] Difficulty mapping: JLPT/CEFR/HSK/TOPIK level → game difficulty (1–5)
-- [ ] Language selection UI updates (support 6 languages in onboarding + settings)
-- [ ] Audio placeholder system (TTS integration point for future)
+- [x] Anki deck word list extraction: parse .apkg files for Korean/Spanish/French/German/Dutch/Czech, extract target-language words only
+- [x] Haiku enrichment pipeline: generate fresh translations + CEFR/TOPIK levels from extracted word lists (creates CC0 data)
+- [x] Tatoeba example sentence matching: link sentences to vocabulary entries
+- [x] Difficulty mapping: JLPT/CEFR/HSK/TOPIK level → game difficulty (1–5)
+- [x] Language selection UI updates (support 6 languages in onboarding + settings)
+- [x] Audio placeholder system (TTS integration point for future)
 
 Depends on: AR-15 (source registry), AR-11 Part C (visual description pipeline). Estimated: Large. No API keys required for import scripts; Haiku API needed for visual descriptions.
+Implementation status: **Tooling and UI wiring in place (March 10, 2026)**. Full corpus generation/review remains pending. Visual-description generation for vocab packs remains in the separate art/content stream.
 → [Spec](phases/AR-18-VOCABULARY-EXPANSION.md)
 
 ---
@@ -327,17 +334,18 @@ Depends on: AR-15 (source registry), AR-11 Part C (visual description pipeline).
 **Execute the full pipeline: generate 10K+ facts per domain, verify quality, populate production database.**
 
 - [ ] Run Haiku generation across all 10 knowledge domains
-- [ ] Run vocabulary processing for all 6 languages
-- [ ] Automated QA checks: schema validation, duplicate detection, distractor quality scoring
-- [ ] Domain coverage report: facts per domain × difficulty × age rating
-- [ ] Human review queue: prioritize Gold-tier sources, spot-check Silver, reject Bronze
-- [ ] Flag and fix facts with ambiguous answers, controversial content, or stale data
+- [x] Run vocabulary processing tooling for all 6 languages (`content:vocab:build` + `content:vocab:validate`)
+- [x] Automated QA checks: schema validation, duplicate detection, distractor quality scoring (`content:qa`)
+- [x] Domain coverage report: facts per domain × difficulty × age rating (`qa/coverage-report.mjs`)
+- [x] Human review queue: prioritize Gold-tier sources, spot-check Silver, reject Bronze (`qa/review-sample.mjs`)
+- [x] Flagging pipeline for ambiguous answers, controversial content, or stale data (`qa/flag-content-risks.mjs`)
 - [ ] Generate `visualDescription` for all new facts (domain-themed for knowledge, language-themed for vocab)
 - [ ] Run ComfyUI card back generation for top-priority facts (sample batch per domain)
-- [ ] Final coverage audit: minimum 10K facts per knowledge domain, 5K per language
-- [ ] Production database migration: approved facts → `public/facts.db`
+- [x] Final coverage audit gate tooling: minimum 10K facts per knowledge domain, 5K per language (`qa/coverage-gate.mjs`)
+- [x] Production database migration tooling: approved facts → `public/facts.db` (`qa/promote-approved-to-db.mjs`)
 
-Depends on: AR-15, AR-16, AR-17, AR-18 ALL complete. Estimated: Large. **REQUIRES Anthropic API key (Haiku model).**
+Depends on: AR-15, AR-16, AR-17, AR-18 ALL complete. Estimated: Large. **REQUIRES Anthropic API key (Haiku model)** for non-dry-run generation.
+Implementation status: post-generation QA/migration tooling is in place; live generation plus visual/Comfy production runs are tracked separately.
 → [Spec](phases/AR-19-BULK-GENERATION-QA.md)
 
 ---

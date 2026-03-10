@@ -19,7 +19,6 @@
     showMasteryTrialHeader?: boolean
     highlightHint?: boolean
     allowCancel?: boolean
-    skipLabel?: string
     onanswer: (answerIndex: number, isCorrect: boolean, speedBonus: boolean) => void
     onskip: () => void
     oncancel: () => void
@@ -40,7 +39,6 @@
     showMasteryTrialHeader = false,
     highlightHint = false,
     allowCancel = true,
-    skipLabel = 'Skip',
     onanswer,
     onskip,
     oncancel,
@@ -297,7 +295,6 @@
   {/if}
 
   <div class="action-row">
-    <button class="action-btn skip-btn" onclick={onskip} disabled={answersDisabled}>{skipLabel}</button>
     <button
       class="action-btn hint-btn"
       class:hint-highlight={highlightHint && !answersDisabled && hintsRemaining > 0 && !hintUsed}
@@ -495,7 +492,7 @@
 
   .action-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 8px;
     padding: 10px 12px 12px;
   }
@@ -505,11 +502,6 @@
     border: none;
     border-radius: 10px;
     font-weight: 700;
-  }
-
-  .skip-btn {
-    background: #374151;
-    color: #f8fafc;
   }
 
   .hint-btn {

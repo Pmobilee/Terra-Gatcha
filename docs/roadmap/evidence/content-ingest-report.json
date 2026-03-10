@@ -1,0 +1,45 @@
+{
+  "generatedAt": "2026-03-10T02:57:02.806Z",
+  "sourcePath": "../../tmp/geo1.json",
+  "targetPath": null,
+  "dryRun": false,
+  "verify": false,
+  "totals": {
+    "input": 1,
+    "valid": 1,
+    "invalid": 0,
+    "duplicates": 0
+  },
+  "invalid": [],
+  "duplicates": [],
+  "coverage": {
+    "generatedAt": "2026-03-10T02:57:02.807Z",
+    "totalFacts": 1,
+    "withSource": 1,
+    "sourceCoveragePct": 100,
+    "byCategory": {
+      "Geography": 1
+    },
+    "byDifficulty": {
+      "2": 1
+    },
+    "byType": {
+      "fact": 1
+    },
+    "byAgeRating": {
+      "kid": 1
+    },
+    "byVerification": {
+      "verified": 0,
+      "unverified": 1
+    },
+    "distractorWarnings": [
+      {
+        "id": "dry-geography-1",
+        "warnings": [
+          "distractor_matches_correct:geography"
+        ]
+      }
+    ]
+  }
+}

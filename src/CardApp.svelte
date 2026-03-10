@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import { get } from 'svelte/store'
+
+  let phaserContainer: HTMLDivElement
   import { currentScreen } from './ui/stores/gameState'
   import type { Screen } from './ui/stores/gameState'
   import { navigateToScreen, type HubScreenName, normalizeHomeScreen } from './services/screenController'
@@ -49,6 +51,7 @@
   import { healPlayer } from './services/runManager'
   import { isSlowReader } from './services/cardPreferences'
   import { unlockCardAudio } from './services/cardAudioManager'
+  import { languageService } from './services/languageService'
   import { playerSave } from './ui/stores/playerData'
   import { lastRunSummary } from './services/hubState'
 
@@ -127,14 +130,28 @@
 
   function handleArchetypeSelect(archetype: import('./services/runManager').RewardArchetype): void {
     onArchetypeSelected(archetype)
-    startEncounterForRoom()
+    if (!startEncounterForRoom()) {
+      currentScreen.set('hub')
+      activeRunState.set(null)
+    }
   }
 
-  function handleOnboardingBegin(slowReader: boolean): void {
+  function handleOnboardingBegin(slowReader: boolean, languageCode: string | null): void {
     isSlowReader.set(slowReader)
+    if (languageCode) {
+      const firstLevel = languageService.getLevelsForLanguage(languageCode)[0]
+      if (firstLevel) {
+        languageService.setLanguageMode(languageCode, firstLevel.id)
+      }
+    } else {
+      languageService.disableLanguageMode()
+    }
     onDomainsSelected('natural_sciences', 'history')
     onArchetypeSelected('balanced')
-    startEncounterForRoom()
+    if (!startEncounterForRoom()) {
+      currentScreen.set('hub')
+      activeRunState.set(null)
+    }
   }
 
   function handleRoomPick(index: number): void {
@@ -142,7 +159,10 @@
     if (!room) return
     onRoomSelected(room)
     if (room.type === 'combat') {
-      startEncounterForRoom(room.enemyId)
+      if (!startEncounterForRoom(room.enemyId)) {
+        currentScreen.set('hub')
+        activeRunState.set(null)
+      }
     }
   }
 
@@ -227,6 +247,12 @@
   }
 
   onMount(() => {
+    // Boot Phaser after Svelte has stabilized the DOM
+    import('./game/CardGameManager').then(({ CardGameManager }) => {
+      const mgr = CardGameManager.getInstance()
+      mgr.boot()
+    })
+
     const onInteraction = (): void => {
       handleUserInteraction()
       window.removeEventListener('pointerdown', onInteraction)
@@ -248,6 +274,7 @@
     id="phaser-container"
     class="phaser-container"
     class:visible={$currentScreen === 'combat'}
+    bind:this={phaserContainer}
   ></div>
 
   {#if $currentScreen === 'hub' || $currentScreen === 'mainMenu' || $currentScreen === 'base'}
@@ -290,6 +317,7 @@
       onskipcard={handleSkipCard}
       onendturn={handleEndTurn}
       onusehint={handleUseHint}
+      onreturnhub={() => { currentScreen.set('hub'); activeRunState.set(null); }}
     />
     <button
       type="button"

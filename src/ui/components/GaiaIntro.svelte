@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { SUPPORTED_LANGUAGES } from '../../types/vocabulary'
+
   interface Props {
     onComplete: (interests: string[], weights: Record<string, number>, targetLanguage: string | null) => void
   }
@@ -33,10 +35,11 @@
     Generalist: "A generalist! My favorite kind. The people who know a little about everything are always the most dangerous in a crisis. This qualifies as a crisis.",
   }
 
-  /** Available languages. Extensible for future additions. */
-  const AVAILABLE_LANGUAGES: { code: string; label: string; nativeLabel: string }[] = [
-    { code: 'ja', label: 'Japanese', nativeLabel: '日本語' },
-  ]
+  const AVAILABLE_LANGUAGES: { code: string; label: string; nativeLabel: string }[] = SUPPORTED_LANGUAGES.map((lang) => ({
+    code: lang.code,
+    label: lang.name,
+    nativeLabel: lang.nativeName,
+  }))
 
   let phase = $state<Phase>('talking')
   let visibleLines = $state(0)

@@ -2,7 +2,7 @@
 // The facts DB is not needed until the player's first quiz (30+ seconds into a session).
 // DD-V2-218: Initial JS bundle < 500 KB gzipped.
 import type { Database } from 'sql.js'
-import type { Fact, ContentType, Rarity, AgeRating } from '../data/types'
+import type { Fact, ContentType, Rarity, AgeRating, QuestionVariant } from '../data/types'
 import { factPackService } from './factPackService'
 import { AGE_BRACKET_KEY } from './legalConstants'
 
@@ -519,7 +519,9 @@ class FactsDB {
       gaiaComment:     optStr('gaia_comment'),
       quizQuestion:    String(row['quiz_question']),
       correctAnswer:   String(row['correct_answer']),
-      distractors:     JSON.parse(String(row['distractors'])) as string[],
+      distractors:     (JSON.parse(String(row['distractors'])) as unknown[]).map(
+        d => typeof d === 'string' ? d : (d as { text: string }).text ?? String(d)
+      ),
       category:        JSON.parse(String(row['category'])) as string[],
       rarity:          String(row['rarity']) as Rarity,
       difficulty:      Number(row['difficulty']),
@@ -531,7 +533,12 @@ class FactsDB {
       exampleSentence: optStr('example_sentence'),
       imageUrl:        optStr('image_url'),
       mnemonic:        optStr('mnemonic'),
-      variants: row['variants'] ? JSON.parse(String(row['variants'])) : undefined,
+      variants: row['variants'] ? (JSON.parse(String(row['variants'])) as Array<Record<string, unknown>>).map(v => ({
+        ...v,
+        distractors: Array.isArray(v.distractors)
+          ? (v.distractors as unknown[]).map(d => typeof d === 'string' ? d : (d as { text: string }).text ?? String(d))
+          : v.distractors,
+      })) as QuestionVariant[] : undefined,
     }
   }
 }

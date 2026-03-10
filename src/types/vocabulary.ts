@@ -101,16 +101,31 @@ export interface LanguageLevel {
   order: number         // Sort order (lower = easier)
 }
 
-/** Supported languages for V1 */
+export const LAUNCH_LANGUAGE_CODES = ['ja', 'es', 'fr', 'de', 'ko', 'zh'] as const
+
+export type LaunchLanguageCode = typeof LAUNCH_LANGUAGE_CODES[number]
+
+export const LANGUAGE_FLAGS: Record<string, string> = {
+  ja: '\u{1F1EF}\u{1F1F5}',
+  es: '\u{1F1EA}\u{1F1F8}',
+  fr: '\u{1F1EB}\u{1F1F7}',
+  de: '\u{1F1E9}\u{1F1EA}',
+  ko: '\u{1F1F0}\u{1F1F7}',
+  zh: '\u{1F1E8}\u{1F1F3}',
+}
+
+/** Supported launch languages for vocabulary mode (AR-18). */
 export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
   {
     code: 'ja',
     name: 'Japanese',
     nativeName: '\u65e5\u672c\u8a9e',
     levels: [
-      { id: 'N5', name: 'JLPT N5', wordCount: 280, order: 1 },
-      { id: 'N4', name: 'JLPT N4', wordCount: 650, order: 2 },
-      { id: 'N3', name: 'JLPT N3', wordCount: 400, order: 3 }
+      { id: 'N5', name: 'JLPT N5', wordCount: 800, order: 1 },
+      { id: 'N4', name: 'JLPT N4', wordCount: 1500, order: 2 },
+      { id: 'N3', name: 'JLPT N3', wordCount: 3500, order: 3 },
+      { id: 'N2', name: 'JLPT N2', wordCount: 5000, order: 4 },
+      { id: 'N1', name: 'JLPT N1', wordCount: 10000, order: 5 }
     ],
     voiceId: 'ja-JP-NanamiNeural'
   },
@@ -119,16 +134,80 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
     name: 'Spanish',
     nativeName: 'Espa\u00f1ol',
     levels: [
-      { id: 'A1', name: 'CEFR A1', wordCount: 500, order: 1 },
-      { id: 'A2', name: 'CEFR A2', wordCount: 800, order: 2 }
+      { id: 'A1', name: 'CEFR A1', wordCount: 700, order: 1 },
+      { id: 'A2', name: 'CEFR A2', wordCount: 1500, order: 2 },
+      { id: 'B1', name: 'CEFR B1', wordCount: 2600, order: 3 },
+      { id: 'B2', name: 'CEFR B2', wordCount: 3800, order: 4 },
+      { id: 'C1', name: 'CEFR C1', wordCount: 4600, order: 5 },
+      { id: 'C2', name: 'CEFR C2', wordCount: 5200, order: 6 }
     ],
     voiceId: 'es-ES-ElviraNeural'
-  }
+  },
+  {
+    code: 'fr',
+    name: 'French',
+    nativeName: 'Fran\u00e7ais',
+    levels: [
+      { id: 'A1', name: 'CEFR A1', wordCount: 650, order: 1 },
+      { id: 'A2', name: 'CEFR A2', wordCount: 1400, order: 2 },
+      { id: 'B1', name: 'CEFR B1', wordCount: 2500, order: 3 },
+      { id: 'B2', name: 'CEFR B2', wordCount: 3600, order: 4 },
+      { id: 'C1', name: 'CEFR C1', wordCount: 4400, order: 5 },
+      { id: 'C2', name: 'CEFR C2', wordCount: 5000, order: 6 }
+    ],
+    voiceId: 'fr-FR-DeniseNeural'
+  },
+  {
+    code: 'de',
+    name: 'German',
+    nativeName: 'Deutsch',
+    levels: [
+      { id: 'A1', name: 'CEFR A1', wordCount: 700, order: 1 },
+      { id: 'A2', name: 'CEFR A2', wordCount: 1500, order: 2 },
+      { id: 'B1', name: 'CEFR B1', wordCount: 2600, order: 3 },
+      { id: 'B2', name: 'CEFR B2', wordCount: 3800, order: 4 },
+      { id: 'C1', name: 'CEFR C1', wordCount: 4700, order: 5 },
+      { id: 'C2', name: 'CEFR C2', wordCount: 5300, order: 6 }
+    ],
+    voiceId: 'de-DE-KatjaNeural'
+  },
+  {
+    code: 'ko',
+    name: 'Korean',
+    nativeName: '\ud55c\uad6d\uc5b4',
+    levels: [
+      { id: 'TOPIK1', name: 'TOPIK 1', wordCount: 800, order: 1 },
+      { id: 'TOPIK2', name: 'TOPIK 2', wordCount: 1600, order: 2 },
+      { id: 'TOPIK3', name: 'TOPIK 3', wordCount: 2600, order: 3 },
+      { id: 'TOPIK4', name: 'TOPIK 4', wordCount: 3600, order: 4 },
+      { id: 'TOPIK5', name: 'TOPIK 5', wordCount: 4500, order: 5 },
+      { id: 'TOPIK6', name: 'TOPIK 6', wordCount: 5400, order: 6 }
+    ],
+    voiceId: 'ko-KR-SunHiNeural'
+  },
+  {
+    code: 'zh',
+    name: 'Mandarin Chinese',
+    nativeName: '\u666e\u901a\u8bdd',
+    levels: [
+      { id: 'HSK1', name: 'HSK 1', wordCount: 500, order: 1 },
+      { id: 'HSK2', name: 'HSK 2', wordCount: 1272, order: 2 },
+      { id: 'HSK3', name: 'HSK 3', wordCount: 2245, order: 3 },
+      { id: 'HSK4', name: 'HSK 4', wordCount: 3245, order: 4 },
+      { id: 'HSK5', name: 'HSK 5', wordCount: 4316, order: 5 },
+      { id: 'HSK6', name: 'HSK 6', wordCount: 5456, order: 6 }
+    ],
+    voiceId: 'zh-CN-XiaoxiaoNeural'
+  },
 ]
 
 /** Get language config by code */
 export function getLanguageConfig(code: string): LanguageConfig | undefined {
   return SUPPORTED_LANGUAGES.find(l => l.code === code)
+}
+
+export function getLanguageFlag(code: string): string {
+  return LANGUAGE_FLAGS[code] ?? '\u{1F310}'
 }
 
 /**

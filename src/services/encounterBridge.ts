@@ -186,14 +186,14 @@ function syncCombatScene(turnState: TurnState): void {
   }
 }
 
-export function startEncounterForRoom(enemyId?: string): void {
+export function startEncounterForRoom(enemyId?: string): boolean {
   const run = get(activeRunState);
-  if (!run) return;
+  if (!run) return false;
 
   if (!activeDeck) {
     if (!factsDB.isReady()) {
       console.warn('[encounterBridge] factsDB not ready — cannot start encounter');
-      return;
+      return false;
     }
     const reviewStates = get(playerSave)?.reviewStates ?? [];
     activeRunPool = buildRunPool(run.primaryDomain, run.secondaryDomain, reviewStates, {
@@ -202,7 +202,7 @@ export function startEncounterForRoom(enemyId?: string): void {
     });
     if (activeRunPool.length === 0) {
       console.warn('[encounterBridge] Empty run pool — cannot start encounter');
-      return;
+      return false;
     }
     const starterDeck = buildStarterDeckFromRunPool(activeRunPool, run.starterDeckSize);
     activeDeck = createDeck(starterDeck);
@@ -227,7 +227,7 @@ export function startEncounterForRoom(enemyId?: string): void {
   }
 
   const template = ENEMY_TEMPLATES.find((enemyTemplate) => enemyTemplate.id === templateId);
-  if (!template || !activeDeck) return;
+  if (!template || !activeDeck) return false;
 
   const enemy = createEnemy(template, run.floor.currentFloor);
   const turnState = startEncounter(activeDeck, enemy, run.playerMaxHp);
@@ -272,6 +272,8 @@ export function startEncounterForRoom(enemyId?: string): void {
   turnState.deck.hand.forEach((_, index) => {
     setTimeout(() => playCardAudio('card-draw'), index * 90);
   });
+
+  return true;
 }
 
 function createEchoCardFrom(card: Card): Card {

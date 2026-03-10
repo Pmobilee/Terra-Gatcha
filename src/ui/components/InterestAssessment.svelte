@@ -1,5 +1,6 @@
 <script lang="ts">
   import { CATEGORIES } from '../../data/types'
+  import { SUPPORTED_LANGUAGES } from '../../types/vocabulary'
   import {
     createDefaultInterestConfig,
     type InterestConfig,
@@ -30,7 +31,7 @@
     { id: 'eclectic', label: 'Eclectic', icon: '**', hint: 'A bit of everything' },
   ]
 
-  const LANGUAGES = ['Japanese', 'Spanish', 'French', 'Chinese', 'Korean', 'German']
+  const LANGUAGES = SUPPORTED_LANGUAGES.map((language) => language.name)
 
   let step = $state<1 | 2 | 3>(1)
   let selectedPersonas = $state<string[]>([])

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { CATEGORIES } from '../../data/types'
+  import { SUPPORTED_LANGUAGES } from '../../types/vocabulary'
 
   interface Props {
     onClose: () => void
@@ -12,10 +13,12 @@
   let step: 'category' | 'subcategory' = $state('category')
   let selectedCategory: string | null = $state(null)
 
+  const LANGUAGE_SUBCATEGORIES = SUPPORTED_LANGUAGES.map((lang) => lang.name)
+
   // Known subcategories per category (hardcoded for now, could be derived from facts DB)
   const SUBCATEGORIES: Record<string, string[]> = {
     'General Knowledge': ['Inventions', 'Records', 'Firsts', 'Institutions'],
-    'Language': ['Japanese', 'English', 'Spanish', 'French', 'German'],
+    'Language': LANGUAGE_SUBCATEGORIES,
     'Natural Sciences': ['Physics', 'Chemistry', 'Geology', 'Materials'],
     'Space & Astronomy': ['Planets', 'Missions', 'Stars', 'Astronauts'],
     'History': ['Ancient', 'Medieval', 'Modern', 'World Wars'],

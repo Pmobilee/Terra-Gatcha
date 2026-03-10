@@ -1,6 +1,7 @@
 <script lang="ts">
   import { languageMode } from '../../services/languageService'
   import { languageService } from '../../services/languageService'
+  import { getLanguageFlag } from '../../types/vocabulary'
   import type { LanguageConfig, LanguageLevel } from '../../types/vocabulary'
 
   export let onClose: (() => void) | undefined = undefined
@@ -29,10 +30,6 @@
     if (onClose) onClose()
   }
 
-  function getLanguageFlag(code: string): string {
-    const flags: Record<string, string> = { ja: '\u{1F1EF}\u{1F1F5}', es: '\u{1F1EA}\u{1F1F8}', fr: '\u{1F1EB}\u{1F1F7}' }
-    return flags[code] ?? '\u{1F310}'
-  }
 </script>
 
 <div class="lang-panel-overlay" role="dialog" aria-label="Language Mode Settings">

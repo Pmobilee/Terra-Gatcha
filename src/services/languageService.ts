@@ -25,7 +25,20 @@ export const languageMode = writable<LanguageModeState>(loadState())
 function loadState(): LanguageModeState {
   try {
     const stored = localStorage.getItem(LANG_MODE_KEY)
-    if (stored) return { ...defaultState, ...JSON.parse(stored) }
+    if (stored) {
+      const parsed = { ...defaultState, ...JSON.parse(stored) } as LanguageModeState
+      const config = parsed.language ? getLanguageConfig(parsed.language) : null
+
+      if (!config) {
+        return { ...defaultState, showGeneralFacts: parsed.showGeneralFacts }
+      }
+
+      const validLevel = parsed.level ? config.levels.find((level) => level.id === parsed.level) : null
+      return {
+        ...parsed,
+        level: validLevel?.id ?? config.levels[0]?.id ?? null,
+      }
+    }
   } catch { /* ignore */ }
   return defaultState
 }

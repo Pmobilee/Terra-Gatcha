@@ -23,6 +23,8 @@
   import AccountSettings from './AccountSettings.svelte'
   import FeedbackButton from './FeedbackButton.svelte'
   import ParentalControlsPanel from './ParentalControlsPanel.svelte'
+  import LanguageModePanel from './LanguageModePanel.svelte'
+  import { languageMode, languageService } from '../../services/languageService'
   import {
     getNotificationPreferences,
     setNotificationPreferences,
@@ -35,6 +37,7 @@
 
   let { onback }: Props = $props()
   let showParentalControls = $state(false)
+  let showLanguageModePanel = $state(false)
 
   // Notification preferences — loaded once on mount, written back on toggle.
   let notifPrefs = $state<NotificationPreferences>(getNotificationPreferences())
@@ -51,6 +54,16 @@
     return () => unsub()
   })
   let difficultyLocked = $derived(runsCompleted < STORY_MODE_FORCED_RUNS)
+  let selectedLanguage = $derived(
+    $languageMode.language
+      ? languageService.getSupportedLanguages().find((lang) => lang.code === $languageMode.language) ?? null
+      : null,
+  )
+  let languageModeSummary = $derived(
+    $languageMode.enabled && selectedLanguage
+      ? `${selectedLanguage.name} • ${$languageMode.level}`
+      : 'Disabled',
+  )
 
   const difficultyOptions: DifficultyMode[] = ['explorer', 'standard', 'scholar']
   const textSizeOptions: TextSize[] = ['small', 'medium', 'large']
@@ -253,6 +266,19 @@
       {/if}
     </section>
 
+    <section class="settings-section">
+      <h3>Language Learning</h3>
+      <p class="language-summary">Language Mode: {languageModeSummary}</p>
+      <button
+        type="button"
+        class="back-btn"
+        aria-label="Language Mode"
+        onclick={() => { showLanguageModePanel = true }}
+      >
+        Configure Language Mode
+      </button>
+    </section>
+
     <AccountSettings />
     <FeedbackButton />
 
@@ -272,6 +298,10 @@
 
 {#if showParentalControls}
   <ParentalControlsPanel onClose={() => { showParentalControls = false }} />
+{/if}
+
+{#if showLanguageModePanel}
+  <LanguageModePanel onClose={() => { showLanguageModePanel = false }} />
 {/if}
 
 <style>
@@ -396,5 +426,11 @@
     min-width: 52px;
     text-align: right;
     color: #f8fafc;
+  }
+
+  .language-summary {
+    margin: 0 0 10px;
+    color: #cbd5e1;
+    font-size: calc(12px * var(--text-scale, 1));
   }
 </style>

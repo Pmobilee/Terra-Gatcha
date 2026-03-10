@@ -37,6 +37,7 @@
     onskipcard: (cardId: string) => void
     onendturn: () => void
     onusehint: () => void
+    onreturnhub?: () => void
   }
 
   type CardPlayStage = 'hand' | 'selected' | 'committed'
@@ -48,7 +49,7 @@
     variantIndex: number
   }
 
-  let { turnState, activeBounties = [], onplaycard, onskipcard, onendturn, onusehint }: Props = $props()
+  let { turnState, activeBounties = [], onplaycard, onskipcard, onendturn, onusehint, onreturnhub }: Props = $props()
 
   let cardPlayStage = $state<CardPlayStage>('hand')
   let selectedIndex = $state<number | null>(null)
@@ -573,7 +574,12 @@
 
 <div class="card-combat-overlay">
   {#if turnState === null}
-    <div class="empty-state">Waiting for encounter...</div>
+    <div class="empty-state">
+      <p>Waiting for encounter...</p>
+      {#if onreturnhub}
+        <button type="button" class="return-hub-btn" onclick={onreturnhub}>Return to Hub</button>
+      {/if}
+    </div>
   {:else}
     <RelicTray relics={activeRelics} triggeredRelicId={turnState.triggeredRelicId} />
 
@@ -622,7 +628,6 @@
         timerColorVariant={timerColorVariant}
         highlightHint={turnState.canaryQuestionBias < 0}
         allowCancel={false}
-        skipLabel="Forfeit"
         onanswer={handleAnswer}
         onskip={handleSkip}
         oncancel={() => {}}
@@ -700,11 +705,31 @@
 
   .empty-state {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 16px;
     height: 100%;
     color: #7f8c8d;
     font-size: 14px;
+  }
+
+  .empty-state p {
+    margin: 0;
+  }
+
+  .return-hub-btn {
+    min-height: 44px;
+    padding: 0 24px;
+    border-radius: 10px;
+    border: 1px solid #475569;
+    background: #1f2937;
+    color: #f8fafc;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .ap-strip {

@@ -65,6 +65,17 @@ node scripts/ingest-facts.mjs --source /tmp/geography.generated.jsonl --domain g
 - `vocab/import-hsk-vocabulary.mjs`
 - `vocab/match-tatoeba.mjs`
 - `vocab/vocab-to-facts.mjs`
+- `vocab/build-seed-packs.mjs`
+- `vocab/validate-seed-packs.mjs`
+
+Example:
+```bash
+# Build launch vocab seed packs (ja/es/fr/de/ko/zh) plus nl/cs scaffolds
+npm run content:vocab:build -- --limit 5000
+
+# Validate generated seed packs and emit a report
+npm run content:vocab:validate -- --languages ja,es,fr,de,ko,zh --min-rows 100
+```
 
 ## QA and migration (AR-19)
 
@@ -74,6 +85,27 @@ node scripts/ingest-facts.mjs --source /tmp/geography.generated.jsonl --domain g
 - `qa/generate-validation-summary.mjs`
 - `qa/migrate-to-production.mjs`
 - `qa/final-validation.mjs`
+- `qa/source-fact-check.mjs`
+- `qa/flag-content-risks.mjs`
+- `qa/coverage-gate.mjs`
+- `qa/run-post-generation-qa.mjs`
+- `qa/promote-approved-to-db.mjs`
+
+Example:
+```bash
+# Source cross-reference audit + risk flags
+npm run content:factcheck -- --input data/generated --sample 200
+node scripts/content-pipeline/qa/flag-content-risks.mjs --input data/generated
+
+# Full post-generation QA chain (coverage/dedup/review sample/migration/gates)
+npm run content:qa -- --input data/generated
+
+# Coverage threshold gate (AR-19 target checks)
+npm run content:coverage:gate -- --knowledge-min 10000 --language-min 5000
+
+# Promote approved generated facts into seed and rebuild public/facts.db
+npm run content:promote -- --input data/generated --approved-only true --rebuild-db true
+```
 
 ## Notes
 

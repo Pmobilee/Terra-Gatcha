@@ -83,106 +83,127 @@ db.exec(`
   );
 `);
 
-// --- Style Presets (organized by dungeon ambiance level) ---
+// --- Style Presets (20 radically different pixel art philosophies) ---
 const STYLE_PRESETS = [
-  // --- AMBIANCE LEVEL 0: No dungeon framing, just dark moody pixel art ---
   {
-    id: 'no-frame-dark',
-    name: '01 No Frame (Dark Mood)',
+    id: 'dark-mood-baseline',
+    name: '01 Dark Mood Baseline',
     styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a dark moody background, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no gradients, no text, no UI elements, no border frame, no watermark, slight atmospheric glow around subject, game asset card art, vertical portrait composition, subject fills 80-90% of frame with breathing room at edges`,
     loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
   },
   {
-    id: 'no-frame-warm',
-    name: '02 No Frame (Warm Glow)',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors, warm amber candlelight glow against a deep dark background, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no gradients, no text, no UI elements, no border frame, no watermark, warm rim lighting on subject, game asset card art, vertical portrait composition, subject fills 80-90% of frame with breathing room at edges`,
-    loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
-  },
-
-  // --- AMBIANCE LEVEL 1: Subtle dungeon mood (vignette, no architecture) ---
-  {
-    id: 'subtle-vignette',
-    name: '03 Subtle Vignette',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors, dark fantasy atmosphere with deep shadows at edges fading inward like a dark vignette, flickering torchlight illumination from below, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, moody atmospheric lighting, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
-    loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
+    id: 'gameboy-dmg',
+    name: '02 Game Boy DMG',
+    styleSuffix: `rendered in original Game Boy 4-shade green monochrome palette only, darkest olive green to lightest yellow-green, extremely chunky blocky pixels where every single pixel is a deliberate placement, simplified to absolute essential shapes like a tiny overworld sprite blown up large, communicate form through silhouette and shape only with no fine detail, every pixel hand-placed with intentional precision, Link's Awakening and Pokemon Red sprite aesthetic, no anti-aliasing no smooth edges, hard blocky stepped pixel edges on all curves and diagonals, minimal detail maximum readability, centered vertical composition against dark green background, no text, no UI elements, no border frame`,
+    loraStrength: 0.4, numColors: 4, pixelationSize: 240, guidance: 4, steps: 20
   },
   {
-    id: 'subtle-mist',
-    name: '04 Subtle Mist & Embers',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against deep darkness, faint mystical mist and floating ember particles in the air, dark fantasy dungeon crawler atmosphere, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, warm ember glow around subject, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
-    loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
-  },
-
-  // --- AMBIANCE LEVEL 2: Ambient dungeon (ground texture, rim light, no arch) ---
-  {
-    id: 'ambient-stone',
-    name: '05 Ambient Stone Floor',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors, subject resting on ancient weathered stone cobblestone ground, warm torchlight from the sides casting long shadows, dark fantasy dungeon atmosphere fading to deep black at edges, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, atmospheric torch glow, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
-    loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
+    id: 'nes-8bit',
+    name: '03 NES 8-Bit',
+    styleSuffix: `8-bit NES era pixel art with strict 8 color limit, punchy saturated primary colors chosen for maximum contrast and readability, heavy ordered dithering patterns used for all shading and tonal transitions, checkerboard and line dithering for midtones, blocky but expressive sprites like Final Fantasy 1 monster art or Mega Man boss sprites, every pixel carefully placed within tight constraints, subject fills entire frame with no wasted space, iconic and instantly readable even at tiny display sizes, strong black outlines with single-pixel width, centered composition, dark background, no text, no UI elements, no border frame, no anti-aliasing`,
+    loraStrength: 0.4, numColors: 8, pixelationSize: 300, guidance: 4, steps: 20
   },
   {
-    id: 'ambient-runes',
-    name: '06 Ambient Rune Glow',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors, faint glowing arcane runes visible in the dark background, subtle blue-purple magical energy wisps floating at the edges, dark fantasy atmosphere, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, arcane ambient glow around subject, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
-    loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
+    id: 'snes-battle',
+    name: '04 SNES Battle Sprite',
+    styleSuffix: `Super Nintendo RPG enemy battle sprite in the exact style of Final Fantasy 6 and Chrono Trigger monster art, 16 color palette with beautiful careful dithering for smooth tonal transitions, side-view perspective as if viewed in a JRPG battle encounter, dramatic battle-ready pose with sense of menace or power, rendered with the meticulous pixel-level craftsmanship of 16-bit era sprite artists, subject treated as a creature or boss you would fight, detailed within strict palette constraints, characteristic SNES-era color choices with deep shadows and bright highlights, flat dark background like a battle screen, centered composition, no text, no UI elements, no border frame`,
+    loraStrength: 0.35, numColors: 16, pixelationSize: 400, guidance: 4.5, steps: 20
   },
   {
-    id: 'ambient-crystal',
-    name: '07 Ambient Crystal Light',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors, faint teal and amethyst crystal formations glowing softly at the dark edges, underground cavern atmosphere without visible walls, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, crystalline rim lighting on subject, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
-    loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
-  },
-
-  // --- AMBIANCE LEVEL 3: Full dungeon framing (arch, walls — for comparison) ---
-  {
-    id: 'framed-arch',
-    name: '08 Full Stone Arch',
-    styleSuffix: `centered in frame as a single iconic vignette, viewed through an ancient stone dungeon archway lit by flickering wall torches, pixel art trading card illustration, dark fantasy dungeon crawler aesthetic, bold readable silhouette, warm amber torchlight against deep shadow, rich saturated colors, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, warm torch glow illuminating subject, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
-    loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
-  },
-
-  // --- TECHNICAL VARIATIONS (on best ambient style) ---
-  {
-    id: 'ambient-24col',
-    name: '09 Ambient Stone 24-Color',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors, subject resting on ancient weathered stone cobblestone ground, warm torchlight from the sides casting long shadows, dark fantasy dungeon atmosphere fading to deep black at edges, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, atmospheric torch glow, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
+    id: 'gba-rich',
+    name: '05 GBA Rich Sprite',
+    styleSuffix: `Game Boy Advance era pixel art portrait with 24 color richness, vibrant hyper-saturated colors characteristic of Golden Sun and Fire Emblem GBA character portraits, expressive detailed faces with visible emotion, finely rendered equipment and clothing details, the sweet spot between retro charm and genuine detail, warm and vivid palette with smooth color ramps, each color carefully chosen to maximize the 24-color range, clean pixel art with anti-aliased edges on key curves, character-focused framing like a GBA dialogue portrait blown up, dark background, centered composition, no text, no UI elements, no border frame`,
     loraStrength: 0.3, numColors: 24, pixelationSize: 480, guidance: 4, steps: 20
   },
   {
-    id: 'ambient-32col',
-    name: '10 Ambient Stone 32-Color',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors, subject resting on ancient weathered stone cobblestone ground, warm torchlight from the sides casting long shadows, dark fantasy dungeon atmosphere fading to deep black at edges, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, atmospheric torch glow, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
-    loraStrength: 0.3, numColors: 32, pixelationSize: 480, guidance: 4, steps: 20
+    id: 'hd-pixel',
+    name: '06 HD Pixel Art',
+    styleSuffix: `modern indie HD pixel art in the style of Dead Cells Hyper Light Drifter and Octopath Traveler, smooth color gradients and atmospheric lighting effects blended with deliberate hard pixel edges on key outlines and silhouettes, volumetric light shafts and particle effects rendered at high resolution, rich detailed shading with no color quantization, subtle rim lighting and ambient occlusion, the pixel edges are an aesthetic choice not a technical limitation, cinematic composition with dramatic lighting against a moody atmospheric background, high detail count with layered depth, no text, no UI elements, no border frame, vertical portrait composition`,
+    loraStrength: 0.2, numColors: 0, pixelationSize: 0, guidance: 4, steps: 25
   },
   {
-    id: 'ambient-lora20',
-    name: '11 Ambient LoRA 0.20',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors, subject resting on ancient weathered stone cobblestone ground, warm torchlight from the sides casting long shadows, dark fantasy dungeon atmosphere fading to deep black at edges, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, atmospheric torch glow, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
-    loraStrength: 0.20, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
+    id: 'chibi-sd',
+    name: '07 Chibi SD',
+    styleSuffix: `super-deformed chibi proportions with oversized head taking up 40 percent of total body height, tiny stubby arms and legs, huge round expressive eyes with sparkle highlights, adorable and round with maximum cute personality, simplified body with exaggerated head features, RPG Maker and Stardew Valley character aesthetic, bright cheerful colors even against dark background, bouncy energetic pose suggesting movement and life, rounded soft shapes with clean pixel outlines, kawaii charm with game sprite readability, centered composition, dark background with subtle warmth, no text, no UI elements, no border frame, vertical portrait`,
+    loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 4.5, steps: 20
   },
   {
-    id: 'ambient-lora40',
-    name: '12 Ambient LoRA 0.40',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors, subject resting on ancient weathered stone cobblestone ground, warm torchlight from the sides casting long shadows, dark fantasy dungeon atmosphere fading to deep black at edges, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, atmospheric torch glow, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
-    loraStrength: 0.40, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
-  },
-  {
-    id: 'ambient-guide5',
-    name: '13 Ambient Guidance 5',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors, subject resting on ancient weathered stone cobblestone ground, warm torchlight from the sides casting long shadows, dark fantasy dungeon atmosphere fading to deep black at edges, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, atmospheric torch glow, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
+    id: 'isometric-diorama',
+    name: '08 Isometric Diorama',
+    styleSuffix: `isometric 3/4 top-down perspective viewed from 45 degrees above, subject rendered standing on a small visible ground tile or platform like a tactics game unit, Final Fantasy Tactics and Disgaea sprite perspective with foreshortened proportions, the card becomes a tiny diorama scene viewed from above at an angle, subtle drop shadow on the ground plane, environment hints on the isometric tile beneath the subject, clean pixel art with isometric grid alignment on edges, 16-color palette with careful isometric shading where light comes from upper-left, dark void surrounding the illuminated diorama tile, no text, no UI elements, no border frame`,
     loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 5, steps: 20
   },
   {
-    id: 'ambient-nopix',
-    name: '14 Ambient No Pixelate',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors, subject resting on ancient weathered stone cobblestone ground, warm torchlight from the sides casting long shadows, dark fantasy dungeon atmosphere fading to deep black at edges, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, atmospheric torch glow, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
-    loraStrength: 0.3, numColors: 0, pixelationSize: 0, guidance: 4, steps: 20
+    id: 'silhouette-dramatic',
+    name: '09 Silhouette Dramatic',
+    styleSuffix: `subject rendered as a bold dramatic pure black silhouette with only 2-3 key accent details picked out in a single vibrant color, nearly all form communicated through the outer contour shape alone, like Limbo or shadow puppet theater, maximum readability through silhouette, dramatic single-color rim light tracing one edge of the subject in hot orange or electric blue, the silhouette IS the entire artwork, vast dark negative space surrounding the crisp black shape, no internal detail except the few accent color highlights on eyes or weapon or key feature, stark and theatrical, vertical portrait composition, no text, no UI elements, no border frame`,
+    loraStrength: 0.3, numColors: 8, pixelationSize: 480, guidance: 5, steps: 20
   },
   {
-    id: 'best-candidate',
-    name: '15 Best Candidate (24col, LoRA 0.35, Ambient)',
-    styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors, faint dark fantasy atmosphere with ember particles and soft torchlight glow at edges fading to deep black, subtle ancient stone texture underfoot, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no text, no UI elements, no border frame, no watermark, warm atmospheric rim lighting on subject, game asset card art, vertical portrait composition, subject fills 80-90% of frame`,
-    loraStrength: 0.35, numColors: 24, pixelationSize: 480, guidance: 4.5, steps: 20
+    id: 'dither-heavy',
+    name: '10 Dither-Heavy Retro',
+    styleSuffix: `ALL shading and tonal transitions rendered exclusively through heavy dithering patterns, checkerboard dither for midtones, ordered Bayer matrix dithering for gradients, crosshatch stipple patterns for shadows, the dithering texture IS the visual style like classic Macintosh or Atari ST graphics, near-monochrome palette with dithering providing all tonal range and depth, no solid fills larger than a few pixels, every surface textured with visible dither patterns, stark high-contrast with the dithering doing all the heavy lifting between light and dark, centered composition, dark background, no text, no UI elements, no border frame, vertical portrait`,
+    loraStrength: 0.35, numColors: 8, pixelationSize: 360, guidance: 4, steps: 20
+  },
+  {
+    id: 'painterly-mini',
+    name: '11 Painterly Miniature',
+    styleSuffix: `painted tabletop gaming miniature photographed against dark velvet, rich visible oil paint brushstrokes with impasto texture, dramatic chiaroscuro directional lighting from upper left casting deep shadows, Warhammer 40K painted figurine quality with edge highlighting and layered glazes, realistic proportions and anatomy, warm skin tones with cool shadow recesses, NOT pixel art at all but traditional painted miniature aesthetic, depth of field blur at edges suggesting macro photography of a real physical object, matte varnish finish, tabletop RPG miniature feel, dark background, centered composition, no text, no UI elements, no border frame`,
+    loraStrength: 0.1, numColors: 0, pixelationSize: 0, guidance: 5, steps: 25
+  },
+  {
+    id: 'chunky-icon',
+    name: '12 Chunky 64px Icon',
+    styleSuffix: `extremely chunky ultra-low-resolution pixel art as if designed for a 32x32 icon and blown up enormous, MAXIMUM pixel blockiness where individual pixels are huge and clearly visible, subject reduced to absolute bare essential geometric shapes, almost abstract in simplicity, every single pixel is a critical design decision, favicon and emoji design philosophy where you represent a complex concept in minimal pixel count, bold simple color blocks with no subtlety, stark readability at any size, centered composition, dark background, no text, no UI elements, no border frame, no dithering just solid pixel blocks`,
+    loraStrength: 0.45, numColors: 8, pixelationSize: 120, guidance: 4, steps: 20
+  },
+  {
+    id: 'detailed-scene',
+    name: '13 Detailed Scene',
+    styleSuffix: `full environmental scene where the subject exists within a richly detailed pixel art setting, background is as important as the foreground subject, visible ground terrain sky or ceiling and environmental objects surrounding the subject, like a tiny landscape painting in pixel art, subject occupies only 40-50 percent of the frame with the remaining space filled with contextual environment details, trees rocks buildings water weather effects or interior furnishings depending on subject, layered parallax depth with foreground middle and background elements, atmospheric perspective with distant elements lighter, 24-color palette, no text, no UI elements, no border frame, vertical portrait composition`,
+    loraStrength: 0.25, numColors: 24, pixelationSize: 480, guidance: 4, steps: 25
+  },
+  {
+    id: 'ink-wash',
+    name: '14 Ink Wash Sumi-e',
+    styleSuffix: `Japanese sumi-e ink wash painting aesthetic translated into pixels, limited strictly to black ink tones grey washes and one single accent color of vermillion red, flowing calligraphic brushstroke quality interpreted through pixel placement, abundant negative space with 60 percent or more of the image empty, subject rendered with minimal essential strokes implying form rather than explicitly defining every edge, zen minimalist philosophy where what is omitted matters more than what is shown, ink splatter and wash bleed effects at edges, contemplative and meditative atmosphere, vertical scroll painting composition, no text, no UI elements, no border frame`,
+    loraStrength: 0.25, numColors: 8, pixelationSize: 480, guidance: 4.5, steps: 20
+  },
+  {
+    id: 'sticker-flat',
+    name: '15 Sticker / Flat Design',
+    styleSuffix: `modern flat design sticker aesthetic with bold perfectly flat colors and absolutely zero shading zero gradients zero highlights, thick uniform-width dark outline around the entire subject like a die-cut vinyl sticker, geometric simplification of all forms into clean shapes, vector art precision meets pixel grid alignment, clean modern and instantly readable like a well-designed app icon or emoji, bright saturated flat color fills with no tonal variation within each color zone, white or very thick dark border surrounding the complete subject creating sticker cutout effect, centered composition, dark background, no text, no UI elements, no border frame`,
+    loraStrength: 0.3, numColors: 12, pixelationSize: 480, guidance: 5, steps: 20
+  },
+  {
+    id: 'ukiyo-e-woodblock',
+    name: '16 Ukiyo-e Woodblock',
+    styleSuffix: `authentic Japanese ukiyo-e woodblock print style with flat color planes separated by hard carved edges, characteristic ukiyo-e palette of indigo blue vermillion red ochre yellow and black, no gradients only flat color areas like carved woodblock layers, bold black outlines of varying thickness suggesting carved wood grain, dynamic composition with flowing fabric hair or natural elements, characteristic wave patterns cloud motifs and stylized water, Hokusai and Hiroshige aesthetic translated into pixel art, strong sense of graphic design and negative space, dramatic poses with theatrical kabuki energy, vertical composition, dark background, no text, no UI elements, no border frame`,
+    loraStrength: 0.25, numColors: 12, pixelationSize: 480, guidance: 4.5, steps: 20
+  },
+  {
+    id: 'tarot-arcana',
+    name: '17 Tarot Arcana',
+    styleSuffix: `mystical tarot card major arcana illustration with symmetrical sacred geometry framing, Art Nouveau organic border elements woven into the composition, esoteric occult symbolism with celestial motifs of stars moons and suns, rich jewel tone palette of deep purple amethyst burnished gold midnight blue and ruby, the subject rendered with mysterious gravitas as if depicting an archetypal cosmic force, ornamental and deeply symbolic composition, radiating lines and mandala patterns in the background, the subject framed as if revealing a universal truth, candlelit warmth mixed with cosmic mystery, vertical portrait composition perfectly centered, no text, no UI elements, no outer border frame`,
+    loraStrength: 0.2, numColors: 16, pixelationSize: 480, guidance: 5, steps: 25
+  },
+  {
+    id: 'ps1-prerender',
+    name: '18 PS1 Pre-Rendered',
+    styleSuffix: `PlayStation 1 era pre-rendered 3D sprite aesthetic, that specific chunky low-polygon 3D-rendered-to-2D-sprite look of Donkey Kong Country Final Fantasy 7 field sprites and Diablo 1, smooth Phong shading with visible polygon faceting artifacts, slightly uncanny 3D-to-2D conversion quality with baked lighting, rendered at a slight 3/4 angle suggesting fake 3D depth and volume, specular highlights on surfaces suggesting plastic or metallic CG materials, the characteristic early-CGI look that is neither pixel art nor photorealistic but its own distinct aesthetic, soft shadows baked into the sprite, dark background, centered composition, no text, no UI elements, no border frame`,
+    loraStrength: 0.15, numColors: 32, pixelationSize: 360, guidance: 4, steps: 20
+  },
+  {
+    id: 'maximalist-ornate',
+    name: '19 Maximalist Ornate',
+    styleSuffix: `every single pixel filled with intricate detail in baroque horror vacui style, dense ornamental complexity covering all surfaces with decorative filigree scrollwork and patterning, no empty space anywhere, like a medieval illuminated manuscript or densely detailed heavy metal album cover, intricate patterns on every surface of the subject including clothing skin architecture and background, decorative border elements growing organically from the subject itself, overwhelming beautiful excess of visual information, rich 24-color palette used to its fullest with detailed color transitions, the eye discovers new details on every viewing, centered composition, no text, no UI elements, no outer border frame, vertical portrait`,
+    loraStrength: 0.25, numColors: 24, pixelationSize: 480, guidance: 5.5, steps: 30
+  },
+  {
+    id: 'minimal-negative',
+    name: '20 Minimal Negative Space',
+    styleSuffix: `maximum emptiness and restraint, subject rendered with absolute minimum linework and detail floating in vast empty black negative space, only the essential contour outline and 1-2 key identifying details rendered, 70-80 percent of the image is pure empty dark void, the breathing room and emptiness IS the aesthetic, Japanese ma philosophy of meaningful negative space, what you leave out defines the art more than what you include, subject reduced to its most essential recognizable form with surgical precision, sparse and contemplative, a few perfect pixels in an ocean of nothing, centered composition, deep black background, no text, no UI elements, no border frame, vertical portrait`,
+    loraStrength: 0.3, numColors: 8, pixelationSize: 480, guidance: 4.5, steps: 20
   },
 ];
 
