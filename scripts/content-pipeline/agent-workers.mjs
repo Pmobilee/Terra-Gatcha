@@ -43,6 +43,11 @@ function rel(filePath) {
   return path.relative(root, filePath) || '.'
 }
 
+function resolveAbsolute(value) {
+  if (!value) return null
+  return path.isAbsolute(String(value)) ? String(value) : path.resolve(root, String(value))
+}
+
 function toCliArgs(options) {
   const out = []
   for (const [key, value] of Object.entries(options || {})) {
@@ -784,6 +789,15 @@ async function cmdStatus(rawArgs) {
     typeof qaReport?.pass === 'boolean' ? qaReport.pass : null,
   )
   const promoteSummary = summarizeStage(promoteReport)
+
+  const [prepareContextExists, ingestContextExists, qaContextExists] = await Promise.all([
+    prepareReport?.generatedDir ? exists(resolveAbsolute(prepareReport.generatedDir)) : null,
+    ingestReport?.workerOutputDir ? exists(resolveAbsolute(ingestReport.workerOutputDir)) : null,
+    qaReport?.input ? exists(resolveAbsolute(qaReport.input)) : null,
+  ])
+  if (prepareContextExists === false) prepareSummary.stale = true
+  if (ingestContextExists === false) ingestSummary.stale = true
+  if (qaContextExists === false) qaSummary.stale = true
 
   const qaFailedStep = Array.isArray(qaReport?.results)
     ? qaReport.results.find((entry) => entry?.ok === false)?.script || null
