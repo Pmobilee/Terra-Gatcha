@@ -3,14 +3,15 @@
 
   interface Props {
     current: Screen
-    onNavigate: (screen: Extract<Screen, 'hub' | 'library' | 'settings' | 'profile' | 'journal'>) => void
+    onNavigate: (screen: Extract<Screen, 'hub' | 'library' | 'settings' | 'profile' | 'journal' | 'social'>) => void
   }
 
   let { current, onNavigate }: Props = $props()
 
-  const NAV_ITEMS: Array<{ key: Extract<Screen, 'hub' | 'library' | 'settings' | 'profile' | 'journal'>; label: string; icon: string }> = [
+  const NAV_ITEMS: Array<{ key: Extract<Screen, 'hub' | 'library' | 'settings' | 'profile' | 'journal' | 'social'>; label: string; icon: string }> = [
     { key: 'hub', label: 'Start', icon: '🏃' },
     { key: 'library', label: 'Library', icon: '📖' },
+    { key: 'social', label: 'Social', icon: '🤝' },
     { key: 'settings', label: 'Settings', icon: '⚙️' },
     { key: 'profile', label: 'Profile', icon: '👤' },
     { key: 'journal', label: 'Journal', icon: '📜' },
@@ -39,7 +40,7 @@
     right: 0;
     bottom: 0;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     background: rgba(9, 14, 24, 0.94);
     border-top: 1px solid rgba(148, 163, 184, 0.35);
     padding: 6px 4px calc(6px + env(safe-area-inset-bottom));

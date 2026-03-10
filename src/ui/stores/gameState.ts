@@ -44,6 +44,7 @@ export type Screen =
   | 'profile'
   | 'journal'
   | 'leaderboards'
+  | 'social'
   | 'roomSelection'
   | 'mysteryEvent'
   | 'restRoom'
@@ -70,6 +71,7 @@ const VALID_SCREENS: Screen[] = [
   'profile',
   'journal',
   'leaderboards',
+  'social',
   'roomSelection',
   'mysteryEvent',
   'restRoom',
@@ -93,6 +95,7 @@ const PERSISTABLE_SCREENS = new Set<Screen>([
   'profile',
   'journal',
   'leaderboards',
+  'social',
 ])
 
 function normalizeHomeScreen(screen: Screen): Screen {

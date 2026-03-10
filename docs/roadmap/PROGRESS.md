@@ -460,7 +460,7 @@ Updated GAME_DESIGN.md, ARCHITECTURE.md, and PROGRESS.md to reflect all AR-22→
 - [ ] Endless Depths (infinite scaling after Floor 9, separate leaderboard)
 - [ ] Mastery Challenges (rare Mystery room, 3s timer, 5 distractors, fail = Tier 2b)
 - [ ] Relic Sanctum (between-run relic management for >12 mastered)
-- [ ] Wire up existing Co-op, Duel, Guild components (already built, need backend + matchmaking)
+- [x] Wire up existing Co-op, Duel, Guild components (already built, need backend + matchmaking)
 
 ### AR-21: Monetization Activation
 - [ ] Ad removal IAP ($4.99)
@@ -578,9 +578,9 @@ These features exist as implemented Svelte components / services but are current
 | Analytics Service | analyticsService.ts | Built ✓ | AR-14 |
 | A/B Testing | experiments.ts, featureFlagService.ts | Built ✓ | AR-14 |
 | Leaderboards | Leaderboard components | Built ✓ | AR-20 |
-| Co-op Lobby | CoopLobby.svelte | Built ✓ | AR-20 |
-| Guild View | GuildView.svelte | Built ✓ | AR-20 |
-| Duel View | DuelView.svelte | Built ✓ | AR-20 |
+| Co-op Lobby | CoopLobby.svelte | Built ✓ | AR-20 (partial) |
+| Guild View | GuildView.svelte | Built ✓ | AR-20 (partial) |
+| Duel View | DuelView.svelte | Built ✓ | AR-20 (partial) |
 | Season Pass | SeasonPassView.svelte | Built ✓ | AR-21 |
 | IAP Service | iapService.ts | Built ✓ | AR-21 |
 | Daily Deals | dailyDeals.ts | Built ✓ | AR-21 |

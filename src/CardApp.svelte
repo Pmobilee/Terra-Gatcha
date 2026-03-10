@@ -72,6 +72,7 @@
   import ProfileScreen from './ui/components/ProfileScreen.svelte'
   import JournalScreen from './ui/components/JournalScreen.svelte'
   import LeaderboardsScreen from './ui/components/LeaderboardsScreen.svelte'
+  import SocialScreen from './ui/components/SocialScreen.svelte'
   import ShopRoomOverlay from './ui/components/ShopRoomOverlay.svelte'
   import CampfirePause from './ui/components/CampfirePause.svelte'
   import SpecialEventOverlay from './ui/components/SpecialEventOverlay.svelte'
@@ -85,6 +86,7 @@
     'profile',
     'journal',
     'leaderboards',
+    'social',
   ])
 
   function transitionScreen(target: Screen): void {
@@ -114,6 +116,10 @@
 
   function handleOpenLeaderboards(): void {
     transitionScreen('leaderboards')
+  }
+
+  function handleOpenSocial(): void {
+    transitionScreen('social')
   }
 
   function handleHubNavigate(target: HubScreenName): void {
@@ -319,6 +325,7 @@
       onOpenProfile={handleOpenProfile}
       onOpenJournal={handleOpenJournal}
       onOpenLeaderboards={handleOpenLeaderboards}
+      onOpenSocial={handleOpenSocial}
     />
     {#if showActiveRunBanner}
       <div class="active-run-banner">
@@ -523,6 +530,10 @@
 
   {#if $currentScreen === 'leaderboards'}
     <LeaderboardsScreen onBack={handleBackToMenu} />
+  {/if}
+
+  {#if $currentScreen === 'social'}
+    <SocialScreen onBack={handleBackToMenu} onOpenSettings={handleOpenSettings} />
   {/if}
 
   {#if shouldShowHubNav($currentScreen)}

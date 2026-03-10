@@ -31,6 +31,7 @@
     onOpenProfile: () => void
     onOpenJournal: () => void
     onOpenLeaderboards: () => void
+    onOpenSocial: () => void
   }
 
   let {
@@ -42,6 +43,7 @@
     onOpenProfile,
     onOpenJournal,
     onOpenLeaderboards,
+    onOpenSocial,
   }: Props = $props()
 
   interface CampObject {
@@ -352,6 +354,7 @@
   <div class="grid-actions" aria-label="Hub features">
     <button type="button" class="start-btn" data-testid="btn-start-run" onclick={onStartRun}>Start Run</button>
     <button type="button" class="tile" onclick={onOpenLeaderboards} aria-label="Leaderboards">🏆<span>Leaderboards</span></button>
+    <button type="button" class="tile" onclick={onOpenSocial} aria-label="Social">🤝<span>Social</span></button>
   </div>
 </section>
 
@@ -738,7 +741,7 @@
 
   .grid-actions {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1.2fr 1fr 1fr;
     gap: 10px;
   }
 
