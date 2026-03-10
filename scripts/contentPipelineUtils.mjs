@@ -46,6 +46,32 @@ function ensureArray(value) {
   return Array.isArray(value) ? value : []
 }
 
+const DOMAIN_TO_CATEGORY_LABEL = {
+  general_knowledge: 'General Knowledge',
+  natural_sciences: 'Natural Sciences',
+  space_astronomy: 'Space & Astronomy',
+  geography: 'Geography',
+  history: 'History',
+  mythology_folklore: 'Mythology & Folklore',
+  animals_wildlife: 'Animals & Wildlife',
+  human_body_health: 'Human Body & Health',
+  food_cuisine: 'Food & World Cuisine',
+  art_architecture: 'Art & Architecture',
+  language: 'Language',
+  science: 'Natural Sciences',
+  math: 'General Knowledge',
+  arts: 'Art & Architecture',
+  medicine: 'Human Body & Health',
+  technology: 'General Knowledge',
+}
+
+function normalizeCategoryToken(value) {
+  const text = cleanString(value)
+  if (!text) return ''
+  const key = text.toLowerCase().replace(/[ -]+/g, '_')
+  return DOMAIN_TO_CATEGORY_LABEL[key] || text
+}
+
 function toStringArray(values) {
   if (!Array.isArray(values)) return []
   return values
@@ -58,14 +84,16 @@ function toStringArray(values) {
 }
 
 function normalizeCategory(value, fallbackDomain) {
+  const fallback = normalizeCategoryToken(fallbackDomain) || 'General Knowledge'
   if (Array.isArray(value)) {
-    return value.map(cleanString).filter(Boolean)
+    const normalized = value.map(normalizeCategoryToken).filter(Boolean)
+    return normalized.length > 0 ? normalized : [fallback]
   }
   if (typeof value === 'string') {
-    const text = cleanString(value)
-    return text ? [text] : [fallbackDomain]
+    const text = normalizeCategoryToken(value)
+    return text ? [text] : [fallback]
   }
-  return [fallbackDomain]
+  return [fallback]
 }
 
 function normalizeVariants(rawVariants, correctAnswer, distractors) {

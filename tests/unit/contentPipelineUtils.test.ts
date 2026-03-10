@@ -93,12 +93,29 @@ describe('contentPipelineUtils', () => {
       type: 'fact',
     }, { domain: 'geography', verify: false })
 
-    expect(fact.category).toEqual(['geography'])
+    expect(fact.category).toEqual(['Geography'])
     expect(fact.distractors).toEqual(['London', 'Rome'])
     expect(Array.isArray(fact.variants)).toBe(true)
     expect(fact.variants?.length).toBe(2)
     expect(fact.variants?.[0]?.type).toBe('forward')
     const result = validateFactRecord(fact)
     expect(result.valid).toBe(true)
+  })
+
+  it('maps slug fallback domains to canonical category labels', () => {
+    const fact = normalizeFactInput({
+      statement: 'Jupiter is the largest planet.',
+      explanation: 'Gas giant with largest mass in Solar System.',
+      quizQuestion: 'Which planet is the largest?',
+      correctAnswer: 'Jupiter',
+      distractors: ['Earth', 'Mars'],
+      variants: ['Which planet is largest?', 'Largest planet?'],
+      sourceName: 'NASA',
+      ageRating: 'kid',
+      type: 'fact',
+    }, { domain: 'natural_sciences', verify: false })
+
+    expect(fact.category[0]).toBe('Natural Sciences')
+    expect(fact.categoryL1).toBe('Natural Sciences')
   })
 })

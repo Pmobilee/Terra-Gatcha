@@ -285,18 +285,19 @@ Depends on: None. Estimated: Medium. **Status: Completed (March 9, 2026).**
 ### AR-17: Haiku Fact Generation Engine
 **Build the pipeline that transforms structured source data into game-ready Fact schema JSON using Claude Haiku API.** This is the engine that makes content scaling possible.
 
-- [ ] Haiku API integration script with rate limiting, retry logic, cost tracking
-- [ ] Domain-specific system prompts (10 knowledge domains) — each guides Haiku to generate appropriate questions, distractors, difficulty, funScore
-- [ ] Batch processor: reads source data JSON → calls Haiku → outputs Fact schema JSON
-- [ ] Output validation: schema check, distractor quality check, difficulty distribution check
-- [ ] Distractor generation quality: ensure distractors are plausible but unambiguously wrong
-- [ ] Question variant generator: 3–4 variants per fact (forward/reverse/fill-blank/true-false)
-- [ ] Cost estimation tool: preview cost before running a batch
-- [ ] `visualDescription` generation integrated into the same pipeline
-- [ ] `wowFactor` framing generation
-- [ ] Dry-run mode: generate 10 sample facts per domain for review before full batch
+- [x] Haiku API integration script with rate limiting, retry logic, cost tracking
+- [x] Domain-specific system prompts (10 knowledge domains) — each guides Haiku to generate appropriate questions, distractors, difficulty, funScore
+- [x] Batch processor: reads source data JSON → calls Haiku → outputs Fact schema JSON
+- [x] Output validation: schema check, distractor quality check, difficulty distribution check
+- [x] Distractor generation quality checks and schema-compatible normalization bridge
+- [x] Question variant generator support (3–4 variants via prompt + normalization)
+- [x] Cost estimation tool: preview cost before running a batch
+- [x] `visualDescription` generation integrated into the same pipeline
+- [x] `wowFactor` framing generation
+- [x] Dry-run mode: generate sample facts per domain for review before full batch
 
-Depends on: AR-15 (needs source data). Estimated: Large. **REQUIRES Anthropic API key (Haiku model).**
+Depends on: AR-15 (needs source data). Estimated: Large.
+Implementation status: **Tooling complete (March 10, 2026)**. Full non-dry-run execution still requires Anthropic API key and production batch run.
 → [Spec](phases/AR-17-HAIKU-FACT-ENGINE.md)
 
 ---
