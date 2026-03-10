@@ -144,8 +144,8 @@ describe('relic definitions and synergies', () => {
   })
 })
 
-// Hub floor definitions and painting/achievement tier tests archived
-// (hubFloors.ts, hubLayout.ts, paintings.ts moved to _archived-mining)
+// Hub floor definitions and painting/achievement tier tests remain archived
+// in docs/archive historical phase documentation.
 
 describe('sprite key manifests', () => {
   it('keeps HIGH_RES_KEYS and LOW_RES_KEYS in sync', () => {

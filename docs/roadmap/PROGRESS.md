@@ -16,7 +16,7 @@
 - AR-25 Push notifications: 4 notification types, quiet hours, priority scheduling, per-type settings toggles.
 - AR-26 All documentation updated to reflect AR-22-25 changes plus ascension mode design.
 
-**Next up:** Finish remaining AR-11 cleanup items, close AR-13 dead-code cleanup, then complete AR-17 through AR-19 productionization (schema alignment, generation QA, and final migration flow).
+**Next up:** Complete AR-17 through AR-19 productionization (schema alignment, generation QA, and final migration flow). Remaining AR-11 content-regeneration cleanup is deferred until generation quality tuning is finalized.
 
 ---
 
@@ -52,6 +52,9 @@ Content source registry, SPARQL query set, API fetchers, and source pipeline doc
 ### AR-16: Knowledge Domain Expansion ✓
 Expanded domain model, metadata, resolver mappings, run-pool/category compatibility, and UI domain surfacing completed. → [Spec](completed/AR-16-DOMAIN-EXPANSION.md)
 
+### AR-13: Launch Readiness ✓
+Performance audit, full Playwright E2E coverage, dead-code cleanup (including mining-era archive removal), PWA, error tracking, share verification, and responsive layout checks complete. → [Spec](completed/AR-13-LAUNCH-READINESS.md)
+
 ### AR-22: Rename to Recall Rogue ✓
 Global rename from "Arcane Recall" / "Terra Gacha" to "Recall Rogue" across 263 files. → [Spec](completed/AR-22-RENAME.md)
 
@@ -77,7 +80,7 @@ GAME_DESIGN.md, ARCHITECTURE.md, PROGRESS.md updated with AR-22-25 changes and a
 - [x] **Accessibility baseline** — Colorblind support, 3 text sizes, high contrast, reduce motion, 48dp+ touch targets.
 - [ ] ~~Playwright E2E test suite~~ → expanded in AR-13
 - [ ] ~~Performance audit~~ → moved to AR-13
-- [ ] ~~Dead code cleanup~~ → moved to AR-13
+- [x] ~~Dead code cleanup~~ → completed in AR-13
 - [x] **App store metadata** — Screenshots, description, privacy policy, age rating.
 
 Note: AR-07 is being superseded by AR-13 which has a broader scope including web deployment, PWA, and the new deck building/hub features that must be tested. The completed items (accessibility, metadata) stand.
@@ -199,16 +202,16 @@ Depends on: AR-08 (Settings accessible). Estimated: Medium-Large. **Status: Comp
 
 - [x] Performance audit: 60fps combat, <3s cold start, <150MB memory
 - [x] Full Playwright E2E test suite (hub, run flow, type selection, FSRS, combos, relics, save/load)
-- [ ] Dead code cleanup (archive mining-era code, remove unused social nav entries)
+- [x] Dead code cleanup (archive mining-era code removed, no active social nav dead entries)
 - [x] PWA configuration (manifest, service worker, offline, app icons)
 - [x] Error tracking (Sentry or equivalent)
 - [x] Share image generator verification
 - [x] Responsive layout on common mobile screen sizes
 
-Verification notes (March 9, 2026): `npx playwright test tests/e2e/playwright --workers=1` passes (12/12). `npm run audit:perf` passes with cold start ~358ms and JS heap ~8.6MB.
+Verification notes (March 10, 2026): `npm run typecheck` passes, `npm run build` succeeds, `npm test` passes (23/23 files). Dead-code cleanup completed by deleting `src/_archived-mining/` with no dangling imports.
 
-Depends on: AR-08, AR-09. Estimated: Medium.
-→ [Spec](phases/AR-13-LAUNCH-READINESS.md)
+Depends on: AR-08, AR-09. Estimated: Medium. **Status: Completed (March 10, 2026).**
+→ [Spec](completed/AR-13-LAUNCH-READINESS.md)
 
 ---
 

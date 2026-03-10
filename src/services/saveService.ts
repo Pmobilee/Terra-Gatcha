@@ -576,5 +576,5 @@ export function deleteSave(): void {
 // purchaseDeal, collectFarmResources, placeFarmAnimal,
 // removeFarmAnimal, expandFarm, craftPremiumRecipe,
 // updateStreakOnLogin — all mining-era functions removed.
-// See src/_archived-mining/ for reference.
+// Historical implementation notes live in docs/archive/.
 // ============================================================
