@@ -51,6 +51,8 @@ export function roomIdsToFloorIds(roomIds: string[]): string[] {
 const gaiaMessage = singletonWritable<string | null>('gaiaMessage', null)
 import { recordFastMastery } from '../../services/behavioralLearner'
 
+let hasLoggedSyncBootstrapError = false
+
 /** The active player save data. */
 export const playerSave = singletonWritable<PlayerSave | null>('playerSave', null)
 
@@ -113,7 +115,12 @@ export function persistPlayer(): void {
   // Cloud sync is debounced and no-ops when auth is unavailable or sync is disabled.
   import('../../services/syncService')
     .then((m) => m.syncService.syncAfterSave(updated))
-    .catch(() => {})
+    .catch((error) => {
+      if (!hasLoggedSyncBootstrapError) {
+        hasLoggedSyncBootstrapError = true
+        console.warn('[playerData] Failed to bootstrap syncService for persistPlayer', error)
+      }
+    })
 }
 
 /**
