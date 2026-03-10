@@ -632,12 +632,16 @@ export function applyMasteryTrialOutcome(factId: string, passed: boolean): void 
         }
 
         const currentStability = state.stability ?? state.interval ?? 0
+        const demotedStability = Math.max(15, Math.min(29, Math.round(currentStability - 5)))
         return {
           ...state,
           passedMasteryTrial: false,
-          consecutiveCorrect: 0,
-          repetitions: 0,
-          stability: Math.max(0, currentStability - 5),
+          // AR-20: failed mastery challenge demotes to Tier 2b instead of dropping to 1/2a.
+          consecutiveCorrect: Math.max(5, state.consecutiveCorrect ?? 0),
+          repetitions: Math.max(5, state.repetitions ?? 0),
+          stability: demotedStability,
+          interval: Math.max(15, Math.min(29, Math.round(state.interval ?? demotedStability))),
+          retrievability: Math.min(state.retrievability ?? 1, 0.69),
         }
       }),
     }
@@ -678,6 +682,62 @@ export function setGraduatedRelicId(factId: string, relicId: string | null): voi
       ),
     }
   })
+  persistPlayer()
+}
+
+/** Bumps a mastered relic source fact so it remains in the active relic slice. */
+export function prioritizeGraduatedRelicFact(factId: string): void {
+  playerSave.update((save) => {
+    if (!save) return save
+    return {
+      ...save,
+      reviewStates: save.reviewStates.map((state) => {
+        if (state.factId !== factId) return state
+        return {
+          ...state,
+          masteredAt: Date.now(),
+        }
+      }),
+    }
+  })
+  persistPlayer()
+}
+
+/** Applies Relic Sanctum ordering by boosting masteredAt for selected Tier-3 relic facts. */
+export function applyRelicSanctumSelection(factIds: string[]): void {
+  const uniqueFactIds = [...new Set(factIds.filter(Boolean))]
+  if (uniqueFactIds.length === 0) return
+
+  playerSave.update((save) => {
+    if (!save) return save
+
+    const now = Date.now()
+    const rankByFactId = new Map<string, number>()
+    uniqueFactIds.forEach((factId, index) => {
+      rankByFactId.set(factId, now + (uniqueFactIds.length - index))
+    })
+
+    return {
+      ...save,
+      reviewStates: save.reviewStates.map((state) => {
+        const nextMasteredAt = rankByFactId.get(state.factId)
+        if (nextMasteredAt == null) return state
+
+        const tier = getCardTier({
+          stability: state.stability ?? state.interval ?? 0,
+          consecutiveCorrect: state.consecutiveCorrect ?? state.repetitions ?? 0,
+          passedMasteryTrial: state.passedMasteryTrial ?? false,
+        })
+        if (tier !== '3') return state
+
+        return {
+          ...state,
+          masteredAt: nextMasteredAt,
+        }
+      }),
+    }
+  })
+
   persistPlayer()
 }
 

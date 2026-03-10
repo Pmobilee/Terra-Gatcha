@@ -54,6 +54,8 @@ export type Screen =
   | 'shopRoom'
   | 'specialEvent'
   | 'campfire'
+  | 'masteryChallenge'
+  | 'relicSanctum'
   | 'onboarding'
   | 'ageSelection'
   | 'settings'
@@ -81,6 +83,8 @@ const VALID_SCREENS: Screen[] = [
   'shopRoom',
   'specialEvent',
   'campfire',
+  'masteryChallenge',
+  'relicSanctum',
   'onboarding',
   'ageSelection',
   'settings',
@@ -96,6 +100,7 @@ const PERSISTABLE_SCREENS = new Set<Screen>([
   'journal',
   'leaderboards',
   'social',
+  'relicSanctum',
 ])
 
 function normalizeHomeScreen(screen: Screen): Screen {

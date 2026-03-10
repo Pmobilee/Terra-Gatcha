@@ -8,6 +8,7 @@ const RUN_LOCKED_SCREENS = new Set<Screen>([
   'shopRoom',
   'roomSelection',
   'mysteryEvent',
+  'masteryChallenge',
   'restRoom',
   'retreatOrDelve',
 ])
@@ -20,6 +21,7 @@ const HUB_SCREENS = new Set<Screen>([
   'journal',
   'leaderboards',
   'social',
+  'relicSanctum',
   'mainMenu',
   'base',
 ])

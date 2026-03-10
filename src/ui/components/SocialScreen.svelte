@@ -13,6 +13,7 @@
     onOpenSettings: () => void
     onStartDailyExpedition: () => { ok: true } | { ok: false; reason: string }
     onStartEndlessDepths: () => { ok: true } | { ok: false; reason: string }
+    onOpenRelicSanctum: () => { ok: true } | { ok: false; reason: string }
   }
 
   let {
@@ -20,6 +21,7 @@
     onOpenSettings,
     onStartDailyExpedition,
     onStartEndlessDepths,
+    onOpenRelicSanctum,
   }: Props = $props()
 
   type SocialPanel = 'coop' | 'duel' | 'guild' | null
@@ -29,10 +31,14 @@
   let dailyMessage = $state('')
   let endlessRows = $state<EndlessDepthsEntry[]>(getEndlessDepthsLeaderboard(5))
   let endlessMessage = $state('')
+  let relicMessage = $state('')
 
   const socialEnabled = $derived($parentalStore.socialEnabled)
   const playerId = $derived($authStore.userId ?? $playerSave?.playerId ?? 'local-player')
   const playerName = $derived($authStore.displayName ?? `Rogue-${playerId.slice(0, 6)}`)
+  const masteredCount = $derived(($playerSave?.reviewStates ?? []).filter((state) => (
+    (state.stability ?? state.interval ?? 0) >= 30 && Boolean(state.passedMasteryTrial)
+  )).length)
 
   function makeLobbyId(): string {
     const stamp = Date.now().toString(36)
@@ -94,6 +100,21 @@
       endlessMessage = 'Unable to start Endless Depths right now.'
     }
     refreshEndlessRows()
+  }
+
+  function openRelicSanctum(): void {
+    const opened = onOpenRelicSanctum()
+    if (opened.ok) {
+      relicMessage = ''
+      return
+    }
+    if (opened.reason === 'insufficient_mastered') {
+      relicMessage = 'Relic Sanctum unlocks once you have more than 12 mastered relic facts.'
+    } else if (opened.reason === 'run_active') {
+      relicMessage = 'Finish or abandon the active run before opening Relic Sanctum.'
+    } else {
+      relicMessage = 'Unable to open Relic Sanctum right now.'
+    }
   }
 
   $effect(() => {
@@ -176,6 +197,18 @@
             </div>
           {/each}
         </div>
+      </article>
+
+      <article class="card">
+        <h3>Relic Sanctum</h3>
+        <p>Between runs, choose which mastered relics stay in your active 12-slot loadout.</p>
+        <div class="meta">Mastered relic facts: {masteredCount}</div>
+        <div class="actions">
+          <button type="button" class="primary" onclick={openRelicSanctum}>Open Sanctum</button>
+        </div>
+        {#if relicMessage}
+          <p class="inline-message">{relicMessage}</p>
+        {/if}
       </article>
 
       <article class="card">

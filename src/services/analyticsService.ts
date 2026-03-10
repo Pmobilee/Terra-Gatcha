@@ -341,6 +341,15 @@ interface DailyExpeditionCompleteEvent {
   }
 }
 
+interface MasteryChallengeEvent {
+  name: 'mastery_challenge_start' | 'mastery_challenge_pass' | 'mastery_challenge_fail'
+  properties: {
+    fact_id: string
+    floor: number
+    encounter?: number
+  }
+}
+
 interface SettingsChangeEvent {
   name: 'settings_change'
   properties: {
@@ -436,6 +445,7 @@ export type AnalyticsEvent =
   | TierUpgradeEvent
   | DailyExpeditionStartEvent
   | DailyExpeditionCompleteEvent
+  | MasteryChallengeEvent
   | SettingsChangeEvent
   | AccountCreatedEvent
   | FeedbackSubmittedEvent

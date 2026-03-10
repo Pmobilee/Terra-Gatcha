@@ -9,6 +9,7 @@
   import {
     activeCardRewardOptions,
     activeMysteryEvent,
+    activeMasteryChallenge,
     activeRoomOptions,
     activeRunEndData,
     activeRunState,
@@ -22,6 +23,7 @@
     onDelve,
     onDomainsSelected,
     onMysteryResolved,
+    onMasteryChallengeResolved,
     onRestResolved,
     onRetreat,
     onRoomSelected,
@@ -40,6 +42,8 @@
     startNewRun,
     startDailyExpeditionRun,
     startEndlessDepthsRun,
+    openRelicSanctum,
+    closeRelicSanctum,
   } from './services/gameFlowController'
   import {
     activeTurnState,
@@ -63,6 +67,7 @@
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
   import RoomSelection from './ui/components/RoomSelection.svelte'
   import MysteryEventOverlay from './ui/components/MysteryEventOverlay.svelte'
+  import MasteryChallengeOverlay from './ui/components/MasteryChallengeOverlay.svelte'
   import RestRoomOverlay from './ui/components/RestRoomOverlay.svelte'
   import RunEndScreen from './ui/components/RunEndScreen.svelte'
   import CardRewardScreen from './ui/components/CardRewardScreen.svelte'
@@ -76,6 +81,7 @@
   import JournalScreen from './ui/components/JournalScreen.svelte'
   import LeaderboardsScreen from './ui/components/LeaderboardsScreen.svelte'
   import SocialScreen from './ui/components/SocialScreen.svelte'
+  import RelicSanctumScreen from './ui/components/RelicSanctumScreen.svelte'
   import ShopRoomOverlay from './ui/components/ShopRoomOverlay.svelte'
   import CampfirePause from './ui/components/CampfirePause.svelte'
   import SpecialEventOverlay from './ui/components/SpecialEventOverlay.svelte'
@@ -133,12 +139,20 @@
     return startEndlessDepthsRun()
   }
 
+  function handleOpenRelicSanctum(): { ok: true } | { ok: false; reason: string } {
+    return openRelicSanctum()
+  }
+
   function handleHubNavigate(target: HubScreenName): void {
     transitionScreen(target)
   }
 
   function handleBackToMenu(): void {
     transitionScreen('hub')
+  }
+
+  function handleCloseRelicSanctum(): void {
+    closeRelicSanctum()
   }
 
   function handleDomainsChosen(primary: FactDomain, secondary: FactDomain): void {
@@ -373,11 +387,11 @@
   {/if}
 
   {#if $currentScreen === 'archetypeSelection'}
-    <ArchetypeSelection onselect={handleArchetypeSelect} onskip={() => handleArchetypeSelect('balanced')} />
+    <ArchetypeSelection onselect={handleArchetypeSelect} onskip={() => handleArchetypeSelect('balanced')} onback={returnToMenu} />
   {/if}
 
   {#if $currentScreen === 'onboarding'}
-    <DungeonEntrance onbegin={handleOnboardingBegin} />
+    <DungeonEntrance onbegin={handleOnboardingBegin} onback={returnToMenu} />
   {/if}
 
   {#if $currentScreen === 'combat'}
@@ -488,6 +502,13 @@
     />
   {/if}
 
+  {#if $currentScreen === 'masteryChallenge'}
+    <MasteryChallengeOverlay
+      challenge={$activeMasteryChallenge}
+      onresolve={onMasteryChallengeResolved}
+    />
+  {/if}
+
   {#if $currentScreen === 'restRoom'}
     {@const run = $activeRunState}
     <RestRoomOverlay
@@ -550,7 +571,12 @@
       onOpenSettings={handleOpenSettings}
       onStartDailyExpedition={handleStartDailyExpedition}
       onStartEndlessDepths={handleStartEndlessDepths}
+      onOpenRelicSanctum={handleOpenRelicSanctum}
     />
+  {/if}
+
+  {#if $currentScreen === 'relicSanctum'}
+    <RelicSanctumScreen onBack={handleCloseRelicSanctum} />
   {/if}
 
   {#if shouldShowHubNav($currentScreen)}

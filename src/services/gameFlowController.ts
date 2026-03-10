@@ -33,7 +33,14 @@ import { isSlowReader } from './cardPreferences';
 import { STORY_MODE_FORCED_RUNS, ARCHETYPE_UNLOCK_RUNS } from '../data/balance';
 import { updateBounties } from './bountyManager';
 import { resetCanaryFloor } from './canaryService';
-import { applyRunAccuracyBonus, playerSave, persistPlayer, recordDiveComplete } from '../ui/stores/playerData';
+import {
+  applyMasteryTrialOutcome,
+  applyRunAccuracyBonus,
+  playerSave,
+  persistPlayer,
+  prioritizeGraduatedRelicFact,
+  recordDiveComplete,
+} from '../ui/stores/playerData';
 import { recordRunCompleted as recordRunForReview, checkBossKillTrigger } from './reviewPromptService';
 import { captureRunSummary, lastRunSummary } from './hubState';
 import {
@@ -58,6 +65,11 @@ import {
   activateDeterministicRandom,
   deactivateDeterministicRandom,
 } from './deterministicRandom'
+import {
+  rollMasteryChallenge,
+  type MasteryChallengeQuestion,
+} from './masteryChallengeService'
+import { getCardTier } from './tierDerivation'
 
 export type GameFlowState =
   | 'idle'
@@ -66,6 +78,7 @@ export type GameFlowState =
   | 'combat'
   | 'roomSelection'
   | 'mysteryEvent'
+  | 'masteryChallenge'
   | 'restRoom'
   | 'treasureReward'
   | 'bossEncounter'
@@ -74,6 +87,7 @@ export type GameFlowState =
   | 'shopRoom'
   | 'specialEvent'
   | 'campfire'
+  | 'relicSanctum'
   | 'runEnd';
 
 export const gameFlowState = writable<GameFlowState>('idle');
@@ -84,6 +98,7 @@ export const activeRunEndData = writable<RunEndData | null>(null);
 export const activeCardRewardOptions = writable<Card[]>([]);
 export const activeShopCards = writable<Card[]>([]);
 export const activeSpecialEvent = writable<SpecialEvent | null>(null);
+export const activeMasteryChallenge = writable<MasteryChallengeQuestion | null>(null);
 export const campfireReturnScreen = writable<GameFlowState | null>(null);
 
 let pendingFloorCompleted = false;
@@ -106,6 +121,36 @@ export function startNewRun(): void {
   }
   gameFlowState.set('domainSelection');
   currentScreen.set('domainSelection');
+}
+
+function getTier3MasteredCount(): number {
+  const states = get(playerSave)?.reviewStates ?? []
+  return states.filter((state) => (
+    getCardTier({
+      stability: state.stability ?? state.interval ?? 0,
+      consecutiveCorrect: state.consecutiveCorrect ?? state.repetitions ?? 0,
+      passedMasteryTrial: state.passedMasteryTrial ?? false,
+    }) === '3'
+  )).length
+}
+
+export function canOpenRelicSanctum(): boolean {
+  if (get(activeRunState)) return false
+  return getTier3MasteredCount() > 12
+}
+
+export function openRelicSanctum(): { ok: true } | { ok: false; reason: string } {
+  if (get(activeRunState)) return { ok: false, reason: 'run_active' }
+  if (!canOpenRelicSanctum()) return { ok: false, reason: 'insufficient_mastered' }
+  gameFlowState.set('relicSanctum')
+  currentScreen.set('relicSanctum')
+  return { ok: true }
+}
+
+export function closeRelicSanctum(): void {
+  if (get(activeRunState)) return
+  gameFlowState.set('idle')
+  currentScreen.set('social')
 }
 
 function calculateDailyExpeditionScore(endData: RunEndData): number {
@@ -272,7 +317,9 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
   activeRunState.set(null);
   activeCardRewardOptions.set([]);
   activeShopCards.set([]);
+  activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
+  activeMasteryChallenge.set(null);
   pendingFloorCompleted = false;
   pendingSpecialEvent = false;
   pendingClearedFloor = 0;
@@ -680,6 +727,25 @@ export function onRoomSelected(room: RoomOption): void {
       currentScreen.set('combat');
       break;
     case 'mystery':
+      activeMasteryChallenge.set(null);
+      activeMysteryEvent.set(null);
+      {
+        const challenge = rollMasteryChallenge(get(playerSave)?.reviewStates ?? [])
+        if (challenge) {
+          activeMasteryChallenge.set(challenge)
+          analyticsService.track({
+            name: 'mastery_challenge_start',
+            properties: {
+              fact_id: challenge.factId,
+              floor: run?.floor.currentFloor ?? 0,
+              encounter: run?.floor.currentEncounter ?? 0,
+            },
+          })
+          gameFlowState.set('masteryChallenge')
+          currentScreen.set('masteryChallenge')
+          break
+        }
+      }
       activeMysteryEvent.set(generateMysteryEvent());
       gameFlowState.set('mysteryEvent');
       currentScreen.set('mysteryEvent');
@@ -701,6 +767,31 @@ export function onRoomSelected(room: RoomOption): void {
 export function onSpecialEventResolved(): void {
   activeSpecialEvent.set(null);
   proceedAfterReward();
+}
+
+export function onMasteryChallengeResolved(passed: boolean): void {
+  const challenge = get(activeMasteryChallenge)
+  if (!challenge) {
+    onMysteryResolved()
+    return
+  }
+
+  if (passed) {
+    prioritizeGraduatedRelicFact(challenge.factId)
+  } else {
+    applyMasteryTrialOutcome(challenge.factId, false)
+  }
+
+  analyticsService.track({
+    name: passed ? 'mastery_challenge_pass' : 'mastery_challenge_fail',
+    properties: {
+      fact_id: challenge.factId,
+      floor: get(activeRunState)?.floor.currentFloor ?? 0,
+    },
+  })
+
+  activeMasteryChallenge.set(null)
+  onMysteryResolved()
 }
 
 export function openCampfire(): void {
@@ -744,7 +835,9 @@ export function abandonActiveRun(): void {
   activeRunState.set(null);
   activeCardRewardOptions.set([]);
   activeShopCards.set([]);
+  activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
+  activeMasteryChallenge.set(null);
   pendingFloorCompleted = false;
   pendingSpecialEvent = false;
   pendingClearedFloor = 0;
@@ -785,6 +878,8 @@ function autoSaveRun(screen: string): void {
 export function onMysteryResolved(): void {
   const run = get(activeRunState);
   if (!run) return;
+  activeMysteryEvent.set(null)
+  activeMasteryChallenge.set(null)
   activeRoomOptions.set(generateRoomOptions(run.floor.currentFloor));
   gameFlowState.set('roomSelection');
   currentScreen.set('roomSelection');
@@ -807,7 +902,9 @@ export function returnToMenu(): void {
   activeRunEndData.set(null);
   activeCardRewardOptions.set([]);
   activeShopCards.set([]);
+  activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
+  activeMasteryChallenge.set(null);
   pendingFloorCompleted = false;
   pendingSpecialEvent = false;
   pendingClearedFloor = 0;
@@ -825,7 +922,9 @@ export function playAgain(): void {
   activeRunEndData.set(null);
   activeCardRewardOptions.set([]);
   activeShopCards.set([]);
+  activeMysteryEvent.set(null);
   activeSpecialEvent.set(null);
+  activeMasteryChallenge.set(null);
   pendingFloorCompleted = false;
   pendingSpecialEvent = false;
   pendingClearedFloor = 0;
