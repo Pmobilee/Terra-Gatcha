@@ -1,6 +1,8 @@
 # AR-19: Bulk Generation & QA
 
-Execute the full content generation pipeline: generate 10K+ facts per knowledge domain and 5K+ per language, run QA, populate production database.
+Execute the full worker-first content pipeline: generate 10K+ facts per knowledge domain and 5K+ per language, run QA, and populate production database.
+
+> **Status Update (March 2026):** Local QA/coverage/promotion tooling is complete. Production-scale runs are executed by external Claude subscription workers and validated through repo QA gates.
 
 ## Overview
 
@@ -16,12 +18,12 @@ All of the following MUST be complete before starting this phase:
 - **AR-11 Part C** (Visual Description Pipeline) — if visual generation is included in final steps
 
 ### Estimated Complexity
-**Large** — Primarily execution-heavy (running existing scripts), but with significant QA and analysis work. Estimated timeline: 3-4 weeks including API execution, validation, human review, and database migration.
+**Large** — Primarily execution-heavy (running existing scripts + worker orchestration), with significant QA and analysis work.
 
 ### Requirements & Constraints
-- **Anthropic API Access**: Claude Haiku (`claude-haiku-4-5-20251001`) with sufficient quota
-- **Estimated API Cost**: ~$180-220 for generating 130K facts total
-- **Time Budget**: ~50-60 hours of API execution (spread across multiple days or parallelized per domain)
+- **Worker Access**: External Claude subscription workers with isolated worktrees
+- **No local paid API requirement**: repo scripts run without paid API key dependency
+- **Time Budget**: multi-day parallel worker execution plus QA/review cycles
 - **Human Review**: Plan for 1-2 people to review 50 sample facts per domain (500 facts total), approximately 10-20 hours
 - **Disk Space**: ~2GB for intermediate generated files, temporary storage of source data
 - **Quality Standards**:
@@ -131,17 +133,15 @@ All of the following MUST be complete before starting this phase:
    - Verify: All source JSON files exist in `data/raw/`
    - Verify: Output directories are writable
 
-6. **Environment Configuration**:
+6. **Worker Execution Configuration**:
    ```bash
-   # Verify required environment variables
-   [ -z "$ANTHROPIC_API_KEY" ] && echo "ERROR: ANTHROPIC_API_KEY not set" && exit 1
-   echo "✓ ANTHROPIC_API_KEY configured"
-
-   # Optional: test API key is valid
-   node -e "const sdk = require('@anthropic-ai/sdk'); new sdk.default({apiKey: process.env.ANTHROPIC_API_KEY}).messages.countTokens({messages: [{role: 'user', content: 'test'}], model: 'claude-haiku-4-5-20251001'}).then(() => console.log('✓ API key valid')).catch(e => { console.error('✗ API key error:', e.message); process.exit(1); })"
+   # Verify worker package artifacts exist
+   test -f data/generated/worker-packages/manifest.json && echo "✓ worker manifest present"
+   test -d data/generated/worker-packages/prompts && echo "✓ worker prompts present"
+   test -d data/generated/worker-packages/tasks && echo "✓ worker task definitions present"
    ```
-   - Verify: API key is set and valid
-   - Verify: Haiku model is accessible
+   - Verify: external Claude worker sessions are available and attached to the prepared task packages
+   - Verify: no local paid API key dependency is required for repo scripts
 
 **Go/No-Go Decision**:
 - If all checks pass: Proceed to step 2
@@ -150,13 +150,13 @@ All of the following MUST be complete before starting this phase:
 
 ---
 
-### 2. Batch Generation — Knowledge Domains
+### 2. Batch Generation — Knowledge Domains (Worker-First)
 
-**Objective**: Execute the Haiku fact engine for all 10 knowledge domains, generating 10K+ facts per domain.
+**Objective**: Execute worker-driven generation for all 10 knowledge domains, targeting 10K+ facts per domain.
 
 **Execution Strategy**:
 
-**Sequential Batch Runs** (recommended to avoid overwhelming API quota):
+**Sequential Batch Runs** (or parallel worker sessions with isolated worktrees):
 
 ```bash
 #!/bin/bash
@@ -1193,9 +1193,9 @@ NEXT STEPS:
 - [ ] `node scripts/generate-all-domains.sh --dry-run` completes without errors
 - [ ] All 10 domain source files present in `data/raw/`
 - [ ] All 6 vocabulary source files present in `src/data/seed/`
-- [ ] ANTHROPIC_API_KEY is set and valid
+- [ ] Worker task packages generated and dispatched successfully
 - [ ] Pre-generation audit passes (step 1)
-- [ ] Estimated budget approved ($180-220)
+- [ ] Worker budget/retry limits approved
 
 **Post-Execution Checklist**:
 - [ ] Total fact count ≥ 130,000 (knowledge + vocabulary)

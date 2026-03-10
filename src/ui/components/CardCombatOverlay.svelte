@@ -19,10 +19,11 @@
   import { juiceManager } from '../../services/juiceManager'
   import { factsDB } from '../../services/factsDB'
   import { getReviewStateByFactId } from '../stores/playerData'
+  import { getCardTier } from '../../services/tierDerivation'
   import type { ActiveBounty } from '../../services/bountyManager'
   import { playCardAudio } from '../../services/cardAudioManager'
   import { hasCardback } from '../utils/cardbackManifest'
-  import { REVEAL_DURATION, MECHANIC_DURATION, LAUNCH_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
+  import { REVEAL_DURATION, TIER_UP_DURATION, MECHANIC_DURATION, LAUNCH_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
 
   interface Props {
     turnState: TurnState | null
@@ -60,6 +61,8 @@
   let answeredThisTurn = $state(0)
   let damageNumbers = $state<Array<{ id: number; value: string; isCritical: boolean }>>([])
   let cardAnimations = $state<Record<string, CardAnimPhase>>({})
+  type TierUpTransition = 'tier1_to_2a' | 'tier2a_to_2b' | 'tier2b_to_3'
+  let tierUpTransitions = $state<Record<string, TierUpTransition>>({})
   let animatingCards = $state<Card[]>([])
   let damageIdCounter = $state(0)
   let slowReaderEnabled = $state(false)
@@ -371,6 +374,17 @@
     }
   }
 
+  function getTierUpTransition(
+    previousTier: ReturnType<typeof getCardTier> | null,
+    nextTier: ReturnType<typeof getCardTier> | null,
+  ): TierUpTransition | null {
+    if (!previousTier || !nextTier || previousTier === nextTier) return null
+    if (previousTier === '1' && nextTier === '2a') return 'tier1_to_2a'
+    if (previousTier === '2a' && nextTier === '2b') return 'tier2a_to_2b'
+    if (previousTier === '2b' && nextTier === '3') return 'tier2b_to_3'
+    return null
+  }
+
   function resetCardFlow(): void {
     cardPlayStage = 'hand'
     selectedIndex = null
@@ -487,6 +501,8 @@
 
     // Capture before resetCardFlow nulls it
     const quizVariantIndex = committedQuizData?.variantIndex
+    const previousReviewState = getReviewStateByFactId(card.factId)
+    const previousTier = previousReviewState ? getCardTier(previousReviewState) : null
 
     // Reset card flow immediately (hides quiz panel)
     resetCardFlow()
@@ -522,8 +538,20 @@
         animatingCards = [...animatingCards, card]
         cardAnimations = { ...cardAnimations, [cardId]: 'reveal' }
         onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex)
+        const nextReviewState = getReviewStateByFactId(card.factId)
+        const nextTier = nextReviewState ? getCardTier(nextReviewState) : null
+        const tierUpTransition = getTierUpTransition(previousTier, nextTier)
+        if (tierUpTransition) {
+          tierUpTransitions = { ...tierUpTransitions, [cardId]: tierUpTransition }
+        }
+        const celebrationDelay = tierUpTransition ? TIER_UP_DURATION : 0
 
         setTimeout(() => {
+          if (tierUpTransition) {
+            // Phase 2: Tier-up celebration
+            cardAnimations = { ...cardAnimations, [cardId]: 'tier-up' }
+            return
+          }
           // Phase 2: Mechanic animation (400-900ms)
           cardAnimations = { ...cardAnimations, [cardId]: 'mechanic' }
 
@@ -537,41 +565,76 @@
           })
         }, REVEAL_DURATION)
 
+        if (tierUpTransition) {
+          setTimeout(() => {
+            cardAnimations = { ...cardAnimations, [cardId]: 'mechanic' }
+
+            juiceManager.fire({
+              type: 'correct',
+              damage: effectVal,
+              isCritical: speedBonus,
+              comboCount: nextCombo,
+              effectLabel: effectLabel,
+              isPerfectTurn: willBePerfect,
+            })
+          }, REVEAL_DURATION + TIER_UP_DURATION)
+        }
+
         setTimeout(() => {
-          // Phase 3: Launch (900-1200ms)
+          // Phase 3: Launch
           cardAnimations = { ...cardAnimations, [cardId]: 'launch' }
-        }, REVEAL_DURATION + MECHANIC_DURATION)
+        }, REVEAL_DURATION + celebrationDelay + MECHANIC_DURATION)
 
         setTimeout(() => {
           // Cleanup
           cardAnimations = { ...cardAnimations, [cardId]: null }
+          tierUpTransitions = Object.fromEntries(
+            Object.entries(tierUpTransitions).filter(([id]) => id !== cardId),
+          ) as Record<string, TierUpTransition>
           animatingCards = animatingCards.filter(c => c.id !== cardId)
-        }, REVEAL_DURATION + MECHANIC_DURATION + LAUNCH_DURATION)
+        }, REVEAL_DURATION + celebrationDelay + MECHANIC_DURATION + LAUNCH_DURATION)
       } else {
         // No cardback: buffer card, call onplaycard immediately
         animatingCards = [...animatingCards, card]
-        cardAnimations = { ...cardAnimations, [cardId]: 'mechanic' }
         onplaycard(cardId, true, speedBonus, responseTimeMs, quizVariantIndex)
+        const nextReviewState = getReviewStateByFactId(card.factId)
+        const nextTier = nextReviewState ? getCardTier(nextReviewState) : null
+        const tierUpTransition = getTierUpTransition(previousTier, nextTier)
+        if (tierUpTransition) {
+          tierUpTransitions = { ...tierUpTransitions, [cardId]: tierUpTransition }
+          cardAnimations = { ...cardAnimations, [cardId]: 'tier-up' }
+        } else {
+          cardAnimations = { ...cardAnimations, [cardId]: 'mechanic' }
+        }
 
-        juiceManager.fire({
-          type: 'correct',
-          damage: effectVal,
-          isCritical: speedBonus,
-          comboCount: nextCombo,
-          effectLabel: effectLabel,
-          isPerfectTurn: willBePerfect,
-        })
+        const mechanicStartDelay = tierUpTransition ? TIER_UP_DURATION : 0
+
+        setTimeout(() => {
+          cardAnimations = { ...cardAnimations, [cardId]: 'mechanic' }
+
+          juiceManager.fire({
+            type: 'correct',
+            damage: effectVal,
+            isCritical: speedBonus,
+            comboCount: nextCombo,
+            effectLabel: effectLabel,
+            isPerfectTurn: willBePerfect,
+          })
+        }, mechanicStartDelay)
 
         setTimeout(() => {
           // Launch
           cardAnimations = { ...cardAnimations, [cardId]: 'launch' }
-        }, MECHANIC_DURATION)
+        }, mechanicStartDelay + MECHANIC_DURATION)
 
         setTimeout(() => {
           // Cleanup
           cardAnimations = { ...cardAnimations, [cardId]: null }
+          tierUpTransitions = Object.fromEntries(
+            Object.entries(tierUpTransitions).filter(([id]) => id !== cardId),
+          ) as Record<string, TierUpTransition>
           animatingCards = animatingCards.filter(c => c.id !== cardId)
-        }, MECHANIC_DURATION + LAUNCH_DURATION)
+        }, mechanicStartDelay + MECHANIC_DURATION + LAUNCH_DURATION)
       }
     }
 
@@ -717,6 +780,7 @@
       {animatingCards}
       {selectedIndex}
       {cardAnimations}
+      {tierUpTransitions}
       apCurrent={apCurrent}
       disabled={turnState.phase !== 'player_action' || cardPlayStage === 'committed'}
       onselectcard={handleSelect}

@@ -7,8 +7,11 @@ export const MECHANIC_DURATION = 500;
 /** Existing launch fly-up (ms) */
 export const LAUNCH_DURATION = 300;
 
+/** Tier-up celebration duration (ms) */
+export const TIER_UP_DURATION = 600;
+
 /** Animation phase for card play sequence */
-export type CardAnimPhase = 'reveal' | 'mechanic' | 'launch' | 'fizzle' | null;
+export type CardAnimPhase = 'reveal' | 'tier-up' | 'mechanic' | 'launch' | 'fizzle' | null;
 
 /** Maps mechanic IDs to their CSS animation class names */
 const MECHANIC_ANIM_MAP: Record<string, string> = {

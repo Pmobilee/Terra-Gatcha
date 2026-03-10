@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:27:24.790Z",
+  "generatedAt": "2026-03-10T06:42:21.284Z",
   "domains": {
     "animals_wildlife": {
       "total": 63,
@@ -97,6 +97,17 @@
         "3": 14,
         "4": 7,
         "5": 0
+      },
+      "visualCoverage": 1
+    },
+    "production-facts": {
+      "total": 710,
+      "difficulty": {
+        "1": 40,
+        "2": 292,
+        "3": 298,
+        "4": 63,
+        "5": 17
       },
       "visualCoverage": 1
     },

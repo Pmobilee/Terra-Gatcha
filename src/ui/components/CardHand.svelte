@@ -13,12 +13,25 @@
     disabled: boolean
     apCurrent: number
     cardAnimations?: Record<string, CardAnimPhase>
+    tierUpTransitions?: Record<string, TierUpTransition>
     onselectcard: (index: number) => void
     ondeselectcard: () => void
     oncastdirect?: (index: number) => void
   }
 
-  let { cards, animatingCards = [], selectedIndex, disabled, apCurrent, cardAnimations, onselectcard, oncastdirect }: Props = $props()
+  type TierUpTransition = 'tier1_to_2a' | 'tier2a_to_2b' | 'tier2b_to_3'
+
+  let {
+    cards,
+    animatingCards = [],
+    selectedIndex,
+    disabled,
+    apCurrent,
+    cardAnimations,
+    tierUpTransitions = {},
+    onselectcard,
+    oncastdirect,
+  }: Props = $props()
 
   const TYPE_ICONS: Record<CardType, string> = {
     attack: '⚔',
@@ -224,7 +237,9 @@
     {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
     {@const mechAnimClass = getMechanicAnimClass(card.mechanicId) || getTypeFallbackAnimClass(card.cardType)}
     {@const isRevealing = cardAnim === 'reveal'}
+    {@const isTierUp = cardAnim === 'tier-up'}
     {@const isMechanic = cardAnim === 'mechanic'}
+    {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
     {@const isHovered = hoveredIndex === i && !isSelected && !isOther && selectedIndex === null}
     {@const hoverLift = isHovered ? 18 : 0}
     {@const hoverScale = isHovered ? 1.15 : 1}
@@ -246,7 +261,11 @@
       class:card-playable={!insufficientAp && !isSelected && !isOther && selectedIndex === null}
       class:card-launch={cardAnim === 'launch'}
       class:card-fizzle={cardAnim === 'fizzle'}
-      class:card-reveal={isRevealing || isMechanic}
+      class:card-reveal={isRevealing || isTierUp || isMechanic}
+      class:card-tier-up={isTierUp}
+      class:card-tier-up-1-2a={isTierUp && tierUpTransition === 'tier1_to_2a'}
+      class:card-tier-up-2a-2b={isTierUp && tierUpTransition === 'tier2a_to_2b'}
+      class:card-tier-up-2b-3={isTierUp && tierUpTransition === 'tier2b_to_3'}
       class:card-mechanic={isMechanic}
       class:drag-ready={isDragPastThreshold && isDraggingThis}
       style="
@@ -265,7 +284,7 @@
       onpointerenter={(e) => handlePointerEnter(e, i)}
       onpointerleave={handlePointerLeave}
     >
-      <div class="card-inner" class:flipped={isRevealing || isMechanic}>
+      <div class="card-inner" class:flipped={isRevealing || isTierUp || isMechanic}>
         <div class="card-front">
           <div class="ap-badge">{apCost}</div>
           <div class="card-domain-stripe" style="background: {domainColor};"></div>
@@ -303,6 +322,14 @@
       {#if isMechanic}
         <div class="mechanic-overlay {mechAnimClass}"></div>
       {/if}
+      {#if isTierUp}
+        <div
+          class="tier-up-overlay"
+          class:tier-up-1-2a={tierUpTransition === 'tier1_to_2a'}
+          class:tier-up-2a-2b={tierUpTransition === 'tier2a_to_2b'}
+          class:tier-up-2b-3={tierUpTransition === 'tier2b_to_3'}
+        ></div>
+      {/if}
     </button>
   {/each}
 
@@ -311,7 +338,9 @@
     {@const cardbackUrl = cardbackUrls.get(card.factId) ?? null}
     {@const mechAnimClass = getMechanicAnimClass(card.mechanicId) || getTypeFallbackAnimClass(card.cardType)}
     {@const isRevealing = cardAnim === 'reveal'}
+    {@const isTierUp = cardAnim === 'tier-up'}
     {@const isMechanic = cardAnim === 'mechanic'}
+    {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
     {@const domainColor = getDomainColor(card.domain)}
     {@const framePath = card.isEcho ? '/assets/sprites/cards/frame_echo.png' : getCardFramePath(card.cardType)}
     {@const domainIconPath = getDomainIconPath(card.domain)}
@@ -319,7 +348,11 @@
 
     <div
       class="card-in-hand card-animating"
-      class:card-reveal={isRevealing || isMechanic}
+      class:card-reveal={isRevealing || isTierUp || isMechanic}
+      class:card-tier-up={isTierUp}
+      class:card-tier-up-1-2a={isTierUp && tierUpTransition === 'tier1_to_2a'}
+      class:card-tier-up-2a-2b={isTierUp && tierUpTransition === 'tier2a_to_2b'}
+      class:card-tier-up-2b-3={isTierUp && tierUpTransition === 'tier2b_to_3'}
       class:card-mechanic={isMechanic}
       class:card-launch={cardAnim === 'launch'}
       class:card-fizzle={cardAnim === 'fizzle'}
@@ -328,7 +361,7 @@
         --frame-image: url('{framePath}');
       "
     >
-      <div class="card-inner" class:flipped={isRevealing || isMechanic}>
+      <div class="card-inner" class:flipped={isRevealing || isTierUp || isMechanic}>
         <div class="card-front">
           <div class="card-domain-stripe" style="background: {domainColor};"></div>
           <img class="card-domain-icon" src={domainIconPath} alt={`${card.domain} icon`} />
@@ -344,6 +377,14 @@
 
       {#if isMechanic}
         <div class="mechanic-overlay {mechAnimClass}"></div>
+      {/if}
+      {#if isTierUp}
+        <div
+          class="tier-up-overlay"
+          class:tier-up-1-2a={tierUpTransition === 'tier1_to_2a'}
+          class:tier-up-2a-2b={tierUpTransition === 'tier2a_to_2b'}
+          class:tier-up-2b-3={tierUpTransition === 'tier2b_to_3'}
+        ></div>
       {/if}
     </div>
   {/each}
@@ -692,6 +733,71 @@
   @keyframes cardFizzle {
     0% { transform: translateY(0) scale(1); opacity: 0.4; filter: grayscale(0.5); }
     100% { transform: translateY(100px) scale(0.8); opacity: 0; filter: grayscale(1); }
+  }
+
+  .card-tier-up .card-inner {
+    animation: tierUpInnerRumble 600ms ease-in-out both;
+  }
+
+  @keyframes tierUpInnerRumble {
+    0% { transform: rotateY(180deg) translateX(0); }
+    16% { transform: rotateY(180deg) translateX(-2px); }
+    32% { transform: rotateY(180deg) translateX(2px); }
+    48% { transform: rotateY(180deg) translateX(-1px); }
+    64% { transform: rotateY(180deg) translateX(1px); }
+    100% { transform: rotateY(180deg) translateX(0); }
+  }
+
+  .tier-up-overlay {
+    position: absolute;
+    inset: -4px;
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 12;
+    animation-duration: 600ms;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+  }
+
+  .tier-up-overlay.tier-up-1-2a {
+    border: 2px solid rgba(96, 165, 250, 0.95);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.95), 0 0 40px rgba(37, 99, 235, 0.5);
+    animation-name: tierUpBluePulse;
+  }
+
+  .tier-up-overlay.tier-up-2a-2b {
+    border: 2px solid rgba(74, 222, 128, 0.95);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.9), 0 0 42px rgba(21, 128, 61, 0.5);
+    background:
+      radial-gradient(circle at 15% 20%, rgba(187, 247, 208, 0.85) 0, transparent 35%),
+      radial-gradient(circle at 70% 30%, rgba(167, 243, 208, 0.7) 0, transparent 32%),
+      radial-gradient(circle at 45% 75%, rgba(220, 252, 231, 0.65) 0, transparent 36%);
+    animation-name: tierUpGreenSparkle;
+  }
+
+  .tier-up-overlay.tier-up-2b-3 {
+    border: 2px solid rgba(250, 204, 21, 0.95);
+    box-shadow: 0 0 24px rgba(250, 204, 21, 0.95), 0 0 46px rgba(168, 85, 247, 0.55);
+    background: linear-gradient(135deg, rgba(147, 51, 234, 0.45), rgba(250, 204, 21, 0.42));
+    animation-name: tierUpMasteryBurst;
+  }
+
+  @keyframes tierUpBluePulse {
+    0% { opacity: 0; transform: scale(0.88); }
+    35% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0; transform: scale(1.18); }
+  }
+
+  @keyframes tierUpGreenSparkle {
+    0% { opacity: 0; transform: scale(0.86); }
+    45% { opacity: 1; transform: scale(1.03); }
+    100% { opacity: 0; transform: scale(1.2); }
+  }
+
+  @keyframes tierUpMasteryBurst {
+    0% { opacity: 0; transform: scale(0.84) rotate(-2deg); }
+    45% { opacity: 1; transform: scale(1.04) rotate(1deg); }
+    100% { opacity: 0; transform: scale(1.24) rotate(3deg); }
   }
 
   /* ═══ ATTACK ANIMATIONS (red/orange) ═══ */

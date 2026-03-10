@@ -183,7 +183,14 @@ function syncCombatScene(turnState: TurnState): void {
   if (scene && scene.scene.isActive()) {
     pushDisplayData();
   } else {
-    setTimeout(pushDisplayData, 100);
+    setTimeout(() => {
+      const s = getCombatScene();
+      if (s && s.scene.isActive()) {
+        pushDisplayData();
+      } else {
+        setTimeout(pushDisplayData, 300);
+      }
+    }, 100);
   }
 }
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:27:09.725Z",
+  "generatedAt": "2026-03-10T06:42:20.354Z",
   "inputFiles": [
     "data/generated/worker-output/history.jsonl"
   ],
@@ -10,7 +10,7 @@
   "newTotalAfterMerge": 91,
   "sampleFacts": [],
   "coverage": {
-    "generatedAt": "2026-03-10T06:27:09.725Z",
+    "generatedAt": "2026-03-10T06:42:20.354Z",
     "totalFacts": 0,
     "withSource": 0,
     "sourceCoveragePct": 0,

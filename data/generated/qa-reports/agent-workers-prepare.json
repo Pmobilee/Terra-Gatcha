@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:27:09.048Z",
+  "generatedAt": "2026-03-10T06:42:19.436Z",
   "command": "prepare",
   "configPath": "/root/terra-miner/scripts/content-pipeline/sources.json",
   "domains": [
@@ -25,7 +25,7 @@
       "script": "scripts/content-pipeline/manual-ingest/source-mix.mjs",
       "ok": true,
       "exitCode": 0,
-      "durationMs": 130,
+      "durationMs": 243,
       "stdout": "{\n  \"ok\": true,\n  \"reportPath\": \"/root/terra-miner/data/generated/qa-reports/source-mix-report.json\",\n  \"outputDir\": \"/root/terra-miner/data/raw/mixed\",\n  \"domainsProcessed\": 10,\n  \"rowsWritten\": 11076,\n  \"duplicatesDropped\": 0,\n  \"missingInputs\": 0\n}",
       "stderr": "",
       "args": [

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:27:09.225Z",
+  "generatedAt": "2026-03-10T06:42:19.737Z",
   "command": "ingest",
   "domains": [
     "general_knowledge",
@@ -53,7 +53,7 @@
         "script": "scripts/content-pipeline/manual-ingest/run.mjs",
         "ok": true,
         "exitCode": 0,
-        "durationMs": 82,
+        "durationMs": 81,
         "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/general_knowledge.jsonl domain=general_knowledge\n  loaded 140 records\n  report: data/generated/qa-reports/worker-ingest/general_knowledge/manual-ingest-validation-report.json\n  valid=140 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1373 documents)\n  report: data/generated/qa-reports/worker-ingest/general_knowledge/manual-ingest-dedup-report.json\n  exact=140 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/general_knowledge/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/general_knowledge.jsonl (current: 140)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 140 | Accepted: 0 | Review: 0 | Flagged: 0",
         "stderr": "",
         "args": [
@@ -109,7 +109,7 @@
         "script": "scripts/content-pipeline/manual-ingest/run.mjs",
         "ok": true,
         "exitCode": 0,
-        "durationMs": 75,
+        "durationMs": 99,
         "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/natural_sciences.jsonl domain=natural_sciences\n  loaded 54 records\n  report: data/generated/qa-reports/worker-ingest/natural_sciences/manual-ingest-validation-report.json\n  valid=54 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1287 documents)\n  report: data/generated/qa-reports/worker-ingest/natural_sciences/manual-ingest-dedup-report.json\n  exact=54 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/natural_sciences/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/natural_sciences.jsonl (current: 54)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 54 | Accepted: 0 | Review: 0 | Flagged: 0",
         "stderr": "",
         "args": [
@@ -165,7 +165,7 @@
         "script": "scripts/content-pipeline/manual-ingest/run.mjs",
         "ok": true,
         "exitCode": 0,
-        "durationMs": 76,
+        "durationMs": 90,
         "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/space_astronomy.jsonl domain=space_astronomy\n  loaded 61 records\n  report: data/generated/qa-reports/worker-ingest/space_astronomy/manual-ingest-validation-report.json\n  valid=61 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1294 documents)\n  report: data/generated/qa-reports/worker-ingest/space_astronomy/manual-ingest-dedup-report.json\n  exact=61 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/space_astronomy/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/space_astronomy.jsonl (current: 61)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 61 | Accepted: 0 | Review: 0 | Flagged: 0",
         "stderr": "",
         "args": [
@@ -221,7 +221,7 @@
         "script": "scripts/content-pipeline/manual-ingest/run.mjs",
         "ok": true,
         "exitCode": 0,
-        "durationMs": 83,
+        "durationMs": 141,
         "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/geography.jsonl domain=geography\n  loaded 50 records\n  report: data/generated/qa-reports/worker-ingest/geography/manual-ingest-validation-report.json\n  valid=50 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1283 documents)\n  report: data/generated/qa-reports/worker-ingest/geography/manual-ingest-dedup-report.json\n  exact=50 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/geography/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/geography.jsonl (current: 50)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 50 | Accepted: 0 | Review: 0 | Flagged: 0",
         "stderr": "",
         "args": [
@@ -277,7 +277,7 @@
         "script": "scripts/content-pipeline/manual-ingest/run.mjs",
         "ok": true,
         "exitCode": 0,
-        "durationMs": 81,
+        "durationMs": 88,
         "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/history.jsonl domain=history\n  loaded 91 records\n  report: data/generated/qa-reports/worker-ingest/history/manual-ingest-validation-report.json\n  valid=91 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1324 documents)\n  report: data/generated/qa-reports/worker-ingest/history/manual-ingest-dedup-report.json\n  exact=91 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/history/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/history.jsonl (current: 91)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 91 | Accepted: 0 | Review: 0 | Flagged: 0",
         "stderr": "",
         "args": [
@@ -333,7 +333,7 @@
         "script": "scripts/content-pipeline/manual-ingest/run.mjs",
         "ok": true,
         "exitCode": 0,
-        "durationMs": 85,
+        "durationMs": 94,
         "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/mythology_folklore.jsonl domain=mythology_folklore\n  loaded 63 records\n  report: data/generated/qa-reports/worker-ingest/mythology_folklore/manual-ingest-validation-report.json\n  valid=63 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1296 documents)\n  report: data/generated/qa-reports/worker-ingest/mythology_folklore/manual-ingest-dedup-report.json\n  exact=63 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/mythology_folklore/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/mythology_folklore.jsonl (current: 63)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 63 | Accepted: 0 | Review: 0 | Flagged: 0",
         "stderr": "",
         "args": [
@@ -389,7 +389,7 @@
         "script": "scripts/content-pipeline/manual-ingest/run.mjs",
         "ok": true,
         "exitCode": 0,
-        "durationMs": 113,
+        "durationMs": 84,
         "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/animals_wildlife.jsonl domain=animals_wildlife\n  loaded 63 records\n  report: data/generated/qa-reports/worker-ingest/animals_wildlife/manual-ingest-validation-report.json\n  valid=63 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1296 documents)\n  report: data/generated/qa-reports/worker-ingest/animals_wildlife/manual-ingest-dedup-report.json\n  exact=63 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/animals_wildlife/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/animals_wildlife.jsonl (current: 63)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 63 | Accepted: 0 | Review: 0 | Flagged: 0",
         "stderr": "",
         "args": [
@@ -445,7 +445,7 @@
         "script": "scripts/content-pipeline/manual-ingest/run.mjs",
         "ok": true,
         "exitCode": 0,
-        "durationMs": 77,
+        "durationMs": 82,
         "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/human_body_health.jsonl domain=human_body_health\n  loaded 63 records\n  report: data/generated/qa-reports/worker-ingest/human_body_health/manual-ingest-validation-report.json\n  valid=63 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1296 documents)\n  report: data/generated/qa-reports/worker-ingest/human_body_health/manual-ingest-dedup-report.json\n  exact=63 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/human_body_health/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/human_body_health.jsonl (current: 63)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 63 | Accepted: 0 | Review: 0 | Flagged: 0",
         "stderr": "",
         "args": [
@@ -501,7 +501,7 @@
         "script": "scripts/content-pipeline/manual-ingest/run.mjs",
         "ok": true,
         "exitCode": 0,
-        "durationMs": 94,
+        "durationMs": 87,
         "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/food_cuisine.jsonl domain=food_cuisine\n  loaded 63 records\n  report: data/generated/qa-reports/worker-ingest/food_cuisine/manual-ingest-validation-report.json\n  valid=63 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1296 documents)\n  report: data/generated/qa-reports/worker-ingest/food_cuisine/manual-ingest-dedup-report.json\n  exact=63 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/food_cuisine/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/food_cuisine.jsonl (current: 63)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 63 | Accepted: 0 | Review: 0 | Flagged: 0",
         "stderr": "",
         "args": [
@@ -557,7 +557,7 @@
         "script": "scripts/content-pipeline/manual-ingest/run.mjs",
         "ok": true,
         "exitCode": 0,
-        "durationMs": 211,
+        "durationMs": 75,
         "stdout": "=== Manual Fact Ingestion Pipeline ===\n\n[step 1/4] Validate\n[validate] input=data/generated/worker-output/art_architecture.jsonl domain=art_architecture\n  loaded 62 records\n  report: data/generated/qa-reports/worker-ingest/art_architecture/manual-ingest-validation-report.json\n  valid=62 invalid=0 flagged=0\n\n[step 2/4] Deduplicate\n[dedup] thresholds: auto=0.95 review=0.75 dryRun=false tfidf=true index=true\n  loaded dedup index: 1233 facts from cache\n  loaded 1233 existing facts\n  built TF-IDF scorer (1295 documents)\n  report: data/generated/qa-reports/worker-ingest/art_architecture/manual-ingest-dedup-report.json\n  exact=62 semantic=0 review=0 accepted=0\n\n[step 3/4] Merge Preview\n  report: data/generated/qa-reports/worker-ingest/art_architecture/manual-ingest-merge-preview.json\n  would add 0 facts to data/generated/art_architecture.jsonl (current: 62)\n\n[step 4/4] Finalize Merge\n  no facts to merge — all were duplicates or invalid\n\n=== Complete ===\n  Valid: 62 | Accepted: 0 | Review: 0 | Flagged: 0",
         "stderr": "",
         "args": [
@@ -594,7 +594,7 @@
     "script": "scripts/content-pipeline/manual-ingest/run.mjs",
     "ok": true,
     "exitCode": 0,
-    "durationMs": 100,
+    "durationMs": 115,
     "stdout": "[build-index] Loading facts from all targets...\n  loaded 1233 facts\n  index built: 1233 facts, 1232 keys, 5627 trigrams\n  saved to: data/generated/qa-reports/dedup-index.json",
     "stderr": "",
     "args": [

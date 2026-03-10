@@ -1,0 +1,116 @@
+{
+  "generatedAt": "2026-03-10T06:39:05.018Z",
+  "thresholds": {
+    "maxInvalidRate": 0.03,
+    "maxFlaggedRate": 0.01,
+    "maxSemanticDupRate": 0.2,
+    "maxNeedsReviewRate": 0.35,
+    "maxCrossDomainDuplicates": 200,
+    "requireCoveragePass": true
+  },
+  "checks": [
+    {
+      "name": "validation_report_exists",
+      "pass": true,
+      "actual": true,
+      "expected": true,
+      "detail": "/root/terra-miner/data/generated/qa-reports/manual-ingest-validation-report.json"
+    },
+    {
+      "name": "dedup_report_exists",
+      "pass": true,
+      "actual": true,
+      "expected": true,
+      "detail": "/root/terra-miner/data/generated/qa-reports/manual-ingest-dedup-report.json"
+    },
+    {
+      "name": "cross_domain_report_exists",
+      "pass": true,
+      "actual": true,
+      "expected": true,
+      "detail": "/root/terra-miner/data/generated/qa-reports/cross-domain-dedup.json"
+    },
+    {
+      "name": "coverage_report_exists",
+      "pass": true,
+      "actual": true,
+      "expected": true,
+      "detail": "/root/terra-miner/data/generated/qa-reports/coverage-gate.json"
+    },
+    {
+      "name": "invalid_rate",
+      "pass": true,
+      "actual": 0,
+      "expected": "<= 0.03",
+      "detail": "invalid=0 input=711"
+    },
+    {
+      "name": "flagged_rate",
+      "pass": true,
+      "actual": 0.001406,
+      "expected": "<= 0.01",
+      "detail": "flagged=1 input=711"
+    },
+    {
+      "name": "semantic_duplicate_rate",
+      "pass": true,
+      "actual": 0,
+      "expected": "<= 0.2",
+      "detail": "semantic=0 input=711"
+    },
+    {
+      "name": "needs_review_rate",
+      "pass": true,
+      "actual": 0,
+      "expected": "<= 0.35",
+      "detail": "review=0 input=711"
+    },
+    {
+      "name": "cross_domain_duplicates",
+      "pass": true,
+      "actual": 0,
+      "expected": "<= 200",
+      "detail": "exact statement+answer duplicates across generated domain files"
+    },
+    {
+      "name": "coverage_gate_pass",
+      "pass": false,
+      "actual": false,
+      "expected": true,
+      "detail": "/root/terra-miner/data/generated/qa-reports/coverage-gate.json"
+    }
+  ],
+  "failedChecks": [
+    {
+      "name": "coverage_gate_pass",
+      "pass": false,
+      "actual": false,
+      "expected": true,
+      "detail": "/root/terra-miner/data/generated/qa-reports/coverage-gate.json"
+    }
+  ],
+  "metrics": {
+    "validation": {
+      "input": 711,
+      "invalid": 0,
+      "flagged": 1,
+      "invalidRate": 0,
+      "flaggedRate": 0.001406
+    },
+    "dedup": {
+      "input": 711,
+      "semanticDuplicates": 0,
+      "needsReview": 0,
+      "semanticDupRate": 0,
+      "needsReviewRate": 0
+    },
+    "crossDomain": {
+      "duplicates": 0
+    },
+    "coverage": {
+      "pass": false,
+      "deficits": 10
+    }
+  },
+  "pass": false
+}

@@ -1,0 +1,1749 @@
+{
+  "generatedAt": "2026-03-10T06:41:14.885Z",
+  "inputPath": "/root/terra-miner/data/generated",
+  "sampleSize": 200,
+  "maxFetch": 250,
+  "timeoutMs": 8000,
+  "minScore": 0.35,
+  "summary": {
+    "totalFacts": 200,
+    "matched": 32,
+    "lowEvidence": 5,
+    "missingSourceName": 0,
+    "missingSourceUrl": 0,
+    "fetchFailed": 163,
+    "fetchedUrls": 200
+  },
+  "items": [
+    {
+      "id": "genet-victoriae-001",
+      "status": "low_evidence_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q41133",
+      "tokenCount": 11,
+      "matchedTokens": [
+        "giant",
+        "forest",
+        "genet"
+      ],
+      "matchScore": 0.2727
+    },
+    {
+      "id": "parnassius-apollo-001",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q41633",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "butterfly",
+        "type",
+        "parnassius",
+        "apollo",
+        "species",
+        "mountain"
+      ],
+      "matchScore": 0.6
+    },
+    {
+      "id": "senna-alata-001",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q41504",
+      "tokenCount": 9,
+      "matchedTokens": [
+        "plant",
+        "senna",
+        "alata",
+        "species"
+      ],
+      "matchScore": 0.4444
+    },
+    {
+      "id": "leopard-cat-001",
+      "status": "low_evidence_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q42627",
+      "tokenCount": 12,
+      "matchedTokens": [
+        "prionailurus",
+        "bengalensis",
+        "leopard",
+        "asia"
+      ],
+      "matchScore": 0.3333
+    },
+    {
+      "id": "phaseolus-vulgaris-001",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q42339",
+      "tokenCount": 11,
+      "matchedTokens": [
+        "common",
+        "bean",
+        "phaseolus",
+        "vulgaris",
+        "crop"
+      ],
+      "matchScore": 0.4545
+    },
+    {
+      "id": "serval-001",
+      "status": "low_evidence_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q42699",
+      "tokenCount": 11,
+      "matchedTokens": [
+        "serval",
+        "servals"
+      ],
+      "matchScore": 0.1818
+    },
+    {
+      "id": "laetacara-curviceps-001",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q3767",
+      "tokenCount": 8,
+      "matchedTokens": [
+        "fish",
+        "species",
+        "laetacara",
+        "curviceps"
+      ],
+      "matchScore": 0.5
+    },
+    {
+      "id": "baikal-seal-001",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q4535",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "lake",
+        "baikal",
+        "seal",
+        "seals",
+        "species"
+      ],
+      "matchScore": 0.5
+    },
+    {
+      "id": "alpine-pika-001",
+      "status": "low_evidence_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q4524",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "ochotonidae",
+        "family",
+        "alpine"
+      ],
+      "matchScore": 0.3
+    },
+    {
+      "id": "red-fox-001",
+      "status": "low_evidence_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q8332",
+      "tokenCount": 12,
+      "matchedTokens": [
+        "vulpes",
+        "carnivores"
+      ],
+      "matchScore": 0.1667
+    },
+    {
+      "id": "mullus-barbatus-001",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q7171",
+      "tokenCount": 9,
+      "matchedTokens": [
+        "mullet",
+        "species",
+        "mullus",
+        "barbatus",
+        "fish"
+      ],
+      "matchScore": 0.5556
+    },
+    {
+      "id": "nannacara_aureocephalus_001",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q11308",
+      "tokenCount": 9,
+      "matchedTokens": [
+        "fish",
+        "species",
+        "nannacara",
+        "aureocephalus"
+      ],
+      "matchScore": 0.4444
+    },
+    {
+      "id": "pomegranate-001",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q13188",
+      "tokenCount": 9,
+      "matchedTokens": [
+        "deciduous",
+        "shrub",
+        "type",
+        "plant",
+        "pomegranate",
+        "fruit",
+        "bearing"
+      ],
+      "matchScore": 0.7778
+    },
+    {
+      "id": "anim-wolverine-001",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q14334",
+      "tokenCount": 11,
+      "matchedTokens": [
+        "largest",
+        "land",
+        "dwelling",
+        "family",
+        "type",
+        "animal",
+        "wolverine",
+        "gulo"
+      ],
+      "matchScore": 0.7273
+    },
+    {
+      "id": "anim-house-sparrow-002",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q14683",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "bird",
+        "type",
+        "animal",
+        "house",
+        "sparrow",
+        "passer",
+        "domesticus"
+      ],
+      "matchScore": 0.7
+    },
+    {
+      "id": "anim-mallard-003",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25348",
+      "tokenCount": 9,
+      "matchedTokens": [
+        "duck",
+        "type",
+        "animal",
+        "mallard",
+        "anas",
+        "platyrhynchos"
+      ],
+      "matchScore": 0.6667
+    },
+    {
+      "id": "anim-eurasian-jay-004",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25354",
+      "tokenCount": 9,
+      "matchedTokens": [
+        "bird",
+        "type",
+        "animal",
+        "eurasian",
+        "garrulus",
+        "glandarius"
+      ],
+      "matchScore": 0.6667
+    },
+    {
+      "id": "anim-white-stork-005",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25352",
+      "tokenCount": 9,
+      "matchedTokens": [
+        "bird",
+        "type",
+        "animal",
+        "white",
+        "stork",
+        "ciconia"
+      ],
+      "matchScore": 0.6667
+    },
+    {
+      "id": "anim-accipiter-gentilis-006",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25353",
+      "tokenCount": 8,
+      "matchedTokens": [
+        "bird",
+        "type",
+        "animal",
+        "accipiter",
+        "gentilis"
+      ],
+      "matchScore": 0.625
+    },
+    {
+      "id": "anim-northern-raven-007",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25357",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "bird",
+        "type",
+        "animal",
+        "northern",
+        "raven",
+        "corvus",
+        "corax"
+      ],
+      "matchScore": 0.7
+    },
+    {
+      "id": "anim-european-nightjar-008",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26717",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "bird",
+        "type",
+        "animal",
+        "european",
+        "nightjar",
+        "caprimulgus",
+        "europaeus"
+      ],
+      "matchScore": 0.7
+    },
+    {
+      "id": "anim-canada-goose-009",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26733",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "wild",
+        "goose",
+        "type",
+        "animal",
+        "canada",
+        "branta",
+        "canadensis"
+      ],
+      "matchScore": 0.7
+    },
+    {
+      "id": "anim-black-redstart-010",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26755",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "bird",
+        "type",
+        "black",
+        "redstart",
+        "phoenicurus",
+        "ochruros"
+      ],
+      "matchScore": 0.6
+    },
+    {
+      "id": "anim-arctic-tern-011",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26800",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "seabird",
+        "type",
+        "animal",
+        "arctic",
+        "tern",
+        "sterna",
+        "paradisaea"
+      ],
+      "matchScore": 0.7
+    },
+    {
+      "id": "anim-common-ringed-plover-012",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26816",
+      "tokenCount": 11,
+      "matchedTokens": [
+        "bird",
+        "type",
+        "animal",
+        "common",
+        "ringed",
+        "plover",
+        "charadrius",
+        "hiaticula"
+      ],
+      "matchScore": 0.7273
+    },
+    {
+      "id": "anim-atlantic-emperor-013",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31394",
+      "tokenCount": 12,
+      "matchedTokens": [
+        "fish",
+        "family",
+        "lethrinidae",
+        "type",
+        "animal",
+        "atlantic",
+        "emperor",
+        "lethrinus",
+        "atlanticus"
+      ],
+      "matchScore": 0.75
+    },
+    {
+      "id": "anim-lethrinus-reticulatus-014",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31398",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "fish",
+        "family",
+        "lethrinidae",
+        "type",
+        "animal",
+        "lethrinus",
+        "reticulatus"
+      ],
+      "matchScore": 0.7
+    },
+    {
+      "id": "anim-lethrinus-enigmaticus-015",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31396",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "fish",
+        "belonging",
+        "family",
+        "type",
+        "lethrinus",
+        "enigmaticus"
+      ],
+      "matchScore": 0.6
+    },
+    {
+      "id": "anim-spotted-wobbegong-016",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31782",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "shark",
+        "orectolobus",
+        "maculatus",
+        "type",
+        "spotted",
+        "wobbegong"
+      ],
+      "matchScore": 0.6
+    },
+    {
+      "id": "anim-northern-wobbegong-017",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31784",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "shark",
+        "orectolobus",
+        "wardi",
+        "type",
+        "northern",
+        "wobbegong"
+      ],
+      "matchScore": 0.6
+    },
+    {
+      "id": "anim-ornate-wobbegong-018",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31788",
+      "tokenCount": 10,
+      "matchedTokens": [
+        "shark",
+        "orectolobus",
+        "ornatus",
+        "type",
+        "ornate",
+        "wobbegong"
+      ],
+      "matchScore": 0.6
+    },
+    {
+      "id": "anim-edible-nest-swiftlet-019",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31801",
+      "tokenCount": 11,
+      "matchedTokens": [
+        "bird",
+        "type",
+        "animal",
+        "edible",
+        "nest",
+        "swiftlet",
+        "aerodramus",
+        "fuciphagus"
+      ],
+      "matchScore": 0.7273
+    },
+    {
+      "id": "anim-fulvous-breasted-woodpecker-020",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31804",
+      "tokenCount": 12,
+      "matchedTokens": [
+        "bird",
+        "picidae",
+        "family",
+        "type",
+        "fulvous",
+        "breasted",
+        "woodpecker",
+        "dendrocopos",
+        "macei"
+      ],
+      "matchScore": 0.75
+    },
+    {
+      "id": "anim-dwarf-spotted-wobbegong-021",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31815",
+      "tokenCount": 11,
+      "matchedTokens": [
+        "shark",
+        "orectolobus",
+        "parvimaculatus",
+        "type",
+        "dwarf",
+        "spotted",
+        "wobbegong"
+      ],
+      "matchScore": 0.6364
+    },
+    {
+      "id": "anim-necklace-carpetshark-022",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31838",
+      "tokenCount": 9,
+      "matchedTokens": [
+        "parascyllium",
+        "variolatum",
+        "type",
+        "animal",
+        "necklace",
+        "carpetshark"
+      ],
+      "matchScore": 0.6667
+    },
+    {
+      "id": "anim-saddle-carpetshark-023",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31843",
+      "tokenCount": 12,
+      "matchedTokens": [
+        "carpet",
+        "shark",
+        "family",
+        "type",
+        "saddle",
+        "carpetshark",
+        "cirrhoscyllium",
+        "japonicum"
+      ],
+      "matchScore": 0.6667
+    },
+    {
+      "id": "anim-ginger-carpetshark-024",
+      "status": "cross_reference_match",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31841",
+      "tokenCount": 11,
+      "matchedTokens": [
+        "carpetshark",
+        "family",
+        "parascyll",
+        "type",
+        "ginger",
+        "parascyllium",
+        "sparsimaculatum"
+      ],
+      "matchScore": 0.6364
+    },
+    {
+      "id": "anim-collared-carpetshark-025",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31851",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-parascyllium-ferrugineum-026",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31857",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-apus-pacificus-027",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31866",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-blue-tailed-bee-eater-028",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q31884",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-rock-dove-029",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q42326",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-dwarf-sperm-whale-030",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q42669",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-geoffroy-s-cat-031",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q42682",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-rusty-spotted-genet-032",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q43214",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-pardine-genet-033",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q43213",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-angolan-genet-034",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q43217",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-cape-genet-035",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q43230",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-eurasian-lynx-036",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q43375",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-wildcat-037",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q43576",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-lilac-breasted-roller-038",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q44023",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-mahi-mahi-039",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q14443",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-common-ostrich-040",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q17592",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-common-coot-041",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25376",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-eurasian-bullfinch-042",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25382",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-eurasian-chaffinch-043",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25383",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-long-eared-owl-044",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25384",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-common-buzzard-045",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25385",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-lepus-europaeus-046",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26838",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-wild-turkey-047",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26844",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-northern-fulmar-048",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26896",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-african-openbill-049",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26902",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "anim-phoca-vitulina-050",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26913",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "mfn-berlin-1810",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q233098",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "qa-valencia-arts-sciences-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q239935",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "ushmm-founding-1993",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q238990",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "olavinlinna-castle-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q251272",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "q251672-chateau-borely-1778",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q251672",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "abbots-palace-oliwa-1756",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q252800",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "su-nuraxi-barumini-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q253241",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "tyreso-palace-1633",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q253430",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "egyp-mus-leipzig-1874",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q254134",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "Q256200-charlier-museum-1844",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q256200",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "cabildo-montevideo-1804",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q257698",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "huntington-beach-state-park-1960",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q259242",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-heralds-museum-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q250522",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-holocaust-museum-la-002",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q254118",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-auezov-home-museum-003",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q258173",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-k-lonia-004",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q259897",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-centraal-museum-005",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q260913",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-ghetto-fighters-house-006",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q260983",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-guinness-storehouse-007",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q261012",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-illuminated-block-008",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q263127",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-house-of-history-baden-w-rttem-009",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q263491",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-long-island-museum-of-american-010",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q263750",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-caramulo-museum-011",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q264190",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-valentin-volkss-nger-mus-um-012",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q264209",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-holzknechtmuseum-ruhpolding-013",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q264941",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-markus-wasmeier-freilichtmuseu-014",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q266565",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-stadthaus-ulm-015",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q268609",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-hus-museum-016",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q270849",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-palazzo-vecchio-017",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q271928",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-beaux-arts-de-paris-018",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q273593",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-ecomus-e-d-alsace-019",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q273653",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-boyana-church-020",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q276553",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-francke-foundations-021",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q276846",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-margravial-opera-house-022",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q278908",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-ernest-hemingway-house-023",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q280171",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-imperial-carriage-museum-024",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q281725",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-liers-begijnhof-025",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q281856",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-prinsenhof-026",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q281903",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-palazzo-nuovo-027",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q283153",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-saint-joseph-s-oratory-028",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q284716",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-gabinet-de-les-arts-gr-fiques-029",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q284916",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-the-new-collection-030",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q286549",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-castle-of-gaasbeek-031",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q287806",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-small-carpathian-museum-032",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q289034",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-spag-033",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q293851",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-university-museum-of-bergen-034",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q301787",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-thracian-tomb-of-kazanlak-035",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q301815",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-oflag-ii-c-woldenberg-036",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q301861",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-austrian-national-library-037",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q304037",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-abai-literary-memorial-museum-038",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q304797",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-railway-museum-039",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q304972",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-austrian-film-museum-040",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q306604",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-austrian-open-air-museum-st-bi-041",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q306611",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-sterreichisches-gartenbaumuseu-042",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q306615",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-gesellschafts-und-wirtschaftsm-043",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q306628",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-austrian-museum-of-aviation-044",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q306671",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-austrian-museum-of-folk-life-a-045",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q306678",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-landesmuseum-hannover-046",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q314082",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-museum-ostwall-047",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q314441",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-tr-nenpalast-048",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q314446",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-burg-stolpen-049",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q314460",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "art-altzella-abbey-050",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q314478",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "waffle-origin-france",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q375",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food_cuisine_hamburger_001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q6663",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "labskaus-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q6493",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "mille-feuille-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q12491",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "crêpe-001-france",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q12200",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "fideuà-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q20016",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "spatzle-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q20065",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-cn-paper-covered-bone-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26670",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "lasagna-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q20034",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "tarta-santiago-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q34715",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "pancake-origin-us-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q44541",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "choc-cake-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q30186",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "bun-cha-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q50634",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-muesli-014",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q52406",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-cold-borscht-015",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q70241",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-ahle-wurst-016",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q123441",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-pemmican-017",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q130097",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-a-ure-018",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q136922",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-dondurma-019",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q141293",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-fruit-salad-020",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q152834",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-potato-pancake-021",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q152981",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-rijstevlaai-022",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q154043",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-noon-chai-023",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q170883",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-dhokla-024",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q171983",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-turkish-delight-025",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q182339",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-baklava-026",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q187495",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-falafel-027",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q188788",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-ayran-028",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q192892",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-salisbury-steak-029",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q200527",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-tzimmes-030",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q203886",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-goulash-031",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q205762",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-gado-gado-032",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q209304",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-ni-ard-salad-033",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q209486",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-biangbiang-noodles-034",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q213105",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-zwetschkenkn-del-035",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q244495",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-zwiebeldinnele-036",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q244589",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-manti-037",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q262796",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-ganci-038",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q264558",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-biryani-039",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q271555",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-olivier-salad-040",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q281278",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-mandu-041",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q284983",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-eel-soup-042",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q300959",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-stoemp-043",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q305329",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-tarte-flamb-e-044",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q316849",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-rumford-s-soup-045",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q356346",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-pea-soup-046",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q367225",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-backhendl-047",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q389574",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-burrito-048",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q390823",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-kkakdugi-049",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q430583",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-papa-a-la-hancaina-050",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q432308",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-onsen-tamago-051",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q453174",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-chinmi-052",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q464545",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-pepernoot-053",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q473271",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-amuse-bouche-054",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q481774",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-red-beans-and-rice-055",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q489703",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-samosa-056",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q491517",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-gimbap-057",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q495360",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-almond-058",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q184357",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-whey-059",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q185009",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-lemon-zest-060",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q206454",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-lemon-powder-061",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q206496",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-walnut-062",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q208021",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "food-palm-oil-063",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q231458",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "fan-sin-temple-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q2794106",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "aqaba-church-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q2845916",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "q2873434-minerva-chalcidica",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q2873434",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "Q2882977-etemple-uruk",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q2882977",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "Q2883612-baolun-ge",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q2883612",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "q2900794-ein-gedi-temple",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q2900794",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "guang-ming-temple-orlando",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q2914182",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "Q2919923-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q2919923",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "bubasteion-alexandria-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q2927378",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "Q2937495-capitolium-vetus",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q2937495",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "Q3057828-antique-stairs",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q3057828",
+      "reason": "HTTP 429"
+    },
+    {
+      "id": "Q3074203-temple-trajan-001",
+      "status": "source_fetch_failed",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q3074203",
+      "reason": "HTTP 429"
+    }
+  ]
+}

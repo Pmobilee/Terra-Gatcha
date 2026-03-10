@@ -26,6 +26,7 @@ import {
   getActiveDeckFactIds,
   getRunPoolCards,
   sellCardFromActiveDeck,
+  startEncounterForRoom,
 } from './encounterBridge';
 import { onboardingState, incrementRunsCompleted, markOnboardingComplete, difficultyMode } from './cardPreferences';
 import { isSlowReader } from './cardPreferences';
@@ -275,6 +276,7 @@ function proceedAfterReward(): void {
   if (run.floor.currentEncounter === run.floor.encountersPerFloor) {
     gameFlowState.set('combat');
     currentScreen.set('combat');
+    startEncounterForRoom();
     return;
   }
 

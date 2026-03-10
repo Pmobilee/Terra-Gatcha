@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:27:25.028Z",
+  "generatedAt": "2026-03-10T06:42:21.634Z",
   "inputFiles": [
     "data/generated"
   ],
@@ -9,9 +9,9 @@
     "review": 0.75
   },
   "counts": {
-    "input": 711,
+    "input": 1421,
     "existingCompared": 1233,
-    "exactDuplicates": 710,
+    "exactDuplicates": 1420,
     "semanticDuplicates": 0,
     "needsReview": 0,
     "accepted": 1
@@ -202,7 +202,7 @@
   "needsReview": [],
   "topAccepted": [
     {
-      "id": "general-knowledge-1773124044965-t0ztm4",
+      "id": "general-knowledge-1773124941546-ch7xpc",
       "question": ""
     }
   ]

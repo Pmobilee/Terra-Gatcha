@@ -1,0 +1,94 @@
+{
+  "generatedAt": "2026-03-10T06:41:14.977Z",
+  "inputPath": "/root/terra-miner/data/generated/qa-reports/coverage-report.json",
+  "thresholds": {
+    "knowledgeMin": 10000,
+    "languageMin": 5000
+  },
+  "summary": {
+    "checkedBuckets": 11,
+    "knowledgePassed": 0,
+    "languagePassed": 0,
+    "deficits": 11
+  },
+  "deficits": [
+    {
+      "name": "animals_wildlife",
+      "type": "knowledge",
+      "total": 63,
+      "required": 10000,
+      "missing": 9937
+    },
+    {
+      "name": "art_architecture",
+      "type": "knowledge",
+      "total": 62,
+      "required": 10000,
+      "missing": 9938
+    },
+    {
+      "name": "food_cuisine",
+      "type": "knowledge",
+      "total": 63,
+      "required": 10000,
+      "missing": 9937
+    },
+    {
+      "name": "general_knowledge",
+      "type": "knowledge",
+      "total": 140,
+      "required": 10000,
+      "missing": 9860
+    },
+    {
+      "name": "geography",
+      "type": "knowledge",
+      "total": 50,
+      "required": 10000,
+      "missing": 9950
+    },
+    {
+      "name": "history",
+      "type": "knowledge",
+      "total": 91,
+      "required": 10000,
+      "missing": 9909
+    },
+    {
+      "name": "human_body_health",
+      "type": "knowledge",
+      "total": 63,
+      "required": 10000,
+      "missing": 9937
+    },
+    {
+      "name": "mythology_folklore",
+      "type": "knowledge",
+      "total": 63,
+      "required": 10000,
+      "missing": 9937
+    },
+    {
+      "name": "natural_sciences",
+      "type": "knowledge",
+      "total": 54,
+      "required": 10000,
+      "missing": 9946
+    },
+    {
+      "name": "production-facts",
+      "type": "knowledge",
+      "total": 710,
+      "required": 10000,
+      "missing": 9290
+    },
+    {
+      "name": "space_astronomy",
+      "type": "knowledge",
+      "total": 61,
+      "required": 10000,
+      "missing": 9939
+    }
+  ],
+  "pass": false
+}

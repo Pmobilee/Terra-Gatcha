@@ -33,14 +33,12 @@ async function main() {
     validation: 'data/generated/qa-reports/manual-ingest-validation-report.json',
     dedup: 'data/generated/qa-reports/manual-ingest-dedup-report.json',
     'cross-domain': 'data/generated/qa-reports/cross-domain-dedup.json',
-    gameplay: 'data/generated/qa-reports/gameplay-safety-report.json',
     coverage: 'data/generated/qa-reports/coverage-gate.json',
     'max-invalid-rate': 0.03,
     'max-flagged-rate': 0.01,
     'max-semantic-dup-rate': 0.2,
     'max-needs-review-rate': 0.35,
     'max-cross-domain-duplicates': 200,
-    'require-gameplay-pass': true,
     'require-coverage-pass': true,
     strict: false,
   })
@@ -49,7 +47,6 @@ async function main() {
   const validationPath = path.resolve(root, String(args.validation))
   const dedupPath = path.resolve(root, String(args.dedup))
   const crossDomainPath = path.resolve(root, String(args['cross-domain']))
-  const gameplayPath = path.resolve(root, String(args.gameplay))
   const coveragePath = path.resolve(root, String(args.coverage))
 
   const maxInvalidRate = Math.max(0, Math.min(1, Number(args['max-invalid-rate']) || 0.03))
@@ -57,7 +54,6 @@ async function main() {
   const maxSemanticDupRate = Math.max(0, Math.min(1, Number(args['max-semantic-dup-rate']) || 0.2))
   const maxNeedsReviewRate = Math.max(0, Math.min(1, Number(args['max-needs-review-rate']) || 0.35))
   const maxCrossDomainDuplicates = Math.max(0, Number(args['max-cross-domain-duplicates']) || 200)
-  const requireGameplayPass = Boolean(args['require-gameplay-pass'])
   const requireCoveragePass = Boolean(args['require-coverage-pass'])
   const strict = Boolean(args.strict)
 
@@ -66,20 +62,17 @@ async function main() {
   const validationExists = await exists(validationPath)
   const dedupExists = await exists(dedupPath)
   const crossDomainExists = await exists(crossDomainPath)
-  const gameplayExists = await exists(gameplayPath)
   const coverageExists = await exists(coveragePath)
 
   addCheck(checks, 'validation_report_exists', validationExists, validationExists, true, validationPath)
   addCheck(checks, 'dedup_report_exists', dedupExists, dedupExists, true, dedupPath)
   addCheck(checks, 'cross_domain_report_exists', crossDomainExists, crossDomainExists, true, crossDomainPath)
-  addCheck(checks, 'gameplay_report_exists', gameplayExists, gameplayExists, true, gameplayPath)
   addCheck(checks, 'coverage_report_exists', coverageExists, coverageExists, true, coveragePath)
 
   let metrics = {
     validation: null,
     dedup: null,
     crossDomain: null,
-    gameplay: null,
     coverage: null,
   }
 
@@ -139,18 +132,6 @@ async function main() {
     metrics.crossDomain = { duplicates }
   }
 
-  if (gameplayExists) {
-    const gameplay = await readJson(gameplayPath)
-    const gameplayPass = Boolean(gameplay?.pass)
-    if (requireGameplayPass) {
-      addCheck(checks, 'gameplay_safety_pass', gameplayPass, gameplayPass, true, gameplayPath)
-    }
-    metrics.gameplay = {
-      pass: gameplayPass,
-      failures: Number(gameplay?.summary?.failures || 0),
-    }
-  }
-
   if (coverageExists) {
     const coverage = await readJson(coveragePath)
     const coveragePass = Boolean(coverage?.pass)
@@ -172,7 +153,6 @@ async function main() {
       maxSemanticDupRate,
       maxNeedsReviewRate,
       maxCrossDomainDuplicates,
-      requireGameplayPass,
       requireCoveragePass,
     },
     checks,

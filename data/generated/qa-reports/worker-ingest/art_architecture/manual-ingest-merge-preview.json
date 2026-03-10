@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:27:10.324Z",
+  "generatedAt": "2026-03-10T06:42:20.789Z",
   "inputFiles": [
     "data/generated/worker-output/art_architecture.jsonl"
   ],
@@ -10,7 +10,7 @@
   "newTotalAfterMerge": 62,
   "sampleFacts": [],
   "coverage": {
-    "generatedAt": "2026-03-10T06:27:10.324Z",
+    "generatedAt": "2026-03-10T06:42:20.789Z",
     "totalFacts": 0,
     "withSource": 0,
     "sourceCoveragePct": 0,

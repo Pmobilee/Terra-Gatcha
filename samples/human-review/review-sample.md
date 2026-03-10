@@ -1,822 +1,904 @@
 # Human Review Sample
 
 ## animals_wildlife
-- [ ] The Atlantic emperor (Lethrinus atlanticus) is classified as Least Concern.
-  - Question: What type of animal is the Atlantic emperor?
-  - Answer: Fish of the family lethrinidae
-  - Source: Wikidata (http://www.wikidata.org/entity/Q31394)
 - [ ] The Common Buzzard (Buteo buteo) is classified as Least Concern.
   - Question: What type of animal is the Common Buzzard?
   - Answer: Bird of prey
   - Source: Wikidata (http://www.wikidata.org/entity/Q25385)
-- [ ] The African Openbill (Anastomus lamelligerus) is classified as Least Concern.
-  - Question: What type of animal is the African Openbill?
-  - Answer: Bird
-  - Source: Wikidata (http://www.wikidata.org/entity/Q26902)
-- [ ] The Fulvous-breasted Woodpecker (Dendrocopos macei) is classified as Least Concern.
-  - Question: What type of animal is the Fulvous-breasted Woodpecker?
-  - Answer: Bird in picidae family
-  - Source: Wikidata (http://www.wikidata.org/entity/Q31804)
-- [ ] The spotted wobbegong (Orectolobus maculatus) is classified as Least Concern.
-  - Question: What type of animal is the spotted wobbegong?
-  - Answer: Shark (orectolobus maculatus)
-  - Source: Wikidata (http://www.wikidata.org/entity/Q31782)
-- [ ] The ginger carpetshark (Parascyllium sparsimaculatum) is classified as Least Concern.
-  - Question: What type of animal is the ginger carpetshark?
-  - Answer: Carpetshark of the family parascyll
-  - Source: Wikidata (http://www.wikidata.org/entity/Q31841)
-- [ ] Red foxes are highly adaptable carnivores found across diverse habitats worldwide.
-  - Question: What is the scientific name for red foxes?
-  - Answer: Vulpes vulpes
-  - Source: Wikidata (http://www.wikidata.org/entity/Q8332)
-- [ ] The Common Ostrich (Struthio camelus) is classified as Least Concern.
-  - Question: What type of animal is the Common Ostrich?
-  - Answer: Large flightless bird
-  - Source: Wikidata (http://www.wikidata.org/entity/Q17592)
-- [ ] Laetacara curviceps is a small freshwater fish species of least concern.
-  - Question: What species is Laetacara curviceps?
-  - Answer: Freshwater fish
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3767)
-- [ ] The Lethrinus enigmaticus (Lethrinus enigmaticus) is classified as Least Concern.
-  - Question: What type of animal is the Lethrinus enigmaticus?
-  - Answer: Fish belonging to the family
-  - Source: Wikidata (http://www.wikidata.org/entity/Q31396)
-- [ ] The Black Redstart (Phoenicurus ochruros) is classified as Least Concern.
-  - Question: What type of animal is the Black Redstart?
-  - Answer: Bird
-  - Source: Wikidata (http://www.wikidata.org/entity/Q26755)
-- [ ] The Angolan genet (Genetta angolensis) is classified as Least Concern.
-  - Question: What type of animal is the Angolan genet?
-  - Answer: Mammal
-  - Source: Wikidata (http://www.wikidata.org/entity/Q43217)
-- [ ] The Eurasian Jay (Garrulus glandarius) is classified as Least Concern.
-  - Question: What type of animal is the Eurasian Jay?
-  - Answer: Bird
-  - Source: Wikidata (http://www.wikidata.org/entity/Q25354)
-- [ ] Mullus barbatus is a red mullet fish species with least concern conservation status.
-  - Question: What species is Mullus barbatus?
-  - Answer: Red mullet
-  - Source: Wikidata (http://www.wikidata.org/entity/Q7171)
-- [ ] The Blue-tailed Bee-eater (Merops philippinus) is classified as Least Concern.
-  - Question: What type of animal is the Blue-tailed Bee-eater?
-  - Answer: Bird in the bee-eater family
-  - Source: Wikidata (http://www.wikidata.org/entity/Q31884)
-- [ ] Servals are African wild cats with distinctive long legs and spotted coats.
-  - Question: What African wild cat has exceptionally long legs?
-  - Answer: Serval
-  - Source: Wikidata (http://www.wikidata.org/entity/Q42699)
 - [ ] Pomegranate is a fruit-bearing deciduous shrub native to regions.
   - Question: What type of plant is a pomegranate?
   - Answer: Deciduous shrub
   - Source: Wikidata (http://www.wikidata.org/entity/Q13188)
+- [ ] The Parascyllium ferrugineum (Parascyllium ferrugineum) is classified as Least Concern.
+  - Question: What type of animal is the Parascyllium ferrugineum?
+  - Answer: Carpetshark of the family parascyll
+  - Source: Wikidata (http://www.wikidata.org/entity/Q31857)
+- [ ] The Common Ringed Plover (Charadrius hiaticula) is classified as Least Concern.
+  - Question: What type of animal is the Common Ringed Plover?
+  - Answer: Bird
+  - Source: Wikidata (http://www.wikidata.org/entity/Q26816)
+- [ ] Mullus barbatus is a red mullet fish species with least concern conservation status.
+  - Question: What species is Mullus barbatus?
+  - Answer: Red mullet
+  - Source: Wikidata (http://www.wikidata.org/entity/Q7171)
+- [ ] The Phoca vitulina (Phoca vitulina) is classified as Least Concern.
+  - Question: What type of animal is the Phoca vitulina?
+  - Answer: Mammal
+  - Source: Wikidata (http://www.wikidata.org/entity/Q26913)
 - [ ] The saddle carpetshark (Cirrhoscyllium japonicum) is classified as Least Concern.
   - Question: What type of animal is the saddle carpetshark?
   - Answer: Carpet shark of the family
   - Source: Wikidata (http://www.wikidata.org/entity/Q31843)
-- [ ] The Rusty-spotted genet (Genetta maculata) is classified as Least Concern.
-  - Question: What type of animal is the Rusty-spotted genet?
+- [ ] The Blue-tailed Bee-eater (Merops philippinus) is classified as Least Concern.
+  - Question: What type of animal is the Blue-tailed Bee-eater?
+  - Answer: Bird in the bee-eater family
+  - Source: Wikidata (http://www.wikidata.org/entity/Q31884)
+- [ ] Giant forest genets are small carnivorous mammals found in African forests.
+  - Question: What is a giant forest genet?
+  - Answer: Small African carnivore
+  - Source: Wikidata (http://www.wikidata.org/entity/Q41133)
+- [ ] The Wolverine (Gulo gulo) is classified as Least Concern.
+  - Question: What type of animal is the Wolverine?
+  - Answer: Largest land-dwelling the family mu
+  - Source: Wikidata (http://www.wikidata.org/entity/Q14334)
+- [ ] The Pardine genet (Genetta pardina) is classified as Least Concern.
+  - Question: What type of animal is the Pardine genet?
   - Answer: Mammal
-  - Source: Wikidata (http://www.wikidata.org/entity/Q43214)
-- [ ] The Lepus europaeus (Lepus europaeus) is classified as Least Concern.
-  - Question: What type of animal is the Lepus europaeus?
-  - Answer: Mammal
-  - Source: Wikidata (http://www.wikidata.org/entity/Q26838)
+  - Source: Wikidata (http://www.wikidata.org/entity/Q43213)
+- [ ] The Eurasian Chaffinch (Fringilla coelebs) is classified as Least Concern.
+  - Question: What type of animal is the Eurasian Chaffinch?
+  - Answer: Small passerine bird
+  - Source: Wikidata (http://www.wikidata.org/entity/Q25383)
+- [ ] The Wild Turkey (Meleagris gallopavo) is classified as Least Concern.
+  - Question: What type of animal is the Wild Turkey?
+  - Answer: Turkey native to north america
+  - Source: Wikidata (http://www.wikidata.org/entity/Q26844)
+- [ ] The Mallard (Anas platyrhynchos) is classified as Least Concern.
+  - Question: What type of animal is the Mallard?
+  - Answer: Duck
+  - Source: Wikidata (http://www.wikidata.org/entity/Q25348)
+- [ ] The Atlantic emperor (Lethrinus atlanticus) is classified as Least Concern.
+  - Question: What type of animal is the Atlantic emperor?
+  - Answer: Fish of the family lethrinidae
+  - Source: Wikidata (http://www.wikidata.org/entity/Q31394)
+- [ ] The Black Redstart (Phoenicurus ochruros) is classified as Least Concern.
+  - Question: What type of animal is the Black Redstart?
+  - Answer: Bird
+  - Source: Wikidata (http://www.wikidata.org/entity/Q26755)
+- [ ] The Northern Fulmar (Fulmarus glacialis) is classified as Least Concern.
+  - Question: What type of animal is the Northern Fulmar?
+  - Answer: Bird
+  - Source: Wikidata (http://www.wikidata.org/entity/Q26896)
+- [ ] Parnassius apollo is a butterfly species found in European mountain regions.
+  - Question: What type of animal is Parnassius apollo?
+  - Answer: Butterfly
+  - Source: Wikidata (http://www.wikidata.org/entity/Q41633)
+- [ ] The Common Coot (Fulica atra) is classified as Least Concern.
+  - Question: What type of animal is the Common Coot?
+  - Answer: Bird
+  - Source: Wikidata (http://www.wikidata.org/entity/Q25376)
+- [ ] The African Openbill (Anastomus lamelligerus) is classified as Least Concern.
+  - Question: What type of animal is the African Openbill?
+  - Answer: Bird
+  - Source: Wikidata (http://www.wikidata.org/entity/Q26902)
 
 ## art_architecture
-- [ ] Burg Stolpen is a castle in Saxony, Germany, established in 1121.
-  - Question: Where is Burg Stolpen located?
-  - Answer: Saxony, Germany
-  - Source: Wikidata (http://www.wikidata.org/entity/Q314460)
-- [ ] Olavinlinna Castle is a medieval fortress located in Savonlinna, Finland.
-  - Question: Where is Olavinlinna Castle located?
-  - Answer: Savonlinna, Finland
-  - Source: Wikidata (http://www.wikidata.org/entity/Q251272)
-- [ ] Palazzo Nuovo is a building located in Rome, Italy.
-  - Question: Where is Palazzo Nuovo located?
-  - Answer: Rome, Italy
-  - Source: Wikidata (http://www.wikidata.org/entity/Q283153)
-- [ ] castle of Gaasbeek is a museum in Belgium, established in 1236.
-  - Question: Where is castle of Gaasbeek located?
-  - Answer: Belgium
-  - Source: Wikidata (http://www.wikidata.org/entity/Q287806)
-- [ ] The Charlier Museum is a museum located in Brussels, Belgium, founded in 1844.
-  - Question: In which city is the Charlier Museum located?
-  - Answer: Brussels
-  - Source: Wikidata (http://www.wikidata.org/entity/Q256200)
-- [ ] Illuminated Block is a museum located in Buenos Aires, Argentina.
-  - Question: Where is Illuminated Block located?
-  - Answer: Buenos Aires, Argentina
-  - Source: Wikidata (http://www.wikidata.org/entity/Q263127)
+- [ ] Small Carpathian Museum is a museum in Pezinok, Slovakia, established in 2008.
+  - Question: Where is Small Carpathian Museum located?
+  - Answer: Pezinok, Slovakia
+  - Source: Wikidata (http://www.wikidata.org/entity/Q289034)
 - [ ] Museum für Naturkunde opened in Berlin in 1810 as a natural history institution.
   - Question: When did Museum für Naturkunde Berlin open?
   - Answer: 1810
   - Source: Wikidata (http://www.wikidata.org/entity/Q233098)
+- [ ] The Cabildo is a historical museum in Montevideo founded in 1804.
+  - Question: What historical building houses a museum in Montevideo?
+  - Answer: The Cabildo
+  - Source: Wikidata (http://www.wikidata.org/entity/Q257698)
 - [ ] Austrian Open-Air Museum Stübing is a museum established in 1962.
   - Question: When was Austrian Open-Air Museum Stübi established?
   - Answer: 1962
   - Source: Wikidata (http://www.wikidata.org/entity/Q306611)
-- [ ] Åhus Museum is a notable museum of cultural significance.
-  - Question: What type of structure is Åhus Museum?
-  - Answer: Museum
-  - Source: Wikidata (http://www.wikidata.org/entity/Q270849)
-- [ ] The City of Arts and Sciences is a cultural complex in Valencia, Spain, completed in 1998.
-  - Question: What cultural complex opened in Valencia, Spain in 1998?
-  - Answer: City of Arts and Sciences
-  - Source: Wikidata (http://www.wikidata.org/entity/Q239935)
-- [ ] Ghetto Fighters' House is a museum established in 1949.
-  - Question: When was Ghetto Fighters' House established?
-  - Answer: 1949
-  - Source: Wikidata (http://www.wikidata.org/entity/Q260983)
-- [ ] Guinness Storehouse is a museum in Dublin, Ireland, established in 2000.
-  - Question: Where is Guinness Storehouse located?
-  - Answer: Dublin, Ireland
-  - Source: Wikidata (http://www.wikidata.org/entity/Q261012)
-- [ ] Margravial Opera House is a monument in Bayreuth, Bavaria, established in 1744.
-  - Question: Where is Margravial Opera House located?
-  - Answer: Bayreuth, Bavaria
-  - Source: Wikidata (http://www.wikidata.org/entity/Q278908)
-- [ ] Railway Museum is a museum in Belgrade, Serbia, established in 1950.
-  - Question: Where is Railway Museum located?
-  - Answer: Belgrade, Serbia
-  - Source: Wikidata (http://www.wikidata.org/entity/Q304972)
-- [ ] Thracian Tomb of Kazanlak is a tomb located in Kazanlak, Bulgaria.
-  - Question: Where is Thracian Tomb of Kazanlak located?
-  - Answer: Kazanlak, Bulgaria
-  - Source: Wikidata (http://www.wikidata.org/entity/Q301815)
-- [ ] Holocaust Museum LA is a museum established in 1961.
-  - Question: When was Holocaust Museum LA established?
-  - Answer: 1961
-  - Source: Wikidata (http://www.wikidata.org/entity/Q254118)
-- [ ] Österreichisches Gartenbaumuseum is a museum established in 1969.
-  - Question: When was Österreichisches Gartenbaumuse established?
-  - Answer: 1969
-  - Source: Wikidata (http://www.wikidata.org/entity/Q306615)
+- [ ] Holzknechtmuseum Ruhpolding is a museum established in 1988.
+  - Question: When was Holzknechtmuseum Ruhpolding established?
+  - Answer: 1988
+  - Source: Wikidata (http://www.wikidata.org/entity/Q264941)
+- [ ] The Egyptian Museum of the University of Leipzig was founded in 1874.
+  - Question: When was the Egyptian Museum of Leipzig founded?
+  - Answer: 1874
+  - Source: Wikidata (http://www.wikidata.org/entity/Q254134)
+- [ ] Tränenpalast is a building established in 1962.
+  - Question: When was Tränenpalast established?
+  - Answer: 1962
+  - Source: Wikidata (http://www.wikidata.org/entity/Q314446)
+- [ ] Long Island Museum of American Art, History, and Carriages is a museum in Stony Brook, New York, established in 1939.
+  - Question: Where is Long Island Museum of American located?
+  - Answer: Stony Brook, New York
+  - Source: Wikidata (http://www.wikidata.org/entity/Q263750)
+- [ ] The Charlier Museum is a museum located in Brussels, Belgium, founded in 1844.
+  - Question: In which city is the Charlier Museum located?
+  - Answer: Brussels
+  - Source: Wikidata (http://www.wikidata.org/entity/Q256200)
+- [ ] Altzella Abbey is a abbey established in 1101.
+  - Question: When was Altzella Abbey established?
+  - Answer: 1101
+  - Source: Wikidata (http://www.wikidata.org/entity/Q314478)
+- [ ] Huntington Beach State Park in South Carolina was established in 1960.
+  - Question: When was Huntington Beach State Park established?
+  - Answer: 1960
+  - Source: Wikidata (http://www.wikidata.org/entity/Q259242)
+- [ ] The New Collection is a museum established in 1925.
+  - Question: When was The New Collection established?
+  - Answer: 1925
+  - Source: Wikidata (http://www.wikidata.org/entity/Q286549)
+- [ ] Austrian Film Museum is a cinemateque in Vienna, established in 1964.
+  - Question: Where is Austrian Film Museum located?
+  - Answer: Vienna
+  - Source: Wikidata (http://www.wikidata.org/entity/Q306604)
 - [ ] Imperial Carriage Museum is a notable museum of cultural significance.
   - Question: What type of structure is Imperial Carriage Mu?
   - Answer: Museum
   - Source: Wikidata (http://www.wikidata.org/entity/Q281725)
+- [ ] Francke Foundations is a museum in Germany, established in 1695.
+  - Question: Where is Francke Foundations located?
+  - Answer: Germany
+  - Source: Wikidata (http://www.wikidata.org/entity/Q276846)
+- [ ] Saint Joseph's Oratory is a basilica in Montreal, Quebec, established in 1967.
+  - Question: Where is Saint Joseph's Oratory located?
+  - Answer: Montreal, Quebec
+  - Source: Wikidata (http://www.wikidata.org/entity/Q284716)
+- [ ] Österreichisches Gartenbaumuseum is a museum established in 1969.
+  - Question: When was Österreichisches Gartenbaumuse established?
+  - Answer: 1969
+  - Source: Wikidata (http://www.wikidata.org/entity/Q306615)
+- [ ] House of History Baden-Württemberg is a museum in Germany, established in 1992.
+  - Question: Where is House of History Baden-Württem located?
+  - Answer: Germany
+  - Source: Wikidata (http://www.wikidata.org/entity/Q263491)
 - [ ] Centraal Museum is a museum in Utrecht, Netherlands, established in 1838.
   - Question: Where is Centraal Museum located?
   - Answer: Utrecht, Netherlands
   - Source: Wikidata (http://www.wikidata.org/entity/Q260913)
-- [ ] University Museum of Bergen is a museum in Bergen, Norway, established in 1825.
-  - Question: Where is University Museum of Bergen located?
-  - Answer: Bergen, Norway
-  - Source: Wikidata (http://www.wikidata.org/entity/Q301787)
+- [ ] Boyana Church is a church in Sofia, Bulgaria, established in 980.
+  - Question: Where is Boyana Church located?
+  - Answer: Sofia, Bulgaria
+  - Source: Wikidata (http://www.wikidata.org/entity/Q276553)
 
 ## food_cuisine
-- [ ] walnut is a edible seed.
-  - Question: What is walnut?
-  - Answer: edible seed
-  - Source: Wikidata (http://www.wikidata.org/entity/Q208021)
-- [ ] Onsen tamago is a egg dish from Japan.
-  - Question: Where does Onsen tamago originate from?
-  - Answer: Japan
-  - Source: Wikidata (http://www.wikidata.org/entity/Q453174)
-- [ ] Rumford's Soup is a soup of barley, dried peas, potatoes, an from Bavaria.
-  - Question: Where does Rumford's Soup originate from?
-  - Answer: Bavaria
-  - Source: Wikidata (http://www.wikidata.org/entity/Q356346)
-- [ ] Chinmi is a Japanese delicacies from Japan.
-  - Question: Where does Chinmi originate from?
-  - Answer: Japan
-  - Source: Wikidata (http://www.wikidata.org/entity/Q464545)
-- [ ] potato pancake is a fried pancakes of grated or ground potato.
-  - Question: What is potato pancake?
-  - Answer: fried pancakes of
-  - Source: Wikidata (http://www.wikidata.org/entity/Q152981)
-- [ ] Salisbury steak is a meat patty from United States.
-  - Question: Where does Salisbury steak originate from?
-  - Answer: United States
-  - Source: Wikidata (http://www.wikidata.org/entity/Q200527)
-- [ ] pepernoot is a tiny Dutch cookie made from many rich in from Netherlands.
-  - Question: Where does pepernoot originate from?
-  - Answer: Netherlands
-  - Source: Wikidata (http://www.wikidata.org/entity/Q473271)
-- [ ] dondurma is a Turkish variety of ice cream from Turkey.
-  - Question: Where does dondurma originate from?
-  - Answer: Turkey
-  - Source: Wikidata (http://www.wikidata.org/entity/Q141293)
-- [ ] ayran is a drink made from yoghurt with soda water  from Turkey.
-  - Question: Where does ayran originate from?
-  - Answer: Turkey
-  - Source: Wikidata (http://www.wikidata.org/entity/Q192892)
-- [ ] mandu is a Korean dumplings from Goryeo.
-  - Question: Where does mandu originate from?
-  - Answer: Goryeo
-  - Source: Wikidata (http://www.wikidata.org/entity/Q284983)
-- [ ] dhokla is a Indian vegetarian dish from India.
-  - Question: Where does dhokla originate from?
-  - Answer: India
-  - Source: Wikidata (http://www.wikidata.org/entity/Q171983)
-- [ ] tarte flambée is a traditional food of Alsace, Saarland, Ba from France.
-  - Question: Where does tarte flambée originate from?
-  - Answer: France
-  - Source: Wikidata (http://www.wikidata.org/entity/Q316849)
-- [ ] Zwetschkenknödel is a Plum dumplings from Austria–Hungary.
-  - Question: Where does Zwetschkenknödel originate from?
-  - Answer: Austria–Hungary
-  - Source: Wikidata (http://www.wikidata.org/entity/Q244495)
-- [ ] samosa is a baked dish common to South Asia and the  from Middle East.
-  - Question: Where does samosa originate from?
-  - Answer: Middle East
-  - Source: Wikidata (http://www.wikidata.org/entity/Q491517)
-- [ ] manti is a dish from Xinjiang.
-  - Question: Where does manti originate from?
-  - Answer: Xinjiang
-  - Source: Wikidata (http://www.wikidata.org/entity/Q262796)
+- [ ] Paper-covered bone is a popular Chinese snack with crispy, seasoned meat.
+  - Question: What is paper-covered bone?
+  - Answer: Chinese snack
+  - Source: Wikidata (http://www.wikidata.org/entity/Q26670)
+- [ ] falafel is a Egyptian fried bean dish from Egypt.
+  - Question: Where does falafel originate from?
+  - Answer: Egypt
+  - Source: Wikidata (http://www.wikidata.org/entity/Q188788)
 - [ ] Mille-feuille is a French pastry with layers of puff pastry and cream.
   - Question: What is mille-feuille?
   - Answer: French pastry
   - Source: Wikidata (http://www.wikidata.org/entity/Q12491)
-- [ ] stoemp is a Dish with stomped potatoes and vegetable from Belgium.
-  - Question: Where does stoemp originate from?
-  - Answer: Belgium
-  - Source: Wikidata (http://www.wikidata.org/entity/Q305329)
 - [ ] amuse-bouche is a single, bite-sized hors d’œuvre from France.
   - Question: Where does amuse-bouche originate from?
   - Answer: France
   - Source: Wikidata (http://www.wikidata.org/entity/Q481774)
-- [ ] Fideuà is a noodle dish from Valencia, Spain.
-  - Question: What is fideuà?
-  - Answer: Spanish noodle dish
-  - Source: Wikidata (http://www.wikidata.org/entity/Q20016)
-- [ ] palm oil is a edible and biocombustible vegetable oil from fruit.
-  - Question: What is palm oil?
-  - Answer: edible and biocombustible
-  - Source: Wikidata (http://www.wikidata.org/entity/Q231458)
+- [ ] Lasagna is a layered pasta dish that originated in Italy.
+  - Question: What country did lasagna originate from?
+  - Answer: Italy
+  - Source: Wikidata (http://www.wikidata.org/entity/Q20034)
+- [ ] Bun cha is a Vietnamese dish featuring grilled meat with noodles and vegetables.
+  - Question: What is bun cha?
+  - Answer: Vietnamese grilled meat dish
+  - Source: Wikidata (http://www.wikidata.org/entity/Q50634)
+- [ ] potato pancake is a fried pancakes of grated or ground potato.
+  - Question: What is potato pancake?
+  - Answer: fried pancakes of
+  - Source: Wikidata (http://www.wikidata.org/entity/Q152981)
+- [ ] mandu is a Korean dumplings from Goryeo.
+  - Question: Where does mandu originate from?
+  - Answer: Goryeo
+  - Source: Wikidata (http://www.wikidata.org/entity/Q284983)
+- [ ] Rumford's Soup is a soup of barley, dried peas, potatoes, an from Bavaria.
+  - Question: Where does Rumford's Soup originate from?
+  - Answer: Bavaria
+  - Source: Wikidata (http://www.wikidata.org/entity/Q356346)
+- [ ] Olivier salad is a salad dish from Russia.
+  - Question: Where does Olivier salad originate from?
+  - Answer: Russia
+  - Source: Wikidata (http://www.wikidata.org/entity/Q281278)
+- [ ] Red beans and rice is a dish characteristic of Louisiana Creole  from United States.
+  - Question: Where does Red beans and rice originate from?
+  - Answer: United States
+  - Source: Wikidata (http://www.wikidata.org/entity/Q489703)
+- [ ] pepernoot is a tiny Dutch cookie made from many rich in from Netherlands.
+  - Question: Where does pepernoot originate from?
+  - Answer: Netherlands
+  - Source: Wikidata (http://www.wikidata.org/entity/Q473271)
+- [ ] kkakdugi is a a variation of kimchi.
+  - Question: What is kkakdugi?
+  - Answer: a variation of
+  - Source: Wikidata (http://www.wikidata.org/entity/Q430583)
+- [ ] Ahle Wurst is a kind of hard pork sausage made in northe from Hesse.
+  - Question: Where does Ahle Wurst originate from?
+  - Answer: Hesse
+  - Source: Wikidata (http://www.wikidata.org/entity/Q123441)
+- [ ] stoemp is a Dish with stomped potatoes and vegetable from Belgium.
+  - Question: Where does stoemp originate from?
+  - Answer: Belgium
+  - Source: Wikidata (http://www.wikidata.org/entity/Q305329)
+- [ ] Labskaus is a hearty culinary specialty from Northern Germany and Scandinavia.
+  - Question: What is Labskaus?
+  - Answer: Northern German dish
+  - Source: Wikidata (http://www.wikidata.org/entity/Q6493)
+- [ ] manti is a dish from Xinjiang.
+  - Question: Where does manti originate from?
+  - Answer: Xinjiang
+  - Source: Wikidata (http://www.wikidata.org/entity/Q262796)
+- [ ] Pancakes are a traditional breakfast food originating from the United States.
+  - Question: Where did pancakes originate?
+  - Answer: United States
+  - Source: Wikidata (http://www.wikidata.org/entity/Q44541)
+- [ ] almond is a edible seed of the almond tree.
+  - Question: What is almond?
+  - Answer: edible seed of
+  - Source: Wikidata (http://www.wikidata.org/entity/Q184357)
+- [ ] samosa is a baked dish common to South Asia and the  from Middle East.
+  - Question: Where does samosa originate from?
+  - Answer: Middle East
+  - Source: Wikidata (http://www.wikidata.org/entity/Q491517)
 
 ## general_knowledge
-- [ ] The Great Wall of China is visible from space with naked eye.
-  - Question: Is the Great Wall visible from space?
-  - Answer: No, myth
-  - Source: Wikidata Q3391358 (http://www.wikidata.org/entity/Q3391358)
-- [ ] Kollur Mookambika Temple is a goddess temple in Karnataka, India.
-  - Question: What deity is worshipped at Kollur Mookambika Temple?
-  - Answer: Goddess Mookambika
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3595863)
-- [ ] The Temple of Athena in Paestum, Italy was built around 500 BCE.
-  - Question: When was the Temple of Athena in Paestum built?
-  - Answer: Around 500 BCE
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3983228)
-- [ ] Temple of Anu-Adad is a landmark located in Iraq.
-  - Question: Where is Temple of Anu-Adad located?
-  - Answer: Iraq
-  - Source: Wikidata (http://www.wikidata.org/entity/Q612123)
+- [ ] The Temple of Monthu is an ancient Egyptian building discovered by Fernand Bisson de la Roque.
+  - Question: Who discovered the Temple of Monthu?
+  - Answer: Fernand Bisson de la Roque
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3517593)
+- [ ] The Temple in Jerusalem was the central religious center for ancient Israelites.
+  - Question: What was the Temple in Jerusalem?
+  - Answer: Israelite religious center
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3906600)
+- [ ] Tempio Evangelico Valdese is a Waldensian church located in Rio Marina, Italy.
+  - Question: Where is Tempio Evangelico Valdese located?
+  - Answer: Rio Marina, Italy
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3983185)
+- [ ] The Temple of Jupiter was the main temple on Pompeii's forum.
+  - Question: What was Pompeii's main forum temple?
+  - Answer: Temple of Jupiter
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3309400)
+- [ ] Santa Maria del Colledestro is a temple located in Pieve Santo Stefano, Italy.
+  - Question: Where is Santa Maria del Colledestro located?
+  - Answer: Pieve Santo Stefano, Italy
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3983170)
+- [ ] Eanna is a temple located in Uruk.
+  - Question: Where is Eanna located?
+  - Answer: Uruk
+  - Source: Wikidata (http://www.wikidata.org/entity/Q706970)
+- [ ] Salasar Balaji is a prominent Hindu temple located in Rajasthan, India.
+  - Question: Where is Salasar Balaji temple located?
+  - Answer: Rajasthan, India
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3764808)
+- [ ] Temple of Clitumnus is a medieval church in Campello sul Clitunno, Italy.
+  - Question: Where is the Temple of Clitumnus located?
+  - Answer: Campello sul Clitunno, Italy
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3983167)
 - [ ] Bayon is a temple located in Cambodia.
   - Question: Where is Bayon located?
   - Answer: Cambodia
   - Source: Wikidata (http://www.wikidata.org/entity/Q654024)
-- [ ] Temple C is an ancient Greek temple located at Selinus in Sicily.
-  - Question: Where is Temple C, an ancient Greek temple, located?
-  - Answer: Selinus, Sicily
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3983175)
-- [ ] Temple of Minerva Chalcidica is an ancient Roman building located in Rome.
-  - Question: Where is the Temple of Minerva Chalcidica located?
-  - Answer: Rome, Italy
-  - Source: Wikidata (http://www.wikidata.org/entity/Q2873434)
+- [ ] Ein Gedi Temple is an ancient archaeological site in Israel from 3500 BCE.
+  - Question: When was Ein Gedi Temple built?
+  - Answer: 3500 BCE
+  - Source: Wikidata (http://www.wikidata.org/entity/Q2900794)
+- [ ] Bhadrachalam Temple is a Hindu temple located in Telangana, India.
+  - Question: Where is Bhadrachalam Temple located?
+  - Answer: Telangana, India
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3523674)
 - [ ] Capitolium Vetus was an archaic Roman temple dedicated to the Capitoline Triad.
   - Question: What was Capitolium Vetus in ancient Rome?
   - Answer: Archaic temple
   - Source: Wikidata (http://www.wikidata.org/entity/Q2937495)
-- [ ] Temple of Antoninus and Faustina is a temple located in Rome which was later converted into a Roman Catholic.
-  - Question: Where is Temple of Antoninus and Faustina located?
-  - Answer: Rome which was later converted
-  - Source: Wikidata (http://www.wikidata.org/entity/Q752555)
-- [ ] Transfiguration Church in Krasnoyarsk was completed in 1910.
-  - Question: When was Transfiguration Church in Krasnoyarsk built?
-  - Answer: 1910
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3585857)
-- [ ] Temple of Pudicitia Patricia was an ancient Roman temple dedicated to chastity.
-  - Question: What ancient Roman temple honored the goddess of chastity?
-  - Answer: Pudicitia Patricia
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3983213)
-- [ ] Temple of Fortuna Augusta is ancient Roman temple located in Pompeii.
-  - Question: Where is the Temple of Fortuna Augusta located?
-  - Answer: Pompeii
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3983204)
-- [ ] The Temple of Hathor in Memphis honored the Egyptian goddess of love and joy.
-  - Question: Which Egyptian goddess did Memphis's Hathor temple honor?
-  - Answer: Hathor
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3517521)
-- [ ] Q723125 is a archaeological site located in Rhineland-Palatinate, Germany.
-  - Question: Where is Q723125 located?
-  - Answer: Rhineland-Palatinate, Germany
-  - Source: Wikidata (http://www.wikidata.org/entity/Q723125)
-- [ ] Temple of Augustus and Livia is a Roman temple in Vienne, France.
-  - Question: Where is the Temple of Augustus and Livia located?
-  - Answer: Vienne, France
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3517516)
-- [ ] Old Temple of Athena is described as ancient temple on the Athenian Acropolis.
-  - Question: What type of structure is Old Temple of Athena?
+- [ ] Mausi Maa Temple is a building located in India.
+  - Question: Where is Mausi Maa Temple located?
+  - Answer: India
+  - Source: Wikidata (http://www.wikidata.org/entity/Q763027)
+- [ ] Temple of Pudicitia Plebeia was an ancient Roman building located in Rome.
+  - Question: Where was the Temple of Pudicitia Plebeia located?
+  - Answer: Rome
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3412256)
+- [ ] Temple of Jupiter is described as poliadic temple of the Latin city of Cosa.
+  - Question: What type of structure is Temple of Jupiter?
   - Answer: temple
-  - Source: Wikidata (http://www.wikidata.org/entity/Q683988)
-- [ ] Dendera Temple complex is described as ancient Egyptian temple complex.
-  - Question: What type of structure is Dendera Temple complex?
-  - Answer: temple
-  - Source: Wikidata (http://www.wikidata.org/entity/Q735254)
-- [ ] Temple du Gol is a Hindu temple built in 1852 on the island of La Réunion.
-  - Question: Where is Temple du Gol located?
-  - Answer: La Réunion
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3517666)
-- [ ] E-ninnu is a temple located in Girsu.
-  - Question: Where is E-ninnu located?
-  - Answer: Girsu
-  - Source: Wikidata (http://www.wikidata.org/entity/Q611285)
-- [ ] Temple of Antas is a temple located in the commune of Fluminimaggiore, southern Sardinia, Italy.
-  - Question: Where is Temple of Antas located?
-  - Answer: the commune of Fluminimaggiore, sou
-  - Source: Wikidata (http://www.wikidata.org/entity/Q689104)
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3983250)
+- [ ] Temple of Fortuna Muliebris is an ancient temple located in Rome, Italy.
+  - Question: Where is the Temple of Fortuna Muliebris located?
+  - Answer: Rome, Italy
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3983205)
+- [ ] The Temple of Athena in Priene is an ancient Greek temple located in Turkey.
+  - Question: Where is the Temple of Athena located?
+  - Answer: Priene, Turkey
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3983229)
+- [ ] Banke Bihari Temple is a Radha Krishna shrine built in Vrindavan, India around 1501.
+  - Question: In which year was Banke Bihari Temple constructed?
+  - Answer: 1501
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3630572)
+- [ ] Church of Saint Nicholas in Podkopai is a historic religious structure.
+  - Question: Where is the Church of Saint Nicholas located?
+  - Answer: Podkopai
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3583328)
+- [ ] Temple of Anu-Adad is a landmark located in Iraq.
+  - Question: Where is Temple of Anu-Adad located?
+  - Answer: Iraq
+  - Source: Wikidata (http://www.wikidata.org/entity/Q612123)
 
 ## geography
-- [ ] The capital of Honduras is Tegucigalpa.
-  - Question: What is the capital of Honduras?
-  - Answer: Tegucigalpa
-  - Source: Wikidata (http://www.wikidata.org/entity/Q783)
-- [ ] The capital of Saint Lucia is Castries.
-  - Question: What is the capital of Saint Lucia?
-  - Answer: Castries
-  - Source: Wikidata (http://www.wikidata.org/entity/Q760)
-- [ ] The capital of Yemen is Sanaa.
-  - Question: What is the capital of Yemen?
-  - Answer: Sanaa
-  - Source: Wikidata (http://www.wikidata.org/entity/Q805)
-- [ ] The capital of Saudi Arabia is Riyadh.
-  - Question: What is the capital of Saudi Arabia?
-  - Answer: Riyadh
-  - Source: Wikidata (http://www.wikidata.org/entity/Q851)
-- [ ] The capital of El Salvador is San Salvador.
-  - Question: What is the capital of El Salvador?
-  - Answer: San Salvador
-  - Source: Wikidata (http://www.wikidata.org/entity/Q792)
-- [ ] The capital of Vietnam is Hanoi.
-  - Question: What is the capital of Vietnam?
-  - Answer: Hanoi
-  - Source: Wikidata (http://www.wikidata.org/entity/Q881)
-- [ ] The capital of Panama is Panama City.
-  - Question: What is the capital of Panama?
-  - Answer: Panama City
-  - Source: Wikidata (http://www.wikidata.org/entity/Q804)
-- [ ] The capital of Jamaica is Kingston.
-  - Question: What is the capital of Jamaica?
-  - Answer: Kingston
-  - Source: Wikidata (http://www.wikidata.org/entity/Q766)
-- [ ] The capital of Syria is Damascus.
-  - Question: What is the capital of Syria?
-  - Answer: Damascus
-  - Source: Wikidata (http://www.wikidata.org/entity/Q858)
-- [ ] The capital of Saint Kitts and Nevis is Basseterre.
-  - Question: What is the capital of Saint Kitts and Nevis?
-  - Answer: Basseterre
-  - Source: Wikidata (http://www.wikidata.org/entity/Q763)
-- [ ] The capital of Philippines is Manila.
-  - Question: What is the capital of Philippines?
-  - Answer: Manila
-  - Source: Wikidata (http://www.wikidata.org/entity/Q928)
 - [ ] The capital of Togo is Lomé.
   - Question: What is the capital of Togo?
   - Answer: Lomé
   - Source: Wikidata (http://www.wikidata.org/entity/Q945)
-- [ ] The capital of Taiwan is Taipei.
-  - Question: What is the capital of Taiwan?
-  - Answer: Taipei
-  - Source: Wikidata (http://www.wikidata.org/entity/Q865)
+- [ ] The capital of Syria is Damascus.
+  - Question: What is the capital of Syria?
+  - Answer: Damascus
+  - Source: Wikidata (http://www.wikidata.org/entity/Q858)
+- [ ] The capital of The Bahamas is Nassau.
+  - Question: What is the capital of The Bahamas?
+  - Answer: Nassau
+  - Source: Wikidata (http://www.wikidata.org/entity/Q778)
+- [ ] The capital of Iran is Tehran.
+  - Question: What is the capital of Iran?
+  - Answer: Tehran
+  - Source: Wikidata (http://www.wikidata.org/entity/Q794)
+- [ ] The capital of Kyrgyzstan is Bishkek.
+  - Question: What is the capital of Kyrgyzstan?
+  - Answer: Bishkek
+  - Source: Wikidata (http://www.wikidata.org/entity/Q813)
+- [ ] The capital of Nicaragua is Managua.
+  - Question: What is the capital of Nicaragua?
+  - Answer: Managua
+  - Source: Wikidata (http://www.wikidata.org/entity/Q811)
+- [ ] The capital of Vietnam is Hanoi.
+  - Question: What is the capital of Vietnam?
+  - Answer: Hanoi
+  - Source: Wikidata (http://www.wikidata.org/entity/Q881)
 - [ ] The capital of Maldives is Malé.
   - Question: What is the capital of Maldives?
   - Answer: Malé
   - Source: Wikidata (http://www.wikidata.org/entity/Q826)
-- [ ] The capital of Oman is Muscat.
-  - Question: What is the capital of Oman?
-  - Answer: Muscat
-  - Source: Wikidata (http://www.wikidata.org/entity/Q842)
-- [ ] The capital of Guatemala is Guatemala City.
-  - Question: What is the capital of Guatemala?
-  - Answer: Guatemala City
-  - Source: Wikidata (http://www.wikidata.org/entity/Q774)
-- [ ] The capital of Brunei is Bandar Seri Begawan.
-  - Question: What is the capital of Brunei?
-  - Answer: Bandar Seri Begawan
-  - Source: Wikidata (http://www.wikidata.org/entity/Q921)
-- [ ] The capital of Afghanistan is Kabul.
-  - Question: What is the capital of Afghanistan?
-  - Answer: Kabul
-  - Source: Wikidata (http://www.wikidata.org/entity/Q889)
-- [ ] The capital of Mali is Bamako.
-  - Question: What is the capital of Mali?
-  - Answer: Bamako
-  - Source: Wikidata (http://www.wikidata.org/entity/Q912)
-- [ ] The capital of Thailand is Bangkok.
-  - Question: What is the capital of Thailand?
-  - Answer: Bangkok
-  - Source: Wikidata (http://www.wikidata.org/entity/Q869)
+- [ ] The capital of Yemen is Sanaa.
+  - Question: What is the capital of Yemen?
+  - Answer: Sanaa
+  - Source: Wikidata (http://www.wikidata.org/entity/Q805)
+- [ ] The capital of Lebanon is Beirut.
+  - Question: What is the capital of Lebanon?
+  - Answer: Beirut
+  - Source: Wikidata (http://www.wikidata.org/entity/Q822)
+- [ ] The capital of Antigua and Barbuda is St. John's.
+  - Question: What is the capital of Antigua and Barbuda?
+  - Answer: St. John's
+  - Source: Wikidata (http://www.wikidata.org/entity/Q781)
+- [ ] The capital of Saudi Arabia is Riyadh.
+  - Question: What is the capital of Saudi Arabia?
+  - Answer: Riyadh
+  - Source: Wikidata (http://www.wikidata.org/entity/Q851)
+- [ ] The capital of Tajikistan is Dushanbe.
+  - Question: What is the capital of Tajikistan?
+  - Answer: Dushanbe
+  - Source: Wikidata (http://www.wikidata.org/entity/Q863)
+- [ ] The capital of Myanmar is Naypyidaw.
+  - Question: What is the capital of Myanmar?
+  - Answer: Naypyidaw
+  - Source: Wikidata (http://www.wikidata.org/entity/Q836)
+- [ ] The capital of Bhutan is Thimphu.
+  - Question: What is the capital of Bhutan?
+  - Answer: Thimphu
+  - Source: Wikidata (http://www.wikidata.org/entity/Q917)
+- [ ] The capital of Dominican Republic is Santo Domingo.
+  - Question: What is the capital of Dominican Republic?
+  - Answer: Santo Domingo
+  - Source: Wikidata (http://www.wikidata.org/entity/Q786)
+- [ ] The capital of Turkmenistan is Ashgabat.
+  - Question: What is the capital of Turkmenistan?
+  - Answer: Ashgabat
+  - Source: Wikidata (http://www.wikidata.org/entity/Q874)
+- [ ] The capital of Nepal is Kathmandu.
+  - Question: What is the capital of Nepal?
+  - Answer: Kathmandu
+  - Source: Wikidata (http://www.wikidata.org/entity/Q837)
+- [ ] The capital of United Arab Emirates is Abu Dhabi.
+  - Question: What is the capital of United Arab Emirates?
+  - Answer: Abu Dhabi
+  - Source: Wikidata (http://www.wikidata.org/entity/Q878)
+- [ ] The capital of Honduras is Tegucigalpa.
+  - Question: What is the capital of Honduras?
+  - Answer: Tegucigalpa
+  - Source: Wikidata (http://www.wikidata.org/entity/Q783)
 
 ## history
-- [ ] The Battle of Westkapelle occurred in 1253.
-  - Question: When did the Battle of Westkapelle occur?
-  - Answer: 1253
-  - Source: Wikidata (http://www.wikidata.org/entity/Q73105)
-- [ ] The Attack on Pearl Harbor took place in 1941 near Pearl Harbor.
-  - Question: Where did the Attack on Pearl Harbor take place?
-  - Answer: Pearl Harbor
-  - Source: Wikidata (http://www.wikidata.org/entity/Q52418)
-- [ ] The Battle of Le Mans took place in 1871 near Le Mans.
-  - Question: Where did the Battle of Le Mans take place?
-  - Answer: Le Mans
-  - Source: Wikidata (http://www.wikidata.org/entity/Q40559)
-- [ ] The Battle of Gettysburg occurred July 1–3, 1863, in Pennsylvania during the Civil War.
-  - Question: When did the Battle of Gettysburg take place?
-  - Answer: July 1863
-  - Source: Wikidata (http://www.wikidata.org/entity/Q33132)
-- [ ] Arabs besieged Constantinople for over a year during 717-718 CE.
-  - Question: When did the Umayyad Arabs besiege Constantinople?
-  - Answer: 717-718 CE
-  - Source: Wikidata (http://www.wikidata.org/entity/Q27900)
-- [ ] The Battle of Civitate took place in 1053 near San Paolo di Civitate.
-  - Question: When did the Battle of Civitate occur?
-  - Answer: 1053
-  - Source: Wikidata (http://www.wikidata.org/entity/Q61100)
-- [ ] The Battle of Marathon occurred in 490 BCE during the Greco-Persian Wars.
-  - Question: In what year did the Battle of Marathon occur?
-  - Answer: 490 BCE
-  - Source: Wikidata (http://www.wikidata.org/entity/Q31900)
-- [ ] The Battle of Cepeda took place in 1859 near Buenos Aires Province.
-  - Question: Where did the Battle of Cepeda take place?
-  - Answer: Buenos Aires Province
-  - Source: Wikidata (http://www.wikidata.org/entity/Q76914)
-- [ ] The Battle of Struth occurred in 1945.
-  - Question: When did the Battle of Struth occur?
-  - Answer: 1945
-  - Source: Wikidata (http://www.wikidata.org/entity/Q113047)
-- [ ] The Battle of the Dukla Pass took place in 1944 near Dukla Pass.
-  - Question: Where did the Battle of the Dukla Pass take place?
-  - Answer: Dukla Pass
-  - Source: Wikidata (http://www.wikidata.org/entity/Q60270)
-- [ ] The Siege of Malta took place in 1565 near Grand Harbour.
-  - Question: When did the Siege of Malta occur?
-  - Answer: 1565
-  - Source: Wikidata (http://www.wikidata.org/entity/Q58732)
-- [ ] The Battle of Gloucester was an early American Revolutionary War skirmish in 1775.
-  - Question: Where did the Battle of Gloucester occur?
-  - Answer: Gloucester, Massachusetts
-  - Source: Wikidata (http://www.wikidata.org/entity/Q32198)
-- [ ] The Battle of Grunwald in 1410 saw Poland-Lithuania defeat the Teutonic Knights.
-  - Question: Who won the Battle of Grunwald in 1410?
-  - Answer: Poland-Lithuania
-  - Source: Wikidata (http://www.wikidata.org/entity/Q33570)
+- [ ] The Battle of Deutschbrod occurred in 1422 in Havlíčkův Brod.
+  - Question: In what year did the Battle of Deutschbrod take place?
+  - Answer: 1422
+  - Source: Wikidata (http://www.wikidata.org/entity/Q38977)
+- [ ] The Operation Ramadan ul-Mubarak took place in 1988 near Al-Faw Peninsula.
+  - Question: When did the Operation Ramadan ul-Mubarak occur?
+  - Answer: 1988
+  - Source: Wikidata (http://www.wikidata.org/entity/Q82995)
+- [ ] The Battle of Jarama was a Spanish Civil War engagement in February 1937 near Madrid.
+  - Question: When did the Battle of Jarama occur?
+  - Answer: February 1937
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3956)
+- [ ] The Battle of Coronel took place in 1914 near Pacific Ocean.
+  - Question: When did the Battle of Coronel occur?
+  - Answer: 1914
+  - Source: Wikidata (http://www.wikidata.org/entity/Q40144)
 - [ ] The Battle of Ichikawa-Funabashi took place in 1868 near Ichikawa.
   - Question: When did the Battle of Ichikawa-Funabashi occur?
   - Answer: 1868
   - Source: Wikidata (http://www.wikidata.org/entity/Q81256)
-- [ ] The Battle of Bolia was part of the Roman-Germanic wars in Pannonia.
-  - Question: Where did the Battle of Bolia occur?
-  - Answer: Pannonia
-  - Source: Wikidata (http://www.wikidata.org/entity/Q13190)
-- [ ] The Batalla del Monte de las Cruces took place in 1810 near Ocoyoacac Municipality.
-  - Question: Where did the Batalla del Monte de las Cruces take place?
-  - Answer: Ocoyoacac Municipality
-  - Source: Wikidata (http://www.wikidata.org/entity/Q55635)
+- [ ] The Battle of Civitate took place in 1053 near San Paolo di Civitate.
+  - Question: When did the Battle of Civitate occur?
+  - Answer: 1053
+  - Source: Wikidata (http://www.wikidata.org/entity/Q61100)
+- [ ] The Battle of Crécy in 1346 was a major English victory during the Hundred Years' War.
+  - Question: In which year did the Battle of Crécy occur?
+  - Answer: 1346
+  - Source: Wikidata (http://www.wikidata.org/entity/Q27759)
+- [ ] The Battle of Valmy occurred in 1792 during the War of the First Coalition.
+  - Question: In what year did the Battle of Valmy occur?
+  - Answer: 1792
+  - Source: Wikidata (http://www.wikidata.org/entity/Q4411)
+- [ ] Arabs besieged Constantinople for over a year during 717-718 CE.
+  - Question: When did the Umayyad Arabs besiege Constantinople?
+  - Answer: 717-718 CE
+  - Source: Wikidata (http://www.wikidata.org/entity/Q27900)
+- [ ] The Battle of Marathon occurred in 490 BCE during the Greco-Persian Wars.
+  - Question: In what year did the Battle of Marathon occur?
+  - Answer: 490 BCE
+  - Source: Wikidata (http://www.wikidata.org/entity/Q31900)
 - [ ] The Battle of Milne Bay took place in 1942 near Milne Bay.
   - Question: When did the Battle of Milne Bay occur?
   - Answer: 1942
   - Source: Wikidata (http://www.wikidata.org/entity/Q113621)
-- [ ] The Battle of Custoza took place in 1866 near Custoza.
-  - Question: Where did the Battle of Custoza take place?
-  - Answer: Custoza
-  - Source: Wikidata (http://www.wikidata.org/entity/Q48163)
-- [ ] The Battle of Surabaya occurred between British and Indonesian forces in 1945.
-  - Question: When did the Battle of Surabaya take place?
-  - Answer: October-November 1945
-  - Source: Wikidata (http://www.wikidata.org/entity/Q26496)
-- [ ] The Battle of Varna occurred in 1444 at Varna, Bulgaria.
-  - Question: In what year did the Battle of Varna occur?
-  - Answer: 1444
-  - Source: Wikidata (http://www.wikidata.org/entity/Q32832)
+- [ ] The Battle of Grunwald in 1410 saw Poland-Lithuania defeat the Teutonic Knights.
+  - Question: Who won the Battle of Grunwald in 1410?
+  - Answer: Poland-Lithuania
+  - Source: Wikidata (http://www.wikidata.org/entity/Q33570)
+- [ ] The Battle of Stony Point took place in 1779 near Stony Point.
+  - Question: Where did the Battle of Stony Point take place?
+  - Answer: Stony Point
+  - Source: Wikidata (http://www.wikidata.org/entity/Q111648)
+- [ ] The Battle of Nauheim took place in 1762 near Nauheim.
+  - Question: When did the Battle of Nauheim occur?
+  - Answer: 1762
+  - Source: Wikidata (http://www.wikidata.org/entity/Q74391)
+- [ ] The Battle of Embūte took place in 1244 near Embūte.
+  - Question: Where did the Battle of Embūte take place?
+  - Answer: Embūte
+  - Source: Wikidata (http://www.wikidata.org/entity/Q83272)
+- [ ] The Siege of Bitche lasted from August 1870 to March 1871 during the Franco-Prussian War.
+  - Question: When did the Siege of Bitche occur?
+  - Answer: 1870-1871
+  - Source: Wikidata (http://www.wikidata.org/entity/Q28651)
+- [ ] The Battle of Corupedium took place near Lydia.
+  - Question: Where did the Battle of Corupedium take place?
+  - Answer: Lydia
+  - Source: Wikidata (http://www.wikidata.org/entity/Q47299)
+- [ ] The Brécourt Manor Assault was a crucial 1944 U.S. parachute operation during Normandy Invasion.
+  - Question: What was the Brécourt Manor Assault?
+  - Answer: 1944 U.S. parachute assault
+  - Source: Wikidata (http://www.wikidata.org/entity/Q28703)
+- [ ] The Battle of Pell's Point took place in 1776 near The Bronx.
+  - Question: When did the Battle of Pell's Point occur?
+  - Answer: 1776
+  - Source: Wikidata (http://www.wikidata.org/entity/Q63313)
+- [ ] The Battle of Phaleron took place in 1827 near Palaio Faliro.
+  - Question: When did the Battle of Phaleron occur?
+  - Answer: 1827
+  - Source: Wikidata (http://www.wikidata.org/entity/Q82702)
 
 ## human_body_health
-- [ ] Pulse oximetry measures blood oxygen levels using a finger clip.
-  - Question: What does pulse oximetry measure?
-  - Answer: Blood oxygen levels
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1140495)
-- [ ] Congenital torticollis causes a baby's head to tilt to one side.
-  - Question: What does congenital torticollis cause?
-  - Answer: Head tilt in babies
-  - Source: Wikidata (http://www.wikidata.org/entity/Q3993706)
-- [ ] A bone neoplasm is a tumor or cancer located in bone tissue.
-  - Question: What is a bone neoplasm?
-  - Answer: A bone tumor
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1328805)
-- [ ] The Ponseti method corrects clubfoot without invasive surgery.
-  - Question: What does the Ponseti method treat?
-  - Answer: Clubfoot
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1776595)
-- [ ] Vitamin D deficiency occurs from inadequate sunlight exposure.
-  - Question: What causes vitamin D deficiency?
-  - Answer: Lack of sunlight
-  - Source: Wikidata (http://www.wikidata.org/entity/Q4138762)
-- [ ] A malunited fracture heals in a faulty or abnormal position.
-  - Question: What goes wrong in a malunited fracture?
-  - Answer: Bone heals incorrectly
-  - Source: Wikidata (http://www.wikidata.org/entity/Q54943948)
-- [ ] Candidemia is a bloodstream infection caused by Candida fungus.
-  - Question: What organism causes candidemia?
-  - Answer: Candida fungus
-  - Source: Wikidata (http://www.wikidata.org/entity/Q54946225)
-- [ ] A mandibular injury is damage to the lower jaw bone.
-  - Question: Which bone is affected in mandibular injury?
-  - Answer: The lower jaw
-  - Source: Wikidata (http://www.wikidata.org/entity/Q54943919)
 - [ ] GPRC5D is a protein-coding gene found in humans.
   - Question: What does GPRC5D encode in human cells?
   - Answer: Protein
   - Source: Wikidata (http://www.wikidata.org/entity/Q5514306)
-- [ ] The Lamaze technique uses breathing exercises for childbirth pain.
-  - Question: What does Lamaze focus on during birth?
-  - Answer: Breathing exercises
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1062210)
-- [ ] Lead poisoning damages the nervous system through toxic exposure.
-  - Question: What system does lead poisoning damage?
-  - Answer: Nervous system
-  - Source: Wikidata (http://www.wikidata.org/entity/Q54932084)
+- [ ] Hypophosphatemic rickets weakens bones from low phosphate levels.
+  - Question: What mineral is lacking in hypophosphatemic rickets?
+  - Answer: Phosphate
+  - Source: Wikidata (http://www.wikidata.org/entity/Q54945704)
+- [ ] Glyceraldehyde-3-phosphate dehydrogenase is a key enzyme in cellular energy production.
+  - Question: What does GAPDH enzyme do in cells?
+  - Answer: Produces cellular energy
+  - Source: Wikidata (http://www.wikidata.org/entity/Q5572527)
+- [ ] A mandibular injury is damage to the lower jaw bone.
+  - Question: Which bone is affected in mandibular injury?
+  - Answer: The lower jaw
+  - Source: Wikidata (http://www.wikidata.org/entity/Q54943919)
+- [ ] Whole-body MRI scans the entire body using magnetic resonance imaging.
+  - Question: What does whole-body MRI scan?
+  - Answer: The entire body
+  - Source: Wikidata (http://www.wikidata.org/entity/Q110972658)
+- [ ] Hallucinosis is a syndrome of persistent hallucinations while awake.
+  - Question: What characterizes hallucinosis?
+  - Answer: Persistent hallucinations
+  - Source: Wikidata (http://www.wikidata.org/entity/Q4132712)
+- [ ] Tracheal intubation places a tube into the windpipe for breathing.
+  - Question: Where is a tube placed during intubation?
+  - Answer: The trachea
+  - Source: Wikidata (http://www.wikidata.org/entity/Q750195)
+- [ ] Congenital torticollis causes a baby's head to tilt to one side.
+  - Question: What does congenital torticollis cause?
+  - Answer: Head tilt in babies
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3993706)
+- [ ] The Ponseti method corrects clubfoot without invasive surgery.
+  - Question: What does the Ponseti method treat?
+  - Answer: Clubfoot
+  - Source: Wikidata (http://www.wikidata.org/entity/Q1776595)
+- [ ] Esophageal dilation widens a narrowed esophagus for easier swallowing.
+  - Question: What does esophageal dilation widen?
+  - Answer: The esophagus
+  - Source: Wikidata (http://www.wikidata.org/entity/Q4993158)
+- [ ] Pulse oximetry measures blood oxygen levels using a finger clip.
+  - Question: What does pulse oximetry measure?
+  - Answer: Blood oxygen levels
+  - Source: Wikidata (http://www.wikidata.org/entity/Q1140495)
 - [ ] A depressed skull fracture pushes bone fragments inward toward the brain.
   - Question: What direction do fragments go in depressed skull fracture?
   - Answer: Inward toward the brain
   - Source: Wikidata (http://www.wikidata.org/entity/Q54947033)
+- [ ] Frostbite damages skin and tissue from extreme cold temperatures.
+  - Question: What causes frostbite?
+  - Answer: Extreme cold
+  - Source: Wikidata (http://www.wikidata.org/entity/Q1350326)
+- [ ] Spinal osteochondrosis is a bone disorder affecting the vertebral column.
+  - Question: What does spinal osteochondrosis affect?
+  - Answer: The vertebral column
+  - Source: Wikidata (http://www.wikidata.org/entity/Q4338644)
+- [ ] A bone neoplasm is a tumor or cancer located in bone tissue.
+  - Question: What is a bone neoplasm?
+  - Answer: A bone tumor
+  - Source: Wikidata (http://www.wikidata.org/entity/Q1328805)
+- [ ] Oral hemorrhage is bleeding from blood vessels inside the mouth.
+  - Question: What is oral hemorrhage?
+  - Answer: Mouth bleeding
+  - Source: Wikidata (http://www.wikidata.org/entity/Q54946292)
 - [ ] The head tilt chin lift opens a blocked airway in emergencies.
   - Question: What does the head tilt chin lift do?
   - Answer: Opens the airway
   - Source: Wikidata (http://www.wikidata.org/entity/Q25048905)
-- [ ] GPC4 is a protein-coding gene found in human cells.
-  - Question: What type of gene is GPC4?
-  - Answer: Protein-coding gene
-  - Source: Wikidata (http://www.wikidata.org/entity/Q5573601)
-- [ ] GPC5 is a protein-coding gene found in humans.
-  - Question: What type of gene is GPC5 in humans?
-  - Answer: Protein-coding gene
-  - Source: Wikidata (http://www.wikidata.org/entity/Q5573603)
-- [ ] Complete edentulism means total loss of all teeth.
-  - Question: What is complete edentulism?
-  - Answer: Total tooth loss
-  - Source: Wikidata (http://www.wikidata.org/entity/Q54932060)
-- [ ] Heavy metal detoxification removes toxic metals from the body.
-  - Question: What does heavy metal detox remove?
-  - Answer: Toxic metals
-  - Source: Wikidata (http://www.wikidata.org/entity/Q5695266)
-- [ ] Ototoxicity means a substance is toxic to the ear and hearing.
-  - Question: What does ototoxicity damage?
-  - Answer: The ear
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1351381)
-- [ ] Dental pulp exposure occurs when the inner tooth nerve becomes unprotected.
-  - Question: What becomes exposed in dental pulp exposure?
-  - Answer: Inner tooth nerve
-  - Source: Wikidata (http://www.wikidata.org/entity/Q54943809)
-- [ ] Chemically induced disorders result from exposure to harmful chemicals.
-  - Question: What causes chemically induced disorders?
-  - Answer: Chemical exposure
-  - Source: Wikidata (http://www.wikidata.org/entity/Q54930906)
+- [ ] Spine trauma involves injuries to the vertebral column.
+  - Question: What does spine trauma affect?
+  - Answer: The vertebral column
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3997975)
+- [ ] A fracture dislocation combines a broken bone with a dislocated joint.
+  - Question: What two injuries occur in fracture dislocation?
+  - Answer: Fracture and dislocation
+  - Source: Wikidata (http://www.wikidata.org/entity/Q54930822)
+- [ ] Severe acute malnutrition is a life-threatening lack of nutrition in children.
+  - Question: Who does severe acute malnutrition mainly affect?
+  - Answer: Children
+  - Source: Wikidata (http://www.wikidata.org/entity/Q54972217)
 
 ## mythology_folklore
-- [ ] Serpopard is a mythical animal known from ancient Egyptian and Mesopotamian art.
-  - Question: What is Serpopard in mythology?
-  - Answer: mythical animal known from ancient
-  - Source: Wikidata (http://www.wikidata.org/entity/Q499356)
-- [ ] Mothman is a legendary creature based around West Virginia, United States.
-  - Question: What kind of creature is Mothman?
-  - Answer: legendary creature based around
-  - Source: Wikidata (http://www.wikidata.org/entity/Q746248)
-- [ ] táltos is a shamanistic figure in Hungarian mythology.
-  - Question: What is táltos in mythology?
-  - Answer: shamanistic figure in Hungarian
-  - Source: Wikidata (http://www.wikidata.org/entity/Q510798)
-- [ ] Death is a stock character in the danse macabre medieval tradition.
-  - Question: What medieval tradition features Death as a main character?
-  - Answer: Danse macabre
-  - Source: Wikidata (http://www.wikidata.org/entity/Q161936)
-- [ ] wyvern is a legendary winged creature with a dragon's head.
-  - Question: What kind of creature is wyvern?
-  - Answer: legendary winged creature with a
-  - Source: Wikidata (http://www.wikidata.org/entity/Q862809)
-- [ ] Taotie is a legendary voracious beast motif.
-  - Question: What is Taotie in mythology?
-  - Answer: legendary voracious beast motif
-  - Source: Wikidata (http://www.wikidata.org/entity/Q758058)
-- [ ] Am Fear Liath Mòr is a Purported Scottish mountain phenomenon.
-  - Question: What is Am Fear Liath Mòr in mythology?
-  - Answer: Purported Scottish mountain
-  - Source: Wikidata (http://www.wikidata.org/entity/Q911979)
-- [ ] The Loch Ness Monster is a legendary creature from Scottish folklore inhabiting Loch Ness.
-  - Question: What is the Loch Ness Monster from?
-  - Answer: Scottish folklore
-  - Source: Wikidata (http://www.wikidata.org/entity/Q49658)
-- [ ] hippocamp is a mythological creature in Phoenician and Greek mythology.
-  - Question: What kind of creature is hippocamp?
-  - Answer: mythological creature in
-  - Source: Wikidata (http://www.wikidata.org/entity/Q816795)
-- [ ] Pishtaco is a andean mythological figure.
-  - Question: What is Pishtaco in mythology?
-  - Answer: andean mythological figure
-  - Source: Wikidata (http://www.wikidata.org/entity/Q607347)
-- [ ] lindworm is a dragon or serpent monster in Nordic mythology.
-  - Question: What kind of creature is lindworm?
-  - Answer: dragon or serpent monster in
-  - Source: Wikidata (http://www.wikidata.org/entity/Q287065)
-- [ ] Barong is a lion-like mythical creature in Javanese and Balinese mythology.
-  - Question: What is Barong in Indonesian mythology?
-  - Answer: Lion-like creature
-  - Source: Wikidata (http://www.wikidata.org/entity/Q204753)
-- [ ] Kubikajiri is a Japanese yokai that bites off human heads from behind.
-  - Question: What does Kubikajiri, a Japanese yokai, do?
-  - Answer: Bites off heads
-  - Source: Wikidata (http://www.wikidata.org/entity/Q133368)
-- [ ] Denglong is a Chinese legendary creature.
-  - Question: What kind of creature is Denglong?
-  - Answer: Chinese legendary creature
-  - Source: Wikidata (http://www.wikidata.org/entity/Q758067)
-- [ ] Uraeus is a stylized, upright form of an Egyptian cobra used as a symbol of sovereignty, royalty, deity and.
-  - Question: What type of deity is Uraeus?
-  - Answer: stylized
-  - Source: Wikidata (http://www.wikidata.org/entity/Q756990)
-- [ ] Erymanthian Boar is a mythological boar.
-  - Question: What is Erymanthian Boar in mythology?
-  - Answer: mythological boar
-  - Source: Wikidata (http://www.wikidata.org/entity/Q334456)
+- [ ] Odontotyrannos is a legendary creature appearing in stories of Alexander the Great.
+  - Question: What kind of creature is Odontotyrannos?
+  - Answer: legendary creature appearing in
+  - Source: Wikidata (http://www.wikidata.org/entity/Q684955)
+- [ ] Adne Sadeh is a humanoid creature from Jewish folklore traditions.
+  - Question: What is Adne Sadeh in Jewish folklore?
+  - Answer: Humanoid creature
+  - Source: Wikidata (http://www.wikidata.org/entity/Q252853)
+- [ ] Myrmecoleon is a fantastical animal, hybrid of an ant and a lion..
+  - Question: What is Myrmecoleon in mythology?
+  - Answer: fantastical animal
+  - Source: Wikidata (http://www.wikidata.org/entity/Q374234)
 - [ ] Lady Midday is a Slavic mythological creature, personification of sunstroke.
   - Question: What kind of creature is Lady Midday?
   - Answer: Slavic mythological creature
   - Source: Wikidata (http://www.wikidata.org/entity/Q160010)
-- [ ] Curupira is a mythological forest guardian creature from Brazilian folklore.
-  - Question: What is Curupira in Brazilian mythology?
-  - Answer: Forest guardian creature
-  - Source: Wikidata (http://www.wikidata.org/entity/Q38419)
-- [ ] Taowu is a mythical creature in Chinese mythology.
-  - Question: What kind of creature is Taowu?
-  - Answer: mythical creature in Chinese
-  - Source: Wikidata (http://www.wikidata.org/entity/Q873665)
-- [ ] Azrael is a angel in some Abrahamic religions; often identified with the angel of death.
-  - Question: What role does Azrael have in religion?
-  - Answer: angel in some Abrahamic religions
-  - Source: Wikidata (http://www.wikidata.org/entity/Q490838)
+- [ ] Moon rabbit is a mythical creature in Asian folklore who lives on the Moon.
+  - Question: What kind of creature is Moon rabbit?
+  - Answer: mythical creature in Asian folklore
+  - Source: Wikidata (http://www.wikidata.org/entity/Q622761)
+- [ ] The Olgoi-Khorkhoi is a legendary cryptid from Mongolia's Gobi Desert.
+  - Question: What is the Olgoi-Khorkhoi?
+  - Answer: Mongolian death worm
+  - Source: Wikidata (http://www.wikidata.org/entity/Q272149)
+- [ ] Jersey Devil is a also known as the Leeds Devil, legendary creature said to inhabit southern New Jersey, USA.
+  - Question: What kind of creature is Jersey Devil?
+  - Answer: also known as the Leeds
+  - Source: Wikidata (http://www.wikidata.org/entity/Q668330)
+- [ ] Bahamut is a mythical creature.
+  - Question: What kind of creature is Bahamut?
+  - Answer: mythical creature
+  - Source: Wikidata (http://www.wikidata.org/entity/Q794547)
+- [ ] Aello is a one of the Harpy sisters in Greek mythology.
+  - Question: What is Aello in mythology?
+  - Answer: one of the Harpy sisters
+  - Source: Wikidata (http://www.wikidata.org/entity/Q380832)
+- [ ] The Chupacabra is a legendary cryptid first reported in Puerto Rico.
+  - Question: Where was the Chupacabra first reportedly sighted?
+  - Answer: Puerto Rico
+  - Source: Wikidata (http://www.wikidata.org/entity/Q183571)
+- [ ] Erymanthian Boar is a mythological boar.
+  - Question: What is Erymanthian Boar in mythology?
+  - Answer: mythological boar
+  - Source: Wikidata (http://www.wikidata.org/entity/Q334456)
+- [ ] Taotie is a legendary voracious beast motif.
+  - Question: What is Taotie in mythology?
+  - Answer: legendary voracious beast motif
+  - Source: Wikidata (http://www.wikidata.org/entity/Q758058)
+- [ ] ahuizotl is a Aztec mythological creature.
+  - Question: What kind of creature is ahuizotl?
+  - Answer: Aztec mythological creature
+  - Source: Wikidata (http://www.wikidata.org/entity/Q403017)
+- [ ] A Marid is a powerful rebellious jinn in Islamic mythology and folklore.
+  - Question: What is a Marid in Islamic mythology?
+  - Answer: Powerful rebellious jinn
+  - Source: Wikidata (http://www.wikidata.org/entity/Q212403)
+- [ ] Death is a stock character in the danse macabre medieval tradition.
+  - Question: What medieval tradition features Death as a main character?
+  - Answer: Danse macabre
+  - Source: Wikidata (http://www.wikidata.org/entity/Q161936)
+- [ ] Yazi is a mythical creature.
+  - Question: What kind of creature is Yazi?
+  - Answer: mythical creature
+  - Source: Wikidata (http://www.wikidata.org/entity/Q757960)
+- [ ] Behemoth is a biblical creature.
+  - Question: What kind of creature is Behemoth?
+  - Answer: biblical creature
+  - Source: Wikidata (http://www.wikidata.org/entity/Q378477)
+- [ ] bishop-fish is a mythical monster.
+  - Question: What kind of creature is bishop-fish?
+  - Answer: mythical monster
+  - Source: Wikidata (http://www.wikidata.org/entity/Q771046)
+- [ ] Bahkauv is a fearsome monster from Slavic mythology and folklore traditions.
+  - Question: What type of creature is Bahkauv in Slavic mythology?
+  - Answer: Monster
+  - Source: Wikidata (http://www.wikidata.org/entity/Q151761)
+- [ ] Serpopard is a mythical animal known from ancient Egyptian and Mesopotamian art.
+  - Question: What is Serpopard in mythology?
+  - Answer: mythical animal known from ancient
+  - Source: Wikidata (http://www.wikidata.org/entity/Q499356)
 
 ## natural_sciences
-- [ ] Woodfree paper is made from lignin-free wood pulp for durability.
-  - Question: What is removed from woodfree paper pulp?
-  - Answer: Lignin
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1625488)
-- [ ] Aluminium is a silvery metal with symbol Al and atomic number 13.
-  - Question: What is aluminium's atomic number?
-  - Answer: 13
-  - Source: Wikidata (http://www.wikidata.org/entity/Q663)
+- [ ] Wallpaper is a decorative material applied to interior walls.
+  - Question: Where is wallpaper typically applied?
+  - Answer: Interior walls
+  - Source: Wikidata (http://www.wikidata.org/entity/Q191529)
+- [ ] Bambuseae is a tribe of bamboo plants in the Bambusoideae subfamily.
+  - Question: What taxonomic rank is Bambuseae?
+  - Answer: Tribe
+  - Source: Wikidata (http://www.wikidata.org/entity/Q35922)
+- [ ] Paper is a thin flexible material mainly used for writing and printing.
+  - Question: What plant fiber is paper mostly made from?
+  - Answer: Wood pulp
+  - Source: Wikidata (http://www.wikidata.org/entity/Q11472)
 - [ ] Sawali is a woven bamboo material used in Filipino nipa huts.
   - Question: What is sawali woven from?
   - Answer: Bamboo
   - Source: Wikidata (http://www.wikidata.org/entity/Q7428560)
-- [ ] Blasfilm is a German term for a type of plastic material.
-  - Question: What does Blasfilm refer to?
-  - Answer: Plastic material
-  - Source: Wikidata (http://www.wikidata.org/entity/Q881868)
-- [ ] Cross-linked polyethylene is a strong polymer used in pipes and cables.
-  - Question: What type of material is cross-linked polyethylene?
-  - Answer: Polymer
-  - Source: Wikidata (http://www.wikidata.org/entity/Q2666962)
-- [ ] Felbel is a velvety textile used in traditional crafts.
-  - Question: What texture describes felbel textile?
-  - Answer: Velvety
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1402193)
-- [ ] Lime mortar is a traditional building material made from limestone and sand.
-  - Question: What is lime mortar primarily used for?
-  - Answer: Building material
-  - Source: Wikidata (http://www.wikidata.org/entity/Q911999)
-- [ ] Horsehair is long, coarse hair from horse manes and tails.
-  - Question: What is horsehair?
-  - Answer: Hair from manes and tails
-  - Source: Wikidata (http://www.wikidata.org/entity/Q964736)
-- [ ] Vanadium is a hard transition metal with symbol V and atomic number 23.
-  - Question: What is vanadium's chemical symbol?
-  - Answer: V
-  - Source: Wikidata (http://www.wikidata.org/entity/Q722)
-- [ ] Angelica archangelica is a medicinal herb used in traditional remedies.
-  - Question: What type of plant is Angelica archangelica?
-  - Answer: Medicinal herb
-  - Source: Wikidata (http://www.wikidata.org/entity/Q207745)
-- [ ] Glass is an amorphous solid without a regular crystal structure.
-  - Question: What type of solid structure is glass?
-  - Answer: Amorphous
-  - Source: Wikidata (http://www.wikidata.org/entity/Q11469)
-- [ ] Lincrusta is a wall covering made from wood and linseed oil.
-  - Question: What oil is used to make Lincrusta?
-  - Answer: Linseed oil
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1747762)
-- [ ] Corrugated fiberboard has a fluted sheet between flat linerboards.
-  - Question: What shape is inside corrugated fiberboard?
-  - Answer: Fluted waves
-  - Source: Wikidata (http://www.wikidata.org/entity/Q7463524)
-- [ ] Stoneware is a vitreous ceramic made from stoneware or fire clay.
-  - Question: What material is stoneware primarily made from?
-  - Answer: Stoneware clay
-  - Source: Wikidata (http://www.wikidata.org/entity/Q830894)
-- [ ] Limestone is a sedimentary rock composed primarily of calcium carbonate.
-  - Question: What is limestone primarily made of?
-  - Answer: Calcium carbonate
-  - Source: Wikidata (http://www.wikidata.org/entity/Q23757)
-- [ ] Boron is a metalloid element with symbol B and atomic number 5.
-  - Question: Is boron a metal or metalloid?
-  - Answer: Metalloid
-  - Source: Wikidata (http://www.wikidata.org/entity/Q618)
+- [ ] Helium is a noble gas with atomic number 2 and symbol He.
+  - Question: What type of gas is helium?
+  - Answer: Noble gas
+  - Source: Wikidata (http://www.wikidata.org/entity/Q560)
+- [ ] Aluminium is a silvery metal with symbol Al and atomic number 13.
+  - Question: What is aluminium's atomic number?
+  - Answer: 13
+  - Source: Wikidata (http://www.wikidata.org/entity/Q663)
+- [ ] Beryllium is a lightweight element with symbol Be and atomic number 4.
+  - Question: What is beryllium's chemical symbol?
+  - Answer: Be
+  - Source: Wikidata (http://www.wikidata.org/entity/Q569)
+- [ ] Tool steel is carbon and alloy steel designed for manufacturing cutting tools.
+  - Question: What is tool steel primarily used for?
+  - Answer: Making cutting tools
+  - Source: Wikidata (http://www.wikidata.org/entity/Q537460)
 - [ ] Phosphogypsum is calcium sulfate hydrate formed during phosphate fertilizer production.
   - Question: What is phosphogypsum primarily composed of?
   - Answer: Calcium sulfate hydrate
   - Source: Wikidata (http://www.wikidata.org/entity/Q729386)
-- [ ] Copper-based alloys contain copper as their principal metal component.
-  - Question: What metal is principal in copper-based alloys?
-  - Answer: Copper
-  - Source: Wikidata (http://www.wikidata.org/entity/Q518350)
-- [ ] Catgut is a cord made from refined sheep intestines.
-  - Question: What animal provides catgut material?
-  - Answer: Sheep
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1147086)
-- [ ] Dross is impurities that form on molten metal surfaces.
-  - Question: What is dross in metalworking?
-  - Answer: Impurities in molten metal
-  - Source: Wikidata (http://www.wikidata.org/entity/Q837336)
+- [ ] Stoneware is a vitreous ceramic made from stoneware or fire clay.
+  - Question: What material is stoneware primarily made from?
+  - Answer: Stoneware clay
+  - Source: Wikidata (http://www.wikidata.org/entity/Q830894)
+- [ ] Reinforcement strengthens concrete by resisting tensile forces and cracks.
+  - Question: What does reinforcement do in concrete?
+  - Answer: Resists tensile forces
+  - Source: Wikidata (http://www.wikidata.org/entity/Q852520)
+- [ ] Glass is an amorphous solid without a regular crystal structure.
+  - Question: What type of solid structure is glass?
+  - Answer: Amorphous
+  - Source: Wikidata (http://www.wikidata.org/entity/Q11469)
+- [ ] Cellulose acetate is a compound derived from plant cellulose.
+  - Question: What natural material is cellulose acetate from?
+  - Answer: Plant cellulose
+  - Source: Wikidata (http://www.wikidata.org/entity/Q124686)
+- [ ] Lime mortar is a traditional building material made from limestone and sand.
+  - Question: What is lime mortar primarily used for?
+  - Answer: Building material
+  - Source: Wikidata (http://www.wikidata.org/entity/Q911999)
+- [ ] Hard-paste porcelain is a durable ceramic fired at very high temperatures.
+  - Question: What type of material is hard-paste porcelain?
+  - Answer: Ceramic
+  - Source: Wikidata (http://www.wikidata.org/entity/Q1587663)
+- [ ] Leather is created by tanning animal rawhide and skin.
+  - Question: What process creates leather from hides?
+  - Answer: Tanning
+  - Source: Wikidata (http://www.wikidata.org/entity/Q286)
+- [ ] Petroleum seeps are natural locations where hydrocarbons escape from underground.
+  - Question: What is a petroleum seep?
+  - Answer: Natural hydrocarbon escape
+  - Source: Wikidata (http://www.wikidata.org/entity/Q782491)
+- [ ] Niello is a black mixture of copper, silver, and lead sulphides.
+  - Question: What color is the metalwork inlay niello?
+  - Answer: Black
+  - Source: Wikidata (http://www.wikidata.org/entity/Q1164661)
+- [ ] Woodfree paper is made from lignin-free wood pulp for durability.
+  - Question: What is removed from woodfree paper pulp?
+  - Answer: Lignin
+  - Source: Wikidata (http://www.wikidata.org/entity/Q1625488)
+- [ ] Cross-linked polyethylene is a strong polymer used in pipes and cables.
+  - Question: What type of material is cross-linked polyethylene?
+  - Answer: Polymer
+  - Source: Wikidata (http://www.wikidata.org/entity/Q2666962)
 
-## space_astronomy
-- [ ] Prognoz 2 detected cosmic gamma-ray bursts and solar flare events.
-  - Question: What cosmic events did Prognoz 2 detect?
-  - Answer: Gamma-ray bursts
-  - Source: Wikidata (http://www.wikidata.org/entity/Q113148214)
-- [ ] A-103 was a Soviet test mission exploring spacecraft systems.
-  - Question: What was the purpose of A-103?
-  - Answer: Soviet test mission
-  - Source: Wikidata (http://www.wikidata.org/entity/Q277734)
-- [ ] Soyuz GVK was a planned Russian reusable cargo spacecraft.
-  - Question: What made Soyuz GVK unusual for a cargo craft?
-  - Answer: It was reusable
-  - Source: Wikidata (http://www.wikidata.org/entity/Q60767924)
-- [ ] Camilla is a proposed NASA New Frontiers mission concept.
-  - Question: Which NASA program was Camilla proposed under?
-  - Answer: New Frontiers program
-  - Source: Wikidata (http://www.wikidata.org/entity/Q105882815)
-- [ ] Progress M1-11 was an unmanned spacecraft that resupplied the International Space Station.
-  - Question: What was the main purpose of Progress M1-11?
-  - Answer: Resupply the ISS
-  - Source: Wikidata (http://www.wikidata.org/entity/Q4379860)
-- [ ] GECAM monitors the entire sky for gamma-ray flashes from gravitational waves.
-  - Question: What does GECAM search for in the sky?
-  - Answer: Gamma-ray bursts
-  - Source: Wikidata (http://www.wikidata.org/entity/Q111945201)
-- [ ] NEOMIR is a proposed European space telescope to detect dangerous asteroids.
-  - Question: What is NEOMIR designed to detect?
-  - Answer: Dangerous asteroids
-  - Source: Wikidata (http://www.wikidata.org/entity/Q131669794)
-- [ ] Vanguard SLV-1 was America's first failed satellite launch attempt in 1957.
-  - Question: What was Vanguard SLV-1's primary outcome?
-  - Answer: Failed launch
-  - Source: Wikidata (http://www.wikidata.org/entity/Q4055345)
-- [ ] Satellite 1971-054A tested an infrared sensor system for mapping stars.
-  - Question: What technology did satellite 1971-054A test?
-  - Answer: Infrared star mapping
-  - Source: Wikidata (http://www.wikidata.org/entity/Q112795279)
-- [ ] Astromag Free-Flyer measured high-energy cosmic ray nuclei with extreme precision.
-  - Question: What did Astromag Free-Flyer measure?
-  - Answer: Cosmic ray nuclei
-  - Source: Wikidata (http://www.wikidata.org/entity/Q112812069)
-- [ ] Vela 5B was a polyhedral satellite designed to detect nuclear tests in space.
-  - Question: What was the Vela 5B satellite designed to detect?
-  - Answer: Nuclear tests in space
-  - Source: Wikidata (http://www.wikidata.org/entity/Q111859446)
+## production-facts
+- [ ] Temple of Faunus is a temple located in Rome, dedicated to Faunus.
+  - Question: Where is Temple of Faunus located?
+  - Answer: Rome, dedicated to Faunus
+  - Source: Wikidata (http://www.wikidata.org/entity/Q745552)
+- [ ] The Battle of Ölper took place in 1761 near Ölper.
+  - Question: When did the Battle of Ölper occur?
+  - Answer: 1761
+  - Source: Wikidata (http://www.wikidata.org/entity/Q74122)
+- [ ] Gabinet de les Arts Gràfiques is a building established in 1942.
+  - Question: When was Gabinet de les Arts Gràfiques established?
+  - Answer: 1942
+  - Source: Wikidata (http://www.wikidata.org/entity/Q284916)
+- [ ] The Eurasian Bullfinch (Pyrrhula pyrrhula) is classified as Least Concern.
+  - Question: What type of animal is the Eurasian Bullfinch?
+  - Answer: Bird
+  - Source: Wikidata (http://www.wikidata.org/entity/Q25382)
+- [ ] The Temple of Isis stands in Benevento, Italy as a Roman religious monument.
+  - Question: Where is the Temple of Isis located?
+  - Answer: Benevento, Italy
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3517526)
+- [ ] Temple of Apollo Grannus is a archaeological site located in Bavaria.
+  - Question: Where is Temple of Apollo Grannus located?
+  - Answer: Bavaria
+  - Source: Wikidata (http://www.wikidata.org/entity/Q618934)
+- [ ] Temple of Saturn is a temple located in what is now Rome, Italy, at the foot of the Capitoline Hill.
+  - Question: Where is Temple of Saturn located?
+  - Answer: what is now Rome, Italy,
+  - Source: Wikidata (http://www.wikidata.org/entity/Q746721)
+- [ ] A-101 was an early German rocket test flight program.
+  - Question: What was A-101 in rocket history?
+  - Answer: German test flight
+  - Source: Wikidata (http://www.wikidata.org/entity/Q277719)
+- [ ] Manananggal is a Vampire-like creature from Filipino folklore.
+  - Question: What kind of creature is Manananggal?
+  - Answer: Vampire-like creature from
+  - Source: Wikidata (http://www.wikidata.org/entity/Q634637)
+- [ ] The Battle of Našice occurred in November 1944 during World War II.
+  - Question: When did the Battle of Našice take place?
+  - Answer: November 1944
+  - Source: Wikidata (http://www.wikidata.org/entity/Q25801)
+- [ ] A-001 was Apollo's second abort test of the spacecraft system.
+  - Question: What was the A-001 mission in Apollo?
+  - Answer: Second abort test
+  - Source: Wikidata (http://www.wikidata.org/entity/Q1364515)
+- [ ] Lunar Cruiser is a pressurized Moon rover designed by Toyota.
+  - Question: Which car company designed the Lunar Cruiser?
+  - Answer: Toyota
+  - Source: Wikidata (http://www.wikidata.org/entity/Q99076662)
+- [ ] The Parascyllium ferrugineum (Parascyllium ferrugineum) is classified as Least Concern.
+  - Question: What type of animal is the Parascyllium ferrugineum?
+  - Answer: Carpetshark of the family parascyll
+  - Source: Wikidata (http://www.wikidata.org/entity/Q31857)
+- [ ] Rubrication is the use of red letters for emphasis in manuscripts.
+  - Question: What color defines rubrication in manuscripts?
+  - Answer: Red
+  - Source: Wikidata (http://www.wikidata.org/entity/Q1365156)
+- [ ] Giant forest genets are small carnivorous mammals found in African forests.
+  - Question: What is a giant forest genet?
+  - Answer: Small African carnivore
+  - Source: Wikidata (http://www.wikidata.org/entity/Q41133)
 - [ ] Vanguard SLV-3 was an unsuccessful rocket launch attempt in space exploration history.
   - Question: What was Vanguard SLV-3?
   - Answer: Failed rocket launch
   - Source: Wikidata (http://www.wikidata.org/entity/Q4055348)
-- [ ] SSLV-D1 was India's first Small Satellite Launch Vehicle flight.
-  - Question: What was SSLV-D1 for India?
-  - Answer: First small rocket launch
-  - Source: Wikidata (http://www.wikidata.org/entity/Q113461312)
-- [ ] Mars 2 Lander was the first human-made object to reach Mars's surface.
-  - Question: What was Mars 2 Lander the first to do?
-  - Answer: Reach Mars surface
-  - Source: Wikidata (http://www.wikidata.org/entity/Q112960233)
-- [ ] Europa Lander is a proposed NASA mission to land on Jupiter's icy moon.
-  - Question: Where would the Europa Lander touch down?
-  - Answer: Jupiter's moon Europa
-  - Source: Wikidata (http://www.wikidata.org/entity/Q29419489)
-- [ ] A-105 was the final boilerplate test of an Apollo spacecraft.
-  - Question: What was A-105 in Apollo program history?
-  - Answer: Final boilerplate test
-  - Source: Wikidata (http://www.wikidata.org/entity/Q277747)
+- [ ] A Marid is a powerful rebellious jinn in Islamic mythology and folklore.
+  - Question: What is a Marid in Islamic mythology?
+  - Answer: Powerful rebellious jinn
+  - Source: Wikidata (http://www.wikidata.org/entity/Q212403)
+- [ ] The Battle of Jarama was a Spanish Civil War engagement in February 1937 near Madrid.
+  - Question: When did the Battle of Jarama occur?
+  - Answer: February 1937
+  - Source: Wikidata (http://www.wikidata.org/entity/Q3956)
+- [ ] Guang Ming Temple is a Buddhist temple in Orlando, Florida established in 2007.
+  - Question: When was Guang Ming Temple in Orlando founded?
+  - Answer: 2007
+  - Source: Wikidata (http://www.wikidata.org/entity/Q2914182)
+- [ ] POLR2MP1 is a pseudogene found in human DNA.
+  - Question: What is POLR2MP1 in humans?
+  - Answer: Pseudogene
+  - Source: Wikidata (http://www.wikidata.org/entity/Q5514469)
+
+## space_astronomy
+- [ ] HERACLES is a joint ESA-JAXA-CSA robotic lunar landing mission.
+  - Question: Which agencies plan the HERACLES mission?
+  - Answer: ESA, JAXA, and CSA
+  - Source: Wikidata (http://www.wikidata.org/entity/Q85765162)
+- [ ] Progress M1-11 was an unmanned spacecraft that resupplied the International Space Station.
+  - Question: What was the main purpose of Progress M1-11?
+  - Answer: Resupply the ISS
+  - Source: Wikidata (http://www.wikidata.org/entity/Q4379860)
+- [ ] CORSA was Japan's cosmic radiation satellite that failed to reach orbit.
+  - Question: What happened to Japan's CORSA satellite?
+  - Answer: Failed to reach orbit
+  - Source: Wikidata (http://www.wikidata.org/entity/Q112816849)
+- [ ] A-103 was a Soviet test mission exploring spacecraft systems.
+  - Question: What was the purpose of A-103?
+  - Answer: Soviet test mission
+  - Source: Wikidata (http://www.wikidata.org/entity/Q277734)
+- [ ] Mengtian is a laboratory module of China's Tiangong space station.
+  - Question: Which space station includes the Mengtian module?
+  - Answer: Tiangong
+  - Source: Wikidata (http://www.wikidata.org/entity/Q28671166)
+- [ ] GECAM monitors the entire sky for gamma-ray flashes from gravitational waves.
+  - Question: What does GECAM search for in the sky?
+  - Answer: Gamma-ray bursts
+  - Source: Wikidata (http://www.wikidata.org/entity/Q111945201)
+- [ ] The US Deorbit Vehicle will safely guide the ISS back to Earth.
+  - Question: What is the US Deorbit Vehicle's purpose?
+  - Answer: Guide ISS to Earth
+  - Source: Wikidata (http://www.wikidata.org/entity/Q126953049)
+- [ ] OMOTENASHI was a tiny CubeSat designed to semi-hard land on the Moon.
+  - Question: What was OMOTENASHI designed to do?
+  - Answer: Land a CubeSat on Moon
+  - Source: Wikidata (http://www.wikidata.org/entity/Q48799723)
+- [ ] P-21A collected nighttime ionosphere data to improve space communications.
+  - Question: Why did P-21A study the nighttime ionosphere?
+  - Answer: Improve space communications
+  - Source: Wikidata (http://www.wikidata.org/entity/Q113275193)
+- [ ] Owl 1 measured auroral light from oxygen, nitrogen, and hydrogen emissions.
+  - Question: What natural phenomenon did Owl 1 measure?
+  - Answer: Aurora light intensity
+  - Source: Wikidata (http://www.wikidata.org/entity/Q113275164)
+- [ ] Luna 24 was the last Soviet mission to return lunar soil samples.
+  - Question: What did Luna 24 bring back from the Moon?
+  - Answer: Lunar soil samples
+  - Source: Wikidata (http://www.wikidata.org/entity/Q112960050)
+- [ ] SPARTAN 201-04 was a free-flying solar observatory deployed from the Space Shuttle.
+  - Question: How was SPARTAN 201-04 deployed in space?
+  - Answer: From the Space Shuttle
+  - Source: Wikidata (http://www.wikidata.org/entity/Q111858478)
 - [ ] Spartan-C surveyed star fields and captured ultraviolet images of nebulae.
   - Question: What type of light did Spartan-C use to image nebulae?
   - Answer: Ultraviolet light
   - Source: Wikidata (http://www.wikidata.org/entity/Q113149343)
-- [ ] Lunar Pathfinder will provide communication relay service around the Moon.
-  - Question: What will Lunar Pathfinder provide at the Moon?
-  - Answer: Communication relay
-  - Source: Wikidata (http://www.wikidata.org/entity/Q125576163)
-- [ ] Saturn SA-1 was NASA's first uncrewed Apollo test flight in 1961.
-  - Question: What was Saturn SA-1's purpose in NASA's Apollo program?
-  - Answer: First uncrewed test flight
-  - Source: Wikidata (http://www.wikidata.org/entity/Q1071068)
-- [ ] San Marco-D/L was Italy's atmospheric research satellite.
-  - Question: Which country built the San Marco-D/L satellite?
-  - Answer: Italy
-  - Source: Wikidata (http://www.wikidata.org/entity/Q16325274)
+- [ ] STS/STORE tested components for Gravity Probe-B to verify Einstein's relativity.
+  - Question: Whose theory did Gravity Probe-B aim to test?
+  - Answer: Einstein's relativity
+  - Source: Wikidata (http://www.wikidata.org/entity/Q112943590)
+- [ ] ISEE-1 was a space probe studying magnetic fields near Earth.
+  - Question: What did the ISEE-1 probe study near Earth?
+  - Answer: Magnetic fields
+  - Source: Wikidata (http://www.wikidata.org/entity/Q16063700)
+- [ ] Multi-slit Solar Explorer will observe the Sun through multiple spectral slits.
+  - Question: What does Multi-slit Solar Explorer observe?
+  - Answer: The Sun
+  - Source: Wikidata (http://www.wikidata.org/entity/Q131191723)
+- [ ] Apollo 10's S-IVB third stage had a 10-meter bottom diameter.
+  - Question: What was the bottom diameter of Saturn V's S-IVB?
+  - Answer: About 10 meters
+  - Source: Wikidata (http://www.wikidata.org/entity/Q111860822)
+- [ ] Scientists planned to launch an artificial comet into space in the 1960s.
+  - Question: What unusual object was planned for space launch in 1963?
+  - Answer: An artificial comet
+  - Source: Wikidata (http://www.wikidata.org/entity/Q112958593)
+- [ ] Falcon Heavy's maiden flight launched a Tesla car into solar orbit.
+  - Question: What did Falcon Heavy launch on its maiden flight?
+  - Answer: A Tesla car
+  - Source: Wikidata (http://www.wikidata.org/entity/Q42710118)
+- [ ] LightShip is a planned European space tug for Mars missions.
+  - Question: What planet will LightShip support missions to?
+  - Answer: Mars
+  - Source: Wikidata (http://www.wikidata.org/entity/Q136085368)
 

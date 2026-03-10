@@ -561,8 +561,10 @@ Players can quit mid-run and resume later. Only ONE active run save at a time. S
 - When app goes to background
 
 **Resume flow:**
-- On app startup, if an active run save exists, the Hub shows a "Run in progress" banner with Resume/Abandon buttons
+- On app startup, if an active run save exists, the Hub shows a "Run in progress" banner with Continue/Abandon buttons
+- Continue/Abandon buttons appear **reactively** when navigating back to Hub mid-run (no page refresh needed)
 - Resume restores full run state (floor, HP, deck, pool, relics, screen position)
+- **Abandon confirmation modal**: Tapping Abandon shows a popup with run progress (current floor, gold earned, encounters won, facts answered correctly) and asks "Are you sure?" before abandoning. This prevents accidental loss of run progress.
 - Abandon clears the save; FSRS progress is kept but run rewards are lost
 
 **Save cleared on:** run end (victory, defeat, retreat, abandon)
@@ -673,7 +675,7 @@ Strategic depth: play easy facts first to build combo (metacognitive awareness o
 | standard | Timed Mode | Dynamic (floor + question length) | Fizzle (costs 1 AP) | Normal | 1.00x |
 | scholar | Expert Mode | -2s per tier, Tier 2 = free recall | Fizzle + 3 self-dmg | +20% | 1.20x |
 
-**Story Mode forced for new players:** Run 1 automatically uses Story Mode (controlled by `STORY_MODE_FORCED_RUNS` in `balance.ts`). This ensures new players experience the game without timer pressure during their introduction. Difficulty selection in Settings is locked during this period. After 1 completed run, all modes unlock.
+**Story Mode forced for new players:** Run 1 automatically uses Story Mode (controlled by `STORY_MODE_FORCED_RUNS` in `balance.ts`). This ensures new players experience the game without timer pressure during their introduction. Difficulty selection in Settings is locked during this period. After 1 completed run, all modes unlock. A startup reset clears any stuck explorer mode values from localStorage to ensure timers properly activate in Timed and Expert modes after the forced-explorer period ends.
 
 **Difficulty unlock popup:** When the player completes their first run (`runsCompleted === 1`), the RunEndScreen displays a modal popup after a 1.5-second delay. The popup congratulates the player, explains the three difficulty modes (Story / Timed / Expert), and lets them choose. Timed Mode is pre-selected and marked as "Recommended". The selection is saved to `difficultyMode` in `cardPreferences.ts`. Players can always change their difficulty later in Settings.
 
@@ -898,9 +900,20 @@ Research: 94% of smartphone users hold vertically. 49% one-hand, 75% thumb-drive
 
 ### Enemy Intent Display
 
-STS-style intent badge shown in combat overlay (center, between AP and bounty strips). Shows icon + value:
-- ⚔️ Attack, ⚔️× Multi-attack, 🛡️ Defend, 💪 Buff, ☠️ Debuff, 💚 Heal
-- Attack intents have red border highlight
+Color-coded intent panel shown in combat overlay (center, between AP and bounty strips). Each intent type has a distinct background color for instant readability:
+
+| Intent | Background | Icon | Label |
+|--------|-----------|------|-------|
+| Attack | Red | ⚔️ | ATTACK |
+| Multi-attack | Red | ⚔️⚔️ | ATTACK |
+| Defend | Blue | 🛡️ | DEFEND |
+| Buff | Gold | 💪 | BUFF |
+| Debuff | Purple | 🔮 | DEBUFF |
+| Heal | Green | 💚 | HEAL |
+
+- **Primary label**: Telegraph text (e.g., "Venom Bite", "Petrified Shield") — tells the player what move is coming
+- **Subtitle**: Intent type label (e.g., "DEBUFF", "ATTACK") — reinforces the category
+- **Value always shown**: Damage, block, or effect amount displayed alongside the intent
 - Hidden during quiz (committed stage) to reduce visual noise
 - Data sourced from `turnState.enemy.nextIntent` (pre-rolled by enemyManager)
 
@@ -1283,6 +1296,20 @@ FSRS replaced SM-2 as Anki default 2023. Tracks Difficulty (1-10), Stability (da
 | FSRS review queue | 30% (~36 facts, only from previously engaged domains) |
 
 Players never see facts from domains they haven't opted into.
+
+### Question Variety — Reducing Repetition
+
+Two systems work together to ensure players don't see the same facts repeatedly across runs:
+
+**Weighted review shuffle:** Instead of strict `nextReviewAt` sorting (which always surfaces the same overdue facts first), review facts are selected using urgency-based weights:
+- Overdue (past due date): 3x weight — strongly favored but not guaranteed
+- Due within 24h: 2x weight
+- Due within 7d: 1x weight
+- Not yet due: 0.3x weight
+
+This preserves FSRS integrity (overdue cards are still strongly prioritized) while introducing enough randomness that the opening hand of each run feels fresh.
+
+**Recently-played deprioritization:** The last 2 runs' fact IDs are stored in localStorage. When building the domain portion of the run pool (~70% of total), facts seen in recent runs are deprioritized. Review cards (FSRS queue, ~30% of pool) are NOT affected — FSRS scheduling always takes priority for spaced repetition correctness.
 
 ### Stratified Difficulty Sampling
 

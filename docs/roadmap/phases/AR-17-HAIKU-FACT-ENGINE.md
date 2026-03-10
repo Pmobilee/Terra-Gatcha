@@ -1,11 +1,13 @@
 # AR-17: Haiku Fact Engine
 
-Build the pipeline that transforms structured source data (JSON from Wikidata SPARQL, NASA APIs, etc.) into game-ready Fact schema JSON using Claude Haiku API.
+Build the worker-first pipeline that transforms structured source data (JSON from Wikidata SPARQL, NASA APIs, etc.) into game-ready Fact schema JSON using external Claude subscription workers.
+
+> **Status Update (March 2026):** Local paid API generation paths were removed from this repo. This phase is executed via external worker sessions plus local ingest/QA/promote scripts.
 
 ## Overview
 
 ### Goal
-Establish an automated fact generation system using Claude Haiku to transform raw structured data from multiple sources (Wikidata, NASA, Wikipedia dumps, etc.) into complete game-playable Fact objects with quiz questions, variants, distractors, visual prompts, and metadata.
+Establish an automated fact generation system using external Claude workers to transform raw structured data from multiple sources (Wikidata, NASA, Wikipedia dumps, etc.) into complete game-playable Fact objects with quiz questions, variants, distractors, visual prompts, and metadata.
 
 ### Dependencies
 - **AR-15** (Source Data & Registry) — Fetch scripts must exist and produce structured JSON output in `data/raw/` directory
@@ -16,15 +18,17 @@ Establish an automated fact generation system using Claude Haiku to transform ra
 **Large** — involves API integration, batch processing, validation, and error handling. Estimated timeline: 2-3 weeks execution + testing.
 
 ### Requirements & Constraints
-- **Anthropic API key**: Must have access to `claude-haiku-4-5-20251001` model with sufficient credits
-- **Rate limiting**: Must respect API rate limits (compliance with Anthropic's free/paid tier constraints)
-- **Cost tracking**: Log all token usage; estimated total cost for generating 100K+ facts across 10 domains: ~$180
+- **Worker execution**: Runs are performed by external Claude subscription workers in isolated worktrees
+- **Rate limiting/budgeting**: Enforced via worker orchestration metadata, retry caps, and QA gates
+- **No local paid API requirement**: Repo scripts do not require paid LLM API keys for generation
 - **Offline capability**: Support dry-run and resume modes to enable iterative development without repeated API calls
 - **Schema validation**: All output must conform to the Fact schema defined in `src/data/types.ts`
 
 ---
 
 ## Sub-steps
+
+> Legacy note: API-client implementation details below are retained as historical reference. Active execution path is `content:workers:*` + manual-ingest/QA/promotion scripts.
 
 ### 1. Core Haiku API Integration Client
 

@@ -1,6 +1,8 @@
 # AR-18: Vocabulary Expansion
 
-Import and process vocabulary data for all 6 target languages from approved sources (JMdict, Wikidata lexemes, CEFR lists, Tatoeba).
+Import and process vocabulary data for all target languages from approved sources (JMdict, Wikidata lexemes, CEFR lists, Tatoeba, Anki extraction workflows).
+
+> **Status Update (March 2026):** Core import/enrichment/validation tooling is in place. Full corpus fill + themed visual-description regeneration remains an active content-art stream.
 
 ## Overview
 
@@ -9,9 +11,9 @@ Build a complete multi-language vocabulary system supporting 8 languages (Japane
 
 ### Dependencies
 - **AR-15** (Source Data & Registry) — Fetch scripts must be complete and producing JSON outputs
-- **AR-17** (Haiku Fact Engine) — Required for `vocab-to-facts.mjs` to generate quiz variants
+- **AR-17** (Worker Fact Engine) — Required for worker-run generation/rewrite paths and QA alignment
 - **AR-11 Part C** (Visual Description Pipeline) — Required for final visual description generation step
-- **Vocabulary sources**: All publicly available, no API keys required except for Haiku in final steps
+- **Vocabulary sources**: All publicly available, no local paid API keys required for import/validation scripts
 
 ### Estimated Complexity
 **Large** — involves data integration from multiple sources, cross-referencing level lists, and format conversion. Estimated timeline: 3-4 weeks.
@@ -19,6 +21,7 @@ Build a complete multi-language vocabulary system supporting 8 languages (Japane
 ### Requirements & Constraints
 - **Open Data Sources Only**: JMdict (EDRDG), Wikidata, Tatoeba, and public CEFR/HSK/TOPIK lists
 - **Copyright Attribution**: All sources must be credited in `sourceName` and `sourceUrl` fields
+- **Execution model**: Prefer worker-first enrichment/review; local scripts handle deterministic transforms, validation, and promotion gates
 - **Language Coverage**:
   - Japanese: Complete JLPT N1-N5 (estimated 20K+ words total)
   - Spanish: 5K+ words from Wikidata + frequency lists

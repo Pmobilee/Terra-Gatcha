@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-03-10T06:39:05.074Z",
+  "files": {
+    "animals_wildlife": 63,
+    "art_architecture": 62,
+    "food_cuisine": 63,
+    "general_knowledge": 140,
+    "geography": 50,
+    "history": 91,
+    "human_body_health": 63,
+    "mythology_folklore": 63,
+    "natural_sciences": 54,
+    "space_astronomy": 61
+  },
+  "totalFacts": 710,
+  "outputPath": "/root/terra-miner/data/generated/production-facts.jsonl"
+}

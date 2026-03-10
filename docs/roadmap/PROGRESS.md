@@ -16,12 +16,21 @@
 - AR-25 Push notifications: 4 notification types, quiet hours, priority scheduling, per-type settings toggles.
 - AR-26 All documentation updated to reflect AR-22-25 changes plus ascension mode design.
 
-**Next up:** Execute live AR-17/AR-19 production runs (API-backed generation + full-scale QA) and process deferred go-live tasks when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
+**Next up:** Continue worker-first AR-17/AR-19 production runs (external Claude subscription workers + full-scale QA gates) and process deferred go-live tasks only when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
 
 **Parallel workstreams (separate from core engineering):**
 - Visual descriptions regeneration (AR-11 Part C + AR-18 visual theming) is handled in a dedicated content-art stream.
 - ComfyUI image/cardback generation is handled in a dedicated art pipeline stream.
 - Core engineering continues independently on data pipelines, validation, gameplay logic, and DB migration tooling.
+
+---
+
+## Active Phases
+
+- **AR-11:** Content pipeline infrastructure is implemented; visual-description cleanup/regeneration remains in the separate art/content stream.
+- **AR-17:** Worker fact generation engine tooling is complete and in active worker execution.
+- **AR-18:** Vocabulary tooling/UI wiring is complete; full corpus generation and themed visuals remain in progress.
+- **AR-19:** QA/promotion tooling is complete; production-scale worker output review, visual descriptions, and ComfyUI art passes remain in progress.
 
 ---
 
@@ -77,9 +86,9 @@ GAME_DESIGN.md, ARCHITECTURE.md, PROGRESS.md updated with AR-22-25 changes and a
 
 ---
 
-## In Progress
+## Superseded / Archived
 
-### AR-07: Launch Readiness (2/6 done — being superseded by AR-13)
+### AR-07: Launch Readiness (superseded by AR-13)
 
 - [ ] ~~Capacitor build verification~~ → moved to AR-13
 - [x] **Accessibility baseline** — Colorblind support, 3 text sizes, high contrast, reduce motion, 48dp+ touch targets.
@@ -94,7 +103,7 @@ Note: AR-07 is being superseded by AR-13 which has a broader scope including web
 
 ---
 
-## Next Phases (Pre-Launch)
+## Pre-Launch History (Completed + Archived)
 
 ### AR-08: Hub Navigation & Feature Discovery
 **Surface all built-but-hidden features.** Create main hub/home screen with navigation to Start Run, Knowledge Library, Settings, Profile. Add streak display, last run summary widget, post-run share image generator. Wire up existing components that currently have no entry point.
@@ -325,7 +334,7 @@ Implementation status: **Tooling complete (March 10, 2026)**. Local paid API gen
 - [x] Language selection UI updates (support 6 languages in onboarding + settings)
 - [x] Audio placeholder system (TTS integration point for future)
 
-Depends on: AR-15 (source registry), AR-11 Part C (visual description pipeline). Estimated: Large. No API keys required for import scripts; Haiku API needed for visual descriptions.
+Depends on: AR-15 (source registry), AR-11 Part C (visual description pipeline). Estimated: Large. No local paid API keys required for import scripts; visual-description generation runs through external worker sessions.
 Implementation status: **Tooling and UI wiring in place (March 10, 2026)**. Full corpus generation/review remains pending. Visual-description generation for vocab packs remains in the separate art/content stream.
 → [Spec](phases/AR-18-VOCABULARY-EXPANSION.md)
 
@@ -463,15 +472,15 @@ Updated GAME_DESIGN.md, ARCHITECTURE.md, and PROGRESS.md to reflect all AR-22→
 ### AR-27: Card Tier-Up Celebration Animations
 **Visual reward feedback when cards level up during a run.** Short, satisfying animations play when a correct answer causes a card to advance tiers — blue (→Recall), green (→Deep Recall), purple/gold (→Mastered). Makes each correct answer feel like visible progress. Per-fact unique mastery animations generated as art assets in a later phase.
 
-- [ ] Detect tier-up after correct answer (compare tier before/after FSRS update)
-- [ ] Blue glow + rumble animation for Tier 1 → 2a transition
-- [ ] Green glow + sparkle animation for Tier 2a → 2b transition
-- [ ] Purple/gold glow animation for Tier 2b → 3 transition (integrates with Mastery Trial ceremony)
-- [ ] Insert ~600ms celebration phase into answer animation sequence (between reveal and mechanic)
-- [ ] Generic gold burst placeholder for per-fact mastery animation
+- [x] Detect tier-up after correct answer (compare tier before/after FSRS update)
+- [x] Blue glow + rumble animation for Tier 1 → 2a transition
+- [x] Green glow + sparkle animation for Tier 2a → 2b transition
+- [x] Purple/gold glow animation for Tier 2b → 3 transition (integrates with Mastery Trial ceremony)
+- [x] Insert ~600ms celebration phase into answer animation sequence (between reveal and mechanic)
+- [x] Generic gold burst placeholder for per-fact mastery animation
 - [ ] Per-fact unique mastery animations (art asset generation — future phase)
 
-Depends on: None (combat system is stable). Estimated: Medium.
+Depends on: None (combat system is stable). Estimated: Medium. **Status: Core implementation completed (March 10, 2026); unique per-fact art pass pending.**
 → Spec: TBD
 
 ### AR-28: Reward Altar (Loot Presentation Overhaul)
@@ -535,7 +544,7 @@ PRE-LAUNCH (parallel tracks):
   Track D: AR-12 ✓ (Auth) ───────────────────────────────→ AR-14
 
 CONTENT AT SCALE (parallel where possible):
-  AR-15 ✓ (Sources) ──┬── AR-17 (Haiku Engine) ──→ AR-19 (Bulk Gen & QA)
+  AR-15 ✓ (Sources) ──┬── AR-17 (Worker Engine) ──→ AR-19 (Bulk Gen & QA)
   AR-16 ✓ (Domains) ──┘                                ↑
   AR-18 (Vocab) ─────────────────────────────────────┘
 

@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-03-10T06:27:10.693Z",
+  "generatedAt": "2026-03-10T06:42:21.177Z",
   "dryRun": false,
   "includeGenerated": true,
   "includeSeed": true,
   "totals": {
-    "files": 26,
-    "scannedFacts": 2653,
+    "files": 27,
+    "scannedFacts": 3363,
     "patchedFacts": 0
   },
   "results": [
@@ -61,6 +61,12 @@
       "filePath": "data/generated/natural_sciences.jsonl",
       "kind": "jsonl",
       "scanned": 54,
+      "patched": 0
+    },
+    {
+      "filePath": "data/generated/production-facts.jsonl",
+      "kind": "jsonl",
+      "scanned": 710,
       "patched": 0
     },
     {

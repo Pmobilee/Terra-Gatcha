@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-03-10T06:42:21.717Z",
+  "checkedFiles": 11,
+  "totalFlagged": 2,
+  "flagged": [
+    {
+      "bucket": "art_architecture",
+      "id": "abbots-palace-oliwa-1756",
+      "reasons": [
+        "answer_collision_with_distractor"
+      ],
+      "quizQuestion": "When was Abbot's Palace in Oliwa built?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q252800"
+    },
+    {
+      "bucket": "production-facts",
+      "id": "abbots-palace-oliwa-1756",
+      "reasons": [
+        "answer_collision_with_distractor"
+      ],
+      "quizQuestion": "When was Abbot's Palace in Oliwa built?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q252800"
+    }
+  ]
+}
