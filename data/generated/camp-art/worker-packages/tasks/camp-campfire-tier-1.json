@@ -1,0 +1,11 @@
+{
+  "id": "camp-campfire-tier-1",
+  "kind": "element",
+  "element": "campfire",
+  "tier": 1,
+  "theme": "small ember fire with sparse stones",
+  "locationHint": "center foreground as main focal camp object",
+  "width": 256,
+  "height": 256,
+  "assetPath": "elements/campfire-tier-1"
+}

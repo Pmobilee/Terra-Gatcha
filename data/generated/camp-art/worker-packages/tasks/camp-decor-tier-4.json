@@ -1,0 +1,11 @@
+{
+  "id": "camp-decor-tier-4",
+  "kind": "element",
+  "element": "decor",
+  "tier": 4,
+  "theme": "heroic trophy post with banners, books, and relic trinkets",
+  "locationHint": "right edge near settings signpost and trophy area",
+  "width": 256,
+  "height": 256,
+  "assetPath": "elements/decor-tier-4"
+}

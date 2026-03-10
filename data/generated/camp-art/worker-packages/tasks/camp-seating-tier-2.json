@@ -1,0 +1,11 @@
+{
+  "id": "camp-seating-tier-2",
+  "kind": "element",
+  "element": "seating",
+  "tier": 2,
+  "theme": "sturdy wooden bench with carved legs",
+  "locationHint": "right side of camp scene near the workshop area",
+  "width": 256,
+  "height": 256,
+  "assetPath": "elements/seating-tier-2"
+}

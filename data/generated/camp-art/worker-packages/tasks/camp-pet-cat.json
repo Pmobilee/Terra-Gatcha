@@ -1,0 +1,10 @@
+{
+  "id": "camp-pet-cat",
+  "kind": "pet",
+  "pet": "cat",
+  "theme": "camp cat companion with alert stance",
+  "locationHint": "pet slot in lower-right camp foreground",
+  "width": 192,
+  "height": 192,
+  "assetPath": "pets/pet-cat"
+}

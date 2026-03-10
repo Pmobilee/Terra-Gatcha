@@ -1,0 +1,10 @@
+{
+  "id": "camp-pet-fox",
+  "kind": "pet",
+  "pet": "fox",
+  "theme": "curious fox companion with curled tail",
+  "locationHint": "pet slot in lower-right camp foreground",
+  "width": 192,
+  "height": 192,
+  "assetPath": "pets/pet-fox"
+}

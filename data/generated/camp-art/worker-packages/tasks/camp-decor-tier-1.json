@@ -1,0 +1,11 @@
+{
+  "id": "camp-decor-tier-1",
+  "kind": "element",
+  "element": "decor",
+  "tier": 1,
+  "theme": "weathered signpost and supply crate",
+  "locationHint": "right edge near settings signpost and trophy area",
+  "width": 256,
+  "height": 256,
+  "assetPath": "elements/decor-tier-1"
+}

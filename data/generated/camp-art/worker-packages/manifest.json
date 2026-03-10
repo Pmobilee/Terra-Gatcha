@@ -1,0 +1,277 @@
+{
+  "generatedAt": "2026-03-10T07:13:22.926Z",
+  "command": "camp:art:prepare",
+  "taskCount": 24,
+  "countsByKind": {
+    "element": 16,
+    "outfit": 4,
+    "pet": 4
+  },
+  "workerOutputDir": "data/generated/camp-art/worker-output",
+  "tasksDir": "data/generated/camp-art/worker-packages/tasks",
+  "promptsDir": "data/generated/camp-art/worker-packages/prompts",
+  "tasks": [
+    {
+      "id": "camp-tent-tier-1",
+      "kind": "element",
+      "element": "tent",
+      "tier": 1,
+      "theme": "worn bedroll and simple travel tarp",
+      "locationHint": "left side of camp scene near the archive crate",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/tent-tier-1"
+    },
+    {
+      "id": "camp-tent-tier-2",
+      "kind": "element",
+      "element": "tent",
+      "tier": 2,
+      "theme": "small canvas expedition tent with rope ties",
+      "locationHint": "left side of camp scene near the archive crate",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/tent-tier-2"
+    },
+    {
+      "id": "camp-tent-tier-3",
+      "kind": "element",
+      "element": "tent",
+      "tier": 3,
+      "theme": "reinforced leather tent with supply satchels",
+      "locationHint": "left side of camp scene near the archive crate",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/tent-tier-3"
+    },
+    {
+      "id": "camp-tent-tier-4",
+      "kind": "element",
+      "element": "tent",
+      "tier": 4,
+      "theme": "decorated pavilion tent with lantern accents",
+      "locationHint": "left side of camp scene near the archive crate",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/tent-tier-4"
+    },
+    {
+      "id": "camp-seating-tier-1",
+      "kind": "element",
+      "element": "seating",
+      "tier": 1,
+      "theme": "rough log seat beside the fire",
+      "locationHint": "right side of camp scene near the workshop area",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/seating-tier-1"
+    },
+    {
+      "id": "camp-seating-tier-2",
+      "kind": "element",
+      "element": "seating",
+      "tier": 2,
+      "theme": "sturdy wooden bench with carved legs",
+      "locationHint": "right side of camp scene near the workshop area",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/seating-tier-2"
+    },
+    {
+      "id": "camp-seating-tier-3",
+      "kind": "element",
+      "element": "seating",
+      "tier": 3,
+      "theme": "cushioned adventurer bench with blankets",
+      "locationHint": "right side of camp scene near the workshop area",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/seating-tier-3"
+    },
+    {
+      "id": "camp-seating-tier-4",
+      "kind": "element",
+      "element": "seating",
+      "tier": 4,
+      "theme": "ornate carved throne bench with rune motifs",
+      "locationHint": "right side of camp scene near the workshop area",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/seating-tier-4"
+    },
+    {
+      "id": "camp-campfire-tier-1",
+      "kind": "element",
+      "element": "campfire",
+      "tier": 1,
+      "theme": "small ember fire with sparse stones",
+      "locationHint": "center foreground as main focal camp object",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/campfire-tier-1"
+    },
+    {
+      "id": "camp-campfire-tier-2",
+      "kind": "element",
+      "element": "campfire",
+      "tier": 2,
+      "theme": "ringed stone fire pit with brighter flame",
+      "locationHint": "center foreground as main focal camp object",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/campfire-tier-2"
+    },
+    {
+      "id": "camp-campfire-tier-3",
+      "kind": "element",
+      "element": "campfire",
+      "tier": 3,
+      "theme": "iron brazier with steady orange fire",
+      "locationHint": "center foreground as main focal camp object",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/campfire-tier-3"
+    },
+    {
+      "id": "camp-campfire-tier-4",
+      "kind": "element",
+      "element": "campfire",
+      "tier": 4,
+      "theme": "arcane brazier with magical blue-violet flame",
+      "locationHint": "center foreground as main focal camp object",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/campfire-tier-4"
+    },
+    {
+      "id": "camp-decor-tier-1",
+      "kind": "element",
+      "element": "decor",
+      "tier": 1,
+      "theme": "weathered signpost and supply crate",
+      "locationHint": "right edge near settings signpost and trophy area",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/decor-tier-1"
+    },
+    {
+      "id": "camp-decor-tier-2",
+      "kind": "element",
+      "element": "decor",
+      "tier": 2,
+      "theme": "improved signpost with map board and banner strip",
+      "locationHint": "right edge near settings signpost and trophy area",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/decor-tier-2"
+    },
+    {
+      "id": "camp-decor-tier-3",
+      "kind": "element",
+      "element": "decor",
+      "tier": 3,
+      "theme": "decorative banner stand and stacked books",
+      "locationHint": "right edge near settings signpost and trophy area",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/decor-tier-3"
+    },
+    {
+      "id": "camp-decor-tier-4",
+      "kind": "element",
+      "element": "decor",
+      "tier": 4,
+      "theme": "heroic trophy post with banners, books, and relic trinkets",
+      "locationHint": "right edge near settings signpost and trophy area",
+      "width": 256,
+      "height": 256,
+      "assetPath": "elements/decor-tier-4"
+    },
+    {
+      "id": "camp-outfit-scout",
+      "kind": "outfit",
+      "outfit": "scout",
+      "theme": "light traveler armor with practical cloth layers",
+      "locationHint": "player avatar slot near center-lower camp scene",
+      "width": 256,
+      "height": 256,
+      "assetPath": "outfits/outfit-scout"
+    },
+    {
+      "id": "camp-outfit-warden",
+      "kind": "outfit",
+      "outfit": "warden",
+      "theme": "heavy guardian armor with shield-bearing silhouette",
+      "locationHint": "player avatar slot near center-lower camp scene",
+      "width": 256,
+      "height": 256,
+      "assetPath": "outfits/outfit-warden"
+    },
+    {
+      "id": "camp-outfit-scholar",
+      "kind": "outfit",
+      "outfit": "scholar",
+      "theme": "learned explorer robes with satchel and scroll motifs",
+      "locationHint": "player avatar slot near center-lower camp scene",
+      "width": 256,
+      "height": 256,
+      "assetPath": "outfits/outfit-scholar"
+    },
+    {
+      "id": "camp-outfit-vanguard",
+      "kind": "outfit",
+      "outfit": "vanguard",
+      "theme": "battle-ready frontliner armor with bold plating",
+      "locationHint": "player avatar slot near center-lower camp scene",
+      "width": 256,
+      "height": 256,
+      "assetPath": "outfits/outfit-vanguard"
+    },
+    {
+      "id": "camp-pet-cat",
+      "kind": "pet",
+      "pet": "cat",
+      "theme": "camp cat companion with alert stance",
+      "locationHint": "pet slot in lower-right camp foreground",
+      "width": 192,
+      "height": 192,
+      "assetPath": "pets/pet-cat"
+    },
+    {
+      "id": "camp-pet-owl",
+      "kind": "pet",
+      "pet": "owl",
+      "theme": "wise owl companion perched and watchful",
+      "locationHint": "pet slot in lower-right camp foreground",
+      "width": 192,
+      "height": 192,
+      "assetPath": "pets/pet-owl"
+    },
+    {
+      "id": "camp-pet-fox",
+      "kind": "pet",
+      "pet": "fox",
+      "theme": "curious fox companion with curled tail",
+      "locationHint": "pet slot in lower-right camp foreground",
+      "width": 192,
+      "height": 192,
+      "assetPath": "pets/pet-fox"
+    },
+    {
+      "id": "camp-pet-dragon_whelp",
+      "kind": "pet",
+      "pet": "dragon_whelp",
+      "theme": "small dragon whelp companion, friendly not threatening",
+      "locationHint": "pet slot in lower-right camp foreground",
+      "width": 192,
+      "height": 192,
+      "assetPath": "pets/pet-dragon_whelp"
+    }
+  ],
+  "usage": [
+    "1) Run: npm run camp:art:prepare",
+    "2) Generate images externally and save outputs to data/generated/camp-art/worker-output/<task-id>.png",
+    "3) Run: npm run camp:art:ingest",
+    "4) Manifest is written to public/assets/camp/manifest.json"
+  ]
+}

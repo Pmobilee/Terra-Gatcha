@@ -1,0 +1,11 @@
+{
+  "id": "camp-tent-tier-1",
+  "kind": "element",
+  "element": "tent",
+  "tier": 1,
+  "theme": "worn bedroll and simple travel tarp",
+  "locationHint": "left side of camp scene near the archive crate",
+  "width": 256,
+  "height": 256,
+  "assetPath": "elements/tent-tier-1"
+}

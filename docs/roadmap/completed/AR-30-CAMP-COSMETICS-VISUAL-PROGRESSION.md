@@ -1,7 +1,7 @@
 # AR-30: Camp Cosmetics & Visual Progression
 > Phase: Post-Content UX
 > Priority: Large
-> Status: Core Implementation Completed (March 10, 2026)
+> Status: Completed (March 10, 2026)
 
 ## Summary
 
@@ -52,6 +52,10 @@ From `docs/GAME_DESIGN.md`:
 - Integrates with existing hub navigation callbacks.
 - Integrates with existing player dust resource via `deductMinerals`.
 - Uses existing save data for boss trophy surfacing.
+- Integrates with worker-first camp art pipeline:
+  - `camp:art:prepare` emits prompt/task bundles for external image workers
+  - `camp:art:ingest` normalizes worker outputs into `/public/assets/camp`
+  - `camp:art:manifest` rebuilds runtime asset manifest consumed by Hub UI
 
 ## Edge Cases
 
@@ -59,11 +63,16 @@ From `docs/GAME_DESIGN.md`:
 - Tier ceilings enforced (`CAMP_MAX_TIER`).
 - Persisted camp data is sanitized on load for unknown or malformed values.
 - Pet selection only allowed for unlocked pets.
+- Hub UI falls back to emoji placeholders when camp sprite assets are unavailable.
 
 ## Files Modified
 
 - `src/ui/components/HubScreen.svelte`
 - `src/ui/stores/campState.ts`
+- `src/ui/utils/campArtManifest.ts`
+- `scripts/camp-art/pipeline.mjs`
+- `public/assets/camp/manifest.json`
+- `docs/SPRITE_PIPELINE.md`
 - `docs/roadmap/PROGRESS.md`
 
 ## Done-When Checklist
@@ -75,4 +84,4 @@ From `docs/GAME_DESIGN.md`:
 - [x] Pet unlock/select flow implemented.
 - [x] Boss trophy display implemented.
 - [x] Camp state persistence implemented.
-- [ ] AI sprite-generation pipeline for location-aware camp element variants.
+- [x] AI sprite-generation pipeline for location-aware camp element variants.

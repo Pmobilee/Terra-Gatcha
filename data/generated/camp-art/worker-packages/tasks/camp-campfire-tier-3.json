@@ -1,0 +1,11 @@
+{
+  "id": "camp-campfire-tier-3",
+  "kind": "element",
+  "element": "campfire",
+  "tier": 3,
+  "theme": "iron brazier with steady orange fire",
+  "locationHint": "center foreground as main focal camp object",
+  "width": 256,
+  "height": 256,
+  "assetPath": "elements/campfire-tier-3"
+}

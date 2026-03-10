@@ -1,0 +1,11 @@
+{
+  "id": "camp-campfire-tier-2",
+  "kind": "element",
+  "element": "campfire",
+  "tier": 2,
+  "theme": "ringed stone fire pit with brighter flame",
+  "locationHint": "center foreground as main focal camp object",
+  "width": 256,
+  "height": 256,
+  "assetPath": "elements/campfire-tier-2"
+}

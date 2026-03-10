@@ -1,0 +1,10 @@
+{
+  "id": "camp-outfit-vanguard",
+  "kind": "outfit",
+  "outfit": "vanguard",
+  "theme": "battle-ready frontliner armor with bold plating",
+  "locationHint": "player avatar slot near center-lower camp scene",
+  "width": 256,
+  "height": 256,
+  "assetPath": "outfits/outfit-vanguard"
+}

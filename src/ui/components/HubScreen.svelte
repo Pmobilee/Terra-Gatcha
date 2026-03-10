@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import type { RunSummary } from '../../services/hubState'
   import { playerSave, deductMinerals } from '../stores/playerData'
   import {
@@ -14,6 +15,12 @@
     type CampOutfit,
     type CampPet,
   } from '../stores/campState'
+  import {
+    getCampElementArtUrl,
+    getCampOutfitArtUrl,
+    getCampPetArtUrl,
+    initCampArtManifest,
+  } from '../utils/campArtManifest'
 
   interface Props {
     streak: number
@@ -119,6 +126,13 @@
 
   let selectedElement = $state<CampElement>('campfire')
   let campTip = $state('Tap camp objects to navigate. Upgrade visuals in the camp shop.')
+  let campArtReady = $state(false)
+
+  onMount(() => {
+    initCampArtManifest().finally(() => {
+      campArtReady = true
+    })
+  })
 
   function formatDate(iso: string): string {
     try {
@@ -130,6 +144,8 @@
 
   let dustBalance = $derived($playerSave?.minerals.dust ?? 0)
   let defeatedBosses = $derived(($playerSave?.defeatedBosses ?? []).slice(-6))
+  let activeOutfitArt = $derived(campArtReady ? getCampOutfitArtUrl($campState.outfit) : null)
+  let activePetArt = $derived(campArtReady ? getCampPetArtUrl($campState.activePet) : null)
 
   function campTier(element: CampElement): number {
     return $campState.tiers[element] ?? 0
@@ -186,6 +202,11 @@
   function outfitIcon(outfit: CampOutfit): string {
     return OUTFITS.find((entry) => entry.id === outfit)?.icon ?? '🧥'
   }
+
+  function objectArtUrl(object: CampObject): string | null {
+    if (!campArtReady) return null
+    return getCampElementArtUrl(object.upgradeElement, campTier(object.upgradeElement) + 1)
+  }
 </script>
 
 <section class="hub-screen" aria-label="Camp hub">
@@ -201,11 +222,16 @@
     <div class="dungeon-gate" aria-hidden="true">🕳</div>
 
     <div class={`player-avatar outfit-${$campState.outfit}`} aria-label={`Current outfit: ${$campState.outfit}`}>
-      <span class="avatar-icon">{outfitIcon($campState.outfit)}</span>
+      {#if activeOutfitArt}
+        <img class="avatar-art" src={activeOutfitArt} alt="" loading="lazy" decoding="async" />
+      {:else}
+        <span class="avatar-icon">{outfitIcon($campState.outfit)}</span>
+      {/if}
       <span class="avatar-label">You</span>
     </div>
 
     {#each campObjects as object (object.id)}
+      {@const objectArt = objectArtUrl(object)}
       <button
         type="button"
         class={`camp-object tier-${campTier(object.upgradeElement)}`}
@@ -213,14 +239,22 @@
         style={`top: ${object.top}; left: ${object.left};`}
         onclick={() => pickCampObject(object)}
       >
-        <span class="obj-icon">{object.icon}</span>
+        {#if objectArt}
+          <img class="obj-art" src={objectArt} alt="" loading="lazy" decoding="async" />
+        {:else}
+          <span class="obj-icon">{object.icon}</span>
+        {/if}
         <span class="obj-name">{object.label}</span>
         <span class="obj-tier">Tier {campTier(object.upgradeElement) + 1}</span>
       </button>
     {/each}
 
     <div class="pet-slot" aria-label="Active camp pet">
-      <span class="pet-icon">{PETS.find((pet) => pet.id === $campState.activePet)?.icon ?? '🐈'}</span>
+      {#if activePetArt}
+        <img class="pet-art" src={activePetArt} alt="" loading="lazy" decoding="async" />
+      {:else}
+        <span class="pet-icon">{PETS.find((pet) => pet.id === $campState.activePet)?.icon ?? '🐈'}</span>
+      {/if}
       <span class="pet-label">{PETS.find((pet) => pet.id === $campState.activePet)?.label ?? 'Cat'}</span>
     </div>
 
@@ -427,6 +461,13 @@
     line-height: 1;
   }
 
+  .avatar-art {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+
   .avatar-label {
     font-size: 11px;
     color: #d5deea;
@@ -462,6 +503,13 @@
     font-size: 20px;
   }
 
+  .camp-object .obj-art {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+
   .camp-object .obj-name {
     font-size: calc(12px * var(--text-scale, 1));
     text-align: center;
@@ -493,6 +541,13 @@
 
   .pet-icon {
     font-size: 18px;
+  }
+
+  .pet-art {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    image-rendering: pixelated;
   }
 
   .pet-label {

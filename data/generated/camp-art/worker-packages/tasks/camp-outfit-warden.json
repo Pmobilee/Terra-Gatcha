@@ -1,0 +1,10 @@
+{
+  "id": "camp-outfit-warden",
+  "kind": "outfit",
+  "outfit": "warden",
+  "theme": "heavy guardian armor with shield-bearing silhouette",
+  "locationHint": "player avatar slot near center-lower camp scene",
+  "width": 256,
+  "height": 256,
+  "assetPath": "outfits/outfit-warden"
+}

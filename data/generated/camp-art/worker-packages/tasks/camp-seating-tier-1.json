@@ -1,0 +1,11 @@
+{
+  "id": "camp-seating-tier-1",
+  "kind": "element",
+  "element": "seating",
+  "tier": 1,
+  "theme": "rough log seat beside the fire",
+  "locationHint": "right side of camp scene near the workshop area",
+  "width": 256,
+  "height": 256,
+  "assetPath": "elements/seating-tier-1"
+}

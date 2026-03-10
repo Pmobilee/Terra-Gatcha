@@ -46,6 +46,30 @@ Workflows stored in `sprite-gen/workflows/` as JSON files.
 Scripts in `sprite-gen/scripts/` call the ComfyUI API programmatically.
 Generated outputs land in `sprite-gen/output/`.
 
+## Camp Cosmetics Pipeline (AR-30)
+Camp hub sprite variants are worker-first so generation can run outside local paid APIs.
+
+1. Build prompt/task bundles:
+```bash
+npm run camp:art:prepare
+```
+2. External workers generate images named by task id (for example `camp-tent-tier-1.png`) into:
+`data/generated/camp-art/worker-output/`
+3. Ingest and normalize outputs (PNG + WebP) into game assets:
+```bash
+npm run camp:art:ingest
+```
+4. Rebuild manifest only:
+```bash
+npm run camp:art:manifest
+```
+
+Outputs:
+- `public/assets/camp/elements/*.webp`
+- `public/assets/camp/outfits/*.webp`
+- `public/assets/camp/pets/*.webp`
+- `public/assets/camp/manifest.json`
+
 ## Quality Control
 - All generated sprites must be reviewed before adding to `src/assets/`
 - Check for: transparent background, consistent palette, correct dimensions

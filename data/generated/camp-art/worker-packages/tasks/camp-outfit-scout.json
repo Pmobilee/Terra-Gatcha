@@ -1,0 +1,10 @@
+{
+  "id": "camp-outfit-scout",
+  "kind": "outfit",
+  "outfit": "scout",
+  "theme": "light traveler armor with practical cloth layers",
+  "locationHint": "player avatar slot near center-lower camp scene",
+  "width": 256,
+  "height": 256,
+  "assetPath": "outfits/outfit-scout"
+}

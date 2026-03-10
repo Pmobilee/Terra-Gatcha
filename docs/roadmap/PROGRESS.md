@@ -522,10 +522,10 @@ Depends on: None. Estimated: Medium-Large. **Status: Core implementation complet
 - [x] Pet companion system: unlock and display pets at camp (cat, owl, fox, dragon whelp)
 - [x] Gold-to-upgrade shop UI: preview upgrade → spend gold → sprite swap
 - [x] Boss trophy display: defeated bosses leave trophies/banners at camp
-- [ ] Sprite generation pipeline: location-aware camp element variants via AI image gen
+- [x] Sprite generation pipeline: location-aware camp element variants via AI image gen
 - [x] Camp state persistence (save/load upgrade levels)
 
-Depends on: AR-08 (hub — complete). Estimated: Large. **Status: Core implementation completed (March 10, 2026); AI-generated camp sprite pipeline remains pending.**
+Depends on: AR-08 (hub — complete). Estimated: Large. **Status: Completed (March 10, 2026).**
 → [Spec](completed/AR-30-CAMP-COSMETICS-VISUAL-PROGRESSION.md)
 
 ---
