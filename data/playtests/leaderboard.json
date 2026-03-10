@@ -1,0 +1,649 @@
+{
+  "updatedAt": "2026-03-10T13:04:02.474Z",
+  "totalPlaythroughs": 25,
+  "totalIssues": 17,
+  "issues": [
+    {
+      "canonicalId": "balance_combo_unreachable_global",
+      "category": "balance_combo_unreachable",
+      "severity": "critical",
+      "title": "Systemic combo cap at 3 — expert/speed-runner profile cannot reach higher combos",
+      "description": "Max combo across entire run is exactly 3 (439 cards played, 91.34396355353076% accuracy). All 27 encounters also capped at maxCombo <= 3. This is a systemic bug — the combo system appears hard-capped at 3, preventing expert players from achieving the designed 1.5x/2.0x multipliers at combo 4/5. This severely limits damage output and is likely the root cause of expert defeats.",
+      "frequency": 13,
+      "affectedProfiles": [
+        "average",
+        "expert",
+        "speed-runner"
+      ],
+      "firstSeen": "2026-03-10T13:01:45.320Z",
+      "lastSeen": "2026-03-10T13:02:35.620Z",
+      "rank": 1,
+      "score": 195,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-100-1773147436903",
+        "playthrough-average-201-1773147448175",
+        "playthrough-average-303-1773147468738",
+        "playthrough-average-400-1773147471156",
+        "playthrough-average-500-1773147472444",
+        "playthrough-average-600-1773147473528",
+        "playthrough-average-704-1773147481564",
+        "playthrough-expert-100-1773147438103",
+        "playthrough-expert-200-1773147447024",
+        "playthrough-expert-401-1773147474938",
+        "playthrough-expert-700-1773147477343",
+        "playthrough-speed-runner-202-1773147449441",
+        "playthrough-speed-runner-701-1773147478324"
+      ],
+      "bestEvidence": {
+        "maxCombo": 3,
+        "totalCardsPlayed": 439,
+        "overallAccuracy": 0.9134396355353075,
+        "allEncountersCapped": true,
+        "metric": "maxCombo = 3 with 91.3% accuracy over 439 cards — combo system broken"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 100",
+        "Achieve 4+ consecutive correct answers in a single turn"
+      ]
+    },
+    {
+      "canonicalId": "balance_damage_spike_early",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Damage spike: enemy dealt 38 dmg (173% of 22 HP) on floor 3",
+      "description": "At turn seq 214 (floor 3, encounter 2, turn 15), the enemy dealt 38 damage when the player had 22 HP. This is 173% of the player's current HP, exceeding the 50% spike threshold.",
+      "frequency": 19,
+      "affectedProfiles": [
+        "average",
+        "beginner",
+        "expert",
+        "impatient",
+        "speed-runner",
+        "struggling"
+      ],
+      "firstSeen": "2026-03-10T13:01:45.320Z",
+      "lastSeen": "2026-03-10T13:02:35.622Z",
+      "rank": 2,
+      "score": 142.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-100-1773147436903",
+        "playthrough-average-201-1773147448175",
+        "playthrough-average-303-1773147468738",
+        "playthrough-average-400-1773147471156",
+        "playthrough-average-500-1773147472444",
+        "playthrough-average-704-1773147481564",
+        "playthrough-beginner-100-1773147435674",
+        "playthrough-beginner-203-1773147450665",
+        "playthrough-beginner-300-1773147464896",
+        "playthrough-beginner-304-1773147469779",
+        "playthrough-expert-200-1773147447024",
+        "playthrough-impatient-100-1773147440212",
+        "playthrough-impatient-302-1773147467768",
+        "playthrough-impatient-702-1773147479282",
+        "playthrough-speed-runner-202-1773147449441",
+        "playthrough-struggling-100-1773147439084",
+        "playthrough-struggling-204-1773147452102",
+        "playthrough-struggling-301-1773147466293",
+        "playthrough-struggling-501-1773147476040"
+      ],
+      "bestEvidence": {
+        "turnSeqs": [
+          254,
+          255
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "Enemy dealt 30 damage (200% of player's 15 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 100",
+        "Reach floor 3, encounter 2, turn 11"
+      ]
+    },
+    {
+      "canonicalId": "balance_too_hard_early",
+      "category": "balance_too_hard",
+      "severity": "high",
+      "title": "Player defeated on floor 1, encounter 2 (stone_sentinel) — struggling profile",
+      "description": "The struggling player was defeated by stone_sentinel (mini_boss) on floor 1, encounter 2 after 19 turns. They dealt 42 damage but took 105. Accuracy was 35.1%. Dying on floor 1 is extremely punishing for retention.",
+      "frequency": 19,
+      "affectedProfiles": [
+        "average",
+        "beginner",
+        "expert",
+        "impatient",
+        "struggling"
+      ],
+      "firstSeen": "2026-03-10T13:01:45.320Z",
+      "lastSeen": "2026-03-10T13:02:35.622Z",
+      "rank": 3,
+      "score": 142.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-100-1773147436903",
+        "playthrough-average-201-1773147448175",
+        "playthrough-average-303-1773147468738",
+        "playthrough-average-400-1773147471156",
+        "playthrough-average-500-1773147472444",
+        "playthrough-average-600-1773147473528",
+        "playthrough-average-704-1773147481564",
+        "playthrough-beginner-100-1773147435674",
+        "playthrough-beginner-203-1773147450665",
+        "playthrough-beginner-300-1773147464896",
+        "playthrough-beginner-304-1773147469779",
+        "playthrough-expert-200-1773147447024",
+        "playthrough-impatient-100-1773147440212",
+        "playthrough-impatient-302-1773147467768",
+        "playthrough-impatient-702-1773147479282",
+        "playthrough-struggling-100-1773147439084",
+        "playthrough-struggling-204-1773147452102",
+        "playthrough-struggling-301-1773147466293",
+        "playthrough-struggling-501-1773147476040"
+      ],
+      "bestEvidence": {
+        "floor": 1,
+        "encounter": 2,
+        "enemyId": "stone_sentinel",
+        "enemyCategory": "mini_boss",
+        "turnsToResolve": 19,
+        "damageDealt": 42,
+        "damageTaken": 105,
+        "accuracy": 0.3508771929824561,
+        "metric": "Defeated on floor 1 by stone_sentinel (105 damage taken)"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 100",
+        "Play through floor 1"
+      ]
+    },
+    {
+      "canonicalId": "progression_difficulty_spike_early",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Difficulty spike: stone_sentinel on floor 2 took 10 turns (prev floor avg: 4.0)",
+      "description": "Encounter 2 on floor 2 against stone_sentinel (mini_boss) required 10 turns to resolve, which is 2.5x the previous floor's average of 4.0 turns. This exceeds the 2x threshold for difficulty spikes. The player dealt 121 damage and took 11.",
+      "frequency": 9,
+      "affectedProfiles": [
+        "average",
+        "expert",
+        "impatient",
+        "speed-runner"
+      ],
+      "firstSeen": "2026-03-10T13:01:45.320Z",
+      "lastSeen": "2026-03-10T13:02:35.620Z",
+      "rank": 4,
+      "score": 67.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-100-1773147436903",
+        "playthrough-average-201-1773147448175",
+        "playthrough-average-303-1773147468738",
+        "playthrough-expert-100-1773147438103",
+        "playthrough-expert-200-1773147447024",
+        "playthrough-expert-401-1773147474938",
+        "playthrough-impatient-702-1773147479282",
+        "playthrough-speed-runner-202-1773147449441",
+        "playthrough-speed-runner-701-1773147478324"
+      ],
+      "bestEvidence": {
+        "floor": 3,
+        "encounter": 2,
+        "turnsToResolve": 20,
+        "previousFloorAvg": 6,
+        "ratio": 3.3,
+        "enemyId": "the_archivist",
+        "metric": "20 turns vs 6.0 avg (3.3x)"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 100",
+        "Reach floor 3, encounter 2"
+      ]
+    },
+    {
+      "canonicalId": "balance_too_hard_global",
+      "category": "balance_too_hard",
+      "severity": "high",
+      "title": "speed-runner defeated on floor 9 with 90.3% accuracy — mid-game scaling too harsh",
+      "description": "The speed-runner player achieved 89.9% accuracy over 36 encounters and reached floor 12, but still lost. With near-90% accuracy and optimal play, the player should be able to complete a 12-floor run. The inability to win despite high skill suggests damage scaling outpaces available healing/shielding, or the combo cap bug (maxCombo=3) prevents necessary damage output.",
+      "frequency": 5,
+      "affectedProfiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "firstSeen": "2026-03-10T13:02:35.605Z",
+      "lastSeen": "2026-03-10T13:02:35.620Z",
+      "rank": 5,
+      "score": 31.25,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-200-1773147447024",
+        "playthrough-expert-401-1773147474938",
+        "playthrough-expert-700-1773147477343",
+        "playthrough-speed-runner-202-1773147449441",
+        "playthrough-speed-runner-701-1773147478324"
+      ],
+      "bestEvidence": {
+        "result": "defeat",
+        "finalFloor": 3,
+        "accuracy": 0.8940397350993378,
+        "totalEncounters": 9,
+        "maxCombo": 3,
+        "metric": "Expert defeat on floor 3 at 89.4% accuracy"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 200",
+        "Play to floor 3"
+      ]
+    },
+    {
+      "canonicalId": "progression_difficulty_spike_mid_early",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Difficulty spike: bone_collector on floor 5 took 9 turns (prev floor avg: 3.3)",
+      "description": "Encounter 2 on floor 5 against bone_collector (mini_boss) required 9 turns to resolve, which is 2.7x the previous floor's average of 3.3 turns. This exceeds the 2x threshold for difficulty spikes. The player dealt 81 damage and took 16.",
+      "frequency": 4,
+      "affectedProfiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "firstSeen": "2026-03-10T13:02:35.608Z",
+      "lastSeen": "2026-03-10T13:02:35.620Z",
+      "rank": 6,
+      "score": 25,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-401-1773147474938",
+        "playthrough-expert-700-1773147477343",
+        "playthrough-speed-runner-202-1773147449441",
+        "playthrough-speed-runner-701-1773147478324"
+      ],
+      "bestEvidence": {
+        "floor": 6,
+        "encounter": 2,
+        "enemyId": "void_weaver",
+        "turnsToResolve": 24,
+        "previousFloorAvg": 3.3,
+        "ratio": 7.2,
+        "metric": "24 turns vs 3.3 avg (7.2x)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 401",
+        "Reach floor 5, encounter 2 (bone_collector)"
+      ]
+    },
+    {
+      "canonicalId": "balance_damage_spike_mid",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Damage spike: enemy dealt 13 dmg (87% of 15 HP) on floor 7",
+      "description": "At turn seq 387 (floor 7, encounter 1, turn 3), the enemy dealt 13 damage when the player had 15 HP. This is 87% of the player's current HP, exceeding the 50% spike threshold.",
+      "frequency": 3,
+      "affectedProfiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "firstSeen": "2026-03-10T13:01:45.333Z",
+      "lastSeen": "2026-03-10T13:02:35.620Z",
+      "rank": 7,
+      "score": 18.75,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-100-1773147438103",
+        "playthrough-speed-runner-202-1773147449441",
+        "playthrough-speed-runner-701-1773147478324"
+      ],
+      "bestEvidence": {
+        "turnSeqs": [
+          627,
+          628
+        ],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "Enemy dealt 24 damage (100% of player's 24 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 100",
+        "Reach floor 9, encounter 2, turn 4"
+      ]
+    },
+    {
+      "canonicalId": "progression_difficulty_spike_mid",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Difficulty spike: bone_collector on floor 8 took 10 turns (prev floor avg: 4.7)",
+      "description": "Encounter 2 on floor 8 against stone_sentinel (mini_boss) required 11 turns to resolve, which is 3.3x the previous floor's average of 3.3 turns. This exceeds the 2x threshold for difficulty spikes. The player dealt 137 damage and took 11.",
+      "frequency": 3,
+      "affectedProfiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "firstSeen": "2026-03-10T13:01:45.333Z",
+      "lastSeen": "2026-03-10T13:02:35.620Z",
+      "rank": 8,
+      "score": 18.75,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-100-1773147438103",
+        "playthrough-expert-700-1773147477343",
+        "playthrough-speed-runner-701-1773147478324"
+      ],
+      "bestEvidence": {
+        "floor": 9,
+        "encounter": 2,
+        "turnsToResolve": 13,
+        "previousFloorAvg": 6,
+        "ratio": 2.2,
+        "enemyId": "the_curator",
+        "metric": "13 turns vs 6.0 avg (2.2x)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 100",
+        "Reach floor 9, encounter 2"
+      ]
+    },
+    {
+      "canonicalId": "balance_damage_spike_late",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Damage spike: enemy dealt 27 dmg (208% of 13 HP) on floor 12",
+      "description": "At turn seq 881 (floor 12, encounter 2, turn 19), the enemy dealt 27 damage when the player had 13 HP. This is 208% of the player's current HP, exceeding the 50% spike threshold.",
+      "frequency": 2,
+      "affectedProfiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "firstSeen": "2026-03-10T13:02:35.612Z",
+      "lastSeen": "2026-03-10T13:02:35.620Z",
+      "rank": 9,
+      "score": 12.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-700-1773147477343",
+        "playthrough-speed-runner-701-1773147478324"
+      ],
+      "bestEvidence": {
+        "turnSeqs": [
+          881
+        ],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "Enemy dealt 27 damage (208% of player's 13 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 700",
+        "Reach floor 12, encounter 2, turn 17"
+      ]
+    },
+    {
+      "canonicalId": "balance_damage_spike_mid_early",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Damage spike: enemy dealt 14 dmg (108% of 13 HP) on floor 6",
+      "description": "At turn seq 396 (floor 6, encounter 2, turn 10), the enemy dealt 20 damage when the player had 10 HP. This is 200% of the player's current HP, exceeding the 50% spike threshold.",
+      "frequency": 2,
+      "affectedProfiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "firstSeen": "2026-03-10T13:02:35.608Z",
+      "lastSeen": "2026-03-10T13:02:35.617Z",
+      "rank": 10,
+      "score": 12.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-401-1773147474938",
+        "playthrough-speed-runner-202-1773147449441"
+      ],
+      "bestEvidence": {
+        "turnSeqs": [
+          384
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "Enemy dealt 14 damage (108% of player's 13 HP)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 401",
+        "Reach floor 6, encounter 2, turn 4"
+      ]
+    },
+    {
+      "canonicalId": "progression_dead_end_early",
+      "category": "progression_dead_end",
+      "severity": "critical",
+      "title": "Dead end: Zero damage dealt in F3E2 against the_curator",
+      "description": "Player dealt 0 damage in floor 3 encounter 2 against the_curator (boss). This means the player could not progress. Cards played: 6, correct: 3, wrong: 3.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "average"
+      ],
+      "firstSeen": "2026-03-10T13:01:45.327Z",
+      "lastSeen": "2026-03-10T13:01:45.327Z",
+      "rank": 11,
+      "score": 10,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-704-1773147481564"
+      ],
+      "bestEvidence": {
+        "floor": 3,
+        "encounter": 2,
+        "enemyId": "the_curator",
+        "cardsPlayed": 6,
+        "metric": "0 damage dealt with 6 cards played"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 704",
+        "Reach floor 3, encounter 2"
+      ]
+    },
+    {
+      "canonicalId": "ux_unfun_moment_early",
+      "category": "ux_unfun_moment",
+      "severity": "low",
+      "title": "Unfun moment: HP dropped from 59 to 0 in single encounter (floor 1, stone_sentinel)",
+      "description": "During encounter 2 on floor 1 against stone_sentinel (mini_boss), the player's HP plummeted from 59 (74%) to 0 (0%). This 59 HP loss in a single encounter feels punishing and demoralizing, especially for struggling players.",
+      "frequency": 6,
+      "affectedProfiles": [
+        "beginner",
+        "struggling"
+      ],
+      "firstSeen": "2026-03-10T13:01:45.329Z",
+      "lastSeen": "2026-03-10T13:02:35.622Z",
+      "rank": 12,
+      "score": 7.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-beginner-300-1773147464896",
+        "playthrough-beginner-304-1773147469779",
+        "playthrough-struggling-100-1773147439084",
+        "playthrough-struggling-204-1773147452102",
+        "playthrough-struggling-301-1773147466293",
+        "playthrough-struggling-501-1773147476040"
+      ],
+      "bestEvidence": {
+        "floor": 1,
+        "encounter": 1,
+        "enemyId": "crystal_golem",
+        "startHP": 64,
+        "endHP": 0,
+        "damageTaken": 108,
+        "metric": "HP: 64 → 0 (lost 64)"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 300",
+        "Reach floor 1, encounter 2"
+      ]
+    },
+    {
+      "canonicalId": "balance_too_easy_early",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "3+ consecutive encounters with >90% HP remaining (floors 1-1)",
+      "description": "Encounters 0 through 4 (5 in a row) ended with the player above 90% HP (>72). This suggests these encounters provide no meaningful challenge. Encounters: f1e0(HP=80), f1e1(HP=80), f1e2(HP=80), f2e0(HP=80), f2e1(HP=73).",
+      "frequency": 5,
+      "affectedProfiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "firstSeen": "2026-03-10T13:01:45.333Z",
+      "lastSeen": "2026-03-10T13:02:35.620Z",
+      "rank": 13,
+      "score": 6.25,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-100-1773147438103",
+        "playthrough-expert-401-1773147474938",
+        "playthrough-expert-700-1773147477343",
+        "playthrough-speed-runner-202-1773147449441",
+        "playthrough-speed-runner-701-1773147478324"
+      ],
+      "bestEvidence": {
+        "floors": [
+          1,
+          1,
+          1
+        ],
+        "encounters": [
+          0,
+          1,
+          2
+        ],
+        "hpRemaining": [
+          80,
+          80,
+          80
+        ],
+        "metric": "All 3 encounters ended with HP > 72: 80, 80, 80"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 100",
+        "Play through floors 1-1"
+      ]
+    },
+    {
+      "canonicalId": "balance_too_hard_mid",
+      "category": "balance_too_hard",
+      "severity": "high",
+      "title": "Expert/speed-runner defeated on floor 9 despite 91% accuracy",
+      "description": "expert profile with 91.3% accuracy was defeated on floor 9 after 27 encounters. With this level of skill, the player should be able to progress further. The combination of combo cap at 3 and enemy scaling likely makes late-game progression impossible even for skilled players.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "expert"
+      ],
+      "firstSeen": "2026-03-10T13:01:45.333Z",
+      "lastSeen": "2026-03-10T13:01:45.333Z",
+      "rank": 14,
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-100-1773147438103"
+      ],
+      "bestEvidence": {
+        "floor": 9,
+        "accuracy": 0.9134396355353075,
+        "totalEncounters": 27,
+        "maxCombo": 3,
+        "metric": "Defeat on floor 9 with 91.3% accuracy and maxCombo 3"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 100",
+        "Play through to floor 9"
+      ]
+    },
+    {
+      "canonicalId": "progression_difficulty_spike_late",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Difficulty spike: the_archivist on floor 12 took 19 turns (prev floor avg: 9.3)",
+      "description": "Encounter 2 on floor 12 against the_archivist (boss) required 19 turns to resolve, which is 2.0x the previous floor's average of 9.3 turns. This exceeds the 2x threshold for difficulty spikes. The player dealt 249 damage and took 89.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "expert"
+      ],
+      "firstSeen": "2026-03-10T13:02:35.612Z",
+      "lastSeen": "2026-03-10T13:02:35.612Z",
+      "rank": 15,
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-700-1773147477343"
+      ],
+      "bestEvidence": {
+        "floor": 12,
+        "encounter": 2,
+        "enemyId": "the_archivist",
+        "turnsToResolve": 19,
+        "previousFloorAvg": 9.3,
+        "ratio": 2,
+        "metric": "19 turns vs 9.3 avg (2.0x)"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 700",
+        "Reach floor 12, encounter 2 (the_archivist)"
+      ]
+    },
+    {
+      "canonicalId": "balance_healing_insufficient_global",
+      "category": "balance_healing_insufficient",
+      "severity": "medium",
+      "title": "Player never recovered above 60% HP (48) after floor 3",
+      "description": "After floor 3, the player's HP remained at or below 48 for all remaining encounters. This indicates healing mechanics are insufficient to sustain a run beyond early floors. HP values: f4e0(HP=28), f4e1(HP=28), f4e2(HP=18), f5e0(HP=18), f5e1(HP=18), f5e2(HP=15), f6e0(HP=15), f6e1(HP=15), f6e2(HP=15), f7e0(HP=15), f7e1(HP=13), f7e2(HP=10), f8e0(HP=10), f8e1(HP=8), f8e2(HP=8), f9e0(HP=6), f9e1(HP=0).",
+      "frequency": 1,
+      "affectedProfiles": [
+        "speed-runner"
+      ],
+      "firstSeen": "2026-03-10T13:02:35.617Z",
+      "lastSeen": "2026-03-10T13:02:35.617Z",
+      "rank": 16,
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-speed-runner-202-1773147449441"
+      ],
+      "bestEvidence": {
+        "metric": "Max HP after floor 3: 28",
+        "floorsAfter3": 17
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 202",
+        "Observe HP after completing floor 3"
+      ]
+    },
+    {
+      "canonicalId": "ux_dead_turn_early",
+      "category": "ux_dead_turn",
+      "severity": "low",
+      "title": "Dead turn: player played 0 cards on floor 3, encounter 1, turn 16",
+      "description": "On turn 16 of encounter 1 (floor 3), the player ended their turn without playing any cards. This could indicate AP exhaustion, empty hand, or a stuck state. Hand size was 5 and AP was 3.",
+      "frequency": 2,
+      "affectedProfiles": [
+        "impatient"
+      ],
+      "firstSeen": "2026-03-10T13:02:35.615Z",
+      "lastSeen": "2026-03-10T13:02:35.616Z",
+      "rank": 17,
+      "score": 2,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-impatient-302-1773147467768",
+        "playthrough-impatient-702-1773147479282"
+      ],
+      "bestEvidence": {
+        "turnSeqs": [
+          325
+        ],
+        "floor": 3,
+        "encounter": 1,
+        "turnNumber": 16,
+        "metric": "0 cards played before end_turn"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 302",
+        "Reach floor 3, encounter 1, turn 16"
+      ]
+    }
+  ]
+}
