@@ -11,14 +11,37 @@
   let isHost = false
   let loading = true
   let error = ''
+  let roomMode = false
 
   async function loadLobby(): Promise<void> {
+    loading = true
+    error = ''
     try {
       const res = await fetch(`/api/coop/lobby/${lobbyId}`)
       if (res.ok) {
-        const data = await res.json()
-        players = data.lobby.players
-        isHost = data.lobby.hostId === playerId
+        const data = await res.json() as {
+          lobby?: { players?: LobbyPlayer[]; hostId?: string }
+          slots?: Array<{ playerId: string; displayName: string; connected?: boolean } | null>
+        }
+        if (data.lobby?.players && data.lobby.hostId) {
+          roomMode = false
+          players = data.lobby.players
+          isHost = data.lobby.hostId === playerId
+        } else if (Array.isArray(data.slots)) {
+          roomMode = true
+          players = data.slots
+            .filter((slot): slot is { playerId: string; displayName: string; connected?: boolean } => Boolean(slot))
+            .map((slot) => ({
+              id: slot.playerId,
+              name: slot.displayName,
+              ready: Boolean(slot.connected),
+            }))
+          isHost = players.some((player) => player.id === playerId) && players[0]?.id === playerId
+        } else {
+          error = 'Lobby payload is invalid.'
+        }
+      } else {
+        error = 'Lobby not found.'
       }
     } catch { error = 'Failed to load lobby' }
     finally { loading = false }
@@ -27,6 +50,12 @@
   async function toggleReady(): Promise<void> {
     const me = players.find(p => p.id === playerId)
     if (!me) return
+    if (roomMode) {
+      players = players.map((player) => (
+        player.id === playerId ? { ...player, ready: !player.ready } : player
+      ))
+      return
+    }
     await fetch(`/api/coop/lobby/${lobbyId}/ready`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -36,6 +65,10 @@
   }
 
   async function leaveLobby(): Promise<void> {
+    if (roomMode) {
+      if (onClose) onClose()
+      return
+    }
     await fetch(`/api/coop/lobby/${lobbyId}/leave`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -95,6 +128,9 @@
           </button>
         {/if}
       </div>
+      {#if roomMode}
+        <p class="loading">Room mode: ready state is local until full websocket session flow is connected.</p>
+      {/if}
     {/if}
   </div>
 </div>

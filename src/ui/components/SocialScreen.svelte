@@ -42,6 +42,7 @@
   let endlessMessage = $state('')
   let relicMessage = $state('')
   let leaderboardMessage = $state('')
+  let coopMessage = $state('')
 
   const socialEnabled = $derived($parentalStore.socialEnabled)
   const playerId = $derived($authStore.userId ?? $playerSave?.playerId ?? 'local-player')
@@ -56,8 +57,48 @@
     return `local-${stamp}-${random}`
   }
 
+  function apiBase(): string {
+    const stored = localStorage.getItem('terra_api_base')
+    return (stored ?? 'http://localhost:3001/api').replace(/\/$/, '')
+  }
+
+  function authHeaders(): Record<string, string> {
+    const token = localStorage.getItem('terra_auth_token')
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' }
+    if (token) headers.Authorization = `Bearer ${token}`
+    return headers
+  }
+
+  async function createCoopLobby(): Promise<void> {
+    try {
+      const response = await fetch(`${apiBase()}/coop/lobby/create`, {
+        method: 'POST',
+        headers: authHeaders(),
+        body: JSON.stringify({ hostId: playerId, hostName: playerName }),
+      })
+      if (!response.ok) throw new Error(`status ${response.status}`)
+      const data = await response.json() as { lobby?: { id?: string } }
+      if (data.lobby?.id) {
+        coopLobbyId = data.lobby.id
+        coopMessage = ''
+        return
+      }
+      throw new Error('missing lobby id')
+    } catch {
+      coopLobbyId = makeLobbyId()
+      coopMessage = 'Unable to create a cloud lobby, using local fallback ID.'
+    }
+  }
+
   function openPanel(panel: Exclude<SocialPanel, null>): void {
     if (!socialEnabled) return
+    if (panel === 'coop') {
+      void (async () => {
+        await createCoopLobby()
+        activePanel = panel
+      })()
+      return
+    }
     activePanel = panel
   }
 
@@ -69,8 +110,8 @@
     activePanel = null
   }
 
-  function regenerateLobby(): void {
-    coopLobbyId = makeLobbyId()
+  async function regenerateLobby(): Promise<void> {
+    await createCoopLobby()
   }
 
   async function refreshDailyStatus(): Promise<void> {
@@ -210,9 +251,12 @@
         <p>Create or join a shared dive room and ready up together.</p>
         <div class="meta">Lobby: <code>{coopLobbyId.slice(-8).toUpperCase()}</code></div>
         <div class="actions">
-          <button type="button" onclick={regenerateLobby}>New Lobby ID</button>
+          <button type="button" onclick={() => void regenerateLobby()}>New Lobby ID</button>
           <button type="button" class="primary" onclick={() => openPanel('coop')}>Open Co-op</button>
         </div>
+        {#if coopMessage}
+          <p class="inline-message">{coopMessage}</p>
+        {/if}
       </article>
 
       <article class="card">
