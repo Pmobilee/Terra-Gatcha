@@ -17,10 +17,10 @@ export interface ActiveSeason {
     biomeId: string
     probability: number
   }
-  rewards: SeasonReward[]
+  rewards: ServerSeasonReward[]
 }
 
-export interface SeasonReward {
+export interface ServerSeasonReward {
   id: string
   type: 'cosmetic' | 'companion_fragment' | 'mineral_bonus' | 'title'
   name: string
