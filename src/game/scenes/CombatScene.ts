@@ -1,12 +1,10 @@
 import Phaser from 'phaser'
 
-/** Layout constants for the combat display zone (top 55% of viewport). */
-const DISPLAY_ZONE_HEIGHT_PCT = 0.55
-const ENEMY_Y_PCT = 0.20
-const PLAYER_Y_PCT = 0.40
-const PLAYER_X_PCT = 0.25
-const ENEMY_X_PCT = 0.75
-const PLAYER_HP_Y_PCT = 0.48
+/** Layout constants for first-person combat display zone (top ~58% of viewport). */
+const DISPLAY_ZONE_HEIGHT_PCT = 0.58
+const ENEMY_Y_PCT = 0.28
+const ENEMY_X_PCT = 0.50
+const PLAYER_HP_Y_PCT = 0.50
 const ENEMY_HP_Y_PCT = 0.12
 const FLOOR_COUNTER_Y = 16
 const INTENT_ICON_OFFSET_Y = -40
@@ -20,9 +18,10 @@ const ENEMY_HP_BAR_H = 12
 const PLAYER_HP_BAR_W = 200
 const PLAYER_HP_BAR_H = 16
 
-/** Enemy placeholder size. */
-const ENEMY_SIZE = 80
-const PLAYER_SIZE = 96
+/** Enemy first-person sprite sizes by enemy tier. */
+const ENEMY_SIZE_COMMON = 168
+const ENEMY_SIZE_ELITE = 198
+const ENEMY_SIZE_BOSS = 236
 
 /** Color constants. */
 const COLOR_HP_RED = 0xe74c3c
@@ -41,6 +40,12 @@ function categoryColor(category: 'common' | 'elite' | 'mini_boss' | 'boss'): num
     case 'boss': return COLOR_BOSS
     default: return COLOR_COMMON
   }
+}
+
+function enemyDisplaySize(category: 'common' | 'elite' | 'mini_boss' | 'boss'): number {
+  if (category === 'boss') return ENEMY_SIZE_BOSS
+  if (category === 'elite' || category === 'mini_boss') return ENEMY_SIZE_ELITE
+  return ENEMY_SIZE_COMMON
 }
 
 /** Get player HP bar fill color based on ratio. */
@@ -79,7 +84,6 @@ export class CombatScene extends Phaser.Scene {
 
   // ── Game objects (created once, reused) ──────────────────
   private enemySprite!: Phaser.GameObjects.Rectangle | Phaser.GameObjects.Image
-  private playerSprite!: Phaser.GameObjects.Rectangle | Phaser.GameObjects.Image
   private combatBackground!: Phaser.GameObjects.Image | Phaser.GameObjects.Rectangle
   private enemyNameText!: Phaser.GameObjects.Text
   private enemyHpBarBg!: Phaser.GameObjects.Rectangle
@@ -92,6 +96,7 @@ export class CombatScene extends Phaser.Scene {
   private floorCounterText!: Phaser.GameObjects.Text
   private relicContainer!: Phaser.GameObjects.Container
   private flashRect!: Phaser.GameObjects.Rectangle
+  private entryFadeRect!: Phaser.GameObjects.Rectangle
   private particles!: Phaser.GameObjects.Particles.ParticleEmitter
   private enemyPlaceholderBorder!: Phaser.GameObjects.Rectangle | null
   private enemyPlaceholderIcon!: Phaser.GameObjects.Text | null
@@ -109,6 +114,7 @@ export class CombatScene extends Phaser.Scene {
   private currentEncounter = 1
   private totalEncounters = 3
   private currentEnemyId = 'cave_bat'
+  private currentEnemyCategory: 'common' | 'elite' | 'mini_boss' | 'boss' = 'common'
   private reduceMotion = false
 
   // ── Stored layout values ─────────────────────────────────
@@ -189,42 +195,34 @@ export class CombatScene extends Phaser.Scene {
 
     // ── Enemy sprite placeholder ──────────────────────────
     const enemyY = this.displayH * ENEMY_Y_PCT
+    const baseEnemySize = enemyDisplaySize('common')
     this.enemySprite = this.add.rectangle(
       w * ENEMY_X_PCT, enemyY,
-      ENEMY_SIZE, ENEMY_SIZE,
+      baseEnemySize, baseEnemySize,
       COLOR_COMMON,
-    ).setOrigin(0.5, 0.5)
+    ).setOrigin(0.5, 0.5).setDepth(5)
 
     // Border outline for placeholder
     this.enemyPlaceholderBorder = this.add.rectangle(
       w * ENEMY_X_PCT, enemyY,
-      ENEMY_SIZE + 4, ENEMY_SIZE + 4,
+      baseEnemySize + 10, baseEnemySize + 10,
     ).setOrigin(0.5, 0.5).setStrokeStyle(2, 0xaaaaaa).setFillStyle(0x000000, 0)
+      .setDepth(4)
 
     // "?" silhouette indicator
     this.enemyPlaceholderIcon = this.add.text(w * ENEMY_X_PCT, enemyY, '?', {
       fontFamily: 'monospace',
-      fontSize: '36px',
+      fontSize: '46px',
       color: '#ffffff',
       align: 'center',
-    }).setOrigin(0.5, 0.5).setAlpha(0.6)
+    }).setOrigin(0.5, 0.5).setAlpha(0.6).setDepth(6)
 
-    this.enemyNameText = this.add.text(w * ENEMY_X_PCT, enemyY + ENEMY_SIZE / 2 + 8, '', {
+    this.enemyNameText = this.add.text(w * ENEMY_X_PCT, enemyY + baseEnemySize / 2 + 12, '', {
       fontFamily: 'monospace',
-      fontSize: '12px',
+      fontSize: '13px',
       color: '#ffffff',
       align: 'center',
-    }).setOrigin(0.5, 0)
-
-    // ── Player sprite placeholder ─────────────────────────
-    const playerY = this.displayH * PLAYER_Y_PCT
-    if (hasTexture(this, 'player-idle')) {
-      this.playerSprite = this.add.image(w * PLAYER_X_PCT, playerY, 'player-idle')
-        .setDisplaySize(PLAYER_SIZE, PLAYER_SIZE)
-        .setDepth(5)
-    } else {
-      this.playerSprite = this.add.rectangle(w * PLAYER_X_PCT, playerY, PLAYER_SIZE, PLAYER_SIZE, 0x5b7ea4)
-    }
+    }).setOrigin(0.5, 0).setDepth(7)
 
     // ── Player HP bar ─────────────────────────────────────
     const playerHpY = this.displayH * PLAYER_HP_Y_PCT
@@ -259,6 +257,17 @@ export class CombatScene extends Phaser.Scene {
       0xFFFFFF, 0
     )
     this.flashRect.setDepth(999)
+
+    // ── Encounter entry fade overlay ──────────────────────
+    this.entryFadeRect = this.add.rectangle(
+      this.cameras.main.centerX,
+      this.cameras.main.height * DISPLAY_ZONE_HEIGHT_PCT / 2,
+      this.cameras.main.width,
+      this.cameras.main.height * DISPLAY_ZONE_HEIGHT_PCT,
+      0x000000,
+      0,
+    )
+    this.entryFadeRect.setDepth(995)
 
     // ── Particle emitter (procedural texture) ───────────
     const gfx = this.make.graphics({ x: 0, y: 0 })
@@ -300,6 +309,10 @@ export class CombatScene extends Phaser.Scene {
     this.currentEnemyHP = hp
     this.currentEnemyMaxHP = maxHP
     this.currentEnemyId = enemyId ?? this.currentEnemyId
+    this.currentEnemyCategory = category
+    const size = enemyDisplaySize(category)
+    const enemyX = this.scale.width * ENEMY_X_PCT
+    const enemyY = this.displayH * ENEMY_Y_PCT
 
     // Reset enemy sprite for new encounter
     const texture = enemyTextureKey(this.currentEnemyId, 'idle')
@@ -308,20 +321,24 @@ export class CombatScene extends Phaser.Scene {
     if (hasSprite) {
       if (!('setTexture' in this.enemySprite)) {
         this.enemySprite.destroy()
-        this.enemySprite = this.add.image(this.scale.width * ENEMY_X_PCT, this.displayH * ENEMY_Y_PCT, texture)
-          .setDisplaySize(ENEMY_SIZE + 26, ENEMY_SIZE + 26)
+        this.enemySprite = this.add.image(enemyX, enemyY, texture)
+          .setDisplaySize(size, size)
+          .setDepth(5)
       } else {
         ;(this.enemySprite as Phaser.GameObjects.Image).setTexture(texture)
+        ;(this.enemySprite as Phaser.GameObjects.Image).setDisplaySize(size, size)
       }
     } else if ('setTexture' in this.enemySprite) {
       this.enemySprite.destroy()
       this.enemySprite = this.add.rectangle(
-        this.scale.width * ENEMY_X_PCT,
-        this.displayH * ENEMY_Y_PCT,
-        ENEMY_SIZE,
-        ENEMY_SIZE,
+        enemyX,
+        enemyY,
+        size,
+        size,
         categoryColor(category),
-      )
+      ).setDepth(5)
+    } else {
+      this.enemySprite.setSize(size, size)
     }
 
     if ('setFillStyle' in this.enemySprite) {
@@ -333,19 +350,22 @@ export class CombatScene extends Phaser.Scene {
     if (this.enemyPlaceholderBorder) {
       this.enemyPlaceholderBorder.setVisible(!hasSprite)
       this.enemyPlaceholderBorder.setStrokeStyle(2, borderColor)
-      this.enemyPlaceholderBorder.setPosition(this.scale.width * ENEMY_X_PCT, this.displayH * ENEMY_Y_PCT)
+      this.enemyPlaceholderBorder.setSize(size + 10, size + 10)
+      this.enemyPlaceholderBorder.setPosition(enemyX, enemyY)
     }
     if (this.enemyPlaceholderIcon) {
       this.enemyPlaceholderIcon.setVisible(!hasSprite)
-      this.enemyPlaceholderIcon.setPosition(this.scale.width * ENEMY_X_PCT, this.displayH * ENEMY_Y_PCT)
+      this.enemyPlaceholderIcon.setPosition(enemyX, enemyY)
     }
 
     this.enemySprite.setAlpha(1)
     this.enemySprite.setScale(1)
-    this.enemySprite.setPosition(this.scale.width * ENEMY_X_PCT, this.displayH * ENEMY_Y_PCT)
+    this.enemySprite.setPosition(enemyX, enemyY)
 
     this.enemyNameText.setText(name)
+    this.enemyNameText.setPosition(enemyX, enemyY + size / 2 + 12)
     this.refreshEnemyHpBar(false)
+    this.playEncounterEntry()
   }
 
   /** Update enemy HP (optionally animate the bar). */
@@ -414,17 +434,20 @@ export class CombatScene extends Phaser.Scene {
       this.enemySprite.setFillStyle(0xffffff)
       this.time.delayedCall(110, () => {
         if ('setFillStyle' in this.enemySprite) {
-          this.enemySprite.setFillStyle(COLOR_COMMON)
+          this.enemySprite.setFillStyle(categoryColor(this.currentEnemyCategory))
         }
       })
     }
 
-    const origX = this.scale.width * ENEMY_X_PCT
+    const origScaleX = this.enemySprite.scaleX
+    const origScaleY = this.enemySprite.scaleY
     if (this.reduceMotion) return
+    this.cameras.main.shake(100, 0.0025, true)
     this.tweens.add({
       targets: this.enemySprite,
-      x: origX - 5,
-      duration: 75,
+      scaleX: origScaleX * 1.08,
+      scaleY: origScaleY * 1.08,
+      duration: 95,
       yoyo: true,
       ease: 'Sine.easeInOut',
     })
@@ -439,13 +462,17 @@ export class CombatScene extends Phaser.Scene {
   playEnemyAttackAnimation(): void {
     if (this.reduceMotion) return
     const startY = this.displayH * ENEMY_Y_PCT
+    const startScale = this.enemySprite.scaleX
     this.tweens.add({
       targets: this.enemySprite,
-      y: startY + 30,
-      duration: 150,
+      y: startY + 18,
+      scaleX: startScale * 1.12,
+      scaleY: startScale * 1.12,
+      duration: 140,
       yoyo: true,
       ease: 'Power2',
     })
+    this.cameras.main.shake(130, 0.0034, true)
   }
 
   /** Play enemy death animation (fade out + scale down). Returns promise resolving on completion. */
@@ -462,9 +489,10 @@ export class CombatScene extends Phaser.Scene {
       this.tweens.add({
         targets: this.enemySprite,
         alpha: 0,
-        scaleX: 0.3,
-        scaleY: 0.3,
-        duration: 500,
+        scaleX: 0.15,
+        scaleY: 0.15,
+        y: this.enemySprite.y + 24,
+        duration: 520,
         ease: 'Power2',
         onComplete: () => resolve(),
       })
@@ -473,11 +501,6 @@ export class CombatScene extends Phaser.Scene {
 
   /** Play player damage flash (red tint across display zone). */
   playPlayerDamageFlash(): void {
-    if ('setTexture' in this.playerSprite && hasTexture(this, 'player-hit')) {
-      ;(this.playerSprite as Phaser.GameObjects.Image).setTexture('player-hit')
-      this.time.delayedCall(220, () => this.setPlayerPose('player-idle'))
-    }
-
     if (this.reduceMotion) return
 
     const flash = this.add.rectangle(
@@ -493,13 +516,11 @@ export class CombatScene extends Phaser.Scene {
       hold: 0,
       onComplete: () => flash.destroy(),
     })
+    this.cameras.main.shake(150, 0.004, true)
   }
 
   /** Play heal effect (green particles rising near player HP bar). */
   playHealEffect(): void {
-    this.setPlayerPose('player-heal')
-    this.time.delayedCall(260, () => this.setPlayerPose('player-idle'))
-
     if (this.reduceMotion) return
 
     const playerHpY = this.displayH * PLAYER_HP_Y_PCT
@@ -553,35 +574,87 @@ export class CombatScene extends Phaser.Scene {
   }
 
   playPlayerAttackAnimation(): void {
-    this.setPlayerPose('player-attack')
-    this.time.delayedCall(240, () => this.setPlayerPose('player-idle'))
+    if (this.reduceMotion) return
+    this.tweens.add({
+      targets: this.enemySprite,
+      y: this.enemySprite.y - 8,
+      duration: 110,
+      yoyo: true,
+      ease: 'Sine.easeOut',
+    })
   }
 
   playPlayerCastAnimation(): void {
-    this.setPlayerPose('player-heal')
-    this.time.delayedCall(240, () => this.setPlayerPose('player-idle'))
+    if (this.reduceMotion) return
+    this.playScreenFlash(0.12)
+    this.burstParticles(14, this.scale.width / 2, this.displayH * 0.44, 0x8be4ff)
   }
 
   playPlayerBlockAnimation(): void {
-    this.setPlayerPose('player-shield')
-    this.time.delayedCall(240, () => this.setPlayerPose('player-idle'))
+    if (this.reduceMotion) return
+    this.playScreenFlash(0.1)
+    this.burstParticles(10, this.scale.width / 2, this.displayH * 0.47, 0x8fbfff)
   }
 
   playPlayerVictoryAnimation(): void {
-    this.setPlayerPose('player-victory')
+    if (this.reduceMotion) return
+    this.tweens.add({
+      targets: this.enemySprite,
+      alpha: 0.2,
+      duration: 140,
+      yoyo: true,
+    })
   }
 
   playPlayerDefeatAnimation(): void {
-    this.setPlayerPose('player-death')
+    if (this.reduceMotion) return
+    this.playPlayerDamageFlash()
+    this.cameras.main.shake(200, 0.005, true)
   }
 
   // ═════════════════════════════════════════════════════════
   // Private helpers
   // ═════════════════════════════════════════════════════════
 
-  private setPlayerPose(textureKey: string): void {
-    if ('setTexture' in this.playerSprite && hasTexture(this, textureKey)) {
-      ;(this.playerSprite as Phaser.GameObjects.Image).setTexture(textureKey)
+  private playEncounterEntry(): void {
+    this.entryFadeRect.setAlpha(1)
+
+    const isBoss = this.currentEnemyCategory === 'boss'
+    const startScale = isBoss ? 0.76 : 0.86
+    const fadeDuration = isBoss ? 560 : 380
+
+    this.enemySprite.setAlpha(this.reduceMotion ? 1 : 0.16)
+    this.enemySprite.setScale(this.reduceMotion ? 1 : startScale)
+
+    if (!this.reduceMotion) {
+      this.tweens.add({
+        targets: this.enemySprite,
+        alpha: 1,
+        scaleX: 1,
+        scaleY: 1,
+        duration: fadeDuration,
+        ease: isBoss ? 'Back.Out' : 'Quad.Out',
+      })
+    }
+
+    this.tweens.add({
+      targets: this.entryFadeRect,
+      alpha: 0,
+      duration: fadeDuration,
+      ease: 'Sine.easeOut',
+    })
+
+    if (isBoss && !this.reduceMotion) {
+      this.cameras.main.shake(180, 0.0035, true)
+      const cam = this.cameras.main
+      const baseZoom = cam.zoom
+      this.tweens.add({
+        targets: cam,
+        zoom: baseZoom * 1.045,
+        duration: 190,
+        yoyo: true,
+        ease: 'Sine.easeInOut',
+      })
     }
   }
 

@@ -501,16 +501,16 @@ Depends on: AR-09 (card type selection system — already complete). Estimated: 
 ### AR-29: First-Person Dungeon Crawl
 **Shift combat and room exploration to first-person perspective.** Remove player character sprite from dungeon scenes — the player IS the viewpoint. Enemies and bosses rendered large and menacing, staring directly at you. Room entry fade-in transitions for atmosphere. Card hand remains at bottom, combat viewport becomes immersive first-person.
 
-- [ ] Remove player character sprite from combat/room scenes
-- [ ] Redesign combat viewport: first-person perspective with enemy filling upper screen
-- [ ] Upscale enemy/boss sprites or generate larger first-person variants
-- [ ] Room entry fade-in effect (fade from black or door-opening animation)
-- [ ] First-person hallway view for door/room selection (2-3 doorways perspective)
-- [ ] Adjust hit/damage animations for first-person framing (screen shake, flash)
-- [ ] Boss encounters: even larger sprites, dramatic zoom-in on entry
+- [x] Remove player character sprite from combat/room scenes
+- [x] Redesign combat viewport: first-person perspective with enemy filling upper screen
+- [x] Upscale enemy/boss sprites or generate larger first-person variants
+- [x] Room entry fade-in effect (fade from black or door-opening animation)
+- [x] First-person hallway view for door/room selection (2-3 doorways perspective)
+- [x] Adjust hit/damage animations for first-person framing (screen shake, flash)
+- [x] Boss encounters: even larger sprites, dramatic zoom-in on entry
 
-Depends on: None. Estimated: Medium-Large.
-→ Spec: TBD
+Depends on: None. Estimated: Medium-Large. **Status: Core implementation completed (March 10, 2026).**
+→ [Spec](completed/AR-29-FIRST-PERSON-DUNGEON-CRAWL.md)
 
 ### AR-30: Camp Cosmetics & Visual Progression
 **Between-runs hub becomes a visual camp scene near the dungeon entrance.** Players spend gold on purely cosmetic upgrades — tent, seating, campfire, character outfit, pet companion, decorations. Each camp element is a location-aware sprite slot; upgrades swap sprite variants. Gives gold a meaningful non-gameplay sink and creates "home base" attachment.
@@ -555,7 +555,7 @@ FUTURE:
   AR-19 → AR-20 (Social) / AR-21 (Monetization)
   AR-27 (Tier-Up Animations) — independent, can run anytime
   AR-28 (Reward Altar) — core complete, optional icon art pass can run anytime
-  AR-29 (First-Person Crawl) — independent, can run anytime
+  AR-29 (First-Person Crawl) — core complete
   AR-30 (Camp Cosmetics) — depends on AR-08 (complete), can run anytime
 ```
 
