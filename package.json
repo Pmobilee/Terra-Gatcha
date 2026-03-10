@@ -21,6 +21,7 @@
     "content:workers:ingest": "node scripts/content-pipeline/agent-workers.mjs ingest",
     "content:workers:qa": "node scripts/content-pipeline/agent-workers.mjs qa",
     "content:workers:promote": "node scripts/content-pipeline/agent-workers.mjs promote",
+    "content:workers:status": "node scripts/content-pipeline/agent-workers.mjs status",
     "content:workers:all": "node scripts/content-pipeline/agent-workers.mjs all",
     "content:visuals:fill": "node scripts/content-pipeline/fill-missing-visual-descriptions.mjs",
     "content:autopilot": "node scripts/content-pipeline/autopilot.mjs",

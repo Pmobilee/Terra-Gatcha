@@ -23,6 +23,7 @@
 - AR-20 competitive runtime hardening: added regression coverage for Endless Depths and Scholar Challenge reservation/completion/leaderboard mapping (`tests/unit/endlessDepthsService.test.ts`, `tests/unit/scholarChallengeService.test.ts`).
 - Added dome sprite coverage regression tests to keep layout/tree sprite keys aligned with `DOME_SPRITE_KEYS` (`tests/unit/domeManifest.test.ts`).
 - Build-pipeline hardening: `scripts/convert-to-webp.mjs` now skips up-to-date assets, validates conversion integrity (non-empty + dimension match), and fails strict builds on conversion errors.
+- Worker-orchestration observability: `content:workers:status` now summarizes per-domain generated/worker-output counts, target deltas, and prepare/ingest/QA/promote stage health in one JSON report.
 
 **Next up:** Continue worker-first AR-17/AR-19 production runs (external Claude subscription workers + full-scale QA gates) and process deferred go-live tasks only when explicitly unblocked. Visual-description and ComfyUI tracks continue in their separate workstreams.
 

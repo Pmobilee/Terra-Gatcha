@@ -10,7 +10,7 @@ const execFileAsync = promisify(execFile)
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const root = path.resolve(__dirname, '../..')
-const VALID_COMMANDS = new Set(['prepare', 'ingest', 'qa', 'promote', 'all', 'help'])
+const VALID_COMMANDS = new Set(['prepare', 'ingest', 'qa', 'promote', 'status', 'all', 'help'])
 const DEFAULT_DOMAIN_TARGET = 1000
 
 function parseCli(argv) {
@@ -425,6 +425,19 @@ async function tryReadJson(filePath) {
   }
 }
 
+function summarizeStage(report, fallbackPass = null) {
+  if (!report) {
+    return { available: false, pass: fallbackPass, generatedAt: null }
+  }
+  return {
+    available: true,
+    pass: typeof report?.pass === 'boolean'
+      ? report.pass
+      : (typeof report?.run?.ok === 'boolean' ? report.run.ok : fallbackPass),
+    generatedAt: report?.generatedAt || null,
+  }
+}
+
 async function cmdIngest(rawArgs) {
   const args = {
     sources: 'scripts/content-pipeline/sources.json',
@@ -677,6 +690,141 @@ async function cmdPromote(rawArgs) {
   }
 }
 
+async function cmdStatus(rawArgs) {
+  const args = {
+    sources: 'scripts/content-pipeline/sources.json',
+    domains: '',
+    'generated-dir': 'data/generated',
+    'worker-output-dir': 'data/generated/worker-output',
+    'tasks-dir': 'data/generated/worker-packages',
+    'prepare-report': 'data/generated/qa-reports/agent-workers-prepare.json',
+    'ingest-report': 'data/generated/qa-reports/agent-workers-ingest.json',
+    'qa-report': 'data/generated/qa-reports/agent-workers-qa.json',
+    'qa-wrapper-report': 'data/generated/qa-reports/agent-workers-qa-wrapper.json',
+    'promote-report': 'data/generated/qa-reports/agent-workers-promote-wrapper.json',
+    output: '',
+    ...rawArgs,
+  }
+
+  const sourcesPath = path.resolve(root, String(args.sources))
+  const generatedDir = String(args['generated-dir'])
+  const workerOutputDir = String(args['worker-output-dir'])
+  const tasksDir = path.resolve(root, String(args['tasks-dir']))
+
+  const [{ config, domainKeys }, manifest, prepareReport, ingestReport, qaReport, qaWrapperReport, promoteReport] = await Promise.all([
+    loadSourcesConfig(sourcesPath),
+    loadTaskManifest(tasksDir),
+    tryReadJson(path.resolve(root, String(args['prepare-report']))),
+    tryReadJson(path.resolve(root, String(args['ingest-report']))),
+    tryReadJson(path.resolve(root, String(args['qa-report']))),
+    tryReadJson(path.resolve(root, String(args['qa-wrapper-report']))),
+    tryReadJson(path.resolve(root, String(args['promote-report']))),
+  ])
+
+  const manifestTasks = new Map(
+    Array.isArray(manifest?.tasks)
+      ? manifest.tasks.map((task) => [toDomainKey(task?.domain), task])
+      : [],
+  )
+  const domains = parseDomainList(args.domains, manifest?.domains || domainKeys)
+
+  const rows = []
+  const totals = {
+    domains: domains.length,
+    generatedFacts: 0,
+    workerOutputFacts: 0,
+    targetFacts: 0,
+    missingFacts: 0,
+    targetMetDomains: 0,
+    pendingIngestDomains: 0,
+    needsGenerationDomains: 0,
+  }
+
+  for (const domain of domains) {
+    const task = manifestTasks.get(domain) || null
+    const generated = await countGeneratedFacts(generatedDir, domain)
+    const workerOutputPath = await resolveWorkerOutputPath(domain, workerOutputDir, task)
+    const workerOutputCount = workerOutputPath ? await countRecords(workerOutputPath) : 0
+    const expectedMinimum = Math.max(0, Number(config?.domains?.[domain]?.expectedMinimum || 0))
+    const taskTarget = Math.max(0, Number(task?.targetFacts || 0))
+    const targetFacts = Math.max(taskTarget, expectedMinimum)
+    const missingFacts = Math.max(0, targetFacts - generated.count)
+
+    let state = 'no_target'
+    if (targetFacts > 0) {
+      if (missingFacts === 0) state = 'target_met'
+      else if (workerOutputCount > 0) state = 'pending_ingest'
+      else state = 'needs_generation'
+    }
+
+    rows.push({
+      domain,
+      generatedFacts: generated.count,
+      generatedPath: generated.path ? rel(generated.path) : null,
+      workerOutputFacts: workerOutputCount,
+      workerOutputPath: workerOutputPath ? rel(workerOutputPath) : null,
+      targetFacts,
+      missingFacts,
+      state,
+    })
+
+    totals.generatedFacts += generated.count
+    totals.workerOutputFacts += workerOutputCount
+    totals.targetFacts += targetFacts
+    totals.missingFacts += missingFacts
+    if (state === 'target_met') totals.targetMetDomains += 1
+    if (state === 'pending_ingest') totals.pendingIngestDomains += 1
+    if (state === 'needs_generation') totals.needsGenerationDomains += 1
+  }
+
+  const prepareSummary = summarizeStage(prepareReport)
+  const ingestSummary = summarizeStage(ingestReport)
+  const qaSummary = summarizeStage(
+    qaWrapperReport || qaReport,
+    typeof qaReport?.pass === 'boolean' ? qaReport.pass : null,
+  )
+  const promoteSummary = summarizeStage(promoteReport)
+
+  const qaFailedStep = Array.isArray(qaReport?.results)
+    ? qaReport.results.find((entry) => entry?.ok === false)?.script || null
+    : null
+
+  const blockers = []
+  for (const row of rows) {
+    if (row.state !== 'target_met') {
+      blockers.push({
+        domain: row.domain,
+        state: row.state,
+        missingFacts: row.missingFacts,
+      })
+    }
+  }
+
+  const summary = {
+    generatedAt: new Date().toISOString(),
+    command: 'status',
+    domains,
+    totals,
+    stages: {
+      prepare: prepareSummary,
+      ingest: ingestSummary,
+      qa: {
+        ...qaSummary,
+        failedStep: qaFailedStep,
+      },
+      promote: promoteSummary,
+    },
+    blockers,
+    rows,
+  }
+
+  if (String(args.output || '').trim()) {
+    await writeJson(path.resolve(root, String(args.output)), summary)
+  }
+
+  console.log(JSON.stringify(summary, null, 2))
+}
+
 async function cmdAll(rawArgs) {
   await cmdPrepare(rawArgs)
   await cmdIngest(rawArgs)
@@ -694,11 +842,13 @@ function printHelp() {
     '  ingest   Merge worker outputs through manual-ingest validate/dedup/finalize flow',
     '  qa       Run strict post-generation QA chain',
     '  promote  Promote approved facts and rebuild DB',
+    '  status   Summarize per-domain generation/ingest readiness + stage reports',
     '  all      Run prepare -> ingest -> qa -> promote',
     '',
     'Examples:',
     '  npm run content:workers:prepare -- --target-per-domain 1200',
     '  npm run content:workers:ingest -- --worker-output-dir data/generated/worker-output --strict true',
+    '  npm run content:workers:status -- --output data/generated/qa-reports/agent-workers-status.json',
     '  npm run content:workers:all -- --domains geography,history --dry-run true --rebuild-db false',
   ].join('\n'))
 }
@@ -723,6 +873,9 @@ async function main() {
       break
     case 'promote':
       await cmdPromote(args)
+      break
+    case 'status':
+      await cmdStatus(args)
       break
     case 'all':
       await cmdAll(args)

@@ -34,7 +34,12 @@ data/generated/worker-output/<domain>.jsonl
 npm run content:workers:ingest -- --strict true
 ```
 
-6. Run QA gate and promote into seed/db:
+6. Check readiness/status across domains and QA stages:
+```bash
+npm run content:workers:status
+```
+
+7. Run QA gate and promote into seed/db:
 ```bash
 npm run content:workers:qa
 npm run content:workers:promote
@@ -85,7 +90,7 @@ Local paid Anthropic API execution paths are removed from content-pipeline scrip
 - `generate/estimate-cost.mjs` - token/cost estimate
 - `generate/sample.mjs` - small sample dry-run generation
 - `generate/generate-all-domains.mjs` - dry-run multi-domain generation helper
-- `agent-workers.mjs` - full worker-first orchestrator (`prepare`, `ingest`, `qa`, `promote`, `all`)
+- `agent-workers.mjs` - full worker-first orchestrator (`prepare`, `ingest`, `qa`, `promote`, `status`, `all`)
 - `autopilot.mjs` - end-to-end orchestration (knowledge + vocab + visuals + QA + promote)
 - `fill-missing-visual-descriptions.mjs` - fills empty visualDescription fields without paid API calls
 
