@@ -1,17 +1,15 @@
 {
   "domain": "mythology_folklore",
   "domainSlug": "mythology-folklore",
-  "existingFacts": 63,
+  "existingFacts": 327,
   "existingFactsPath": "data/generated/mythology_folklore.jsonl",
-  "targetFacts": 50,
+  "targetFacts": 1000,
   "expectedMinimum": 400,
-  "missingFacts": 0,
-  "requestedNewFacts": 0,
+  "missingFacts": 673,
+  "requestedNewFacts": 673,
   "inputPath": "data/raw/mixed/mythology_folklore.json",
   "workerOutputPath": "data/generated/worker-output/mythology_folklore.jsonl",
-  "recommendation": "skip",
+  "recommendation": "generate",
   "pass": true,
-  "notes": [
-    "domain target already satisfied"
-  ]
+  "notes": []
 }

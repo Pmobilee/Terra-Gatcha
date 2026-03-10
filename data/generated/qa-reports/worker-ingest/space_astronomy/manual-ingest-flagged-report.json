@@ -1,0 +1,1811 @@
+{
+  "generatedAt": "2026-03-10T09:08:26.632Z",
+  "inputFiles": [
+    "data/generated/worker-output/space_astronomy.jsonl"
+  ],
+  "counts": {
+    "flagged": 200
+  },
+  "items": [
+    {
+      "index": 61,
+      "id": "space_astronomy_gen_062",
+      "question": "How massive is the supermassive black hole Sagittarius A* at the center of our galaxy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 62,
+      "id": "space_astronomy_gen_063",
+      "question": "Approximately how much would a teaspoon of neutron star material weigh on Earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 63,
+      "id": "space_astronomy_gen_064",
+      "question": "Which moon of Jupiter is believed to have more water than all of Earth's oceans?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 64,
+      "id": "space_astronomy_gen_065",
+      "question": "Where does the James Webb Space Telescope orbit?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 65,
+      "id": "space_astronomy_gen_066",
+      "question": "How old is the cosmic microwave background radiation?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 66,
+      "id": "space_astronomy_gen_067",
+      "question": "What percentage of the universe is made up of dark energy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 67,
+      "id": "space_astronomy_gen_068",
+      "question": "What color are sunsets on Mars?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 68,
+      "id": "space_astronomy_gen_069",
+      "question": "When were gravitational waves first directly detected?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 69,
+      "id": "space_astronomy_gen_070",
+      "question": "What is the most distant human-made object from Earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 70,
+      "id": "space_astronomy_gen_071",
+      "question": "What is unusual about a day on Venus compared to its year?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 71,
+      "id": "space_astronomy_gen_072",
+      "question": "What is the name of the first aircraft to fly on another planet?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 72,
+      "id": "space_astronomy_gen_073",
+      "question": "How tall are the Pillars of Creation in the Eagle Nebula?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 73,
+      "id": "space_astronomy_gen_074",
+      "question": "How many times does the ISS orbit Earth per day?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 74,
+      "id": "space_astronomy_gen_075",
+      "question": "Approximately how many stars are estimated to exist in the observable universe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 75,
+      "id": "space_astronomy_gen_076",
+      "question": "How thick are Saturn's rings on average?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 76,
+      "id": "space_astronomy_gen_077",
+      "question": "What is a magnetar?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 77,
+      "id": "space_astronomy_gen_078",
+      "question": "In what year was the Hubble Space Telescope launched?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 78,
+      "id": "space_astronomy_gen_079",
+      "question": "Which moon of Saturn shoots water ice geysers into space?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 79,
+      "id": "space_astronomy_gen_080",
+      "question": "How does the total mass of the asteroid belt compare to the Moon?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 80,
+      "id": "space_astronomy_gen_081",
+      "question": "How fast can the fastest known pulsars spin?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 81,
+      "id": "space_astronomy_gen_082",
+      "question": "How long has Jupiter's Great Red Spot been observed?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 82,
+      "id": "space_astronomy_gen_083",
+      "question": "In what year was the first exoplanet orbiting a Sun-like star discovered?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 83,
+      "id": "space_astronomy_gen_084",
+      "question": "What is the shape of the Kuiper Belt object Arrokoth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 84,
+      "id": "space_astronomy_gen_085",
+      "question": "What liquid fills the lakes and rivers on Saturn's moon Titan?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 85,
+      "id": "space_astronomy_gen_086",
+      "question": "In approximately how many years will the Andromeda Galaxy collide with the Milky Way?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 86,
+      "id": "space_astronomy_gen_087",
+      "question": "What is the fastest human-made object ever built?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 87,
+      "id": "space_astronomy_gen_088",
+      "question": "What unusual substance is found in enormous quantities in the molecular cloud Sagittarius B2?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 88,
+      "id": "space_astronomy_gen_089",
+      "question": "What fraction of star systems in our galaxy are binary or multiple star systems?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 89,
+      "id": "space_astronomy_gen_090",
+      "question": "What is the coldest known natural place in the universe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 90,
+      "id": "space_astronomy_gen_091",
+      "question": "What is the tallest volcano in the solar system?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 91,
+      "id": "space_astronomy_gen_092",
+      "question": "How many Earth-sized planets orbit the star TRAPPIST-1?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 92,
+      "id": "space_astronomy_gen_093",
+      "question": "Where is most of Earth's gold believed to have originally been created?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 93,
+      "id": "space_astronomy_gen_094",
+      "question": "How many atoms are typically found per cubic centimeter in interstellar space?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 94,
+      "id": "space_astronomy_gen_095",
+      "question": "In what year was the supernova that created the Crab Nebula recorded?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 95,
+      "id": "space_astronomy_gen_096",
+      "question": "Which body in the solar system is the most volcanically active?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 96,
+      "id": "space_astronomy_gen_097",
+      "question": "What is the diameter of the observable universe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 97,
+      "id": "space_astronomy_gen_098",
+      "question": "What effect can powerful solar flares have on Earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 98,
+      "id": "space_astronomy_gen_099",
+      "question": "How many confirmed exoplanets did the Kepler Space Telescope discover?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 99,
+      "id": "space_astronomy_gen_100",
+      "question": "What is the scientific term for being stretched apart by a black hole's tidal forces?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 100,
+      "id": "space_astronomy_gen_101",
+      "question": "When was the Arecibo message transmitted into space?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 101,
+      "id": "space_astronomy_gen_102",
+      "question": "What is puzzling about the temperature of the Sun's corona?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 102,
+      "id": "space_astronomy_gen_103",
+      "question": "What is a rogue planet?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 103,
+      "id": "space_astronomy_gen_104",
+      "question": "What did Apollo astronauts leave on the Moon that scientists still use today?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 104,
+      "id": "space_astronomy_gen_105",
+      "question": "What is the approximate weight of a sugar-cube-sized piece of white dwarf material?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 105,
+      "id": "space_astronomy_gen_106",
+      "question": "What is the Chandrasekhar limit?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 106,
+      "id": "space_astronomy_gen_107",
+      "question": "How far from the Sun might the Oort Cloud extend?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 107,
+      "id": "space_astronomy_gen_108",
+      "question": "How large is the star Betelgeuse compared to our Sun?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 108,
+      "id": "space_astronomy_gen_109",
+      "question": "When was the famous Wow! signal detected?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 109,
+      "id": "space_astronomy_gen_110",
+      "question": "What powers the extreme brightness of quasars?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 110,
+      "id": "space_astronomy_gen_111",
+      "question": "Why did NASA crash the Cassini spacecraft into Saturn?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 161,
+      "id": "space_astronomy_gen_112",
+      "question": "Which exoplanet orbits the closest star to our Sun?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 162,
+      "id": "space_astronomy_gen_113",
+      "question": "Approximately how much would a teaspoon of neutron star material weigh on Earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 163,
+      "id": "space_astronomy_gen_114",
+      "question": "Which moon of Jupiter is believed to have a subsurface ocean larger than Earth's oceans?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 164,
+      "id": "space_astronomy_gen_115",
+      "question": "What was the name of the helicopter that achieved the first powered flight on Mars?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 165,
+      "id": "space_astronomy_gen_116",
+      "question": "What type of light does the James Webb Space Telescope primarily observe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 166,
+      "id": "space_astronomy_gen_117",
+      "question": "Approximately what percentage of the universe's mass-energy is dark matter?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 167,
+      "id": "space_astronomy_gen_118",
+      "question": "The total mass of the asteroid belt is less than what percentage of the Moon's mass?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 168,
+      "id": "space_astronomy_gen_119",
+      "question": "Approximately how long does it take the ISS to orbit Earth once?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 169,
+      "id": "space_astronomy_gen_120",
+      "question": "Which rocket was the first orbital-class booster to land successfully for reuse?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 170,
+      "id": "space_astronomy_gen_121",
+      "question": "What solar phenomenon can release energy equivalent to millions of nuclear bombs?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 171,
+      "id": "space_astronomy_gen_122",
+      "question": "What is the closest large star-forming nebula visible to the naked eye?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 172,
+      "id": "space_astronomy_gen_123",
+      "question": "What type of galaxy has rotating arms where new stars form?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 173,
+      "id": "space_astronomy_gen_124",
+      "question": "Which observatory first directly detected gravitational waves in 2015?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 174,
+      "id": "space_astronomy_gen_125",
+      "question": "Which spacecraft is the most distant human-made object from Earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 175,
+      "id": "space_astronomy_gen_126",
+      "question": "What causes a star to become a red giant?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 176,
+      "id": "space_astronomy_gen_127",
+      "question": "The cosmic microwave background is the afterglow of what event?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 177,
+      "id": "space_astronomy_gen_128",
+      "question": "Which microscopic animal has survived exposure to the vacuum of space?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 178,
+      "id": "space_astronomy_gen_129",
+      "question": "Approximately how much bone density can astronauts lose per month in microgravity?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 179,
+      "id": "space_astronomy_gen_130",
+      "question": "Which moon has a dense atmosphere and lakes of liquid methane?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 180,
+      "id": "space_astronomy_gen_131",
+      "question": "What is the tallest known volcano in the solar system?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 181,
+      "id": "space_astronomy_gen_132",
+      "question": "In what year was the Hubble Space Telescope launched into orbit?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 182,
+      "id": "space_astronomy_gen_133",
+      "question": "Approximately how often is Halley's Comet visible from Earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 183,
+      "id": "space_astronomy_gen_134",
+      "question": "Approximately what percentage of the universe's energy is dark energy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 184,
+      "id": "space_astronomy_gen_135",
+      "question": "Which Saturn moon ejects water ice geysers from its south pole?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 185,
+      "id": "space_astronomy_gen_136",
+      "question": "What is the minimum distance at which a moon can orbit without being torn apart by tidal forces called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 186,
+      "id": "space_astronomy_gen_137",
+      "question": "Which exoplanet orbits the closest star to our Sun?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 187,
+      "id": "space_astronomy_gen_138",
+      "question": "Approximately how much would a teaspoon of neutron star material weigh on Earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 188,
+      "id": "space_astronomy_gen_139",
+      "question": "Which moon of Jupiter is believed to have a subsurface ocean with more water than Earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 189,
+      "id": "space_astronomy_gen_140",
+      "question": "At which Lagrange point does the James Webb Space Telescope orbit?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 190,
+      "id": "space_astronomy_gen_141",
+      "question": "What percentage of the universe's total energy content is dark energy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 191,
+      "id": "space_astronomy_gen_142",
+      "question": "The total mass of the asteroid belt is less than what percentage of the Moon's mass?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 192,
+      "id": "space_astronomy_gen_143",
+      "question": "How long does it take the International Space Station to complete one orbit of Earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 193,
+      "id": "space_astronomy_gen_144",
+      "question": "Which rocket was the first orbital-class booster to successfully land for reuse?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 194,
+      "id": "space_astronomy_gen_145",
+      "question": "What solar phenomenon can release energy equivalent to millions of nuclear bombs?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 195,
+      "id": "space_astronomy_gen_146",
+      "question": "The Pillars of Creation are found in which nebula?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 196,
+      "id": "space_astronomy_gen_147",
+      "question": "In approximately how many billion years will the Andromeda Galaxy collide with the Milky Way?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 197,
+      "id": "space_astronomy_gen_148",
+      "question": "Which observatory first directly detected gravitational waves in 2015?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 198,
+      "id": "space_astronomy_gen_149",
+      "question": "Which spacecraft is the most distant human-made object from Earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 199,
+      "id": "space_astronomy_gen_150",
+      "question": "How large can a red giant star expand compared to the Sun's diameter?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 200,
+      "id": "space_astronomy_gen_151",
+      "question": "The Kuiper Belt begins at approximately which planet's orbit?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 201,
+      "id": "space_astronomy_gen_152",
+      "question": "What is the name of the tallest known volcano in the solar system?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 202,
+      "id": "space_astronomy_gen_153",
+      "question": "Approximately how many galaxies are estimated to exist in the observable universe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 203,
+      "id": "space_astronomy_gen_154",
+      "question": "Which moon is the only one in the solar system with a thick atmosphere?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 204,
+      "id": "space_astronomy_gen_155",
+      "question": "What type of neutron star has a magnetic field trillions of times stronger than Earth's?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 205,
+      "id": "space_astronomy_gen_156",
+      "question": "About how many galaxies were revealed in the original Hubble Deep Field image?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 206,
+      "id": "space_astronomy_gen_157",
+      "question": "How far from the Sun does the Oort Cloud hypothetically extend?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 207,
+      "id": "space_astronomy_gen_158",
+      "question": "What does the Drake Equation attempt to estimate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 208,
+      "id": "space_astronomy_gen_159",
+      "question": "On which planet is a single day longer than its year?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 209,
+      "id": "space_astronomy_gen_160",
+      "question": "The Cosmic Microwave Background dates to approximately how long after the Big Bang?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 210,
+      "id": "space_astronomy_gen_161",
+      "question": "Which moon of Saturn ejects geysers of water ice from its south pole?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 211,
+      "id": "space_astronomy_gen_162",
+      "question": "What is the boundary around a black hole beyond which nothing can escape called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 212,
+      "id": "space_astronomy_gen_163",
+      "question": "Which spacecraft holds the record as the fastest human-made object?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 213,
+      "id": "space_astronomy_gen_164",
+      "question": "What are rapidly rotating neutron stars that emit beams of radiation called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 214,
+      "id": "space_astronomy_gen_165",
+      "question": "In what year was the supernova that created the Crab Nebula recorded by Chinese astronomers?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 215,
+      "id": "space_astronomy_gen_166",
+      "question": "Saturn's rings are primarily composed of what material?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 216,
+      "id": "space_astronomy_gen_167",
+      "question": "What is the name of the paradox about the absence of evidence for extraterrestrial civilizations?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 217,
+      "id": "space_astronomy_gen_168",
+      "question": "A white dwarf is approximately the size of which celestial body?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 218,
+      "id": "space_astronomy_gen_169",
+      "question": "Approximately how many confirmed exoplanets did the Kepler Space Telescope discover?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 219,
+      "id": "space_astronomy_gen_170",
+      "question": "Which body in the solar system is the most volcanically active?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 220,
+      "id": "space_astronomy_gen_171",
+      "question": "Approximately what percentage of the universe is composed of dark matter?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 221,
+      "id": "space_astronomy_gen_172",
+      "question": "What is the maximum mass of a stable white dwarf, known as the Chandrasekhar limit?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 222,
+      "id": "space_astronomy_gen_173",
+      "question": "How many Earth-sized planets orbit the TRAPPIST-1 star?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 223,
+      "id": "space_astronomy_gen_174",
+      "question": "Approximately how many trillion kilometers is one light-year?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 224,
+      "id": "space_astronomy_gen_175",
+      "question": "Which moon in the solar system is larger than the planet Mercury?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 225,
+      "id": "space_astronomy_gen_176",
+      "question": "Which Apollo mission first landed humans on the Moon?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 226,
+      "id": "space_astronomy_gen_177",
+      "question": "What is the name of the supermassive black hole at the center of the Milky Way?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 227,
+      "id": "space_astronomy_gen_178",
+      "question": "What was the name of the helicopter that made the first powered flight on Mars?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 228,
+      "id": "space_astronomy_gen_179",
+      "question": "How many times per second can the fastest known neutron star rotate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 229,
+      "id": "space_astronomy_gen_180",
+      "question": "For at least how many years has Jupiter's Great Red Spot storm been active?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 230,
+      "id": "space_astronomy_gen_181",
+      "question": "What is the region around a star where liquid water could exist on a planet called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 231,
+      "id": "space_astronomy_gen_182",
+      "question": "What is the term for the stretching of objects into thin shapes near a black hole?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 232,
+      "id": "space_astronomy_gen_183",
+      "question": "What is the name of NASA's program to return humans to the Moon?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 233,
+      "id": "space_astronomy_gen_184",
+      "question": "What powers the extreme luminosity of quasars?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 234,
+      "id": "space_astronomy_gen_185",
+      "question": "What is the minimum orbital distance before tidal forces tear a body apart called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 235,
+      "id": "space_astronomy_gen_186",
+      "question": "What is the exact speed of light in a vacuum?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 236,
+      "id": "space_astronomy_gen_187",
+      "question": "What does the Hertzsprung-Russell diagram plot stars by?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 237,
+      "id": "space_astronomy_gen_188",
+      "question": "What liquid fills the lakes and seas on Saturn's moon Titan?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 238,
+      "id": "space_astronomy_gen_189",
+      "question": "What triggers a Type Ia supernova?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 239,
+      "id": "space_astronomy_gen_190",
+      "question": "Which planet in our solar system is the smallest?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 240,
+      "id": "space_astronomy_gen_191",
+      "question": "In which galaxy was the first black hole ever directly imaged?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 241,
+      "id": "space_astronomy_gen_192",
+      "question": "What are massive bursts of magnetized plasma ejected from the Sun's corona called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 242,
+      "id": "space_astronomy_gen_193",
+      "question": "How many overlapping collapse craters form the caldera complex at the summit of Olympus Mons?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 243,
+      "id": "space_astronomy_gen_194",
+      "question": "In what year was the unexplained Wow! signal detected?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 244,
+      "id": "space_astronomy_gen_195",
+      "question": "Which planet has the fastest winds in the solar system?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 245,
+      "id": "space_astronomy_gen_196",
+      "question": "In what year was the Hubble Space Telescope launched into orbit?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 246,
+      "id": "space_astronomy_gen_197",
+      "question": "In what year was Pluto reclassified as a dwarf planet?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 247,
+      "id": "space_astronomy_gen_198",
+      "question": "What is the bending of light by gravity from a massive object called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 248,
+      "id": "space_astronomy_gen_199",
+      "question": "Which spacecraft visited the Kuiper Belt object Arrokoth in 2019?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 249,
+      "id": "space_astronomy_gen_200",
+      "question": "What type of galaxy is the Milky Way?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 250,
+      "id": "space_astronomy_gen_201",
+      "question": "What phenomenon describes light stretching to longer wavelengths as its source moves away?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 251,
+      "id": "space_astronomy_gen_202",
+      "question": "Which NASA spacecraft has been orbiting Jupiter since 2016?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 252,
+      "id": "space_astronomy_gen_203",
+      "question": "What are high-energy particles traveling through space at nearly the speed of light called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 253,
+      "id": "space_astronomy_gen_204",
+      "question": "Approximately how hot is the Sun's corona?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 254,
+      "id": "space_astronomy_gen_205",
+      "question": "Which large moon orbits its planet in a retrograde direction, suggesting capture from the Kuiper Belt?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 255,
+      "id": "space_astronomy_gen_206",
+      "question": "Are binary star systems more or less common than single star systems?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 256,
+      "id": "space_astronomy_gen_207",
+      "question": "What is the name of the heart-shaped ice plain on Pluto?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 257,
+      "id": "space_astronomy_gen_208",
+      "question": "Approximately how many times larger than the Sun's radius is UY Scuti?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 258,
+      "id": "space_astronomy_gen_209",
+      "question": "Approximately how many atoms per cubic centimeter exist in interstellar space?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 259,
+      "id": "space_astronomy_gen_210",
+      "question": "Which comet is responsible for the Perseid meteor shower?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 260,
+      "id": "space_astronomy_gen_211",
+      "question": "What is the boundary where the solar wind meets the interstellar medium called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 261,
+      "id": "space_astronomy_gen_212",
+      "question": "What unusual spin-orbit ratio does Mercury have with the Sun?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 262,
+      "id": "space_astronomy_gen_213",
+      "question": "What is unusual about the globular cluster Omega Centauri?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 263,
+      "id": "space_astronomy_gen_214",
+      "question": "What color are sunsets on Mars?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 264,
+      "id": "space_astronomy_gen_215",
+      "question": "What did Apollo astronauts say lunar dust smelled like?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 265,
+      "id": "space_astronomy_gen_216",
+      "question": "How much mass does the Sun lose per second through nuclear fusion?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 266,
+      "id": "space_astronomy_gen_217",
+      "question": "Which exoplanet is theorized to have a diamond-rich interior?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 267,
+      "id": "space_astronomy_gen_218",
+      "question": "What materials did Apollo 17 astronauts use to repair their lunar rover fender?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 268,
+      "id": "space_astronomy_gen_219",
+      "question": "How does Europa's subsurface ocean compare to Earth's total ocean volume?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 269,
+      "id": "space_astronomy_gen_220",
+      "question": "How long could Apollo footprints last on the Moon?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 270,
+      "id": "space_astronomy_gen_221",
+      "question": "How fast can the fastest known neutron star spin?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 271,
+      "id": "space_astronomy_gen_222",
+      "question": "What flavor compound was found in the space cloud Sagittarius B2?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 272,
+      "id": "space_astronomy_gen_223",
+      "question": "What is the coldest known natural place in the universe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 273,
+      "id": "space_astronomy_gen_224",
+      "question": "Which planet in our solar system is less dense than water?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 274,
+      "id": "space_astronomy_gen_225",
+      "question": "Which planet has a day longer than its year?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 275,
+      "id": "space_astronomy_gen_226",
+      "question": "What is included on the Voyager Golden Records?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 276,
+      "id": "space_astronomy_gen_227",
+      "question": "Are there more trees on Earth or stars in the Milky Way?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 277,
+      "id": "space_astronomy_gen_228",
+      "question": "If the Sun were the size of a front door, what would Earth be?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 278,
+      "id": "space_astronomy_gen_229",
+      "question": "By how much would GPS positions drift per day without relativistic corrections?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 279,
+      "id": "space_astronomy_gen_230",
+      "question": "What is the Great Attractor?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 280,
+      "id": "space_astronomy_gen_231",
+      "question": "How much taller can astronauts grow in space?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 281,
+      "id": "space_astronomy_gen_232",
+      "question": "What unusual payload did SpaceX launch on the Falcon Heavy's maiden flight?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 282,
+      "id": "space_astronomy_gen_233",
+      "question": "How long does it take a photon to travel from the Sun's core to its surface?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 283,
+      "id": "space_astronomy_gen_234",
+      "question": "Why can you not see the base of Olympus Mons from its peak?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 284,
+      "id": "space_astronomy_gen_235",
+      "question": "What was Buzz Aldrin's mother's maiden name?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 285,
+      "id": "space_astronomy_gen_236",
+      "question": "How many telescopes were combined to create the first black hole image?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 286,
+      "id": "space_astronomy_gen_237",
+      "question": "What unusual geometric shape is the storm at Saturn's north pole?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 287,
+      "id": "space_astronomy_gen_238",
+      "question": "How long will the Arecibo message take to reach its target star cluster M13?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 288,
+      "id": "space_astronomy_gen_239",
+      "question": "Why is the Pluto-Charon system sometimes called a 'double dwarf planet'?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 289,
+      "id": "space_astronomy_gen_240",
+      "question": "How massive is the supermassive black hole TON 618?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 290,
+      "id": "space_astronomy_gen_241",
+      "question": "Approximately how much has the International Space Station cost to build?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 291,
+      "id": "space_astronomy_gen_242",
+      "question": "How strong is a magnetar's magnetic field compared to Earth's?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 292,
+      "id": "space_astronomy_gen_243",
+      "question": "What did the Hubble Deep Field image reveal in a tiny patch of seemingly empty sky?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 293,
+      "id": "space_astronomy_gen_244",
+      "question": "What is the fastest human-made object ever built?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 294,
+      "id": "space_astronomy_gen_245",
+      "question": "How much did a bag of Apollo Moon dust accidentally sell for at a government auction?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 295,
+      "id": "space_astronomy_gen_246",
+      "question": "On which moon could a human theoretically fly by flapping artificial wings?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 296,
+      "id": "space_astronomy_gen_247",
+      "question": "What is the largest known structure in the observable universe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 297,
+      "id": "space_astronomy_gen_248",
+      "question": "Which planet has the most known major volcanoes in the solar system?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 298,
+      "id": "space_astronomy_gen_249",
+      "question": "How long did the famous Wow! Signal last?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 299,
+      "id": "space_astronomy_gen_250",
+      "question": "What happens when two clean metal surfaces touch in space vacuum?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 300,
+      "id": "space_astronomy_gen_251",
+      "question": "Why did NASA deliberately crash Cassini into Saturn?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 301,
+      "id": "space_astronomy_gen_252",
+      "question": "Approximately how many galaxies are estimated to be in the observable universe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 302,
+      "id": "space_astronomy_gen_253",
+      "question": "What is unusual about Uranus's axial tilt?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 303,
+      "id": "space_astronomy_gen_254",
+      "question": "How much would a sugar-cube-sized piece of a neutron star weigh?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 304,
+      "id": "space_astronomy_gen_255",
+      "question": "From how far away was the famous Pale Blue Dot photograph taken?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 305,
+      "id": "space_astronomy_gen_256",
+      "question": "Where did the Big Bang happen?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 306,
+      "id": "space_astronomy_gen_257",
+      "question": "Which of Saturn's moons resembles the Death Star due to its giant impact crater?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 307,
+      "id": "space_astronomy_gen_258",
+      "question": "What do astronauts say space smells like?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 308,
+      "id": "space_astronomy_gen_259",
+      "question": "When the Milky Way and Andromeda collide, what will happen to individual stars?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 309,
+      "id": "space_astronomy_gen_260",
+      "question": "What makes the Bootes Void unusual?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 310,
+      "id": "space_astronomy_gen_261",
+      "question": "How has Jupiter's Great Red Spot changed over time?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    }
+  ]
+}

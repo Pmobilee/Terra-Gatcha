@@ -1,102 +1,102 @@
 {
-  "generatedAt": "2026-03-10T06:42:21.284Z",
+  "generatedAt": "2026-03-10T09:08:29.629Z",
   "domains": {
     "animals_wildlife": {
-      "total": 63,
+      "total": 254,
       "difficulty": {
-        "1": 0,
-        "2": 24,
-        "3": 39,
-        "4": 0,
+        "1": 8,
+        "2": 91,
+        "3": 124,
+        "4": 31,
         "5": 0
       },
       "visualCoverage": 1
     },
     "art_architecture": {
-      "total": 62,
+      "total": 237,
       "difficulty": {
-        "1": 0,
-        "2": 19,
-        "3": 38,
-        "4": 5,
-        "5": 0
+        "1": 9,
+        "2": 82,
+        "3": 110,
+        "4": 31,
+        "5": 5
       },
       "visualCoverage": 1
     },
     "food_cuisine": {
-      "total": 63,
+      "total": 328,
       "difficulty": {
-        "1": 12,
-        "2": 38,
-        "3": 13,
-        "4": 0,
+        "1": 30,
+        "2": 132,
+        "3": 127,
+        "4": 39,
         "5": 0
       },
       "visualCoverage": 1
     },
     "general_knowledge": {
-      "total": 140,
+      "total": 286,
       "difficulty": {
-        "1": 3,
-        "2": 87,
-        "3": 29,
-        "4": 14,
+        "1": 5,
+        "2": 148,
+        "3": 90,
+        "4": 36,
         "5": 7
       },
       "visualCoverage": 1
     },
     "geography": {
-      "total": 50,
+      "total": 255,
       "difficulty": {
-        "1": 3,
-        "2": 11,
-        "3": 22,
-        "4": 6,
-        "5": 8
+        "1": 12,
+        "2": 62,
+        "3": 100,
+        "4": 54,
+        "5": 27
       },
       "visualCoverage": 1
     },
     "history": {
-      "total": 91,
+      "total": 244,
       "difficulty": {
-        "1": 3,
-        "2": 34,
-        "3": 52,
-        "4": 2,
-        "5": 0
+        "1": 9,
+        "2": 68,
+        "3": 124,
+        "4": 41,
+        "5": 2
       },
       "visualCoverage": 1
     },
     "human_body_health": {
-      "total": 63,
+      "total": 320,
       "difficulty": {
-        "1": 4,
-        "2": 25,
-        "3": 28,
-        "4": 6,
-        "5": 0
+        "1": 30,
+        "2": 110,
+        "3": 126,
+        "4": 49,
+        "5": 5
       },
       "visualCoverage": 1
     },
     "mythology_folklore": {
-      "total": 63,
+      "total": 327,
       "difficulty": {
-        "1": 0,
-        "2": 18,
-        "3": 41,
-        "4": 4,
-        "5": 0
+        "1": 10,
+        "2": 84,
+        "3": 158,
+        "4": 64,
+        "5": 11
       },
       "visualCoverage": 1
     },
     "natural_sciences": {
-      "total": 54,
+      "total": 210,
       "difficulty": {
-        "1": 15,
-        "2": 18,
-        "3": 14,
-        "4": 7,
-        "5": 0
+        "1": 22,
+        "2": 70,
+        "3": 73,
+        "4": 37,
+        "5": 8
       },
       "visualCoverage": 1
     },
@@ -112,13 +112,13 @@
       "visualCoverage": 1
     },
     "space_astronomy": {
-      "total": 61,
+      "total": 261,
       "difficulty": {
-        "1": 0,
-        "2": 18,
-        "3": 22,
-        "4": 19,
-        "5": 2
+        "1": 25,
+        "2": 76,
+        "3": 99,
+        "4": 54,
+        "5": 7
       },
       "visualCoverage": 1
     }

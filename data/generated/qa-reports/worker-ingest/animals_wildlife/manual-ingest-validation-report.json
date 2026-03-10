@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.500Z",
+  "generatedAt": "2026-03-10T09:08:27.841Z",
   "inputFiles": [
     "data/generated/worker-output/animals_wildlife.jsonl"
   ],
   "domain": "animals_wildlife",
   "counts": {
-    "input": 63,
-    "valid": 63,
+    "input": 283,
+    "valid": 154,
     "invalid": 0,
-    "flagged": 0
+    "flagged": 129
   },
   "invalid": [],
   "topExamples": [

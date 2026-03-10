@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.026Z",
+  "generatedAt": "2026-03-10T09:08:26.552Z",
   "inputFiles": [
     "data/generated/worker-output/natural_sciences.jsonl"
   ],
   "target": "data/generated/natural_sciences.jsonl",
   "targetExists": true,
-  "existingFactsInTarget": 54,
+  "existingFactsInTarget": 210,
   "factsToAdd": 0,
-  "newTotalAfterMerge": 54,
+  "newTotalAfterMerge": 210,
   "sampleFacts": [],
   "coverage": {
-    "generatedAt": "2026-03-10T06:42:20.026Z",
+    "generatedAt": "2026-03-10T09:08:26.553Z",
     "totalFacts": 0,
     "withSource": 0,
     "sourceCoveragePct": 0,

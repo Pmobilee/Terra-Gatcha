@@ -1,0 +1,1730 @@
+{
+  "generatedAt": "2026-03-10T09:08:28.216Z",
+  "inputFiles": [
+    "data/generated/worker-output/food_cuisine.jsonl"
+  ],
+  "counts": {
+    "flagged": 191
+  },
+  "items": [
+    {
+      "index": 63,
+      "id": "food_cuisine_gen_064",
+      "question": "What food was found still edible in 3,000-year-old Egyptian tombs?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 64,
+      "id": "food_cuisine_gen_065",
+      "question": "Why is vanilla so expensive to produce?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 65,
+      "id": "food_cuisine_gen_066",
+      "question": "How does capsaicin make peppers taste hot?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 66,
+      "id": "food_cuisine_gen_067",
+      "question": "What was the original main ingredient of ketchup?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 67,
+      "id": "food_cuisine_gen_068",
+      "question": "What color were carrots originally before selective breeding?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 68,
+      "id": "food_cuisine_gen_069",
+      "question": "How was chocolate originally consumed for thousands of years?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 69,
+      "id": "food_cuisine_gen_070",
+      "question": "Why did 18th-century English people rent pineapples?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 70,
+      "id": "food_cuisine_gen_071",
+      "question": "Who discovered MSG and the umami taste?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 71,
+      "id": "food_cuisine_gen_072",
+      "question": "Approximately how many crocus flowers does it take to produce one pound of saffron?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 72,
+      "id": "food_cuisine_gen_073",
+      "question": "How was lobster regarded in colonial America?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 73,
+      "id": "food_cuisine_gen_074",
+      "question": "What is the Maillard reaction responsible for in cooking?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 74,
+      "id": "food_cuisine_gen_075",
+      "question": "How much more lethal is tetrodotoxin (in fugu) compared to cyanide?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 75,
+      "id": "food_cuisine_gen_076",
+      "question": "What is the world's oldest known recipe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 76,
+      "id": "food_cuisine_gen_077",
+      "question": "Which of these is a true botanical berry?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 77,
+      "id": "food_cuisine_gen_078",
+      "question": "What key ingredient is fermented to make Worcestershire sauce?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 78,
+      "id": "food_cuisine_gen_079",
+      "question": "Was freeze-dried 'astronaut ice cream' actually eaten in space?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 79,
+      "id": "food_cuisine_gen_080",
+      "question": "What compound in nutmeg can cause hallucinations in large doses?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 80,
+      "id": "food_cuisine_gen_081",
+      "question": "What is the most shoplifted food item in the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 81,
+      "id": "food_cuisine_gen_082",
+      "question": "Where was the Caesar salad invented?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 82,
+      "id": "food_cuisine_gen_083",
+      "question": "Why do apples float in water?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 83,
+      "id": "food_cuisine_gen_084",
+      "question": "How was the tea bag accidentally invented?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 84,
+      "id": "food_cuisine_gen_085",
+      "question": "What makes modern dry pasta last up to 2 years?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 85,
+      "id": "food_cuisine_gen_086",
+      "question": "What makes casu marzu cheese unique?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 86,
+      "id": "food_cuisine_gen_087",
+      "question": "How many Scoville Heat Units does Pepper X measure?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 87,
+      "id": "food_cuisine_gen_088",
+      "question": "Why were potatoes initially feared in Europe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 88,
+      "id": "food_cuisine_gen_089",
+      "question": "Who invented instant ramen noodles?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 89,
+      "id": "food_cuisine_gen_090",
+      "question": "What was garum in ancient Rome?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 90,
+      "id": "food_cuisine_gen_091",
+      "question": "According to the cooking hypothesis, how did cooking affect human evolution?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 91,
+      "id": "food_cuisine_gen_092",
+      "question": "What is the 'wasabi' served in most restaurants outside Japan actually made of?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 92,
+      "id": "food_cuisine_gen_093",
+      "question": "What are peanuts classified as botanically?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 93,
+      "id": "food_cuisine_gen_094",
+      "question": "How is kopi luwak coffee produced?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 94,
+      "id": "food_cuisine_gen_095",
+      "question": "How was the microwave oven accidentally discovered?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 95,
+      "id": "food_cuisine_gen_096",
+      "question": "Why does cilantro taste like soap to some people?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 96,
+      "id": "food_cuisine_gen_097",
+      "question": "Why must Greenland shark meat be fermented before eating?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 97,
+      "id": "food_cuisine_gen_098",
+      "question": "Why did the Earl of Sandwich want his food served between bread slices?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 98,
+      "id": "food_cuisine_gen_099",
+      "question": "What does sourdough fermentation break down that improves nutrient absorption?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 99,
+      "id": "food_cuisine_gen_100",
+      "question": "Where were fortune cookies actually invented?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 100,
+      "id": "food_cuisine_gen_101",
+      "question": "When must saffron flowers be harvested to preserve flavor?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 101,
+      "id": "food_cuisine_gen_102",
+      "question": "Who invented milk chocolate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 102,
+      "id": "food_cuisine_gen_103",
+      "question": "How can you predict what color eggs a hen will lay?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 103,
+      "id": "food_cuisine_gen_104",
+      "question": "How much did a turkey cost in the Aztec cacao bean economy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 104,
+      "id": "food_cuisine_gen_105",
+      "question": "What technique creates caviar-like spheres from any liquid?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 105,
+      "id": "food_cuisine_gen_106",
+      "question": "What did Alaric the Visigoth demand as part of Rome's ransom in 408 AD?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 106,
+      "id": "food_cuisine_gen_107",
+      "question": "What is the actual shelf life of a Twinkie?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 107,
+      "id": "food_cuisine_gen_108",
+      "question": "Why is durian fruit banned from hotels and public transport in Southeast Asia?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 108,
+      "id": "food_cuisine_gen_109",
+      "question": "Until what year did Coca-Cola contain coca leaf extract?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 109,
+      "id": "food_cuisine_gen_110",
+      "question": "What unusual biological trait do oysters have?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 110,
+      "id": "food_cuisine_gen_111",
+      "question": "Which city is considered the street food capital of the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 111,
+      "id": "food_cuisine_gen_112",
+      "question": "What percentage of people can smell the odor asparagus causes in urine?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 112,
+      "id": "food_cuisine_gen_113",
+      "question": "How does the confit preservation method work?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 163,
+      "id": "food_cuisine_gen_114",
+      "question": "What type of fermentation is used to make sauerkraut?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 164,
+      "id": "food_cuisine_gen_115",
+      "question": "Which two chemicals are combined in the spherification technique used in molecular gastronomy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 165,
+      "id": "food_cuisine_gen_116",
+      "question": "What was the fermented fish sauce used as a primary seasoning in ancient Rome?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 166,
+      "id": "food_cuisine_gen_117",
+      "question": "Which spice was so valuable in the Middle Ages that it was used as currency?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 167,
+      "id": "food_cuisine_gen_118",
+      "question": "Which fruit is commonly banned from hotels and public transport in Southeast Asia due to its strong odor?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 168,
+      "id": "food_cuisine_gen_119",
+      "question": "Which ancient civilization pioneered freeze-drying potatoes to create chuño?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 169,
+      "id": "food_cuisine_gen_120",
+      "question": "What unique sensation do Sichuan peppercorns produce, known as 'má' in Chinese?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 170,
+      "id": "food_cuisine_gen_121",
+      "question": "The word 'botulism' derives from the Latin word for which food item?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 171,
+      "id": "food_cuisine_gen_122",
+      "question": "Why did the Thai government promote Pad Thai as a national dish in the 1930s–40s?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 172,
+      "id": "food_cuisine_gen_123",
+      "question": "What does the French term 'sous vide' literally mean?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 173,
+      "id": "food_cuisine_gen_124",
+      "question": "What is the chemical reaction responsible for the browning and flavor development when food is seared or toasted?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 174,
+      "id": "food_cuisine_gen_125",
+      "question": "What food has been found in 3,000-year-old Egyptian tombs and was still edible?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 175,
+      "id": "food_cuisine_gen_126",
+      "question": "Who identified umami as the fifth basic taste in 1908?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 176,
+      "id": "food_cuisine_gen_127",
+      "question": "How did the Aztecs and Maya traditionally consume chocolate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 177,
+      "id": "food_cuisine_gen_128",
+      "question": "Approximately how many crocus flowers are needed to produce one pound of saffron?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 178,
+      "id": "food_cuisine_gen_129",
+      "question": "In which French region was Camembert cheese reportedly invented?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 179,
+      "id": "food_cuisine_gen_130",
+      "question": "What gives sourdough bread its characteristic tangy flavor?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 180,
+      "id": "food_cuisine_gen_131",
+      "question": "After water, what is the most widely consumed beverage in the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 181,
+      "id": "food_cuisine_gen_132",
+      "question": "From which food did Albert Szent-Györgyi first isolate large quantities of vitamin C?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 182,
+      "id": "food_cuisine_gen_133",
+      "question": "In which Japanese city did takoyaki originate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 183,
+      "id": "food_cuisine_gen_134",
+      "question": "Which ancient civilization is credited as among the first to use yeast to make leavened bread?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 184,
+      "id": "food_cuisine_gen_135",
+      "question": "What natural feature provides the ideal aging environment for Roquefort cheese?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 185,
+      "id": "food_cuisine_gen_136",
+      "question": "Which compound in chili peppers is responsible for the sensation of heat?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 186,
+      "id": "food_cuisine_gen_137",
+      "question": "Which Italian cheese is so valuable that banks accept wheels of it as collateral?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 187,
+      "id": "food_cuisine_gen_138",
+      "question": "According to legend, who discovered the energizing effects of coffee?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 188,
+      "id": "food_cuisine_gen_139",
+      "question": "What is most commonly used as a substitute for real wasabi in restaurants outside Japan?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 189,
+      "id": "food_cuisine_gen_140",
+      "question": "Who created the French culinary brigade system that organizes professional kitchens into specialized stations?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 190,
+      "id": "food_cuisine_gen_141",
+      "question": "Which of these foods naturally contains high levels of glutamate, the same compound found in MSG?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 191,
+      "id": "food_cuisine_gen_142",
+      "question": "How long must Japanese chefs train before they are licensed to prepare fugu?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 192,
+      "id": "food_cuisine_gen_143",
+      "question": "In which country did biltong originate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 193,
+      "id": "food_cuisine_gen_144",
+      "question": "Why must vanilla orchids outside Mexico be hand-pollinated?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 194,
+      "id": "food_cuisine_gen_145",
+      "question": "What type of oven is traditionally used to bake naan bread?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 195,
+      "id": "food_cuisine_gen_146",
+      "question": "What makes the Sardinian cheese casu marzu unique among cheeses?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 196,
+      "id": "food_cuisine_gen_147",
+      "question": "What is the oldest known recipe in the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 197,
+      "id": "food_cuisine_gen_148",
+      "question": "Which type of microorganism binds soybeans together to form tempeh?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 198,
+      "id": "food_cuisine_gen_149",
+      "question": "Which animal's digestive process is involved in making kopi luwak coffee?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 199,
+      "id": "food_cuisine_gen_150",
+      "question": "What color were carrots originally before the orange variety was developed?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 200,
+      "id": "food_cuisine_gen_151",
+      "question": "What mold is used to ferment soybeans into miso?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 201,
+      "id": "food_cuisine_gen_152",
+      "question": "How many Scoville Heat Units does the Carolina Reaper pepper exceed?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 202,
+      "id": "food_cuisine_gen_153",
+      "question": "Why must Greenland shark be fermented before it can be safely eaten?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 203,
+      "id": "food_cuisine_gen_154",
+      "question": "What process must corn undergo to make its niacin nutritionally available?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 204,
+      "id": "food_cuisine_gen_155",
+      "question": "Who accidentally created Worcestershire sauce after leaving a barrel of sauce in a cellar?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 205,
+      "id": "food_cuisine_gen_156",
+      "question": "Why are tea plants shaded before harvest when making matcha?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 206,
+      "id": "food_cuisine_gen_157",
+      "question": "What is the traditional Ethiopian vessel used to brew coffee during the coffee ceremony?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 207,
+      "id": "food_cuisine_gen_158",
+      "question": "How many English counties are legally permitted to produce Stilton cheese?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 208,
+      "id": "food_cuisine_gen_159",
+      "question": "What is the main chili paste used in tteokbokki sauce?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 209,
+      "id": "food_cuisine_gen_160",
+      "question": "What wood is traditionally used to smoke-dry the peppers for pimentón de la Vera?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 210,
+      "id": "food_cuisine_gen_161",
+      "question": "What is the primary ingredient in Vegemite?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 211,
+      "id": "food_cuisine_gen_162",
+      "question": "What is the minimum aging period for traditional balsamic vinegar of Modena?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 212,
+      "id": "food_cuisine_gen_163",
+      "question": "After whom is the sandwich named?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 213,
+      "id": "food_cuisine_gen_164",
+      "question": "What type of beneficial bacteria dominates the fermentation process in kimchi?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 214,
+      "id": "food_cuisine_gen_165",
+      "question": "In what order are traditional Danish smørrebrød eaten?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 215,
+      "id": "food_cuisine_gen_166",
+      "question": "Which spice is essential to the aromatic profile of traditional pho broth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 216,
+      "id": "food_cuisine_gen_167",
+      "question": "What animals are traditionally used to locate truffles underground?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 217,
+      "id": "food_cuisine_gen_168",
+      "question": "How many 'mother sauces' form the foundation of classical French cooking?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 218,
+      "id": "food_cuisine_gen_169",
+      "question": "Which Japanese products all rely on koji mold for their production?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 219,
+      "id": "food_cuisine_gen_170",
+      "question": "What grain is traditionally used to make Ethiopian injera?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 220,
+      "id": "food_cuisine_gen_171",
+      "question": "Who won Napoleon's prize for inventing a food preservation method using sealed containers?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 221,
+      "id": "food_cuisine_gen_172",
+      "question": "What is regularly applied to the rind of Gruyère cheese during aging?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 222,
+      "id": "food_cuisine_gen_173",
+      "question": "Why must açaí berries be processed so quickly after harvest?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 223,
+      "id": "food_cuisine_gen_174",
+      "question": "What international organization recognized Turkish coffee culture as Intangible Cultural Heritage?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 224,
+      "id": "food_cuisine_gen_175",
+      "question": "What root vegetable is pounded to make Hawaiian poi?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 225,
+      "id": "food_cuisine_gen_176",
+      "question": "What does SCOBY stand for in kombucha brewing?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 226,
+      "id": "food_cuisine_gen_177",
+      "question": "Which empire's palace kitchens produced the earliest known recipe resembling modern baklava?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 227,
+      "id": "food_cuisine_gen_178",
+      "question": "What beverage was Louis Pasteur originally trying to preserve when he invented pasteurization?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 228,
+      "id": "food_cuisine_gen_179",
+      "question": "What causes raw fish to become opaque and firm in ceviche?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 229,
+      "id": "food_cuisine_gen_180",
+      "question": "On which remote island, famous as Napoleon's place of exile, is an extremely rare coffee variety grown?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 230,
+      "id": "food_cuisine_gen_181",
+      "question": "What bacterium is used to ferment soybeans into natto?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 231,
+      "id": "food_cuisine_gen_182",
+      "question": "What do Iberian pigs eat during the montanera season that gives Jamón Ibérico de Bellota its distinctive flavor?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 232,
+      "id": "food_cuisine_gen_183",
+      "question": "In which country did the precursor to the croissant originate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 233,
+      "id": "food_cuisine_gen_184",
+      "question": "Which German city is the frankfurter sausage named after?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 234,
+      "id": "food_cuisine_gen_185",
+      "question": "Why are blue cheese wheels pierced with needles during aging?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 235,
+      "id": "food_cuisine_gen_186",
+      "question": "Approximately how many liters of maple sap are needed to produce 1 liter of maple syrup?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 236,
+      "id": "food_cuisine_gen_187",
+      "question": "In which Chinese city did hot pot originate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 237,
+      "id": "food_cuisine_gen_188",
+      "question": "What is the key difference between plantains and dessert bananas?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 238,
+      "id": "food_cuisine_gen_189",
+      "question": "What organism produces xanthan gum through fermentation?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 239,
+      "id": "food_cuisine_gen_190",
+      "question": "What traditional ingredient gives tandoori chicken its characteristic red color?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 240,
+      "id": "food_cuisine_gen_191",
+      "question": "In 19th-century New York, what was the economic status of oysters?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 241,
+      "id": "food_cuisine_gen_192",
+      "question": "What is transglutaminase commonly called in the culinary world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 242,
+      "id": "food_cuisine_gen_193",
+      "question": "Chapulines, a traditional food in Oaxaca, Mexico, are made from what insect?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 243,
+      "id": "food_cuisine_gen_194",
+      "question": "What gives challah bread its distinctively rich, slightly sweet taste?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 244,
+      "id": "food_cuisine_gen_195",
+      "question": "What unusual material are the curing basins for Lardo di Colonnata carved from?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 245,
+      "id": "food_cuisine_gen_196",
+      "question": "Who created the Scoville scale for measuring pepper heat?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 246,
+      "id": "food_cuisine_gen_197",
+      "question": "What type of fish is traditionally used to make Norwegian rakfisk?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 247,
+      "id": "food_cuisine_gen_198",
+      "question": "What toxic compound can be released from improperly processed cassava?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 248,
+      "id": "food_cuisine_gen_199",
+      "question": "What alcohol is used to wash the rind of Epoisses cheese during aging?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 249,
+      "id": "food_cuisine_gen_200",
+      "question": "Compared to ice cream, gelato has what key structural difference?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 250,
+      "id": "food_cuisine_gen_201",
+      "question": "Approximately how many tons of snails does France consume annually?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 251,
+      "id": "food_cuisine_gen_202",
+      "question": "What molecule does the Impossible Burger use to replicate the taste of real beef?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 252,
+      "id": "food_cuisine_gen_203",
+      "question": "Which pepper was the first to officially exceed 1 million Scoville Heat Units?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 253,
+      "id": "food_cuisine_gen_204",
+      "question": "Which unexpected ingredient is essential to traditional mole poblano?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 254,
+      "id": "food_cuisine_gen_205",
+      "question": "What flavor does dulse seaweed develop when pan-fried?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 255,
+      "id": "food_cuisine_gen_206",
+      "question": "What does 'ciabatta' mean in Italian?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 256,
+      "id": "food_cuisine_gen_207",
+      "question": "What color tag indicates the highest quality of Ibérico ham?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 257,
+      "id": "food_cuisine_gen_208",
+      "question": "Why was fish and chips never rationed during the World Wars in Britain?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 258,
+      "id": "food_cuisine_gen_209",
+      "question": "In the baker's percentage system, which ingredient is always set at 100%?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 259,
+      "id": "food_cuisine_gen_210",
+      "question": "What step in Peking duck preparation creates its ultra-crispy skin?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 260,
+      "id": "food_cuisine_gen_211",
+      "question": "Which yeast extract spread was invented first?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 261,
+      "id": "food_cuisine_gen_212",
+      "question": "In which city was the Caesar salad invented?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 262,
+      "id": "food_cuisine_gen_213",
+      "question": "Which two countries produce approximately 85% of the world's palm oil?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 263,
+      "id": "food_cuisine_gen_214",
+      "question": "What causes the crunchy white crystals found in aged Parmesan cheese?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 264,
+      "id": "food_cuisine_gen_215",
+      "question": "What filling combination is traditional for Hong Kong-style wontons?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 265,
+      "id": "food_cuisine_gen_216",
+      "question": "Which taste was the last to be officially recognized as a basic taste, accepted in 1985?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 266,
+      "id": "food_cuisine_gen_217",
+      "question": "In which country does rooibos tea grow naturally?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 267,
+      "id": "food_cuisine_gen_218",
+      "question": "What protein is extracted from bones during long simmering to create gelatin-rich bone broth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 268,
+      "id": "food_cuisine_gen_219",
+      "question": "How is traditional Moroccan smen aged?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 269,
+      "id": "food_cuisine_gen_220",
+      "question": "What gives traditional Westphalian pumpernickel its very dark color?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 270,
+      "id": "food_cuisine_gen_221",
+      "question": "How many stigma threads does each saffron crocus flower produce?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 271,
+      "id": "food_cuisine_gen_222",
+      "question": "What type of vessel is traditionally used to age gochujang outdoors?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 272,
+      "id": "food_cuisine_gen_223",
+      "question": "What material forms the edible birds' nests used in Chinese soup?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 273,
+      "id": "food_cuisine_gen_224",
+      "question": "Why is the cast iron cooking pot called a 'Dutch oven'?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 274,
+      "id": "food_cuisine_gen_225",
+      "question": "What is the metal straw used to drink yerba mate called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 275,
+      "id": "food_cuisine_gen_226",
+      "question": "What bacterium causes both Limburger cheese's smell and human body odor?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 276,
+      "id": "food_cuisine_gen_227",
+      "question": "How many years after the tin can was patented did the first can opener appear?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 277,
+      "id": "food_cuisine_gen_228",
+      "question": "What compound in black pepper dramatically increases the absorption of turmeric's curcumin?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 278,
+      "id": "food_cuisine_gen_229",
+      "question": "What company created the Michelin star restaurant rating system?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 279,
+      "id": "food_cuisine_gen_230",
+      "question": "Why is sake technically more similar to beer than wine in its production process?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 280,
+      "id": "food_cuisine_gen_231",
+      "question": "What breed of sheep provides the milk for authentic Manchego cheese?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 281,
+      "id": "food_cuisine_gen_232",
+      "question": "What French law regulates the ingredients allowed in a traditional baguette?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 282,
+      "id": "food_cuisine_gen_233",
+      "question": "For which Italian queen was the Margherita pizza reportedly named?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 283,
+      "id": "food_cuisine_gen_234",
+      "question": "What plant's starch is used to make the chewy tapioca pearls in bubble tea?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 284,
+      "id": "food_cuisine_gen_235",
+      "question": "What minimum butterfat percentage must clotted cream contain?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 285,
+      "id": "food_cuisine_gen_236",
+      "question": "From which country does surströmming, the notoriously smelly fermented herring, originate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 286,
+      "id": "food_cuisine_gen_237",
+      "question": "What did the Inca call quinoa, reflecting its importance to their civilization?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 287,
+      "id": "food_cuisine_gen_238",
+      "question": "What step gives New York bagels their distinctive chewy crust?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 330,
+      "id": "food-ketchup-medicine",
+      "question": "In the 1830s, what was ketchup (tomato extract) marketed as?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 331,
+      "id": "food-bananas-radioactive",
+      "question": "What element in bananas makes them slightly radioactive?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 332,
+      "id": "food-cheese-addictive-casomorphin",
+      "question": "What compound in cheese binds to opioid receptors in the brain?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 333,
+      "id": "food-pineapple-bromelain-digests-you",
+      "question": "What enzyme in pineapple actively breaks down the proteins in your mouth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 334,
+      "id": "food-vanilla-more-expensive-silver",
+      "question": "Why must vanilla orchid flowers be hand-pollinated outside Mexico?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 335,
+      "id": "food-carrots-not-orange",
+      "question": "What color were carrots originally before the Dutch bred the orange variety?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 336,
+      "id": "food-lobster-prison-food",
+      "question": "What was lobster considered in colonial America?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 337,
+      "id": "food-fortune-cookie-japanese",
+      "question": "Who actually invented fortune cookies?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 338,
+      "id": "food-honey-flavor-terroir",
+      "question": "What is the term for how a honey's flavor reflects the local flowers and environment where bees foraged?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 339,
+      "id": "food-avocado-named-after-body-part",
+      "question": "What does the Aztec word 'ahuacatl' — the origin of 'avocado' — literally mean?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 340,
+      "id": "food-msg-umami-unfairly-maligned",
+      "question": "What common food additive was unfairly blamed for 'Chinese Restaurant Syndrome'?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 341,
+      "id": "food-coffee-fruit-cherry",
+      "question": "What is a 'coffee cherry'?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 342,
+      "id": "food-saffron-75000-flowers",
+      "question": "How many crocus flowers does it take to produce one pound of saffron?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 343,
+      "id": "food-worcestershire-fermented-anchovy",
+      "question": "How was Worcestershire sauce accidentally invented?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 344,
+      "id": "food-blue-cheese-penicillium",
+      "question": "What creates the blue veins in blue cheese?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 345,
+      "id": "food-champagne-pressure-bus-tire",
+      "question": "How does the pressure inside a Champagne bottle compare to a car tire?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    }
+  ]
+}

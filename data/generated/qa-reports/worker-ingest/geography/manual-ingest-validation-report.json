@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.170Z",
+  "generatedAt": "2026-03-10T10:03:25.068Z",
   "inputFiles": [
     "data/generated/worker-output/geography.jsonl"
   ],
   "domain": "geography",
   "counts": {
-    "input": 50,
-    "valid": 50,
+    "input": 300,
+    "valid": 106,
     "invalid": 0,
-    "flagged": 0
+    "flagged": 194
   },
   "invalid": [],
   "topExamples": [

@@ -1,17 +1,15 @@
 {
   "domain": "natural_sciences",
   "domainSlug": "natural-sciences",
-  "existingFacts": 54,
+  "existingFacts": 210,
   "existingFactsPath": "data/generated/natural_sciences.jsonl",
-  "targetFacts": 50,
+  "targetFacts": 1000,
   "expectedMinimum": 200,
-  "missingFacts": 0,
-  "requestedNewFacts": 0,
+  "missingFacts": 790,
+  "requestedNewFacts": 790,
   "inputPath": "data/raw/mixed/natural_sciences.json",
   "workerOutputPath": "data/generated/worker-output/natural_sciences.jsonl",
-  "recommendation": "skip",
+  "recommendation": "generate",
   "pass": true,
-  "notes": [
-    "domain target already satisfied"
-  ]
+  "notes": []
 }

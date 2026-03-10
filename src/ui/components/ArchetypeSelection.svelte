@@ -4,9 +4,10 @@
   interface Props {
     onselect: (archetype: RewardArchetype) => void
     onskip: () => void
+    onback?: () => void
   }
 
-  let { onselect, onskip }: Props = $props()
+  let { onselect, onskip, onback }: Props = $props()
 
   const OPTIONS: Array<{ id: RewardArchetype; icon: string; title: string; desc: string }> = [
     { id: 'balanced', icon: '⚖️', title: 'Balanced', desc: 'Even spread across all core card types.' },
@@ -18,6 +19,9 @@
 </script>
 
 <section class="archetype-overlay" aria-label="Archetype selection">
+  {#if onback}
+    <button class="back-btn" type="button" onclick={onback}>&larr; Back</button>
+  {/if}
   <h1>Choose Your Playstyle</h1>
   <p>Your archetype biases reward type options for this run.</p>
 
@@ -105,6 +109,19 @@
     color: #bac7d3;
     font-size: 12px;
     line-height: 1.3;
+  }
+
+  .back-btn {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: none;
+    border: none;
+    color: #8b949e;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px;
+    min-height: 44px;
   }
 
   .skip {

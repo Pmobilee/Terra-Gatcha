@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:41:14.981Z",
+  "generatedAt": "2026-03-10T09:08:37.574Z",
   "input": "data/generated",
   "qaDir": "data/generated/qa-reports",
   "dedupCompareAgainst": "src/data/seed",
@@ -9,56 +9,56 @@
     {
       "script": "scripts/content-pipeline/qa/coverage-report.mjs",
       "ok": true,
-      "durationMs": 59,
+      "durationMs": 77,
       "stdout": "coverage report: /root/terra-miner/data/generated/qa-reports/coverage-report.json",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/qa/cross-domain-dedup.mjs",
       "ok": true,
-      "durationMs": 75,
-      "stdout": "cross-domain dedup report: /root/terra-miner/data/generated/qa-reports/cross-domain-dedup.json (710 duplicates)",
+      "durationMs": 97,
+      "stdout": "cross-domain dedup report: /root/terra-miner/data/generated/qa-reports/cross-domain-dedup.json (721 duplicates)",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/manual-ingest/run.mjs",
       "ok": true,
-      "durationMs": 143,
-      "stdout": "[validate] input=data/generated domain=general_knowledge\n  loaded 1421 records\n  report: data/generated/qa-reports/manual-ingest-validation-report.json\n  report: data/generated/qa-reports/manual-ingest-flagged-report.json\n  valid=1420 invalid=0 flagged=1",
+      "durationMs": 573,
+      "stdout": "[validate] input=data/generated domain=general_knowledge\n  loaded 3433 records\n  report: data/generated/qa-reports/manual-ingest-validation-report.json\n  report: data/generated/qa-reports/manual-ingest-flagged-report.json\n  valid=2092 invalid=0 flagged=1341",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/manual-ingest/run.mjs",
       "ok": true,
-      "durationMs": 145,
-      "stdout": "[dedup] thresholds: auto=0.95 review=0.75 dryRun=true tfidf=true index=false\n  comparing against 1 target files\n  loaded 1233 existing facts\n  built TF-IDF scorer (2654 documents)\n  report: data/generated/qa-reports/manual-ingest-dedup-report.json\n  exact=1420 semantic=0 review=0 accepted=1",
+      "durationMs": 303,
+      "stdout": "[dedup] thresholds: auto=0.95 review=0.75 dryRun=true tfidf=true index=false\n  comparing against 1 target files\n  loaded 3955 existing facts\n  built TF-IDF scorer (7388 documents)\n  report: data/generated/qa-reports/manual-ingest-dedup-report.json\n  exact=3432 semantic=0 review=0 accepted=1",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/qa/flag-content-risks.mjs",
       "ok": true,
-      "durationMs": 81,
-      "stdout": "{\n  \"ok\": true,\n  \"outputPath\": \"/root/terra-miner/data/generated/qa-reports/content-risk-report.json\",\n  \"totalFlagged\": 2\n}",
+      "durationMs": 200,
+      "stdout": "{\n  \"ok\": true,\n  \"outputPath\": \"/root/terra-miner/data/generated/qa-reports/content-risk-report.json\",\n  \"totalFlagged\": 47\n}",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/qa/source-fact-check.mjs",
       "ok": true,
-      "durationMs": 34674,
-      "stdout": "{\n  \"ok\": true,\n  \"outputPath\": \"/root/terra-miner/data/generated/qa-reports/source-fact-check.json\",\n  \"summary\": {\n    \"totalFacts\": 200,\n    \"matched\": 32,\n    \"lowEvidence\": 5,\n    \"missingSourceName\": 0,\n    \"missingSourceUrl\": 0,\n    \"fetchFailed\": 163,\n    \"fetchedUrls\": 200\n  }\n}",
+      "durationMs": 6643,
+      "stdout": "{\n  \"ok\": true,\n  \"outputPath\": \"/root/terra-miner/data/generated/qa-reports/source-fact-check.json\",\n  \"summary\": {\n    \"totalFacts\": 200,\n    \"matched\": 2,\n    \"lowEvidence\": 2,\n    \"missingSourceName\": 87,\n    \"missingSourceUrl\": 0,\n    \"fetchFailed\": 109,\n    \"fetchedUrls\": 113\n  }\n}",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/qa/review-sample.mjs",
       "ok": true,
-      "durationMs": 57,
+      "durationMs": 88,
       "stdout": "review sample: /root/terra-miner/samples/human-review/review-sample.md",
       "stderr": ""
     },
     {
       "script": "scripts/content-pipeline/qa/coverage-gate.mjs",
       "ok": false,
-      "durationMs": 25,
+      "durationMs": 30,
       "stdout": "{\n  \"ok\": false,\n  \"outputPath\": \"/root/terra-miner/data/generated/qa-reports/coverage-gate.json\",\n  \"deficits\": 11\n}",
       "stderr": "",
       "error": "Command failed: /usr/bin/node /root/terra-miner/scripts/content-pipeline/qa/coverage-gate.mjs --input data/generated/qa-reports/coverage-report.json --output data/generated/qa-reports/coverage-gate.json --knowledge-min 0 --language-min 0 --strict\n"

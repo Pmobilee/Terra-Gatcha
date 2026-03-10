@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:41:14.977Z",
+  "generatedAt": "2026-03-10T09:08:37.566Z",
   "inputPath": "/root/terra-miner/data/generated/qa-reports/coverage-report.json",
   "thresholds": {
     "knowledgeMin": 10000,
@@ -15,65 +15,65 @@
     {
       "name": "animals_wildlife",
       "type": "knowledge",
-      "total": 63,
+      "total": 254,
       "required": 10000,
-      "missing": 9937
+      "missing": 9746
     },
     {
       "name": "art_architecture",
       "type": "knowledge",
-      "total": 62,
+      "total": 237,
       "required": 10000,
-      "missing": 9938
+      "missing": 9763
     },
     {
       "name": "food_cuisine",
       "type": "knowledge",
-      "total": 63,
+      "total": 328,
       "required": 10000,
-      "missing": 9937
+      "missing": 9672
     },
     {
       "name": "general_knowledge",
       "type": "knowledge",
-      "total": 140,
+      "total": 286,
       "required": 10000,
-      "missing": 9860
+      "missing": 9714
     },
     {
       "name": "geography",
       "type": "knowledge",
-      "total": 50,
+      "total": 255,
       "required": 10000,
-      "missing": 9950
+      "missing": 9745
     },
     {
       "name": "history",
       "type": "knowledge",
-      "total": 91,
+      "total": 244,
       "required": 10000,
-      "missing": 9909
+      "missing": 9756
     },
     {
       "name": "human_body_health",
       "type": "knowledge",
-      "total": 63,
+      "total": 320,
       "required": 10000,
-      "missing": 9937
+      "missing": 9680
     },
     {
       "name": "mythology_folklore",
       "type": "knowledge",
-      "total": 63,
+      "total": 327,
       "required": 10000,
-      "missing": 9937
+      "missing": 9673
     },
     {
       "name": "natural_sciences",
       "type": "knowledge",
-      "total": 54,
+      "total": 210,
       "required": 10000,
-      "missing": 9946
+      "missing": 9790
     },
     {
       "name": "production-facts",
@@ -85,9 +85,9 @@
     {
       "name": "space_astronomy",
       "type": "knowledge",
-      "total": 61,
+      "total": 261,
       "required": 10000,
-      "missing": 9939
+      "missing": 9739
     }
   ],
   "pass": false

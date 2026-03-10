@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:41:14.885Z",
+  "generatedAt": "2026-03-10T09:08:37.439Z",
   "inputPath": "/root/terra-miner/data/generated",
   "sampleSize": 200,
   "maxFetch": 250,
@@ -7,12 +7,12 @@
   "minScore": 0.35,
   "summary": {
     "totalFacts": 200,
-    "matched": 32,
-    "lowEvidence": 5,
-    "missingSourceName": 0,
+    "matched": 2,
+    "lowEvidence": 2,
+    "missingSourceName": 87,
     "missingSourceUrl": 0,
-    "fetchFailed": 163,
-    "fetchedUrls": 200
+    "fetchFailed": 109,
+    "fetchedUrls": 113
   },
   "items": [
     {
@@ -74,535 +74,234 @@
     },
     {
       "id": "phaseolus-vulgaris-001",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q42339",
-      "tokenCount": 11,
-      "matchedTokens": [
-        "common",
-        "bean",
-        "phaseolus",
-        "vulgaris",
-        "crop"
-      ],
-      "matchScore": 0.4545
+      "reason": "HTTP 429"
     },
     {
       "id": "serval-001",
-      "status": "low_evidence_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q42699",
-      "tokenCount": 11,
-      "matchedTokens": [
-        "serval",
-        "servals"
-      ],
-      "matchScore": 0.1818
+      "reason": "HTTP 429"
     },
     {
       "id": "laetacara-curviceps-001",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q3767",
-      "tokenCount": 8,
-      "matchedTokens": [
-        "fish",
-        "species",
-        "laetacara",
-        "curviceps"
-      ],
-      "matchScore": 0.5
+      "reason": "HTTP 429"
     },
     {
       "id": "baikal-seal-001",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q4535",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "lake",
-        "baikal",
-        "seal",
-        "seals",
-        "species"
-      ],
-      "matchScore": 0.5
+      "reason": "HTTP 429"
     },
     {
       "id": "alpine-pika-001",
-      "status": "low_evidence_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q4524",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "ochotonidae",
-        "family",
-        "alpine"
-      ],
-      "matchScore": 0.3
+      "reason": "HTTP 429"
     },
     {
       "id": "red-fox-001",
-      "status": "low_evidence_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q8332",
-      "tokenCount": 12,
-      "matchedTokens": [
-        "vulpes",
-        "carnivores"
-      ],
-      "matchScore": 0.1667
+      "reason": "HTTP 429"
     },
     {
       "id": "mullus-barbatus-001",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q7171",
-      "tokenCount": 9,
-      "matchedTokens": [
-        "mullet",
-        "species",
-        "mullus",
-        "barbatus",
-        "fish"
-      ],
-      "matchScore": 0.5556
+      "reason": "HTTP 429"
     },
     {
       "id": "nannacara_aureocephalus_001",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q11308",
-      "tokenCount": 9,
-      "matchedTokens": [
-        "fish",
-        "species",
-        "nannacara",
-        "aureocephalus"
-      ],
-      "matchScore": 0.4444
+      "reason": "HTTP 429"
     },
     {
       "id": "pomegranate-001",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q13188",
-      "tokenCount": 9,
-      "matchedTokens": [
-        "deciduous",
-        "shrub",
-        "type",
-        "plant",
-        "pomegranate",
-        "fruit",
-        "bearing"
-      ],
-      "matchScore": 0.7778
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-wolverine-001",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q14334",
-      "tokenCount": 11,
-      "matchedTokens": [
-        "largest",
-        "land",
-        "dwelling",
-        "family",
-        "type",
-        "animal",
-        "wolverine",
-        "gulo"
-      ],
-      "matchScore": 0.7273
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-house-sparrow-002",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q14683",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "bird",
-        "type",
-        "animal",
-        "house",
-        "sparrow",
-        "passer",
-        "domesticus"
-      ],
-      "matchScore": 0.7
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-mallard-003",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q25348",
-      "tokenCount": 9,
-      "matchedTokens": [
-        "duck",
-        "type",
-        "animal",
-        "mallard",
-        "anas",
-        "platyrhynchos"
-      ],
-      "matchScore": 0.6667
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-eurasian-jay-004",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q25354",
-      "tokenCount": 9,
-      "matchedTokens": [
-        "bird",
-        "type",
-        "animal",
-        "eurasian",
-        "garrulus",
-        "glandarius"
-      ],
-      "matchScore": 0.6667
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-white-stork-005",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q25352",
-      "tokenCount": 9,
-      "matchedTokens": [
-        "bird",
-        "type",
-        "animal",
-        "white",
-        "stork",
-        "ciconia"
-      ],
-      "matchScore": 0.6667
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-accipiter-gentilis-006",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q25353",
-      "tokenCount": 8,
-      "matchedTokens": [
-        "bird",
-        "type",
-        "animal",
-        "accipiter",
-        "gentilis"
-      ],
-      "matchScore": 0.625
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-northern-raven-007",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q25357",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "bird",
-        "type",
-        "animal",
-        "northern",
-        "raven",
-        "corvus",
-        "corax"
-      ],
-      "matchScore": 0.7
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-european-nightjar-008",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q26717",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "bird",
-        "type",
-        "animal",
-        "european",
-        "nightjar",
-        "caprimulgus",
-        "europaeus"
-      ],
-      "matchScore": 0.7
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-canada-goose-009",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q26733",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "wild",
-        "goose",
-        "type",
-        "animal",
-        "canada",
-        "branta",
-        "canadensis"
-      ],
-      "matchScore": 0.7
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-black-redstart-010",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q26755",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "bird",
-        "type",
-        "black",
-        "redstart",
-        "phoenicurus",
-        "ochruros"
-      ],
-      "matchScore": 0.6
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-arctic-tern-011",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q26800",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "seabird",
-        "type",
-        "animal",
-        "arctic",
-        "tern",
-        "sterna",
-        "paradisaea"
-      ],
-      "matchScore": 0.7
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-common-ringed-plover-012",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q26816",
-      "tokenCount": 11,
-      "matchedTokens": [
-        "bird",
-        "type",
-        "animal",
-        "common",
-        "ringed",
-        "plover",
-        "charadrius",
-        "hiaticula"
-      ],
-      "matchScore": 0.7273
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-atlantic-emperor-013",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q31394",
-      "tokenCount": 12,
-      "matchedTokens": [
-        "fish",
-        "family",
-        "lethrinidae",
-        "type",
-        "animal",
-        "atlantic",
-        "emperor",
-        "lethrinus",
-        "atlanticus"
-      ],
-      "matchScore": 0.75
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-lethrinus-reticulatus-014",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q31398",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "fish",
-        "family",
-        "lethrinidae",
-        "type",
-        "animal",
-        "lethrinus",
-        "reticulatus"
-      ],
-      "matchScore": 0.7
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-lethrinus-enigmaticus-015",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q31396",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "fish",
-        "belonging",
-        "family",
-        "type",
-        "lethrinus",
-        "enigmaticus"
-      ],
-      "matchScore": 0.6
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-spotted-wobbegong-016",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q31782",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "shark",
-        "orectolobus",
-        "maculatus",
-        "type",
-        "spotted",
-        "wobbegong"
-      ],
-      "matchScore": 0.6
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-northern-wobbegong-017",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q31784",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "shark",
-        "orectolobus",
-        "wardi",
-        "type",
-        "northern",
-        "wobbegong"
-      ],
-      "matchScore": 0.6
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-ornate-wobbegong-018",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q31788",
-      "tokenCount": 10,
-      "matchedTokens": [
-        "shark",
-        "orectolobus",
-        "ornatus",
-        "type",
-        "ornate",
-        "wobbegong"
-      ],
-      "matchScore": 0.6
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-edible-nest-swiftlet-019",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q31801",
-      "tokenCount": 11,
-      "matchedTokens": [
-        "bird",
-        "type",
-        "animal",
-        "edible",
-        "nest",
-        "swiftlet",
-        "aerodramus",
-        "fuciphagus"
-      ],
-      "matchScore": 0.7273
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-fulvous-breasted-woodpecker-020",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q31804",
-      "tokenCount": 12,
-      "matchedTokens": [
-        "bird",
-        "picidae",
-        "family",
-        "type",
-        "fulvous",
-        "breasted",
-        "woodpecker",
-        "dendrocopos",
-        "macei"
-      ],
-      "matchScore": 0.75
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-dwarf-spotted-wobbegong-021",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q31815",
-      "tokenCount": 11,
-      "matchedTokens": [
-        "shark",
-        "orectolobus",
-        "parvimaculatus",
-        "type",
-        "dwarf",
-        "spotted",
-        "wobbegong"
-      ],
-      "matchScore": 0.6364
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-necklace-carpetshark-022",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q31838",
-      "tokenCount": 9,
-      "matchedTokens": [
-        "parascyllium",
-        "variolatum",
-        "type",
-        "animal",
-        "necklace",
-        "carpetshark"
-      ],
-      "matchScore": 0.6667
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-saddle-carpetshark-023",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q31843",
-      "tokenCount": 12,
-      "matchedTokens": [
-        "carpet",
-        "shark",
-        "family",
-        "type",
-        "saddle",
-        "carpetshark",
-        "cirrhoscyllium",
-        "japonicum"
-      ],
-      "matchScore": 0.6667
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-ginger-carpetshark-024",
-      "status": "cross_reference_match",
+      "status": "source_fetch_failed",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q31841",
-      "tokenCount": 11,
-      "matchedTokens": [
-        "carpetshark",
-        "family",
-        "parascyll",
-        "type",
-        "ginger",
-        "parascyllium",
-        "sparsimaculatum"
-      ],
-      "matchScore": 0.6364
+      "reason": "HTTP 429"
     },
     {
       "id": "anim-collared-carpetshark-025",
@@ -787,963 +486,789 @@
       "reason": "HTTP 429"
     },
     {
-      "id": "mfn-berlin-1810",
+      "id": "animal-diamond-dove-064",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q233098",
+      "sourceUrl": "http://www.wikidata.org/entity/Q58904",
       "reason": "HTTP 429"
     },
     {
-      "id": "qa-valencia-arts-sciences-001",
+      "id": "animal-black-slug-065",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q239935",
+      "sourceUrl": "http://www.wikidata.org/entity/Q21113",
       "reason": "HTTP 429"
     },
     {
-      "id": "ushmm-founding-1993",
+      "id": "animal-aequidens-chimantanus-066",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q238990",
+      "sourceUrl": "http://www.wikidata.org/entity/Q130506",
       "reason": "HTTP 429"
     },
     {
-      "id": "olavinlinna-castle-001",
+      "id": "animal-alburnoides-eichwaldii-067",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q251272",
+      "sourceUrl": "http://www.wikidata.org/entity/Q129750",
       "reason": "HTTP 429"
     },
     {
-      "id": "q251672-chateau-borely-1778",
+      "id": "animal-galaxias-fasciatus-068",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q251672",
+      "sourceUrl": "http://www.wikidata.org/entity/Q44502",
       "reason": "HTTP 429"
     },
     {
-      "id": "abbots-palace-oliwa-1756",
+      "id": "animal-wood-sandpiper-069",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q252800",
+      "sourceUrl": "http://www.wikidata.org/entity/Q18837",
       "reason": "HTTP 429"
     },
     {
-      "id": "su-nuraxi-barumini-001",
+      "id": "animal-nephila-clavata-070",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q253241",
+      "sourceUrl": "http://www.wikidata.org/entity/Q136925",
       "reason": "HTTP 429"
     },
     {
-      "id": "tyreso-palace-1633",
+      "id": "animal-glossophaga-commissarisi-071",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q253430",
+      "sourceUrl": "http://www.wikidata.org/entity/Q137600",
       "reason": "HTTP 429"
     },
     {
-      "id": "egyp-mus-leipzig-1874",
+      "id": "animal-fringed-lipped-peninsula-carp-072",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q254134",
+      "sourceUrl": "http://www.wikidata.org/entity/Q138594",
       "reason": "HTTP 429"
     },
     {
-      "id": "Q256200-charlier-museum-1844",
+      "id": "animal-puerto-rican-lizard-cuckoo-073",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q256200",
+      "sourceUrl": "http://www.wikidata.org/entity/Q18958",
       "reason": "HTTP 429"
     },
     {
-      "id": "cabildo-montevideo-1804",
+      "id": "animal-hazel-dormouse-074",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q257698",
+      "sourceUrl": "http://www.wikidata.org/entity/Q207148",
       "reason": "HTTP 429"
     },
     {
-      "id": "huntington-beach-state-park-1960",
+      "id": "animal-black-swan-075",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q259242",
+      "sourceUrl": "http://www.wikidata.org/entity/Q131044",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-heralds-museum-001",
+      "id": "animal-spike-heeled-lark-076",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q250522",
+      "sourceUrl": "http://www.wikidata.org/entity/Q63671",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-holocaust-museum-la-002",
+      "id": "animal-tramitichromis-lituris-077",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q254118",
+      "sourceUrl": "http://www.wikidata.org/entity/Q527460",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-auezov-home-museum-003",
+      "id": "animal-niceforos-big-eared-bat-078",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q258173",
+      "sourceUrl": "http://www.wikidata.org/entity/Q209207",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-k-lonia-004",
+      "id": "animal-marsh-sandpiper-079",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q259897",
+      "sourceUrl": "http://www.wikidata.org/entity/Q28355",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-centraal-museum-005",
+      "id": "animal-martes-zibellina-080",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q260913",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26423",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-ghetto-fighters-house-006",
+      "id": "animal-aardwolf-081",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q260983",
+      "sourceUrl": "http://www.wikidata.org/entity/Q185295",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-guinness-storehouse-007",
+      "id": "animal-megalurus-palustris-082",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q261012",
+      "sourceUrl": "http://www.wikidata.org/entity/Q73512",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-illuminated-block-008",
+      "id": "animal-amandava-amandava-083",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q263127",
+      "sourceUrl": "http://www.wikidata.org/entity/Q73741",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-house-of-history-baden-w-rttem-009",
+      "id": "animal-manx-shearwater-084",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q263491",
+      "sourceUrl": "http://www.wikidata.org/entity/Q208405",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-long-island-museum-of-american-010",
+      "id": "animal-trinidad-spiny-pocket-mouse-085",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q263750",
+      "sourceUrl": "http://www.wikidata.org/entity/Q63872",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-caramulo-museum-011",
+      "id": "animal-vulpes-zerda-086",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q264190",
+      "sourceUrl": "http://www.wikidata.org/entity/Q131564",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-valentin-volkss-nger-mus-um-012",
+      "id": "animal-african-emerald-cuckoo-087",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q264209",
+      "sourceUrl": "http://www.wikidata.org/entity/Q18956",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-holzknechtmuseum-ruhpolding-013",
+      "id": "animal-lonchura-ferruginosa-088",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q264941",
+      "sourceUrl": "http://www.wikidata.org/entity/Q73851",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-markus-wasmeier-freilichtmuseu-014",
+      "id": "animal-australian-swiftlet-089",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q266565",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26464",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-stadthaus-ulm-015",
+      "id": "animal-tramea-insularis-090",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q268609",
+      "sourceUrl": "http://www.wikidata.org/entity/Q149043",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-hus-museum-016",
+      "id": "animal-spiny-blaasop-091",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q270849",
+      "sourceUrl": "http://www.wikidata.org/entity/Q130558",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-palazzo-vecchio-017",
+      "id": "animal-little-egret-092",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q271928",
+      "sourceUrl": "http://www.wikidata.org/entity/Q131709",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-beaux-arts-de-paris-018",
+      "id": "animal-largescale-yellowfish-093",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q273593",
+      "sourceUrl": "http://www.wikidata.org/entity/Q149306",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-ecomus-e-d-alsace-019",
+      "id": "animal-papilio-aristodemus-094",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q273653",
+      "sourceUrl": "http://www.wikidata.org/entity/Q151091",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-boyana-church-020",
+      "id": "animal-mangrove-sunbird-095",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q276553",
+      "sourceUrl": "http://www.wikidata.org/entity/Q56903",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-francke-foundations-021",
+      "id": "animal-gaumers-spiny-pocket-mouse-096",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q276846",
+      "sourceUrl": "http://www.wikidata.org/entity/Q74238",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-margravial-opera-house-022",
+      "id": "animal-monotrete-leiurus-097",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q278908",
+      "sourceUrl": "http://www.wikidata.org/entity/Q129951",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-ernest-hemingway-house-023",
+      "id": "animal-montagus-harrier-098",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q280171",
+      "sourceUrl": "http://www.wikidata.org/entity/Q26574",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-imperial-carriage-museum-024",
+      "id": "animal-motacilla-alba-099",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q281725",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25399",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-liers-begijnhof-025",
+      "id": "animal-lesser-shortwing-100",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q281856",
+      "sourceUrl": "http://www.wikidata.org/entity/Q73854",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-prinsenhof-026",
+      "id": "animal-little-owl-101",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q281903",
+      "sourceUrl": "http://www.wikidata.org/entity/Q129958",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-palazzo-nuovo-027",
+      "id": "animal-protobothrops-elegans-102",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q283153",
+      "sourceUrl": "http://www.wikidata.org/entity/Q46108",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-saint-joseph-s-oratory-028",
+      "id": "animal-great-tit-103",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q284716",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25485",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-gabinet-de-les-arts-gr-fiques-029",
+      "id": "animal-black-headed-gull-104",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q284916",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25634",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-the-new-collection-030",
+      "id": "animal-blue-capped-rock-thrush-105",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q286549",
+      "sourceUrl": "http://www.wikidata.org/entity/Q27043",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-castle-of-gaasbeek-031",
+      "id": "animal-desmarests-spiny-pocket-mouse-106",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q287806",
+      "sourceUrl": "http://www.wikidata.org/entity/Q63874",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-small-carpathian-museum-032",
+      "id": "animal-king-eider-107",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q289034",
+      "sourceUrl": "http://www.wikidata.org/entity/Q207846",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-spag-033",
+      "id": "animal-phocoena-phocoena-108",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q293851",
+      "sourceUrl": "http://www.wikidata.org/entity/Q27027",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-university-museum-of-bergen-034",
+      "id": "animal-ixobrychus-cinnamomeus-109",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q301787",
+      "sourceUrl": "http://www.wikidata.org/entity/Q204111",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-thracian-tomb-of-kazanlak-035",
+      "id": "animal-tauriphila-australis-110",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q301815",
+      "sourceUrl": "http://www.wikidata.org/entity/Q150864",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-oflag-ii-c-woldenberg-036",
+      "id": "animal-roosterfish-111",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q301861",
+      "sourceUrl": "http://www.wikidata.org/entity/Q138378",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-austrian-national-library-037",
+      "id": "animal-brown-prinia-112",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q304037",
+      "sourceUrl": "http://www.wikidata.org/entity/Q73703",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-abai-literary-memorial-museum-038",
+      "id": "animal-murray-cod-113",
       "status": "source_fetch_failed",
       "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q304797",
+      "sourceUrl": "http://www.wikidata.org/entity/Q23366",
       "reason": "HTTP 429"
     },
     {
-      "id": "art-railway-museum-039",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q304972",
-      "reason": "HTTP 429"
+      "id": "animal-mantis-shrimp-punch-114",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "art-austrian-film-museum-040",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q306604",
-      "reason": "HTTP 429"
+      "id": "animal-archerfish-spit-115",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "art-austrian-open-air-museum-st-bi-041",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q306611",
-      "reason": "HTTP 429"
+      "id": "animal-lyrebird-mimic-116",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "art-sterreichisches-gartenbaumuseu-042",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q306615",
-      "reason": "HTTP 429"
+      "id": "animal-octopus-camouflage-117",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "art-gesellschafts-und-wirtschaftsm-043",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q306628",
-      "reason": "HTTP 429"
+      "id": "animal-pistol-shrimp-snap-118",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "art-austrian-museum-of-aviation-044",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q306671",
-      "reason": "HTTP 429"
+      "id": "animal-cuttlefish-hypnosis-119",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "art-austrian-museum-of-folk-life-a-045",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q306678",
-      "reason": "HTTP 429"
+      "id": "animal-harpy-eagle-grip-120",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "art-landesmuseum-hannover-046",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q314082",
-      "reason": "HTTP 429"
+      "id": "animal-axolotl-regen-121",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "art-museum-ostwall-047",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q314441",
-      "reason": "HTTP 429"
+      "id": "animal-peregrine-stoop-122",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "art-tr-nenpalast-048",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q314446",
-      "reason": "HTTP 429"
+      "id": "animal-horned-lizard-blood-123",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "art-burg-stolpen-049",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q314460",
-      "reason": "HTTP 429"
+      "id": "animal-dolphin-sleep-124",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "art-altzella-abbey-050",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q314478",
-      "reason": "HTTP 429"
+      "id": "animal-bombardier-beetle-125",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "waffle-origin-france",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q375",
-      "reason": "HTTP 429"
+      "id": "animal-tardigrade-survive-126",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food_cuisine_hamburger_001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q6663",
-      "reason": "HTTP 429"
+      "id": "animal-electric-eel-voltage-127",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "labskaus-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q6493",
-      "reason": "HTTP 429"
+      "id": "animal-mimic-octopus-128",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "mille-feuille-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q12491",
-      "reason": "HTTP 429"
+      "id": "animal-wandering-albatross-wingspan-129",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "crêpe-001-france",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q12200",
-      "reason": "HTTP 429"
+      "id": "animal-naked-mole-rat-pain-130",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "fideuà-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q20016",
-      "reason": "HTTP 429"
+      "id": "animal-honeybee-waggle-131",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "spatzle-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q20065",
-      "reason": "HTTP 429"
+      "id": "animal-sperm-whale-click-132",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-cn-paper-covered-bone-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q26670",
-      "reason": "HTTP 429"
+      "id": "animal-glass-frog-transparent-133",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "lasagna-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q20034",
-      "reason": "HTTP 429"
+      "id": "animal-crow-tool-use-134",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "tarta-santiago-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q34715",
-      "reason": "HTTP 429"
+      "id": "animal-box-jellyfish-venom-135",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "pancake-origin-us-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q44541",
-      "reason": "HTTP 429"
+      "id": "animal-pangolin-scales-136",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "choc-cake-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q30186",
-      "reason": "HTTP 429"
+      "id": "animal-vampire-bat-sharing-137",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "bun-cha-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q50634",
-      "reason": "HTTP 429"
+      "id": "animal-leafcutter-ant-farming-138",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-muesli-014",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q52406",
-      "reason": "HTTP 429"
+      "id": "animal-sea-otter-tools-139",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-cold-borscht-015",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q70241",
-      "reason": "HTTP 429"
+      "id": "animal-humpback-whale-song-140",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-ahle-wurst-016",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q123441",
-      "reason": "HTTP 429"
+      "id": "animal-platypus-electroreception-141",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-pemmican-017",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q130097",
-      "reason": "HTTP 429"
+      "id": "animal-firefly-sync-142",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-a-ure-018",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q136922",
-      "reason": "HTTP 429"
+      "id": "animal-komodo-venom-143",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-dondurma-019",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q141293",
-      "reason": "HTTP 429"
+      "id": "animal-arctic-tern-migration-144",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-fruit-salad-020",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q152834",
-      "reason": "HTTP 429"
+      "id": "animal-gecko-adhesion-145",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-potato-pancake-021",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q152981",
-      "reason": "HTTP 429"
+      "id": "animal-whale-shark-filter-146",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-rijstevlaai-022",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q154043",
-      "reason": "HTTP 429"
+      "id": "animal-anglerfish-fusion-147",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-noon-chai-023",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q170883",
-      "reason": "HTTP 429"
+      "id": "animal-chameleon-tongue-148",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-dhokla-024",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q171983",
-      "reason": "HTTP 429"
+      "id": "animal-elephant-infrasound-149",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-turkish-delight-025",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q182339",
-      "reason": "HTTP 429"
+      "id": "animal-monarch-migration-150",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-baklava-026",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q187495",
-      "reason": "HTTP 429"
+      "id": "animal-blue-ringed-octopus-151",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-falafel-027",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q188788",
-      "reason": "HTTP 429"
+      "id": "animal-african-grey-parrot-152",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-ayran-028",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q192892",
-      "reason": "HTTP 429"
+      "id": "animal-tuatara-third-eye-153",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-salisbury-steak-029",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q200527",
-      "reason": "HTTP 429"
+      "id": "animal-pistol-shrimp-goby-154",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-tzimmes-030",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q203886",
-      "reason": "HTTP 429"
+      "id": "animal-hummingbird-hover-155",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-goulash-031",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q205762",
-      "reason": "HTTP 429"
+      "id": "animal-cone-snail-venom-156",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-gado-gado-032",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q209304",
-      "reason": "HTTP 429"
+      "id": "animal-aye-aye-finger-157",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-ni-ard-salad-033",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q209486",
-      "reason": "HTTP 429"
+      "id": "animal-dolphins-names-158",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-biangbiang-noodles-034",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q213105",
-      "reason": "HTTP 429"
+      "id": "animal-horseshoe-crab-blood-159",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-zwetschkenkn-del-035",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q244495",
-      "reason": "HTTP 429"
+      "id": "animal-spider-silk-strength-160",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-zwiebeldinnele-036",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q244589",
-      "reason": "HTTP 429"
+      "id": "animal-coelacanth-fossil-161",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-manti-037",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q262796",
-      "reason": "HTTP 429"
+      "id": "animal-draco-lizard-glide-162",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-ganci-038",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q264558",
-      "reason": "HTTP 429"
+      "id": "animal-clownfish-sex-change-163",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-biryani-039",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q271555",
-      "reason": "HTTP 429"
+      "id": "animal-migratory-salmon-smell-164",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-olivier-salad-040",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q281278",
-      "reason": "HTTP 429"
+      "id": "animal-wolverine-strength-165",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-mandu-041",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q284983",
-      "reason": "HTTP 429"
+      "id": "animal-oxpecker-symbiosis-166",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-eel-soup-042",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q300959",
-      "reason": "HTTP 429"
+      "id": "animal-mata-mata-turtle-167",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-stoemp-043",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q305329",
-      "reason": "HTTP 429"
+      "id": "animal-dik-dik-tears-168",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-tarte-flamb-e-044",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q316849",
-      "reason": "HTTP 429"
+      "id": "animal-mantis-prayer-169",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-rumford-s-soup-045",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q356346",
-      "reason": "HTTP 429"
+      "id": "animal-deep-sea-bioluminescence-170",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-pea-soup-046",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q367225",
-      "reason": "HTTP 429"
+      "id": "animal-camel-spider-speed-171",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-backhendl-047",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q389574",
-      "reason": "HTTP 429"
+      "id": "animal-paradise-flying-frog-172",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-burrito-048",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q390823",
-      "reason": "HTTP 429"
+      "id": "animal-black-mamba-speed-173",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-kkakdugi-049",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q430583",
-      "reason": "HTTP 429"
+      "id": "animal-osprey-fishing-174",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-papa-a-la-hancaina-050",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q432308",
-      "reason": "HTTP 429"
+      "id": "animal-geographic-cone-snail-175",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-onsen-tamago-051",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q453174",
-      "reason": "HTTP 429"
+      "id": "animal-surinam-toad-birth-176",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-chinmi-052",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q464545",
-      "reason": "HTTP 429"
+      "id": "animal-great-white-electroreception-177",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-pepernoot-053",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q473271",
-      "reason": "HTTP 429"
+      "id": "animal-decorator-crab-178",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-amuse-bouche-054",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q481774",
-      "reason": "HTTP 429"
+      "id": "animal-superb-fairy-wren-password-179",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-red-beans-and-rice-055",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q489703",
-      "reason": "HTTP 429"
+      "id": "animal-star-nosed-mole-180",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-samosa-056",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q491517",
-      "reason": "HTTP 429"
+      "id": "animal-wood-frog-freeze-181",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-gimbap-057",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q495360",
-      "reason": "HTTP 429"
+      "id": "animal-immortal-jellyfish-182",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-almond-058",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q184357",
-      "reason": "HTTP 429"
+      "id": "animal-oilbird-echolocation-183",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-whey-059",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q185009",
-      "reason": "HTTP 429"
+      "id": "animal-greenland-shark-age-184",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-lemon-zest-060",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q206454",
-      "reason": "HTTP 429"
+      "id": "animal-portia-spider-planning-185",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-lemon-powder-061",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q206496",
-      "reason": "HTTP 429"
+      "id": "animal-honey-badger-resilience-186",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-walnut-062",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q208021",
-      "reason": "HTTP 429"
+      "id": "animal-bowerbird-art-187",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "food-palm-oil-063",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q231458",
-      "reason": "HTTP 429"
+      "id": "animal-japanese-macaque-bathing-188",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "fan-sin-temple-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q2794106",
-      "reason": "HTTP 429"
+      "id": "animal-leafy-seadragon-189",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "aqaba-church-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q2845916",
-      "reason": "HTTP 429"
+      "id": "animal-blanket-octopus-size-190",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "q2873434-minerva-chalcidica",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q2873434",
-      "reason": "HTTP 429"
+      "id": "animal-pangolin-tongue-191",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "Q2882977-etemple-uruk",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q2882977",
-      "reason": "HTTP 429"
+      "id": "animal-peacock-mantis-shrimp-vision-192",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "Q2883612-baolun-ge",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q2883612",
-      "reason": "HTTP 429"
+      "id": "animal-vampire-squid-fossils-193",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "q2900794-ein-gedi-temple",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q2900794",
-      "reason": "HTTP 429"
+      "id": "animal-fennec-fox-ears-194",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "guang-ming-temple-orlando",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q2914182",
-      "reason": "HTTP 429"
+      "id": "animal-immortal-lobster-195",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "Q2919923-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q2919923",
-      "reason": "HTTP 429"
+      "id": "animal-pangolin-walk-196",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "bubasteion-alexandria-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q2927378",
-      "reason": "HTTP 429"
+      "id": "animal-migratory-godwit-197",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "Q2937495-capitolium-vetus",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q2937495",
-      "reason": "HTTP 429"
+      "id": "animal-golden-poison-frog-198",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "Q3057828-antique-stairs",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q3057828",
-      "reason": "HTTP 429"
+      "id": "animal-crows-funeral-199",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     },
     {
-      "id": "Q3074203-temple-trajan-001",
-      "status": "source_fetch_failed",
-      "sourceName": "Wikidata",
-      "sourceUrl": "http://www.wikidata.org/entity/Q3074203",
-      "reason": "HTTP 429"
+      "id": "animal-cassowary-danger-200",
+      "status": "missing_source_name",
+      "sourceUrl": ""
     }
   ]
 }

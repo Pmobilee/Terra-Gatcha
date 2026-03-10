@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.788Z",
+  "generatedAt": "2026-03-10T09:08:28.931Z",
   "inputFiles": [
     "data/generated/worker-output/art_architecture.jsonl"
   ],
@@ -9,9 +9,9 @@
     "review": 0.75
   },
   "counts": {
-    "input": 62,
-    "existingCompared": 1233,
-    "exactDuplicates": 62,
+    "input": 112,
+    "existingCompared": 3220,
+    "exactDuplicates": 112,
     "semanticDuplicates": 0,
     "needsReview": 0,
     "accepted": 0

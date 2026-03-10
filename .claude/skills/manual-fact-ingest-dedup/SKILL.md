@@ -10,10 +10,33 @@ Run the full content pipeline autonomously after a single user request. Do not a
 
 ## Non-Negotiable Rules
 - Never use paid API scripts from this repository for fact generation.
-- Generate missing facts directly with your own Opus reasoning and write JSONL outputs.
+- Generate missing facts using Haiku sub-agents (not Sonnet/Opus) — fact generation is structured content work, not architecture. Haiku produces equivalent quality at ~10x lower cost.
 - Keep every new fact schema-valid and include a non-empty `visualDescription`.
 - Keep source attribution fields when available: `sourceRecordId`, `sourceName`, `sourceUrl`.
 - Continue until QA passes and facts are promoted to DB, unless blocked by hard errors.
+
+## Source-Based Generation (Mandatory for new facts)
+Raw data lives in `data/raw/<domain>.json` — structured Wikidata/API dumps with minimal info (labels, dates, species names, etc.). These are **seeds**, not facts.
+
+### How to use raw sources
+1. **Read raw entries** from `data/raw/<domain>.json` (or `data/raw/mixed/<domain>.json`)
+2. **Cherry-pick interesting entries** — skip entries that are:
+   - Missing labels (e.g. `"itemLabel": "Q19727656"`)
+   - Too obscure to make a fun fact (e.g. unnamed satellites, minor subspecies)
+   - Already covered in existing generated facts (check `data/generated/worker-output/<domain>.jsonl`)
+3. **Transform into surprising facts** — the raw entry is just a starting point. The agent should:
+   - Use the Wikidata entity as a seed topic, then add genuinely interesting/surprising context from training knowledge
+   - Apply the transformability rubric below — skip generic/ambiguous entries, transform specific nameable things
+   - Write the `statement` to be surprising, not encyclopedic ("Waffles originated in 13th-century France as communion wafers..." NOT "A waffle is a batter-based food from France")
+4. **Preserve source attribution**: set `sourceUrl` to the Wikidata URI, `sourceName` to "Wikidata"
+5. **Fill gaps from training knowledge** — when raw sources are exhausted or too boring, generate additional facts purely from training knowledge (no source attribution needed)
+
+### Transformability rubric
+**Skip if:** Broken Wikidata ID (unresolved Q-number), duplicate of existing fact, factually ambiguous, or so generic that no interesting angle exists.
+**Transform if:** Names a specific thing (species, food, event, place, person, invention) that a good trivia writer could turn into a question stumping 50%+ of adults. The raw data is a starting menu, not a mandatory list.
+
+### Truthfulness
+All facts (whether source-based or from training knowledge) must be verifiable. Agents should not invent statistics, dates, or claims they are uncertain about. When in doubt, use hedging language ("approximately", "estimated") or skip the fact entirely.
 
 ## One-Command Backbone
 Use this as the orchestration backbone:
@@ -50,23 +73,36 @@ Run this loop until pass:
    - QA passes
    - promotion succeeds
    - `public/facts.db` is rebuilt
+7. After promotion, run fact verification:
+   ```bash
+   node scripts/content-pipeline/qa/verify-facts-websearch.mjs --stamp true --quarantine true
+   ```
+   - Only facts with `verifiedAt` timestamp are considered "live" in the game
+   - Facts that fail verification are quarantined (not deleted)
+   - This step uses the free Wikipedia API — zero token cost
 
-## Fact Schema Minimum (must satisfy)
-- `id` string
+## Fact Schema (DB NOT NULL columns)
+All these fields are required by the DB. `normalizeFactShape()` auto-derives missing ones during promotion, but it's best to include them in generated JSONL:
+
+- `id` string (unique)
+- `type` string — `"fact"` or `"vocabulary"` (auto-derived from `contentType`)
 - `statement` string
+- `explanation` string (auto-derived from `wowFactor` or `statement`)
 - `quizQuestion` string
 - `correctAnswer` string
-- `variants` array (>= 2)
-- `distractors` array (>= 4)
-- `visualDescription` non-empty string
+- `distractors` array (>= 4, serialized as JSON text in DB)
+- `category` string or array (auto-wrapped in array)
+- `rarity` string — `"common"|"uncommon"|"rare"|"epic"` (auto-derived from `difficulty`)
+- `difficulty` integer 1-5
+- `funScore` integer 1-10
+- `ageRating` string — `"kid"|"teen"|"adult"`
 
-Recommended:
-- `type`: `fact` or `vocabulary`
-- `difficulty`: 1-5
-- `funScore`: 1-10
-- `ageRating`: `kid|teen|adult`
-- `category` includes appropriate domain/language
+Recommended but nullable:
+- `variants` array (>= 2)
+- `visualDescription` non-empty string
+- `wowFactor` string (used as `explanation` fallback)
 - `sourceName` and `sourceUrl` when available
+- `tags` array of strings
 
 ## Language Targets
 Default language set:

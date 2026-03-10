@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-03-10T06:42:19.893Z",
+  "generatedAt": "2026-03-10T09:08:26.260Z",
   "inputFiles": [
     "data/generated/worker-output/general_knowledge.jsonl"
   ],
   "domain": "general_knowledge",
   "counts": {
-    "input": 140,
-    "valid": 140,
+    "input": 350,
+    "valid": 196,
     "invalid": 0,
-    "flagged": 0
+    "flagged": 154
   },
   "invalid": [],
   "topExamples": [

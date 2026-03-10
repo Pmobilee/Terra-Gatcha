@@ -1,0 +1,1586 @@
+{
+  "generatedAt": "2026-03-10T09:08:28.840Z",
+  "inputFiles": [
+    "data/generated/worker-output/art_architecture.jsonl"
+  ],
+  "counts": {
+    "flagged": 175
+  },
+  "items": [
+    {
+      "index": 112,
+      "id": "art_architecture_gen_063",
+      "question": "How many figures did Michelangelo paint on the Sistine Chapel ceiling?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 113,
+      "id": "art_architecture_gen_064",
+      "question": "What architectural innovation allowed Gothic cathedrals to have enormous stained glass windows?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 114,
+      "id": "art_architecture_gen_065",
+      "question": "What everyday object did Marcel Duchamp submit as art in 1917, calling it 'Fountain'?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 115,
+      "id": "art_architecture_gen_066",
+      "question": "For approximately how many years was the Great Pyramid of Giza the tallest human-made structure?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 116,
+      "id": "art_architecture_gen_067",
+      "question": "What larger work was Rodin's 'The Thinker' originally designed to be part of?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 117,
+      "id": "art_architecture_gen_068",
+      "question": "In what year did construction of Gaudí's Sagrada Família begin?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 118,
+      "id": "art_architecture_gen_069",
+      "question": "Who founded the Bauhaus school in 1919?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 119,
+      "id": "art_architecture_gen_070",
+      "question": "What mathematical property do some Islamic geometric patterns share with Penrose tilings?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 120,
+      "id": "art_architecture_gen_071",
+      "question": "What is the Japanese woodworking technique that joins wood without nails called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 121,
+      "id": "art_architecture_gen_072",
+      "question": "What happened to Banksy's 'Girl with Balloon' immediately after it sold at auction in 2018?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 122,
+      "id": "art_architecture_gen_073",
+      "question": "Where were the world's oldest known cave paintings discovered?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 123,
+      "id": "art_architecture_gen_074",
+      "question": "What optical technique makes the Parthenon's columns appear perfectly straight from a distance?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 124,
+      "id": "art_architecture_gen_075",
+      "question": "Who stole the Mona Lisa from the Louvre in 1911?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 125,
+      "id": "art_architecture_gen_076",
+      "question": "Approximately how many of Frida Kahlo's paintings are self-portraits?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 126,
+      "id": "art_architecture_gen_077",
+      "question": "What phrase is most commonly repeated in the Arabic calligraphy throughout the Alhambra?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 127,
+      "id": "art_architecture_gen_078",
+      "question": "What is the diameter of the Pantheon's dome, making it the largest unreinforced concrete dome in the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 128,
+      "id": "art_architecture_gen_079",
+      "question": "Which fashion designer created a famous dress inspired by Mondrian's paintings in 1965?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 129,
+      "id": "art_architecture_gen_080",
+      "question": "How many times was the Aztec Templo Mayor rebuilt?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 130,
+      "id": "art_architecture_gen_081",
+      "question": "What is unique about the blue color in Chartres Cathedral's stained glass?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 131,
+      "id": "art_architecture_gen_082",
+      "question": "What French term gives Brutalist architecture its name?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 132,
+      "id": "art_architecture_gen_083",
+      "question": "How many paintings did Vincent van Gogh sell during his lifetime?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 133,
+      "id": "art_architecture_gen_084",
+      "question": "What term describes the economic revitalization of a city through a single iconic building, named after Bilbao?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 134,
+      "id": "art_architecture_gen_085",
+      "question": "What textile technique was actually used to create the Bayeux Tapestry?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 135,
+      "id": "art_architecture_gen_086",
+      "question": "Where is Robert Smithson's 'Spiral Jetty' located?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 136,
+      "id": "art_architecture_gen_087",
+      "question": "Who first described the camera obscura principle around 1021 CE?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 137,
+      "id": "art_architecture_gen_088",
+      "question": "Approximately how many terracotta warriors were created for Emperor Qin Shi Huang's tomb?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 138,
+      "id": "art_architecture_gen_089",
+      "question": "How many paintings by Johannes Vermeer are known to survive?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 139,
+      "id": "art_architecture_gen_090",
+      "question": "Who invented the color wheel in 1666?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 140,
+      "id": "art_architecture_gen_091",
+      "question": "Why does the Leaning Tower of Pisa lean?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 141,
+      "id": "art_architecture_gen_092",
+      "question": "What is the Japanese art of repairing broken pottery with gold called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 142,
+      "id": "art_architecture_gen_093",
+      "question": "Who was the first woman to win the Pritzker Architecture Prize?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 143,
+      "id": "art_architecture_gen_094",
+      "question": "Why did Leonardo's 'The Last Supper' begin deteriorating so quickly?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 144,
+      "id": "art_architecture_gen_095",
+      "question": "What ancient people carved the city of Petra out of sandstone cliffs?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 145,
+      "id": "art_architecture_gen_096",
+      "question": "How many canvases make up Warhol's Campbell's Soup Cans?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 146,
+      "id": "art_architecture_gen_097",
+      "question": "How many different religious and secular roles has the Hagia Sophia served throughout its history?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 147,
+      "id": "art_architecture_gen_098",
+      "question": "Approximately how many water lily paintings did Claude Monet create?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 148,
+      "id": "art_architecture_gen_099",
+      "question": "What is the total combined length of all sections of the Great Wall of China?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 149,
+      "id": "art_architecture_gen_100",
+      "question": "How much did Klimt's 'Portrait of Adele Bloch-Bauer I' sell for in 2006?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 150,
+      "id": "art_architecture_gen_101",
+      "question": "What was the Antikythera mechanism designed to predict?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 151,
+      "id": "art_architecture_gen_102",
+      "question": "How long did it reportedly take Frank Lloyd Wright to design Fallingwater?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 152,
+      "id": "art_architecture_gen_103",
+      "question": "Where was the Venus de Milo discovered in 1820?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 153,
+      "id": "art_architecture_gen_104",
+      "question": "What series does Hokusai's 'The Great Wave off Kanagawa' belong to?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 154,
+      "id": "art_architecture_gen_105",
+      "question": "How many artworks were stolen in the 1990 Isabella Stewart Gardner Museum heist?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 155,
+      "id": "art_architecture_gen_106",
+      "question": "How did the Chrysler Building secretly become the world's tallest building in 1930?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 156,
+      "id": "art_architecture_gen_107",
+      "question": "What type of document is the Rosetta Stone?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 157,
+      "id": "art_architecture_gen_108",
+      "question": "Where has artist Yayoi Kusama voluntarily lived since 1977?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 158,
+      "id": "art_architecture_gen_109",
+      "question": "What is the total height drop of the Pont du Gard aqueduct over its 50-kilometer channel?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 159,
+      "id": "art_architecture_gen_110",
+      "question": "Which famous surrealist artist designed the Chupa Chups lollipop logo?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 160,
+      "id": "art_architecture_gen_111",
+      "question": "Why does the Taj Mahal appear to change color throughout the day?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 161,
+      "id": "art_architecture_gen_112",
+      "question": "How many porcelain sunflower seeds were in Ai Weiwei's Tate Modern installation?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 162,
+      "id": "art_architecture_gen_113",
+      "question": "Who painted the ceiling of the Sistine Chapel?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 163,
+      "id": "art_architecture_gen_114",
+      "question": "What architectural element allowed Gothic cathedrals to have thin walls with large stained glass windows?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 164,
+      "id": "art_architecture_gen_115",
+      "question": "Which two artists co-founded Cubism?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 165,
+      "id": "art_architecture_gen_116",
+      "question": "Which artist painted The Persistence of Memory with its famous melting clocks?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 166,
+      "id": "art_architecture_gen_117",
+      "question": "In what year was the Hagia Sophia originally completed as a cathedral?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 167,
+      "id": "art_architecture_gen_118",
+      "question": "What precious stone was ground to make ultramarine blue pigment?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 168,
+      "id": "art_architecture_gen_119",
+      "question": "Who is credited with inventing linear perspective in art?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 169,
+      "id": "art_architecture_gen_120",
+      "question": "Which New York skyscraper is famous for its Art Deco stainless steel crown?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 170,
+      "id": "art_architecture_gen_121",
+      "question": "What indigenous art tradition uses patterns of dots to depict Dreamtime stories?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 171,
+      "id": "art_architecture_gen_122",
+      "question": "Which Dutch art forger created fake Vermeer paintings that fooled experts?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 172,
+      "id": "art_architecture_gen_123",
+      "question": "What is the largest mud-brick building in the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 173,
+      "id": "art_architecture_gen_124",
+      "question": "Approximately how many of Frida Kahlo's paintings are self-portraits?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 174,
+      "id": "art_architecture_gen_125",
+      "question": "What ancient Roman structure in southern France is a three-tiered aqueduct bridge?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 175,
+      "id": "art_architecture_gen_126",
+      "question": "Which artist is known for minimalist metal box sculptures and his art installations in Marfa, Texas?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 176,
+      "id": "art_architecture_gen_127",
+      "question": "What mathematical concept do non-repeating Islamic geometric patterns demonstrate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 177,
+      "id": "art_architecture_gen_128",
+      "question": "Who was one of the first women recognized as a major Baroque painter, known for depicting biblical heroines?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 178,
+      "id": "art_architecture_gen_129",
+      "question": "What is the diameter of the Pantheon's unreinforced concrete dome?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 179,
+      "id": "art_architecture_gen_130",
+      "question": "What is the Japanese art of meditative brush calligraphy called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 180,
+      "id": "art_architecture_gen_131",
+      "question": "Which Italian city is famous for its 5th-6th century Byzantine mosaics?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 181,
+      "id": "art_architecture_gen_132",
+      "question": "How tall is the Burj Khalifa?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 182,
+      "id": "art_architecture_gen_133",
+      "question": "What genre or technique does Vermeer's Girl with a Pearl Earring represent?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 183,
+      "id": "art_architecture_gen_134",
+      "question": "What is the largest religious monument in the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 184,
+      "id": "art_architecture_gen_135",
+      "question": "Whose frescoes in the Arena Chapel marked the shift from Byzantine flatness to Renaissance naturalism?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 185,
+      "id": "art_architecture_gen_136",
+      "question": "Who created the Cloud Gate sculpture (The Bean) in Chicago?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 186,
+      "id": "art_architecture_gen_137",
+      "question": "What is the official color of the Golden Gate Bridge?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 187,
+      "id": "art_architecture_gen_138",
+      "question": "Which Baroque painter is famous for his dramatic use of chiaroscuro (extreme light and shadow)?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 188,
+      "id": "art_architecture_gen_139",
+      "question": "What is the name for the honeycomb-like carved vaulting found in the Alhambra?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 189,
+      "id": "art_architecture_gen_140",
+      "question": "Which artist is famous for monumental large-scale flower paintings?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 190,
+      "id": "art_architecture_gen_141",
+      "question": "What was the retractable awning system at the Roman Colosseum called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 191,
+      "id": "art_architecture_gen_142",
+      "question": "What everyday object did Marcel Duchamp submit as art under the title 'Fountain'?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 192,
+      "id": "art_architecture_gen_143",
+      "question": "Who designed the Sagrada Família basilica in Barcelona?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 193,
+      "id": "art_architecture_gen_144",
+      "question": "What green mineral did ancient Egyptians use as both eye paint and artistic pigment?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 194,
+      "id": "art_architecture_gen_145",
+      "question": "What art technique was used to create Hokusai's The Great Wave off Kanagawa?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 195,
+      "id": "art_architecture_gen_146",
+      "question": "Which architect designed Fallingwater, the house built over a waterfall?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 196,
+      "id": "art_architecture_gen_147",
+      "question": "What happens to Navajo sand paintings after a healing ceremony?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 197,
+      "id": "art_architecture_gen_148",
+      "question": "What painting technique creates the illusion that a flat ceiling opens to the sky?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 198,
+      "id": "art_architecture_gen_149",
+      "question": "Approximately how many terracotta soldiers were created to guard Emperor Qin Shi Huang's tomb?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 199,
+      "id": "art_architecture_gen_150",
+      "question": "Which artist is famous for creating immersive Infinity Mirror Rooms?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 200,
+      "id": "art_architecture_gen_151",
+      "question": "How many different scripts appear on the Rosetta Stone?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 201,
+      "id": "art_architecture_gen_152",
+      "question": "What art movement did Mondrian's primary-color grid paintings represent?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 202,
+      "id": "art_architecture_gen_153",
+      "question": "What geometric shape are all the Sydney Opera House roof shells derived from?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 203,
+      "id": "art_architecture_gen_154",
+      "question": "What is the Japanese art of repairing broken pottery with gold called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 204,
+      "id": "art_architecture_gen_155",
+      "question": "What does the right panel of Bosch's The Garden of Earthly Delights depict?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 205,
+      "id": "art_architecture_gen_156",
+      "question": "What technique do the Parthenon's columns use to correct the illusion of inward bowing?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 206,
+      "id": "art_architecture_gen_157",
+      "question": "What happened to Banksy's Girl with Balloon at a Sotheby's auction in 2018?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 207,
+      "id": "art_architecture_gen_158",
+      "question": "What color does the Taj Mahal appear at dawn?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 208,
+      "id": "art_architecture_gen_159",
+      "question": "What painting technique did Leonardo use to create the Mona Lisa's smoky, soft transitions?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 209,
+      "id": "art_architecture_gen_160",
+      "question": "Who single-handedly built the Watts Towers in Los Angeles over 33 years?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 210,
+      "id": "art_architecture_gen_161",
+      "question": "Why must fresco painters work quickly on the plaster?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 211,
+      "id": "art_architecture_gen_162",
+      "question": "On which island was the ancient Lighthouse of Alexandria built?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 212,
+      "id": "art_architecture_gen_163",
+      "question": "Approximately how many water lily paintings did Claude Monet create?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 213,
+      "id": "art_architecture_gen_164",
+      "question": "Who designed the titanium-clad Guggenheim Museum in Bilbao?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 214,
+      "id": "art_architecture_gen_165",
+      "question": "What mathematical object is hidden in Dürer's engraving Melencolia I?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 215,
+      "id": "art_architecture_gen_166",
+      "question": "Approximately how long is the total network of walls that make up the Great Wall of China?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 216,
+      "id": "art_architecture_gen_167",
+      "question": "Which Swedish artist created abstract paintings years before Kandinsky but kept them secret?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 217,
+      "id": "art_architecture_gen_168",
+      "question": "Why did the Tower of Pisa start leaning during construction?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 218,
+      "id": "art_architecture_gen_169",
+      "question": "What French text appears on Magritte's painting of a pipe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 219,
+      "id": "art_architecture_gen_170",
+      "question": "What people carved the ancient city of Petra into sandstone cliffs?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 220,
+      "id": "art_architecture_gen_171",
+      "question": "What technique did Jackson Pollock use to create his famous drip paintings?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 221,
+      "id": "art_architecture_gen_172",
+      "question": "How many medieval stained glass windows does Chartres Cathedral contain?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 222,
+      "id": "art_architecture_gen_173",
+      "question": "How many porcelain sunflower seeds did Ai Weiwei's Tate Modern installation contain?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 223,
+      "id": "art_architecture_gen_174",
+      "question": "What building technique allowed the Inca to construct Machu Picchu without mortar?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 224,
+      "id": "art_architecture_gen_175",
+      "question": "What personal experience inspired Edvard Munch to create The Scream?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 225,
+      "id": "art_architecture_gen_176",
+      "question": "Why were Byzantine gold mosaic tiles set at slightly different angles?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 226,
+      "id": "art_architecture_gen_177",
+      "question": "What creature did Louise Bourgeois sculpt in her monumental work Maman?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 227,
+      "id": "art_architecture_gen_178",
+      "question": "In what year was the Dome of the Rock in Jerusalem completed?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 228,
+      "id": "art_architecture_gen_179",
+      "question": "Why was the Eiffel Tower not dismantled after 20 years as originally planned?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 229,
+      "id": "art_architecture_gen_180",
+      "question": "What are the 'Four Treasures of the Study' in Chinese calligraphy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 230,
+      "id": "art_architecture_gen_181",
+      "question": "What is the only painting Vincent van Gogh is confirmed to have sold during his lifetime?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 231,
+      "id": "art_architecture_gen_182",
+      "question": "Where was the marble for the Parthenon quarried?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 232,
+      "id": "art_architecture_gen_183",
+      "question": "Which artist is famous for prints depicting impossible staircases and mathematical geometry?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 233,
+      "id": "art_architecture_gen_184",
+      "question": "What optical device did Vermeer likely use as a compositional aid?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 234,
+      "id": "art_architecture_gen_185",
+      "question": "What does the torii gate of Itsukushima Shrine appear to do at high tide?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 235,
+      "id": "art_architecture_gen_186",
+      "question": "From what creature was the ancient Tyrian purple dye extracted?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 236,
+      "id": "art_architecture_gen_187",
+      "question": "Who was the first woman to win the Pritzker Architecture Prize?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 237,
+      "id": "art_architecture_gen_188",
+      "question": "Approximately what percentage of the Topkapi Palace's collection is on display at any given time?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 238,
+      "id": "art_architecture_gen_189",
+      "question": "What made Brunelleschi's dome for the Florence Cathedral so revolutionary?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 239,
+      "id": "art_architecture_gen_190",
+      "question": "Which castle is the real-life setting for Shakespeare's Hamlet?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 240,
+      "id": "art_architecture_gen_191",
+      "question": "Which is the largest functioning royal palace in Europe by floor area?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 241,
+      "id": "art_architecture_gen_192",
+      "question": "What is unusual about the Centre Pompidou's architectural design?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 242,
+      "id": "art_architecture_gen_193",
+      "question": "What was the Mole Antonelliana in Turin originally designed to be?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 243,
+      "id": "art_architecture_gen_194",
+      "question": "Why did Herculaneum preserve organic materials better than Pompeii?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 244,
+      "id": "art_architecture_gen_195",
+      "question": "How long has Eltz Castle in Germany been owned by the same family?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 245,
+      "id": "art_architecture_gen_196",
+      "question": "Which French palace has been used as a head-of-state residence for over 800 years?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 246,
+      "id": "art_architecture_gen_197",
+      "question": "What record does the ceiling fresco at Würzburg Residence hold?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 247,
+      "id": "art_architecture_gen_198",
+      "question": "Why did Rembrandt go bankrupt in 1656?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 248,
+      "id": "art_architecture_gen_199",
+      "question": "What is considered the world's first known synthetic pigment?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 249,
+      "id": "art_architecture_gen_200",
+      "question": "What unusual debt did the Sagrada Familia settle with Barcelona in 2019?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 250,
+      "id": "art_architecture_gen_201",
+      "question": "Approximately how many times did the artist Hokusai change his name?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 251,
+      "id": "art_architecture_gen_202",
+      "question": "Who donated their private art collection to create Moscow's Tretyakov Gallery?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 252,
+      "id": "art_architecture_gen_203",
+      "question": "Approximately how many objects does the Metropolitan Museum of Art hold in total?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 253,
+      "id": "art_architecture_gen_204",
+      "question": "Approximately how many paintings make up Vermeer's entire known body of work?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 254,
+      "id": "art_architecture_gen_205",
+      "question": "What famous ancient structure was reconstructed inside Berlin's Pergamon Museum?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 255,
+      "id": "art_architecture_gen_206",
+      "question": "How did Michelangelo feel about painting the Sistine Chapel ceiling?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 256,
+      "id": "art_architecture_gen_207",
+      "question": "What is remarkable about how the Nazca Lines were created?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 257,
+      "id": "art_architecture_gen_208",
+      "question": "What is the oldest public art collection in the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 258,
+      "id": "art_architecture_gen_209",
+      "question": "What inspired Gustav Klimt to start using gold leaf in his paintings?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 259,
+      "id": "art_architecture_gen_210",
+      "question": "How many times has Hohenzollern Castle been destroyed and rebuilt?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 260,
+      "id": "art_architecture_gen_211",
+      "question": "Where are Frida Kahlo's ashes kept?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 261,
+      "id": "art_architecture_gen_212",
+      "question": "What is remarkable about the 1259 frescoes in the Boyana Church?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 262,
+      "id": "art_architecture_gen_213",
+      "question": "What dual purpose did the Library of Celsus in Ephesus serve?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 263,
+      "id": "art_architecture_gen_214",
+      "question": "Where has artist Yayoi Kusama voluntarily lived since 1977?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 264,
+      "id": "art_architecture_gen_215",
+      "question": "What holds the massive stones of the Pont du Gard together?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 265,
+      "id": "art_architecture_gen_216",
+      "question": "What medical condition affected Monet's painting in his later years?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 266,
+      "id": "art_architecture_gen_217",
+      "question": "Why did Sarah Winchester keep building her house for 38 years without stopping?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 267,
+      "id": "art_architecture_gen_218",
+      "question": "Where was Van Gogh when he painted Starry Night?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 268,
+      "id": "art_architecture_gen_219",
+      "question": "Who saved the Alhambra from almost total destruction in 1812?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 269,
+      "id": "art_architecture_gen_220",
+      "question": "Who operated the Colosseum's retractable awning system?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 270,
+      "id": "art_architecture_gen_221",
+      "question": "Why was Picasso questioned about the 1911 Mona Lisa theft?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 271,
+      "id": "art_architecture_gen_222",
+      "question": "What unusual technique helped save the Leaning Tower of Pisa from collapse?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 272,
+      "id": "art_architecture_gen_223",
+      "question": "Where is the world's oldest known figurative cave painting?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 273,
+      "id": "art_architecture_gen_224",
+      "question": "What makes Maulbronn Monastery unique among medieval monasteries?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 274,
+      "id": "art_architecture_gen_225",
+      "question": "Who was Charlottenburg Palace named after?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 275,
+      "id": "art_architecture_gen_226",
+      "question": "Why is the 'Gypsy Girl' mosaic sometimes called the 'Mona Lisa of mosaics'?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 276,
+      "id": "art_architecture_gen_227",
+      "question": "What is the Mona Lisa painted on?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 277,
+      "id": "art_architecture_gen_228",
+      "question": "Which of King Ludwig II's palaces was the only one completed during his lifetime?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 278,
+      "id": "art_architecture_gen_229",
+      "question": "Why did the Blue Mosque's six minarets cause a controversy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 279,
+      "id": "art_architecture_gen_230",
+      "question": "Why did Bramante design a spiral ramp instead of stairs for the Vatican?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 280,
+      "id": "art_architecture_gen_231",
+      "question": "What crime forced Caravaggio to flee Rome in 1606?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 281,
+      "id": "art_architecture_gen_232",
+      "question": "What suggests the Great Sphinx was once brightly colored?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 282,
+      "id": "art_architecture_gen_233",
+      "question": "How does the Hagia Sophia's dome appear to float?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 283,
+      "id": "art_architecture_gen_234",
+      "question": "What did Marcel Duchamp secretly do for 20 years while claiming to have retired from art?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 284,
+      "id": "art_architecture_gen_235",
+      "question": "Why are the Parthenon's columns slightly bulged outward?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 285,
+      "id": "art_architecture_gen_236",
+      "question": "What did artist Yves Klein patent in 1960?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 286,
+      "id": "art_architecture_gen_237",
+      "question": "What annual event maintains the Great Mosque of Djenne?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    }
+  ]
+}

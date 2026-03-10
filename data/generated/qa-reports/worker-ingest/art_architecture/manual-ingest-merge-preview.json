@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.789Z",
+  "generatedAt": "2026-03-10T09:08:28.933Z",
   "inputFiles": [
     "data/generated/worker-output/art_architecture.jsonl"
   ],
   "target": "data/generated/art_architecture.jsonl",
   "targetExists": true,
-  "existingFactsInTarget": 62,
+  "existingFactsInTarget": 237,
   "factsToAdd": 0,
-  "newTotalAfterMerge": 62,
+  "newTotalAfterMerge": 237,
   "sampleFacts": [],
   "coverage": {
-    "generatedAt": "2026-03-10T06:42:20.789Z",
+    "generatedAt": "2026-03-10T09:08:28.933Z",
     "totalFacts": 0,
     "withSource": 0,
     "sourceCoveragePct": 0,

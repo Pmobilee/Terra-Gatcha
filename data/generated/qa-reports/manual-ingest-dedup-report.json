@@ -1,198 +1,198 @@
 {
-  "generatedAt": "2026-03-10T06:42:21.634Z",
+  "generatedAt": "2026-03-10T09:08:59.099Z",
   "inputFiles": [
-    "data/generated"
+    "data/generated/worker-output/space_astronomy.jsonl"
   ],
-  "domain": "general_knowledge",
+  "domain": "space_astronomy",
   "thresholds": {
-    "autoDedup": 0.95,
-    "review": 0.75
+    "autoDedup": 0.92,
+    "review": 0.7
   },
   "counts": {
-    "input": 1421,
-    "existingCompared": 1233,
-    "exactDuplicates": 1420,
+    "input": 111,
+    "existingCompared": 3220,
+    "exactDuplicates": 111,
     "semanticDuplicates": 0,
     "needsReview": 0,
-    "accepted": 1
+    "accepted": 0
   },
   "exactDuplicates": [
     {
-      "candidateId": "genet-victoriae-001",
-      "candidateQuestion": "What is a giant forest genet?",
-      "matchId": "genet-victoriae-001",
-      "matchQuestion": "What is a giant forest genet?",
+      "candidateId": "apx-001-satellite-power",
+      "candidateQuestion": "What did Advanced Photovoltaic Experiment test in space?",
+      "matchId": "apx-001-satellite-power",
+      "matchQuestion": "What did Advanced Photovoltaic Experiment test in space?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "parnassius-apollo-001",
-      "candidateQuestion": "What type of animal is Parnassius apollo?",
-      "matchId": "parnassius-apollo-001",
-      "matchQuestion": "What type of animal is Parnassius apollo?",
+      "candidateId": "a101-testflight-001",
+      "candidateQuestion": "What was A-101 in rocket history?",
+      "matchId": "a101-testflight-001",
+      "matchQuestion": "What was A-101 in rocket history?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "senna-alata-001",
-      "candidateQuestion": "What is Senna alata?",
-      "matchId": "senna-alata-001",
-      "matchQuestion": "What is Senna alata?",
+      "candidateId": "A-103-001",
+      "candidateQuestion": "What was the purpose of A-103?",
+      "matchId": "A-103-001",
+      "matchQuestion": "What was the purpose of A-103?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "leopard-cat-001",
-      "candidateQuestion": "What is the scientific name of the leopard cat?",
-      "matchId": "leopard-cat-001",
-      "matchQuestion": "What is the scientific name of the leopard cat?",
+      "candidateId": "apollo-a104-test-1965",
+      "candidateQuestion": "What was Apollo A-104's primary purpose?",
+      "matchId": "apollo-a104-test-1965",
+      "matchQuestion": "What was Apollo A-104's primary purpose?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "phaseolus-vulgaris-001",
-      "candidateQuestion": "What is Phaseolus vulgaris commonly known as?",
-      "matchId": "phaseolus-vulgaris-001",
-      "matchQuestion": "What is Phaseolus vulgaris commonly known as?",
+      "candidateId": "apollo-a105-boilerplate",
+      "candidateQuestion": "What was A-105 in Apollo program history?",
+      "matchId": "apollo-a105-boilerplate",
+      "matchQuestion": "What was A-105 in Apollo program history?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "serval-001",
-      "candidateQuestion": "What African wild cat has exceptionally long legs?",
-      "matchId": "serval-001",
-      "matchQuestion": "What African wild cat has exceptionally long legs?",
+      "candidateId": "apollo-a001-abort-test",
+      "candidateQuestion": "What was the A-001 mission in Apollo?",
+      "matchId": "apollo-a001-abort-test",
+      "matchQuestion": "What was the A-001 mission in Apollo?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "laetacara-curviceps-001",
-      "candidateQuestion": "What species is Laetacara curviceps?",
-      "matchId": "laetacara-curviceps-001",
-      "matchQuestion": "What species is Laetacara curviceps?",
+      "candidateId": "saturn-sa1-001",
+      "candidateQuestion": "What was Saturn SA-1's purpose in NASA's Apollo program?",
+      "matchId": "saturn-sa1-001",
+      "matchQuestion": "What was Saturn SA-1's purpose in NASA's Apollo program?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "baikal-seal-001",
-      "candidateQuestion": "What is the Baikal seal's primary habitat?",
-      "matchId": "baikal-seal-001",
-      "matchQuestion": "What is the Baikal seal's primary habitat?",
+      "candidateId": "vanguard-slv1-001",
+      "candidateQuestion": "What was Vanguard SLV-1's primary outcome?",
+      "matchId": "vanguard-slv1-001",
+      "matchQuestion": "What was Vanguard SLV-1's primary outcome?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "alpine-pika-001",
-      "candidateQuestion": "What family do Alpine pikas belong to?",
-      "matchId": "alpine-pika-001",
-      "matchQuestion": "What family do Alpine pikas belong to?",
+      "candidateId": "vanguard-slv5-001",
+      "candidateQuestion": "What was Vanguard SLV-5?",
+      "matchId": "vanguard-slv5-001",
+      "matchQuestion": "What was Vanguard SLV-5?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "red-fox-001",
-      "candidateQuestion": "What is the scientific name for red foxes?",
-      "matchId": "red-fox-001",
-      "matchQuestion": "What is the scientific name for red foxes?",
+      "candidateId": "vanguard-slv6-001",
+      "candidateQuestion": "What was Vanguard SLV-6?",
+      "matchId": "vanguard-slv6-001",
+      "matchQuestion": "What was Vanguard SLV-6?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "mullus-barbatus-001",
-      "candidateQuestion": "What species is Mullus barbatus?",
-      "matchId": "mullus-barbatus-001",
-      "matchQuestion": "What species is Mullus barbatus?",
+      "candidateId": "vanguard-slv3-001",
+      "candidateQuestion": "What was Vanguard SLV-3?",
+      "matchId": "vanguard-slv3-001",
+      "matchQuestion": "What was Vanguard SLV-3?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "nannacara_aureocephalus_001",
-      "candidateQuestion": "What species is Nannacara aureocephalus?",
-      "matchId": "nannacara_aureocephalus_001",
-      "matchQuestion": "What species is Nannacara aureocephalus?",
+      "candidateId": "progress-m1-11-001",
+      "candidateQuestion": "What was the main purpose of Progress M1-11?",
+      "matchId": "progress-m1-11-001",
+      "matchQuestion": "What was the main purpose of Progress M1-11?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "pomegranate-001",
-      "candidateQuestion": "What type of plant is a pomegranate?",
-      "matchId": "pomegranate-001",
-      "matchQuestion": "What type of plant is a pomegranate?",
+      "candidateId": "space-falcon9-f20-001",
+      "candidateQuestion": "What milestone did Falcon 9 Flight 20 achieve?",
+      "matchId": "space-falcon9-f20-001",
+      "matchQuestion": "What milestone did Falcon 9 Flight 20 achieve?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "anim-wolverine-001",
-      "candidateQuestion": "What type of animal is the Wolverine?",
-      "matchId": "anim-wolverine-001",
-      "matchQuestion": "What type of animal is the Wolverine?",
+      "candidateId": "space-falcon-heavy-demo-002",
+      "candidateQuestion": "What did Falcon Heavy launch on its maiden flight?",
+      "matchId": "space-falcon-heavy-demo-002",
+      "matchQuestion": "What did Falcon Heavy launch on its maiden flight?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "anim-house-sparrow-002",
-      "candidateQuestion": "What type of animal is the House Sparrow?",
-      "matchId": "anim-house-sparrow-002",
-      "matchQuestion": "What type of animal is the House Sparrow?",
+      "candidateId": "space-sslv-d1-003",
+      "candidateQuestion": "What was SSLV-D1 for India?",
+      "matchId": "space-sslv-d1-003",
+      "matchQuestion": "What was SSLV-D1 for India?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "anim-mallard-003",
-      "candidateQuestion": "What type of animal is the Mallard?",
-      "matchId": "anim-mallard-003",
-      "matchQuestion": "What type of animal is the Mallard?",
+      "candidateId": "space-electrodyn-explorer-004",
+      "candidateQuestion": "What did Electrodynamics Explorer study?",
+      "matchId": "space-electrodyn-explorer-004",
+      "matchQuestion": "What did Electrodynamics Explorer study?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "anim-eurasian-jay-004",
-      "candidateQuestion": "What type of animal is the Eurasian Jay?",
-      "matchId": "anim-eurasian-jay-004",
-      "matchQuestion": "What type of animal is the Eurasian Jay?",
+      "candidateId": "space-firewheel-005",
+      "candidateQuestion": "What did the Firewheel spacecraft release?",
+      "matchId": "space-firewheel-005",
+      "matchQuestion": "What did the Firewheel spacecraft release?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "anim-white-stork-005",
-      "candidateQuestion": "What type of animal is the White Stork?",
-      "matchId": "anim-white-stork-005",
-      "matchQuestion": "What type of animal is the White Stork?",
+      "candidateId": "space-europa-lander-006",
+      "candidateQuestion": "Where would the Europa Lander touch down?",
+      "matchId": "space-europa-lander-006",
+      "matchQuestion": "Where would the Europa Lander touch down?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "anim-accipiter-gentilis-006",
-      "candidateQuestion": "What type of animal is the Accipiter gentilis?",
-      "matchId": "anim-accipiter-gentilis-006",
-      "matchQuestion": "What type of animal is the Accipiter gentilis?",
+      "candidateId": "space-elysium-star2-007",
+      "candidateQuestion": "What is Elysium Star 2 used for?",
+      "matchId": "space-elysium-star2-007",
+      "matchQuestion": "What is Elysium Star 2 used for?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
     },
     {
-      "candidateId": "anim-northern-raven-007",
-      "candidateQuestion": "What type of animal is the Northern Raven?",
-      "matchId": "anim-northern-raven-007",
-      "matchQuestion": "What type of animal is the Northern Raven?",
+      "candidateId": "space-omotenashi-008",
+      "candidateQuestion": "What was OMOTENASHI designed to do?",
+      "matchId": "space-omotenashi-008",
+      "matchQuestion": "What was OMOTENASHI designed to do?",
       "score": 1,
       "decision": "exact_duplicate",
       "source": "existing"
@@ -200,10 +200,5 @@
   ],
   "semanticDuplicates": [],
   "needsReview": [],
-  "topAccepted": [
-    {
-      "id": "general-knowledge-1773124941546-ch7xpc",
-      "question": ""
-    }
-  ]
+  "topAccepted": []
 }

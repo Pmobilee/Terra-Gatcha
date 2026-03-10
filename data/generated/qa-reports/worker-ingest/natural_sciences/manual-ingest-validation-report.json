@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-03-10T06:42:19.987Z",
+  "generatedAt": "2026-03-10T09:08:26.448Z",
   "inputFiles": [
     "data/generated/worker-output/natural_sciences.jsonl"
   ],
   "domain": "natural_sciences",
   "counts": {
-    "input": 54,
-    "valid": 54,
+    "input": 254,
+    "valid": 110,
     "invalid": 0,
-    "flagged": 0
+    "flagged": 144
   },
   "invalid": [],
   "topExamples": [

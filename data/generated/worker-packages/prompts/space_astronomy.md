@@ -1,14 +1,14 @@
 # Claude Worker Task: space_astronomy
 
 ## Goal
-Generate up to 0 new fact rows for `space_astronomy` using your Claude subscription worker.
+Generate up to 739 new fact rows for `space_astronomy` using your Claude subscription worker.
 
 ## Inputs/Outputs
 - Input source file: `data/raw/mixed/space_astronomy.json`
 - Output JSONL file: `data/generated/worker-output/space_astronomy.jsonl`
-- Existing generated facts: 61
-- Target facts for domain: 50
-- Missing facts to fill: 0
+- Existing generated facts: 261
+- Target facts for domain: 1000
+- Missing facts to fill: 739
 
 ## Hard Rules
 - Do NOT call any paid API scripts from this repository.

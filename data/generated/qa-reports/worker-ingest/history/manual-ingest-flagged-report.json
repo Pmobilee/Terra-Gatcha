@@ -1,0 +1,992 @@
+{
+  "generatedAt": "2026-03-10T09:08:27.361Z",
+  "inputFiles": [
+    "data/generated/worker-output/history.jsonl"
+  ],
+  "counts": {
+    "flagged": 109
+  },
+  "items": [
+    {
+      "index": 141,
+      "id": "hist-rosetta-stone-141",
+      "question": "What artifact allowed scholars to decipher Egyptian hieroglyphics?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 142,
+      "id": "hist-gutenberg-press-142",
+      "question": "Who invented the movable-type printing press in Europe around 1440?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 143,
+      "id": "hist-magna-carta-143",
+      "question": "In what year was the Magna Carta sealed?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 144,
+      "id": "hist-silk-road-trade-144",
+      "question": "What was the primary luxury good that gave the Silk Road its name?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 145,
+      "id": "hist-black-death-145",
+      "question": "What bacterium caused the Black Death?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 146,
+      "id": "hist-magellan-circumnavigation-146",
+      "question": "Who completed the first circumnavigation of the Earth after Magellan's death?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 147,
+      "id": "hist-pompeii-eruption-147",
+      "question": "Which volcano destroyed Pompeii in 79 CE?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 148,
+      "id": "hist-industrial-revolution-148",
+      "question": "In which country did the Industrial Revolution begin?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 149,
+      "id": "hist-enigma-code-149",
+      "question": "What was the name of the electro-mechanical device Turing built to crack Enigma?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 150,
+      "id": "hist-terracotta-army-150",
+      "question": "How many terracotta soldiers are estimated to be in the Terracotta Army?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 151,
+      "id": "hist-cold-war-berlin-wall-151",
+      "question": "In what year did the Berlin Wall fall?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 152,
+      "id": "hist-suffragettes-152",
+      "question": "Which country first granted women the right to vote in national elections?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 153,
+      "id": "hist-sputnik-launch-153",
+      "question": "What was the name of the first artificial satellite launched into orbit?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 154,
+      "id": "hist-spanish-flu-154",
+      "question": "Approximately what fraction of the world's population was infected by the 1918 flu?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 155,
+      "id": "hist-antikythera-mechanism-155",
+      "question": "What was the Antikythera Mechanism used to predict?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 156,
+      "id": "hist-mongol-empire-156",
+      "question": "What was the approximate area of the Mongol Empire at its peak?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 157,
+      "id": "hist-galileo-trial-157",
+      "question": "Why was Galileo tried by the Roman Inquisition?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 158,
+      "id": "hist-trojan-horse-158",
+      "question": "What trick did the Greeks allegedly use to capture Troy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 159,
+      "id": "hist-d-day-normandy-159",
+      "question": "How many Allied troops landed on D-Day?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 160,
+      "id": "hist-cleopatra-rome-160",
+      "question": "How many languages did Cleopatra reportedly speak?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 161,
+      "id": "hist-wright-brothers-161",
+      "question": "Where did the Wright brothers make their first powered flight?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 162,
+      "id": "hist-renaissance-florence-162",
+      "question": "Which powerful family were the primary patrons of the Florentine Renaissance?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 163,
+      "id": "hist-code-of-hammurabi-163",
+      "question": "How many laws does the Code of Hammurabi contain?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 164,
+      "id": "hist-mlk-dream-speech-164",
+      "question": "At which landmark was the 'I Have a Dream' speech delivered?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 165,
+      "id": "hist-voyager-golden-record-165",
+      "question": "Who chaired the committee that curated the Voyager Golden Records?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 166,
+      "id": "hist-battle-thermopylae-166",
+      "question": "Which Spartan king led the defense at Thermopylae?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 167,
+      "id": "hist-roman-aqueducts-167",
+      "question": "Approximately how many major aqueducts supplied the city of Rome?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 168,
+      "id": "hist-mata-hari-168",
+      "question": "What was Mata Hari's real name?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 169,
+      "id": "hist-library-alexandria-169",
+      "question": "Approximately how many scrolls did the Library of Alexandria hold at its peak?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 170,
+      "id": "hist-cuban-missile-crisis-170",
+      "question": "How many days did the Cuban Missile Crisis last?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 171,
+      "id": "hist-vasco-da-gama-171",
+      "question": "In what year did Vasco da Gama reach India by sea?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 172,
+      "id": "hist-joan-of-arc-172",
+      "question": "At which battle did Joan of Arc achieve her most famous victory?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 173,
+      "id": "hist-penicillin-discovery-173",
+      "question": "What did Alexander Fleming accidentally discover in 1928?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 174,
+      "id": "hist-dead-sea-scrolls-174",
+      "question": "Where were the Dead Sea Scrolls discovered?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 175,
+      "id": "hist-manhattan-project-175",
+      "question": "Who was the scientific director of the Manhattan Project?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 176,
+      "id": "hist-viking-north-america-176",
+      "question": "What did the Vikings call the region of North America they discovered?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 177,
+      "id": "hist-french-revolution-177",
+      "question": "What event on July 14, 1789, is considered the start of the French Revolution?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 178,
+      "id": "hist-treaty-of-westphalia-178",
+      "question": "What major concept in international relations did the Peace of Westphalia establish?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 179,
+      "id": "hist-moon-landing-179",
+      "question": "Who was the second person to walk on the Moon during Apollo 11?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 180,
+      "id": "hist-samurai-bushido-180",
+      "question": "What does 'Bushido' literally translate to?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 181,
+      "id": "hist-great-wall-china-181",
+      "question": "Which dynasty built most of the existing Great Wall?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 182,
+      "id": "hist-battle-of-stalingrad-182",
+      "question": "Approximately how many total casualties occurred at the Battle of Stalingrad?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 183,
+      "id": "hist-ancient-olympics-183",
+      "question": "For how many years were the ancient Olympic Games held?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 184,
+      "id": "hist-enigma-machine-design-184",
+      "question": "What components of the Enigma machine created its encryption?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 185,
+      "id": "hist-hypatia-alexandria-185",
+      "question": "What scientific instrument did Hypatia of Alexandria help improve?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 186,
+      "id": "hist-tenochtitlan-190",
+      "question": "What innovative farming technique did the Aztecs use in Tenochtitlan?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 187,
+      "id": "hist-harriet-tubman-186",
+      "question": "Approximately how many enslaved people did Harriet Tubman free via the Underground Railroad?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 188,
+      "id": "hist-justinian-plague-187",
+      "question": "Which emperor gave the Plague of Justinian its name?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 189,
+      "id": "hist-spinning-jenny-188",
+      "question": "What did the Spinning Jenny dramatically increase the production of?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 190,
+      "id": "hist-battle-of-hastings-189",
+      "question": "Who won the Battle of Hastings in 1066?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 191,
+      "id": "hist-cambridge-five-191",
+      "question": "How many members made up the Cambridge spy ring?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 192,
+      "id": "hist-indus-valley-civilization-192",
+      "question": "Which ancient civilization had indoor plumbing and sewage systems around 2500 BCE?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 193,
+      "id": "hist-ada-lovelace-193",
+      "question": "What machine was Ada Lovelace's algorithm designed for?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 194,
+      "id": "hist-suez-canal-194",
+      "question": "By how much did the Suez Canal reduce the London-to-Mumbai sailing distance?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 195,
+      "id": "hist-trail-of-tears-195",
+      "question": "What legislation authorized the forced removal of Native Americans in the Trail of Tears?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 196,
+      "id": "hist-compass-invention-196",
+      "question": "What was the magnetic compass originally used for in China?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 197,
+      "id": "hist-battle-of-midway-197",
+      "question": "How many Japanese aircraft carriers were sunk at the Battle of Midway?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 198,
+      "id": "hist-rosa-parks-198",
+      "question": "How long did the Montgomery Bus Boycott last?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 199,
+      "id": "hist-printing-movable-type-china-199",
+      "question": "Who invented the first movable type printing system?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 200,
+      "id": "hist-charge-of-light-brigade-200",
+      "question": "What caused the disastrous Charge of the Light Brigade?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 201,
+      "id": "hist-alexander-the-great-201",
+      "question": "Who was Alexander the Great's famous tutor?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 202,
+      "id": "hist-napoleon-exile-202",
+      "question": "From which island did Napoleon famously escape during his first exile?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 203,
+      "id": "hist-emancipation-proclamation-203",
+      "question": "In what year was the Emancipation Proclamation issued?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 204,
+      "id": "hist-easter-island-moai-204",
+      "question": "How were the Moai statues most likely transported to their platforms?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 205,
+      "id": "hist-florence-nightingale-205",
+      "question": "What type of innovative diagram did Florence Nightingale create?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 206,
+      "id": "hist-fall-of-constantinople-206",
+      "question": "What was the name of the massive cannon used to breach Constantinople's walls?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 207,
+      "id": "hist-apollo-13-207",
+      "question": "What did the Apollo 13 crew use as a lifeboat after the explosion?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 208,
+      "id": "hist-spanish-armada-208",
+      "question": "How many ships comprised the original Spanish Armada?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 209,
+      "id": "hist-aztec-calendar-stone-209",
+      "question": "How much does the Aztec Sun Stone weigh?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 210,
+      "id": "hist-marie-curie-210",
+      "question": "In which two scientific fields did Marie Curie win Nobel Prizes?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 211,
+      "id": "hist-bay-of-pigs-211",
+      "question": "How long did the Bay of Pigs invasion last before the exiles were defeated?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 212,
+      "id": "hist-gutenberg-bible-212",
+      "question": "How many copies of the Gutenberg Bible survive today?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 213,
+      "id": "hist-stonewall-riots-213",
+      "question": "In which New York City neighborhood did the Stonewall Riots occur?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 214,
+      "id": "hist-zheng-he-voyages-214",
+      "question": "How long were Zheng He's largest treasure ships?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 215,
+      "id": "hist-nuremberg-trials-215",
+      "question": "How many major Nazi leaders were prosecuted at the Nuremberg Trials?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 244,
+      "id": "hist-cleopatras-nose-philosophy",
+      "question": "Who wrote that 'if Cleopatra's nose had been shorter, the whole face of the world would have been changed'?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 245,
+      "id": "hist-dancing-plague-1518",
+      "question": "What happened during the Dancing Plague of Strasbourg in 1518?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 246,
+      "id": "hist-great-molasses-flood-1919",
+      "question": "How fast did the wave of molasses travel during Boston's Great Molasses Flood of 1919?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 247,
+      "id": "hist-emu-war-1932",
+      "question": "What happened when the Australian military used machine guns against emus in 1932?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 248,
+      "id": "hist-london-beer-flood-1814",
+      "question": "What unusual flood struck London in 1814?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 249,
+      "id": "hist-war-of-the-bucket-1325",
+      "question": "What object triggered a war between Bologna and Modena in 1325?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 250,
+      "id": "hist-aztec-skull-towers",
+      "question": "What did archaeologists discover in Mexico City in 2017 that confirmed Spanish conquistador accounts?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 251,
+      "id": "hist-christmas-truce-1914",
+      "question": "What spontaneously happened between German and British soldiers on Christmas Day 1914?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 252,
+      "id": "hist-night-witches-wwii",
+      "question": "Why were the Soviet 588th Night Bomber Regiment called 'Night Witches' by the Germans?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 253,
+      "id": "hist-mad-king-ludwig-castles",
+      "question": "What famous modern landmark did King Ludwig II's Neuschwanstein Castle inspire?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 254,
+      "id": "hist-tulip-mania-1637",
+      "question": "What is the Dutch Tulip Mania of 1637 often called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 255,
+      "id": "hist-pepys-cheese-burial-1666",
+      "question": "What did Samuel Pepys bury in his garden to save from the Great Fire of London?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 256,
+      "id": "hist-window-tax-bricked-up",
+      "question": "Why do many old British buildings have bricked-up windows?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 257,
+      "id": "hist-war-of-the-stray-dog-1925",
+      "question": "What triggered the 1925 military conflict between Greece and Bulgaria?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 258,
+      "id": "hist-king-tuts-dagger-meteorite",
+      "question": "What was King Tutankhamun's famous dagger made from?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 259,
+      "id": "hist-roman-concrete-self-healing",
+      "question": "Why does ancient Roman concrete get stronger over time while modern concrete deteriorates?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 260,
+      "id": "hist-voynich-manuscript-mystery",
+      "question": "Where is the undeciphered Voynich Manuscript housed today?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 261,
+      "id": "hist-napoleon-height-myth",
+      "question": "How tall was Napoleon actually?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 262,
+      "id": "hist-dancing-bear-army-wwii",
+      "question": "What did the bear Wojtek do at the Battle of Monte Cassino?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 263,
+      "id": "hist-tanganyika-laughter-epidemic",
+      "question": "How long did the Tanganyika Laughter Epidemic of 1962 take to fully subside?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 264,
+      "id": "hist-defenestrations-of-prague",
+      "question": "How many major 'Defenestrations of Prague' sparked major wars?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 265,
+      "id": "hist-arctic-convoy-cat-wwii",
+      "question": "How many warships did the cat Unsinkable Sam survive the sinking of during WWII?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 266,
+      "id": "hist-ben-franklin-turkey-eagle",
+      "question": "Did Benjamin Franklin actually propose the turkey as America's national bird?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 267,
+      "id": "hist-alexander-gordian-knot",
+      "question": "What English phrase comes from Alexander the Great's solution to an ancient puzzle?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 268,
+      "id": "hist-versailles-palace-no-toilets",
+      "question": "What major facility was essentially missing from the Palace of Versailles?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 269,
+      "id": "hist-pope-vs-cats-medieval",
+      "question": "What unintended consequence may have resulted from Pope Gregory IX's 1233 decree against cats?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 270,
+      "id": "hist-greenland-iceland-names",
+      "question": "Why did Erik the Red name an ice-covered island 'Greenland'?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 271,
+      "id": "hist-tsutomu-yamaguchi-two-nukes",
+      "question": "What happened to Tsutomu Yamaguchi after surviving the Hiroshima atomic bomb?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 272,
+      "id": "hist-genghis-khan-postal-system",
+      "question": "How fast could a message travel through Genghis Khan's Yam postal system?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 273,
+      "id": "hist-captain-cook-scurvy-beer",
+      "question": "How did Captain Cook trick his sailors into eating sauerkraut to prevent scurvy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 274,
+      "id": "hist-last-samurai-photograph",
+      "question": "What ended the samurai era in Japan?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 275,
+      "id": "hist-witch-trial-last-europe-1782",
+      "question": "When was the last legal execution for witchcraft in Europe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 276,
+      "id": "hist-cadaver-synod-897",
+      "question": "What bizarre event happened at the 'Cadaver Synod' of 897 CE?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 277,
+      "id": "hist-dancing-diplomacy-louis-xiv",
+      "question": "How did Louis XIV use ballet as a tool of political control?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    }
+  ]
+}

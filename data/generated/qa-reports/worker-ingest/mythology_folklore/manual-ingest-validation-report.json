@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.402Z",
+  "generatedAt": "2026-03-10T09:08:27.636Z",
   "inputFiles": [
     "data/generated/worker-output/mythology_folklore.jsonl"
   ],
   "domain": "mythology_folklore",
   "counts": {
-    "input": 63,
-    "valid": 63,
+    "input": 338,
+    "valid": 152,
     "invalid": 0,
-    "flagged": 0
+    "flagged": 186
   },
   "invalid": [],
   "topExamples": [

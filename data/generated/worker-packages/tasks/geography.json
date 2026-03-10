@@ -1,9 +1,9 @@
 {
   "domain": "geography",
   "domainSlug": "geography",
-  "existingFacts": 50,
+  "existingFacts": 300,
   "existingFactsPath": "data/generated/geography.jsonl",
-  "targetFacts": 50,
+  "targetFacts": 1,
   "expectedMinimum": 150,
   "missingFacts": 0,
   "requestedNewFacts": 0,

@@ -1,0 +1,1397 @@
+{
+  "generatedAt": "2026-03-10T09:08:26.261Z",
+  "inputFiles": [
+    "data/generated/worker-output/general_knowledge.jsonl"
+  ],
+  "counts": {
+    "flagged": 154
+  },
+  "items": [
+    {
+      "index": 190,
+      "id": "gk-etymology-salary-191",
+      "question": "What commodity is the English word 'salary' etymologically linked to?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 191,
+      "id": "gk-usain-bolt-record-192",
+      "question": "What is Usain Bolt's 100-meter world record time, set in 2009?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 192,
+      "id": "gk-beatles-abbey-road-193",
+      "question": "How long did the photoshoot for the Beatles' Abbey Road album cover take?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 193,
+      "id": "gk-first-feature-film-194",
+      "question": "Which country produced what is generally considered the world's first narrative feature film in 1906?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 194,
+      "id": "gk-first-computer-bug-195",
+      "question": "What insect was famously found inside the Harvard Mark II computer in 1947?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 195,
+      "id": "gk-nobel-prize-curie-196",
+      "question": "In which two scientific fields did Marie Curie win Nobel Prizes?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 196,
+      "id": "gk-zipper-invention-197",
+      "question": "Who perfected the modern zipper design in 1913?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 197,
+      "id": "gk-prime-number-two-198",
+      "question": "What is the only even prime number?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 198,
+      "id": "gk-dunning-kruger-199",
+      "question": "What cognitive bias causes people with low ability to overestimate their competence?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 199,
+      "id": "gk-socrates-no-writings-200",
+      "question": "Which famous ancient philosopher never wrote down any of his own teachings?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 200,
+      "id": "gk-gdp-invented-201",
+      "question": "Who developed the concept of GDP in 1934?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 201,
+      "id": "gk-morse-code-sos-202",
+      "question": "Why was SOS chosen as the Morse code distress signal?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 202,
+      "id": "gk-wheel-invention-203",
+      "question": "What was the wheel first used for when it was invented around 3500 BCE?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 203,
+      "id": "gk-coco-chanel-lbd-204",
+      "question": "Who popularized the 'little black dress' in 1926?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 204,
+      "id": "gk-ethiopian-calendar-205",
+      "question": "How many months does the Ethiopian calendar have?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 205,
+      "id": "gk-ok-etymology-206",
+      "question": "What phrase was 'OK' originally an abbreviation of?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 206,
+      "id": "gk-saxophone-invention-207",
+      "question": "Who invented the saxophone, and what was it originally designed for?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 207,
+      "id": "gk-murphy-law-208",
+      "question": "Murphy's Law is named after an engineer who coined the phrase during what type of experiments?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 208,
+      "id": "gk-oscar-name-209",
+      "question": "According to popular legend, the Academy Award statuette got the nickname 'Oscar' because it resembled whose uncle?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 209,
+      "id": "gk-dunbar-number-210",
+      "question": "Dunbar's number proposes that humans can maintain stable relationships with approximately how many people?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 210,
+      "id": "gk-first-email-211",
+      "question": "Who sent the first email in 1971 and introduced the @ symbol for email addresses?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 211,
+      "id": "gk-sunk-cost-fallacy-212",
+      "question": "What cognitive bias describes continuing an endeavor because of resources already spent, even when stopping is more rational?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 212,
+      "id": "gk-olympic-rings-213",
+      "question": "Who designed the five Olympic rings in 1913?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 213,
+      "id": "gk-braille-inventor-214",
+      "question": "At what age did Louis Braille invent the Braille reading system?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 214,
+      "id": "gk-nobel-dynamite-215",
+      "question": "What event motivated Alfred Nobel to establish the Nobel Prizes?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 215,
+      "id": "gk-binary-system-216",
+      "question": "Who formally described the binary number system in 1703?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 216,
+      "id": "gk-marathon-distance-217",
+      "question": "Why was the marathon distance set to 26.2 miles at the 1908 London Olympics?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 217,
+      "id": "gk-dvorak-keyboard-218",
+      "question": "Who patented the Dvorak keyboard layout in 1936?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 218,
+      "id": "gk-ampersand-etymology-219",
+      "question": "The word 'ampersand' is a corruption of what phrase?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 219,
+      "id": "gk-placebo-effect-220",
+      "question": "What real chemical does the brain release when a patient takes a placebo painkiller?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 220,
+      "id": "gk-morse-code-sos-221",
+      "question": "Why was SOS chosen as the international distress signal?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 221,
+      "id": "gk-fahrenheit-body-temp-222",
+      "question": "What did Daniel Fahrenheit originally set as body temperature on his scale?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 222,
+      "id": "gk-worlds-oldest-currency-223",
+      "question": "What is the world's oldest currency still in use?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 223,
+      "id": "gk-confirmation-bias-224",
+      "question": "What cognitive bias describes the tendency to favor information that confirms existing beliefs?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 224,
+      "id": "gk-gregorian-calendar-225",
+      "question": "How many days were skipped when the Gregorian calendar was first adopted in 1582?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 225,
+      "id": "gk-pony-express-lifespan-226",
+      "question": "How long did the Pony Express actually operate before being replaced by the telegraph?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 226,
+      "id": "gk-ikea-name-origin-227",
+      "question": "What does the acronym IKEA stand for?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 227,
+      "id": "gk-leap-second-228",
+      "question": "Why are leap seconds occasionally added to UTC?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 228,
+      "id": "gk-tulip-mania-229",
+      "question": "During Dutch Tulip Mania in 1637, a single tulip bulb could cost more than how many times a craftsman's annual income?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 229,
+      "id": "gk-rosetta-stone-230",
+      "question": "What three scripts appear on the Rosetta Stone?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 230,
+      "id": "gk-trolley-problem-231",
+      "question": "Who first proposed the trolley problem thought experiment in 1967?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 231,
+      "id": "gk-first-photograph-232",
+      "question": "Who took the oldest surviving photograph, and roughly how long was the exposure?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 232,
+      "id": "gk-fibonacci-rabbits-233",
+      "question": "The Fibonacci sequence was introduced through a puzzle about what in Liber Abaci (1202)?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 233,
+      "id": "gk-worlds-shortest-war-234",
+      "question": "The shortest war in history, lasting about 38–45 minutes, was between which two parties?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 234,
+      "id": "gk-wifi-not-acronym-235",
+      "question": "Does Wi-Fi stand for 'Wireless Fidelity'?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 235,
+      "id": "gk-wright-brothers-coin-236",
+      "question": "The Wright Brothers' first flight distance of 120 feet is shorter than what part of a Boeing 747?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 236,
+      "id": "gk-roman-concrete-237",
+      "question": "What ingredient in Roman concrete makes it get stronger over time?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 237,
+      "id": "gk-paper-clip-maximizer-238",
+      "question": "Who proposed the 'paperclip maximizer' thought experiment about AI risk?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 238,
+      "id": "gk-phonograph-invention-239",
+      "question": "What was the first phrase Thomas Edison recorded on his phonograph in 1877?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 239,
+      "id": "gk-monty-hall-problem-240",
+      "question": "In the Monty Hall problem, what is your probability of winning if you switch doors?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 240,
+      "id": "gk-esperanto-241",
+      "question": "Who created Esperanto in 1887?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 241,
+      "id": "gk-anchoring-bias-242",
+      "question": "What cognitive bias causes over-reliance on the first piece of information encountered?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 242,
+      "id": "gk-bluetooth-name-243",
+      "question": "Bluetooth technology is named after a Viking king known for doing what?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 243,
+      "id": "gk-zero-invention-244",
+      "question": "Who first defined zero as a number with arithmetic rules around the 5th–7th century?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 244,
+      "id": "gk-cottage-cheese-world-record-245",
+      "question": "What is David Morgan's Guinness World Record for the largest collection of?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 245,
+      "id": "gk-semaphore-telegraph-246",
+      "question": "France's pre-electric semaphore telegraph used towers with what type of signaling mechanism?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 246,
+      "id": "gk-levi-jeans-origin-247",
+      "question": "Who partnered with Levi Strauss to patent riveted denim jeans in 1873?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 247,
+      "id": "gk-stockholm-syndrome-248",
+      "question": "Stockholm syndrome was named after a 1973 incident involving what type of crime?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 248,
+      "id": "gk-isbn-check-digit-249",
+      "question": "What is the purpose of the last digit in an ISBN?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 249,
+      "id": "gk-fax-before-phone-250",
+      "question": "The fax machine was invented how many years before the telephone?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 250,
+      "id": "gk-barnum-effect-251",
+      "question": "What psychological effect explains why people believe horoscopes are specifically about them?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 251,
+      "id": "gk-ship-of-theseus-252",
+      "question": "The Ship of Theseus paradox questions whether an object remains the same after what happens?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 252,
+      "id": "gk-pringles-not-chips-253",
+      "question": "Why were Pringles argued to be 'not potato chips' in a UK tax case?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 253,
+      "id": "gk-turing-test-254",
+      "question": "In what year did Alan Turing propose the test for machine intelligence?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 254,
+      "id": "gk-inflation-zimbabwe-255",
+      "question": "What was the denomination of the highest banknote Zimbabwe printed during its 2008 hyperinflation?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 255,
+      "id": "gk-pinball-ban-256",
+      "question": "Why were pinball machines banned in New York City from 1942 to 1976?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 256,
+      "id": "gk-schrodingers-cat-257",
+      "question": "Schrödinger created his famous cat thought experiment to do what?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 257,
+      "id": "gk-origins-of-dollar-sign-258",
+      "question": "The dollar sign ($) most likely evolved from the abbreviation of what currency?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 258,
+      "id": "gk-hashtag-octothorpe-259",
+      "question": "What is the official name of the # symbol, coined by Bell Labs?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 259,
+      "id": "gk-cassini-gap-rings-260",
+      "question": "When Galileo first observed Saturn's rings in 1610, what did he think they were?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 260,
+      "id": "gk-dead-mans-hand-261",
+      "question": "The 'dead man's hand' in poker is named after which historical figure?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 261,
+      "id": "gk-imperial-vs-metric-262",
+      "question": "Which three countries have not officially adopted the metric system?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 262,
+      "id": "gk-murphy-bed-patent-263",
+      "question": "Why did William Murphy invent the fold-away bed around 1900?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 263,
+      "id": "gk-hawthorne-effect-264",
+      "question": "What is the Hawthorne effect?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 264,
+      "id": "gk-typewriter-patent-265",
+      "question": "What was unusual about the Remington No. 1 typewriter (1873)?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 265,
+      "id": "gk-earths-rotation-slowing-266",
+      "question": "Approximately how much is Earth's day lengthening per century?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 266,
+      "id": "gk-fortune-cookie-origin-267",
+      "question": "Where were fortune cookies actually invented?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 267,
+      "id": "gk-paper-fold-limit-268",
+      "question": "Who disproved the myth that paper can only be folded 7 times, achieving 12 folds?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 268,
+      "id": "gk-dunning-kruger-269",
+      "question": "What does the Dunning-Kruger effect describe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 269,
+      "id": "gk-silent-letters-english-270",
+      "question": "Approximately what percentage of English words contain silent letters?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 270,
+      "id": "gk-teflon-accidental-271",
+      "question": "Teflon was accidentally discovered by Roy Plunkett while trying to develop what?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 271,
+      "id": "gk-mcnugget-shapes-272",
+      "question": "How many official shapes do McDonald's Chicken McNuggets come in?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 272,
+      "id": "gk-bayesian-thinking-273",
+      "question": "Bayes' theorem describes how to do what with probability?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 273,
+      "id": "gk-champagne-invention-274",
+      "question": "What was Dom Pérignon actually trying to do with wine, contrary to popular belief?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 274,
+      "id": "gk-qwerty-myth-275",
+      "question": "What is the real reason for the QWERTY keyboard layout?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 275,
+      "id": "gk-pygmalion-effect-276",
+      "question": "What does the Pygmalion effect demonstrate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 276,
+      "id": "gk-404-error-room-277",
+      "question": "What does the HTTP error code 404 indicate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 277,
+      "id": "gk-velcro-burrs-278",
+      "question": "What inspired George de Mestral to invent Velcro?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 278,
+      "id": "gk-petrichor-rain-smell-279",
+      "question": "What is the scientific name for the pleasant smell after rain?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 279,
+      "id": "gk-pascal-wager-280",
+      "question": "What does Pascal's Wager argue about belief in God?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 286,
+      "id": "gk-honey-never-spoils-287",
+      "question": "What property of honey allows 3,000-year-old samples found in Egyptian tombs to remain edible?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 287,
+      "id": "gk-bananas-are-berries-288",
+      "question": "Which of these is a true botanical berry?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 288,
+      "id": "gk-oxford-older-aztec-289",
+      "question": "Which institution is older?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 289,
+      "id": "gk-cleopatra-moon-landing-290",
+      "question": "Cleopatra lived closer in time to which event?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 290,
+      "id": "gk-lighter-before-match-291",
+      "question": "Which was invented first — the cigarette lighter or the friction match?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 291,
+      "id": "gk-greenland-ice-sheet-292",
+      "question": "By how much would global sea levels rise if Greenland's entire ice sheet melted?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 292,
+      "id": "gk-stomach-acid-razor-293",
+      "question": "What is the approximate pH of human stomach acid?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 293,
+      "id": "gk-earth-rotation-dinosaurs-294",
+      "question": "Approximately how long was a day when dinosaurs lived, about 70 million years ago?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 294,
+      "id": "gk-octopus-three-hearts-295",
+      "question": "Why do octopuses have blue blood?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 295,
+      "id": "gk-venus-day-longer-year-296",
+      "question": "On which planet does a single day last longer than its entire year?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 296,
+      "id": "gk-swiss-army-corkscrew-297",
+      "question": "Who actually coined the term 'Swiss Army Knife'?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 297,
+      "id": "gk-platypus-venomous-298",
+      "question": "Where is the platypus's venom delivered from?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 298,
+      "id": "gk-sahara-was-green-299",
+      "question": "What was the Sahara Desert like during the 'African Humid Period' about 5,000-11,000 years ago?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 299,
+      "id": "gk-human-dna-banana-300",
+      "question": "Approximately what percentage of DNA do humans share with bananas?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 300,
+      "id": "gk-french-scrabble-champ-301",
+      "question": "What remarkable feat did Nigel Richards accomplish at the 2015 French Scrabble championship?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 301,
+      "id": "gk-time-zones-china-302",
+      "question": "How many official time zones does China use despite spanning five geographical ones?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 302,
+      "id": "gk-trees-outnumber-stars-303",
+      "question": "Are there more trees on Earth or stars in the Milky Way?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 303,
+      "id": "gk-coca-cola-santa-304",
+      "question": "Did Coca-Cola invent the image of Santa Claus in a red suit?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 304,
+      "id": "gk-blind-spot-eye-305",
+      "question": "Why don't you normally notice the blind spot in each of your eyes?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 305,
+      "id": "gk-gps-relativity-306",
+      "question": "By approximately how much would GPS positions drift per day without relativistic corrections?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 306,
+      "id": "gk-bacteria-cells-body-307",
+      "question": "What is the approximate ratio of bacterial cells to human cells in the human body?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 307,
+      "id": "gk-shortest-war-308",
+      "question": "How long did the Anglo-Zanzibar War of 1896 — the shortest war in recorded history — last?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 308,
+      "id": "gk-pi-memorization-309",
+      "question": "How many digits of pi did Rajveer Meena recite from memory to set the world record?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 309,
+      "id": "gk-lego-tire-manufacturer-310",
+      "question": "Which company produces the most tires per year by unit count?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 310,
+      "id": "gk-niagara-falls-stopped-311",
+      "question": "What caused Niagara Falls to completely stop flowing in March 1848?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 311,
+      "id": "gk-rain-smell-bacteria-312",
+      "question": "At what concentration can humans detect geosmin, the chemical that contributes to the smell of rain?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 312,
+      "id": "gk-airplane-black-box-313",
+      "question": "What color are airplane 'black boxes' actually painted?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 313,
+      "id": "gk-dead-sea-float-314",
+      "question": "Approximately how much saltier is the Dead Sea compared to typical ocean water?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 314,
+      "id": "gk-barcode-first-scan-315",
+      "question": "What was the first product ever scanned with a barcode?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 315,
+      "id": "gk-alaska-time-zones-316",
+      "question": "What unusual calendar event happened when the US purchased Alaska from Russia in 1867?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 316,
+      "id": "gk-vowel-island-317",
+      "question": "What is 'crwth' — one of the longest English words with no standard vowels?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 317,
+      "id": "gk-fingerprint-koala-318",
+      "question": "Which animal has fingerprints so similar to humans that they can confuse forensic investigators?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 318,
+      "id": "gk-fencing-wifi-319",
+      "question": "How does electronic scoring work in Olympic fencing?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 319,
+      "id": "gk-tardigrade-survival-320",
+      "question": "What survival state do tardigrades enter to withstand extreme conditions?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 320,
+      "id": "gk-goldfish-memory-321",
+      "question": "How long can goldfish actually remember things, according to scientific studies?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 321,
+      "id": "gk-great-wall-not-visible-322",
+      "question": "Can the Great Wall of China be seen from space with the naked eye?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 322,
+      "id": "gk-pineapple-digests-you-323",
+      "question": "Why does eating fresh pineapple sometimes make your tongue feel tingly or sore?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 323,
+      "id": "gk-reno-west-of-la-324",
+      "question": "Which city is farther west: Reno, Nevada, or Los Angeles, California?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 324,
+      "id": "gk-wright-brothers-feud-325",
+      "question": "Why did the Wright Brothers almost never fly together?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 325,
+      "id": "gk-appendix-function-326",
+      "question": "What function do scientists now believe the human appendix serves?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 326,
+      "id": "gk-neutron-star-teaspoon-327",
+      "question": "How much would a teaspoon of neutron star material weigh on Earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 327,
+      "id": "gk-olympic-gold-silver-328",
+      "question": "What are Olympic gold medals primarily made of?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 328,
+      "id": "gk-carrots-vision-myth-329",
+      "question": "Why was the myth that carrots improve eyesight promoted during World War II?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 329,
+      "id": "gk-vending-machine-deaths-330",
+      "question": "On average, which causes more human deaths per year?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 330,
+      "id": "gk-cold-doesnt-cause-colds-331",
+      "question": "What actually causes the common cold?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 331,
+      "id": "gk-cassowary-dinosaur-332",
+      "question": "What feature makes the cassowary the most dangerous bird in the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 332,
+      "id": "gk-reading-silently-333",
+      "question": "Why did St. Augustine consider St. Ambrose's behavior remarkable around 380 CE?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 333,
+      "id": "gk-eiffel-tower-grows-334",
+      "question": "By how much can the Eiffel Tower grow in hot summer weather?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 334,
+      "id": "gk-blue-whale-heart-335",
+      "question": "How large is a blue whale's heart?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 335,
+      "id": "gk-pencil-line-length-336",
+      "question": "How long a line can a typical graphite pencil draw before running out?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 336,
+      "id": "gk-time-travel-gps-337",
+      "question": "Due to general relativity, which part of your body ages slightly slower?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 337,
+      "id": "gk-diamond-not-rare-338",
+      "question": "Why are diamonds perceived as rare despite being relatively common?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 338,
+      "id": "gk-frog-boiling-myth-339",
+      "question": "What actually happens when a frog is placed in slowly heated water?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 339,
+      "id": "gk-rain-terminal-velocity-340",
+      "question": "What shape are falling raindrops actually?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 340,
+      "id": "gk-moon-lemon-shaped-341",
+      "question": "What is the actual shape of the Moon?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 341,
+      "id": "gk-wombat-cube-poop-342",
+      "question": "Why do wombats produce cube-shaped droppings?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 342,
+      "id": "gk-earths-rotation-speed-343",
+      "question": "Why don't you feel the Earth rotating at 1,670 km/h?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 343,
+      "id": "gk-ketchup-medicine-344",
+      "question": "What was ketchup originally marketed as in the 1830s United States?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 344,
+      "id": "gk-shakespeare-insults-345",
+      "question": "Approximately how many words did Shakespeare introduce into English that are still used today?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 345,
+      "id": "gk-left-right-shoes-346",
+      "question": "Before the 1850s, what was unique about how shoes were manufactured?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 346,
+      "id": "gk-typewriter-alligator-347",
+      "question": "What is the longest common English word you can type using only the top row of a QWERTY keyboard?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 347,
+      "id": "gk-oxygen-not-breathe-348",
+      "question": "What gas makes up the majority of the air you breathe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 348,
+      "id": "gk-kangaroo-cant-walk-backward-349",
+      "question": "Why are kangaroos featured on Australia's coat of arms?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 349,
+      "id": "gk-earth-not-round-350",
+      "question": "What is the farthest point from Earth's center?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    }
+  ]
+}

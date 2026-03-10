@@ -1,0 +1,311 @@
+{
+  "generatedAt": "2026-03-10T08:42:43.748Z",
+  "summary": {
+    "total": 20,
+    "alreadyVerified": 0,
+    "highConfidence": 12,
+    "mediumConfidence": 7,
+    "lowConfidence": 1,
+    "rateLimited": 0
+  },
+  "items": [
+    {
+      "id": "genet-victoriae-001",
+      "confidence": "high",
+      "matchScore": 0.7273,
+      "matchedTokens": [
+        "small",
+        "african",
+        "carnivore",
+        "forest",
+        "genet",
+        "carnivorous",
+        "mammals",
+        "found"
+      ],
+      "wikiArticle": "African wild dog",
+      "sourceUrl": "http://www.wikidata.org/entity/Q41133"
+    },
+    {
+      "id": "parnassius-apollo-001",
+      "confidence": "high",
+      "matchScore": 0.7,
+      "matchedTokens": [
+        "butterfly",
+        "type",
+        "parnassius",
+        "apollo",
+        "species",
+        "found",
+        "mountain"
+      ],
+      "wikiArticle": "Apollo (butterfly)",
+      "sourceUrl": "http://www.wikidata.org/entity/Q41633"
+    },
+    {
+      "id": "senna-alata-001",
+      "confidence": "high",
+      "matchScore": 0.6667,
+      "matchedTokens": [
+        "plant",
+        "species",
+        "least",
+        "concern",
+        "conservation",
+        "status"
+      ],
+      "wikiArticle": "List of least concern plants",
+      "sourceUrl": "http://www.wikidata.org/entity/Q41504"
+    },
+    {
+      "id": "leopard-cat-001",
+      "confidence": "high",
+      "matchScore": 0.8333,
+      "matchedTokens": [
+        "prionailurus",
+        "bengalensis",
+        "name",
+        "leopard",
+        "cats",
+        "small",
+        "wild",
+        "native",
+        "asia",
+        "spotted"
+      ],
+      "wikiArticle": "Leopard cat",
+      "sourceUrl": "http://www.wikidata.org/entity/Q42627"
+    },
+    {
+      "id": "phaseolus-vulgaris-001",
+      "confidence": "high",
+      "matchScore": 0.9091,
+      "matchedTokens": [
+        "common",
+        "bean",
+        "phaseolus",
+        "vulgaris",
+        "known",
+        "legume",
+        "crop",
+        "cultivated",
+        "worldwide",
+        "food"
+      ],
+      "wikiArticle": "Phaseolus vulgaris",
+      "sourceUrl": "http://www.wikidata.org/entity/Q42339"
+    },
+    {
+      "id": "serval-001",
+      "confidence": "medium",
+      "matchScore": 0.4545,
+      "matchedTokens": [
+        "african",
+        "wild",
+        "long",
+        "cats",
+        "spotted"
+      ],
+      "wikiArticle": "Black-footed cat",
+      "sourceUrl": "http://www.wikidata.org/entity/Q42699"
+    },
+    {
+      "id": "laetacara-curviceps-001",
+      "confidence": "medium",
+      "matchScore": 0.25,
+      "matchedTokens": [
+        "freshwater",
+        "species"
+      ],
+      "wikiArticle": "List of freshwater aquarium fish species",
+      "sourceUrl": "http://www.wikidata.org/entity/Q3767"
+    },
+    {
+      "id": "baikal-seal-001",
+      "confidence": "high",
+      "matchScore": 0.9,
+      "matchedTokens": [
+        "lake",
+        "baikal",
+        "seal",
+        "primary",
+        "seals",
+        "only",
+        "freshwater",
+        "species",
+        "world"
+      ],
+      "wikiArticle": "Lake Baikal",
+      "sourceUrl": "http://www.wikidata.org/entity/Q4535"
+    },
+    {
+      "id": "alpine-pika-001",
+      "confidence": "high",
+      "matchScore": 0.9,
+      "matchedTokens": [
+        "ochotonidae",
+        "family",
+        "alpine",
+        "pikas",
+        "belong",
+        "small",
+        "found",
+        "mountainous",
+        "regions"
+      ],
+      "wikiArticle": "Pika",
+      "sourceUrl": "http://www.wikidata.org/entity/Q4524"
+    },
+    {
+      "id": "red-fox-001",
+      "confidence": "high",
+      "matchScore": 0.5,
+      "matchedTokens": [
+        "vulpes",
+        "name",
+        "foxes",
+        "highly",
+        "found",
+        "across"
+      ],
+      "wikiArticle": "Red fox",
+      "sourceUrl": "http://www.wikidata.org/entity/Q8332"
+    },
+    {
+      "id": "mullus-barbatus-001",
+      "confidence": "high",
+      "matchScore": 1,
+      "matchedTokens": [
+        "mullet",
+        "species",
+        "mullus",
+        "barbatus",
+        "fish",
+        "least",
+        "concern",
+        "conservation",
+        "status"
+      ],
+      "wikiArticle": "Mullus barbatus",
+      "sourceUrl": "http://www.wikidata.org/entity/Q7171"
+    },
+    {
+      "id": "nannacara_aureocephalus_001",
+      "confidence": "low",
+      "matchScore": 0,
+      "matchedTokens": [],
+      "wikiArticle": null,
+      "sourceUrl": "http://www.wikidata.org/entity/Q11308"
+    },
+    {
+      "id": "pomegranate-001",
+      "confidence": "medium",
+      "matchScore": 0.4444,
+      "matchedTokens": [
+        "shrub",
+        "plant",
+        "pomegranate",
+        "fruit"
+      ],
+      "wikiArticle": "List of malvid families",
+      "sourceUrl": "http://www.wikidata.org/entity/Q13188"
+    },
+    {
+      "id": "anim-wolverine-001",
+      "confidence": "medium",
+      "matchScore": 0.2727,
+      "matchedTokens": [
+        "largest",
+        "land",
+        "dwelling"
+      ],
+      "wikiArticle": "Dog",
+      "sourceUrl": "http://www.wikidata.org/entity/Q14334"
+    },
+    {
+      "id": "anim-house-sparrow-002",
+      "confidence": "medium",
+      "matchScore": 0.4,
+      "matchedTokens": [
+        "bird",
+        "house",
+        "sparrow",
+        "passer"
+      ],
+      "wikiArticle": "Spanish sparrow",
+      "sourceUrl": "http://www.wikidata.org/entity/Q14683"
+    },
+    {
+      "id": "anim-mallard-003",
+      "confidence": "medium",
+      "matchScore": 0.3333,
+      "matchedTokens": [
+        "duck",
+        "animal",
+        "concern"
+      ],
+      "wikiArticle": "Foie gras",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25348"
+    },
+    {
+      "id": "anim-eurasian-jay-004",
+      "confidence": "high",
+      "matchScore": 0.6667,
+      "matchedTokens": [
+        "bird",
+        "type",
+        "eurasian",
+        "classified",
+        "least",
+        "concern"
+      ],
+      "wikiArticle": "Common buzzard",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25354"
+    },
+    {
+      "id": "anim-white-stork-005",
+      "confidence": "high",
+      "matchScore": 0.8889,
+      "matchedTokens": [
+        "bird",
+        "type",
+        "animal",
+        "white",
+        "stork",
+        "ciconia",
+        "least",
+        "concern"
+      ],
+      "wikiArticle": "White stork",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25352"
+    },
+    {
+      "id": "anim-accipiter-gentilis-006",
+      "confidence": "high",
+      "matchScore": 0.75,
+      "matchedTokens": [
+        "bird",
+        "type",
+        "accipiter",
+        "classified",
+        "least",
+        "concern"
+      ],
+      "wikiArticle": "Eurasian sparrowhawk",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25353"
+    },
+    {
+      "id": "anim-northern-raven-007",
+      "confidence": "medium",
+      "matchScore": 0.4,
+      "matchedTokens": [
+        "bird",
+        "animal",
+        "raven",
+        "corvus"
+      ],
+      "wikiArticle": "Australian raven",
+      "sourceUrl": "http://www.wikidata.org/entity/Q25357"
+    }
+  ]
+}

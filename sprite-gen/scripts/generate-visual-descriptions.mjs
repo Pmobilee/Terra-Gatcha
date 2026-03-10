@@ -347,6 +347,48 @@ function assignSettings(facts, settings, existingAssignments) {
   return assignments;
 }
 
+/**
+ * Deterministically assign art styles to facts using seeded shuffle.
+ * Existing assignments from disk are preserved; only new facts get assigned.
+ *
+ * @param {Array<{ id: string }>} facts
+ * @param {string[]} artStyles
+ * @param {Record<string, number>} existingAssignments
+ * @returns {Record<string, number>} Updated assignments map (factId -> artStyleIndex)
+ */
+function assignArtStyles(facts, artStyles, existingAssignments) {
+  const assignments = { ...existingAssignments };
+  const unassigned = facts.filter(f => !(f.id in assignments));
+
+  if (unassigned.length === 0) return assignments;
+
+  // Seed from hash of first unassigned fact ID (offset to differ from settings)
+  const seed = hashString(unassigned[0].id + ':artStyle');
+  const rng = seededRandom(seed);
+
+  // Create enough copies of the style indices to cover all unassigned facts
+  const copies = Math.ceil(unassigned.length / artStyles.length);
+  const pool = [];
+  for (let c = 0; c < copies; c++) {
+    for (let s = 0; s < artStyles.length; s++) {
+      pool.push(s);
+    }
+  }
+
+  // Fisher-Yates shuffle with seeded RNG
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+
+  // Zip: fact[i] -> pool[i]
+  for (let i = 0; i < unassigned.length; i++) {
+    assignments[unassigned[i].id] = pool[i];
+  }
+
+  return assignments;
+}
+
 // ---------------------------------------------------------------------------
 // Element frequency tracking
 // ---------------------------------------------------------------------------
@@ -554,6 +596,14 @@ COLOR PALETTE: ${config.palette}`;
     prompt += `\n\nAVOID these overused elements: ${avoidList.join(', ')}`;
   }
 
+  prompt += `\n\nART STYLE DIRECTION:
+Each fact below has an assigned ART STYLE. Begin each description by naturally weaving in the art style as a visual rendering direction. The art style phrase should appear at the start of the description, setting the aesthetic tone for the entire scene.
+
+Example with art style "bold ukiyo-e woodblock print with thick carved outlines and flat color planes":
+- "bold ukiyo-e woodblock print style, a courier in a happi coat extending both arms to hand a wrapped package to a merchant, thick carved outlines framing the scene, parcels stacked on a delivery cart"
+
+The art style keywords must be present in the description so the image generator can pick them up. Do NOT ignore or skip the art style — it is mandatory.`;
+
   prompt += `\n\nReturn EXACTLY ${count} lines, numbered 1-${count}. Each line is ONLY the description text (no quotes, no JSON).`;
 
   return prompt;
@@ -566,7 +616,13 @@ COLOR PALETTE: ${config.palette}`;
  */
 function buildBatchUserPrompt(batchItems) {
   return batchItems
-    .map((item, i) => `${i + 1}. Word meaning: "${item.fact.statement}" | Background hint: ${item.settingAnchor}`)
+    .map((item, i) => {
+      let line = `${i + 1}. Word meaning: "${item.fact.statement}" | Background hint: ${item.settingAnchor}`;
+      if (item.artStyle) {
+        line += ` | Art style: ${item.artStyle}`;
+      }
+      return line;
+    })
     .join('\n');
 }
 
@@ -857,9 +913,10 @@ async function processSingleMode(items, processed) {
  * @param {object} config - Language config
  * @param {Record<string, number>} settingAssignments
  * @param {string} language
+ * @param {Record<string, number>} [artStyleAssignments]
  * @returns {Promise<{ success: number, failed: number, unsafe: number, modifiedFiles: Set<string> }>}
  */
-async function processBatchMode(items, processed, config, settingAssignments, language) {
+async function processBatchMode(items, processed, config, settingAssignments, language, artStyleAssignments = {}) {
   /** @type {Map<string, any[]>} */
   const modifiedFiles = new Map();
   let success = 0;
@@ -889,11 +946,13 @@ async function processBatchMode(items, processed, config, settingAssignments, la
       console.log(`  Avoiding ${avoidList.length} overused elements`);
     }
 
-    // Prepare batch items with setting anchors
+    // Prepare batch items with setting anchors and art styles
     const batchWithSettings = batchItems.map(item => {
       const settingIdx = settingAssignments[item.fact.id] ?? 0;
       const setting = config.settings[settingIdx] || config.settings[0];
-      return { fact: item.fact, settingAnchor: setting.anchor, file: item.file };
+      const artStyleIdx = artStyleAssignments[item.fact.id] ?? 0;
+      const artStyle = config.artStyles ? config.artStyles[artStyleIdx] : null;
+      return { fact: item.fact, settingAnchor: setting.anchor, artStyle, file: item.file };
     });
 
     if (DRY_RUN) {
@@ -1098,8 +1157,21 @@ async function main() {
     const existingAssignments = await loadSettingAssignments();
     const factList = toProcess.map(m => m.fact);
     const assignments = assignSettings(factList, config.settings, existingAssignments);
-    await saveSettingAssignments(assignments);
     console.log(`Setting assignments: ${Object.keys(assignments).length} total (${factList.length} new)\n`);
+
+    // Art style assignments (for visual variety in cardbacks)
+    let artStyleAssignments = {};
+    if (config.artStyles && config.artStyles.length > 0) {
+      const existingArtAssignments = existingAssignments._artStyles || {};
+      artStyleAssignments = assignArtStyles(factList, config.artStyles, existingArtAssignments);
+      console.log(`Art style assignments: ${Object.keys(artStyleAssignments).length} total (${factList.length} new)\n`);
+    }
+
+    const combinedAssignments = { ...assignments };
+    if (Object.keys(artStyleAssignments).length > 0) {
+      combinedAssignments._artStyles = artStyleAssignments;
+    }
+    await saveSettingAssignments(combinedAssignments);
 
     if (DRY_RUN) {
       // Dry-run preview for batch mode
@@ -1113,7 +1185,7 @@ async function main() {
       return;
     }
 
-    result = await processBatchMode(toProcess, processed, config, assignments, LANGUAGE);
+    result = await processBatchMode(toProcess, processed, config, assignments, LANGUAGE, artStyleAssignments);
   } else {
     if (LANGUAGE) {
       console.log(`Using SINGLE mode (${total} facts < ${BATCH_SIZE} threshold for batch)\n`);

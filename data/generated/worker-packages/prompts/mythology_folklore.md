@@ -1,14 +1,14 @@
 # Claude Worker Task: mythology_folklore
 
 ## Goal
-Generate up to 0 new fact rows for `mythology_folklore` using your Claude subscription worker.
+Generate up to 673 new fact rows for `mythology_folklore` using your Claude subscription worker.
 
 ## Inputs/Outputs
 - Input source file: `data/raw/mixed/mythology_folklore.json`
 - Output JSONL file: `data/generated/worker-output/mythology_folklore.jsonl`
-- Existing generated facts: 63
-- Target facts for domain: 50
-- Missing facts to fill: 0
+- Existing generated facts: 327
+- Target facts for domain: 1000
+- Missing facts to fill: 673
 
 ## Hard Rules
 - Do NOT call any paid API scripts from this repository.

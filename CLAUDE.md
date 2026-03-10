@@ -192,6 +192,7 @@ Never skip to step 3 — guessing at fixes without evidence wastes cycles and cr
 ## Sub-Agent Rules (Agent Tool)
 - **Complex tasks** (system integration, architecture, multi-file changes, debugging): use `model: "sonnet"`, `subagent_type: "general-purpose"`
 - **Simple tasks** (file creation from spec, single-file edits, formatting, boilerplate): use `model: "haiku"`, `subagent_type: "general-purpose"`
+- **Fact/content generation** (trivia facts, JSONL content, quiz questions): use `model: "haiku"`, `subagent_type: "general-purpose"` — produces equivalent quality to Sonnet for structured content at ~10x lower cost
 - **Codebase exploration** (finding files, searching code, understanding patterns): use `subagent_type: "Explore"`
 - Always provide sub-agents with full context: file paths, expected behavior, verification commands
 - Parallelize independent sub-agent tasks whenever possible

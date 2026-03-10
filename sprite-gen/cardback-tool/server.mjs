@@ -230,11 +230,12 @@ const PRODUCTION_STYLES = {
     styleSuffix: `centered in frame, pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a dark moody background, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no gradients, no text, no UI elements, no border frame, no watermark, slight atmospheric glow around subject, game asset card art, vertical portrait composition, subject fills 80-90% of frame with breathing room at edges`,
     loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
   },
-  // Japanese vocabulary cards — Ukiyo-e Woodblock (Style Lab #16)
-  // Extra-strong "no text" reinforcement because Flux loves inserting kanji
+  // Japanese vocabulary cards — Generic rendering (art direction comes from visual descriptions)
+  // Each fact's visualDescription carries its own art style (sumi-e, ukiyo-e, gold leaf, etc.)
+  // Style suffix only handles rendering format + kanji suppression
   japanese: {
-    styleSuffix: `authentic Japanese ukiyo-e woodblock print style with flat color planes separated by hard carved edges, characteristic ukiyo-e palette of indigo blue vermillion red ochre yellow and black, no gradients only flat color areas like carved woodblock layers, bold black outlines of varying thickness suggesting carved wood grain, dynamic composition with flowing fabric hair or natural elements, characteristic wave patterns cloud motifs and stylized water, Hokusai and Hiroshige aesthetic translated into pixel art, strong sense of graphic design and negative space, dramatic poses with theatrical kabuki energy, absolutely no text no writing no kanji no kana no hiragana no katakana no letters no characters no words no numbers no symbols no script of any kind anywhere in the image, pixel art trading card illustration, bold readable silhouette, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, no UI elements, no border frame, no watermark, game asset card art, vertical portrait composition, subject fills 80-90% of frame with breathing room at edges`,
-    loraStrength: 0.25, numColors: 12, pixelationSize: 480, guidance: 4.5, steps: 20
+    styleSuffix: `pixel art trading card illustration, 32-bit era JRPG style, bold readable silhouette, rich saturated colors against a dark moody background, hand-pixeled, clean hard pixel edges, strong dark outlines, interesting microdetails, flat shading with minimal dithering, somewhat dark atmospheric mood, absolutely no text no writing no kanji no kana no hiragana no katakana no letters no characters no words no numbers no symbols no script of any kind anywhere in the image, no gradients, no UI elements, no border frame, no watermark, game asset card art, vertical portrait composition, subject fills 80-90% of frame with breathing room at edges`,
+    loraStrength: 0.3, numColors: 16, pixelationSize: 480, guidance: 4, steps: 20
   }
 };
 

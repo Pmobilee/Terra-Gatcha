@@ -1,14 +1,14 @@
 # Claude Worker Task: history
 
 ## Goal
-Generate up to 0 new fact rows for `history` using your Claude subscription worker.
+Generate up to 756 new fact rows for `history` using your Claude subscription worker.
 
 ## Inputs/Outputs
 - Input source file: `data/raw/mixed/history.json`
 - Output JSONL file: `data/generated/worker-output/history.jsonl`
-- Existing generated facts: 91
-- Target facts for domain: 50
-- Missing facts to fill: 0
+- Existing generated facts: 244
+- Target facts for domain: 1000
+- Missing facts to fill: 756
 
 ## Hard Rules
 - Do NOT call any paid API scripts from this repository.

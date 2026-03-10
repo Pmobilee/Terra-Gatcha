@@ -1,0 +1,1172 @@
+{
+  "generatedAt": "2026-03-10T09:08:27.841Z",
+  "inputFiles": [
+    "data/generated/worker-output/animals_wildlife.jsonl"
+  ],
+  "counts": {
+    "flagged": 129
+  },
+  "items": [
+    {
+      "index": 113,
+      "id": "animal-mantis-shrimp-punch-114",
+      "question": "What speed can a mantis shrimp's strike reach?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 114,
+      "id": "animal-archerfish-spit-115",
+      "question": "How do archerfish catch insects above the water?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 115,
+      "id": "animal-lyrebird-mimic-116",
+      "question": "What remarkable ability does the superb lyrebird possess?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 116,
+      "id": "animal-octopus-camouflage-117",
+      "question": "What cells allow octopuses to change their skin color almost instantly?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 117,
+      "id": "animal-pistol-shrimp-snap-118",
+      "question": "What extreme phenomenon does a pistol shrimp's claw snap produce?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 118,
+      "id": "animal-cuttlefish-hypnosis-119",
+      "question": "Why do cuttlefish display pulsing color bands while hunting?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 119,
+      "id": "animal-harpy-eagle-grip-120",
+      "question": "How strong is a harpy eagle's grip?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 120,
+      "id": "animal-axolotl-regen-121",
+      "question": "What makes the axolotl unique among vertebrates?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 121,
+      "id": "animal-peregrine-stoop-122",
+      "question": "What is the peregrine falcon's hunting dive called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 122,
+      "id": "animal-horned-lizard-blood-123",
+      "question": "How does the Texas horned lizard defend itself?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 123,
+      "id": "animal-dolphin-sleep-124",
+      "question": "How do dolphins manage to sleep without drowning?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 124,
+      "id": "animal-bombardier-beetle-125",
+      "question": "What does the bombardier beetle spray at predators?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 125,
+      "id": "animal-tardigrade-survive-126",
+      "question": "What is the dormant survival state of a tardigrade called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 126,
+      "id": "animal-electric-eel-voltage-127",
+      "question": "How much voltage can an electric eel generate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 127,
+      "id": "animal-mimic-octopus-128",
+      "question": "How many species can the mimic octopus impersonate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 128,
+      "id": "animal-wandering-albatross-wingspan-129",
+      "question": "What technique allows the wandering albatross to fly without flapping?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 129,
+      "id": "animal-naked-mole-rat-pain-130",
+      "question": "What molecule in naked mole-rats helps prevent cancer?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 130,
+      "id": "animal-honeybee-waggle-131",
+      "question": "Who decoded the honeybee waggle dance?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 131,
+      "id": "animal-sperm-whale-click-132",
+      "question": "What is the loudest sound produced by any animal?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 132,
+      "id": "animal-glass-frog-transparent-133",
+      "question": "How do glass frogs become nearly invisible while sleeping?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 133,
+      "id": "animal-crow-tool-use-134",
+      "question": "What advanced cognitive ability do New Caledonian crows demonstrate with tools?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 134,
+      "id": "animal-box-jellyfish-venom-135",
+      "question": "How many people could the venom from a single Chironex fleckeri box jellyfish potentially kill?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 135,
+      "id": "animal-pangolin-scales-136",
+      "question": "What are pangolin scales made of?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 136,
+      "id": "animal-vampire-bat-sharing-137",
+      "question": "What social behavior do vampire bats exhibit with food?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 137,
+      "id": "animal-leafcutter-ant-farming-138",
+      "question": "What do leafcutter ants actually eat?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 138,
+      "id": "animal-sea-otter-tools-139",
+      "question": "Where do sea otters store the rocks they use as tools?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 139,
+      "id": "animal-humpback-whale-song-140",
+      "question": "How do humpback whale songs change over time?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 140,
+      "id": "animal-platypus-electroreception-141",
+      "question": "How many electroreceptors does a platypus bill contain?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 141,
+      "id": "animal-firefly-sync-142",
+      "question": "Why do some firefly species synchronize their flashes?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 142,
+      "id": "animal-komodo-venom-143",
+      "question": "How do Komodo dragons primarily kill their prey?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 143,
+      "id": "animal-arctic-tern-migration-144",
+      "question": "How far does an Arctic tern migrate each year?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 144,
+      "id": "animal-gecko-adhesion-145",
+      "question": "What molecular force allows geckos to walk on smooth surfaces?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 145,
+      "id": "animal-whale-shark-filter-146",
+      "question": "How much water can a whale shark filter per hour?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 146,
+      "id": "animal-anglerfish-fusion-147",
+      "question": "What happens to a male anglerfish after it finds a female?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 147,
+      "id": "animal-chameleon-tongue-148",
+      "question": "How fast can a chameleon's tongue accelerate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 148,
+      "id": "animal-elephant-infrasound-149",
+      "question": "How do elephants detect infrasound communication through the ground?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 149,
+      "id": "animal-monarch-migration-150",
+      "question": "How do monarch butterflies navigate during migration?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 150,
+      "id": "animal-blue-ringed-octopus-151",
+      "question": "What venom does the blue-ringed octopus carry?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 151,
+      "id": "animal-african-grey-parrot-152",
+      "question": "What historic question did Alex the African grey parrot famously ask?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 152,
+      "id": "animal-tuatara-third-eye-153",
+      "question": "What is the tuatara's third eye primarily used for?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 153,
+      "id": "animal-pistol-shrimp-goby-154",
+      "question": "How does the goby fish warn the pistol shrimp of danger?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 154,
+      "id": "animal-hummingbird-hover-155",
+      "question": "How do hummingbirds generate lift differently from other birds?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 155,
+      "id": "animal-cone-snail-venom-156",
+      "question": "What medical product has been derived from cone snail venom?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 156,
+      "id": "animal-aye-aye-finger-157",
+      "question": "What is the aye-aye's unique feeding technique called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 157,
+      "id": "animal-dolphins-names-158",
+      "question": "How long can dolphins remember another dolphin's signature whistle?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 158,
+      "id": "animal-horseshoe-crab-blood-159",
+      "question": "Why is horseshoe crab blood medically important?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 159,
+      "id": "animal-spider-silk-strength-160",
+      "question": "How many types of silk can a spider produce?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 160,
+      "id": "animal-coelacanth-fossil-161",
+      "question": "In what year was the first living coelacanth discovered?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 161,
+      "id": "animal-draco-lizard-glide-162",
+      "question": "What supports the gliding membranes of Draco lizards?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 162,
+      "id": "animal-clownfish-sex-change-163",
+      "question": "What triggers a clownfish to change sex from male to female?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 163,
+      "id": "animal-migratory-salmon-smell-164",
+      "question": "How do salmon find their exact birth river after years at sea?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 164,
+      "id": "animal-wolverine-strength-165",
+      "question": "What physical adaptation helps wolverines travel through deep snow?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 165,
+      "id": "animal-oxpecker-symbiosis-166",
+      "question": "What makes the oxpecker-mammal relationship more complex than simple mutualism?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 166,
+      "id": "animal-mata-mata-turtle-167",
+      "question": "How does the mata mata turtle capture prey?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 167,
+      "id": "animal-dik-dik-tears-168",
+      "question": "What unusual feature helps dik-diks cool their brains in hot weather?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 168,
+      "id": "animal-mantis-prayer-169",
+      "question": "How many eyes does a praying mantis have in total?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 169,
+      "id": "animal-deep-sea-bioluminescence-170",
+      "question": "What percentage of deep-sea creatures are bioluminescent?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 170,
+      "id": "animal-camel-spider-speed-171",
+      "question": "What makes camel spiders different from true spiders?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 171,
+      "id": "animal-paradise-flying-frog-172",
+      "question": "What enables Wallace's flying frog to glide?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 172,
+      "id": "animal-black-mamba-speed-173",
+      "question": "Why is the black mamba called 'black'?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 173,
+      "id": "animal-osprey-fishing-174",
+      "question": "What unique foot adaptation helps ospreys grip slippery fish?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 174,
+      "id": "animal-geographic-cone-snail-175",
+      "question": "How does the geography cone snail deliver its venom?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 175,
+      "id": "animal-surinam-toad-birth-176",
+      "question": "Where do Surinam toad embryos develop?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 176,
+      "id": "animal-great-white-electroreception-177",
+      "question": "What are the electrical-sensing organs of sharks called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 177,
+      "id": "animal-decorator-crab-178",
+      "question": "What happens to a decorator crab's camouflage when it molts?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 178,
+      "id": "animal-superb-fairy-wren-password-179",
+      "question": "Why do fairy-wren mothers teach passwords to unhatched chicks?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 179,
+      "id": "animal-star-nosed-mole-180",
+      "question": "How fast can the star-nosed mole identify and eat a prey item?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 180,
+      "id": "animal-wood-frog-freeze-181",
+      "question": "What cryoprotectant do wood frogs use to survive freezing?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 181,
+      "id": "animal-immortal-jellyfish-182",
+      "question": "What process allows the immortal jellyfish to reverse aging?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 182,
+      "id": "animal-oilbird-echolocation-183",
+      "question": "What makes the oilbird unusual among birds?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 183,
+      "id": "animal-greenland-shark-age-184",
+      "question": "How do scientists determine the age of Greenland sharks?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 184,
+      "id": "animal-portia-spider-planning-185",
+      "question": "What makes Portia spiders remarkable among arachnids?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 185,
+      "id": "animal-honey-badger-resilience-186",
+      "question": "What genetic adaptation gives honey badgers resistance to snake venom?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 186,
+      "id": "animal-bowerbird-art-187",
+      "question": "What tool do some bowerbirds use to paint their bowers?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 187,
+      "id": "animal-japanese-macaque-bathing-188",
+      "question": "How did Japanese macaques first start bathing in hot springs?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 188,
+      "id": "animal-leafy-seadragon-189",
+      "question": "Who carries the eggs in leafy seadragon reproduction?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 189,
+      "id": "animal-blanket-octopus-size-190",
+      "question": "What unusual weapon do male blanket octopuses use for defense?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 190,
+      "id": "animal-pangolin-tongue-191",
+      "question": "Where is a pangolin's tongue muscle anchored?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 191,
+      "id": "animal-peacock-mantis-shrimp-vision-192",
+      "question": "How many types of color receptors do peacock mantis shrimp have?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 192,
+      "id": "animal-vampire-squid-fossils-193",
+      "question": "What does the vampire squid eat?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 193,
+      "id": "animal-fennec-fox-ears-194",
+      "question": "What dual purpose do the fennec fox's oversized ears serve?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 194,
+      "id": "animal-immortal-lobster-195",
+      "question": "What enzyme allows lobsters to avoid typical aging?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 195,
+      "id": "animal-pangolin-walk-196",
+      "question": "Why do pangolins curl their front claws inward when walking?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 196,
+      "id": "animal-migratory-godwit-197",
+      "question": "How do bar-tailed godwits prepare for their non-stop migration?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 197,
+      "id": "animal-golden-poison-frog-198",
+      "question": "Where does the golden poison frog get its toxin?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 198,
+      "id": "animal-crows-funeral-199",
+      "question": "According to research, why do crows gather around dead crows?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 199,
+      "id": "animal-cassowary-danger-200",
+      "question": "How fast can a cassowary run through dense rainforest?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 200,
+      "id": "animal-cleaner-wrasse-mirror-201",
+      "question": "What test did cleaner wrasse fish pass that was previously thought exclusive to large-brained animals?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 201,
+      "id": "animal-desert-rain-frog-202",
+      "question": "Where does the desert rain frog live?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 202,
+      "id": "animal-jewel-wasp-zombie-203",
+      "question": "How does the jewel wasp control the cockroach's behavior?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 203,
+      "id": "animal-narwhal-tusk-204",
+      "question": "What is the narwhal's tusk actually made of?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 204,
+      "id": "animal-leafbird-army-ants-205",
+      "question": "How do army ants create temporary shelters?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 205,
+      "id": "animal-slow-loris-toxic-206",
+      "question": "Where does the slow loris produce its venom?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 206,
+      "id": "animal-octopus-three-hearts-207",
+      "question": "Why is octopus blood blue?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 207,
+      "id": "animal-epaulette-shark-walk-208",
+      "question": "How does the epaulette shark survive out of water?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 208,
+      "id": "animal-pit-viper-infrared-209",
+      "question": "How sensitive are pit viper heat-sensing organs?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 209,
+      "id": "animal-peacock-spider-dance-210",
+      "question": "What happens if a female peacock spider is unimpressed by a male's dance?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 210,
+      "id": "animal-salmon-shark-warm-211",
+      "question": "What blood vessel system allows salmon sharks to stay warm?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 211,
+      "id": "animal-spittlebug-jump-212",
+      "question": "What g-forces do froghoppers experience when jumping?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 212,
+      "id": "animal-tarsier-eye-213",
+      "question": "Why can't tarsiers move their eyes?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 250,
+      "id": "animal-king-eider-deep-dive-251",
+      "question": "How deep can king eider ducks dive to find food?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 255,
+      "id": "animal-wombat-cube-poop-256",
+      "question": "What is unique about the shape of wombat droppings?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 256,
+      "id": "animal-pistol-shrimp-plasma-257",
+      "question": "What extreme phenomenon does a pistol shrimp's claw snap create?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 257,
+      "id": "animal-lyrebird-chainsaw-258",
+      "question": "What vocal ability makes the superb lyrebird unique among birds?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 258,
+      "id": "animal-sea-cucumber-eviscerate-259",
+      "question": "What extreme defense mechanism do sea cucumbers use when attacked?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 259,
+      "id": "animal-hoatzin-claws-260",
+      "question": "What dinosaur-like feature do hoatzin chicks possess that other modern birds do not?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 260,
+      "id": "animal-mimic-poison-frog-261",
+      "question": "What is unique about the mimic poison frog's approach to mimicry?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 261,
+      "id": "animal-frigate-bird-inflate-262",
+      "question": "What do male frigatebirds inflate during courtship displays?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 262,
+      "id": "animal-japanese-spider-crab-263",
+      "question": "What world record does the Japanese spider crab hold?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 263,
+      "id": "animal-flying-fish-glide-264",
+      "question": "How far can a flying fish glide through the air?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 264,
+      "id": "animal-okapi-tongue-265",
+      "question": "What remarkable thing can an okapi do with its tongue?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 265,
+      "id": "animal-coconut-crab-thief-266",
+      "question": "What is the coconut crab's claim to fame among land arthropods?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 266,
+      "id": "animal-vampire-finch-blood-267",
+      "question": "What unusual food source do 'vampire finches' on the Galapagos consume?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 267,
+      "id": "animal-tardigrade-space-268",
+      "question": "What makes tardigrades' survival in outer space so remarkable?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 268,
+      "id": "animal-honey-ant-living-jar-269",
+      "question": "What role do 'replete' honeypot ants serve in their colony?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 269,
+      "id": "animal-cuttlefish-colorblind-270",
+      "question": "What is paradoxical about cuttlefish color-changing ability?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 270,
+      "id": "animal-elephant-shrew-speed-271",
+      "question": "What surprising speed can elephant shrews reach?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 271,
+      "id": "animal-mimic-octopus-shapes-272",
+      "question": "How does the mimic octopus decide which animal to impersonate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 272,
+      "id": "animal-hairy-frog-bone-claws-273",
+      "question": "How does the hairy frog create its defensive claws?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 273,
+      "id": "animal-dragonfly-success-274",
+      "question": "What hunting success rate makes dragonflies the most efficient predators?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 274,
+      "id": "animal-alpine-ibex-dam-climbing-275",
+      "question": "Why do Alpine ibex climb nearly vertical dam walls in Italy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 275,
+      "id": "animal-leaf-insect-sway-276",
+      "question": "How do leaf insects enhance their leaf camouflage beyond just shape and color?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 276,
+      "id": "animal-hognose-snake-drama-277",
+      "question": "What gives away the Eastern hognose snake's fake death performance?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 277,
+      "id": "animal-mantis-shrimp-punch-speed-278",
+      "question": "How fast does the peacock mantis shrimp's punch accelerate?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 278,
+      "id": "animal-axolotl-neoteny-279",
+      "question": "What happens if you give an axolotl thyroid hormone?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 279,
+      "id": "animal-anglerfish-male-280",
+      "question": "What happens to a male deep-sea anglerfish when it finds a female?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 280,
+      "id": "animal-bombardier-beetle-explosion-281",
+      "question": "What defense mechanism do bombardier beetles use?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 281,
+      "id": "animal-platypus-venom-282",
+      "question": "What is unusual about the pain caused by platypus venom?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 282,
+      "id": "animal-harvestman-detach-leg-283",
+      "question": "What happens after a harvestman detaches its leg as a defense?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    }
+  ]
+}

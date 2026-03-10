@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.623Z",
+  "generatedAt": "2026-03-10T09:08:28.131Z",
   "inputFiles": [
     "data/generated/worker-output/human_body_health.jsonl"
   ],
   "target": "data/generated/human_body_health.jsonl",
   "targetExists": true,
-  "existingFactsInTarget": 63,
+  "existingFactsInTarget": 320,
   "factsToAdd": 0,
-  "newTotalAfterMerge": 63,
+  "newTotalAfterMerge": 320,
   "sampleFacts": [],
   "coverage": {
-    "generatedAt": "2026-03-10T06:42:20.623Z",
+    "generatedAt": "2026-03-10T09:08:28.132Z",
     "totalFacts": 0,
     "withSource": 0,
     "sourceCoveragePct": 0,

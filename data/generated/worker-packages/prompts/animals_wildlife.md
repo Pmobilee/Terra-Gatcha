@@ -1,14 +1,14 @@
 # Claude Worker Task: animals_wildlife
 
 ## Goal
-Generate up to 0 new fact rows for `animals_wildlife` using your Claude subscription worker.
+Generate up to 746 new fact rows for `animals_wildlife` using your Claude subscription worker.
 
 ## Inputs/Outputs
 - Input source file: `data/raw/mixed/animals_wildlife.json`
 - Output JSONL file: `data/generated/worker-output/animals_wildlife.jsonl`
-- Existing generated facts: 63
-- Target facts for domain: 50
-- Missing facts to fill: 0
+- Existing generated facts: 254
+- Target facts for domain: 1000
+- Missing facts to fill: 746
 
 ## Hard Rules
 - Do NOT call any paid API scripts from this repository.

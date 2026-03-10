@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.253Z",
+  "generatedAt": "2026-03-10T10:03:25.183Z",
   "inputFiles": [
     "data/generated/worker-output/geography.jsonl"
   ],
@@ -9,9 +9,9 @@
     "review": 0.75
   },
   "counts": {
-    "input": 50,
-    "existingCompared": 1233,
-    "exactDuplicates": 50,
+    "input": 106,
+    "existingCompared": 3608,
+    "exactDuplicates": 106,
     "semanticDuplicates": 0,
     "needsReview": 0,
     "accepted": 0

@@ -1,36 +1,36 @@
 {
-  "generatedAt": "2026-03-10T06:42:21.487Z",
+  "generatedAt": "2026-03-10T09:08:59.001Z",
   "inputFiles": [
-    "data/generated"
+    "data/generated/worker-output/space_astronomy.jsonl"
   ],
-  "domain": "general_knowledge",
+  "domain": "space_astronomy",
   "counts": {
-    "input": 1421,
-    "valid": 1420,
+    "input": 311,
+    "valid": 111,
     "invalid": 0,
-    "flagged": 1
+    "flagged": 200
   },
   "invalid": [],
   "topExamples": [
     {
-      "id": "genet-victoriae-001",
-      "question": "What is a giant forest genet?"
+      "id": "apx-001-satellite-power",
+      "question": "What did Advanced Photovoltaic Experiment test in space?"
     },
     {
-      "id": "parnassius-apollo-001",
-      "question": "What type of animal is Parnassius apollo?"
+      "id": "a101-testflight-001",
+      "question": "What was A-101 in rocket history?"
     },
     {
-      "id": "senna-alata-001",
-      "question": "What is Senna alata?"
+      "id": "A-103-001",
+      "question": "What was the purpose of A-103?"
     },
     {
-      "id": "leopard-cat-001",
-      "question": "What is the scientific name of the leopard cat?"
+      "id": "apollo-a104-test-1965",
+      "question": "What was Apollo A-104's primary purpose?"
     },
     {
-      "id": "phaseolus-vulgaris-001",
-      "question": "What is Phaseolus vulgaris commonly known as?"
+      "id": "apollo-a105-boilerplate",
+      "question": "What was A-105 in Apollo program history?"
     }
   ]
 }

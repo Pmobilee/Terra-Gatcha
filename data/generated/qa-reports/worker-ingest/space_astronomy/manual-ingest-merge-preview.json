@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.119Z",
+  "generatedAt": "2026-03-10T09:08:26.727Z",
   "inputFiles": [
     "data/generated/worker-output/space_astronomy.jsonl"
   ],
   "target": "data/generated/space_astronomy.jsonl",
   "targetExists": true,
-  "existingFactsInTarget": 61,
+  "existingFactsInTarget": 261,
   "factsToAdd": 0,
-  "newTotalAfterMerge": 61,
+  "newTotalAfterMerge": 261,
   "sampleFacts": [],
   "coverage": {
-    "generatedAt": "2026-03-10T06:42:20.119Z",
+    "generatedAt": "2026-03-10T09:08:26.727Z",
     "totalFacts": 0,
     "withSource": 0,
     "sourceCoveragePct": 0,

@@ -1,48 +1,26 @@
 {
-  "generatedAt": "2026-03-10T04:55:30.337Z",
+  "generatedAt": "2026-03-10T09:08:59.102Z",
   "inputFiles": [
-    "/tmp/test-dupes.json"
+    "data/generated/worker-output/space_astronomy.jsonl"
   ],
-  "target": "data/generated/geography.jsonl",
+  "target": "data/generated/space_astronomy.jsonl",
   "targetExists": true,
-  "existingFactsInTarget": 47,
-  "factsToAdd": 2,
-  "newTotalAfterMerge": 49,
-  "sampleFacts": [
-    {
-      "id": "test-dup-3",
-      "question": "What is the capital of Australia?",
-      "answer": "Canberra",
-      "domain": "Geography"
-    },
-    {
-      "id": "test-unique-1",
-      "question": "How tall is Mount Everest in meters?",
-      "answer": "8,849 meters",
-      "domain": "Geography"
-    }
-  ],
+  "existingFactsInTarget": 261,
+  "factsToAdd": 0,
+  "newTotalAfterMerge": 261,
+  "sampleFacts": [],
   "coverage": {
-    "generatedAt": "2026-03-10T04:55:30.337Z",
-    "totalFacts": 2,
-    "withSource": 2,
-    "sourceCoveragePct": 100,
-    "byCategory": {
-      "Geography": 2
-    },
-    "byDifficulty": {
-      "2": 1,
-      "3": 1
-    },
-    "byType": {
-      "fact": 2
-    },
-    "byAgeRating": {
-      "teen": 2
-    },
+    "generatedAt": "2026-03-10T09:08:59.102Z",
+    "totalFacts": 0,
+    "withSource": 0,
+    "sourceCoveragePct": 0,
+    "byCategory": {},
+    "byDifficulty": {},
+    "byType": {},
+    "byAgeRating": {},
     "byVerification": {
       "verified": 0,
-      "unverified": 2
+      "unverified": 0
     },
     "distractorWarnings": []
   }

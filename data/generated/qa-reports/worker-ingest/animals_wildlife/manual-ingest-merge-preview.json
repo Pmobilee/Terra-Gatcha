@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.538Z",
+  "generatedAt": "2026-03-10T09:08:27.940Z",
   "inputFiles": [
     "data/generated/worker-output/animals_wildlife.jsonl"
   ],
   "target": "data/generated/animals_wildlife.jsonl",
   "targetExists": true,
-  "existingFactsInTarget": 63,
+  "existingFactsInTarget": 254,
   "factsToAdd": 0,
-  "newTotalAfterMerge": 63,
+  "newTotalAfterMerge": 254,
   "sampleFacts": [],
   "coverage": {
-    "generatedAt": "2026-03-10T06:42:20.538Z",
+    "generatedAt": "2026-03-10T09:08:27.940Z",
     "totalFacts": 0,
     "withSource": 0,
     "sourceCoveragePct": 0,

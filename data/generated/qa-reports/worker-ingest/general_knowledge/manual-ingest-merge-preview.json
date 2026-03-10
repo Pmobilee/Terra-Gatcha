@@ -1,16 +1,16 @@
 {
-  "generatedAt": "2026-03-10T06:42:19.926Z",
+  "generatedAt": "2026-03-10T09:08:26.370Z",
   "inputFiles": [
     "data/generated/worker-output/general_knowledge.jsonl"
   ],
   "target": "data/generated/general_knowledge.jsonl",
   "targetExists": true,
-  "existingFactsInTarget": 140,
+  "existingFactsInTarget": 286,
   "factsToAdd": 0,
-  "newTotalAfterMerge": 140,
+  "newTotalAfterMerge": 286,
   "sampleFacts": [],
   "coverage": {
-    "generatedAt": "2026-03-10T06:42:19.927Z",
+    "generatedAt": "2026-03-10T09:08:26.370Z",
     "totalFacts": 0,
     "withSource": 0,
     "sourceCoveragePct": 0,

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.707Z",
+  "generatedAt": "2026-03-10T09:08:28.764Z",
   "inputFiles": [
     "data/generated/worker-output/food_cuisine.jsonl"
   ],
@@ -9,10 +9,10 @@
     "review": 0.75
   },
   "counts": {
-    "input": 63,
-    "existingCompared": 1233,
-    "exactDuplicates": 63,
-    "semanticDuplicates": 0,
+    "input": 155,
+    "existingCompared": 3220,
+    "exactDuplicates": 153,
+    "semanticDuplicates": 2,
     "needsReview": 0,
     "accepted": 0
   },
@@ -198,7 +198,46 @@
       "source": "existing"
     }
   ],
-  "semanticDuplicates": [],
+  "semanticDuplicates": [
+    {
+      "candidateId": "food-nutmeg-hallucinogen",
+      "candidateQuestion": "What compound in nutmeg can cause psychoactive effects in large doses?",
+      "matchId": "food_cuisine_gen_080",
+      "matchQuestion": "What compound in nutmeg can cause hallucinations in large doses?",
+      "score": 0.9692,
+      "features": {
+        "exactKey": 0,
+        "trigram": 0.5138888888888888,
+        "keyword": 0.625,
+        "levenshtein": 0.7571428571428571,
+        "answer": 1,
+        "statement": 0.125,
+        "tfidf": 0.7165
+      },
+      "decision": "semantic_duplicate",
+      "reason": "above_auto_threshold",
+      "source": "existing"
+    },
+    {
+      "candidateId": "food-wasabi-almost-fake",
+      "candidateQuestion": "What is most 'wasabi' served in restaurants actually made from?",
+      "matchId": "food_cuisine_gen_092",
+      "matchQuestion": "What is the 'wasabi' served in most restaurants outside Japan actually made of?",
+      "score": 1,
+      "features": {
+        "exactKey": 0,
+        "trigram": 0.5,
+        "keyword": 0.75,
+        "levenshtein": 0.6708860759493671,
+        "answer": 1,
+        "statement": 0.4090909090909091,
+        "tfidf": 0.8419
+      },
+      "decision": "semantic_duplicate",
+      "reason": "above_auto_threshold",
+      "source": "existing"
+    }
+  ],
   "needsReview": [],
   "topAccepted": []
 }

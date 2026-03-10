@@ -1,17 +1,15 @@
 {
   "domain": "general_knowledge",
   "domainSlug": "general-knowledge",
-  "existingFacts": 140,
+  "existingFacts": 286,
   "existingFactsPath": "data/generated/general_knowledge.jsonl",
-  "targetFacts": 50,
+  "targetFacts": 1000,
   "expectedMinimum": 350,
-  "missingFacts": 0,
-  "requestedNewFacts": 0,
+  "missingFacts": 714,
+  "requestedNewFacts": 714,
   "inputPath": "data/raw/mixed/general_knowledge.json",
   "workerOutputPath": "data/generated/worker-output/general_knowledge.jsonl",
-  "recommendation": "skip",
+  "recommendation": "generate",
   "pass": true,
-  "notes": [
-    "domain target already satisfied"
-  ]
+  "notes": []
 }

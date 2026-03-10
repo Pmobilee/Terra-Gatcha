@@ -1,0 +1,1685 @@
+{
+  "generatedAt": "2026-03-10T09:08:27.636Z",
+  "inputFiles": [
+    "data/generated/worker-output/mythology_folklore.jsonl"
+  ],
+  "counts": {
+    "flagged": 186
+  },
+  "items": [
+    {
+      "index": 63,
+      "id": "mythology_folklore_gen_064",
+      "question": "What did Odin sacrifice at Mimir's Well to gain wisdom?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 64,
+      "id": "mythology_folklore_gen_065",
+      "question": "Which Egyptian god was credited with inventing writing and mathematics?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 65,
+      "id": "mythology_folklore_gen_066",
+      "question": "How many tails does the most powerful kitsune fox spirit have?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 66,
+      "id": "mythology_folklore_gen_067",
+      "question": "What is the elixir of immortality produced during the churning of the Ocean of Milk called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 67,
+      "id": "mythology_folklore_gen_068",
+      "question": "Which ancient Celtic festival is the direct ancestor of Halloween?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 68,
+      "id": "mythology_folklore_gen_069",
+      "question": "Which West African trickster god became the owner of all stories in the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 69,
+      "id": "mythology_folklore_gen_070",
+      "question": "What unusual feature does Baba Yaga's hut have in Slavic folklore?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 70,
+      "id": "mythology_folklore_gen_071",
+      "question": "What did the Polynesian demigod Maui do to the sun?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 71,
+      "id": "mythology_folklore_gen_072",
+      "question": "How many gates did Inanna pass through on her descent to the underworld?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 72,
+      "id": "mythology_folklore_gen_073",
+      "question": "Who trapped the Monkey King Sun Wukong under a mountain for 500 years?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 73,
+      "id": "mythology_folklore_gen_074",
+      "question": "The earliest known Cinderella story comes from which country?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 74,
+      "id": "mythology_folklore_gen_075",
+      "question": "Who gave King Arthur the sword Excalibur?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 75,
+      "id": "mythology_folklore_gen_076",
+      "question": "Which trickster figure appears in the mythology of over 60 Native American tribal traditions?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 76,
+      "id": "mythology_folklore_gen_077",
+      "question": "What punishment did Zeus inflict on Prometheus for stealing fire?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 77,
+      "id": "mythology_folklore_gen_078",
+      "question": "In Egyptian mythology, what was a person's heart weighed against after death?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 78,
+      "id": "mythology_folklore_gen_079",
+      "question": "In Norse mythology, what is the prophesied end of the world called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 79,
+      "id": "mythology_folklore_gen_080",
+      "question": "How can you defeat a Kappa in Japanese folklore?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 80,
+      "id": "mythology_folklore_gen_081",
+      "question": "Why does the Hindu god Ganesha have an elephant head?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 81,
+      "id": "mythology_folklore_gen_082",
+      "question": "What is the oldest known work of literary fiction?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 82,
+      "id": "mythology_folklore_gen_083",
+      "question": "In the original Brothers Grimm version of Sleeping Beauty, what wakes the princess?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 83,
+      "id": "mythology_folklore_gen_084",
+      "question": "What is Loki's true nature in Norse mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 84,
+      "id": "mythology_folklore_gen_085",
+      "question": "Approximately how old are the oldest known depictions of the Aboriginal Rainbow Serpent?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 85,
+      "id": "mythology_folklore_gen_086",
+      "question": "How did Hades end up ruling the underworld in Greek mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 86,
+      "id": "mythology_folklore_gen_087",
+      "question": "What is the name of the squirrel that runs up and down the Norse World Tree?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 87,
+      "id": "mythology_folklore_gen_088",
+      "question": "What are tanuki famous for magically expanding in Japanese folklore?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 88,
+      "id": "mythology_folklore_gen_089",
+      "question": "How many avatars of Vishnu are there in the Dashavatara?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 89,
+      "id": "mythology_folklore_gen_090",
+      "question": "Which Slavic god was the eternal rival of the thunder god Perun?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 90,
+      "id": "mythology_folklore_gen_091",
+      "question": "How many total years was Odysseus away from home (Troy + journey back)?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 91,
+      "id": "mythology_folklore_gen_092",
+      "question": "How did the Yoruba trickster Eshu start a war between two friends?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 92,
+      "id": "mythology_folklore_gen_093",
+      "question": "Why was Medusa cursed with snake hair according to Ovid's version?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 93,
+      "id": "mythology_folklore_gen_094",
+      "question": "In Polynesian creation mythology, who separated the Sky Father and Earth Mother?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 94,
+      "id": "mythology_folklore_gen_095",
+      "question": "Who tricked Quetzalcoatl into exile in Aztec mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 95,
+      "id": "mythology_folklore_gen_096",
+      "question": "Why did Thor dress as a bride in Norse mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 96,
+      "id": "mythology_folklore_gen_097",
+      "question": "How did the Chinese goddess Nüwa create the first humans?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 97,
+      "id": "mythology_folklore_gen_098",
+      "question": "What was Heracles' 12th and final labor?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 98,
+      "id": "mythology_folklore_gen_099",
+      "question": "What happened to the Celtic goddess Brigid when Christianity arrived in Ireland?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 99,
+      "id": "mythology_folklore_gen_100",
+      "question": "What lured the Japanese sun goddess Amaterasu out of her cave?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 100,
+      "id": "mythology_folklore_gen_101",
+      "question": "According to Navajo creation mythology, which world do humans currently inhabit?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 101,
+      "id": "mythology_folklore_gen_102",
+      "question": "What was the magical ribbon Gleipnir made from in Norse mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 102,
+      "id": "mythology_folklore_gen_103",
+      "question": "What is Euhemerism?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 103,
+      "id": "mythology_folklore_gen_104",
+      "question": "What did the Egyptian sun god Ra do every night according to mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 104,
+      "id": "mythology_folklore_gen_105",
+      "question": "What is the Leshy in Slavic folklore?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 105,
+      "id": "mythology_folklore_gen_106",
+      "question": "Who designed both the Labyrinth and the wax wings in Greek mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 106,
+      "id": "mythology_folklore_gen_107",
+      "question": "What happened to Sedna's severed fingers in Inuit mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 107,
+      "id": "mythology_folklore_gen_108",
+      "question": "In Korean mythology, what animal transformed into a woman to become the mother of Dangun?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 108,
+      "id": "mythology_folklore_gen_109",
+      "question": "How did the Celtic god Lugh gain entry to the court of the gods?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 109,
+      "id": "mythology_folklore_gen_110",
+      "question": "How long did the Jade Emperor cultivate his virtue before becoming supreme god?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 110,
+      "id": "mythology_folklore_gen_111",
+      "question": "What happens at the end of the original 1697 Little Red Riding Hood by Perrault?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 111,
+      "id": "mythology_folklore_gen_112",
+      "question": "Why are the sun and moon separated in Japanese mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 112,
+      "id": "mythology_folklore_gen_113",
+      "question": "How did the Mayan Hero Twins ultimately defeat the Lords of Death?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 163,
+      "id": "mythology_folklore_gen_114",
+      "question": "In Greek mythology, who stole fire from the gods and gave it to humanity?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 164,
+      "id": "mythology_folklore_gen_115",
+      "question": "What is the name of the great world tree in Norse mythology that connects the nine realms?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 165,
+      "id": "mythology_folklore_gen_116",
+      "question": "Which Egyptian god with a jackal head guided souls to the afterlife and oversaw mummification?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 166,
+      "id": "mythology_folklore_gen_117",
+      "question": "In Japanese folklore, what type of spirit gains additional tails as it grows older and more powerful?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 167,
+      "id": "mythology_folklore_gen_118",
+      "question": "What is the Hindu mythological event where gods and demons churned the cosmic ocean to obtain the elixir of immortality?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 168,
+      "id": "mythology_folklore_gen_119",
+      "question": "What is the Norse prophesied end of the world called, in which most gods perish before the world is reborn?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 169,
+      "id": "mythology_folklore_gen_120",
+      "question": "In Greek mythology, which Gorgon sister was mortal and turned anyone who looked at her to stone?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 170,
+      "id": "mythology_folklore_gen_121",
+      "question": "According to Hindu mythology, why does the god Ganesha have an elephant head?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 171,
+      "id": "mythology_folklore_gen_122",
+      "question": "Which Egyptian goddess reassembled the body of Osiris after he was murdered by Set?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 172,
+      "id": "mythology_folklore_gen_123",
+      "question": "In Japanese folklore, what are the fearsome horned, club-wielding demons called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 173,
+      "id": "mythology_folklore_gen_124",
+      "question": "What structure did Daedalus build to imprison the Minotaur in Greek mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 174,
+      "id": "mythology_folklore_gen_125",
+      "question": "In Norse mythology, which trickster god is the father of Fenrir, Jörmungandr, and Hel?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 175,
+      "id": "mythology_folklore_gen_126",
+      "question": "What ancient Celtic festival, celebrated around October 31st, is considered a precursor to Halloween?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 176,
+      "id": "mythology_folklore_gen_127",
+      "question": "Which Polynesian demigod is said to have fished the North Island of New Zealand out of the ocean?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 177,
+      "id": "mythology_folklore_gen_128",
+      "question": "What West African and Caribbean trickster figure takes the form of a spider and uses wit to defeat stronger opponents?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 178,
+      "id": "mythology_folklore_gen_129",
+      "question": "In Slavic folklore, what is unusual about the witch Baba Yaga's hut?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 179,
+      "id": "mythology_folklore_gen_130",
+      "question": "What do Aboriginal Australians call the time of creation when ancestral spirits shaped the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 180,
+      "id": "mythology_folklore_gen_131",
+      "question": "What ancient Mesopotamian king undertook an epic quest for immortality, featured in one of the oldest works of literature?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 181,
+      "id": "mythology_folklore_gen_132",
+      "question": "Who is the supreme ruler of heaven in Chinese mythology, presiding over a celestial bureaucracy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 182,
+      "id": "mythology_folklore_gen_133",
+      "question": "Who is the legendary founder of the first Korean kingdom, Gojoseon, in Korean mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 183,
+      "id": "mythology_folklore_gen_134",
+      "question": "In Arthurian legend, who gave King Arthur the sword Excalibur?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 184,
+      "id": "mythology_folklore_gen_135",
+      "question": "In the original Brothers Grimm version of Cinderella, what provided her with magical dresses instead of a fairy godmother?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 185,
+      "id": "mythology_folklore_gen_136",
+      "question": "Which animal serves as a central trickster figure across many Native American mythologies?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 186,
+      "id": "mythology_folklore_gen_137",
+      "question": "Which avatar of Vishnu, appearing as half-man and half-lion, defeated the demon Hiranyakashipu?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 187,
+      "id": "mythology_folklore_gen_138",
+      "question": "In Greek mythology, which legendary musician descended to the underworld to bring back his wife Eurydice?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 188,
+      "id": "mythology_folklore_gen_139",
+      "question": "In Chinese mythology, which character was born from stone and imprisoned under a mountain by the Buddha for 500 years?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 189,
+      "id": "mythology_folklore_gen_140",
+      "question": "Which Yoruba deity is the god of iron, war, and labor, and patron of blacksmiths?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 190,
+      "id": "mythology_folklore_gen_141",
+      "question": "In Slavic folklore, what magical creature has glowing golden feathers that often set a hero on a quest?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 191,
+      "id": "mythology_folklore_gen_142",
+      "question": "In Polynesian mythology, which god separated Sky Father and Earth Mother to bring light into the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 192,
+      "id": "mythology_folklore_gen_143",
+      "question": "How many gates did the Mesopotamian goddess Inanna pass through during her descent to the underworld?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 193,
+      "id": "mythology_folklore_gen_144",
+      "question": "In Arthurian legend, who imprisoned the wizard Merlin using his own magic?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 194,
+      "id": "mythology_folklore_gen_145",
+      "question": "In Norse mythology, why does Thor's hammer Mjölnir have an unusually short handle?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 195,
+      "id": "mythology_folklore_gen_146",
+      "question": "In Charles Perrault's original 1697 version of Little Red Riding Hood, what happens at the end?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 196,
+      "id": "mythology_folklore_gen_147",
+      "question": "In Egyptian mythology, which chaos serpent did the sun god Ra battle each night in the underworld?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 197,
+      "id": "mythology_folklore_gen_148",
+      "question": "What is the name of the Feathered Serpent deity in Mesoamerican mythology, associated with wind and learning?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 198,
+      "id": "mythology_folklore_gen_149",
+      "question": "Which Hindu goddess, depicted with a necklace of heads, is paradoxically worshipped as a protective mother who destroys evil?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 199,
+      "id": "mythology_folklore_gen_150",
+      "question": "In Japanese mythology, which sun goddess hid in a cave and plunged the world into darkness?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 200,
+      "id": "mythology_folklore_gen_151",
+      "question": "In Greek mythology, from where did the goddess Athena spring forth fully grown and armored?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 201,
+      "id": "mythology_folklore_gen_152",
+      "question": "In Algonquian Native American folklore, what cannibalistic spirit is associated with winter famine and insatiable greed?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 202,
+      "id": "mythology_folklore_gen_153",
+      "question": "In Norse mythology, what did Odin sacrifice in exchange for wisdom from Mímir's Well?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 203,
+      "id": "mythology_folklore_gen_154",
+      "question": "In Bushongo mythology, how did the creator god Bumba bring the world into existence?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 204,
+      "id": "mythology_folklore_gen_155",
+      "question": "In the earliest known version of Sleeping Beauty (by Basile, 1634), how does the princess finally awaken?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 205,
+      "id": "mythology_folklore_gen_156",
+      "question": "In Chinese mythology, which primordial being hatched from a cosmic egg and separated sky from earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 206,
+      "id": "mythology_folklore_gen_157",
+      "question": "In Greek mythology, who was condemned to push a boulder up a hill for eternity?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 207,
+      "id": "mythology_folklore_gen_158",
+      "question": "In the Hindu epic Ramayana, who kidnapped Prince Rama's wife Sita?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 208,
+      "id": "mythology_folklore_gen_159",
+      "question": "In Celtic mythology, which supernatural race ruled Ireland before retreating underground to become the fairy folk?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 209,
+      "id": "mythology_folklore_gen_160",
+      "question": "In Norse mythology, how did Odin gain knowledge of the runes?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 210,
+      "id": "mythology_folklore_gen_161",
+      "question": "In Aboriginal Australian mythology, what creator being shaped the landscape by slithering across the earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 211,
+      "id": "mythology_folklore_gen_162",
+      "question": "In Korean folklore, what mischievous goblin-like spirits carry magical clubs and love wrestling?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 212,
+      "id": "mythology_folklore_gen_163",
+      "question": "In Pacific Northwest Native American mythology, which trickster released the sun from a box to bring light to the world?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 213,
+      "id": "mythology_folklore_gen_164",
+      "question": "How many labors did the Greek hero Heracles have to complete as penance?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 214,
+      "id": "mythology_folklore_gen_165",
+      "question": "In Chinese mythology, which goddess created humanity from clay and later repaired the broken sky?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 215,
+      "id": "mythology_folklore_gen_166",
+      "question": "What mythical bird dies in flames and is reborn from its own ashes?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 216,
+      "id": "mythology_folklore_gen_167",
+      "question": "Which Yoruba trickster deity guards crossroads and serves as messenger between humans and gods?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 217,
+      "id": "mythology_folklore_gen_168",
+      "question": "In Japanese folklore, how can a Kappa water imp be defeated?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 218,
+      "id": "mythology_folklore_gen_169",
+      "question": "In Norse mythology, which goddess rides a chariot pulled by two cats and receives half of the battle-slain?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 219,
+      "id": "mythology_folklore_gen_170",
+      "question": "Which English folk hero lived in Sherwood Forest and robbed from the rich to give to the poor?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 220,
+      "id": "mythology_folklore_gen_171",
+      "question": "Whose feather was used to weigh the hearts of the dead in Egyptian afterlife judgment?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 221,
+      "id": "mythology_folklore_gen_172",
+      "question": "In Hindu mythology, which divine eagle serves as the mount of Vishnu and is the enemy of serpents?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 222,
+      "id": "mythology_folklore_gen_173",
+      "question": "In Norse mythology, what are the female warrior spirits called who choose the slain for Valhalla?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 223,
+      "id": "mythology_folklore_gen_174",
+      "question": "In Slavic folklore, where does Koschei the Deathless hide the secret of his death?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 224,
+      "id": "mythology_folklore_gen_175",
+      "question": "Who is the god of the sea in Polynesian mythology, worshipped across many Pacific island cultures?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 225,
+      "id": "mythology_folklore_gen_176",
+      "question": "In the original Greek myth, what type of container did Pandora open to release all evils?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 226,
+      "id": "mythology_folklore_gen_177",
+      "question": "In Mesopotamian mythology, which primordial sea goddess was slain by Marduk and used to create the earth and sky?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 227,
+      "id": "mythology_folklore_gen_178",
+      "question": "In the original Brothers Grimm version of Hansel and Gretel, who abandons the children in the forest?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 228,
+      "id": "mythology_folklore_gen_179",
+      "question": "In Zulu mythology, which supreme creator god emerged from a reed bed and created all living things?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 229,
+      "id": "mythology_folklore_gen_180",
+      "question": "In Arthurian legend, which knight is typically described as the only one pure enough to achieve the Holy Grail?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 230,
+      "id": "mythology_folklore_gen_181",
+      "question": "In Greek mythology, how many heads does Cerberus, the guard dog of the underworld, have?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 231,
+      "id": "mythology_folklore_gen_182",
+      "question": "What Japanese festival celebrates the yearly meeting of star-crossed lovers separated by the Milky Way?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 232,
+      "id": "mythology_folklore_gen_183",
+      "question": "In Norse mythology, what seemingly harmless plant was used to kill the invulnerable god Baldur?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 233,
+      "id": "mythology_folklore_gen_184",
+      "question": "Who correctly answered the Sphinx's riddle in Greek mythology, causing the Sphinx to destroy herself?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 234,
+      "id": "mythology_folklore_gen_185",
+      "question": "Which Hindu god performs the cosmic dance Nataraja that destroys and recreates the universe?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 235,
+      "id": "mythology_folklore_gen_186",
+      "question": "What was the name of the Irish hero Cú Chulainn's fearsome battle transformation?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 236,
+      "id": "mythology_folklore_gen_187",
+      "question": "In Chinese mythology, what animal lives on the moon and pounds herbs to make the elixir of immortality?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 237,
+      "id": "mythology_folklore_gen_188",
+      "question": "Which Aztec god, whose name means 'Smoking Mirror,' was the eternal rival of Quetzalcoatl?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 238,
+      "id": "mythology_folklore_gen_189",
+      "question": "In the original Greek myth, what does Atlas actually hold up on his shoulders?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 239,
+      "id": "mythology_folklore_gen_190",
+      "question": "In the Finnish epic Kalevala, which hero-shaman sang the world into existence through magical songs?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 240,
+      "id": "mythology_folklore_gen_191",
+      "question": "Which ibis-headed Egyptian god invented writing and served as the divine scribe of the afterlife?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 241,
+      "id": "mythology_folklore_gen_192",
+      "question": "How many years did it take Odysseus to return home from the Trojan War in Homer's Odyssey?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 242,
+      "id": "mythology_folklore_gen_193",
+      "question": "In Navajo mythology, what is a yee naaldlooshii — a witch who can transform by wearing an animal's skin?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 243,
+      "id": "mythology_folklore_gen_194",
+      "question": "In Norse mythology, which serpent encircles the entire world and is destined to kill Thor at Ragnarök?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 244,
+      "id": "mythology_folklore_gen_195",
+      "question": "In Aboriginal Australian mythology, what are the paths across the land traced by creator spirits and navigated through song called?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 245,
+      "id": "mythology_folklore_gen_196",
+      "question": "Which Greek king was cursed with the power to turn everything he touched into gold?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 246,
+      "id": "mythology_folklore_gen_197",
+      "question": "Which Hindu creator god has four faces but is rarely worshipped with dedicated temples?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 247,
+      "id": "mythology_folklore_gen_198",
+      "question": "In Finnish mythology's Kalevala, what is the Sampo?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 248,
+      "id": "mythology_folklore_gen_199",
+      "question": "According to Aztec mythology, how many times was the world created and destroyed before the current era?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 249,
+      "id": "mythology_folklore_gen_200",
+      "question": "In Greek mythology, what caused Icarus's wings to fail, causing him to fall into the sea?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 250,
+      "id": "mythology_folklore_gen_201",
+      "question": "In Inuit mythology, which sea goddess must be appeased by hunters to ensure successful marine hunts?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 251,
+      "id": "mythology_folklore_gen_202",
+      "question": "In Japanese folklore, what mountain-dwelling supernatural beings have long noses and are masters of martial arts?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 252,
+      "id": "mythology_folklore_gen_203",
+      "question": "In Norse mythology, who rules the realm of the dead for those who did not die in battle?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 253,
+      "id": "mythology_folklore_gen_204",
+      "question": "In Chinese mythology, how many Dragon Kings rule over the seas surrounding China?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 254,
+      "id": "mythology_folklore_gen_205",
+      "question": "How did the Egyptian god Ra stop the lioness goddess Sekhmet from destroying all of humanity?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 255,
+      "id": "mythology_folklore_gen_206",
+      "question": "In Hans Christian Andersen's original Little Mermaid, what happens to the mermaid at the end?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 256,
+      "id": "mythology_folklore_gen_207",
+      "question": "In Māori mythology, how did Māui make the days longer?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 257,
+      "id": "mythology_folklore_gen_208",
+      "question": "In Norse mythology, who crafted most of the gods' magical weapons and artifacts?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 258,
+      "id": "mythology_folklore_gen_209",
+      "question": "In Hindu mythology, how did the sacred river Ganges safely descend from heaven to earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 259,
+      "id": "mythology_folklore_gen_210",
+      "question": "In Arthurian legend, which enchantress is Arthur's half-sister who carried him to Avalon after his final battle?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 260,
+      "id": "mythology_folklore_gen_211",
+      "question": "In Chinese Taoist mythology, how many legendary immortal beings make up the famous group representing all conditions of life?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 261,
+      "id": "mythology_folklore_gen_212",
+      "question": "In Greek mythology, why must Persephone spend part of each year in the underworld?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 262,
+      "id": "mythology_folklore_gen_213",
+      "question": "In Korean mythology, what is the malevolent nine-tailed fox spirit called that disguises itself as a beautiful woman?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 263,
+      "id": "mythology_folklore_gen_214",
+      "question": "In Greek mythology, who devised the plan to use the Trojan Horse to infiltrate the city of Troy?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 264,
+      "id": "mythology_folklore_gen_215",
+      "question": "In Egyptian mythology, how long did Horus and Set battle over the throne of Egypt?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 265,
+      "id": "mythology_folklore_gen_216",
+      "question": "In Japanese mythology, how did Izanagi and Izanami create the islands of Japan?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 266,
+      "id": "mythology_folklore_gen_217",
+      "question": "In Norse mythology, what was the magical chain Gleipnir that bound the wolf Fenrir made from?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 267,
+      "id": "mythology_folklore_gen_218",
+      "question": "In Hindu mythology, why did the child Hanuman try to swallow the sun?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 268,
+      "id": "mythology_folklore_gen_219",
+      "question": "Who is the supreme god of thunder and lightning in Slavic mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 269,
+      "id": "mythology_folklore_gen_220",
+      "question": "According to Greek mythology, how was the goddess Aphrodite born?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 270,
+      "id": "mythology_folklore_gen_221",
+      "question": "In the Epic of Gilgamesh, who was the wild man created by the gods to be Gilgamesh's companion?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 271,
+      "id": "mythology_folklore_gen_222",
+      "question": "Which Hawaiian goddess lives in the Kīlauea volcano and controls volcanic activity?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 272,
+      "id": "mythology_folklore_gen_223",
+      "question": "In Igbo mythology, which earth goddess governs morality, fertility, and the realm of the dead?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 273,
+      "id": "mythology_folklore_gen_224",
+      "question": "Which folk hero was forced to shoot an apple off his son's head with a crossbow?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 274,
+      "id": "mythology_folklore_gen_225",
+      "question": "In Norse mythology, which goddess keeps the golden apples that maintain the gods' immortality?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 275,
+      "id": "mythology_folklore_gen_226",
+      "question": "What legendary quest did Jason and the Argonauts undertake in Greek mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 276,
+      "id": "mythology_folklore_gen_227",
+      "question": "In Japanese folklore, what is the name of the ghostly woman in white who appears during snowstorms?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 277,
+      "id": "mythology_folklore_gen_228",
+      "question": "In Hindu mythology, which god lifted Govardhan Hill on one finger to protect villagers from a storm?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 278,
+      "id": "mythology_folklore_gen_229",
+      "question": "In Celtic mythology, which shape-shifting war goddess appears as a crow on battlefields?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 279,
+      "id": "mythology_folklore_gen_230",
+      "question": "In the original Pied Piper legend, what happened after the town of Hamelin refused to pay the piper?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 280,
+      "id": "mythology_folklore_gen_231",
+      "question": "In Māori mythology, how did the demigod Māui die while attempting to gain immortality?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 281,
+      "id": "mythology_folklore_gen_232",
+      "question": "Which sacred Egyptian bird associated with the sun god Ra is believed to have inspired the Greek phoenix?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 282,
+      "id": "mythology_folklore_gen_233",
+      "question": "In Norse mythology, which god guards the rainbow bridge Bifröst and will signal Ragnarök with his horn?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 283,
+      "id": "mythology_folklore_gen_234",
+      "question": "In Chinese mythology, which ugly scholar became the Jade Emperor's appointed demon-queller after death?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 284,
+      "id": "mythology_folklore_gen_235",
+      "question": "In Greek mythology, which of the three Fates cuts the thread of life to bring death?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 285,
+      "id": "mythology_folklore_gen_236",
+      "question": "In Aztec mythology, who was the skeletal god ruling over Mictlan, the underworld?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 286,
+      "id": "mythology_folklore_gen_237",
+      "question": "In Greek mythology, what happened to the beautiful youth Narcissus who fell in love with his own reflection?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 287,
+      "id": "mythology_folklore_gen_238",
+      "question": "In the Epic of Gilgamesh, who is the Mesopotamian flood survivor equivalent to the Biblical Noah?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 327,
+      "id": "mythology_folklore_gen_278",
+      "question": "What does the squirrel Ratatoskr do in Norse mythology?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 328,
+      "id": "mythology_folklore_gen_279",
+      "question": "The Japanese term 'kamikaze' (divine wind) was originally attributed to which pair of gods?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 329,
+      "id": "mythology_folklore_gen_280",
+      "question": "In Aboriginal Australian culture, what practical function do Dreamtime songlines serve?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 330,
+      "id": "mythology_folklore_gen_281",
+      "question": "According to Aztec mythology, why do humans come in different sizes?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 331,
+      "id": "mythology_folklore_gen_282",
+      "question": "In Vodou, what must Baron Samedi do before anyone can die?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 332,
+      "id": "mythology_folklore_gen_283",
+      "question": "Anansi spider stories originated with which African people?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 333,
+      "id": "mythology_folklore_gen_284",
+      "question": "In Mesopotamian mythology, which god split Tiamat's body to create heaven and earth?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 334,
+      "id": "mythology_folklore_gen_285",
+      "question": "In Irish folklore, what form does the Pooka most commonly take?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 335,
+      "id": "mythology_folklore_gen_286",
+      "question": "In Maori mythology, rain and mist are said to come from whose tears?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 336,
+      "id": "mythology_folklore_gen_287",
+      "question": "What is unusual about Baba Yaga's house in Slavic folklore?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    },
+    {
+      "index": 337,
+      "id": "mythology_folklore_gen_288",
+      "question": "In Egyptian mythology, how did the goddess Nut cause the daily cycle of the sun?",
+      "errors": [
+        "missing_source_name"
+      ],
+      "attempts": 3
+    }
+  ]
+}

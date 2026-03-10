@@ -1,14 +1,14 @@
 # Claude Worker Task: natural_sciences
 
 ## Goal
-Generate up to 0 new fact rows for `natural_sciences` using your Claude subscription worker.
+Generate up to 790 new fact rows for `natural_sciences` using your Claude subscription worker.
 
 ## Inputs/Outputs
 - Input source file: `data/raw/mixed/natural_sciences.json`
 - Output JSONL file: `data/generated/worker-output/natural_sciences.jsonl`
-- Existing generated facts: 54
-- Target facts for domain: 50
-- Missing facts to fill: 0
+- Existing generated facts: 210
+- Target facts for domain: 1000
+- Missing facts to fill: 790
 
 ## Hard Rules
 - Do NOT call any paid API scripts from this repository.

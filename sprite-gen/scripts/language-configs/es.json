@@ -63,5 +63,22 @@
     "iron gate", "tile", "pottery", "leather", "lasso", "hammock", "bonfire",
     "torch", "candle", "stained glass", "bell tower", "cobblestone", "arch",
     "colonnade", "balcony", "shutters", "harvest", "corn", "pepper", "chile"
+  ],
+  "artStyles": [
+    "Talavera hand-painted tile patterns in cobalt blue and marigold yellow",
+    "bold Diego Rivera mural style with flat planes and earthy worker figures",
+    "Frida Kahlo surrealist portrait style with vivid tropical colors",
+    "Baroque colonial altarpiece with gold and deep crimson",
+    "Aztec codex illustration with geometric angular figures",
+    "Moorish arabesque pattern with intricate interlocking geometry",
+    "Huichol yarn painting with psychedelic neon beadwork dots",
+    "Oaxacan alebrije folk art with fantastical creature forms",
+    "Spanish Romantic oil painting with dramatic chiaroscuro shadows",
+    "Mediterranean ceramic glaze in turquoise and terracotta",
+    "Mayan stone relief carving with weathered limestone texture",
+    "Day of the Dead papel picado cutout in vivid orange and purple",
+    "gaucho leatherwork tooling with warm brown and burnt sienna",
+    "Chilean arpillera textile with patchwork fabric texture",
+    "flamenco poster art with bold red and black silhouettes"
   ]
 }

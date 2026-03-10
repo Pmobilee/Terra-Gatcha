@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.117Z",
+  "generatedAt": "2026-03-10T09:08:26.725Z",
   "inputFiles": [
     "data/generated/worker-output/space_astronomy.jsonl"
   ],
@@ -9,9 +9,9 @@
     "review": 0.75
   },
   "counts": {
-    "input": 61,
-    "existingCompared": 1233,
-    "exactDuplicates": 61,
+    "input": 111,
+    "existingCompared": 3220,
+    "exactDuplicates": 111,
     "semanticDuplicates": 0,
     "needsReview": 0,
     "accepted": 0

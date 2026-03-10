@@ -1,7 +1,95 @@
 {
   "scannedFiles": 11,
-  "duplicates": 710,
+  "duplicates": 721,
   "items": [
+    {
+      "key": "honey never spoils archaeologists have found 3 000 year old honey in egyptian tombs that was still edible::honey",
+      "first": {
+        "domain": "food_cuisine",
+        "id": "food_cuisine_gen_064"
+      },
+      "duplicate": {
+        "domain": "food_cuisine",
+        "id": "food_cuisine_gen_125"
+      }
+    },
+    {
+      "key": "the capital of turkmenistan is ashgabat::ashgabat",
+      "first": {
+        "domain": "geography",
+        "id": "geo-turkmenistan-037"
+      },
+      "duplicate": {
+        "domain": "geography",
+        "id": "geo-turkmenistan-051"
+      }
+    },
+    {
+      "key": "the capital of tajikistan is dushanbe::dushanbe",
+      "first": {
+        "domain": "geography",
+        "id": "geo-tajikistan-034"
+      },
+      "duplicate": {
+        "domain": "geography",
+        "id": "geo-tajikistan-066"
+      }
+    },
+    {
+      "key": "bhutan is the only country in the world that is carbon negative absorbing more co2 than it produces::bhutan",
+      "first": {
+        "domain": "geography",
+        "id": "geo-bhutan-carbon-104"
+      },
+      "duplicate": {
+        "domain": "geography",
+        "id": "geo-bhutan-carbon-negative-163"
+      }
+    },
+    {
+      "key": "the human body produces about 3 8 million cells every second::3 8 million",
+      "first": {
+        "domain": "human_body_health",
+        "id": "human_body_health_gen_064"
+      },
+      "duplicate": {
+        "domain": "human_body_health",
+        "id": "human_body_health_gen_076"
+      }
+    },
+    {
+      "key": "red blood cells travel the entire circulatory system in about 20 seconds::about 20 seconds",
+      "first": {
+        "domain": "human_body_health",
+        "id": "human_body_health_gen_091"
+      },
+      "duplicate": {
+        "domain": "human_body_health",
+        "id": "human_body_health_gen_115"
+      }
+    },
+    {
+      "key": "the human eye can distinguish approximately 10 million different colors::about 10 million",
+      "first": {
+        "domain": "human_body_health",
+        "id": "human_body_health_gen_085"
+      },
+      "duplicate": {
+        "domain": "human_body_health",
+        "id": "human_body_health_gen_137"
+      }
+    },
+    {
+      "key": "the gut microbiome contains approximately 39 trillion microorganisms slightly outnumbering human cells::about 39 trillion",
+      "first": {
+        "domain": "human_body_health",
+        "id": "human_body_health_gen_130"
+      },
+      "duplicate": {
+        "domain": "human_body_health",
+        "id": "human_body_health_gen_127"
+      }
+    },
     {
       "key": "giant forest genets are small carnivorous mammals found in african forests::small african carnivore",
       "first": {
@@ -7810,6 +7898,39 @@
       "duplicate": {
         "domain": "space_astronomy",
         "id": "space-susie-049"
+      }
+    },
+    {
+      "key": "a teaspoon of neutron star material would weigh about 6 billion tons on earth::6 billion tons",
+      "first": {
+        "domain": "space_astronomy",
+        "id": "space_astronomy_gen_113"
+      },
+      "duplicate": {
+        "domain": "space_astronomy",
+        "id": "space_astronomy_gen_138"
+      }
+    },
+    {
+      "key": "europa one of jupiter s moons has a subsurface ocean that may contain more water than all of earth s oceans combined::europa",
+      "first": {
+        "domain": "space_astronomy",
+        "id": "space_astronomy_gen_114"
+      },
+      "duplicate": {
+        "domain": "space_astronomy",
+        "id": "space_astronomy_gen_139"
+      }
+    },
+    {
+      "key": "solar flares can release energy equivalent to millions of nuclear bombs in just minutes::solar flares",
+      "first": {
+        "domain": "space_astronomy",
+        "id": "space_astronomy_gen_121"
+      },
+      "duplicate": {
+        "domain": "space_astronomy",
+        "id": "space_astronomy_gen_145"
       }
     }
   ]

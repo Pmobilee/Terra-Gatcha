@@ -6,8 +6,8 @@ Generate up to 0 new fact rows for `geography` using your Claude subscription wo
 ## Inputs/Outputs
 - Input source file: `data/raw/mixed/geography.json`
 - Output JSONL file: `data/generated/worker-output/geography.jsonl`
-- Existing generated facts: 50
-- Target facts for domain: 50
+- Existing generated facts: 300
+- Target facts for domain: 1
 - Missing facts to fill: 0
 
 ## Hard Rules

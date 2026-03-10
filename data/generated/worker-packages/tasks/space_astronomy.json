@@ -1,17 +1,15 @@
 {
   "domain": "space_astronomy",
   "domainSlug": "space-astronomy",
-  "existingFacts": 61,
+  "existingFacts": 261,
   "existingFactsPath": "data/generated/space_astronomy.jsonl",
-  "targetFacts": 50,
+  "targetFacts": 1000,
   "expectedMinimum": 300,
-  "missingFacts": 0,
-  "requestedNewFacts": 0,
+  "missingFacts": 739,
+  "requestedNewFacts": 739,
   "inputPath": "data/raw/mixed/space_astronomy.json",
   "workerOutputPath": "data/generated/worker-output/space_astronomy.jsonl",
-  "recommendation": "skip",
+  "recommendation": "generate",
   "pass": true,
-  "notes": [
-    "domain target already satisfied"
-  ]
+  "notes": []
 }

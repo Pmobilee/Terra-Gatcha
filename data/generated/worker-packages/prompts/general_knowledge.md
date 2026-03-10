@@ -1,14 +1,14 @@
 # Claude Worker Task: general_knowledge
 
 ## Goal
-Generate up to 0 new fact rows for `general_knowledge` using your Claude subscription worker.
+Generate up to 714 new fact rows for `general_knowledge` using your Claude subscription worker.
 
 ## Inputs/Outputs
 - Input source file: `data/raw/mixed/general_knowledge.json`
 - Output JSONL file: `data/generated/worker-output/general_knowledge.jsonl`
-- Existing generated facts: 140
-- Target facts for domain: 50
-- Missing facts to fill: 0
+- Existing generated facts: 286
+- Target facts for domain: 1000
+- Missing facts to fill: 714
 
 ## Hard Rules
 - Do NOT call any paid API scripts from this repository.

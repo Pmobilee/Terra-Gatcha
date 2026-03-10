@@ -3,9 +3,10 @@
 
   interface Props {
     onbegin: (slowReader: boolean, languageCode: string | null) => void
+    onback?: () => void
   }
 
-  let { onbegin }: Props = $props()
+  let { onbegin, onback }: Props = $props()
   let selectedLanguage = $state<string>('')
 
   function handleEnter(): void {
@@ -16,6 +17,9 @@
 
 <div class="onboarding-screen">
   <div class="onboarding-panel">
+    {#if onback}
+      <button class="back-btn" type="button" onclick={onback}>&larr; Back</button>
+    {/if}
     <h1>RECALL ROGUE</h1>
     <p>Enter the depths and test your recall.</p>
     <label class="language-select" for="onboarding-language">
@@ -84,6 +88,19 @@
     color: #e2e8f0;
     padding: 8px 10px;
     font-size: 13px;
+  }
+
+  .back-btn {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: none;
+    border: none;
+    color: #8b949e;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px;
+    min-height: 44px;
   }
 
   .enter-btn {

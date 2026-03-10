@@ -1,8 +1,28 @@
 {
-  "generatedAt": "2026-03-10T06:42:21.717Z",
+  "generatedAt": "2026-03-10T09:08:30.803Z",
   "checkedFiles": 11,
-  "totalFlagged": 2,
+  "totalFlagged": 47,
   "flagged": [
+    {
+      "bucket": "animals_wildlife",
+      "id": "animal-mimic-octopus-128",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "How many species can the mimic octopus impersonate?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "animals_wildlife",
+      "id": "animal-arabian-horned-viper-sidewind-230",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "Why does the Arabian horned viper use sidewinding locomotion?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q32814"
+    },
     {
       "bucket": "art_architecture",
       "id": "abbots-palace-oliwa-1756",
@@ -14,6 +34,396 @@
       "sourceUrl": "http://www.wikidata.org/entity/Q252800"
     },
     {
+      "bucket": "art_architecture",
+      "id": "art-arctic-antarctic-museum-074",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "In which city is the Russian Arctic and Antarctic Museum located?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q673942"
+    },
+    {
+      "bucket": "art_architecture",
+      "id": "art-brest-fortress-080",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "In what year was Brest Fortress originally constructed?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q23868"
+    },
+    {
+      "bucket": "art_architecture",
+      "id": "art-moma-nyc-100",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "In what year was MoMA founded?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q188740"
+    },
+    {
+      "bucket": "art_architecture",
+      "id": "art-villa-medici-careggi-108",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "Which famous academy met at Villa Medici at Careggi?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q948476"
+    },
+    {
+      "bucket": "art_architecture",
+      "id": "art_architecture_gen_065",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "What everyday object did Marcel Duchamp submit as art in 1917, calling it 'Fountain'?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "art_architecture",
+      "id": "art_architecture_gen_103",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "Where was the Venus de Milo discovered in 1820?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "art_architecture",
+      "id": "art_architecture_gen_123",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "What is the largest mud-brick building in the world?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "art_architecture",
+      "id": "art_architecture_gen_178",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "In what year was the Dome of the Rock in Jerusalem completed?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "art_architecture",
+      "id": "art_architecture_gen_181",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "What is the only painting Vincent van Gogh is confirmed to have sold during his lifetime?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "food_cuisine",
+      "id": "food_cuisine_gen_094",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "How is kopi luwak coffee produced?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "food_cuisine",
+      "id": "food_cuisine_gen_184",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "Which German city is the frankfurter sausage named after?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "food_cuisine",
+      "id": "food_cuisine_gen_216",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "Which taste was the last to be officially recognized as a basic taste, accepted in 1985?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "general_knowledge",
+      "id": "gk-zipper-invention-197",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "Who perfected the modern zipper design in 1913?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "general_knowledge",
+      "id": "gk-oscar-name-209",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "According to popular legend, the Academy Award statuette got the nickname 'Oscar' because it resembled whose uncle?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "general_knowledge",
+      "id": "gk-monty-hall-problem-240",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "In the Monty Hall problem, what is your probability of winning if you switch doors?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "general_knowledge",
+      "id": "gk-barnum-effect-251",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "What psychological effect explains why people believe horoscopes are specifically about them?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "general_knowledge",
+      "id": "gk-ship-of-theseus-252",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "The Ship of Theseus paradox questions whether an object remains the same after what happens?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "general_knowledge",
+      "id": "gk-hashtag-octothorpe-259",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "What is the official name of the # symbol, coined by Bell Labs?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "general_knowledge",
+      "id": "gk-dead-mans-hand-261",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "The 'dead man's hand' in poker is named after which historical figure?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "general_knowledge",
+      "id": "gk-fortune-cookie-origin-267",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "Where were fortune cookies actually invented?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "general_knowledge",
+      "id": "gk-404-error-room-277",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "What does the HTTP error code 404 indicate?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "general_knowledge",
+      "id": "gk-oscar-first-ceremony-284",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "How long did the very first Academy Awards ceremony last in 1929?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q102427"
+    },
+    {
+      "bucket": "geography",
+      "id": "geo-everest-height-129",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "How tall is Mount Everest above sea level?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "geography",
+      "id": "geo-megacity-count-244",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "What population threshold defines a megacity?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "geography",
+      "id": "geo-san-marino-oldest-republic-260",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "Which country claims to be the world's oldest surviving republic?",
+      "sourceName": "World Bank Open Data",
+      "sourceUrl": "https://data.worldbank.org/country/smr"
+    },
+    {
+      "bucket": "history",
+      "id": "hist-operation-spark-105",
+      "reasons": [
+        "answer_collision_with_distractor"
+      ],
+      "quizQuestion": "In what year did the Operation Spark happen?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q233278"
+    },
+    {
+      "bucket": "history",
+      "id": "hist-pursuit-of-krasnokutsk-107",
+      "reasons": [
+        "answer_collision_with_distractor"
+      ],
+      "quizQuestion": "When did the Pursuit of Krasnokutsk occur?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q167971"
+    },
+    {
+      "bucket": "history",
+      "id": "hist-battle-of-charleroi-113",
+      "reasons": [
+        "answer_collision_with_distractor"
+      ],
+      "quizQuestion": "In what year did the Battle of Charleroi happen?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q860150"
+    },
+    {
+      "bucket": "history",
+      "id": "hist-battle-of-tinian-122",
+      "reasons": [
+        "answer_collision_with_distractor"
+      ],
+      "quizQuestion": "When did the Battle of Tinian occur?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q176915"
+    },
+    {
+      "bucket": "history",
+      "id": "hist-trojan-horse-158",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "What trick did the Greeks allegedly use to capture Troy?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "history",
+      "id": "hist-mata-hari-168",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "What was Mata Hari's real name?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "history",
+      "id": "hist-gutenberg-bible-212",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "How many copies of the Gutenberg Bible survive today?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "history",
+      "id": "hist-battle-of-carrhae-53bce",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "Which English phrase originated from Parthian mounted archers at the Battle of Carrhae?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q205887"
+    },
+    {
+      "bucket": "history",
+      "id": "hist-300-champions-546bce",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "How many total survivors were there from the Battle of the 300 Champions between Sparta and Argos?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q195881"
+    },
+    {
+      "bucket": "history",
+      "id": "hist-battle-of-pharsalus-48bce",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "What unusual tactic did Caesar order his soldiers to use against Pompey's cavalry at Pharsalus?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q203681"
+    },
+    {
+      "bucket": "mythology_folklore",
+      "id": "myth-trecouche-071",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "Where does the monster Trécouche allegedly roam?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q125585022"
+    },
+    {
+      "bucket": "mythology_folklore",
+      "id": "myth-morag-093",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "In which Scottish loch does Morag allegedly live?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q1503117"
+    },
+    {
+      "bucket": "mythology_folklore",
+      "id": "mythology_folklore_gen_170",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "Which English folk hero lived in Sherwood Forest and robbed from the rich to give to the poor?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "natural_sciences",
+      "id": "natural_sciences_gen_114",
+      "reasons": [
+        "controversial_or_uncertain_wording"
+      ],
+      "quizQuestion": "What is the name for the phenomenon where hot water freezes faster than cold water?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
       "bucket": "production-facts",
       "id": "abbots-palace-oliwa-1756",
       "reasons": [
@@ -22,6 +432,46 @@
       "quizQuestion": "When was Abbot's Palace in Oliwa built?",
       "sourceName": "Wikidata",
       "sourceUrl": "http://www.wikidata.org/entity/Q252800"
+    },
+    {
+      "bucket": "space_astronomy",
+      "id": "space-esro-1a-095",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "What modern agency grew out of the European Space Research Organization?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q3060530"
+    },
+    {
+      "bucket": "space_astronomy",
+      "id": "space-sms-2-072",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "What orbit type did SMS 2 use for weather monitoring?",
+      "sourceName": "Wikidata",
+      "sourceUrl": "http://www.wikidata.org/entity/Q113148643"
+    },
+    {
+      "bucket": "space_astronomy",
+      "id": "space_astronomy_gen_149",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "Which spacecraft is the most distant human-made object from Earth?",
+      "sourceName": null,
+      "sourceUrl": null
+    },
+    {
+      "bucket": "space_astronomy",
+      "id": "space_astronomy_gen_153",
+      "reasons": [
+        "potentially_stale_time_reference"
+      ],
+      "quizQuestion": "Approximately how many galaxies are estimated to exist in the observable universe?",
+      "sourceName": null,
+      "sourceUrl": null
     }
   ]
 }

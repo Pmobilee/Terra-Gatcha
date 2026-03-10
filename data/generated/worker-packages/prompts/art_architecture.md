@@ -1,14 +1,14 @@
 # Claude Worker Task: art_architecture
 
 ## Goal
-Generate up to 0 new fact rows for `art_architecture` using your Claude subscription worker.
+Generate up to 763 new fact rows for `art_architecture` using your Claude subscription worker.
 
 ## Inputs/Outputs
 - Input source file: `data/raw/mixed/art_architecture.json`
 - Output JSONL file: `data/generated/worker-output/art_architecture.jsonl`
-- Existing generated facts: 62
-- Target facts for domain: 50
-- Missing facts to fill: 0
+- Existing generated facts: 237
+- Target facts for domain: 1000
+- Missing facts to fill: 763
 
 ## Hard Rules
 - Do NOT call any paid API scripts from this repository.

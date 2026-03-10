@@ -1,14 +1,14 @@
 # Claude Worker Task: food_cuisine
 
 ## Goal
-Generate up to 0 new fact rows for `food_cuisine` using your Claude subscription worker.
+Generate up to 672 new fact rows for `food_cuisine` using your Claude subscription worker.
 
 ## Inputs/Outputs
 - Input source file: `data/raw/mixed/food_cuisine.json`
 - Output JSONL file: `data/generated/worker-output/food_cuisine.jsonl`
-- Existing generated facts: 63
-- Target facts for domain: 50
-- Missing facts to fill: 0
+- Existing generated facts: 328
+- Target facts for domain: 1000
+- Missing facts to fill: 672
 
 ## Hard Rules
 - Do NOT call any paid API scripts from this repository.

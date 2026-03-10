@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.672Z",
+  "generatedAt": "2026-03-10T09:08:28.216Z",
   "inputFiles": [
     "data/generated/worker-output/food_cuisine.jsonl"
   ],
   "domain": "food_cuisine",
   "counts": {
-    "input": 63,
-    "valid": 63,
+    "input": 346,
+    "valid": 155,
     "invalid": 0,
-    "flagged": 0
+    "flagged": 191
   },
   "invalid": [],
   "topExamples": [

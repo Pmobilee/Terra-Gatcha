@@ -1,66 +1,66 @@
 {
-  "generatedAt": "2026-03-10T06:42:21.177Z",
+  "generatedAt": "2026-03-10T09:08:29.496Z",
   "dryRun": false,
   "includeGenerated": true,
   "includeSeed": true,
   "totals": {
     "files": 27,
-    "scannedFacts": 3363,
+    "scannedFacts": 10497,
     "patchedFacts": 0
   },
   "results": [
     {
       "filePath": "data/generated/animals_wildlife.jsonl",
       "kind": "jsonl",
-      "scanned": 63,
+      "scanned": 254,
       "patched": 0
     },
     {
       "filePath": "data/generated/art_architecture.jsonl",
       "kind": "jsonl",
-      "scanned": 62,
+      "scanned": 237,
       "patched": 0
     },
     {
       "filePath": "data/generated/food_cuisine.jsonl",
       "kind": "jsonl",
-      "scanned": 63,
+      "scanned": 328,
       "patched": 0
     },
     {
       "filePath": "data/generated/general_knowledge.jsonl",
       "kind": "jsonl",
-      "scanned": 140,
+      "scanned": 286,
       "patched": 0
     },
     {
       "filePath": "data/generated/geography.jsonl",
       "kind": "jsonl",
-      "scanned": 50,
+      "scanned": 255,
       "patched": 0
     },
     {
       "filePath": "data/generated/history.jsonl",
       "kind": "jsonl",
-      "scanned": 91,
+      "scanned": 244,
       "patched": 0
     },
     {
       "filePath": "data/generated/human_body_health.jsonl",
       "kind": "jsonl",
-      "scanned": 63,
+      "scanned": 320,
       "patched": 0
     },
     {
       "filePath": "data/generated/mythology_folklore.jsonl",
       "kind": "jsonl",
-      "scanned": 63,
+      "scanned": 327,
       "patched": 0
     },
     {
       "filePath": "data/generated/natural_sciences.jsonl",
       "kind": "jsonl",
-      "scanned": 54,
+      "scanned": 210,
       "patched": 0
     },
     {
@@ -72,67 +72,67 @@
     {
       "filePath": "data/generated/space_astronomy.jsonl",
       "kind": "jsonl",
-      "scanned": 61,
+      "scanned": 261,
       "patched": 0
     },
     {
       "filePath": "data/generated/worker-output/animals_wildlife.jsonl",
       "kind": "jsonl",
-      "scanned": 63,
+      "scanned": 283,
       "patched": 0
     },
     {
       "filePath": "data/generated/worker-output/art_architecture.jsonl",
       "kind": "jsonl",
-      "scanned": 62,
+      "scanned": 287,
       "patched": 0
     },
     {
       "filePath": "data/generated/worker-output/food_cuisine.jsonl",
       "kind": "jsonl",
-      "scanned": 63,
+      "scanned": 346,
       "patched": 0
     },
     {
       "filePath": "data/generated/worker-output/general_knowledge.jsonl",
       "kind": "jsonl",
-      "scanned": 140,
+      "scanned": 350,
       "patched": 0
     },
     {
       "filePath": "data/generated/worker-output/geography.jsonl",
       "kind": "jsonl",
-      "scanned": 50,
+      "scanned": 300,
       "patched": 0
     },
     {
       "filePath": "data/generated/worker-output/history.jsonl",
       "kind": "jsonl",
-      "scanned": 91,
+      "scanned": 278,
       "patched": 0
     },
     {
       "filePath": "data/generated/worker-output/human_body_health.jsonl",
       "kind": "jsonl",
-      "scanned": 63,
+      "scanned": 363,
       "patched": 0
     },
     {
       "filePath": "data/generated/worker-output/mythology_folklore.jsonl",
       "kind": "jsonl",
-      "scanned": 63,
+      "scanned": 338,
       "patched": 0
     },
     {
       "filePath": "data/generated/worker-output/natural_sciences.jsonl",
       "kind": "jsonl",
-      "scanned": 54,
+      "scanned": 254,
       "patched": 0
     },
     {
       "filePath": "data/generated/worker-output/space_astronomy.jsonl",
       "kind": "jsonl",
-      "scanned": 61,
+      "scanned": 311,
       "patched": 0
     },
     {
@@ -156,7 +156,7 @@
     {
       "filePath": "src/data/seed/facts-generated.json",
       "kind": "json",
-      "scanned": 710,
+      "scanned": 3432,
       "patched": 0
     },
     {

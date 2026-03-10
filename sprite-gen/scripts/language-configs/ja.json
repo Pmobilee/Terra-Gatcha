@@ -64,5 +64,22 @@
     "paper umbrella", "folding fan", "abacus", "biwa", "shakuhachi", "iron kettle",
     "oil lamp", "torch", "kiln", "forge", "watermill", "cormorant", "woodblock",
     "indigo", "lacquer", "sake", "puppet", "sumo", "kabuki", "ronin"
+  ],
+  "artStyles": [
+    "sumi-e ink wash with flowing wet brushstrokes and pooling black ink",
+    "bold ukiyo-e woodblock print with thick carved outlines and flat color planes",
+    "gold leaf and black lacquer with rich metallic accents",
+    "wabi-sabi rough ceramic texture with earthy muted tones",
+    "delicate bamboo brush painting with thin precise strokes",
+    "zen karesansui dry garden aesthetic with raked sand patterns",
+    "vibrant matsuri festival colors with warm paper lantern glow",
+    "deep indigo aizome dye gradients from navy to pale blue",
+    "autumn momiji palette of crimson red and burnished gold",
+    "misty sansui mountain landscape wash in grey and green",
+    "kintsugi gold-crack patterns with dark mended surfaces",
+    "cherry blossom hanami softness in pale pink and white",
+    "dramatic kabuki kumadori with bold theatrical color blocks",
+    "cool moonlit tsukimi scene in silver and deep midnight blue",
+    "warm irori hearthfire glow in amber and deep shadow"
   ]
 }

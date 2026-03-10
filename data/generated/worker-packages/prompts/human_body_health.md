@@ -1,14 +1,14 @@
 # Claude Worker Task: human_body_health
 
 ## Goal
-Generate up to 0 new fact rows for `human_body_health` using your Claude subscription worker.
+Generate up to 680 new fact rows for `human_body_health` using your Claude subscription worker.
 
 ## Inputs/Outputs
 - Input source file: `data/raw/mixed/human_body_health.json`
 - Output JSONL file: `data/generated/worker-output/human_body_health.jsonl`
-- Existing generated facts: 63
-- Target facts for domain: 50
-- Missing facts to fill: 0
+- Existing generated facts: 320
+- Target facts for domain: 1000
+- Missing facts to fill: 680
 
 ## Hard Rules
 - Do NOT call any paid API scripts from this repository.

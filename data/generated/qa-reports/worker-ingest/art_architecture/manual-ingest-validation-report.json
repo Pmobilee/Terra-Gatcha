@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-03-10T06:42:20.754Z",
+  "generatedAt": "2026-03-10T09:08:28.840Z",
   "inputFiles": [
     "data/generated/worker-output/art_architecture.jsonl"
   ],
   "domain": "art_architecture",
   "counts": {
-    "input": 62,
-    "valid": 62,
+    "input": 287,
+    "valid": 112,
     "invalid": 0,
-    "flagged": 0
+    "flagged": 175
   },
   "invalid": [],
   "topExamples": [

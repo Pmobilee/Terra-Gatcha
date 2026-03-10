@@ -1,17 +1,15 @@
 {
   "domain": "food_cuisine",
   "domainSlug": "food-cuisine",
-  "existingFacts": 63,
+  "existingFacts": 328,
   "existingFactsPath": "data/generated/food_cuisine.jsonl",
-  "targetFacts": 50,
+  "targetFacts": 1000,
   "expectedMinimum": 250,
-  "missingFacts": 0,
-  "requestedNewFacts": 0,
+  "missingFacts": 672,
+  "requestedNewFacts": 672,
   "inputPath": "data/raw/mixed/food_cuisine.json",
   "workerOutputPath": "data/generated/worker-output/food_cuisine.jsonl",
-  "recommendation": "skip",
+  "recommendation": "generate",
   "pass": true,
-  "notes": [
-    "domain target already satisfied"
-  ]
+  "notes": []
 }

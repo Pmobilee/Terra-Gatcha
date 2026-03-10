@@ -64,5 +64,22 @@
     "swan", "dove", "snail", "butterfly", "fox", "owl", "horse",
     "wrought iron", "mansard", "dormer", "turret", "drawbridge", "slate",
     "gas lamp", "hearth", "forge", "mill", "canal", "barge"
+  ],
+  "artStyles": [
+    "Impressionist brushwork with dappled light and soft color blending",
+    "Art Nouveau sinuous curves with organic floral metalwork borders",
+    "Rococo pastel elegance with ornate gilded decorative flourishes",
+    "medieval illuminated manuscript with gold leaf and jewel-tone borders",
+    "Toulouse-Lautrec lithograph poster in bold flat color and linework",
+    "Pointillist dot technique with vibrant pure color clusters",
+    "Provençal faience pottery in warm yellows and rustic blues",
+    "Gothic stained glass with leaded black outlines and saturated jewel colors",
+    "Bayeux Tapestry embroidery with naive flat figures and earthy wool tones",
+    "Belle Époque gaslit atmosphere in warm amber and soft shadow",
+    "Cézanne still-life geometry with muted earth tones and angular forms",
+    "Toile de Jouy pastoral print in monochrome blue on cream",
+    "Art Deco geometric elegance with metallic gold and deep teal",
+    "Monet water garden soft focus with lily pads and reflected sky",
+    "cave painting primitive charcoal and ochre on rough stone"
   ]
 }

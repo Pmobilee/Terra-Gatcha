@@ -54,12 +54,14 @@ async function main() {
     'gate-max-needs-review-rate': 0.35,
     'gate-max-cross-domain-duplicates': 200,
     'stop-on-fail': true,
+    verify: false,
   })
 
   const input = String(args.input)
   const qaDir = String(args['qa-dir'])
   const dedupCompareAgainst = String(args['dedup-compare-against'])
   const stopOnFail = Boolean(args['stop-on-fail'])
+  const verify = Boolean(args.verify)
   const outputPath = path.resolve(root, String(args.output))
 
   const steps = [
@@ -96,6 +98,14 @@ async function main() {
       script: 'scripts/content-pipeline/qa/source-fact-check.mjs',
       args: ['--input', input, '--output', `${qaDir}/source-fact-check.json`, '--sample', String(args['fact-check-sample'])],
     },
+    ...(verify
+      ? [
+          {
+            script: 'scripts/content-pipeline/qa/verify-facts-websearch.mjs',
+            args: ['--input', 'src/data/seed/facts-generated.json', '--output', `${qaDir}/verification-report.json`, '--stamp', 'true'],
+          },
+        ]
+      : []),
     {
       script: 'scripts/content-pipeline/qa/review-sample.mjs',
       args: ['--input', input, '--output', 'samples/human-review/review-sample.md', '--perDomain', '20'],
