@@ -37,6 +37,7 @@
     playAgain,
     returnToMenu,
     startNewRun,
+    startDailyExpeditionRun,
   } from './services/gameFlowController'
   import {
     activeTurnState,
@@ -120,6 +121,10 @@
 
   function handleOpenSocial(): void {
     transitionScreen('social')
+  }
+
+  function handleStartDailyExpedition(): { ok: true } | { ok: false; reason: string } {
+    return startDailyExpeditionRun()
   }
 
   function handleHubNavigate(target: HubScreenName): void {
@@ -533,7 +538,11 @@
   {/if}
 
   {#if $currentScreen === 'social'}
-    <SocialScreen onBack={handleBackToMenu} onOpenSettings={handleOpenSettings} />
+    <SocialScreen
+      onBack={handleBackToMenu}
+      onOpenSettings={handleOpenSettings}
+      onStartDailyExpedition={handleStartDailyExpedition}
+    />
   {/if}
 
   {#if shouldShowHubNav($currentScreen)}

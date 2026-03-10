@@ -321,6 +321,26 @@ interface TierUpgradeEvent {
   }
 }
 
+interface DailyExpeditionStartEvent {
+  name: 'daily_expedition_start'
+  properties: {
+    date_key: string
+    seed: number
+    player_id: string
+  }
+}
+
+interface DailyExpeditionCompleteEvent {
+  name: 'daily_expedition_complete'
+  properties: {
+    score: number
+    floor_reached: number
+    accuracy: number
+    best_combo: number
+    run_duration_ms: number
+  }
+}
+
 interface SettingsChangeEvent {
   name: 'settings_change'
   properties: {
@@ -414,6 +434,8 @@ export type AnalyticsEvent =
   | AnswerCorrectEvent
   | AnswerIncorrectEvent
   | TierUpgradeEvent
+  | DailyExpeditionStartEvent
+  | DailyExpeditionCompleteEvent
   | SettingsChangeEvent
   | AccountCreatedEvent
   | FeedbackSubmittedEvent

@@ -456,7 +456,7 @@ Updated GAME_DESIGN.md, ARCHITECTURE.md, and PROGRESS.md to reflect all AR-22→
 ## Post-Content: Social & Monetization (Future)
 
 ### AR-20: Competitive & Social Features
-- [ ] Daily Expedition (fixed seed, one attempt/day, leaderboard)
+- [ ] Daily Expedition (fixed seed, one attempt/day, leaderboard) — MVP shell implemented (daily lock + local read-only leaderboard + launch flow), full seeded gameplay parity pending
 - [ ] Endless Depths (infinite scaling after Floor 9, separate leaderboard)
 - [ ] Mastery Challenges (rare Mystery room, 3s timer, 5 distractors, fail = Tier 2b)
 - [ ] Relic Sanctum (between-run relic management for >12 mastered)

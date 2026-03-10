@@ -49,6 +49,10 @@ import { saveActiveRun, loadActiveRun, clearActiveRun, hasActiveRun } from './ru
 import { requestNotificationPermission, rescheduleNotifications } from './notificationService'
 import type { NotificationPlayerData } from './notificationService'
 import { getDueReviews } from '../ui/stores/playerData';
+import {
+  completeDailyExpeditionAttempt,
+  reserveDailyExpeditionAttempt,
+} from './dailyExpeditionService'
 
 export type GameFlowState =
   | 'idle'
@@ -81,8 +85,11 @@ let pendingFloorCompleted = false;
 let pendingSpecialEvent = false;
 let pendingClearedFloor = 0;
 let pendingDomainSelection: { primary: FactDomain; secondary: FactDomain } | null = null;
+type ActiveRunMode = 'standard' | 'daily_expedition'
+let activeRunMode: ActiveRunMode = 'standard'
 
 export function startNewRun(): void {
+  activeRunMode = 'standard'
   const onboarding = get(onboardingState);
   if (!onboarding.hasCompletedOnboarding) {
     gameFlowState.set('idle');
@@ -91,6 +98,44 @@ export function startNewRun(): void {
   }
   gameFlowState.set('domainSelection');
   currentScreen.set('domainSelection');
+}
+
+function calculateDailyExpeditionScore(endData: RunEndData): number {
+  const accuracyFactor = Math.max(0, endData.accuracy) / 100
+  const speedFactor = Math.max(0.4, Math.min(2.5, 600_000 / Math.max(60_000, endData.runDurationMs)))
+  const depthFactor = Math.max(1, endData.floorReached)
+  const comboFactor = Math.max(1, endData.bestCombo)
+  return Math.round(accuracyFactor * speedFactor * depthFactor * comboFactor * 1000)
+}
+
+export function startDailyExpeditionRun(): { ok: true } | { ok: false; reason: string } {
+  const onboarding = get(onboardingState)
+  if (!onboarding.hasCompletedOnboarding) {
+    currentScreen.set('onboarding')
+    gameFlowState.set('idle')
+    return { ok: false, reason: 'onboarding_required' }
+  }
+
+  const save = get(playerSave)
+  const playerId = save?.accountId ?? save?.deviceId ?? save?.playerId ?? 'anonymous'
+  const playerName = save?.accountEmail?.split('@')[0] ?? `Rogue-${playerId.slice(0, 6)}`
+  const reservation = reserveDailyExpeditionAttempt(playerId, playerName)
+  if (!reservation.ok) {
+    return { ok: false, reason: reservation.reason }
+  }
+
+  activeRunMode = 'daily_expedition'
+  pendingDomainSelection = { primary: 'general_knowledge', secondary: 'history' }
+  onArchetypeSelected('balanced')
+  analyticsService.track({
+    name: 'daily_expedition_start',
+    properties: {
+      date_key: reservation.attempt.dateKey,
+      seed: reservation.attempt.seed,
+      player_id: reservation.attempt.playerId,
+    },
+  })
+  return { ok: true }
 }
 
 function markRunCompleted(): void {
@@ -129,6 +174,27 @@ export function rescheduleNotificationsFromPlayerState(): void {
 }
 
 function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
+  if (activeRunMode === 'daily_expedition') {
+    const score = calculateDailyExpeditionScore(endData)
+    completeDailyExpeditionAttempt({
+      score,
+      floorReached: endData.floorReached,
+      accuracy: endData.accuracy,
+      bestCombo: endData.bestCombo,
+      runDurationMs: endData.runDurationMs,
+    })
+    analyticsService.track({
+      name: 'daily_expedition_complete',
+      properties: {
+        score,
+        floor_reached: endData.floorReached,
+        accuracy: endData.accuracy,
+        best_combo: endData.bestCombo,
+        run_duration_ms: endData.runDurationMs,
+      },
+    })
+  }
+  activeRunMode = 'standard'
   clearActiveRun();
   lastRunSummary.set(captureRunSummary(run, endData));
   activeRunEndData.set(endData);
@@ -596,6 +662,7 @@ export function returnToHubFromCampfire(): void {
 }
 
 export function abandonActiveRun(): void {
+  activeRunMode = 'standard'
   clearActiveRun();
   activeRunState.set(null);
   activeCardRewardOptions.set([]);
@@ -653,6 +720,7 @@ export function onRestResolved(): void {
 }
 
 export function returnToMenu(): void {
+  activeRunMode = 'standard'
   clearActiveRun();
   activeRunState.set(null);
   activeRunEndData.set(null);
@@ -668,6 +736,7 @@ export function returnToMenu(): void {
 }
 
 export function playAgain(): void {
+  activeRunMode = 'standard'
   clearActiveRun();
   activeRunState.set(null);
   activeRunEndData.set(null);
