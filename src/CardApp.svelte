@@ -34,6 +34,7 @@
     abandonActiveRun,
     hasActiveRun,
     loadActiveRun,
+    restoreRunMode,
     playAgain,
     returnToMenu,
     startNewRun,
@@ -226,6 +227,7 @@
   function handleResumeActiveRun(): void {
     const saved = loadActiveRun()
     if (!saved) return
+    restoreRunMode(saved.runMode, saved.dailySeed)
     activeRunState.set(saved.runState)
     if (saved.roomOptions && saved.roomOptions.length > 0) {
       activeRoomOptions.set(saved.roomOptions)

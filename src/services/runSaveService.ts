@@ -19,6 +19,10 @@ export interface RunSaveState {
   runState: SerializedRunState;
   /** Which screen to restore on resume. */
   currentScreen: string;
+  /** Active run mode for deterministic/resume behavior. */
+  runMode?: 'standard' | 'daily_expedition';
+  /** Optional deterministic seed used by fixed-seed modes. */
+  dailySeed?: number | null;
   /** Room options if paused at room selection. */
   roomOptions?: RoomOption[];
 }
@@ -62,6 +66,8 @@ export function saveActiveRun(state: {
   savedAt: string;
   runState: RunState;
   currentScreen: string;
+  runMode?: 'standard' | 'daily_expedition';
+  dailySeed?: number | null;
   roomOptions?: RoomOption[];
 }): void {
   const serialized: RunSaveState = {
@@ -69,6 +75,8 @@ export function saveActiveRun(state: {
     savedAt: state.savedAt,
     runState: serializeRunState(state.runState),
     currentScreen: state.currentScreen,
+    runMode: state.runMode,
+    dailySeed: state.dailySeed ?? null,
     roomOptions: state.roomOptions,
   };
   try {
@@ -79,7 +87,13 @@ export function saveActiveRun(state: {
 }
 
 /** Load the active run save from localStorage. Returns null if no save exists. */
-export function loadActiveRun(): { runState: RunState; currentScreen: string; roomOptions?: RoomOption[] } | null {
+export function loadActiveRun(): {
+  runState: RunState;
+  currentScreen: string;
+  runMode?: 'standard' | 'daily_expedition';
+  dailySeed?: number | null;
+  roomOptions?: RoomOption[];
+} | null {
   try {
     const raw = localStorage.getItem(SAVE_KEY);
     if (!raw) return null;
@@ -88,6 +102,8 @@ export function loadActiveRun(): { runState: RunState; currentScreen: string; ro
     return {
       runState: deserializeRunState(parsed.runState),
       currentScreen: parsed.currentScreen,
+      runMode: parsed.runMode,
+      dailySeed: parsed.dailySeed ?? null,
       roomOptions: parsed.roomOptions,
     };
   } catch {

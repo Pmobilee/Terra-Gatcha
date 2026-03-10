@@ -53,6 +53,10 @@ import {
   completeDailyExpeditionAttempt,
   reserveDailyExpeditionAttempt,
 } from './dailyExpeditionService'
+import {
+  activateDeterministicRandom,
+  deactivateDeterministicRandom,
+} from './deterministicRandom'
 
 export type GameFlowState =
   | 'idle'
@@ -87,9 +91,12 @@ let pendingClearedFloor = 0;
 let pendingDomainSelection: { primary: FactDomain; secondary: FactDomain } | null = null;
 type ActiveRunMode = 'standard' | 'daily_expedition'
 let activeRunMode: ActiveRunMode = 'standard'
+let activeDailySeed: number | null = null
 
 export function startNewRun(): void {
   activeRunMode = 'standard'
+  activeDailySeed = null
+  deactivateDeterministicRandom()
   const onboarding = get(onboardingState);
   if (!onboarding.hasCompletedOnboarding) {
     gameFlowState.set('idle');
@@ -125,6 +132,8 @@ export function startDailyExpeditionRun(): { ok: true } | { ok: false; reason: s
   }
 
   activeRunMode = 'daily_expedition'
+  activeDailySeed = reservation.attempt.seed
+  activateDeterministicRandom(reservation.attempt.seed)
   pendingDomainSelection = { primary: 'general_knowledge', secondary: 'history' }
   onArchetypeSelected('balanced')
   analyticsService.track({
@@ -195,6 +204,8 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
     })
   }
   activeRunMode = 'standard'
+  activeDailySeed = null
+  deactivateDeterministicRandom()
   clearActiveRun();
   lastRunSummary.set(captureRunSummary(run, endData));
   activeRunEndData.set(endData);
@@ -642,6 +653,9 @@ export function openCampfire(): void {
 }
 
 export function resumeFromCampfire(): void {
+  if (activeRunMode === 'daily_expedition' && activeDailySeed !== null) {
+    activateDeterministicRandom(activeDailySeed)
+  }
   const returnState = get(campfireReturnScreen);
   if (returnState) {
     gameFlowState.set(returnState);
@@ -656,6 +670,7 @@ export function resumeFromCampfire(): void {
 export function returnToHubFromCampfire(): void {
   // Save run state so player can resume later
   autoSaveRun('campfire');
+  deactivateDeterministicRandom()
   campfireReturnScreen.set(null);
   gameFlowState.set('idle');
   currentScreen.set('hub');
@@ -663,6 +678,8 @@ export function returnToHubFromCampfire(): void {
 
 export function abandonActiveRun(): void {
   activeRunMode = 'standard'
+  activeDailySeed = null
+  deactivateDeterministicRandom()
   clearActiveRun();
   activeRunState.set(null);
   activeCardRewardOptions.set([]);
@@ -696,6 +713,8 @@ function autoSaveRun(screen: string): void {
       savedAt: new Date().toISOString(),
       runState: run,
       currentScreen: screen,
+      runMode: activeRunMode,
+      dailySeed: activeDailySeed,
       roomOptions: get(activeRoomOptions),
     });
   } catch {
@@ -721,6 +740,8 @@ export function onRestResolved(): void {
 
 export function returnToMenu(): void {
   activeRunMode = 'standard'
+  activeDailySeed = null
+  deactivateDeterministicRandom()
   clearActiveRun();
   activeRunState.set(null);
   activeRunEndData.set(null);
@@ -737,6 +758,8 @@ export function returnToMenu(): void {
 
 export function playAgain(): void {
   activeRunMode = 'standard'
+  activeDailySeed = null
+  deactivateDeterministicRandom()
   clearActiveRun();
   activeRunState.set(null);
   activeRunEndData.set(null);
@@ -749,4 +772,16 @@ export function playAgain(): void {
   pendingDomainSelection = null;
   gameFlowState.set('domainSelection');
   currentScreen.set('domainSelection');
+}
+
+export function restoreRunMode(runMode?: 'standard' | 'daily_expedition', dailySeed?: number | null): void {
+  if (runMode === 'daily_expedition' && typeof dailySeed === 'number' && Number.isFinite(dailySeed)) {
+    activeRunMode = 'daily_expedition'
+    activeDailySeed = dailySeed
+    activateDeterministicRandom(dailySeed)
+    return
+  }
+  activeRunMode = 'standard'
+  activeDailySeed = null
+  deactivateDeterministicRandom()
 }
