@@ -113,6 +113,12 @@ export default defineConfig({
         '**/*.md',
         // Playtest data & reports
         '**/data/playtests/**',
+        // Test files & output
+        '**/tests/**',
+        '**/.playwright-mcp/**',
+        // Server DB & build output
+        '**/server/**',
+        '**/dist/**',
       ],
     },
   },

@@ -66,6 +66,8 @@ export interface RunState {
   deckMasteryPct?: number;
   /** Whether rewards are disabled (e.g. pool too small). */
   rewardsDisabled?: boolean;
+  /** Per-domain answer tracking for auto-calibration. */
+  domainAccuracy: Record<string, { answered: number; correct: number }>;
 }
 
 export interface RunEndData {
@@ -146,6 +148,7 @@ export function createRunState(
     offeredRelicIds: new Set<string>(),
     firstMiniBossRelicAwarded: false,
     phoenixFeatherUsed: false,
+    domainAccuracy: {},
   };
 }
 
@@ -154,6 +157,7 @@ export function recordCardPlay(
   correct: boolean,
   comboCount: number,
   factId?: string,
+  domain?: string,
 ): void {
   state.factsAnswered += 1;
   if (correct) {
@@ -173,6 +177,13 @@ export function recordCardPlay(
   state.correctAnswers = state.factsCorrect;
   state.canary = recordCanaryAnswer(state.canary, correct);
   if (comboCount > state.bestCombo) state.bestCombo = comboCount;
+  if (domain) {
+    if (!state.domainAccuracy[domain]) {
+      state.domainAccuracy[domain] = { answered: 0, correct: 0 };
+    }
+    state.domainAccuracy[domain].answered += 1;
+    if (correct) state.domainAccuracy[domain].correct += 1;
+  }
 }
 
 export function damagePlayer(state: RunState, amount: number): number {

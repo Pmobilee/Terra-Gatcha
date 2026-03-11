@@ -11,7 +11,8 @@
 
 import { writeFileSync } from 'node:fs';
 import { HeadlessCombatSimulator } from '../tests/playtest/core/headless-combat';
-import type { PlayerProfile, PlaythroughSummary } from '../tests/playtest/core/types';
+import type { PlayerProfile, PlaythroughSummary, DeepRunStats } from '../tests/playtest/core/types';
+import { FULL_RELIC_CATALOGUE, STARTER_RELIC_IDS } from '../src/data/relics/index';
 
 // ─── Profile Presets ─────────────────────────────────────────────────────────
 
@@ -58,35 +59,37 @@ const PROFILES: Record<string, PlayerProfile> = {
   },
 };
 
-// ─── Relic Lists ─────────────────────────────────────────────────────────────
+// ─── Relic Lists (dynamic from catalogue) ───────────────────────────────────
 
-const STARTER_RELICS = [
-  'whetstone', 'flame_brand', 'barbed_edge', 'war_drum', 'sharp_eye',
-  'iron_buckler', 'steel_skin', 'thorned_vest', 'stone_wall',
-  'herbal_pouch', 'vitality_ring', 'medic_kit', 'last_breath',
-  'swift_boots', 'combo_ring', 'momentum_gem', 'speed_charm', 'cartographers_lens',
-  'scholars_hat', 'memory_palace', 'curiosity_gem', 'brain_booster',
-  'gold_magnet', 'lucky_coin', 'scavengers_pouch',
-];
+/** Categories that don't affect combat simulation outcomes. */
+const NON_COMBAT_CATEGORIES = new Set(['economy']);
 
-const UNLOCKABLE_RELICS = [
-  'berserker_band', 'chain_lightning_rod', 'venom_fang', 'crescendo_blade', 'executioners_axe',
-  'fortress_wall', 'mirror_shield', 'iron_resolve', 'phase_cloak',
-  'blood_pact', 'phoenix_feather', 'renewal_spring',
-  'quicksilver', 'time_dilation', 'afterimage',
-  'echo_lens', 'double_vision', 'polyglot_pendant', 'eidetic_memory', 'speed_reader',
-  'domain_mastery',
-  'prospectors_pick', 'miser_ring', 'glass_cannon', 'blood_price',
-];
+/** Triggers that only affect meta-game / UI, not combat math. */
+const NON_COMBAT_TRIGGERS = new Set<string>([]);
 
-const ALL_RELICS = [...STARTER_RELICS, ...UNLOCKABLE_RELICS];
+/** Specific relics excluded because the simulator can't model their effect
+ *  (timer-based, echo system, domain tracking, UI-only). */
+const SIMULATOR_EXCLUDED_RELICS = new Set([
+  'time_dilation',       // timer-based (no timer in headless)
+  'speed_reader',        // timer threshold (no timer in headless)
+  'echo_lens',           // echo card system not modeled
+  'domain_mastery',      // multi-domain tracking not modeled
+  'polyglot_pendant',    // language detection not modeled
+  'eidetic_memory',      // visual memory not modeled
+  'brain_booster',       // UI hint system not modeled
+  'cartographers_lens',  // foresight UI not modeled
+]);
 
-/** Combat-relevant relics (exclude UI-only and economy-only relics). */
-const COMBAT_RELICS = ALL_RELICS.filter(r => ![
-  'cartographers_lens', 'brain_booster', 'gold_magnet', 'lucky_coin',
-  'scavengers_pouch', 'prospectors_pick', 'miser_ring', 'time_dilation',
-  'speed_reader', 'polyglot_pendant', 'eidetic_memory', 'domain_mastery',
-].includes(r));
+const ALL_RELICS = FULL_RELIC_CATALOGUE.map(r => r.id);
+
+/** Combat-relevant relics: exclude economy-only, UI-only, and unmodelable relics. */
+const COMBAT_RELICS = FULL_RELIC_CATALOGUE
+  .filter(r =>
+    !NON_COMBAT_CATEGORIES.has(r.category) &&
+    !NON_COMBAT_TRIGGERS.has(r.trigger) &&
+    !SIMULATOR_EXCLUDED_RELICS.has(r.id)
+  )
+  .map(r => r.id);
 
 // ─── Config Types ────────────────────────────────────────────────────────────
 
@@ -204,6 +207,211 @@ class RunAccumulator {
       groups.get(g)!.push(entry.config);
     }
     return groups;
+  }
+}
+
+// ─── Deep Analysis Types ────────────────────────────────────────────────────
+
+interface PerFloorStat {
+  floor: number;
+  survivalToFloorN: number;
+  avgDamageDealt: number;
+  avgDamageTaken: number;
+  avgHpRemaining: number;
+  dropoffPct: number;
+}
+
+interface PerEnemyStat {
+  enemyId: string;
+  category: string;
+  encounters: number;
+  defeatRate: number;
+  avgTurnsToKill: number;
+  avgDamageDealt: number;
+  avgDamageTaken: number;
+}
+
+interface CardTypeEffectiveness {
+  cardType: string;
+  totalPlayed: number;
+  accuracy: number;
+  avgDamage: number;
+  avgShield: number;
+  avgHeal: number;
+  fizzleRate: number;
+}
+
+interface FunFactorMetrics {
+  closeCallRate: number;
+  comebackRate: number;
+  overkillRate: number;
+  avgMinHpReached: number;
+}
+
+interface RelicCountScaling {
+  relicCount: number;
+  survivalRate: number;
+  avgFloor: number;
+  avgDPS: number;
+}
+
+interface DeepAnalysisOutput {
+  perFloorStats: PerFloorStat[];
+  perEnemyStats: PerEnemyStat[];
+  cardTypeEffectiveness: CardTypeEffectiveness[];
+  funFactorMetrics: FunFactorMetrics;
+  relicCountScaling: RelicCountScaling[];
+}
+
+// ─── Deep Accumulator ───────────────────────────────────────────────────────
+
+class DeepAccumulator {
+  private floorStats = new Map<number, { reached: number; survived: number; damageDealtSum: number; damageTakenSum: number; hpRemainingSum: number }>();
+  private enemyStats = new Map<string, { encounters: number; defeats: number; turnsSum: number; damageDealtSum: number; damageTakenSum: number; category: string }>();
+  private cardTypeStats = new Map<string, { played: number; correct: number; damageSum: number; shieldSum: number; healSum: number; fizzled: number }>();
+
+  private totalRuns = 0;
+  private totalWins = 0;
+  private closeCallWins = 0;
+  private comebackWins = 0;
+  private overkillWins = 0;
+  private minHpSum = 0;
+
+  private relicCountStats = new Map<number, { runs: number; wins: number; floorSum: number; dpsSum: number }>();
+
+  /** Add a completed run's deep stats to the accumulator. */
+  addRun(summary: PlaythroughSummary, relicCount: number): void {
+    if (!summary.deepStats) return;
+    const ds = summary.deepStats;
+
+    this.totalRuns++;
+    const won = summary.result === 'victory';
+    if (won) this.totalWins++;
+
+    // Floor stats
+    for (const fr of ds.floorResults) {
+      let fs = this.floorStats.get(fr.floor);
+      if (!fs) { fs = { reached: 0, survived: 0, damageDealtSum: 0, damageTakenSum: 0, hpRemainingSum: 0 }; this.floorStats.set(fr.floor, fs); }
+      fs.reached++;
+      if (fr.survived) fs.survived++;
+      fs.damageDealtSum += fr.totalDamageDealt;
+      fs.damageTakenSum += fr.totalDamageTaken;
+      fs.hpRemainingSum += fr.hpAtEnd;
+    }
+
+    // Enemy stats
+    for (const ee of ds.enemyEncounters) {
+      let es = this.enemyStats.get(ee.enemyId);
+      if (!es) { es = { encounters: 0, defeats: 0, turnsSum: 0, damageDealtSum: 0, damageTakenSum: 0, category: ee.enemyCategory }; this.enemyStats.set(ee.enemyId, es); }
+      es.encounters++;
+      if (ee.defeated) es.defeats++;
+      es.turnsSum += ee.turnsToResolve;
+      es.damageDealtSum += ee.damageDealt;
+      es.damageTakenSum += ee.damageTaken;
+    }
+
+    // Card type stats
+    for (const [ct, stats] of Object.entries(ds.cardTypeStats)) {
+      let cs = this.cardTypeStats.get(ct);
+      if (!cs) { cs = { played: 0, correct: 0, damageSum: 0, shieldSum: 0, healSum: 0, fizzled: 0 }; this.cardTypeStats.set(ct, cs); }
+      cs.played += stats.played;
+      cs.correct += stats.correct;
+      cs.damageSum += stats.totalDamage;
+      cs.shieldSum += stats.totalShield;
+      cs.healSum += stats.totalHeal;
+      cs.fizzled += stats.fizzled;
+    }
+
+    // Fun factor
+    if (ds.funFactor.closeCallWin) this.closeCallWins++;
+    if (ds.funFactor.comebackWin) this.comebackWins++;
+    if (ds.funFactor.overkillWin) this.overkillWins++;
+    this.minHpSum += ds.funFactor.minHpReached;
+
+    // Relic count buckets
+    let rc = this.relicCountStats.get(relicCount);
+    if (!rc) { rc = { runs: 0, wins: 0, floorSum: 0, dpsSum: 0 }; this.relicCountStats.set(relicCount, rc); }
+    rc.runs++;
+    if (won) rc.wins++;
+    rc.floorSum += summary.finalFloor;
+    const totalDmg = ds.floorResults.reduce((sum, fr) => sum + fr.totalDamageDealt, 0);
+    const totalTurns = ds.floorResults.reduce((sum, fr) => sum + fr.totalTurns, 0);
+    rc.dpsSum += totalTurns > 0 ? totalDmg / totalTurns : 0;
+  }
+
+  /** Compute deep analysis results. */
+  getResults(): DeepAnalysisOutput {
+    // Floor stats
+    const perFloorStats: PerFloorStat[] = [];
+    const floors = [...this.floorStats.keys()].sort((a, b) => a - b);
+    let prevSurvival = 1.0;
+    for (const f of floors) {
+      const fs = this.floorStats.get(f)!;
+      const survivalRate = fs.reached > 0 ? fs.survived / fs.reached : 0;
+      const dropoff = prevSurvival > 0 ? ((prevSurvival - survivalRate) / prevSurvival) * 100 : 0;
+      perFloorStats.push({
+        floor: f,
+        survivalToFloorN: round2(survivalRate * 100),
+        avgDamageDealt: round2(fs.reached > 0 ? fs.damageDealtSum / fs.reached : 0),
+        avgDamageTaken: round2(fs.reached > 0 ? fs.damageTakenSum / fs.reached : 0),
+        avgHpRemaining: round2(fs.reached > 0 ? fs.hpRemainingSum / fs.reached : 0),
+        dropoffPct: round2(dropoff),
+      });
+      prevSurvival = survivalRate;
+    }
+
+    // Enemy stats
+    const perEnemyStats: PerEnemyStat[] = [];
+    for (const [id, es] of this.enemyStats) {
+      perEnemyStats.push({
+        enemyId: id,
+        category: es.category,
+        encounters: es.encounters,
+        defeatRate: round2(es.encounters > 0 ? (es.defeats / es.encounters) * 100 : 0),
+        avgTurnsToKill: round2(es.encounters > 0 ? es.turnsSum / es.encounters : 0),
+        avgDamageDealt: round2(es.encounters > 0 ? es.damageDealtSum / es.encounters : 0),
+        avgDamageTaken: round2(es.encounters > 0 ? es.damageTakenSum / es.encounters : 0),
+      });
+    }
+    perEnemyStats.sort((a, b) => a.defeatRate - b.defeatRate); // hardest enemies first
+
+    // Card type stats
+    const cardTypeEffectiveness: CardTypeEffectiveness[] = [];
+    for (const [ct, cs] of this.cardTypeStats) {
+      cardTypeEffectiveness.push({
+        cardType: ct,
+        totalPlayed: cs.played,
+        accuracy: round2(cs.played > 0 ? (cs.correct / cs.played) * 100 : 0),
+        avgDamage: round2(cs.played > 0 ? cs.damageSum / cs.played : 0),
+        avgShield: round2(cs.played > 0 ? cs.shieldSum / cs.played : 0),
+        avgHeal: round2(cs.played > 0 ? cs.healSum / cs.played : 0),
+        fizzleRate: round2(cs.played > 0 ? (cs.fizzled / cs.played) * 100 : 0),
+      });
+    }
+    cardTypeEffectiveness.sort((a, b) => b.totalPlayed - a.totalPlayed);
+
+    // Fun factor
+    const funFactorMetrics: FunFactorMetrics = {
+      closeCallRate: round2(this.totalWins > 0 ? (this.closeCallWins / this.totalWins) * 100 : 0),
+      comebackRate: round2(this.totalWins > 0 ? (this.comebackWins / this.totalWins) * 100 : 0),
+      overkillRate: round2(this.totalWins > 0 ? (this.overkillWins / this.totalWins) * 100 : 0),
+      avgMinHpReached: round2(this.totalRuns > 0 ? this.minHpSum / this.totalRuns : 0),
+    };
+
+    // Relic count scaling
+    const relicCountScaling: RelicCountScaling[] = [];
+    const relicCounts = [...this.relicCountStats.keys()].sort((a, b) => a - b);
+    for (const rc of relicCounts) {
+      const rcs = this.relicCountStats.get(rc)!;
+      relicCountScaling.push({
+        relicCount: rc,
+        survivalRate: round2(rcs.runs > 0 ? (rcs.wins / rcs.runs) * 100 : 0),
+        avgFloor: round2(rcs.runs > 0 ? rcs.floorSum / rcs.runs : 0),
+        avgDPS: round2(rcs.runs > 0 ? rcs.dpsSum / rcs.runs : 0),
+      });
+    }
+
+    return { perFloorStats, perEnemyStats, cardTypeEffectiveness, funFactorMetrics, relicCountScaling };
   }
 }
 
@@ -462,6 +670,39 @@ function generateCustomConfigs(
   return configs;
 }
 
+function generateDeepConfigs(ascensionLevels: number[]): SimConfig[] {
+  const configs: SimConfig[] = [];
+  const profile = 'average'; // deep mode uses average profile
+
+  for (const asc of ascensionLevels) {
+    // Control (0 relics)
+    configs.push({ label: `deep-control-${profile}-asc${asc}`, profileId: profile, relics: [], ascensionLevel: asc, group: 'deep' });
+
+    // 1 relic (use top B-tier relics)
+    const topRelics = ['glass_cannon', 'combo_ring', 'whetstone'];
+    for (const r of topRelics) {
+      configs.push({ label: `deep-1relic-${r}-asc${asc}`, profileId: profile, relics: [r], ascensionLevel: asc, group: 'deep' });
+    }
+
+    // 3 relics (starter set)
+    configs.push({ label: `deep-3relics-starter-asc${asc}`, profileId: profile, relics: ['whetstone', 'iron_buckler', 'herbal_pouch'], ascensionLevel: asc, group: 'deep' });
+
+    // 5 relics (mid-game)
+    configs.push({ label: `deep-5relics-mid-asc${asc}`, profileId: profile, relics: ['whetstone', 'iron_buckler', 'herbal_pouch', 'combo_ring', 'swift_boots'], ascensionLevel: asc, group: 'deep' });
+
+    // 8 relics (full build)
+    configs.push({ label: `deep-8relics-full-asc${asc}`, profileId: profile, relics: ['whetstone', 'iron_buckler', 'herbal_pouch', 'combo_ring', 'swift_boots', 'fortress_wall', 'blood_pact', 'afterimage'], ascensionLevel: asc, group: 'deep' });
+  }
+
+  // Also run with expert profile
+  for (const asc of ascensionLevels) {
+    configs.push({ label: `deep-control-expert-asc${asc}`, profileId: 'expert', relics: [], ascensionLevel: asc, group: 'deep' });
+    configs.push({ label: `deep-8relics-expert-asc${asc}`, profileId: 'expert', relics: ['whetstone', 'iron_buckler', 'herbal_pouch', 'combo_ring', 'swift_boots', 'fortress_wall', 'blood_pact', 'afterimage'], ascensionLevel: asc, group: 'deep' });
+  }
+
+  return configs;
+}
+
 // ─── Deduplication ───────────────────────────────────────────────────────────
 
 function deduplicateConfigs(configs: SimConfig[]): SimConfig[] {
@@ -560,7 +801,7 @@ function parseArgs(argv: string[]): CliArgs {
     process.exit(1);
   }
 
-  const validModes = ['solo', 'combos', 'builds', 'fairness', 'progression', 'sweep', 'custom'];
+  const validModes = ['solo', 'combos', 'builds', 'fairness', 'progression', 'sweep', 'custom', 'deep'];
   if (!validModes.includes(args.mode)) {
     process.stderr.write(`Error: invalid mode "${args.mode}". Valid modes: ${validModes.join(', ')}\n`);
     process.exit(1);
@@ -583,6 +824,7 @@ Modes:
   progression  Test progression stages (new player -> full collection)
   sweep        Run all modes combined
   custom       Custom relics and profiles
+  deep         Deep analytics: per-floor stats, enemy stats, card effectiveness, fun factor
 
 Options:
   --seeds N              Seeds per config (default: 50)
@@ -682,6 +924,7 @@ interface AnalysisOutput {
     brokenSynergies: string[];
     immortality: string[];
   };
+  deepAnalysis?: DeepAnalysisOutput;
 }
 
 function runAnalysis(accumulator: RunAccumulator, mode: string): Omit<AnalysisOutput, 'meta'> {
@@ -767,7 +1010,9 @@ function runAnalysis(accumulator: RunAccumulator, mode: string): Omit<AnalysisOu
       : 1.0;
 
     let verdict: string;
-    if (synergyFactor > 2.0) verdict = 'broken_synergy';
+    // Only flag as broken if the combo impact is substantial (>5.0) AND ratio is high
+    // This prevents false positives from low-solo-impact relics producing high ratios
+    if (synergyFactor > 2.0 && Math.abs(comboOverall) > 5.0) verdict = 'broken_synergy';
     else if (synergyFactor > 1.5) verdict = 'strong_synergy';
     else if (synergyFactor > 0.8) verdict = 'additive';
     else verdict = 'anti_synergy';
@@ -1114,6 +1359,76 @@ function printSummaryTable(
   process.stderr.write('\n' + '='.repeat(70) + '\n');
 }
 
+function printDeepSummary(deep: DeepAnalysisOutput): void {
+  process.stderr.write('\n');
+  process.stderr.write('-'.repeat(70) + '\n');
+  process.stderr.write('  DEEP ANALYSIS\n');
+  process.stderr.write('-'.repeat(70) + '\n');
+
+  // Floor difficulty curve
+  if (deep.perFloorStats.length > 0) {
+    process.stderr.write('\n  FLOOR DIFFICULTY CURVE:\n');
+    const floorRows = deep.perFloorStats.map(f => ({
+      floor: f.floor,
+      survival: `${f.survivalToFloorN.toFixed(1)}%`,
+      avgDmgDealt: round2(f.avgDamageDealt),
+      avgDmgTaken: round2(f.avgDamageTaken),
+      avgHpLeft: round2(f.avgHpRemaining),
+      dropoff: `${f.dropoffPct.toFixed(1)}%`,
+    }));
+    process.stderr.write(formatTable(floorRows, ['floor', 'survival', 'avgDmgDealt', 'avgDmgTaken', 'avgHpLeft', 'dropoff']));
+  }
+
+  // Top 10 hardest enemies
+  if (deep.perEnemyStats.length > 0) {
+    process.stderr.write('\n  HARDEST ENEMIES (top 10):\n');
+    const enemyRows = deep.perEnemyStats.slice(0, 10).map(e => ({
+      enemy: e.enemyId,
+      category: e.category,
+      encounters: e.encounters,
+      defeatRate: `${e.defeatRate.toFixed(1)}%`,
+      avgTurns: round2(e.avgTurnsToKill),
+      avgDmgDealt: round2(e.avgDamageDealt),
+      avgDmgTaken: round2(e.avgDamageTaken),
+    }));
+    process.stderr.write(formatTable(enemyRows, ['enemy', 'category', 'encounters', 'defeatRate', 'avgTurns', 'avgDmgDealt', 'avgDmgTaken']));
+  }
+
+  // Card type effectiveness
+  if (deep.cardTypeEffectiveness.length > 0) {
+    process.stderr.write('\n  CARD TYPE EFFECTIVENESS:\n');
+    const ctRows = deep.cardTypeEffectiveness.map(c => ({
+      type: c.cardType,
+      played: c.totalPlayed,
+      accuracy: `${c.accuracy.toFixed(1)}%`,
+      avgDmg: round2(c.avgDamage),
+      avgShield: round2(c.avgShield),
+      avgHeal: round2(c.avgHeal),
+      fizzle: `${c.fizzleRate.toFixed(1)}%`,
+    }));
+    process.stderr.write(formatTable(ctRows, ['type', 'played', 'accuracy', 'avgDmg', 'avgShield', 'avgHeal', 'fizzle']));
+  }
+
+  // Fun factor metrics
+  process.stderr.write('\n  FUN FACTOR METRICS:\n');
+  process.stderr.write(`  Close-call win rate:  ${deep.funFactorMetrics.closeCallRate.toFixed(1)}%\n`);
+  process.stderr.write(`  Comeback win rate:    ${deep.funFactorMetrics.comebackRate.toFixed(1)}%\n`);
+  process.stderr.write(`  Overkill win rate:    ${deep.funFactorMetrics.overkillRate.toFixed(1)}%\n`);
+  process.stderr.write(`  Avg min HP reached:   ${deep.funFactorMetrics.avgMinHpReached.toFixed(1)}\n`);
+
+  // Relic count scaling
+  if (deep.relicCountScaling.length > 0) {
+    process.stderr.write('\n  RELIC COUNT SCALING:\n');
+    const rcRows = deep.relicCountScaling.map(r => ({
+      relics: r.relicCount,
+      survival: `${r.survivalRate.toFixed(1)}%`,
+      avgFloor: round2(r.avgFloor),
+      avgDPS: round2(r.avgDPS),
+    }));
+    process.stderr.write(formatTable(rcRows, ['relics', 'survival', 'avgFloor', 'avgDPS']));
+  }
+}
+
 // ─── Main ────────────────────────────────────────────────────────────────────
 
 async function main(): Promise<void> {
@@ -1164,6 +1479,9 @@ async function main(): Promise<void> {
     case 'custom':
       configs = generateCustomConfigs(args.relics, args.profiles, ascensionLevels);
       break;
+    case 'deep':
+      configs = generateDeepConfigs(ascensionLevels);
+      break;
   }
 
   configs = deduplicateConfigs(configs);
@@ -1175,6 +1493,7 @@ async function main(): Promise<void> {
 
   // Run loop
   const accumulator = new RunAccumulator();
+  const deepAccumulator = mode === 'deep' ? new DeepAccumulator() : null;
   const baseSeed = 1000;
   let totalRuns = 0;
   const startTime = Date.now();
@@ -1199,8 +1518,11 @@ async function main(): Promise<void> {
     for (let s = 0; s < seedCount; s++) {
       const seed = baseSeed + s;
       const sim = new HeadlessCombatSimulator(profile, seed);
-      const log = sim.simulateRun({ maxFloors: floors, summaryOnly: true, maxTotalTurns: 500 });
+      const log = sim.simulateRun({ maxFloors: floors, summaryOnly: true, maxTotalTurns: 500, deepMode: mode === 'deep' });
       accumulator.addRun(config, log.summary);
+      if (deepAccumulator && log.summary.deepStats) {
+        deepAccumulator.addRun(log.summary, config.relics.length);
+      }
       totalRuns++;
 
       if (!quiet && totalRuns % 500 === 0) {
@@ -1230,6 +1552,11 @@ async function main(): Promise<void> {
 
   const output: AnalysisOutput = { meta, ...analysis };
 
+  // Attach deep analysis if available
+  if (deepAccumulator) {
+    output.deepAnalysis = deepAccumulator.getResults();
+  }
+
   // Output JSON
   const jsonStr = JSON.stringify(output, null, 2);
 
@@ -1253,6 +1580,9 @@ async function main(): Promise<void> {
   // Print summary table to stderr
   if (!quiet) {
     printSummaryTable(analysis, meta);
+    if (output.deepAnalysis) {
+      printDeepSummary(output.deepAnalysis);
+    }
   }
 }
 

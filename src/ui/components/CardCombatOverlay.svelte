@@ -869,9 +869,8 @@
       </div>
     {/if}
 
-    <div class="ap-strip" aria-label="Action points">
-      <span>AP</span>
-      <strong>{apCurrent}/{apMax}</strong>
+    <div class="ap-orb" class:ap-active={apCurrent > 0} class:ap-empty={apCurrent === 0} aria-label="Action points: {apCurrent}">
+      <span class="ap-number">{apCurrent}</span>
     </div>
 
     {#if activeBounties.length > 0}
@@ -998,7 +997,7 @@
     right: 0;
     height: 45vh;
     z-index: 10;
-    background: rgba(0, 0, 0, 0.6);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 30%, transparent 100%);
     overflow: visible;
   }
 
@@ -1031,21 +1030,43 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  .ap-strip {
+  .ap-orb {
     position: absolute;
-    left: 12px;
+    left: 16px;
     top: 10px;
     z-index: 8;
-    background: rgba(15, 23, 35, 0.92);
-    border: 1px solid #3a4b63;
-    border-radius: 10px;
-    color: #dce7f6;
-    padding: 6px 10px;
-    display: inline-flex;
-    gap: 8px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
-    font-size: 12px;
-    letter-spacing: 0.4px;
+    justify-content: center;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+
+  .ap-orb.ap-active {
+    background: radial-gradient(circle at 40% 35%, #ff4444, #991111);
+    box-shadow: 0 0 12px 4px rgba(255, 50, 50, 0.6), 0 0 24px 8px rgba(255, 50, 50, 0.3);
+    animation: ap-pulse 2s ease-in-out infinite;
+  }
+
+  .ap-orb.ap-empty {
+    background: radial-gradient(circle at 40% 35%, #666666, #333333);
+    box-shadow: none;
+    animation: none;
+  }
+
+  .ap-number {
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: 900;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  }
+
+  @keyframes ap-pulse {
+    0%, 100% { box-shadow: 0 0 12px 4px rgba(255, 50, 50, 0.6), 0 0 24px 8px rgba(255, 50, 50, 0.3); }
+    50% { box-shadow: 0 0 20px 8px rgba(255, 50, 50, 0.8), 0 0 32px 12px rgba(255, 50, 50, 0.4); }
   }
 
   .bounty-strip {
@@ -1178,10 +1199,6 @@
     to { opacity: 1; transform: translateX(-50%) translateY(0); }
   }
 
-  .ap-strip strong {
-    font-size: 15px;
-    color: #7dd3fc;
-  }
 
   .card-backdrop {
     position: fixed;
@@ -1236,8 +1253,8 @@
   }
 
   .tip-ap {
-    top: 44px;
-    left: 12px;
+    top: 60px;
+    left: 16px;
   }
 
   .end-turn-btn {

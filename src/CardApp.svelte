@@ -91,6 +91,11 @@
   import RelicCollectionScreen from './ui/components/RelicCollectionScreen.svelte'
   import RelicRewardScreen from './ui/components/RelicRewardScreen.svelte'
   import RelicPickupToast from './ui/components/RelicPickupToast.svelte'
+  import TopicInterestsPage from './ui/components/TopicInterestsPage.svelte'
+  import KnowledgeLevelPopup from './ui/components/KnowledgeLevelPopup.svelte'
+  import { knowledgeLevelSelected } from './services/cardPreferences'
+  import { createDefaultCalibrationState, setGlobalKnowledgeLevel } from './services/difficultyCalibration'
+  import type { KnowledgeLevel } from './services/difficultyCalibration'
 
   function transitionScreen(target: Screen): void {
     const nextScreen = navigateToScreen(target, $currentScreen)
@@ -99,6 +104,16 @@
 
   function handleStartRun(): void {
     startNewRun()
+  }
+
+  function handleKnowledgeLevelSelect(level: KnowledgeLevel): void {
+    const save = get(playerSave)
+    if (save) {
+      const calibration = save.calibrationState ?? createDefaultCalibrationState()
+      const updated = setGlobalKnowledgeLevel(level, calibration)
+      playerSave.update(s => s ? { ...s, calibrationState: updated } : s)
+    }
+    knowledgeLevelSelected.set(true)
   }
 
   let libraryInitialTab = $state<'knowledge' | 'deckbuilder' | undefined>(undefined)
@@ -131,6 +146,10 @@
 
   function handleOpenSocial(): void {
     transitionScreen('social')
+  }
+
+  function handleOpenTopicInterests(): void {
+    transitionScreen('topicInterests')
   }
 
   let gainedFactText = $state<string | null>(null)
@@ -192,16 +211,9 @@
     }
   }
 
-  async function handleOnboardingBegin(slowReader: boolean, languageCode: string | null): Promise<void> {
+  async function handleOnboardingBegin(slowReader: boolean, _languageCode: string | null): Promise<void> {
     isSlowReader.set(slowReader)
-    if (languageCode) {
-      const firstLevel = languageService.getLevelsForLanguage(languageCode)[0]
-      if (firstLevel) {
-        languageService.setLanguageMode(languageCode, firstLevel.id)
-      }
-    } else {
-      languageService.disableLanguageMode()
-    }
+    languageService.disableLanguageMode()
     onDomainsSelected('natural_sciences', 'history')
     onArchetypeSelected('balanced')
     void ensurePhaserBooted()
@@ -424,6 +436,7 @@
       onOpenSocial={handleOpenSocial}
       onOpenRelicSanctum={() => handleOpenRelicSanctum()}
       onOpenDeckBuilder={handleOpenDeckBuilder}
+      onOpenTopicInterests={handleOpenTopicInterests}
     />
     {#if showActiveRunBanner}
       <div class="active-run-banner" data-testid="active-run-banner">
@@ -452,6 +465,10 @@
         </div>
       </div>
     {/if}
+  {/if}
+
+  {#if $currentScreen === 'hub' && $onboardingState.hasCompletedOnboarding && !$knowledgeLevelSelected}
+    <KnowledgeLevelPopup onselect={handleKnowledgeLevelSelect} />
   {/if}
 
   {#if $currentScreen === 'domainSelection'}
@@ -628,6 +645,10 @@
 
   {#if $currentScreen === 'settings'}
     <SettingsPanel onback={handleBackToMenu} />
+  {/if}
+
+  {#if $currentScreen === 'topicInterests'}
+    <TopicInterestsPage onBack={handleBackToMenu} />
   {/if}
 
   {#if $currentScreen === 'profile'}

@@ -22,6 +22,7 @@
     onOpenSocial: () => void
     onOpenRelicSanctum: () => { ok: true } | { ok: false; reason: string }
     onOpenDeckBuilder?: () => void
+    onOpenTopicInterests?: () => void
   }
 
   let {
@@ -36,6 +37,7 @@
     onOpenSocial,
     onOpenRelicSanctum,
     onOpenDeckBuilder,
+    onOpenTopicInterests,
   }: Props = $props()
 
   let showUpgradeModal = $state(false)
@@ -174,6 +176,18 @@
     labelTop="86%" labelLeft="16%"
   />
 
+  <!-- 9.5. Scroll - Topics & Difficulty -->
+  {#if onOpenTopicInterests}
+    <CampSpriteButton
+      spriteUrl={getCampSpriteUrl('scroll')}
+      label="Topics"
+      zIndex={25}
+      onclick={onOpenTopicInterests}
+      hitTop="68%" hitLeft="32%" hitWidth="18%" hitHeight="8%"
+      labelTop="67%" labelLeft="41%"
+    />
+  {/if}
+
   <!-- 10. Quest Board - Leaderboards -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('quest-board')}
@@ -230,8 +244,10 @@
   .study-mode-container {
     position: absolute;
     top: 3%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
     z-index: 30;
   }
 

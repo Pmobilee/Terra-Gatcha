@@ -5,7 +5,7 @@
 import type { EnemyTemplate, EnemyInstance, EnemyIntent } from '../data/enemies';
 import type { StatusEffect } from '../data/statusEffects';
 import { applyStatusEffect, tickStatusEffects, getStrengthModifier } from '../data/statusEffects';
-import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR } from '../data/balance';
+import { ENEMY_TURN_DAMAGE_CAP, FLOOR_DAMAGE_SCALING_PER_FLOOR, FLOOR_DAMAGE_SCALE_EARLY, FLOOR_DAMAGE_SCALE_MID } from '../data/balance';
 
 /**
  * Computes HP scaling factor for a given floor.
@@ -22,17 +22,17 @@ export function getFloorScaling(floor: number): number {
 /**
  * Computes damage scaling factor for a given floor.
  *
- * Floors 1-3: 85% damage (training wheels for new players).
- * Floors 4-6: 100% base damage.
- * Floors 7+: +3% per floor above 6.
+ * Floors 1-3: 90% damage (training wheels for new players).
+ * Floors 4-6: 115% base damage.
+ * Floors 7+: +5% per floor above 6.
  *
  * @param floor - The current floor number (1-indexed).
  * @returns The damage scaling multiplier.
  */
 export function getFloorDamageScaling(floor: number): number {
-  if (floor <= 3) return 0.85;
-  if (floor <= 6) return 1.0;
-  return 1.0 + (floor - 6) * FLOOR_DAMAGE_SCALING_PER_FLOOR;
+  if (floor <= 3) return FLOOR_DAMAGE_SCALE_EARLY;
+  if (floor <= 6) return FLOOR_DAMAGE_SCALE_MID;
+  return FLOOR_DAMAGE_SCALE_MID + (floor - 6) * FLOOR_DAMAGE_SCALING_PER_FLOOR;
 }
 
 /**

@@ -7,6 +7,7 @@ import { DEFAULT_POOL_SIZE, POOL_PRIMARY_PCT, POOL_SECONDARY_PCT } from '../data
 import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
 import { assignTypesToCards } from './cardTypeAllocator';
 import { shuffled } from './randomUtils';
+import type { DifficultyDistribution } from './difficultyCalibration';
 
 const DOMAIN_TO_CATEGORY: Record<FactDomain, string[]> = {
   general_knowledge: ['General Knowledge', 'Technology', 'Mathematics', 'Math'],
@@ -83,7 +84,7 @@ export function recordRunFacts(factIds: string[]): void {
  * Targets: easy (1-2) ~30%, medium (3) ~45%, hard (4-5) ~25%.
  * Shortfalls backfill from medium first, then any remaining bucket.
  */
-function stratifiedSample(facts: Fact[], target: number): Fact[] {
+function stratifiedSample(facts: Fact[], target: number, distribution?: DifficultyDistribution): Fact[] {
   const recentIds = getRecentFactIds();
   // Partition each bucket: non-recent (shuffled) first, then recent (shuffled) — so slicing prefers fresh facts
   const deprioritize = (arr: Fact[]) => {
@@ -95,8 +96,9 @@ function stratifiedSample(facts: Fact[], target: number): Fact[] {
   const medium = deprioritize(facts.filter(f => (f.difficulty ?? 3) === 3));
   const hard = deprioritize(facts.filter(f => (f.difficulty ?? 3) >= 4));
 
-  const easyTarget = Math.round(target * 0.30);
-  const hardTarget = Math.round(target * 0.25);
+  const dist = distribution ?? { easyPct: 0.30, mediumPct: 0.45, hardPct: 0.25 };
+  const easyTarget = Math.round(target * dist.easyPct);
+  const hardTarget = Math.round(target * dist.hardPct);
   const mediumTarget = target - easyTarget - hardTarget;
 
   const selected: Fact[] = [];
@@ -202,6 +204,8 @@ export function buildRunPool(
     probeRunNumber?: number
     probeDomain?: FactDomain
     subscriberCategoryFilters?: Record<string, string[]>
+    primaryDistribution?: DifficultyDistribution
+    secondaryDistribution?: DifficultyDistribution
   },
 ): Card[] {
   const poolSize = options?.poolSize ?? DEFAULT_POOL_SIZE;
@@ -243,7 +247,7 @@ export function buildRunPool(
     return filtered.length > 0 ? filtered : facts;
   }
 
-  function collectDomainFacts(domain: FactDomain, limit: number, excludedFactIds: Set<string>): Fact[] {
+  function collectDomainFacts(domain: FactDomain, limit: number, excludedFactIds: Set<string>, distribution?: DifficultyDistribution): Fact[] {
     const normalized = normalizeDomain(domain);
     const categories = DOMAIN_TO_CATEGORY[normalized] ?? DOMAIN_TO_CATEGORY.general_knowledge;
     const selected: Fact[] = [];
@@ -258,7 +262,7 @@ export function buildRunPool(
     const categoryFactsRaw = factsDB.getByCategory(categories, limit * 3)
       .filter(f => !excludedFactIds.has(f.id));
     const categoryFacts = applySubscriberSubcategoryFilter(normalized, categoryFactsRaw);
-    const stratified = stratifiedSample(categoryFacts, limit);
+    const stratified = stratifiedSample(categoryFacts, limit, distribution);
     for (const fact of stratified) {
       pushUnique(fact);
     }
@@ -289,11 +293,11 @@ export function buildRunPool(
     return facts.map((fact) => createCard(fact, stateByFactId.get(fact.id)));
   }
 
-  const primaryFacts = collectDomainFacts(primaryDomain, primaryTarget, new Set<string>());
+  const primaryFacts = collectDomainFacts(primaryDomain, primaryTarget, new Set<string>(), options?.primaryDistribution);
   const usedFactIds = new Set(primaryFacts.map((fact) => fact.id));
   const primaryCards = factsToCards(primaryFacts);
 
-  const secondaryFacts = collectDomainFacts(secondaryDomain, secondaryTarget, usedFactIds)
+  const secondaryFacts = collectDomainFacts(secondaryDomain, secondaryTarget, usedFactIds, options?.secondaryDistribution)
     .slice(0, secondaryTarget);
   for (const fact of secondaryFacts) usedFactIds.add(fact.id);
   const secondaryCards = factsToCards(secondaryFacts);

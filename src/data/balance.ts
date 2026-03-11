@@ -848,21 +848,21 @@ export const MASTERY_SCALING = {
 // Card Combat
 export const HAND_SIZE = 5;
 export const DEFAULT_POOL_SIZE = 120;
-export const POOL_PRIMARY_PCT = 0.40;
-export const POOL_SECONDARY_PCT = 0.30;
+export const POOL_PRIMARY_PCT = 0.30;
+export const POOL_SECONDARY_PCT = 0.25;
 export const POOL_REVIEW_PCT = 0.30;
 
 // Base effect values by card type
 // Uses Record<string, number> instead of Record<CardType, number> to avoid
 // circular imports (balance.ts should NOT import from card-types.ts).
 export const BASE_EFFECT: Record<string, number> = {
-  attack: 8,
-  shield: 6,
-  heal: 8,
+  attack: 10,
+  shield: 8,
+  heal: 10,
   utility: 0,
   buff: 0,
   debuff: 0,
-  regen: 3,
+  regen: 4,
   wild: 0,
 };
 
@@ -934,7 +934,7 @@ export const MAX_AP_PER_TURN = 5;
 
 // Post-encounter healing (AR-31: between-encounter recovery)
 /** Fraction of max HP healed after each non-defeat encounter. */
-export const POST_ENCOUNTER_HEAL_PCT = 0.15;
+export const POST_ENCOUNTER_HEAL_PCT = 0.08;
 /** Extra healing fraction for Story/Explorer mode (additive with POST_ENCOUNTER_HEAL_PCT). */
 export const EXPLORER_POST_ENCOUNTER_HEAL_BONUS = 0.10;
 /** Extra healing fraction after defeating a boss or mini-boss (AR-32, additive). */
@@ -942,15 +942,32 @@ export const POST_BOSS_ENCOUNTER_HEAL_BONUS = 0.10;
 /** HP multiplier for mini-bosses on floors 1-3 (makes early mini-bosses less tanky). */
 export const EARLY_MINI_BOSS_HP_MULTIPLIER = 0.60;
 
+// === AUTO-CALIBRATION (Difficulty Calibration System) ===
+/** Maximum per-domain offset magnitude from auto-calibration. */
+export const AUTO_CALIBRATE_MAX_OFFSET = 0.20;
+/** Offset step per run when auto-calibration triggers. */
+export const AUTO_CALIBRATE_STEP = 0.05;
+/** Accuracy threshold above which difficulty shifts up. */
+export const AUTO_CALIBRATE_ACCURACY_HIGH = 80;
+/** Accuracy threshold below which difficulty shifts down. */
+export const AUTO_CALIBRATE_ACCURACY_LOW = 50;
+/** Minimum answers in a domain for auto-calibration to trigger. */
+export const AUTO_CALIBRATE_MIN_ANSWERS = 5;
+
 /** Per-floor enemy damage scaling increment above floor 6. */
-export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.03;
+export const FLOOR_DAMAGE_SCALING_PER_FLOOR = 0.05;
+
+/** Enemy damage multiplier for floors 1-3 (training wheels). */
+export const FLOOR_DAMAGE_SCALE_EARLY = 0.90;
+/** Enemy damage multiplier for floors 4-6 (base). */
+export const FLOOR_DAMAGE_SCALE_MID = 1.15;
 
 /** Per-turn enemy damage caps by segment. Applied in executeEnemyIntent(). */
 export const ENEMY_TURN_DAMAGE_CAP: Record<1 | 2 | 3 | 4 | 'endless', number | null> = {
   1: 25,
-  2: 35,
-  3: 45,
-  4: 55,
+  2: 42,
+  3: 55,
+  4: 70,
   endless: null,
 };
 
@@ -1044,12 +1061,15 @@ export const SPEED_BONUS_THRESHOLD = 0.25;    // answer in first 25% of timer
 export const SPEED_BONUS_MULTIPLIER = 1.5;
 
 export const ECHO = {
-  REAPPEARANCE_CHANCE: 0.70,
+  REAPPEARANCE_CHANCE: 0.85,
   POWER_MULTIPLIER: 0.70,
-  FSRS_STABILITY_BONUS: 2.0,
-  MAX_ECHOES_PER_RUN: 15,
+  FSRS_STABILITY_BONUS: 3.0,
+  MAX_ECHOES_PER_RUN: 20,
   INSERT_DELAY_CARDS: 3,
 } as const;
+
+/** Wrong answer still applies this fraction of card effect (0 = full fizzle, 1 = no penalty). */
+export const FIZZLE_EFFECT_RATIO = 0.30;
 
 // === RELIC SYSTEM ===
 

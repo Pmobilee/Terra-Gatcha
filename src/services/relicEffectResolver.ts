@@ -15,7 +15,7 @@
 
 /** Effects resolved at the start of each player turn. */
 export interface TurnStartEffects {
-  /** Block granted at start of each turn (iron_buckler: +3). */
+  /** Block granted at start of each turn (iron_buckler: +5). */
   bonusBlock: number;
 }
 
@@ -27,7 +27,7 @@ export interface TurnStartEffects {
  */
 export function resolveTurnStartEffects(relicIds: Set<string>): TurnStartEffects {
   return {
-    bonusBlock: relicIds.has('iron_buckler') ? 3 : 0,
+    bonusBlock: relicIds.has('iron_buckler') ? 5 : 0,
   };
 }
 
@@ -87,7 +87,7 @@ export interface AttackModifiers {
   applyPoison: { value: number; turns: number } | null;
   /** Extra hits added to multi-hit attacks (chain_lightning_rod). */
   multiHitBonus: number;
-  /** Override for execute threshold if executioners_axe is held (0.4 instead of default 0.3). */
+  /** Override for execute threshold if executioners_axe is held (0.5 instead of default 0.3). */
   executeThresholdOverride: number | null;
 }
 
@@ -178,12 +178,12 @@ export function resolveAttackModifiers(
   // chain_lightning_rod — Multi-hit attacks get +2 extra hits
   const multiHitBonus = relicIds.has('chain_lightning_rod') ? 2 : 0;
 
-  // executioners_axe — Execute threshold 40% instead of 30%
-  const executeThresholdOverride = relicIds.has('executioners_axe') ? 0.4 : null;
+  // executioners_axe — Execute threshold 50% instead of 30%
+  const executeThresholdOverride = relicIds.has('executioners_axe') ? 0.5 : null;
 
-  // executioners_axe — +3 flat damage when enemy below 30% HP
+  // executioners_axe — +5 flat damage when enemy below 30% HP
   if (relicIds.has('executioners_axe') && context.enemyHpPercent < 0.3) {
-    flatDamageBonus += 3;
+    flatDamageBonus += 5;
   }
 
   return {
@@ -257,7 +257,7 @@ export interface DamageTakenEffects {
   reflectOnBlock: { percent: number } | null;
   /** Thorned vest reflect: 2 normally, 4 if player had no block (thorned_vest redesign). */
   thornReflect: number;
-  /** Percentage attack bonus when below HP threshold (iron_resolve: +15%). */
+  /** Percentage attack bonus when below HP threshold (iron_resolve: +25%). */
   lowHpAttackBonus: number;
 }
 
@@ -296,7 +296,7 @@ export function resolveDamageTakenEffects(
         ? { percent: 0.3 }
         : null,
     thornReflect,
-    lowHpAttackBonus: relicIds.has('iron_resolve') && context.playerHpPercent < 0.50 ? 0.15 : 0,
+    lowHpAttackBonus: relicIds.has('iron_resolve') && context.playerHpPercent < 0.50 ? 0.25 : 0,
   };
 }
 
@@ -310,7 +310,7 @@ export interface LethalSaveEffects {
   lastBreathBlock: number;
   /** Damage bonus granted when last_breath triggers. */
   lastBreathDamageBonus: number;
-  /** Whether phoenix_feather triggers (once per boss encounter). */
+  /** Whether phoenix_feather triggers (once per encounter). */
   phoenixSave: boolean;
   /** HP to restore as a fraction of max HP when phoenix triggers. */
   phoenixHealPercent: number;
@@ -332,7 +332,7 @@ export interface LethalContext {
 
 /**
  * Resolve whether any relic can save the player from a killing blow.
- * Priority: last_breath first (encounter-scoped), then phoenix_feather (boss-encounter-scoped).
+ * Priority: last_breath first (encounter-scoped), then phoenix_feather (encounter-scoped).
  *
  * @param relicIds - Set of relic IDs the player currently holds.
  * @param context  - Usage history for once-per-scope relics.
@@ -345,11 +345,10 @@ export function resolveLethalEffects(
   const lastBreathSave =
     relicIds.has('last_breath') && !context.lastBreathUsedThisEncounter;
 
-  // Phoenix only fires if last_breath didn't already save, and only during boss encounters
+  // Phoenix only fires if last_breath didn't already save (works on all encounters)
   const phoenixSave =
     !lastBreathSave &&
     relicIds.has('phoenix_feather') &&
-    context.isBossEncounter &&
     !context.phoenixUsedThisEncounter;
 
   return {
@@ -357,8 +356,8 @@ export function resolveLethalEffects(
     lastBreathBlock: lastBreathSave ? 8 : 0,
     lastBreathDamageBonus: lastBreathSave ? 5 : 0,
     phoenixSave,
-    phoenixHealPercent: phoenixSave ? 0.3 : 0,
-    phoenixBlock: phoenixSave ? 15 : 0,
+    phoenixHealPercent: phoenixSave ? 0.5 : 0,
+    phoenixBlock: phoenixSave ? 20 : 0,
     phoenixEmpowerTurns: phoenixSave ? 2 : 0,
   };
 }
@@ -431,9 +430,9 @@ export function resolvePerfectTurnBonus(relicIds: Set<string>): number {
 
 /** Effects resolved when the player answers a quiz question correctly. */
 export interface CorrectAnswerEffects {
-  /** HP healed per correct answer (scholars_hat: +2). */
+  /** HP healed per correct answer (scholars_hat: +3). */
   healHp: number;
-  /** Bonus damage to next attack from scholars_hat (+1 on correct). */
+  /** Bonus damage to next attack from scholars_hat (+2 on correct). */
   bonusDamage: number;
   /** Bonus damage to next attack from memory_palace (+4 after 2 correct in a row). */
   memoryPalaceBonus: number;
@@ -457,8 +456,8 @@ export function resolveCorrectAnswerEffects(
   context: CorrectAnswerContext,
 ): CorrectAnswerEffects {
   return {
-    healHp: relicIds.has('scholars_hat') ? 2 : 0,
-    bonusDamage: relicIds.has('scholars_hat') ? 1 : 0,
+    healHp: relicIds.has('scholars_hat') ? 3 : 0,
+    bonusDamage: relicIds.has('scholars_hat') ? 2 : 0,
     memoryPalaceBonus:
       relicIds.has('memory_palace') && context.correctStreakThisEncounter >= 2
         ? 4
@@ -578,13 +577,13 @@ export function resolveBaseDrawCount(relicIds: Set<string>): number {
 
 /**
  * Resolve the starting combo multiplier index.
- * Default combo starts at index 0 (1.0x); combo_ring starts at index 1 (1.10x via COMBO_RING_START_MULTIPLIER).
+ * Default combo starts at index 0 (1.0x); combo_ring starts at index 2 (1.25x).
  *
  * @param relicIds - Set of relic IDs the player currently holds.
- * @returns Starting combo index (0 or 1).
+ * @returns Starting combo index (0 or 2).
  */
 export function resolveComboStartValue(relicIds: Set<string>): number {
-  return relicIds.has('combo_ring') ? 1 : 0;
+  return relicIds.has('combo_ring') ? 2 : 0;
 }
 
 // ─── Speed Bonus ────────────────────────────────────────────────────

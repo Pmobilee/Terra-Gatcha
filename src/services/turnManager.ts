@@ -30,6 +30,7 @@ import {
   ENRAGE_PHASE1_DURATION,
   ENRAGE_LOW_HP_THRESHOLD,
   ENRAGE_LOW_HP_BONUS,
+  FIZZLE_EFFECT_RATIO,
 } from '../data/balance';
 import { MECHANICS_BY_TYPE } from '../data/mechanics';
 import { difficultyMode } from './cardPreferences';
@@ -382,21 +383,38 @@ export function playCardAction(
     turnState.comboCount = turnState.baseComboCount;
     turnState.cardsPlayedThisTurn += 1;
     turnState.isPerfectTurn = false;
-    turnState.turnLog.push({
-      type: 'fizzle',
-      message: 'Card fizzled — wrong answer',
-      cardId,
-    });
 
+    // Partial fizzle: wrong answers still apply a fraction of the base effect
+    const fizzleBase = Math.round(card.baseEffectValue * FIZZLE_EFFECT_RATIO);
     const fizzledEffect: CardEffectResult = {
       ...createNoEffect(card),
       targetHit: true,
+      rawValue: fizzleBase,
+      finalValue: fizzleBase,
+      damageDealt: (card.cardType === 'attack' || card.cardType === 'wild') ? fizzleBase : 0,
+      shieldApplied: card.cardType === 'shield' ? fizzleBase : 0,
+      healApplied: (card.cardType === 'heal' || card.cardType === 'regen') ? fizzleBase : 0,
     };
+
+    // Apply partial fizzle effects to game state
+    if (fizzledEffect.damageDealt > 0) {
+      const damageResult = applyDamageToEnemy(enemy, fizzledEffect.damageDealt);
+      fizzledEffect.enemyDefeated = damageResult.defeated;
+      turnState.damageDealtThisTurn += fizzledEffect.damageDealt;
+    }
+    if (fizzledEffect.shieldApplied > 0) applyShield(playerState, fizzledEffect.shieldApplied);
+    if (fizzledEffect.healApplied > 0) healPlayer(playerState, fizzledEffect.healApplied);
+
+    turnState.turnLog.push({
+      type: 'fizzle',
+      message: `Card fizzled — wrong answer (${Math.round(FIZZLE_EFFECT_RATIO * 100)}% effect applied)`,
+      cardId,
+    });
 
     return {
       effect: fizzledEffect,
       comboCount: turnState.comboCount,
-      enemyDefeated: false,
+      enemyDefeated: fizzledEffect.enemyDefeated,
       fizzled: true,
       blocked: false,
       isPerfectTurn: false,

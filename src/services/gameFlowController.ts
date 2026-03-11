@@ -77,6 +77,7 @@ import {
 import { recordEndlessDepthsRun } from './endlessDepthsService'
 import { apiClient } from './apiClient'
 import { enqueueCompetitiveScoreSubmission } from './scoreSubmissionQueue'
+import { updateAutoCalibration, createDefaultCalibrationState } from './difficultyCalibration'
 import {
   activateDeterministicRandom,
   deactivateDeterministicRandom,
@@ -435,6 +436,17 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
       })
     }
   }
+  // Auto-calibrate difficulty based on per-domain accuracy
+  const calibSave = get(playerSave);
+  if (calibSave) {
+    const calibration = calibSave.calibrationState ?? createDefaultCalibrationState();
+    if (calibration.autoCalibrate && run.domainAccuracy) {
+      const updated = updateAutoCalibration(run.domainAccuracy, calibration);
+      playerSave.update(s => s ? { ...s, calibrationState: updated } : s);
+      persistPlayer();
+    }
+  }
+
   activeRunMode = 'standard'
   activeDailySeed = null
   deactivateDeterministicRandom()

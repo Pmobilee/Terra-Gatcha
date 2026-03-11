@@ -336,7 +336,7 @@ Facts get HARDER as they approach mastery. Bjork's desirable difficulties: harde
 
 ### Mastery Trial
 
-Fact at Tier 2b + stability >30d + 7 consecutive correct → qualifies.
+Fact at Tier 2b + stability ≥10d + 4 consecutive correct → qualifies.
 
 - Golden card in hand
 - 4-second timer (regardless of floor, no slow reader bonus)
@@ -795,7 +795,7 @@ Adds flat +3 seconds to all timers. Timer bar color changes from red to amber (l
 
 ## 11. Echo Mechanic
 
-When a fact is answered wrong during a run, 70% chance it reappears later as an "Echo" card.
+When a fact is answered wrong during a run, 85% chance it reappears later as an "Echo" card.
 
 **Visual:** Translucent/ghostly appearance. Shimmers slightly. Clearly distinct from normal cards.
 
@@ -900,7 +900,7 @@ Instead of a separate placement test (immersion-breaking) or accepting slow cali
 
 **Mechanics:**
 
-1. **Correct + Fast Response (Runs 1-3 only):** Answer a question correctly AND within 50% of the allotted timer → count as 2 consecutive correct answers instead of 1. This doubled stability gain accelerates promotion to Tier 2a (5d+ stability).
+1. **Correct + Fast Response (Runs 1-3 only):** Answer a question correctly AND within 50% of the allotted timer → count as 2 consecutive correct answers instead of 1. This doubled stability gain accelerates promotion to Tier 2a (2d+ stability).
 
 2. **Run Accuracy Bonus (Runs 1-3):** Achieve 80%+ accuracy across the entire run → all correctly-answered facts receive a flat stability bonus of +2 days. This ensures even medium-difficulty facts tier up faster if the player demonstrates broad knowledge.
 
@@ -1444,13 +1444,13 @@ FSRS replaced SM-2 as Anki default 2023. Tracks Difficulty (1-10), Stability (da
 
 | Source | % |
 |--------|---|
-| Primary domain | 40% (~48 facts) |
-| Secondary domain | 30% (~36 facts) |
-| FSRS review queue | 30% (~36 facts, only from previously engaged domains) |
+| Primary domain | 30% (~36 facts) |
+| Secondary domain | 25% (~30 facts) |
+| FSRS review queue | 45% (~54 facts, only from previously engaged domains) |
 
 Players never see facts from domains they haven't opted into.
 
-**Study preset override:** When a study preset is selected (see §26b), the preset's domain + subcategory filters replace the primary/secondary split. `presetPoolBuilder.ts` resolves the preset into a weighted fact pool, maintaining the 30% FSRS review queue.
+**Study preset override:** When a study preset is selected (see §26b), the preset's domain + subcategory filters replace the primary/secondary split. `presetPoolBuilder.ts` resolves the preset into a weighted fact pool, maintaining the 45% FSRS review queue.
 
 ### Question Variety — Reducing Repetition
 
@@ -1464,7 +1464,7 @@ Two systems work together to ensure players don't see the same facts repeatedly 
 
 This preserves FSRS integrity (overdue cards are still strongly prioritized) while introducing enough randomness that the opening hand of each run feels fresh.
 
-**Recently-played deprioritization:** The last 2 runs' fact IDs are stored in localStorage. When building the domain portion of the run pool (~70% of total), facts seen in recent runs are deprioritized. Review cards (FSRS queue, ~30% of pool) are NOT affected — FSRS scheduling always takes priority for spaced repetition correctness.
+**Recently-played deprioritization:** The last 2 runs' fact IDs are stored in localStorage. When building the domain portion of the run pool (~55% of total), facts seen in recent runs are deprioritized. Review cards (FSRS queue, ~45% of pool) are NOT affected — FSRS scheduling always takes priority for spaced repetition correctness.
 
 ### Stratified Difficulty Sampling
 
@@ -1520,9 +1520,9 @@ interface PlayerFactState {
 
 ```typescript
 function getCardTier(state: PlayerFactState): '1' | '2a' | '2b' | '3' {
-  if (state.stability >= 30 && state.consecutiveCorrect >= 7 && state.passedMasteryTrial) return '3';
-  if (state.stability >= 15 && state.consecutiveCorrect >= 5) return '2b';
-  if (state.stability >= 5 && state.consecutiveCorrect >= 3) return '2a';
+  if (state.stability >= 10 && state.consecutiveCorrect >= 4 && state.passedMasteryTrial) return '3';
+  if (state.stability >= 5 && state.consecutiveCorrect >= 3) return '2b';
+  if (state.stability >= 2 && state.consecutiveCorrect >= 2) return '2a';
   return '1';
 }
 ```
@@ -2175,7 +2175,7 @@ data/playtests/
 | Relic | Permanent passive buff collected during runs. 50 total (25 free + 25 unlockable). No limit on active relics per run. |
 | Mastery Coin | Meta-currency earned by mastering facts (1 per Tier 3). Spent to unlock relics in the Relic Archive. |
 | Relic Archive | Hub screen (via Anvil) for browsing, unlocking, and configuring relics. Replaces old Relic Sanctum. |
-| Echo | Ghost card from wrong answer. 70% reappearance chance. Reduced power. |
+| Echo | Ghost card from wrong answer. 85% reappearance chance. Reduced power. |
 | Mastery Trial | Final exam: 4s timer, 5 close distractors. Pass = Tier 3. |
 | Mechanic | Specific behavior within a card type (Strike, Multi-Hit, Thorns, etc.). Assigned per-run. |
 | Bounty Quest | Optional per-run bonus objective with rewards. |

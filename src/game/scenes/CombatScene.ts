@@ -3,27 +3,27 @@ import { getDeviceTier } from '../../services/deviceTierService'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
-const ENEMY_Y_PCT = 0.35
 const ENEMY_X_PCT = 0.50
-const PLAYER_HP_Y_PCT = 0.88
 const ENEMY_HP_Y_PCT = 0.12
 const FLOOR_COUNTER_Y = 16
 const INTENT_ICON_OFFSET_Y = -40
 const RELIC_TRAY_Y_PCT = 0.92
+const FLOOR_LINE_PCT = 0.80
 
 /** Enemy HP bar dimensions. */
 const ENEMY_HP_BAR_W = 160
 const ENEMY_HP_BAR_H = 12
 
-/** Player HP bar dimensions. */
-const PLAYER_HP_BAR_W = 140
-const PLAYER_HP_BAR_H = 16
-const PLAYER_HP_X = 12
+/** Player HP bar dimensions (vertical, right side). */
+const PLAYER_HP_BAR_WIDTH = 16
+const PLAYER_HP_BAR_X_OFFSET = 24
+const PLAYER_HP_BAR_TOP_PCT = 0.35
+const PLAYER_HP_BAR_BOTTOM_PCT = 0.82
 
 /** Enemy first-person sprite sizes by enemy tier. */
-const ENEMY_SIZE_COMMON = 200
-const ENEMY_SIZE_ELITE = 250
-const ENEMY_SIZE_BOSS = 300
+const ENEMY_SIZE_COMMON = 280
+const ENEMY_SIZE_ELITE = 340
+const ENEMY_SIZE_BOSS = 400
 
 /** Color constants. */
 const COLOR_HP_RED = 0xe74c3c
@@ -107,6 +107,13 @@ export class CombatScene extends Phaser.Scene {
   private enemyBlockText!: Phaser.GameObjects.Text
   private sceneReady = false
 
+  // ── Player block display ───────────────────────────────
+  private currentPlayerBlock = 0
+  private playerBlockIcon!: Phaser.GameObjects.Text
+  private playerBlockText!: Phaser.GameObjects.Text
+  private playerBarMaxH = 0
+  private currentEnemyY = 0
+
   // ── State ────────────────────────────────────────────────
   private currentEnemyHP = 0
   private currentEnemyMaxHP = 0
@@ -131,6 +138,23 @@ export class CombatScene extends Phaser.Scene {
 
   /** Preload combat assets (background + enemy sprites). */
   preload(): void {
+    const pw = this.scale.width
+    const ph = this.scale.height
+    const loadBarBg = this.add.rectangle(pw / 2, ph / 2, 200, 16, 0x333333)
+    const loadBarFill = this.add.rectangle(pw / 2 - 100, ph / 2, 0, 16, 0xf1c40f).setOrigin(0, 0.5)
+    const loadText = this.add.text(pw / 2, ph / 2 - 24, 'Loading...', {
+      fontFamily: 'monospace', fontSize: '12px', color: '#cccccc',
+    }).setOrigin(0.5, 0.5)
+
+    this.load.on('progress', (value: number) => {
+      loadBarFill.displayWidth = 200 * value
+    })
+    this.load.on('complete', () => {
+      loadBarBg.destroy()
+      loadBarFill.destroy()
+      loadText.destroy()
+    })
+
     const suffix = getDeviceTier() === 'low-end' ? '_1x.webp' : '.webp'
     const enemySprite = (name: string) => `assets/sprites/enemies/${name}${suffix}`
 
@@ -219,8 +243,10 @@ export class CombatScene extends Phaser.Scene {
     ).setOrigin(0.5, 0.5).setDepth(12).setVisible(false)
 
     // ── Enemy sprite placeholder ──────────────────────────
-    const enemyY = this.displayH * ENEMY_Y_PCT
+    const floorY = this.displayH * FLOOR_LINE_PCT
     const baseEnemySize = enemyDisplaySize('common')
+    const enemyY = floorY - baseEnemySize / 2
+    this.currentEnemyY = enemyY
     this.enemySprite = this.add.rectangle(
       w * ENEMY_X_PCT, enemyY,
       baseEnemySize, baseEnemySize,
@@ -250,29 +276,45 @@ export class CombatScene extends Phaser.Scene {
     }).setOrigin(0.5, 0).setDepth(7)
     this.enemyNameText.setVisible(false)
 
-    // ── Player HP bar ─────────────────────────────────────
-    const playerHpY = this.displayH * PLAYER_HP_Y_PCT
+    // ── Player HP bar (vertical, right side) ─────────────────
+    const barX = w - PLAYER_HP_BAR_X_OFFSET
+    const barTop = h * PLAYER_HP_BAR_TOP_PCT
+    const barBottom = h * PLAYER_HP_BAR_BOTTOM_PCT
+    this.playerBarMaxH = barBottom - barTop
+
     this.playerHpBarBg = this.add.rectangle(
-      PLAYER_HP_X + PLAYER_HP_BAR_W / 2, playerHpY,
-      PLAYER_HP_BAR_W, PLAYER_HP_BAR_H,
+      barX, barTop + this.playerBarMaxH / 2,
+      PLAYER_HP_BAR_WIDTH, this.playerBarMaxH,
       COLOR_BAR_BG,
-    ).setOrigin(0.5, 0.5)
+    ).setOrigin(0.5, 0.5).setDepth(8)
 
     this.playerHpBarFill = this.add.rectangle(
-      PLAYER_HP_X, playerHpY,
-      PLAYER_HP_BAR_W, PLAYER_HP_BAR_H,
+      barX, barBottom,
+      PLAYER_HP_BAR_WIDTH, this.playerBarMaxH,
       COLOR_HP_GREEN,
-    ).setOrigin(0, 0.5)
+    ).setOrigin(0.5, 1).setDepth(8)
 
-    this.playerHpText = this.add.text(PLAYER_HP_X + PLAYER_HP_BAR_W / 2, playerHpY, `${this.currentPlayerHP} / ${this.currentPlayerMaxHP}`, {
+    this.playerHpText = this.add.text(barX, barBottom + 14, `${this.currentPlayerHP}`, {
       fontFamily: 'monospace',
       fontSize: '11px',
       color: '#ffffff',
       align: 'center',
-    }).setOrigin(0.5, 0.5)
+    }).setOrigin(0.5, 0).setDepth(8)
+
+    // ── Player block icon (above HP bar) ────────────────────
+    this.playerBlockIcon = this.add.text(barX, barTop - 16, '\u{1F6E1}\u{FE0F}', {
+      fontSize: '16px',
+    }).setOrigin(0.5, 0.5).setVisible(false).setDepth(12)
+
+    this.playerBlockText = this.add.text(barX, barTop - 16, '', {
+      fontFamily: 'monospace',
+      fontSize: '10px',
+      color: '#ffffff',
+      align: 'center',
+    }).setOrigin(0.5, 0.5).setVisible(false).setDepth(13)
 
     // ── Relic tray container ──────────────────────────────
-    this.relicContainer = this.add.container(PLAYER_HP_X + PLAYER_HP_BAR_W / 2, this.displayH * RELIC_TRAY_Y_PCT)
+    this.relicContainer = this.add.container(w / 2, this.displayH * RELIC_TRAY_Y_PCT)
 
     // ── Screen flash overlay (full display zone, max depth) ─
     this.flashRect = this.add.rectangle(
@@ -341,7 +383,9 @@ export class CombatScene extends Phaser.Scene {
     this.currentEnemyCategory = category
     const size = enemyDisplaySize(category)
     const enemyX = this.scale.width * ENEMY_X_PCT
-    const enemyY = this.displayH * ENEMY_Y_PCT
+    const floorY = this.displayH * FLOOR_LINE_PCT
+    const enemyY = floorY - size / 2
+    this.currentEnemyY = enemyY
 
     // Reset enemy sprite for new encounter
     const texture = enemyTextureKey(this.currentEnemyId, 'idle')
@@ -424,6 +468,15 @@ export class CombatScene extends Phaser.Scene {
     this.refreshPlayerHpBar(animate && !this.reduceMotion)
   }
 
+  /** Update player block display. */
+  updatePlayerBlock(block: number, animate = true): void {
+    if (!this.sceneReady) return
+    this.currentPlayerBlock = block
+    this.refreshPlayerBlock(animate && !this.reduceMotion)
+    // Re-color HP bar based on block state
+    this.refreshPlayerHpBar(animate && !this.reduceMotion)
+  }
+
   /** Set floor and encounter counters. */
   setFloorInfo(floor: number, encounter: number, totalEncounters: number): void {
     if (!this.sceneReady) return
@@ -493,7 +546,7 @@ export class CombatScene extends Phaser.Scene {
   /** Play enemy attack animation (lunge toward player). */
   playEnemyAttackAnimation(): void {
     if (this.reduceMotion) return
-    const startY = this.displayH * ENEMY_Y_PCT
+    const startY = this.currentEnemyY
     const startScale = this.enemySprite.scaleX
     this.tweens.add({
       targets: this.enemySprite,
@@ -542,9 +595,9 @@ export class CombatScene extends Phaser.Scene {
   /** Play heal effect (green particles rising near player HP bar). */
   playHealEffect(): void {
     if (this.reduceMotion) return
-
-    const playerHpY = this.displayH * PLAYER_HP_Y_PCT
-    this.burstParticles(12, this.scale.width / 2, playerHpY, COLOR_HP_GREEN)
+    const barX = this.scale.width - PLAYER_HP_BAR_X_OFFSET
+    const barMidY = this.displayH * (PLAYER_HP_BAR_TOP_PCT + PLAYER_HP_BAR_BOTTOM_PCT) / 2
+    this.burstParticles(12, barX, barMidY, COLOR_HP_GREEN)
   }
 
   /** Flash the display zone white. */
@@ -737,28 +790,38 @@ export class CombatScene extends Phaser.Scene {
     }
   }
 
-  /** Refresh player HP bar fill width, color, and text. */
+  /** Refresh player HP bar fill height, color, and text. */
   private refreshPlayerHpBar(animate: boolean): void {
     const ratio = this.currentPlayerMaxHP > 0
       ? this.currentPlayerHP / this.currentPlayerMaxHP
       : 0
-    const targetW = Math.max(1, ratio * PLAYER_HP_BAR_W)
-    const color = playerHpColor(ratio)
+    const targetH = Math.max(1, ratio * this.playerBarMaxH)
+    const color = this.currentPlayerBlock > 0 ? 0x3498db : playerHpColor(ratio)
 
     this.playerHpBarFill.setFillStyle(color)
 
     if (animate) {
       this.tweens.add({
         targets: this.playerHpBarFill,
-        displayWidth: targetW,
+        displayHeight: targetH,
         duration: 400,
         ease: 'Power2',
       })
     } else {
-      this.playerHpBarFill.displayWidth = targetW
+      this.playerHpBarFill.displayHeight = targetH
     }
 
-    this.playerHpText.setText(`${this.currentPlayerHP} / ${this.currentPlayerMaxHP}`)
+    this.playerHpText.setText(`${this.currentPlayerHP}`)
+  }
+
+  /** Refresh player block icon and text visibility. */
+  private refreshPlayerBlock(animate: boolean): void {
+    const hasBlock = this.currentPlayerBlock > 0
+    this.playerBlockIcon.setVisible(hasBlock)
+    this.playerBlockText.setVisible(hasBlock)
+    if (hasBlock) {
+      this.playerBlockText.setText(`${this.currentPlayerBlock}`)
+    }
   }
 
   /** Cleanup on shutdown/sleep — stop tweens, reset positions. */

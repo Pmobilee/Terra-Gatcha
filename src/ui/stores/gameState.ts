@@ -32,6 +32,7 @@ export type Screen =
   | 'onboarding'
   | 'ageSelection'
   | 'settings'
+  | 'topicInterests'
 
 const SCREEN_STORAGE_KEY = 'card:currentScreen'
 
@@ -62,6 +63,7 @@ const VALID_SCREENS: Screen[] = [
   'onboarding',
   'ageSelection',
   'settings',
+  'topicInterests',
 ]
 
 const PERSISTABLE_SCREENS = new Set<Screen>([
@@ -75,6 +77,7 @@ const PERSISTABLE_SCREENS = new Set<Screen>([
   'leaderboards',
   'social',
   'relicSanctum',
+  'topicInterests',
 ])
 
 function normalizeHomeScreen(screen: Screen): Screen {

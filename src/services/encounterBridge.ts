@@ -40,6 +40,7 @@ import {
   resolveBaseDrawCount,
   resolveComboStartValue,
 } from './relicEffectResolver';
+import { resolveDistributionForDomain, createDefaultCalibrationState } from './difficultyCalibration';
 
 /** Create a shallow copy of TurnState with fresh array references for Svelte reactivity. */
 function freshTurnState(ts: TurnState): TurnState {
@@ -155,6 +156,7 @@ function syncCombatScene(turnState: TurnState): void {
       turnState.enemy.nextIntent.value > 0 ? turnState.enemy.nextIntent.value : undefined,
     );
     scene.updatePlayerHP(turnState.playerState.hp, turnState.playerState.maxHP, false);
+    scene.updatePlayerBlock(turnState.playerState.shield, false);
     scene.updateEnemyBlock(turnState.enemy.block, false);
     scene.setFloorInfo(
       turnState.deck.currentFloor,
@@ -204,10 +206,15 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     const subscriberCategoryFilters = save && isSubscriber(save)
       ? (save.subscriberCategoryFilters ?? undefined)
       : undefined;
+    const calibration = save?.calibrationState ?? createDefaultCalibrationState();
+    const primaryDistribution = resolveDistributionForDomain(run.primaryDomain, calibration);
+    const secondaryDistribution = resolveDistributionForDomain(run.secondaryDomain, calibration);
     activeRunPool = buildRunPool(run.primaryDomain, run.secondaryDomain, reviewStates, {
       probeRunNumber: run.primaryDomainRunNumber,
       probeDomain: run.primaryDomain,
       subscriberCategoryFilters,
+      primaryDistribution,
+      secondaryDistribution,
     });
     // Record pool fact IDs for recently-played deprioritization in future runs
     recordRunFacts(activeRunPool.map(c => c.factId));
@@ -370,7 +377,7 @@ export function handlePlayCard(
   const run = get(activeRunState);
 
   if (run && playedCard) {
-    recordCardPlay(run, correct, result.comboCount, playedCard.factId);
+    recordCardPlay(run, correct, result.comboCount, playedCard.factId, playedCard.domain);
     analyticsService.track({
       name: 'card_play',
       properties: {
@@ -479,6 +486,7 @@ export function handlePlayCard(
     scene.updateEnemyHP(result.turnState.enemy.currentHP, true);
     scene.updateEnemyBlock(result.turnState.enemy.block, true);
     scene.updatePlayerHP(result.turnState.playerState.hp, result.turnState.playerState.maxHP, true);
+    scene.updatePlayerBlock(result.turnState.playerState.shield, true);
     if (result.enemyDefeated) {
       playCardAudio('enemy-death');
       scene.playEnemyDeathAnimation();
@@ -553,6 +561,7 @@ export function handleEndTurn(): void {
       scene.playPlayerDamageFlash();
     }
     scene.updatePlayerHP(result.turnState.playerState.hp, result.turnState.playerState.maxHP, true);
+    scene.updatePlayerBlock(result.turnState.playerState.shield, true);
     scene.updateEnemyHP(result.turnState.enemy.currentHP, true);
     scene.updateEnemyBlock(result.turnState.enemy.block, true);
     scene.setEnemyIntent(

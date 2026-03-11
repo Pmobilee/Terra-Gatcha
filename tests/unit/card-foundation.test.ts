@@ -122,7 +122,7 @@ describe('cardFactory', () => {
     });
 
     it('returns tier 2a at first mastery threshold', () => {
-      expect(computeTier(makeReviewState({ stability: 5, consecutiveCorrect: 3 }))).toBe('2a');
+      expect(computeTier(makeReviewState({ stability: 3, consecutiveCorrect: 2 }))).toBe('2a');
     });
 
     it('returns tier 2b before mastery trial pass', () => {
@@ -136,6 +136,34 @@ describe('cardFactory', () => {
         passedMasteryTrial: true,
       });
       expect(computeTier(state)).toBe('3');
+    });
+
+    // --- New boundary tests for relaxed thresholds ---
+    it('returns tier 2a at exact new boundary (stability=2, consecutive=2)', () => {
+      expect(computeTier(makeReviewState({ stability: 2, consecutiveCorrect: 2 }))).toBe('2a');
+    });
+
+    it('returns tier 1 just below tier 2a boundary', () => {
+      expect(computeTier(makeReviewState({ stability: 1, consecutiveCorrect: 2 }))).toBe('1');
+      expect(computeTier(makeReviewState({ stability: 2, consecutiveCorrect: 1 }))).toBe('1');
+    });
+
+    it('returns tier 2b at exact new boundary (stability=5, consecutive=3)', () => {
+      expect(computeTier(makeReviewState({ stability: 5, consecutiveCorrect: 3 }))).toBe('2b');
+    });
+
+    it('returns tier 2a just below tier 2b boundary', () => {
+      expect(computeTier(makeReviewState({ stability: 4, consecutiveCorrect: 3 }))).toBe('2a');
+      expect(computeTier(makeReviewState({ stability: 5, consecutiveCorrect: 2 }))).toBe('2a');
+    });
+
+    it('returns tier 3 at exact new boundary (stability=10, consecutive=4, masteryTrial=true)', () => {
+      expect(computeTier(makeReviewState({ stability: 10, consecutiveCorrect: 4, passedMasteryTrial: true }))).toBe('3');
+    });
+
+    it('returns tier 2b just below tier 3 boundary', () => {
+      expect(computeTier(makeReviewState({ stability: 9, consecutiveCorrect: 4, passedMasteryTrial: true }))).toBe('2b');
+      expect(computeTier(makeReviewState({ stability: 10, consecutiveCorrect: 3, passedMasteryTrial: true }))).toBe('2b');
     });
   });
 

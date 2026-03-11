@@ -495,7 +495,7 @@
     --card-w: calc(var(--gw, 390px) * 0.22);
     --card-h: calc(var(--card-w) * 1.5);
     position: absolute;
-    bottom: 68px;
+    bottom: calc(68px + 10vh);
     left: 50%;
     z-index: 20;
     transform: translateX(-50%);

@@ -16,9 +16,9 @@ function normalizeState(state: TierStateLike | undefined): Required<TierStateLik
 
 export function getCardTier(state: TierStateLike | undefined): CardTier {
   const normalized = normalizeState(state);
-  if (normalized.stability >= 30 && normalized.consecutiveCorrect >= 7 && normalized.passedMasteryTrial) return '3';
-  if (normalized.stability >= 15 && normalized.consecutiveCorrect >= 5) return '2b';
-  if (normalized.stability >= 5 && normalized.consecutiveCorrect >= 3) return '2a';
+  if (normalized.stability >= 10 && normalized.consecutiveCorrect >= 4 && normalized.passedMasteryTrial) return '3';
+  if (normalized.stability >= 5 && normalized.consecutiveCorrect >= 3) return '2b';
+  if (normalized.stability >= 2 && normalized.consecutiveCorrect >= 2) return '2a';
   return '1';
 }
 
@@ -43,8 +43,8 @@ export function qualifiesForMasteryTrial(state: TierStateLike | undefined): bool
   const normalized = normalizeState(state);
   return (
     getCardTier(normalized) === '2b' &&
-    normalized.stability >= 30 &&
-    normalized.consecutiveCorrect >= 7 &&
+    normalized.stability >= 10 &&
+    normalized.consecutiveCorrect >= 4 &&
     !normalized.passedMasteryTrial
   );
 }
