@@ -5,6 +5,7 @@
   import { getCardFramePath } from '../utils/domainAssets'
   import { activeRewardBundle } from '../../ui/stores/gameState'
   import { getRandomRoomBg } from '../../data/backgroundManifest'
+  import { untrack } from 'svelte'
 
   interface Props {
     options: Card[]
@@ -218,40 +219,46 @@
   }
 
   $effect(() => {
-    if (options.length === 0) {
-      selectedType = null
-      lastOptionsRef = []
-      return
-    }
+    // Only depend on options and bundle
+    const opts = options
+    const b = bundle
 
-    // Only reset reward step when options actually change (new reward screen)
-    const isNewReward = options !== lastOptionsRef
-    if (isNewReward) {
-      lastOptionsRef = options
-      if (!bundle || (bundle.goldEarned === 0 && bundle.healAmount === 0)) {
-        rewardStep = 'card'
-      } else {
-        rewardStep = 'gold'
+    untrack(() => {
+      if (opts.length === 0) {
+        selectedType = null
+        lastOptionsRef = []
+        return
       }
-      stepVisible = false
-      setTimeout(() => {
-        stepVisible = true
-      }, 100)
 
-      if (!hasPlayedIntroCue) {
-        playCardAudio('combo-3')
-        hasPlayedIntroCue = true
+      // Only reset reward step when options actually change (new reward screen)
+      const isNewReward = opts !== lastOptionsRef
+      if (isNewReward) {
+        lastOptionsRef = opts
+        if (!b || (b.goldEarned === 0 && b.healAmount === 0)) {
+          rewardStep = 'card'
+        } else {
+          rewardStep = 'gold'
+        }
+        stepVisible = false
+        setTimeout(() => {
+          stepVisible = true
+        }, 100)
+
+        if (!hasPlayedIntroCue) {
+          playCardAudio('combo-3')
+          hasPlayedIntroCue = true
+        }
+        collectLocked = false
+        collectingType = null
+        showSkipConfirm = false
+        altarBiome = pickBiome(opts)
+        iconByType = buildIconMap(opts)
       }
-      collectLocked = false
-      collectingType = null
-      showSkipConfirm = false
-      altarBiome = pickBiome(options)
-      iconByType = buildIconMap(options)
-    }
 
-    if (selectedType === null || !options.some((option) => option.cardType === selectedType)) {
-      selectedType = options[0]?.cardType ?? null
-    }
+      if (selectedType === null || !opts.some((option) => option.cardType === selectedType)) {
+        selectedType = opts[0]?.cardType ?? null
+      }
+    })
   })
 
   function isSelected(option: Card): boolean {
