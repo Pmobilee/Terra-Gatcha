@@ -6,7 +6,10 @@
 
   let { count, isPerfectTurn = false }: Props = $props()
 
-  let displayText = $derived(count >= 5 ? 'PERFECT!' : count >= 2 ? `${count}x` : '')
+  let displayText = $derived(
+    isPerfectTurn ? 'PERFECT!' :
+    count >= 2 ? `${count}x` : ''
+  )
   let visible = $derived(count >= 2)
   // Track previous count without causing effect loops
   let animKey = $state(0)
@@ -60,15 +63,17 @@
   {#key animKey}
     <div
       class="combo-counter"
-      class:combo-3={count >= 3}
-      class:combo-4={count >= 4}
-      class:combo-5={count >= 5}
+      class:combo-2={count === 2}
+      class:combo-3={count === 3}
+      class:combo-4={count === 4}
+      class:combo-5={count === 5}
+      class:combo-6={count >= 6}
       class:combo-break={showBreak}
       class:perfect-turn={isPerfectTurn}
       data-testid="combo-counter"
     >
       <span class="combo-text">{displayText}</span>
-      {#if count >= 3}
+      {#if count >= 5}
         <div class="particle-ring">
           {#each particles as p}
             <div
@@ -85,22 +90,41 @@
 <style>
   .combo-counter {
     position: absolute;
-    top: 8px;
-    right: 16px;
-    z-index: 50;
-    animation: comboBounce 300ms ease-out;
+    right: 10px;
+    bottom: 64px;
+    z-index: 18;
+    pointer-events: none;
+    animation: comboSlamIn 220ms ease-out;
   }
   .combo-text {
-    font-size: 20px;
-    font-weight: 900;
-    color: #FFD700;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+    font-size: 14px;
+    font-weight: 700;
+    color: #facc15;
+    text-shadow: 0 0 6px rgba(250, 204, 21, 0.35);
+    opacity: 0.9;
   }
-  .combo-3 .combo-text { font-size: 24px; }
-  .combo-4 .combo-text { font-size: 28px; }
+  /* Tier 2 (1.15x): subtle pulse */
+  .combo-2 .combo-text {
+    font-size: 14px;
+    text-shadow: 0 0 5px rgba(250, 204, 21, 0.3);
+  }
+  /* Tier 3 (1.3x): particle ring + bigger text */
+  .combo-3 .combo-text { font-size: 15px; }
+  /* Tier 4 (1.5x): screen edge gold bleed + enhanced glow */
+  .combo-4 .combo-text {
+    font-size: 16px;
+    text-shadow: 0 0 7px rgba(255, 215, 0, 0.5), 0 0 14px rgba(255, 165, 0, 0.2);
+  }
+  /* Tier 5 (2.0x): biggest text + bright glow */
   .combo-5 .combo-text {
-    font-size: 36px;
-    text-shadow: 0 0 16px rgba(255, 215, 0, 0.8);
+    font-size: 18px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.9), 0 0 16px rgba(255, 215, 0, 0.5), 0 0 24px rgba(255, 140, 0, 0.25);
+  }
+  /* Tier 6+ (combo count >= 6): pulsing rainbow-gold */
+  .combo-6 .combo-text {
+    font-size: 19px;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 1), 0 0 18px rgba(255, 200, 0, 0.6);
+    animation: comboSlamIn 400ms ease-out, comboGlow 1s ease-in-out infinite alternate;
   }
   .combo-break {
     animation: comboBreak 200ms ease-out forwards;
@@ -130,10 +154,14 @@
   .combo-5 .particle-dot {
     background: rgba(255, 215, 0, 0.9);
   }
-  @keyframes comboBounce {
-    0% { transform: scale(1.5); }
-    50% { transform: scale(0.9); }
-    100% { transform: scale(1.0); }
+  @keyframes comboSlamIn {
+    0% { transform: scale(1.35); opacity: 0; }
+    60% { transform: scale(0.95); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg); }
+  }
+  @keyframes comboGlow {
+    0% { text-shadow: 0 0 24px rgba(255, 215, 0, 1), 0 0 48px rgba(255, 200, 0, 0.7); }
+    100% { text-shadow: 0 0 32px rgba(255, 180, 0, 1), 0 0 60px rgba(255, 140, 0, 0.9); }
   }
   @keyframes comboBreak {
     0%   { transform: scale(1.0); opacity: 1; }

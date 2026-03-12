@@ -3,6 +3,8 @@
   import type { RoomOption } from '../../services/floorManager'
   import { getDoorSpritePath } from '../utils/domainAssets'
   import { getRandomRoomBg } from '../../data/backgroundManifest'
+  import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
+  import { preloadImages } from '../utils/assetPreloader'
 
   interface Props {
     options: RoomOption[]
@@ -15,6 +17,8 @@
 
   let { options, playerHp, playerMaxHp, currentFloor, encounterNumber, onselect }: Props = $props()
   const bgUrl = getRandomRoomBg('hallway')
+  holdScreenTransition()
+  preloadImages([bgUrl]).then(releaseScreenTransition)
 
   let hpPercent = $derived(playerMaxHp > 0 ? Math.round((playerHp / playerMaxHp) * 100) : 0)
 
@@ -104,7 +108,7 @@
     display: grid;
     grid-template-rows: auto 1fr;
     align-items: start;
-    padding: 16px 14px 18px;
+    padding: calc(16px + var(--safe-top)) 14px 18px;
     z-index: 200;
     overflow: hidden;
     opacity: 0;
@@ -272,6 +276,7 @@
   .room-door:hover {
     transform: scale(1.02);
     filter: brightness(1.08);
+    box-shadow: 0 0 16px var(--door-border), 0 8px 20px rgba(0, 0, 0, 0.35);
   }
 
   .room-door.tapped {
@@ -282,6 +287,15 @@
   .room-door.dimmed {
     opacity: 0.24;
     filter: grayscale(0.45);
+  }
+
+  .room-door:not(.dimmed):not(.tapped) {
+    animation: doorPulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes doorPulse {
+    0%, 100% { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); }
+    50% { box-shadow: 0 0 10px var(--door-border), 0 8px 20px rgba(0, 0, 0, 0.35); }
   }
 
   .door-sprite {
@@ -325,6 +339,12 @@
     100% {
       transform: translateX(150%);
       opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .room-door:not(.dimmed):not(.tapped) {
+      animation: none;
     }
   }
 

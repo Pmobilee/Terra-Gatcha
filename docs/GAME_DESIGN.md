@@ -371,7 +371,7 @@ When a correct answer causes a card to advance to a higher tier (consecutiveCorr
 
 ### Enemy Sprite Rendering
 
-Enemy sprites are rendered via the **EnemySpriteSystem**, a centralized Phaser system that encapsulates all enemy visual display and animation. The system uses a single static PNG texture per enemy (no hit/death variants) and applies procedural animations for idle, attack, hit, and death states.
+Enemy sprites are rendered via the **EnemySpriteSystem**, a centralized Phaser system that encapsulates all enemy visual display and animation. All 88 enemies now have unique pixel art sprites, significantly enhancing visual variety and dungeon identity compared to the pre-sprite phase. The system uses a single static PNG texture per enemy (no hit/death variants) and applies procedural animations for idle, attack, hit, and death states.
 
 #### 3D Paper Cutout Effect
 
@@ -412,10 +412,12 @@ Enemies without sprite assets display as **colored rectangles** with the same la
 
 #### Enemy Display Sizes
 
-- **Common enemies:** 280px tall
-- **Elite enemies:** 340px tall
-- **Mini-bosses:** 340px tall
-- **Bosses:** 400px tall
+Sprites display with aspect-ratio-preserving scaling, with the longest dimension constrained to:
+
+- **Common enemies:** 300px (longest edge)
+- **Elite enemies:** 340px (longest edge)
+- **Mini-bosses:** 340px (longest edge)
+- **Bosses:** 400px (longest edge)
 
 ### Enemy Rarity System
 
@@ -436,7 +438,7 @@ Each common enemy instance spawns with a random difficulty multiplier (0.8–1.2
 
 ### Animation Archetypes
 
-Each enemy is assigned one of 8 animation archetypes that define idle, attack, and hit tween parameters:
+Each enemy is assigned one of 8 animation archetypes that define procedural idle, attack, and hit tween parameters. These archetypes provide variety in combat feel and enemy personality without requiring hand-animated sprite sheets:
 
 | Archetype  | Feel                  | Used By                         |
 |------------|-----------------------|---------------------------------|
@@ -449,7 +451,7 @@ Each enemy is assigned one of 8 animation archetypes that define idle, attack, a
 | Striker    | Alert rapid stance    | Raptors, hounds, stalkers       |
 | Trembler   | Still with twitches   | Sentinels, scarabs, golems      |
 
-Config defined in `src/data/enemyAnimations.ts`, consumed by `EnemySpriteSystem`.
+Config defined in `src/data/enemyAnimations.ts`, consumed by `EnemySpriteSystem`. Hit/death animations are also fully procedural (tweens + particles).
 
 ### Enemy Size Tiers
 
@@ -464,7 +466,7 @@ Enemy sprite size scales by category for visual impact hierarchy:
 
 ### Enemy Roster Summary
 
-88 total enemies across 4 dungeon regions:
+88 total enemies across 4 dungeon regions, each with unique pixel art sprites:
 - **45 common** (11-12 per region, with rarity tiers)
 - **25 mini-boss** (6-7 per region)
 - **10 elite** (2-3 per region)
@@ -472,11 +474,153 @@ Enemy sprite size scales by category for visual impact hierarchy:
 
 Regions: Shallow Depths (floors 1-6), Deep Caverns (7-12), The Abyss (13-18), The Archive (19-24).
 
+All enemy sprites are processed via `scripts/process-enemy-sprites.mjs` from source PNGs into mobile-ready formats (`.webp` for standard devices, `_1x.webp` for low-end). Sprite assets preload at CombatScene startup for seamless combat transitions.
+
 #### Performance & Accessibility
 
 **Reduced Motion:** When `prefers-reduced-motion` is active, all animations are disabled. Enemies display statically. Attack/hit/death states still show visually (no animation, instant transitions).
 
 **Device-Tier Scaling:** On low-end devices, particle count and tween complexity scale down to 0.65x (fewer particles, shorter durations, simpler easing). Determined by `performance.memory.jsHeapSizeLimit` check in `EnemySpriteSystem.ts`.
+
+---
+
+## 5.6. VFX Systems (Atmosphere & Status Effects)
+
+### Combat Atmosphere System (D2)
+
+Creates atmospheric effects that evolve as the player descends deeper into the dungeon, with each floor theme providing visual feedback on progression.
+
+#### Floor Themes
+- **Dust (Floors 1-3):** Tan/beige dust particles with gentle downward gravity, subtle fog overlay
+- **Embers (Floors 4-6):** Orange/red embers with upward gravity (heat rising), thicker fog
+- **Ice (Floors 7-9):** Cyan/blue ice particles with slight downward gravity, ethereal atmosphere
+- **Arcane (Floors 10-12):** Purple/violet arcane wisps with slight upward gravity, magical aura
+- **Void (Floors 13+):** Dark purple/black void particles with slight upward gravity, menacing aura
+
+#### Effects
+- **Fog overlay:** Front-most layer (depth 2) with semi-transparent black rectangle covering bottom 40% of display zone. Alpha oscillates gently (sine wave, 3s period) to create breathing effect. Boss encounters use stronger fog (15% alpha) than regular encounters (8% alpha).
+- **Ambient particles:** Procedurally spawned every 500ms, one particle per spawn (respects device-tier budgets). Particles spawn randomly across the upper-middle display area, drift per theme physics, fade to 0% alpha over 3s lifespan. Budget: low-end = 10 particles total, mid-tier = 20, flagship = 50.
+
+#### Device Adaptation
+- **Low-end:** 0.65x effect scale, 10 particle budget
+- **Mid-tier:** 1.0x scale, 20 particle budget
+- **Flagship:** 1.0x scale, 50 particle budget
+- **Reduce Motion:** All atmosphere effects disabled. Fog and particles do not render.
+
+### Status Effect Visual System (D3)
+
+Renders persistent visual overlays on the enemy showing active status effects, providing real-time feedback on combat state.
+
+#### Effect Types
+
+| Effect | Particle Tint | Gravity | Rate | Visual Style |
+|--------|---------------|---------| -----|--------------|
+| **Poison** | Green (#44ff44) | 60 (downward) | 3/sec | Dripping toxin |
+| **Burn** | Orange (#ff6600) | -40 (upward) | 3/sec | Rising embers |
+| **Freeze** | Cyan (#88ccff) | 5 (gentle down) | 2/sec | Drifting frost |
+| **Bleed** | Red (#cc0000) | 80 (fast down) | 2/sec | Falling droplets |
+| **Buff** | Gold (#ffd700) | 0 (none) | 0 | Rotating aura ring |
+| **Debuff** | Purple (#9b59b6) | 0 (none) | 0 | Rotating aura ring |
+
+**Buff/Debuff Mapping:**
+- **Buff effects** (strength_up, empower, quicken) render as a rotating golden aura ring (60px radius) with pulsing alpha (0.1–0.25 range)
+- **Debuff effects** (weaken, expose, slow) render as a rotating purple aura ring with same pulsing pattern
+
+#### Particle-Based Effects
+- **Poison/Burn/Freeze/Bleed:** Spawned every interval (based on rate), offset ±30px from enemy position
+- **Speed variation:** Particles move at different velocities per effect (poison 10-25px/s, burn 15-30px/s, freeze 5-15px/s, bleed 8-20px/s)
+- **Lifespan:** 800ms per particle with alpha fade-out over duration
+- **Depth:** Rendered at depth 999 (in front of enemy sprite, behind dialogue overlays)
+- **Angle:** Particle spray angle depends on gravity direction (upward effects: 250-290°, downward: 70-110°)
+
+#### Effect Lifecycle
+- **Add:** When an effect is first applied to the enemy, its visual system initializes
+- **Persistent:** Visual continues rendering every game frame while effect is active
+- **Remove:** When effect expires or is cleansed, visual system destroys particles/tweens and clears map entry
+- **Multi-effect:** Multiple status effects can be active simultaneously (e.g., poisoned + burning), each with independent particle streams
+
+#### Device Adaptation
+- **Low-end:** 0.65x particle scale (smaller, thinner trails)
+- **Mid/Flagship:** 1.0x particle scale
+- **Reduce Motion:** All status effect visuals disabled. No particles or aura rings render.
+
+---
+
+## 5.7. VFX Systems (Hub & Ceremonies)
+
+### Campfire Living Fire (C1)
+
+A Canvas2D overlay renders a living campfire tied to the player's streak:
+
+| Streak | Particles | Glow Radius | Glow Alpha |
+|--------|-----------|-------------|------------|
+| None | 10 | 80px | 0.10 |
+| 3-day | 20 | 100px | 0.14 |
+| 7-day+ | 30 | 120px | 0.18, occasional spark pops |
+
+30fps throttled, warm palette (0xFF6B1A → 0xFFCC00), sin-wave flicker. Disabled on reduce-motion.
+
+### Hub Ambient Micro-Animations (C2)
+
+CSS-only sprite animations on camp objects:
+- **Cat/Pet:** `.ambient-breathe` — scaleY 1→1.005 over 3s
+- **Tent/Profile:** `.ambient-sway` — translateY ±1px over 4s
+- **Anvil/Relics:** `.ambient-spark` — gold dot pseudo-element with 8s pop interval
+
+All disabled by `@media (prefers-reduced-motion: reduce)`.
+
+### Echo Card Visuals (C3)
+
+Echo cards (wrong-answer ghosts that reappear later in a run) have distinct haunted styling:
+- Lower opacity (0.65), dashed purple border, desaturation filter
+- Chromatic aberration via box-shadow color offsets (red/cyan shift)
+- `echoShimmer` keyframe animation (5-step opacity+filter cycle)
+- `echoWisp` pseudo-element with radial gradient floating animation
+
+### Near-Death Tension (C4)
+
+When player HP drops below 25%:
+- Svelte overlay: `filter: saturate(0.7)` desaturation on non-critical elements
+- Phaser: Red vignette overlay at screen edges with heartbeat pulse (1Hz)
+- Combined effect makes clutch plays feel heroic
+
+### Enrage Visual Indicator (C5)
+
+When enemy enters enrage phase (turn budget exceeded):
+- Intensified idle animations (1.5x bob amplitude, 1.3x speed)
+- Red glow rectangle border around enemy sprite with pulsing tween
+- Continuous red particle border (spawned every 300ms)
+
+### Charge Attack Telegraph (C6)
+
+During enemy charge turns (0-damage preparation):
+- Growing orange glow circle around enemy (radius tween 20→60px)
+- Orange particle accumulation (1 particle/200ms, expanding radius)
+- Camera pull-back (scale 0.97→1.0 on release turn)
+
+### Reward Altar Ceremony (D1)
+
+4-phase ceremony when selecting a card reward (1200ms total, skippable):
+1. **Altar Brighten** (0-300ms): `filter: brightness(1.3)` pulse
+2. **Ceremony Rise** (300-600ms): Card options rise with staggered translateY
+3. **Selected Glow** (600-900ms): Selected card intensifies type-colored glow
+4. **Spotlight Narrow** (900-1200ms): Spotlight tightens to selected card
+
+### Perfect Turn Celebration (D5)
+
+3/3 correct answers in a turn triggers:
+- ComboCounter shows "PERFECT!" text with golden glow (already built into combo system)
+- Triple heavy haptic feedback
+- Brief golden screen pulse (200ms)
+
+### Run End Statistics (D6)
+
+Post-run screen animations:
+- **Victory:** Gold rain pseudo-elements, stat rows cascade in with 80ms stagger delay
+- **Defeat:** Desaturation (`filter: grayscale(0.7)`), red header pulse
+- Stat values pop with `statPop` keyframe emphasis animation
+- 300ms interaction delay before buttons appear
+- All disabled on reduce-motion
 
 ---
 
@@ -1294,6 +1438,10 @@ Combat and room exploration use a first-person viewpoint — the player characte
 - Entering a new room triggers a fade-in from black (~400ms) for pacing and atmosphere
 - Door/room selection presented as a first-person hallway with 2-3 visible doorways to choose from
 
+#### Instant Screen Loading
+
+All screens preload their background images behind a transition overlay before revealing content. Players see a brief loading animation (pulsing dots), then the fully-loaded screen appears instantly with no visible asset pop-in. This applies to all screens: camp hub, room selection, combat, rest sites, shops, mystery events, rewards, retreat/delve, and run end.
+
 **Player character visibility:**
 - NOT visible during dungeon crawl (first-person)
 - Visible at the camp hub between runs (third-person camp scene)
@@ -1379,6 +1527,8 @@ Each card mechanic has a unique CSS `@keyframes` animation that plays during the
 | 5 | Enemy | 5px knockback, red flash, smooth HP drain |
 | 6 | Sound | Crisp impact (Wordle ding x fighting game punch) |
 | 7 | Combo | Escalating text + particles at 3+, burst at 5 |
+
+**CombatParticleSystem (A2):** Multi-emitter particle manager powering all Phaser-side VFX. Uses 4 procedural textures (4x4 square, 6px circle, 4px diamond, 2x8 streak) generated at runtime. Methods: `burstImpact()`, `burstDirectional()`, `comboMilestone()`, `tierUpCascade()`, `enemyDeathAsh()`, `goldCoinShower()`, `statusEffect()`, `startAmbient()`, `stopAmbient()`, `rewardReveal()`. Particle budgets from QualityPreset: low=40, mid=80, flagship=150 total particles.
 
 ### wowFactor Display (Learning Tier Only)
 
@@ -1582,7 +1732,7 @@ Reserve option: lock Tier 2+ cards to N3+ levels (e.g., N5 players see only N5-s
 
 ## 22. Language Learning Integration (Post-Launch)
 
-**Status:** Language domains are hidden from the domain picker at launch (`ENABLE_LANGUAGE_DOMAINS = false` in `balance.ts`). Language content (Japanese N3-N5, etc.) exists in the facts database but is not selectable until the feature flag is enabled post-launch. This allows focus on knowledge domains for initial launch quality.
+**Status:** Language domains are hidden from the Study Mode Selector at launch (`ENABLE_LANGUAGE_DOMAINS = false` in `balance.ts`). Language content (Japanese N3-N5, etc.) exists in the facts database but is not selectable until the feature flag is enabled post-launch. This allows focus on knowledge domains for initial launch quality.
 
 Vocabulary cards require different UI and interaction patterns.
 
@@ -1713,7 +1863,7 @@ Arcane Pass subscribers gain access to fine-grained category filters within each
 **Design constraints:**
 - Minimum 1 sub-category must remain active per domain (can't empty the pool)
 - Filters persist across runs until changed
-- UI: accessible from domain selection for selected primary/secondary domains (subscriber-gated)
+- UI: accessible from the Study Mode Selector for custom study presets (subscriber-gated)
 - Free players see the filter UI greyed out with an upgrade prompt
 - Sub-categories are derived from fact taxonomy (`category[1]`, fallback `categoryL2`, fallback `General`)
 

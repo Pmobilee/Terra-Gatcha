@@ -62,14 +62,8 @@ function buildDistractorPool(fact: Fact, variant: QuestionVariant | null, correc
   for (const distractor of variant?.distractors ?? []) push(distractor)
   for (const distractor of fact.distractors ?? []) push(distractor)
 
-  // Fallback: pull other correct answers so we always provide 5 distractors.
-  if (pool.length < DISTRACTOR_COUNT && factsDB.isReady()) {
-    const fallback = shuffle(factsDB.getAll()).slice(0, 400)
-    for (const candidate of fallback) {
-      if (pool.length >= DISTRACTOR_COUNT) break
-      push(candidate.correctAnswer)
-    }
-  }
+  // No fallback — only use LLM-curated distractors from the variant/fact itself.
+  // Cross-domain random answers would produce nonsensical options.
 
   return pool
 }
@@ -79,9 +73,9 @@ function buildQuestionFromFact(fact: Fact): MasteryChallengeQuestion | null {
   const question = variant?.question ?? fact.quizQuestion
   const correctAnswer = variant?.correctAnswer ?? fact.correctAnswer
   const pool = buildDistractorPool(fact, variant, correctAnswer)
-  if (pool.length < DISTRACTOR_COUNT) return null
+  if (pool.length < 2) return null
 
-  const distractors = shuffle(pool).slice(0, DISTRACTOR_COUNT)
+  const distractors = shuffle(pool).slice(0, Math.min(DISTRACTOR_COUNT, pool.length))
   const answers = shuffle([...distractors, correctAnswer])
 
   return {

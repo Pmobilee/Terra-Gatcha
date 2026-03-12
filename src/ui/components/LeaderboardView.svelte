@@ -4,6 +4,7 @@
   import { playerSave } from '../stores/playerData'
   import { authStore } from '../stores/authStore'
   import { readAccessToken } from '../../services/authTokens'
+  import { getLeaderboardIconPath, getLeaderboardEmoji, getUIIconPath } from '../utils/iconAssets'
 
   // ============================================================
   // TYPES
@@ -140,10 +141,10 @@
   }
 
   function rankMedal(rank: number): string {
-    if (rank === 1) return '🥇'
-    if (rank === 2) return '🥈'
-    if (rank === 3) return '🥉'
-    return `#${rank}`
+    if (rank === 1) return 'gold_medal'
+    if (rank === 2) return 'silver_medal'
+    if (rank === 3) return 'bronze_medal'
+    return ''
   }
 
   function selectCategory(key: string): void {
@@ -161,7 +162,10 @@
 
     <!-- Header -->
     <div class="lb-header">
-      <span class="lb-title">🏆 Rankings</span>
+      <span class="lb-title">
+        <img class="lb-title-icon" src={getUIIconPath('trophy')} alt="" />
+        Rankings
+      </span>
       <button class="lb-close-btn" type="button" onclick={onClose} aria-label="Close leaderboard">
         ✕
       </button>
@@ -178,7 +182,11 @@
           aria-selected={activeCategory === cat.key}
           onclick={() => selectCategory(cat.key)}
         >
-          <span class="lb-tab-icon" aria-hidden="true">{cat.icon}</span>
+          <span class="lb-tab-icon" aria-hidden="true">
+            <img class="lb-icon-img" src={getLeaderboardIconPath(cat.key)} alt=""
+              onerror={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'inline'; }} />
+            <span style="display:none">{getLeaderboardEmoji(cat.key)}</span>
+          </span>
           <span class="lb-tab-label">{cat.label}</span>
         </button>
       {/each}
@@ -234,7 +242,15 @@
               class:lb-row-mine={entry.userId === myUserId}
               aria-label="{entry.displayName}, rank {entry.rank}, score {formatScore(entry.score)}"
             >
-              <span class="lb-rank" aria-hidden="true">{rankMedal(entry.rank)}</span>
+              <span class="lb-rank" aria-hidden="true">
+                {#if rankMedal(entry.rank)}
+                  <img class="lb-medal-icon" src={getLeaderboardIconPath(rankMedal(entry.rank))} alt=""
+                    onerror={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'inline'; }} />
+                  <span style="display:none">{getLeaderboardEmoji(rankMedal(entry.rank))}</span>
+                {:else}
+                  #{entry.rank}
+                {/if}
+              </span>
               <span class="lb-name">
                 {entry.displayName}
                 <!-- patron / pioneer badges are optional fields not on LeaderboardEntry yet
@@ -575,6 +591,31 @@
     margin: 0;
     flex-shrink: 0;
     border-top: 1px solid #f59e0b1a;
+  }
+
+  /* ---- Icon images ---- */
+  .lb-icon-img {
+    width: 1em;
+    height: 1em;
+    image-rendering: pixelated;
+    display: inline-block;
+  }
+
+  .lb-medal-icon {
+    width: 1.2em;
+    height: 1.2em;
+    image-rendering: pixelated;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .lb-title-icon {
+    width: 1.2em;
+    height: 1.2em;
+    image-rendering: pixelated;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
   }
 
   /* ---- Responsive ---- */

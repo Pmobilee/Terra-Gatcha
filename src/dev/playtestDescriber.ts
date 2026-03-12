@@ -38,10 +38,11 @@ export interface StudyCardTextResult {
 }
 
 export interface HUDTextResult {
-  o2: string | null;
-  dust: string | null;
-  layer: string | null;
+  hp: string | null;
+  currency: string | null;
+  floor: string | null;
   streak: string | null;
+  combo: string | null;
 }
 
 export interface ValidationResult {
@@ -91,27 +92,6 @@ function collectActions(): string[] {
   return actions;
 }
 
-/** Try to access the Phaser CombatScene for grid data. */
-function getCombatScene(): {
-  grid: Array<Array<{ type: string }>> | null;
-  playerX: number;
-  playerY: number;
-} | null {
-  try {
-    const game = (globalThis as Record<string, unknown>).__phaserGame as {
-      scene?: { getScene?: (key: string) => unknown };
-    } | undefined;
-    if (!game?.scene?.getScene) return null;
-    const scene = game.scene.getScene('CombatScene') as {
-      grid?: Array<Array<{ type: string }>>;
-      player?: { gridX: number; gridY: number };
-    } | null;
-    if (!scene?.grid || !scene.player) return null;
-    return { grid: scene.grid, playerX: scene.player.gridX, playerY: scene.player.gridY };
-  } catch {
-    return null;
-  }
-}
 
 // ---------------------------------------------------------------------------
 // Exported functions
@@ -130,66 +110,150 @@ export function look(): string {
   const actions = collectActions();
 
   switch (screen) {
-    case 'combat':
-    case 'combatActive': {
-      const o2 = readStore<number>('terra:oxygenCurrent');
+    case 'hub':
+    case 'base': {
       const save = readStore<Record<string, unknown>>('terra:playerSave') as Record<string, unknown> | undefined;
-      const dust = (save?.dust as number) ?? '?';
-      const layer = (save?.currentLayer as number) ?? '?';
-      const depth = (save?.currentDepth as number) ?? '?';
-
-      lines.push(`SCREEN: combat (layer ${layer}, depth ${depth})`);
-      lines.push(`O2: ${o2 ?? '?'}  DUST: ${dust}`);
+      const currency = (save as any)?.minerals?.dust ?? '?';
+      const streak = (save as any)?.stats?.currentStreak ?? 0;
+      const runsCompleted = (save as any)?.stats?.totalRunsCompleted ?? 0;
+      lines.push('SCREEN: hub');
+      lines.push(`CURRENCY: ${currency}  STREAK: ${streak} days  RUNS: ${runsCompleted}`);
       lines.push('');
-
-      const ms = getCombatScene();
-      if (ms?.grid) {
-        const { grid, playerX, playerY } = ms;
-        const radius = 2;
-        lines.push('VISIBLE GRID (5x5 around player):');
-        for (let dy = -radius; dy <= radius; dy++) {
-          const row: string[] = [];
-          for (let dx = -radius; dx <= radius; dx++) {
-            const gy = playerY + dy;
-            const gx = playerX + dx;
-            if (dx === 0 && dy === 0) {
-              row.push('[YOU]');
-            } else if (gy >= 0 && gy < grid.length && gx >= 0 && gx < (grid[0]?.length ?? 0)) {
-              row.push(`[${grid[gy][gx].type}]`);
-            } else {
-              row.push('[---]');
-            }
-          }
-          lines.push('  ' + row.join(' '));
-        }
-        lines.push('');
-      } else {
-        lines.push('GRID: (not accessible — Phaser scene not reachable)');
-        lines.push('');
-      }
-
       break;
     }
 
-    case 'base': {
-      const save = readStore<Record<string, unknown>>('terra:playerSave') as Record<string, unknown> | undefined;
-      const dust = (save?.dust as number) ?? '?';
-      const streak = (save?.streakDays as number) ?? '?';
-      lines.push('SCREEN: base (Hub)');
-      lines.push(`O2: ${hud.o2 ?? '?'}  DUST: ${dust}  STREAK: ${streak} days`);
+    case 'domainSelection': {
+      lines.push('SCREEN: domainSelection');
+      lines.push('Select your primary knowledge domain for this run.');
+      lines.push('');
+      break;
+    }
+
+    case 'archetypeSelection': {
+      lines.push('SCREEN: archetypeSelection');
+      lines.push('Choose your combat archetype: Balanced, Aggressive, Defensive, Control, or Hybrid.');
+      lines.push('');
+      break;
+    }
+
+    case 'combat': {
+      const turnState = readStore<any>('terra:activeTurnState');
+      const runState = readStore<any>('terra:activeRunState');
+      const playerHp = turnState?.playerHP ?? '?';
+      const enemyHp = turnState?.enemy?.health ?? '?';
+      const enemyMaxHp = turnState?.enemy?.maxHealth ?? '?';
+      const enemyName = turnState?.enemy?.name ?? 'Unknown';
+      const combo = turnState?.comboMultiplier ?? 1;
+      const turn = turnState?.turn ?? '?';
+      const floor = runState?.currentFloor ?? '?';
+      const handSize = turnState?.deck?.hand?.length ?? 0;
+
+      lines.push(`SCREEN: combat (Floor ${floor}, Turn ${turn})`);
+      lines.push(`PLAYER HP: ${playerHp}  ENEMY: ${enemyName} (${enemyHp}/${enemyMaxHp})`);
+      lines.push(`COMBO: ${combo}x  HAND: ${handSize} cards`);
       lines.push('');
 
-      const notifications: string[] = [];
-      const reviewsDue = testIdText('reviews-due-badge');
-      if (reviewsDue) notifications.push(`Reviews due: ${reviewsDue}`);
-      const pendingArtifacts = testIdText('pending-artifacts-badge');
-      if (pendingArtifacts) notifications.push(`Pending artifacts: ${pendingArtifacts}`);
-      if (notifications.length > 0) {
-        lines.push('NOTIFICATIONS:');
-        notifications.forEach(n => lines.push(`  - ${n}`));
-      } else {
-        lines.push('NOTIFICATIONS: none');
+      if (turnState?.deck?.hand) {
+        lines.push('HAND:');
+        (turnState.deck.hand as any[]).forEach((c: any, i: number) => {
+          lines.push(`  [${i}] ${c.cardType ?? '?'} — ${c.fact?.question?.slice(0, 60) ?? 'no fact'}`);
+        });
+        lines.push('');
       }
+      break;
+    }
+
+    case 'cardReward': {
+      lines.push('SCREEN: cardReward');
+      lines.push('Choose a card type to add to your deck.');
+      lines.push('');
+      break;
+    }
+
+    case 'roomSelection': {
+      const rooms = readStore<any>('terra:activeRoomOptions');
+      lines.push('SCREEN: roomSelection');
+      if (Array.isArray(rooms)) {
+        lines.push('DOORS:');
+        rooms.forEach((r: any, i: number) => {
+          lines.push(`  [${i}] ${r.type ?? r.roomType ?? 'combat'}`);
+        });
+      }
+      lines.push('');
+      break;
+    }
+
+    case 'retreatOrDelve': {
+      const runState = readStore<any>('terra:activeRunState');
+      const currency = runState?.currency ?? '?';
+      const segment = runState?.currentSegment ?? '?';
+      const hp = runState?.playerHp ?? '?';
+      lines.push(`SCREEN: retreatOrDelve (Segment ${segment})`);
+      lines.push(`CURRENCY: ${currency}  HP: ${hp}`);
+      lines.push('Retreat to keep rewards, or delve deeper for greater risk/reward.');
+      lines.push('');
+      break;
+    }
+
+    case 'shopRoom': {
+      lines.push('SCREEN: shopRoom');
+      lines.push('Browse and buy relics or cards.');
+      lines.push('');
+      break;
+    }
+
+    case 'restRoom': {
+      lines.push('SCREEN: restRoom');
+      lines.push('Choose to heal HP or upgrade a card.');
+      lines.push('');
+      break;
+    }
+
+    case 'mysteryEvent': {
+      const event = readStore<any>('terra:activeMysteryEvent');
+      lines.push('SCREEN: mysteryEvent');
+      if (event) {
+        lines.push(`EVENT: ${event.title ?? event.id ?? 'Unknown'}`);
+        lines.push(`DESC: ${event.description ?? ''}`);
+      }
+      lines.push('');
+      break;
+    }
+
+    case 'masteryChallenge': {
+      lines.push('SCREEN: masteryChallenge');
+      lines.push('Timed quiz challenge for relic bonus.');
+      lines.push('');
+      break;
+    }
+
+    case 'runEnd': {
+      const runState = readStore<any>('terra:activeRunState');
+      lines.push('SCREEN: runEnd');
+      if (runState) {
+        lines.push(`FLOOR REACHED: ${runState.currentFloor ?? '?'}`);
+        lines.push(`CURRENCY EARNED: ${runState.currency ?? '?'}`);
+        lines.push(`ENCOUNTERS WON: ${runState.encountersCompleted ?? '?'}`);
+      }
+      lines.push('');
+      break;
+    }
+
+    case 'library': {
+      lines.push('SCREEN: library (Knowledge Library)');
+      lines.push('Browse cards, build decks, study modes.');
+      lines.push('');
+      break;
+    }
+
+    case 'settings': {
+      lines.push('SCREEN: settings');
+      lines.push('');
+      break;
+    }
+
+    case 'profile': {
+      lines.push('SCREEN: profile');
       lines.push('');
       break;
     }
@@ -206,10 +270,6 @@ export function look(): string {
         if (studyCard.category) lines.push(`  Category: ${studyCard.category}`);
         if (studyCard.answer) lines.push(`  Answer: ${studyCard.answer}`);
         if (studyCard.explanation) lines.push(`  Explanation: ${studyCard.explanation}`);
-        if (studyCard.mnemonic) lines.push(`  Mnemonic: ${studyCard.mnemonic}`);
-        if (studyCard.gaiaComment) lines.push(`  Keeper: ${studyCard.gaiaComment}`);
-      } else {
-        lines.push('CURRENT CARD: (not visible)');
       }
       lines.push('');
       break;
@@ -223,66 +283,8 @@ export function look(): string {
         lines.push('CHOICES:');
         quiz.choices.forEach((c, i) => lines.push(`  [${i}] ${c}`));
         if (quiz.gaiaReaction) lines.push(`Keeper: ${quiz.gaiaReaction}`);
-        if (quiz.memoryTip) lines.push(`TIP: ${quiz.memoryTip}`);
         if (quiz.resultText) lines.push(`RESULT: ${quiz.resultText}`);
-        if (quiz.consistencyWarning) lines.push(`WARNING: ${quiz.consistencyWarning}`);
-      } else {
-        lines.push('QUIZ: (DOM not populated)');
       }
-      lines.push('');
-      break;
-    }
-
-    case 'divePrep':
-    case 'divePrepScreen': {
-      lines.push('SCREEN: divePrep (Loadout Selection)');
-      const loadout = readStore<Record<string, unknown>>('terra:selectedLoadout');
-      if (loadout) {
-        lines.push(`LOADOUT: ${JSON.stringify(loadout)}`);
-      }
-      lines.push('');
-      break;
-    }
-
-    case 'diveResults': {
-      lines.push('SCREEN: diveResults');
-      const summary = textOf('.summary-message');
-      if (summary) lines.push(`SUMMARY: ${summary}`);
-      const correct = textOf('.score-correct');
-      const total = textOf('.score-total');
-      if (correct || total) lines.push(`SCORE: ${correct ?? '?'} / ${total ?? '?'}`);
-      lines.push('');
-      break;
-    }
-
-    case 'dome': {
-      lines.push('SCREEN: dome (Hub Interior)');
-      const selectorTitle = textOf('.selector-title');
-      if (selectorTitle) lines.push(`ROOM: ${selectorTitle}`);
-      lines.push('');
-      break;
-    }
-
-    case 'knowledgeTree': {
-      lines.push('SCREEN: knowledgeTree');
-      const gateProgress = textOf('.gate-progress');
-      if (gateProgress) lines.push(`GATE PROGRESS: ${gateProgress}`);
-      lines.push('');
-      break;
-    }
-
-    case 'inventory': {
-      lines.push('SCREEN: inventory');
-      const inv = readStore<unknown[]>('terra:inventoryStore');
-      lines.push(`ITEMS: ${Array.isArray(inv) ? inv.length : '?'} total`);
-      lines.push('');
-      break;
-    }
-
-    case 'artifactLab': {
-      lines.push('SCREEN: artifactLab (Appraisal)');
-      const header = textOf('.artifact-appraisal-header');
-      if (header) lines.push(`HEADER: ${header}`);
       lines.push('');
       break;
     }
@@ -361,7 +363,7 @@ export function getQuizText(): QuizTextResult | null {
   if (!question) return null;
 
   const choices: string[] = [];
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 3; i++) {
     choices.push(testIdText(`quiz-answer-${i}`) ?? '');
   }
 
@@ -398,10 +400,11 @@ export function getStudyCardText(): StudyCardTextResult | null {
  */
 export function getHUDText(): HUDTextResult {
   return {
-    o2: testIdText('hud-o2-bar') ?? String(readStore<number>('terra:oxygenCurrent') ?? null),
-    dust: testIdText('hud-dust') ?? null,
-    layer: testIdText('hud-layer') ?? null,
+    hp: testIdText('hud-hp') ?? null,
+    currency: testIdText('hud-currency') ?? null,
+    floor: testIdText('hud-floor') ?? null,
     streak: testIdText('hud-streak') ?? null,
+    combo: testIdText('combo-counter') ?? null,
   };
 }
 
@@ -465,12 +468,12 @@ export function validateScreen(): ValidationResult {
   const quiz = getQuizText();
   if (quiz) {
     if (!quiz.question) issues.push('Quiz question is empty');
-    if (quiz.choices.length !== 4) {
-      issues.push(`Expected 4 quiz choices, got ${quiz.choices.length}`);
+    if (quiz.choices.length !== 3) {
+      issues.push(`Expected 3 quiz choices, got ${quiz.choices.length}`);
     }
     const nonEmpty = quiz.choices.filter(c => c.length > 0);
-    if (nonEmpty.length !== 4) {
-      issues.push(`${4 - nonEmpty.length} quiz choice(s) are empty`);
+    if (nonEmpty.length !== 3) {
+      issues.push(`${3 - nonEmpty.length} quiz choice(s) are empty`);
     }
     const unique = new Set(quiz.choices);
     if (unique.size !== quiz.choices.length) {
@@ -482,13 +485,6 @@ export function validateScreen(): ValidationResult {
   const study = getStudyCardText();
   if (study) {
     if (!study.question) issues.push('Study card question is empty');
-  }
-
-  // O2 sanity check
-  const o2 = readStore<number>('terra:oxygenCurrent');
-  if (o2 !== undefined) {
-    if (Number.isNaN(o2)) issues.push('O2 value is NaN');
-    if (o2 < 0) issues.push(`O2 value is negative: ${o2}`);
   }
 
   // Check interactive elements for anomalies via __terraDebug

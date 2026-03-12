@@ -27,14 +27,13 @@ export function getCSPMeta(isDev: boolean): string {
       "font-src 'self'"
     )
   }
-  // Production: strict — no eval, no inline scripts, connections limited to
-  // first-party origins and the production CDN domain.
+  // Production + Capacitor: allows eval for sql.js WASM and inline for Capacitor bridge
   return (
     "default-src 'self'; " +
-    "script-src 'self'; " +
+    "script-src 'self' 'unsafe-eval' 'unsafe-inline' 'wasm-unsafe-eval'; " +
     "style-src 'self' 'unsafe-inline'; " +
     "img-src 'self' data: blob:; " +
-    "connect-src 'self' https://*.terragacha.com; " +
+    "connect-src 'self' https://*.terragacha.com https://localhost:*; " +
     "font-src 'self'"
   )
 }

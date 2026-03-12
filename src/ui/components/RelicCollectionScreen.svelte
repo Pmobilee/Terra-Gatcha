@@ -2,6 +2,7 @@
   import { FULL_RELIC_CATALOGUE, STARTER_RELIC_IDS, RELIC_BY_ID } from '../../data/relics/index'
   import type { RelicDefinition, RelicRarity, RelicCategory } from '../../data/relics/types'
   import { playerSave, getMasteryBalance, unlockRelic, toggleRelicExclusion } from '../stores/playerData'
+  import { getRelicIconPath, getUIIconPath } from '../utils/iconAssets'
 
   interface Props {
     onBack: () => void
@@ -159,16 +160,20 @@
         class="relic-card"
         class:locked={!owned}
         class:excluded={isExcluded && owned}
-        onclick={() => openDetail(relic)}
+        onclick={() => { if (owned) openDetail(relic) }}
         style="border-color: {RARITY_COLOR[relic.rarity]}"
         aria-label="{relic.name}, {relic.rarity}{owned ? ', owned' : ', locked'}"
       >
-        <span class="relic-icon" aria-hidden="true">{owned ? relic.icon : '❓'}</span>
+        <div class="relic-icon" aria-hidden="true">
+          <img class="relic-icon-img"
+            src={owned ? getRelicIconPath(relic.id) : getUIIconPath('unknown')}
+            alt=""
+            onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement)?.style.setProperty('display', 'inline'); }} />
+          <span class="relic-icon-fallback" style="display:none">{owned ? relic.icon : '❓'}</span>
+        </div>
         <span class="relic-name">{owned ? relic.name : '???'}</span>
         {#if isExcluded && owned}
           <span class="badge badge-excluded">Excluded</span>
-        {:else if isStarter}
-          <span class="badge badge-free">FREE</span>
         {:else if owned}
           <span class="badge badge-owned">OWNED</span>
         {:else}
@@ -210,7 +215,13 @@
       </button>
 
       <!-- Icon -->
-      <div class="modal-icon" aria-hidden="true">{selectedRelic.icon}</div>
+      <div class="modal-icon" aria-hidden="true">
+        <img class="modal-icon-img"
+          src={getRelicIconPath(selectedRelic.id)}
+          alt=""
+          onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement)?.style.setProperty('display', 'inline'); }} />
+        <span class="modal-icon-fallback" style="display:none">{selectedRelic.icon}</span>
+      </div>
 
       <!-- Name + rarity badge -->
       <h3 class="modal-name">{selectedRelic.name}</h3>
@@ -295,7 +306,7 @@
     position: fixed;
     inset: 0;
     overflow-y: auto;
-    padding: 16px 12px 32px;
+    padding: calc(16px + var(--safe-top)) 12px 32px;
     background:
       radial-gradient(circle at 15% 0%, rgba(250, 204, 21, 0.10), transparent 36%),
       radial-gradient(circle at 85% 5%, rgba(139, 92, 246, 0.10), transparent 32%),
@@ -420,13 +431,13 @@
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    padding: 10px 4px 8px;
+    padding: 12px 6px 10px;
     border-radius: 12px;
     border: 2px solid;
     background: rgba(15, 23, 42, 0.80);
     cursor: pointer;
     transition: transform 0.12s, box-shadow 0.12s;
-    min-height: 44px;
+    min-height: 90px;
   }
 
   .relic-card:active {
@@ -449,6 +460,20 @@
   .relic-icon {
     font-size: calc(28px * var(--text-scale, 1));
     line-height: 1;
+    width: calc(28px * var(--text-scale, 1));
+    height: calc(28px * var(--text-scale, 1));
+  }
+
+  .relic-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .relic-icon-fallback {
+    font-size: 1.5em;
   }
 
   .relic-name {
@@ -475,12 +500,6 @@
     padding: 1px 6px;
     border-radius: 999px;
     line-height: 1.4;
-  }
-
-  .badge-free {
-    color: #bbf7d0;
-    background: rgba(34, 197, 94, 0.22);
-    border: 1px solid rgba(34, 197, 94, 0.45);
   }
 
   .badge-owned {
@@ -573,6 +592,20 @@
     font-size: calc(48px * var(--text-scale, 1));
     line-height: 1;
     margin-top: 4px;
+    width: calc(48px * var(--text-scale, 1));
+    height: calc(48px * var(--text-scale, 1));
+  }
+
+  .modal-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .modal-icon-fallback {
+    font-size: 1em;
   }
 
   .modal-name {

@@ -4,7 +4,11 @@
   import { playerSave } from '../stores/playerData'
   import { initCampArtManifest } from '../utils/campArtManifest'
   import { getCampSpriteUrl, getCampBackgroundUrl } from '../utils/campArtManifest'
+  import { getAmbientClass } from '../effects/HubAmbientEffects'
+  import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
+  import { preloadImages } from '../utils/assetPreloader'
   import CampSpriteButton from './CampSpriteButton.svelte'
+  import CampfireCanvas from './CampfireCanvas.svelte'
   import CampSpeechBubble from './CampSpeechBubble.svelte'
   import CampHudOverlay from './CampHudOverlay.svelte'
   import CampUpgradeModal from './CampUpgradeModal.svelte'
@@ -45,6 +49,27 @@
   let showUpgradeModal = $state(false)
   let petBubbleVisible = $state(false)
   let petBubbleTimer: ReturnType<typeof setTimeout> | null = null
+  let sparkleBursts = $state<number[]>([])
+  let sparkleIdCounter = 0
+  const MAX_SPARKLE_BURSTS = 5
+
+  // Preload all camp images before revealing screen
+  const _campImagesToPreload = [
+    getCampBackgroundUrl(),
+    getCampSpriteUrl('dungeon-gate'),
+    getCampSpriteUrl('bookshelf'),
+    getCampSpriteUrl('signpost'),
+    getCampSpriteUrl('anvil'),
+    getCampSpriteUrl('campfire'),
+    getCampSpriteUrl('tent'),
+    getCampSpriteUrl('character'),
+    getCampSpriteUrl('cat'),
+    getCampSpriteUrl('journal'),
+    getCampSpriteUrl('quest-board'),
+    getCampSpriteUrl('treasure-chest'),
+  ]
+  holdScreenTransition()
+  preloadImages(_campImagesToPreload).then(releaseScreenTransition)
 
   let dustBalance = $derived($playerSave?.minerals.dust ?? 0)
 
@@ -66,6 +91,14 @@
 
   function handleRelicClick(): void {
     onOpenRelicSanctum()
+  }
+
+  function handleCampfireClick(): void {
+    const id = ++sparkleIdCounter
+    sparkleBursts = [...sparkleBursts.slice(-(MAX_SPARKLE_BURSTS - 1)), id]
+    setTimeout(() => {
+      sparkleBursts = sparkleBursts.filter(b => b !== id)
+    }, 700)
   }
 </script>
 
@@ -98,6 +131,7 @@
     onclick={onStartRun}
     hitTop="11%" hitLeft="28%" hitWidth="44%" hitHeight="27%"
     labelTop="40%" labelLeft="50%"
+    showBorder
   />
 
   <!-- 2. Bookshelf - Library -->
@@ -108,6 +142,7 @@
     onclick={onOpenLibrary}
     hitTop="31%" hitLeft="2%" hitWidth="32%" hitHeight="23%"
     labelTop="29%" labelLeft="18%"
+    showBorder
   />
 
   <!-- 3. Signpost - Settings -->
@@ -118,6 +153,7 @@
     onclick={onOpenSettings}
     hitTop="29%" hitLeft="76%" hitWidth="16%" hitHeight="18%"
     labelTop="27%" labelLeft="84%"
+    showBorder
   />
 
   <!-- 4. Anvil - Relics -->
@@ -128,15 +164,30 @@
     onclick={handleRelicClick}
     hitTop="54%" hitLeft="26%" hitWidth="18%" hitHeight="9%"
     labelTop="52%" labelLeft="35%"
+    ambientClass={getAmbientClass('Relics')}
+    showBorder
   />
 
-  <!-- 5. Campfire - Decorative (no hitbox, no label) -->
+  <!-- 5. Campfire - Sparkle burst on click -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('campfire')}
-    label="Campfire"
+    label=""
     zIndex={15}
-    decorative
+    onclick={handleCampfireClick}
+    hitTop="55%" hitLeft="38%" hitWidth="24%" hitHeight="18%"
   />
+
+  <!-- Campfire VFX overlay -->
+  <CampfireCanvas {streak} />
+
+  <!-- Campfire sparkle bursts -->
+  {#each sparkleBursts as burstId (burstId)}
+    <div class="campfire-sparkle-burst" aria-hidden="true">
+      {#each Array(8) as _, i}
+        <span class="sparkle-particle" style="--i: {i};"></span>
+      {/each}
+    </div>
+  {/each}
 
   <!-- 6. Tent - Profile -->
   <CampSpriteButton
@@ -145,7 +196,9 @@
     zIndex={18}
     onclick={onOpenProfile}
     hitTop="44%" hitLeft="64%" hitWidth="36%" hitHeight="22%"
-    labelTop="42%" labelLeft="74%"
+    labelTop="46%" labelLeft="74%"
+    ambientClass={getAmbientClass('Profile')}
+    showBorder
   />
 
   <!-- 7. Character - Social -->
@@ -156,16 +209,17 @@
     onclick={onOpenSocial}
     hitTop="58%" hitLeft="57%" hitWidth="21%" hitHeight="11%"
     labelTop="57%" labelLeft="58%"
+    showBorder
   />
 
   <!-- 8. Cat - Pet, shows speech bubble -->
   <CampSpriteButton
     spriteUrl={getCampSpriteUrl('cat')}
-    label="Pet"
+    label=""
     zIndex={22}
     onclick={showPetBubble}
     hitTop="69%" hitLeft="66%" hitWidth="11%" hitHeight="4%"
-    labelTop="74%" labelLeft="72%"
+    showBorder
   />
 
   <!-- 9. Journal (Book) -->
@@ -176,6 +230,7 @@
     onclick={onOpenJournal}
     hitTop="76%" hitLeft="5%" hitWidth="23%" hitHeight="9%"
     labelTop="86%" labelLeft="16%"
+    showBorder
   />
 
   <!-- 9.5. Scroll - Topics & Difficulty (hidden: no scroll sprite asset yet) -->
@@ -188,6 +243,7 @@
     onclick={onOpenLeaderboards}
     hitTop="75%" hitLeft="72%" hitWidth="26%" hitHeight="20%"
     labelTop="96%" labelLeft="85%"
+    showBorder
   />
 
   <!-- 11. Treasure Chest - Shop (opens upgrade modal) -->
@@ -198,6 +254,7 @@
     onclick={openUpgradeModal}
     hitTop="87%" hitLeft="52%" hitWidth="19%" hitHeight="11%"
     labelTop="84%" labelLeft="62%"
+    showBorder
   />
 
   <!-- Pet speech bubble -->
@@ -235,7 +292,7 @@
 
   .study-mode-container {
     position: absolute;
-    top: 3%;
+    top: calc(3% + var(--safe-top));
     left: 0;
     right: 0;
     display: flex;
@@ -244,7 +301,44 @@
   }
 
   .study-mode-container.banner-offset {
-    top: calc(3% + 64px);
+    top: calc(3% + 64px + var(--safe-top));
+  }
+
+  .campfire-sparkle-burst {
+    position: absolute;
+    bottom: 38%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    z-index: 17;
+    pointer-events: none;
+  }
+
+  .sparkle-particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #ffd700;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #ffa500, 0 0 12px #ff8c00;
+    animation: sparkle-burst 600ms ease-out forwards;
+    --angle: calc(var(--i) * 45deg);
+    --dist: calc(30px + var(--i) * 5px);
+  }
+
+  @keyframes sparkle-burst {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(
+        calc(cos(var(--angle)) * var(--dist)),
+        calc(sin(var(--angle)) * var(--dist) - 20px)
+      ) scale(0);
+      opacity: 0;
+    }
   }
 
 </style>

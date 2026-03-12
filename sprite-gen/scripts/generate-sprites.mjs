@@ -34,7 +34,7 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const PROJECT_ROOT = resolve(__dirname, '../..');
-const REGISTRY_PATH = join(PROJECT_ROOT, 'sprite-gen/sprite-registry.json');
+const DEFAULT_REGISTRY_PATH = join(PROJECT_ROOT, 'sprite-gen/sprite-registry.json');
 const ENV_PATH = join(PROJECT_ROOT, '.env');
 
 const OPENROUTER_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
@@ -92,6 +92,7 @@ const { values: args } = parseArgs({
     'dry-run': { type: 'boolean', default: false },
     force:    { type: 'boolean', default: false },
     model:    { type: 'string' },
+    registry: { type: 'string' },
     help:     { type: 'boolean', short: 'h', default: false },
   },
   strict: true,
@@ -109,6 +110,7 @@ Options:
   --dry-run          Show what would be generated without calling the API
   --force            Regenerate even if already generated
   --model <id>       Override the model for this run
+  --registry <path>  Use a custom registry file (default: sprite-gen/sprite-registry.json)
   -h, --help         Show this help message
 `);
   process.exit(0);
@@ -118,6 +120,10 @@ if (!args.all && !args.category && !args.key) {
   console.error('[ERROR] Specify --all, --category <name>, or --key <name>. Use --help for usage.');
   process.exit(1);
 }
+
+const REGISTRY_PATH = args.registry
+  ? resolve(PROJECT_ROOT, args.registry)
+  : DEFAULT_REGISTRY_PATH;
 
 // ---------------------------------------------------------------------------
 // Environment

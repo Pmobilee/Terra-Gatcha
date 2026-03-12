@@ -3,7 +3,7 @@
   import { get } from 'svelte/store'
 
   let phaserContainer: HTMLDivElement
-  import { currentScreen, screenTransitionActive } from './ui/stores/gameState'
+  import { currentScreen, screenTransitionActive, screenTransitionDirection, screenTransitionLoading, releaseScreenTransition } from './ui/stores/gameState'
   import type { Screen } from './ui/stores/gameState'
   import { navigateToScreen } from './services/screenController'
   import {
@@ -42,6 +42,7 @@
     resumeFromCampfire,
     returnToHubFromCampfire,
     abandonActiveRun,
+    autoSaveRun,
     hasActiveRun,
     loadActiveRun,
     restoreRunMode,
@@ -67,6 +68,7 @@
   } from './services/encounterBridge'
   import type { FactDomain } from './data/card-types'
   import type { MysteryEffect } from './services/floorManager'
+  import { generateCombatRoomOptions } from './services/floorManager'
   import { healPlayer } from './services/runManager'
   import { POST_MINI_BOSS_HEAL_PCT } from './data/balance'
   import { isSlowReader, onboardingState } from './services/cardPreferences'
@@ -78,7 +80,6 @@
   import { getPresetById } from './services/studyPresetService'
   import { collectMatchingFactIds } from './services/presetSelectionService'
 
-  import DomainSelection from './ui/components/DomainSelection.svelte'
   import ArchetypeSelection from './ui/components/ArchetypeSelection.svelte'
   import CardCombatOverlay from './ui/components/CardCombatOverlay.svelte'
   import RoomSelection from './ui/components/RoomSelection.svelte'
@@ -246,14 +247,20 @@
     onRelicRewardSelected(relic)
   }
 
-  function handleDomainsChosen(primary: FactDomain, secondary: FactDomain): void {
-    onDomainsSelected(primary, secondary)
-  }
-
   async function handleArchetypeSelect(archetype: import('./services/runManager').RewardArchetype): Promise<void> {
     onArchetypeSelected(archetype)
     void ensurePhaserBooted()
-    if (!(await startEncounterForRoom())) {
+    try {
+      if (!(await startEncounterForRoom())) {
+        releaseScreenTransition()
+        currentScreen.set('hub')
+        activeRunState.set(null)
+      } else {
+        autoSaveRun('combat')
+      }
+    } catch (err) {
+      console.error('[CardApp] Failed to start encounter', err)
+      releaseScreenTransition()
       currentScreen.set('hub')
       activeRunState.set(null)
     }
@@ -265,7 +272,17 @@
     onDomainsSelected('natural_sciences', 'history')
     onArchetypeSelected('balanced')
     void ensurePhaserBooted()
-    if (!(await startEncounterForRoom())) {
+    try {
+      if (!(await startEncounterForRoom())) {
+        releaseScreenTransition()
+        currentScreen.set('hub')
+        activeRunState.set(null)
+      } else {
+        autoSaveRun('combat')
+      }
+    } catch (err) {
+      console.error('[CardApp] Failed to start onboarding encounter', err)
+      releaseScreenTransition()
       currentScreen.set('hub')
       activeRunState.set(null)
     }
@@ -277,7 +294,17 @@
     onRoomSelected(room)
     if (room.type === 'combat') {
       void ensurePhaserBooted()
-      if (!(await startEncounterForRoom(room.enemyId))) {
+      try {
+        if (!(await startEncounterForRoom(room.enemyId))) {
+          releaseScreenTransition()
+          currentScreen.set('hub')
+          activeRunState.set(null)
+        } else {
+          autoSaveRun('combat')
+        }
+      } catch (err) {
+        console.error('[CardApp] Failed to start room encounter', err)
+        releaseScreenTransition()
         currentScreen.set('hub')
         activeRunState.set(null)
       }
@@ -347,10 +374,15 @@
     }
     // Navigate to the saved screen or default to room selection
     const screen = saved.currentScreen as import('./ui/stores/gameState').Screen
+    const targetScreen = screen === 'campfire' ? 'roomSelection' : (screen || 'roomSelection')
+    // If navigating to roomSelection but no room options exist, regenerate them
+    if (targetScreen === 'roomSelection' && (!saved.roomOptions || saved.roomOptions.length === 0)) {
+      activeRoomOptions.set(generateCombatRoomOptions(saved.runState.floor.currentFloor))
+    }
     if (screen === 'combat') {
       void ensurePhaserBooted()
     }
-    currentScreen.set(screen === 'campfire' ? 'roomSelection' : (screen || 'roomSelection'))
+    currentScreen.set(targetScreen)
     hasRunSave = false
   }
 
@@ -533,10 +565,6 @@
     <KnowledgeLevelPopup onselect={handleKnowledgeLevelSelect} />
   {/if}
 
-  {#if $currentScreen === 'domainSelection'}
-    <DomainSelection onstart={handleDomainsChosen} onback={returnToMenu} />
-  {/if}
-
   {#if $currentScreen === 'archetypeSelection'}
     <ArchetypeSelection onselect={handleArchetypeSelect} onskip={() => handleArchetypeSelect('balanced')} onback={returnToMenu} />
   {/if}
@@ -715,7 +743,6 @@
         runDurationMs={end.runDurationMs}
         rewardMultiplier={end.rewardMultiplier}
         currencyEarned={end.currencyEarned}
-        isFirstRunComplete={$onboardingState.runsCompleted === 1}
         onplayagain={playAgain}
         onhome={returnToMenu}
       />
@@ -807,7 +834,19 @@
   {/if}
 
   <!-- Screen transition overlay -->
-  <div class="screen-transition" class:active={$screenTransitionActive}></div>
+  <div
+    class="screen-transition"
+    class:loading={$screenTransitionLoading}
+    class:active={$screenTransitionActive}
+    class:wipe-down={$screenTransitionDirection === 'down'}
+    class:wipe-up={$screenTransitionDirection === 'up'}
+    class:wipe-left={$screenTransitionDirection === 'left'}
+    class:wipe-right={$screenTransitionDirection === 'right'}
+  >
+    <div class="loading-dots" aria-label="Loading">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
 </div>
 
 <style>
@@ -862,7 +901,7 @@
 
   .pause-btn {
     position: fixed;
-    top: 8px;
+    top: calc(8px + var(--safe-top));
     right: 8px;
     width: 36px;
     height: 36px;
@@ -898,7 +937,7 @@
 
   .active-run-banner {
     position: fixed;
-    top: 0;
+    top: var(--safe-top);
     left: 0;
     right: 0;
     z-index: 250;
@@ -1080,13 +1119,110 @@
     background: #0a0e18;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 300ms ease-out;
   }
 
   .screen-transition.active {
+    pointer-events: all;
+  }
+
+  .screen-transition.loading {
     opacity: 1;
     pointer-events: all;
-    transition: none;
+    animation: none;
+  }
+
+  .loading-dots {
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    gap: 8px;
+  }
+
+  .screen-transition.loading .loading-dots {
+    display: flex;
+  }
+
+  .loading-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(148, 163, 184, 0.5);
+    animation: loadingPulse 1.2s ease-in-out infinite;
+  }
+
+  .loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes loadingPulse {
+    0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+    40% { opacity: 1; transform: scale(1.2); }
+  }
+
+  .screen-transition.active:not(.wipe-down):not(.wipe-up):not(.wipe-left):not(.wipe-right) {
+    animation: revealFade 400ms ease-out forwards;
+  }
+
+  .screen-transition.active.wipe-down {
+    animation: revealDown 400ms ease-in-out forwards;
+  }
+
+  .screen-transition.active.wipe-up {
+    animation: revealUp 400ms ease-in-out forwards;
+  }
+
+  .screen-transition.active.wipe-left {
+    animation: revealLeft 400ms ease-in-out forwards;
+  }
+
+  .screen-transition.active.wipe-right {
+    animation: revealRight 400ms ease-in-out forwards;
+  }
+
+  @keyframes revealFade {
+    0% { opacity: 1; }
+    30% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes revealDown {
+    0% { clip-path: inset(0 0 0 0); opacity: 1; }
+    85% { clip-path: inset(100% 0 0 0); opacity: 1; }
+    100% { clip-path: inset(100% 0 0 0); opacity: 0; }
+  }
+
+  @keyframes revealUp {
+    0% { clip-path: inset(0 0 0 0); opacity: 1; }
+    85% { clip-path: inset(0 0 100% 0); opacity: 1; }
+    100% { clip-path: inset(0 0 100% 0); opacity: 0; }
+  }
+
+  @keyframes revealLeft {
+    0% { clip-path: inset(0 0 0 0); opacity: 1; }
+    85% { clip-path: inset(0 100% 0 0); opacity: 1; }
+    100% { clip-path: inset(0 100% 0 0); opacity: 0; }
+  }
+
+  @keyframes revealRight {
+    0% { clip-path: inset(0 0 0 0); opacity: 1; }
+    85% { clip-path: inset(0 0 0 100%); opacity: 1; }
+    100% { clip-path: inset(0 0 0 100%); opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .screen-transition.active,
+    .screen-transition.active.wipe-down,
+    .screen-transition.active.wipe-up,
+    .screen-transition.active.wipe-left,
+    .screen-transition.active.wipe-right {
+      animation: revealFade 400ms ease-out forwards;
+    }
   }
 
 </style>

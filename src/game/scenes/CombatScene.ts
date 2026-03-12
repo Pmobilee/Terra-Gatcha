@@ -1,8 +1,11 @@
 import Phaser from 'phaser'
 import { getDeviceTier } from '../../services/deviceTierService'
 import { EnemySpriteSystem } from '../systems/EnemySpriteSystem'
+import { CombatAtmosphereSystem } from '../systems/CombatAtmosphereSystem'
+import { StatusEffectVisualSystem } from '../systems/StatusEffectVisualSystem'
 import type { AnimArchetype } from '../../data/enemyAnimations'
 import { getRandomCombatBg } from '../../data/backgroundManifest'
+import { ENEMY_TEMPLATES } from '../../data/enemies'
 
 /** Layout constants for first-person combat display zone (top ~58% of viewport). */
 const DISPLAY_ZONE_HEIGHT_PCT = 0.58
@@ -130,11 +133,33 @@ export class CombatScene extends Phaser.Scene {
   private effectScale = 1
   private flashTween: Phaser.Tweens.Tween | null = null
   private vignetteGfx!: Phaser.GameObjects.Graphics
-  private edgeGlowTop!: Phaser.GameObjects.Rectangle
-  private edgeGlowLeft!: Phaser.GameObjects.Rectangle
-  private edgeGlowRight!: Phaser.GameObjects.Rectangle
+  private edgeGlowTop!: Phaser.GameObjects.Graphics
+  private edgeGlowLeft!: Phaser.GameObjects.Graphics
+  private edgeGlowRight!: Phaser.GameObjects.Graphics
+  private edgeGlowThickness = 0
   private edgeGlowTween: Phaser.Tweens.Tween | null = null
   private currentBgKey: string = ''
+
+  // ── HP bar enhancement effects ───────────────────────────
+  private criticalPulseRect!: Phaser.GameObjects.Rectangle
+  private criticalPulseTween: Phaser.Tweens.Tween | null = null
+  private damagePreviewGfx!: Phaser.GameObjects.Graphics
+  private previousPlayerHpRatio = 1
+
+  // ── Near-death tension overlay ────────────────────────────
+  private nearDeathVignette!: Phaser.GameObjects.Graphics
+  private nearDeathPulseTween: Phaser.Tweens.Tween | null = null
+  private isNearDeathActive = false
+
+  // ── Charge telegraph ──────────────────────────────────
+  private chargeParticleTimer: Phaser.Time.TimerEvent | null = null
+  private chargeGlowCircle: Phaser.GameObjects.Arc | null = null
+  private chargeGlowTween: Phaser.Tweens.Tween | null = null
+  private isCharging = false
+
+  // ── VFX systems ────────────────────────────────────
+  private atmosphereSystem!: CombatAtmosphereSystem
+  private statusEffectVisuals!: StatusEffectVisualSystem
 
   // ── Stored layout values ─────────────────────────────────
   private displayH = 0
@@ -163,12 +188,14 @@ export class CombatScene extends Phaser.Scene {
     })
 
     const suffix = getDeviceTier() === 'low-end' ? '_1x.webp' : '.webp'
-    const enemySprite = (name: string) => `assets/sprites/enemies/${name}${suffix}`
 
-    this.load.image('bg-combat', 'assets/backgrounds/combat/bg_combat_dungeon.webp')
-    this.load.image('enemy-cave_bat-idle', enemySprite('cave_bat_idle'))
-    this.load.image('enemy-crystal_golem-idle', enemySprite('crystal_golem_idle'))
-    this.load.image('enemy-the_excavator-idle', enemySprite('the_excavator_idle'))
+    // Preload all enemy idle sprites
+    for (const enemy of ENEMY_TEMPLATES) {
+      const key = `enemy-${enemy.id}-idle`
+      if (!this.textures.exists(key)) {
+        this.load.image(key, `assets/sprites/enemies/${enemy.id}_idle${suffix}`)
+      }
+    }
   }
 
   /** Create all game objects for the combat display zone. */
@@ -180,13 +207,8 @@ export class CombatScene extends Phaser.Scene {
     this.displayH = h * DISPLAY_ZONE_HEIGHT_PCT
 
     // ── Combat background ─────────────────────────────────
-    if (hasTexture(this, 'bg-combat')) {
-      this.combatBackground = this.add.image(w / 2, h / 2, 'bg-combat')
-        .setDisplaySize(w, h)
-        .setDepth(0)
-    } else {
-      this.combatBackground = this.add.rectangle(w / 2, h / 2, w, h, 0x0d1117)
-    }
+    // Initial dark background — real bg loaded per-encounter via setBackground()
+    this.combatBackground = this.add.rectangle(w / 2, h / 2, w, h, 0x0d1117)
 
     // ── Permanent vignette (dark edge fade) ──────────────
     this.vignetteGfx = this.add.graphics().setDepth(1)
@@ -209,11 +231,26 @@ export class CombatScene extends Phaser.Scene {
       this.vignetteGfx.fillRect(w - offsetX - (vigInsetX - offsetX) / vigSteps - 1, 0, (vigInsetX - offsetX) / vigSteps + 1, h)
     }
 
-    // ── Edge glow rectangles (event-driven) ──────────────
-    const glowThickness = 140
-    this.edgeGlowTop = this.add.rectangle(w / 2, glowThickness / 2, w, glowThickness, 0xff0000, 0).setDepth(2)
-    this.edgeGlowLeft = this.add.rectangle(glowThickness / 2, h / 2, glowThickness, h, 0xff0000, 0).setDepth(2)
-    this.edgeGlowRight = this.add.rectangle(w - glowThickness / 2, h / 2, glowThickness, h, 0xff0000, 0).setDepth(2)
+    // ── Near-death tension vignette (hidden by default) ──
+    this.nearDeathVignette = this.add.graphics().setDepth(3).setAlpha(0)
+    const ndSteps = 32
+    for (let i = 0; i < ndSteps; i++) {
+      const t = i / ndSteps
+      const alpha = 0.35 * Math.pow(1 - t, 2.5)
+      const ox = w * 0.15 * t
+      const oy = h * 0.15 * t
+      this.nearDeathVignette.fillStyle(0xff0000, alpha)
+      this.nearDeathVignette.fillRect(0, oy, w, (h * 0.15 - oy) / ndSteps + 1)
+      this.nearDeathVignette.fillRect(0, h - oy - (h * 0.15 - oy) / ndSteps - 1, w, (h * 0.15 - oy) / ndSteps + 1)
+      this.nearDeathVignette.fillRect(ox, 0, (w * 0.15 - ox) / ndSteps + 1, h)
+      this.nearDeathVignette.fillRect(w - ox - (w * 0.15 - ox) / ndSteps - 1, 0, (w * 0.15 - ox) / ndSteps + 1, h)
+    }
+
+    // ── Edge glow graphics (event-driven, gradient-filled) ──────────────
+    this.edgeGlowThickness = Math.round(h * 0.05)
+    this.edgeGlowTop = this.add.graphics().setDepth(2).setAlpha(0)
+    this.edgeGlowLeft = this.add.graphics().setDepth(2).setAlpha(0)
+    this.edgeGlowRight = this.add.graphics().setDepth(2).setAlpha(0)
 
     // ── Floor counter (top-left) ──────────────────────────
     this.floorCounterText = this.add.text(12, FLOOR_COUNTER_Y, this.floorLabel(), {
@@ -254,6 +291,9 @@ export class CombatScene extends Phaser.Scene {
       color: '#ffffff',
       align: 'center',
     }).setOrigin(0.5, 0.5)
+
+    // ── Damage preview ghost bar (enemy HP) ────────────────
+    this.damagePreviewGfx = this.add.graphics().setDepth(11)
 
     // ── Enemy block bar (overlays HP bar when enemy has block) ──
     this.enemyBlockBarFill = this.add.graphics().setDepth(12)
@@ -310,6 +350,13 @@ export class CombatScene extends Phaser.Scene {
       align: 'center',
     }).setOrigin(0.5, 0).setDepth(8)
 
+    // ── Critical health pulse overlay (behind player HP bar) ──
+    this.criticalPulseRect = this.add.rectangle(
+      barX, (barTop + barBottom) / 2,
+      PLAYER_HP_BAR_WIDTH + 12, this.playerBarMaxH + 12,
+      COLOR_HP_RED, 0
+    ).setDepth(7).setVisible(false)
+
     // ── Player block icon (above HP bar) ────────────────────
     this.playerBlockIcon = this.add.text(barX, barTop - 16, '\u{1F6E1}\u{FE0F}', {
       fontSize: '16px',
@@ -365,6 +412,12 @@ export class CombatScene extends Phaser.Scene {
     })
     this.particles.setDepth(998)
 
+    // ── Combat atmosphere system ────────────────────
+    this.atmosphereSystem = new CombatAtmosphereSystem(this)
+
+    // ── Status effect visual system ─────────────────
+    this.statusEffectVisuals = new StatusEffectVisualSystem(this)
+
     // ── Scene lifecycle events ────────────────────────────
     this.events.on('shutdown', this.onShutdown, this)
     this.events.on('sleep', this.onShutdown, this)
@@ -397,6 +450,9 @@ export class CombatScene extends Phaser.Scene {
     const enemyY = floorY - size / 2
     this.currentEnemyY = enemyY
 
+    // Clear status effects from previous encounter
+    this.statusEffectVisuals?.clearAll()
+
     // Setup enemy sprite/placeholder via EnemySpriteSystem
     const texture = enemyTextureKey(this.currentEnemyId, 'idle')
     const hasSprite = hasTexture(this, texture)
@@ -414,6 +470,9 @@ export class CombatScene extends Phaser.Scene {
     this.enemyNameText.setPosition(enemyX, enemyY + size / 2 + 12)
     this.refreshEnemyHpBar(false)
     this.playEncounterEntry()
+
+    // Start atmosphere effects
+    this.atmosphereSystem.start(this.currentFloor, this.currentEnemyCategory === 'boss')
   }
 
   /** Update enemy HP (optionally animate the bar). */
@@ -452,6 +511,110 @@ export class CombatScene extends Phaser.Scene {
     this.refreshPlayerHpBar(animate && !this.reduceMotion)
   }
 
+  /** Set enemy enrage visual state on enemy sprite. */
+  setEnemyEnraged(enraged: boolean): void {
+    if (!this.sceneReady) return
+    this.enemySpriteSystem.setEnraged(enraged)
+  }
+
+  /** Show or hide charge attack telegraph on enemy. */
+  setChargeTelegraph(charging: boolean): void {
+    if (!this.sceneReady || charging === this.isCharging) return
+    this.isCharging = charging
+
+    if (charging && !this.reduceMotion) {
+      const enemyX = this.scale.width * ENEMY_X_PCT
+      const enemyY = this.currentEnemyY
+
+      // Growing energy glow circle behind enemy
+      this.chargeGlowCircle = this.add.circle(enemyX, enemyY, 20, 0xff8800, 0.15)
+        .setDepth(4)
+
+      this.chargeGlowTween = this.tweens.add({
+        targets: this.chargeGlowCircle,
+        radius: 80,
+        alpha: 0.35,
+        duration: 1500,
+        ease: 'Sine.easeIn',
+        onUpdate: () => {
+          if (this.chargeGlowCircle) {
+            // Redraw circle at new radius by scaling
+            const progress = this.chargeGlowTween?.progress ?? 0
+            const scale = 1 + progress * 3
+            this.chargeGlowCircle.setScale(scale)
+          }
+        },
+      })
+
+      // Ensure charge particle texture
+      if (!this.textures.exists('charge_particle')) {
+        const gfx = this.make.graphics({ x: 0, y: 0 })
+        gfx.fillStyle(0xffffff)
+        gfx.fillRect(0, 0, 3, 3)
+        gfx.generateTexture('charge_particle', 3, 3)
+        gfx.destroy()
+      }
+
+      // Particle accumulation around enemy
+      this.chargeParticleTimer = this.time.addEvent({
+        delay: 200,
+        loop: true,
+        callback: () => {
+          if (!this.isCharging) return
+          const angle = Math.random() * Math.PI * 2
+          const dist = 60 + Math.random() * 40
+          const px = enemyX + Math.cos(angle) * dist
+          const py = enemyY + Math.sin(angle) * dist
+
+          const emitter = this.add.particles(px, py, 'charge_particle', {
+            speed: { min: 30, max: 60 },
+            angle: { min: 0, max: 360 },
+            scale: { start: 0.6, end: 0 },
+            alpha: { start: 0.8, end: 0 },
+            tint: [0xff8800, 0xffaa00, 0xff6600],
+            lifespan: 600,
+            emitting: false,
+          })
+          emitter.setDepth(998)
+          emitter.explode(Math.max(1, Math.round(3 * this.effectScale)), 0, 0)
+          this.time.delayedCall(700, () => emitter.destroy())
+        },
+      })
+
+      // Slight camera pull-back
+      const cam = this.cameras.main
+      this.tweens.add({
+        targets: cam,
+        zoom: cam.zoom * 0.97,
+        duration: 1200,
+        ease: 'Sine.easeOut',
+      })
+    } else {
+      // Clear charge telegraph
+      if (this.chargeGlowTween) {
+        this.chargeGlowTween.destroy()
+        this.chargeGlowTween = null
+      }
+      if (this.chargeGlowCircle) {
+        this.chargeGlowCircle.destroy()
+        this.chargeGlowCircle = null
+      }
+      if (this.chargeParticleTimer) {
+        this.chargeParticleTimer.destroy()
+        this.chargeParticleTimer = null
+      }
+
+      // Restore camera zoom
+      const cam = this.cameras.main
+      this.tweens.add({
+        targets: cam,
+        zoom: 1,
+        duration: 200,
+        ease: 'Sine.easeOut',
+      })
+    }
+  }
+
   /** Set floor and encounter counters. */
   setFloorInfo(floor: number, encounter: number, totalEncounters: number): void {
     if (!this.sceneReady) return
@@ -479,8 +642,8 @@ export class CombatScene extends Phaser.Scene {
   }
 
   /** Dynamically load and display a random combat background for the given floor. */
-  setBackground(floor: number, isBoss: boolean): void {
-    if (!this.sceneReady) return
+  setBackground(floor: number, isBoss: boolean): Promise<void> {
+    if (!this.sceneReady) return Promise.resolve()
 
     const bgPath = getRandomCombatBg(floor, isBoss)
     // Strip leading slash for Phaser's asset loader
@@ -488,20 +651,23 @@ export class CombatScene extends Phaser.Scene {
     const bgKey = `bg-combat-${cleanPath.split('/').pop()?.replace('.webp', '') ?? 'default'}`
 
     // If same texture already loaded, skip
-    if (bgKey === this.currentBgKey) return
+    if (bgKey === this.currentBgKey) return Promise.resolve()
 
     // If texture already exists in cache, just swap
     if (hasTexture(this, bgKey)) {
       this._swapBackground(bgKey)
-      return
+      return Promise.resolve()
     }
 
     // Load new texture dynamically
-    this.load.image(bgKey, cleanPath)
-    this.load.once('complete', () => {
-      this._swapBackground(bgKey)
+    return new Promise<void>((resolve) => {
+      this.load.image(bgKey, cleanPath)
+      this.load.once('complete', () => {
+        this._swapBackground(bgKey)
+        resolve()
+      })
+      this.load.start()
     })
-    this.load.start()
   }
 
   private _swapBackground(bgKey: string): void {
@@ -540,6 +706,36 @@ export class CombatScene extends Phaser.Scene {
     return this.enemySpriteSystem.playDeath()
   }
 
+  /** Play kill confirmation punch — hard impact at the moment of the killing blow. */
+  playKillConfirmation(): Promise<void> {
+    if (this.reduceMotion) return Promise.resolve()
+
+    return new Promise<void>((resolve) => {
+      // Hard white flash (highest intensity)
+      this.pulseFlash(0xFFFFFF, 0.55, 100)
+
+      // Strong camera shake
+      this.cameras.main.shake(120, 0.008 * this.effectScale, true)
+
+      // Brief camera zoom punch
+      const cam = this.cameras.main
+      const baseZoom = cam.zoom
+      this.tweens.add({
+        targets: cam,
+        zoom: baseZoom * 1.05,
+        duration: 60,
+        yoyo: true,
+        ease: 'Sine.easeOut',
+      })
+
+      // Gold edge glow
+      this.pulseEdgeGlow(0xFFD700, 0.4, 250)
+
+      // Resolve after the punch settles (80ms)
+      this.time.delayedCall(80, resolve)
+    })
+  }
+
   /** Play player damage flash (red tint across display zone). */
   playPlayerDamageFlash(): void {
     if (this.reduceMotion) return
@@ -561,6 +757,63 @@ export class CombatScene extends Phaser.Scene {
   playScreenFlash(intensity: number = 0.3): void {
     if (this.reduceMotion) return
     this.pulseFlash(0xFFFFFF, intensity, 150)
+  }
+
+  /** Play speed bonus pop effect — blue-white flash + camera zoom punch + "FAST!" text. */
+  playSpeedBonusPop(): void {
+    if (this.reduceMotion) return
+
+    // Blue-white flash (distinct from normal white flash)
+    this.pulseFlash(0xAADDFF, 0.5, 120)
+
+    // Brief camera zoom punch (freeze-frame feel without pausing game time)
+    const cam = this.cameras.main
+    const baseZoom = cam.zoom
+    this.tweens.add({
+      targets: cam,
+      zoom: baseZoom * 1.03,
+      duration: 50,
+      yoyo: true,
+      ease: 'Sine.easeOut',
+    })
+
+    // "FAST!" text pop
+    const fastText = this.add.text(
+      this.scale.width / 2,
+      this.displayH * 0.35,
+      'FAST!',
+      {
+        fontFamily: '"Press Start 2P", monospace',
+        fontSize: '28px',
+        color: '#AADDFF',
+        stroke: '#000000',
+        strokeThickness: 4,
+        align: 'center',
+      }
+    ).setOrigin(0.5, 0.5).setDepth(997).setAlpha(0)
+
+    // Slam in (fast scale up), hold briefly, fade out with upward motion
+    this.tweens.add({
+      targets: fastText,
+      alpha: 1,
+      scaleX: 1.3,
+      scaleY: 1.3,
+      duration: 80,
+      ease: 'Back.Out',
+      onComplete: () => {
+        this.tweens.add({
+          targets: fastText,
+          alpha: 0,
+          scaleX: 1,
+          scaleY: 1,
+          y: fastText.y - 30,
+          duration: 400,
+          ease: 'Sine.easeIn',
+          delay: 150,
+          onComplete: () => fastText.destroy(),
+        })
+      },
+    })
   }
 
   /** Burst particles at a position. */
@@ -756,9 +1009,131 @@ export class CombatScene extends Phaser.Scene {
     })
   }
 
+  /**
+   * Show damage preview on enemy HP bar (ghost bar showing predicted damage).
+   * Call when a card is selected to show how much damage it would deal.
+   */
+  showDamagePreview(predictedDamage: number): void {
+    if (!this.sceneReady || this.reduceMotion) return
+
+    const ratio = this.currentEnemyMaxHP > 0
+      ? this.currentEnemyHP / this.currentEnemyMaxHP
+      : 0
+    const damageRatio = this.currentEnemyMaxHP > 0
+      ? predictedDamage / this.currentEnemyMaxHP
+      : 0
+
+    const currentW = Math.max(1, ratio * ENEMY_HP_BAR_W)
+    const damageW = Math.min(currentW, damageRatio * ENEMY_HP_BAR_W)
+    const w = this.scale.width
+    const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
+    const startX = w / 2 - ENEMY_HP_BAR_W / 2 + currentW - damageW
+
+    this.damagePreviewGfx.clear()
+    this.damagePreviewGfx.fillStyle(0xaa3333, 0.3)
+    this.damagePreviewGfx.fillRoundedRect(
+      startX, enemyHpY - ENEMY_HP_BAR_H / 2,
+      damageW, ENEMY_HP_BAR_H, 6
+    )
+  }
+
+  /** Hide damage preview on enemy HP bar. */
+  hideDamagePreview(): void {
+    if (!this.sceneReady) return
+    this.damagePreviewGfx.clear()
+  }
+
+  /**
+   * Play overkill HP bar shatter effect if damage greatly exceeded remaining HP.
+   * Called when enemy dies with significant overkill (>50% of remaining HP as damage).
+   */
+  playOverkillShatter(overkillDamage: number, attackColor?: number): void {
+    if (this.reduceMotion) return
+    if (overkillDamage <= 0) return
+
+    const w = this.scale.width
+    const enemyHpY = this.displayH * ENEMY_HP_Y_PCT
+    const barLeft = w / 2 - ENEMY_HP_BAR_W / 2
+    const color = attackColor ?? 0xe74c3c
+
+    // Create 6 fragments
+    const fragmentCount = 6
+    for (let i = 0; i < fragmentCount; i++) {
+      const fragW = ENEMY_HP_BAR_W / fragmentCount + Math.random() * 4
+      const fragH = ENEMY_HP_BAR_H + Math.random() * 4
+      const fragX = barLeft + (ENEMY_HP_BAR_W / fragmentCount) * i
+      const fragY = enemyHpY
+
+      const frag = this.add.rectangle(fragX, fragY, fragW, fragH, color, 0.8)
+        .setDepth(13)
+
+      const velX = (Math.random() - 0.5) * 200
+      const velY = (Math.random() - 0.7) * 150
+
+      this.tweens.add({
+        targets: frag,
+        x: frag.x + velX * 0.4,
+        y: frag.y + velY * 0.4 + 30,
+        angle: (Math.random() - 0.5) * 180,
+        alpha: 0,
+        scaleX: 0.3,
+        scaleY: 0.3,
+        duration: 400,
+        ease: 'Power2',
+        onComplete: () => frag.destroy(),
+      })
+    }
+
+    // Hide the actual HP bar
+    this.enemyHpBarFill.clear()
+    this.enemyHpBarBg.setAlpha(0.3)
+  }
+
   // ═════════════════════════════════════════════════════════
   // Private helpers
   // ═════════════════════════════════════════════════════════
+
+  /** Activate or deactivate near-death tension overlay. */
+  private setNearDeathTension(active: boolean): void {
+    if (active === this.isNearDeathActive) return
+    this.isNearDeathActive = active
+
+    if (active && !this.reduceMotion) {
+      // Fade in the red vignette
+      this.tweens.add({
+        targets: this.nearDeathVignette,
+        alpha: 1,
+        duration: 500,
+        ease: 'Sine.easeIn',
+      })
+      // Start pulsing heartbeat glow at edges with smooth gradient updates
+      const pulseProxy = { t: 0.08 }
+      this.nearDeathPulseTween = this.tweens.add({
+        targets: pulseProxy,
+        t: 0.25,
+        duration: 1000,
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.easeInOut',
+        onUpdate: () => {
+          this.drawEdgeGlowGradients(0xff0000, pulseProxy.t)
+        },
+      })
+    } else {
+      // Fade out
+      this.tweens.add({
+        targets: this.nearDeathVignette,
+        alpha: 0,
+        duration: 300,
+        ease: 'Sine.easeOut',
+      })
+      if (this.nearDeathPulseTween) {
+        this.nearDeathPulseTween.destroy()
+        this.nearDeathPulseTween = null
+        this.drawEdgeGlowGradients(0xff0000, 0)
+      }
+    }
+  }
 
   private playEncounterEntry(): void {
     this.entryFadeRect.setAlpha(1)
@@ -816,6 +1191,28 @@ export class CombatScene extends Phaser.Scene {
     })
   }
 
+  /** Redraw edge glow graphics with gradient fill for the given color and alpha intensity. */
+  private drawEdgeGlowGradients(color: number, baseAlpha: number = 1): void {
+    const w = this.scale.width
+    const h = this.displayH
+    const t = this.edgeGlowThickness
+
+    // Top edge: gradient fades from top (opaque) to bottom (transparent)
+    this.edgeGlowTop.clear()
+    this.edgeGlowTop.fillGradientStyle(color, color, color, color, baseAlpha, baseAlpha, 0, 0)
+    this.edgeGlowTop.fillRect(0, 0, w, t)
+
+    // Left edge: gradient fades from left (opaque) to right (transparent)
+    this.edgeGlowLeft.clear()
+    this.edgeGlowLeft.fillGradientStyle(color, color, color, color, baseAlpha, 0, baseAlpha, 0)
+    this.edgeGlowLeft.fillRect(0, 0, t, h)
+
+    // Right edge: gradient fades from right (opaque) to left (transparent)
+    this.edgeGlowRight.clear()
+    this.edgeGlowRight.fillGradientStyle(color, color, color, color, 0, baseAlpha, 0, baseAlpha)
+    this.edgeGlowRight.fillRect(w - t, 0, t, h)
+  }
+
   /** Flash colored glow at screen edges for combat feedback. */
   private pulseEdgeGlow(color: number, peakAlpha: number, durationMs: number): void {
     if (this.reduceMotion) return
@@ -823,19 +1220,19 @@ export class CombatScene extends Phaser.Scene {
       this.edgeGlowTween.stop()
       this.edgeGlowTween = null
     }
-    const rects = [this.edgeGlowTop, this.edgeGlowLeft, this.edgeGlowRight]
-    for (const r of rects) {
-      r.setFillStyle(color, 1)
-      r.setAlpha(0)
-    }
+    const gfxArr = [this.edgeGlowTop, this.edgeGlowLeft, this.edgeGlowRight]
+    this.drawEdgeGlowGradients(color)
+    for (const g of gfxArr) g.setAlpha(0)
+
+    const softPeak = peakAlpha * 0.6
     this.edgeGlowTween = this.tweens.add({
-      targets: rects,
-      alpha: peakAlpha,
-      duration: Math.max(40, Math.round(durationMs * 0.65)),
+      targets: gfxArr,
+      alpha: softPeak,
+      duration: durationMs,
       yoyo: true,
-      ease: 'Cubic.easeOut',
+      ease: 'Sine.easeInOut',
       onComplete: () => {
-        for (const r of rects) r.setAlpha(0)
+        for (const g of gfxArr) g.setAlpha(0)
         this.edgeGlowTween = null
       },
     })
@@ -901,6 +1298,57 @@ export class CombatScene extends Phaser.Scene {
     const barTop = h * PLAYER_HP_BAR_TOP_PCT
     const barBottom = h * PLAYER_HP_BAR_BOTTOM_PCT
 
+    const previousRatio = this.previousPlayerHpRatio
+    this.previousPlayerHpRatio = ratio
+
+    // ── Heal overshoot bounce ───────────────────────────────
+    if (animate && ratio > previousRatio && !this.reduceMotion) {
+      const overshootH = Math.min(this.playerBarMaxH, targetH * 1.05)
+
+      // Draw overshoot first
+      this.playerHpBarFill.clear()
+      this.playerHpBarFill.fillStyle(COLOR_HP_GREEN, 1)
+      this.playerHpBarFill.fillRoundedRect(
+        barX - PLAYER_HP_BAR_WIDTH / 2, barBottom - overshootH,
+        PLAYER_HP_BAR_WIDTH, overshootH, 8
+      )
+
+      // Brief green flash at edges
+      this.pulseEdgeGlow(COLOR_HP_GREEN, 0.15, 200)
+
+      // After 100ms, redraw at correct height
+      this.time.delayedCall(100, () => {
+        this.playerHpBarFill.clear()
+        this.playerHpBarFill.fillStyle(color, 1)
+        this.playerHpBarFill.fillRoundedRect(
+          barX - PLAYER_HP_BAR_WIDTH / 2, barBottom - targetH,
+          PLAYER_HP_BAR_WIDTH, targetH, 8
+        )
+      })
+
+      this.playerHpText.setText(`${this.currentPlayerHP}`)
+      return // Skip normal redraw below since we handled it
+    }
+
+    // ── Critical health pulse ────────────────────────────────
+    const isCritical = ratio > 0 && ratio < 0.25
+    if (isCritical && !this.reduceMotion && !this.criticalPulseTween) {
+      this.criticalPulseRect.setVisible(true)
+      this.criticalPulseTween = this.tweens.add({
+        targets: this.criticalPulseRect,
+        alpha: { from: 0.1, to: 0.3 },
+        duration: 1000,
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.easeInOut',
+      })
+    } else if (!isCritical && this.criticalPulseTween) {
+      this.criticalPulseTween.destroy()
+      this.criticalPulseTween = null
+      this.criticalPulseRect.setVisible(false)
+      this.criticalPulseRect.setAlpha(0)
+    }
+
     // Redraw the fill bar with the new height (grows from bottom)
     this.playerHpBarFill.clear()
     this.playerHpBarFill.fillStyle(color, 1)
@@ -910,6 +1358,10 @@ export class CombatScene extends Phaser.Scene {
     )
 
     this.playerHpText.setText(`${this.currentPlayerHP}`)
+
+    // Activate/deactivate near-death tension
+    const nearDeath = ratio > 0 && ratio < 0.25
+    this.setNearDeathTension(nearDeath)
   }
 
   /** Refresh player block icon and text visibility. */
@@ -922,16 +1374,57 @@ export class CombatScene extends Phaser.Scene {
     }
   }
 
+  /** Update status effect visuals on enemy. */
+  updateStatusEffects(effects: Array<{ type: string }>): void {
+    if (!this.sceneReady) return
+    const enemyX = this.scale.width * ENEMY_X_PCT
+    this.statusEffectVisuals.setEnemyPosition(enemyX, this.currentEnemyY)
+    this.statusEffectVisuals.updateEffects(effects)
+  }
+
+  /** Clear all status effect visuals. */
+  clearStatusEffects(): void {
+    if (!this.sceneReady) return
+    this.statusEffectVisuals.clearAll()
+  }
+
   /** Cleanup on shutdown/sleep — stop tweens, reset positions. */
   private onShutdown(): void {
     this.tweens.killAll()
     this.flashTween = null
+    if (this.criticalPulseTween) {
+      this.criticalPulseTween.destroy()
+      this.criticalPulseTween = null
+    }
+    if (this.nearDeathPulseTween) {
+      this.nearDeathPulseTween.destroy()
+      this.nearDeathPulseTween = null
+    }
+    this.isNearDeathActive = false
+    if (this.chargeParticleTimer) {
+      this.chargeParticleTimer.destroy()
+      this.chargeParticleTimer = null
+    }
+    if (this.chargeGlowTween) {
+      this.chargeGlowTween.destroy()
+      this.chargeGlowTween = null
+    }
+    if (this.chargeGlowCircle) {
+      this.chargeGlowCircle.destroy()
+      this.chargeGlowCircle = null
+    }
+    this.isCharging = false
     this.enemySpriteSystem?.destroy()
+    this.atmosphereSystem?.stop()
+    this.statusEffectVisuals?.destroy()
   }
 
   /** Re-sync display on wake/resume. */
   private onWake(): void {
     this.reduceMotion = isReduceMotionEnabled()
+    this.previousPlayerHpRatio = this.currentPlayerMaxHP > 0
+      ? this.currentPlayerHP / this.currentPlayerMaxHP
+      : 1
     this.refreshEnemyHpBar(false)
     this.refreshPlayerHpBar(false)
   }

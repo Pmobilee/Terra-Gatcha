@@ -2,7 +2,6 @@
   import { onDestroy, onMount } from 'svelte'
   import type { Card, FactDomain, CardType } from '../../data/card-types'
   import { getDomainMetadata } from '../../data/domainMetadata'
-  import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
   import { getCardbackUrl, onCardbackReady } from '../utils/cardbackManifest'
   import { getMechanicAnimClass, getTypeFallbackAnimClass, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { getTierDisplayName } from '../../services/tierDerivation'
@@ -300,8 +299,6 @@
     {@const xOffset = getXOffset(i, cards.length)}
     {@const domainColor = getDomainColor(card.domain)}
     {@const icon = TYPE_ICONS[card.cardType]}
-    {@const framePath = card.isEcho ? '/assets/sprites/cards/frame_echo.webp' : getCardFramePath(card.cardType)}
-    {@const domainIconPath = getDomainIconPath(card.domain)}
     {@const effectVal = getEffectValue(card)}
     {@const cardAnim = cardAnimations?.[card.id] ?? null}
     {@const tierBadge = getTierBadge(card)}
@@ -346,7 +343,6 @@
       style="
         {isRevealing || isMechanic ? '' : isDraggingThis ? `transform: translate3d(${xOffset + cardDragX}px, ${(isSelected ? -80 : -arcOffset) - cardDragRawY}px, 0) rotate(0deg) scale(${cardDragScale});` : `transform: translate3d(${xOffset}px, ${isSelected ? -80 : isOther ? 15 : -(arcOffset + hoverLift)}px, 0) rotate(${isSelected ? 0 : rotation}deg) scale(${isSelected ? 1.2 : hoverScale});`}
         border-color: {domainColor};
-        --frame-image: url('{framePath}');
         animation-delay: {i * 50}ms;
         opacity: {isOther ? 0.3 : 1};
         z-index: {isDraggingThis ? 20 : isHovered ? 10 : ''};
@@ -362,9 +358,11 @@
     >
       <div class="card-inner" class:flipped={isRevealing || isTierUp || isMechanic}>
         <div class="card-front">
+          {#if cardbackUrl}
+            <img class="card-front-bg" src={cardbackUrl} alt="" />
+          {/if}
           <div class="ap-badge">{apCost}</div>
           <div class="card-domain-stripe" style="background: {domainColor};"></div>
-          <img class="card-domain-icon" src={domainIconPath} alt={`${card.domain} icon`} />
           <div class="card-type-icon">{icon}</div>
           <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0}>{effectVal}</div>
 
@@ -425,8 +423,6 @@
     {@const isMechanic = cardAnim === 'mechanic'}
     {@const tierUpTransition = tierUpTransitions[card.id] ?? null}
     {@const domainColor = getDomainColor(card.domain)}
-    {@const framePath = card.isEcho ? '/assets/sprites/cards/frame_echo.webp' : getCardFramePath(card.cardType)}
-    {@const domainIconPath = getDomainIconPath(card.domain)}
     {@const effectVal = getEffectValue(card)}
     {@const tierVisual = getTierUpVisualSignature(card.factId)}
 
@@ -442,13 +438,14 @@
       class:card-fizzle={cardAnim === 'fizzle'}
       style="
         border-color: {domainColor};
-        --frame-image: url('{framePath}');
       "
     >
       <div class="card-inner" class:flipped={isRevealing || isTierUp || isMechanic}>
         <div class="card-front">
+          {#if cardbackUrl}
+            <img class="card-front-bg" src={cardbackUrl} alt="" />
+          {/if}
           <div class="card-domain-stripe" style="background: {domainColor};"></div>
-          <img class="card-domain-icon" src={domainIconPath} alt={`${card.domain} icon`} />
           <div class="card-type-icon">{TYPE_ICONS[card.cardType]}</div>
           <div class="card-effect-value" class:boosted={isBoosted() && effectVal > 0}>{effectVal}</div>
         </div>
@@ -503,9 +500,6 @@
     width: var(--card-w);
     height: var(--card-h);
     background-color: #1e2d3d;
-    background-image: var(--frame-image);
-    background-size: cover;
-    background-position: center;
     border: 2px solid;
     border-radius: 8px;
     cursor: pointer;
@@ -615,7 +609,21 @@
   .card-front {
     z-index: 1;
     padding: 0;
-    overflow: visible;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .card-front-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    opacity: 0.25;
+    z-index: 0;
+    pointer-events: none;
+    filter: brightness(0.7) saturate(0.8);
   }
 
   .card-back {
@@ -659,21 +667,16 @@
     width: 100%;
     height: 4px;
     flex-shrink: 0;
-  }
-
-  .card-domain-icon {
-    width: 1.4em;
-    height: 1.4em;
-    object-fit: contain;
-    image-rendering: pixelated;
-    margin-top: 0.25em;
-    font-size: calc(var(--card-w) * 0.18);
+    position: relative;
+    z-index: 1;
   }
 
   .card-type-icon {
     font-size: calc(var(--card-w) * 0.25);
     margin-top: 0.3em;
     line-height: 1;
+    position: relative;
+    z-index: 1;
   }
 
   .card-effect-value {
@@ -681,6 +684,8 @@
     font-weight: 700;
     margin-top: 0.15em;
     line-height: 1;
+    position: relative;
+    z-index: 1;
   }
 
   .card-effect-value.boosted {
@@ -712,6 +717,8 @@
     margin-top: auto;
     margin-bottom: 3px;
     color: #c0c0c0;
+    position: relative;
+    z-index: 1;
   }
 
   .tier-2b .card-tier-badge {
@@ -762,6 +769,7 @@
     border-radius: 6px;
     pointer-events: none;
     animation: info-fade-in 200ms ease-out;
+    z-index: 3;
   }
 
   .info-mechanic {

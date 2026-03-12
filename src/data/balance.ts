@@ -1223,7 +1223,7 @@ export const PHOENIX_RAGE_PENALTY_REMOVAL_TURNS = 3;
 export const ENABLE_PHASE2_MECHANICS = false;
 
 /** When true, language domains appear in the domain picker. */
-export const ENABLE_LANGUAGE_DOMAINS = false;
+export const ENABLE_LANGUAGE_DOMAINS = true;
 
 /** Number of runs that force Relaxed difficulty. */
 export const STORY_MODE_FORCED_RUNS = 1;

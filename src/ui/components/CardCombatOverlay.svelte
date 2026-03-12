@@ -20,15 +20,19 @@
   import RelicTray from './RelicTray.svelte'
   import { RELIC_BY_ID } from '../../data/relics/index'
   import { juiceManager } from '../../services/juiceManager'
+  import { getCombatScene } from '../../services/encounterBridge'
   import { factsDB } from '../../services/factsDB'
   import { getReviewStateByFactId } from '../stores/playerData'
+  import type { CombatScene } from '../../game/scenes/CombatScene'
   import { getCardTier } from '../../services/tierDerivation'
   import type { ActiveBounty } from '../../services/bountyManager'
   import { playCardAudio } from '../../services/cardAudioManager'
   import { hasCardback } from '../utils/cardbackManifest'
   import { REVEAL_DURATION, TIER_UP_DURATION, MECHANIC_DURATION, LAUNCH_DURATION, type CardAnimPhase } from '../utils/mechanicAnimations'
   import { shuffled } from '../../services/randomUtils'
+  import { isPlaceholderDistractor } from '../../services/distractorFilter'
   import { activeRunState } from '../../services/runStateStore'
+  import { getIntentIconPath } from '../utils/iconAssets'
   import { getMasteryScalingTier, getRewardMultiplier, getDifficultyBoostFloors } from '../../services/masteryScalingService'
   import { synergyFlash } from '../stores/gameState'
 
@@ -75,6 +79,11 @@
   let damageIdCounter = $state(0)
   let slowReaderEnabled = $state(false)
   let currentDifficulty = $state<DifficultyMode>('normal')
+
+  // Near-death tension indicator
+  let isNearDeath = $derived(
+    turnState != null && turnState.playerState.hp > 0 && turnState.playerState.hp < turnState.playerState.maxHP * 0.25
+  )
 
   // wowFactor overlay state
   let wowFactorText = $state<string | null>(null)
@@ -153,7 +162,8 @@
       : (CATEGORY_COLORS[enemyCategory] ?? '#9ca3af')
   )
 
-  const INTENT_ICONS: Record<string, string> = {
+  /** Emoji fallbacks for enemy intents */
+  const INTENT_EMOJI: Record<string, string> = {
     attack: '⚔️',
     multi_attack: '⚔️⚔️',
     defend: '🛡️',
@@ -191,7 +201,7 @@
 
   let intentDisplay = $derived.by(() => {
     if (!enemyIntent) return null
-    const icon = INTENT_ICONS[enemyIntent.type] ?? '❓'
+    const icon = INTENT_EMOJI[enemyIntent.type] ?? '❓'
     const val = enemyIntent.value
     const label = INTENT_LABELS[enemyIntent.type] ?? ''
     const color = INTENT_COLORS[enemyIntent.type] ?? 'rgba(100, 116, 139, 0.2)'
@@ -382,6 +392,24 @@
   $effect(() => {
     juiceManager.setCallbacks({
       onDamageNumber: (value, isCritical) => spawnDamageNumber(value, isCritical),
+      onScreenFlash: (intensity) => {
+        const scene = getCombatScene()
+        scene?.playScreenFlash(intensity)
+      },
+      onParticleBurst: (count, tint) => {
+        const scene = getCombatScene()
+        if (scene) {
+          scene.burstParticles(count, scene.scale.width / 2, scene.scale.height * 0.4, tint)
+        }
+      },
+      onComboScreenEdge: () => {
+        const scene = getCombatScene()
+        scene?.playGoldFlash()
+      },
+      onSpeedBonusPop: () => {
+        const scene = getCombatScene()
+        scene?.playSpeedBonusPop()
+      },
     })
     return () => juiceManager.clearCallbacks()
   })
@@ -448,8 +476,12 @@
     distractorCount: number,
     preferClose: boolean,
   ): string[] {
-    const unique = [...new Set(distractorSource.filter((entry) => entry && entry !== correctAnswer))]
+    const unique = [...new Set(distractorSource.filter((entry) => entry && entry !== correctAnswer && !isPlaceholderDistractor(entry)))]
     if (unique.length === 0) return []
+
+    if (unique.length < distractorCount && import.meta.env.DEV) {
+      console.warn(`[pickDistractors] Only ${unique.length}/${distractorCount} valid distractors after filtering placeholders`)
+    }
 
     if (!preferClose) {
       return shuffled(unique).slice(0, Math.min(distractorCount, unique.length))
@@ -689,6 +721,9 @@
     const nextCombo = isCorrect ? (turnState?.comboCount ?? 0) + 1 : 0
     const willBePerfect = isCorrect && (turnState?.cardsCorrectThisTurn === turnState?.cardsPlayedThisTurn)
 
+    // Determine hit count for multi-hit mechanics
+    const hitCount = card.mechanicId === 'multi_hit' ? 3 : undefined
+
     // Capture before resetCardFlow nulls it
     const quizVariantIndex = committedQuizData?.variantIndex
     const previousReviewState = getReviewStateByFactId(card.factId)
@@ -754,6 +789,7 @@
             effectLabel: effectLabel,
             isPerfectTurn: willBePerfect,
             cardType: card.cardType,
+            hitCount,
           })
         }, REVEAL_DURATION)
 
@@ -769,6 +805,7 @@
               effectLabel: effectLabel,
               isPerfectTurn: willBePerfect,
               cardType: card.cardType,
+              hitCount,
             })
           }, REVEAL_DURATION + TIER_UP_DURATION)
         }
@@ -813,6 +850,7 @@
             effectLabel: effectLabel,
             isPerfectTurn: willBePerfect,
             cardType: card.cardType,
+            hitCount,
           })
         }, mechanicStartDelay)
 
@@ -877,7 +915,7 @@
   }
 </script>
 
-<div class="card-combat-overlay">
+<div class="card-combat-overlay" class:near-death-tension={isNearDeath}>
   {#if turnState === null}
     <div class="empty-state">
       <p>Waiting for encounter...</p>
@@ -924,7 +962,9 @@
         aria-label="View intent details"
       >
         <div class="intent-bubble-summary">
-          <span class="intent-icon">{intentDisplay.icon}</span>
+          <img class="intent-icon-img" src={enemyIntent ? getIntentIconPath(enemyIntent.type) : ''} alt=""
+            onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; (e.currentTarget.nextElementSibling as HTMLElement)?.style.setProperty('display', 'inline'); }} />
+          <span class="intent-icon-fallback" style="display:none">{enemyIntent ? INTENT_EMOJI[enemyIntent.type] ?? '❓' : '❓'}</span>
           {#if intentDisplay.text}
             <span class="intent-value" class:intent-value-attack={intentDisplay.type === 'attack' || intentDisplay.type === 'multi_attack'}
               class:intent-value-defend={intentDisplay.type === 'defend'}
@@ -1063,6 +1103,17 @@
     overflow: visible;
   }
 
+  .card-combat-overlay.near-death-tension {
+    filter: saturate(0.7);
+    transition: filter 500ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card-combat-overlay.near-death-tension {
+      filter: none;
+    }
+  }
+
   .empty-state {
     display: flex;
     flex-direction: column;
@@ -1095,7 +1146,7 @@
   .ap-orb {
     position: absolute;
     left: 16px;
-    top: 10px;
+    top: calc(10px + var(--safe-top));
     z-index: 8;
     width: 44px;
     height: 44px;
@@ -1189,8 +1240,8 @@
 
   .enemy-intent-bubble {
     position: fixed;
-    top: 16%;
-    right: 52%;
+    top: calc(16% + var(--safe-top));
+    right: 65%;
     z-index: 12;
     border: 1.5px solid;
     border-radius: 12px;
@@ -1248,9 +1299,17 @@
     opacity: 0.7;
   }
 
-  .intent-icon {
-    font-size: 16px;
-    line-height: 1;
+  .intent-icon-img {
+    width: 1.5em;
+    height: 1.5em;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    vertical-align: middle;
+  }
+
+  .intent-icon-fallback {
+    vertical-align: middle;
   }
 
   .intent-value {
@@ -1306,7 +1365,7 @@
 
   .enemy-name-header {
     position: fixed;
-    top: 4vh;
+    top: calc(4vh + var(--safe-top));
     left: 50%;
     transform: translateX(-50%);
     z-index: 11;
@@ -1481,27 +1540,39 @@
 
   .wow-factor-overlay {
     position: absolute;
-    top: 48px;
+    bottom: calc(45vh + 8px);
     left: 12px;
     right: 12px;
     z-index: 12;
     text-align: center;
-    font-size: 12px;
-    font-style: italic;
-    color: #fef3c7;
-    background: rgba(15, 23, 35, 0.82);
-    border: 1px solid rgba(251, 191, 36, 0.35);
-    border-radius: 8px;
-    padding: 8px 12px;
-    line-height: 1.35;
+    font-size: 15px;
+    font-weight: 600;
+    color: #f0c860;
+    background: rgba(10, 8, 20, 0.75);
+    border: 1px solid rgba(240, 200, 96, 0.25);
+    border-radius: 10px;
+    padding: 10px 14px;
+    line-height: 1.4;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 300ms ease;
+    transform: translateY(10px);
+    transition: opacity 300ms ease, transform 300ms ease;
   }
 
   .wow-factor-overlay.wow-visible {
     opacity: 1;
-    transition: opacity 200ms ease;
+    transform: translateY(0);
+    transition: opacity 200ms ease, transform 200ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wow-factor-overlay {
+      transform: none;
+      transition: opacity 200ms ease;
+    }
+    .wow-factor-overlay.wow-visible {
+      transform: none;
+    }
   }
 
   .screen-edge-pulse {
@@ -1510,20 +1581,20 @@
     left: 0;
     right: 0;
     bottom: 0;
-    box-shadow: inset 0 0 60px 20px rgba(255, 215, 0, 0.15);
-    animation: edgePulse 400ms ease-in-out;
+    background: radial-gradient(ellipse at center, transparent 75%, rgba(255, 215, 0, 0.12) 100%);
+    animation: edgePulse 600ms ease-in-out;
     z-index: 5;
   }
 
   @keyframes edgePulse {
     0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0.7; }
+    40% { opacity: 1; }
+    100% { opacity: 0; }
   }
 
   .expert-badge {
     position: absolute;
-    top: 6px;
+    top: calc(6px + var(--safe-top));
     right: 6px;
     display: flex;
     flex-direction: column;

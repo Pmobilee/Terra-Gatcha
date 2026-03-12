@@ -35,6 +35,11 @@ export class EnemySpriteSystem {
   private jitterTimer: Phaser.Time.TimerEvent | null = null
   private animConfig: AnimConfig = getAnimConfig()
 
+  private isEnraged = false
+  private enrageParticleTimer: Phaser.Time.TimerEvent | null = null
+  private enrageGlowRect: Phaser.GameObjects.Rectangle | null = null
+  private enrageGlowTween: Phaser.Tweens.Tween | null = null
+
   /**
    * Create a new EnemySpriteSystem.
    * @param scene The Phaser scene to render into
@@ -75,10 +80,23 @@ export class EnemySpriteSystem {
     this.baseY = y
     this.hasRealTexture = true
 
+    // Compute aspect-ratio-preserving display dimensions
+    const frame = this.scene.textures.getFrame(textureKey)
+    const tw = frame.width
+    const th = frame.height
+    let dw: number, dh: number
+    if (tw >= th) {
+      dw = displaySize
+      dh = displaySize * (th / tw)
+    } else {
+      dh = displaySize
+      dw = displaySize * (tw / th)
+    }
+
     // Create shadow
     this.shadowSprite = this.scene.add
       .image(4, 5, textureKey)
-      .setDisplaySize(displaySize, displaySize)
+      .setDisplaySize(dw, dh)
       .setTint(0x000000)
       .setAlpha(0.25)
 
@@ -87,14 +105,14 @@ export class EnemySpriteSystem {
     for (const [ox, oy] of outlineOffsets) {
       const outline = this.scene.add
         .image(ox, oy, textureKey)
-        .setDisplaySize(displaySize, displaySize)
+        .setDisplaySize(dw, dh)
         .setTint(0x000000)
         .setAlpha(0.9)
       this.outlineSprites.push(outline)
     }
 
     // Create main sprite
-    this.mainSprite = this.scene.add.image(0, 0, textureKey).setDisplaySize(displaySize, displaySize)
+    this.mainSprite = this.scene.add.image(0, 0, textureKey).setDisplaySize(dw, dh)
 
     // Add all to container in order: shadow, outlines, main
     this.container.add(this.shadowSprite)
@@ -267,6 +285,110 @@ export class EnemySpriteSystem {
     this.idleBobTween = null
     this.breatheTween = null
     this.wobbleTween = null
+  }
+
+  /**
+   * Activate enrage visual effects — red particle border and intensified idle.
+   */
+  public setEnraged(enraged: boolean): void {
+    if (enraged === this.isEnraged) return
+    this.isEnraged = enraged
+
+    if (enraged && !this.reduceMotion) {
+      // Intensify idle: increase bob amplitude and speed
+      if (this.idleBobTween) {
+        this.idleBobTween.updateTo('y', this.baseY - this.animConfig.idle.bobAmplitude * 1.5)
+        this.idleBobTween.timeScale = 1.3
+      }
+      if (this.breatheTween) {
+        this.breatheTween.timeScale = 1.3
+      }
+
+      // Red/orange glow rectangle around enemy
+      const size = this.mainSprite
+        ? Math.max(this.mainSprite.displayWidth, this.mainSprite.displayHeight)
+        : (this.mainRect ? this.mainRect.displayWidth : 100)
+      this.enrageGlowRect = this.scene.add.rectangle(0, 0, size + 16, size + 16)
+        .setStrokeStyle(3, 0xff4400, 0.6)
+        .setFillStyle(0xff0000, 0)
+        .setDepth(4)
+      this.container.add(this.enrageGlowRect)
+      this.container.sendToBack(this.enrageGlowRect)
+
+      // Pulse the glow
+      this.enrageGlowTween = this.scene.tweens.add({
+        targets: this.enrageGlowRect,
+        alpha: { from: 0.4, to: 0.8 },
+        scaleX: { from: 1, to: 1.05 },
+        scaleY: { from: 1, to: 1.05 },
+        duration: 800,
+        yoyo: true,
+        repeat: -1,
+        ease: 'Sine.easeInOut',
+      })
+
+      // Ensure enrage particle texture
+      if (!this.scene.textures.exists('enrage_particle')) {
+        const gfx = this.scene.make.graphics({ x: 0, y: 0 })
+        gfx.fillStyle(0xffffff)
+        gfx.fillRect(0, 0, 3, 3)
+        gfx.generateTexture('enrage_particle', 3, 3)
+        gfx.destroy()
+      }
+
+      // Continuous particle border
+      this.enrageParticleTimer = this.scene.time.addEvent({
+        delay: 300,
+        loop: true,
+        callback: () => {
+          if (!this.isEnraged) return
+          const halfSize = (size + 16) / 2
+          const side = Math.floor(Math.random() * 4)
+          let px = 0, py = 0
+          switch (side) {
+            case 0: px = -halfSize + Math.random() * (size + 16); py = -halfSize; break
+            case 1: px = -halfSize + Math.random() * (size + 16); py = halfSize; break
+            case 2: px = -halfSize; py = -halfSize + Math.random() * (size + 16); break
+            case 3: px = halfSize; py = -halfSize + Math.random() * (size + 16); break
+          }
+          const emitter = this.scene.add.particles(
+            this.container.x + px, this.container.y + py, 'enrage_particle', {
+              speed: { min: 10, max: 30 },
+              angle: { min: 250, max: 290 },
+              scale: { start: 0.5, end: 0 },
+              alpha: { start: 0.7, end: 0 },
+              tint: [0xff4400, 0xff6600, 0xff2200],
+              lifespan: 500,
+              emitting: false,
+            }
+          )
+          emitter.setDepth(999)
+          emitter.explode(Math.max(1, Math.round(2 * this.effectScale)), 0, 0)
+          this.scene.time.delayedCall(600, () => emitter.destroy())
+        },
+      })
+    } else {
+      // Deactivate enrage
+      if (this.idleBobTween) {
+        this.idleBobTween.updateTo('y', this.baseY - this.animConfig.idle.bobAmplitude)
+        this.idleBobTween.timeScale = 1
+      }
+      if (this.breatheTween) {
+        this.breatheTween.timeScale = 1
+      }
+      if (this.enrageGlowTween) {
+        this.enrageGlowTween.destroy()
+        this.enrageGlowTween = null
+      }
+      if (this.enrageGlowRect) {
+        this.enrageGlowRect.destroy()
+        this.enrageGlowRect = null
+      }
+      if (this.enrageParticleTimer) {
+        this.enrageParticleTimer.destroy()
+        this.enrageParticleTimer = null
+      }
+    }
   }
 
   /**
@@ -570,6 +692,7 @@ export class EnemySpriteSystem {
    * Destroy the sprite system and clean up all resources.
    */
   public destroy(): void {
+    this.setEnraged(false)
     this.killIdleTweens()
     if (this.jitterTimer) {
       this.jitterTimer.destroy()
@@ -583,6 +706,7 @@ export class EnemySpriteSystem {
    * Destroy all child objects and reset sprite references.
    */
   private destroyChildren(): void {
+    this.setEnraged(false)
     this.killIdleTweens()
     this.container.removeAll(true)
 

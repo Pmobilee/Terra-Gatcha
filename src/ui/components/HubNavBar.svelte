@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Screen } from '../stores/gameState'
+  import { getNavIconPath } from '../utils/iconAssets'
 
   interface Props {
     current: Screen
@@ -27,7 +28,9 @@
       onclick={() => onNavigate(item.key)}
       aria-label={item.label}
     >
-      <span class="icon" aria-hidden="true">{item.icon}</span>
+      <img class="nav-icon-img" src={getNavIconPath(item.key)} alt=""
+        onerror={(e) => { const img = e.currentTarget as HTMLImageElement; img.style.display = 'none'; (img.nextElementSibling as HTMLElement | null)?.style.setProperty('display', 'inline'); }} />
+      <span class="nav-icon-fallback" style="display:none" aria-hidden="true">{item.icon}</span>
       <span class="label">{item.label}</span>
     </button>
   {/each}
@@ -66,7 +69,15 @@
     background: rgba(15, 33, 53, 0.7);
   }
 
-  .icon {
+  .nav-icon-img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .nav-icon-fallback {
     font-size: 16px;
     line-height: 1;
   }

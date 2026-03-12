@@ -44,6 +44,8 @@ Primary boot path:
 
 - `CombatScene` — renders enemy HP bars (with block overlay), damage particles, screen flash. Enemy sprites are rendered and animated via EnemySpriteSystem (3D paper cutout effect with procedural idle/attack/hit/death states). Intent, floor info, enemy name, and bounty strip have moved to the Svelte overlay.
 - `CombatScene` uses a `sceneReady` guard: a private boolean flag set `true` at end of `create()`. All public methods (`setEnemy`, `updateEnemyBlock`, `setEnemyIntent`, `updatePlayerHP`, `setFloorInfo`, `setRelics`) early-return if the scene is not yet ready, preventing race conditions when callers invoke display updates before Phaser objects exist.
+- **Enemy Sprite Pipeline** (`scripts/process-enemy-sprites.mjs`): Sharp-based script processes source PNGs from `data/generated/enemies/{zone}/{tier}/` into mobile-ready sprites with 4 output files per enemy: `{name}_idle.png`, `{name}_idle.webp`, `{name}_idle_1x.png`, `{name}_idle_1x.webp` in `public/assets/sprites/enemies/`. Resolution tiers: Standard (common=256px, elite/miniboss=320px, boss=384px longest edge) and 1x low-end (half size). Sprite keys auto-generated via `scripts/gen-sprite-keys.mjs` following `enemy-{id}-idle` pattern. All 88 enemy sprites preloaded at CombatScene startup via loop over ENEMY_TEMPLATES. Only idle textures used; hit/death animations are fully procedural (tweens + particles).
+- **Sprite Display**: EnemySpriteSystem preserves texture aspect ratio, constraining longest edge to displaySize. Standard devices get `.webp`, low-end devices get `_1x.webp`. Layered 3D paper-cutout effect (shadow + outlines + main sprite) applied to both real sprites and placeholder colored rectangles.
 - Sprite pool of 5 pre-created card sprites, repositioned per turn (no create/destroy)
 - Particle cap: 50 concurrent max on mobile; correct answer burst = 30 particles, 300ms lifespan
 - Scale mode: `Scale.ENVELOP` (fills viewport without gaps)
@@ -76,6 +78,25 @@ After answering a quiz, cards go through a multi-phase CSS animation sequence. S
 **Cardback discovery**: `cardbackManifest.ts` uses `import.meta.glob` at build time to discover which facts have cardback WebP images in `/public/assets/cardbacks/lowres/`. Images are preloaded via Svelte `$effect` when cards enter the hand.
 
 **Reduced motion**: `@media (prefers-reduced-motion: reduce)` replaces flip + mechanic animations with a simple fade + color flash.
+
+#### Asset Preloading Gate
+
+Every screen preloads its background images behind the transition overlay before revealing content, ensuring zero visible pop-in.
+
+**Core utilities:**
+- `src/ui/utils/assetPreloader.ts` — `preloadImages(urls: string[]): Promise<void>` loads images via browser Image API
+- `src/ui/stores/gameState.ts` — `holdScreenTransition()` / `releaseScreenTransition()` control the transition overlay
+
+**Flow:**
+1. Screen transition overlay activates (opaque with loading dots)
+2. Target screen component calls `holdScreenTransition()` at initialization
+3. Component preloads background images via `preloadImages([bgUrl])`
+4. On completion, `releaseScreenTransition()` fades out the overlay
+5. Safety timeouts prevent permanent blocking (8s per hold, 5s initial boot)
+
+**Combat scene:** `gameFlowController.ts` holds the transition before `currentScreen.set('combat')`. `CombatScene.setBackground()` returns a `Promise<void>` that resolves when the per-encounter background loads. `encounterBridge.ts` chains `releaseScreenTransition()` on that promise.
+
+**Screens with preloading:** HubScreen (12 camp images), RoomSelection, RestRoomOverlay, ShopRoomOverlay, MysteryEventOverlay, CardRewardScreen, RetreatOrDelve, RunEndScreen, CombatScene.
 
 ### Service Layer
 
@@ -149,7 +170,7 @@ These systems transfer from the mining codebase with minimal changes:
 | Flag manifest | `src/data/flagManifest.ts` | Built — maps 218 country names to flag SVG URLs in `/public/assets/flags/` |
 | Mechanic animations | `src/ui/utils/mechanicAnimations.ts` | Built |
 | CombatScene | `src/game/scenes/CombatScene.ts` | Built — Delegates enemy sprite rendering and animation to EnemySpriteSystem |
-| Enemy sprite system | `src/game/systems/EnemySpriteSystem.ts` | Built — Encapsulates enemy rendering, 3D paper cutout effect (shadow + outline layers), config-driven idle/attack/hit/death animations via `setAnimConfig(archetype)` method (8 animation archetypes from `src/data/enemyAnimations.ts`), placeholder display for missing sprites |
+| Enemy sprite system | `src/game/systems/EnemySpriteSystem.ts` | Built — Encapsulates all 88 enemy rendering with sharp-processed PNG assets. 3D paper cutout effect (shadow + outline layers), config-driven idle/attack/hit/death animations via `setAnimConfig(archetype)` method (8 animation archetypes from `src/data/enemyAnimations.ts`). Aspect-ratio-preserving scaling, device-tier texture selection (.webp vs _1x.webp), placeholder display for missing sprites. |
 | CardGameManager | `src/game/CardGameManager.ts` | Built |
 | CardApp (root) | `src/CardApp.svelte` | Built |
 | Card hand UI | `src/ui/components/CardHand.svelte` | Built — added `.card-upgraded` CSS class (blue glow) |
@@ -157,7 +178,7 @@ These systems transfer from the mining codebase with minimal changes:
 | Card combat overlay | `src/ui/components/CardCombatOverlay.svelte` | Built — added synergy flash UI element |
 | Combo counter | `src/ui/components/ComboCounter.svelte` | Built |
 | Damage numbers | `src/ui/components/DamageNumber.svelte` | Built |
-| Domain selection | `src/ui/components/DomainSelection.svelte` | Built |
+| Domain selection | `src/ui/components/DomainSelection.svelte` | Deprecated — no longer used in run flow; removed from gameFlowController.playAgain() |
 | Deck builder | `src/ui/components/DeckBuilder.svelte` | Built — study preset creation/editing within Library screen |
 | Study mode selector | `src/ui/components/StudyModeSelector.svelte` | Built — hub dropdown for selecting study mode before runs |
 | Room selection overlay | `src/ui/components/RoomSelectionOverlay.svelte` | Built |
@@ -179,6 +200,11 @@ These systems transfer from the mining codebase with minimal changes:
 | Deck options service | `src/services/deckOptionsService.ts` | Built — Persisted store for language-specific display options (furigana, romaji) |
 | Furigana display | `src/ui/FuriganaText.svelte` | Built — Ruby annotation component for Japanese text |
 | Deck options panel | `src/ui/DeckOptionsPanel.svelte` | Built — Toggle UI for language-specific display options |
+| Combat atmosphere system | `src/game/systems/CombatAtmosphereSystem.ts` | Built (D2) — Fog overlays + themed ambient particles, floor-based tint progression (dust/embers/ice/arcane/void), device-tier aware budgets, respects reduce-motion |
+| Status effect visual system | `src/game/systems/StatusEffectVisualSystem.ts` | Built (D3) — Persistent particle streams for poison/burn/freeze/bleed, aura rings for buff/debuff, effect type mapping, depth layering |
+| Combat particle system | `src/game/systems/CombatParticleSystem.ts` | Built (A2) — Multi-emitter particle manager with 4 procedural textures (square, circle, diamond, streak), burst/directional/combo/death methods, device-tier budgets |
+| Campfire living fire | `src/ui/components/CampfireCanvas.svelte`, `src/ui/effects/CampfireEffect.ts` | Built (C1) — Canvas2D fire overlay with streak-based intensity (3 levels), 30-particle pool, warm palette, 30fps throttled |
+| Hub ambient effects | `src/ui/effects/HubAmbientEffects.ts` | Built (C2) — CSS micro-animations for camp sprites (breathe, sway, spark), `getAmbientClass()` mapping |
 
 ### Implemented (Camp Hub Visual Overhaul)
 
@@ -392,7 +418,8 @@ src/
                            AchievementManager, InventoryManager, CombatManager,
                            CompanionManager, EncounterManager
     systems/               ParticleSystem, ScreenShakeSystem, SessionTracker,
-                           CameraSystem, AnimationSystem, TextureAtlasLRU, ...
+                           CameraSystem, AnimationSystem, TextureAtlasLRU,
+                           CombatParticleSystem.ts, CombatAtmosphereSystem.ts, StatusEffectVisualSystem.ts, ...
     entities/              Player, Boss, Creature
   services/
     encounterBridge.ts     — Wires flow → deck → enemy → turns → display (async startEncounterForRoom with factsDB init guard). Applies post-encounter healing (with boss/mini-boss bonus) and early mini-boss HP reduction.
@@ -425,7 +452,11 @@ src/
       RestRoomOverlay.svelte    — Rest site (heal/upgrade)
       MysteryEventOverlay.svelte — Random event resolution
       RunEndOverlay.svelte      — Post-run summary
+      CampfireCanvas.svelte    — Canvas2D campfire overlay with streak-based intensity
       + 150 other Svelte components (HUD, QuizOverlay, Settings, ...)
+    effects/
+      CampfireEffect.ts      — Streak-linked fire particle simulation (3 intensity levels)
+      HubAmbientEffects.ts   — Camp sprite CSS micro-animations (breathe, sway, spark)
     utils/
       cardbackManifest.ts    — Build-time manifest (import.meta.glob) for cardback WebP images; exports hasCardback(factId), getCardbackUrl(factId)
       mechanicAnimations.ts  — Maps 31 mechanic IDs to CSS animation classes; exports timing constants (REVEAL_DURATION=400, MECHANIC_DURATION=500, LAUNCH_DURATION=300), CardAnimPhase type, getMechanicAnimClass(), getTypeFallbackAnimClass()

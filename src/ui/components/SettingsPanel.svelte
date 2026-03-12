@@ -22,9 +22,6 @@
   import { analyticsService } from '../../services/analyticsService'
   import AccountSettings from './AccountSettings.svelte'
   import FeedbackButton from './FeedbackButton.svelte'
-  import ParentalControlsPanel from './ParentalControlsPanel.svelte'
-  import LanguageModePanel from './LanguageModePanel.svelte'
-  import { languageMode, languageService } from '../../services/languageService'
   import {
     getNotificationPreferences,
     setNotificationPreferences,
@@ -36,8 +33,6 @@
   }
 
   let { onback }: Props = $props()
-  let showParentalControls = $state(false)
-  let showLanguageModePanel = $state(false)
 
   // Notification preferences — loaded once on mount, written back on toggle.
   let notifPrefs = $state<NotificationPreferences>(getNotificationPreferences())
@@ -54,16 +49,6 @@
     return () => unsub()
   })
   let difficultyLocked = $derived(runsCompleted < STORY_MODE_FORCED_RUNS)
-  let selectedLanguage = $derived(
-    $languageMode.language
-      ? languageService.getSupportedLanguages().find((lang) => lang.code === $languageMode.language) ?? null
-      : null,
-  )
-  let languageModeSummary = $derived(
-    $languageMode.enabled && selectedLanguage
-      ? `${selectedLanguage.name} • ${$languageMode.level}`
-      : 'Disabled',
-  )
 
   const difficultyOptions: DifficultyMode[] = ['relaxed', 'normal']
   const textSizeOptions: TextSize[] = ['small', 'medium', 'large']
@@ -111,7 +96,7 @@
     <section class="settings-section">
       <h3>Difficulty</h3>
       {#if difficultyLocked}
-        <p class="difficulty-lock-note">Relaxed Mode is active for your first {STORY_MODE_FORCED_RUNS} runs.</p>
+        <p class="difficulty-lock-note">Normal mode is unlocked after your first run</p>
       {/if}
       <div class="chip-row">
         {#each difficultyOptions as mode}
@@ -266,43 +251,10 @@
       {/if}
     </section>
 
-    <section class="settings-section">
-      <h3>Language Learning</h3>
-      <p class="language-summary">Language Mode: {languageModeSummary}</p>
-      <button
-        type="button"
-        class="back-btn"
-        aria-label="Language Mode"
-        onclick={() => { showLanguageModePanel = true }}
-      >
-        Configure Language Mode
-      </button>
-    </section>
-
     <AccountSettings />
     <FeedbackButton />
-
-    <section class="settings-section">
-      <h3>Family</h3>
-      <button
-        type="button"
-        class="back-btn"
-        aria-label="Parental Controls"
-        onclick={() => { showParentalControls = true }}
-      >
-        Parental Controls
-      </button>
-    </section>
   </div>
 </div>
-
-{#if showParentalControls}
-  <ParentalControlsPanel onClose={() => { showParentalControls = false }} />
-{/if}
-
-{#if showLanguageModePanel}
-  <LanguageModePanel onClose={() => { showLanguageModePanel = false }} />
-{/if}
 
 <style>
   .settings-overlay {
@@ -311,16 +263,16 @@
     background: rgba(5, 9, 16, 0.88);
     display: grid;
     place-items: center;
-    padding: 16px;
+    padding: 0;
     z-index: 260;
   }
 
   .settings-card {
-    width: min(460px, 100%);
-    max-height: calc(100vh - 32px);
+    width: 100%;
+    max-height: 100vh;
     overflow: auto;
-    border-radius: 16px;
-    border: 1px solid rgba(148, 163, 184, 0.4);
+    border-radius: 0;
+    border: none;
     background: #111c2b;
     color: #e2e8f0;
     padding: 16px;
@@ -426,11 +378,5 @@
     min-width: 52px;
     text-align: right;
     color: #f8fafc;
-  }
-
-  .language-summary {
-    margin: 0 0 10px;
-    color: #cbd5e1;
-    font-size: calc(12px * var(--text-scale, 1));
   }
 </style>

@@ -2,6 +2,9 @@
   import type { Card } from '../../data/card-types'
   import { getTierDisplayName } from '../../services/tierDerivation'
   import { getRandomRoomBg } from '../../data/backgroundManifest'
+  import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
+  import { preloadImages } from '../utils/assetPreloader'
+  import { getCardTypeIconPath, getCardTypeEmoji } from '../utils/iconAssets'
 
   interface ShopRelicItem {
     relic: { id: string; name: string; description: string; rarity: string; icon: string }
@@ -30,8 +33,11 @@
 
   let { cards, currency, shopInventory, onsell, onbuyRelic, onbuyCard, ondone }: Props = $props()
   const bgUrl = getRandomRoomBg('shop')
+  holdScreenTransition()
+  preloadImages([bgUrl]).then(releaseScreenTransition)
 
-  const TYPE_ICONS: Record<string, string> = {
+  /** Emoji fallbacks */
+  const TYPE_EMOJI: Record<string, string> = {
     attack: '⚔',
     shield: '🛡',
     heal: '💚',
@@ -102,7 +108,11 @@
           {@const canAfford = currency >= item.price}
           <article class="card-item">
             <div class="meta">
-              <span class="icon">{TYPE_ICONS[item.card.cardType] ?? '🃏'}</span>
+              <span class="icon">
+                <img class="type-icon-img" src={getCardTypeIconPath(item.card.cardType)} alt=""
+                  onerror={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'inline'; }} />
+                <span style="display:none">{TYPE_EMOJI[item.card.cardType] ?? '🃏'}</span>
+              </span>
               <div class="text">
                 <div class="name">{item.card.cardType.toUpperCase()} • {tierLabel(item.card)}</div>
                 <div class="sub">Power {Math.round(item.card.baseEffectValue * item.card.effectMultiplier)}</div>
@@ -130,7 +140,11 @@
       {#each cards as card (card.id)}
         <article class="card-item">
           <div class="meta">
-            <span class="icon">{TYPE_ICONS[card.cardType] ?? '🃏'}</span>
+            <span class="icon">
+              <img class="type-icon-img" src={getCardTypeIconPath(card.cardType)} alt=""
+                onerror={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'inline'; }} />
+              <span style="display:none">{TYPE_EMOJI[card.cardType] ?? '🃏'}</span>
+            </span>
             <div class="text">
               <div class="name">{card.cardType.toUpperCase()} • {tierLabel(card)}</div>
               <div class="sub">Power {Math.round(card.baseEffectValue * card.effectMultiplier)}</div>
@@ -156,7 +170,7 @@
     z-index: 220;
     background: linear-gradient(180deg, #101214 0%, #1f2329 100%);
     color: #e6edf3;
-    padding: 20px 16px 28px;
+    padding: calc(20px + var(--safe-top)) 16px 28px;
     display: grid;
     align-content: start;
     gap: 8px;
@@ -229,6 +243,15 @@
     font-size: 20px;
     line-height: 1;
     flex-shrink: 0;
+  }
+
+  .type-icon-img {
+    width: 1.2em;
+    height: 1.2em;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    vertical-align: middle;
   }
 
   .text {

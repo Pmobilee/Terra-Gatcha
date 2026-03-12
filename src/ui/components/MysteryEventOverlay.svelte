@@ -1,6 +1,9 @@
 <script lang="ts">
   import type { MysteryEvent, MysteryEffect } from '../../services/floorManager'
   import { getRandomRoomBg } from '../../data/backgroundManifest'
+  import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
+  import { preloadImages } from '../utils/assetPreloader'
+  import { getMysteryEventIconPath, getMysteryEventEmoji } from '../utils/iconAssets'
 
   interface Props {
     event: MysteryEvent | null
@@ -12,18 +15,20 @@
   let { event, playerHp, playerMaxHp, onresolve }: Props = $props()
 
   const bgUrl = getRandomRoomBg('mystery')
+  holdScreenTransition()
+  preloadImages([bgUrl]).then(releaseScreenTransition)
 
   let effectIcon = $derived(getEffectIcon(event?.effect))
 
   function getEffectIcon(effect: MysteryEffect | undefined): string {
-    if (!effect) return '\u2753' // ❓
+    if (!effect) return 'choice' // fallback
     switch (effect.type) {
-      case 'heal': return '\uD83D\uDC9A'      // 💚
-      case 'damage': return '\uD83D\uDCA5'     // 💥
-      case 'freeCard': return '\uD83C\uDCCF'   // 🃏
-      case 'nothing': return '\uD83C\uDF2C\uFE0F' // 🌬️
-      case 'choice': return '\u2696\uFE0F'      // ⚖️
-      default: return '\u2753'
+      case 'heal': return 'heal'
+      case 'damage': return 'damage'
+      case 'freeCard': return 'free_card'
+      case 'nothing': return 'nothing'
+      case 'choice': return 'choice'
+      default: return 'choice'
     }
   }
 
@@ -43,7 +48,11 @@
     <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
     <div class="mystery-card">
       <h2 class="event-name">{event.name}</h2>
-      <span class="effect-icon">{effectIcon}</span>
+      <span class="effect-icon">
+        <img class="mystery-icon-img" src={getMysteryEventIconPath(effectIcon)} alt=""
+          onerror={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'inline'; }} />
+        <span style="display:none">{getMysteryEventEmoji(effectIcon)}</span>
+      </span>
       <p class="event-desc">{event.description}</p>
 
       <div class="hp-info">
@@ -176,5 +185,12 @@
 
   .continue-btn:hover {
     transform: scale(1.03);
+  }
+
+  .mystery-icon-img {
+    width: 3rem;
+    height: 3rem;
+    image-rendering: pixelated;
+    display: inline-block;
   }
 </style>

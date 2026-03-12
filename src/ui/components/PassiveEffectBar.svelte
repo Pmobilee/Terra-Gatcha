@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { PassiveEffect } from '../../data/card-types'
   import type { CardType } from '../../data/card-types'
+  import { getCardTypeIconPath, getCardTypeEmoji } from '../utils/iconAssets'
 
   interface Props {
     passives: PassiveEffect[]
@@ -8,7 +9,8 @@
 
   let { passives }: Props = $props()
 
-  const TYPE_ICONS: Record<CardType, string> = {
+  /** Emoji fallbacks */
+  const TYPE_EMOJI: Record<CardType, string> = {
     attack: '⚔',
     shield: '🛡',
     utility: '⭐',
@@ -37,7 +39,9 @@
         style="border-color: {DOMAIN_COLORS[p.domain] ?? '#888'};"
         title="{p.cardType} +{p.value}"
       >
-        <span class="passive-emoji">{TYPE_ICONS[p.cardType] ?? '?'}</span>
+        <img class="passive-icon-img" src={getCardTypeIconPath(p.cardType)} alt=""
+          onerror={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'inline'; }} />
+        <span class="passive-emoji" style="display:none">{TYPE_EMOJI[p.cardType] ?? '?'}</span>
         <span class="passive-value">+{p.value}</span>
       </div>
     {/each}
@@ -63,6 +67,14 @@
     border-radius: 6px;
     padding: 2px 6px;
     min-width: 32px;
+  }
+
+  .passive-icon-img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
   }
 
   .passive-emoji {

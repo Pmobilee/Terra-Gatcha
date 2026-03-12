@@ -3,7 +3,7 @@
  */
 
 import { writable, get } from 'svelte/store';
-import { currentScreen, activeRewardBundle } from '../ui/stores/gameState';
+import { currentScreen, activeRewardBundle, holdScreenTransition } from '../ui/stores/gameState';
 import type { RunState, RunEndData } from './runManager';
 import { createRunState, endRun } from './runManager';
 import type { RewardArchetype } from './runManager';
@@ -22,7 +22,7 @@ import {
   shouldOfferEvent,
 } from './floorManager';
 import type { Card, FactDomain } from '../data/card-types';
-import { DEATH_PENALTY, POST_MINI_BOSS_HEAL_PCT, REST_UPGRADE_CANDIDATE_COUNT, SHOP_RELIC_PRICE, SHOP_CARD_PRICE } from '../data/balance';
+import { DEATH_PENALTY, POST_MINI_BOSS_HEAL_PCT, SHOP_RELIC_PRICE, SHOP_CARD_PRICE } from '../data/balance';
 import { generateCardRewardOptionsByType, rerollRewardCardInType } from './rewardGenerator';
 import {
   addRewardCardToActiveDeck,
@@ -30,6 +30,7 @@ import {
   getActiveDeckFactIds,
   getRunPoolCards,
   registerEncounterCompleteHandler,
+  resetEncounterBridge,
   sellCardFromActiveDeck,
   startEncounterForRoom,
 } from './encounterBridge';
@@ -167,20 +168,19 @@ export function startNewRun(options?: { includeOutsideDueReviews?: boolean }): v
     currentScreen.set('onboarding');
     return;
   }
-  // Check if player has an active deck mode from the hub selector
+  // Always use deck mode from hub selector (defaults to "general" = all topics)
   const save = get(playerSave);
-  const deckMode = save?.activeDeckMode;
-  if (deckMode) {
-    // Skip domain selection — go straight to archetype selection
-    pendingDeckMode = deckMode;
-    // Placeholder domains (pool builder uses deckMode, not these)
-    pendingDomainSelection = { primary: 'general_knowledge', secondary: 'general_knowledge' };
-    gameFlowState.set('archetypeSelection');
-    currentScreen.set('archetypeSelection');
+  pendingDeckMode = save?.activeDeckMode ?? { type: 'general' as const };
+  // Placeholder domains (pool builder uses deckMode, not these)
+  pendingDomainSelection = { primary: 'general_knowledge', secondary: 'general_knowledge' };
+
+  // Skip archetype selection for runs 1-3; auto-assign 'balanced'
+  if (onboarding.runsCompleted < ARCHETYPE_UNLOCK_RUNS) {
+    onArchetypeSelected('balanced');
     return;
   }
-  gameFlowState.set('domainSelection');
-  currentScreen.set('domainSelection');
+  gameFlowState.set('archetypeSelection');
+  currentScreen.set('archetypeSelection');
 }
 
 function getTier3MasteredCount(): number {
@@ -284,6 +284,7 @@ export async function startDailyExpeditionRun(): Promise<{ ok: true } | { ok: fa
     deactivateDeterministicRandom()
     return { ok: false, reason: 'failed_to_start_encounter' }
   }
+  autoSaveRun('combat')
   analyticsService.track({
     name: 'daily_expedition_start',
     properties: {
@@ -328,6 +329,7 @@ export async function startScholarChallengeRun(): Promise<{ ok: true } | { ok: f
     deactivateDeterministicRandom()
     return { ok: false, reason: 'failed_to_start_encounter' }
   }
+  autoSaveRun('combat')
   return { ok: true }
 }
 
@@ -368,6 +370,7 @@ export async function startEndlessDepthsRun(): Promise<{ ok: true } | { ok: fals
     activeRunMode = 'standard'
     return { ok: false, reason: 'failed_to_start_encounter' }
   }
+  autoSaveRun('combat')
   return { ok: true }
 }
 
@@ -490,6 +493,7 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
   activeRunMode = 'standard'
   activeDailySeed = null
   deactivateDeterministicRandom()
+  resetEncounterBridge()
   clearActiveRun();
   lastRunSummary.set(captureRunSummary(run, endData));
   activeRunEndData.set(endData);
@@ -632,6 +636,7 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
   }
   pendingDomainSelection = null;
   gameFlowState.set('combat');
+  holdScreenTransition();
   currentScreen.set('combat');
 }
 
@@ -671,8 +676,10 @@ async function proceedAfterReward(): Promise<void> {
   // After encounter 2, auto-start encounter 3 (mini-boss/boss) — no room selection
   if (run.floor.currentEncounter === run.floor.encountersPerFloor) {
     gameFlowState.set('combat');
+    holdScreenTransition();
     currentScreen.set('combat');
     await startEncounterForRoom();
+    autoSaveRun('combat');
     return;
   }
 
@@ -1138,6 +1145,7 @@ export function onRoomSelected(room: RoomOption): void {
   switch (room.type) {
     case 'combat':
       gameFlowState.set('combat');
+      holdScreenTransition();
       currentScreen.set('combat');
       break;
     case 'mystery':
@@ -1256,6 +1264,7 @@ export function abandonActiveRun(): void {
   activeRunMode = 'standard'
   activeDailySeed = null
   deactivateDeterministicRandom()
+  resetEncounterBridge()
   clearActiveRun();
   activeRunState.set(null);
   activeCardRewardOptions.set([]);
@@ -1285,7 +1294,7 @@ export function checkAndResumeActiveRun(): boolean {
 export { hasActiveRun, loadActiveRun, clearActiveRun };
 
 /** Auto-save the current run state at a safe point. */
-function autoSaveRun(screen: string): void {
+export function autoSaveRun(screen: string): void {
   const run = get(activeRunState);
   if (!run) return;
   try {
@@ -1319,7 +1328,7 @@ export function openUpgradeSelection(): void {
 /** Prepare upgrade candidates from the active deck. */
 function prepareUpgradeCandidates(): Array<{ card: Card; preview: UpgradePreview }> {
   const allCards = getActiveDeckCards();
-  const candidates = getUpgradeCandidates(allCards, REST_UPGRADE_CANDIDATE_COUNT);
+  const candidates = getUpgradeCandidates(allCards, Infinity);
   return candidates.map(card => {
     const preview = getUpgradePreview(card);
     return { card, preview: preview! };
@@ -1455,8 +1464,18 @@ export function playAgain(): void {
   pendingSpecialEvent = false;
   pendingClearedFloor = 0;
   pendingDomainSelection = null;
-  gameFlowState.set('domainSelection');
-  currentScreen.set('domainSelection');
+  // Always use deck mode from hub selector (defaults to "general" = all topics)
+  const replaySave = get(playerSave);
+  pendingDeckMode = replaySave?.activeDeckMode ?? { type: 'general' as const };
+  pendingDomainSelection = { primary: 'general_knowledge', secondary: 'general_knowledge' };
+
+  const onboarding = get(onboardingState);
+  if (onboarding.runsCompleted < ARCHETYPE_UNLOCK_RUNS) {
+    onArchetypeSelected('balanced');
+    return;
+  }
+  gameFlowState.set('archetypeSelection');
+  currentScreen.set('archetypeSelection');
 }
 
 export function restoreRunMode(runMode?: 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge', dailySeed?: number | null, runSeed?: number | null): void {

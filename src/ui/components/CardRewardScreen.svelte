@@ -3,8 +3,10 @@
   import { playCardAudio } from '../../services/cardAudioManager'
   import { getDetailedCardDescription } from '../../services/cardDescriptionService'
   import { getCardFramePath } from '../utils/domainAssets'
-  import { activeRewardBundle } from '../../ui/stores/gameState'
+  import { getRewardIconPath } from '../utils/iconAssets'
+  import { activeRewardBundle, holdScreenTransition, releaseScreenTransition } from '../../ui/stores/gameState'
   import { getRandomRoomBg } from '../../data/backgroundManifest'
+  import { preloadImages } from '../utils/assetPreloader'
   import { untrack } from 'svelte'
 
   interface Props {
@@ -16,6 +18,8 @@
   let { options, onselect, onskip }: Props = $props()
 
   const bgUrl = getRandomRoomBg('treasure')
+  holdScreenTransition()
+  preloadImages([bgUrl]).then(releaseScreenTransition)
 
   let selectedType = $state<CardType | null>(null)
   let collectLocked = $state(false)
@@ -26,6 +30,7 @@
   // Reward reveal state
   let rewardStep = $state<'gold' | 'heal' | 'card'>('gold')
   let stepVisible = $state(false)
+  let altarCeremonyPhase = $state(0)
 
   interface AltarBiome {
     id: string
@@ -38,6 +43,7 @@
     glyph: string
     label: string
     glow: string
+    imageKey: string
   }
 
   const ALTAR_BIOMES: AltarBiome[] = [
@@ -50,40 +56,40 @@
 
   const CARD_TYPE_ICON_POOL: Record<CardType, RewardIcon[]> = {
     attack: [
-      { glyph: '🗡', label: 'Rust Dagger', glow: '#ff8a65' },
-      { glyph: '⚔', label: 'Twin Blades', glow: '#ff7043' },
-      { glyph: '🪓', label: 'War Axe', glow: '#ff6f61' },
-      { glyph: '🏹', label: 'Hunter Bow', glow: '#ff9e80' },
+      { glyph: '🗡', label: 'Rust Dagger', glow: '#ff8a65', imageKey: 'rust_dagger' },
+      { glyph: '⚔', label: 'Twin Blades', glow: '#ff7043', imageKey: 'twin_blades' },
+      { glyph: '🪓', label: 'War Axe', glow: '#ff6f61', imageKey: 'war_axe' },
+      { glyph: '🏹', label: 'Hunter Bow', glow: '#ff9e80', imageKey: 'hunter_bow' },
     ],
     shield: [
-      { glyph: '🛡', label: 'Round Shield', glow: '#7ec8ff' },
-      { glyph: '🛡', label: 'Tower Shield', glow: '#81d4fa' },
-      { glyph: '🛡', label: 'Buckler', glow: '#90caf9' },
-      { glyph: '🛡', label: 'Mirror Guard', glow: '#64b5f6' },
+      { glyph: '🛡', label: 'Round Shield', glow: '#7ec8ff', imageKey: 'round_shield' },
+      { glyph: '🛡', label: 'Tower Shield', glow: '#81d4fa', imageKey: 'tower_shield' },
+      { glyph: '🛡', label: 'Buckler', glow: '#90caf9', imageKey: 'buckler' },
+      { glyph: '🛡', label: 'Mirror Guard', glow: '#64b5f6', imageKey: 'mirror_guard' },
     ],
     utility: [
-      { glyph: '📜', label: 'Arc Scroll', glow: '#ffe082' },
-      { glyph: '📘', label: 'Field Tome', glow: '#ffd54f' },
-      { glyph: '🧭', label: 'Path Compass', glow: '#ffcc80' },
-      { glyph: '🧰', label: 'Tool Kit', glow: '#ffca6f' },
+      { glyph: '📜', label: 'Arc Scroll', glow: '#ffe082', imageKey: 'arc_scroll' },
+      { glyph: '📘', label: 'Field Tome', glow: '#ffd54f', imageKey: 'field_tome' },
+      { glyph: '🧭', label: 'Path Compass', glow: '#ffcc80', imageKey: 'path_compass' },
+      { glyph: '🧰', label: 'Tool Kit', glow: '#ffca6f', imageKey: 'tool_kit' },
     ],
     buff: [
-      { glyph: '🔮', label: 'Focus Crystal', glow: '#c8a6ff' },
-      { glyph: '✨', label: 'Tempo Charm', glow: '#d1b3ff' },
-      { glyph: '🧿', label: 'Fortune Eye', glow: '#caa0ff' },
-      { glyph: '💠', label: 'Surge Sigil', glow: '#b88cff' },
+      { glyph: '🔮', label: 'Focus Crystal', glow: '#c8a6ff', imageKey: 'focus_crystal' },
+      { glyph: '✨', label: 'Tempo Charm', glow: '#d1b3ff', imageKey: 'tempo_charm' },
+      { glyph: '🧿', label: 'Fortune Eye', glow: '#caa0ff', imageKey: 'fortune_eye' },
+      { glyph: '💠', label: 'Surge Sigil', glow: '#b88cff', imageKey: 'surge_sigil' },
     ],
     debuff: [
-      { glyph: '☠', label: 'Hex Totem', glow: '#ff9ec5' },
-      { glyph: '🕸', label: 'Snare Thread', glow: '#f8a6d8' },
-      { glyph: '🦂', label: 'Venom Fang', glow: '#ff8ab6' },
-      { glyph: '🪤', label: 'Dread Trap', glow: '#f58bc0' },
+      { glyph: '☠', label: 'Hex Totem', glow: '#ff9ec5', imageKey: 'hex_totem' },
+      { glyph: '🕸', label: 'Snare Thread', glow: '#f8a6d8', imageKey: 'snare_thread' },
+      { glyph: '🦂', label: 'Venom Fang', glow: '#ff8ab6', imageKey: 'venom_fang' },
+      { glyph: '🪤', label: 'Dread Trap', glow: '#f58bc0', imageKey: 'dread_trap' },
     ],
     wild: [
-      { glyph: '💎', label: 'Prism Core', glow: '#ffd480' },
-      { glyph: '🌠', label: 'Comet Shard', glow: '#ffd166' },
-      { glyph: '🪙', label: 'Lucky Relic', glow: '#ffcf6e' },
-      { glyph: '🎲', label: 'Chaos Die', glow: '#ffe08a' },
+      { glyph: '💎', label: 'Prism Core', glow: '#ffd480', imageKey: 'prism_core' },
+      { glyph: '🌠', label: 'Comet Shard', glow: '#ffd166', imageKey: 'comet_shard' },
+      { glyph: '🪙', label: 'Lucky Relic', glow: '#ffcf6e', imageKey: 'lucky_relic' },
+      { glyph: '🎲', label: 'Chaos Die', glow: '#ffe08a', imageKey: 'chaos_die' },
     ],
   }
 
@@ -202,6 +208,22 @@
     showSkipConfirm = false
   }
 
+  function startCeremony(): void {
+    altarCeremonyPhase = 1
+    setTimeout(() => {
+      altarCeremonyPhase = 2
+    }, 300)
+    setTimeout(() => {
+      altarCeremonyPhase = 3
+    }, 600)
+    setTimeout(() => {
+      altarCeremonyPhase = 4
+    }, 900)
+    setTimeout(() => {
+      altarCeremonyPhase = 0
+    }, 1200)
+  }
+
   function advanceStep(): void {
     stepVisible = false
     setTimeout(() => {
@@ -210,9 +232,11 @@
           rewardStep = 'heal'
         } else {
           rewardStep = 'card'
+          startCeremony()
         }
       } else if (rewardStep === 'heal') {
         rewardStep = 'card'
+        startCeremony()
       }
       stepVisible = true
     }, 200)
@@ -296,7 +320,7 @@
   {:else}
     <div class="spotlight-cone" aria-hidden="true"></div>
 
-    <section class={`altar-shell biome-${altarBiome.id}`}>
+    <section class={`altar-shell biome-${altarBiome.id}`} class:ceremony-phase-1={altarCeremonyPhase >= 1} class:ceremony-phase-2={altarCeremonyPhase >= 2} class:ceremony-phase-3={altarCeremonyPhase >= 3} class:ceremony-phase-4={altarCeremonyPhase >= 4}>
       <header class="altar-header">
         <h1>Choose a Card</h1>
         <p>{altarBiome.title} • {altarBiome.subtitle}</p>
@@ -320,7 +344,9 @@
               data-testid={`reward-type-${option.cardType}`}
               aria-label={`Inspect ${option.cardType} reward`}
             >
-              <span class="icon-glyph">{icon.glyph}</span>
+              <img class="reward-icon-img" src={getRewardIconPath(icon.imageKey)} alt={icon.label}
+                onerror={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'inline'; }} />
+              <span class="reward-icon-fallback" style="display:none">{icon.glyph}</span>
               <span class="icon-label">{icon.label}</span>
             </button>
           {/each}
@@ -374,7 +400,7 @@
     inset: 0;
     overflow-y: auto;
     z-index: 220;
-    padding: 24px 16px 18px;
+    padding: calc(24px + var(--safe-top)) 16px 18px;
     color: #f4f5f7;
     background:
       radial-gradient(1200px 500px at 50% -90px, rgba(252, 230, 173, 0.12), transparent 68%),
@@ -382,7 +408,7 @@
     display: grid;
     gap: 14px;
     justify-items: center;
-    position: relative;
+    align-content: start;
   }
 
   .overlay-bg {
@@ -395,7 +421,7 @@
     pointer-events: none;
   }
 
-  .reward-screen > :not(.overlay-bg) {
+  .reward-screen > :not(.overlay-bg):not(.spotlight-cone) {
     position: relative;
     z-index: 1;
   }
@@ -650,8 +676,17 @@
     z-index: 2;
   }
 
-  .icon-glyph {
-    font-size: 34px;
+  .reward-icon-img {
+    width: 2.5em;
+    height: 2.5em;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    filter: drop-shadow(0 0 9px color-mix(in srgb, var(--icon-glow) 52%, transparent));
+  }
+
+  .reward-icon-fallback {
+    font-size: 2em;
     filter: drop-shadow(0 0 9px color-mix(in srgb, var(--icon-glow) 52%, transparent));
   }
 
@@ -874,27 +909,212 @@
     }
   }
 
+  /* Ceremony Phase 1: Altar brightens */
+  .ceremony-phase-1 {
+    animation: altarBrighten 300ms ease-out;
+  }
+
+  @keyframes altarBrighten {
+    0% {
+      filter: brightness(1);
+    }
+    50% {
+      filter: brightness(1.3);
+    }
+    100% {
+      filter: brightness(1);
+    }
+  }
+
+  /* Ceremony Phase 2: Options stagger in */
+  .ceremony-phase-2 .altar-option {
+    animation: ceremonyRise 400ms ease-out both;
+  }
+
+  .ceremony-phase-2 .altar-option:nth-child(1) {
+    animation-delay: 0ms;
+  }
+
+  .ceremony-phase-2 .altar-option:nth-child(2) {
+    animation-delay: 100ms;
+  }
+
+  .ceremony-phase-2 .altar-option:nth-child(3) {
+    animation-delay: 200ms;
+  }
+
+  @keyframes ceremonyRise {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Ceremony Phase 3: Selected option glows brighter */
+  .ceremony-phase-3 .altar-option.selected {
+    box-shadow: 0 0 0 2px #f6d57d, 0 18px 28px rgba(0, 0, 0, 0.4), 0 0 40px color-mix(in srgb, var(--icon-glow) 60%, transparent);
+    transform: translateY(-12px) scale(1.06);
+    transition: all 300ms ease;
+  }
+
+  /* Ceremony Phase 4: Integration — spotlight narrows */
+  .ceremony-phase-4 .spotlight-cone {
+    animation: spotlightNarrow 300ms ease-in-out;
+  }
+
+  @keyframes spotlightNarrow {
+    0% {
+      opacity: 1;
+      transform: translateX(-50%) scaleX(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: translateX(-50%) scaleX(0.7);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(-50%) scaleX(1);
+    }
+  }
+
+  /* Enhanced step value animation */
+  .step-value {
+    animation: valueSlam 400ms ease-out;
+  }
+
+  @keyframes valueSlam {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Reduced motion: skip all ceremony animations */
+  @media (prefers-reduced-motion: reduce) {
+    .ceremony-phase-1,
+    .ceremony-phase-2 .altar-option,
+    .ceremony-phase-3 .altar-option.selected,
+    .ceremony-phase-4 .spotlight-cone {
+      animation: none !important;
+    }
+  }
+
   @media (max-width: 700px) {
     .reward-screen {
-      padding-top: 14px;
+      padding: calc(14px + var(--safe-top)) 12px 12px;
+      gap: 10px;
     }
 
     .altar-header h1 {
-      font-size: 25px;
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .altar-header p {
+      font-size: 12px;
+      margin: 2px 0 0;
+    }
+
+    .altar-shell {
+      padding: 12px 12px 10px;
+      gap: 10px;
+      border-radius: 14px;
+    }
+
+    .altar-surface {
+      padding: 12px 10px 8px;
+      border-radius: 10px;
     }
 
     .altar-options {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       min-height: auto;
+      gap: 8px;
     }
 
     .altar-option {
-      min-height: 120px;
+      min-height: 85px;
+      padding: 6px 4px 4px;
+      border-radius: 10px;
       animation-duration: 2.3s;
     }
 
     .altar-option.selected {
-      transform: scale(1.015);
+      transform: scale(1.02);
+    }
+
+    .reward-icon-img {
+      width: 2em;
+      height: 2em;
+    }
+
+    .reward-icon-fallback {
+      font-size: 1.6em;
+    }
+
+    .icon-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .inspect-panel {
+      padding: 10px;
+      gap: 6px;
+      border-radius: 10px;
+    }
+
+    .inspect-kicker {
+      font-size: 10px;
+      letter-spacing: 0.4px;
+    }
+
+    .inspect-panel h2 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .inspect-mechanic-badge {
+      font-size: 11px;
+      padding: 2px 6px;
+    }
+
+    .inspect-summary {
+      font-size: 13px;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .inspect-meta {
+      font-size: 11px;
+      gap: 6px;
+    }
+
+    .inspect-meta span {
+      padding: 3px 6px;
+    }
+
+    .actions {
+      gap: 6px;
+    }
+
+    .accept,
+    .skip {
+      height: 48px;
+      font-size: 14px;
+      border-radius: 8px;
     }
   }
 

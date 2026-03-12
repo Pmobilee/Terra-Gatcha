@@ -27,6 +27,7 @@ export interface JuiceEvent {
   effectLabel?: string  // e.g. "HEAL 8", "SHIELD 15"
   isPerfectTurn?: boolean
   cardType?: string
+  hitCount?: number  // For multi-hit cards: stagger juice across N hits
 }
 
 /** Callbacks registered by UI components to receive juice events */
@@ -36,6 +37,9 @@ export interface JuiceCallbacks {
   onEnemyHit?: () => void
   onParticleBurst?: (count: number, tint: number) => void
   onComboMilestone?: (count: number) => void
+  onComboScreenEdge?: () => void
+  onSpeedBonusPop?: () => void
+  onKillConfirmation?: () => void
 }
 
 class JuiceManager {
@@ -53,11 +57,100 @@ class JuiceManager {
 
   /** Fire the full juice stack for a correct or wrong answer */
   fire(event: JuiceEvent): void {
+    if (event.type === 'correct' && event.hitCount && event.hitCount > 1) {
+      this.fireMultiHit(event, event.hitCount)
+      return
+    }
     if (event.type === 'correct') {
       this.fireCorrect(event)
     } else {
       this.fireWrong(event)
     }
+  }
+
+  /** Fire kill confirmation juice (heavy haptic burst). */
+  fireKillConfirmation(): void {
+    tapHeavy()
+    setTimeout(() => tapHeavy(), 60)
+    setTimeout(() => tapHeavy(), 120)
+    emitSound('enemy-death')
+    this.callbacks.onKillConfirmation?.()
+  }
+
+  /**
+   * Fire a staggered multi-hit juice sequence. Each hit fires with increasing intensity.
+   * Creates fighting game combo feel with timed haptics, flashes, damage numbers, and particles.
+   */
+  private fireMultiHit(event: JuiceEvent, hitCount: number): void {
+    const baseDelay = 90 // ms between hits
+    const perHitDamage = event.damage ? Math.round(event.damage / hitCount) : 0
+
+    for (let i = 0; i < hitCount; i++) {
+      const isLastHit = i === hitCount - 1
+      const hitDelay = i * baseDelay
+
+      setTimeout(() => {
+        // Haptic per hit: last hit is heavier
+        if (isLastHit && event.isCritical) {
+          tapHeavy()
+          setTimeout(() => tapHeavy(), 80)
+        } else {
+          tapHeavy()
+        }
+
+        // Screen flash — last hit is stronger
+        const flashIntensity = isLastHit ? 0.4 : 0.2
+        this.callbacks.onScreenFlash?.(flashIntensity)
+
+        // Damage number per hit — last hit shows remainder, others show per-hit amount
+        const hitDamageValue = isLastHit
+          ? Math.max(perHitDamage, event.damage! - perHitDamage * (hitCount - 1))
+          : perHitDamage
+        this.callbacks.onDamageNumber?.(String(hitDamageValue), isLastHit && (event.isCritical ?? false))
+
+        // Enemy hit animation per hit
+        this.callbacks.onEnemyHit?.()
+
+        // Particles — last hit gets more
+        const particleCount = isLastHit ? 25 : 12
+        const tint = isLastHit ? 0xFF4444 : 0xFFD700
+        this.callbacks.onParticleBurst?.(particleCount, tint)
+
+        // Sound per hit
+        emitSound(isLastHit && event.isCritical ? 'correct-critical' : 'correct-impact')
+      }, hitDelay)
+    }
+
+    // Combo milestones fire after all hits complete
+    const totalDelay = (hitCount - 1) * baseDelay + 50
+    setTimeout(() => {
+      if (event.comboCount >= 3) {
+        emitSound(event.comboCount >= 5 ? 'combo-5' : 'combo-3')
+        tapMedium()
+        this.callbacks.onComboMilestone?.(event.comboCount)
+      }
+
+      // Combo 4+: screen edge gold bleed
+      if (event.comboCount >= 4) {
+        this.callbacks.onComboScreenEdge?.()
+      }
+
+      // Perfect turn (5 combo)
+      if (event.comboCount >= 5) {
+        tapHeavy()
+        setTimeout(() => tapHeavy(), 80)
+        setTimeout(() => tapHeavy(), 160)
+      }
+
+      // Perfect turn celebration (all cards correct this turn)
+      if (event.isPerfectTurn) {
+        setTimeout(() => {
+          this.callbacks.onScreenFlash?.(0.2)
+          this.callbacks.onParticleBurst?.(50, 0xFFD700)
+          emitSound('combo-5')
+        }, 500)
+      }
+    }, totalDelay)
   }
 
   private fireCorrect(event: JuiceEvent): void {
@@ -69,6 +162,11 @@ class JuiceManager {
     } else {
       tapHeavy()
       emitSound('correct-impact')
+    }
+
+    // T+0ms: Speed bonus (critical hit): freeze frame pop
+    if (event.isCritical) {
+      this.callbacks.onSpeedBonusPop?.()
     }
 
     // T+0ms: Screen flash
@@ -96,6 +194,11 @@ class JuiceManager {
       emitSound(event.comboCount >= 5 ? 'combo-5' : 'combo-3')
       tapMedium()
       this.callbacks.onComboMilestone?.(event.comboCount)
+    }
+
+    // Combo 4+: screen edge gold bleed
+    if (event.comboCount >= 4) {
+      this.callbacks.onComboScreenEdge?.()
     }
 
     // Perfect turn (5 combo)

@@ -21,7 +21,7 @@ function cspInjectPlugin(): Plugin {
       const isDev = ctx.server !== undefined
       const csp = isDev
         ? "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' ws: wss: http://localhost:* http://*:3001; font-src 'self'"
-        : "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://*.terragacha.com; font-src 'self'"
+        : "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://*.terragacha.com https://localhost:*; font-src 'self'"
       return html.replace(
         '</head>',
         `  <meta http-equiv="Content-Security-Policy" content="${csp}">\n  </head>`
@@ -86,6 +86,25 @@ function excludeHiresCardbacks(): Plugin {
   }
 }
 
+/**
+ * Adds Cache-Control headers for static assets during development.
+ * Prevents the Android webview from re-fetching every image on every app launch.
+ * Applies Cache-Control: public, max-age=86400 (1 day) to all /assets/ requests.
+ */
+function staticAssetCachePlugin(): Plugin {
+  return {
+    name: 'static-asset-cache',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (req.url && req.url.startsWith('/assets/')) {
+          res.setHeader('Cache-Control', 'public, max-age=86400')
+        }
+        next()
+      })
+    },
+  }
+}
+
 // Conditionally import visualizer for bundle analysis (DD-V2-218)
 // Run: ANALYZE=true npm run build (or npm run analyze)
 let visualizerPlugin: Plugin | null = null
@@ -107,6 +126,7 @@ if (process.env.ANALYZE === 'true') {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
+    staticAssetCachePlugin(),
     svelte(),
     cspInjectPlugin(),
     structuredDataPlugin(),
@@ -121,7 +141,8 @@ export default defineConfig({
     strictPort: true,
     allowedHosts: true,
     hmr: {
-      host: '100.74.153.81',
+      // No host override — client auto-detects from page URL.
+      // Works for both Tailscale browser (100.74.153.81) and phone (localhost via adb reverse).
       port: 5173,
       overlay: false,
     },

@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { RewardArchetype } from '../../services/runManager'
+  import { getArchetypeIconPath } from '../utils/iconAssets'
 
   interface Props {
     onselect: (archetype: RewardArchetype) => void
@@ -28,7 +29,9 @@
   <div class="option-list">
     {#each OPTIONS as option (option.id)}
       <button type="button" class="option" onclick={() => onselect(option.id)} data-testid={`archetype-${option.id}`}>
-        <span class="icon">{option.icon}</span>
+        <img class="arch-icon-img" src={getArchetypeIconPath(option.id)} alt=""
+          onerror={(e) => { const img = e.currentTarget as HTMLImageElement; img.style.display = 'none'; (img.nextElementSibling as HTMLElement | null)?.style.setProperty('display', 'inline'); }} />
+        <span class="arch-icon-fallback" style="display:none">{option.icon}</span>
         <span class="title">{option.title}</span>
         <span class="desc">{option.desc}</span>
       </button>
@@ -48,7 +51,7 @@
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    padding: 20px 16px 32px;
+    padding: calc(20px + var(--safe-top)) 16px 32px;
     overflow-y: auto;
     z-index: 210;
   }
@@ -92,9 +95,18 @@
     padding: 10px 12px;
   }
 
-  .icon {
+  .arch-icon-img {
     grid-area: icon;
-    font-size: 24px;
+    width: 2em;
+    height: 2em;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .arch-icon-fallback {
+    grid-area: icon;
+    font-size: 2em;
     line-height: 1;
   }
 

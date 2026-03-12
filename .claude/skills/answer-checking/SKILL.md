@@ -60,6 +60,28 @@ npm run content:qa:answer-check:db -- apply-fixes \
   --fixer haiku-1
 ```
 
+### 5) Preview facts as the player sees them
+```bash
+npm run content:qa:answer-check:db -- preview \
+  --db public/facts.db \
+  --limit 20
+```
+
+Options:
+- `--flagged-only` — show only flagged facts
+- `--option-count 3` — simulate N answer options (default: 3)
+- `--output path/to/preview.md` — write to file instead of stdout
+
+### Distractor Quality Checks (automatic in `check`)
+The `check` command now also validates distractors:
+- Placeholder text (e.g., "Alternative option 3", "other meaning")
+- Too few real distractors (need 3+ after filtering placeholders)
+- Duplicate distractors
+- Distractor identical to correct answer
+- Empty/single-character distractors
+- Scientific names as distractors when question asks for common name
+- Variant-specific distractor issues
+
 ## Tagged Fact Variants
 Use `--tags` and `--tag-mode` with `check` or `export-flagged`.
 

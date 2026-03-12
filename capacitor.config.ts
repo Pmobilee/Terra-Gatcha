@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'Recall Rogue',
   webDir: 'dist',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
   },
   plugins: {
     SplashScreen: {
@@ -18,7 +18,6 @@ const config: CapacitorConfig = {
     StatusBar: {
       style: 'DARK',
       backgroundColor: '#0a0e1a',
-      overlaysWebView: true,          // allows game canvas to render under status bar
     },
     Keyboard: {
       resize: 'body',

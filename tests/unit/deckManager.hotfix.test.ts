@@ -1,6 +1,7 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import type { Card } from '../../src/data/card-types'
 import { addFactsToCooldown, createDeck, drawHand, tickFactCooldowns } from '../../src/services/deckManager'
+import { factsDB } from '../../src/services/factsDB'
 
 function makeCard(id: string, factId: string): Card {
   return {
@@ -15,6 +16,10 @@ function makeCard(id: string, factId: string): Card {
 }
 
 describe('deckManager hotfix behavior', () => {
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
   it('reassigns fact ids from factPool when drawing hand cards', () => {
     const deck = createDeck([
       makeCard('card-1', 'legacy-a'),
@@ -64,5 +69,62 @@ describe('deckManager hotfix behavior', () => {
     tickFactCooldowns(deck)
     tickFactCooldowns(deck)
     expect(deck.factCooldown).toHaveLength(0)
+  })
+
+  it('avoids duplicate base facts in the same hand when alternatives exist', () => {
+    const deck = createDeck([
+      makeCard('card-1', 'legacy-1'),
+      makeCard('card-2', 'legacy-2'),
+      makeCard('card-3', 'legacy-3'),
+    ])
+
+    deck.factPool = ['fact-a', 'fact-b', 'fact-c', 'fact-d']
+
+    vi.spyOn(factsDB, 'getById').mockImplementation((factId: string) => {
+      if (factId === 'fact-a') {
+        return {
+          id: factId,
+          statement: 'Alpha fact',
+          quizQuestion: 'What is alpha?',
+          correctAnswer: 'Alpha',
+        } as any
+      }
+      if (factId === 'fact-b') {
+        return {
+          id: factId,
+          statement: 'Alpha fact',
+          quizQuestion: 'Tell me about alpha',
+          correctAnswer: 'Alpha',
+        } as any
+      }
+      if (factId === 'fact-c') {
+        return {
+          id: factId,
+          statement: 'Beta fact',
+          quizQuestion: 'What is beta?',
+          correctAnswer: 'Beta',
+        } as any
+      }
+      if (factId === 'fact-d') {
+        return {
+          id: factId,
+          statement: 'Gamma fact',
+          quizQuestion: 'What is gamma?',
+          correctAnswer: 'Gamma',
+        } as any
+      }
+      return null
+    })
+
+    const drawn = drawHand(deck, 3)
+    expect(drawn).toHaveLength(3)
+
+    const factIds = drawn.map((card) => card.factId)
+    const baseKeys = factIds.map((factId) => {
+      const fact = factsDB.getById(factId) as any
+      return `${fact?.statement ?? ''}|${fact?.correctAnswer ?? ''}`
+    })
+
+    expect(new Set(baseKeys).size).toBe(3)
   })
 })

@@ -34,14 +34,6 @@ function getGM(): any {
   return readStore('terra:gameManagerStore');
 }
 
-/** Get the active MineScene from Phaser, or null. */
-function getMineScene(): any {
-  const gm = getGM();
-  const game = gm?.game;
-  if (!game?.scene?.getScene) return null;
-  const scene = game.scene.getScene('MineScene');
-  return scene ?? null;
-}
 
 /** Small async delay helper. */
 function wait(ms: number): Promise<void> {
@@ -57,19 +49,6 @@ async function safeAction(fn: () => Promise<PlayResult>): Promise<PlayResult> {
   }
 }
 
-/** Compute target grid coordinates from player position + direction. */
-function computeTarget(scene: any, dir: string): { x: number; y: number } | null {
-  const px = scene.player?.gridX;
-  const py = scene.player?.gridY;
-  if (px == null || py == null) return null;
-  switch (dir) {
-    case 'up':    return { x: px, y: py - 1 };
-    case 'down':  return { x: px, y: py + 1 };
-    case 'left':  return { x: px - 1, y: py };
-    case 'right': return { x: px + 1, y: py };
-    default: return null;
-  }
-}
 
 // ---------------------------------------------------------------------------
 // Navigation
@@ -95,150 +74,212 @@ function getScreen(): string {
 
 /** Get the list of available screens based on current state. */
 function getAvailableScreens(): string[] {
-  const always = ['base', 'inventory', 'knowledgeTree', 'settings', 'study'];
+  const always = ['hub', 'library', 'settings', 'profile', 'journal', 'leaderboards'];
   const screen = getScreen();
   const extras: string[] = [];
 
-  if (screen === 'mine' || screen === 'mineActive') {
-    extras.push('mine');
+  const runState = readStore<any>('terra:activeRunState');
+  if (runState) {
+    extras.push('combat', 'roomSelection', 'cardReward', 'retreatOrDelve');
   }
-
-  const save = readStore<any>('terra:playerSave');
-  if (save?.unlockedRooms?.length > 0) {
-    extras.push('dome');
-  }
-
-  const diveResults = readStore<any>('terra:diveResults');
-  if (diveResults) {
-    extras.push('diveResults');
-  }
-
-  extras.push('divePrepScreen');
-  extras.push('artifactLab');
 
   return [...new Set([...always, ...extras])];
 }
 
 // ---------------------------------------------------------------------------
-// Mining
+// Card Roguelite — Run Management
 // ---------------------------------------------------------------------------
 
-/** Mine or move in a cardinal direction. */
-async function mineBlock(direction: 'up' | 'down' | 'left' | 'right'): Promise<PlayResult> {
+/** Start a new run by clicking the Start Run button. */
+async function startRun(): Promise<PlayResult> {
   return safeAction(async () => {
-    const scene = getMineScene();
-    if (!scene) return { ok: false, message: 'MineScene not active' };
-
-    const target = computeTarget(scene, direction);
-    if (!target) return { ok: false, message: `Invalid direction: ${direction}` };
-
-    const mod = await import('../game/scenes/MineBlockInteractor');
-    mod.handleMoveOrMine(scene, target.x, target.y);
-    await wait(400);
-
-    const o2 = readStore<number>('terra:oxygenCurrent');
-    const depth = readStore<number>('terra:currentDepth');
-    return {
-      ok: true,
-      message: `Moved/mined ${direction}`,
-      state: {
-        playerX: scene.player?.gridX,
-        playerY: scene.player?.gridY,
-        o2,
-        depth,
-      },
-    };
-  });
-}
-
-/** Mine or move to specific grid coordinates. */
-async function mineAt(x: number, y: number): Promise<PlayResult> {
-  return safeAction(async () => {
-    const scene = getMineScene();
-    if (!scene) return { ok: false, message: 'MineScene not active' };
-
-    const mod = await import('../game/scenes/MineBlockInteractor');
-    mod.handleMoveOrMine(scene, x, y);
-    await wait(400);
-
-    const o2 = readStore<number>('terra:oxygenCurrent');
-    return {
-      ok: true,
-      message: `Moved/mined to (${x}, ${y})`,
-      state: {
-        playerX: scene.player?.gridX,
-        playerY: scene.player?.gridY,
-        o2,
-      },
-    };
-  });
-}
-
-/** Start a new dive with the given number of oxygen tanks. */
-async function startDive(tanks?: number): Promise<PlayResult> {
-  return safeAction(async () => {
-    const gm = getGM();
-    if (!gm) return { ok: false, message: 'GameManager not available' };
-    if (typeof gm.startDive !== 'function') return { ok: false, message: 'startDive not found on GameManager' };
-
-    gm.startDive(tanks ?? 1);
+    const btn = document.querySelector('[data-testid="btn-start-run"]') as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: 'Start Run button not found' };
+    btn.click();
     await wait(1500);
-
-    const screen = getScreen();
-    return {
-      ok: true,
-      message: `Dive started with ${tanks ?? 1} tank(s). Screen: ${screen}`,
-      state: { screen },
-    };
+    return { ok: true, message: `Run started. Screen: ${getScreen()}` };
   });
 }
 
-/** End the current dive — navigate to diveResults or base. */
-async function endDive(): Promise<PlayResult> {
+/** Select a domain by clicking its card. */
+async function selectDomain(domain: string): Promise<PlayResult> {
   return safeAction(async () => {
-    const gm = getGM();
-    if (gm && typeof gm.endDive === 'function') {
-      gm.endDive();
-      await wait(800);
-    }
-
-    const diveResults = readStore<any>('terra:diveResults');
-    if (diveResults) {
-      writeStore('terra:currentScreen', 'diveResults');
-    } else {
-      writeStore('terra:currentScreen', 'base');
-    }
-    await wait(300);
-
-    return { ok: true, message: `Dive ended. Screen: ${getScreen()}` };
+    const btn = document.querySelector(`[data-testid="domain-card-${domain}"]`) as HTMLElement | null;
+    if (!btn) return { ok: false, message: `Domain card '${domain}' not found` };
+    btn.click();
+    await wait(1000);
+    return { ok: true, message: `Selected domain: ${domain}. Screen: ${getScreen()}` };
   });
 }
 
-/** Trigger bomb consumable usage in the mine. */
-async function useBomb(): Promise<PlayResult> {
+/** Select an archetype by clicking its button. */
+async function selectArchetype(archetype: string): Promise<PlayResult> {
   return safeAction(async () => {
-    const gm = getGM();
-    if (!gm) return { ok: false, message: 'GameManager not available' };
-    if (typeof gm.useBomb !== 'function') return { ok: false, message: 'useBomb not found on GameManager' };
-
-    gm.useBomb();
-    await wait(600);
-    return { ok: true, message: 'Bomb used' };
+    const btn = document.querySelector(`[data-testid="archetype-${archetype}"]`) as HTMLElement | null;
+    if (!btn) return { ok: false, message: `Archetype '${archetype}' not found` };
+    btn.click();
+    await wait(2000);
+    return { ok: true, message: `Selected archetype: ${archetype}. Screen: ${getScreen()}` };
   });
 }
 
-/** Check scanner upgrade tier on the active mine scene. */
-function useScanner(): PlayResult {
-  const scene = getMineScene();
-  if (!scene) return { ok: false, message: 'MineScene not active' };
+// ---------------------------------------------------------------------------
+// Card Roguelite — Combat
+// ---------------------------------------------------------------------------
 
-  const tier = scene.scannerTierIndex ?? 0;
-  const hasScanner = scene.activeUpgrades?.has?.('scanner_boost');
+/** Get the current combat state. */
+function getCombatState(): Record<string, unknown> | null {
+  const turnState = readStore<any>('terra:activeTurnState');
+  if (!turnState) return null;
+  const runState = readStore<any>('terra:activeRunState');
   return {
-    ok: true,
-    message: hasScanner ? `Scanner active (tier ${tier})` : 'No scanner upgrade active',
-    state: { scannerTier: tier, active: !!hasScanner },
+    playerHp: turnState.playerHP,
+    enemyHp: turnState.enemy?.health,
+    enemyMaxHp: turnState.enemy?.maxHealth,
+    enemyName: turnState.enemy?.name,
+    enemyAction: turnState.enemy?.currentAction,
+    handSize: turnState.deck?.hand?.length ?? 0,
+    hand: (turnState.deck?.hand ?? []).map((c: any) => ({
+      type: c.cardType,
+      factQuestion: c.fact?.question,
+      tier: c.tier,
+    })),
+    comboMultiplier: turnState.comboMultiplier,
+    turn: turnState.turn,
+    floor: runState?.currentFloor,
+    segment: runState?.currentSegment,
+    gold: runState?.currency,
   };
+}
+
+/** Play a card by clicking it in the hand. */
+async function playCard(index: number): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector(`[data-testid="card-hand-${index}"]`) as HTMLElement | null;
+    if (!btn) return { ok: false, message: `Card at index ${index} not found` };
+    btn.click();
+    await wait(800);
+    return { ok: true, message: `Selected card ${index}. Screen: ${getScreen()}` };
+  });
+}
+
+/** End the current combat turn. */
+async function endTurn(): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector('[data-testid="btn-end-turn"]') as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: 'End Turn button not found' };
+    btn.click();
+    await wait(2000);
+    return { ok: true, message: 'Turn ended' };
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Card Roguelite — Room & Reward
+// ---------------------------------------------------------------------------
+
+/** Select a room choice door. */
+async function selectRoom(index: number): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector(`[data-testid="room-choice-${index}"]`) as HTMLElement | null;
+    if (!btn) return { ok: false, message: `Room choice ${index} not found` };
+    btn.click();
+    await wait(1500);
+    return { ok: true, message: `Selected room ${index}. Screen: ${getScreen()}` };
+  });
+}
+
+/** Accept a card reward (click the accept button). */
+async function acceptReward(): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector('[data-testid="reward-accept"]') as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: 'Reward accept button not found' };
+    btn.click();
+    await wait(1000);
+    return { ok: true, message: `Reward accepted. Screen: ${getScreen()}` };
+  });
+}
+
+/** Select a card reward type option. */
+async function selectRewardType(cardType: string): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector(`[data-testid="reward-type-${cardType}"]`) as HTMLElement | null;
+    if (!btn) return { ok: false, message: `Reward type '${cardType}' not found` };
+    btn.click();
+    await wait(500);
+    return { ok: true, message: `Selected reward type: ${cardType}` };
+  });
+}
+
+/** Retreat at a checkpoint (cash out). */
+async function retreat(): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector('[data-testid="btn-retreat"]') as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: 'Retreat button not found' };
+    btn.click();
+    await wait(2000);
+    return { ok: true, message: `Retreated. Screen: ${getScreen()}` };
+  });
+}
+
+/** Delve deeper at a checkpoint. */
+async function delve(): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector('[data-testid="btn-delve"]') as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: 'Delve button not found' };
+    btn.click();
+    await wait(2000);
+    return { ok: true, message: `Delving deeper. Screen: ${getScreen()}` };
+  });
+}
+
+/** Get the current run state. */
+function getRunState(): Record<string, unknown> | null {
+  const runState = readStore<any>('terra:activeRunState');
+  if (!runState) return null;
+  return {
+    floor: runState.currentFloor,
+    segment: runState.currentSegment,
+    currency: runState.currency,
+    deckSize: runState.deck?.length,
+    relics: runState.relics?.map((r: any) => r.id),
+    playerHp: runState.playerHp,
+    playerMaxHp: runState.playerMaxHp,
+    encountersCompleted: runState.encountersCompleted,
+  };
+}
+
+/** Click the heal option in a rest room. */
+async function restHeal(): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector('[data-testid="rest-heal"]') as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: 'Rest heal button not found' };
+    btn.click();
+    await wait(1000);
+    return { ok: true, message: 'Healed at rest room' };
+  });
+}
+
+/** Click the upgrade option in a rest room. */
+async function restUpgrade(): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector('[data-testid="rest-upgrade"]') as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: 'Rest upgrade button not found' };
+    btn.click();
+    await wait(1000);
+    return { ok: true, message: 'Upgrading at rest room' };
+  });
+}
+
+/** Continue past a mystery event. */
+async function mysteryContinue(): Promise<PlayResult> {
+  return safeAction(async () => {
+    const btn = document.querySelector('[data-testid="mystery-continue"]') as HTMLButtonElement | null;
+    if (!btn) return { ok: false, message: 'Mystery continue button not found' };
+    btn.click();
+    await wait(1000);
+    return { ok: true, message: `Mystery resolved. Screen: ${getScreen()}` };
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -441,19 +482,14 @@ function getStats(): Record<string, unknown> {
   if (!save) return {};
 
   return {
-    dust: save.minerals?.dust ?? 0,
-    shard: save.minerals?.shard ?? 0,
-    crystal: save.minerals?.crystal ?? 0,
-    geode: save.minerals?.geode ?? 0,
-    essence: save.minerals?.essence ?? 0,
-    oxygen: save.oxygen ?? 0,
-    totalDives: save.totalDives ?? 0,
-    deepestLayer: save.deepestLayerReached ?? 0,
-    streakDays: save.streakDays ?? 0,
+    totalRunsCompleted: save.stats?.totalRunsCompleted ?? 0,
+    totalEncountersWon: save.stats?.totalEncountersWon ?? 0,
+    totalQuizCorrect: save.stats?.totalQuizCorrect ?? 0,
+    totalQuizWrong: save.stats?.totalQuizWrong ?? 0,
+    currentStreak: save.stats?.currentStreak ?? 0,
+    bestStreak: save.stats?.bestStreak ?? 0,
     learnedFactCount: Array.isArray(save.learnedFacts) ? save.learnedFacts.length : 0,
-    unlockedRooms: save.unlockedRooms ?? [],
-    pickaxeTier: save.pickaxeTier ?? 0,
-    companions: save.companions?.length ?? 0,
+    currency: save.minerals?.dust ?? 0,
   };
 }
 
@@ -637,13 +673,24 @@ export function initPlaytestAPI(): void {
     navigate,
     getScreen,
     getAvailableScreens,
-    // Mining
-    mineBlock,
-    mineAt,
-    startDive,
-    endDive,
-    useBomb,
-    useScanner,
+    // Card Roguelite — Run
+    startRun,
+    selectDomain,
+    selectArchetype,
+    // Card Roguelite — Combat
+    getCombatState,
+    playCard,
+    endTurn,
+    // Card Roguelite — Room & Reward
+    selectRoom,
+    acceptReward,
+    selectRewardType,
+    retreat,
+    delve,
+    getRunState,
+    restHeal,
+    restUpgrade,
+    mysteryContinue,
     // Quiz
     getQuiz,
     answerQuiz,
@@ -656,7 +703,7 @@ export function initPlaytestAPI(): void {
     gradeCard,
     endStudy,
     getLeechInfo,
-    // Dome
+    // Dome (legacy but still functional)
     enterRoom,
     exitRoom,
     // Inventory / Economy

@@ -31,7 +31,7 @@
 <style>
   .relic-tray {
     position: absolute;
-    top: 8px;
+    top: calc(8px + var(--safe-top));
     right: 10px;
     display: flex;
     gap: 6px;

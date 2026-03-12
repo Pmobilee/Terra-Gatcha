@@ -59,7 +59,7 @@
 
   .back-btn {
     position: absolute;
-    top: 16px;
+    top: calc(16px + var(--safe-top));
     left: 16px;
     background: none;
     border: none;

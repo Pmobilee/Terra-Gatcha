@@ -3,6 +3,35 @@ import { HAND_SIZE, PLAYER_START_HP, PLAYER_MAX_HP, HINTS_PER_ENCOUNTER, FACT_CO
 import { factsDB } from './factsDB';
 import { shuffled } from './randomUtils';
 
+function normalizeFactKeyPart(value: string | undefined): string {
+  return (value ?? '')
+    .toLowerCase()
+    .normalize('NFKC')
+    .replace(/[^\p{L}\p{N}]+/gu, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function buildFactBaseKey(factId: string, cache: Map<string, string>): string {
+  const cached = cache.get(factId);
+  if (cached) return cached;
+
+  const fact = factsDB.getById(factId);
+  if (!fact) {
+    cache.set(factId, factId);
+    return factId;
+  }
+
+  const language = normalizeFactKeyPart(fact.language);
+  const statement = normalizeFactKeyPart(fact.statement);
+  const quizQuestion = normalizeFactKeyPart(fact.quizQuestion);
+  const answer = normalizeFactKeyPart(fact.correctAnswer);
+  const prompt = statement || quizQuestion || factId;
+  const key = `${language}|${prompt}|${answer}`;
+  cache.set(factId, key);
+  return key;
+}
+
 /**
  * Weighted shuffle biasing high-funScore facts toward the front.
  * Facts with funScore >= 7 get 2x weight in selection probability.
@@ -171,10 +200,49 @@ export function drawHand(deck: CardRunState, count?: number, options?: { firstDr
       shuffledFacts = shuffled(factsToUse);
     }
 
-    // Pair each drawn card slot with a random fact
+    const factKeyCache = new Map<string, string>();
+    const drawnCardIds = new Set(drawn.map((card) => card.id));
+    const usedFactIds = new Set(
+      deck.hand
+        .filter((card) => !drawnCardIds.has(card.id))
+        .map((card) => card.factId)
+    );
+    const usedBaseKeys = new Set(
+      deck.hand
+        .filter((card) => !drawnCardIds.has(card.id))
+        .map((card) => buildFactBaseKey(card.factId, factKeyCache))
+    );
+    const candidateFacts = [...shuffledFacts];
+
+    const pickCandidateFactId = (): string | null => {
+      if (candidateFacts.length === 0) return null;
+
+      let candidateIndex = candidateFacts.findIndex((candidateFactId) => (
+        !usedFactIds.has(candidateFactId)
+          && !usedBaseKeys.has(buildFactBaseKey(candidateFactId, factKeyCache))
+      ));
+
+      if (candidateIndex < 0) {
+        candidateIndex = candidateFacts.findIndex((candidateFactId) => !usedFactIds.has(candidateFactId));
+      }
+
+      if (candidateIndex < 0) {
+        candidateIndex = candidateFacts.findIndex((candidateFactId) => (
+          !usedBaseKeys.has(buildFactBaseKey(candidateFactId, factKeyCache))
+        ));
+      }
+
+      if (candidateIndex < 0) candidateIndex = 0;
+      const [factId] = candidateFacts.splice(candidateIndex, 1);
+      return factId ?? null;
+    };
+
+    // Pair each drawn card slot with a random fact, avoiding duplicate base facts when possible.
     for (let i = 0; i < drawn.length; i++) {
-      const factId = shuffledFacts[i % shuffledFacts.length];
+      const factId = pickCandidateFactId() ?? shuffledFacts[i % shuffledFacts.length];
       drawn[i].factId = factId;
+      usedFactIds.add(factId);
+      usedBaseKeys.add(buildFactBaseKey(factId, factKeyCache));
     }
   }
 

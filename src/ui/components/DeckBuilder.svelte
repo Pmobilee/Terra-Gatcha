@@ -475,18 +475,18 @@
         {#each languageItems as lang (lang.id)}
           {@const canExpandLanguage = hasSubcategoryChoices(lang.id)}
           <div class="domain-toggle-card language-card" class:selected={isDomainSelected(lang.id)}>
-            <button
-              class="domain-toggle-btn language-toggle-btn"
-              onclick={() => toggleDomain(lang.id)}
-              aria-pressed={isDomainSelected(lang.id)}
-            >
-              <span class="domain-icon">{lang.icon}</span>
-              <div class="domain-name-wrap">
-                <OverflowLabel text={lang.name} className="domain-name" />
-              </div>
-            </button>
+            <div class="lang-card-top-row">
+              <button
+                class="domain-toggle-btn language-toggle-btn"
+                onclick={() => toggleDomain(lang.id)}
+                aria-pressed={isDomainSelected(lang.id)}
+              >
+                <span class="domain-icon">{lang.icon}</span>
+                <div class="domain-name-wrap">
+                  <OverflowLabel text={lang.name} className="domain-name" />
+                </div>
+              </button>
 
-            <div class="lang-card-actions">
               {#if lang.config.options && lang.config.options.length > 0}
                 <button
                   class="cogwheel-btn"
@@ -497,17 +497,17 @@
                   aria-label="Display options for {lang.name}"
                 >⚙️</button>
               {/if}
-
-              {#if isDomainSelected(lang.id) && canExpandLanguage}
-                <button
-                  class="inline-expand-btn"
-                  onclick={() => toggleExpand(lang.id)}
-                  aria-label="Toggle subcategories for {lang.name}"
-                >
-                  {expandedDomain === lang.id ? 'Hide' : 'Subcategories'}
-                </button>
-              {/if}
             </div>
+
+            {#if isDomainSelected(lang.id) && canExpandLanguage}
+              <button
+                class="lang-subcategory-btn"
+                onclick={() => toggleExpand(lang.id)}
+                aria-label="Toggle subcategories for {lang.name}"
+              >
+                {expandedDomain === lang.id ? 'Hide Subcategories' : 'Subcategories'}
+              </button>
+            {/if}
           </div>
 
           {#if expandedDomain === lang.id && isDomainSelected(lang.id)}
@@ -876,10 +876,8 @@
   }
 
   .language-card {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 8px;
+    flex-direction: column;
+    padding: 0;
   }
 
   .language-toggle-btn {
@@ -887,23 +885,24 @@
     flex: 1;
   }
 
-  .lang-card-actions {
-    display: inline-flex;
+  .lang-card-top-row {
+    display: flex;
     align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-    white-space: nowrap;
+    width: 100%;
+    padding-right: 8px;
   }
 
-  .inline-expand-btn {
-    border: 1px solid rgba(148, 163, 184, 0.3);
-    border-radius: 8px;
-    background: rgba(15, 23, 42, 0.4);
+  .lang-subcategory-btn {
+    width: 100%;
+    padding: 6px 12px;
+    background: none;
+    border: none;
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
     color: #cbd5e1;
     font-size: 11px;
-    min-height: 28px;
-    padding: 0 10px;
     cursor: pointer;
+    min-height: 32px;
+    text-align: left;
   }
 
   .expand-btn {

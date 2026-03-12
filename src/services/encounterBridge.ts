@@ -28,6 +28,7 @@ import { factsDB } from './factsDB';
 import { RELIC_BY_ID } from '../data/relics/index';
 import { onboardingState, difficultyMode } from './cardPreferences';
 import { updateBounties } from './bountyManager';
+import { juiceManager } from './juiceManager';
 import { getCardTier } from './tierDerivation';
 import { playCardAudio } from './cardAudioManager';
 import { analyticsService } from './analyticsService';
@@ -36,7 +37,7 @@ import {
   applyAscensionEnemyTemplateAdjustments,
   getAscensionModifiers,
 } from './ascension';
-import { activeRewardBundle } from '../ui/stores/gameState';
+import { activeRewardBundle, releaseScreenTransition } from '../ui/stores/gameState';
 import {
   resolveEncounterStartEffects,
   resolveBaseDrawCount,
@@ -67,7 +68,7 @@ function freshTurnState(ts: TurnState): TurnState {
   };
 }
 
-function getCombatScene(): CombatScene | null {
+export function getCombatScene(): CombatScene | null {
   try {
     const reg = globalThis as Record<symbol, unknown>;
     const sym = Symbol.for('terra:cardGameManager');
@@ -177,7 +178,9 @@ function syncCombatScene(turnState: TurnState): void {
     scene.setBackground(
       turnState.deck.currentFloor,
       isBossFloor(turnState.deck.currentFloor)
-    );
+    ).then(() => {
+      releaseScreenTransition();
+    });
     const run = get(activeRunState);
     scene.setRelics(
       (run?.runRelics ?? []).map((rr) => {
@@ -197,6 +200,9 @@ function syncCombatScene(turnState: TurnState): void {
       pushDisplayData();
     } else if (retries > 0) {
       setTimeout(() => tryPush(retries - 1), 200);
+    } else {
+      // All retries exhausted — release transition to avoid permanent overlay
+      releaseScreenTransition();
     }
   };
   tryPush(25);
@@ -559,8 +565,12 @@ export function handlePlayCard(
     scene.updatePlayerBlock(result.turnState.playerState.shield, true);
     if (result.enemyDefeated) {
       playCardAudio('enemy-death');
-      scene.playEnemyDeathAnimation();
-      scene.playPlayerVictoryAnimation();
+      juiceManager.fireKillConfirmation();
+      // Kill confirmation punch FIRST, then death animation
+      scene.playKillConfirmation().then(() => {
+        scene.playEnemyDeathAnimation();
+        scene.playPlayerVictoryAnimation();
+      });
     }
   }
 

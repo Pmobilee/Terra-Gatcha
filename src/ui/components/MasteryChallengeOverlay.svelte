@@ -93,15 +93,16 @@
       </div>
 
       <p class="sub">Relic check for: {challenge.factStatement}</p>
-      <p class="question">{challenge.question}</p>
+      <p class="question" data-testid="mastery-question">{challenge.question}</p>
 
       <div class="answers">
-        {#each challenge.answers as answer}
+        {#each challenge.answers as answer, i}
           <button
             type="button"
             class={`answer ${buttonClass(answer)}`}
             onclick={() => handleSelect(answer)}
             disabled={resolved}
+            data-testid="mastery-answer-{i}"
           >
             {answer}
           </button>

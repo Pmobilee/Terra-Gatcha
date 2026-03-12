@@ -1,5 +1,7 @@
 <script lang="ts">
   import { getRandomRoomBg } from '../../data/backgroundManifest'
+  import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
+  import { preloadImages } from '../utils/assetPreloader'
 
   interface Props {
     bossName: string
@@ -30,6 +32,8 @@
   }: Props = $props()
 
   const bgUrl = getRandomRoomBg('crossroads')
+  holdScreenTransition()
+  preloadImages([bgUrl]).then(releaseScreenTransition)
 
   let retainedOnDeath = $derived(Math.floor(currency * deathPenalty))
 </script>
@@ -46,7 +50,7 @@
       <div>Next Segment: <strong>{nextSegmentName}</strong></div>
     </div>
 
-    <button class="retreat" onclick={onretreat}>
+    <button class="retreat" onclick={onretreat} data-testid="btn-retreat">
       Retreat
       <span>
         {#if retreatRewardsLocked}
@@ -57,7 +61,7 @@
       </span>
     </button>
 
-    <button class="delve" onclick={ondelve}>
+    <button class="delve" onclick={ondelve} data-testid="btn-delve">
       Delve Deeper
       <span>Death keeps {Math.round(deathPenalty * 100)}% ({retainedOnDeath})</span>
     </button>

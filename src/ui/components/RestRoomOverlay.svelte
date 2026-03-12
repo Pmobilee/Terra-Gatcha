@@ -1,5 +1,7 @@
 <script lang="ts">
   import { getRandomRoomBg } from '../../data/backgroundManifest'
+  import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
+  import { preloadImages } from '../utils/assetPreloader'
 
   interface Props {
     playerHp: number
@@ -10,6 +12,8 @@
 
   let { playerHp, playerMaxHp, onheal, onupgrade }: Props = $props()
   const bgUrl = getRandomRoomBg('rest')
+  holdScreenTransition()
+  preloadImages([bgUrl]).then(releaseScreenTransition)
 
   let healAmount = $derived(Math.round(playerMaxHp * 0.3))
   let projectedHp = $derived(Math.min(playerMaxHp, playerHp + healAmount))

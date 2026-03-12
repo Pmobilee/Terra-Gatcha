@@ -303,14 +303,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 24px 16px;
+    padding: calc(24px + var(--safe-top)) 16px;
     z-index: 200;
     overflow-y: auto;
   }
 
   .back-btn {
     position: absolute;
-    top: 16px;
+    top: calc(16px + var(--safe-top));
     left: 16px;
     background: none;
     border: none;

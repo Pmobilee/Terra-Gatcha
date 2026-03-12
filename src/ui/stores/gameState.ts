@@ -125,23 +125,91 @@ if (typeof window !== 'undefined') {
 // Screen transition overlay
 // =========================================================
 
+/** Direction metadata for screen transitions. */
+export type TransitionDirection = 'down' | 'up' | 'left' | 'right' | 'fade'
+
+/** Current transition direction — consumed by the transition overlay. */
+export const screenTransitionDirection = singletonWritable<TransitionDirection>('screenTransitionDirection', 'fade')
+
 /** Controls the dark transition overlay shown during screen changes. */
 export const screenTransitionActive = singletonWritable<boolean>('screenTransitionActive', false)
 
+/** Controls the opaque loading cover during asset preloading. */
+export const screenTransitionLoading = singletonWritable<boolean>('screenTransitionLoading', true)
+
 let _transitionTimer: ReturnType<typeof setTimeout> | null = null
+let _transitionHeld = false
+let _holdSafetyTimer: ReturnType<typeof setTimeout> | null = null
+
+/**
+ * Prevents the screen transition overlay from auto-clearing.
+ * Call before a screen change when the target screen needs to preload assets.
+ * Must be paired with releaseScreenTransition().
+ */
+export function holdScreenTransition(): void {
+  _transitionHeld = true
+  screenTransitionLoading.set(true)
+  screenTransitionActive.set(false)
+  if (_holdSafetyTimer) clearTimeout(_holdSafetyTimer)
+  _holdSafetyTimer = setTimeout(() => {
+    console.warn('[gameState] Screen transition hold timed out (8s)')
+    releaseScreenTransition()
+  }, 8000)
+}
+
+/**
+ * Clears the screen transition overlay after assets are loaded.
+ * Safe to call even if holdScreenTransition() was not called.
+ */
+export function releaseScreenTransition(): void {
+  _transitionHeld = false
+  if (_holdSafetyTimer) {
+    clearTimeout(_holdSafetyTimer)
+    _holdSafetyTimer = null
+  }
+  if (_transitionTimer) {
+    clearTimeout(_transitionTimer)
+    _transitionTimer = null
+  }
+  // Switch from opaque loading cover to reveal animation
+  screenTransitionLoading.set(false)
+  screenTransitionActive.set(true)
+  // Auto-clear active after reveal animation completes
+  setTimeout(() => {
+    screenTransitionActive.set(false)
+  }, 500)
+}
+
+function inferTransitionDirection(from: Screen, to: Screen): TransitionDirection {
+  if (to === 'combat' || to === 'roomSelection') return 'down'
+  if (to === 'hub' || to === 'runEnd') return 'up'
+  if (to === 'cardReward' || to === 'retreatOrDelve' || to === 'shopRoom') return 'left'
+  return 'fade'
+}
 
 if (typeof window !== 'undefined') {
   let _prevScreen: Screen | null = null
   currentScreen.subscribe((screen) => {
     if (_prevScreen !== null && screen !== _prevScreen) {
-      screenTransitionActive.set(true)
+      const dir = inferTransitionDirection(_prevScreen, screen)
+      screenTransitionDirection.set(dir)
+      // Show opaque loading cover (not the reveal animation)
+      screenTransitionLoading.set(true)
+      screenTransitionActive.set(false)
       if (_transitionTimer) clearTimeout(_transitionTimer)
       _transitionTimer = setTimeout(() => {
-        screenTransitionActive.set(false)
+        if (!_transitionHeld) {
+          releaseScreenTransition()
+        }
       }, 350)
     }
     _prevScreen = screen
   })
+
+  // Safety: clear initial loading overlay if no screen ever releases it
+  setTimeout(() => {
+    releaseScreenTransition()
+  }, 5000)
 }
 
 // =========================================================

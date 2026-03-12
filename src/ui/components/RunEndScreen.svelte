@@ -1,8 +1,10 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { shareRunSummaryCard } from '../../services/runShareService'
   import { analyticsService } from '../../services/analyticsService'
-  import { difficultyMode, type DifficultyMode } from '../../services/cardPreferences'
   import { getRandomScreenBg } from '../../data/backgroundManifest'
+  import { holdScreenTransition, releaseScreenTransition } from '../stores/gameState'
+  import { preloadImages } from '../utils/assetPreloader'
 
   interface Props {
     result: 'victory' | 'defeat' | 'retreat'
@@ -20,7 +22,6 @@
     runDurationMs?: number
     rewardMultiplier: number
     currencyEarned: number
-    isFirstRunComplete?: boolean
     onplayagain: () => void
     onhome: () => void
   }
@@ -41,31 +42,27 @@
     runDurationMs = 0,
     rewardMultiplier,
     currencyEarned,
-    isFirstRunComplete = false,
     onplayagain,
     onhome,
   }: Props = $props()
 
-  const bgUrl = $derived(getRandomScreenBg(result === 'victory' || result === 'retreat' ? 'victory' : 'defeat'))
+  const bgUrl = getRandomScreenBg(result === 'victory' || result === 'retreat' ? 'victory' : 'defeat')
+  holdScreenTransition()
+  preloadImages([bgUrl]).then(releaseScreenTransition)
 
   let isVictory = $derived(result === 'victory' || result === 'retreat')
   let headerText = $derived(result === 'retreat' ? 'SAFE RETREAT' : isVictory ? 'EXPEDITION COMPLETE' : 'EXPEDITION FAILED')
   let headerColor = $derived(isVictory ? '#F1C40F' : '#E74C3C')
   let shareStatus = $state<'idle' | 'sharing' | 'done' | 'error'>('idle')
-  let showDifficultyUnlock = $state(false)
-  let selectedDifficulty = $state<DifficultyMode>('normal')
+  let showStats = $state(false)
+  let showButtons = $state(false)
 
-  $effect(() => {
-    if (isFirstRunComplete) {
-      const timer = setTimeout(() => { showDifficultyUnlock = true }, 1500)
-      return () => clearTimeout(timer)
-    }
+  onMount(() => {
+    // Stagger stat reveal
+    setTimeout(() => { showStats = true }, 200)
+    // Delay buttons by 300ms after stats are fully visible
+    setTimeout(() => { showButtons = true }, 1200)
   })
-
-  function confirmDifficulty(): void {
-    difficultyMode.set(selectedDifficulty)
-    showDifficultyUnlock = false
-  }
 
   function formatDuration(ms: number): string {
     const totalSeconds = Math.max(0, Math.floor(ms / 1000))
@@ -115,56 +112,56 @@
   }
 </script>
 
-<div class="run-end-overlay">
+<div class="run-end-overlay" class:victory-result={isVictory} class:defeat-result={!isVictory}>
   <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
   <h1 class="header" style="color: {headerColor}">{headerText}</h1>
 
-  <div class="stats-list">
-    <div class="stat-row">
+  <div class="stats-list" class:stats-revealed={showStats}>
+    <div class="stat-row" style="--stagger: 0">
       <span class="stat-label">Floor Reached</span>
       <span class="stat-value">{floorReached}</span>
     </div>
-    <div class="stat-row">
+    <div class="stat-row" style="--stagger: 1">
       <span class="stat-label">Facts Answered</span>
       <span class="stat-value">{factsAnswered}</span>
     </div>
-    <div class="stat-row">
+    <div class="stat-row" style="--stagger: 2">
       <span class="stat-label">Accuracy</span>
       <span class="stat-value">{accuracy}%</span>
     </div>
-    <div class="stat-row">
+    <div class="stat-row" style="--stagger: 3">
       <span class="stat-label">Correct Answers</span>
       <span class="stat-value">{correctAnswers}</span>
     </div>
-    <div class="stat-row">
+    <div class="stat-row" style="--stagger: 4">
       <span class="stat-label">Best Combo</span>
       <span class="stat-value">{bestCombo}x</span>
     </div>
-    <div class="stat-row">
+    <div class="stat-row" style="--stagger: 5">
       <span class="stat-label">Cards Earned</span>
       <span class="stat-value">{cardsEarned}</span>
     </div>
-    <div class="stat-row">
+    <div class="stat-row" style="--stagger: 6">
       <span class="stat-label">Reward Multiplier</span>
       <span class="stat-value">{Math.round(rewardMultiplier * 100)}%</span>
     </div>
-    <div class="stat-row">
+    <div class="stat-row" style="--stagger: 7">
       <span class="stat-label">Currency Earned</span>
       <span class="stat-value">{currencyEarned}</span>
     </div>
-    <div class="stat-row">
+    <div class="stat-row" style="--stagger: 8">
       <span class="stat-label">New Facts Learned</span>
       <span class="stat-value">{newFactsLearned}</span>
     </div>
-    <div class="stat-row">
+    <div class="stat-row" style="--stagger: 9">
       <span class="stat-label">Facts Mastered</span>
       <span class="stat-value">{factsMastered}</span>
     </div>
-    <div class="stat-row">
+    <div class="stat-row" style="--stagger: 10">
       <span class="stat-label">Encounters</span>
       <span class="stat-value">{encountersWon}/{encountersTotal}</span>
     </div>
-    <div class="stat-row">
+    <div class="stat-row" style="--stagger: 11">
       <span class="stat-label">Run Time</span>
       <span class="stat-value">{formatDuration(runDurationMs)}</span>
     </div>
@@ -178,7 +175,7 @@
     {/if}
   </div>
 
-  <div class="btn-row">
+  <div class="btn-row" class:btns-visible={showButtons}>
     <button
       class="btn btn-share"
       data-testid="btn-share-run"
@@ -202,40 +199,6 @@
       Home
     </button>
   </div>
-
-  {#if showDifficultyUnlock}
-    <div class="difficulty-unlock-overlay" role="dialog" aria-modal="true" aria-label="Difficulty modes unlocked">
-      <div class="difficulty-unlock-modal">
-        <div class="unlock-badge">🎉</div>
-        <h3>Difficulty Modes Unlocked!</h3>
-        <p class="unlock-desc">Great first run! You can now choose how you want to play. You can change this anytime in Settings.</p>
-
-        <div class="difficulty-options">
-          <button
-            class="diff-option"
-            class:diff-selected={selectedDifficulty === 'relaxed'}
-            onclick={() => selectedDifficulty = 'relaxed'}
-          >
-            <span class="diff-name">Relaxed</span>
-            <span class="diff-detail">No timer — learn at your own pace</span>
-          </button>
-          <button
-            class="diff-option"
-            class:diff-selected={selectedDifficulty === 'normal'}
-            onclick={() => selectedDifficulty = 'normal'}
-          >
-            <span class="diff-name">Normal</span>
-            <span class="diff-detail">Answer before time runs out — the intended experience</span>
-            <span class="diff-recommended">Recommended</span>
-          </button>
-        </div>
-
-        <button class="diff-confirm-btn" onclick={confirmDifficulty}>
-          Continue
-        </button>
-      </div>
-    </div>
-  {/if}
 </div>
 
 <style>
@@ -360,117 +323,119 @@
     color: #e7f0ff;
   }
 
-  .difficulty-unlock-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 400;
-    animation: fadeIn 0.3s ease;
+  /* Stat row stagger animation */
+  .stat-row {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 400ms ease, transform 400ms ease;
+    transition-delay: calc(var(--stagger, 0) * 80ms);
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  .stats-revealed .stat-row {
+    opacity: 1;
+    transform: translateX(0);
   }
 
-  .difficulty-unlock-modal {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    border: 2px solid #f1c40f;
-    border-radius: 16px;
-    padding: 24px 20px;
-    max-width: 340px;
-    width: 90%;
-    text-align: center;
+  /* Stat value count-up effect via CSS */
+  .stats-revealed .stat-value {
+    animation: statPop 300ms ease-out;
+    animation-delay: calc(var(--stagger, 0) * 80ms + 200ms);
+    animation-fill-mode: both;
   }
 
-  .unlock-badge {
-    font-size: 40px;
-    margin-bottom: 8px;
+  @keyframes statPop {
+    0% { transform: scale(0.7); opacity: 0; }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
   }
 
-  .difficulty-unlock-modal h3 {
-    color: #f1c40f;
-    margin: 0 0 8px;
-    font-size: 18px;
+  /* Button entrance */
+  .btn-row {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 400ms ease, transform 400ms ease;
   }
 
-  .unlock-desc {
-    color: #94a3b8;
-    font-size: 13px;
-    margin: 0 0 16px;
-    line-height: 1.4;
+  .btn-row.btns-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  .difficulty-options {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-
-  .diff-option {
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 10px 12px;
-    text-align: left;
-    cursor: pointer;
-    transition: border-color 0.15s ease, background 0.15s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    position: relative;
-  }
-
-  .diff-option:hover {
-    background: rgba(255, 255, 255, 0.08);
-  }
-
-  .diff-selected {
-    border-color: #f1c40f !important;
-    background: rgba(241, 196, 15, 0.1) !important;
-  }
-
-  .diff-name {
-    font-size: 15px;
-    font-weight: 700;
-    color: #e2e8f0;
-  }
-
-  .diff-detail {
-    font-size: 12px;
-    color: #94a3b8;
-  }
-
-  .diff-recommended {
+  /* Victory: gold particle pseudo-elements */
+  .run-end-overlay.victory-result::before,
+  .run-end-overlay.victory-result::after {
+    content: '';
     position: absolute;
-    top: -8px;
-    right: 8px;
-    background: #f1c40f;
-    color: #1a1a2e;
-    font-size: 10px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 4px;
-    text-transform: uppercase;
+    top: -20px;
+    width: 6px;
+    height: 6px;
+    background: #ffd700;
+    border-radius: 50%;
+    z-index: 2;
+    animation: goldRain 2s linear infinite;
+    pointer-events: none;
   }
 
-  .diff-confirm-btn {
-    background: #f1c40f;
-    color: #1a1a2e;
-    border: none;
-    border-radius: 10px;
-    padding: 12px 32px;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    width: 100%;
+  .run-end-overlay.victory-result::before {
+    left: 25%;
+    animation-delay: 0s;
   }
 
-  .diff-confirm-btn:hover {
-    background: #f39c12;
+  .run-end-overlay.victory-result::after {
+    left: 75%;
+    animation-delay: 0.7s;
+  }
+
+  @keyframes goldRain {
+    0% { transform: translateY(-20px); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+
+  /* Defeat: desaturation + red vignette */
+  .run-end-overlay.defeat-result {
+    animation: defeatFade 500ms ease-out forwards;
+  }
+
+  @keyframes defeatFade {
+    0% { filter: none; }
+    100% { filter: grayscale(0.5) brightness(0.85); }
+  }
+
+  .run-end-overlay.defeat-result .header {
+    animation: defeatPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes defeatPulse {
+    0%, 100% { text-shadow: 0 0 10px rgba(231, 76, 60, 0.3); }
+    50% { text-shadow: 0 0 20px rgba(231, 76, 60, 0.6); }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .stat-row {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .stats-revealed .stat-value {
+      animation: none;
+      opacity: 1;
+    }
+    .btn-row {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .run-end-overlay.victory-result::before,
+    .run-end-overlay.victory-result::after {
+      animation: none;
+      display: none;
+    }
+    .run-end-overlay.defeat-result {
+      animation: none;
+    }
+    .run-end-overlay.defeat-result .header {
+      animation: none;
+    }
   }
 </style>

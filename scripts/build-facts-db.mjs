@@ -11,6 +11,7 @@ import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import fs from 'node:fs';
+import { isPlaceholderDistractor, isGarbageDistractor, hasAnswerInQuestion, normalizeText } from './content-pipeline/qa/shared.mjs';
 
 // ---------------------------------------------------------------------------
 // Paths
@@ -113,7 +114,14 @@ function factToRow(fact) {
     fact.gaiaComment      ?? null,
     fact.quizQuestion     ?? null,
     fact.correctAnswer    ?? null,
-    JSON.stringify(fact.distractors ?? []),
+    (() => {
+      const raw = fact.distractors ?? [];
+      const cleaned = raw.filter(d => {
+        const text = typeof d === 'string' ? d : String(d?.text ?? d ?? '');
+        return text && !isPlaceholderDistractor(text);
+      });
+      return JSON.stringify(cleaned);
+    })(),
     JSON.stringify(fact.category    ?? []),
     fact.rarity           ?? null,
     fact.difficulty       ?? null,
@@ -148,7 +156,16 @@ function factToRow(fact) {
     fact.visualDescription     ?? null,
     fact.hasPixelArt           ? 1 : 0,
     fact.pixelArtStatus        ?? 'none',
-    fact.variants              ? JSON.stringify(fact.variants) : null,
+    fact.variants ? JSON.stringify(fact.variants.map(v => {
+      if (!Array.isArray(v.distractors)) return v;
+      return {
+        ...v,
+        distractors: v.distractors.filter(d => {
+          const text = typeof d === 'string' ? d : String(d?.text ?? d ?? '');
+          return text && !isPlaceholderDistractor(text);
+        }),
+      };
+    })) : null,
     fact.dbVersion             ?? 0,
   ];
 }
@@ -260,6 +277,79 @@ async function main() {
   }
 
   INSERT.free();
+
+  // -- Post-build distractor quality check --
+  const lowDistractorRows = db.exec(
+    "SELECT COUNT(*) FROM facts WHERE json_array_length(distractors) < 3"
+  );
+  const lowCount = lowDistractorRows[0]?.values[0]?.[0] ?? 0;
+  if (lowCount > 0) {
+    console.warn(`  [WARN] ${lowCount} facts have fewer than 3 distractors — these will show reduced answer options in-game`);
+  }
+
+  // -- Post-build quality validation --
+  const allFactRows = db.exec(
+    "SELECT id, quiz_question, correct_answer, distractors FROM facts"
+  );
+  if (allFactRows.length > 0 && allFactRows[0].values.length > 0) {
+    let answerInQuestionCount = 0;
+    let distractorEqualsAnswerCount = 0;
+    let garbageDistractorCount = 0;
+    let duplicateDistractorCount = 0;
+
+    for (const row of allFactRows[0].values) {
+      const [id, question, answer, distractorsJson] = row;
+      const q = String(question || '');
+      const a = String(answer || '');
+
+      // Check answer-in-question
+      if (hasAnswerInQuestion(q, a)) {
+        answerInQuestionCount++;
+      }
+
+      // Check distractors
+      let distractors = [];
+      try { distractors = JSON.parse(String(distractorsJson || '[]')); } catch {}
+      if (Array.isArray(distractors)) {
+        const aNorm = normalizeText(a);
+        const seen = new Set();
+        let hasGarbage = false;
+        let hasDupe = false;
+        let hasAnswerDupe = false;
+
+        for (const d of distractors) {
+          const text = typeof d === 'string' ? d : String(d?.text ?? d ?? '');
+          const norm = normalizeText(text);
+          if (norm === aNorm) hasAnswerDupe = true;
+          if (seen.has(norm)) hasDupe = true;
+          seen.add(norm);
+          if (isGarbageDistractor(text)) hasGarbage = true;
+        }
+
+        if (hasAnswerDupe) distractorEqualsAnswerCount++;
+        if (hasDupe) duplicateDistractorCount++;
+        if (hasGarbage) garbageDistractorCount++;
+      }
+    }
+
+    if (answerInQuestionCount > 0) {
+      console.warn(`  [WARN] ${answerInQuestionCount} facts have the answer appearing in the question`);
+    }
+    if (distractorEqualsAnswerCount > 0) {
+      console.warn(`  [WARN] ${distractorEqualsAnswerCount} facts have a distractor identical to the correct answer`);
+    }
+    if (garbageDistractorCount > 0) {
+      console.warn(`  [WARN] ${garbageDistractorCount} facts have generic/garbage distractors (run fix-fact-quality.mjs)`);
+    }
+    if (duplicateDistractorCount > 0) {
+      console.warn(`  [WARN] ${duplicateDistractorCount} facts have duplicate distractors`);
+    }
+
+    const totalIssues = answerInQuestionCount + distractorEqualsAnswerCount + garbageDistractorCount + duplicateDistractorCount;
+    if (totalIssues === 0) {
+      console.log('  [OK] All quality checks passed');
+    }
+  }
 
   // -- Write database to disk --
   fs.mkdirSync(PUBLIC_DIR, { recursive: true });

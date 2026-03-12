@@ -29,7 +29,7 @@ Every single fact that enters the database MUST be processed by a Haiku agent.
 1. **Assess worth** — Is this fact interesting/educational enough for a quiz game? Reject boring/trivial/too-obscure facts.
 2. **Write/rewrite quiz question** — Clear, concise, 10-20 words, ends with ?
 3. **Write correct answer** — Short (1-5 words), definitive
-4. **Generate 3+ plausible distractors** — Same type as correct answer. BLOCKLIST: "Unknown", "Other", "None of the above", "None of these", "All of the above", "N/A", "...", "", single-character answers
+4. **Generate 8 plausible distractors** — Same type as correct answer, domain-appropriate. BLOCKLIST (auto-stripped at build time): "Alternative option N", "Unknown option N", "Not applicable", "Invalid answer", "Unrelated concept", "Incorrect claim", "False statement", "Similar concept", "Related term", "Alternative word", "Different word", "Misleading choice", "Incorrect term", "Unrelated option", "Alternative theory", "Related concept", "Other meaning", "Alternative sense", "Another option", "Additional meaning", "Related idea", "Unknown", "Other", "None of the above", "All of the above", "N/A", "...", "", single-character answers, or any generic/placeholder text. The build script (`build-facts-db.mjs`) auto-strips these, but Haiku agents should never generate them.
 5. **Write explanation** — Engaging 1-2 sentences
 6. **Generate 2+ variants** — Different question angles (forward, reverse, fill_blank)
 7. **Mark as processed** — Set `_haikuProcessed: true`, `_haikuProcessedAt: <ISO date>`
@@ -125,7 +125,7 @@ Haiku agents independently choose different output schemas. MUST normalize befor
 Always ensure:
 - `correctAnswer` is a plain string (not an object)
 - `distractors` are plain strings (not objects with `.text`)
-- At least 4 distractors (pad with "Unknown" only as last resort, flag for review)
+- At least 8 distractors (if any facts have <8, spawn Haiku agents to generate domain-appropriate replacements — see "Distractor Quality Rules")
 - `difficulty` is integer 1-5
 - `funScore` is integer 1-10
 - `category` is an array
@@ -159,7 +159,21 @@ After appending new knowledge facts to `src/data/seed/facts-generated.json`:
    node scripts/build-facts-db.mjs
    ```
 
-6. **Verify valid subcategories**:
+6. **Strip placeholder distractors** (safety net — should be no-ops if Haiku agents are well-behaved):
+   ```bash
+   node scripts/content-pipeline/strip-placeholder-distractors.mjs
+   ```
+
+7. **Generate missing distractors via Haiku agents** (NEVER use mine-distractors.mjs — it produces cross-subcategory garbage):
+   - If any facts have <8 distractors after step 1, spawn Haiku agents to generate domain-appropriate distractors
+   - See "Distractor Quality Rules — MANDATORY" section below for requirements
+
+8. **Rebuild the SQLite database** (again, to include regenerated distractors):
+   ```bash
+   node scripts/build-facts-db.mjs
+   ```
+
+9. **Verify valid subcategories**:
    ```bash
    node scripts/content-pipeline/count-invalid-l2.mjs
    ```
@@ -179,7 +193,7 @@ Required fields (or auto-derived):
 - `explanation` string (auto-derived from `wowFactor` or `statement`)
 - `quizQuestion` string
 - `correctAnswer` string
-- `distractors` array (>= 4, serialized as JSON text in DB)
+- `distractors` array (>= 8 recommended, minimum 3; serialized as JSON text in DB)
 - `category` string or array (auto-wrapped in array)
 - `rarity` string — `"common"|"uncommon"|"rare"|"epic"` (auto-derived from `difficulty`)
 - `difficulty` integer 1-5
@@ -200,6 +214,65 @@ Recommended:
 5. **No parenthetical reveals** — Answers must be concise. Explanations go in the `explanation` field.
 6. **Variant-specific distractors** — Each variant SHOULD have its own tailored `distractors` array (3 minimum).
 
+## Distractor Quality Rules — MANDATORY
+
+**CRITICAL:** ALL distractors must be generated via Haiku LLM agents. NEVER use the deprecated `mine-distractors.mjs` script — it mines correct answers from the same domain and produces cross-subcategory contamination (e.g., biology answers contaminating chemistry questions). The script has been deprecated as of March 2026.
+
+These rules exist because past Haiku workers generated thousands of garbage distractors that made the game trivially easy. Over 7,000 facts had to be fixed. Do NOT repeat these mistakes.
+
+### What Makes a Good Distractor
+- **Domain-appropriate**: For "What is the capital of France?", distractors should be OTHER capitals (Berlin, Madrid, Rome) — NOT generic words like "concept" or "method"
+- **Same type as the answer**: If the answer is a noun, distractors must be nouns. If a number, other numbers. If a person's name, other people's names.
+- **Plausible but wrong**: A player who doesn't know the answer should find all options equally plausible
+- **Unique per fact**: NEVER reuse the same distractor set across multiple facts. Each fact must have individually crafted distractors.
+
+### BANNED Distractor Patterns (auto-stripped + flagged)
+These patterns were found in 7,000+ broken facts. Generating ANY of these is a critical failure:
+
+1. **Generic concept words**: "concept", "method", "process", "approach", "practice", "system", "theory", "technique", "aspect", "element", "idea", "item", "action", "condition", "feeling", "object", "quality"
+2. **Generic verb fillers**: "to change", "to find", "to know", "to make", "to move", "to be", "to do", "to give", "to go", "to have"
+3. **Random English nouns**: "book", "chair", "door", "flower", "house", "tree", "table"
+4. **Template German words**: "beispiel", "grund", "kraft", "muster", "raum"
+5. **Meta-category phrases**: "a quality or characteristic", "a state or condition", "a type of object or tool", "a concept or idea", "a feeling or emotion", "a location or place"
+6. **Template history phrases**: "A military campaign against the Roman Empire", "A religious movement that spread across Asia", etc.
+7. **Category labels as distractors**: "vitamin", "hormone", "enzyme", "antibody" (unless the question IS about biochemistry)
+8. **The word "alternate meaning 8"** or any numbered placeholder
+
+### Rules for Vocabulary Facts
+- Distractors MUST be other real translations from the SAME language
+- For "What does [German word] mean?": distractors should be other English meanings of DIFFERENT German words
+- NEVER use generic English words ("book", "chair") — use actual translations from the vocabulary pool
+- Each vocab fact must have 8 UNIQUE distractors from the same language domain
+
+### Rules for Knowledge Facts
+- Distractors MUST be from the same domain/subcategory as the correct answer
+- For animal questions: other animal names. For country questions: other countries. For year questions: other years.
+- NEVER reuse the same 5 distractors across an entire batch — craft individual distractors for each fact
+- Check: would a smart player be able to eliminate ALL distractors by noticing they're from the wrong category? If yes, they're garbage.
+
+### Answer-in-Question Prevention
+- NEVER write a question where the correct answer appears verbatim in the question text
+- BAD: "What is Pasta gratin?" → "Pasta gratin" (circular — player just reads the answer from the question)
+- BAD: "What was the Fifth Xhosa War?" → "Fifth Xhosa War" (echo question)
+- GOOD: "What Italian dish features pasta baked with a crispy cheese topping?" → "Pasta gratin"
+- GOOD: "Which 1818–1819 conflict involved Xhosa resistance against colonial expansion?" → "Fifth Xhosa War"
+- Exception: Geography capitals where country name ≠ city name are acceptable ("What is the capital of France?" → "Paris")
+
+### Distractor = Answer Prevention
+- NEVER include the correct answer as one of the distractors
+- After generating distractors, CHECK that none of them match the correct answer (case-insensitive)
+- This was found in 583 facts and is a game-breaking bug
+
+### Quality Verification
+After generating facts, the build pipeline runs these checks automatically:
+- `isPlaceholderDistractor()` — catches template phrases
+- `isGarbageDistractor()` — catches reused generic words
+- `hasAnswerInQuestion()` — catches answer embedded in question
+- Distractor uniqueness check — catches reuse across facts
+- Answer-distractor equality check — catches answer in distractor list
+
+Run `node scripts/content-pipeline/fix-fact-quality.mjs --dry-run` to preview issues before committing.
+
 ## Known Issues & Fixes
 
 ### normalizeFactShape() auto-derivation
@@ -209,7 +282,7 @@ Generated facts often lack fields the DB expects. These are auto-derived during 
 - **`rarity`** — derived from `difficulty`: 1-2 = common, 3 = uncommon, 4 = rare, 5 = epic
 
 ### Distractor blocklist enforcement
-Invalid distractors: "Unknown", "Other", "None of the above", "None of these", "All of the above", "N/A", "...", "", single-character answers. Promotion fails if found.
+Invalid distractors are auto-stripped by `build-facts-db.mjs` using the `isPlaceholderDistractor()` regex from `scripts/content-pipeline/qa/shared.mjs`. This catches all placeholder patterns (see full list in shared.mjs). After build, spawn Haiku agents to generate domain-appropriate replacements for any facts left with <8 distractors.
 
 ### Quality gate enforcement
 Every fact must have `_haikuProcessed: true` to pass promotion. QA validates:
@@ -237,3 +310,6 @@ Every fact must have `_haikuProcessed: true` to pass promotion. QA validates:
 | `data/extracted/anki-*.json` | Pre-extracted Anki word lists |
 | `data/references/*.apkg` | Source Anki deck files |
 | `src/data/subcategoryTaxonomy.ts` | Domain/subcategory taxonomy IDs (74 subcategories) |
+| `scripts/content-pipeline/strip-placeholder-distractors.mjs` | Strips placeholder/garbage distractors from seed file |
+| `scripts/content-pipeline/_DEPRECATED_mine-distractors.mjs` | DEPRECATED — use Haiku agents instead to generate domain-appropriate distractors |
+| `scripts/content-pipeline/qa/shared.mjs` | Shared utilities including `isPlaceholderDistractor()` regex |

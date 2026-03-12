@@ -30,7 +30,7 @@
 
   .hud-pill {
     position: absolute;
-    top: 12px;
+    top: calc(12px + var(--safe-top));
     display: inline-flex;
     align-items: center;
     gap: 5px;

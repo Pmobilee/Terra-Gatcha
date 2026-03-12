@@ -4,14 +4,14 @@ import fssync from 'node:fs'
 import path from 'node:path'
 import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
-import { parseArgs, writeJson, normalizeText } from './shared.mjs'
+import { parseArgs, writeJson, normalizeText, isPlaceholderDistractor, parseDistractorsColumn } from './shared.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const root = path.resolve(__dirname, '../../..')
 const require = createRequire(import.meta.url)
 
-const VALID_COMMANDS = new Set(['assign', 'check', 'export-flagged', 'apply-fixes', 'help'])
+const VALID_COMMANDS = new Set(['assign', 'check', 'export-flagged', 'apply-fixes', 'preview', 'help'])
 
 function parseCli(argv) {
   const token = argv[2]
@@ -66,12 +66,21 @@ function baseHeuristicIssues(row) {
   const issues = []
   const question = String(row?.quiz_question || row?.quizQuestion || '').trim()
   const answer = String(row?.correct_answer || row?.correctAnswer || '').trim()
+  const type = String(row?.type || '').trim().toLowerCase()
   const qLower = question.toLowerCase()
 
   if (!question) issues.push('missing question')
   if (!answer) issues.push('missing answer')
   if (question.endsWith('...')) issues.push('truncated question')
   if (answer.endsWith('...')) issues.push('truncated answer')
+
+  if (question === 'What does this mean?') {
+    issues.push('vague vocab question')
+  }
+
+  if (type && type !== 'vocabulary' && question && question.length < 20) {
+    issues.push('question too short')
+  }
 
   const questionNorm = normalizeText(question)
   const answerNorm = normalizeText(answer)
@@ -87,6 +96,82 @@ function baseHeuristicIssues(row) {
   if (/\b(where|which country|which city|which continent)\b/.test(qLower)) {
     const words = answer.split(/\s+/).filter(Boolean)
     if (words.length > 8) issues.push('location question has non-location style answer')
+  }
+
+  // Distractor quality checks
+  const distractorIssues = distractorHeuristicIssues(row)
+  issues.push(...distractorIssues)
+
+  return [...new Set(issues)]
+}
+
+function distractorHeuristicIssues(row) {
+  const issues = []
+  const distractors = parseDistractorsColumn(row.distractors)
+  const answer = String(row?.correct_answer || row?.correctAnswer || '').trim()
+  const question = String(row?.quiz_question || row?.quizQuestion || '').trim()
+  const qLower = question.toLowerCase()
+
+  if (distractors.length === 0) {
+    issues.push('no distractors')
+    return issues
+  }
+
+  // Check for placeholder distractors
+  const placeholders = distractors.filter(d => isPlaceholderDistractor(d))
+  if (placeholders.length > 0) {
+    issues.push(`${placeholders.length} placeholder distractors`)
+  }
+
+  // Check real distractor count after removing placeholders
+  const realDistractors = distractors.filter(d => !isPlaceholderDistractor(d))
+  if (realDistractors.length < 3) {
+    issues.push(`only ${realDistractors.length} real distractors (need 3+)`)
+  }
+
+  // Check for duplicates (normalized)
+  const normalized = realDistractors.map(d => normalizeText(d))
+  const uniqueCount = new Set(normalized).size
+  if (uniqueCount < normalized.length) {
+    issues.push(`${normalized.length - uniqueCount} duplicate distractors`)
+  }
+
+  // Check if any distractor matches the correct answer
+  const answerNorm = normalizeText(answer)
+  if (answerNorm && normalized.some(d => d === answerNorm)) {
+    issues.push('distractor identical to correct answer')
+  }
+
+  // Check for very short distractors
+  const tooShort = realDistractors.filter(d => d.trim().length <= 1)
+  if (tooShort.length > 0) {
+    issues.push(`${tooShort.length} empty/single-char distractors`)
+  }
+
+  // Semantic mismatch: question asks for "common name" but distractors are Latin binomials
+  if (/\b(common name|which common|what common)\b/i.test(qLower)) {
+    const latinBinomials = realDistractors.filter(d => /^[A-Z][a-z]+ [a-z]+$/.test(d.trim()))
+    if (latinBinomials.length > 0) {
+      issues.push(`${latinBinomials.length} scientific-name distractors for common-name question`)
+    }
+  }
+
+  // Check variant distractors too
+  if (row.variants) {
+    try {
+      const variants = typeof row.variants === 'string' ? JSON.parse(row.variants) : row.variants
+      if (Array.isArray(variants)) {
+        for (let i = 0; i < variants.length; i++) {
+          const v = variants[i]
+          if (!v?.distractors || !Array.isArray(v.distractors)) continue
+          const vDistractors = v.distractors.map(d => typeof d === 'string' ? d : String(d?.text ?? d ?? '')).filter(Boolean)
+          const vPlaceholders = vDistractors.filter(d => isPlaceholderDistractor(d))
+          if (vPlaceholders.length > 0) {
+            issues.push(`variant[${i}]: ${vPlaceholders.length} placeholder distractors`)
+          }
+        }
+      }
+    } catch { /* ignore parse errors */ }
   }
 
   return [...new Set(issues)]
@@ -131,6 +216,8 @@ function rowToAssignment(row) {
     quizQuestion: row.quiz_question,
     correctAnswer: row.correct_answer,
     explanation: row.explanation,
+    distractors: parseDistractorsColumn(row.distractors),
+    variants: row.variants ? (() => { try { return JSON.parse(String(row.variants)) } catch { return [] } })() : [],
     tags: parseTagsJson(row.tags),
     answerCheckIssue: String(row.answer_check_issue || ''),
   }
@@ -156,6 +243,7 @@ function selectFacts(db, { status, limit, offset }) {
     return db
       .prepare(`
         SELECT id, statement, quiz_question, correct_answer, explanation, tags,
+               distractors, variants,
                answer_check_issue, answer_check_needs_fix
         FROM facts
         WHERE status = ?
@@ -168,6 +256,7 @@ function selectFacts(db, { status, limit, offset }) {
   return db
     .prepare(`
       SELECT id, statement, quiz_question, correct_answer, explanation, tags,
+             distractors, variants,
              answer_check_issue, answer_check_needs_fix
       FROM facts
       ORDER BY id
@@ -181,6 +270,7 @@ function selectFlaggedFacts(db, { status, limit, offset }) {
     return db
       .prepare(`
         SELECT id, statement, quiz_question, correct_answer, explanation, tags,
+               distractors, variants,
                answer_check_issue, answer_check_needs_fix, answer_check_checked_at
         FROM facts
         WHERE answer_check_needs_fix = 1 AND status = ?
@@ -193,6 +283,7 @@ function selectFlaggedFacts(db, { status, limit, offset }) {
   return db
     .prepare(`
       SELECT id, statement, quiz_question, correct_answer, explanation, tags,
+             distractors, variants,
              answer_check_issue, answer_check_needs_fix, answer_check_checked_at
       FROM facts
       WHERE answer_check_needs_fix = 1
@@ -466,12 +557,14 @@ async function cmdApplyFixes(rawArgs) {
   const columnSet = ensureAnswerCheckColumns(db)
   const now = Date.now()
 
-  const selectStmt = db.prepare('SELECT id, statement, quiz_question, correct_answer, explanation FROM facts WHERE id = ?')
+  const selectStmt = db.prepare('SELECT id, statement, quiz_question, correct_answer, explanation, distractors, variants FROM facts WHERE id = ?')
   const setParts = [
     'statement = @statement',
     'quiz_question = @quizQuestion',
     'correct_answer = @correctAnswer',
     'explanation = @explanation',
+    'distractors = @distractors',
+    'variants = @variants',
     'answer_check_issue = @issue',
     'answer_check_needs_fix = @needsFix',
     'answer_check_checked_at = @checkedAt',
@@ -508,6 +601,12 @@ async function cmdApplyFixes(rawArgs) {
     const quizQuestion = String(row?.quizQuestion ?? row?.quiz_question ?? current.quiz_question ?? '')
     const correctAnswer = String(row?.correctAnswer ?? row?.correct_answer ?? current.correct_answer ?? '')
     const explanation = String(row?.explanation ?? current.explanation ?? '')
+    const distractors = row?.distractors != null
+      ? (typeof row.distractors === 'string' ? row.distractors : JSON.stringify(row.distractors))
+      : (current.distractors ?? '[]')
+    const variants = row?.variants != null
+      ? (typeof row.variants === 'string' ? row.variants : JSON.stringify(row.variants))
+      : (current.variants ?? '[]')
 
     updates.push({
       id,
@@ -515,6 +614,8 @@ async function cmdApplyFixes(rawArgs) {
       quizQuestion,
       correctAnswer,
       explanation,
+      distractors,
+      variants,
       issue,
       needsFix,
       checkedAt: now,
@@ -553,6 +654,123 @@ async function cmdApplyFixes(rawArgs) {
   console.log(JSON.stringify({ ok: true, reportPath: rel(reportPath), counts: report.counts }, null, 2))
 }
 
+async function cmdPreview(rawArgs) {
+  const args = {
+    db: 'public/facts.db',
+    status: 'approved',
+    limit: 20,
+    offset: 0,
+    tags: '',
+    'tag-mode': 'any',
+    'option-count': 3,
+    'flagged-only': false,
+    output: '',
+    report: 'data/generated/qa-reports/answer-check-live-db/preview-report.json',
+    ...rawArgs,
+  }
+
+  const Database = loadBetterSqlite()
+  const dbPath = path.resolve(root, String(args.db))
+  const reportPath = path.resolve(root, String(args.report))
+  const status = String(args.status || '').trim()
+  const limit = Math.max(1, Number(args.limit) || 20)
+  const offset = Math.max(0, Number(args.offset) || 0)
+  const optionCount = Math.max(2, Number(args['option-count']) || 3)
+  const flaggedOnly = parseBool(args['flagged-only'], false)
+  const requiredTags = parseCsv(args.tags).map(tag => tag.toLowerCase())
+  const tagMode = String(args['tag-mode'] || 'any').trim().toLowerCase() === 'all' ? 'all' : 'any'
+  const outputPath = String(args.output || '').trim()
+
+  const db = new Database(dbPath)
+  ensureAnswerCheckColumns(db)
+  const rows = flaggedOnly
+    ? selectFlaggedFacts(db, { status: status || null, limit, offset })
+    : selectFacts(db, { status: status || null, limit, offset })
+  db.close()
+
+  const filtered = rows.filter(row => rowMatchesTags(row, requiredTags, tagMode))
+  const lines = []
+  let issueCount = 0
+
+  for (const row of filtered) {
+    const question = String(row.quiz_question || '').trim()
+    const correctAnswer = String(row.correct_answer || '').trim()
+    const distractors = parseDistractorsColumn(row.distractors)
+    const issues = baseHeuristicIssues(row)
+
+    lines.push(`### ${row.id}`)
+    lines.push(`**Q:** ${question}`)
+    lines.push('')
+
+    // Simulate game display: pick random distractors (excluding placeholders)
+    const realDistractors = distractors.filter(d => d && d !== correctAnswer && !isPlaceholderDistractor(d))
+    const shuffledReal = realDistractors.sort(() => Math.random() - 0.5)
+    const picked = shuffledReal.slice(0, optionCount - 1)
+    const gameAnswers = [...picked]
+    gameAnswers.splice(Math.floor(Math.random() * (gameAnswers.length + 1)), 0, correctAnswer)
+
+    lines.push('**As player sees it:**')
+    for (let i = 0; i < gameAnswers.length; i++) {
+      const marker = gameAnswers[i] === correctAnswer ? ' ✓' : ''
+      lines.push(`  ${i + 1}. ${gameAnswers[i]}${marker}`)
+    }
+    lines.push('')
+
+    // Show full distractor pool
+    const placeholderCount = distractors.filter(d => isPlaceholderDistractor(d)).length
+    lines.push(`**Distractor pool (${distractors.length} total, ${placeholderCount} bad):**`)
+    for (const d of distractors) {
+      if (isPlaceholderDistractor(d)) {
+        lines.push(`  - ~~${d}~~ PLACEHOLDER`)
+      } else {
+        lines.push(`  - ${d}`)
+      }
+    }
+    lines.push('')
+
+    if (issues.length > 0) {
+      issueCount++
+      lines.push(`**Issues:** ${issues.join(' | ')}`)
+    } else {
+      lines.push('**Issues:** none')
+    }
+
+    lines.push('')
+    lines.push('---')
+    lines.push('')
+  }
+
+  const markdown = lines.join('\n')
+
+  if (outputPath) {
+    const fullOutputPath = path.resolve(root, outputPath)
+    await fs.mkdir(path.dirname(fullOutputPath), { recursive: true })
+    await fs.writeFile(fullOutputPath, markdown, 'utf8')
+  } else {
+    console.log(markdown)
+  }
+
+  const report = {
+    generatedAt: new Date().toISOString(),
+    command: 'preview',
+    dbPath: rel(dbPath),
+    status: status || null,
+    limit,
+    offset,
+    optionCount,
+    flaggedOnly,
+    counts: {
+      displayed: filtered.length,
+      withIssues: issueCount,
+    },
+  }
+
+  await writeJson(reportPath, report)
+  if (outputPath) {
+    console.log(JSON.stringify({ ok: true, reportPath: rel(reportPath), displayed: filtered.length, withIssues: issueCount, outputPath: rel(path.resolve(root, outputPath)) }, null, 2))
+  }
+}
+
 function printHelp() {
   console.log([
     'Usage:',
@@ -563,11 +781,14 @@ function printHelp() {
     '  check          Evaluate rows and write answer_check_* flags into DB',
     '  export-flagged Export currently flagged DB rows for worker fixing',
     '  apply-fixes    Apply worker-reviewed fixes back into DB and clear/set flags',
+    '  preview        Display facts as the player would see them (question + answers)',
     '',
     'Examples:',
     '  npm run content:qa:answer-check:db -- check --db public/facts.db --checker gpt-5.1-mini --limit 500',
     '  npm run content:qa:answer-check:db -- export-flagged --db public/facts.db --output data/generated/qa-reports/answer-check-live-db/flagged.jsonl',
     '  npm run content:qa:answer-check:db -- apply-fixes --db public/facts.db --input data/generated/qa-reports/answer-check-live-db/reviewed/flagged-fixed.jsonl --fixer haiku-1',
+    '  npm run content:qa:answer-check:db -- preview --db public/facts.db --limit 20',
+    '  npm run content:qa:answer-check:db -- preview --db public/facts.db --flagged-only --limit 50',
   ].join('\n'))
 }
 
@@ -591,6 +812,9 @@ async function main() {
       break
     case 'apply-fixes':
       await cmdApplyFixes(args)
+      break
+    case 'preview':
+      await cmdPreview(args)
       break
     case 'help':
     default:

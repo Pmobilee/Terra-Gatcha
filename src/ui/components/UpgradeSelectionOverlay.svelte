@@ -18,6 +18,8 @@
 
   let { candidates, onselect, onskip }: Props = $props()
 
+  let selectedCandidate = $state<{ card: Card; preview: UpgradePreview } | null>(null)
+
   const TYPE_ICONS: Record<string, string> = {
     attack: '\u2694',
     shield: '\uD83D\uDEE1',
@@ -32,41 +34,81 @@
 
 <div class="upgrade-overlay">
   <div class="upgrade-panel">
-    <h2 class="title">Upgrade a Card</h2>
-    <p class="subtitle">Choose one card to enhance</p>
+    {#if selectedCandidate}
+      <!-- Phase 2: Detail & Confirm View -->
+      <div class="detail-view">
+        <h2 class="detail-title">Confirm Upgrade</h2>
 
-    <div class="candidates">
-      {#each candidates as { card, preview } (card.id)}
-        {@const tierClass = getDisplayTier(card.tier)}
-        <button
-          class="candidate-card {tierClass}"
-          data-testid="upgrade-candidate-{card.id}"
-          onclick={() => onselect(card.id)}
-        >
-          <div class="card-header">
-            <span class="type-icon">{TYPE_ICONS[card.cardType] ?? '\uD83C\uDCCF'}</span>
-            <span class="tier-badge {tierClass}">{getTierDisplayName(card.tier)}</span>
+        <div class="detail-content">
+          <div class="card-preview">
+            <div class="preview-header">
+              <span class="type-icon">{TYPE_ICONS[selectedCandidate.card.cardType] ?? '\uD83C\uDCCF'}</span>
+              <span class="tier-badge {getDisplayTier(selectedCandidate.card.tier)}">{getTierDisplayName(selectedCandidate.card.tier)}</span>
+            </div>
+
+            <h3 class="preview-mechanic">{selectedCandidate.card.mechanicName ?? selectedCandidate.card.cardType}</h3>
+
+            <div class="upgrade-comparison">
+              <div class="value-change">
+                <span class="old-value">{selectedCandidate.preview.currentBaseValue}</span>
+                <span class="arrow">→</span>
+                <span class="new-value">{selectedCandidate.preview.newBaseValue}</span>
+              </div>
+              {#if selectedCandidate.preview.secondaryDelta}
+                <div class="secondary-delta">+{selectedCandidate.preview.secondaryDelta} hit{selectedCandidate.preview.secondaryDelta > 1 ? 's' : ''}</div>
+              {/if}
+              {#if selectedCandidate.preview.addTag}
+                <div class="add-tag">+{selectedCandidate.preview.addTag}</div>
+              {/if}
+              <div class="upgraded-name">{selectedCandidate.preview.upgradedName}</div>
+            </div>
           </div>
-          <div class="mechanic-name">{card.mechanicName ?? card.cardType}</div>
-          <div class="upgrade-arrow">
-            <span class="old-value">{preview.currentBaseValue}</span>
-            <span class="arrow">\u2192</span>
-            <span class="new-value">{preview.newBaseValue}</span>
+        </div>
+
+        <div class="button-row">
+          <button class="btn-back" data-testid="upgrade-back" onclick={() => selectedCandidate = null}>
+            Back
+          </button>
+          <button class="btn-upgrade" data-testid="upgrade-confirm" onclick={() => onselect(selectedCandidate!.card.id)}>
+            Upgrade
+          </button>
+        </div>
+      </div>
+    {:else}
+      <!-- Phase 1: Grid Browse View -->
+      <div class="grid-view">
+        <h2 class="title">Upgrade a Card</h2>
+        <p class="subtitle">Choose one card to enhance</p>
+
+        <div class="grid-container">
+          <div class="candidates-grid">
+            {#each candidates as { card, preview } (card.id)}
+              {@const tierClass = getDisplayTier(card.tier)}
+              <button
+                class="grid-card {tierClass}"
+                data-testid="upgrade-candidate-{card.id}"
+                onclick={() => selectedCandidate = { card, preview }}
+              >
+                <div class="grid-header">
+                  <span class="type-icon">{TYPE_ICONS[card.cardType] ?? '\uD83C\uDCCF'}</span>
+                  <span class="tier-badge {tierClass}">{getTierDisplayName(card.tier)}</span>
+                </div>
+                <div class="grid-mechanic">{card.mechanicName ?? card.cardType}</div>
+                <div class="grid-values">
+                  <span class="old">{preview.currentBaseValue}</span>
+                  <span class="arrow">→</span>
+                  <span class="new">{preview.newBaseValue}</span>
+                </div>
+              </button>
+            {/each}
           </div>
-          {#if preview.secondaryDelta}
-            <div class="secondary-info">+{preview.secondaryDelta} hit{preview.secondaryDelta > 1 ? 's' : ''}</div>
-          {/if}
-          {#if preview.addTag}
-            <div class="secondary-info">+{preview.addTag}</div>
-          {/if}
-          <div class="upgraded-name">{preview.upgradedName}</div>
+        </div>
+
+        <button class="skip-btn" data-testid="upgrade-skip" onclick={onskip}>
+          Skip
         </button>
-      {/each}
-    </div>
-
-    <button class="skip-btn" data-testid="upgrade-skip" onclick={onskip}>
-      Skip
-    </button>
+      </div>
+    {/if}
   </div>
 </div>
 
@@ -87,11 +129,17 @@
     border: 2px solid #3498db;
     border-radius: 12px;
     padding: 20px;
-    max-width: 380px;
+    max-width: 420px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 12px;
+  }
+
+  /* Grid View (Phase 1) */
+  .grid-view {
+    display: flex;
+    flex-direction: column;
     gap: 12px;
   }
 
@@ -99,26 +147,33 @@
     font-size: 20px;
     color: #3498db;
     margin: 0;
+    text-align: center;
   }
 
   .subtitle {
     font-size: 13px;
     color: #8b949e;
     margin: 0;
+    text-align: center;
   }
 
-  .candidates {
-    display: flex;
-    flex-direction: column;
+  .grid-container {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .candidates-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 8px;
     width: 100%;
   }
 
-  .candidate-card {
+  .grid-card {
     background: rgba(13, 17, 23, 0.82);
     border: 2px solid #3b434f;
     border-radius: 10px;
-    padding: 12px;
+    padding: 10px;
     cursor: pointer;
     transition: transform 0.1s, border-color 0.15s;
     display: flex;
@@ -126,27 +181,43 @@
     gap: 4px;
     text-align: left;
     color: #e6edf3;
-    width: 100%;
+    min-height: 100px;
   }
 
-  .candidate-card:hover {
+  .grid-card:active {
+    transform: scale(0.98);
+  }
+
+  .grid-card:hover {
     transform: scale(1.02);
     border-color: #3498db;
   }
 
-  .candidate-card.gold {
+  .grid-card.gold {
     border-color: #f1c40f44;
   }
 
-  .candidate-card.silver {
+  .grid-card.gold:hover {
+    border-color: #f1c40f;
+  }
+
+  .grid-card.silver {
     border-color: #95a5a644;
   }
 
-  .candidate-card.bronze {
+  .grid-card.silver:hover {
+    border-color: #95a5a6;
+  }
+
+  .grid-card.bronze {
     border-color: #cd7f3244;
   }
 
-  .card-header {
+  .grid-card.bronze:hover {
+    border-color: #cd7f32;
+  }
+
+  .grid-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -179,17 +250,110 @@
     color: #cd7f32;
   }
 
-  .mechanic-name {
+  .grid-mechanic {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
+    line-height: 1.3;
+    flex-grow: 1;
   }
 
-  .upgrade-arrow {
+  .grid-values {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 16px;
+    gap: 4px;
+    font-size: 14px;
     font-weight: 600;
+  }
+
+  .old {
+    color: #8b949e;
+  }
+
+  .arrow {
+    color: #3498db;
+    font-size: 12px;
+  }
+
+  .new {
+    color: #2ecc71;
+  }
+
+  .skip-btn {
+    min-height: 44px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #4b5563;
+    background: #1f2937;
+    color: #9ba4ad;
+    font-weight: 700;
+    cursor: pointer;
+    transition: border-color 0.1s, color 0.1s;
+  }
+
+  .skip-btn:hover {
+    border-color: #6b7280;
+    color: #e5e7eb;
+  }
+
+  .skip-btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Detail View (Phase 2) */
+  .detail-view {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .detail-title {
+    font-size: 20px;
+    color: #3498db;
+    margin: 0;
+    text-align: center;
+  }
+
+  .detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .card-preview {
+    background: rgba(13, 17, 23, 0.5);
+    border: 1px solid #3b434f;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .preview-mechanic {
+    font-size: 18px;
+    font-weight: 700;
+    color: #e6edf3;
+    margin: 0;
+  }
+
+  .upgrade-comparison {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .value-change {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 700;
   }
 
   .old-value {
@@ -204,32 +368,86 @@
     color: #2ecc71;
   }
 
-  .secondary-info {
-    font-size: 11px;
+  .secondary-delta {
+    font-size: 13px;
+    color: #3498db;
+    font-weight: 600;
+  }
+
+  .add-tag {
+    font-size: 13px;
     color: #3498db;
     font-weight: 600;
   }
 
   .upgraded-name {
-    font-size: 12px;
+    font-size: 14px;
     color: #2ecc71;
     font-weight: 700;
   }
 
-  .skip-btn {
-    margin-top: 4px;
-    min-height: 44px;
+  .button-row {
+    display: flex;
+    gap: 8px;
     width: 100%;
-    border-radius: 10px;
-    border: 1px solid #4b5563;
-    background: #1f2937;
-    color: #9ba4ad;
-    font-weight: 700;
-    cursor: pointer;
   }
 
-  .skip-btn:hover {
+  .btn-back,
+  .btn-upgrade {
+    flex: 1;
+    min-height: 44px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.1s;
+  }
+
+  .btn-back {
+    background: #1f2937;
+    color: #8b949e;
+    border: 1px solid #4b5563;
+  }
+
+  .btn-back:hover {
     border-color: #6b7280;
     color: #e5e7eb;
+  }
+
+  .btn-back:active {
+    transform: scale(0.98);
+  }
+
+  .btn-upgrade {
+    background: #3498db;
+    color: #0d1117;
+  }
+
+  .btn-upgrade:hover {
+    background: #2ecc71;
+  }
+
+  .btn-upgrade:active {
+    transform: scale(0.98);
+  }
+
+  /* Scrollbar styling */
+  .grid-container::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .grid-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+  .grid-container::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 10px;
+  }
+
+  .grid-container::-webkit-scrollbar-thumb:hover {
+    background: #2ecc71;
   }
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { KnowledgeLevel } from '../../services/difficultyCalibration'
+  import { getKnowledgeLevelIconPath, getKnowledgeLevelEmoji } from '../utils/iconAssets'
 
   interface Props {
     onselect: (level: KnowledgeLevel) => void
@@ -7,24 +8,24 @@
 
   let { onselect }: Props = $props()
 
-  const levels: Array<{ id: KnowledgeLevel; title: string; description: string; icon: string }> = [
+  const levels: Array<{ id: KnowledgeLevel; title: string; description: string; iconKey: string }> = [
     {
       id: 'casual',
       title: 'Casual Learner',
       description: "I'm just getting started. Start me with easier questions.",
-      icon: '🌱',
+      iconKey: 'casual',
     },
     {
       id: 'normal',
       title: 'Normal',
       description: 'Give me a balanced mix of easy and hard questions.',
-      icon: '📖',
+      iconKey: 'normal',
     },
     {
       id: 'scholar',
       title: 'Master Scholar',
       description: 'Challenge me! I love difficult questions.',
-      icon: '🎓',
+      iconKey: 'scholar',
     },
   ]
 </script>
@@ -41,7 +42,11 @@
           data-testid="knowledge-level-{level.id}"
           onclick={() => onselect(level.id)}
         >
-          <span class="level-icon">{level.icon}</span>
+          <span class="level-icon">
+            <img class="knowledge-level-icon-img" src={getKnowledgeLevelIconPath(level.iconKey)} alt=""
+              onerror={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; ((e.currentTarget as HTMLElement).nextElementSibling as HTMLElement).style.display = 'inline'; }} />
+            <span style="display:none">{getKnowledgeLevelEmoji(level.iconKey)}</span>
+          </span>
           <span class="level-title">{level.title}</span>
           <span class="level-desc">{level.description}</span>
         </button>
@@ -132,5 +137,12 @@
     font-size: 0.82rem;
     color: #94a3b8;
     line-height: 1.3;
+  }
+
+  .knowledge-level-icon-img {
+    width: 2rem;
+    height: 2rem;
+    image-rendering: pixelated;
+    display: inline-block;
   }
 </style>
