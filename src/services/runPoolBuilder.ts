@@ -8,6 +8,7 @@ import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
 import { assignTypesToCards } from './cardTypeAllocator';
 import { shuffled } from './randomUtils';
 import type { DifficultyDistribution } from './difficultyCalibration';
+import { funScoreWeight } from './funnessBoost';
 
 const DOMAIN_TO_CATEGORY: Record<FactDomain, string[]> = {
   general_knowledge: ['General Knowledge', 'Technology', 'Mathematics', 'Math'],
@@ -84,12 +85,31 @@ export function recordRunFacts(factIds: string[]): void {
  * Targets: easy (1-2) ~30%, medium (3) ~45%, hard (4-5) ~25%.
  * Shortfalls backfill from medium first, then any remaining bucket.
  */
-function stratifiedSample(facts: Fact[], target: number, distribution?: DifficultyDistribution): Fact[] {
+function stratifiedSample(facts: Fact[], target: number, distribution?: DifficultyDistribution, funnessBoostFactor?: number): Fact[] {
   const recentIds = getRecentFactIds();
   // Partition each bucket: non-recent (shuffled) first, then recent (shuffled) — so slicing prefers fresh facts
+  const boostFactor = funnessBoostFactor ?? 0;
+  const funnessWeightedShuffle = (arr: Fact[]): Fact[] => {
+    if (boostFactor <= 0) return shuffled(arr);
+    // Weighted shuffle: higher funScore facts are more likely to appear earlier
+    const weighted = arr.map(f => ({ fact: f, _w: funScoreWeight(f.funScore ?? 5, boostFactor) }));
+    const result: Fact[] = [];
+    const pool = [...weighted];
+    while (pool.length > 0) {
+      const totalW = pool.reduce((sum, item) => sum + item._w, 0);
+      let roll = Math.random() * totalW;
+      let picked = 0;
+      for (let j = 0; j < pool.length; j++) {
+        roll -= pool[j]._w;
+        if (roll <= 0) { picked = j; break; }
+      }
+      result.push(pool.splice(picked, 1)[0].fact);
+    }
+    return result;
+  };
   const deprioritize = (arr: Fact[]) => {
-    const fresh = shuffled(arr.filter(f => !recentIds.has(f.id)));
-    const recent = shuffled(arr.filter(f => recentIds.has(f.id)));
+    const fresh = funnessWeightedShuffle(arr.filter(f => !recentIds.has(f.id)));
+    const recent = funnessWeightedShuffle(arr.filter(f => recentIds.has(f.id)));
     return [...fresh, ...recent];
   };
   const easy = deprioritize(facts.filter(f => (f.difficulty ?? 3) <= 2));
@@ -206,6 +226,7 @@ export function buildRunPool(
     subscriberCategoryFilters?: Record<string, string[]>
     primaryDistribution?: DifficultyDistribution
     secondaryDistribution?: DifficultyDistribution
+    funnessBoostFactor?: number
   },
 ): Card[] {
   const poolSize = options?.poolSize ?? DEFAULT_POOL_SIZE;
@@ -276,7 +297,7 @@ export function buildRunPool(
     const subcatKeys = [...subcatGroups.keys()];
     if (subcatKeys.length <= 1) {
       // Only one subcategory — no balancing needed, use normal stratified sample
-      const stratified = stratifiedSample(categoryFacts, limit, distribution);
+      const stratified = stratifiedSample(categoryFacts, limit, distribution, options?.funnessBoostFactor);
       for (const fact of stratified) pushUnique(fact);
     } else {
       // Cap each subcategory at POOL_SUBCATEGORY_MAX_PCT of the limit
@@ -286,7 +307,7 @@ export function buildRunPool(
       const remainingFacts: Fact[] = [];
       for (const key of shuffled(subcatKeys)) {
         const group = subcatGroups.get(key)!;
-        const stratified = stratifiedSample(group, maxPerSubcat, distribution);
+        const stratified = stratifiedSample(group, maxPerSubcat, distribution, options?.funnessBoostFactor);
         for (const fact of stratified) pushUnique(fact);
         // Collect unused facts for backfill
         for (const fact of group) {
@@ -298,7 +319,7 @@ export function buildRunPool(
 
       // Second pass: backfill from remaining facts if we haven't reached limit
       if (selected.length < limit) {
-        const backfill = stratifiedSample(remainingFacts.filter(f => !addedIds.has(f.id)), limit - selected.length, distribution);
+        const backfill = stratifiedSample(remainingFacts.filter(f => !addedIds.has(f.id)), limit - selected.length, distribution, options?.funnessBoostFactor);
         for (const fact of backfill) pushUnique(fact);
       }
     }

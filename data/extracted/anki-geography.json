@@ -1,0 +1,3835 @@
+{
+  "language": "geo",
+  "source": "anki-community-deck",
+  "extractedAt": "2026-03-11",
+  "entries": [
+    {
+      "fields": [
+        "England",
+        "Constituent country of the United Kingdom.",
+        "London",
+        "",
+        "Not a sovereign country",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Scotland",
+        "Constituent country of the United Kingdom.",
+        "Edinburgh",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "United Kingdom",
+        "",
+        "London",
+        "",
+        "Sovereign country",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Northern Ireland",
+        "Constituent country of the United Kingdom.",
+        "Belfast",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "France",
+        "",
+        "Paris",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Wales",
+        "Constituent country of the United Kingdom.",
+        "Cardiff",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Georgia",
+        "",
+        "Tbilisi",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Germany",
+        "",
+        "Berlin",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Greece",
+        "",
+        "Athens",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Greenland",
+        "Constituent country in the Kingdom of Denmark.",
+        "Nuuk",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Hungary",
+        "",
+        "Budapest",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Albania",
+        "",
+        "Tirana",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Andorra",
+        "",
+        "Andorra la Vella",
+        "",
+        "",
+        "",
+        "Moldova (wider, coat of arms with eagle)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Austria",
+        "",
+        "Vienna",
+        "",
+        "",
+        "",
+        "Latvia (darker red, narrower white band)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Azerbaijan",
+        "",
+        "Baku",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Belarus",
+        "",
+        "Minsk",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Belgium",
+        "",
+        "Brussels",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Bosnia and Herzegovina",
+        "",
+        "Sarajevo",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Bulgaria",
+        "",
+        "Sofia",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Croatia",
+        "",
+        "Zagreb",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Czech Republic",
+        "Also known as Czechia.",
+        "Prague",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Denmark",
+        "",
+        "Copenhagen",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Estonia",
+        "",
+        "Tallinn",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Faroe Islands",
+        "Constituent country in the Kingdom of Denmark.",
+        "Tórshavn",
+        "",
+        "",
+        "",
+        "Iceland (blue background, red and white cross), Norway (red background, blue and white cross)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Finland",
+        "",
+        "Helsinki",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Iceland",
+        "",
+        "Reykjavík",
+        "",
+        "",
+        "",
+        "Norway (red background, blue cross), Faroe Islands (white background, red and blue cross)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Ireland",
+        "",
+        "Dublin",
+        "",
+        "",
+        "",
+        "Ivory Coast (green and orange flipped, narrower)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Italy",
+        "",
+        "Rome",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Latvia",
+        "",
+        "Riga",
+        "",
+        "",
+        "",
+        "Austria (brighter red, wider white band)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Liechtenstein",
+        "",
+        "Vaduz",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Lithuania",
+        "",
+        "Vilnius",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Luxembourg",
+        "",
+        "Luxembourg City",
+        "Officially Luxembourg.",
+        "",
+        "",
+        "Netherlands (darker blue)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "North Macedonia",
+        "Formerly known as Macedonia.",
+        "Skopje",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Malta",
+        "",
+        "Valletta",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Moldova",
+        "",
+        "Chișinău",
+        "",
+        "",
+        "",
+        "Andorra (narrower, coat of arms with motto)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Monaco",
+        "",
+        "Monaco",
+        "",
+        "",
+        "",
+        "Indonesia (wider, brighter red), Poland (red and white flipped, wider)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Montenegro",
+        "",
+        "Podgorica",
+        "Cetinje is an honorary capital.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Netherlands",
+        "",
+        "Amsterdam",
+        "While Amsterdam is the official capital, The Hague is the seat of the executive and legislative branches.",
+        "",
+        "",
+        "Luxembourg (lighter blue)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Norway",
+        "",
+        "Oslo",
+        "",
+        "",
+        "",
+        "Iceland (blue background, red cross), Faroe Islands (white background, red and blue cross)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Poland",
+        "",
+        "Warsaw",
+        "",
+        "",
+        "",
+        "Indonesia (white and red flipped, brighter red), Monaco (white and red flipped, narrower)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Portugal",
+        "",
+        "Lisbon",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Romania",
+        "",
+        "Bucharest",
+        "",
+        "",
+        "",
+        "Chad (slightly darker blue)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Russia",
+        "",
+        "Moscow",
+        "",
+        "",
+        "",
+        "Slovakia (with coat of arms)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "San Marino",
+        "",
+        "City of San Marino",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Serbia",
+        "",
+        "Belgrade",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Slovakia",
+        "",
+        "Bratislava",
+        "",
+        "",
+        "",
+        "Russia (no coat of arms), Slovenia (wider, smaller coat of arms)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Slovenia",
+        "",
+        "Ljubljana",
+        "",
+        "",
+        "",
+        "Slovakia (narrower, bigger coat of arms)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Spain",
+        "",
+        "Madrid",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Sweden",
+        "",
+        "Stockholm",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Switzerland",
+        "",
+        "Bern",
+        "Switzerland has no official capital; Bern is the de facto capital.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Turkey",
+        "Also known as Türkiye",
+        "Ankara",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Ukraine",
+        "",
+        "Kyiv",
+        "Also known as Kiev.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Vatican City",
+        "",
+        "Vatican City",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Armenia",
+        "",
+        "Yerevan",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Cyprus",
+        "",
+        "Nicosia",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Kazakhstan",
+        "",
+        "Astana",
+        "Known as Nur-Sultan until September 2022.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Egypt",
+        "",
+        "Cairo",
+        "",
+        "",
+        "",
+        "Iraq (text instead of emblem), Yemen (no emblem)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Algeria",
+        "",
+        "Algiers",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Angola",
+        "",
+        "Luanda",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Benin",
+        "",
+        "Porto-Novo",
+        "While Porto-Novo is the official capital, Cotonou is the de facto seat of government.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Botswana",
+        "",
+        "Gaborone",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Burkina Faso",
+        "",
+        "Ouagadougou",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Cameroon",
+        "",
+        "Yaoundé",
+        "",
+        "",
+        "",
+        "Senegal (green/yellow/red, green star)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Burundi",
+        "",
+        "Gitega",
+        "Official capital was moved from Bujumbura to Gitega in 2019.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Cape Verde",
+        "Also known as Cabo Verde.",
+        "Praia",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "São Tomé and Príncipe",
+        "",
+        "São Tomé",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Central African Republic",
+        "",
+        "Bangui",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Chad",
+        "",
+        "N'Djamena",
+        "",
+        "",
+        "",
+        "Romania (slightly lighter blue)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Equatorial Guinea",
+        "",
+        "Malabo",
+        "Ciudad de la Paz is being built to replace Malabo as capital.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Kenya",
+        "",
+        "Nairobi",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Comoros",
+        "",
+        "Moroni",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Ivory Coast",
+        "Officially Côte d'Ivoire.",
+        "Yamoussoukro",
+        "While Yamoussoukro is the official capital, Abidjan is the de facto seat of government.",
+        "",
+        "",
+        "Ireland (orange and green flipped, wider)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Democratic Republic of the Congo",
+        "Formerly Zaire.",
+        "Kinshasa",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Djibouti",
+        "",
+        "Djibouti",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Guinea-Bissau",
+        "",
+        "Bissau",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Eritrea",
+        "",
+        "Asmara",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Ethiopia",
+        "",
+        "Addis Ababa",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Gabon",
+        "",
+        "Libreville",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "The Gambia",
+        "",
+        "Banjul",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Lesotho",
+        "",
+        "Maseru",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Liberia",
+        "",
+        "Monrovia",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Madagascar",
+        "",
+        "Antananarivo",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Malawi",
+        "",
+        "Lilongwe",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Mali",
+        "",
+        "Bamako",
+        "",
+        "",
+        "",
+        "Guinea (green and red flipped, slightly darker green)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Mauritania",
+        "",
+        "Nouakchott",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Mauritius",
+        "",
+        "Port Louis",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Morocco",
+        "",
+        "Rabat",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Mozambique",
+        "",
+        "Maputo",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Namibia",
+        "",
+        "Windhoek",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Niger",
+        "",
+        "Niamey",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Nigeria",
+        "",
+        "Abuja",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Republic of the Congo",
+        "",
+        "Brazzaville",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Rwanda",
+        "",
+        "Kigali",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Senegal",
+        "",
+        "Dakar",
+        "",
+        "",
+        "",
+        "Cameroon (green/red/yellow, yellow star)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Seychelles",
+        "",
+        "Victoria",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Sierra Leone",
+        "",
+        "Freetown",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "South Africa",
+        "",
+        "Pretoria, Cape Town, Bloemfontein",
+        "South Africa has no legally defined capital: the branches of government are split over three cities: Pretoria (executive), Cape Town (legislative) and Bloemfontein (judicial).",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Sudan",
+        "",
+        "Khartoum",
+        "",
+        "",
+        "",
+        "Palestine (black/white/green, red arrow)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Eswatini",
+        "Known as Swaziland until 2018.",
+        "Mbabane",
+        "While Mbabane is the official, executive capital, Lobamba is the traditional, spiritual and legislative capital.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Tanzania",
+        "",
+        "Dodoma",
+        "While Dodoma is the official capital, Dar es Salaam is the de facto seat of government.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Togo",
+        "",
+        "Lomé",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Tunisia",
+        "",
+        "Tunis",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Uganda",
+        "",
+        "Kampala",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Sahrawi Arab Democratic Republic",
+        "Partially recognised state claimed by Morocco. Also known as Western Sahara.",
+        "Laayoune",
+        "While Laayoune, also known as El Aaiún, is the declared capital, Tifariti is the de facto seat of government.",
+        "",
+        "",
+        "Palestine (no symbol)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Zambia",
+        "",
+        "Lusaka",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Zimbabwe",
+        "",
+        "Harare",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Canary Islands",
+        "Autonomous community of Spain.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Afghanistan",
+        "",
+        "Kabul",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Bahrain",
+        "",
+        "Manama",
+        "",
+        "",
+        "",
+        "Qatar (wider, more serrated edges, maroon)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Bangladesh",
+        "",
+        "Dhaka",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Bhutan",
+        "",
+        "Thimphu",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Brunei",
+        "",
+        "Bandar Seri Begawan",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "China",
+        "",
+        "Beijing",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Cambodia",
+        "",
+        "Phnom Penh",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Indonesia",
+        "",
+        "Jakarta",
+        "",
+        "",
+        "",
+        "Monaco (narrower, darker red), Poland (red and white flipped, darker red)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "India",
+        "",
+        "New Delhi",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Hong Kong",
+        "Special Administrative Region of China.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Iran",
+        "",
+        "Tehran",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Israel",
+        "",
+        "Jerusalem",
+        "Disputed; claimed by Palestine.",
+        "Claimed and controlled",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Iraq",
+        "",
+        "Baghdad",
+        "",
+        "",
+        "",
+        "Egypt (emblem instead of text), Yemen (no text)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "South Korea",
+        "",
+        "Seoul",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "North Korea",
+        "",
+        "Pyongyang",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Jordan",
+        "",
+        "Amman",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Japan",
+        "",
+        "Tokyo",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Lebanon",
+        "",
+        "Beirut",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Laos",
+        "",
+        "Vientiane",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Kyrgyzstan",
+        "",
+        "Bishkek",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Kuwait",
+        "",
+        "Kuwait City",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Myanmar",
+        "Also known as Burma.",
+        "Naypyidaw",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Mongolia",
+        "",
+        "Ulaanbaatar",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Maldives",
+        "",
+        "Malé",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Malaysia",
+        "",
+        "Kuala Lumpur",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Oman",
+        "",
+        "Muscat",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Nepal",
+        "",
+        "Kathmandu",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Palestine",
+        "",
+        "Jerusalem",
+        "Disputed; claimed by Israel; Ramallah is the administrative centre.",
+        "Claimed but not controlled",
+        "",
+        "Sudan (red/white/black, green arrow), Sahrawi Arab Democratic Republic (with star and crescent)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Pakistan",
+        "",
+        "Islamabad",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Qatar",
+        "",
+        "Doha",
+        "",
+        "",
+        "",
+        "Bahrain (narrower, fewer serrated edges, red)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Saudi Arabia",
+        "",
+        "Riyadh",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Singapore",
+        "",
+        "Singapore",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Syria",
+        "",
+        "Damascus",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Taiwan",
+        "Partially recognised state claimed by China.",
+        "Taipei",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Sri Lanka",
+        "",
+        "Sri Jayawardenepura Kotte",
+        "Colombo is often referred to as the capital but Sri Jayawardenepura Kotte, a suburb of Colombo, is the official, legislative capital.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Tajikistan",
+        "",
+        "Dushanbe",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Thailand",
+        "",
+        "Bangkok",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Timor-Leste",
+        "Also known as Timor-Leste.",
+        "Dili",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "United Arab Emirates",
+        "",
+        "Abu Dhabi",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Turkmenistan",
+        "",
+        "Ashgabat",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Yemen",
+        "",
+        "Sanaa",
+        "Also spelled as Sana'a.",
+        "",
+        "",
+        "Egypt (with emblem), Iraq (with text)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Vietnam",
+        "",
+        "Hanoi",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Uzbekistan",
+        "",
+        "Tashkent",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Fiji",
+        "",
+        "Suva",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Papua New Guinea",
+        "",
+        "Port Moresby",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Australia",
+        "",
+        "Canberra",
+        "",
+        "",
+        "",
+        "New Zealand (red stars, two fewer stars)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Solomon Islands",
+        "",
+        "Honiara",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Argentina",
+        "",
+        "Buenos Aires",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Bolivia",
+        "",
+        "Sucre",
+        "While Sucre is the constitutional capital, La Paz is the seat of government.",
+        "",
+        "",
+        "Ghana (star instead of coat of arms)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Brazil",
+        "",
+        "Brasília",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Chile",
+        "",
+        "Santiago",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Colombia",
+        "",
+        "Bogotá",
+        "",
+        "",
+        "",
+        "Ecuador (with coat of arms)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Ecuador",
+        "",
+        "Quito",
+        "",
+        "",
+        "",
+        "Colombia (no coat of arms)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Guyana",
+        "",
+        "Georgetown",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Paraguay",
+        "",
+        "Asunción",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Peru",
+        "",
+        "Lima",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Suriname",
+        "",
+        "Paramaribo",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Uruguay",
+        "",
+        "Montevideo",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Venezuela",
+        "",
+        "Caracas",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Cook Islands",
+        "",
+        "Avarua",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Federated States of Micronesia",
+        "",
+        "Palikir",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Guam",
+        "Unincorporated territory of the United States.",
+        "Hagåtña",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Vanuatu",
+        "",
+        "Port Vila",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Canada",
+        "",
+        "Ottawa",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "United States of America",
+        "",
+        "Washington, D.C.",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Mexico",
+        "",
+        "Mexico City",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Puerto Rico",
+        "Unincorporated territory of the United States.",
+        "San Juan",
+        "",
+        "",
+        "",
+        "Cuba (red triangle, blue stripes)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Cuba",
+        "",
+        "Havana",
+        "",
+        "",
+        "",
+        "Puerto Rico (blue triangle, red stripes)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Dominican Republic",
+        "",
+        "Santo Domingo",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Haiti",
+        "",
+        "Port-au-Prince",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Jamaica",
+        "",
+        "Kingston",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Trinidad and Tobago",
+        "",
+        "Port of Spain",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Bermuda",
+        "Overseas territory of the United Kingdom.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Guadeloupe",
+        "Overseas department of France.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "The Bahamas",
+        "",
+        "Nassau",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Barbados",
+        "",
+        "Bridgetown",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Belize",
+        "",
+        "Belmopan",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Costa Rica",
+        "",
+        "San José",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "El Salvador",
+        "",
+        "San Salvador",
+        "",
+        "",
+        "",
+        "Nicaragua (different coat of arms, slightly lighter blue)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Guatemala",
+        "",
+        "Guatemala City",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Honduras",
+        "",
+        "Tegucigalpa",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Nicaragua",
+        "",
+        "Managua",
+        "",
+        "",
+        "",
+        "El Salvador (different coat of arms, slightly darker blue)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Panama",
+        "",
+        "Panama City",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Antigua and Barbuda",
+        "",
+        "St. John's",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Dominica",
+        "",
+        "Roseau",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Saint Vincent and the Grenadines",
+        "",
+        "Kingstown",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Somalia",
+        "",
+        "Mogadishu",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Zanzibar",
+        "Semi-autonomous region of Tanzania.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Ghana",
+        "",
+        "Accra",
+        "",
+        "",
+        "",
+        "Bolivia (coat of arms instead of star)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Guinea",
+        "",
+        "Conakry",
+        "",
+        "",
+        "",
+        "Mali (red and green flipped, slightly brighter green)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "New Zealand",
+        "",
+        "Wellington",
+        "",
+        "",
+        "",
+        "Australia (white stars, two more stars)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "French Polynesia",
+        "Overseas territory of France.",
+        "Papeete",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Philippines",
+        "",
+        "Manila",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Kosovo",
+        "Partially recognised state claimed by Serbia.",
+        "Pristina",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Libya",
+        "",
+        "Tripoli",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Palau",
+        "",
+        "Ngerulmud",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Saint Lucia",
+        "",
+        "Castries",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Bali",
+        "Island of Indonesia.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Grenada",
+        "",
+        "St. George's",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "British Virgin Islands",
+        "Overseas territory of the United Kingdom.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Turks and Caicos Islands",
+        "Overseas territory of the United Kingdom.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Cayman Islands",
+        "Overseas territory of the United Kingdom.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Anguilla",
+        "Overseas territory of the United Kingdom.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Azores",
+        "Autonomous region of Portugal.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Curaçao",
+        "Constituent country of the Kingdom of the Netherlands.",
+        "Willemstad",
+        "",
+        "",
+        "",
+        "Nauru (single star below yellow band)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "French Guiana",
+        "Overseas department of France.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Gibraltar",
+        "Overseas territory of the United Kingdom.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Guernsey",
+        "Crown dependency of the United Kingdom.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Isle of Man",
+        "Crown dependency of the United Kingdom.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Jersey",
+        "Crown dependency of the United Kingdom.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Kiribati",
+        "",
+        "South Tarawa",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Macau",
+        "Special Administrative Region of China.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Madeira",
+        "Autonomous region of Portugal.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Marshall Islands",
+        "",
+        "Majuro",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Nauru",
+        "",
+        "Yaren",
+        "Nauru has no official capital; the Yaren District is the de facto capital.",
+        "",
+        "",
+        "Curaçao (two stars in top-left corner)",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "New Caledonia",
+        "Overseas territory of France.",
+        "Nouméa",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Niue",
+        "",
+        "Alofi",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Northern Cyprus",
+        "State recognised only by Turkey and claimed by Cyprus.",
+        "North Nicosia",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Saint Kitts and Nevis",
+        "",
+        "Basseterre",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Samoa",
+        "",
+        "Apia",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Somaliland",
+        "Independent state claimed by Somalia.",
+        "Hargeisa",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "South Sudan",
+        "",
+        "Juba",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Tuvalu",
+        "",
+        "Funafuti",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "United States Virgin Islands",
+        "Unincorporated territory of the United States.",
+        "Charlotte Amalie",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Åland Islands",
+        "Autonomous region of Finland.",
+        "Mariehamn",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "South Ossetia",
+        "Independent state claimed by Georgia.",
+        "Tskhinvali",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "American Samoa",
+        "Unincorporated territory of the United States.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Northern Mariana Islands",
+        "Unincorporated territory of the United States.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Aruba",
+        "Constituent country of the Kingdom of the Netherlands.",
+        "Oranjestad",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Abkhazia",
+        "Independent state claimed by Georgia.",
+        "Sukhumi",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Sint Maarten",
+        "Constituent country of the Kingdom of the Netherlands.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Tonga",
+        "",
+        "Nukuʻalofa",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Transnistria",
+        "Independent state claimed by Moldova.",
+        "Tiraspol",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Sardinia",
+        "Autonomous region of Italy.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Kaliningrad Oblast",
+        "Oblast (administrative region) of the Russian Federation.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Martinique",
+        "Overseas department of France.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Java",
+        "Island of Indonesia.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Corsica",
+        "Region of France.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "European Union",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Gulf of Mexico",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Philippine Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Southern Ocean",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Gulf of Thailand",
+        "Also known as the Gulf of Siam.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Micronesia",
+        "Subregion of Oceania comprising thousands of small islands in the western Pacific Ocean.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Pacific Ocean",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Atlantic Ocean",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Indian Ocean",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Arctic Ocean",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Hudson Bay",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Labrador Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "White Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Denmark Strait",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Norwegian Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Baltic Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Celtic Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "English Channel",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Adriatic Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Bay of Biscay",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Black Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Aegean Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Balkan Peninsula",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Caspian Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Mediterranean Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "East Siberian Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Bering Strait",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Arabian Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Red Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Dead Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Bay of Bengal",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Sea of Japan",
+        "A naming dispute exists between the sea's bordering countries, with South Korea notably supporting the name East Sea.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Yellow Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Coral Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "South China Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Tasman Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Gulf of Carpentaria",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Aral Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Persian Gulf",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Caribbean Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Gulf of California",
+        "Also known as the Sea of Cortez.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Polynesia",
+        "Subregion of Oceania comprising thousands of small islands in the central and southern Pacific Ocean.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Melanesia",
+        "Subregion of Oceania, which includes the four countries of Vanuatu, the Solomon Islands, Fiji, and Papua New Guinea.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Scandinavia",
+        "Historical and cultural region in Northern Europe, which includes the countries of Denmark, Norway and Sweden, and sometimes Finland and Iceland.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Sea of Galilee",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Sumatra",
+        "Island of Indonesia.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Sicily",
+        "Autonomous region of Italy.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Mayotte",
+        "Overseas department of France.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Réunion",
+        "Overseas department of France.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Falkland Islands",
+        "Overseas territory of the United Kingdom.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Europe",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "North America",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "South America",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Asia",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Africa",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Oceania",
+        "World region covering the Australian continent and most of the islands in the Pacific Ocean.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Antarctica",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Saint Martin",
+        "Overseas territory of France.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Wallis and Futuna",
+        "Overseas territory of France.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Akrotiri and Dhekelia",
+        "Overseas territory of the United Kingdom.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Svalbard",
+        "Unincorporated internal area of Norway.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Hawaii",
+        "State of the United States.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Alaska",
+        "State of the United States.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Bougainville",
+        "Autonomous region of Papua New Guinea.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Jeju",
+        "Autonomous province of South Korea.",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Banda Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Barents Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Celebes Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "East China Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Gulf of Alaska",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Gulf of Guinea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "North Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Sea of Okhotsk",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "fields": [
+        "Timor Sea",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  ]
+}

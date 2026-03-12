@@ -106,6 +106,7 @@ import type { UpgradePreview } from './cardUpgradeService';
 import { getUpgradeCandidates, getUpgradePreview, upgradeCard } from './cardUpgradeService'
 import type { ShopInventory } from './shopService';
 import { generateShopRelics, priceShopCards } from './shopService';
+import type { DeckMode } from '../data/studyPreset'
 
 export type GameFlowState =
   | 'idle'
@@ -151,15 +152,29 @@ let pendingDomainSelection: { primary: FactDomain; secondary: FactDomain } | nul
 type ActiveRunMode = 'standard' | 'daily_expedition' | 'endless_depths' | 'scholar_challenge'
 let activeRunMode: ActiveRunMode = 'standard'
 let activeDailySeed: number | null = null
+let pendingDeckMode: DeckMode | null = null
 
 export function startNewRun(): void {
   activeRunMode = 'standard'
   activeDailySeed = null
+  pendingDeckMode = null
   deactivateDeterministicRandom()
   const onboarding = get(onboardingState);
   if (!onboarding.hasCompletedOnboarding) {
     gameFlowState.set('idle');
     currentScreen.set('onboarding');
+    return;
+  }
+  // Check if player has an active deck mode from the hub selector
+  const save = get(playerSave);
+  const deckMode = save?.activeDeckMode;
+  if (deckMode) {
+    // Skip domain selection — go straight to archetype selection
+    pendingDeckMode = deckMode;
+    // Placeholder domains (pool builder uses deckMode, not these)
+    pendingDomainSelection = { primary: 'general_knowledge', secondary: 'general_knowledge' };
+    gameFlowState.set('archetypeSelection');
+    currentScreen.set('archetypeSelection');
     return;
   }
   gameFlowState.set('domainSelection');
@@ -459,6 +474,14 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
     }
   }
 
+  // Store last deck mode for "repeat last run" default
+  if (run.deckMode) {
+    const currentSave = get(playerSave);
+    if (currentSave) {
+      playerSave.set({ ...currentSave, lastRunDeckMode: run.deckMode });
+      persistPlayer();
+    }
+  }
   activeRunMode = 'standard'
   activeDailySeed = null
   deactivateDeterministicRandom()
@@ -566,7 +589,9 @@ export function onArchetypeSelected(archetype: RewardArchetype): void {
     primaryDomainRunNumber: runNumber,
     earlyBoostActive,
     ascensionLevel: selectedAscensionLevel,
+    deckMode: pendingDeckMode ?? undefined,
   });
+  pendingDeckMode = null;
   analyticsService.track({
     name: 'domain_select',
     properties: {

@@ -13,6 +13,18 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const root = path.resolve(__dirname, '../../..')
 
+/**
+ * Strip HTML tags and Anki media references from a string value
+ */
+function stripAnkiTags(value) {
+  if (!value) return ''
+  // Remove HTML tags
+  let cleaned = String(value).replace(/<[^>]*>/g, '')
+  // Remove Anki sound references: [sound:...]
+  cleaned = cleaned.replace(/\[sound:[^\]]*\]/g, '')
+  return cleaned.trim()
+}
+
 async function extractCollection(apkgPath) {
   const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'anki-extract-'))
   const candidates = ['collection.anki21', 'collection.anki2']
@@ -56,6 +68,7 @@ async function main() {
     language: 'unknown',
     output: 'data/extracted/anki-wordlist.json',
     'field-index': 0,
+    'all-fields': false,
     limit: 200_000,
   })
 
@@ -67,23 +80,54 @@ async function main() {
   const outputPath = path.resolve(root, String(args.output))
   const fieldIndex = Math.max(0, Number(args['field-index']) || 0)
   const limit = Math.max(1, Number(args.limit) || 200_000)
+  const allFields = Boolean(args['all-fields'])
 
   const collectionPath = await extractCollection(inputPath)
   const noteFieldBlobs = await readNotes(collectionPath, limit)
 
-  const words = dedupeStrings(noteFieldBlobs.map((blob) => {
-    const fields = blob.split('\u001f')
-    return fields[fieldIndex] || fields[0] || ''
-  }))
-
-  await writeJson(outputPath, {
+  const metadata = {
     language: String(args.language),
     source: 'anki-community-deck',
     extractedAt: new Date().toISOString().slice(0, 10),
-    words,
-  })
+  }
 
-  console.log(`wrote ${words.length} words to ${outputPath}`)
+  if (allFields) {
+    // Mode: extract ALL fields per note
+    const seenFirstFields = new Set()
+    const entries = []
+
+    for (const blob of noteFieldBlobs) {
+      const fields = blob.split('\u001f')
+      const cleanedFields = fields.map((f) => stripAnkiTags(f))
+
+      // Deduplicate by fields[0]
+      const firstField = cleanedFields[0]
+      if (firstField && !seenFirstFields.has(firstField)) {
+        seenFirstFields.add(firstField)
+        entries.push({ fields: cleanedFields })
+      }
+    }
+
+    await writeJson(outputPath, {
+      ...metadata,
+      entries,
+    })
+
+    console.log(`wrote ${entries.length} entries with all fields to ${outputPath}`)
+  } else {
+    // Mode: extract single field (original behavior, backward compatible)
+    const words = dedupeStrings(noteFieldBlobs.map((blob) => {
+      const fields = blob.split('\u001f')
+      return fields[fieldIndex] || fields[0] || ''
+    }))
+
+    await writeJson(outputPath, {
+      ...metadata,
+      words,
+    })
+
+    console.log(`wrote ${words.length} words to ${outputPath}`)
+  }
 }
 
 main().catch((error) => {

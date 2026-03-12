@@ -1,13 +1,1523 @@
 {
-  "generatedAt": "2026-03-11T15:34:12.648Z",
+  "generatedAt": "2026-03-11T18:13:03.238Z",
   "inputDir": "/root/terra-miner/data/generated",
-  "scannedFiles": 13,
-  "promotedFacts": 3974,
+  "scannedFiles": 14,
+  "promotedFacts": 0,
   "outputPath": "/root/terra-miner/src/data/seed/facts-generated.json",
   "qaGateEnforced": false,
   "qaReportPath": null,
   "taxonomyValidation": {
-    "pass": true,
-    "violations": 0
+    "pass": false,
+    "violations": 4942,
+    "byDomain": {
+      "general_knowledge": 4942
+    },
+    "samples": [
+      {
+        "id": "cs-b01-001",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'žena' mean in English?"
+      },
+      {
+        "id": "cs-b01-002",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'muž' mean in English?"
+      },
+      {
+        "id": "cs-b01-003",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'dívka' mean in English?"
+      },
+      {
+        "id": "cs-b01-004",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'chlapec' mean in English?"
+      },
+      {
+        "id": "cs-b01-005",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'dvacet pět' mean in English?"
+      },
+      {
+        "id": "cs-b01-006",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'dvanáct' mean in English?"
+      },
+      {
+        "id": "cs-b01-007",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'čtrnáct' mean in English?"
+      },
+      {
+        "id": "cs-b01-008",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'čtyřicet' mean in English?"
+      },
+      {
+        "id": "cs-b01-009",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'Spojené státy americké' mean in English?"
+      },
+      {
+        "id": "cs-b01-010",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'Německo' mean in English?"
+      },
+      {
+        "id": "cs-b01-011",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'Čína' mean in English?"
+      },
+      {
+        "id": "cs-b01-012",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'Japonsko' mean in English?"
+      },
+      {
+        "id": "cs-b01-013",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'angličtina' mean in English?"
+      },
+      {
+        "id": "cs-b01-014",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'němčina' mean in English?"
+      },
+      {
+        "id": "cs-b01-015",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'čínština' mean in English?"
+      },
+      {
+        "id": "cs-b01-016",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'japonština' mean in English?"
+      },
+      {
+        "id": "cs-b01-017",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'spát' mean in English?"
+      },
+      {
+        "id": "cs-b01-018",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'nakupovat' mean in English?"
+      },
+      {
+        "id": "cs-b01-019",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'sledovat film' mean in English?"
+      },
+      {
+        "id": "cs-b01-020",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'mluvit' mean in English?"
+      },
+      {
+        "id": "cs-b01-021",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'běhat' mean in English?"
+      },
+      {
+        "id": "cs-b01-022",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'kniha' mean in English?"
+      },
+      {
+        "id": "cs-b01-023",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'jídlo' mean in English?"
+      },
+      {
+        "id": "cs-b01-024",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'káva' mean in English?"
+      },
+      {
+        "id": "cs-b01-025",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'noviny' mean in English?"
+      },
+      {
+        "id": "cs-b01-026",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'mít' mean in English?"
+      },
+      {
+        "id": "cs-b01-027",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'učit se' mean in English?"
+      },
+      {
+        "id": "cs-b01-028",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'jíst' mean in English?"
+      },
+      {
+        "id": "cs-b01-029",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'číst' mean in English?"
+      },
+      {
+        "id": "cs-b01-030",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'pít' mean in English?"
+      },
+      {
+        "id": "cs-b01-031",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'kupovat' mean in English?"
+      },
+      {
+        "id": "cs-b01-032",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'rýže' mean in English?"
+      },
+      {
+        "id": "cs-b01-033",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'polévka' mean in English?"
+      },
+      {
+        "id": "cs-b01-034",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'chléb' mean in English?"
+      },
+      {
+        "id": "cs-b01-035",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'časopis' mean in English?"
+      },
+      {
+        "id": "cs-b01-036",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'voda' mean in English?"
+      },
+      {
+        "id": "cs-b01-037",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'stát' mean in English?"
+      },
+      {
+        "id": "cs-b01-038",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'jeden' mean in English?"
+      },
+      {
+        "id": "cs-b01-039",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'tři' mean in English?"
+      },
+      {
+        "id": "cs-b01-040",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'pět' mean in English?"
+      },
+      {
+        "id": "cs-b01-041",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'deset' mean in English?"
+      },
+      {
+        "id": "cs-b01-042",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'jablko' mean in English?"
+      },
+      {
+        "id": "cs-b01-043",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'sklenice' mean in English?"
+      },
+      {
+        "id": "cs-b01-044",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'dva' mean in English?"
+      },
+      {
+        "id": "cs-b01-045",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'čtyři' mean in English?"
+      },
+      {
+        "id": "cs-b01-046",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'sedm' mean in English?"
+      },
+      {
+        "id": "cs-b01-047",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'rodina' mean in English?"
+      },
+      {
+        "id": "cs-b01-048",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'otec' mean in English?"
+      },
+      {
+        "id": "cs-b01-049",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'matka' mean in English?"
+      },
+      {
+        "id": "cs-b01-050",
+        "domain": "general_knowledge",
+        "categoryL2": "czech",
+        "category": [
+          "General Knowledge"
+        ],
+        "question": "What does 'syn' mean in English?"
+      }
+    ]
+  },
+  "qualityValidation": {
+    "rejections": 3981,
+    "samples": [
+      {
+        "id": "genet-victoriae-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What is a giant forest genet?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "parnassius-apollo-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "insects_arachnids"
+        ],
+        "question": "What type of animal is Parnassius apollo?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "senna-alata-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "conservation"
+        ],
+        "question": "What is Senna alata?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "leopard-cat-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What is the scientific name of the leopard cat?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "phaseolus-vulgaris-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "conservation"
+        ],
+        "question": "What is Phaseolus vulgaris commonly known as?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "serval-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What African wild cat has exceptionally long legs?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "laetacara-curviceps-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What species is Laetacara curviceps?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "baikal-seal-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What is the Baikal seal's primary habitat?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "alpine-pika-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What family do Alpine pikas belong to?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "red-fox-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What is the scientific name for red foxes?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "mullus-barbatus-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What species is Mullus barbatus?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "nannacara_aureocephalus_001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What species is Nannacara aureocephalus?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "pomegranate-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "conservation"
+        ],
+        "question": "What type of plant is a pomegranate?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-wolverine-001",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What type of animal is the Wolverine?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-house-sparrow-002",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the House Sparrow?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-mallard-003",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Mallard?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-eurasian-jay-004",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Eurasian Jay?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-white-stork-005",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the White Stork?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-accipiter-gentilis-006",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Accipiter gentilis?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-northern-raven-007",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Northern Raven?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-european-nightjar-008",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the European Nightjar?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-canada-goose-009",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Canada Goose?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-black-redstart-010",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Black Redstart?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-arctic-tern-011",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Arctic Tern?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-common-ringed-plover-012",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Common Ringed Plover?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-atlantic-emperor-013",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What type of animal is the Atlantic emperor?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-lethrinus-reticulatus-014",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What type of animal is the Lethrinus reticulatus?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-lethrinus-enigmaticus-015",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What type of animal is the Lethrinus enigmaticus?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-spotted-wobbegong-016",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What type of animal is the spotted wobbegong?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-northern-wobbegong-017",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What type of animal is the northern wobbegong?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-ornate-wobbegong-018",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What type of animal is the ornate wobbegong?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-edible-nest-swiftlet-019",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Edible-nest Swiftlet?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-fulvous-breasted-woodpecker-020",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Fulvous-breasted Woodpecker?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-dwarf-spotted-wobbegong-021",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What type of animal is the dwarf spotted wobbegong?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-necklace-carpetshark-022",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What type of animal is the necklace carpetshark?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-saddle-carpetshark-023",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What type of animal is the saddle carpetshark?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-ginger-carpetshark-024",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What type of animal is the ginger carpetshark?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-collared-carpetshark-025",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What type of animal is the Collared carpetshark?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-parascyllium-ferrugineum-026",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "marine_life"
+        ],
+        "question": "What type of animal is the Parascyllium ferrugineum?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-apus-pacificus-027",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Apus pacificus?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-blue-tailed-bee-eater-028",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Blue-tailed Bee-eater?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-rock-dove-029",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "birds"
+        ],
+        "question": "What type of animal is the Rock Dove?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-dwarf-sperm-whale-030",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What type of animal is the dwarf sperm whale?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-geoffroy-s-cat-031",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What type of animal is the Geoffroy's cat?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-rusty-spotted-genet-032",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What type of animal is the Rusty-spotted genet?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-pardine-genet-033",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What type of animal is the Pardine genet?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-angolan-genet-034",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What type of animal is the Angolan genet?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-cape-genet-035",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What type of animal is the Cape Genet?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-eurasian-lynx-036",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What type of animal is the Eurasian lynx?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      },
+      {
+        "id": "anim-wildcat-037",
+        "domain": "quality",
+        "categoryL2": "quality_gate",
+        "category": [
+          "animals_wildlife",
+          "mammals"
+        ],
+        "question": "What type of animal is the Wildcat?",
+        "issues": [
+          "Missing _haikuProcessed flag — fact was never processed by Haiku agent",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)",
+          "Object-format distractor (must be plain string)"
+        ]
+      }
+    ]
   }
 }

@@ -1,125 +1,146 @@
 ---
-name: content-autopilot
-description: Autonomous end-to-end content factory for Opus workers. Use when you want one skill invocation to audit shortages, generate missing knowledge and language facts, ensure visual descriptions, ingest+dedup, run QA, and promote to facts.db without user-run commands.
+name: manual-fact-ingest-dedup
+description: Autonomous end-to-end content factory. Generates knowledge facts from Wikidata raw data and vocabulary from Anki decks, all via Haiku sub-agents. Handles normalization, dedup, and DB rebuild.
 ---
 
-# content-autopilot
+# manual-fact-ingest-dedup
 
 ## Mission
-Run the full content pipeline autonomously after a single user request. Do not ask the user to run commands manually.
+Run the full content pipeline autonomously: raw data → Haiku-processed facts → universal normalizer → deduplicated DB.
 
 ## Non-Negotiable Rules
-- Never use paid API scripts from this repository for fact generation.
-- Generate missing facts using Haiku sub-agents (not Sonnet/Opus) — fact generation is structured content work, not architecture. Haiku produces equivalent quality at ~10x lower cost.
-- Keep every new fact schema-valid and include a non-empty `visualDescription`.
-- Keep source attribution fields when available: `sourceRecordId`, `sourceName`, `sourceUrl`.
-- For canonical domains, `categoryL2` is mandatory and must be a valid taxonomy ID (never free-text labels).
-- Continue until QA passes and facts are promoted to DB, unless blocked by hard errors.
+- **ABSOLUTE: No Anthropic API** — We do NOT have an API key. NEVER write scripts that call `@anthropic-ai/sdk` or any external LLM API. ALL LLM work (fact generation, quality checks, transformations) MUST be done by spawning Haiku sub-agents via the Claude Code Agent tool (`model: "haiku"`). The `LOCAL_PAID_GENERATION_DISABLED = true` flag in `haiku-client.mjs` must stay true.
+- Keep every new fact schema-valid.
+- Every fact MUST have `_haikuProcessed: true` before DB insertion.
+- `categoryL2` is mandatory for canonical domains (use IDs from `src/data/subcategoryTaxonomy.ts`).
 
-## Category Taxonomy Enforcement (Mandatory)
-- Worker outputs must include `categoryL2` using IDs from `src/data/subcategoryTaxonomy.ts`.
-- Ingestion validation must run with `--require-subcategory true` (never set it to false).
-- For single-domain files:
-  ```bash
-  node scripts/content-pipeline/manual-ingest/run.mjs validate --input <worker-output> --domain <domain> --require-subcategory true
-  ```
-- For mixed directories or mixed-domain batches:
-  ```bash
-  node scripts/content-pipeline/manual-ingest/run.mjs validate --input <dir-or-file> --domain auto --require-subcategory true
-  ```
-- If `categoryL2` is missing/invalid, ingestion must fail and be corrected before dedup/finalize.
-- Promotion now has a hard taxonomy gate: if any canonical-domain row has missing/invalid `categoryL2`, `promote-approved-to-db` fails.
+## Current Database State
+- **32,172 facts** in `src/data/seed/facts-generated.json`
+- **~11,563 knowledge facts** across 10 domains
+- **~20,609 vocabulary facts** across 8 languages
+- **Knowledge domains**: animals_wildlife, general_knowledge, human_body_health, food_cuisine, geography, art_architecture, history, mythology_folklore, natural_sciences, space_astronomy
+- **Languages**: ja (Japanese), es (Spanish), fr (French), de (German), ko (Korean), it (Italian), nl (Dutch), cs (Czech)
 
-## Existing Fact Reclassification (Trusted LLM Workers)
-Use GPT-5.1 mini-family workers in batches to fix all existing missing/invalid `categoryL2` values:
-```bash
-npm run content:subcategory:backfill:llm -- --model openai/gpt-5.1-codex-mini
+## Mandatory Haiku Processing (All Facts)
+Every single fact that enters the database MUST be processed by a Haiku agent.
+
+### What Haiku agents must do for each fact:
+1. **Assess worth** — Is this fact interesting/educational enough for a quiz game? Reject boring/trivial/too-obscure facts.
+2. **Write/rewrite quiz question** — Clear, concise, 10-20 words, ends with ?
+3. **Write correct answer** — Short (1-5 words), definitive
+4. **Generate 3+ plausible distractors** — Same type as correct answer. BLOCKLIST: "Unknown", "Other", "None of the above", "None of these", "All of the above", "N/A", "...", "", single-character answers
+5. **Write explanation** — Engaging 1-2 sentences
+6. **Generate 2+ variants** — Different question angles (forward, reverse, fill_blank)
+7. **Mark as processed** — Set `_haikuProcessed: true`, `_haikuProcessedAt: <ISO date>`
+
+## Knowledge Fact Generation Workflow
+
+### Pipeline
 ```
-- This runs domain-batched LLM classification and writes taxonomy IDs back into existing seed/generated fact stores.
-- Rebuild DB after completion:
-  ```bash
-  node scripts/build-facts-db.mjs
-  ```
-
-## Source-Based Generation (Mandatory for new facts)
-Raw data lives in `data/raw/<domain>.json` — structured Wikidata/API dumps with minimal info (labels, dates, species names, etc.). These are **seeds**, not facts.
-
-### How to use raw sources
-1. **Read raw entries** from `data/raw/<domain>.json` (or `data/raw/mixed/<domain>.json`)
-2. **Cherry-pick interesting entries** — skip entries that are:
-   - Missing labels (e.g. `"itemLabel": "Q19727656"`)
-   - Too obscure to make a fun fact (e.g. unnamed satellites, minor subspecies)
-   - Already covered in existing generated facts (check `data/generated/worker-output/<domain>.jsonl`)
-3. **Transform into surprising facts** — the raw entry is just a starting point. The agent should:
-   - Use the Wikidata entity as a seed topic, then add genuinely interesting/surprising context from training knowledge
-   - Apply the transformability rubric below — skip generic/ambiguous entries, transform specific nameable things
-   - Write the `statement` to be surprising, not encyclopedic ("Waffles originated in 13th-century France as communion wafers..." NOT "A waffle is a batter-based food from France")
-4. **Preserve source attribution**: set `sourceUrl` to the Wikidata URI, `sourceName` to "Wikidata"
-5. **Fill gaps from training knowledge** — when raw sources are exhausted or too boring, generate additional facts purely from training knowledge (no source attribution needed)
-
-### Transformability rubric
-**Skip if:** Broken Wikidata ID (unresolved Q-number), duplicate of existing fact, factually ambiguous, or so generic that no interesting angle exists.
-**Transform if:** Names a specific thing (species, food, event, place, person, invention) that a good trivia writer could turn into a question stumping 50%+ of adults. The raw data is a starting menu, not a mandatory list.
-
-### Truthfulness
-All facts (whether source-based or from training knowledge) must be verifiable. Agents should not invent statistics, dates, or claims they are uncertain about. When in doubt, use hedging language ("approximately", "estimated") or skip the fact entirely.
-
-### Variant & Answer Quality Rules (Mandatory)
-Every fact MUST have 2 proper variant objects. Every variant MUST pass these checks:
-
-1. **Variant coherence**: `correctAnswer` must directly answer the variant's `question`. If the question asks "how many", the answer must contain a number. If it asks "where", the answer must be a place name. If it asks "who", the answer must be a person/entity.
-2. **No self-answering**: No significant word (5+ chars) from `correctAnswer` may appear in the variant's `question`. The question sets up the answer — it must not reveal it. Example violation: Q: "From what part of a fish is isinglass obtained?" A: "Isinglass (fish swim bladders)" — "isinglass" appears in both.
-3. **Distractor format match**: Distractors must be the same *type* as the answer. Numbers match numbers, proper nouns match proper nouns, short phrases match short phrases. Never pair a 3-word answer with 15-word distractors.
-4. **Variant structure**: Every variant MUST be a `{ question, type, correctAnswer, distractors }` object — NEVER a plain string. Types: `forward`, `reverse`, `context`, `fill_blank`, `negative`.
-5. **No parenthetical reveals**: Use concise answers without "Answer (explanation)" format. Put explanations in the `explanation` field. Bad: "Isinglass (fish swim bladders)". Good: "The swim bladder".
-6. **Variant-specific distractors**: Each variant SHOULD have its own `distractors` array (3 minimum) tailored to that variant's question. Falling back to the base fact's distractors only works when the variant asks the same type of question as the base.
-
-## One-Command Backbone
-Use this as the orchestration backbone:
-```bash
-npm run content:autopilot -- --target-per-domain 1000 --target-per-language 1000
+1. Read raw Wikidata entries from data/raw/mixed/<domain>.json (preferred) or data/raw/<domain>.json
+2. Chunk entries into batches of 40-50 per Haiku agent
+3. Write input chunks to /tmp/<session>/<domain>-input-bNN-M.json
+4. Spawn parallel Haiku agents (5-7 at a time) via Claude Code Agent tool
+5. Each agent transforms entries into quiz facts, writes output to /tmp/<session>/<domain>-bNN-output-M.json
+6. Collect all output files, run universal normalizer to handle schema variants
+7. Append normalized facts to src/data/seed/facts-generated.json
+8. Rebuild DB: node scripts/build-facts-db.mjs
 ```
 
-Artifacts:
-- `data/generated/qa-reports/autopilot-report.json`
-- `data/generated/worker-packages/tasks/*.json`
-- `data/generated/worker-packages/prompts/*.md`
-- `data/generated/worker-output/*.jsonl`
-- `data/generated/worker-output-languages/*.jsonl`
-- `data/generated/qa-reports/agent-workers-qa.json`
-- `data/generated/qa-reports/promote-approved-report.json`
+### Available Raw Data
+| Directory | Contents |
+|-----------|----------|
+| `data/raw/<domain>.json` | Primary Wikidata exports (10 domain files) |
+| `data/raw/mixed/<domain>.json` | Enriched/merged exports (preferred, larger) |
+| `data/raw/artic-artworks.json` | Art Institute of Chicago API dump |
+| `data/raw/gbif-species.json` | GBIF biodiversity species |
+| `data/raw/nasa-apod.json` | NASA Astronomy Picture of the Day |
+| `data/raw/met-objects.json` | Metropolitan Museum objects |
+| `data/raw/world-bank-countries.json` | World Bank country data |
+| `data/raw/pubchem-compounds.json` | PubChem chemical compounds |
 
-## Autonomous Loop
-Run this loop until pass:
+## Vocabulary Generation Workflow
 
-1. Run autopilot once.
-2. Read `autopilot-report.json` and identify blockers:
-   - Missing knowledge worker outputs (`data/generated/worker-output/<domain>.jsonl`)
-   - Language shortages in `shortages.languages`
-   - QA gate failures
-3. Fill missing knowledge outputs yourself:
-   - Read source rows from `data/raw/mixed/<domain>.json` (or domain primary source)
-   - Write schema-valid JSONL facts to `data/generated/worker-output/<domain>.jsonl`
-   - Ensure each row has `visualDescription`
-4. Fill language shortages yourself:
-   - Prefer generated vocab fact streams under `data/generated/worker-output-languages/*.jsonl`
-   - If still short, create additional language fact JSONL in `data/generated/worker-output-languages/`
-5. Re-run autopilot.
-6. Stop only when:
-   - QA passes
-   - promotion succeeds
-   - `public/facts.db` is rebuilt
-7. After promotion, run fact verification:
-   ```bash
-   node scripts/content-pipeline/qa/verify-facts-websearch.mjs --stamp true --quarantine true
-   ```
-   - Only facts with `verifiedAt` timestamp are considered "live" in the game
-   - Facts that fail verification are quarantined (not deleted)
-   - This step uses the free Wikipedia API — zero token cost
+### Method A: From Anki Decks (preferred for accuracy)
+```
+1. Extract word lists from .apkg files in data/references/
+   - Anki .apkg = ZIP containing SQLite DB (collection.anki2 or collection.anki21)
+   - Fields \x1f-separated; typically: field[0]=foreign word, field[1]=English meaning
+   - Pre-extracted files in data/extracted/anki-*.json
+2. Chunk extracted words into batches of 40-50
+3. Spawn Haiku agents to transform word+meaning pairs into vocab quiz facts
+4. Normalize and append to facts-generated.json
+5. Rebuild DB
+```
+
+**Available Anki Decks**
+| File | Language | Entries |
+|------|----------|---------|
+| `data/references/SPANISH.apkg` | es | 5,000 |
+| `data/references/KOREAN.apkg` | ko | 7,627 |
+| `data/references/GERMAN.apkg` | de | 4,207 |
+| `data/references/DUTCH.apkg` | nl | 1,081 |
+| `data/references/CZECH.apkg` | cs | 1,006 |
+| `data/references/countries_cities_flags.apkg` | geo | 319 |
+
+**Pre-extracted JSON (ready to use)**
+| File | Entries |
+|------|---------|
+| `data/extracted/anki-spanish.json` | 5,000 |
+| `data/extracted/anki-korean-full.json` | 7,627 |
+| `data/extracted/anki-german.json` | 4,207 |
+| `data/extracted/anki-dutch.json` | 1,081 |
+| `data/extracted/anki-czech.json` | 1,006 |
+| `data/extracted/anki-geography.json` | 319 |
+
+### Method B: From Training Knowledge (for languages without Anki decks)
+```
+1. Spawn Haiku agents with prompt: "Generate 50 [Language] vocabulary quiz facts"
+2. Agent generates word+meaning pairs from training knowledge
+3. Used for: French (fr), Italian (it), and any future language without Anki source
+4. Same normalization and append process
+```
+
+## Universal Output Normalizer
+Haiku agents independently choose different output schemas. MUST normalize before merging. Known schema variants:
+
+| Variant | correctAnswer field | Distractors field |
+|---------|-------------------|-------------------|
+| Standard | `correctAnswer: "text"` | `distractors: ["a","b","c"]` |
+| Answer field | `answer: "text"` | `distractors: ["a","b","c"]` |
+| Options+correct index | `correct: 0, options: [...]` | derived from options |
+| Options+correctAnswerIndex | `correctAnswerIndex: 0, options: [...]` | derived from options |
+| MCQ options | `mcqOptions: [{text, isCorrect: true/false}]` | derived from mcqOptions |
+| Answers array | `answers: [{text, correct: true/false}]` | derived from answers |
+
+**Standard Output Schema**
+```json
+{
+  "correctAnswer": "plain string",
+  "distractors": ["plain string", "plain string", ...]
+}
+```
+
+Always ensure:
+- `correctAnswer` is a plain string (not an object)
+- `distractors` are plain strings (not objects with `.text`)
+- At least 4 distractors (pad with "Unknown" only as last resort, flag for review)
+- `difficulty` is integer 1-5
+- `funScore` is integer 1-10
+- `category` is an array
+- `_haikuProcessed: true` and `_haikuProcessedAt` are set
+
+## DB Rebuild
+```bash
+node scripts/build-facts-db.mjs
+```
+- Reads all `src/data/seed/*.json` files
+- Inserts into SQLite via sql.js
+- Output: `public/facts.db` + `public/seed-pack.json`
+- `normalizeFactShape()` auto-derives missing fields (type, explanation, rarity)
 
 ## Fact Schema (DB NOT NULL columns)
-All these fields are required by the DB. `normalizeFactShape()` auto-derives missing ones during promotion, but it's best to include them in generated JSONL:
-
+Required fields (or auto-derived):
 - `id` string (unique)
 - `type` string — `"fact"` or `"vocabulary"` (auto-derived from `contentType`)
 - `statement` string
@@ -133,56 +154,47 @@ All these fields are required by the DB. `normalizeFactShape()` auto-derives mis
 - `funScore` integer 1-10
 - `ageRating` string — `"kid"|"teen"|"adult"`
 
-Recommended but nullable:
+Recommended:
 - `variants` array (>= 2)
-- `visualDescription` non-empty string
-- `wowFactor` string (used as `explanation` fallback)
-- `sourceName` and `sourceUrl` when available
-- `tags` array of strings
+- `sourceUrl`, `sourceName` when available
+- `tags` array
+- `_haikuProcessed: true`, `_haikuProcessedAt: <ISO date>`
 
-## Language Targets
-Default language set:
-- `ja`, `es`, `fr`, `de`, `ko`, `zh`, `nl`, `cs`
-
-Use autopilot defaults unless user overrides:
-- `--target-per-language 1000`
-
-## Quality Gate Expectations
-Autopilot will run:
-- worker prepare/ingest flow
-- vocab build + vocab validation + vocab ingestion
-- missing visualDescription filler
-- QA chain (gameplay safety check removed — it was blocking promotion for small domain sizes)
-- promotion + DB rebuild
-
-Promote defaults are now permissive: `enforce-qa-gate: false`, `approved-only: false`. Pass `--enforce-qa-gate true --approved-only true` explicitly if you want strict gating.
-
-If QA fails, inspect generated reports under `data/generated/qa-reports/` and correct the underlying content before re-running.
+## Variant & Answer Quality Rules
+1. **Variant coherence** — `correctAnswer` must directly answer the variant's `question`.
+2. **No self-answering** — No significant word (5+ chars) from `correctAnswer` may appear in the question.
+3. **Distractor format match** — Distractors must be the same type as the answer (numbers with numbers, proper nouns with proper nouns).
+4. **Variant structure** — `{ question, type, correctAnswer, distractors }` (NEVER a plain string). Types: `forward`, `reverse`, `context`, `fill_blank`, `negative`.
+5. **No parenthetical reveals** — Answers must be concise. Explanations go in the `explanation` field.
+6. **Variant-specific distractors** — Each variant SHOULD have its own tailored `distractors` array (3 minimum).
 
 ## Known Issues & Fixes
 
-### Field defaults for generated facts
-Generated facts from worker-output JSONL often lack fields the DB expects. These are now auto-derived by `normalizeFactShape()` in the promote script:
+### normalizeFactShape() auto-derivation
+Generated facts often lack fields the DB expects. These are auto-derived during promotion:
 - **`type`** — defaults to `"fact"`, or `"vocabulary"` if `contentType === 'vocabulary'`
 - **`explanation`** — falls back to `wowFactor`, then `statement`
 - **`rarity`** — derived from `difficulty`: 1-2 = common, 3 = uncommon, 4 = rare, 5 = epic
 
-### Gameplay safety check removed
-The gameplay safety check was removed from the QA chain because it blocked promotion for small domain sizes (domains with fewer facts than the minimum threshold). This is acceptable because content quality is ensured by the other QA steps.
+### Distractor blocklist enforcement
+Invalid distractors: "Unknown", "Other", "None of the above", "None of these", "All of the above", "N/A", "...", "", single-character answers. Promotion fails if found.
 
-### Promote defaults changed
-`enforce-qa-gate` and `approved-only` both default to `false`. Most generated facts don't have a `status` field, so filtering by "approved" blocks everything. The QA gate is now opt-in via explicit CLI flags.
+### Quality gate enforcement
+Every fact must have `_haikuProcessed: true` to pass promotion. QA validates:
+- Schema validity
+- Distractor blocklist
+- Dedup check for duplicate `id` and similar `quizQuestion` text
 
-### vocab-build HTTP 404
-The vocab-build step may fail if the JMdict source returns HTTP 404. This is non-blocking for knowledge facts — the pipeline continues and language content can be retried separately.
-
-## Optional Tightening
-Higher coverage targets:
-```bash
-npm run content:autopilot -- --target-per-domain 3000 --target-per-language 2000 --coverage-knowledge-min 3000 --coverage-language-min 1000
-```
-
-Strict hard-fail mode:
-```bash
-npm run content:autopilot -- --strict true --knowledge-strict-ingest true
-```
+## Key Files
+| File | Role |
+|------|------|
+| `src/data/seed/facts-generated.json` | Main generated facts file (32,172 facts) |
+| `src/data/seed/facts.json` | Hand-curated seed facts |
+| `scripts/build-facts-db.mjs` | Builds SQLite DB from seed files |
+| `public/facts.db` | Runtime SQLite database |
+| `public/seed-pack.json` | Exported seed pack for distribution |
+| `data/raw/<domain>.json` | Wikidata raw exports (10 domains) |
+| `data/raw/mixed/<domain>.json` | Enriched Wikidata exports (preferred) |
+| `data/extracted/anki-*.json` | Pre-extracted Anki word lists |
+| `data/references/*.apkg` | Source Anki deck files |
+| `src/data/subcategoryTaxonomy.ts` | Domain/subcategory taxonomy IDs |

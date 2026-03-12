@@ -15,6 +15,7 @@ import { DEFAULT_POOL_SIZE } from '../data/balance';
 import { MECHANICS_BY_TYPE, type MechanicDefinition } from '../data/mechanics';
 import { assignTypesToCards } from './cardTypeAllocator';
 import { shuffled } from './randomUtils';
+import { funScoreWeight } from './funnessBoost';
 
 /** Maps domain IDs to the category strings used in the facts DB. */
 const DOMAIN_TO_CATEGORY: Record<string, string[]> = {
@@ -58,12 +59,30 @@ function getRecentFactIds(): Set<string> {
  * Targets: easy (1-2) ~30%, medium (3) ~45%, hard (4-5) ~25%.
  * Shortfalls backfill from medium first, then any remaining bucket.
  */
-function stratifiedSample(facts: Fact[], target: number): Fact[] {
+function stratifiedSample(facts: Fact[], target: number, funnessBoostFactor?: number): Fact[] {
   const recentIds = getRecentFactIds();
 
+  const boostFactor = funnessBoostFactor ?? 0;
+  const funnessWeightedShuffle = (arr: Fact[]): Fact[] => {
+    if (boostFactor <= 0) return shuffled(arr);
+    const weighted = arr.map(f => ({ fact: f, _w: funScoreWeight(f.funScore ?? 5, boostFactor) }));
+    const result: Fact[] = [];
+    const pool = [...weighted];
+    while (pool.length > 0) {
+      const totalW = pool.reduce((sum, item) => sum + item._w, 0);
+      let roll = Math.random() * totalW;
+      let picked = 0;
+      for (let j = 0; j < pool.length; j++) {
+        roll -= pool[j]._w;
+        if (roll <= 0) { picked = j; break; }
+      }
+      result.push(pool.splice(picked, 1)[0].fact);
+    }
+    return result;
+  };
   const deprioritize = (arr: Fact[]) => {
-    const fresh = shuffled(arr.filter((f) => !recentIds.has(f.id)));
-    const recent = shuffled(arr.filter((f) => recentIds.has(f.id)));
+    const fresh = funnessWeightedShuffle(arr.filter((f) => !recentIds.has(f.id)));
+    const recent = funnessWeightedShuffle(arr.filter((f) => recentIds.has(f.id)));
     return [...fresh, ...recent];
   };
 
@@ -228,6 +247,7 @@ export function buildPresetRunPool(
   options?: {
     poolSize?: number;
     categoryFilters?: Record<string, string[]>;
+    funnessBoostFactor?: number;
   },
 ): Card[] {
   const poolSize = options?.poolSize ?? DEFAULT_POOL_SIZE;
@@ -274,7 +294,7 @@ export function buildPresetRunPool(
 
     // Filter out already-used facts
     const available = facts.filter((f) => !usedFactIds.has(f.id));
-    const sampled = stratifiedSample(available, allocation);
+    const sampled = stratifiedSample(available, allocation, options?.funnessBoostFactor);
 
     for (const fact of sampled) {
       if (usedFactIds.has(fact.id)) continue;
@@ -348,6 +368,7 @@ export function buildGeneralRunPool(
   options?: {
     poolSize?: number;
     categoryFilters?: Record<string, string[]>;
+    funnessBoostFactor?: number;
   },
 ): Card[] {
   const domainSelections: Record<string, string[]> = {};

@@ -93,6 +93,7 @@ Located in `src/services/`:
 | Profile mgmt | `profileService.ts` | EXISTS — reuse |
 | Haptics | `hapticService.ts` | EXISTS — reuse |
 | Push notifications | `notificationService.ts` | Built — 4 types, local scheduling via Capacitor |
+| Funness boost | `funnessBoost.ts` | Built — new player bias toward higher-funScore facts (runs 0–99, linear decay) |
 
 ### Data Layer
 
@@ -134,6 +135,7 @@ These systems transfer from the mining codebase with minimal changes:
 | Domain resolver | `src/services/domainResolver.ts` | Built |
 | Deck manager | `src/services/deckManager.ts` | Built |
 | Run pool builder | `src/services/runPoolBuilder.ts` | Built |
+| Funness boost | `src/services/funnessBoost.ts` | Built — new player bias toward higher-funScore facts (runs 0–99) |
 | Turn manager | `src/services/turnManager.ts` | Built |
 | Enemy manager | `src/services/enemyManager.ts` | Built — includes `getFloorDamageScaling(floor)` (+3%/floor above 6), `getSegmentForFloor(floor)`, and per-turn damage caps via `ENEMY_TURN_DAMAGE_CAP` |
 | Floor manager | `src/services/floorManager.ts` | Built |
@@ -500,3 +502,42 @@ masteryScalingService
   → ui/stores/playerData (FSRS review states for mastery % calculation)
   → data/balance (scaling tier thresholds, reward multipliers)
 ```
+
+## 13. Content Pipeline Architecture
+
+```
+Raw Data Sources (Wikidata, APIs, manual)
+    ↓
+Haiku Agent Transform (Claude Code Agent tool, model: "haiku")
+  - Assesses fact worth (rejects boring/trivial)
+  - Writes quiz question, answer, distractors, explanation
+  - Scores funScore (1-10), difficulty (1-5)
+  - Generates 2+ variants
+  - Marks _haikuProcessed: true
+    ↓
+QA Validation (automated scripts)
+  - Distractor blocklist enforcement
+  - Format validation (question length, answer completeness)
+  - _haikuProcessed flag check
+  - Taxonomy validation (categoryL2)
+    ↓
+Promotion to Database
+  - promote-approved-to-db.mjs (enforce-qa-gate: true)
+  - build-facts-db.mjs → public/facts.db + seed-pack.json
+```
+
+### Key Files
+
+- `scripts/content-pipeline/qa/promote-approved-to-db.mjs` — QA gate + promotion engine
+- `scripts/content-pipeline/qa/audit-fact-quality.mjs` — Quality audit with blocklist validation
+- `scripts/build-facts-db.mjs` — SQLite DB builder + seed-pack generator
+- `src/data/seed/*.json` — Seed fact files (source of truth)
+- `.claude/skills/manual-fact-ingest-dedup/SKILL.md` — Full pipeline skill documentation
+
+### Processing Requirements
+
+All facts MUST pass through Haiku agent processing:
+- **Input validation**: Schema compliance, required fields present
+- **Haiku transform**: Question/answers/variants/scoring via Agent tool
+- **QA enforcement**: Blocklist check, format validation, `_haikuProcessed: true` flag required
+- **No external APIs**: All processing uses Claude Code Agent tool, never `@anthropic-ai/sdk`

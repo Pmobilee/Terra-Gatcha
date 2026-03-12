@@ -43,6 +43,8 @@ import {
   resolveComboStartValue,
 } from './relicEffectResolver';
 import { resolveDistributionForDomain, createDefaultCalibrationState } from './difficultyCalibration';
+import { buildPresetRunPool, buildGeneralRunPool } from './presetPoolBuilder'
+import { calculateFunnessBoostFactor } from './funnessBoost';
 
 /** Create a shallow copy of TurnState with fresh array references for Svelte reactivity. */
 function freshTurnState(ts: TurnState): TurnState {
@@ -214,19 +216,47 @@ export async function startEncounterForRoom(enemyId?: string): Promise<boolean> 
     }
     const save = get(playerSave);
     const reviewStates = save?.reviewStates ?? [];
-    const subscriberCategoryFilters = save && isSubscriber(save)
-      ? (save.subscriberCategoryFilters ?? undefined)
-      : undefined;
-    const calibration = save?.calibrationState ?? createDefaultCalibrationState();
-    const primaryDistribution = resolveDistributionForDomain(run.primaryDomain, calibration);
-    const secondaryDistribution = resolveDistributionForDomain(run.secondaryDomain, calibration);
-    activeRunPool = buildRunPool(run.primaryDomain, run.secondaryDomain, reviewStates, {
-      probeRunNumber: run.primaryDomainRunNumber,
-      probeDomain: run.primaryDomain,
-      subscriberCategoryFilters,
-      primaryDistribution,
-      secondaryDistribution,
-    });
+
+    if (run.deckMode) {
+      // New path: use preset/general pool builders
+      const categoryFilters = save?.categoryFilters ?? undefined;
+      if (run.deckMode.type === 'general') {
+        activeRunPool = buildGeneralRunPool(reviewStates, { categoryFilters, funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0) });
+      } else if (run.deckMode.type === 'preset') {
+        const dm = run.deckMode as { type: 'preset'; presetId: string };
+        const preset = (save?.studyPresets ?? []).find(p => p.id === dm.presetId);
+        const domainSelections = preset?.domainSelections ?? {};
+        activeRunPool = buildPresetRunPool(domainSelections, reviewStates, { categoryFilters, funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0) });
+      } else {
+        // Language mode — use standard builder for now
+        const calibration = save?.calibrationState ?? createDefaultCalibrationState();
+        const primaryDistribution = resolveDistributionForDomain(run.primaryDomain, calibration);
+        const secondaryDistribution = resolveDistributionForDomain(run.secondaryDomain, calibration);
+        activeRunPool = buildRunPool(run.primaryDomain, run.secondaryDomain, reviewStates, {
+          probeRunNumber: run.primaryDomainRunNumber,
+          probeDomain: run.primaryDomain,
+          primaryDistribution,
+          secondaryDistribution,
+          funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+        });
+      }
+    } else {
+      // Legacy path: standard 2-domain builder
+      const subscriberCategoryFilters = save && isSubscriber(save)
+        ? (save.subscriberCategoryFilters ?? undefined)
+        : undefined;
+      const calibration = save?.calibrationState ?? createDefaultCalibrationState();
+      const primaryDistribution = resolveDistributionForDomain(run.primaryDomain, calibration);
+      const secondaryDistribution = resolveDistributionForDomain(run.secondaryDomain, calibration);
+      activeRunPool = buildRunPool(run.primaryDomain, run.secondaryDomain, reviewStates, {
+        probeRunNumber: run.primaryDomainRunNumber,
+        probeDomain: run.primaryDomain,
+        subscriberCategoryFilters,
+        primaryDistribution,
+        secondaryDistribution,
+        funnessBoostFactor: calculateFunnessBoostFactor(save?.stats?.totalDivesCompleted ?? 0),
+      });
+    }
     // Record pool fact IDs for recently-played deprioritization in future runs
     recordRunFacts(activeRunPool.map(c => c.factId));
     if (activeRunPool.length === 0) {

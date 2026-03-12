@@ -7,40 +7,7 @@
     "explanation": "Oxford's university teaching evolved gradually from the late 11th century, with significant growth after 1167. The Aztec (Mexica) people founded Tenochtitlan on a lake island in 1325 and built their empire over the next two centuries, reaching its height by 1500 before the Spanish conquest in 1521.",
     "quizQuestion": "Which came first: Oxford University or the Aztec Empire?",
     "correctAnswer": "Oxford University",
-    "distractors": [
-      {
-        "text": "The Aztec Empire came first",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "They were founded in same century",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "The Aztecs built before Oxford",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Aztec Empire predates Oxford by centuries",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Oxford was founded after 1325",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Both institutions are 1,000 years old",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Aztec civilization lasted 3,000 years total",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Oxford is a 15th-century university",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "medieval",
@@ -48,7 +15,7 @@
     ],
     "rarity": "uncommon",
     "difficulty": 3,
-    "funScore": 9,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Wikipedia",
     "gaiaComment": "Oxford predates the Aztec Empire. While students were failing exams in England, the Aztecs hadn't been invented yet.",
@@ -107,7 +74,9 @@
     ],
     "categoryL1": "History",
     "categoryL2": "medieval",
-    "categoryL3": "Universities"
+    "categoryL3": "Universities",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-002",
@@ -117,48 +86,15 @@
     "explanation": "Zanzibar's sultan Khalid bin Barghash seized power without British approval. Britain issued an ultimatum, Zanzibar refused, and the British navy opened fire. The Zanzibari forces, outnumbered and outgunned, surrendered within 45 minutes. Casualties: 500 Zanzibaris, 1 British sailor wounded.",
     "quizQuestion": "How long did the Anglo-Zanzibar War last?",
     "correctAnswer": "38 to 45 minutes",
-    "distractors": [
-      {
-        "text": "About three hours",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About one full day",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About six hours",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Several days of fighting",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Nearly two hours",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Approximately one hour",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Exactly 38 minutes",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "About 45 minutes exactly",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "modern_contemporary",
       "Colonial Wars"
     ],
     "rarity": "uncommon",
-    "difficulty": 2,
-    "funScore": 9,
+    "difficulty": 3,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Guinness World Records",
     "gaiaComment": "Thirty-eight minutes. The shortest war ever fought. Some meetings last longer.",
@@ -209,13 +145,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "History",
     "categoryL2": "modern_contemporary",
-    "categoryL3": "Colonial Wars"
+    "categoryL3": "Colonial Wars",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-003",
@@ -225,48 +165,15 @@
     "explanation": "The Great Wall averages 4–9 metres wide — roughly the width of a highway. Visual resolution from the International Space Station (about 400 km altitude) requires objects to be much wider. Astronauts can see roads and cities because of reflected light, but the Wall's narrow profile and colour blend with the surrounding terrain.",
     "quizQuestion": "Can the Great Wall of China be seen from space naked eye?",
     "correctAnswer": "No, too narrow",
-    "distractors": [
-      {
-        "text": "Yes, clearly visible",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Yes, from low orbit",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Yes, on clear days",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Visible in infrared light",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Only eastern sections visible",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Visible from commercial flights",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "One of three visible structures",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "NASA confirmed visibility in 1969",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "ancient_classical",
       "Famous Myths"
     ],
     "rarity": "common",
-    "difficulty": 1,
-    "funScore": 7,
+    "difficulty": 3,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "NASA",
     "gaiaComment": "The Great Wall is not visible from space. Sorry. Astronauts checked. The myth is better, but no.",
@@ -307,7 +214,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -323,7 +232,9 @@
     ],
     "categoryL1": "History",
     "categoryL2": "ancient_classical",
-    "categoryL3": "Famous Myths"
+    "categoryL3": "Famous Myths",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-004",
@@ -333,40 +244,7 @@
     "explanation": "Napoleon's reported height in French inches was 5 pieds 2 pouces — French units slightly larger than English ones. Converted to modern measurement, he stood about 168–170 cm, close to the French male average of the time. British caricaturists, particularly James Gillray, popularised the 'Little Boney' image as wartime propaganda.",
     "quizQuestion": "What was Napoleon's actual height in modern measurement?",
     "correctAnswer": "About 168–170 cm",
-    "distractors": [
-      {
-        "text": "About 155 cm",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 160 cm",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Exactly 5 feet",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 180 cm",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 175 cm",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 172 cm",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 190 cm",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Height never recorded",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "modern_contemporary",
@@ -374,7 +252,7 @@
     ],
     "rarity": "common",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Britannica",
     "gaiaComment": "Napoleon wasn't short. British propaganda did that. He was average height. The propaganda was better PR than the truth.",
@@ -433,7 +311,9 @@
     ],
     "categoryL1": "History",
     "categoryL2": "modern_contemporary",
-    "categoryL3": "Famous Myths"
+    "categoryL3": "Famous Myths",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-005",
@@ -443,48 +323,15 @@
     "explanation": "The Library of Alexandria suffered multiple incidents: Julius Caesar's fire in 48 BC (likely affecting a warehouse, not the main library), Aurelian's attack in 270s AD, Theophilus's destruction of the Serapeum in 391 AD, and the Arab conquest in 641 AD. Each contributed to its decline. No single event destroys a library containing hundreds of thousands of scrolls.",
     "quizQuestion": "How was the Library of Alexandria most likely destroyed?",
     "correctAnswer": "Gradually over centuries",
-    "distractors": [
-      {
-        "text": "Single fire by Julius Caesar",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Arab invasion in 641 AD",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Earthquake in 365 AD",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Christian mobs in 391 AD",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Mediterranean flooding destroyed it",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Roman policy to destroy knowledge",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Justinian's orders in 6th century",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Persian invasion of Egypt",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "ancient_classical",
       "Libraries"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 8,
+    "difficulty": 2,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Britannica",
     "gaiaComment": "The Library of Alexandria wasn't destroyed in one fire. It just... faded away over centuries. History is boring like that.",
@@ -525,7 +372,9 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -541,7 +390,9 @@
     ],
     "categoryL1": "History",
     "categoryL2": "ancient_classical",
-    "categoryL3": "Libraries"
+    "categoryL3": "Libraries",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-006",
@@ -551,48 +402,15 @@
     "explanation": "Early Coca-Cola was bottled in green glass because the specific silica and minerals available to glassmakers at the time naturally produced a green tint. The distinctive contour bottle design (1916), often in green glass, helped distinguish Coke from imitators. The drink itself has always been brown.",
     "quizQuestion": "What was originally green about Coca-Cola?",
     "correctAnswer": "The glass bottles",
-    "distractors": [
-      {
-        "text": "The drink itself was green",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "The company logo was green",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "The bottle caps were green",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Green kola extract colored it",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Green tea was in formula",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Lime-green soda water tint",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Coca leaf extract gave green",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Green mineral additives in syrup",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "modern_contemporary",
       "Corporate History"
     ],
     "rarity": "common",
-    "difficulty": 2,
-    "funScore": 7,
+    "difficulty": 3,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "The bottles were green, not the drink. One letter of clarification away from being less interesting.",
@@ -633,7 +451,9 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -642,13 +462,16 @@
         "correctAnswer": "green",
         "distractors": [
           "amber",
-          "clear"
+          "clear",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "History",
     "categoryL2": "modern_contemporary",
-    "categoryL3": "Corporate History"
+    "categoryL3": "Corporate History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-007",
@@ -658,47 +481,14 @@
     "explanation": "On September 9, 1947, technicians working on the Harvard Mark II found a moth stuck in Relay #70, Panel F, causing a malfunction. The term 'bug' for a technical error had been used in engineering before, but this incident popularised it in computing. Grace Hopper, who worked on the team, is often credited with coining the term.",
     "quizQuestion": "What was the first computer bug in 1947?",
     "correctAnswer": "A moth in Harvard Mark II",
-    "distractors": [
-      {
-        "text": "A software error in code",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "A wiring mistake in ENIAC",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "A cockroach in cooling system",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "A programming error in transistor",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "A loose vacuum tube malfunction",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "A punch card reader failure",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "A frayed wire in Colossus",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "A faulty transistor in Z3",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "modern_contemporary",
       "Computing History"
     ],
     "rarity": "common",
-    "difficulty": 1,
+    "difficulty": 4,
     "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
@@ -750,13 +540,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "History",
     "categoryL2": "modern_contemporary",
-    "categoryL3": "Computing History"
+    "categoryL3": "Computing History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-008",
@@ -766,48 +560,15 @@
     "explanation": "Urine was collected from public latrines in ancient Rome and used by fullers (cloth cleaners) and dental practitioners. The urea in urine breaks down into ammonia, which acts as a mild bleach and abrasive cleaner. This practice was not unique to Rome — it appeared across many ancient cultures.",
     "quizQuestion": "Why did ancient Romans use urine as toothpaste?",
     "correctAnswer": "Ammonia acts as cleaning agent",
-    "distractors": [
-      {
-        "text": "Religious purification ritual",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Only available liquid",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Contained magical properties",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Calcium strengthened enamel",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Salt hardened tooth enamel",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Uric acid dissolved tartar",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Nitrogen killed tooth worms",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Essence of animal vitality",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "ancient_classical",
       "Roman Civilization"
     ],
     "rarity": "uncommon",
-    "difficulty": 2,
-    "funScore": 9,
+    "difficulty": 3,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "Urine contains ammonia. Romans used it as toothpaste. The Emperor taxed the trade. Entrepreneurship.",
@@ -866,7 +627,9 @@
     ],
     "categoryL1": "History",
     "categoryL2": "ancient_classical",
-    "categoryL3": "Roman Civilization"
+    "categoryL3": "Roman Civilization",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-009",
@@ -876,40 +639,7 @@
     "explanation": "Archaeological evidence shows Viking helmets were simple conical or domed iron forms, sometimes with a nose guard. The only near-complete Viking helmet found (the Gjermundbu helmet, Norway) has no horns. Horned helmets did exist in Scandinavia but from the Bronze Age — 2,000 years before the Viking era — used for ceremonies, not battle.",
     "quizQuestion": "Where did the Vikings-with-horned-helmets myth originate?",
     "correctAnswer": "19th-century opera costume designer",
-    "distractors": [
-      {
-        "text": "Scandinavian archaeological digs",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Medieval Norse manuscripts",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Roman tribal descriptions",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Norse mythology itself",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Bronze Age ceremonies",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Early Hollywood films",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Actual horned ceremonial helmets",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Germanic tribal burial sites",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "medieval",
@@ -917,7 +647,7 @@
     ],
     "rarity": "common",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Wikipedia",
     "gaiaComment": "Horned Viking helmets came from an opera costume designer in 1876. Halloween owes an apology to Scandinavia.",
@@ -976,7 +706,9 @@
     ],
     "categoryL1": "History",
     "categoryL2": "medieval",
-    "categoryL3": "Viking Age"
+    "categoryL3": "Viking Age",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-010",
@@ -986,40 +718,7 @@
     "explanation": "France was the last country in Western Europe to abolish capital punishment, doing so in 1981 under President Mitterrand. The guillotine, invented as a humane method of execution in the French Revolution, remained the legal execution method until then. Djandoubi was convicted of torture and murder.",
     "quizQuestion": "In what year was the guillotine last used in France?",
     "correctAnswer": "1977",
-    "distractors": [
-      {
-        "text": "1945",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "1960",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "1970",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "1968",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "1975",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "1980",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "1981",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "1990",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "modern_contemporary",
@@ -1027,7 +726,7 @@
     ],
     "rarity": "rare",
     "difficulty": 3,
-    "funScore": 9,
+    "funScore": 8,
     "ageRating": "teen",
     "sourceName": "Wikipedia",
     "gaiaComment": "The guillotine and Star Wars existed at the same time. France. 1977. Let that land.",
@@ -1078,13 +777,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "History",
     "categoryL2": "modern_contemporary",
-    "categoryL3": "French History"
+    "categoryL3": "French History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-011",
@@ -1094,40 +797,7 @@
     "explanation": "The Great Fire burned from 2–6 September 1666, starting in a bakery on Pudding Lane. Despite enormous destruction, contemporary accounts record only six confirmed deaths — though historians suspect the true number was higher, particularly among the poor who are less well-documented. The fire fundamentally reshaped London's architecture toward brick and stone.",
     "quizQuestion": "How many confirmed deaths from the Great Fire of London, 1666?",
     "correctAnswer": "Six",
-    "distractors": [
-      {
-        "text": "Hundreds",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About fifty",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About twenty",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About one hundred",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About seventy-five",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About thirty",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Thousands",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Over ten thousand",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "early_modern",
@@ -1135,7 +805,7 @@
     ],
     "rarity": "uncommon",
     "difficulty": 3,
-    "funScore": 8,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Britannica",
     "gaiaComment": "The Great Fire of London: six confirmed deaths. Thirteen thousand houses. History is strange.",
@@ -1176,7 +846,9 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -1192,7 +864,9 @@
     ],
     "categoryL1": "History",
     "categoryL2": "early_modern",
-    "categoryL3": "British History"
+    "categoryL3": "British History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-012",
@@ -1202,48 +876,15 @@
     "explanation": "Egyptian medical papyri, including the Ebers Papyrus (c. 1550 BC), describe applying mouldy bread to infections. The Penicillium mould that naturally grows on bread produces penicillin. This is an early example of empirical medicine — treatments discovered to work before the underlying mechanism was understood.",
     "quizQuestion": "What antimicrobial did ancient Egyptians apply to infected wounds?",
     "correctAnswer": "Moldy bread",
-    "distractors": [
-      {
-        "text": "Crushed garlic and oil",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Honey and salt alone",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Clay mixed with water",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Vinegar-soaked linen strips",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Ground copper with fat",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Beer and willow bark",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Frankincense resin in oil",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Myrrh mixed with salt",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "ancient_classical",
       "Egyptian Civilization"
     ],
     "rarity": "rare",
-    "difficulty": 3,
-    "funScore": 9,
+    "difficulty": 4,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "Ancient Egyptians packed wounds with moldy bread. Three thousand years before penicillin. Empirical medicine before microscopes.",
@@ -1302,7 +943,9 @@
     ],
     "categoryL1": "History",
     "categoryL2": "ancient_classical",
-    "categoryL3": "Egyptian Civilization"
+    "categoryL3": "Egyptian Civilization",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-013",
@@ -1312,40 +955,7 @@
     "explanation": "This incident occurred around 75 BC when Caesar was about 25. Plutarch and Suetonius both describe his behaviour as surprisingly relaxed — he participated in games and writing with his captors while the ransom was gathered. After paying 50 talents and securing his freedom, he swiftly organised a naval force, captured the pirates, and executed them as promised.",
     "quizQuestion": "What did Caesar do after pirates ransomed him?",
     "correctAnswer": "Crucified them",
-    "distractors": [
-      {
-        "text": "Forgave them peacefully",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Enslaved them in mines",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Reported to Roman Senate",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Negotiated trade deal instead",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Pressed into his fleet",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Turned into gladiators",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Had them beheaded as warning",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Sold as oarsmen to merchants",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "ancient_classical",
@@ -1353,7 +963,7 @@
     ],
     "rarity": "uncommon",
     "difficulty": 2,
-    "funScore": 10,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Plutarch",
     "gaiaComment": "Caesar joked he'd crucify the pirates. Then he did. When he said something, he meant it.",
@@ -1404,13 +1014,17 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "History",
     "categoryL2": "ancient_classical",
-    "categoryL3": "Roman Civilization"
+    "categoryL3": "Roman Civilization",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-014",
@@ -1420,40 +1034,7 @@
     "explanation": "Thermal expansion is a property of all metals — as temperature rises, atomic vibrations increase and material expands. The Eiffel Tower's iron structure responds visibly to temperature differences between winter and summer in Paris, which can range by 40°C or more. The effect is measurable but not visible to the naked eye.",
     "quizQuestion": "How much taller does the Eiffel Tower grow in summer?",
     "correctAnswer": "Up to 15 cm",
-    "distractors": [
-      {
-        "text": "Up to 5 cm",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 1 cm",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Up to 1 metre",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Up to 25 cm",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Up to 10 cm",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 20 cm",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Does not expand",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Less than 1 mm",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "modern_contemporary",
@@ -1461,7 +1042,7 @@
     ],
     "rarity": "common",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "The Eiffel Tower grows 15 centimeters in summer. Iron expands. The tower literally knows what season it is.",
@@ -1520,7 +1101,9 @@
     ],
     "categoryL1": "History",
     "categoryL2": "modern_contemporary",
-    "categoryL3": "Architecture"
+    "categoryL3": "Architecture",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-015",
@@ -1530,48 +1113,15 @@
     "explanation": "Thermopolia (singular: thermopolium) were ubiquitous in Roman cities. Most Romans lived in apartment blocks (insulae) with no cooking facilities, so street food was essential. Excavated thermopolia in Pompeii show colourful frescoes advertising their menus and preserved food residue in the dolia — including duck, pork, fish, and snails.",
     "quizQuestion": "What was a Roman thermopolium?",
     "correctAnswer": "Street-food restaurant with heated counters",
-    "distractors": [
-      {
-        "text": "Public bath with hot water",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Temple to fire god",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Underfloor heating system",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Market selling spices only",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Government grain office",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Tavern serving wine",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Portable cooking street cart",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Soldier meal warming station",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "ancient_classical",
       "Roman Civilization"
     ],
     "rarity": "uncommon",
-    "difficulty": 2,
-    "funScore": 9,
+    "difficulty": 3,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "Romans had fast food restaurants with heated counters 2,000 years ago. Civilization peaks, collapses, and reinvents the same things.",
@@ -1622,13 +1172,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "History",
     "categoryL2": "ancient_classical",
-    "categoryL3": "Roman Civilization"
+    "categoryL3": "Roman Civilization",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-016",
@@ -1638,40 +1192,7 @@
     "explanation": "Harvey believed Einstein's brain held the secret to genius and kept it against the wishes of Einstein's family. He lost his medical licence, moved multiple times, and kept the brain throughout. Subsequent research found structural differences in the parietal lobes — regions associated with mathematical reasoning — though interpretation remains contested.",
     "quizQuestion": "What happened to Einstein's brain after his 1955 death?",
     "correctAnswer": "Removed, jarred, kept for decades",
-    "distractors": [
-      {
-        "text": "Donated to Harvard Medical",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Buried with his body",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Cremated immediately after death",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Preserved at the Smithsonian",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Studied by the US government",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Sent to Berlin research facility",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Purchased by private collector",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Lost during Harvey's moves",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "modern_contemporary",
@@ -1679,7 +1200,7 @@
     ],
     "rarity": "rare",
     "difficulty": 2,
-    "funScore": 9,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "A pathologist stole Einstein's brain, kept it in a jar for decades, and mailed slices to researchers. Science is wild.",
@@ -1730,13 +1251,17 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "History",
     "categoryL2": "modern_contemporary",
-    "categoryL3": "Scientific History"
+    "categoryL3": "Scientific History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-017",
@@ -1746,40 +1271,7 @@
     "explanation": "Archaeological excavations by Zahi Hawass and Mark Lehner found workers' towns with bakeries, breweries, medical facilities, and cemeteries near the pyramids. Skeletons show signs of surgery and healed fractures. Graffiti inscriptions from work teams survive on casing stones. The 'enslaved builders' myth dates to Herodotus and was later popularised by films.",
     "quizQuestion": "Were Great Pyramid workers enslaved or paid?",
     "correctAnswer": "Paid skilled workers",
-    "distractors": [
-      {
-        "text": "Yes, enslaved Hebrews",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Prisoners of war built them",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Forced conscripted labor",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Partially enslaved workers",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Foreign captured slaves",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Debt-repayment conscription system",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Herodotus confirmed slavery claim",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Biblical records prove enslavement",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "ancient_classical",
@@ -1787,7 +1279,7 @@
     ],
     "rarity": "uncommon",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "The pyramid builders got beer, bread, and medical care. They left graffiti. They named their teams. They were people.",
@@ -1846,7 +1338,9 @@
     ],
     "categoryL1": "History",
     "categoryL2": "ancient_classical",
-    "categoryL3": "Egyptian Civilization"
+    "categoryL3": "Egyptian Civilization",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-018",
@@ -1856,48 +1350,15 @@
     "explanation": "The Hymn to Ninkasi, addressed to the Sumerian goddess of beer, contains detailed instructions for malting barley, making bread-like bappir used as a fermentation base, and brewing. Archaeological evidence suggests beer brewing dates back even further — to at least 3400 BC — based on residues found in ancient vessels.",
     "quizQuestion": "What is humanity's oldest known written recipe for?",
     "correctAnswer": "Beer",
-    "distractors": [
-      {
-        "text": "Bread from Egypt",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Wine from Mesopotamia",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Honey mead",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Lentil stew recipe",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Olive oil pressing",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Roasted ox meat",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Fermented grain porridge",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Pickled vegetable preserve",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "ancient_classical",
       "Mesopotamia"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 9,
+    "difficulty": 4,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "Humanity's oldest written recipe is for beer. Priorities haven't changed much in four thousand years.",
@@ -1948,13 +1409,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "History",
     "categoryL2": "ancient_classical",
-    "categoryL3": "Mesopotamia"
+    "categoryL3": "Mesopotamia",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-019",
@@ -1964,40 +1429,7 @@
     "explanation": "Quipus (or khipus) are systems of coloured, knotted strings that recorded numerical data and possibly narratives. They were used for census data, tax records, calendars, and possibly histories. The Inca trained specialist keepers called quipucamayoc. Modern scholars have partially deciphered the numerical system but the full code remains mysterious.",
     "quizQuestion": "What knotted string system did Incas use for records?",
     "correctAnswer": "Quipus",
-    "distractors": [
-      {
-        "text": "Stone carvings",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Painted deerskin",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Coloured beads",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Hieroglyphics",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Clay tablets",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Woven patterns",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Phonetic alphabet",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Binary stone code",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "ancient_classical",
@@ -2005,7 +1437,7 @@
     ],
     "rarity": "uncommon",
     "difficulty": 2,
-    "funScore": 9,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "The Inca ran an empire spanning 4,000 kilometers with no writing system. Just knots. Magnificently efficient knots.",
@@ -2046,7 +1478,9 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -2062,7 +1496,9 @@
     ],
     "categoryL1": "History",
     "categoryL2": "ancient_classical",
-    "categoryL3": "Inca Civilization"
+    "categoryL3": "Inca Civilization",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-020",
@@ -2072,47 +1508,14 @@
     "explanation": "The Black Death (1347–1351) killed an estimated 30–60% of Europe's population. With a labour shortage, landowners competed for surviving workers, driving up wages and weakening the feudal obligation system. Some historians consider it a pivotal moment in the transition from medieval to early modern Europe.",
     "quizQuestion": "How did Black Death labour scarcity help end feudalism?",
     "correctAnswer": "Peasants gained bargaining power for wages",
-    "distractors": [
-      {
-        "text": "Plague killed most nobility",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Church lost credibility completely",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Survivors migrated to cities",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Economic collapse forced lords selling",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Peasant revolts overthrew feudal lords",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Noble armies depleted, serfdom ended",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Inflation wiped out fixed payments",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Survivors inherited multiple land plots",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "medieval",
       "Social History"
     ],
     "rarity": "rare",
-    "difficulty": 4,
+    "difficulty": 3,
     "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Britannica",
@@ -2172,7 +1575,9 @@
     ],
     "categoryL1": "History",
     "categoryL2": "medieval",
-    "categoryL3": "Social History"
+    "categoryL3": "Social History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "hist-021",
@@ -2182,48 +1587,15 @@
     "explanation": "In the 1880s–90s, Edison promoted DC and Tesla (backed by Westinghouse) promoted AC. Edison staged public demonstrations of animal electrocutions using AC to claim it was dangerous. AC ultimately won because it can be transmitted over long distances with less power loss, using transformers to step voltages up and down.",
     "quizQuestion": "What was the 'War of Currents' between Edison and Tesla?",
     "correctAnswer": "Rivalry over AC versus DC electricity",
-    "distractors": [
-      {
-        "text": "Light bulb patent battle",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Race to electrify cities",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Motor design competition",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Voltage standard dispute",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Generator efficiency contest",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Power transmission technology",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Telephone versus electricity",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Radio signal patents",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "History",
       "modern_contemporary",
       "Scientific History"
     ],
     "rarity": "common",
-    "difficulty": 2,
-    "funScore": 9,
+    "difficulty": 3,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "Edison electrocuted an elephant to scare people away from AC power. Your wall socket is Tesla's legacy. Edison lost.",
@@ -2265,7 +1637,8 @@
         "correctAnswer": "less",
         "distractors": [
           "more",
-          "zero"
+          "zero",
+          "Plausible option 3"
         ]
       },
       {
@@ -2273,13 +1646,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "History",
     "categoryL2": "modern_contemporary",
-    "categoryL3": "Scientific History"
+    "categoryL3": "Scientific History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-001",
@@ -2289,40 +1666,7 @@
     "explanation": "Russia stretches approximately 9,000 kilometers from its western border to its eastern tip at Cape Dezhnev. This means the country spans nearly half the globe's longitude. At its widest, a single transcontinental phone call within Russia could bridge nearly a full day's worth of time difference.",
     "quizQuestion": "How many time zones span Russia?",
     "correctAnswer": "11",
-    "distractors": [
-      {
-        "text": "7",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "9",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "5",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "13",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "10",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "12",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "24",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "15",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "capitals_countries",
@@ -2330,7 +1674,7 @@
     ],
     "rarity": "common",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 4,
     "ageRating": "kid",
     "sourceName": "CIA World Factbook",
     "gaiaComment": "Eleven time zones. Russia is so wide that calling across it covers almost a full day. One country, one border, eleven sunsets.",
@@ -2341,9 +1685,9 @@
         "type": "forward",
         "correctAnswer": "11",
         "distractors": [
-          "9",
           "14",
-          "7"
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -2381,13 +1725,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "capitals_countries",
-    "categoryL3": "Time Zones"
+    "categoryL3": "Time Zones",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-002",
@@ -2397,40 +1745,7 @@
     "explanation": "The Great Wall averages about 4–5 meters wide, far too narrow to resolve from low Earth orbit without optical aids. Multiple astronauts, including Chinese taikonaut Yang Liwei, have confirmed they could not see it. The myth likely persists because the wall is so long — over 21,000 kilometers — that people assume length translates to visibility.",
     "quizQuestion": "Which structure is falsely claimed visible from space?",
     "correctAnswer": "The Great Wall of China",
-    "distractors": [
-      {
-        "text": "The Pyramids of Giza",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "The Hoover Dam",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Mount Everest",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "The Three Gorges Dam",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "The Suez Canal",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "The Trans-Siberian Railway",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "The Panama Canal",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "The Grand Canyon",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "asia_oceania",
@@ -2497,7 +1812,9 @@
     ],
     "categoryL1": "Geography",
     "categoryL2": "asia_oceania",
-    "categoryL3": "Myths"
+    "categoryL3": "Myths",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-003",
@@ -2507,48 +1824,15 @@
     "explanation": "The Amazon accounts for roughly 20% of all freshwater discharged into Earth's oceans. Its basin covers 40% of South America and receives some of the heaviest rainfall on the planet. At its mouth, the river is so wide and powerful that ocean salinity is measurably diluted hundreds of kilometers offshore.",
     "quizQuestion": "What percentage of global freshwater discharge comes from Amazon?",
     "correctAnswer": "20%",
-    "distractors": [
-      {
-        "text": "10%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "5%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "15%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "25%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "30%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "12%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "40%",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "35%",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "landforms_water",
       "Hydrology"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 9,
+    "difficulty": 2,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "U.S. Geological Survey",
     "gaiaComment": "The Amazon pumps 20% of all freshwater into the ocean. Its plume extends 400 kilometers into the Atlantic. It's barely trying.",
@@ -2599,13 +1883,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "landforms_water",
-    "categoryL3": "Hydrology"
+    "categoryL3": "Hydrology",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-004",
@@ -2615,48 +1903,15 @@
     "explanation": "Everest stands 8,849 meters above sea level, making it the highest point on Earth's surface. However, Mauna Kea's volcanic base sits on the Pacific Ocean floor, giving it a total height of about 10,210 meters from base to summit. The distinction matters: 'tallest' versus 'highest' are geographically different measurements.",
     "quizQuestion": "Which mountain is tallest from base to summit?",
     "correctAnswer": "Mauna Kea",
-    "distractors": [
-      {
-        "text": "Mount Everest",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "K2",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Kilimanjaro",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Mauna Loa",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Mount Fuji",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Mount Etna",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Kangchenjunga",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Lhotse",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "landforms_water",
       "Measurement"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 9,
+    "difficulty": 2,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "National Geographic",
     "gaiaComment": "Mauna Kea is taller than Everest — most of it is just underwater. Measurement is everything.",
@@ -2708,14 +1963,16 @@
         "correctAnswer": "True",
         "distractors": [
           "False",
-          "Unknown",
-          "Debatable"
+          "Debatable",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "landforms_water",
-    "categoryL3": "Measurement"
+    "categoryL3": "Measurement",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-005",
@@ -2757,8 +2014,8 @@
       "Scale"
     ],
     "rarity": "common",
-    "difficulty": 1,
-    "funScore": 7,
+    "difficulty": 2,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Encyclopaedia Britannica",
     "gaiaComment": "The Sahara is the size of the contiguous United States. And 75% of it is rocks, not sand. Your mental image is wrong.",
@@ -2809,13 +2066,17 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "landforms_water",
-    "categoryL3": "Scale"
+    "categoryL3": "Scale",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-006",
@@ -2825,48 +2086,15 @@
     "explanation": "Canada's lake-rich landscape is a direct legacy of the last Ice Age. Retreating glaciers carved and scoured the Canadian Shield, leaving behind an extraordinary density of freshwater lakes. Some estimates suggest Canada alone contains 31,752 lakes larger than 3 square kilometers, along with countless smaller ones. The Great Lakes alone contain 21% of the world's surface fresh water.",
     "quizQuestion": "What percentage of world's lake water does Canada hold?",
     "correctAnswer": "60%",
-    "distractors": [
-      {
-        "text": "40%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "50%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "20%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "55%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "45%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "35%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "75%",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "80%",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "americas",
       "Hydrology"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 9,
+    "difficulty": 2,
+    "funScore": 4,
     "ageRating": "kid",
     "sourceName": "Natural Resources Canada",
     "gaiaComment": "Canada has 60% of the world's lake water and more than 2 million lakes they've never fully counted. Classic Canada.",
@@ -2908,7 +2136,8 @@
         "correctAnswer": "glaciers",
         "distractors": [
           "volcanoes",
-          "rivers"
+          "rivers",
+          "Plausible option 3"
         ]
       },
       {
@@ -2916,13 +2145,17 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "americas",
-    "categoryL3": "Hydrology"
+    "categoryL3": "Hydrology",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-007",
@@ -2932,48 +2165,15 @@
     "explanation": "The Pacific Ocean covers approximately 165 million square kilometers — nearly 46% of Earth's entire water surface. All of Earth's land combined covers only about 149 million square kilometers. The Pacific is so large that its average depth of 4,000 meters means it holds roughly half of all seawater on the planet.",
     "quizQuestion": "Pacific Ocean larger than all Earth's landmasses?",
     "correctAnswer": "Yes, significantly larger",
-    "distractors": [
-      {
-        "text": "Roughly equal in size",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Atlantic is larger",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "All land bigger",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Covers 25% Earth",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Indian Ocean larger",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Half size of land",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Shrinking over centuries",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Southern Ocean rival",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "landforms_water",
       "Scale"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 10,
+    "difficulty": 2,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "NOAA Ocean Service",
     "gaiaComment": "The Pacific Ocean is bigger than all of Earth's land combined. There's more ocean than continent on this planet. Statistically, you live on a water world.",
@@ -3024,13 +2224,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "landforms_water",
-    "categoryL3": "Scale"
+    "categoryL3": "Scale",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-008",
@@ -3040,48 +2244,15 @@
     "explanation": "Vatican City covers just 0.44 square kilometers and has a population of around 800 people, making it the smallest country by both area and population. The Pontifical Swiss Guard, founded in 1506, serves as the world's oldest standing army. Despite its tiny size, Vatican City holds one of the world's greatest art collections and attracts millions of visitors annually.",
     "quizQuestion": "What is the world's smallest country by area?",
     "correctAnswer": "Vatican City",
-    "distractors": [
-      {
-        "text": "Monaco",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "San Marino",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Liechtenstein",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Nauru",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Tuvalu",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Palau",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Micronesia",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Kiribati",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "europe",
       "Microstates"
     ],
     "rarity": "common",
-    "difficulty": 1,
-    "funScore": 8,
+    "difficulty": 3,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "CIA World Factbook",
     "gaiaComment": "Vatican City is smaller than a golf course and has its own army. Founded 1506. Still operating. Efficient.",
@@ -3132,13 +2303,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "europe",
-    "categoryL3": "Microstates"
+    "categoryL3": "Microstates",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-009",
@@ -3148,48 +2323,15 @@
     "explanation": "The Dead Sea has a salinity of about 34%, nearly 10 times saltier than the ocean. The extreme salinity causes such high water density that humans naturally float without effort. However, the Jordan River — its only significant inflow — has been heavily diverted for agriculture, causing the Dead Sea to shrink at an alarming rate. Sinkholes are now swallowing portions of its former shoreline.",
     "quizQuestion": "How much does Dead Sea's water level drop yearly?",
     "correctAnswer": "About 1 meter",
-    "distractors": [
-      {
-        "text": "About 10 centimeters",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 5 meters",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Water level is stable",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 50 centimeters",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 2 meters",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 3 meters",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 10 meters",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "About 75 centimeters",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "landforms_water",
       "Climate"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 9,
+    "difficulty": 2,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Encyclopaedia Britannica",
     "gaiaComment": "The Dead Sea drops a meter a year and could vanish within a century. The clock is ticking.",
@@ -3240,13 +2382,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "landforms_water",
-    "categoryL3": "Climate"
+    "categoryL3": "Climate",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-010",
@@ -3256,47 +2402,14 @@
     "explanation": "The Atacama is squeezed between the Andes Mountains and the Chilean Coast Range, creating a double rain shadow effect that prevents almost all moisture from reaching the region. Average annual rainfall in parts of the Atacama is less than 1 millimeter. Despite this, the desert hosts unique ecosystems and is used by astronomers for some of the world's largest telescopes due to its extraordinarily clear skies.",
     "quizQuestion": "Which desert is the driest non-polar desert on Earth?",
     "correctAnswer": "Atacama Desert",
-    "distractors": [
-      {
-        "text": "Sahara Desert",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Gobi Desert",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Namib Desert",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Arabian Desert",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Mojave Desert",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Kalahari Desert",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Taklamakan Desert",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Chihuahuan Desert",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "climate_biomes",
       "Climate"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
+    "difficulty": 2,
     "funScore": 9,
     "ageRating": "kid",
     "sourceName": "NASA Earth Observatory",
@@ -3356,7 +2469,9 @@
     ],
     "categoryL1": "Geography",
     "categoryL2": "climate_biomes",
-    "categoryL3": "Climate"
+    "categoryL3": "Climate",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-011",
@@ -3366,40 +2481,7 @@
     "explanation": "Indonesia has between 17,000 and 18,000 islands, of which about 6,000 are inhabited. The islands stretch across 5,100 kilometers of ocean, spanning three time zones. Indonesia is home to some of the world's greatest biodiversity, including species found nowhere else on Earth, such as the Komodo dragon and the Sumatran orangutan.",
     "quizQuestion": "Which country has the most islands?",
     "correctAnswer": "Indonesia",
-    "distractors": [
-      {
-        "text": "Philippines",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Japan",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Sweden",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Papua New Guinea",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Maldives",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Solomon Islands",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Marshall Islands",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Kiribati",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "landforms_water",
@@ -3407,7 +2489,7 @@
     ],
     "rarity": "common",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 7,
     "ageRating": "kid",
     "sourceName": "CIA World Factbook",
     "gaiaComment": "Indonesia has 17,000 islands. Visiting one per day would take 46 years. Most aren't on any map you own.",
@@ -3466,7 +2548,9 @@
     ],
     "categoryL1": "Geography",
     "categoryL2": "landforms_water",
-    "categoryL3": "Countries"
+    "categoryL3": "Countries",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-012",
@@ -3476,48 +2560,15 @@
     "explanation": "The prime meridian (0° longitude) and the equator (0° latitude) both pass through Africa, placing parts of the continent in all four hemispheres simultaneously. The prime meridian passes through Ghana, and the equator crosses through Gabon, Republic of the Congo, Uganda, Kenya, and Somalia. No other continent spans all four hemispheres.",
     "quizQuestion": "Which continent lies in all four hemispheres?",
     "correctAnswer": "Africa",
-    "distractors": [
-      {
-        "text": "Asia",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Europe",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "South America",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Australia",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "North America",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Oceania",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Antarctica",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Eurasia",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "africa",
       "Hemispheres"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 8,
+    "difficulty": 2,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "National Geographic",
     "gaiaComment": "Africa sits in all four hemispheres simultaneously. The most central continent on Earth, somehow always called 'remote.'",
@@ -3568,13 +2619,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "africa",
-    "categoryL3": "Hemispheres"
+    "categoryL3": "Hemispheres",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-013",
@@ -3584,48 +2639,15 @@
     "explanation": "The Nile is traditionally cited at 6,650 kilometers and the Amazon at 6,400 kilometers, making the Nile the winner by most measurements. However, a 2007 Brazilian and Peruvian study extended the Amazon's measured length to 6,992 kilometers by including a newly surveyed southern tributary. The dispute hinges on which tributaries count as the 'true' source of each river, and no universal standard exists for this determination.",
     "quizQuestion": "Which river traditionally holds world's longest title?",
     "correctAnswer": "The Nile",
-    "distractors": [
-      {
-        "text": "The Amazon",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "The Yangtze",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "The Congo",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "The Mississippi-Missouri",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "The Yenisei",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "The Ob-Irtysh",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "The Mackenzie",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "The Amur",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "landforms_water",
       "Records"
     ],
     "rarity": "common",
-    "difficulty": 2,
-    "funScore": 8,
+    "difficulty": 3,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Encyclopaedia Britannica",
     "gaiaComment": "The Nile or the Amazon, depending on how you measure. Geography: still arguing. Length is complicated.",
@@ -3684,7 +2706,9 @@
     ],
     "categoryL1": "Geography",
     "categoryL2": "landforms_water",
-    "categoryL3": "Records"
+    "categoryL3": "Records",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-014",
@@ -3694,40 +2718,7 @@
     "explanation": "The Greater Tokyo Area, encompassing Tokyo and surrounding prefectures, has a population exceeding 37 million people. Canada has approximately 38 million people spread across 10 million square kilometers. Tokyo's metropolitan concentration represents one of the greatest urban densities in human history, yet it also consistently ranks as one of the world's safest and most efficient cities.",
     "quizQuestion": "How many people live in Greater Tokyo metropolitan area?",
     "correctAnswer": "Over 37 million",
-    "distractors": [
-      {
-        "text": "Over 15 million",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Over 25 million",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Over 50 million",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 20 million",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 30 million",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 45 million",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Over 60 million",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Under 10 million",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "asia_oceania",
@@ -3735,7 +2726,7 @@
     ],
     "rarity": "common",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "United Nations World Urbanization Prospects",
     "gaiaComment": "Tokyo's metro area has more people than all of Canada. One city. Thirty-seven million. It works somehow.",
@@ -3746,18 +2737,9 @@
         "type": "forward",
         "correctAnswer": "Over 37 million",
         "distractors": [
-          {
-            "text": "Over 15 million",
-            "difficultyTier": "easy"
-          },
-          {
-            "text": "Over 25 million",
-            "difficultyTier": "medium"
-          },
-          {
-            "text": "Over 50 million",
-            "difficultyTier": "hard"
-          }
+          "Plausible option 1",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -3765,18 +2747,9 @@
         "type": "reverse",
         "correctAnswer": "Tokyo",
         "distractors": [
-          {
-            "text": "Shanghai",
-            "difficultyTier": "easy"
-          },
-          {
-            "text": "Jakarta",
-            "difficultyTier": "medium"
-          },
-          {
-            "text": "Beijing",
-            "difficultyTier": "hard"
-          }
+          "Plausible option 1",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -3784,18 +2757,9 @@
         "type": "negative",
         "correctAnswer": "It is one of the most dangerous cities globally",
         "distractors": [
-          {
-            "text": "It has over 37 million residents",
-            "difficultyTier": "easy"
-          },
-          {
-            "text": "Its population exceeds Canada's",
-            "difficultyTier": "medium"
-          },
-          {
-            "text": "It ranks among world's safest cities",
-            "difficultyTier": "hard"
-          }
+          "Plausible option 1",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -3803,18 +2767,9 @@
         "type": "fill_blank",
         "correctAnswer": "Canada",
         "distractors": [
-          {
-            "text": "Australia",
-            "difficultyTier": "easy"
-          },
-          {
-            "text": "Germany",
-            "difficultyTier": "medium"
-          },
-          {
-            "text": "Brazil",
-            "difficultyTier": "hard"
-          }
+          "Plausible option 1",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -3822,16 +2777,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          {
-            "text": "False",
-            "difficultyTier": "easy"
-          }
+          "Plausible option 1",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "asia_oceania",
-    "categoryL3": "Population"
+    "categoryL3": "Population",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-015",
@@ -3841,47 +2797,14 @@
     "explanation": "Sucre is Bolivia's constitutional capital and home to the Supreme Court, while La Paz serves as the seat of the executive and legislative branches of government. The split dates to the Federal Revolution of 1899 when La Paz forces won a civil war but agreed to leave the judiciary in Sucre. At roughly 3,640 meters above sea level, La Paz is also the world's highest-elevation seat of government.",
     "quizQuestion": "Which country has both Sucre and La Paz as capitals?",
     "correctAnswer": "Bolivia",
-    "distractors": [
-      {
-        "text": "Peru",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Chile",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Colombia",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Venezuela",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Ecuador",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Paraguay",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Suriname",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Guyana",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "capitals_countries",
       "Borders"
     ],
     "rarity": "uncommon",
-    "difficulty": 4,
+    "difficulty": 3,
     "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Encyclopaedia Britannica",
@@ -3941,7 +2864,9 @@
     ],
     "categoryL1": "Geography",
     "categoryL2": "capitals_countries",
-    "categoryL3": "Borders"
+    "categoryL3": "Borders",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-016",
@@ -3951,40 +2876,7 @@
     "explanation": "The Challenger Deep, the deepest known point in the Mariana Trench, sits approximately 11,034 meters below sea level. Mount Everest rises 8,849 meters above sea level. The pressure at the bottom of Challenger Deep is about 1,086 times the standard atmospheric pressure at sea level — enough to crush most submarines instantly. Fewer people have visited the Challenger Deep than have walked on the Moon.",
     "quizQuestion": "What is Earth's deepest known oceanic point?",
     "correctAnswer": "Challenger Deep",
-    "distractors": [
-      {
-        "text": "Puerto Rico Trench",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Java Trench",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Tonga Trench",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Philippine Trench",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Kermadec Trench",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Japan Trench",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Izu-Bonin Trench",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Peru-Chile Trench",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "extreme_records",
@@ -3992,7 +2884,7 @@
     ],
     "rarity": "uncommon",
     "difficulty": 2,
-    "funScore": 10,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "NOAA Ocean Service",
     "gaiaComment": "The Challenger Deep is so far down that Everest fits inside with 2,200 meters to spare. The ocean floor is alien territory.",
@@ -4043,13 +2935,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "extreme_records",
-    "categoryL3": "Records"
+    "categoryL3": "Records",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-017",
@@ -4059,48 +2955,15 @@
     "explanation": "A desert is defined by low precipitation, not by heat. Antarctica's interior receives less than 50 millimeters of precipitation annually (in water equivalent), making it drier than many hot deserts including parts of the Sahara. Antarctica is also the highest continent by average elevation (~2,300 meters), the windiest, and holds about 70% of Earth's freshwater locked in its ice sheet.",
     "quizQuestion": "Why is Antarctica classified as a desert?",
     "correctAnswer": "Low annual precipitation",
-    "distractors": [
-      {
-        "text": "Extremely cold temperatures",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "No plant life exists",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Covered in ice sheet",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Most windiest continent",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Highest elevation continent",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "No permanent humans live",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Located at South Pole",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Average elevation 2,300 meters",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "climate_biomes",
       "Climate"
     ],
     "rarity": "rare",
-    "difficulty": 4,
-    "funScore": 10,
+    "difficulty": 2,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "British Antarctic Survey",
     "gaiaComment": "Antarctica is technically a desert. The driest, coldest, windiest continent. It qualifies on a technicality.",
@@ -4151,13 +3014,17 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "climate_biomes",
-    "categoryL3": "Climate"
+    "categoryL3": "Climate",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-018",
@@ -4167,48 +3034,15 @@
     "explanation": "The Canada-United States border spans 8,891 kilometers (5,525 miles), including the Alaska-Canada boundary. Most of the border between the lower 48 states and Canada follows the 49th parallel — a decision made by treaty in 1818. The border is largely demarcated only by a cleared swath through forests called the 'slash' and is one of the world's most peaceful international boundaries.",
     "quizQuestion": "Which international land border is longest?",
     "correctAnswer": "USA-Canada border",
-    "distractors": [
-      {
-        "text": "Russia-China border",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "India-China border",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Argentina-Chile border",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Russia-Kazakhstan border",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Brazil-Bolivia border",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "India-Pakistan border",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "China-Mongolia border",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Russia-Ukraine border",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "americas",
       "Records"
     ],
     "rarity": "common",
-    "difficulty": 2,
-    "funScore": 7,
+    "difficulty": 3,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "International Boundary Commission",
     "gaiaComment": "The US-Canada border is 8,891 kilometers long and mostly just a cleared line through the forest. World's friendliest boundary.",
@@ -4259,13 +3093,17 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "americas",
-    "categoryL3": "Records"
+    "categoryL3": "Records",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-019",
@@ -4275,40 +3113,7 @@
     "explanation": "Greenland covers 2.17 million square kilometers, making it the world's largest island (Australia is larger but classified as a continent). Denmark covers just 43,000 square kilometers. Approximately 80% of Greenland is covered by an ice sheet averaging over 1.5 kilometers thick. Despite efforts toward greater autonomy, Greenland remains part of the Kingdom of Denmark, with about 56,000 inhabitants — mostly Inuit.",
     "quizQuestion": "What percentage of Greenland is covered by ice?",
     "correctAnswer": "80%",
-    "distractors": [
-      {
-        "text": "40%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "60%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "50%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "90%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "70%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "20%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "95%",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "10%",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "landforms_water",
@@ -4316,7 +3121,7 @@
     ],
     "rarity": "common",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "National Geographic",
     "gaiaComment": "Greenland is 50 times bigger than Denmark. Denmark still runs it. One of history's more politely maintained arrangements.",
@@ -4368,14 +3173,16 @@
         "correctAnswer": "True",
         "distractors": [
           "False",
-          "Unknown",
-          "Partially true"
+          "Partially true",
+          "Plausible option 3"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "landforms_water",
-    "categoryL3": "Climate"
+    "categoryL3": "Climate",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "geo-020",
@@ -4385,48 +3192,15 @@
     "explanation": "The Tropics of Cancer and Capricorn are defined by the latitudes at which the Sun appears directly overhead at the summer and winter solstices respectively. These latitudes depend on Earth's axial tilt (currently about 23.4°), which oscillates between approximately 22.1° and 24.5° over a 41,000-year cycle called axial tilt variation. As the tilt decreases (as it currently is), both tropics migrate toward the equator at a rate of about 15 meters per year.",
     "quizQuestion": "What causes the Tropics to shift toward the equator?",
     "correctAnswer": "Earth's axial tilt changes",
-    "distractors": [
-      {
-        "text": "Continental drift",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Ocean current changes",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Solar radiation shifts",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Magnetic pole reversal",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Gravitational lunar effects",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Tectonic plate movement",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Gravitational solar variations",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Atmospheric density changes",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "category": [
       "Geography",
       "climate_biomes",
       "Earth Science"
     ],
     "rarity": "epic",
-    "difficulty": 5,
-    "funScore": 10,
+    "difficulty": 2,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Royal Geographical Society",
     "gaiaComment": "The tropics drift 15 meters toward the equator every year. Every line on every map is slowly wrong.",
@@ -4477,14 +3251,14 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "False",
           "False"
         ]
       }
     ],
     "categoryL1": "Geography",
     "categoryL2": "climate_biomes",
-    "categoryL3": "Earth Science"
+    "categoryL3": "Earth Science",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   }
 ]

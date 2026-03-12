@@ -58,13 +58,53 @@ function taxonomyViolationForFact(fact) {
   }
 }
 
+const DISTRACTOR_BLOCKLIST = new Set([
+  'unknown', 'other', 'none of the above', 'none of these',
+  'all of the above', 'n/a', '...', '', 'debated', 'disputed',
+  '[object object]'
+])
+
+function validateFactQuality(fact) {
+  const issues = []
+
+  // Require Haiku processing
+  if (!fact._haikuProcessed) {
+    issues.push('Missing _haikuProcessed flag — fact was never processed by Haiku agent')
+  }
+
+  // Check distractors for blocklisted content
+  if (Array.isArray(fact.distractors)) {
+    for (const d of fact.distractors) {
+      const text = (typeof d === 'string' ? d : d?.text || '').toLowerCase().trim()
+      if (DISTRACTOR_BLOCKLIST.has(text)) {
+        issues.push(`Blocklisted distractor: "${text}"`)
+      }
+      if (typeof d === 'object' && d !== null) {
+        issues.push('Object-format distractor (must be plain string)')
+      }
+    }
+  }
+
+  // Check answer completeness
+  const answer = String(fact.correctAnswer || '')
+  if (answer.length < 2) issues.push('Answer too short')
+  if (answer.endsWith('...')) issues.push('Truncated answer')
+
+  // Check question completeness
+  const question = String(fact.quizQuestion || '')
+  if (question.length < 10) issues.push('Question too short')
+  if (question.endsWith('...')) issues.push('Truncated question')
+
+  return issues
+}
+
 async function main() {
   const args = parseArgs(process.argv, {
     input: 'data/generated',
     output: 'src/data/seed/facts-generated.json',
-    'approved-only': false,
+    'approved-only': true,
     'rebuild-db': true,
-    'enforce-qa-gate': false,
+    'enforce-qa-gate': true,
     'qa-report': 'data/generated/qa-reports/post-ingestion-gate.json',
   })
 
@@ -91,6 +131,7 @@ async function main() {
   const files = await listJsonlFiles(inputDir)
   const merged = []
   const taxonomyViolations = []
+  const qualityRejections = []
 
   for (const file of files) {
     // eslint-disable-next-line no-await-in-loop
@@ -103,11 +144,33 @@ async function main() {
         taxonomyViolations.push(violation)
         continue
       }
+
+      // Validate fact quality
+      const qualityIssues = validateFactQuality(normalized)
+      if (qualityIssues.length > 0) {
+        qualityRejections.push({
+          id: normalized?.id || null,
+          domain: 'quality',
+          categoryL2: 'quality_gate',
+          category: Array.isArray(normalized?.category) ? normalized.category.slice(0, 3) : normalized?.category,
+          question: normalized?.quizQuestion || '',
+          issues: qualityIssues,
+        })
+        continue
+      }
+
       merged.push(normalized)
     }
   }
 
-  if (taxonomyViolations.length > 0) {
+  if (qualityRejections.length > 0) {
+    console.warn(`[promote] ${qualityRejections.length} facts rejected by quality gate`)
+    for (const r of qualityRejections.slice(0, 10)) {
+      console.warn(`  - ${r.id}: ${r.issues.join(', ')}`)
+    }
+  }
+
+  if (taxonomyViolations.length > 0 || qualityRejections.length > 0) {
     const violationsByDomain = taxonomyViolations.reduce((acc, violation) => {
       const key = violation.domain || 'unknown'
       acc[key] = (acc[key] || 0) + 1
@@ -129,9 +192,16 @@ async function main() {
         byDomain: violationsByDomain,
         samples: taxonomyViolations.slice(0, 50),
       },
+      qualityValidation: {
+        rejections: qualityRejections.length,
+        samples: qualityRejections.slice(0, 50),
+      },
     })
 
-    throw new Error(`taxonomy categoryL2 validation failed during promotion (${taxonomyViolations.length} invalid rows)`)
+    const errors = []
+    if (taxonomyViolations.length > 0) errors.push(`taxonomy categoryL2 validation failed (${taxonomyViolations.length} invalid rows)`)
+    if (qualityRejections.length > 0) errors.push(`quality gate validation failed (${qualityRejections.length} facts rejected)`)
+    throw new Error(`promotion blocked during QA: ${errors.join(', ')}`)
   }
 
   await writeJson(outputPath, merged)

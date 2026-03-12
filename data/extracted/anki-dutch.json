@@ -1,0 +1,6493 @@
+{
+  "language": "nl",
+  "source": "anki-community-deck",
+  "extractedAt": "2026-03-11",
+  "entries": [
+    {
+      "fields": [
+        "ik",
+        "I"
+      ]
+    },
+    {
+      "fields": [
+        "ik heet",
+        "my name is"
+      ]
+    },
+    {
+      "fields": [
+        "ik ben",
+        "I am"
+      ]
+    },
+    {
+      "fields": [
+        "een",
+        "a"
+      ]
+    },
+    {
+      "fields": [
+        "de",
+        "the"
+      ]
+    },
+    {
+      "fields": [
+        "het",
+        "the"
+      ]
+    },
+    {
+      "fields": [
+        "de man",
+        "the man"
+      ]
+    },
+    {
+      "fields": [
+        "de vrouw",
+        "the woman"
+      ]
+    },
+    {
+      "fields": [
+        "de jongen",
+        "the boy"
+      ]
+    },
+    {
+      "fields": [
+        "het meisje",
+        "the girl"
+      ]
+    },
+    {
+      "fields": [
+        "het huis",
+        "the house"
+      ]
+    },
+    {
+      "fields": [
+        "hallo",
+        "hello"
+      ]
+    },
+    {
+      "fields": [
+        "hoi",
+        "hi"
+      ]
+    },
+    {
+      "fields": [
+        "goed",
+        "good"
+      ]
+    },
+    {
+      "fields": [
+        "slecht",
+        "bad"
+      ]
+    },
+    {
+      "fields": [
+        "morgen",
+        "morning"
+      ]
+    },
+    {
+      "fields": [
+        "goedemorgen",
+        "good morning"
+      ]
+    },
+    {
+      "fields": [
+        "avond",
+        "evening"
+      ]
+    },
+    {
+      "fields": [
+        "goedenavond",
+        "good evening"
+      ]
+    },
+    {
+      "fields": [
+        "dag",
+        "day"
+      ]
+    },
+    {
+      "fields": [
+        "goedendag",
+        "good day !"
+      ]
+    },
+    {
+      "fields": [
+        "tot ziens",
+        "see you"
+      ]
+    },
+    {
+      "fields": [
+        "tot",
+        "until"
+      ]
+    },
+    {
+      "fields": [
+        "doei",
+        "bye"
+      ]
+    },
+    {
+      "fields": [
+        "alsjeblieft",
+        "here you are"
+      ]
+    },
+    {
+      "fields": [
+        "alstublieft",
+        "here you are"
+      ]
+    },
+    {
+      "fields": [
+        "a.u.b.",
+        "please"
+      ]
+    },
+    {
+      "fields": [
+        "dank je wel",
+        "thank you"
+      ]
+    },
+    {
+      "fields": [
+        "ja",
+        "yes"
+      ]
+    },
+    {
+      "fields": [
+        "nee",
+        "no"
+      ]
+    },
+    {
+      "fields": [
+        "niet",
+        "not"
+      ]
+    },
+    {
+      "fields": [
+        "roken",
+        "to smoke"
+      ]
+    },
+    {
+      "fields": [
+        "wel",
+        "(confirmative)"
+      ]
+    },
+    {
+      "fields": [
+        "misschien",
+        "maybe"
+      ]
+    },
+    {
+      "fields": [
+        "links",
+        "left"
+      ]
+    },
+    {
+      "fields": [
+        "rechts",
+        "right"
+      ]
+    },
+    {
+      "fields": [
+        "of",
+        "or"
+      ]
+    },
+    {
+      "fields": [
+        "en",
+        "and"
+      ]
+    },
+    {
+      "fields": [
+        "jij",
+        "you"
+      ]
+    },
+    {
+      "fields": [
+        "je",
+        "you"
+      ]
+    },
+    {
+      "fields": [
+        "hij",
+        "he"
+      ]
+    },
+    {
+      "fields": [
+        "zij",
+        "she"
+      ]
+    },
+    {
+      "fields": [
+        "ze",
+        "she"
+      ]
+    },
+    {
+      "fields": [
+        "wij",
+        "we"
+      ]
+    },
+    {
+      "fields": [
+        "we",
+        "we"
+      ]
+    },
+    {
+      "fields": [
+        "jullie",
+        "you"
+      ]
+    },
+    {
+      "fields": [
+        "u",
+        "you"
+      ]
+    },
+    {
+      "fields": [
+        "zijn",
+        "to be"
+      ]
+    },
+    {
+      "fields": [
+        "de leraar",
+        "the teacher"
+      ]
+    },
+    {
+      "fields": [
+        "blij",
+        "happy"
+      ]
+    },
+    {
+      "fields": [
+        "leuk",
+        "funny"
+      ]
+    },
+    {
+      "fields": [
+        "mooi",
+        "pretty"
+      ]
+    },
+    {
+      "fields": [
+        "oud",
+        "old"
+      ]
+    },
+    {
+      "fields": [
+        "jong",
+        "young"
+      ]
+    },
+    {
+      "fields": [
+        "de voetballer",
+        "the football player"
+      ]
+    },
+    {
+      "fields": [
+        "de premier",
+        "the prime minister"
+      ]
+    },
+    {
+      "fields": [
+        "de student",
+        "the student"
+      ]
+    },
+    {
+      "fields": [
+        "de leerling",
+        "the scholar"
+      ]
+    },
+    {
+      "fields": [
+        "de baas",
+        "the boss"
+      ]
+    },
+    {
+      "fields": [
+        "de bakker",
+        "the baker"
+      ]
+    },
+    {
+      "fields": [
+        "de slager",
+        "the butcher"
+      ]
+    },
+    {
+      "fields": [
+        "de boer",
+        "the farmer"
+      ]
+    },
+    {
+      "fields": [
+        "de visser",
+        "the fisherman"
+      ]
+    },
+    {
+      "fields": [
+        "de advocaat",
+        "the lawyer"
+      ]
+    },
+    {
+      "fields": [
+        "de dokter",
+        "the doctor"
+      ]
+    },
+    {
+      "fields": [
+        "de ober",
+        "the waiter"
+      ]
+    },
+    {
+      "fields": [
+        "de politieman",
+        "the police officer"
+      ]
+    },
+    {
+      "fields": [
+        "de agent",
+        "the police officer"
+      ]
+    },
+    {
+      "fields": [
+        "de kapper",
+        "the hairdresser"
+      ]
+    },
+    {
+      "fields": [
+        "de directeur",
+        "the (company) director"
+      ]
+    },
+    {
+      "fields": [
+        "de boekhouder",
+        "the accountant"
+      ]
+    },
+    {
+      "fields": [
+        "de verkoper",
+        "the salesman"
+      ]
+    },
+    {
+      "fields": [
+        "de vertegenwoordiger",
+        "the representative"
+      ]
+    },
+    {
+      "fields": [
+        "doen",
+        "to do"
+      ]
+    },
+    {
+      "fields": [
+        "beginnen",
+        "to begin"
+      ]
+    },
+    {
+      "fields": [
+        "geloven",
+        "to believe"
+      ]
+    },
+    {
+      "fields": [
+        "brengen",
+        "to bring"
+      ]
+    },
+    {
+      "fields": [
+        "halen",
+        "to pick up"
+      ]
+    },
+    {
+      "fields": [
+        "lenen",
+        "to borrow"
+      ]
+    },
+    {
+      "fields": [
+        "bellen",
+        "to call"
+      ]
+    },
+    {
+      "fields": [
+        "kunnen",
+        "to can"
+      ]
+    },
+    {
+      "fields": [
+        "sluiten",
+        "to close"
+      ]
+    },
+    {
+      "fields": [
+        "snijden",
+        "to cut"
+      ]
+    },
+    {
+      "fields": [
+        "beslissen",
+        "to decide"
+      ]
+    },
+    {
+      "fields": [
+        "vallen",
+        "to fall"
+      ]
+    },
+    {
+      "fields": [
+        "voelen",
+        "to feel, to touch"
+      ]
+    },
+    {
+      "fields": [
+        "volgen",
+        "to follow"
+      ]
+    },
+    {
+      "fields": [
+        "gebeuren",
+        "to happen"
+      ]
+    },
+    {
+      "fields": [
+        "iets",
+        "something"
+      ]
+    },
+    {
+      "fields": [
+        "helpen",
+        "to help"
+      ]
+    },
+    {
+      "fields": [
+        "houden",
+        "to hold, to keep"
+      ]
+    },
+    {
+      "fields": [
+        "houden van",
+        "to love"
+      ]
+    },
+    {
+      "fields": [
+        "weten",
+        "to know"
+      ]
+    },
+    {
+      "fields": [
+        "kennen",
+        "to know"
+      ]
+    },
+    {
+      "fields": [
+        "leuk vinden",
+        "to like"
+      ]
+    },
+    {
+      "fields": [
+        "laten",
+        "to leave"
+      ]
+    },
+    {
+      "fields": [
+        "verliezen",
+        "to lose"
+      ]
+    },
+    {
+      "fields": [
+        "winnen",
+        "to win"
+      ]
+    },
+    {
+      "fields": [
+        "maken",
+        "to make"
+      ]
+    },
+    {
+      "fields": [
+        "eten &amp; drinken",
+        "food &amp; drinks"
+      ]
+    },
+    {
+      "fields": [
+        "de groente",
+        "the vegetables"
+      ]
+    },
+    {
+      "fields": [
+        "het fruit",
+        "the fruits"
+      ]
+    },
+    {
+      "fields": [
+        "het brood",
+        "the bread"
+      ]
+    },
+    {
+      "fields": [
+        "de boterham",
+        "the slice of bread"
+      ]
+    },
+    {
+      "fields": [
+        "de kaas",
+        "the cheese"
+      ]
+    },
+    {
+      "fields": [
+        "de hagelslag",
+        "the chocolate sprinkles"
+      ]
+    },
+    {
+      "fields": [
+        "de pindakaas",
+        "the peanut butter"
+      ]
+    },
+    {
+      "fields": [
+        "de melk",
+        "the milk"
+      ]
+    },
+    {
+      "fields": [
+        "de koffie",
+        "the coffee"
+      ]
+    },
+    {
+      "fields": [
+        "de thee",
+        "the tea"
+      ]
+    },
+    {
+      "fields": [
+        "de aardappel",
+        "the potato"
+      ]
+    },
+    {
+      "fields": [
+        "de aardappeleter",
+        "the potato-eater"
+      ]
+    },
+    {
+      "fields": [
+        "het bier",
+        "the beer"
+      ]
+    },
+    {
+      "fields": [
+        "de wijn",
+        "the wine"
+      ]
+    },
+    {
+      "fields": [
+        "het water",
+        "the water"
+      ]
+    },
+    {
+      "fields": [
+        "het vlees",
+        "the meat"
+      ]
+    },
+    {
+      "fields": [
+        "de kip",
+        "the chicken"
+      ]
+    },
+    {
+      "fields": [
+        "de friet",
+        "the French fries"
+      ]
+    },
+    {
+      "fields": [
+        "frietje met",
+        "French fries with mayonnaise"
+      ]
+    },
+    {
+      "fields": [
+        "de frikandel",
+        "Dutch meat sausage"
+      ]
+    },
+    {
+      "fields": [
+        "de kroket",
+        "Dutch fried ragout bar"
+      ]
+    },
+    {
+      "fields": [
+        "de pannenkoek",
+        "the pancake"
+      ]
+    },
+    {
+      "fields": [
+        "de stroopwafel",
+        "the syrup waffle"
+      ]
+    },
+    {
+      "fields": [
+        "drop",
+        "liquorice"
+      ]
+    },
+    {
+      "fields": [
+        "de, het snoep",
+        "the sweets"
+      ]
+    },
+    {
+      "fields": [
+        "de straat",
+        "the street"
+      ]
+    },
+    {
+      "fields": [
+        "de weg",
+        "the road"
+      ]
+    },
+    {
+      "fields": [
+        "de snelweg",
+        "the highway"
+      ]
+    },
+    {
+      "fields": [
+        "de auto",
+        "the car"
+      ]
+    },
+    {
+      "fields": [
+        "de bus",
+        "the bus"
+      ]
+    },
+    {
+      "fields": [
+        "de trein",
+        "the train"
+      ]
+    },
+    {
+      "fields": [
+        "de tram",
+        "the tram"
+      ]
+    },
+    {
+      "fields": [
+        "de halte",
+        "the stopping place"
+      ]
+    },
+    {
+      "fields": [
+        "de metro",
+        "the metro"
+      ]
+    },
+    {
+      "fields": [
+        "de boot",
+        "the boat"
+      ]
+    },
+    {
+      "fields": [
+        "het vliegtuig",
+        "the airplane"
+      ]
+    },
+    {
+      "fields": [
+        "het vliegveld",
+        "the airport"
+      ]
+    },
+    {
+      "fields": [
+        "de haven",
+        "the port"
+      ]
+    },
+    {
+      "fields": [
+        "het station",
+        "the railway station"
+      ]
+    },
+    {
+      "fields": [
+        "het kantoor",
+        "the office"
+      ]
+    },
+    {
+      "fields": [
+        "de winkel",
+        "the shop"
+      ]
+    },
+    {
+      "fields": [
+        "de supermarkt",
+        "the supermarket"
+      ]
+    },
+    {
+      "fields": [
+        "het ziekenhuis",
+        "the hospital"
+      ]
+    },
+    {
+      "fields": [
+        "de apotheek",
+        "the pharmacy"
+      ]
+    },
+    {
+      "fields": [
+        "het zwembad",
+        "the swimming pool"
+      ]
+    },
+    {
+      "fields": [
+        "de sporthal",
+        "the sports hall"
+      ]
+    },
+    {
+      "fields": [
+        "het politiebureau",
+        "the police station"
+      ]
+    },
+    {
+      "fields": [
+        "de bibliotheek",
+        "the library"
+      ]
+    },
+    {
+      "fields": [
+        "de school",
+        "the school"
+      ]
+    },
+    {
+      "fields": [
+        "de universiteit",
+        "the university"
+      ]
+    },
+    {
+      "fields": [
+        "lopen",
+        "to walk"
+      ]
+    },
+    {
+      "fields": [
+        "hebben",
+        "to have"
+      ]
+    },
+    {
+      "fields": [
+        "worden",
+        "to become"
+      ]
+    },
+    {
+      "fields": [
+        "gaan",
+        "to go"
+      ]
+    },
+    {
+      "fields": [
+        "vragen",
+        "to ask"
+      ]
+    },
+    {
+      "fields": [
+        "de vraag",
+        "the question"
+      ]
+    },
+    {
+      "fields": [
+        "antwoorden",
+        "to answer"
+      ]
+    },
+    {
+      "fields": [
+        "het antwoord",
+        "the answer"
+      ]
+    },
+    {
+      "fields": [
+        "kopen",
+        "to buy"
+      ]
+    },
+    {
+      "fields": [
+        "krijgen",
+        "to get, to receive"
+      ]
+    },
+    {
+      "fields": [
+        "eten",
+        "to eat"
+      ]
+    },
+    {
+      "fields": [
+        "drinken",
+        "to drink"
+      ]
+    },
+    {
+      "fields": [
+        "rijden",
+        "to drive"
+      ]
+    },
+    {
+      "fields": [
+        "vergeten",
+        "to forget"
+      ]
+    },
+    {
+      "fields": [
+        "horen",
+        "to hear"
+      ]
+    },
+    {
+      "fields": [
+        "luisteren",
+        "to listen"
+      ]
+    },
+    {
+      "fields": [
+        "zien",
+        "to see"
+      ]
+    },
+    {
+      "fields": [
+        "kijken",
+        "to look"
+      ]
+    },
+    {
+      "fields": [
+        "leren",
+        "to learn"
+      ]
+    },
+    {
+      "fields": [
+        "slapen",
+        "to sleep"
+      ]
+    },
+    {
+      "fields": [
+        "lezen",
+        "to read"
+      ]
+    },
+    {
+      "fields": [
+        "schrijven",
+        "to write"
+      ]
+    },
+    {
+      "fields": [
+        "spreken",
+        "to speak"
+      ]
+    },
+    {
+      "fields": [
+        "praten",
+        "to talk"
+      ]
+    },
+    {
+      "fields": [
+        "zeggen",
+        "to say"
+      ]
+    },
+    {
+      "fields": [
+        "denken",
+        "to think"
+      ]
+    },
+    {
+      "fields": [
+        "werken",
+        "to work"
+      ]
+    },
+    {
+      "fields": [
+        "wachten",
+        "to wait"
+      ]
+    },
+    {
+      "fields": [
+        "groot",
+        "big"
+      ]
+    },
+    {
+      "fields": [
+        "klein",
+        "small"
+      ]
+    },
+    {
+      "fields": [
+        "lekker",
+        "tasty"
+      ]
+    },
+    {
+      "fields": [
+        "vies",
+        "dirty, disgusting"
+      ]
+    },
+    {
+      "fields": [
+        "schoon",
+        "clean"
+      ]
+    },
+    {
+      "fields": [
+        "de tulp",
+        "the tulip"
+      ]
+    },
+    {
+      "fields": [
+        "lelijk",
+        "ugly"
+      ]
+    },
+    {
+      "fields": [
+        "interessant",
+        "interesting"
+      ]
+    },
+    {
+      "fields": [
+        "saai",
+        "boring"
+      ]
+    },
+    {
+      "fields": [
+        "arm",
+        "poor"
+      ]
+    },
+    {
+      "fields": [
+        "rijk",
+        "rich"
+      ]
+    },
+    {
+      "fields": [
+        "donker",
+        "dark"
+      ]
+    },
+    {
+      "fields": [
+        "licht",
+        "light"
+      ]
+    },
+    {
+      "fields": [
+        "zwaar",
+        "heavy"
+      ]
+    },
+    {
+      "fields": [
+        "hard",
+        "hard, fast"
+      ]
+    },
+    {
+      "fields": [
+        "zacht",
+        "soft, slow"
+      ]
+    },
+    {
+      "fields": [
+        "snel",
+        "fast"
+      ]
+    },
+    {
+      "fields": [
+        "lief",
+        "lovely, sweet"
+      ]
+    },
+    {
+      "fields": [
+        "stout",
+        "naughty"
+      ]
+    },
+    {
+      "fields": [
+        "koud",
+        "cold"
+      ]
+    },
+    {
+      "fields": [
+        "warm",
+        "warm"
+      ]
+    },
+    {
+      "fields": [
+        "duur",
+        "expensive"
+      ]
+    },
+    {
+      "fields": [
+        "goedkoop",
+        "cheap"
+      ]
+    },
+    {
+      "fields": [
+        "hoog",
+        "high, tall"
+      ]
+    },
+    {
+      "fields": [
+        "laag",
+        "low"
+      ]
+    },
+    {
+      "fields": [
+        "week",
+        "week"
+      ]
+    },
+    {
+      "fields": [
+        "de dagen van de week",
+        "the days of the week"
+      ]
+    },
+    {
+      "fields": [
+        "welke dag (van de week)?",
+        "which day of the week"
+      ]
+    },
+    {
+      "fields": [
+        "maandag",
+        "Monday"
+      ]
+    },
+    {
+      "fields": [
+        "dinsdag",
+        "Tuesday"
+      ]
+    },
+    {
+      "fields": [
+        "woensdag",
+        "Wednesday"
+      ]
+    },
+    {
+      "fields": [
+        "donderdag",
+        "Thursday"
+      ]
+    },
+    {
+      "fields": [
+        "vrijdag",
+        "Friday"
+      ]
+    },
+    {
+      "fields": [
+        "zaterdag",
+        "Saturday"
+      ]
+    },
+    {
+      "fields": [
+        "zondag",
+        "Sunday"
+      ]
+    },
+    {
+      "fields": [
+        "de maand",
+        "the month"
+      ]
+    },
+    {
+      "fields": [
+        "de maan",
+        "the moon"
+      ]
+    },
+    {
+      "fields": [
+        "januari",
+        "January"
+      ]
+    },
+    {
+      "fields": [
+        "februari",
+        "February"
+      ]
+    },
+    {
+      "fields": [
+        "maart",
+        "march"
+      ]
+    },
+    {
+      "fields": [
+        "april",
+        "April"
+      ]
+    },
+    {
+      "fields": [
+        "mei",
+        "may"
+      ]
+    },
+    {
+      "fields": [
+        "juni",
+        "June"
+      ]
+    },
+    {
+      "fields": [
+        "juli",
+        "July"
+      ]
+    },
+    {
+      "fields": [
+        "augustus",
+        "august"
+      ]
+    },
+    {
+      "fields": [
+        "september",
+        "September"
+      ]
+    },
+    {
+      "fields": [
+        "oktober",
+        "October"
+      ]
+    },
+    {
+      "fields": [
+        "november",
+        "November"
+      ]
+    },
+    {
+      "fields": [
+        "december",
+        "December"
+      ]
+    },
+    {
+      "fields": [
+        "winter",
+        "winter"
+      ]
+    },
+    {
+      "fields": [
+        "lente",
+        "spring"
+      ]
+    },
+    {
+      "fields": [
+        "zomer",
+        "summer"
+      ]
+    },
+    {
+      "fields": [
+        "herfst",
+        "autumn"
+      ]
+    },
+    {
+      "fields": [
+        "nul",
+        "zero"
+      ]
+    },
+    {
+      "fields": [
+        "twee",
+        "two"
+      ]
+    },
+    {
+      "fields": [
+        "drie",
+        "three"
+      ]
+    },
+    {
+      "fields": [
+        "vier",
+        "four"
+      ]
+    },
+    {
+      "fields": [
+        "vijf",
+        "five"
+      ]
+    },
+    {
+      "fields": [
+        "zes",
+        "six"
+      ]
+    },
+    {
+      "fields": [
+        "zeven",
+        "seven"
+      ]
+    },
+    {
+      "fields": [
+        "acht",
+        "eight"
+      ]
+    },
+    {
+      "fields": [
+        "negen",
+        "nine"
+      ]
+    },
+    {
+      "fields": [
+        "tien",
+        "ten"
+      ]
+    },
+    {
+      "fields": [
+        "elf",
+        "eleven"
+      ]
+    },
+    {
+      "fields": [
+        "twaalf",
+        "twelve"
+      ]
+    },
+    {
+      "fields": [
+        "dertien",
+        "thirteen"
+      ]
+    },
+    {
+      "fields": [
+        "veertien",
+        "fourteen"
+      ]
+    },
+    {
+      "fields": [
+        "vijftien",
+        "fifteen"
+      ]
+    },
+    {
+      "fields": [
+        "twintig",
+        "twenty"
+      ]
+    },
+    {
+      "fields": [
+        "eenentwintig",
+        "twenty one"
+      ]
+    },
+    {
+      "fields": [
+        "dertig",
+        "thirty"
+      ]
+    },
+    {
+      "fields": [
+        "veertig",
+        "forty"
+      ]
+    },
+    {
+      "fields": [
+        "vijftig",
+        "fifty"
+      ]
+    },
+    {
+      "fields": [
+        "honderd",
+        "hundred"
+      ]
+    },
+    {
+      "fields": [
+        "tweehonderd",
+        "two hundred"
+      ]
+    },
+    {
+      "fields": [
+        "duizend",
+        "thousand"
+      ]
+    },
+    {
+      "fields": [
+        "miljoen",
+        "million"
+      ]
+    },
+    {
+      "fields": [
+        "wie",
+        "who"
+      ]
+    },
+    {
+      "fields": [
+        "wat",
+        "what"
+      ]
+    },
+    {
+      "fields": [
+        "dat",
+        "that"
+      ]
+    },
+    {
+      "fields": [
+        "dit",
+        "this"
+      ]
+    },
+    {
+      "fields": [
+        "welke",
+        "which"
+      ]
+    },
+    {
+      "fields": [
+        "deze",
+        "these, this"
+      ]
+    },
+    {
+      "fields": [
+        "die",
+        "that, those"
+      ]
+    },
+    {
+      "fields": [
+        "waar",
+        "where"
+      ]
+    },
+    {
+      "fields": [
+        "hier",
+        "here"
+      ]
+    },
+    {
+      "fields": [
+        "daar",
+        "there"
+      ]
+    },
+    {
+      "fields": [
+        "wanneer",
+        "when"
+      ]
+    },
+    {
+      "fields": [
+        "dan",
+        "then"
+      ]
+    },
+    {
+      "fields": [
+        "toen",
+        "at that time in the past"
+      ]
+    },
+    {
+      "fields": [
+        "terwijl",
+        "while"
+      ]
+    },
+    {
+      "fields": [
+        "hoe",
+        "how"
+      ]
+    },
+    {
+      "fields": [
+        "zo",
+        "like this"
+      ]
+    },
+    {
+      "fields": [
+        "hoeveel",
+        "how much"
+      ]
+    },
+    {
+      "fields": [
+        "de bloem",
+        "the flower"
+      ]
+    },
+    {
+      "fields": [
+        "waarom",
+        "why"
+      ]
+    },
+    {
+      "fields": [
+        "daarom",
+        "that’s why"
+      ]
+    },
+    {
+      "fields": [
+        "want",
+        "because"
+      ]
+    },
+    {
+      "fields": [
+        "omdat",
+        "because"
+      ]
+    },
+    {
+      "fields": [
+        "maar",
+        "but"
+      ]
+    },
+    {
+      "fields": [
+        "behalve",
+        "except"
+      ]
+    },
+    {
+      "fields": [
+        "de fiets",
+        "the bike"
+      ]
+    },
+    {
+      "fields": [
+        "met",
+        "with"
+      ]
+    },
+    {
+      "fields": [
+        "van",
+        "from"
+      ]
+    },
+    {
+      "fields": [
+        "naar",
+        "to"
+      ]
+    },
+    {
+      "fields": [
+        "in",
+        "in"
+      ]
+    },
+    {
+      "fields": [
+        "voor",
+        "in front of"
+      ]
+    },
+    {
+      "fields": [
+        "achter",
+        "behind"
+      ]
+    },
+    {
+      "fields": [
+        "naast",
+        "next to"
+      ]
+    },
+    {
+      "fields": [
+        "beneden",
+        "down, downstairs"
+      ]
+    },
+    {
+      "fields": [
+        "boven",
+        "above, up, upstairs"
+      ]
+    },
+    {
+      "fields": [
+        "onder",
+        "below"
+      ]
+    },
+    {
+      "fields": [
+        "op",
+        "at, on top"
+      ]
+    },
+    {
+      "fields": [
+        "tussen",
+        "between"
+      ]
+    },
+    {
+      "fields": [
+        "het midden",
+        "the middle"
+      ]
+    },
+    {
+      "fields": [
+        "over",
+        "about"
+      ]
+    },
+    {
+      "fields": [
+        "bij",
+        "at, near"
+      ]
+    },
+    {
+      "fields": [
+        "binnen",
+        "inside"
+      ]
+    },
+    {
+      "fields": [
+        "buiten",
+        "outside"
+      ]
+    },
+    {
+      "fields": [
+        "tegen",
+        "against"
+      ]
+    },
+    {
+      "fields": [
+        "rond",
+        "around"
+      ]
+    },
+    {
+      "fields": [
+        "sinds",
+        "since"
+      ]
+    },
+    {
+      "fields": [
+        "zonder",
+        "without"
+      ]
+    },
+    {
+      "fields": [
+        "na",
+        "after"
+      ]
+    },
+    {
+      "fields": [
+        "om",
+        "at"
+      ]
+    },
+    {
+      "fields": [
+        "hoe laat?",
+        "what time?"
+      ]
+    },
+    {
+      "fields": [
+        "hoe laat is het?",
+        "what time is it?"
+      ]
+    },
+    {
+      "fields": [
+        "de klok",
+        "the clock"
+      ]
+    },
+    {
+      "fields": [
+        "het uur",
+        "the hour"
+      ]
+    },
+    {
+      "fields": [
+        "twee uur",
+        "two o’clock"
+      ]
+    },
+    {
+      "fields": [
+        "om tien uur",
+        "at ten o’clock"
+      ]
+    },
+    {
+      "fields": [
+        "half vier",
+        "half past three"
+      ]
+    },
+    {
+      "fields": [
+        "half een",
+        "half past twelve"
+      ]
+    },
+    {
+      "fields": [
+        "het kwartier",
+        "the quarter"
+      ]
+    },
+    {
+      "fields": [
+        "kwart over drie",
+        "quarter past three"
+      ]
+    },
+    {
+      "fields": [
+        "kwart voor zeven",
+        "quarter to seven"
+      ]
+    },
+    {
+      "fields": [
+        "de minuut",
+        "the minute"
+      ]
+    },
+    {
+      "fields": [
+        "tien over zes",
+        "ten past six"
+      ]
+    },
+    {
+      "fields": [
+        "vijf voor acht",
+        "five to eight"
+      ]
+    },
+    {
+      "fields": [
+        "vijf voor half zeven",
+        "twenty five past six"
+      ]
+    },
+    {
+      "fields": [
+        "vijf over half vier",
+        "twenty five to four"
+      ]
+    },
+    {
+      "fields": [
+        "twintig voor vijf",
+        "twenty to five"
+      ]
+    },
+    {
+      "fields": [
+        "hoe lang?",
+        "how long?"
+      ]
+    },
+    {
+      "fields": [
+        "het duurt drie uur",
+        "it takes three hours"
+      ]
+    },
+    {
+      "fields": [
+        "van twee uur tot vijf uur",
+        "from two till five o’clock"
+      ]
+    },
+    {
+      "fields": [
+        "de nacht",
+        "the night"
+      ]
+    },
+    {
+      "fields": [
+        "‘s nachts",
+        "at night"
+      ]
+    },
+    {
+      "fields": [
+        "de ochtend, de morgen",
+        "the morning"
+      ]
+    },
+    {
+      "fields": [
+        "‘s ochtends / ‘s morgens",
+        "in the morning"
+      ]
+    },
+    {
+      "fields": [
+        "de middag",
+        "the afternoon"
+      ]
+    },
+    {
+      "fields": [
+        "‘s middags",
+        "in the afternoon"
+      ]
+    },
+    {
+      "fields": [
+        "de avond",
+        "the evening"
+      ]
+    },
+    {
+      "fields": [
+        "‘s avonds",
+        "in the evening"
+      ]
+    },
+    {
+      "fields": [
+        "kwart voor zeven ‘s ochtends",
+        "quarter to seven am"
+      ]
+    },
+    {
+      "fields": [
+        "middernacht",
+        "midnight"
+      ]
+    },
+    {
+      "fields": [
+        "twaalf uur ‘s middags",
+        "noon"
+      ]
+    },
+    {
+      "fields": [
+        "vrije tijd",
+        "leisure time"
+      ]
+    },
+    {
+      "fields": [
+        "de hobby",
+        "the hobby"
+      ]
+    },
+    {
+      "fields": [
+        "reizen",
+        "to travel"
+      ]
+    },
+    {
+      "fields": [
+        "de vakantie",
+        "the holiday"
+      ]
+    },
+    {
+      "fields": [
+        "kamperen",
+        "to camp out"
+      ]
+    },
+    {
+      "fields": [
+        "het strand",
+        "the beach"
+      ]
+    },
+    {
+      "fields": [
+        "zonnen",
+        "to sunbathe"
+      ]
+    },
+    {
+      "fields": [
+        "het pretpark",
+        "the theme park"
+      ]
+    },
+    {
+      "fields": [
+        "tuinieren",
+        "gardening"
+      ]
+    },
+    {
+      "fields": [
+        "de taal",
+        "the language"
+      ]
+    },
+    {
+      "fields": [
+        "een taal leren",
+        "to learn a language"
+      ]
+    },
+    {
+      "fields": [
+        "sporten",
+        "to exercise"
+      ]
+    },
+    {
+      "fields": [
+        "hardlopen",
+        "to run"
+      ]
+    },
+    {
+      "fields": [
+        "wandelen",
+        "to go for a walk"
+      ]
+    },
+    {
+      "fields": [
+        "tennissen",
+        "to play tennis"
+      ]
+    },
+    {
+      "fields": [
+        "hockeyen",
+        "to play hockey"
+      ]
+    },
+    {
+      "fields": [
+        "borrelen",
+        "to have a drink"
+      ]
+    },
+    {
+      "fields": [
+        "uit eten gaan",
+        "to go out for dinner"
+      ]
+    },
+    {
+      "fields": [
+        "uitgaan",
+        "to go out"
+      ]
+    },
+    {
+      "fields": [
+        "stappen",
+        "to go out (and drink)"
+      ]
+    },
+    {
+      "fields": [
+        "dronken zijn",
+        "being drunk"
+      ]
+    },
+    {
+      "fields": [
+        "koken",
+        "to cook"
+      ]
+    },
+    {
+      "fields": [
+        "kunst",
+        "art"
+      ]
+    },
+    {
+      "fields": [
+        "verjaardag",
+        "the birthday"
+      ]
+    },
+    {
+      "fields": [
+        "een verjaardag vieren",
+        "to celebrate a birthday"
+      ]
+    },
+    {
+      "fields": [
+        "hij is jarig",
+        "it’s his birthday"
+      ]
+    },
+    {
+      "fields": [
+        "zingen",
+        "to sing"
+      ]
+    },
+    {
+      "fields": [
+        "dansen",
+        "to dance"
+      ]
+    },
+    {
+      "fields": [
+        "winkelen",
+        "to go shopping"
+      ]
+    },
+    {
+      "fields": [
+        "Amsterdam",
+        "Amsterdam"
+      ]
+    },
+    {
+      "fields": [
+        "de gracht",
+        "the canal"
+      ]
+    },
+    {
+      "fields": [
+        "het grachtenpand",
+        "the canal house"
+      ]
+    },
+    {
+      "fields": [
+        "de woonboot",
+        "the house boat"
+      ]
+    },
+    {
+      "fields": [
+        "wonen",
+        "to live"
+      ]
+    },
+    {
+      "fields": [
+        "het paleis",
+        "the palace"
+      ]
+    },
+    {
+      "fields": [
+        "pont",
+        "the ferry"
+      ]
+    },
+    {
+      "fields": [
+        "de rondvaart",
+        "the canal cruise"
+      ]
+    },
+    {
+      "fields": [
+        "het museum",
+        "the museum"
+      ]
+    },
+    {
+      "fields": [
+        "het concert",
+        "the concert"
+      ]
+    },
+    {
+      "fields": [
+        "het gebouw",
+        "the building"
+      ]
+    },
+    {
+      "fields": [
+        "het concertgebouw",
+        "the Concertgebouw"
+      ]
+    },
+    {
+      "fields": [
+        "het plein",
+        "the square"
+      ]
+    },
+    {
+      "fields": [
+        "het fietspad",
+        "the bicycle track"
+      ]
+    },
+    {
+      "fields": [
+        "de brug",
+        "the bridge"
+      ]
+    },
+    {
+      "fields": [
+        "het eiland",
+        "the island"
+      ]
+    },
+    {
+      "fields": [
+        "de ring",
+        "the ring, the ring road"
+      ]
+    },
+    {
+      "fields": [
+        "de coffeeshop",
+        "bar where soft drugs is sold"
+      ]
+    },
+    {
+      "fields": [
+        "het stadion",
+        "the stadium"
+      ]
+    },
+    {
+      "fields": [
+        "het hoofdkantoor",
+        "the head office"
+      ]
+    },
+    {
+      "fields": [
+        "de wallen",
+        "the red light district"
+      ]
+    },
+    {
+      "fields": [
+        "de hoer",
+        "the prostitute"
+      ]
+    },
+    {
+      "fields": [
+        "het park",
+        "the park"
+      ]
+    },
+    {
+      "fields": [
+        "het bos",
+        "the forest"
+      ]
+    },
+    {
+      "fields": [
+        "de woning",
+        "the house"
+      ]
+    },
+    {
+      "fields": [
+        "de deur",
+        "the door"
+      ]
+    },
+    {
+      "fields": [
+        "het raam",
+        "the window"
+      ]
+    },
+    {
+      "fields": [
+        "de stoel",
+        "the chair"
+      ]
+    },
+    {
+      "fields": [
+        "de kruk",
+        "the stool"
+      ]
+    },
+    {
+      "fields": [
+        "de tafel",
+        "the table"
+      ]
+    },
+    {
+      "fields": [
+        "de lamp",
+        "the lamp"
+      ]
+    },
+    {
+      "fields": [
+        "de televisie",
+        "the television"
+      ]
+    },
+    {
+      "fields": [
+        "de kast",
+        "the closet"
+      ]
+    },
+    {
+      "fields": [
+        "de wc",
+        "the toilet"
+      ]
+    },
+    {
+      "fields": [
+        "de keuken",
+        "the kitchen"
+      ]
+    },
+    {
+      "fields": [
+        "het fornuis",
+        "the cooker"
+      ]
+    },
+    {
+      "fields": [
+        "de koelkast",
+        "the fridge"
+      ]
+    },
+    {
+      "fields": [
+        "de kamer",
+        "the room"
+      ]
+    },
+    {
+      "fields": [
+        "de woonkamer",
+        "the living room"
+      ]
+    },
+    {
+      "fields": [
+        "de bank",
+        "the couch"
+      ]
+    },
+    {
+      "fields": [
+        "de slaapkamer",
+        "the sleeping room"
+      ]
+    },
+    {
+      "fields": [
+        "het bed",
+        "the bed"
+      ]
+    },
+    {
+      "fields": [
+        "de badkamer",
+        "the bathroom"
+      ]
+    },
+    {
+      "fields": [
+        "de douche",
+        "the shower"
+      ]
+    },
+    {
+      "fields": [
+        "het bad",
+        "the bath tub"
+      ]
+    },
+    {
+      "fields": [
+        "de bijkeuken",
+        "the scullery"
+      ]
+    },
+    {
+      "fields": [
+        "de garage",
+        "the garage"
+      ]
+    },
+    {
+      "fields": [
+        "de tuin",
+        "the garden"
+      ]
+    },
+    {
+      "fields": [
+        "de zolder",
+        "the attic"
+      ]
+    },
+    {
+      "fields": [
+        "het lichaam",
+        "the body"
+      ]
+    },
+    {
+      "fields": [
+        "het lijf",
+        "the body"
+      ]
+    },
+    {
+      "fields": [
+        "het hoofd",
+        "the head"
+      ]
+    },
+    {
+      "fields": [
+        "de kop",
+        "the head"
+      ]
+    },
+    {
+      "fields": [
+        "de mond",
+        "the mouth"
+      ]
+    },
+    {
+      "fields": [
+        "de tand",
+        "the tooth"
+      ]
+    },
+    {
+      "fields": [
+        "het oor",
+        "the ear"
+      ]
+    },
+    {
+      "fields": [
+        "het oog",
+        "the eye"
+      ]
+    },
+    {
+      "fields": [
+        "de bril",
+        "the glasses"
+      ]
+    },
+    {
+      "fields": [
+        "de zonnebril",
+        "the sunglasses"
+      ]
+    },
+    {
+      "fields": [
+        "de neus",
+        "the nose"
+      ]
+    },
+    {
+      "fields": [
+        "het haar",
+        "the hair"
+      ]
+    },
+    {
+      "fields": [
+        "de arm",
+        "the arm"
+      ]
+    },
+    {
+      "fields": [
+        "de elleboog",
+        "the elbow"
+      ]
+    },
+    {
+      "fields": [
+        "de hand",
+        "the hand"
+      ]
+    },
+    {
+      "fields": [
+        "de vinger",
+        "the finger"
+      ]
+    },
+    {
+      "fields": [
+        "het been",
+        "the leg"
+      ]
+    },
+    {
+      "fields": [
+        "de knie",
+        "the knee"
+      ]
+    },
+    {
+      "fields": [
+        "de voet",
+        "the foot"
+      ]
+    },
+    {
+      "fields": [
+        "de teen",
+        "the toe"
+      ]
+    },
+    {
+      "fields": [
+        "de rug",
+        "the spine"
+      ]
+    },
+    {
+      "fields": [
+        "de buik",
+        "the belly, the stomach"
+      ]
+    },
+    {
+      "fields": [
+        "de schouder",
+        "the shoulder"
+      ]
+    },
+    {
+      "fields": [
+        "de kont",
+        "the ass"
+      ]
+    },
+    {
+      "fields": [
+        "de borst",
+        "the chest, the breast"
+      ]
+    },
+    {
+      "fields": [
+        "de baard",
+        "the beard"
+      ]
+    },
+    {
+      "fields": [
+        "de snor",
+        "the moustache"
+      ]
+    },
+    {
+      "fields": [
+        "het hart",
+        "the heart"
+      ]
+    },
+    {
+      "fields": [
+        "de kleren",
+        "the clothes"
+      ]
+    },
+    {
+      "fields": [
+        "de kleding",
+        "the clothing"
+      ]
+    },
+    {
+      "fields": [
+        "de kledingwinkel",
+        "the clothes shop"
+      ]
+    },
+    {
+      "fields": [
+        "de broek",
+        "the pants"
+      ]
+    },
+    {
+      "fields": [
+        "de spijkerbroek",
+        "the jeans"
+      ]
+    },
+    {
+      "fields": [
+        "de trui",
+        "the sweater"
+      ]
+    },
+    {
+      "fields": [
+        "de jas",
+        "the coat"
+      ]
+    },
+    {
+      "fields": [
+        "de rok",
+        "the skirt"
+      ]
+    },
+    {
+      "fields": [
+        "de jurk",
+        "the dress"
+      ]
+    },
+    {
+      "fields": [
+        "de sok",
+        "the sock (short)"
+      ]
+    },
+    {
+      "fields": [
+        "de kous",
+        "the sock (long)"
+      ]
+    },
+    {
+      "fields": [
+        "de schoen",
+        "the shoe"
+      ]
+    },
+    {
+      "fields": [
+        "de klomp",
+        "the wooden shoe"
+      ]
+    },
+    {
+      "fields": [
+        "de riem",
+        "the belt"
+      ]
+    },
+    {
+      "fields": [
+        "het T-shirt",
+        "the T-shirt"
+      ]
+    },
+    {
+      "fields": [
+        "het (onder)hemd",
+        "the undershirt"
+      ]
+    },
+    {
+      "fields": [
+        "het overhemd",
+        "the shirt"
+      ]
+    },
+    {
+      "fields": [
+        "de blouse",
+        "the blouse, the shirt"
+      ]
+    },
+    {
+      "fields": [
+        "het pak",
+        "the suit"
+      ]
+    },
+    {
+      "fields": [
+        "het, de colbert",
+        "the suit jacket"
+      ]
+    },
+    {
+      "fields": [
+        "de stropdas",
+        "the tie"
+      ]
+    },
+    {
+      "fields": [
+        "de strik",
+        "the bow"
+      ]
+    },
+    {
+      "fields": [
+        "de pyjama",
+        "the pyjamas"
+      ]
+    },
+    {
+      "fields": [
+        "de onderbroek",
+        "the undershorts"
+      ]
+    },
+    {
+      "fields": [
+        "de bh",
+        "the bra"
+      ]
+    },
+    {
+      "fields": [
+        "de hoed",
+        "the hat"
+      ]
+    },
+    {
+      "fields": [
+        "de das",
+        "the scarf"
+      ]
+    },
+    {
+      "fields": [
+        "de vader",
+        "the father"
+      ]
+    },
+    {
+      "fields": [
+        "papa",
+        "dad"
+      ]
+    },
+    {
+      "fields": [
+        "de moeder",
+        "the mother"
+      ]
+    },
+    {
+      "fields": [
+        "mama",
+        "mom"
+      ]
+    },
+    {
+      "fields": [
+        "de broer",
+        "the brother"
+      ]
+    },
+    {
+      "fields": [
+        "de zus",
+        "the sister"
+      ]
+    },
+    {
+      "fields": [
+        "de opa",
+        "the grandfather"
+      ]
+    },
+    {
+      "fields": [
+        "de oma",
+        "the grandmother"
+      ]
+    },
+    {
+      "fields": [
+        "de tante",
+        "the aunt"
+      ]
+    },
+    {
+      "fields": [
+        "de oom",
+        "the uncle"
+      ]
+    },
+    {
+      "fields": [
+        "de neef",
+        "the cousin, the nephew"
+      ]
+    },
+    {
+      "fields": [
+        "de nicht",
+        "the cousin, the niece"
+      ]
+    },
+    {
+      "fields": [
+        "het kind",
+        "the child"
+      ]
+    },
+    {
+      "fields": [
+        "het kleinkind",
+        "the grandchild"
+      ]
+    },
+    {
+      "fields": [
+        "de vriend",
+        "the (boy) friend"
+      ]
+    },
+    {
+      "fields": [
+        "de vriendin",
+        "the (girl) friend"
+      ]
+    },
+    {
+      "fields": [
+        "de kennis",
+        "the acquaintance"
+      ]
+    },
+    {
+      "fields": [
+        "de bekende",
+        "the acquaintance"
+      ]
+    },
+    {
+      "fields": [
+        "de klasgenoot",
+        "the classmate"
+      ]
+    },
+    {
+      "fields": [
+        "de verkering",
+        "the relationship (love)"
+      ]
+    },
+    {
+      "fields": [
+        "verliefd",
+        "in love"
+      ]
+    },
+    {
+      "fields": [
+        "verloofd",
+        "to be engaged"
+      ]
+    },
+    {
+      "fields": [
+        "trouwen",
+        "to marry"
+      ]
+    },
+    {
+      "fields": [
+        "scheiden",
+        "to divorce"
+      ]
+    },
+    {
+      "fields": [
+        "gescheiden zijn",
+        "to be divorced"
+      ]
+    },
+    {
+      "fields": [
+        "het dier",
+        "the animal"
+      ]
+    },
+    {
+      "fields": [
+        "het huisdier",
+        "the pet"
+      ]
+    },
+    {
+      "fields": [
+        "de hond",
+        "the dog"
+      ]
+    },
+    {
+      "fields": [
+        "de kat",
+        "the cat"
+      ]
+    },
+    {
+      "fields": [
+        "de muis",
+        "the mouse"
+      ]
+    },
+    {
+      "fields": [
+        "het konijn",
+        "the rabbit"
+      ]
+    },
+    {
+      "fields": [
+        "de haas",
+        "the hare"
+      ]
+    },
+    {
+      "fields": [
+        "de boerderij",
+        "the farm"
+      ]
+    },
+    {
+      "fields": [
+        "de koe",
+        "the cow"
+      ]
+    },
+    {
+      "fields": [
+        "het paard",
+        "the horse"
+      ]
+    },
+    {
+      "fields": [
+        "het varken",
+        "the pig"
+      ]
+    },
+    {
+      "fields": [
+        "de ezel",
+        "the donkey"
+      ]
+    },
+    {
+      "fields": [
+        "de haan",
+        "the cockerel"
+      ]
+    },
+    {
+      "fields": [
+        "de vogel",
+        "the bird"
+      ]
+    },
+    {
+      "fields": [
+        "de eend",
+        "the duck"
+      ]
+    },
+    {
+      "fields": [
+        "de zwaan",
+        "the swan"
+      ]
+    },
+    {
+      "fields": [
+        "de gans",
+        "the goose"
+      ]
+    },
+    {
+      "fields": [
+        "de ooievaar",
+        "the stork"
+      ]
+    },
+    {
+      "fields": [
+        "de mus",
+        "the sparrow"
+      ]
+    },
+    {
+      "fields": [
+        "de duif",
+        "the pigeon"
+      ]
+    },
+    {
+      "fields": [
+        "de vis",
+        "the fish"
+      ]
+    },
+    {
+      "fields": [
+        "het hert",
+        "the deer"
+      ]
+    },
+    {
+      "fields": [
+        "het insect",
+        "the insect"
+      ]
+    },
+    {
+      "fields": [
+        "de vlieg",
+        "the fly"
+      ]
+    },
+    {
+      "fields": [
+        "de bij",
+        "the bee"
+      ]
+    },
+    {
+      "fields": [
+        "de vlinder",
+        "the butterfly"
+      ]
+    },
+    {
+      "fields": [
+        "de spin",
+        "the spider"
+      ]
+    },
+    {
+      "fields": [
+        "nodig hebben",
+        "to need"
+      ]
+    },
+    {
+      "fields": [
+        "vinden",
+        "to find, to think (have an opinion)"
+      ]
+    },
+    {
+      "fields": [
+        "bedoelen",
+        "to mean"
+      ]
+    },
+    {
+      "fields": [
+        "bewegen",
+        "to move"
+      ]
+    },
+    {
+      "fields": [
+        "nemen",
+        "to take"
+      ]
+    },
+    {
+      "fields": [
+        "komen",
+        "to come"
+      ]
+    },
+    {
+      "fields": [
+        "willen",
+        "to want"
+      ]
+    },
+    {
+      "fields": [
+        "gebruiken",
+        "to use"
+      ]
+    },
+    {
+      "fields": [
+        "geven",
+        "to give"
+      ]
+    },
+    {
+      "fields": [
+        "vertellen",
+        "to tell"
+      ]
+    },
+    {
+      "fields": [
+        "proberen",
+        "to try"
+      ]
+    },
+    {
+      "fields": [
+        "lijken",
+        "to seem"
+      ]
+    },
+    {
+      "fields": [
+        "laten zien",
+        "to show"
+      ]
+    },
+    {
+      "fields": [
+        "spelen",
+        "to play"
+      ]
+    },
+    {
+      "fields": [
+        "zitten",
+        "to sit"
+      ]
+    },
+    {
+      "fields": [
+        "staan",
+        "to stand"
+      ]
+    },
+    {
+      "fields": [
+        "betalen",
+        "to pay"
+      ]
+    },
+    {
+      "fields": [
+        "ontmoeten",
+        "to meet"
+      ]
+    },
+    {
+      "fields": [
+        "doorgaan",
+        "to continue"
+      ]
+    },
+    {
+      "fields": [
+        "uitgeven",
+        "to spend"
+      ]
+    },
+    {
+      "fields": [
+        "groeien",
+        "to grow"
+      ]
+    },
+    {
+      "fields": [
+        "aanbieden",
+        "to offer"
+      ]
+    },
+    {
+      "fields": [
+        "herinneren",
+        "to remember"
+      ]
+    },
+    {
+      "fields": [
+        "overwegen",
+        "to consider"
+      ]
+    },
+    {
+      "fields": [
+        "bouwen",
+        "to build"
+      ]
+    },
+    {
+      "fields": [
+        "blijven",
+        "to stay"
+      ]
+    },
+    {
+      "fields": [
+        "het weer",
+        "the weather"
+      ]
+    },
+    {
+      "fields": [
+        "wat voor weer wordt het?",
+        "what will be the weather?"
+      ]
+    },
+    {
+      "fields": [
+        "het weerbericht",
+        "the weather forecast"
+      ]
+    },
+    {
+      "fields": [
+        "het bericht",
+        "the message"
+      ]
+    },
+    {
+      "fields": [
+        "lekker weer, hè",
+        "nice weather isn’t it?"
+      ]
+    },
+    {
+      "fields": [
+        "zeker",
+        "(for) sure"
+      ]
+    },
+    {
+      "fields": [
+        "mooi weer",
+        "nice weather"
+      ]
+    },
+    {
+      "fields": [
+        "vandaag",
+        "today"
+      ]
+    },
+    {
+      "fields": [
+        "de temperatuur",
+        "the temperature"
+      ]
+    },
+    {
+      "fields": [
+        "de thermometer",
+        "the thermometer"
+      ]
+    },
+    {
+      "fields": [
+        "graden",
+        "degrees"
+      ]
+    },
+    {
+      "fields": [
+        "de graad",
+        "the degree"
+      ]
+    },
+    {
+      "fields": [
+        "schijnen",
+        "to shine"
+      ]
+    },
+    {
+      "fields": [
+        "slecht weer",
+        "bad weather"
+      ]
+    },
+    {
+      "fields": [
+        "de neerslag",
+        "the precipitation"
+      ]
+    },
+    {
+      "fields": [
+        "regenen",
+        "to rain"
+      ]
+    },
+    {
+      "fields": [
+        "sneeuwen",
+        "to snow"
+      ]
+    },
+    {
+      "fields": [
+        "hagelen",
+        "to hail"
+      ]
+    },
+    {
+      "fields": [
+        "de wind",
+        "the wind"
+      ]
+    },
+    {
+      "fields": [
+        "waaien",
+        "to blow"
+      ]
+    },
+    {
+      "fields": [
+        "de storm",
+        "the storm"
+      ]
+    },
+    {
+      "fields": [
+        "het onweer",
+        "the thunderstorm"
+      ]
+    },
+    {
+      "fields": [
+        "de bliksem",
+        "the lightning"
+      ]
+    },
+    {
+      "fields": [
+        "de donder",
+        "the thunder"
+      ]
+    },
+    {
+      "fields": [
+        "de wolk",
+        "the cloud"
+      ]
+    },
+    {
+      "fields": [
+        "bewolkt",
+        "cloudy"
+      ]
+    },
+    {
+      "fields": [
+        "vriezen",
+        "to freeze"
+      ]
+    },
+    {
+      "fields": [
+        "het ijs",
+        "the ice"
+      ]
+    },
+    {
+      "fields": [
+        "ander",
+        "other"
+      ]
+    },
+    {
+      "fields": [
+        "kort",
+        "short"
+      ]
+    },
+    {
+      "fields": [
+        "lang",
+        "long"
+      ]
+    },
+    {
+      "fields": [
+        "belangrijk",
+        "important"
+      ]
+    },
+    {
+      "fields": [
+        "beter",
+        "better"
+      ]
+    },
+    {
+      "fields": [
+        "best",
+        "best"
+      ]
+    },
+    {
+      "fields": [
+        "enige",
+        "only"
+      ]
+    },
+    {
+      "fields": [
+        "enkel",
+        "single"
+      ]
+    },
+    {
+      "fields": [
+        "dubbel",
+        "double"
+      ]
+    },
+    {
+      "fields": [
+        "vroeg",
+        "early"
+      ]
+    },
+    {
+      "fields": [
+        "laat",
+        "late"
+      ]
+    },
+    {
+      "fields": [
+        "vrij",
+        "free"
+      ]
+    },
+    {
+      "fields": [
+        "heel",
+        "whole, very"
+      ]
+    },
+    {
+      "fields": [
+        "echt",
+        "real"
+      ]
+    },
+    {
+      "fields": [
+        "vol",
+        "full"
+      ]
+    },
+    {
+      "fields": [
+        "leeg",
+        "empty"
+      ]
+    },
+    {
+      "fields": [
+        "speciaal",
+        "special"
+      ]
+    },
+    {
+      "fields": [
+        "duidelijk",
+        "clear"
+      ]
+    },
+    {
+      "fields": [
+        "onduidelijk",
+        "unclear"
+      ]
+    },
+    {
+      "fields": [
+        "beschikbaar",
+        "available"
+      ]
+    },
+    {
+      "fields": [
+        "waarschijnlijk",
+        "probable"
+      ]
+    },
+    {
+      "fields": [
+        "mogelijk",
+        "possible"
+      ]
+    },
+    {
+      "fields": [
+        "huidig",
+        "current"
+      ]
+    },
+    {
+      "fields": [
+        "verkeerd",
+        "wrong"
+      ]
+    },
+    {
+      "fields": [
+        "juist",
+        "correct"
+      ]
+    },
+    {
+      "fields": [
+        "klaar",
+        "ready"
+      ]
+    },
+    {
+      "fields": [
+        "de gezondheid",
+        "the health"
+      ]
+    },
+    {
+      "fields": [
+        "gezond",
+        "healthy"
+      ]
+    },
+    {
+      "fields": [
+        "ziek",
+        "ill"
+      ]
+    },
+    {
+      "fields": [
+        "(zich) ziek melden",
+        "to report oneself ill"
+      ]
+    },
+    {
+      "fields": [
+        "de griep",
+        "the flu"
+      ]
+    },
+    {
+      "fields": [
+        "verkouden zijn",
+        "to have a cold"
+      ]
+    },
+    {
+      "fields": [
+        "de koorts",
+        "the fever"
+      ]
+    },
+    {
+      "fields": [
+        "de ontsteking",
+        "the inflammation"
+      ]
+    },
+    {
+      "fields": [
+        "misselijk",
+        "nauseous"
+      ]
+    },
+    {
+      "fields": [
+        "duizelig",
+        "dizzy"
+      ]
+    },
+    {
+      "fields": [
+        "de vergiftiging",
+        "the poisoning"
+      ]
+    },
+    {
+      "fields": [
+        "de pijn",
+        "the ache"
+      ]
+    },
+    {
+      "fields": [
+        "zeer",
+        "the ache"
+      ]
+    },
+    {
+      "fields": [
+        "de behandeling",
+        "the treatment"
+      ]
+    },
+    {
+      "fields": [
+        "de huisarts",
+        "the general practitioner"
+      ]
+    },
+    {
+      "fields": [
+        "de patiënt",
+        "the patient"
+      ]
+    },
+    {
+      "fields": [
+        "het spreekuur",
+        "the consultation hours"
+      ]
+    },
+    {
+      "fields": [
+        "de EHBO",
+        "the first aid"
+      ]
+    },
+    {
+      "fields": [
+        "de eerste hulp",
+        "the first aid"
+      ]
+    },
+    {
+      "fields": [
+        "spoed",
+        "urgent"
+      ]
+    },
+    {
+      "fields": [
+        "de ambulance",
+        "the ambulance"
+      ]
+    },
+    {
+      "fields": [
+        "de afspraak",
+        "the appointment"
+      ]
+    },
+    {
+      "fields": [
+        "de verwijsbrief",
+        "the referral letter"
+      ]
+    },
+    {
+      "fields": [
+        "verwijzen",
+        "to refer"
+      ]
+    },
+    {
+      "fields": [
+        "het onderzoek",
+        "the check-up"
+      ]
+    },
+    {
+      "fields": [
+        "de tandarts",
+        "the dentist"
+      ]
+    },
+    {
+      "fields": [
+        "de verzekering",
+        "the insurance"
+      ]
+    },
+    {
+      "fields": [
+        "de ziektekostenverzekering",
+        "the health insurance"
+      ]
+    },
+    {
+      "fields": [
+        "het medicijn",
+        "the medication"
+      ]
+    },
+    {
+      "fields": [
+        "het recept",
+        "the prescription"
+      ]
+    },
+    {
+      "fields": [
+        "aardrijkskunde",
+        "geography"
+      ]
+    },
+    {
+      "fields": [
+        "het land",
+        "the country"
+      ]
+    },
+    {
+      "fields": [
+        "de provincie",
+        "the province"
+      ]
+    },
+    {
+      "fields": [
+        "de streek",
+        "the region"
+      ]
+    },
+    {
+      "fields": [
+        "de stad",
+        "the city"
+      ]
+    },
+    {
+      "fields": [
+        "de hoofdstad",
+        "the capital"
+      ]
+    },
+    {
+      "fields": [
+        "het dorp",
+        "the village"
+      ]
+    },
+    {
+      "fields": [
+        "de plaats",
+        "the place"
+      ]
+    },
+    {
+      "fields": [
+        "de gemeente",
+        "the municipality"
+      ]
+    },
+    {
+      "fields": [
+        "het gemeentehuis",
+        "the town hall"
+      ]
+    },
+    {
+      "fields": [
+        "het platteland",
+        "the countryside"
+      ]
+    },
+    {
+      "fields": [
+        "de polder",
+        "the polder"
+      ]
+    },
+    {
+      "fields": [
+        "de vesting",
+        "the fortress"
+      ]
+    },
+    {
+      "fields": [
+        "wallen",
+        "fortified walls"
+      ]
+    },
+    {
+      "fields": [
+        "de wal",
+        "the shore"
+      ]
+    },
+    {
+      "fields": [
+        "de zee",
+        "the sea"
+      ]
+    },
+    {
+      "fields": [
+        "het meer",
+        "the lake"
+      ]
+    },
+    {
+      "fields": [
+        "het kanaal",
+        "the channel"
+      ]
+    },
+    {
+      "fields": [
+        "de rivier",
+        "the river"
+      ]
+    },
+    {
+      "fields": [
+        "de natuur",
+        "the nature"
+      ]
+    },
+    {
+      "fields": [
+        "de dam",
+        "the dam"
+      ]
+    },
+    {
+      "fields": [
+        "de dijk",
+        "the dike"
+      ]
+    },
+    {
+      "fields": [
+        "de duin",
+        "the dune"
+      ]
+    },
+    {
+      "fields": [
+        "de tunnel",
+        "the tunnel"
+      ]
+    },
+    {
+      "fields": [
+        "de berg",
+        "the mountain"
+      ]
+    },
+    {
+      "fields": [
+        "de heuvel",
+        "the hill"
+      ]
+    },
+    {
+      "fields": [
+        "de hei",
+        "the moor"
+      ]
+    },
+    {
+      "fields": [
+        "het humeur",
+        "the mood"
+      ]
+    },
+    {
+      "fields": [
+        "de gevoelens",
+        "the feelings"
+      ]
+    },
+    {
+      "fields": [
+        "chagrijnig",
+        "grumpy"
+      ]
+    },
+    {
+      "fields": [
+        "moe",
+        "tired"
+      ]
+    },
+    {
+      "fields": [
+        "teleurgesteld",
+        "disappointed"
+      ]
+    },
+    {
+      "fields": [
+        "vervelend",
+        "annoying"
+      ]
+    },
+    {
+      "fields": [
+        "vervelen",
+        "to annoy"
+      ]
+    },
+    {
+      "fields": [
+        "verdrietig",
+        "sad"
+      ]
+    },
+    {
+      "fields": [
+        "boos",
+        "angry"
+      ]
+    },
+    {
+      "fields": [
+        "kwaad",
+        "furious"
+      ]
+    },
+    {
+      "fields": [
+        "depressief",
+        "depressive"
+      ]
+    },
+    {
+      "fields": [
+        "onrustig",
+        "restless"
+      ]
+    },
+    {
+      "fields": [
+        "bang",
+        "afraid"
+      ]
+    },
+    {
+      "fields": [
+        "ongeduldig",
+        "impatient"
+      ]
+    },
+    {
+      "fields": [
+        "vrolijk",
+        "cheerful"
+      ]
+    },
+    {
+      "fields": [
+        "opgewekt",
+        "cheerful"
+      ]
+    },
+    {
+      "fields": [
+        "tevreden",
+        "satisfied"
+      ]
+    },
+    {
+      "fields": [
+        "ontevreden",
+        "dissatisfied"
+      ]
+    },
+    {
+      "fields": [
+        "verrast",
+        "surprised"
+      ]
+    },
+    {
+      "fields": [
+        "enthousiast",
+        "enthusiastic"
+      ]
+    },
+    {
+      "fields": [
+        "ontspannen",
+        "relaxed"
+      ]
+    },
+    {
+      "fields": [
+        "romantisch",
+        "romantic"
+      ]
+    },
+    {
+      "fields": [
+        "vriendelijk",
+        "friendly"
+      ]
+    },
+    {
+      "fields": [
+        "aardig",
+        "friendly"
+      ]
+    },
+    {
+      "fields": [
+        "sympathiek",
+        "sympathetic"
+      ]
+    },
+    {
+      "fields": [
+        "zielig",
+        "pathetic"
+      ]
+    },
+    {
+      "fields": [
+        "serieus",
+        "serious"
+      ]
+    },
+    {
+      "fields": [
+        "de maaltijd",
+        "the meal"
+      ]
+    },
+    {
+      "fields": [
+        "het ontbijt",
+        "the breakfast"
+      ]
+    },
+    {
+      "fields": [
+        "de lunch",
+        "the lunch"
+      ]
+    },
+    {
+      "fields": [
+        "het middageten",
+        "the lunch"
+      ]
+    },
+    {
+      "fields": [
+        "het avondeten",
+        "the dinner"
+      ]
+    },
+    {
+      "fields": [
+        "de kok",
+        "the cook"
+      ]
+    },
+    {
+      "fields": [
+        "het gerecht",
+        "the dish"
+      ]
+    },
+    {
+      "fields": [
+        "honger hebben",
+        "to be hungry"
+      ]
+    },
+    {
+      "fields": [
+        "dorst hebben",
+        "to be thirsty"
+      ]
+    },
+    {
+      "fields": [
+        "de smaak",
+        "the taste"
+      ]
+    },
+    {
+      "fields": [
+        "zoet",
+        "sweet"
+      ]
+    },
+    {
+      "fields": [
+        "zout",
+        "salty"
+      ]
+    },
+    {
+      "fields": [
+        "zuur",
+        "acid"
+      ]
+    },
+    {
+      "fields": [
+        "bitter",
+        "bitter"
+      ]
+    },
+    {
+      "fields": [
+        "pittig",
+        "spicy"
+      ]
+    },
+    {
+      "fields": [
+        "de geur",
+        "the smell"
+      ]
+    },
+    {
+      "fields": [
+        "de pan",
+        "the pan"
+      ]
+    },
+    {
+      "fields": [
+        "het vuur",
+        "the fire"
+      ]
+    },
+    {
+      "fields": [
+        "de rook",
+        "the smoke"
+      ]
+    },
+    {
+      "fields": [
+        "het bestek",
+        "the cutlery"
+      ]
+    },
+    {
+      "fields": [
+        "de vork",
+        "the fork"
+      ]
+    },
+    {
+      "fields": [
+        "het mes",
+        "the knife"
+      ]
+    },
+    {
+      "fields": [
+        "de lepel",
+        "the spoon"
+      ]
+    },
+    {
+      "fields": [
+        "het bord",
+        "the plate"
+      ]
+    },
+    {
+      "fields": [
+        "het glas",
+        "the glass"
+      ]
+    },
+    {
+      "fields": [
+        "het kopje",
+        "the cup"
+      ]
+    },
+    {
+      "fields": [
+        "de fles",
+        "the bottle"
+      ]
+    },
+    {
+      "fields": [
+        "smakelijk eten",
+        "enjoy your meal"
+      ]
+    },
+    {
+      "fields": [
+        "eet smakelijk",
+        "enjoy your meal"
+      ]
+    },
+    {
+      "fields": [
+        "vers",
+        "fresh"
+      ]
+    },
+    {
+      "fields": [
+        "de wortel",
+        "the carrot"
+      ]
+    },
+    {
+      "fields": [
+        "de boon",
+        "the bean"
+      ]
+    },
+    {
+      "fields": [
+        "de erwt",
+        "the pea"
+      ]
+    },
+    {
+      "fields": [
+        "de spinazie",
+        "the spinach"
+      ]
+    },
+    {
+      "fields": [
+        "de boerenkool",
+        "the kale"
+      ]
+    },
+    {
+      "fields": [
+        "de worst",
+        "the sausage"
+      ]
+    },
+    {
+      "fields": [
+        "de knoflook",
+        "the garlic"
+      ]
+    },
+    {
+      "fields": [
+        "de sla",
+        "the lettuce"
+      ]
+    },
+    {
+      "fields": [
+        "de komkommer",
+        "the cucumber"
+      ]
+    },
+    {
+      "fields": [
+        "de tomaat",
+        "the tomato"
+      ]
+    },
+    {
+      "fields": [
+        "de ui",
+        "the onion"
+      ]
+    },
+    {
+      "fields": [
+        "het ei",
+        "the egg"
+      ]
+    },
+    {
+      "fields": [
+        "de soep",
+        "the soup"
+      ]
+    },
+    {
+      "fields": [
+        "de rijst",
+        "the rice"
+      ]
+    },
+    {
+      "fields": [
+        "de peper",
+        "the pepper"
+      ]
+    },
+    {
+      "fields": [
+        "het zout",
+        "the salt"
+      ]
+    },
+    {
+      "fields": [
+        "de suiker",
+        "the sugar"
+      ]
+    },
+    {
+      "fields": [
+        "de appel",
+        "the apple"
+      ]
+    },
+    {
+      "fields": [
+        "de peer",
+        "the pear"
+      ]
+    },
+    {
+      "fields": [
+        "de banaan",
+        "the banana"
+      ]
+    },
+    {
+      "fields": [
+        "de perzik",
+        "the peach"
+      ]
+    },
+    {
+      "fields": [
+        "de abrikoos",
+        "the apricot"
+      ]
+    },
+    {
+      "fields": [
+        "de sinaasappel",
+        "the orange"
+      ]
+    },
+    {
+      "fields": [
+        "de mandarijn",
+        "the mandarin"
+      ]
+    },
+    {
+      "fields": [
+        "de citroen",
+        "the lemon"
+      ]
+    },
+    {
+      "fields": [
+        "de pruim",
+        "the plum"
+      ]
+    },
+    {
+      "fields": [
+        "de meloen",
+        "the melon"
+      ]
+    },
+    {
+      "fields": [
+        "de framboos",
+        "the raspberry"
+      ]
+    },
+    {
+      "fields": [
+        "de bes",
+        "the berry"
+      ]
+    },
+    {
+      "fields": [
+        "de kers",
+        "the cherry"
+      ]
+    },
+    {
+      "fields": [
+        "de aardbei",
+        "the strawberry"
+      ]
+    },
+    {
+      "fields": [
+        "lachen",
+        "to laugh"
+      ]
+    },
+    {
+      "fields": [
+        "wassen",
+        "to wash"
+      ]
+    },
+    {
+      "fields": [
+        "gedragen",
+        "to behave"
+      ]
+    },
+    {
+      "fields": [
+        "haten",
+        "to hate"
+      ]
+    },
+    {
+      "fields": [
+        "delen",
+        "to share"
+      ]
+    },
+    {
+      "fields": [
+        "kiezen",
+        "to choose"
+      ]
+    },
+    {
+      "fields": [
+        "begrijpen",
+        "to understand"
+      ]
+    },
+    {
+      "fields": [
+        "ik begrijp het niet",
+        "I don’t understand"
+      ]
+    },
+    {
+      "fields": [
+        "dromen",
+        "to dream"
+      ]
+    },
+    {
+      "fields": [
+        "genieten",
+        "to enjoy"
+      ]
+    },
+    {
+      "fields": [
+        "huilen",
+        "to cry"
+      ]
+    },
+    {
+      "fields": [
+        "ontdekken",
+        "to discover"
+      ]
+    },
+    {
+      "fields": [
+        "ontwikkelen",
+        "to develop"
+      ]
+    },
+    {
+      "fields": [
+        "vergelijken",
+        "to compare"
+      ]
+    },
+    {
+      "fields": [
+        "vergissen",
+        "to be mistaken"
+      ]
+    },
+    {
+      "fields": [
+        "verkopen",
+        "to sell"
+      ]
+    },
+    {
+      "fields": [
+        "vertrekken",
+        "to leave"
+      ]
+    },
+    {
+      "fields": [
+        "vertrouwen",
+        "to trust"
+      ]
+    },
+    {
+      "fields": [
+        "verwachten",
+        "to expect"
+      ]
+    },
+    {
+      "fields": [
+        "in verwachting",
+        "expecting (a baby)"
+      ]
+    },
+    {
+      "fields": [
+        "zwanger",
+        "pregnant"
+      ]
+    },
+    {
+      "fields": [
+        "zoeken",
+        "to search"
+      ]
+    },
+    {
+      "fields": [
+        "zullen",
+        "will"
+      ]
+    },
+    {
+      "fields": [
+        "bijten",
+        "to bite"
+      ]
+    },
+    {
+      "fields": [
+        "noemen",
+        "to call"
+      ]
+    },
+    {
+      "fields": [
+        "het gereedschap",
+        "the tools"
+      ]
+    },
+    {
+      "fields": [
+        "het instrument",
+        "the tool, the (musical) instrument"
+      ]
+    },
+    {
+      "fields": [
+        "de schaar",
+        "the scissors"
+      ]
+    },
+    {
+      "fields": [
+        "knippen",
+        "to cut (with scissors)"
+      ]
+    },
+    {
+      "fields": [
+        "de machine",
+        "the machine"
+      ]
+    },
+    {
+      "fields": [
+        "de rekenmachine",
+        "the calculator"
+      ]
+    },
+    {
+      "fields": [
+        "de computer",
+        "the computer"
+      ]
+    },
+    {
+      "fields": [
+        "het slot",
+        "the lock"
+      ]
+    },
+    {
+      "fields": [
+        "de sleutel",
+        "the key"
+      ]
+    },
+    {
+      "fields": [
+        "openen",
+        "to open"
+      ]
+    },
+    {
+      "fields": [
+        "de telefoon",
+        "the telephone"
+      ]
+    },
+    {
+      "fields": [
+        "het potlood",
+        "the pencil"
+      ]
+    },
+    {
+      "fields": [
+        "de pen",
+        "the pen"
+      ]
+    },
+    {
+      "fields": [
+        "het papier",
+        "the paper"
+      ]
+    },
+    {
+      "fields": [
+        "de olie",
+        "the oil"
+      ]
+    },
+    {
+      "fields": [
+        "de benzine",
+        "the petrol"
+      ]
+    },
+    {
+      "fields": [
+        "de brandstof",
+        "the fuel"
+      ]
+    },
+    {
+      "fields": [
+        "het goud",
+        "the gold"
+      ]
+    },
+    {
+      "fields": [
+        "het zilver",
+        "the silver"
+      ]
+    },
+    {
+      "fields": [
+        "het hout",
+        "the wood"
+      ]
+    },
+    {
+      "fields": [
+        "de plank",
+        "the plank"
+      ]
+    },
+    {
+      "fields": [
+        "de lucht",
+        "the air"
+      ]
+    },
+    {
+      "fields": [
+        "het ijzer",
+        "the iron"
+      ]
+    },
+    {
+      "fields": [
+        "het staal",
+        "the steel"
+      ]
+    },
+    {
+      "fields": [
+        "de steen",
+        "the stone"
+      ]
+    },
+    {
+      "fields": [
+        "het stof",
+        "the dust"
+      ]
+    },
+    {
+      "fields": [
+        "de stof",
+        "the material"
+      ]
+    },
+    {
+      "fields": [
+        "de aarde",
+        "the earth"
+      ]
+    },
+    {
+      "fields": [
+        "niets",
+        "nothing"
+      ]
+    },
+    {
+      "fields": [
+        "alles",
+        "everything"
+      ]
+    },
+    {
+      "fields": [
+        "een beetje",
+        "a bit"
+      ]
+    },
+    {
+      "fields": [
+        "natuurlijk",
+        "of course"
+      ]
+    },
+    {
+      "fields": [
+        "reeds",
+        "already"
+      ]
+    },
+    {
+      "fields": [
+        "al",
+        "already"
+      ]
+    },
+    {
+      "fields": [
+        "net",
+        "just"
+      ]
+    },
+    {
+      "fields": [
+        "pas",
+        "only"
+      ]
+    },
+    {
+      "fields": [
+        "nog",
+        "still"
+      ]
+    },
+    {
+      "fields": [
+        "erg",
+        "very"
+      ]
+    },
+    {
+      "fields": [
+        "even",
+        "just (as)"
+      ]
+    },
+    {
+      "fields": [
+        "alleen",
+        "alone"
+      ]
+    },
+    {
+      "fields": [
+        "altijd",
+        "always"
+      ]
+    },
+    {
+      "fields": [
+        "door",
+        "through"
+      ]
+    },
+    {
+      "fields": [
+        "dus",
+        "so"
+      ]
+    },
+    {
+      "fields": [
+        "genoeg",
+        "enough"
+      ]
+    },
+    {
+      "fields": [
+        "bijna",
+        "almost"
+      ]
+    },
+    {
+      "fields": [
+        "bijvoorbeeld",
+        "for example"
+      ]
+    },
+    {
+      "fields": [
+        "normaal",
+        "usually"
+      ]
+    },
+    {
+      "fields": [
+        "nooit",
+        "never"
+      ]
+    },
+    {
+      "fields": [
+        "ooit",
+        "ever"
+      ]
+    },
+    {
+      "fields": [
+        "nu",
+        "now"
+      ]
+    },
+    {
+      "fields": [
+        "soms",
+        "sometimes"
+      ]
+    },
+    {
+      "fields": [
+        "ook",
+        "also, too"
+      ]
+    },
+    {
+      "fields": [
+        "meer",
+        "more"
+      ]
+    },
+    {
+      "fields": [
+        "minder",
+        "less"
+      ]
+    },
+    {
+      "fields": [
+        "verder",
+        "further"
+      ]
+    },
+    {
+      "fields": [
+        "terug",
+        "back"
+      ]
+    },
+    {
+      "fields": [
+        "de kleur",
+        "the colour"
+      ]
+    },
+    {
+      "fields": [
+        "rood",
+        "red"
+      ]
+    },
+    {
+      "fields": [
+        "het vierkant",
+        "the square"
+      ]
+    },
+    {
+      "fields": [
+        "de cirkel",
+        "the circle"
+      ]
+    },
+    {
+      "fields": [
+        "de driehoek",
+        "the triangle"
+      ]
+    },
+    {
+      "fields": [
+        "groen",
+        "green"
+      ]
+    },
+    {
+      "fields": [
+        "volgende",
+        "next"
+      ]
+    },
+    {
+      "fields": [
+        "blauw",
+        "blue"
+      ]
+    },
+    {
+      "fields": [
+        "geel",
+        "yellow"
+      ]
+    },
+    {
+      "fields": [
+        "paars",
+        "purple"
+      ]
+    },
+    {
+      "fields": [
+        "oranje",
+        "orange"
+      ]
+    },
+    {
+      "fields": [
+        "wit",
+        "white"
+      ]
+    },
+    {
+      "fields": [
+        "zwart",
+        "black"
+      ]
+    },
+    {
+      "fields": [
+        "grijs",
+        "grey"
+      ]
+    },
+    {
+      "fields": [
+        "bruin",
+        "brown"
+      ]
+    },
+    {
+      "fields": [
+        "roze",
+        "pink"
+      ]
+    },
+    {
+      "fields": [
+        "plat",
+        "flat"
+      ]
+    },
+    {
+      "fields": [
+        "dik",
+        "thick, fat"
+      ]
+    },
+    {
+      "fields": [
+        "dun",
+        "thin"
+      ]
+    },
+    {
+      "fields": [
+        "breed",
+        "wide"
+      ]
+    },
+    {
+      "fields": [
+        "smal",
+        "narrow"
+      ]
+    },
+    {
+      "fields": [
+        "beide",
+        "both"
+      ]
+    },
+    {
+      "fields": [
+        "het gezicht",
+        "the face"
+      ]
+    },
+    {
+      "fields": [
+        "elk",
+        "each"
+      ]
+    },
+    {
+      "fields": [
+        "gelijk",
+        "equal"
+      ]
+    },
+    {
+      "fields": [
+        "zelfde",
+        "same"
+      ]
+    },
+    {
+      "fields": [
+        "recht",
+        "straight"
+      ]
+    },
+    {
+      "fields": [
+        "makkelijk",
+        "easy"
+      ]
+    },
+    {
+      "fields": [
+        "moeilijk",
+        "difficult"
+      ]
+    },
+    {
+      "fields": [
+        "het feest",
+        "the party"
+      ]
+    },
+    {
+      "fields": [
+        "vieren",
+        "to celebrate"
+      ]
+    },
+    {
+      "fields": [
+        "de feestdag",
+        "the public holiday"
+      ]
+    },
+    {
+      "fields": [
+        "de vrije dag",
+        "the day off"
+      ]
+    },
+    {
+      "fields": [
+        "Koningsdag",
+        "King’s Day"
+      ]
+    },
+    {
+      "fields": [
+        "Sinterklaas",
+        "(Sinterklaas)"
+      ]
+    },
+    {
+      "fields": [
+        "Zwarte Piet",
+        "(Black Pete)"
+      ]
+    },
+    {
+      "fields": [
+        "de zak",
+        "the bag"
+      ]
+    },
+    {
+      "fields": [
+        "Kerstmis",
+        "Christmas"
+      ]
+    },
+    {
+      "fields": [
+        "de kerstboom",
+        "the Christmas tree"
+      ]
+    },
+    {
+      "fields": [
+        "de kerstman",
+        "Santa Claus"
+      ]
+    },
+    {
+      "fields": [
+        "Oudjaar",
+        "New year’s eve"
+      ]
+    },
+    {
+      "fields": [
+        "de oliebol",
+        "Dutch fritter with raisins"
+      ]
+    },
+    {
+      "fields": [
+        "Nieuwjaar",
+        "New year"
+      ]
+    },
+    {
+      "fields": [
+        "Oud en Nieuw",
+        "New year’s eve and New year’s day"
+      ]
+    },
+    {
+      "fields": [
+        "Pasen",
+        "Easter"
+      ]
+    },
+    {
+      "fields": [
+        "de paashaas",
+        "the Easter bunny"
+      ]
+    },
+    {
+      "fields": [
+        "het paasei",
+        "the Easter egg"
+      ]
+    },
+    {
+      "fields": [
+        "ijsvrij",
+        "a day off for skating"
+      ]
+    },
+    {
+      "fields": [
+        "uitnodigen",
+        "to invite"
+      ]
+    },
+    {
+      "fields": [
+        "het bezoek",
+        "the visit"
+      ]
+    },
+    {
+      "fields": [
+        "ontvangen",
+        "to receive"
+      ]
+    },
+    {
+      "fields": [
+        "de geboorte",
+        "the birth"
+      ]
+    },
+    {
+      "fields": [
+        "de bruiloft",
+        "the wedding"
+      ]
+    },
+    {
+      "fields": [
+        "de verjaardag",
+        "the birthday"
+      ]
+    },
+    {
+      "fields": [
+        "de taart",
+        "the pie"
+      ]
+    },
+    {
+      "fields": [
+        "de kaars",
+        "the candle"
+      ]
+    },
+    {
+      "fields": [
+        "verrassen",
+        "to surprise"
+      ]
+    },
+    {
+      "fields": [
+        "het cadeau",
+        "the present"
+      ]
+    },
+    {
+      "fields": [
+        "het beest",
+        "the animal, the beast"
+      ]
+    },
+    {
+      "fields": [
+        "de schildpad",
+        "the turtle"
+      ]
+    },
+    {
+      "fields": [
+        "de hamster",
+        "the hamster"
+      ]
+    },
+    {
+      "fields": [
+        "de goudvis",
+        "the goldfish"
+      ]
+    },
+    {
+      "fields": [
+        "het schaap",
+        "the sheep"
+      ]
+    },
+    {
+      "fields": [
+        "de geit",
+        "the goat"
+      ]
+    },
+    {
+      "fields": [
+        "de vos",
+        "the fox"
+      ]
+    },
+    {
+      "fields": [
+        "wild",
+        "wild"
+      ]
+    },
+    {
+      "fields": [
+        "de mier",
+        "the ant"
+      ]
+    },
+    {
+      "fields": [
+        "de mug",
+        "the mosquito"
+      ]
+    },
+    {
+      "fields": [
+        "de kikker",
+        "the frog"
+      ]
+    },
+    {
+      "fields": [
+        "de slak",
+        "the snail"
+      ]
+    },
+    {
+      "fields": [
+        "de eekhoorn",
+        "the squirrel"
+      ]
+    },
+    {
+      "fields": [
+        "de dolfijn",
+        "the dolphin"
+      ]
+    },
+    {
+      "fields": [
+        "de zeehond",
+        "the seal"
+      ]
+    },
+    {
+      "fields": [
+        "de walvis",
+        "the whale"
+      ]
+    },
+    {
+      "fields": [
+        "de haai",
+        "the shark"
+      ]
+    },
+    {
+      "fields": [
+        "de dierentuin",
+        "the zoo"
+      ]
+    },
+    {
+      "fields": [
+        "de aap",
+        "the monkey"
+      ]
+    },
+    {
+      "fields": [
+        "de olifant",
+        "the elephant"
+      ]
+    },
+    {
+      "fields": [
+        "de beer",
+        "the bear"
+      ]
+    },
+    {
+      "fields": [
+        "de wolf",
+        "the wolf"
+      ]
+    },
+    {
+      "fields": [
+        "de giraffe",
+        "the giraffe"
+      ]
+    },
+    {
+      "fields": [
+        "de slang",
+        "the snake"
+      ]
+    },
+    {
+      "fields": [
+        "de krokodil",
+        "the crocodile"
+      ]
+    },
+    {
+      "fields": [
+        "de kameel",
+        "the camel"
+      ]
+    },
+    {
+      "fields": [
+        "de tijger",
+        "the tiger"
+      ]
+    },
+    {
+      "fields": [
+        "de leeuw",
+        "the lion"
+      ]
+    },
+    {
+      "fields": [
+        "nat",
+        "wet"
+      ]
+    },
+    {
+      "fields": [
+        "droog",
+        "dry"
+      ]
+    },
+    {
+      "fields": [
+        "algemeen",
+        "general"
+      ]
+    },
+    {
+      "fields": [
+        "bijzonder",
+        "special"
+      ]
+    },
+    {
+      "fields": [
+        "gebruikelijk",
+        "common"
+      ]
+    },
+    {
+      "fields": [
+        "dom",
+        "stupid"
+      ]
+    },
+    {
+      "fields": [
+        "slim",
+        "clever"
+      ]
+    },
+    {
+      "fields": [
+        "druk",
+        "busy"
+      ]
+    },
+    {
+      "fields": [
+        "glad",
+        "slippery"
+      ]
+    },
+    {
+      "fields": [
+        "beroemd",
+        "famous"
+      ]
+    },
+    {
+      "fields": [
+        "lui",
+        "lazy"
+      ]
+    },
+    {
+      "fields": [
+        "stil",
+        "quiet"
+      ]
+    },
+    {
+      "fields": [
+        "verschrikkelijk",
+        "terrible"
+      ]
+    },
+    {
+      "fields": [
+        "voorzichtig",
+        "careful"
+      ]
+    },
+    {
+      "fields": [
+        "sterk",
+        "strong"
+      ]
+    },
+    {
+      "fields": [
+        "zwak",
+        "weak"
+      ]
+    },
+    {
+      "fields": [
+        "eenzaam",
+        "lonely"
+      ]
+    },
+    {
+      "fields": [
+        "compleet",
+        "complete"
+      ]
+    },
+    {
+      "fields": [
+        "wakker",
+        "awake"
+      ]
+    },
+    {
+      "fields": [
+        "meest",
+        "most"
+      ]
+    },
+    {
+      "fields": [
+        "noord",
+        "north"
+      ]
+    },
+    {
+      "fields": [
+        "oost",
+        "east"
+      ]
+    },
+    {
+      "fields": [
+        "zuid",
+        "south"
+      ]
+    },
+    {
+      "fields": [
+        "west",
+        "west"
+      ]
+    },
+    {
+      "fields": [
+        "veilig",
+        "safe"
+      ]
+    },
+    {
+      "fields": [
+        "gevaarlijk",
+        "dangerous"
+      ]
+    },
+    {
+      "fields": [
+        "het leger",
+        "the army"
+      ]
+    },
+    {
+      "fields": [
+        "de oefening",
+        "the exercise"
+      ]
+    },
+    {
+      "fields": [
+        "de oorlog",
+        "the war"
+      ]
+    },
+    {
+      "fields": [
+        "de aanval",
+        "the attack"
+      ]
+    },
+    {
+      "fields": [
+        "het bloed",
+        "the blood"
+      ]
+    },
+    {
+      "fields": [
+        "dood",
+        "dead"
+      ]
+    },
+    {
+      "fields": [
+        "het nieuws",
+        "the news"
+      ]
+    },
+    {
+      "fields": [
+        "de krant",
+        "the newspaper"
+      ]
+    },
+    {
+      "fields": [
+        "de vlag",
+        "the flag"
+      ]
+    },
+    {
+      "fields": [
+        "toekomst",
+        "the future"
+      ]
+    },
+    {
+      "fields": [
+        "het einde",
+        "the end"
+      ]
+    },
+    {
+      "fields": [
+        "maan",
+        "the moon"
+      ]
+    },
+    {
+      "fields": [
+        "ster",
+        "the star"
+      ]
+    },
+    {
+      "fields": [
+        "de schaduw",
+        "the shadow / shade"
+      ]
+    },
+    {
+      "fields": [
+        "moeten",
+        "must / have to / should"
+      ]
+    },
+    {
+      "fields": [
+        "zetten",
+        "to put"
+      ]
+    },
+    {
+      "fields": [
+        "draaien",
+        "to turn"
+      ]
+    },
+    {
+      "fields": [
+        "kosten",
+        "to cost"
+      ]
+    },
+    {
+      "fields": [
+        "ruiken",
+        "to smell"
+      ]
+    },
+    {
+      "fields": [
+        "leiden",
+        "to lead"
+      ]
+    },
+    {
+      "fields": [
+        "dak",
+        "the roof"
+      ]
+    },
+    {
+      "fields": [
+        "heet",
+        "hot"
+      ]
+    },
+    {
+      "fields": [
+        "de markt",
+        "the market"
+      ]
+    },
+    {
+      "fields": [
+        "het geld",
+        "the money"
+      ]
+    },
+    {
+      "fields": [
+        "geluk",
+        "the happiness"
+      ]
+    },
+    {
+      "fields": [
+        "laatst",
+        "last"
+      ]
+    },
+    {
+      "fields": [
+        "welkom",
+        "welcome"
+      ]
+    },
+    {
+      "fields": [
+        "thuis",
+        "home"
+      ]
+    },
+    {
+      "fields": [
+        "het gras",
+        "the grass"
+      ]
+    },
+    {
+      "fields": [
+        "de boom",
+        "the tree"
+      ]
+    },
+    {
+      "fields": [
+        "eigen",
+        "own"
+      ]
+    },
+    {
+      "fields": [
+        "mijn",
+        "my"
+      ]
+    },
+    {
+      "fields": [
+        "jouw / je",
+        "your"
+      ]
+    },
+    {
+      "fields": [
+        "haar",
+        "her"
+      ]
+    },
+    {
+      "fields": [
+        "ons / onze",
+        "our"
+      ]
+    },
+    {
+      "fields": [
+        "jullie / uw",
+        "your"
+      ]
+    },
+    {
+      "fields": [
+        "uw",
+        "your"
+      ]
+    },
+    {
+      "fields": [
+        "hun",
+        "their"
+      ]
+    },
+    {
+      "fields": [
+        "geen",
+        "no / none"
+      ]
+    },
+    {
+      "fields": [
+        "gewoon",
+        "usual"
+      ]
+    },
+    {
+      "fields": [
+        "als",
+        "if"
+      ]
+    },
+    {
+      "fields": [
+        "het verschil",
+        "the difference"
+      ]
+    },
+    {
+      "fields": [
+        "de leeftijd",
+        "the age"
+      ]
+    },
+    {
+      "fields": [
+        "iemand",
+        "somebody"
+      ]
+    },
+    {
+      "fields": [
+        "iedereen",
+        "everybody"
+      ]
+    },
+    {
+      "fields": [
+        "samen",
+        "together"
+      ]
+    },
+    {
+      "fields": [
+        "dichtbij",
+        "nearby"
+      ]
+    },
+    {
+      "fields": [
+        "vaak",
+        "often"
+      ]
+    },
+    {
+      "fields": [
+        "de grap",
+        "the joke"
+      ]
+    },
+    {
+      "fields": [
+        "het idee",
+        "the idea"
+      ]
+    },
+    {
+      "fields": [
+        "het geluid",
+        "the sound"
+      ]
+    },
+    {
+      "fields": [
+        "de muziek",
+        "the music"
+      ]
+    },
+    {
+      "fields": [
+        "het nummer",
+        "the number / the song"
+      ]
+    },
+    {
+      "fields": [
+        "de naam",
+        "the name"
+      ]
+    },
+    {
+      "fields": [
+        "het boek",
+        "the book"
+      ]
+    },
+    {
+      "fields": [
+        "de les",
+        "the lesson"
+      ]
+    },
+    {
+      "fields": [
+        "het woord",
+        "the word"
+      ]
+    },
+    {
+      "fields": [
+        "immigreren",
+        "to immigrate"
+      ]
+    },
+    {
+      "fields": [
+        "emigreren",
+        "to emigrate"
+      ]
+    },
+    {
+      "fields": [
+        "de allochtoon",
+        "the immigrant"
+      ]
+    },
+    {
+      "fields": [
+        "verhuizen",
+        "to move"
+      ]
+    },
+    {
+      "fields": [
+        "huren",
+        "to rent"
+      ]
+    },
+    {
+      "fields": [
+        "de makelaar",
+        "the real estate agent"
+      ]
+    },
+    {
+      "fields": [
+        "het huurcontract",
+        "the rental contract"
+      ]
+    },
+    {
+      "fields": [
+        "de huur",
+        "the rent"
+      ]
+    },
+    {
+      "fields": [
+        "gwe",
+        "utility bills"
+      ]
+    },
+    {
+      "fields": [
+        "de VVE-bijdrage",
+        "communal costs"
+      ]
+    },
+    {
+      "fields": [
+        "het adres",
+        "the address"
+      ]
+    },
+    {
+      "fields": [
+        "de buren",
+        "the neighbours"
+      ]
+    },
+    {
+      "fields": [
+        "inschrijven",
+        "to subscribe"
+      ]
+    },
+    {
+      "fields": [
+        "het paspoort",
+        "the passport"
+      ]
+    },
+    {
+      "fields": [
+        "het legitimatiebewijs",
+        "the id"
+      ]
+    },
+    {
+      "fields": [
+        "zich legitimeren",
+        "to identify oneself"
+      ]
+    },
+    {
+      "fields": [
+        "het visum",
+        "the visa"
+      ]
+    },
+    {
+      "fields": [
+        "de identiteitskaart",
+        "the identity card"
+      ]
+    },
+    {
+      "fields": [
+        "het rijbewijs",
+        "the driving license"
+      ]
+    },
+    {
+      "fields": [
+        "de verblijfsvergunning",
+        "the residence permit"
+      ]
+    },
+    {
+      "fields": [
+        "de werkvergunning",
+        "the working permit"
+      ]
+    },
+    {
+      "fields": [
+        "de inburgering",
+        "the assimilation (formal)"
+      ]
+    },
+    {
+      "fields": [
+        "integreren",
+        "to integrate (in practice)"
+      ]
+    },
+    {
+      "fields": [
+        "het n2-examen",
+        "the exam for Dutch as a second language"
+      ]
+    },
+    {
+      "fields": [
+        "de naturalisatie",
+        "the naturalisation"
+      ]
+    },
+    {
+      "fields": [
+        "heimwee",
+        "homesick"
+      ]
+    },
+    {
+      "fields": [
+        "solliciteren",
+        "to apply for"
+      ]
+    },
+    {
+      "fields": [
+        "de sollicitatie",
+        "the application"
+      ]
+    },
+    {
+      "fields": [
+        "de vacature",
+        "the vacancy"
+      ]
+    },
+    {
+      "fields": [
+        "de advertentie",
+        "the advertisement"
+      ]
+    },
+    {
+      "fields": [
+        "het werk",
+        "the work"
+      ]
+    },
+    {
+      "fields": [
+        "de baan",
+        "the job"
+      ]
+    },
+    {
+      "fields": [
+        "veranderen",
+        "to change"
+      ]
+    },
+    {
+      "fields": [
+        "de brief",
+        "the letter"
+      ]
+    },
+    {
+      "fields": [
+        "de sollicitatiebrief",
+        "the application letter"
+      ]
+    },
+    {
+      "fields": [
+        "het cv (curriculum vitae)",
+        "the resume"
+      ]
+    },
+    {
+      "fields": [
+        "de opleiding",
+        "the education"
+      ]
+    },
+    {
+      "fields": [
+        "de ervaring",
+        "the experience"
+      ]
+    },
+    {
+      "fields": [
+        "het gesprek",
+        "the conversation, the interview"
+      ]
+    },
+    {
+      "fields": [
+        "het sollicitatiegesprek",
+        "the job interview"
+      ]
+    },
+    {
+      "fields": [
+        "het bedrijf",
+        "the company"
+      ]
+    },
+    {
+      "fields": [
+        "de zaak",
+        "the company"
+      ]
+    },
+    {
+      "fields": [
+        "het salaris",
+        "the salary"
+      ]
+    },
+    {
+      "fields": [
+        "bruto",
+        "gross"
+      ]
+    },
+    {
+      "fields": [
+        "netto",
+        "net"
+      ]
+    },
+    {
+      "fields": [
+        "de belasting",
+        "the tax"
+      ]
+    },
+    {
+      "fields": [
+        "het vakantiegeld",
+        "the vacation bonus"
+      ]
+    },
+    {
+      "fields": [
+        "de auto van de zaak",
+        "the company car"
+      ]
+    },
+    {
+      "fields": [
+        "het pensioen",
+        "the pension"
+      ]
+    },
+    {
+      "fields": [
+        "de reiskosten",
+        "the travel expenses"
+      ]
+    },
+    {
+      "fields": [
+        "de vergoeding",
+        "the compensation"
+      ]
+    },
+    {
+      "fields": [
+        "de reiskostenvergoeding",
+        "the compensation for travel expenses"
+      ]
+    },
+    {
+      "fields": [
+        "de collega",
+        "the colleague"
+      ]
+    },
+    {
+      "fields": [
+        "aannemen",
+        "to hire"
+      ]
+    },
+    {
+      "fields": [
+        "ontslaan",
+        "to fire"
+      ]
+    },
+    {
+      "fields": [
+        "de voetbal",
+        "the football"
+      ]
+    },
+    {
+      "fields": [
+        "het voetbal",
+        "football (soccer)"
+      ]
+    },
+    {
+      "fields": [
+        "het doel",
+        "the goal"
+      ]
+    },
+    {
+      "fields": [
+        "het doelpunt",
+        "the goal"
+      ]
+    },
+    {
+      "fields": [
+        "het elftal",
+        "the football team"
+      ]
+    },
+    {
+      "fields": [
+        "de spits",
+        "the striker"
+      ]
+    },
+    {
+      "fields": [
+        "de middenvelder",
+        "the midfielder"
+      ]
+    },
+    {
+      "fields": [
+        "de verdediger",
+        "the defender"
+      ]
+    },
+    {
+      "fields": [
+        "de keeper",
+        "the goalkeeper"
+      ]
+    },
+    {
+      "fields": [
+        "de doelverdediger",
+        "the goalkeeper"
+      ]
+    },
+    {
+      "fields": [
+        "de scheidsrechter",
+        "the referee"
+      ]
+    },
+    {
+      "fields": [
+        "de supporter",
+        "the fan"
+      ]
+    },
+    {
+      "fields": [
+        "de twaalfde man",
+        "the fans"
+      ]
+    },
+    {
+      "fields": [
+        "de eerste helft",
+        "the first half"
+      ]
+    },
+    {
+      "fields": [
+        "de rust",
+        "half time"
+      ]
+    },
+    {
+      "fields": [
+        "de tweede helft",
+        "the second half"
+      ]
+    },
+    {
+      "fields": [
+        "schoppen",
+        "to kick"
+      ]
+    },
+    {
+      "fields": [
+        "het schot",
+        "the shot"
+      ]
+    },
+    {
+      "fields": [
+        "de redding",
+        "the save"
+      ]
+    },
+    {
+      "fields": [
+        "redden",
+        "to save"
+      ]
+    },
+    {
+      "fields": [
+        "de voorzet",
+        "the assist"
+      ]
+    },
+    {
+      "fields": [
+        "de gele kaart",
+        "the yellow card"
+      ]
+    },
+    {
+      "fields": [
+        "de rode kaart",
+        "the red card"
+      ]
+    },
+    {
+      "fields": [
+        "de vrije trap",
+        "the free kick"
+      ]
+    },
+    {
+      "fields": [
+        "de strafschop",
+        "the penalty"
+      ]
+    },
+    {
+      "fields": [
+        "de hoekschop",
+        "the corner kick"
+      ]
+    },
+    {
+      "fields": [
+        "buitenspel",
+        "offside"
+      ]
+    },
+    {
+      "fields": [
+        "de kampioen",
+        "the champion"
+      ]
+    },
+    {
+      "fields": [
+        "het ek",
+        "the european championship"
+      ]
+    },
+    {
+      "fields": [
+        "het europees kampioenschap",
+        "the european championship"
+      ]
+    },
+    {
+      "fields": [
+        "het wk",
+        "the world cup"
+      ]
+    },
+    {
+      "fields": [
+        "het wereldkampioenschap",
+        "the world cup"
+      ]
+    }
+  ]
+}

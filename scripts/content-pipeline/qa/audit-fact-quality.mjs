@@ -7,6 +7,12 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const root = path.resolve(__dirname, '../../..')
 
+const DISTRACTOR_BLOCKLIST = new Set([
+  'unknown', 'other', 'none of the above', 'none of these',
+  'all of the above', 'n/a', '...', '', 'debated', 'disputed',
+  '[object object]'
+])
+
 const STOPWORDS = new Set([
   'the', 'and', 'that', 'this', 'with', 'from', 'what', 'which', 'where',
   'when', 'into', 'over', 'under', 'about', 'are', 'was', 'were', 'its',
@@ -185,6 +191,37 @@ function checkDistractorCollision(fact) {
   return collisions.length > 0 ? collisions : null
 }
 
+/**
+ * Check BLOCKLISTED_DISTRACTOR: distractor contains blocklisted content.
+ */
+function checkBlocklistedDistractors(fact) {
+  const rawDistractors = Array.isArray(fact.distractors) ? fact.distractors : []
+  const hits = []
+  for (let i = 0; i < rawDistractors.length; i++) {
+    const d = rawDistractors[i]
+    const text = (typeof d === 'string' ? d : d?.text || '').toLowerCase().trim()
+    if (DISTRACTOR_BLOCKLIST.has(text)) {
+      hits.push({ distractorIndex: i, text: distractorText(d), blocklisted: text })
+    }
+  }
+  return hits.length > 0 ? hits : null
+}
+
+/**
+ * Check DISTRACTOR_FORMAT: distractor is an object when it should be a string.
+ */
+function checkDistractorFormat(fact) {
+  const rawDistractors = Array.isArray(fact.distractors) ? fact.distractors : []
+  const hits = []
+  for (let i = 0; i < rawDistractors.length; i++) {
+    const d = rawDistractors[i]
+    if (typeof d === 'object' && d !== null && typeof d !== 'string') {
+      hits.push({ distractorIndex: i, value: d, type: typeof d })
+    }
+  }
+  return hits.length > 0 ? hits : null
+}
+
 async function main() {
   const args = parseArgs(process.argv, {
     input: 'src/data/seed/facts-generated.json',
@@ -205,6 +242,8 @@ async function main() {
     MALFORMED_VARIANT: 0,
     FORMAT_MISMATCH: 0,
     DISTRACTOR_COLLISION: 0,
+    BLOCKLISTED_DISTRACTOR: 0,
+    DISTRACTOR_FORMAT: 0,
   }
 
   const items = []
@@ -253,6 +292,18 @@ async function main() {
     if (collision) {
       issues.push('DISTRACTOR_COLLISION')
       details.DISTRACTOR_COLLISION = collision
+    }
+
+    const blocklisted = checkBlocklistedDistractors(fact)
+    if (blocklisted) {
+      issues.push('BLOCKLISTED_DISTRACTOR')
+      details.BLOCKLISTED_DISTRACTOR = blocklisted
+    }
+
+    const distFormat = checkDistractorFormat(fact)
+    if (distFormat) {
+      issues.push('DISTRACTOR_FORMAT')
+      details.DISTRACTOR_FORMAT = distFormat
     }
 
     if (issues.length > 0) {

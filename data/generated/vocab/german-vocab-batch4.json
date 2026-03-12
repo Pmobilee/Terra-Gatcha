@@ -1,0 +1,4302 @@
+[
+  {
+    "id": "de-b04-001",
+    "type": "vocabulary",
+    "question": "What does 'der Junge' mean?",
+    "correctAnswer": "boy",
+    "incorrectAnswers": [
+      "girl",
+      "man",
+      "child"
+    ],
+    "explanation": "Der Junge (the boy) is a masculine noun. Example: Die Jungen spielen Fußball (The boys play football).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-002",
+    "type": "vocabulary",
+    "question": "What does 'das Produkt' mean?",
+    "correctAnswer": "product",
+    "incorrectAnswers": [
+      "production",
+      "producer",
+      "produce"
+    ],
+    "explanation": "Das Produkt (the product) is a neuter noun. Example: Haferflocken sind ein natürliches Produkt (Oatmeal is a natural product).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-003",
+    "type": "vocabulary",
+    "question": "What does 'selten' mean?",
+    "correctAnswer": "rare",
+    "incorrectAnswers": [
+      "often",
+      "seldom",
+      "strange"
+    ],
+    "explanation": "Selten is an adjective meaning rare or seldom. Example: Jens schaut selten fern (Jens rarely watches TV).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-004",
+    "type": "vocabulary",
+    "question": "What does 'rechnen' mean?",
+    "correctAnswer": "to calculate",
+    "incorrectAnswers": [
+      "to draw",
+      "to write",
+      "to speak"
+    ],
+    "explanation": "Rechnen is a verb meaning to calculate or do arithmetic. Example: Rechnen lernt man in der Schule (You learn to calculate in school).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-005",
+    "type": "vocabulary",
+    "question": "What does 'französisch' mean?",
+    "correctAnswer": "French",
+    "incorrectAnswers": [
+      "German",
+      "Spanish",
+      "Italian"
+    ],
+    "explanation": "Französisch is an adjective meaning French. Example: Deutsche finden den französischen Akzent erotisch (Germans find the French accent attractive).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-006",
+    "type": "vocabulary",
+    "question": "What does 'das Studium' mean?",
+    "correctAnswer": "studies",
+    "incorrectAnswers": [
+      "studio",
+      "student",
+      "school"
+    ],
+    "explanation": "Das Studium (the study/studies) is a neuter noun referring to academic study. Example: Ihr Studium dauert drei Jahre (Her studies last three years).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-007",
+    "type": "vocabulary",
+    "question": "What does 'erleben' mean?",
+    "correctAnswer": "to experience",
+    "incorrectAnswers": [
+      "to live",
+      "to survive",
+      "to endure"
+    ],
+    "explanation": "Erleben is a verb meaning to experience or witness. Example: Gleich kannst du was erleben (You're going to experience something soon).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-008",
+    "type": "vocabulary",
+    "question": "What does 'die Höhe' mean?",
+    "correctAnswer": "height",
+    "incorrectAnswers": [
+      "depth",
+      "width",
+      "length"
+    ],
+    "explanation": "Die Höhe (the height) is a feminine noun. Example: Quito liegt auf einer Höhe von 2800 Metern (Quito is at a height of 2800 meters).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-009",
+    "type": "vocabulary",
+    "question": "What does 'der Vergleich' mean?",
+    "correctAnswer": "comparison",
+    "incorrectAnswers": [
+      "contrast",
+      "agreement",
+      "difference"
+    ],
+    "explanation": "Der Vergleich (the comparison) is a masculine noun. Example: Im Vergleich zu dir geht es mir noch gut (In comparison to you, I'm doing okay).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-010",
+    "type": "vocabulary",
+    "question": "What does 'falsch' mean?",
+    "correctAnswer": "wrong",
+    "incorrectAnswers": [
+      "right",
+      "true",
+      "correct"
+    ],
+    "explanation": "Falsch is an adjective meaning wrong or false. Example: Irgendwas habe ich falsch gemacht (I did something wrong).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-011",
+    "type": "vocabulary",
+    "question": "What does 'die Idee' mean?",
+    "correctAnswer": "idea",
+    "incorrectAnswers": [
+      "ideal",
+      "identity",
+      "ideology"
+    ],
+    "explanation": "Die Idee (the idea) is a feminine noun. Example: Ideen müsste man haben! (One should have ideas!).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-012",
+    "type": "vocabulary",
+    "question": "What does 'die Luft' mean?",
+    "correctAnswer": "air",
+    "incorrectAnswers": [
+      "wind",
+      "sky",
+      "cloud"
+    ],
+    "explanation": "Die Luft (the air) is a feminine noun. Example: Die Luft ist verschmutzt (The air is polluted).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-013",
+    "type": "vocabulary",
+    "question": "What does 'das Englisch' mean?",
+    "correctAnswer": "English (language)",
+    "incorrectAnswers": [
+      "English person",
+      "England",
+      "English culture"
+    ],
+    "explanation": "Das Englisch (the English language) is a neuter noun. Example: Alle Welt spricht Englisch (Everyone speaks English).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-014",
+    "type": "vocabulary",
+    "question": "What does 'beobachten' mean?",
+    "correctAnswer": "to observe",
+    "incorrectAnswers": [
+      "to watch out",
+      "to see",
+      "to look"
+    ],
+    "explanation": "Beobachten is a verb meaning to observe or watch carefully. Example: Beobachten Sie die Löwen bei der Fütterung! (Observe the lions during feeding!).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-015",
+    "type": "vocabulary",
+    "question": "What does 'Das Französisch' mean?",
+    "correctAnswer": "French (language)",
+    "incorrectAnswers": [
+      "French person",
+      "France",
+      "French culture"
+    ],
+    "explanation": "Das Französisch (the French language) is a neuter noun. Example: Ich lerne seit der 7. Klasse Französisch (I've been learning French since 7th grade).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-016",
+    "type": "vocabulary",
+    "question": "What does 'wissenschaftlich' mean?",
+    "correctAnswer": "scientific",
+    "incorrectAnswers": [
+      "academic",
+      "technical",
+      "educational"
+    ],
+    "explanation": "Wissenschaftlich is an adjective meaning scientific or scholarly. Example: Wissenschaftliche Aufsätze sind oft schwer zu lesen (Scientific papers are often hard to read).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-017",
+    "type": "vocabulary",
+    "question": "What does 'die Meinung' mean?",
+    "correctAnswer": "opinion",
+    "incorrectAnswers": [
+      "meaning",
+      "mention",
+      "mood"
+    ],
+    "explanation": "Die Meinung (the opinion) is a feminine noun. Example: Meiner Meinung nach dürfen wir das nicht (In my opinion, we shouldn't do that).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-018",
+    "type": "vocabulary",
+    "question": "What does 'in der Luft' mean?",
+    "correctAnswer": "in the air",
+    "incorrectAnswers": [
+      "in the wind",
+      "in the sky",
+      "on the air"
+    ],
+    "explanation": "In der Luft is a phrase meaning in the air, often used figuratively. Example: Eine Grippe liegt in der Luft (Flu is in the air).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-019",
+    "type": "vocabulary",
+    "question": "What does 'in Höhe' mean?",
+    "correctAnswer": "in the amount of",
+    "incorrectAnswers": [
+      "at height",
+      "in altitude",
+      "at the top"
+    ],
+    "explanation": "In Höhe is a phrase meaning in the amount of, used for sums of money. Example: Sie erzielten einen Umsatz in Höhe von mehreren tausend Euro (They achieved sales in the amount of several thousand euros).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-020",
+    "type": "vocabulary",
+    "question": "What does 'leider' mean?",
+    "correctAnswer": "unfortunately",
+    "incorrectAnswers": [
+      "fortunately",
+      "luckily",
+      "happily"
+    ],
+    "explanation": "Leider is an adverb meaning unfortunately or sadly. Example: Wir können leider nicht mitkommen (Unfortunately, we can't come along).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-021",
+    "type": "vocabulary",
+    "question": "What does 'im Vergleich zu' mean?",
+    "correctAnswer": "in comparison with",
+    "incorrectAnswers": [
+      "compared by",
+      "unlike",
+      "different from"
+    ],
+    "explanation": "Im Vergleich zu is a phrase meaning in comparison with. Example: Im Vergleich zu Hongkong ist Berlin eine Kleinstadt (In comparison with Hong Kong, Berlin is a small city).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-022",
+    "type": "vocabulary",
+    "question": "What does 'holen' mean?",
+    "correctAnswer": "to fetch",
+    "incorrectAnswers": [
+      "to hold",
+      "to help",
+      "to hear"
+    ],
+    "explanation": "Holen is a verb meaning to get, fetch, or pick up. Example: Gehst du heute Brötchen holen? (Are you going to get bread rolls today?).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-023",
+    "type": "vocabulary",
+    "question": "What does 'fremd' mean?",
+    "correctAnswer": "foreign",
+    "incorrectAnswers": [
+      "friendly",
+      "free",
+      "fresh"
+    ],
+    "explanation": "Fremd is an adjective meaning foreign, strange, or unfamiliar. Example: Das ist mir vollkommen fremd (That's completely foreign/unfamiliar to me).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-024",
+    "type": "vocabulary",
+    "question": "What does 'die Natur' mean?",
+    "correctAnswer": "nature",
+    "incorrectAnswers": [
+      "natural",
+      "native",
+      "nation"
+    ],
+    "explanation": "Die Natur (the nature) is a feminine noun. Example: Im Frühjahr erwacht die Natur zu neuem Leben (In spring, nature awakens to new life).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-025",
+    "type": "vocabulary",
+    "question": "What does 'wahr' mean?",
+    "correctAnswer": "true",
+    "incorrectAnswers": [
+      "real",
+      "honest",
+      "reliable"
+    ],
+    "explanation": "Wahr is an adjective meaning true. Example: Das kann doch nicht wahr sein! (That can't be true!).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-026",
+    "type": "vocabulary",
+    "question": "What does 'das Bett' mean?",
+    "correctAnswer": "bed",
+    "incorrectAnswers": [
+      "nest",
+      "table",
+      "chair"
+    ],
+    "explanation": "Das Bett (the bed) is a neuter noun. Example: Das Bett steht im Schlafzimmer (The bed stands in the bedroom).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-027",
+    "type": "vocabulary",
+    "question": "What does 'unterscheiden' mean?",
+    "correctAnswer": "to distinguish",
+    "incorrectAnswers": [
+      "to sign",
+      "to describe",
+      "to define"
+    ],
+    "explanation": "Unterscheiden is a verb meaning to distinguish, differentiate, or tell apart. Example: Man unterscheidet zwischen Zitronen und Limetten (One distinguishes between lemons and limes).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-028",
+    "type": "vocabulary",
+    "question": "What does 'sterben' mean?",
+    "correctAnswer": "to die",
+    "incorrectAnswers": [
+      "to live",
+      "to sleep",
+      "to rest"
+    ],
+    "explanation": "Sterben is a verb meaning to die. Example: Goethe starb 1832 (Goethe died in 1832).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-029",
+    "type": "vocabulary",
+    "question": "What does 'die Wirtschaft' mean?",
+    "correctAnswer": "economy",
+    "incorrectAnswers": [
+      "business",
+      "trade",
+      "commerce"
+    ],
+    "explanation": "Die Wirtschaft (the economy) is a feminine noun. Example: Die Wirtschaft nimmt Einfluss auf die Politik (The economy influences politics).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-030",
+    "type": "vocabulary",
+    "question": "What does 'werfen' mean?",
+    "correctAnswer": "to throw",
+    "incorrectAnswers": [
+      "to catch",
+      "to hit",
+      "to kick"
+    ],
+    "explanation": "Werfen is a verb meaning to throw. Example: Rüben wirft Sophie den Ball an den Kopf (Rubens throws the ball at Sophie's head).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-031",
+    "type": "vocabulary",
+    "question": "What does 'irgendwo' mean?",
+    "correctAnswer": "somewhere",
+    "incorrectAnswers": [
+      "anywhere",
+      "nowhere",
+      "elsewhere"
+    ],
+    "explanation": "Irgendwo is an adverb meaning somewhere. Example: Irgendwo habe ich den Schlüssel hingelegt (I put the key somewhere).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-032",
+    "type": "vocabulary",
+    "question": "What does 'zumindest' mean?",
+    "correctAnswer": "at least",
+    "incorrectAnswers": [
+      "at most",
+      "at best",
+      "at worst"
+    ],
+    "explanation": "Zumindest is an adverb meaning at least. Example: Zumindest der Chef sollte davon wissen (At least the boss should know about it).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-033",
+    "type": "vocabulary",
+    "question": "What does 'der Spaß' mean?",
+    "correctAnswer": "fun",
+    "incorrectAnswers": [
+      "game",
+      "play",
+      "joke"
+    ],
+    "explanation": "Der Spaß (the fun) is a masculine noun. Example: Das macht keinen Spaß mehr (That's no longer fun).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-034",
+    "type": "vocabulary",
+    "question": "What does 'das Modell' mean?",
+    "correctAnswer": "model",
+    "incorrectAnswers": [
+      "module",
+      "modal",
+      "modern"
+    ],
+    "explanation": "Das Modell (the model) is a neuter noun. Example: Im Foyer steht ein Modell des Gebäudes (A model of the building stands in the foyer).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-035",
+    "type": "vocabulary",
+    "question": "What does 'das Geschäft' mean?",
+    "correctAnswer": "business",
+    "incorrectAnswers": [
+      "gift",
+      "story",
+      "trade"
+    ],
+    "explanation": "Das Geschäft (the business) is a neuter noun. Example: Meinem Geschäft geht es wieder besser (My business is doing better again).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-036",
+    "type": "vocabulary",
+    "question": "What does 'normal' mean?",
+    "correctAnswer": "normal",
+    "incorrectAnswers": [
+      "unusual",
+      "special",
+      "standard"
+    ],
+    "explanation": "Normal is an adjective meaning normal or typical. Example: Heute ist ein ganz normaler Tag (Today is a completely normal day).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-037",
+    "type": "vocabulary",
+    "question": "What does 'essen' mean?",
+    "correctAnswer": "to eat",
+    "incorrectAnswers": [
+      "to drink",
+      "to taste",
+      "to cook"
+    ],
+    "explanation": "Essen is a verb meaning to eat. Example: Kinder essen gern Spaghetti (Children like to eat spaghetti).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-038",
+    "type": "vocabulary",
+    "question": "What does 'leisten' mean?",
+    "correctAnswer": "to achieve",
+    "incorrectAnswers": [
+      "to afford",
+      "to provide",
+      "to perform"
+    ],
+    "explanation": "Leisten is a verb meaning to achieve, accomplish, or perform. Example: Sie hat in ihrem Leben viel geleistet (She has achieved much in her life).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-039",
+    "type": "vocabulary",
+    "question": "What does 'die Bewegung' mean?",
+    "correctAnswer": "movement",
+    "incorrectAnswers": [
+      "motion",
+      "move",
+      "mobile"
+    ],
+    "explanation": "Die Bewegung (the movement) is a feminine noun. Example: Er ist ständig in Bewegung (He is constantly in motion).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-040",
+    "type": "vocabulary",
+    "question": "What does 'das Mittel' mean?",
+    "correctAnswer": "means",
+    "incorrectAnswers": [
+      "middle",
+      "medium",
+      "moderate"
+    ],
+    "explanation": "Das Mittel (the means) is a neuter noun. Example: Dagegen gibt es ein Mittel (There is a means against it).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-041",
+    "type": "vocabulary",
+    "question": "What does 'der Kunde' mean?",
+    "correctAnswer": "customer",
+    "incorrectAnswers": [
+      "client",
+      "guest",
+      "visitor"
+    ],
+    "explanation": "Der Kunde (the customer) is a masculine noun. Example: Der Kunde ist König (The customer is king).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-042",
+    "type": "vocabulary",
+    "question": "What does 'reichen' mean?",
+    "correctAnswer": "to reach",
+    "incorrectAnswers": [
+      "to rich",
+      "to range",
+      "to extend"
+    ],
+    "explanation": "Reichen is a verb meaning to reach, extend, or be enough. Example: Jetzt reicht es aber! (That's enough now!).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-043",
+    "type": "vocabulary",
+    "question": "What does 'das Tier' mean?",
+    "correctAnswer": "animal",
+    "incorrectAnswers": [
+      "pet",
+      "creature",
+      "beast"
+    ],
+    "explanation": "Das Tier (the animal) is a neuter noun. Example: Tiger sind wilde Tiere (Tigers are wild animals).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-044",
+    "type": "vocabulary",
+    "question": "What does 'privat' mean?",
+    "correctAnswer": "private",
+    "incorrectAnswers": [
+      "public",
+      "personal",
+      "secret"
+    ],
+    "explanation": "Privat is an adjective meaning private. Example: Das ist meine private Telefonnummer (That is my private phone number).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-045",
+    "type": "vocabulary",
+    "question": "What does 'tot' mean?",
+    "correctAnswer": "dead",
+    "incorrectAnswers": [
+      "death",
+      "dying",
+      "deadly"
+    ],
+    "explanation": "Tot is an adjective meaning dead. Example: Wagner ist seit 121 Jahren tot (Wagner has been dead for 121 years).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-046",
+    "type": "vocabulary",
+    "question": "What does 'verlangen' mean?",
+    "correctAnswer": "to demand",
+    "incorrectAnswers": [
+      "to extend",
+      "to lengthen",
+      "to desire"
+    ],
+    "explanation": "Verlangen is a verb meaning to request, demand, or require. Example: Ich verlange nichts Unmögliches (I don't demand anything impossible).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-047",
+    "type": "vocabulary",
+    "question": "What does 'der Mitarbeiter' mean?",
+    "correctAnswer": "employee",
+    "incorrectAnswers": [
+      "manager",
+      "colleague",
+      "assistant"
+    ],
+    "explanation": "Der Mitarbeiter (the employee) is a masculine noun. Example: Alle Mitarbeiter wurden entlassen (All employees were dismissed).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-048",
+    "type": "vocabulary",
+    "question": "What does 'der Tod' mean?",
+    "correctAnswer": "death",
+    "incorrectAnswers": [
+      "dead",
+      "dying",
+      "die"
+    ],
+    "explanation": "Der Tod (the death) is a masculine noun. Example: Nach dem Tod seiner Frau zog Reinhard zu seinem Sohn (After the death of his wife, Reinhard moved to his son).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-049",
+    "type": "vocabulary",
+    "question": "What does 'das Dorf' mean?",
+    "correctAnswer": "village",
+    "incorrectAnswers": [
+      "town",
+      "city",
+      "hamlet"
+    ],
+    "explanation": "Das Dorf (the village) is a neuter noun. Example: Das Dorf liegt in einem Tal (The village lies in a valley).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-050",
+    "type": "vocabulary",
+    "question": "What does 'sich freuen' mean?",
+    "correctAnswer": "to be happy",
+    "incorrectAnswers": [
+      "to be free",
+      "to be friendly",
+      "to be proud"
+    ],
+    "explanation": "Sich freuen is a reflexive verb meaning to be happy or look forward to. Example: Ich freue mich auf die Ferien (I'm looking forward to the vacation).",
+    "language": "de",
+    "categoryL2": "german",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-051",
+    "type": "vocabulary",
+    "question": "What does \"hängen\" mean in English?",
+    "answer": "to hang",
+    "explanation": "German: hängen. Example usage provided in context.",
+    "options": [
+      "to hang",
+      "to suspend",
+      "to hold"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-052",
+    "type": "vocabulary",
+    "question": "What does \"der Bruder\" mean in English?",
+    "answer": "brother",
+    "explanation": "German: der Bruder. Example usage provided in context.",
+    "options": [
+      "nephew",
+      "uncle",
+      "cousin"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-053",
+    "type": "vocabulary",
+    "question": "What does \"hoffen\" mean in English?",
+    "answer": "to hope",
+    "explanation": "German: hoffen. Example usage provided in context.",
+    "options": [
+      "to hope",
+      "to wish",
+      "to expect"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-054",
+    "type": "vocabulary",
+    "question": "What does \"freuen\" mean in English?",
+    "answer": "to make happy",
+    "explanation": "German: freuen. Example usage provided in context.",
+    "options": [
+      "to make happy",
+      "to satisfy",
+      "to please"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-055",
+    "type": "vocabulary",
+    "question": "What does \"zur Verfügung stehen\" mean in English?",
+    "answer": "to be available",
+    "explanation": "German: zur Verfügung stehen. Example usage provided in context.",
+    "options": [
+      "to be available",
+      "to be ready",
+      "to exist"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-056",
+    "type": "vocabulary",
+    "question": "What does \"die Angabe\" mean in English?",
+    "answer": "information, statement (An~)",
+    "explanation": "German: die Angabe. Example usage provided in context.",
+    "options": [
+      "details",
+      "data",
+      "news"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-057",
+    "type": "vocabulary",
+    "question": "What does \"die Verfügung\" mean in English?",
+    "answer": "disposal",
+    "explanation": "German: die Verfügung. Example usage provided in context.",
+    "options": [
+      "disposal",
+      "management",
+      "arrangement"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-058",
+    "type": "vocabulary",
+    "question": "What does \"der Gast\" mean in English?",
+    "answer": "guest",
+    "explanation": "German: der Gast. Example usage provided in context.",
+    "options": [
+      "guest",
+      "caller",
+      "visitor"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-059",
+    "type": "vocabulary",
+    "question": "What does \"teilen\" mean in English?",
+    "answer": "to divide, share",
+    "explanation": "German: teilen. Example usage provided in context.",
+    "options": [
+      "to separate",
+      "to distribute",
+      "to split"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-060",
+    "type": "vocabulary",
+    "question": "What does \"wünschen\" mean in English?",
+    "answer": "to want, wish",
+    "explanation": "German: wünschen. Example usage provided in context.",
+    "options": [
+      "to request",
+      "to want, wish",
+      "to demand"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-061",
+    "type": "vocabulary",
+    "question": "What does \"die Sicherheit\" mean in English?",
+    "answer": "security, safety",
+    "explanation": "German: die Sicherheit. Example usage provided in context.",
+    "options": [
+      "safety measure",
+      "safeguard",
+      "protection"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-062",
+    "type": "vocabulary",
+    "question": "What does \"positiv\" mean in English?",
+    "answer": "positive",
+    "explanation": "German: positiv. Example usage provided in context.",
+    "options": [
+      "affirmative",
+      "optimistic",
+      "favorable"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-063",
+    "type": "vocabulary",
+    "question": "What does \"der Dank\" mean in English?",
+    "answer": "gratefulness",
+    "explanation": "German: der Dank. Example usage provided in context.",
+    "options": [
+      "gratitude",
+      "gratefulness",
+      "appreciation"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-064",
+    "type": "vocabulary",
+    "question": "What does \"vorliegen\" mean in English?",
+    "answer": "to be, exist (vor~)",
+    "explanation": "German: vorliegen. Example usage provided in context.",
+    "options": [
+      "to stand",
+      "to be, exist (vor~)",
+      "to be present"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-065",
+    "type": "vocabulary",
+    "question": "What does \"der Kollege\" mean in English?",
+    "answer": "colleague (male)",
+    "explanation": "German: der Kollege. Example usage provided in context.",
+    "options": [
+      "colleague (male)",
+      "coworker",
+      "associate"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-066",
+    "type": "vocabulary",
+    "question": "What does \"Vielen Dank\" mean in English?",
+    "answer": "Thanks a lot, many thanks",
+    "explanation": "German: Vielen Dank. Example usage provided in context.",
+    "options": [
+      "Great thanks",
+      "Thank you very much",
+      "Much obliged"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-067",
+    "type": "vocabulary",
+    "question": "What does \"außer\" mean in English?",
+    "answer": "except, apart from (au~)",
+    "explanation": "German: außer. Example usage provided in context.",
+    "options": [
+      "excluding",
+      "besides",
+      "save for"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-068",
+    "type": "vocabulary",
+    "question": "What does \"fest\" mean in English?",
+    "answer": "firm, solid (f~)",
+    "explanation": "German: fest. Example usage provided in context.",
+    "options": [
+      "steady",
+      "rigid",
+      "hard"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-069",
+    "type": "vocabulary",
+    "question": "What does \"bauen\" mean in English?",
+    "answer": "to build (b~)",
+    "explanation": "German: bauen. Example usage provided in context.",
+    "options": [
+      "to erect",
+      "to construct",
+      "to build (b~)"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-070",
+    "type": "vocabulary",
+    "question": "What does \"zur Verfügung stellen\" mean in English?",
+    "answer": "to provide (zur ~)",
+    "explanation": "German: zur Verfügung stellen. Example usage provided in context.",
+    "options": [
+      "to provide (zur ~)",
+      "to offer",
+      "to furnish"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-071",
+    "type": "vocabulary",
+    "question": "What does \"das Gebiet\" mean in English?",
+    "answer": "area, region (Geb~)",
+    "explanation": "German: das Gebiet. Example usage provided in context.",
+    "options": [
+      "area, region (Geb~)",
+      "field",
+      "zone"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-072",
+    "type": "vocabulary",
+    "question": "What does \"zählen\" mean in English?",
+    "answer": "to count",
+    "explanation": "German: zählen. Example usage provided in context.",
+    "options": [
+      "to count",
+      "to number",
+      "to enumerate"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-073",
+    "type": "vocabulary",
+    "question": "What does \"der Einsatz\" mean in English?",
+    "answer": "use, commitment, inset, development (E~)",
+    "explanation": "German: der Einsatz. Example usage provided in context.",
+    "options": [
+      "usage",
+      "deployment",
+      "use, commitment, inset, development (E~)"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-074",
+    "type": "vocabulary",
+    "question": "What does \"der  Unterschied\" mean in English?",
+    "answer": "difference (U~)",
+    "explanation": "German: der  Unterschied. Example usage provided in context.",
+    "options": [
+      "variation",
+      "contrast",
+      "distinction"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-075",
+    "type": "vocabulary",
+    "question": "What does \"die Anwendung\" mean in English?",
+    "answer": "application, use",
+    "explanation": "German: die Anwendung. Example usage provided in context.",
+    "options": [
+      "employment",
+      "implementation",
+      "utilization"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-076",
+    "type": "vocabulary",
+    "question": "What does \"ankommen\" mean in English?",
+    "answer": "to arrive (an~)",
+    "explanation": "German: ankommen. Example usage provided in context.",
+    "options": [
+      "to land",
+      "to come",
+      "to reach"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-077",
+    "type": "vocabulary",
+    "question": "What does \"bezahlen\" mean in English?",
+    "answer": "to pay (b~)",
+    "explanation": "German: bezahlen. Example usage provided in context.",
+    "options": [
+      "to defray",
+      "to pay (b~)",
+      "to settle"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-078",
+    "type": "vocabulary",
+    "question": "What does \"in Verbindung mit\" mean in English?",
+    "answer": "in connection with (in V~)",
+    "explanation": "German: in Verbindung mit. Example usage provided in context.",
+    "options": [
+      "concerning",
+      "regarding",
+      "in relation to"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-079",
+    "type": "vocabulary",
+    "question": "What does \"die Vorstellung\" mean in English?",
+    "answer": "idea, introduction (V~)",
+    "explanation": "German: die Vorstellung. Example usage provided in context.",
+    "options": [
+      "concept",
+      "presentation",
+      "idea, introduction (V~)"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-080",
+    "type": "vocabulary",
+    "question": "What does \"der Kontakt\" mean in English?",
+    "answer": "contact",
+    "explanation": "German: der Kontakt. Example usage provided in context.",
+    "options": [
+      "connection",
+      "relation",
+      "contact"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-081",
+    "type": "vocabulary",
+    "question": "What does \"sorgen\" mean in English?",
+    "answer": "to worry, take care (s~)",
+    "explanation": "German: sorgen. Example usage provided in context.",
+    "options": [
+      "to worry, take care (s~)",
+      "to attend",
+      "to provide"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-082",
+    "type": "vocabulary",
+    "question": "What does \"das Fach\" mean in English?",
+    "answer": "compartment, subject",
+    "explanation": "German: das Fach. Example usage provided in context.",
+    "options": [
+      "category",
+      "compartment, subject",
+      "section"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-083",
+    "type": "vocabulary",
+    "question": "What does \"zentral\" mean in English?",
+    "answer": "central",
+    "explanation": "German: zentral. Example usage provided in context.",
+    "options": [
+      "central",
+      "core",
+      "middle"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-084",
+    "type": "vocabulary",
+    "question": "What does \"die Menge\" mean in English?",
+    "answer": "quantity, amount (M~)",
+    "explanation": "German: die Menge. Example usage provided in context.",
+    "options": [
+      "mass",
+      "quantity, amount (M~)",
+      "portion"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-085",
+    "type": "vocabulary",
+    "question": "What does \"die Verbindung\" mean in English?",
+    "answer": "connection, link",
+    "explanation": "German: die Verbindung. Example usage provided in context.",
+    "options": [
+      "bond",
+      "relationship",
+      "connection, link"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-086",
+    "type": "vocabulary",
+    "question": "What does \"der Sommer\" mean in English?",
+    "answer": "summer",
+    "explanation": "German: der Sommer. Example usage provided in context.",
+    "options": [
+      "season",
+      "summer",
+      "warm period"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-087",
+    "type": "vocabulary",
+    "question": "What does \"stecken\" mean in English?",
+    "answer": "to put, be located (s~)",
+    "explanation": "German: stecken. Example usage provided in context.",
+    "options": [
+      "to put, be located (s~)",
+      "to place",
+      "to be situated"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-088",
+    "type": "vocabulary",
+    "question": "What does \"besuchen\" mean in English?",
+    "answer": "to visit (be~)",
+    "explanation": "German: besuchen. Example usage provided in context.",
+    "options": [
+      "to visit (be~)",
+      "to call on",
+      "to see"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-089",
+    "type": "vocabulary",
+    "question": "What does \"dauern\" mean in English?",
+    "answer": "to last, take (time)",
+    "explanation": "German: dauern. Example usage provided in context.",
+    "options": [
+      "to require",
+      "to span",
+      "to last, take (time)"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-090",
+    "type": "vocabulary",
+    "question": "What does \"beziehen\" mean in English?",
+    "answer": "to refer, put, get",
+    "explanation": "German: beziehen. Example usage provided in context.",
+    "options": [
+      "to refer, put, get",
+      "to cite",
+      "to mention"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-091",
+    "type": "vocabulary",
+    "question": "What does \"fertig\" mean in English?",
+    "answer": "finished, ready (f~)",
+    "explanation": "German: fertig. Example usage provided in context.",
+    "options": [
+      "finished, ready (f~)",
+      "done",
+      "complete"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-092",
+    "type": "vocabulary",
+    "question": "What does \"der Anspruch\" mean in English?",
+    "answer": "claim (A~)",
+    "explanation": "German: der Anspruch. Example usage provided in context.",
+    "options": [
+      "entitlement",
+      "demand",
+      "right"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-093",
+    "type": "vocabulary",
+    "question": "What does \"weder...noch\" mean in English?",
+    "answer": "neither...nor",
+    "explanation": "German: weder...noch. Example usage provided in context.",
+    "options": [
+      "both...and",
+      "neither...nor",
+      "not...nor"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-094",
+    "type": "vocabulary",
+    "question": "What does \"das Herz\" mean in English?",
+    "answer": "heart",
+    "explanation": "German: das Herz. Example usage provided in context.",
+    "options": [
+      "core",
+      "heart",
+      "cardiac organ"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-095",
+    "type": "vocabulary",
+    "question": "What does \"spüren\" mean in English?",
+    "answer": "to sense, notice",
+    "explanation": "German: spüren. Example usage provided in context.",
+    "options": [
+      "to feel",
+      "to sense, notice",
+      "to perceive"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-096",
+    "type": "vocabulary",
+    "question": "What does \"statt\" mean in English?",
+    "answer": "instead of (s~)",
+    "explanation": "German: statt. Example usage provided in context.",
+    "options": [
+      "instead of (s~)",
+      "versus",
+      "in place of"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-097",
+    "type": "vocabulary",
+    "question": "What does \"die Antwort\" mean in English?",
+    "answer": "answer, reply",
+    "explanation": "German: die Antwort. Example usage provided in context.",
+    "options": [
+      "reply",
+      "solution",
+      "response"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-098",
+    "type": "vocabulary",
+    "question": "What does \"bitten\" mean in English?",
+    "answer": "to request, ask",
+    "explanation": "German: bitten. Example usage provided in context.",
+    "options": [
+      "to appeal",
+      "to request, ask",
+      "to inquire"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-099",
+    "type": "vocabulary",
+    "question": "What does \"die Ausbildung\" mean in English?",
+    "answer": "training, development",
+    "explanation": "German: die Ausbildung. Example usage provided in context.",
+    "options": [
+      "apprenticeship",
+      "instruction",
+      "education"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-100",
+    "type": "vocabulary",
+    "question": "What does \"breit\" mean in English?",
+    "answer": "wide, broad",
+    "explanation": "German: breit. Example usage provided in context.",
+    "options": [
+      "spacious",
+      "wide, broad",
+      "expansive"
+    ],
+    "categoryL2": "german",
+    "difficulty": "medium",
+    "source": "german-vocab-rank-801-850",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:43.748Z"
+  },
+  {
+    "id": "de-b04-101",
+    "type": "vocabulary",
+    "question": "What does the German word \"hart\" mean?",
+    "correctAnswer": "hard",
+    "incorrectAnswers": [
+      "soft",
+      "quick",
+      "beautiful"
+    ],
+    "explanation": "Hart (adjective) means \"hard\". Example: Das Leben ist hart. (Life is hard.)",
+    "exampleSentence": "Das Leben ist hart.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-102",
+    "type": "vocabulary",
+    "question": "What does \"unbedingt\" mean in English?",
+    "correctAnswer": "absolute",
+    "incorrectAnswers": [
+      "maybe",
+      "rarely",
+      "slowly"
+    ],
+    "explanation": "Unbedingt (adjective) means \"absolute\" or \"unconditional\". Example: Ich muss den Zug unbedingt kriegen. (I absolutely must catch the train.)",
+    "exampleSentence": "Ich muss den Zug unbedingt kriegen.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-103",
+    "type": "vocabulary",
+    "question": "What does \"das Alter\" mean?",
+    "correctAnswer": "age",
+    "incorrectAnswers": [
+      "height",
+      "weight",
+      "distance"
+    ],
+    "explanation": "Das Alter (noun) means \"age\". Example: Sie starb im Alter von 75 Jahren. (She died at the age of 75 years.)",
+    "exampleSentence": "Sie starb im Alter von 75 Jahren.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-104",
+    "type": "vocabulary",
+    "question": "What does \"der Kilometer\" mean?",
+    "correctAnswer": "kilometre",
+    "incorrectAnswers": [
+      "metre",
+      "mile",
+      "yard"
+    ],
+    "explanation": "Der Kilometer (noun) means \"kilometre\". Example: Von Leipzig nach München sind es etwa 430 Kilometer. (From Leipzig to Munich is about 430 kilometres.)",
+    "exampleSentence": "Von Leipzig nach München sind es etwa 430 Kilometer.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-105",
+    "type": "vocabulary",
+    "question": "What does \"grundsätzlich\" mean?",
+    "correctAnswer": "fundamental",
+    "incorrectAnswers": [
+      "temporary",
+      "secondary",
+      "optional"
+    ],
+    "explanation": "Grundsätzlich (adjective) means \"fundamental\" or \"in principle\". Example: Ich bin grundsätzlich anderer Meinung. (In principle, I have a different opinion.)",
+    "exampleSentence": "Ich bin grundsätzlich anderer Meinung.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-106",
+    "type": "vocabulary",
+    "question": "What does the verb \"erhöhen\" mean?",
+    "correctAnswer": "to increase",
+    "incorrectAnswers": [
+      "to decrease",
+      "to maintain",
+      "to hide"
+    ],
+    "explanation": "Erhöhen (verb) means \"to increase\" or \"to raise\". Example: Wir müssen unser Angebot erhöhen. (We must increase our offer.)",
+    "exampleSentence": "Wir müssen unser Angebot erhöhen.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-107",
+    "type": "vocabulary",
+    "question": "What does \"der Vertrag\" mean?",
+    "correctAnswer": "contract",
+    "incorrectAnswers": [
+      "agreement",
+      "treaty",
+      "document"
+    ],
+    "explanation": "Der Vertrag (noun) means \"contract\". Example: Der Vertrag gilt ab 1. Januar 2006. (The contract is valid from 1st January 2006.)",
+    "exampleSentence": "Der Vertrag gilt ab 1. Januar 2006.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-108",
+    "type": "vocabulary",
+    "question": "What does \"die Hilfe\" mean?",
+    "correctAnswer": "help",
+    "incorrectAnswers": [
+      "hope",
+      "wish",
+      "suggestion"
+    ],
+    "explanation": "Die Hilfe (noun) means \"help\" or \"assistance\". Example: Wir hoffen auf eure Hilfe. (We are counting on your help.)",
+    "exampleSentence": "Wir hoffen auf eure Hilfe.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-109",
+    "type": "vocabulary",
+    "question": "What does \"der Dollar\" mean?",
+    "correctAnswer": "dollar",
+    "incorrectAnswers": [
+      "euro",
+      "pound",
+      "franc"
+    ],
+    "explanation": "Der Dollar (noun) means \"dollar\". Example: Der Dollar steht gut im Kurs. (The dollar is trading well.)",
+    "exampleSentence": "Der Dollar steht gut im Kurs.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-110",
+    "type": "vocabulary",
+    "question": "What does \"das Verfahren\" mean?",
+    "correctAnswer": "method",
+    "incorrectAnswers": [
+      "result",
+      "procedure",
+      "system"
+    ],
+    "explanation": "Das Verfahren (noun) means \"method\", \"process\", or \"technique\". Example: Dieses Verfahren ist am effektivsten. (This method is the most effective.)",
+    "exampleSentence": "Dieses Verfahren ist am effektivsten.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-111",
+    "type": "vocabulary",
+    "question": "What does the adverb \"zuerst\" mean?",
+    "correctAnswer": "first",
+    "incorrectAnswers": [
+      "last",
+      "never",
+      "always"
+    ],
+    "explanation": "Zuerst (adverb) means \"first\" or \"at first\". Example: Zuerst studiere ich, dann mache ich ein Praktikum. (First I study, then I do an internship.)",
+    "exampleSentence": "Zuerst studiere ich, dann mache ich ein Praktikum.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-112",
+    "type": "vocabulary",
+    "question": "What does \"das Theater\" mean?",
+    "correctAnswer": "theater",
+    "incorrectAnswers": [
+      "cinema",
+      "museum",
+      "gallery"
+    ],
+    "explanation": "Das Theater (noun) means \"theater\". Example: Das Theater ist eines der schönsten Gebäude der Stadt. (The theater is one of the most beautiful buildings in the city.)",
+    "exampleSentence": "Das Theater ist eines der schönsten Gebäude der Stadt.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-113",
+    "type": "vocabulary",
+    "question": "What does \"die Gefahr\" mean?",
+    "correctAnswer": "danger",
+    "incorrectAnswers": [
+      "fear",
+      "risk",
+      "threat"
+    ],
+    "explanation": "Die Gefahr (noun) means \"danger\". Example: Er war in großer Gefahr. (He was in great danger.)",
+    "exampleSentence": "Er war in großer Gefahr.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-114",
+    "type": "vocabulary",
+    "question": "What does \"der Patient\" mean?",
+    "correctAnswer": "patient",
+    "incorrectAnswers": [
+      "doctor",
+      "nurse",
+      "hospital"
+    ],
+    "explanation": "Der Patient (noun) means \"patient\". Example: Der Arzt untersucht einen Patienten. (The doctor examines a patient.)",
+    "exampleSentence": "Der Arzt untersucht einen Patienten.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-115",
+    "type": "vocabulary",
+    "question": "What does \"die Kosten\" mean?",
+    "correctAnswer": "costs",
+    "incorrectAnswers": [
+      "benefits",
+      "prices",
+      "values"
+    ],
+    "explanation": "Die Kosten (noun, plural) means \"costs\" or \"expenses\". Example: Die Kosten für die Reise übernimmt die Firma. (The company covers the travel costs.)",
+    "exampleSentence": "Die Kosten für die Reise übernimmt die Firma.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-116",
+    "type": "vocabulary",
+    "question": "What does the verb \"melden\" mean?",
+    "correctAnswer": "to report",
+    "incorrectAnswers": [
+      "to ask",
+      "to deny",
+      "to forget"
+    ],
+    "explanation": "Melden (verb) means \"to report\" or \"to register\". Example: Der Wetterbericht meldet Schnee für das Wochenende. (The weather report predicts snow for the weekend.)",
+    "exampleSentence": "Der Wetterbericht meldet Schnee für das Wochenende.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-117",
+    "type": "vocabulary",
+    "question": "What does \"die Polizei\" mean?",
+    "correctAnswer": "police",
+    "incorrectAnswers": [
+      "army",
+      "guard",
+      "security"
+    ],
+    "explanation": "Die Polizei (noun) means \"police\". Example: Die Polizei erreicht den Unfallort zuerst. (The police arrive at the accident scene first.)",
+    "exampleSentence": "Die Polizei erreicht den Unfallort zuerst.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-118",
+    "type": "vocabulary",
+    "question": "What does \"der Computer\" mean?",
+    "correctAnswer": "computer",
+    "incorrectAnswers": [
+      "telephone",
+      "keyboard",
+      "monitor"
+    ],
+    "explanation": "Der Computer (noun) means \"computer\". Example: Ich arbeite jeden Tag am Computer. (I work at the computer every day.)",
+    "exampleSentence": "Ich arbeite jeden Tag am Computer.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-119",
+    "type": "vocabulary",
+    "question": "What does the adjective \"inner\" mean?",
+    "correctAnswer": "internal",
+    "incorrectAnswers": [
+      "external",
+      "visible",
+      "important"
+    ],
+    "explanation": "Inner (adjective) means \"internal\" or \"inner\". Example: Das ist eine innere Angelegenheit. (This is an internal matter.)",
+    "exampleSentence": "Das ist eine innere Angelegenheit.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-120",
+    "type": "vocabulary",
+    "question": "What does \"künftig\" mean?",
+    "correctAnswer": "future",
+    "incorrectAnswers": [
+      "past",
+      "present",
+      "ancient"
+    ],
+    "explanation": "Künftig (adjective) means \"future\" or \"coming\". Example: Auch künftige Generationen müssen auf dieser Welt noch leben können. (Future generations must also be able to live on this world.)",
+    "exampleSentence": "Auch künftige Generationen müssen auf dieser Welt noch leben können.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-121",
+    "type": "vocabulary",
+    "question": "What does the adverb \"hinaus\" mean?",
+    "correctAnswer": "out",
+    "incorrectAnswers": [
+      "in",
+      "up",
+      "down"
+    ],
+    "explanation": "Hinaus (adverb) means \"out\" or \"beyond\". Example: Darüber hinaus gibt es nichts zu berichten. (Beyond that, there is nothing to report.)",
+    "exampleSentence": "Darüber hinaus gibt es nichts zu berichten.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-122",
+    "type": "vocabulary",
+    "question": "What does \"das Gerät\" mean?",
+    "correctAnswer": "tool",
+    "incorrectAnswers": [
+      "machine",
+      "device",
+      "equipment"
+    ],
+    "explanation": "Das Gerät (noun) means \"tool\", \"piece of equipment\", or \"appliance\". Example: Ein Thermometer ist ein Gerät zur Temperaturmessung. (A thermometer is a tool for measuring temperature.)",
+    "exampleSentence": "Ein Thermometer ist ein Gerät zur Temperaturmessung.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-123",
+    "type": "vocabulary",
+    "question": "What does \"vorhanden\" mean?",
+    "correctAnswer": "available",
+    "incorrectAnswers": [
+      "gone",
+      "lost",
+      "broken"
+    ],
+    "explanation": "Vorhanden (adjective) means \"available\" or \"existing\". Example: Es ist kein Papier mehr vorhanden. (There is no paper left available.)",
+    "exampleSentence": "Es ist kein Papier mehr vorhanden.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-124",
+    "type": "vocabulary",
+    "question": "What does \"der Oktober\" mean?",
+    "correctAnswer": "October",
+    "incorrectAnswers": [
+      "September",
+      "November",
+      "August"
+    ],
+    "explanation": "Der Oktober (noun) means \"October\". Example: Im Oktober ist Erntedankfest. (Thanksgiving is in October.)",
+    "exampleSentence": "Im Oktober ist Erntedankfest.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-125",
+    "type": "vocabulary",
+    "question": "What does \"die Reihe\" mean?",
+    "correctAnswer": "row",
+    "incorrectAnswers": [
+      "circle",
+      "square",
+      "line"
+    ],
+    "explanation": "Die Reihe (noun) means \"row\" or \"line\". Example: Stellt euch bitte in einer Reihe auf! (Please line up in a row!)",
+    "exampleSentence": "Stellt euch bitte in einer Reihe auf!",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-126",
+    "type": "vocabulary",
+    "question": "What does \"historisch\" mean?",
+    "correctAnswer": "historical",
+    "incorrectAnswers": [
+      "modern",
+      "ancient",
+      "current"
+    ],
+    "explanation": "Historisch (adjective) means \"historical\". Example: In jeder Generation kommt es zu historischen Ereignissen. (Every generation experiences historical events.)",
+    "exampleSentence": "In jeder Generation kommt es zu historischen Ereignissen.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-127",
+    "type": "vocabulary",
+    "question": "What does \"der Stoff\" mean?",
+    "correctAnswer": "material",
+    "incorrectAnswers": [
+      "color",
+      "pattern",
+      "design"
+    ],
+    "explanation": "Der Stoff (noun) means \"material\" or \"substance\". Example: Samt ist ein sehr weicher Stoff. (Velvet is a very soft material.)",
+    "exampleSentence": "Samt ist ein sehr weicher Stoff.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-128",
+    "type": "vocabulary",
+    "question": "What does \"die Mitte\" mean?",
+    "correctAnswer": "middle",
+    "incorrectAnswers": [
+      "beginning",
+      "end",
+      "center"
+    ],
+    "explanation": "Die Mitte (noun) means \"middle\" or \"center\". Example: Kassel liegt in der Mitte Deutschlands. (Kassel is located in the middle of Germany.)",
+    "exampleSentence": "Kassel liegt in der Mitte Deutschlands.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-129",
+    "type": "vocabulary",
+    "question": "What does the adverb \"lieber\" mean?",
+    "correctAnswer": "rather",
+    "incorrectAnswers": [
+      "preferably",
+      "definitely",
+      "likely"
+    ],
+    "explanation": "Lieber (adverb) means \"rather\" or \"prefer\". Example: Ich esse lieber Birnen als Äpfel. (I prefer to eat pears rather than apples.)",
+    "exampleSentence": "Ich esse lieber Birnen als Äpfel.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-130",
+    "type": "vocabulary",
+    "question": "What does the verb \"vorkommen\" mean?",
+    "correctAnswer": "to happen",
+    "incorrectAnswers": [
+      "to stop",
+      "to leave",
+      "to understand"
+    ],
+    "explanation": "Vorkommen (verb) means \"to happen\", \"to occur\", or \"to seem\". Example: Fälle von Korruption kommen auch im Bundestag vor. (Cases of corruption also occur in the Bundestag.)",
+    "exampleSentence": "Fälle von Korruption kommen auch im Bundestag vor.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-131",
+    "type": "vocabulary",
+    "question": "What does \"aha\" mean?",
+    "correctAnswer": "aha",
+    "incorrectAnswers": [
+      "hello",
+      "goodbye",
+      "thanks"
+    ],
+    "explanation": "Aha (particle) is an exclamation meaning \"aha\" or \"I see\". Example: Aha, so ist das also! (Aha, so that's how it is!)",
+    "exampleSentence": "Aha, so ist das also!",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-132",
+    "type": "vocabulary",
+    "question": "What does the verb \"betonen\" mean?",
+    "correctAnswer": "to stress",
+    "incorrectAnswers": [
+      "to repeat",
+      "to explain",
+      "to teach"
+    ],
+    "explanation": "Betonen (verb) means \"to stress\" or \"to emphasize\". Example: Der Professor betont noch einmal, dass das Seminar Pflicht ist. (The professor emphasizes again that the seminar is mandatory.)",
+    "exampleSentence": "Der Professor betont noch einmal, dass das Seminar Pflicht ist.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-133",
+    "type": "vocabulary",
+    "question": "What does \"das Glück\" mean?",
+    "correctAnswer": "luck",
+    "incorrectAnswers": [
+      "happiness",
+      "fortune",
+      "chance"
+    ],
+    "explanation": "Das Glück (noun) means \"luck\" or \"fortune\". Example: Alles Gute und viel Glück zum Geburtstag! (All the best and good luck for your birthday!)",
+    "exampleSentence": "Alles Gute und viel Glück zum Geburtstag!",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-134",
+    "type": "vocabulary",
+    "question": "What does \"dennoch\" mean?",
+    "correctAnswer": "nevertheless",
+    "incorrectAnswers": [
+      "therefore",
+      "however",
+      "moreover"
+    ],
+    "explanation": "Dennoch (adverb) means \"nevertheless\" or \"still\". Example: Gregor hat sich große Mühe gegeben, dennoch hat er die Prüfung nicht bestanden. (Gregor made great effort, nevertheless he didn't pass the exam.)",
+    "exampleSentence": "Gregor hat sich große Mühe gegeben, dennoch hat er die Prüfung nicht bestanden.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-135",
+    "type": "vocabulary",
+    "question": "What does \"zugleich\" mean?",
+    "correctAnswer": "at the same time",
+    "incorrectAnswers": [
+      "together",
+      "sometimes",
+      "always"
+    ],
+    "explanation": "Zugleich (adverb) means \"both\" or \"at the same time\". Example: Es ist kalt, zugleich weht ein starker Wind aus Nord. (It is cold, at the same time a strong north wind is blowing.)",
+    "exampleSentence": "Es ist kalt, zugleich weht ein starker Wind aus Nord.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-136",
+    "type": "vocabulary",
+    "question": "What does \"in der Mitte\" mean?",
+    "correctAnswer": "in the middle",
+    "incorrectAnswers": [
+      "at the edge",
+      "at the side",
+      "at the end"
+    ],
+    "explanation": "In der Mitte (phrase) means \"in the middle\". Example: In der Mitte des Zimmers steht ein großer Tisch. (A large table stands in the middle of the room.)",
+    "exampleSentence": "In der Mitte des Zimmers steht ein großer Tisch.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-137",
+    "type": "vocabulary",
+    "question": "What does \"sodass\" mean?",
+    "correctAnswer": "so that",
+    "incorrectAnswers": [
+      "because",
+      "although",
+      "so"
+    ],
+    "explanation": "Sodass (conjunction) means \"so that\". Example: Ich arbeite heute den ganzen Tag über, sodass ich am Abend Zeit für dich habe. (I work all day so that I have time for you in the evening.)",
+    "exampleSentence": "Ich arbeite heute den ganzen Tag über, sodass ich am Abend Zeit für dich habe.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-138",
+    "type": "vocabulary",
+    "question": "What does \"die Maßnahme\" mean?",
+    "correctAnswer": "measure",
+    "incorrectAnswers": [
+      "action",
+      "rule",
+      "step"
+    ],
+    "explanation": "Die Maßnahme (noun) means \"measure\" or \"step\". Example: Jetzt müssen geeignete Maßnahmen zum Hochwasserschutz getroffen werden. (Now appropriate measures for flood protection must be taken.)",
+    "exampleSentence": "Jetzt müssen geeignete Maßnahmen zum Hochwasserschutz getroffen werden.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-139",
+    "type": "vocabulary",
+    "question": "What does \"der Westen\" mean?",
+    "correctAnswer": "west",
+    "incorrectAnswers": [
+      "east",
+      "north",
+      "south"
+    ],
+    "explanation": "Der Westen (noun) means \"west\". Example: Im Westen ist die Arbeitslosigkeit niedriger als im Osten. (Unemployment is lower in the west than in the east.)",
+    "exampleSentence": "Im Westen ist die Arbeitslosigkeit niedriger als im Osten.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-140",
+    "type": "vocabulary",
+    "question": "What does the verb \"erfüllen\" mean?",
+    "correctAnswer": "to fulfil",
+    "incorrectAnswers": [
+      "to fill",
+      "to complete",
+      "to satisfy"
+    ],
+    "explanation": "Erfüllen (verb) means \"to grant\" or \"to fulfil\". Example: Alle Bedingungen müssen erfüllt werden. (All conditions must be fulfilled.)",
+    "exampleSentence": "Alle Bedingungen müssen erfüllt werden.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-141",
+    "type": "vocabulary",
+    "question": "What does \"zuletzt\" mean?",
+    "correctAnswer": "last",
+    "incorrectAnswers": [
+      "first",
+      "always",
+      "never"
+    ],
+    "explanation": "Zuletzt (adverb) means \"last\" or \"in the end\". Example: Zuletzt hat Bruno als Kellner gearbeitet. (Last, Bruno worked as a waiter.)",
+    "exampleSentence": "Zuletzt hat Bruno als Kellner gearbeitet.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-142",
+    "type": "vocabulary",
+    "question": "What does \"knapp\" mean?",
+    "correctAnswer": "scarce",
+    "incorrectAnswers": [
+      "abundant",
+      "enough",
+      "plenty"
+    ],
+    "explanation": "Knapp (adjective) means \"scarce\" or \"slim\". Example: Die Partei hat mit knapper Mehrheit gewonnen. (The party won with a slim majority.)",
+    "exampleSentence": "Die Partei hat mit knapper Mehrheit gewonnen.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-143",
+    "type": "vocabulary",
+    "question": "What does \"die Ordnung\" mean?",
+    "correctAnswer": "order",
+    "incorrectAnswers": [
+      "rule",
+      "command",
+      "discipline"
+    ],
+    "explanation": "Die Ordnung (noun) means \"order\" or \"tidiness\". Example: Ordnung ist das halbe Leben. (Order is half of life. - German proverb)",
+    "exampleSentence": "Ordnung ist das halbe Leben.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-144",
+    "type": "vocabulary",
+    "question": "What does the verb \"besitzen\" mean?",
+    "correctAnswer": "to own",
+    "incorrectAnswers": [
+      "to buy",
+      "to keep",
+      "to hold"
+    ],
+    "explanation": "Besitzen (verb) means \"to own\" or \"to have\". Example: Diese Methode besitzt großes Potenzial. (This method has great potential.)",
+    "exampleSentence": "Diese Methode besitzt großes Potenzial.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-145",
+    "type": "vocabulary",
+    "question": "What does \"eine Reihe von\" mean?",
+    "correctAnswer": "a series of",
+    "incorrectAnswers": [
+      "a line of",
+      "a lot of",
+      "many"
+    ],
+    "explanation": "Eine Reihe von (phrase) means \"a series of\". Example: Für die Gründung eines Vereins gibt es eine Reihe von Vorschriften. (For founding an association, there is a series of regulations.)",
+    "exampleSentence": "Für die Gründung eines Vereins gibt es eine Reihe von Vorschriften.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-146",
+    "type": "vocabulary",
+    "question": "What does \"der Beginn\" mean?",
+    "correctAnswer": "beginning",
+    "incorrectAnswers": [
+      "end",
+      "middle",
+      "start"
+    ],
+    "explanation": "Der Beginn (noun) means \"beginning\". Example: Der Beginn der Sommerzeit ist Ende März. (The beginning of summer time is at the end of March.)",
+    "exampleSentence": "Der Beginn der Sommerzeit ist Ende März.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-147",
+    "type": "vocabulary",
+    "question": "What does \"das Wochenende\" mean?",
+    "correctAnswer": "weekend",
+    "incorrectAnswers": [
+      "weekday",
+      "week",
+      "day"
+    ],
+    "explanation": "Das Wochenende (noun) means \"weekend\". Example: Am Wochenende fahren wir aufs Land. (On the weekend, we're going to the countryside.)",
+    "exampleSentence": "Am Wochenende fahren wir aufs Land.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-148",
+    "type": "vocabulary",
+    "question": "What does \"der Professor\" mean?",
+    "correctAnswer": "professor",
+    "incorrectAnswers": [
+      "teacher",
+      "lecturer",
+      "student"
+    ],
+    "explanation": "Der Professor (noun) means \"professor\". Example: Der Professor betreut viele Studierende. (The professor supervises many students.)",
+    "exampleSentence": "Der Professor betreut viele Studierende.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-149",
+    "type": "vocabulary",
+    "question": "What does the verb \"beteiligen\" mean?",
+    "correctAnswer": "to participate",
+    "incorrectAnswers": [
+      "to join",
+      "to attend",
+      "to include"
+    ],
+    "explanation": "Beteiligen (verb) means \"to participate\" or \"to take part\". Example: Viele Studenten beteiligten sich an der Demonstration. (Many students participated in the demonstration.)",
+    "exampleSentence": "Viele Studenten beteiligten sich an der Demonstration.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-150",
+    "type": "vocabulary",
+    "question": "What does \"der Osten\" mean?",
+    "correctAnswer": "east",
+    "incorrectAnswers": [
+      "west",
+      "north",
+      "south"
+    ],
+    "explanation": "Der Osten (noun) means \"east\". Example: Im Osten geht die Sonne auf. (In the east, the sun rises.)",
+    "exampleSentence": "Im Osten geht die Sonne auf.",
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-151",
+    "type": "vocabulary",
+    "question": "What does 'aktuell' mean?",
+    "answers": [
+      "current",
+      "actual (in the sense of real)",
+      "active"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Aktuell means 'current' or 'up-to-date'. It's an adjective often used with words like 'aktuelle Daten' (current data). Do not confuse with 'actual' in English, which translates to 'eigentlich' in German.",
+    "example": "Die aktuellsten Daten findet man im Internet. (You can find the most current data on the Internet.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-152",
+    "type": "vocabulary",
+    "question": "What does 'sich eignen' mean?",
+    "answers": [
+      "to be suitable",
+      "to own something",
+      "to adapt oneself"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Sich eignen means 'to be suitable' or 'to be fit for'. It's a reflexive verb used with the preposition 'für' (for) or 'zu' (for). Example: Das eignet sich gut zum Kochen.",
+    "example": "Dieses Messer eignet sich sehr gut zum Brotschneiden. (This knife is very suitable for cutting bread.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-153",
+    "type": "vocabulary",
+    "question": "What does 'derzeit' mean?",
+    "answers": [
+      "currently, at the moment",
+      "long ago",
+      "in the future"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Derzeit is an adverb meaning 'currently', 'at the moment', or 'at present'. It's a formal way to express what is happening now. Similar to 'augenblicklich'.",
+    "example": "Derzeit wiederholt das Fernsehen eine Serie aus den 80er Jahren. (The TV is currently repeating a series from the 1980s.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-154",
+    "type": "vocabulary",
+    "question": "What does 'danke' mean?",
+    "answers": [
+      "thanks",
+      "think",
+      "darkness"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Danke means 'thanks' or 'thank you'. It's an adverb borrowed from the Middle High German 'danken' (to thank). You can say 'Danke!' or 'Danke dir!' (Thank you!)",
+    "example": "Danke für deine Hilfe! (Thanks for your help!)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-155",
+    "type": "vocabulary",
+    "question": "What does 'die Reise' mean?",
+    "answers": [
+      "journey, trip",
+      "rice",
+      "row"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Die Reise is a feminine noun meaning 'journey' or 'trip'. It refers to any kind of travel experience. The plural is 'die Reisen'.",
+    "example": "Anschließend unternahm er eine Reise nach Italien. (Afterwards, he took a trip to Italy.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-156",
+    "type": "vocabulary",
+    "question": "What does 'übrig' mean?",
+    "answers": [
+      "remaining, left",
+      "over, above",
+      "forgotten"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Übrig is an adjective meaning 'remaining' or 'left over'. It's used to describe what is left after something has been used or taken away. Example: 'Was bleibt übrig?' (What's left?)",
+    "example": "Es ist nichts mehr von der Suppe übrig. (Nothing is left of the soup anymore.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-157",
+    "type": "vocabulary",
+    "question": "What does 'umfassen' mean?",
+    "answers": [
+      "to include, consist of",
+      "to embrace",
+      "to surround"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Umfassen is a verb meaning 'to include', 'to consist of', or 'to comprise'. It refers to containing something as a whole. Example: Das Buch umfasst 300 Seiten.",
+    "example": "Das Menü umfasst fünf Gänge. (The menu consists of five courses.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-158",
+    "type": "vocabulary",
+    "question": "What does 'indem' mean?",
+    "answers": [
+      "while, by",
+      "inside",
+      "in the same"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Indem is a conjunction meaning 'while' or 'by (doing something)'. It describes the manner or method by which something happens. Often followed by a present participle construction.",
+    "example": "Tim hält sich gesund, indem er viel Sport treibt. (Tim stays healthy by exercising a lot.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-159",
+    "type": "vocabulary",
+    "question": "What does 'unterstützen' mean?",
+    "answers": [
+      "to support",
+      "to stand underneath",
+      "to uphold (as in a principle)"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Unterstützen is a verb meaning 'to support' or 'to aid'. It can refer to emotional, financial, or practical support. Example: Ich unterstütze dich bei deinen Plänen.",
+    "example": "Die Eltern unterstützen ihre Tochter während ihres Studiums finanziell. (The parents support their daughter financially during her studies.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-160",
+    "type": "vocabulary",
+    "question": "What does 'die Einheit' mean?",
+    "answers": [
+      "unity, unit",
+      "only one",
+      "uniqueness"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Die Einheit is a feminine noun meaning 'unity' or 'unit'. In German history, it often refers to 'Deutsche Einheit' (German Unification). It can also mean a single unit or component.",
+    "example": "Die Deutsche Einheit kam für viele überraschend. (German reunification was surprising to many.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-161",
+    "type": "vocabulary",
+    "question": "What does 'schlafen' mean?",
+    "answers": [
+      "to sleep",
+      "to rest",
+      "to lie down"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Schlafen is a strong verb meaning 'to sleep'. It's an essential daily activity. Conjugation: ich schlafe, du schläfst, er schläft, wir schlafen.",
+    "example": "Ich schlafe acht Stunden pro Tag. (I sleep eight hours a day.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-162",
+    "type": "vocabulary",
+    "question": "What does 'das Institut' mean?",
+    "answers": [
+      "institute",
+      "institution (government)",
+      "institution (in general)"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Das Institut is a neuter noun meaning 'institute' or 'institution', usually referring to an academic or research organization. Example: Das Max-Planck-Institut.",
+    "example": "Am Institut für Linguistik lehrt ein Gastprofessor aus den USA. (A visiting professor from the USA teaches at the Institute for Linguistics.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-163",
+    "type": "vocabulary",
+    "question": "What does 'merken' mean?",
+    "answers": [
+      "to notice, remember",
+      "to mark",
+      "to observe"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Merken is a verb meaning 'to notice', 'to remember', or 'to realize'. It can be used reflexively: sich etwas merken (to remember something).",
+    "example": "Ich kann mir seinen Namen nicht merken. (I can't remember his name.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-164",
+    "type": "vocabulary",
+    "question": "What does 'nochmals' mean?",
+    "answers": [
+      "again",
+      "no more",
+      "still, yet"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Nochmals is an adverb meaning 'again' or 'once more'. It's a variant of 'nochmal' and 'noch einmal'. Often used in formal contexts: Vielen Dank nochmals!",
+    "example": "Ich habe den Film nochmal gesehen. (I watched the movie again.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-165",
+    "type": "vocabulary",
+    "question": "What does 'passen' mean?",
+    "answers": [
+      "to fit",
+      "to pass",
+      "to suit"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Passen is a verb meaning 'to fit' or 'to suit'. It can describe physical fit or suitability. Example: Passt dir dieser Schuh?",
+    "example": "Der Deckel passt nicht auf den Topf. (The lid doesn't fit on the pot.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-166",
+    "type": "vocabulary",
+    "question": "What does 'die Bevölkerung' mean?",
+    "answers": [
+      "population",
+      "people, folk",
+      "inhabitants"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Die Bevölkerung is a feminine noun meaning 'population'. It refers to all the people living in a particular area or country.",
+    "example": "Die Bevölkerung verlangt Reformen. (The population demands reforms.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-167",
+    "type": "vocabulary",
+    "question": "What does 'im Übrigen' mean?",
+    "answers": [
+      "by the way, incidentally",
+      "in the remaining time",
+      "in addition"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Im Übrigen is a phrase/adverb meaning 'by the way' or 'incidentally'. It's used to introduce an additional point or change the subject slightly in a conversation.",
+    "example": "Im Übrigen kann die Uni leicht mit dem Bus erreicht werden. (By the way, the university can be easily reached by bus.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-168",
+    "type": "vocabulary",
+    "question": "What does 'die Erde' mean?",
+    "answers": [
+      "earth, ground, soil",
+      "earth (planet)",
+      "dirt"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Die Erde is a feminine noun meaning 'earth', 'ground', or 'soil'. It can refer to the planet Earth or the physical ground material. Example: Ich liebe die Erde unter meinen Füßen.",
+    "example": "Die Erde bewegt sich um die Sonne. (The Earth revolves around the Sun.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-169",
+    "type": "vocabulary",
+    "question": "What does 'die Schwester' mean?",
+    "answers": [
+      "sister",
+      "nurse",
+      "monastic nun"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Die Schwester is a feminine noun meaning 'sister'. The plural is 'die Schwestern'. In some contexts, it can also mean 'nurse' (Krankenschwester).",
+    "example": "Ich habe zwei ältere Schwestern. (I have two older sisters.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-170",
+    "type": "vocabulary",
+    "question": "What does 'richten' mean?",
+    "answers": [
+      "to direct, repair, follow",
+      "to judge",
+      "to set up"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Richten is a verb meaning 'to direct', 'to repair', or 'to follow'. When used reflexively (sich richten nach), it means 'to follow' or 'to be guided by'. Example: Ich richte mich nach deinen Wünschen.",
+    "example": "Ich richte mich nicht nach deinen Wünschen. (I don't follow your wishes.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-171",
+    "type": "vocabulary",
+    "question": "What does 'irgendwas' mean?",
+    "answers": [
+      "something, anything",
+      "something strange",
+      "some kind of thing"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Irgendwas is an indefinite pronoun meaning 'something' or 'anything'. It's informal/colloquial; more formal would be 'irgendetwas' or simply 'etwas'.",
+    "example": "Irgendwas hier riecht verbrannt. (Something here smells burnt.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-172",
+    "type": "vocabulary",
+    "question": "What does 'die Ebene' mean?",
+    "answers": [
+      "plane, level",
+      "plain (geographic feature)",
+      "flat surface"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Die Ebene is a feminine noun meaning 'plane', 'level', or 'plain'. In mathematics, it refers to a geometric plane. In general use, it means a level or flat area.",
+    "example": "Dieses Problem muss man auf verschiedenen Ebenen betrachten. (This problem must be considered on different levels.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-173",
+    "type": "vocabulary",
+    "question": "What does 'zuvor' mean?",
+    "answers": [
+      "before",
+      "ahead",
+      "previously"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Zuvor is an adverb meaning 'before' or 'previously'. It's used to indicate something that happened at an earlier time. Example: Kurz zuvor war ich noch hier.",
+    "example": "Ich habe gleich ein Seminar, zuvor muss ich noch etwas kopieren. (I have a seminar right away, but before that I need to copy something.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-174",
+    "type": "vocabulary",
+    "question": "What does 'die Wahl' mean?",
+    "answers": [
+      "choice, election",
+      "hunt",
+      "selection (in the sense of 'what's available')"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Die Wahl is a feminine noun meaning 'choice' or 'election'. It can refer to choosing between options or voting in an election. Famous phrase: Wer die Wahl hat, hat die Qual (too many choices is a burden).",
+    "example": "Wer die Wahl hat, hat die Qual. (When you have the choice, you have the agony of choosing.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-175",
+    "type": "vocabulary",
+    "question": "What does 'lieb' mean?",
+    "answers": [
+      "dear, kind",
+      "lovely",
+      "beloved (romantic sense)"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Lieb is an adjective meaning 'dear' or 'kind'. It's often used with children or people you care about. The noun 'der/die Liebe' (love) comes from the same root.",
+    "example": "Alina ist ein liebes Kind. (Alina is a dear/kind child.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-176",
+    "type": "vocabulary",
+    "question": "What does 'die Bedingung' mean?",
+    "answers": [
+      "condition, stipulation",
+      "request",
+      "requirement (in the sense of 'need')"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Die Bedingung is a feminine noun meaning 'condition' or 'stipulation'. It refers to a requirement that must be met. Often used in phrases like 'unter folgenden Bedingungen' (under the following conditions).",
+    "example": "Unter solchen Bedingungen kann ich nicht arbeiten. (I cannot work under such conditions.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-177",
+    "type": "vocabulary",
+    "question": "What does 'das Lächeln' mean?",
+    "answers": [
+      "smile",
+      "laugh",
+      "smiling (the action)"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Das Lächeln is a neuter noun meaning 'smile'. It's the gerund/noun form of the verb 'lächeln' (to smile). Example: Ein warmes Lächeln.",
+    "example": "Harry war von Sallys Lächeln hingerissen. (Harry was enchanted by Sally's smile.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-178",
+    "type": "vocabulary",
+    "question": "What does 'in der Nähe' mean?",
+    "answers": [
+      "in the vicinity, nearby",
+      "in the closeness",
+      "in the neighborhood"
+    ],
+    "correctAnswer": 0,
+    "explanation": "In der Nähe is a phrase meaning 'in the vicinity' or 'nearby'. The noun 'die Nähe' means 'proximity' or 'vicinity'. It's often used with 'von' (of/from) to indicate location.",
+    "example": "In der Nähe der Universität sind nette Kneipen. (Near the university there are nice pubs.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-179",
+    "type": "vocabulary",
+    "question": "What does 'die Struktur' mean?",
+    "answers": [
+      "structure",
+      "organization",
+      "arrangement"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Die Struktur is a feminine noun meaning 'structure'. It refers to the way something is organized or arranged. Example: Die Struktur eines Satzes (the structure of a sentence).",
+    "example": "An der föderalen Struktur Deutschlands sollte nicht gerüttelt werden. (The federal structure of Germany should not be tampered with.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-180",
+    "type": "vocabulary",
+    "question": "What does 'lösen' mean?",
+    "answers": [
+      "to solve, loosen",
+      "to dissolve",
+      "to undo"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Lösen is a verb meaning 'to solve' (problems), 'to loosen' (tight things), or 'to dissolve' (substances). Context determines which meaning applies. Example: Ein Problem lösen.",
+    "example": "Probleme löst man am besten gemeinsam. (Problems are best solved together.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-181",
+    "type": "vocabulary",
+    "question": "What does 'das Prinzip' mean?",
+    "answers": [
+      "principle",
+      "beginning",
+      "fundamental rule"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Das Prinzip is a neuter noun meaning 'principle'. It refers to a fundamental truth or rule that guides behavior or understanding. Example: Das Prinzip der Gleichheit.",
+    "example": "Ich esse aus Prinzip kein Fleisch. (I don't eat meat on principle.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-182",
+    "type": "vocabulary",
+    "question": "What does 'das Risiko' mean?",
+    "answers": [
+      "risk",
+      "danger",
+      "chance"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Das Risiko is a neuter noun meaning 'risk'. It refers to the possibility of loss or harm. Example: Ein hohes Risiko eingehen.",
+    "example": "Das Risiko, vom Rauchen Lungenkrebs zu bekommen, ist sehr hoch. (The risk of getting lung cancer from smoking is very high.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-183",
+    "type": "vocabulary",
+    "question": "What does 'daraus' mean?",
+    "answers": [
+      "from it",
+      "out of it",
+      "from that"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Daraus is a pronoun meaning 'from it' or 'from that'. It's a combination of the preposition 'dar-' (from) and 'aus' (out of). Often used with verbs like 'folgen' (to follow).",
+    "example": "Daraus lässt sich schlussfolgern, dass das Rechteck größer als das Quadrat ist. (From this, one can conclude that the rectangle is larger than the square.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-184",
+    "type": "vocabulary",
+    "question": "What does 'lächeln' mean?",
+    "answers": [
+      "to smile",
+      "to laugh",
+      "to grin"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Lächeln is a verb meaning 'to smile'. It's a milder expression than 'lachen' (to laugh). Conjugation: ich lächele, du lächelst, er/sie lächelt.",
+    "example": "Bitte lächeln Sie in die Kamera! (Please smile at the camera!)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-185",
+    "type": "vocabulary",
+    "question": "What does 'beschäftigen' mean?",
+    "answers": [
+      "to employ, be busy, deal with",
+      "to occupy (a place)",
+      "to distract"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Beschäftigen is a verb meaning 'to employ', 'to be busy with', or 'to deal with'. When reflexive (sich beschäftigen mit), it means 'to busy oneself with' or 'to occupy oneself with'.",
+    "example": "Mit solchen Sachen beschäftige ich mich nicht. (I don't deal with such things.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-186",
+    "type": "vocabulary",
+    "question": "What does 'der Vorteil' mean?",
+    "answers": [
+      "advantage",
+      "benefit",
+      "head start"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Der Vorteil is a masculine noun meaning 'advantage'. It refers to something that gives a favorable position or benefit. Opposite: 'der Nachteil' (disadvantage).",
+    "example": "Der Vorteil dieser Methode ist offensichtlich. (The advantage of this method is obvious.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-187",
+    "type": "vocabulary",
+    "question": "What does 'das Haar' mean?",
+    "answers": [
+      "hair",
+      "fiber",
+      "strand"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Das Haar is a neuter noun meaning 'hair'. The plural is 'die Haare'. Often used in the plural form when referring to the hair on one's head.",
+    "example": "Ich lasse mir heute meine Haare schneiden. (I'm getting my hair cut today.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-188",
+    "type": "vocabulary",
+    "question": "What does 'schlimm' mean?",
+    "answers": [
+      "bad, serious",
+      "awful",
+      "terrible"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Schlimm is an adjective meaning 'bad' or 'serious'. It often implies something negative or worrisome. Do not confuse with 'schlecht' (which means bad in quality).",
+    "example": "Am nächsten Tag jedoch bekam er eine schlimme Nachricht. (The next day, however, he received bad news.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-189",
+    "type": "vocabulary",
+    "question": "What does 'miteinander' mean?",
+    "answers": [
+      "with each other",
+      "together",
+      "among themselves"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Miteinander is an adverb meaning 'with each other' or 'together'. It emphasizes mutual action or interaction. Example: Sie spielen miteinander.",
+    "example": "Die Kinder spielen miteinander im Sandkasten. (The children play with each other in the sandbox.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-190",
+    "type": "vocabulary",
+    "question": "What does 'die Wirkung' mean?",
+    "answers": [
+      "effect",
+      "impact",
+      "result"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Die Wirkung is a feminine noun meaning 'effect' or 'impact'. It refers to the result or consequence of something. Example: Die Wirkung eines Medikaments.",
+    "example": "Alkohol hat keine große Wirkung auf mich. (Alcohol has no great effect on me.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-191",
+    "type": "vocabulary",
+    "question": "What does 'der Montag' mean?",
+    "answers": [
+      "Monday",
+      "day of the moon",
+      "first day of the work week"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Der Montag is a masculine noun meaning 'Monday'. It's the first day of the work week in most German-speaking countries. Days of the week are capitalized in German.",
+    "example": "Am Montag beginnt die Arbeitswoche. (The work week begins on Monday.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-192",
+    "type": "vocabulary",
+    "question": "What does 'die Nähe' mean?",
+    "answers": [
+      "vicinity, proximity",
+      "closeness",
+      "neighborhood"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Die Nähe is a feminine noun meaning 'vicinity' or 'proximity'. It refers to the state of being near or close to something. Often used with prepositions like 'in der Nähe von'.",
+    "example": "Die Nähe zur Innenstadt macht die Wohnung attraktiv. (Proximity to the city center makes the apartment attractive.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-193",
+    "type": "vocabulary",
+    "question": "What does 'antworten' mean?",
+    "answers": [
+      "to answer",
+      "to reply",
+      "to respond"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Antworten is a verb meaning 'to answer' or 'to reply'. It's commonly used with the dative case (jemandem antworten = to answer someone). Conjugation: ich antworte, du antwortest, er/sie antwortet.",
+    "example": "Anna antwortet auf die Frage ihrer Lehrerin. (Anna answers her teacher's question.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-194",
+    "type": "vocabulary",
+    "question": "What does 'trennen' mean?",
+    "answers": [
+      "to separate",
+      "to divide",
+      "to split up"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Trennen is a verb meaning 'to separate' or 'to divide'. It can be used transitively (to separate something) or reflexively (sich trennen = to part ways).",
+    "example": "Die Mauer trennte die beiden deutschen Staaten. (The wall separated the two German states.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-195",
+    "type": "vocabulary",
+    "question": "What does 'der Autor' mean?",
+    "answers": [
+      "author",
+      "writer",
+      "creator"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Der Autor is a masculine noun meaning 'author'. A female author is 'die Autorin'. Example: Thomas Mann war ein bekannter Autor.",
+    "example": "Thomas Brussig ist ein zeitgenössischer deutscher Autor. (Thomas Brussig is a contemporary German author.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-196",
+    "type": "vocabulary",
+    "question": "What does 'teilweise' mean?",
+    "answers": [
+      "partly",
+      "partially",
+      "in part"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Teilweise is an adverb meaning 'partly' or 'partially'. It indicates that something is only partially true or done. Do not confuse with 'teils' (which means partly/sometimes but is used differently).",
+    "example": "Diabetes ist teilweise genetisch bedingt. (Diabetes is partly genetically caused.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-197",
+    "type": "vocabulary",
+    "question": "What does 'schlimmer' mean?",
+    "answers": [
+      "worse",
+      "more serious",
+      "more bad"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Schlimmer is the comparative form of 'schlimm' (bad/serious), meaning 'worse' or 'more serious'. Example: Das ist noch schlimmer!",
+    "example": "Grippe ist schlimmer als Angina. (The flu is worse than strep throat.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-198",
+    "type": "vocabulary",
+    "question": "What does 'im Prinzip' mean?",
+    "answers": [
+      "in principle",
+      "basically",
+      "fundamentally"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Im Prinzip is a phrase meaning 'in principle' or 'basically'. It's used to introduce a general truth or rule, though exceptions might exist. Example: Im Prinzip bin ich einverstanden.",
+    "example": "Im Prinzip steht Ihrer Ausreise nichts im Wege. (In principle, there's nothing stopping you from leaving.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-199",
+    "type": "vocabulary",
+    "question": "What does 'einstellen' mean?",
+    "answers": [
+      "to adjust, employ, stop",
+      "to hire",
+      "to set"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Einstellen is a verb with multiple meanings: 'to adjust' (etwas einstellen), 'to employ' (jemanden einstellen), or 'to stop' (etwas einstellen). Context determines the meaning.",
+    "example": "Ich kann mich gut auf Veränderungen einstellen. (I can adjust well to changes.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-200",
+    "type": "vocabulary",
+    "question": "What does 'deswegen' mean?",
+    "answers": [
+      "therefore, that's why",
+      "because of that",
+      "so that"
+    ],
+    "correctAnswer": 0,
+    "explanation": "Deswegen is an adverb meaning 'therefore' or 'that's why'. It's used to indicate a consequence or reason. Similar words: 'darum', 'daher', 'deshalb'.",
+    "example": "Ich habe keine Zeit zu lernen. Deswegen verschiebe ich die Prüfung. (I don't have time to study. That's why I'm postponing the exam.)",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-201",
+    "type": "vocabulary",
+    "question": "What is the German word for 'Sunday'?",
+    "prompt": "Translate to German: Sunday",
+    "explanation": "Der Sonntag is the German word for Sunday. The article 'der' indicates it is masculine. Example: Am Sonntag haben die Läden geschlossen. (The shops are closed on Sunday.)",
+    "correctAnswer": "der Sonntag",
+    "incorrectAnswers": [
+      "der Montag",
+      "der Freitag"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-202",
+    "type": "vocabulary",
+    "question": "What does 'meistens' mean?",
+    "prompt": "Translate to English: meistens",
+    "explanation": "Meistens is an adverb meaning 'mostly' or 'usually'. Example: Meistens fahre ich mit dem Rad zur Uni. (Usually I ride my bike to university.)",
+    "correctAnswer": "mostly",
+    "incorrectAnswers": [
+      "never",
+      "sometimes"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-203",
+    "type": "vocabulary",
+    "question": "What is the German adjective for 'dark'?",
+    "prompt": "Translate to German: dark",
+    "explanation": "Dunkel is an adjective meaning 'dark'. Example: Draußen wird es schon dunkel. (It is getting dark outside already.)",
+    "correctAnswer": "dunkel",
+    "incorrectAnswers": [
+      "hell",
+      "grau"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-204",
+    "type": "vocabulary",
+    "question": "What is the German word for 'size' or 'height'?",
+    "prompt": "Translate to German: size",
+    "explanation": "Die Größe is a feminine noun meaning 'size' or 'height'. Example: Die Miete hängt von der Größe der Wohnung ab. (The rent depends on the size of the apartment.)",
+    "correctAnswer": "die Größe",
+    "incorrectAnswers": [
+      "die Länge",
+      "die Breite"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-205",
+    "type": "vocabulary",
+    "question": "What is the German word for 'media'?",
+    "prompt": "Translate to German: media",
+    "explanation": "Die Medien is a plural noun meaning 'media'. Example: In den Medien wird über den neuen Bestseller berichtet. (The media reports on the new bestseller.)",
+    "correctAnswer": "die Medien",
+    "incorrectAnswers": [
+      "die Presse",
+      "das Fernsehen"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-206",
+    "type": "vocabulary",
+    "question": "What is the German word for 'examination' or 'investigation'?",
+    "prompt": "Translate to German: examination",
+    "explanation": "Die Untersuchung is a feminine noun meaning 'examination' or 'investigation'. Example: Die Untersuchung findet am Montag statt. (The examination takes place on Monday.)",
+    "correctAnswer": "die Untersuchung",
+    "incorrectAnswers": [
+      "die Prüfung",
+      "der Test"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-207",
+    "type": "vocabulary",
+    "question": "What does the German verb 'bestätigen' mean?",
+    "prompt": "Translate to English: bestätigen",
+    "explanation": "Bestätigen is a verb meaning 'to confirm' or 'to endorse'. Example: Das Gericht bestätigt seine Unschuld. (The court confirms his innocence.)",
+    "correctAnswer": "to confirm",
+    "incorrectAnswers": [
+      "to deny",
+      "to question"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-208",
+    "type": "vocabulary",
+    "question": "What is the German word for 'change'?",
+    "prompt": "Translate to German: change",
+    "explanation": "Die Veränderung is a feminine noun meaning 'change'. Example: Ich kann mich schwer auf Veränderungen einstellen. (I have difficulty adapting to changes.)",
+    "correctAnswer": "die Veränderung",
+    "incorrectAnswers": [
+      "die Entwicklung",
+      "die Umwandlung"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-209",
+    "type": "vocabulary",
+    "question": "What does the German adverb 'überall' mean?",
+    "prompt": "Translate to English: überall",
+    "explanation": "Überall is an adverb meaning 'everywhere'. Example: Überall freuen sich die Kinder auf die Ferien. (Children everywhere are looking forward to the holidays.)",
+    "correctAnswer": "everywhere",
+    "incorrectAnswers": [
+      "somewhere",
+      "nowhere"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-210",
+    "type": "vocabulary",
+    "question": "What is the German word for 'data'?",
+    "prompt": "Translate to German: data",
+    "explanation": "Die Daten is a plural noun meaning 'data'. Example: Derzeit liegen uns keine Daten zu diesem Fall vor. (We currently have no data on this case.)",
+    "correctAnswer": "die Daten",
+    "incorrectAnswers": [
+      "die Information",
+      "die Fakten"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-211",
+    "type": "vocabulary",
+    "question": "What is the German word for 'organization'?",
+    "prompt": "Translate to German: organization",
+    "explanation": "Die Organisation is a feminine noun meaning 'organization'. Example: Die Organisation der Olympischen Spiele dauerte länger als gedacht. (The organization of the Olympic Games took longer than expected.)",
+    "correctAnswer": "die Organisation",
+    "incorrectAnswers": [
+      "die Gruppe",
+      "der Verein"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-212",
+    "type": "vocabulary",
+    "question": "What does the German verb 'aufbauen' mean?",
+    "prompt": "Translate to English: aufbauen",
+    "explanation": "Aufbauen is a verb meaning 'to build up' or 'to construct'. Example: Die Bürger bauen die Kirche nach der Zerstörung wieder auf. (The citizens rebuild the church after its destruction.)",
+    "correctAnswer": "to build up",
+    "incorrectAnswers": [
+      "to tear down",
+      "to demolish"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-213",
+    "type": "vocabulary",
+    "question": "What is the German word for 'influence'?",
+    "prompt": "Translate to German: influence",
+    "explanation": "Der Einfluss is a masculine noun meaning 'influence'. Example: Der Einfluss der extremen Parteien nimmt zu. (The influence of extreme parties is increasing.)",
+    "correctAnswer": "der Einfluss",
+    "incorrectAnswers": [
+      "die Wirkung",
+      "die Kraft"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-214",
+    "type": "vocabulary",
+    "question": "What is the German word for 'power' or 'strength'?",
+    "prompt": "Translate to German: power",
+    "explanation": "Die Macht is a feminine noun meaning 'power' or 'strength'. Example: Die Presse ist die vierte Macht im Staate. (The press is the fourth power in the state.)",
+    "correctAnswer": "die Macht",
+    "incorrectAnswers": [
+      "die Kraft",
+      "die Energie"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-215",
+    "type": "vocabulary",
+    "question": "What does the German verb 'lieben' mean?",
+    "prompt": "Translate to English: lieben",
+    "explanation": "Lieben is a verb meaning 'to love'. Example: Ich liebe Picknicks im Park. (I love picnics in the park.)",
+    "correctAnswer": "to love",
+    "incorrectAnswers": [
+      "to like",
+      "to enjoy"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-216",
+    "type": "vocabulary",
+    "question": "What is the German word for 'method'?",
+    "prompt": "Translate to German: method",
+    "explanation": "Die Methode is a feminine noun meaning 'method'. Example: Spazierengehen ist eine gute Methode, um sich zu entspannen. (Walking is a good method to relax.)",
+    "correctAnswer": "die Methode",
+    "incorrectAnswers": [
+      "die Art",
+      "die Weise"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-217",
+    "type": "vocabulary",
+    "question": "What does the German adjective 'offenbar' mean?",
+    "prompt": "Translate to English: offenbar",
+    "explanation": "Offenbar is an adjective meaning 'obvious' or 'apparent'. Example: Hier handelt es sich offenbar um einen Fehler. (This is obviously a mistake.)",
+    "correctAnswer": "obvious",
+    "incorrectAnswers": [
+      "hidden",
+      "unclear"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-218",
+    "type": "vocabulary",
+    "question": "What does the German preposition 'laut' mean?",
+    "prompt": "Translate to English: laut",
+    "explanation": "Laut is a preposition meaning 'according to'. Example: Laut Fahrplan müsste der Zug jeden Moment kommen. (According to the schedule, the train should arrive any moment.)",
+    "correctAnswer": "according to",
+    "incorrectAnswers": [
+      "loud",
+      "because of"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-219",
+    "type": "vocabulary",
+    "question": "What is the German word for 'letter'?",
+    "prompt": "Translate to German: letter",
+    "explanation": "Der Brief is a masculine noun meaning 'letter'. Example: Ein Brief kostet 55 Cent Porto. (A letter costs 55 cents postage.)",
+    "correctAnswer": "der Brief",
+    "incorrectAnswers": [
+      "die Nachricht",
+      "das Schreiben"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-220",
+    "type": "vocabulary",
+    "question": "What does the German verb 'genügen' mean?",
+    "prompt": "Translate to English: genügen",
+    "explanation": "Genügen is a verb meaning 'to be sufficient' or 'to be enough'. Example: Eine Tasse Kaffee pro Tag genügt mir. (One cup of coffee per day is enough for me.)",
+    "correctAnswer": "to be sufficient",
+    "incorrectAnswers": [
+      "to enjoy",
+      "to satisfy"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-221",
+    "type": "vocabulary",
+    "question": "What does the German verb 'durchführen' mean?",
+    "prompt": "Translate to English: durchführen",
+    "explanation": "Durchführen is a verb meaning 'to carry out' or 'to hold'. Example: Wir führen in diesem Monat keine Kurse mehr durch. (We are not holding any more courses this month.)",
+    "correctAnswer": "to carry out",
+    "incorrectAnswers": [
+      "to go through",
+      "to continue"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-222",
+    "type": "vocabulary",
+    "question": "What does the German adverb 'durchaus' mean?",
+    "prompt": "Translate to English: durchaus",
+    "explanation": "Durchaus is an adverb meaning 'absolutely' or 'quite'. Example: Ich bin durchaus deiner Meinung, würde aber gerne noch etwas warten mit der Entscheidung. (I absolutely agree with you, but I would like to wait a bit before deciding.)",
+    "correctAnswer": "absolutely",
+    "incorrectAnswers": [
+      "rarely",
+      "sometimes"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-223",
+    "type": "vocabulary",
+    "question": "What does the German phrase 'im Augenblick' mean?",
+    "prompt": "Translate to English: im Augenblick",
+    "explanation": "Im Augenblick is a phrase meaning 'at the moment'. Example: Im Augenblick beschäftige ich mich mit Literaturwissenschaft. (At the moment I am studying literature.)",
+    "correctAnswer": "at the moment",
+    "incorrectAnswers": [
+      "in the past",
+      "in the future"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-224",
+    "type": "vocabulary",
+    "question": "What does the German adjective 'weltweit' mean?",
+    "prompt": "Translate to English: weltweit",
+    "explanation": "Weltweit is an adjective meaning 'world-wide'. Example: Weltweit steigt die Gefahr einer Klimakatastrophe. (Worldwide, the danger of climate disaster is increasing.)",
+    "correctAnswer": "worldwide",
+    "incorrectAnswers": [
+      "nationally",
+      "locally"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-225",
+    "type": "vocabulary",
+    "question": "What does the German verb 'verkaufen' mean?",
+    "prompt": "Translate to English: verkaufen",
+    "explanation": "Verkaufen is a verb meaning 'to sell'. Example: Ich muss einige Bücher verkaufen, weil ich Geld brauche. (I have to sell some books because I need money.)",
+    "correctAnswer": "to sell",
+    "incorrectAnswers": [
+      "to buy",
+      "to trade"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-226",
+    "type": "vocabulary",
+    "question": "What does the German verb 'drücken' mean?",
+    "prompt": "Translate to English: drücken",
+    "explanation": "Drücken is a verb meaning 'to press' or 'to push'. Example: Sie müssen diesen Knopf hier drücken! (You have to press this button!)",
+    "correctAnswer": "to press",
+    "incorrectAnswers": [
+      "to pull",
+      "to turn"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-227",
+    "type": "vocabulary",
+    "question": "What is the German word for 'sport'?",
+    "prompt": "Translate to German: sport",
+    "explanation": "Der Sport is a masculine noun meaning 'sport'. Example: Sport ist gesund. (Sport is healthy.)",
+    "correctAnswer": "der Sport",
+    "incorrectAnswers": [
+      "das Spiel",
+      "die Aktivität"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-228",
+    "type": "vocabulary",
+    "question": "What is the German word for 'moment'?",
+    "prompt": "Translate to German: moment",
+    "explanation": "Der Augenblick is a masculine noun meaning 'moment'. Example: Genieße den Augenblick! (Enjoy the moment!)",
+    "correctAnswer": "der Augenblick",
+    "incorrectAnswers": [
+      "die Sekunde",
+      "der Moment"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-229",
+    "type": "vocabulary",
+    "question": "What does the German verb 'untersuchen' mean?",
+    "prompt": "Translate to English: untersuchen",
+    "explanation": "Untersuchen is a verb meaning 'to examine'. Example: Der Biologe untersucht Pflanzen und Tiere. (The biologist examines plants and animals.)",
+    "correctAnswer": "to examine",
+    "incorrectAnswers": [
+      "to observe",
+      "to study"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-230",
+    "type": "vocabulary",
+    "question": "What does the German adjective 'geboren' mean?",
+    "prompt": "Translate to English: geboren",
+    "explanation": "Geboren is an adjective meaning 'born'. Example: Meine Mutter wurde 1953 geboren. (My mother was born in 1953.)",
+    "correctAnswer": "born",
+    "incorrectAnswers": [
+      "dead",
+      "alive"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-231",
+    "type": "vocabulary",
+    "question": "What is the German word for 'discussion'?",
+    "prompt": "Translate to German: discussion",
+    "explanation": "Die Diskussion is a feminine noun meaning 'discussion'. Example: Die Diskussion dauerte bis zum späten Abend. (The discussion lasted until late evening.)",
+    "correctAnswer": "die Diskussion",
+    "incorrectAnswers": [
+      "die Debatte",
+      "der Dialog"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-232",
+    "type": "vocabulary",
+    "question": "What is the German word for 'love'?",
+    "prompt": "Translate to German: love",
+    "explanation": "Die Liebe is a feminine noun meaning 'love'. Example: Seine Liebe zur Musik ist grenzenlos. (His love for music is boundless.)",
+    "correctAnswer": "die Liebe",
+    "incorrectAnswers": [
+      "die Zuneigung",
+      "die Neigung"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-233",
+    "type": "vocabulary",
+    "question": "What does the German adjective 'menschlich' mean?",
+    "prompt": "Translate to English: menschlich",
+    "explanation": "Menschlich is an adjective meaning 'human'. Example: Irren ist menschlich. (To err is human.)",
+    "correctAnswer": "human",
+    "incorrectAnswers": [
+      "inhuman",
+      "alien"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-234",
+    "type": "vocabulary",
+    "question": "What is the German word for 'technique' or 'technology'?",
+    "prompt": "Translate to German: technique",
+    "explanation": "Die Technik is a feminine noun meaning 'technique' or 'technology'. Example: Die neue Technik ist effektiver als die alte. (The new technique is more effective than the old one.)",
+    "correctAnswer": "die Technik",
+    "incorrectAnswers": [
+      "die Wissenschaft",
+      "die Kunst"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-235",
+    "type": "vocabulary",
+    "question": "What does the German adjective 'erfolgreich' mean?",
+    "prompt": "Translate to English: erfolgreich",
+    "explanation": "Erfolgreich is an adjective meaning 'successful'. Example: Er hat eine erfolgreiche Managerlaufbahn hinter sich. (He has had a successful career as a manager.)",
+    "correctAnswer": "successful",
+    "incorrectAnswers": [
+      "unsuccessful",
+      "failed"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-236",
+    "type": "vocabulary",
+    "question": "What is the German word for 'attempt' or 'experiment'?",
+    "prompt": "Translate to German: attempt",
+    "explanation": "Der Versuch is a masculine noun meaning 'attempt' or 'experiment'. Example: Ihr erster Versuch, die Prüfung zu bestehen, scheiterte. (Her first attempt to pass the exam failed.)",
+    "correctAnswer": "der Versuch",
+    "incorrectAnswers": [
+      "der Erfolg",
+      "die Anstrengung"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-237",
+    "type": "vocabulary",
+    "question": "What does the German verb 'eingehen' mean?",
+    "prompt": "Translate to English: eingehen",
+    "explanation": "Eingehen is a verb meaning 'to deal with' or 'to pay attention to'. Example: Ein guter Professor geht auf seine Studenten ein. (A good professor pays attention to his students.)",
+    "correctAnswer": "to deal with",
+    "incorrectAnswers": [
+      "to ignore",
+      "to avoid"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-238",
+    "type": "vocabulary",
+    "question": "What does the German adverb 'andererseits' mean?",
+    "prompt": "Translate to English: andererseits",
+    "explanation": "Andererseits is an adverb meaning 'on the other hand'. Example: Er ist einerseits sehr erfolgreich, andererseits aber auch sehr unglücklich. (On the one hand he is very successful, but on the other hand he is very unhappy.)",
+    "correctAnswer": "on the other hand",
+    "incorrectAnswers": [
+      "in addition",
+      "furthermore"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-239",
+    "type": "vocabulary",
+    "question": "What does the German adjective 'zahlreich' mean?",
+    "prompt": "Translate to English: zahlreich",
+    "explanation": "Zahlreich is an adjective meaning 'numerous'. Example: Zahlreiche Touristen verlassen das Land. (Numerous tourists are leaving the country.)",
+    "correctAnswer": "numerous",
+    "incorrectAnswers": [
+      "few",
+      "scarce"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-240",
+    "type": "vocabulary",
+    "question": "What does the German verb 'erlauben' mean?",
+    "prompt": "Translate to English: erlauben",
+    "explanation": "Erlauben is a verb meaning 'to allow' or 'to permit'. Example: Die Eltern erlauben ihren Kindern, bis um neun draußen zu bleiben. (The parents allow their children to stay outside until nine.)",
+    "correctAnswer": "to allow",
+    "incorrectAnswers": [
+      "to forbid",
+      "to prevent"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-241",
+    "type": "vocabulary",
+    "question": "What does the German adjective 'aktiv' mean?",
+    "prompt": "Translate to English: aktiv",
+    "explanation": "Aktiv is an adjective meaning 'active'. Example: Wir treiben in unserer Freizeit aktiv Sport. (We actively do sports in our leisure time.)",
+    "correctAnswer": "active",
+    "incorrectAnswers": [
+      "passive",
+      "lazy"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-242",
+    "type": "vocabulary",
+    "question": "What is the German word for 'circle' or 'district'?",
+    "prompt": "Translate to German: circle",
+    "explanation": "Der Kreis is a masculine noun meaning 'circle' or 'district'. Example: Daniel feiert seinen Geburtstag im Kreise seiner Familie. (Daniel celebrates his birthday in the circle of his family.)",
+    "correctAnswer": "der Kreis",
+    "incorrectAnswers": [
+      "der Ring",
+      "die Runde"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-243",
+    "type": "vocabulary",
+    "question": "What is the German word for 'demand' or 'claim'?",
+    "prompt": "Translate to German: demand",
+    "explanation": "Die Forderung is a feminine noun meaning 'demand' or 'claim'. Example: Der Chef kommt den Forderungen nach Gehaltserhöhung nicht nach. (The boss does not comply with the demands for a salary increase.)",
+    "correctAnswer": "die Forderung",
+    "incorrectAnswers": [
+      "die Bitte",
+      "die Anfrage"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-244",
+    "type": "vocabulary",
+    "question": "What is the German word for 'speech' or 'talk'?",
+    "prompt": "Translate to German: speech",
+    "explanation": "Die Rede is a feminine noun meaning 'speech' or 'talk'. Example: In dem Zeitungsartikel ist die Rede von Reformen. (The newspaper article talks about reforms.)",
+    "correctAnswer": "die Rede",
+    "incorrectAnswers": [
+      "die Ansprache",
+      "das Gespräch"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-245",
+    "type": "vocabulary",
+    "question": "What does the German verb 'blicken' mean?",
+    "prompt": "Translate to English: blicken",
+    "explanation": "Blicken is a verb meaning 'to glance' or 'to look'. Example: Rainer blickt immer nach vorne. (Rainer always looks forward.)",
+    "correctAnswer": "to glance",
+    "incorrectAnswers": [
+      "to stare",
+      "to see"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-246",
+    "type": "vocabulary",
+    "question": "What does the German adjective 'konkret' mean?",
+    "prompt": "Translate to English: konkret",
+    "explanation": "Konkret is an adjective meaning 'concrete'. Example: Nächste Woche ist keine sehr konkrete Zeitangabe. (Next week is not a very concrete time specification.)",
+    "correctAnswer": "concrete",
+    "incorrectAnswers": [
+      "abstract",
+      "vague"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-247",
+    "type": "vocabulary",
+    "question": "What does the German adjective 'regelmäßig' mean?",
+    "prompt": "Translate to English: regelmäßig",
+    "explanation": "Regelmäßig is an adjective meaning 'regular'. Example: Ich nehme regelmäßig an Fachtagungen teil. (I regularly participate in professional conferences.)",
+    "correctAnswer": "regular",
+    "incorrectAnswers": [
+      "irregular",
+      "unusual"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-248",
+    "type": "vocabulary",
+    "question": "What does the German adjective 'ehemalig' mean?",
+    "prompt": "Translate to English: ehemalig",
+    "explanation": "Ehemalig is an adjective meaning 'former'. Example: Auf einem Klassentreffen treffen sich ehemalige Mitschüler. (At a class reunion, former classmates meet.)",
+    "correctAnswer": "former",
+    "incorrectAnswers": [
+      "current",
+      "future"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-249",
+    "type": "vocabulary",
+    "question": "What does the German adverb 'stets' mean?",
+    "prompt": "Translate to English: stets",
+    "explanation": "Stets is an adverb meaning 'always'. Example: Das Kinoprogramm findet man stets aktuell im Internet. (You can always find the current movie program on the internet.)",
+    "correctAnswer": "always",
+    "incorrectAnswers": [
+      "never",
+      "sometimes"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "de-b04-250",
+    "type": "vocabulary",
+    "question": "What does the German verb 'versprechen' mean?",
+    "prompt": "Translate to English: versprechen",
+    "explanation": "Versprechen is a verb meaning 'to promise'. Example: Sie verspricht ihm, nicht mehr zu rauchen. (She promises him not to smoke anymore.)",
+    "correctAnswer": "to promise",
+    "incorrectAnswers": [
+      "to threaten",
+      "to warn"
+    ],
+    "rarity": "common",
+    "categoryL2": "german",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  }
+]

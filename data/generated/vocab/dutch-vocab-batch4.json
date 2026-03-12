@@ -1,0 +1,4500 @@
+[
+  {
+    "id": "nl-b04-001",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'begrijpen' mean in English?",
+    "answers": [
+      "to understand",
+      "to explain",
+      "to believe"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Begrijpen is a common Dutch verb meaning 'to understand' (to comprehend or grasp the meaning of something).",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-002",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'ik begrijp het niet' mean?",
+    "answers": [
+      "I don't understand",
+      "I understand it well",
+      "I believe it"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "This is a useful phrase combining 'ik' (I), 'begrijp' (understand), 'het' (it), and 'niet' (not), meaning 'I don't understand'.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-003",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'dromen' mean?",
+    "answers": [
+      "to dream",
+      "to sleep",
+      "to think"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Dromen means 'to dream'—the experience of vivid images and thoughts during sleep.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-004",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'genieten' mean?",
+    "answers": [
+      "to enjoy",
+      "to create",
+      "to dance"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Genieten means 'to enjoy' or 'to take pleasure in' something.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-005",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'huilen' mean?",
+    "answers": [
+      "to cry",
+      "to laugh",
+      "to run"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Huilen means 'to cry' or 'to weep'—to shed tears, usually expressing sadness or strong emotion.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-006",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'ontdekken' mean?",
+    "answers": [
+      "to discover",
+      "to cover",
+      "to hide"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Ontdekken means 'to discover'—to find something previously unknown or unnoticed.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-007",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'ontwikkelen' mean?",
+    "answers": [
+      "to develop",
+      "to break",
+      "to lose"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Ontwikkelen means 'to develop'—to grow, evolve, or increase in complexity or ability.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-008",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'vergelijken' mean?",
+    "answers": [
+      "to compare",
+      "to forget",
+      "to remember"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Vergelijken means 'to compare'—to examine similarities and differences between things.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-009",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'vergissen' mean?",
+    "answers": [
+      "to be mistaken",
+      "to be happy",
+      "to be tired"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Vergissen means 'to be mistaken' or 'to make a mistake'—to do or think something incorrectly.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-010",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'verkopen' mean?",
+    "answers": [
+      "to sell",
+      "to buy",
+      "to trade"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Verkopen means 'to sell'—to exchange goods or services for money.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-011",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'vertrekken' mean?",
+    "answers": [
+      "to leave",
+      "to stay",
+      "to arrive"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Vertrekken means 'to leave' or 'to depart'—to go away from a place.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-012",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'vertrouwen' mean?",
+    "answers": [
+      "to trust",
+      "to doubt",
+      "to question"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Vertrouwen means 'to trust'—to have confidence in someone's reliability or honesty.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-013",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'verwachten' mean?",
+    "answers": [
+      "to expect",
+      "to fear",
+      "to hope"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Verwachten means 'to expect'—to anticipate or assume that something will happen.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-014",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'in verwachting' mean?",
+    "answers": [
+      "expecting (a baby)",
+      "hoping for something",
+      "waiting in line"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "'In verwachting' is a phrase used to describe being pregnant—literally 'in expectation' of a baby's arrival.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-015",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'zwanger' mean?",
+    "answers": [
+      "pregnant",
+      "heavy",
+      "sad"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Zwanger means 'pregnant'—describing a woman who is expecting a baby.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-016",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'zoeken' mean?",
+    "answers": [
+      "to search",
+      "to find",
+      "to lose"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Zoeken means 'to search' or 'to look for'—to try to find something.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-017",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'zullen' mean?",
+    "answers": [
+      "will",
+      "shall",
+      "must"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Zullen is a modal verb meaning 'will'—used to express future tense or intention in Dutch.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-018",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'bijten' mean?",
+    "answers": [
+      "to bite",
+      "to chew",
+      "to eat"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Bijten means 'to bite'—to cut or pierce with the teeth.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-019",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'noemen' mean?",
+    "answers": [
+      "to call",
+      "to name",
+      "to shout"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Noemen means 'to call' or 'to name'—to refer to someone or something by a particular name.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-020",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'het gereedschap' mean?",
+    "answers": [
+      "the tools",
+      "the equipment",
+      "the machines"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Het gereedschap means 'the tools'—implements used for manual work and repairs.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-021",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'het instrument' mean?",
+    "answers": [
+      "the tool, the (musical) instrument",
+      "the device",
+      "the object"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Het instrument can mean both 'the tool' in a general sense and 'the musical instrument' for playing music.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-022",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de schaar' mean?",
+    "answers": [
+      "the scissors",
+      "the knife",
+      "the blade"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De schaar means 'the scissors'—a cutting tool with two blades that pivot together.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-023",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'knippen' mean?",
+    "answers": [
+      "to cut (with scissors)",
+      "to trim",
+      "to snip"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Knippen means 'to cut with scissors'—to use scissors to cut something.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-024",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de machine' mean?",
+    "answers": [
+      "the machine",
+      "the engine",
+      "the device"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De machine means 'the machine'—a mechanical or electrical device that performs a function.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-025",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de rekenmachine' mean?",
+    "answers": [
+      "the calculator",
+      "the computer",
+      "the device"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De rekenmachine combines 'rekenen' (to calculate) and 'machine', meaning 'the calculator'.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-026",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de computer' mean?",
+    "answers": [
+      "the computer",
+      "the machine",
+      "the device"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De computer means 'the computer'—an electronic device for processing data.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-027",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'het slot' mean?",
+    "answers": [
+      "the lock",
+      "the chain",
+      "the bolt"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Het slot means 'the lock'—a mechanism for fastening a door or container.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-028",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de sleutel' mean?",
+    "answers": [
+      "the key",
+      "the lock",
+      "the door"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De sleutel means 'the key'—an object used to open a lock.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-029",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'openen' mean?",
+    "answers": [
+      "to open",
+      "to close",
+      "to enter"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Openen means 'to open'—to move something so it's no longer closed.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-030",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de telefoon' mean?",
+    "answers": [
+      "the telephone",
+      "the phone call",
+      "the device"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De telefoon means 'the telephone'—a device for communicating over distances via sound.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-031",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'het potlood' mean?",
+    "answers": [
+      "the pencil",
+      "the pen",
+      "the marker"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Het potlood means 'the pencil'—a writing instrument with a graphite core.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-032",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de pen' mean?",
+    "answers": [
+      "the pen",
+      "the pencil",
+      "the marker"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De pen means 'the pen'—a writing instrument that uses ink.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-033",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'het papier' mean?",
+    "answers": [
+      "the paper",
+      "the document",
+      "the material"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Het papier means 'the paper'—a thin material made from plant fibers, used for writing.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-034",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de olie' mean?",
+    "answers": [
+      "the oil",
+      "the water",
+      "the liquid"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De olie means 'the oil'—a slippery liquid used in cooking, machines, and more.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-035",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de benzine' mean?",
+    "answers": [
+      "the petrol",
+      "the fuel",
+      "the gas"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De benzine means 'the petrol' (British English) or 'the gasoline' (American English)—fuel for vehicles.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-036",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de brandstof' mean?",
+    "answers": [
+      "the fuel",
+      "the petrol",
+      "the oil"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De brandstof means 'the fuel'—material burned to produce energy.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-037",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'het goud' mean?",
+    "answers": [
+      "the gold",
+      "the silver",
+      "the metal"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Het goud means 'the gold'—a precious yellow metal highly valued for jewelry and investment.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-038",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'het zilver' mean?",
+    "answers": [
+      "the silver",
+      "the gold",
+      "the metal"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Het zilver means 'the silver'—a precious white metal used for jewelry and coins.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-039",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'het hout' mean?",
+    "answers": [
+      "the wood",
+      "the tree",
+      "the forest"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Het hout means 'the wood'—the hard material from tree trunks used for building and fuel.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-040",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de plank' mean?",
+    "answers": [
+      "the plank",
+      "the board",
+      "the shelf"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De plank means 'the plank'—a flat piece of wood, often used for shelving or flooring.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-041",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de lucht' mean?",
+    "answers": [
+      "the air",
+      "the wind",
+      "the sky"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De lucht means 'the air'—the invisible mixture of gases we breathe.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-042",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'het ijzer' mean?",
+    "answers": [
+      "the iron",
+      "the steel",
+      "the metal"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Het ijzer means 'the iron'—a common metal element used for tools and building.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-043",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'het staal' mean?",
+    "answers": [
+      "the steel",
+      "the iron",
+      "the metal"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Het staal means 'the steel'—an alloy of iron and carbon, stronger than pure iron.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-044",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de steen' mean?",
+    "answers": [
+      "the stone",
+      "the rock",
+      "the pebble"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De steen means 'the stone'—a hard mineral material found in nature.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-045",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'het stof' mean?",
+    "answers": [
+      "the dust",
+      "the powder",
+      "the particles"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Het stof (neuter) means 'the dust'—fine particles of matter suspended in air.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-046",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de stof' mean?",
+    "answers": [
+      "the material",
+      "the fabric",
+      "the cloth"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De stof (common) means 'the material' or 'the fabric'—cloth or textile material.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-047",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'de aarde' mean?",
+    "answers": [
+      "the earth",
+      "the ground",
+      "the planet"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "De aarde means 'the earth'—the planet we live on, or soil/ground.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-048",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'niets' mean?",
+    "answers": [
+      "nothing",
+      "something",
+      "anything"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Niets means 'nothing'—the absence of anything; not a single thing.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-049",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'alles' mean?",
+    "answers": [
+      "everything",
+      "nothing",
+      "something"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Alles means 'everything'—all things combined; the complete total.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-050",
+    "type": "vocabulary",
+    "categoryL2": "dutch",
+    "question": "What does 'een beetje' mean?",
+    "answers": [
+      "a bit",
+      "a lot",
+      "nothing"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "'Een beetje' means 'a bit' or 'a little'—a small amount or degree of something.",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-051",
+    "question": "What does 'natuurlijk' mean?",
+    "answers": [
+      "of course",
+      "naturally",
+      "clearly"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "natuurlijk is a common Dutch adverb meaning 'of course' or 'naturally', expressing something that is obvious or expected.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-801",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-052",
+    "question": "What does 'reeds' mean?",
+    "answers": [
+      "already",
+      "still",
+      "yet"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "reeds is a formal/literary Dutch adverb meaning 'already', indicating that something has happened before the present moment.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-802",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-053",
+    "question": "What does 'al' mean?",
+    "answers": [
+      "already",
+      "always",
+      "all"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "al is a common Dutch adverb meaning 'already', used to indicate that something has happened before now.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-803",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-054",
+    "question": "What does 'net' mean?",
+    "answers": [
+      "just",
+      "only",
+      "barely"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "net is a Dutch adverb meaning 'just' or 'barely', often used to indicate something that happened very recently or narrowly.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-804",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-055",
+    "question": "What does 'pas' mean?",
+    "answers": [
+      "only",
+      "just",
+      "not until"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "pas is a Dutch adverb meaning 'only' or 'not until', used to indicate a limitation or a point in time.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-805",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-056",
+    "question": "What does 'nog' mean?",
+    "answers": [
+      "still",
+      "yet",
+      "anymore"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "nog is a common Dutch adverb meaning 'still' or 'yet', used to indicate continuation or expectation.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-806",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-057",
+    "question": "What does 'erg' mean?",
+    "answers": [
+      "very",
+      "terrible",
+      "awful"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "erg is a common Dutch adverb meaning 'very', used as an intensifier to modify adjectives or other adverbs.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-807",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-058",
+    "question": "What does 'even' mean?",
+    "answers": [
+      "just (as)",
+      "moment",
+      "equally"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "even is a Dutch adverb meaning 'just' or 'even', used to indicate a brief duration or equivalence.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-808",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-059",
+    "question": "What does 'alleen' mean?",
+    "answers": [
+      "alone",
+      "only",
+      "single"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "alleen is a common Dutch adjective and adverb meaning 'alone' or 'only', used to describe solitude or exclusivity.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-809",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-060",
+    "question": "What does 'altijd' mean?",
+    "answers": [
+      "always",
+      "ever",
+      "forever"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "altijd is a common Dutch adverb meaning 'always', used to indicate a universal or continuous action.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-810",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-061",
+    "question": "What does 'door' mean?",
+    "answers": [
+      "through",
+      "by",
+      "across"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "door is a common Dutch preposition and adverb meaning 'through', indicating movement or passage from one side to another.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-811",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-062",
+    "question": "What does 'dus' mean?",
+    "answers": [
+      "so",
+      "therefore",
+      "thus"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "dus is a common Dutch conjunction meaning 'so' or 'therefore', used to introduce a consequence or conclusion.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-812",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-063",
+    "question": "What does 'genoeg' mean?",
+    "answers": [
+      "enough",
+      "sufficient",
+      "plenty"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "genoeg is a common Dutch adjective and adverb meaning 'enough', indicating a sufficient quantity or degree.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-813",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-064",
+    "question": "What does 'bijna' mean?",
+    "answers": [
+      "almost",
+      "nearly",
+      "practically"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "bijna is a common Dutch adverb meaning 'almost' or 'nearly', indicating that something is close but not quite complete.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-814",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-065",
+    "question": "What does 'bijvoorbeeld' mean?",
+    "answers": [
+      "for example",
+      "for instance",
+      "such as"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "bijvoorbeeld is a common Dutch adverb meaning 'for example', used to introduce illustrations or specific instances.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-815",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-066",
+    "question": "What does 'normaal' mean?",
+    "answers": [
+      "usually",
+      "normally",
+      "regular"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "normaal is a Dutch adjective and adverb meaning 'usually' or 'normally', describing standard or expected behavior.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-816",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-067",
+    "question": "What does 'nooit' mean?",
+    "answers": [
+      "never",
+      "not ever",
+      "at no time"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "nooit is a common Dutch adverb meaning 'never', used to indicate that something does not or will not happen.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-817",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-068",
+    "question": "What does 'ooit' mean?",
+    "answers": [
+      "ever",
+      "at any time",
+      "once"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "ooit is a Dutch adverb meaning 'ever', used in questions or negative statements to indicate any point in time.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-818",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-069",
+    "question": "What does 'nu' mean?",
+    "answers": [
+      "now",
+      "at present",
+      "currently"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "nu is a common Dutch adverb meaning 'now', indicating the present time or immediate moment.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-819",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-070",
+    "question": "What does 'soms' mean?",
+    "answers": [
+      "sometimes",
+      "occasionally",
+      "at times"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "soms is a common Dutch adverb meaning 'sometimes', indicating that something happens occasionally but not always.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-820",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-071",
+    "question": "What does 'ook' mean?",
+    "answers": [
+      "also, too",
+      "as well",
+      "neither"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "ook is a common Dutch adverb meaning 'also' or 'too', used to add something to what has already been mentioned.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-821",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-072",
+    "question": "What does 'meer' mean?",
+    "answers": [
+      "more",
+      "greater",
+      "additional"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "meer is a common Dutch adjective and adverb meaning 'more', used to indicate a greater quantity or degree.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-822",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-073",
+    "question": "What does 'minder' mean?",
+    "answers": [
+      "less",
+      "fewer",
+      "not as much"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "minder is a common Dutch adjective and adverb meaning 'less' or 'fewer', used to indicate a smaller quantity or degree.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-823",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-074",
+    "question": "What does 'verder' mean?",
+    "answers": [
+      "further",
+      "farther",
+      "beyond"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "verder is a Dutch adverb meaning 'further' or 'farther', indicating greater distance or continuation.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-824",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-075",
+    "question": "What does 'terug' mean?",
+    "answers": [
+      "back",
+      "return",
+      "backwards"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "terug is a common Dutch adverb meaning 'back' or 'return', indicating movement toward a previous position.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-825",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-076",
+    "question": "What does 'de kleur' mean?",
+    "answers": [
+      "the colour",
+      "the color",
+      "the shade"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "de kleur is a Dutch noun phrase meaning 'the colour', used to refer to colors in general or specific shades.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-826",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-077",
+    "question": "What does 'rood' mean?",
+    "answers": [
+      "red",
+      "crimson",
+      "scarlet"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "rood is a Dutch adjective meaning 'red', describing the color of blood, fire, or roses.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-827",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-078",
+    "question": "What does 'het vierkant' mean?",
+    "answers": [
+      "the square",
+      "the rectangle",
+      "the quadrilateral"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "het vierkant is a Dutch noun meaning 'the square', a geometric shape with four equal sides and right angles.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-828",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-079",
+    "question": "What does 'de cirkel' mean?",
+    "answers": [
+      "the circle",
+      "the round shape",
+      "the ring"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "de cirkel is a Dutch noun meaning 'the circle', a round geometric shape with all points equidistant from center.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-829",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-080",
+    "question": "What does 'de driehoek' mean?",
+    "answers": [
+      "the triangle",
+      "the three-sided shape",
+      "the three-angle"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "de driehoek is a Dutch noun meaning 'the triangle', a geometric shape with three sides and three angles.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-830",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-081",
+    "question": "What does 'groen' mean?",
+    "answers": [
+      "green",
+      "verdant",
+      "emerald"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "groen is a Dutch adjective meaning 'green', describing the color of grass, leaves, and trees.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-831",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-082",
+    "question": "What does 'volgende' mean?",
+    "answers": [
+      "next",
+      "following",
+      "subsequent"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "volgende is a Dutch adjective meaning 'next' or 'following', used to describe what comes after the current item.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-832",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-083",
+    "question": "What does 'blauw' mean?",
+    "answers": [
+      "blue",
+      "azure",
+      "cerulean"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "blauw is a Dutch adjective meaning 'blue', describing the color of the sky and ocean.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-833",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-084",
+    "question": "What does 'geel' mean?",
+    "answers": [
+      "yellow",
+      "golden",
+      "amber"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "geel is a Dutch adjective meaning 'yellow', describing the color of the sun and bananas.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-834",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-085",
+    "question": "What does 'paars' mean?",
+    "answers": [
+      "purple",
+      "violet",
+      "mauve"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "paars is a Dutch adjective meaning 'purple', describing a color between red and blue.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-835",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-086",
+    "question": "What does 'oranje' mean?",
+    "answers": [
+      "orange",
+      "reddish-yellow",
+      "tangerine"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "oranje is a Dutch adjective meaning 'orange', describing the color between red and yellow, also the national color of the Netherlands.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-836",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-087",
+    "question": "What does 'wit' mean?",
+    "answers": [
+      "white",
+      "pale",
+      "colorless"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "wit is a Dutch adjective meaning 'white', describing the color of snow and milk.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-837",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-088",
+    "question": "What does 'zwart' mean?",
+    "answers": [
+      "black",
+      "dark",
+      "ebony"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "zwart is a Dutch adjective meaning 'black', describing the color of night and coal.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-838",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-089",
+    "question": "What does 'grijs' mean?",
+    "answers": [
+      "grey",
+      "gray",
+      "ashen"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "grijs is a Dutch adjective meaning 'grey' or 'gray', describing a neutral color between black and white.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-839",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-090",
+    "question": "What does 'bruin' mean?",
+    "answers": [
+      "brown",
+      "russet",
+      "tan"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "bruin is a Dutch adjective meaning 'brown', describing the color of earth, wood, and chocolate.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-840",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-091",
+    "question": "What does 'roze' mean?",
+    "answers": [
+      "pink",
+      "rose",
+      "light red"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "roze is a Dutch adjective meaning 'pink', describing a light red color.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-841",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-092",
+    "question": "What does 'plat' mean?",
+    "answers": [
+      "flat",
+      "level",
+      "even"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "plat is a Dutch adjective meaning 'flat' or 'level', describing a surface without bumps or raised areas.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-842",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-093",
+    "question": "What does 'dik' mean?",
+    "answers": [
+      "thick, fat",
+      "heavy",
+      "wide"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "dik is a Dutch adjective meaning 'thick' or 'fat', describing something with significant width or bulk.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-843",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-094",
+    "question": "What does 'dun' mean?",
+    "answers": [
+      "thin",
+      "slender",
+      "light"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "dun is a Dutch adjective meaning 'thin', describing something with little width or thickness.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-844",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-095",
+    "question": "What does 'breed' mean?",
+    "answers": [
+      "wide",
+      "broad",
+      "extensive"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "breed is a Dutch adjective meaning 'wide' or 'broad', describing something with considerable extent from side to side.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-845",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-096",
+    "question": "What does 'smal' mean?",
+    "answers": [
+      "narrow",
+      "thin",
+      "tight"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "smal is a Dutch adjective meaning 'narrow', describing something with limited width.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-846",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-097",
+    "question": "What does 'beide' mean?",
+    "answers": [
+      "both",
+      "two together",
+      "either"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "beide is a Dutch adjective and pronoun meaning 'both', used to refer to two people or things together.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-847",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-098",
+    "question": "What does 'het gezicht' mean?",
+    "answers": [
+      "the face",
+      "the visage",
+      "the countenance"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "het gezicht is a Dutch noun meaning 'the face', referring to the front of the human head.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-848",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-099",
+    "question": "What does 'elk' mean?",
+    "answers": [
+      "each",
+      "every",
+      "any"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "elk is a Dutch adjective meaning 'each' or 'every', used to refer to all individual items in a group.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-849",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-100",
+    "question": "What does 'gelijk' mean?",
+    "answers": [
+      "equal",
+      "same",
+      "alike"
+    ],
+    "correct": 0,
+    "type": "vocabulary",
+    "explanation": "gelijk is a Dutch adjective meaning 'equal' or 'same', used to indicate equivalence or similarity.",
+    "rarity": "common",
+    "categoryL2": "dutch",
+    "source": "vocabulary-rank-850",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-101",
+    "type": "vocabulary",
+    "question": "What does the Dutch word 'zelfde' mean?",
+    "answer": "same",
+    "explanation": "Zelfde is the Dutch word for 'same', commonly used in comparisons and to indicate identical items or qualities.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-102",
+    "type": "vocabulary",
+    "question": "What does the Dutch word 'recht' mean?",
+    "answer": "straight",
+    "explanation": "Recht means 'straight' in Dutch, used to describe direction or form without curves or angles.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-103",
+    "type": "vocabulary",
+    "question": "What does the Dutch word 'makkelijk' mean?",
+    "answer": "easy",
+    "explanation": "Makkelijk is the Dutch adjective meaning 'easy', used to describe tasks or concepts that require little effort.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-104",
+    "type": "vocabulary",
+    "question": "What does the Dutch word 'moeilijk' mean?",
+    "answer": "difficult",
+    "explanation": "Moeilijk is the Dutch adjective meaning 'difficult', used to describe challenges or complex tasks.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-105",
+    "type": "vocabulary",
+    "question": "What does 'het feest' mean in Dutch?",
+    "answer": "the party",
+    "explanation": "Het feest is a Dutch noun meaning 'the party', referring to a social celebration or gathering.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-106",
+    "type": "vocabulary",
+    "question": "What does the Dutch verb 'vieren' mean?",
+    "answer": "to celebrate",
+    "explanation": "Vieren is the Dutch verb meaning 'to celebrate', used when marking special occasions or events.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-107",
+    "type": "vocabulary",
+    "question": "What does 'de feestdag' mean in Dutch?",
+    "answer": "the public holiday",
+    "explanation": "De feestdag is a Dutch noun meaning 'the public holiday' or 'the holiday', referring to nationally observed celebrations.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-108",
+    "type": "vocabulary",
+    "question": "What does 'de vrije dag' mean in Dutch?",
+    "answer": "the day off",
+    "explanation": "De vrije dag is a Dutch noun meaning 'the day off', referring to a day without work or school.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-109",
+    "type": "vocabulary",
+    "question": "What is 'Koningsdag' in Dutch?",
+    "answer": "King's Day",
+    "explanation": "Koningsdag is a Dutch holiday meaning 'King's Day', celebrated on April 27th to commemorate the Dutch king's birthday.",
+    "categoryL2": "dutch",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-110",
+    "type": "vocabulary",
+    "question": "What is 'Sinterklaas' in Dutch?",
+    "answer": "Sinterklaas",
+    "explanation": "Sinterklaas is a Dutch holiday character and celebration similar to Christmas, celebrated on December 5th with gift-giving traditions.",
+    "categoryL2": "dutch",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-111",
+    "type": "vocabulary",
+    "question": "What is 'Zwarte Piet' in Dutch culture?",
+    "answer": "Black Pete",
+    "explanation": "Zwarte Piet, or Black Pete, is a traditional character associated with Sinterklaas celebrations in Dutch culture.",
+    "categoryL2": "dutch",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-112",
+    "type": "vocabulary",
+    "question": "What does 'de zak' mean in Dutch?",
+    "answer": "the bag",
+    "explanation": "De zak is a Dutch noun meaning 'the bag', used for containers of various sizes and materials.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-113",
+    "type": "vocabulary",
+    "question": "What does 'Kerstmis' mean in Dutch?",
+    "answer": "Christmas",
+    "explanation": "Kerstmis is the Dutch word for 'Christmas', the annual Christian holiday celebrated on December 25th.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-114",
+    "type": "vocabulary",
+    "question": "What does 'de kerstboom' mean in Dutch?",
+    "answer": "the Christmas tree",
+    "explanation": "De kerstboom is a Dutch noun meaning 'the Christmas tree', the decorated evergreen tree used in Christmas celebrations.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-115",
+    "type": "vocabulary",
+    "question": "What does 'de kerstman' mean in Dutch?",
+    "answer": "Santa Claus",
+    "explanation": "De kerstman is a Dutch noun meaning 'Santa Claus' or 'Father Christmas', the legendary gift-giving figure.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-116",
+    "type": "vocabulary",
+    "question": "What does 'Oudjaar' mean in Dutch?",
+    "answer": "New year's eve",
+    "explanation": "Oudjaar is a Dutch word meaning 'New Year's Eve', the last day of the year celebrated on December 31st.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-117",
+    "type": "vocabulary",
+    "question": "What does 'de oliebol' mean in Dutch?",
+    "answer": "Dutch fritter with raisins",
+    "explanation": "De oliebol is a traditional Dutch pastry, a round fried dough ball typically filled with raisins or apple, eaten especially around New Year.",
+    "categoryL2": "dutch",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-118",
+    "type": "vocabulary",
+    "question": "What does 'Nieuwjaar' mean in Dutch?",
+    "answer": "New year",
+    "explanation": "Nieuwjaar is the Dutch word for 'New Year', referring to January 1st and the beginning of a new calendar year.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-119",
+    "type": "vocabulary",
+    "question": "What does 'Oud en Nieuw' mean in Dutch?",
+    "answer": "New year's eve and New year's day",
+    "explanation": "Oud en Nieuw is a Dutch phrase meaning 'Old and New', referring to the transition between New Year's Eve and New Year's Day.",
+    "categoryL2": "dutch",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-120",
+    "type": "vocabulary",
+    "question": "What does 'Pasen' mean in Dutch?",
+    "answer": "Easter",
+    "explanation": "Pasen is the Dutch word for 'Easter', the Christian holiday celebrating the resurrection of Jesus Christ.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-121",
+    "type": "vocabulary",
+    "question": "What does 'de paashaas' mean in Dutch?",
+    "answer": "the Easter bunny",
+    "explanation": "De paashaas is a Dutch noun meaning 'the Easter bunny', the legendary creature that delivers Easter eggs in Dutch tradition.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-122",
+    "type": "vocabulary",
+    "question": "What does 'het paasei' mean in Dutch?",
+    "answer": "the Easter egg",
+    "explanation": "Het paasei is a Dutch noun meaning 'the Easter egg', decorative or chocolate eggs given during Easter celebrations.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-123",
+    "type": "vocabulary",
+    "question": "What does 'ijsvrij' mean in Dutch?",
+    "answer": "a day off for skating",
+    "explanation": "Ijsvrij is a Dutch term meaning 'ice-free day' or historically a day off for skating, referring to a school holiday when the ice is suitable for skating.",
+    "categoryL2": "dutch",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-124",
+    "type": "vocabulary",
+    "question": "What does the Dutch verb 'uitnodigen' mean?",
+    "answer": "to invite",
+    "explanation": "Uitnodigen is the Dutch verb meaning 'to invite', used when asking someone to attend an event or gathering.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-125",
+    "type": "vocabulary",
+    "question": "What does 'het bezoek' mean in Dutch?",
+    "answer": "the visit",
+    "explanation": "Het bezoek is a Dutch noun meaning 'the visit', referring to a social call or the act of visiting someone.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-126",
+    "type": "vocabulary",
+    "question": "What does the Dutch verb 'ontvangen' mean?",
+    "answer": "to receive",
+    "explanation": "Ontvangen is the Dutch verb meaning 'to receive', used when accepting something given or when greeting a visitor.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-127",
+    "type": "vocabulary",
+    "question": "What does 'de geboorte' mean in Dutch?",
+    "answer": "the birth",
+    "explanation": "De geboorte is a Dutch noun meaning 'the birth', referring to the event of a child being born.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-128",
+    "type": "vocabulary",
+    "question": "What does 'de bruiloft' mean in Dutch?",
+    "answer": "the wedding",
+    "explanation": "De bruiloft is a Dutch noun meaning 'the wedding', the ceremonial celebration of marriage.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-129",
+    "type": "vocabulary",
+    "question": "What does 'de verjaardag' mean in Dutch?",
+    "answer": "the birthday",
+    "explanation": "De verjaardag is a Dutch noun meaning 'the birthday', the annual commemoration of someone's birth.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-130",
+    "type": "vocabulary",
+    "question": "What does 'de taart' mean in Dutch?",
+    "answer": "the pie",
+    "explanation": "De taart is a Dutch noun meaning 'the pie' or 'the cake', a baked dessert often served at celebrations.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-131",
+    "type": "vocabulary",
+    "question": "What does 'de kaars' mean in Dutch?",
+    "answer": "the candle",
+    "explanation": "De kaars is a Dutch noun meaning 'the candle', a stick of wax with a wick used for light or decoration.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-132",
+    "type": "vocabulary",
+    "question": "What does the Dutch verb 'verrassen' mean?",
+    "answer": "to surprise",
+    "explanation": "Verrassen is the Dutch verb meaning 'to surprise', used when doing something unexpected to delight someone.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-133",
+    "type": "vocabulary",
+    "question": "What does 'het cadeau' mean in Dutch?",
+    "answer": "the present",
+    "explanation": "Het cadeau is a Dutch noun meaning 'the present' or 'the gift', something given to someone as a gesture of generosity.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-134",
+    "type": "vocabulary",
+    "question": "What does 'het beest' mean in Dutch?",
+    "answer": "the animal, the beast",
+    "explanation": "Het beest is a Dutch noun meaning 'the animal' or 'the beast', referring to any living creature.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-135",
+    "type": "vocabulary",
+    "question": "What does 'de schildpad' mean in Dutch?",
+    "answer": "the turtle",
+    "explanation": "De schildpad is a Dutch noun meaning 'the turtle', a reptile with a hard protective shell.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-136",
+    "type": "vocabulary",
+    "question": "What does 'de hamster' mean in Dutch?",
+    "answer": "the hamster",
+    "explanation": "De hamster is a Dutch noun meaning 'the hamster', a small rodent commonly kept as a pet.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-137",
+    "type": "vocabulary",
+    "question": "What does 'de goudvis' mean in Dutch?",
+    "answer": "the goldfish",
+    "explanation": "De goudvis is a Dutch noun meaning 'the goldfish', a common orange fish kept as an aquarium pet.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-138",
+    "type": "vocabulary",
+    "question": "What does 'het schaap' mean in Dutch?",
+    "answer": "the sheep",
+    "explanation": "Het schaap is a Dutch noun meaning 'the sheep', a woolly farm animal.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-139",
+    "type": "vocabulary",
+    "question": "What does 'de geit' mean in Dutch?",
+    "answer": "the goat",
+    "explanation": "De geit is a Dutch noun meaning 'the goat', a horned farm animal known for climbing and producing milk.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-140",
+    "type": "vocabulary",
+    "question": "What does 'de vos' mean in Dutch?",
+    "answer": "the fox",
+    "explanation": "De vos is a Dutch noun meaning 'the fox', a red wild animal known for its cunning.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-141",
+    "type": "vocabulary",
+    "question": "What does the Dutch word 'wild' mean?",
+    "answer": "wild",
+    "explanation": "Wild is a Dutch adjective meaning 'wild', used to describe untamed nature or uninhibited behavior.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-142",
+    "type": "vocabulary",
+    "question": "What does 'de mier' mean in Dutch?",
+    "answer": "the ant",
+    "explanation": "De mier is a Dutch noun meaning 'the ant', a small insect that lives in colonies.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-143",
+    "type": "vocabulary",
+    "question": "What does 'de mug' mean in Dutch?",
+    "answer": "the mosquito",
+    "explanation": "De mug is a Dutch noun meaning 'the mosquito', a small flying insect that feeds on blood.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-144",
+    "type": "vocabulary",
+    "question": "What does 'de kikker' mean in Dutch?",
+    "answer": "the frog",
+    "explanation": "De kikker is a Dutch noun meaning 'the frog', an amphibian known for its jumping ability and croaking sound.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-145",
+    "type": "vocabulary",
+    "question": "What does 'de slak' mean in Dutch?",
+    "answer": "the snail",
+    "explanation": "De slak is a Dutch noun meaning 'the snail', a slow-moving mollusk with a spiral shell.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-146",
+    "type": "vocabulary",
+    "question": "What does 'de eekhoorn' mean in Dutch?",
+    "answer": "the squirrel",
+    "explanation": "De eekhoorn is a Dutch noun meaning 'the squirrel', a bushy-tailed rodent that lives in trees.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-147",
+    "type": "vocabulary",
+    "question": "What does 'de dolfijn' mean in Dutch?",
+    "answer": "the dolphin",
+    "explanation": "De dolfijn is a Dutch noun meaning 'the dolphin', an intelligent marine mammal known for its playful behavior.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-148",
+    "type": "vocabulary",
+    "question": "What does 'de zeehond' mean in Dutch?",
+    "answer": "the seal",
+    "explanation": "De zeehond is a Dutch noun meaning 'the seal', a marine mammal with flippers adapted for swimming.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-149",
+    "type": "vocabulary",
+    "question": "What does 'de walvis' mean in Dutch?",
+    "answer": "the whale",
+    "explanation": "De walvis is a Dutch noun meaning 'the whale', the largest marine mammal in the world.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-150",
+    "type": "vocabulary",
+    "question": "What does 'de haai' mean in Dutch?",
+    "answer": "the shark",
+    "explanation": "De haai is a Dutch noun meaning 'the shark', a large predatory fish found in oceans and seas.",
+    "categoryL2": "dutch",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "nl-b04-151",
+    "type": "vocabulary",
+    "question": "How do you say 'the zoo' in Dutch?",
+    "explanation": "The Dutch word 'de dierentuin' translates to 'the zoo' in English.",
+    "options": [
+      "de dierentuin",
+      "lui",
+      "de tijger"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "animals",
+      "adjectives",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-152",
+    "type": "vocabulary",
+    "question": "What does 'de aap' mean in English?",
+    "explanation": "The Dutch word 'de aap' translates to 'the monkey' in English.",
+    "options": [
+      "the monkey",
+      "dead",
+      "quiet"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner",
+      "adjectives"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-153",
+    "type": "vocabulary",
+    "question": "How do you say 'the elephant' in Dutch?",
+    "explanation": "The Dutch word 'de olifant' translates to 'the elephant' in English.",
+    "options": [
+      "stil",
+      "ster",
+      "de olifant"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-154",
+    "type": "vocabulary",
+    "question": "What does 'de beer' mean in English?",
+    "explanation": "The Dutch word 'de beer' translates to 'the bear' in English.",
+    "options": [
+      "the bear",
+      "the moon",
+      "the news"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-155",
+    "type": "vocabulary",
+    "question": "How do you say 'the wolf' in Dutch?",
+    "explanation": "The Dutch word 'de wolf' translates to 'the wolf' in English.",
+    "options": [
+      "de wolf",
+      "glad",
+      "de vlag"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-156",
+    "type": "vocabulary",
+    "question": "What does 'de giraffe' mean in English?",
+    "explanation": "The Dutch word 'de giraffe' translates to 'the giraffe' in English.",
+    "options": [
+      "slippery",
+      "the star",
+      "the giraffe"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-157",
+    "type": "vocabulary",
+    "question": "How do you say 'the snake' in Dutch?",
+    "explanation": "The Dutch word 'de slang' translates to 'the snake' in English.",
+    "options": [
+      "bijzonder",
+      "glad",
+      "de slang"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "adjectives"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-158",
+    "type": "vocabulary",
+    "question": "What does 'de krokodil' mean in English?",
+    "explanation": "The Dutch word 'de krokodil' translates to 'the crocodile' in English.",
+    "options": [
+      "the crocodile",
+      "wet",
+      "the moon"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "beginner",
+      "animals",
+      "adjectives"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-159",
+    "type": "vocabulary",
+    "question": "How do you say 'the camel' in Dutch?",
+    "explanation": "The Dutch word 'de kameel' translates to 'the camel' in English.",
+    "options": [
+      "stil",
+      "de oefening",
+      "de kameel"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "adjectives",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-160",
+    "type": "vocabulary",
+    "question": "What does 'de tijger' mean in English?",
+    "explanation": "The Dutch word 'de tijger' translates to 'the tiger' in English.",
+    "options": [
+      "complete",
+      "east",
+      "the tiger"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner",
+      "animals",
+      "adjectives",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-161",
+    "type": "vocabulary",
+    "question": "How do you say 'the lion' in Dutch?",
+    "explanation": "The Dutch word 'de leeuw' translates to 'the lion' in English.",
+    "options": [
+      "de leeuw",
+      "de oefening",
+      "het leger"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner",
+      "adjectives",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-162",
+    "type": "vocabulary",
+    "question": "What does 'nat' mean in English?",
+    "explanation": "The Dutch word 'nat' translates to 'wet' in English.",
+    "options": [
+      "the attack",
+      "safe",
+      "wet"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "animals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-163",
+    "type": "vocabulary",
+    "question": "How do you say 'dry' in Dutch?",
+    "explanation": "The Dutch word 'droog' translates to 'dry' in English.",
+    "options": [
+      "de beer",
+      "het einde",
+      "droog"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-164",
+    "type": "vocabulary",
+    "question": "What does 'algemeen' mean in English?",
+    "explanation": "The Dutch word 'algemeen' translates to 'general' in English.",
+    "options": [
+      "general",
+      "the tiger",
+      "the attack"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-165",
+    "type": "vocabulary",
+    "question": "How do you say 'special' in Dutch?",
+    "explanation": "The Dutch word 'bijzonder' translates to 'special' in English.",
+    "options": [
+      "bijzonder",
+      "druk",
+      "dood"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner",
+      "animals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-166",
+    "type": "vocabulary",
+    "question": "What does 'gebruikelijk' mean in English?",
+    "explanation": "The Dutch word 'gebruikelijk' translates to 'common' in English.",
+    "options": [
+      "east",
+      "the army",
+      "common"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-167",
+    "type": "vocabulary",
+    "question": "How do you say 'stupid' in Dutch?",
+    "explanation": "The Dutch word 'dom' translates to 'stupid' in English.",
+    "options": [
+      "dom",
+      "de vlag",
+      "wakker"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-168",
+    "type": "vocabulary",
+    "question": "What does 'slim' mean in English?",
+    "explanation": "The Dutch word 'slim' translates to 'clever' in English.",
+    "options": [
+      "clever",
+      "complete",
+      "dangerous"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "animals",
+      "adjectives"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-169",
+    "type": "vocabulary",
+    "question": "How do you say 'busy' in Dutch?",
+    "explanation": "The Dutch word 'druk' translates to 'busy' in English.",
+    "options": [
+      "zuid",
+      "lui",
+      "druk"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "animals",
+      "adjectives",
+      "geography",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-170",
+    "type": "vocabulary",
+    "question": "What does 'glad' mean in English?",
+    "explanation": "The Dutch word 'glad' translates to 'slippery' in English.",
+    "options": [
+      "slippery",
+      "south",
+      "dead"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "geography",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-171",
+    "type": "vocabulary",
+    "question": "How do you say 'famous' in Dutch?",
+    "explanation": "The Dutch word 'beroemd' translates to 'famous' in English.",
+    "options": [
+      "de olifant",
+      "beroemd",
+      "west"
+    ],
+    "correctIndex": 1,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-172",
+    "type": "vocabulary",
+    "question": "What does 'lui' mean in English?",
+    "explanation": "The Dutch word 'lui' translates to 'lazy' in English.",
+    "options": [
+      "lazy",
+      "special",
+      "the lion"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "animals",
+      "adjectives"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-173",
+    "type": "vocabulary",
+    "question": "How do you say 'quiet' in Dutch?",
+    "explanation": "The Dutch word 'stil' translates to 'quiet' in English.",
+    "options": [
+      "stil",
+      "ster",
+      "het nieuws"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-174",
+    "type": "vocabulary",
+    "question": "What does 'verschrikkelijk' mean in English?",
+    "explanation": "The Dutch word 'verschrikkelijk' translates to 'terrible' in English.",
+    "options": [
+      "the news",
+      "south",
+      "terrible"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "animals",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-175",
+    "type": "vocabulary",
+    "question": "How do you say 'careful' in Dutch?",
+    "explanation": "The Dutch word 'voorzichtig' translates to 'careful' in English.",
+    "options": [
+      "de olifant",
+      "ster",
+      "voorzichtig"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-176",
+    "type": "vocabulary",
+    "question": "What does 'sterk' mean in English?",
+    "explanation": "The Dutch word 'sterk' translates to 'strong' in English.",
+    "options": [
+      "the elephant",
+      "terrible",
+      "strong"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-177",
+    "type": "vocabulary",
+    "question": "How do you say 'weak' in Dutch?",
+    "explanation": "The Dutch word 'zwak' translates to 'weak' in English.",
+    "options": [
+      "de giraffe",
+      "het bloed",
+      "zwak"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "animals",
+      "adjectives",
+      "geography",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-178",
+    "type": "vocabulary",
+    "question": "What does 'eenzaam' mean in English?",
+    "explanation": "The Dutch word 'eenzaam' translates to 'lonely' in English.",
+    "options": [
+      "west",
+      "slippery",
+      "lonely"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "beginner",
+      "animals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-179",
+    "type": "vocabulary",
+    "question": "How do you say 'complete' in Dutch?",
+    "explanation": "The Dutch word 'compleet' translates to 'complete' in English.",
+    "options": [
+      "compleet",
+      "ster",
+      "de oefening"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "animals",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-180",
+    "type": "vocabulary",
+    "question": "What does 'wakker' mean in English?",
+    "explanation": "The Dutch word 'wakker' translates to 'awake' in English.",
+    "options": [
+      "the exercise",
+      "wet",
+      "awake"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "animals",
+      "adjectives",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-181",
+    "type": "vocabulary",
+    "question": "How do you say 'most' in Dutch?",
+    "explanation": "The Dutch word 'meest' translates to 'most' in English.",
+    "options": [
+      "meest",
+      "het einde",
+      "de slang"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-182",
+    "type": "vocabulary",
+    "question": "What does 'noord' mean in English?",
+    "explanation": "The Dutch word 'noord' translates to 'north' in English.",
+    "options": [
+      "north",
+      "the war",
+      "the camel"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-183",
+    "type": "vocabulary",
+    "question": "How do you say 'east' in Dutch?",
+    "explanation": "The Dutch word 'oost' translates to 'east' in English.",
+    "options": [
+      "oost",
+      "droog",
+      "het leger"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "animals",
+      "geography",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-184",
+    "type": "vocabulary",
+    "question": "What does 'zuid' mean in English?",
+    "explanation": "The Dutch word 'zuid' translates to 'south' in English.",
+    "options": [
+      "south",
+      "the exercise",
+      "awake"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "animals",
+      "adjectives",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-185",
+    "type": "vocabulary",
+    "question": "How do you say 'west' in Dutch?",
+    "explanation": "The Dutch word 'west' translates to 'west' in English.",
+    "options": [
+      "oost",
+      "west",
+      "compleet"
+    ],
+    "correctIndex": 1,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-186",
+    "type": "vocabulary",
+    "question": "What does 'veilig' mean in English?",
+    "explanation": "The Dutch word 'veilig' translates to 'safe' in English.",
+    "options": [
+      "the elephant",
+      "safe",
+      "the wolf"
+    ],
+    "correctIndex": 1,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner",
+      "adjectives",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-187",
+    "type": "vocabulary",
+    "question": "How do you say 'dangerous' in Dutch?",
+    "explanation": "The Dutch word 'gevaarlijk' translates to 'dangerous' in English.",
+    "options": [
+      "zwak",
+      "gevaarlijk",
+      "de olifant"
+    ],
+    "correctIndex": 1,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "adjectives",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-188",
+    "type": "vocabulary",
+    "question": "What does 'het leger' mean in English?",
+    "explanation": "The Dutch word 'het leger' translates to 'the army' in English.",
+    "options": [
+      "the army",
+      "the bear",
+      "stupid"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "adjectives"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-189",
+    "type": "vocabulary",
+    "question": "How do you say 'the exercise' in Dutch?",
+    "explanation": "The Dutch word 'de oefening' translates to 'the exercise' in English.",
+    "options": [
+      "de oefening",
+      "wakker",
+      "zwak"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-190",
+    "type": "vocabulary",
+    "question": "What does 'de oorlog' mean in English?",
+    "explanation": "The Dutch word 'de oorlog' translates to 'the war' in English.",
+    "options": [
+      "the newspaper",
+      "clever",
+      "the war"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner",
+      "adjectives",
+      "geography",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-191",
+    "type": "vocabulary",
+    "question": "How do you say 'the attack' in Dutch?",
+    "explanation": "The Dutch word 'de aanval' translates to 'the attack' in English.",
+    "options": [
+      "droog",
+      "maan",
+      "de aanval"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-192",
+    "type": "vocabulary",
+    "question": "What does 'het bloed' mean in English?",
+    "explanation": "The Dutch word 'het bloed' translates to 'the blood' in English.",
+    "options": [
+      "the blood",
+      "the bear",
+      "the future"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner",
+      "adjectives"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-193",
+    "type": "vocabulary",
+    "question": "How do you say 'dead' in Dutch?",
+    "explanation": "The Dutch word 'dood' translates to 'dead' in English.",
+    "options": [
+      "de beer",
+      "dood",
+      "toekomst"
+    ],
+    "correctIndex": 1,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "animals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-194",
+    "type": "vocabulary",
+    "question": "What does 'het nieuws' mean in English?",
+    "explanation": "The Dutch word 'het nieuws' translates to 'the news' in English.",
+    "options": [
+      "the news",
+      "the camel",
+      "the monkey"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "beginner"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-195",
+    "type": "vocabulary",
+    "question": "How do you say 'the newspaper' in Dutch?",
+    "explanation": "The Dutch word 'de krant' translates to 'the newspaper' in English.",
+    "options": [
+      "druk",
+      "de krant",
+      "beroemd"
+    ],
+    "correctIndex": 1,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "animals",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-196",
+    "type": "vocabulary",
+    "question": "What does 'de vlag' mean in English?",
+    "explanation": "The Dutch word 'de vlag' translates to 'the flag' in English.",
+    "options": [
+      "the flag",
+      "the snake",
+      "the news"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "animals"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-197",
+    "type": "vocabulary",
+    "question": "How do you say 'the future' in Dutch?",
+    "explanation": "The Dutch word 'toekomst' translates to 'the future' in English.",
+    "options": [
+      "lui",
+      "de krant",
+      "toekomst"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "adjectives",
+      "geography",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-198",
+    "type": "vocabulary",
+    "question": "What does 'het einde' mean in English?",
+    "explanation": "The Dutch word 'het einde' translates to 'the end' in English.",
+    "options": [
+      "the war",
+      "careful",
+      "the end"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "beginner",
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-199",
+    "type": "vocabulary",
+    "question": "How do you say 'the moon' in Dutch?",
+    "explanation": "The Dutch word 'maan' translates to 'the moon' in English.",
+    "options": [
+      "maan",
+      "druk",
+      "de beer"
+    ],
+    "correctIndex": 0,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "vocab",
+      "animals",
+      "adjectives"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-200",
+    "type": "vocabulary",
+    "question": "What does 'ster' mean in English?",
+    "explanation": "The Dutch word 'ster' translates to 'the star' in English.",
+    "options": [
+      "the monkey",
+      "the giraffe",
+      "the star"
+    ],
+    "correctIndex": 2,
+    "categoryL2": "dutch",
+    "source": "duolingo-curriculum",
+    "difficulty": 1,
+    "rarity": "common",
+    "tags": [
+      "geography"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:09.355Z"
+  },
+  {
+    "id": "nl-b04-201",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "de schaduw",
+    "meaning": "the shadow / shade",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the shadow\" (rank 951).",
+    "mnemonic": "\"de schaduw\" = the shadow",
+    "exampleSentence": "Ik ken het woord \"de schaduw\".",
+    "exampleTranslation": "I know the word \"de schaduw\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 951 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the shadow",
+    "wrongAnswers": [
+      "the darkness",
+      "the outline"
+    ]
+  },
+  {
+    "id": "nl-b04-202",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "moeten",
+    "meaning": "must / have to / should",
+    "partOfSpeech": "verb",
+    "definition": "Dutch word meaning \"must\" (rank 952).",
+    "mnemonic": "\"moeten\" = must",
+    "exampleSentence": "Ik ken het woord \"moeten\".",
+    "exampleTranslation": "I know the word \"moeten\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: verb. Rank 952 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "must",
+    "wrongAnswers": [
+      "must",
+      "something else"
+    ]
+  },
+  {
+    "id": "nl-b04-203",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "zetten",
+    "meaning": "to put",
+    "partOfSpeech": "verb",
+    "definition": "Dutch word meaning \"to put\" (rank 953).",
+    "mnemonic": "\"zetten\" = to put",
+    "exampleSentence": "Ik ken het woord \"zetten\".",
+    "exampleTranslation": "I know the word \"zetten\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: verb. Rank 953 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "to put",
+    "wrongAnswers": [
+      "to place",
+      "to set down"
+    ]
+  },
+  {
+    "id": "nl-b04-204",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "draaien",
+    "meaning": "to turn",
+    "partOfSpeech": "verb",
+    "definition": "Dutch word meaning \"to turn\" (rank 954).",
+    "mnemonic": "\"draaien\" = to turn",
+    "exampleSentence": "Ik ken het woord \"draaien\".",
+    "exampleTranslation": "I know the word \"draaien\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: verb. Rank 954 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "to turn",
+    "wrongAnswers": [
+      "to twist",
+      "to rotate"
+    ]
+  },
+  {
+    "id": "nl-b04-205",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "kosten",
+    "meaning": "to cost",
+    "partOfSpeech": "verb",
+    "definition": "Dutch word meaning \"to cost\" (rank 955).",
+    "mnemonic": "\"kosten\" = to cost",
+    "exampleSentence": "Ik ken het woord \"kosten\".",
+    "exampleTranslation": "I know the word \"kosten\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: verb. Rank 955 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "to cost",
+    "wrongAnswers": [
+      "to charge",
+      "to price"
+    ]
+  },
+  {
+    "id": "nl-b04-206",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "ruiken",
+    "meaning": "to smell",
+    "partOfSpeech": "verb",
+    "definition": "Dutch word meaning \"to smell\" (rank 956).",
+    "mnemonic": "\"ruiken\" = to smell",
+    "exampleSentence": "Ik ken het woord \"ruiken\".",
+    "exampleTranslation": "I know the word \"ruiken\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: verb. Rank 956 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "to smell",
+    "wrongAnswers": [
+      "to sniff",
+      "to odor"
+    ]
+  },
+  {
+    "id": "nl-b04-207",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "leiden",
+    "meaning": "to lead",
+    "partOfSpeech": "verb",
+    "definition": "Dutch word meaning \"to lead\" (rank 957).",
+    "mnemonic": "\"leiden\" = to lead",
+    "exampleSentence": "Ik ken het woord \"leiden\".",
+    "exampleTranslation": "I know the word \"leiden\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: verb. Rank 957 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "to lead",
+    "wrongAnswers": [
+      "to guide",
+      "to direct"
+    ]
+  },
+  {
+    "id": "nl-b04-208",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "dak",
+    "meaning": "the roof",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the roof\" (rank 958).",
+    "mnemonic": "\"dak\" = the roof",
+    "exampleSentence": "Ik ken het woord \"dak\".",
+    "exampleTranslation": "I know the word \"dak\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 958 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the roof",
+    "wrongAnswers": [
+      "the ceiling",
+      "the top"
+    ]
+  },
+  {
+    "id": "nl-b04-209",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "heet",
+    "meaning": "hot",
+    "partOfSpeech": "adjective",
+    "definition": "Dutch word meaning \"hot\" (rank 959).",
+    "mnemonic": "\"heet\" = hot",
+    "exampleSentence": "Ik ken het woord \"heet\".",
+    "exampleTranslation": "I know the word \"heet\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: adjective. Rank 959 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "hot",
+    "wrongAnswers": [
+      "warm",
+      "heated"
+    ]
+  },
+  {
+    "id": "nl-b04-210",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "de markt",
+    "meaning": "the market",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the market\" (rank 960).",
+    "mnemonic": "\"de markt\" = the market",
+    "exampleSentence": "Ik ken het woord \"de markt\".",
+    "exampleTranslation": "I know the word \"de markt\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 960 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the market",
+    "wrongAnswers": [
+      "the shop",
+      "the store"
+    ]
+  },
+  {
+    "id": "nl-b04-211",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "het geld",
+    "meaning": "the money",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the money\" (rank 961).",
+    "mnemonic": "\"het geld\" = the money",
+    "exampleSentence": "Ik ken het woord \"het geld\".",
+    "exampleTranslation": "I know the word \"het geld\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 961 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the money",
+    "wrongAnswers": [
+      "the cash",
+      "the currency"
+    ]
+  },
+  {
+    "id": "nl-b04-212",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "geluk",
+    "meaning": "the happiness",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the happiness\" (rank 962).",
+    "mnemonic": "\"geluk\" = the happiness",
+    "exampleSentence": "Ik ken het woord \"geluk\".",
+    "exampleTranslation": "I know the word \"geluk\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 962 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the happiness",
+    "wrongAnswers": [
+      "the joy",
+      "the pleasure"
+    ]
+  },
+  {
+    "id": "nl-b04-213",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "laatst",
+    "meaning": "last",
+    "partOfSpeech": "adjective",
+    "definition": "Dutch word meaning \"last\" (rank 963).",
+    "mnemonic": "\"laatst\" = last",
+    "exampleSentence": "Ik ken het woord \"laatst\".",
+    "exampleTranslation": "I know the word \"laatst\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: adjective. Rank 963 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "last",
+    "wrongAnswers": [
+      "final",
+      "previous"
+    ]
+  },
+  {
+    "id": "nl-b04-214",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "welkom",
+    "meaning": "welcome",
+    "partOfSpeech": "adverb",
+    "definition": "Dutch word meaning \"welcome\" (rank 964).",
+    "mnemonic": "\"welkom\" = welcome",
+    "exampleSentence": "Ik ken het woord \"welkom\".",
+    "exampleTranslation": "I know the word \"welkom\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: adverb. Rank 964 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "welcome",
+    "wrongAnswers": [
+      "hello",
+      "greetings"
+    ]
+  },
+  {
+    "id": "nl-b04-215",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "thuis",
+    "meaning": "home",
+    "partOfSpeech": "adverb",
+    "definition": "Dutch word meaning \"home\" (rank 965).",
+    "mnemonic": "\"thuis\" = home",
+    "exampleSentence": "Ik ken het woord \"thuis\".",
+    "exampleTranslation": "I know the word \"thuis\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: adverb. Rank 965 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "home",
+    "wrongAnswers": [
+      "house",
+      "residence"
+    ]
+  },
+  {
+    "id": "nl-b04-216",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "het gras",
+    "meaning": "the grass",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the grass\" (rank 966).",
+    "mnemonic": "\"het gras\" = the grass",
+    "exampleSentence": "Ik ken het woord \"het gras\".",
+    "exampleTranslation": "I know the word \"het gras\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 966 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the grass",
+    "wrongAnswers": [
+      "the lawn",
+      "the vegetation"
+    ]
+  },
+  {
+    "id": "nl-b04-217",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "de boom",
+    "meaning": "the tree",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the tree\" (rank 967).",
+    "mnemonic": "\"de boom\" = the tree",
+    "exampleSentence": "Ik ken het woord \"de boom\".",
+    "exampleTranslation": "I know the word \"de boom\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 967 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the tree",
+    "wrongAnswers": [
+      "the plant",
+      "the wood"
+    ]
+  },
+  {
+    "id": "nl-b04-218",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "eigen",
+    "meaning": "own",
+    "partOfSpeech": "adjective",
+    "definition": "Dutch word meaning \"own\" (rank 968).",
+    "mnemonic": "\"eigen\" = own",
+    "exampleSentence": "Ik ken het woord \"eigen\".",
+    "exampleTranslation": "I know the word \"eigen\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: adjective. Rank 968 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "own",
+    "wrongAnswers": [
+      "personal",
+      "individual"
+    ]
+  },
+  {
+    "id": "nl-b04-219",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "mijn",
+    "meaning": "my",
+    "partOfSpeech": "pronoun",
+    "definition": "Dutch word meaning \"my\" (rank 969).",
+    "mnemonic": "\"mijn\" = my",
+    "exampleSentence": "Ik ken het woord \"mijn\".",
+    "exampleTranslation": "I know the word \"mijn\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: pronoun. Rank 969 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "my",
+    "wrongAnswers": [
+      "mine",
+      "belonging to me"
+    ]
+  },
+  {
+    "id": "nl-b04-220",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "jouw / je",
+    "meaning": "your",
+    "partOfSpeech": "pronoun",
+    "definition": "Dutch word meaning \"your\" (rank 970).",
+    "mnemonic": "\"jouw / je\" = your",
+    "exampleSentence": "Ik ken het woord \"jouw / je\".",
+    "exampleTranslation": "I know the word \"jouw / je\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: pronoun. Rank 970 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "your",
+    "wrongAnswers": [
+      "yours",
+      "belonging to you"
+    ]
+  },
+  {
+    "id": "nl-b04-221",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "haar",
+    "meaning": "her",
+    "partOfSpeech": "pronoun",
+    "definition": "Dutch word meaning \"her\" (rank 971).",
+    "mnemonic": "\"haar\" = her",
+    "exampleSentence": "Ik ken het woord \"haar\".",
+    "exampleTranslation": "I know the word \"haar\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: pronoun. Rank 971 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "her",
+    "wrongAnswers": [
+      "hers",
+      "belonging to her"
+    ]
+  },
+  {
+    "id": "nl-b04-222",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "ons / onze",
+    "meaning": "our",
+    "partOfSpeech": "pronoun",
+    "definition": "Dutch word meaning \"our\" (rank 972).",
+    "mnemonic": "\"ons / onze\" = our",
+    "exampleSentence": "Ik ken het woord \"ons / onze\".",
+    "exampleTranslation": "I know the word \"ons / onze\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: pronoun. Rank 972 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "our",
+    "wrongAnswers": [
+      "ours",
+      "belonging to us"
+    ]
+  },
+  {
+    "id": "nl-b04-223",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "jullie / uw",
+    "meaning": "your",
+    "partOfSpeech": "pronoun",
+    "definition": "Dutch word meaning \"your\" (rank 973).",
+    "mnemonic": "\"jullie / uw\" = your",
+    "exampleSentence": "Ik ken het woord \"jullie / uw\".",
+    "exampleTranslation": "I know the word \"jullie / uw\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: pronoun. Rank 973 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "your",
+    "wrongAnswers": [
+      "yours",
+      "belonging to you"
+    ]
+  },
+  {
+    "id": "nl-b04-224",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "uw",
+    "meaning": "your",
+    "partOfSpeech": "pronoun",
+    "definition": "Dutch word meaning \"your\" (rank 974).",
+    "mnemonic": "\"uw\" = your",
+    "exampleSentence": "Ik ken het woord \"uw\".",
+    "exampleTranslation": "I know the word \"uw\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: pronoun. Rank 974 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "your",
+    "wrongAnswers": [
+      "yours",
+      "belonging to you"
+    ]
+  },
+  {
+    "id": "nl-b04-225",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "hun",
+    "meaning": "their",
+    "partOfSpeech": "pronoun",
+    "definition": "Dutch word meaning \"their\" (rank 975).",
+    "mnemonic": "\"hun\" = their",
+    "exampleSentence": "Ik ken het woord \"hun\".",
+    "exampleTranslation": "I know the word \"hun\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: pronoun. Rank 975 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "their",
+    "wrongAnswers": [
+      "theirs",
+      "belonging to them"
+    ]
+  },
+  {
+    "id": "nl-b04-226",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "geen",
+    "meaning": "no / none",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"no\" (rank 976).",
+    "mnemonic": "\"geen\" = no",
+    "exampleSentence": "Ik ken het woord \"geen\".",
+    "exampleTranslation": "I know the word \"geen\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 976 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "no",
+    "wrongAnswers": [
+      "none",
+      "not any"
+    ]
+  },
+  {
+    "id": "nl-b04-227",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "gewoon",
+    "meaning": "usual",
+    "partOfSpeech": "adjective",
+    "definition": "Dutch word meaning \"usual\" (rank 977).",
+    "mnemonic": "\"gewoon\" = usual",
+    "exampleSentence": "Ik ken het woord \"gewoon\".",
+    "exampleTranslation": "I know the word \"gewoon\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: adjective. Rank 977 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "usual",
+    "wrongAnswers": [
+      "normal",
+      "typical"
+    ]
+  },
+  {
+    "id": "nl-b04-228",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "als",
+    "meaning": "if",
+    "partOfSpeech": "adverb",
+    "definition": "Dutch word meaning \"if\" (rank 978).",
+    "mnemonic": "\"als\" = if",
+    "exampleSentence": "Ik ken het woord \"als\".",
+    "exampleTranslation": "I know the word \"als\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: adverb. Rank 978 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "if",
+    "wrongAnswers": [
+      "whether",
+      "in case"
+    ]
+  },
+  {
+    "id": "nl-b04-229",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "het verschil",
+    "meaning": "the difference",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the difference\" (rank 979).",
+    "mnemonic": "\"het verschil\" = the difference",
+    "exampleSentence": "Ik ken het woord \"het verschil\".",
+    "exampleTranslation": "I know the word \"het verschil\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 979 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the difference",
+    "wrongAnswers": [
+      "the distinction",
+      "the contrast"
+    ]
+  },
+  {
+    "id": "nl-b04-230",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "de leeftijd",
+    "meaning": "the age",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the age\" (rank 980).",
+    "mnemonic": "\"de leeftijd\" = the age",
+    "exampleSentence": "Ik ken het woord \"de leeftijd\".",
+    "exampleTranslation": "I know the word \"de leeftijd\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 980 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the age",
+    "wrongAnswers": [
+      "the years",
+      "the period"
+    ]
+  },
+  {
+    "id": "nl-b04-231",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "iemand",
+    "meaning": "somebody",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"somebody\" (rank 981).",
+    "mnemonic": "\"iemand\" = somebody",
+    "exampleSentence": "Ik ken het woord \"iemand\".",
+    "exampleTranslation": "I know the word \"iemand\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 981 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "somebody",
+    "wrongAnswers": [
+      "someone",
+      "a person"
+    ]
+  },
+  {
+    "id": "nl-b04-232",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "iedereen",
+    "meaning": "everybody",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"everybody\" (rank 982).",
+    "mnemonic": "\"iedereen\" = everybody",
+    "exampleSentence": "Ik ken het woord \"iedereen\".",
+    "exampleTranslation": "I know the word \"iedereen\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 982 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "everybody",
+    "wrongAnswers": [
+      "everyone",
+      "all people"
+    ]
+  },
+  {
+    "id": "nl-b04-233",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "samen",
+    "meaning": "together",
+    "partOfSpeech": "adverb",
+    "definition": "Dutch word meaning \"together\" (rank 983).",
+    "mnemonic": "\"samen\" = together",
+    "exampleSentence": "Ik ken het woord \"samen\".",
+    "exampleTranslation": "I know the word \"samen\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: adverb. Rank 983 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "together",
+    "wrongAnswers": [
+      "united",
+      "as one"
+    ]
+  },
+  {
+    "id": "nl-b04-234",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "dichtbij",
+    "meaning": "nearby",
+    "partOfSpeech": "adverb",
+    "definition": "Dutch word meaning \"nearby\" (rank 984).",
+    "mnemonic": "\"dichtbij\" = nearby",
+    "exampleSentence": "Ik ken het woord \"dichtbij\".",
+    "exampleTranslation": "I know the word \"dichtbij\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: adverb. Rank 984 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "nearby",
+    "wrongAnswers": [
+      "close",
+      "adjacent"
+    ]
+  },
+  {
+    "id": "nl-b04-235",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "vaak",
+    "meaning": "often",
+    "partOfSpeech": "adverb",
+    "definition": "Dutch word meaning \"often\" (rank 985).",
+    "mnemonic": "\"vaak\" = often",
+    "exampleSentence": "Ik ken het woord \"vaak\".",
+    "exampleTranslation": "I know the word \"vaak\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: adverb. Rank 985 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "often",
+    "wrongAnswers": [
+      "frequently",
+      "many times"
+    ]
+  },
+  {
+    "id": "nl-b04-236",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "de grap",
+    "meaning": "the joke",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the joke\" (rank 986).",
+    "mnemonic": "\"de grap\" = the joke",
+    "exampleSentence": "Ik ken het woord \"de grap\".",
+    "exampleTranslation": "I know the word \"de grap\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 986 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the joke",
+    "wrongAnswers": [
+      "the laugh",
+      "the humor"
+    ]
+  },
+  {
+    "id": "nl-b04-237",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "het idee",
+    "meaning": "the idea",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the idea\" (rank 987).",
+    "mnemonic": "\"het idee\" = the idea",
+    "exampleSentence": "Ik ken het woord \"het idee\".",
+    "exampleTranslation": "I know the word \"het idee\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 987 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the idea",
+    "wrongAnswers": [
+      "the thought",
+      "the concept"
+    ]
+  },
+  {
+    "id": "nl-b04-238",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "het geluid",
+    "meaning": "the sound",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the sound\" (rank 988).",
+    "mnemonic": "\"het geluid\" = the sound",
+    "exampleSentence": "Ik ken het woord \"het geluid\".",
+    "exampleTranslation": "I know the word \"het geluid\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 988 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the sound",
+    "wrongAnswers": [
+      "the noise",
+      "the tone"
+    ]
+  },
+  {
+    "id": "nl-b04-239",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "de muziek",
+    "meaning": "the music",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the music\" (rank 989).",
+    "mnemonic": "\"de muziek\" = the music",
+    "exampleSentence": "Ik ken het woord \"de muziek\".",
+    "exampleTranslation": "I know the word \"de muziek\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 989 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the music",
+    "wrongAnswers": [
+      "the song",
+      "the tune"
+    ]
+  },
+  {
+    "id": "nl-b04-240",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "het nummer",
+    "meaning": "the number / the song",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the number\" (rank 990).",
+    "mnemonic": "\"het nummer\" = the number",
+    "exampleSentence": "Ik ken het woord \"het nummer\".",
+    "exampleTranslation": "I know the word \"het nummer\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 990 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the number",
+    "wrongAnswers": [
+      "the count",
+      "the digit"
+    ]
+  },
+  {
+    "id": "nl-b04-241",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "de naam",
+    "meaning": "the name",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the name\" (rank 991).",
+    "mnemonic": "\"de naam\" = the name",
+    "exampleSentence": "Ik ken het woord \"de naam\".",
+    "exampleTranslation": "I know the word \"de naam\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 991 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the name",
+    "wrongAnswers": [
+      "the title",
+      "the designation"
+    ]
+  },
+  {
+    "id": "nl-b04-242",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "het boek",
+    "meaning": "the book",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the book\" (rank 992).",
+    "mnemonic": "\"het boek\" = the book",
+    "exampleSentence": "Ik ken het woord \"het boek\".",
+    "exampleTranslation": "I know the word \"het boek\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 992 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the book",
+    "wrongAnswers": [
+      "the volume",
+      "the publication"
+    ]
+  },
+  {
+    "id": "nl-b04-243",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "de les",
+    "meaning": "the lesson",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the lesson\" (rank 993).",
+    "mnemonic": "\"de les\" = the lesson",
+    "exampleSentence": "Ik ken het woord \"de les\".",
+    "exampleTranslation": "I know the word \"de les\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 993 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the lesson",
+    "wrongAnswers": [
+      "the class",
+      "the instruction"
+    ]
+  },
+  {
+    "id": "nl-b04-244",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "het woord",
+    "meaning": "the word",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the word\" (rank 994).",
+    "mnemonic": "\"het woord\" = the word",
+    "exampleSentence": "Ik ken het woord \"het woord\".",
+    "exampleTranslation": "I know the word \"het woord\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 994 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the word",
+    "wrongAnswers": [
+      "the term",
+      "the expression"
+    ]
+  },
+  {
+    "id": "nl-b04-245",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "immigreren",
+    "meaning": "to immigrate",
+    "partOfSpeech": "verb",
+    "definition": "Dutch word meaning \"to immigrate\" (rank 995).",
+    "mnemonic": "\"immigreren\" = to immigrate",
+    "exampleSentence": "Ik ken het woord \"immigreren\".",
+    "exampleTranslation": "I know the word \"immigreren\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: verb. Rank 995 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "to immigrate",
+    "wrongAnswers": [
+      "to settle",
+      "to come to"
+    ]
+  },
+  {
+    "id": "nl-b04-246",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "emigreren",
+    "meaning": "to emigrate",
+    "partOfSpeech": "verb",
+    "definition": "Dutch word meaning \"to emigrate\" (rank 996).",
+    "mnemonic": "\"emigreren\" = to emigrate",
+    "exampleSentence": "Ik ken het woord \"emigreren\".",
+    "exampleTranslation": "I know the word \"emigreren\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: verb. Rank 996 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "to emigrate",
+    "wrongAnswers": [
+      "to leave",
+      "to depart from"
+    ]
+  },
+  {
+    "id": "nl-b04-247",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "de allochtoon",
+    "meaning": "the immigrant",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the immigrant\" (rank 997).",
+    "mnemonic": "\"de allochtoon\" = the immigrant",
+    "exampleSentence": "Ik ken het woord \"de allochtoon\".",
+    "exampleTranslation": "I know the word \"de allochtoon\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 997 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the immigrant",
+    "wrongAnswers": [
+      "the newcomer",
+      "the foreigner"
+    ]
+  },
+  {
+    "id": "nl-b04-248",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "verhuizen",
+    "meaning": "to move",
+    "partOfSpeech": "verb",
+    "definition": "Dutch word meaning \"to move\" (rank 998).",
+    "mnemonic": "\"verhuizen\" = to move",
+    "exampleSentence": "Ik ken het woord \"verhuizen\".",
+    "exampleTranslation": "I know the word \"verhuizen\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: verb. Rank 998 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "to move",
+    "wrongAnswers": [
+      "to relocate",
+      "to change residence"
+    ]
+  },
+  {
+    "id": "nl-b04-249",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "huren",
+    "meaning": "to rent",
+    "partOfSpeech": "verb",
+    "definition": "Dutch word meaning \"to rent\" (rank 999).",
+    "mnemonic": "\"huren\" = to rent",
+    "exampleSentence": "Ik ken het woord \"huren\".",
+    "exampleTranslation": "I know the word \"huren\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: verb. Rank 999 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "to rent",
+    "wrongAnswers": [
+      "to lease",
+      "to hire"
+    ]
+  },
+  {
+    "id": "nl-b04-250",
+    "type": "vocabulary",
+    "language": "nl",
+    "categoryL1": "language",
+    "categoryL2": "dutch",
+    "word": "de makelaar",
+    "meaning": "the real estate agent",
+    "partOfSpeech": "noun",
+    "definition": "Dutch word meaning \"the real estate agent\" (rank 1000).",
+    "mnemonic": "\"de makelaar\" = the real estate agent",
+    "exampleSentence": "Ik ken het woord \"de makelaar\".",
+    "exampleTranslation": "I know the word \"de makelaar\".",
+    "difficulty": "intermediate",
+    "rarity": "uncommon",
+    "explanation": "Common Dutch vocabulary (B1-B4 level). Part of speech: noun. Rank 1000 in frequency.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T18:10:20.354Z",
+    "answer": "the real estate agent",
+    "wrongAnswers": [
+      "the property dealer",
+      "the broker"
+    ]
+  }
+]

@@ -1,0 +1,306 @@
+{
+  "seed": 2,
+  "startedAt": "2026-03-11T16:47:01.004Z",
+  "devUrl": "http://localhost:5173",
+  "viewport": {
+    "width": 412,
+    "height": 915
+  },
+  "quizzes": [
+    {
+      "turn": 1,
+      "question": "If the Sun disappeared, how long before Earth felt the gravitational change?",
+      "answers": [
+        "Twice the speed of light",
+        "Instantaneously",
+        "At the speed of light"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "Twice the speed of light",
+          "htmlSnippet": "Twice the speed of light"
+        },
+        {
+          "index": 1,
+          "text": "Instantaneously",
+          "htmlSnippet": "Instantaneously"
+        },
+        {
+          "index": 2,
+          "text": "At the speed of light",
+          "htmlSnippet": "At the speed of light"
+        }
+      ],
+      "image": null,
+      "effect": "Deal 3 Damage",
+      "issues": []
+    },
+    {
+      "turn": 2,
+      "question": "How does the cornea of the eye get its oxygen?",
+      "answers": [
+        "From specialized oxygen-producing cells",
+        "From blood vessels behind the iris",
+        "Directly from the air through the tear film"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "From specialized oxygen-producing cells",
+          "htmlSnippet": "From specialized oxygen-producing cells"
+        },
+        {
+          "index": 1,
+          "text": "From blood vessels behind the iris",
+          "htmlSnippet": "From blood vessels behind the iris"
+        },
+        {
+          "index": 2,
+          "text": "Directly from the air through the tear film",
+          "htmlSnippet": "Directly from the air through the tear film"
+        }
+      ],
+      "image": null,
+      "effect": "Block 6 Damage",
+      "issues": []
+    },
+    {
+      "turn": 3,
+      "question": "How much does an average cumulus cloud weigh?",
+      "answers": [
+        "About 1 kilogram",
+        "About 100 kilograms",
+        "About 500,000 kg — roughly 100 elephants"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "About 1 kilogram",
+          "htmlSnippet": "About 1 kilogram"
+        },
+        {
+          "index": 1,
+          "text": "About 100 kilograms",
+          "htmlSnippet": "About 100 kilograms"
+        },
+        {
+          "index": 2,
+          "text": "About 500,000 kg — roughly 100 elephants",
+          "htmlSnippet": "About 500,000 kg — roughly 100 elephants"
+        }
+      ],
+      "image": null,
+      "effect": "Deal 8 Damage",
+      "issues": [
+        {
+          "type": "very_similar_answers",
+          "detail": "Answers 0 and 1 are too similar (84% match)"
+        }
+      ]
+    },
+    {
+      "turn": 4,
+      "question": "What is Tuvalu's population approximately?",
+      "answers": [
+        "About 100,000",
+        "Fewer than 12,000",
+        "About 1 million"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "About 100,000",
+          "htmlSnippet": "About 100,000"
+        },
+        {
+          "index": 1,
+          "text": "Fewer than 12,000",
+          "htmlSnippet": "Fewer than 12,000"
+        },
+        {
+          "index": 2,
+          "text": "About 1 million",
+          "htmlSnippet": "About 1 million"
+        }
+      ],
+      "image": null,
+      "effect": "Utility",
+      "issues": []
+    },
+    {
+      "turn": 5,
+      "question": "What is the observable universe's approximate diameter?",
+      "answers": [
+        "93 billion light-years",
+        "10 billion light-years",
+        "13.8 billion light-years"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "93 billion light-years",
+          "htmlSnippet": "93 billion light-years"
+        },
+        {
+          "index": 1,
+          "text": "10 billion light-years",
+          "htmlSnippet": "10 billion light-years"
+        },
+        {
+          "index": 2,
+          "text": "13.8 billion light-years",
+          "htmlSnippet": "13.8 billion light-years"
+        }
+      ],
+      "image": null,
+      "effect": "Block 4 Damage",
+      "issues": [
+        {
+          "type": "very_similar_answers",
+          "detail": "Answers 0 and 1 are too similar (91% match)"
+        },
+        {
+          "type": "very_similar_answers",
+          "detail": "Answers 0 and 2 are too similar (88% match)"
+        },
+        {
+          "type": "very_similar_answers",
+          "detail": "Answers 1 and 2 are too similar (88% match)"
+        }
+      ]
+    },
+    {
+      "turn": 7,
+      "question": "What technique uses hot wax mixed with pigments to create paintings?",
+      "answers": [
+        "Heated beeswax",
+        "Egg yolk",
+        "Linseed oil"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "Heated beeswax",
+          "htmlSnippet": "Heated beeswax"
+        },
+        {
+          "index": 1,
+          "text": "Egg yolk",
+          "htmlSnippet": "Egg yolk"
+        },
+        {
+          "index": 2,
+          "text": "Linseed oil",
+          "htmlSnippet": "Linseed oil"
+        }
+      ],
+      "image": null,
+      "effect": "Deal 3 Damage",
+      "issues": []
+    },
+    {
+      "turn": 8,
+      "question": "How much does an average cumulus cloud weigh?",
+      "answers": [
+        "Almost nothing — clouds are weightless",
+        "About 1 kilogram",
+        "About 500,000 kg — roughly 100 elephants"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "Almost nothing — clouds are weightless",
+          "htmlSnippet": "Almost nothing — clouds are weightless"
+        },
+        {
+          "index": 1,
+          "text": "About 1 kilogram",
+          "htmlSnippet": "About 1 kilogram"
+        },
+        {
+          "index": 2,
+          "text": "About 500,000 kg — roughly 100 elephants",
+          "htmlSnippet": "About 500,000 kg — roughly 100 elephants"
+        }
+      ],
+      "image": null,
+      "effect": "Deal 8 Damage",
+      "issues": []
+    },
+    {
+      "turn": 9,
+      "question": "How does the cornea of the eye get its oxygen?",
+      "answers": [
+        "Directly from the air through the tear film",
+        "From the optic nerve",
+        "From blood vessels behind the iris"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "Directly from the air through the tear film",
+          "htmlSnippet": "Directly from the air through the tear film"
+        },
+        {
+          "index": 1,
+          "text": "From the optic nerve",
+          "htmlSnippet": "From the optic nerve"
+        },
+        {
+          "index": 2,
+          "text": "From blood vessels behind the iris",
+          "htmlSnippet": "From blood vessels behind the iris"
+        }
+      ],
+      "image": null,
+      "effect": "Block 6 Damage",
+      "issues": []
+    }
+  ],
+  "roomTransitions": [],
+  "errors": [
+    {
+      "type": "very_similar_answers",
+      "turn": 3,
+      "message": "Answers 0 and 1 are too similar (84% match)",
+      "question": "How much does an average cumulus cloud weigh?"
+    },
+    {
+      "type": "very_similar_answers",
+      "turn": 5,
+      "message": "Answers 0 and 1 are too similar (91% match)",
+      "question": "What is the observable universe's approximate diameter?"
+    },
+    {
+      "type": "very_similar_answers",
+      "turn": 5,
+      "message": "Answers 0 and 2 are too similar (88% match)",
+      "question": "What is the observable universe's approximate diameter?"
+    },
+    {
+      "type": "very_similar_answers",
+      "turn": 5,
+      "message": "Answers 1 and 2 are too similar (88% match)",
+      "question": "What is the observable universe's approximate diameter?"
+    },
+    {
+      "type": "crash",
+      "message": "page.waitForTimeout: Target page, context or browser has been closed",
+      "stack": "page.waitForTimeout: Target page, context or browser has been closed\n    at /root/terra-miner/tests/playtest/runners/run-visual-qa.cjs:588:22"
+    }
+  ],
+  "screenshots": [
+    "/tmp/qa-2-01-hub.png",
+    "/tmp/qa-2-02-combat-start.png",
+    "/tmp/qa-2-issue-turn3.png",
+    "/tmp/qa-2-issue-turn5.png"
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "turnCount": 0,
+  "result": "crash",
+  "floorsReached": 0,
+  "endScreenText": null,
+  "completedAt": null
+}

@@ -1,0 +1,81 @@
+{
+  "seed": 1,
+  "startedAt": "2026-03-11T16:36:43.674Z",
+  "devUrl": "http://localhost:5173",
+  "viewport": {
+    "width": 412,
+    "height": 915
+  },
+  "quizzes": [
+    {
+      "turn": 1,
+      "question": "Name the effect where hot water sometimes freezes faster than cold water.",
+      "answers": [
+        "Mpemba effect",
+        "Coriolis effect",
+        "Leidenfrost effect"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "Mpemba effect",
+          "htmlSnippet": "Mpemba effect"
+        },
+        {
+          "index": 1,
+          "text": "Coriolis effect",
+          "htmlSnippet": "Coriolis effect"
+        },
+        {
+          "index": 2,
+          "text": "Leidenfrost effect",
+          "htmlSnippet": "Leidenfrost effect"
+        }
+      ],
+      "image": null,
+      "effect": "Block 6 Damage",
+      "issues": []
+    }
+  ],
+  "roomTransitions": [],
+  "errors": [],
+  "screenshots": [
+    "/tmp/qa-1-01-hub.png",
+    "/tmp/qa-1-02-combat-start.png",
+    "/tmp/qa-1-final.png"
+  ],
+  "consoleErrors": [
+    {
+      "level": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "location": "http://localhost:5173/?skipOnboarding=true&devpreset=post_tutorial"
+    },
+    {
+      "level": "warning",
+      "text": "[.WebGL-0xd4c000ea600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "level": "warning",
+      "text": "[.WebGL-0xd4c000ea600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "level": "warning",
+      "text": "[.WebGL-0xd4c000ea600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "level": "warning",
+      "text": "[.WebGL-0xd4c000ea600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+    }
+  ],
+  "pageErrors": [
+    {
+      "message": "Failed to execute 'setPointerCapture' on 'Element': No active pointer with the given id is found.",
+      "stack": "NotFoundError: Failed to execute 'setPointerCapture' on 'Element': No active pointer with the given id is found.\n    at handlePointerDown (http://localhost:5173/src/ui/components/CardHand.svelte:352:19)\n    at HTMLButtonElement.pointerdown (http://localhost:5173/src/ui/components/CardHand.svelte:813:12)\n    at HTMLDivElement.handle_event_propagation (http://localhost:5173/node_modules/.vite/deps/chunk-S7PYH5XG.js?v=33a2b75d:4544:22)\n    at eval (eval at evaluate (:290:30), <anonymous>:7:14)\n    "
+    }
+  ],
+  "turnCount": 100,
+  "result": "timeout",
+  "floorsReached": 0,
+  "endScreenText": null,
+  "completedAt": "2026-03-11T16:40:27.163Z"
+}

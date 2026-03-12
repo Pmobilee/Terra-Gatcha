@@ -7,40 +7,7 @@
     "explanation": "On September 9, 1947, engineers at Harvard found a moth trapped in Relay 70 of the Mark II Aiken Relay Calculator. They taped it into the logbook with the note 'First actual case of bug being found.' Grace Hopper's team popularized the term, and the logbook is preserved at the Smithsonian.",
     "quizQuestion": "What insect was found in the Harvard Mark II computer?",
     "correctAnswer": "A moth",
-    "distractors": [
-      {
-        "text": "A beetle in a tube",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "A spider in relay",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "A fly in capacitor",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "A cockroach in transistor",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "A wasp in power supply",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "A cricket in logic gate",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "A silverfish in paper tape",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "A mayfly in relay coil",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What insect caused the first computer bug in 1947?",
@@ -87,7 +54,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -97,15 +66,17 @@
       "Computer History"
     ],
     "rarity": "uncommon",
-    "difficulty": 2,
-    "funScore": 9,
+    "difficulty": 3,
+    "funScore": 7,
     "ageRating": "kid",
     "sourceName": "Smithsonian National Museum of American History",
     "gaiaComment": "A moth in a relay. Taped to the log. Grace Hopper's team coined the term. The bug is at the Smithsonian. Historical.",
     "visualDescription": "A moth with powdered wings pinned and taped into an open relay panel of a massive vacuum-tube computer, its body pressed flat against the delicate metal components, technicians' gloved hands holding tweezers near the insect, logbook pages visible nearby with the moth sketched and annotated.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Computer History"
+    "categoryL3": "Computer History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-002",
@@ -115,40 +86,7 @@
     "explanation": "Researchers at Japan's National Institute of Information and Communications Technology achieved 1.02 petabits per second over a single fiber strand in 2022 using wavelength-division multiplexing across thousands of channels. A petabit is one quadrillion bits. This capacity doubles roughly every two years, mirroring Moore's Law for networking.",
     "quizQuestion": "What enables one fiber optic strand to carry multiple data channels?",
     "correctAnswer": "Wavelength-division multiplexing",
-    "distractors": [
-      {
-        "text": "Time-division multiplexing",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Frequency-shift keying",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Amplitude modulation",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Quantum entanglement routing",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Coherent optical multiplexing",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Mode-division splitting",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Photonic crystal routing",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Soliton wave division",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "How does a single fiber optic strand transmit multiple data channels simultaneously?",
@@ -207,15 +145,17 @@
       "Telecommunications"
     ],
     "rarity": "rare",
-    "difficulty": 4,
-    "funScore": 8,
+    "difficulty": 3,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "National Institute of Information and Communications Technology (Japan)",
     "gaiaComment": "One fiber strand carries a petabit per second. The Library of Congress fits through it 10,000 times per second. Light does the work.",
     "visualDescription": "A translucent fiber optic strand as thin as a human hair glowing with countless streams of colored light pulses traveling through it at incredible speed, while stacks of film reels and digital movie icons blur past on either side, all contained within the single illuminated cable stretching across the frame.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Telecommunications"
+    "categoryL3": "Telecommunications",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-003",
@@ -225,40 +165,7 @@
     "explanation": "The Apollo Guidance Computer (AGC) had 4,096 bytes of erasable core rope memory and 72 KB of fixed rope memory. It ran at 2 MHz and weighed 70 pounds. Despite these constraints, it successfully guided the spacecraft to a lunar landing with less computing power than a modern pocket calculator. The software was literally woven by hand into rope memory.",
     "quizQuestion": "How much RAM did Apollo 11's guidance computer have?",
     "correctAnswer": "4 kilobytes",
-    "distractors": [
-      {
-        "text": "64 kilobytes",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "8 kilobytes",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "16 kilobytes",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "256 kilobytes",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "1 megabyte",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "512 bytes",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "128 kilobytes",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "2 megabytes",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Apollo 11's guidance computer had how much RAM?",
@@ -305,7 +212,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -315,15 +224,17 @@
       "Space Computing"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 9,
+    "difficulty": 2,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "NASA Apollo Program Documentation",
     "gaiaComment": "Four kilobytes of RAM landed humans on the Moon. One emoji is larger. The software was woven by hand into rope memory.",
     "visualDescription": "A pixelated Apollo Guidance Computer with its small gray cabinet open, displaying a tiny glowing circuit board inside, while a massive modern smartphone looms behind it casting a shadow, the phone's screen blazing with data streams and complexity, emphasizing the vast size difference in computing power between the two devices.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Space Computing"
+    "categoryL3": "Space Computing",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-004",
@@ -333,40 +244,7 @@
     "explanation": "As of the mid-2020s, global internet traffic exceeds 5 exabytes (5 billion gigabytes) per day, driven by video streaming, social media, cloud computing, and IoT devices. This figure was roughly 100 gigabytes per day in 1992. The exponential growth follows a pattern known as Nielsen's Law, which predicts that high-end network bandwidth grows by 50% per year.",
     "quizQuestion": "How much data transmits daily via internet mid-2020s?",
     "correctAnswer": "5 exabytes",
-    "distractors": [
-      {
-        "text": "50 exabytes",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "1 exabyte",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "500 petabytes",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "5 zettabytes",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "10 exabytes",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "2 exabytes",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "500 exabytes",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "1 zettabyte",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Daily internet traffic in mid-2020s equals?",
@@ -413,7 +291,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -424,14 +304,16 @@
     ],
     "rarity": "uncommon",
     "difficulty": 3,
-    "funScore": 8,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Cisco Annual Internet Report",
     "gaiaComment": "Five exabytes of data per day. More data every 48 hours than existed in all of human history until 2003.",
     "visualDescription": "A massive digital torrent of glowing data packets streaming through interconnected fiber optic cables at impossible speed, the stream's volume so thick it physically overwhelms a tiny stack of ancient scrolls and stone tablets crumbling beneath its weight, holographic numbers and light trails filling the frame with relentless motion and energy.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Data"
+    "categoryL3": "Data",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-005",
@@ -441,40 +323,7 @@
     "explanation": "George de Mestral examined the burdock burrs under a microscope and discovered they had tiny hooks that caught on loops of fabric and hair. He spent 14 years perfecting a nylon version and patented Velcro in 1955. The name comes from the French words velours (velvet) and crochet (hook). NASA adopted it extensively for zero-gravity environments.",
     "quizQuestion": "What inspired George de Mestral to invent Velcro?",
     "correctAnswer": "Burdock burrs on his dog",
-    "distractors": [
-      {
-        "text": "Gecko feet",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Spider webs",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Ivy vines clinging",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Mussel threads anchoring",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Barnacles on ships",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Butterfly foot gripping",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Lotus leaf water repelling",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Lichen bonding stone",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What natural object inspired Velcro's invention?",
@@ -522,8 +371,8 @@
         "correctAnswer": "True",
         "distractors": [
           "False",
-          "Unknown",
-          "Debated"
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -533,15 +382,17 @@
       "Biomimicry"
     ],
     "rarity": "common",
-    "difficulty": 2,
-    "funScore": 8,
+    "difficulty": 3,
+    "funScore": 7,
     "ageRating": "kid",
     "sourceName": "Smithsonian Magazine",
     "gaiaComment": "Velcro came from burdock burrs on a dog. Fourteen years of iteration later, NASA adopted it. Good dogs change history.",
     "visualDescription": "A Swiss engineer in hiking clothes kneeling beside his dog, plucking spiky burdock burrs from the matted fur while examining them closely in his hands, the burrs' hooked spines clearly visible catching the light, alpine forest and mountains visible in the background.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Biomimicry"
+    "categoryL3": "Biomimicry",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-006",
@@ -551,40 +402,7 @@
     "explanation": "Atlas uses model predictive control, where it simulates hundreds of possible futures every millisecond and picks the best trajectory. Its hydraulic system and 28 degrees of freedom allow it to generate forces similar to a human athlete. The robot weighs 89 kg but can clear obstacles and recover from stumbles that would floor a human gymnast. Boston Dynamics transitioned Atlas to electric actuators in 2024.",
     "quizQuestion": "What control technique keeps Atlas robot balanced during acrobatics?",
     "correctAnswer": "Model predictive control",
-    "distractors": [
-      {
-        "text": "Gyroscopic stabilization",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Fuzzy logic control",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Reinforcement learning",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Zero-moment point control",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Neural network balancing",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Passive dynamic walking",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Inverse kinematics feedback",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Optimal feedback linearization",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "How does Atlas maintain balance during complex parkour moves?",
@@ -631,7 +449,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -641,15 +461,17 @@
       "Control Systems"
     ],
     "rarity": "rare",
-    "difficulty": 4,
-    "funScore": 9,
+    "difficulty": 3,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Boston Dynamics Technical Blog",
     "gaiaComment": "Atlas simulates hundreds of possible futures per millisecond to stay upright. It does backflips. Engineers called it impossible once.",
     "visualDescription": "A sleek humanoid robot mid-backflip in a gymnasium, its metallic body arcing through the air with perfect form, limbs precisely positioned, landing upright on both feet on a padded mat below while engineers in the background watch from behind safety glass, stopwatches in hand.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Control Systems"
+    "categoryL3": "Control Systems",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-007",
@@ -659,40 +481,7 @@
     "explanation": "Large language models like GPT-4 learn statistical patterns across vast text corpora but do not inherently understand logical or arithmetic operations. They predict the most likely next token, which fails for tasks requiring precise computation. This is why modern LLMs use tool-calling to invoke calculators and code interpreters for math, rather than computing directly. The gap between apparent fluency and genuine reasoning is called the 'stochastic parrot' problem.",
     "quizQuestion": "Why do LLMs fail basic arithmetic despite massive training?",
     "correctAnswer": "They predict text, not compute",
-    "distractors": [
-      {
-        "text": "Lack math textbooks",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "GPU hardware limitations",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Binary logic incompatible",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Token embeddings fail numbers",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Attention mechanisms inconsistent",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Softmax activations round incorrectly",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Arithmetic requires symbolic reasoning",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Stochastic token selection defeats logic",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Why do large language models struggle with basic arithmetic?",
@@ -751,15 +540,17 @@
       "Machine Learning"
     ],
     "rarity": "uncommon",
-    "difficulty": 4,
-    "funScore": 8,
+    "difficulty": 2,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "OpenAI Technical Report GPT-4",
     "gaiaComment": "Trained on a trillion tokens and still fails basic arithmetic. I say this without judgment. Prediction isn't understanding.",
     "visualDescription": "A massive glowing neural network hovering above a desk displaying countless floating books and scrolls spiraling upward into infinity, while below a pixel-art hand holds a paper showing \"2+2=5\" with the AI's confident cursor pointing at the wrong answer, stacks of novels piled chaotically around the base.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Machine Learning"
+    "categoryL3": "Machine Learning",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-008",
@@ -769,40 +560,7 @@
     "explanation": "Graphene was first isolated in 2004 by Andre Geim and Konstantin Novoselov at the University of Manchester using ordinary Scotch tape to peel layers off graphite. It has a tensile strength of 130 GPa compared to steel's 0.4 GPa. It conducts electricity better than copper and heat better than diamond. The discoverers won the 2010 Nobel Prize in Physics for this work.",
     "quizQuestion": "How was graphene first isolated in laboratory?",
     "correctAnswer": "Scotch tape peeling graphite",
-    "distractors": [
-      {
-        "text": "Chemical vapor deposition",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Laser ablation method",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Electrochemical exfoliation",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Sonication in liquid nitrogen",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Thermal decomposition process",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Plasma etching technique",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Molecular beam epitaxy",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Arc discharge between electrodes",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What simple method first isolated graphene in laboratory?",
@@ -849,7 +607,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -859,7 +619,7 @@
       "Nanomaterials"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
+    "difficulty": 4,
     "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Nobel Prize Committee 2010 Physics Announcement",
@@ -867,7 +627,9 @@
     "visualDescription": "A single sheet of transparent graphene stretches horizontally across the frame, its hexagonal atomic lattice glowing faintly visible like a honeycomb grid, while a thick steel beam bends and crumples beneath one edge of the delicate material, the contrast between the fragile-looking sheet and the deformed metal stark and impossible.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Nanomaterials"
+    "categoryL3": "Nanomaterials",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-009",
@@ -877,40 +639,7 @@
     "explanation": "Voyager 1 crossed into interstellar space in 2012 and continues to transmit data at about 160 bits per second — vastly slower than dial-up internet. NASA's Deep Space Network uses antennas up to 70 meters wide to detect signals that arrive 22 hours after transmission and are 10 billion times weaker than a digital watch battery. The spacecraft is powered by plutonium-238 radioisotope thermoelectric generators.",
     "quizQuestion": "What powers Voyager 1 after 45+ years in space?",
     "correctAnswer": "Plutonium-238 radioisotope thermoelectric generators",
-    "distractors": [
-      {
-        "text": "Solar panels optimized for deep space",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Hydrogen fuel cells",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Lithium-ion battery packs",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Nuclear fission reactor",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Antimatter annihilation cells",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Beamed laser power from Earth",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Cosmic ray harvesting array",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Dark matter interaction cell",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What type of power source keeps Voyager 1 operating in deep space?",
@@ -957,7 +686,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -975,7 +706,9 @@
     "visualDescription": "A tiny spacecraft with golden panels transmitting a thin radio beam across an impossibly vast starfield, a minuscule glowing filament inside a clear bulb nearby casting that same beam's light, the beam stretching infinitely toward a distant blue dot labeled Earth, cosmic dust and distant stars scattered across black void.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Spacecraft"
+    "categoryL3": "Spacecraft",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-010",
@@ -985,40 +718,7 @@
     "explanation": "Tim Berners-Lee submitted his proposal 'Information Management: A Proposal' to CERN management in March 1989. His supervisor Mike Sendall wrote 'vague but exciting' on the cover before approving further work. Berners-Lee invented HTTP, HTML, and URLs simultaneously and deliberately made the Web royalty-free so it could be universally adopted. The first website went live at CERN on December 20, 1990.",
     "quizQuestion": "Why did Tim Berners-Lee invent the World Wide Web?",
     "correctAnswer": "Help physicists share documents",
-    "distractors": [
-      {
-        "text": "Enable military communications",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Connect university libraries",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Replace postal mail",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Distribute software updates",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Stream radio broadcasts",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Link financial markets",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Coordinate satellite tracking",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Manage particle accelerator logs",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What was Tim Berners-Lee's original purpose for the Web?",
@@ -1065,7 +765,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1075,7 +777,7 @@
       "Web History"
     ],
     "rarity": "common",
-    "difficulty": 2,
+    "difficulty": 3,
     "funScore": 8,
     "ageRating": "kid",
     "sourceName": "CERN — The Birth of the Web",
@@ -1083,7 +785,9 @@
     "visualDescription": "A bearded physicist in 1980s attire holds up a handwritten proposal covered in sketches of connected nodes and document symbols to his skeptical boss seated at a desk, the boss's hand raised in a dismissive yet intrigued gesture, a CERN particle detector blueprint visible on the wall behind them, both figures frozen in the moment of pitched idea versus cautious interest.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Web History"
+    "categoryL3": "Web History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-011",
@@ -1093,40 +797,7 @@
     "explanation": "In 2019, Google's 53-qubit Sycamore processor completed a random circuit sampling task in 200 seconds. IBM disputed the comparison and argued the classical estimate should be 2.5 days with improved algorithms. Quantum computers exploit superposition and entanglement so each qubit can represent 0 and 1 simultaneously, allowing exponentially parallel computation for specific problem types. They are not universally faster than classical computers.",
     "quizQuestion": "What quantum property lets qubits represent 0 and 1 simultaneously?",
     "correctAnswer": "Superposition",
-    "distractors": [
-      {
-        "text": "Entanglement",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Coherence",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Tunneling",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Quantum annealing",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Spin polarization",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Wave-particle duality",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Topological protection",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Quantum error correction",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What quantum property allows qubits to be 0 and 1 at once?",
@@ -1185,7 +856,7 @@
       "Quantum Computing"
     ],
     "rarity": "rare",
-    "difficulty": 4,
+    "difficulty": 5,
     "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Google AI — Quantum Supremacy Paper, Nature 2019",
@@ -1193,7 +864,9 @@
     "visualDescription": "A gleaming quantum computer with crystalline cooling chambers and blue-glowing qubits processing at blazing speed while beside it a massive classical supercomputer covered in dust and cobwebs sits motionless, a calendar on the wall behind showing only years passing, the quantum machine's answer already displayed on a screen as the classical machine's progress bar reads one percent complete.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Quantum Computing"
+    "categoryL3": "Quantum Computing",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-012",
@@ -1203,40 +876,7 @@
     "explanation": "Webb's 18 hexagonal mirror segments are coated with a layer of gold just 100 nanometers thick using a vacuum deposition process. Gold was chosen because it reflects infrared light exceptionally well. The mirror spans 6.5 meters in diameter and must operate at -233°C (-387°F) — colder than the surface of Pluto — to detect faint infrared heat from the most distant objects in the universe.",
     "quizQuestion": "Why is JWST's mirror coated in gold?",
     "correctAnswer": "Reflects infrared light well",
-    "distractors": [
-      {
-        "text": "Resists corrosion in space",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Lighter than aluminum",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Cheaper than alternatives",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Stays rigid when cold",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Bonds well to beryllium",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Non-magnetic properties",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Reflects gamma rays",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Resists micrometeorite damage",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Why was gold chosen for JWST's mirror coating?",
@@ -1283,7 +923,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1301,7 +943,9 @@
     "visualDescription": "A massive hexagonal mirror array gleaming with thin golden coating catches starlight, its delicate gold surface reflecting impossibly distant galaxies while a tiny wedding ring sits beside it for size comparison, both catching identical celestial light.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Telescopes"
+    "categoryL3": "Telescopes",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-013",
@@ -1311,40 +955,7 @@
     "explanation": "At low temperatures, the viscosity of the liquid electrolyte in lithium-ion cells increases, slowing ion transport between anode and cathode. Additionally, lithium plating can occur on graphite anodes below 0°C, permanently reducing capacity. Solid-state batteries, which use a solid ceramic electrolyte, are being developed to mitigate this effect. Battery management systems in EVs use resistive heating to pre-warm packs before discharge.",
     "quizQuestion": "Why do EV batteries lose range in cold weather?",
     "correctAnswer": "Lithium ions move slower",
-    "distractors": [
-      {
-        "text": "Separator membrane freezes",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Electrodes contract sharply",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Battery casing warps",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Lithium plating damages anode",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Solid electrolyte layer thickens",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Cathode oxide becomes unstable",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Lithium dendrite growth accelerates",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Thermal expansion cracks electrodes",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Why do EV batteries lose range in cold weather?",
@@ -1383,7 +994,7 @@
         "distractors": [
           "10",
           "75",
-          "5"
+          "Plausible option 3"
         ]
       },
       {
@@ -1391,7 +1002,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1401,15 +1014,17 @@
       "Batteries"
     ],
     "rarity": "common",
-    "difficulty": 3,
-    "funScore": 7,
+    "difficulty": 2,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "U.S. Department of Energy — Vehicle Technologies Office",
     "gaiaComment": "Cold slows the ions. Your EV loses 40% range in winter not from energy loss but from retrieval speed. Physics doesn't care.",
     "visualDescription": "An electric vehicle's battery pack visibly shrinking in power output as snowflakes fall around it, tiny glowing lithium ions frozen mid-crawl through crystalline electrolyte pathways inside a cutaway battery cell, their sluggish movement contrasting with rapid ions flowing freely in a warm battery shown beside it, dashboard range display dropping in real-time.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Batteries"
+    "categoryL3": "Batteries",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-014",
@@ -1419,40 +1034,7 @@
     "explanation": "Elon Musk published the Hyperloop Alpha paper in 2013, proposing pods levitated by air bearings inside low-pressure steel tubes, eliminating most aerodynamic drag and rolling friction. The tubes would be pumped to about 1/1000th atmospheric pressure. Multiple companies pursued prototypes, with Virgin Hyperloop completing a human test ride in 2020 at 172 km/h. Safety, tube integrity, and evacuation procedures remain major engineering challenges.",
     "quizQuestion": "What enables Hyperloop pods to exceed 1,000 km/h?",
     "correctAnswer": "Near-vacuum tubes reduce drag",
-    "distractors": [
-      {
-        "text": "Rocket boosters accelerate pods",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Superconducting magnetic levitation",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Electromagnetic catapults launch pods",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Pods surf pressurized air waves",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Cryogenic cooling enables superconductivity",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Linear induction motors provide thrust",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Graphene coatings eliminate friction",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Plasma sheaths reduce aerodynamic resistance",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What makes Hyperloop pods faster than commercial airliners?",
@@ -1490,8 +1072,8 @@
         "correctAnswer": "35",
         "distractors": [
           "120",
-          "5",
-          "90"
+          "90",
+          "Plausible option 3"
         ]
       },
       {
@@ -1499,7 +1081,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1509,15 +1093,17 @@
       "Future Transport"
     ],
     "rarity": "common",
-    "difficulty": 2,
-    "funScore": 8,
+    "difficulty": 4,
+    "funScore": 4,
     "ageRating": "kid",
     "sourceName": "Elon Musk — Hyperloop Alpha White Paper 2013",
     "gaiaComment": "Near-vacuum tubes, no drag, 1,000 km/h. LA to San Francisco in 35 minutes. Engineering challenges remain. Many.",
     "visualDescription": "A sleek cylindrical pod with smooth rounded ends racing through a transparent tube with minimal air, a speedometer dial showing past 1000 km/h, a tiny commercial airplane visible through the tube's transparent wall flying alongside but visibly slower, the pod's interior showing seated passengers pressed slightly back against their seats from acceleration, bright blue energy lines trailing behind the pod.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Future Transport"
+    "categoryL3": "Future Transport",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-015",
@@ -1527,40 +1113,7 @@
     "explanation": "GPS satellites orbit at 20,200 km altitude and travel at 14,000 km/h. Special relativity predicts their clocks run slower than Earth's by 7 microseconds per day due to velocity, while general relativity predicts the clocks run faster by 45 microseconds per day due to weaker gravity at altitude. The net gain of 38 microseconds per day, if uncorrected, would cause GPS errors of about 10 km daily. Satellite clocks are pre-adjusted before launch to compensate.",
     "quizQuestion": "How many microseconds per day do GPS clocks gain due to relativity?",
     "correctAnswer": "38 microseconds",
-    "distractors": [
-      {
-        "text": "7 microseconds",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "45 microseconds",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "100 microseconds",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "50 microseconds",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "22 microseconds",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "30 microseconds",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "1 millisecond",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "60 microseconds",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "GPS satellite clocks gain how many microseconds daily from relativistic effects?",
@@ -1607,7 +1160,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1618,14 +1173,16 @@
     ],
     "rarity": "rare",
     "difficulty": 5,
-    "funScore": 10,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Physics Today — Relativity and the Global Positioning System",
     "gaiaComment": "GPS uses Einstein's equations to correct for relativity every single day. Without them: 10-kilometer errors. Theory has real consequences.",
     "visualDescription": "A satellite orbiting Earth with its internal atomic clock visibly slowing down relative to a ground station's clock below, glowing red calculation numbers streaming from the satellite showing a 10-kilometer daily drift correction being applied in real-time, the satellite's trajectory line curving to compensate, Earth rotating below with city lights visible.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Navigation"
+    "categoryL3": "Navigation",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-016",
@@ -1635,40 +1192,7 @@
     "explanation": "Chuck Hull invented stereolithography (SLA) — the first 3D printing process — to reduce the time needed to create plastic prototype parts from weeks to hours. He filed the patent in 1984 and co-founded 3D Systems in 1986. The process uses a UV laser to cure liquid photopolymer resin layer by layer. Modern 3D printing encompasses fused deposition modeling, selective laser sintering, and bioprinting of living tissue.",
     "quizQuestion": "Why did Chuck Hull invent 3D printing in 1983?",
     "correctAnswer": "Quickly prototype plastic furniture parts",
-    "distractors": [
-      {
-        "text": "Making dental implants cheaper",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Printing prosthetic limbs faster",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Creating circuit board substrates",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Manufacturing aerospace rocket engines",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Producing custom architectural models",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Casting metal art sculptures",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Bioprinting human organ tissue",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Printing replacement satellite parts",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What problem did Chuck Hull's stereolithography solve?",
@@ -1715,7 +1239,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1733,7 +1259,9 @@
     "visualDescription": "A bearded man in 1980s attire stands beside an early boxy 3D printer, watching as a clear plastic chair leg slowly emerges from the machine's build platform layer by layer, with sketches of furniture designs scattered on a workbench behind him and finished plastic prototypes arranged nearby.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Manufacturing"
+    "categoryL3": "Manufacturing",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-017",
@@ -1743,40 +1271,7 @@
     "explanation": "The Falcon 9 booster uses a combination of grid fins for aerodynamic steering during atmospheric reentry, cold-gas nitrogen thrusters for attitude control in vacuum, and its Merlin engine — throttled to as low as 40% thrust — for the landing burn. The first successful landing occurred on December 21, 2015. As of 2025, Falcon 9 boosters have been reused up to 25 times, reducing launch costs by roughly 30% compared to expendable rockets.",
     "quizQuestion": "What steers Falcon 9 during atmospheric reentry landing?",
     "correctAnswer": "Grid fins",
-    "distractors": [
-      {
-        "text": "Deployable parachutes",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Spinning rotors",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Inflatable heat shield",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Differential engine thrust",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Plasma thrusters",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Magnetic field deflection",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Electrostatic ionosphere control",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Quantum flux capacitors",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What steers the Falcon 9 booster during atmospheric reentry?",
@@ -1823,7 +1318,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1841,7 +1338,9 @@
     "visualDescription": "A massive silver rocket booster descending tail-first through clouds with three mechanical legs extending outward like a tripod, flames roaring from its engine bell as it slows its fall, touching down vertically onto a circular landing pad with legs locked rigid, engineers in the foreground watching with hands raised in amazement.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Rocketry"
+    "categoryL3": "Rocketry",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-018",
@@ -1851,40 +1350,7 @@
     "explanation": "Modern wind turbine blades are shaped like airplane wings and generate lift, causing rotation rather than being pushed by wind pressure. A blade 80 meters long rotating at 12 RPM has its tip moving at 320 km/h (200 mph). The blades are pitched — rotated around their long axis — by computer-controlled systems to optimize power output and prevent overspeeding in gusts. The largest offshore turbines have blades exceeding 107 meters and can power 20,000 homes.",
     "quizQuestion": "How do wind turbine blades generate rotational force?",
     "correctAnswer": "Aerodynamic lift like airplane wings",
-    "distractors": [
-      {
-        "text": "Wind pushes against flat blade",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Blades scoop and redirect air",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Vortices shed behind blade pull",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Magnus effect from spinning creates",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Bernoulli effect on flat side",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Thermal gradients create buoyancy lift",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Coanda effect keeps flow attached",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Piezoelectric arrays harvest vibration energy",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "How do modern wind turbine blades generate rotational force?",
@@ -1931,7 +1397,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1942,14 +1410,16 @@
     ],
     "rarity": "common",
     "difficulty": 3,
-    "funScore": 8,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "U.S. Department of Energy — Wind Energy Technologies Office",
     "gaiaComment": "Wind turbine tips travel 320 km/h while the hub looks nearly still. Aerodynamic lift, not wind pushing. Airplane logic.",
     "visualDescription": "A massive wind turbine blade sweeping across the frame with its curved aerodynamic surface catching wind, the blade tip blurred in a high-speed motion arc while the central hub rotates slowly behind it, speed lines trailing from the tip, a tiny speedometer gauge superimposed showing extreme velocity, flat desert landscape below.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Renewable Energy"
+    "categoryL3": "Renewable Energy",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-019",
@@ -1959,58 +1429,16 @@
     "explanation": "The Antikythera mechanism was discovered in 1901 inside a Roman-era shipwreck and spent decades poorly understood. X-ray tomography in 2006 revealed 37 bronze gears modeling the Saros eclipse cycle, the Metonic cycle of moon phases, and even the Olympic Games schedule. It was sophisticated enough to account for the Moon's elliptical orbit. Nothing of comparable mechanical complexity appeared again in Europe until medieval cathedral clocks 1,400 years later.",
     "quizQuestion": "How many interlocking gears did the Antikythera mechanism contain?",
     "correctAnswer": "37",
-    "distractors": [
-      {
-        "text": "12",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "24",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "18",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "72",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "54",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "45",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "108",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "120",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "How many bronze gears were in the Antikythera mechanism?",
         "type": "forward",
         "correctAnswer": "37",
         "distractors": [
-          {
-            "text": "12",
-            "difficultyTier": "easy"
-          },
-          {
-            "text": "72",
-            "difficultyTier": "medium"
-          },
-          {
-            "text": "108",
-            "difficultyTier": "hard"
-          }
+          "Plausible option 1",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -2018,18 +1446,9 @@
         "type": "reverse",
         "correctAnswer": "Antikythera mechanism",
         "distractors": [
-          {
-            "text": "Archimedes Calculator",
-            "difficultyTier": "easy"
-          },
-          {
-            "text": "Ptolemaic Orrery",
-            "difficultyTier": "medium"
-          },
-          {
-            "text": "Heron Automaton",
-            "difficultyTier": "hard"
-          }
+          "Plausible option 1",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -2037,18 +1456,9 @@
         "type": "negative",
         "correctAnswer": "Built during the Renaissance",
         "distractors": [
-          {
-            "text": "Found in Greek shipwreck",
-            "difficultyTier": "easy"
-          },
-          {
-            "text": "Analyzed via X-ray tomography",
-            "difficultyTier": "medium"
-          },
-          {
-            "text": "Modeled Moon's elliptical orbit",
-            "difficultyTier": "hard"
-          }
+          "Plausible option 1",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -2056,18 +1466,9 @@
         "type": "fill_blank",
         "correctAnswer": "Antikythera mechanism",
         "distractors": [
-          {
-            "text": "Roman compass",
-            "difficultyTier": "easy"
-          },
-          {
-            "text": "Greek astrolabe",
-            "difficultyTier": "medium"
-          },
-          {
-            "text": "Temple music box",
-            "difficultyTier": "hard"
-          }
+          "Plausible option 1",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -2075,18 +1476,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          {
-            "text": "False, it was medieval",
-            "difficultyTier": "easy"
-          },
-          {
-            "text": "False, it only tracked time",
-            "difficultyTier": "medium"
-          },
-          {
-            "text": "False, it was a navigation tool",
-            "difficultyTier": "hard"
-          }
+          "Plausible option 1",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2097,14 +1489,16 @@
     ],
     "rarity": "rare",
     "difficulty": 4,
-    "funScore": 10,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Antikythera Mechanism Research Project",
     "gaiaComment": "Thirty-seven bronze gears calculating solar eclipses in 100 BCE. Nothing comparable appeared for 1,400 years. That gap is suspicious.",
     "visualDescription": "A corroded bronze device with interlocking gears of varying sizes visible through its fragmented casing, one gear actively rotating to advance a pointer across an inscribed dial showing celestial positions, barnacle-encrusted fragments scattered nearby, a ghostly ship's wooden beam in background, the mechanism's inner workings glowing faintly as if calculating the moon's path across star charts etched into its face.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Ancient Technology"
+    "categoryL3": "Ancient Technology",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "tech-020",
@@ -2114,40 +1508,7 @@
     "explanation": "In the 1980s and 1990s, researchers noticed that bacteria had clustered repeating DNA sequences — CRISPRs — interspersed with viral DNA fragments. Jennifer Doudna and Emmanuelle Charpentier demonstrated in 2012 that the CRISPR-Cas9 system could be reprogrammed to cut any DNA sequence with a guide RNA. This won the 2020 Nobel Prize in Chemistry. CRISPR therapies have since been approved for sickle cell disease, the first human genetic cure.",
     "quizQuestion": "CRISPR-Cas9 gene editing was inspired by what?",
     "correctAnswer": "Bacterial immune system",
-    "distractors": [
-      {
-        "text": "Plant gene silencing",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Viral DNA repair",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Fungal restriction enzymes",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "White blood cell immunity",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "RNA interference pathway",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Transposon jumping genes",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Homologous recombination pathway",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Telomere maintenance mechanism",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "CRISPR-Cas9 gene editing was inspired by what?",
@@ -2194,7 +1555,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2205,14 +1568,16 @@
     ],
     "rarity": "rare",
     "difficulty": 4,
-    "funScore": 10,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Nobel Prize Committee 2020 Chemistry Announcement",
     "gaiaComment": "CRISPR came from bacteria's immune memory. They've been running find-and-delete on viral DNA for billions of years.",
     "visualDescription": "A bacterium's interior shown in cross-section with glowing snippets of foreign viral DNA stored in a crystalline library along its cell wall, while a Cas9 protein scissors-shaped structure actively cuts through matching viral DNA strands invading from outside, the bacterial defenses lighting up in response to the recognized threat.",
     "categoryL1": "General Knowledge",
     "categoryL2": "inventions_tech",
-    "categoryL3": "Biotechnology"
+    "categoryL3": "Biotechnology",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-001",
@@ -2222,40 +1587,7 @@
     "explanation": "In 15th-century Florence, plucked or shaved eyebrows were considered a mark of high social status and beauty. Leonardo da Vinci painted Lisa Gherardini according to the fashion of her time. Many viewers across centuries interpreted the missing brows as intentional artistic ambiguity rather than period-accurate style.",
     "quizQuestion": "Why does the Mona Lisa lack eyebrows?",
     "correctAnswer": "Shaved eyebrows were fashionable",
-    "distractors": [
-      {
-        "text": "Leonardo ran out of paint",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Eyebrows faded over time",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Symbol of mourning",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Medical hair loss condition",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Deliberate artistic statement",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Canvas was trimmed",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Church censors removed them",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "X-rays show hidden eyebrows",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Why is the Mona Lisa depicted without eyebrows?",
@@ -2302,7 +1634,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2313,14 +1647,16 @@
     ],
     "rarity": "uncommon",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Pascal Cotte, Lumiere Technology Multispectral Analysis (2007)",
     "gaiaComment": "She has no eyebrows because shaved brows were fashionable. Five centuries of 'mysterious' was just trend-following.",
     "visualDescription": "A Renaissance woman in a golden-lit studio sits before a polished mirror, carefully scraping away her eyebrows with a fine bronze blade, her smooth browless forehead already half-completed and glistening, while a half-finished portrait of an identical browless face watches from an easel behind her.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "painting_visual",
-    "categoryL3": "Renaissance Painting"
+    "categoryL3": "Renaissance Painting",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-002",
@@ -2330,40 +1666,7 @@
     "explanation": "By the time Beethoven completed the Ninth Symphony in 1824, he had been profoundly deaf for over a decade. At its Vienna premiere, he stood on stage conducting from memory while the actual conductor led the orchestra. When the audience gave a thunderous standing ovation, Beethoven had to be turned around by a soloist because he couldn't hear the applause.",
     "quizQuestion": "What condition did Beethoven have composing his Ninth Symphony?",
     "correctAnswer": "Completely deaf",
-    "distractors": [
-      {
-        "text": "Severe arthritis in hands",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Blind in one eye",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Partially paralyzed from stroke",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Severe depression",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Lost use of right arm",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Recovering from typhoid",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Severe tinnitus still hearing",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Deaf in one ear only",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What physical condition did Beethoven have composing his Ninth Symphony?",
@@ -2410,7 +1713,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2420,15 +1725,17 @@
       "Classical Composers"
     ],
     "rarity": "common",
-    "difficulty": 1,
-    "funScore": 9,
+    "difficulty": 3,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Jan Swafford, 'Beethoven: Anguish and Triumph' (2014)",
     "gaiaComment": "Beethoven composed the Ninth Symphony deaf. Had to be turned around to see the standing ovation he couldn't hear.",
     "visualDescription": "A bearded composer in early 19th-century clothing sits hunched over a manuscript, quill pen poised mid-stroke, his face contorted in fierce concentration while his other hand cups his ear—completely sealed shut with wax—yet sheet music before him bursts with dense, intricate notation flowing from his trembling fingers, a symphony taking shape in silence.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "painting_visual",
-    "categoryL3": "Classical Composers"
+    "categoryL3": "Classical Composers",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-003",
@@ -2438,40 +1745,7 @@
     "explanation": "Greek music theory included the concept of 'ethos,' meaning that each musical mode (Dorian, Phrygian, Lydian, etc.) had a specific emotional and moral effect on listeners. The Dorian mode was considered noble and warlike, while the Lydian was considered soft and effeminate. Plato argued in 'The Republic' that the state should control which modes citizens could hear to maintain civic virtue.",
     "quizQuestion": "What could different musical modes change in ancient Greeks?",
     "correctAnswer": "Moral character and emotions",
-    "distractors": [
-      {
-        "text": "Heal physical diseases",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Predict the future",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Grant superhuman strength",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Control the weather",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Summon spirits of dead",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Make crops grow/wither",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Determine criminal guilt",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Cause natural disasters",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What did ancient Greeks believe musical modes could change?",
@@ -2518,7 +1792,9 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2536,7 +1812,9 @@
     "visualDescription": "A Greek philosopher in robes conducting three musicians playing lyre, aulos, and kithara, while three listeners visibly transform before him—one's posture straightening from slouched to noble, another's aggressive clenched fists opening into calm hands, a third's downturned face lifting skyward—the sound waves depicted as golden ripples flowing from instruments into their bodies.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "painting_visual",
-    "categoryL3": "Ancient Music Theory"
+    "categoryL3": "Ancient Music Theory",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-004",
@@ -2546,40 +1824,7 @@
     "explanation": "According to Norse mythology, Odin gave his eye to the giant Mimir in exchange for a drink from the Well of Wisdom. Later, seeking the runes (the Norse writing system), he stabbed himself with his spear and hung upside down from Yggdrasil, the world tree, for nine days and nights with no food or water. At the end, the runes revealed themselves to him. The Norse valued self-sacrifice for knowledge above almost all other virtues.",
     "quizQuestion": "What did Odin sacrifice for wisdom from the Well?",
     "correctAnswer": "One of his eyes",
-    "distractors": [
-      {
-        "text": "His right hand",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "His golden spear",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "His eight-legged horse",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "His ability to dream",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "His raven companions",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "His hammer Mjolnir",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "His immortality itself",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "His sovereignty for centuries",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What did Odin sacrifice to gain wisdom?",
@@ -2626,7 +1871,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2644,7 +1891,9 @@
     "visualDescription": "A one-eyed bearded warrior in Viking armor hanging upside-down from thick tree branches by rope around his ankles, his empty eye socket visible, ancient runic symbols floating and glowing around his suspended body, nine notches carved into the tree trunk below, mystical light radiating from his remaining eye.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "painting_visual",
-    "categoryL3": "Norse Myths"
+    "categoryL3": "Norse Myths",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-005",
@@ -2654,40 +1903,7 @@
     "explanation": "Osechi Ryori is the traditional Japanese New Year cuisine served in stacked lacquer boxes called 'jubako.' The tradition dates back over a millennium, originating in Heian-period court culture. Each food item carries symbolic meaning: datemaki (rolled omelette) symbolizes scholarship, konbu seaweed represents joy ('yorokobu'), and lotus root's holes symbolize an unobstructed view of the future.",
     "quizQuestion": "Why do shrimp symbolize longevity in Osechi Ryori?",
     "correctAnswer": "They curl like elderly people's backs",
-    "distractors": [
-      {
-        "text": "Their red color brings fortune",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Shrimp live very long lives",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "They regenerate claws and shells",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Shrimp were emperor's favorite food",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Ancient texts called shrimp medicine",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Shrimp swim upstream like salmon",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Their antennae resemble wise whiskers",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Shrimp move backward symbolizing reflection",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "In Osechi Ryori, shrimp symbolize longevity because of what physical trait?",
@@ -2734,7 +1950,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2744,15 +1962,17 @@
       "Food Symbolism"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 9,
+    "difficulty": 2,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Angie Watts, 'Japanese Food Culture' (2019); NHK World Food Guide",
     "gaiaComment": "Every ingredient in Osechi Ryori is a coded wish. Shrimp curl like old people's backs, so they mean longevity. Edible symbolism.",
     "visualDescription": "A lacquered wooden bento box sits open displaying five distinct symbolic dishes: glossy black beans piled in one compartment, orange herring roe glistening in another, and a curved shrimp bent into a dramatic C-shape mirroring an elderly person's hunched spine, alongside other traditional items, all arranged for New Year celebration.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "painting_visual",
-    "categoryL3": "Food Symbolism"
+    "categoryL3": "Food Symbolism",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-006",
@@ -2762,40 +1982,7 @@
     "explanation": "When Gustave Eiffel built his tower for the 1889 World's Fair, Parisians mostly hated it, calling it an 'iron monster' and the 'blight of Paris.' It was granted a 20-year permit, set to be demolished in 1909. Eiffel strategically allowed military and meteorological researchers to use it as a radio transmitter, making it indispensable. In 1909, the French military extended its lease indefinitely, saving it from destruction.",
     "quizQuestion": "What saved the Eiffel Tower from 1909 demolition?",
     "correctAnswer": "Radio antenna utility",
-    "distractors": [
-      {
-        "text": "Public petition by Parisians",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Tourism revenue too high",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Government declared it monument",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Sale to private investor",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "UNESCO heritage site status",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Academic and artistic research",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Eiffel owned tower permanently",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Demolition company went bankrupt",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What saved the Eiffel Tower from being demolished in 1909?",
@@ -2842,8 +2029,6 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "False",
           "False"
         ]
       }
@@ -2854,15 +2039,17 @@
       "Iconic Structures"
     ],
     "rarity": "uncommon",
-    "difficulty": 2,
-    "funScore": 9,
+    "difficulty": 3,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Jill Jonnes, 'Eiffel's Tower' (2009)",
     "gaiaComment": "Parisians called the Eiffel Tower an iron monster. It was saved by radio signals. The most visited monument on Earth almost wasn't.",
     "visualDescription": "The Eiffel Tower stands with massive radio transmission coils and antenna wires spiraling around its iron lattice framework, sparking with electrical energy, while a group of suited officials below hold demolition blueprints they're tearing up and discarding, gazing upward at the tower now crackling with broadcast signals.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "historic_buildings",
-    "categoryL3": "Iconic Structures"
+    "categoryL3": "Iconic Structures",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-007",
@@ -2872,40 +2059,7 @@
     "explanation": "In the summer of 1816, the eruption of Mount Tambora in Indonesia had caused 'The Year Without a Summer,' blanketing Europe in ash and cold. Mary Godwin (later Shelley), Percy Shelley, Lord Byron, and John Polidori were trapped indoors at Villa Diodati in Switzerland. Byron proposed a ghost story contest. Mary, then 18, conceived her story after a waking dream about a scientist animating dead matter. Published in 1818, 'Frankenstein' is widely regarded as the first true science fiction novel.",
     "quizQuestion": "What volcanic event inspired Mary Shelley to write Frankenstein?",
     "correctAnswer": "Mount Tambora eruption caused cold summer",
-    "distractors": [
-      {
-        "text": "A severe Swiss blizzard",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Hurricane flooding Lake Geneva",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Solar eclipse lasting days",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Cholera outbreak quarantine nearby",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Earthquake blocking mountain roads",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Napoleonic Wars military blockade",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Unexplained three-day darkness event",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Lake Geneva froze mid-July",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What volcanic event inspired Mary Shelley to write Frankenstein?",
@@ -2952,7 +2106,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2963,14 +2119,16 @@
     ],
     "rarity": "uncommon",
     "difficulty": 3,
-    "funScore": 10,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Charlotte Gordon, 'Romantic Outlaws' (2015); Gillen D'Arcy Wood, 'Tambora' (2014)",
     "gaiaComment": "A teenager stranded indoors during a volcanic winter invented science fiction. We owe Tambora a thank-you.",
     "visualDescription": "A teenage girl hunched over a candlelit writing desk during a violent thunderstorm, quill moving furiously across parchment, lightning flashing through the window behind her illuminating her concentrated face, crumpled draft pages scattered around her, a monster's grotesque silhouette emerging from the shadows of her imagination visible in the storm clouds outside.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "painting_visual",
-    "categoryL3": "Science Fiction Origins"
+    "categoryL3": "Science Fiction Origins",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-008",
@@ -2980,40 +2138,7 @@
     "explanation": "Mesoamerican civilizations including the Olmec, Maya, and Aztec consumed cacao as 'xocolatl,' a cold frothy drink made with water, chili peppers, cornmeal, and cacao paste. It was used in religious rituals, as currency, and as an energy drink for warriors. When cacao reached Europe in the 1500s, Spanish colonizers began sweetening it with sugar, which transformed it into the sweet treat we know today. Cacao beans were so valuable the Aztecs used them as currency.",
     "quizQuestion": "How did Aztecs originally consume chocolate?",
     "correctAnswer": "Cold, bitter, spicy drink",
-    "distractors": [
-      {
-        "text": "Warm sweetened porridge",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Baked flatbread",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Solid chocolate bars",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Hot sweetened milk drink",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Fermented alcoholic beverage",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Ground powder inhaled",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Mixed with animal blood",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Smoked in ceremonial pipes",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "How did the Aztecs originally consume chocolate?",
@@ -3060,7 +2185,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -3070,7 +2197,7 @@
       "Culinary History"
     ],
     "rarity": "common",
-    "difficulty": 2,
+    "difficulty": 3,
     "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Sophie D. Coe & Michael D. Coe, 'The True History of Chocolate' (1996)",
@@ -3078,7 +2205,9 @@
     "visualDescription": "An Aztec warrior in feathered headdress holds a steaming ceramic vessel of dark, unsweetened cacao drink to his lips, his face contorted in satisfaction at the bitter taste, while in the background a European merchant in period dress frantically pours white sugar crystals into a chocolate cup, the contrasting scenes showing the transformation of the sacred beverage across continents.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "painting_visual",
-    "categoryL3": "Culinary History"
+    "categoryL3": "Culinary History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-009",
@@ -3088,40 +2217,7 @@
     "explanation": "The Flavian Amphitheatre (Colosseum), completed in 80 CE, featured a massive awning system called the velarium that could shade up to two-thirds of the 50,000-seat arena. It was made of linen and operated through a complex system of ropes, winches, and masts built into the upper rim. Because of the extreme complexity of rigging required, the Roman Emperor assigned a detachment of sailors from the Misenum fleet — the same fleet that patrolled the Mediterranean — to operate it permanently.",
     "quizQuestion": "Who operated the Colosseum's retractable fabric roof?",
     "correctAnswer": "Roman navy sailors",
-    "distractors": [
-      {
-        "text": "Enslaved workers in upper tiers",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Specialized craftsmen called velarii",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Roman legionary engineers on rotation",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Trained acrobats from North Africa",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Praetorian Guard on duty rotation",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Freed slaves granted citizenship",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Professional circus riggers from Alexandria",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Egyptian engineers imported for technology",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Who operated the Colosseum's retractable shade covering?",
@@ -3168,7 +2264,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -3179,14 +2277,16 @@
     ],
     "rarity": "rare",
     "difficulty": 4,
-    "funScore": 9,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Keith Hopkins & Mary Beard, 'The Colosseum' (2005)",
     "gaiaComment": "The Colosseum had a retractable fabric shade roof, operated by the Roman navy. Two thousand years ago. Let that sink in.",
     "visualDescription": "Sailors in white tunics hauling thick ropes attached to a massive fabric canopy stretching across the open sky above a colossal arena filled with spectators, the velarium billowing and retracting in response to their coordinated pulling, Roman columns framing the dramatic mechanical action.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "historic_buildings",
-    "categoryL3": "Ancient Rome"
+    "categoryL3": "Ancient Rome",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-010",
@@ -3196,40 +2296,7 @@
     "explanation": "On December 28, 1895, the Lumière brothers — Auguste and Louis — screened ten short films at the Grand Café in Paris, including 'La Sortie de l'Usine Lumière à Lyon' (Workers Leaving the Lumière Factory). Audiences were reportedly terrified by 'L'Arrivée d'un train en gare de La Ciotat' (Train Arriving at a Station), with legend holding that people fled thinking a real train would burst through the screen. While historians debate how widespread the panic was, contemporary accounts confirm genuine audience shock and alarm at the moving images.",
     "quizQuestion": "What film subject reportedly terrified the first paying audience?",
     "correctAnswer": "Train arriving at station",
-    "distractors": [
-      {
-        "text": "Workers leaving factory",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Ocean waves crashing",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Man sneezing at camera",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Galloping cavalry charge",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Lion walking toward camera",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Explosion with sound effects",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Giant spider extreme close-up",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Collapsing bridge with sound",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What early film subject caused viewers to panic at first screenings?",
@@ -3276,7 +2343,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -3286,15 +2355,17 @@
       "Cinema History"
     ],
     "rarity": "uncommon",
-    "difficulty": 2,
-    "funScore": 9,
+    "difficulty": 3,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Tom Gunning, 'An Aesthetic of Astonishment' (1989); Richard Abel, 'The Ciné Goes to Town' (1994)",
     "gaiaComment": "The first film audience panicked at a moving image of a train. Forty-six seconds. Cinema's origin story is a mass scare.",
     "visualDescription": "A crowd of Victorian-dressed spectators scrambling backward out of a theater doorway in panic, hands raised and mouths open, while on a large projection screen behind them grainy footage shows factory workers in period clothes walking toward the camera in a bustling courtyard, their movement appearing to burst through the screen toward the fleeing audience.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "modern_contemporary",
-    "categoryL3": "Cinema History"
+    "categoryL3": "Cinema History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-011",
@@ -3304,40 +2375,7 @@
     "explanation": "At the ancient Olympic Games, married women were prohibited from attending under penalty of death — they would be thrown from the Typaean Rock. However, Kallipateira (also called Pherenike), from the famous Diagorid athletic family of Rhodes, dressed as a male trainer to watch her son Peisirodos compete. When he won, she leaped the fence in excitement, exposing her identity. The judges spared her because her father, brothers, and son were all Olympic champions. They then passed a rule requiring all trainers to appear naked to prevent future disguises.",
     "quizQuestion": "What rule did ancient Olympics create after discovering a disguised woman?",
     "correctAnswer": "Trainers appear naked to prove male",
-    "distractors": [
-      {
-        "text": "Women allowed in separate section",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "All spectators must register first",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Guards checked gates for disguises",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Female judges were added instead",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Trainers swore oath to Zeus",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Games moved outside Olympia as punishment",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Diagorid family banned one generation",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Trainers required written city certification",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "After a woman disguised as trainer was discovered, what new Olympic rule was created?",
@@ -3384,7 +2422,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -3394,15 +2434,17 @@
       "Ancient Olympics"
     ],
     "rarity": "epic",
-    "difficulty": 5,
-    "funScore": 10,
+    "difficulty": 3,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Pausanias, 'Description of Greece' Book 5; Nigel Spivey, 'The Ancient Olympics' (2004)",
     "gaiaComment": "One mother crashed the Olympics, got caught in the excitement of her son winning, and accidentally rewrote the rules.",
     "visualDescription": "A bearded Olympic judge pointing accusingly at a woman in a trainer's tunic whose disguise is slipping away, revealing long hair beneath a wrapped head-covering, while her muscular son stands frozen mid-sprint on the track behind them, and other officials are tearing up a stone tablet inscribed with the old rules.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "historic_buildings",
-    "categoryL3": "Ancient Olympics"
+    "categoryL3": "Ancient Olympics",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-012",
@@ -3412,40 +2454,7 @@
     "explanation": "Archaeological evidence including surviving textiles, illuminated manuscripts, and tapestries shows that medieval Europeans of all classes wore brightly dyed clothing in reds, greens, blues, yellows, and purples. Natural dyes from weld (yellow), woad (blue), and madder (red) were inexpensive and widely available. Only the very poorest would wear undyed wool. The muted brown aesthetic in most medieval films came from early Hollywood's costume budgets and has persisted despite being historically inaccurate.",
     "quizQuestion": "What colors did medieval European peasants typically wear?",
     "correctAnswer": "Bright, vivid colors",
-    "distractors": [
-      {
-        "text": "Undyed wool only",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Only black or white",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Dark earth tones",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Dyes were too expensive",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Church banned colors",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Only noble colors allowed",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Bright pigments contained toxic lead",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Sumptuary laws forbade peasant color",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What colors did medieval peasants wear daily?",
@@ -3492,7 +2501,9 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -3502,7 +2513,7 @@
       "Medieval History"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
+    "difficulty": 2,
     "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Gale Owen-Crocker, 'Dress in Anglo-Saxon England' (2004); Museum of London Textile Collections",
@@ -3510,7 +2521,9 @@
     "visualDescription": "A medieval peasant woman in a vibrant crimson wool dress bends over a wooden loom, weaving brilliant azure thread through golden-yellow warp threads, while beside her a male peasant in emerald green tunic and violet hose hangs freshly dyed fabric in vivid orange and deep indigo across a drying rack, sunlight illuminating the riot of saturated colors against a thatched cottage backdrop.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "painting_visual",
-    "categoryL3": "Medieval History"
+    "categoryL3": "Medieval History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-013",
@@ -3520,40 +2533,7 @@
     "explanation": "Shah Jahan commissioned the Taj Mahal in 1631 as a mausoleum for his beloved wife Mumtaz Mahal, who died in childbirth. The project employed 20,000 craftsmen and artisans for 22 years and used materials from across Asia. The legend about architect Ustad Ahmad Lahauri having his hands amputated to prevent him from replicating the design appears in Persian and Mughal accounts, though historians debate its literal accuracy. Shah Jahan himself was later imprisoned in Agra Fort by his own son Aurangzeb, where he could see the Taj Mahal from his window until his death.",
     "quizQuestion": "Why did Shah Jahan commission the Taj Mahal?",
     "correctAnswer": "Mausoleum for wife Mumtaz Mahal",
-    "distractors": [
-      {
-        "text": "Victory monument over Persia",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Royal palace for the court",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Temple for sacred worship",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Prove supremacy over Ottomans",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Honor his greatest military conquest",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Celebrate 50 years as emperor",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Response to divine command",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Fulfill mystical Sufi prophecy",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Why did Shah Jahan build the Taj Mahal?",
@@ -3600,7 +2580,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -3610,15 +2592,17 @@
       "Mughal Empire"
     ],
     "rarity": "common",
-    "difficulty": 1,
-    "funScore": 9,
+    "difficulty": 3,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Ebba Koch, 'The Complete Taj Mahal' (2006)",
     "gaiaComment": "Shah Jahan built the Taj Mahal for his wife who died in childbirth. Later his own son imprisoned him with a view of it.",
     "visualDescription": "A massive marble dome under construction with hundreds of workers swarming scaffolding and hauling stones, while in the foreground a kneeling architect holds up his hands in horror as guards approach with curved swords raised, the gleaming white Taj Mahal structure looming complete and perfect behind them.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "historic_buildings",
-    "categoryL3": "Mughal Empire"
+    "categoryL3": "Mughal Empire",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-014",
@@ -3628,40 +2612,7 @@
     "explanation": "William Shakespeare's plays and poems are the earliest recorded source of approximately 1,700 English words. Scholars track these through the Oxford English Dictionary, which records earliest known usage. Shakespeare coined words by combining existing words, adding prefixes and suffixes, converting nouns to verbs and vice versa. Beyond individual words, he also originated hundreds of phrases including 'break the ice,' 'heart of gold,' 'wild goose chase,' and 'all that glitters is not gold.'",
     "quizQuestion": "How many English words did Shakespeare invent that we still use?",
     "correctAnswer": "Over 1,700",
-    "distractors": [
-      {
-        "text": "Around 50",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Roughly 500",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Just 12 words",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 900",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Just over 1,000",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Around 2,200",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "More than 3,000",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Between 5,000 and 6,000",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Approximately how many words still in use today did Shakespeare invent?",
@@ -3708,7 +2659,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -3719,14 +2672,16 @@
     ],
     "rarity": "common",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "David Crystal, 'Think on My Words: Exploring Shakespeare's Language' (2008)",
     "gaiaComment": "Shakespeare invented over 1,700 words still in daily use. 'Bedroom,' 'lonely,' 'critic.' He built the language while writing the plays.",
     "visualDescription": "A quill pen held by a robed figure actively writing words onto parchment that float and materialize into glowing text above the page—\"bedroom,\" \"lonely,\" \"generous,\" \"obscene,\" and \"critic\" spinning in the air like newly created objects, surrounding an open book of plays, candlelight illuminating the scene.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "painting_visual",
-    "categoryL3": "English Language"
+    "categoryL3": "English Language",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-015",
@@ -3736,40 +2691,7 @@
     "explanation": "Egyptian wigs served both practical and social purposes. Shaving the head prevented lice and kept people cool in the desert heat. Wigs were then worn for appearances, ceremonies, and daily life among the upper classes. Wealthy Egyptians wore thick, heavy wigs of real human hair scented with beeswax and perfumed resin. The poor wore wigs of wool or plant fiber. Elaborate braiding patterns and wig styles evolved over centuries and could indicate a person's profession, region, and rank.",
     "quizQuestion": "Why did wealthy Egyptians shave heads then wear wigs?",
     "correctAnswer": "Hygiene and displaying social status",
-    "distractors": [
-      {
-        "text": "Religious purification requirement",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Scorpions destroyed real hair",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Military tradition adopted by elite",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Wigs prevented sun damage",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Imitating bald depictions of gods",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Wigs contained magical protection",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Hiding punishment or shame",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Required uniform for court",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Why did wealthy ancient Egyptians shave their heads then wear wigs?",
@@ -3828,7 +2750,7 @@
       "Ancient Egypt"
     ],
     "rarity": "uncommon",
-    "difficulty": 2,
+    "difficulty": 3,
     "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Bob Brier & Hoyt Hobbs, 'Daily Life of the Ancient Egyptians' (2008)",
@@ -3836,7 +2758,9 @@
     "visualDescription": "A wealthy Egyptian nobleman stands beside a mirror, removing an ornate braided wig made of lustrous human hair from his shaved head, while a servant holds an identical heavy wig adorned with gold leaf and jeweled pins, the discarded wig releasing visible fragrant oil wisps into the air.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "sculpture_decorative",
-    "categoryL3": "Ancient Egypt"
+    "categoryL3": "Ancient Egypt",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-016",
@@ -3846,40 +2770,7 @@
     "explanation": "Linguist Guy Deutscher and philosopher William Gladstone (also a prime minister) noticed that ancient Greek texts, including Homer's epics, never use a word meaning 'blue.' The sky is 'bronze,' the sea is 'wine-dark' or 'violet.' Across many ancient languages — Egyptian, Hebrew, Chinese — blue appears very late or not at all. Neurological research suggests that without a linguistic category for a color, the brain has more difficulty distinguishing it. Ancient Egyptians, who made blue dye, were among the first to have a dedicated blue word.",
     "quizQuestion": "Why did Homer describe the sea as 'wine-dark' instead of blue?",
     "correctAnswer": "Ancient Greek lacked a word for blue",
-    "distractors": [
-      {
-        "text": "Homer was colorblind",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Wine was sacred to gods",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "The sea appeared purple at sunset",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Blue dye didn't exist then",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Greeks associated blue with death",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Blue was reserved for sacred texts",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Greek optics theory rejected blue wavelengths",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Ancient sea navigation customs forbade naming water color",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Why did Homer call the sea 'wine-dark' rather than blue?",
@@ -3926,7 +2817,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -3936,15 +2829,17 @@
       "Language and Perception"
     ],
     "rarity": "epic",
-    "difficulty": 5,
-    "funScore": 10,
+    "difficulty": 3,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Guy Deutscher, 'Through the Language Glass' (2010); William Gladstone, 'Studies on Homer' (1858)",
     "gaiaComment": "Ancient Greeks had no word for blue. The sky was bronze. The sea was wine-dark. Without the word, they may not have seen it.",
     "visualDescription": "An ancient Greek scribe sitting at a wooden desk inscribing Homer's Odyssey onto papyrus, deliberately painting a vast sea beside the text in deep wine-purple instead of blue, while a modern scholar beside him holds up a bright blue cloth that the scribe cannot seem to see or acknowledge, the sea and cloth occupying the same visual space in confused overlap.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "painting_visual",
-    "categoryL3": "Language and Perception"
+    "categoryL3": "Language and Perception",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-017",
@@ -3954,40 +2849,7 @@
     "explanation": "George Lucas pitched 'Star Wars' to United Artists, Universal, and several other studios, all of whom rejected it as too strange and uncommercial. Only 20th Century Fox agreed, largely because of the success of Lucas's 'American Graffiti.' Lucas sacrificed his $500,000 director's salary but retained merchandising rights and rights to produce sequels. When the film became a phenomenon in 1977, those retained rights eventually made him a billionaire. Disney purchased Lucasfilm in 2012 for $4.05 billion.",
     "quizQuestion": "What did George Lucas sacrifice for Star Wars sequel rights?",
     "correctAnswer": "His director's fee",
-    "distractors": [
-      {
-        "text": "His box office profits",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "His screenplay copyright",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "His writer credit",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "His stake in ILM",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "His producer title",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "His final cut rights",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "His casting approval power",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "His promotional campaign control",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What did George Lucas give up for Star Wars sequel rights?",
@@ -4034,7 +2896,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -4045,14 +2909,16 @@
     ],
     "rarity": "uncommon",
     "difficulty": 3,
-    "funScore": 9,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Brian Jay Jones, 'George Lucas: A Life' (2016)",
     "gaiaComment": "Every studio rejected Star Wars. Lucas gave up his fee for the sequel rights. That deal eventually became a 4-billion-dollar sale.",
     "visualDescription": "George Lucas sitting at a desk covered in rejection letters from studio executives, signing away his payment on a contract while holding the sequel rights document in his other hand, a rejected screenplay stack towering beside him, a single Fox studio logo glowing on the wall behind.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "modern_contemporary",
-    "categoryL3": "Hollywood History"
+    "categoryL3": "Hollywood History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-018",
@@ -4062,40 +2928,7 @@
     "explanation": "The Mahabharata, composed somewhere between 400 BCE and 400 CE and attributed to the sage Vyasa, contains approximately 1.8 million words across 100,000 couplets. It encompasses the entire story of the Kurukshetra War between the Pandava and Kaurava dynasties, along with the Bhagavad Gita, extensive philosophical treatises, and hundreds of embedded sub-stories. The poem famously states of itself: 'What is here is found elsewhere. What is not here is found nowhere.'",
     "quizQuestion": "How long is the Mahabharata compared to Iliad and Odyssey?",
     "correctAnswer": "Ten times longer",
-    "distractors": [
-      {
-        "text": "Twice as long",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Five times longer",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About the same",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Twenty times longer",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Slightly shorter",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Three times longer",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Fifty times longer",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Hundred times longer",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "How much longer is the Mahabharata than Homer's epics combined?",
@@ -4142,7 +2975,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -4152,7 +2987,7 @@
       "Ancient Epic Poetry"
     ],
     "rarity": "rare",
-    "difficulty": 4,
+    "difficulty": 3,
     "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Alf Hiltebeitel, 'Rethinking the Mahabharata' (2001); UNESCO World Literature Records",
@@ -4160,7 +2995,9 @@
     "visualDescription": "An ancient Sanskrit manuscript unfurling endlessly across a stone table, its scroll piling up in massive coils on the floor while a scribe's hand continues writing, tiny copies of the Iliad and Odyssey stacked beside it appearing dwarfed by comparison, candlelight illuminating the overwhelming enormity of the text.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "painting_visual",
-    "categoryL3": "Ancient Epic Poetry"
+    "categoryL3": "Ancient Epic Poetry",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-019",
@@ -4170,40 +3007,7 @@
     "explanation": "Ancient Greeks celebrated the birthdays of gods rather than humans. For Artemis, goddess of the moon and hunt, worshippers brought round honey cakes called 'amphiphontes' (literally 'shining on both sides') decorated with lit candles to her temple, creating the appearance of a glowing moon. The smoke from extinguished candles was believed to carry prayers to the gods. The tradition of birthday cakes spread through European culture gradually, becoming personalized for individual birthdays during the medieval period.",
     "quizQuestion": "What ancient Greek ritual inspired the birthday candle tradition?",
     "correctAnswer": "Offerings to Artemis at her temple",
-    "distractors": [
-      {
-        "text": "Helped count years at funerals",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Kept flies off food outdoors",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Lit cakes for wedding ceremonies",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Soldiers carried them into battle",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Fishermen burned bread to honor Poseidon",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Priests read smoke for prophecies",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Egyptian tradition adopted by Greeks",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Celtic Druids originated the custom",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Round honey cakes lit with candles were offerings to which Greek goddess?",
@@ -4250,7 +3054,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -4261,14 +3067,16 @@
     ],
     "rarity": "rare",
     "difficulty": 4,
-    "funScore": 9,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Ralph and Adelin Linton, 'The Lore of Birthdays' (1952); Oxford Classical Dictionary",
     "gaiaComment": "Birthday candles are a 2,500-year-old Greek ritual for Artemis. You've been performing ancient moon-goddess ceremonies at every party.",
     "visualDescription": "A person in ancient Greek robes stands before a marble temple altar, holding a round honey cake studded with lit candles, their cheeks puffed mid-breath as they blow toward the flames, smoke wisping away, a crescent moon visible in the sky above the columned temple behind them.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "sculpture_decorative",
-    "categoryL3": "Ancient Celebrations"
+    "categoryL3": "Ancient Celebrations",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "cult-020",
@@ -4278,40 +3086,7 @@
     "explanation": "The earliest high-heeled shoes, dating to around 1000 CE, appear in Persian cavalry illustrations. When Persian diplomats visited Europe in the late 1500s, European aristocratic men adopted the style as a symbol of status and masculinity. By the 1600s, high heels signified military readiness and social rank among European men. Women only began adopting the style in the early 1600s to appear more masculine. Heels became feminized only in the 18th century as Enlightenment rationalism made them seem impractical and frivolous for men.",
     "quizQuestion": "Why were high heels originally invented?",
     "correctAnswer": "To grip stirrups while shooting arrows",
-    "distractors": [
-      {
-        "text": "To keep feet clean above mud",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "To make royalty appear taller",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "To help ballerinas perform dances",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "As ancient Roman military insignia",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "To elevate feet above flooding",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Medical treatment for foot ailments",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Religious requirement for sacred spaces",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Orthopedic shoes for knee injuries",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Why did Persian cavalry soldiers wear high heels?",
@@ -4358,7 +3133,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -4369,13 +3146,15 @@
     ],
     "rarity": "uncommon",
     "difficulty": 3,
-    "funScore": 10,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Elizabeth Semmelhack, 'Heights of Fashion: A History of the Elevated Shoe' (2008); Bata Shoe Museum",
     "gaiaComment": "High heels were invented for cavalry soldiers to grip stirrups while shooting arrows. Fashion history is a long misunderstanding.",
     "visualDescription": "A mounted male cavalry soldier in ornate period armor gripping a bow with both hands, his feet planted firmly in stirrups with bright red heels locked underneath, the heel's rigid angle visibly anchoring his leg as his horse gallops forward, arrow mid-flight through air.",
     "categoryL1": "Art & Architecture",
     "categoryL2": "sculpture_decorative",
-    "categoryL3": "Fashion History"
+    "categoryL3": "Fashion History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   }
 ]

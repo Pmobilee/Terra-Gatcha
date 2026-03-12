@@ -1,0 +1,88 @@
+{
+  "seed": 3,
+  "startedAt": "2026-03-11T16:49:59.184Z",
+  "devUrl": "http://localhost:5173",
+  "viewport": {
+    "width": 412,
+    "height": 915
+  },
+  "quizzes": [
+    {
+      "turn": 1,
+      "question": "Which company produces the most tires per year by unit count?",
+      "answers": [
+        "LEGO",
+        "Goodyear",
+        "Michelin"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "LEGO",
+          "htmlSnippet": "LEGO"
+        },
+        {
+          "index": 1,
+          "text": "Goodyear",
+          "htmlSnippet": "Goodyear"
+        },
+        {
+          "index": 2,
+          "text": "Michelin",
+          "htmlSnippet": "Michelin"
+        }
+      ],
+      "image": null,
+      "effect": "Block 4 Damage",
+      "issues": []
+    },
+    {
+      "turn": 2,
+      "question": "Einstein called entanglement \"_____ action at a distance.\"",
+      "answers": [
+        "spooky",
+        "ghostly",
+        "magical"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "spooky",
+          "htmlSnippet": "spooky"
+        },
+        {
+          "index": 1,
+          "text": "ghostly",
+          "htmlSnippet": "ghostly"
+        },
+        {
+          "index": 2,
+          "text": "magical",
+          "htmlSnippet": "magical"
+        }
+      ],
+      "image": null,
+      "effect": "Deal 8 Damage",
+      "issues": []
+    }
+  ],
+  "roomTransitions": [],
+  "errors": [
+    {
+      "type": "crash",
+      "message": "page.waitForTimeout: Target page, context or browser has been closed",
+      "stack": "page.waitForTimeout: Target page, context or browser has been closed\n    at /root/terra-miner/tests/playtest/runners/run-visual-qa.cjs:359:20"
+    }
+  ],
+  "screenshots": [
+    "/tmp/qa-3-01-hub.png",
+    "/tmp/qa-3-02-combat-start.png"
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "turnCount": 0,
+  "result": "crash",
+  "floorsReached": 0,
+  "endScreenText": null,
+  "completedAt": null
+}

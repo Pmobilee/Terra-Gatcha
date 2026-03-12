@@ -478,6 +478,13 @@ export function load(): PlayerSave | null {
     if (!Array.isArray(parsedAny['excludedRelicIds'])) {
       parsedAny['excludedRelicIds'] = []
     }
+    // Study Presets & Deck Builder migration
+    if (!Array.isArray(parsedAny['studyPresets'])) {
+      parsedAny['studyPresets'] = []
+    }
+    if (!parsedAny['categoryFilters'] || typeof parsedAny['categoryFilters'] !== 'object') {
+      parsedAny['categoryFilters'] = parsedAny['subscriberCategoryFilters'] ?? {}
+    }
     return parsed as PlayerSave
   } catch {
     return null
@@ -566,6 +573,8 @@ export function createNewPlayer(ageRating: AgeRating): PlayerSave {
     purchasedProducts: [],
     adsRemoved: false,
     subscriberCategoryFilters: {},
+    studyPresets: [],
+    categoryFilters: {},
     // Phase 47: Achievement Gallery
     unlockedPaintings: [],
     defeatedBosses: [],

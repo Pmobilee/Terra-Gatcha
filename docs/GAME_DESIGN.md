@@ -1657,6 +1657,19 @@ Within each domain allocation, facts are sampled by difficulty to ensure a balan
 
 These are soft targets — if a domain lacks facts at a given difficulty, shortfalls backfill from medium first, then any remaining bucket. This prevents runs from being all-easy or all-hard regardless of domain content distribution.
 
+### New Player Funness Bias
+
+Early runs (0–9) probabilistically bias card pool selection toward higher-funScore facts using weighted random shuffling during stratified sampling. The bias decays linearly to zero over runs 10–99. At run 100+, no bias is applied (normal random selection).
+
+**Boost parameters:**
+- Runs 0–9: Full boost (funScore 10 facts are 2× more likely to appear; funScore 1 facts are 0.2× more likely)
+- Runs 10–99: Linear decay from full boost to zero
+- Runs 100+: No boost (all facts equally likely within their difficulty tier)
+
+**Mechanism:** The system preserves difficulty distribution — only weights WHICH facts within each difficulty tier are selected. A Medium (difficulty 3) fact with funScore 10 is more likely to be picked over another Medium fact with funScore 1, but both remain Medium difficulty cards. This front-loads engaging content for player retention without compromising learning progression.
+
+**Implementation:** Applied in `runPoolBuilder.ts` and `presetPoolBuilder.ts` via weighted shuffle in `stratifiedSample()`, with boost calculation in `funnessBoost.ts`. Reads `totalDivesCompleted` from player save data (passed via `encounterBridge.ts`).
+
 ### Domain Partitioning for Performance
 
 At 20,000+ facts, a single FSRS queue is a mobile performance concern. Each domain maintains its own scheduler:
@@ -1907,6 +1920,42 @@ Every fact requires a `visualDescription` for card back art generation. See §22
 ### Scale
 
 122 current → 10K+ per domain → 5K+ per language pack. All human-verified. All sourced.
+
+---
+
+## 27.5. Content Quality Pipeline
+
+### Mandatory Haiku Processing
+
+Every fact that enters the game database MUST be processed by a Haiku LLM agent via Claude Code's Agent tool. No exceptions. This applies to:
+- Wikidata-sourced facts (transformed from raw structured data into quiz format)
+- Hand-crafted facts (quality-checked and scored)
+- Auto-generated facts (fully reviewed and re-scored)
+
+### Quality Requirements Per Fact
+
+Each fact must have:
+- **Quiz question**: Clear, concise, 10-20 words, ends with ?
+- **Correct answer**: Definitive, 1-5 words
+- **3+ distractors**: Plausible wrong answers, same type as correct answer
+- **Explanation**: Engaging 1-2 sentence explanation with a "wow" hook
+- **Fun score (1-10)**: Subjective interest rating. Facts scoring ≤2 are rejected
+- **Difficulty (1-5)**: Accurate difficulty for average adult player
+- **2+ variants**: Alternative question angles (forward, reverse, fill_blank)
+
+### Distractor Blocklist
+
+These are NEVER acceptable as distractors: "Unknown", "Other", "None of the above", "None of these", "All of the above", "N/A", "...", empty strings, "[object Object]"
+
+### QA Gates (Enforced by Default)
+
+- `promote-approved-to-db.mjs`: `enforce-qa-gate: true`, `approved-only: true`
+- `audit-fact-quality.mjs`: Blocklist check, format validation, `_haikuProcessed` flag required
+- Facts without `_haikuProcessed: true` cannot enter the database
+
+### No Anthropic API
+
+All LLM processing uses Claude Code Agent tool (`model: "haiku"`). No `@anthropic-ai/sdk` or external API calls. The `LOCAL_PAID_GENERATION_DISABLED` flag in `haiku-client.mjs` stays `true`.
 
 ---
 

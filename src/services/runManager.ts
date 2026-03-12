@@ -15,6 +15,7 @@ import type { CanaryState } from './canaryService';
 import { createCanaryState, recordCanaryAnswer } from './canaryService';
 import { getAscensionModifiers, type AscensionModifiers } from './ascension';
 import { getRewardMultiplier } from './masteryScalingService';
+import type { DeckMode } from '../data/studyPreset';
 
 export type RewardArchetype = 'balanced' | 'aggressive' | 'defensive' | 'control' | 'hybrid';
 
@@ -66,6 +67,8 @@ export interface RunState {
   deckMasteryPct?: number;
   /** Whether rewards are disabled (e.g. pool too small). */
   rewardsDisabled?: boolean;
+  /** Active deck mode for this run (general/preset/language). */
+  deckMode?: DeckMode;
   /** Per-domain answer tracking for auto-calibration. */
   domainAccuracy: Record<string, { answered: number; correct: number }>;
   /** Number of cards upgraded during this run. */
@@ -105,6 +108,9 @@ export function createRunState(
     primaryDomainRunNumber?: number;
     earlyBoostActive?: boolean;
     ascensionLevel?: number;
+    deckMode?: DeckMode;
+    deckMasteryPct?: number;
+    rewardsDisabled?: boolean;
   },
 ): RunState {
   const runSeed = Math.floor(Math.random() * 0xFFFFFFFF);
@@ -156,6 +162,9 @@ export function createRunState(
     domainAccuracy: {},
     cardsUpgraded: 0,
     runSeed,
+    deckMode: options?.deckMode,
+    deckMasteryPct: options?.deckMasteryPct,
+    rewardsDisabled: options?.rewardsDisabled,
   };
 }
 

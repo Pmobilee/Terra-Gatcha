@@ -37,12 +37,20 @@ docs/RESEARCH/     — Design specs and research (source of truth for game desig
 - ALWAYS use parameterized queries for any database operations
 - ALWAYS validate API responses against expected schemas
 - Keep dependencies minimal; audit before adding new packages
+- NEVER import or call `@anthropic-ai/sdk` or any paid LLM API — use Claude Code Agent tool for all LLM work
 
 ## Agent Architecture (Claude Code)
 - **Orchestrator**: Claude Opus 4.6 — planning, analysis, coordination, verification
 - **Coding workers**: Sonnet 4.5 sub-agents via Agent tool (`model: "sonnet"`) — all code edits, new files, refactoring
 - **Quick tasks**: Haiku 4.5 sub-agents via Agent tool (`model: "haiku"`) — simple/mechanical changes, formatting, boilerplate
 - **Exploration**: Explore-type sub-agents (`subagent_type: "Explore"`) — codebase search, file discovery, code understanding
+
+### ABSOLUTE RULE: No Anthropic API
+- We do NOT have an Anthropic API key or budget. The Claude Code subscription is the ONLY LLM access.
+- NEVER write scripts that import `@anthropic-ai/sdk`, call the Anthropic Messages API, or use any external LLM API.
+- ALL LLM processing (fact generation, rewriting, quality assessment, content transformation) MUST be done by spawning Haiku sub-agents via the Claude Code Agent tool (`model: "haiku"`).
+- The `haiku-client.mjs` file's `LOCAL_PAID_GENERATION_DISABLED = true` flag must STAY true. It exists as a safeguard.
+- This applies to ALL content pipeline work: Wikidata ingestion, fact fixing, variant generation, quality checks.
 
 ## Agent Autonomy Rules
 - MAY: Run ComfyUI workflows to generate sprites autonomously

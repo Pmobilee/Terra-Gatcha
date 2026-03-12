@@ -290,7 +290,7 @@ async function main() {
     try {
       if (row['distractors']) {
         const parsed = JSON.parse(String(row['distractors']));
-        if (Array.isArray(parsed)) distractors = parsed.map(String);
+        if (Array.isArray(parsed)) distractors = parsed.map(d => typeof d === 'string' ? d : (d && d.text ? String(d.text) : String(d)));
       }
     } catch { /* ignore */ }
 

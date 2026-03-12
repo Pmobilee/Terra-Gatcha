@@ -1,0 +1,192 @@
+{
+  "seed": 2,
+  "startedAt": "2026-03-11T16:42:02.834Z",
+  "devUrl": "http://localhost:5173",
+  "viewport": {
+    "width": 412,
+    "height": 915
+  },
+  "quizzes": [
+    {
+      "turn": 1,
+      "question": "Which Earth layer reaches 5,000-6,000°C like the Sun's surface?",
+      "answers": [
+        "Crust",
+        "Outer core",
+        "Inner core"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "Crust",
+          "htmlSnippet": "Crust"
+        },
+        {
+          "index": 1,
+          "text": "Outer core",
+          "htmlSnippet": "Outer core"
+        },
+        {
+          "index": 2,
+          "text": "Inner core",
+          "htmlSnippet": "Inner core"
+        }
+      ],
+      "image": null,
+      "effect": "Deal 8 Damage",
+      "issues": []
+    },
+    {
+      "turn": 2,
+      "question": "Which is NOT part of Falcon 9's landing system?",
+      "answers": [
+        "Deployable parachutes",
+        "Three landing legs",
+        "Grid fins for steering"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "Deployable parachutes",
+          "htmlSnippet": "Deployable parachutes"
+        },
+        {
+          "index": 1,
+          "text": "Three landing legs",
+          "htmlSnippet": "Three landing legs"
+        },
+        {
+          "index": 2,
+          "text": "Grid fins for steering",
+          "htmlSnippet": "Grid fins for steering"
+        }
+      ],
+      "image": null,
+      "effect": "Utility",
+      "issues": []
+    },
+    {
+      "turn": 3,
+      "question": "Entangled particles instantly correlate across any distance. What did Einstein call this?",
+      "answers": [
+        "He called it quantum teleportation",
+        "He proved it impossible",
+        "True"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "He called it quantum teleportation",
+          "htmlSnippet": "He called it quantum teleportation"
+        },
+        {
+          "index": 1,
+          "text": "He proved it impossible",
+          "htmlSnippet": "He proved it impossible"
+        },
+        {
+          "index": 2,
+          "text": "True",
+          "htmlSnippet": "True"
+        }
+      ],
+      "image": null,
+      "effect": "Block 4 Damage",
+      "issues": []
+    },
+    {
+      "turn": 4,
+      "question": "What technique uses hot wax mixed with pigments to create paintings?",
+      "answers": [
+        "Linseed oil",
+        "Heated beeswax",
+        "Egg yolk"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "Linseed oil",
+          "htmlSnippet": "Linseed oil"
+        },
+        {
+          "index": 1,
+          "text": "Heated beeswax",
+          "htmlSnippet": "Heated beeswax"
+        },
+        {
+          "index": 2,
+          "text": "Egg yolk",
+          "htmlSnippet": "Egg yolk"
+        }
+      ],
+      "image": null,
+      "effect": "Utility",
+      "issues": []
+    },
+    {
+      "turn": 5,
+      "question": "What surprising material forms the basis of Egyptian faience?",
+      "answers": [
+        "Crushed quartz paste",
+        "Melted sand",
+        "Clay and minerals"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "Crushed quartz paste",
+          "htmlSnippet": "Crushed quartz paste"
+        },
+        {
+          "index": 1,
+          "text": "Melted sand",
+          "htmlSnippet": "Melted sand"
+        },
+        {
+          "index": 2,
+          "text": "Clay and minerals",
+          "htmlSnippet": "Clay and minerals"
+        }
+      ],
+      "image": null,
+      "effect": "Deal 3 Damage",
+      "issues": []
+    }
+  ],
+  "roomTransitions": [],
+  "errors": [],
+  "screenshots": [
+    "/tmp/qa-2-01-hub.png",
+    "/tmp/qa-2-02-combat-start.png",
+    "/tmp/qa-2-final.png"
+  ],
+  "consoleErrors": [
+    {
+      "level": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "location": "http://localhost:5173/?skipOnboarding=true&devpreset=post_tutorial"
+    },
+    {
+      "level": "warning",
+      "text": "[.WebGL-0x207c02102a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "level": "warning",
+      "text": "[.WebGL-0x207c02102a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "level": "warning",
+      "text": "[.WebGL-0x207c02102a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "level": "warning",
+      "text": "[.WebGL-0x207c02102a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+    }
+  ],
+  "pageErrors": [],
+  "turnCount": 80,
+  "result": "timeout",
+  "floorsReached": 0,
+  "endScreenText": null,
+  "completedAt": "2026-03-11T16:46:07.361Z"
+}

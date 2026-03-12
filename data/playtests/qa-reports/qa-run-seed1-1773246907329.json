@@ -1,0 +1,692 @@
+{
+  "seed": 1,
+  "startedAt": "2026-03-11T16:32:07.129Z",
+  "devUrl": "http://localhost:5173",
+  "viewport": {
+    "width": 412,
+    "height": 915
+  },
+  "quizzes": [
+    {
+      "turn": 1,
+      "question": "Capsaicin, the compound that makes chili peppers h. Capsaicin binds to TRPV1 receptors, the ...",
+      "answers": [
+        "True"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "True",
+          "htmlSnippet": "True"
+        }
+      ],
+      "image": null,
+      "effect": "Utility",
+      "issues": [
+        {
+          "type": "wrong_answer_count",
+          "detail": "Expected 3 answer choices, got 1"
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "question": "By approximately how much does water expand when freezing?",
+      "answers": [
+        "About 9%",
+        "About 3%",
+        "About 25%"
+      ],
+      "answersRaw": [
+        {
+          "index": 0,
+          "text": "About 9%",
+          "htmlSnippet": "About 9%"
+        },
+        {
+          "index": 1,
+          "text": "About 3%",
+          "htmlSnippet": "About 3%"
+        },
+        {
+          "index": 2,
+          "text": "About 25%",
+          "htmlSnippet": "About 25%"
+        }
+      ],
+      "image": null,
+      "effect": "Deal 8 Damage",
+      "issues": [
+        {
+          "type": "very_similar_answers",
+          "detail": "Answers 0 and 1 are too similar (88% match)"
+        }
+      ]
+    }
+  ],
+  "roomTransitions": [],
+  "errors": [
+    {
+      "type": "wrong_answer_count",
+      "turn": 1,
+      "message": "Expected 3 answer choices, got 1",
+      "question": "Capsaicin, the compound that makes chili peppers h. Capsaicin binds to TRPV1 receptors, the ..."
+    },
+    {
+      "type": "very_similar_answers",
+      "turn": 2,
+      "message": "Answers 0 and 1 are too similar (88% match)",
+      "question": "By approximately how much does water expand when freezing?"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 12,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 13,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 14,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 15,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 16,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 17,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 18,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 19,
+      "message": "No recognized action available. Visible: "
+    },
+    {
+      "type": "unknown_state",
+      "turn": 20,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 21,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 22,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 23,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 24,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 25,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 26,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 27,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 28,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 29,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 30,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 31,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 32,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 33,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 34,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 35,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 36,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 37,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 38,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 39,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 40,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 41,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 42,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 43,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 44,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 45,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 46,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 47,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 48,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 49,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 50,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 51,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 52,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 53,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 54,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 55,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 56,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 57,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 58,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 59,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 60,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 61,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 62,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 63,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 64,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 65,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 66,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 67,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 68,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 69,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 70,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 71,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 72,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 73,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 74,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 75,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 76,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 77,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 78,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 79,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 80,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 81,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 82,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 83,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 84,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 85,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 86,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 87,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 88,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 89,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 90,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 91,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 92,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 93,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 94,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 95,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 96,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 97,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 98,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 99,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 100,
+      "message": "No recognized action available. Visible: study-mode-pill, btn-start-run"
+    }
+  ],
+  "screenshots": [
+    "/tmp/qa-1-01-hub.png",
+    "/tmp/qa-1-02-combat-start.png",
+    "/tmp/qa-1-issue-turn1.png",
+    "/tmp/qa-1-issue-turn2.png",
+    "/tmp/qa-1-unknown-turn12.png",
+    "/tmp/qa-1-unknown-turn13.png",
+    "/tmp/qa-1-unknown-turn14.png",
+    "/tmp/qa-1-unknown-turn15.png",
+    "/tmp/qa-1-unknown-turn16.png",
+    "/tmp/qa-1-unknown-turn17.png",
+    "/tmp/qa-1-unknown-turn18.png",
+    "/tmp/qa-1-unknown-turn19.png",
+    "/tmp/qa-1-unknown-turn20.png",
+    "/tmp/qa-1-unknown-turn21.png",
+    "/tmp/qa-1-unknown-turn22.png",
+    "/tmp/qa-1-unknown-turn23.png",
+    "/tmp/qa-1-unknown-turn24.png",
+    "/tmp/qa-1-unknown-turn25.png",
+    "/tmp/qa-1-unknown-turn26.png",
+    "/tmp/qa-1-unknown-turn27.png",
+    "/tmp/qa-1-unknown-turn28.png",
+    "/tmp/qa-1-unknown-turn29.png",
+    "/tmp/qa-1-unknown-turn30.png",
+    "/tmp/qa-1-unknown-turn31.png",
+    "/tmp/qa-1-unknown-turn32.png",
+    "/tmp/qa-1-unknown-turn33.png",
+    "/tmp/qa-1-unknown-turn34.png",
+    "/tmp/qa-1-unknown-turn35.png",
+    "/tmp/qa-1-unknown-turn36.png",
+    "/tmp/qa-1-unknown-turn37.png",
+    "/tmp/qa-1-unknown-turn38.png",
+    "/tmp/qa-1-unknown-turn39.png",
+    "/tmp/qa-1-unknown-turn40.png",
+    "/tmp/qa-1-unknown-turn41.png",
+    "/tmp/qa-1-unknown-turn42.png",
+    "/tmp/qa-1-unknown-turn43.png",
+    "/tmp/qa-1-unknown-turn44.png",
+    "/tmp/qa-1-unknown-turn45.png",
+    "/tmp/qa-1-unknown-turn46.png",
+    "/tmp/qa-1-unknown-turn47.png",
+    "/tmp/qa-1-unknown-turn48.png",
+    "/tmp/qa-1-unknown-turn49.png",
+    "/tmp/qa-1-unknown-turn50.png",
+    "/tmp/qa-1-unknown-turn51.png",
+    "/tmp/qa-1-unknown-turn52.png",
+    "/tmp/qa-1-unknown-turn53.png",
+    "/tmp/qa-1-unknown-turn54.png",
+    "/tmp/qa-1-unknown-turn55.png",
+    "/tmp/qa-1-unknown-turn56.png",
+    "/tmp/qa-1-unknown-turn57.png",
+    "/tmp/qa-1-unknown-turn58.png",
+    "/tmp/qa-1-unknown-turn59.png",
+    "/tmp/qa-1-unknown-turn60.png",
+    "/tmp/qa-1-unknown-turn61.png",
+    "/tmp/qa-1-unknown-turn62.png",
+    "/tmp/qa-1-unknown-turn63.png",
+    "/tmp/qa-1-unknown-turn64.png",
+    "/tmp/qa-1-unknown-turn65.png",
+    "/tmp/qa-1-unknown-turn66.png",
+    "/tmp/qa-1-unknown-turn67.png",
+    "/tmp/qa-1-unknown-turn68.png",
+    "/tmp/qa-1-unknown-turn69.png",
+    "/tmp/qa-1-unknown-turn70.png",
+    "/tmp/qa-1-unknown-turn71.png",
+    "/tmp/qa-1-unknown-turn72.png",
+    "/tmp/qa-1-unknown-turn73.png",
+    "/tmp/qa-1-unknown-turn74.png",
+    "/tmp/qa-1-unknown-turn75.png",
+    "/tmp/qa-1-unknown-turn76.png",
+    "/tmp/qa-1-unknown-turn77.png",
+    "/tmp/qa-1-unknown-turn78.png",
+    "/tmp/qa-1-unknown-turn79.png",
+    "/tmp/qa-1-unknown-turn80.png",
+    "/tmp/qa-1-unknown-turn81.png",
+    "/tmp/qa-1-unknown-turn82.png",
+    "/tmp/qa-1-unknown-turn83.png",
+    "/tmp/qa-1-unknown-turn84.png",
+    "/tmp/qa-1-unknown-turn85.png",
+    "/tmp/qa-1-unknown-turn86.png",
+    "/tmp/qa-1-unknown-turn87.png",
+    "/tmp/qa-1-unknown-turn88.png",
+    "/tmp/qa-1-unknown-turn89.png",
+    "/tmp/qa-1-unknown-turn90.png",
+    "/tmp/qa-1-unknown-turn91.png",
+    "/tmp/qa-1-unknown-turn92.png",
+    "/tmp/qa-1-unknown-turn93.png",
+    "/tmp/qa-1-unknown-turn94.png",
+    "/tmp/qa-1-unknown-turn95.png",
+    "/tmp/qa-1-unknown-turn96.png",
+    "/tmp/qa-1-unknown-turn97.png",
+    "/tmp/qa-1-unknown-turn98.png",
+    "/tmp/qa-1-unknown-turn99.png",
+    "/tmp/qa-1-unknown-turn100.png",
+    "/tmp/qa-1-final.png"
+  ],
+  "consoleErrors": [
+    {
+      "level": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "location": "http://localhost:5173/?skipOnboarding=true&devpreset=post_tutorial"
+    },
+    {
+      "level": "warning",
+      "text": "[.WebGL-0x7a4000e0800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "level": "warning",
+      "text": "[.WebGL-0x7a4000e0800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "level": "warning",
+      "text": "[.WebGL-0x7a4000e0800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+    },
+    {
+      "level": "warning",
+      "text": "[.WebGL-0x7a4000e0800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+    },
+    {
+      "level": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "location": "http://localhost:5173/?skipOnboarding=true&devpreset=post_tutorial"
+    },
+    {
+      "level": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "location": "http://localhost:5173/?skipOnboarding=true&devpreset=post_tutorial"
+    },
+    {
+      "level": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "location": "http://localhost:5173/?skipOnboarding=true&devpreset=post_tutorial"
+    },
+    {
+      "level": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "location": "http://localhost:5173/?skipOnboarding=true&devpreset=post_tutorial"
+    },
+    {
+      "level": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "location": "http://localhost:5173/?skipOnboarding=true&devpreset=post_tutorial"
+    },
+    {
+      "level": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "location": "http://localhost:5173/?skipOnboarding=true&devpreset=post_tutorial"
+    },
+    {
+      "level": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "location": "http://localhost:5173/?skipOnboarding=true&devpreset=post_tutorial"
+    },
+    {
+      "level": "error",
+      "text": "Connecting to 'http://100.74.153.81:5175/api/game/cardback-updates' violates the following Content Security Policy directive: \"connect-src 'self' ws: wss: http://localhost:* http://*:3001\". The action has been blocked.",
+      "location": "http://localhost:5173/?skipOnboarding=true&devpreset=post_tutorial"
+    }
+  ],
+  "pageErrors": [],
+  "turnCount": 100,
+  "result": "timeout",
+  "floorsReached": 0,
+  "endScreenText": null,
+  "completedAt": "2026-03-11T16:35:07.115Z"
+}

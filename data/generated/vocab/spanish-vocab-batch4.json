@@ -1,0 +1,5402 @@
+[
+  {
+    "id": "es-b04-001",
+    "type": "vocabulary",
+    "statement": "cuidar means 'to take care of' in Spanish",
+    "quizQuestion": "What does 'cuidar' mean in English?",
+    "correctAnswer": "to take care of",
+    "distractors": [
+      "to worry",
+      "to heal",
+      "to guard",
+      "to serve",
+      "to wash",
+      "to repair",
+      "to clean",
+      "to teach"
+    ],
+    "explanation": "cuidar is a Spanish verb meaning \"to take care of\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 7,
+    "visualDescription": "A caregiver holding a child's hand gently",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "koo-ee-DAHR",
+    "exampleSentence": "Mi madre cuida a los niños con mucho amor.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-002",
+    "type": "vocabulary",
+    "statement": "informar means 'to inform' in Spanish",
+    "quizQuestion": "What does 'informar' mean in English?",
+    "correctAnswer": "to inform",
+    "distractors": [
+      "to form",
+      "to reform",
+      "to transform",
+      "to perform",
+      "to deform",
+      "to confirm",
+      "to report",
+      "to declare"
+    ],
+    "explanation": "informar is a Spanish verb meaning \"to inform\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "A reporter with a microphone speaking",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "een-for-MAHR",
+    "exampleSentence": "El reportero informa sobre los eventos importantes.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-003",
+    "type": "vocabulary",
+    "statement": "texto means 'text' in Spanish",
+    "quizQuestion": "What does 'texto' mean in English?",
+    "correctAnswer": "text",
+    "distractors": [
+      "context",
+      "pretext",
+      "texture",
+      "vortex",
+      "excuse",
+      "mixture",
+      "fixture",
+      "next"
+    ],
+    "explanation": "texto is a Spanish noun meaning \"text\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Pages of a book with flowing words",
+    "difficulty": 2,
+    "funScore": 7,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "TEK-stoh",
+    "exampleSentence": "Este texto es muy interesante y educativo.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-004",
+    "type": "vocabulary",
+    "statement": "elección means 'election' in Spanish",
+    "quizQuestion": "What does 'elección' mean in English?",
+    "correctAnswer": "election",
+    "distractors": [
+      "collection",
+      "reflection",
+      "direction",
+      "selection",
+      "connection",
+      "protection",
+      "detection",
+      "election"
+    ],
+    "explanation": "elección is a Spanish noun meaning \"election\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 8,
+    "visualDescription": "Ballot box with voting papers",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "eh-lek-see-OHN",
+    "exampleSentence": "La elección fue importante para el país.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-005",
+    "type": "vocabulary",
+    "statement": "cortar means 'to cut' in Spanish",
+    "quizQuestion": "What does 'cortar' mean in English?",
+    "correctAnswer": "to cut",
+    "distractors": [
+      "to correct",
+      "to construct",
+      "to contrast",
+      "to convert",
+      "to corrupt",
+      "to conduct",
+      "to confront",
+      "to consult"
+    ],
+    "explanation": "cortar is a Spanish verb meaning \"to cut\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Scissors cutting colored paper",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "kor-TAHR",
+    "exampleSentence": "Necesito cortar el papel para la tarea.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-006",
+    "type": "vocabulary",
+    "statement": "fecha means 'date' in Spanish",
+    "quizQuestion": "What does 'fecha' mean in English?",
+    "correctAnswer": "date",
+    "distractors": [
+      "beach",
+      "reach",
+      "teach",
+      "peach",
+      "leach",
+      "speech",
+      "french",
+      "bench"
+    ],
+    "explanation": "fecha is a Spanish noun meaning \"date\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 7,
+    "visualDescription": "Calendar page with red circled date",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "FEH-chah",
+    "exampleSentence": "Mañana es la fecha del examen final.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-007",
+    "type": "vocabulary",
+    "statement": "especialmente means 'especially' in Spanish",
+    "quizQuestion": "What does 'especialmente' mean in English?",
+    "correctAnswer": "especially",
+    "distractors": [
+      "especially",
+      "particularly",
+      "basically",
+      "typically",
+      "literally",
+      "specifically",
+      "naturally",
+      "generally"
+    ],
+    "explanation": "especialmente is a Spanish verb meaning \"especially\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 7,
+    "visualDescription": "Spotlight illuminating one object",
+    "difficulty": 2,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "es-peh-see-ahl-MEHN-teh",
+    "exampleSentence": "Me gusta especialmente el chocolate oscuro.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-008",
+    "type": "vocabulary",
+    "statement": "profundo means 'deep' in Spanish",
+    "quizQuestion": "What does 'profundo' mean in English?",
+    "correctAnswer": "deep",
+    "distractors": [
+      "profound",
+      "profound",
+      "profound",
+      "profound",
+      "profound",
+      "profound",
+      "profane",
+      "prodigal"
+    ],
+    "explanation": "profundo is a Spanish adjective meaning \"deep\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 7,
+    "visualDescription": "Deep ocean trench with darkness",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "proh-FOON-doh",
+    "exampleSentence": "El océano es muy profundo y misterioso.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-009",
+    "type": "vocabulary",
+    "statement": "conocido means 'known' in Spanish",
+    "quizQuestion": "What does 'conocido' mean in English?",
+    "correctAnswer": "known",
+    "distractors": [
+      "conductor",
+      "conflict",
+      "confidence",
+      "conspire",
+      "conduit",
+      "concerned",
+      "confined",
+      "confused"
+    ],
+    "explanation": "conocido is a Spanish adjective meaning \"known\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Famous landmark with crowds",
+    "difficulty": 2,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "koh-noh-SEE-doh",
+    "exampleSentence": "Ese restaurante es muy conocido en la ciudad.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-010",
+    "type": "vocabulary",
+    "statement": "unir means 'to unite' in Spanish",
+    "quizQuestion": "What does 'unir' mean in English?",
+    "correctAnswer": "to unite",
+    "distractors": [
+      "to unit",
+      "to uniform",
+      "to universe",
+      "to unicycle",
+      "to unique",
+      "to unite (archaic)",
+      "to undone",
+      "to unfold"
+    ],
+    "explanation": "unir is a Spanish verb meaning \"to unite\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 8,
+    "visualDescription": "Hands coming together to join",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "oo-NEER",
+    "exampleSentence": "Tenemos que unir nuestros esfuerzos para ganar.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-011",
+    "type": "vocabulary",
+    "statement": "alemán means 'German' in Spanish",
+    "quizQuestion": "What does 'alemán' mean in English?",
+    "correctAnswer": "German",
+    "distractors": [
+      "algebra",
+      "almanac",
+      "almost",
+      "alert",
+      "alien",
+      "alias",
+      "align",
+      "alive"
+    ],
+    "explanation": "alemán is a Spanish adjective meaning \"German\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "German flag with castle silhouette",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "ah-leh-MAHN",
+    "exampleSentence": "Aprendo el idioma alemán en la escuela.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-012",
+    "type": "vocabulary",
+    "statement": "actuar means 'to act' in Spanish",
+    "quizQuestion": "What does 'actuar' mean in English?",
+    "correctAnswer": "to act",
+    "distractors": [
+      "to act",
+      "to actuate",
+      "to actual",
+      "to activate",
+      "to action",
+      "to activity",
+      "to attitude",
+      "to actor"
+    ],
+    "explanation": "actuar is a Spanish verb meaning \"to act\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Actor on stage under spotlight",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "ahk-too-AHR",
+    "exampleSentence": "Los actores actúan en el teatro cada noche.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-013",
+    "type": "vocabulary",
+    "statement": "salvar means 'to save' in Spanish",
+    "quizQuestion": "What does 'salvar' mean in English?",
+    "correctAnswer": "to save",
+    "distractors": [
+      "to salvage",
+      "to salute",
+      "to salivate",
+      "to solve",
+      "to silver",
+      "to salon",
+      "to sailor",
+      "to salary"
+    ],
+    "explanation": "salvar is a Spanish verb meaning \"to save\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 8,
+    "visualDescription": "Rescue ladder against tall building",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "sahl-VAHR",
+    "exampleSentence": "El héroe salva a la ciudad del peligro.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-014",
+    "type": "vocabulary",
+    "statement": "aplicar means 'to apply' in Spanish",
+    "quizQuestion": "What does 'aplicar' mean in English?",
+    "correctAnswer": "to apply",
+    "distractors": [
+      "to replicate",
+      "to duplicate",
+      "to triplicate",
+      "to complicate",
+      "to implicate",
+      "to explicate",
+      "to replicate",
+      "to complain"
+    ],
+    "explanation": "aplicar is a Spanish verb meaning \"to apply\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 7,
+    "visualDescription": "Brush applying paint to canvas",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "ah-plee-KAHR",
+    "exampleSentence": "Debo aplicar crema solar en la playa.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-015",
+    "type": "vocabulary",
+    "statement": "extranjero means 'foreigner' in Spanish",
+    "quizQuestion": "What does 'extranjero' mean in English?",
+    "correctAnswer": "foreigner",
+    "distractors": [
+      "extra",
+      "extraordinary",
+      "extractor",
+      "extract",
+      "extraterrestrial",
+      "extravagant",
+      "extreme",
+      "exterior"
+    ],
+    "explanation": "extranjero is a Spanish noun meaning \"foreigner\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 8,
+    "visualDescription": "Map with exotic foreign location",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "ehks-trahn-HEH-roh",
+    "exampleSentence": "Mi profesor es de un país extranjero.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-016",
+    "type": "vocabulary",
+    "statement": "respecto means 'con r. a: regarding' in Spanish",
+    "quizQuestion": "What does 'respecto' mean in English?",
+    "correctAnswer": "con r. a: regarding",
+    "distractors": [
+      "respect",
+      "respond",
+      "respond",
+      "respond",
+      "respond",
+      "response",
+      "respiratory",
+      "respectable"
+    ],
+    "explanation": "respecto is a Spanish noun meaning \"con r. a: regarding\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 7,
+    "visualDescription": "Scale balancing two equal weights",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "rehs-PEHK-toh",
+    "exampleSentence": "Con respecto a tu pregunta, tengo una respuesta.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-017",
+    "type": "vocabulary",
+    "statement": "entrada means 'entrance' in Spanish",
+    "quizQuestion": "What does 'entrada' mean in English?",
+    "correctAnswer": "entrance",
+    "distractors": [
+      "entrance",
+      "entrant",
+      "entranced",
+      "entree",
+      "entrust",
+      "entangle",
+      "enter",
+      "enterprise"
+    ],
+    "explanation": "entrada is a Spanish noun meaning \"entrance\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Ornate door entrance with light",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "ehn-TRAH-dah",
+    "exampleSentence": "Necesito una entrada para el concierto.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-018",
+    "type": "vocabulary",
+    "statement": "planta means 'plant' in Spanish",
+    "quizQuestion": "What does 'planta' mean in English?",
+    "correctAnswer": "plant",
+    "distractors": [
+      "plan",
+      "planet",
+      "plane",
+      "plain",
+      "plant",
+      "plate",
+      "place",
+      "plastic"
+    ],
+    "explanation": "planta is a Spanish noun meaning \"plant\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 8,
+    "visualDescription": "Green plant in sunny pot",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "PLAHN-tah",
+    "exampleSentence": "La planta crece en el jardín soleado.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-019",
+    "type": "vocabulary",
+    "statement": "hija means 'daughter' in Spanish",
+    "quizQuestion": "What does 'hija' mean in English?",
+    "correctAnswer": "daughter",
+    "distractors": [
+      "hijo (son)",
+      "hair",
+      "hinge",
+      "hire",
+      "here",
+      "heritage",
+      "hearing",
+      "healing"
+    ],
+    "explanation": "hija is a Spanish noun meaning \"daughter\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 8,
+    "visualDescription": "Young girl with book and smile",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "EE-hah",
+    "exampleSentence": "Mi hija estudia mucho en la escuela.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-020",
+    "type": "vocabulary",
+    "statement": "negar means 'to deny' in Spanish",
+    "quizQuestion": "What does 'negar' mean in English?",
+    "correctAnswer": "to deny",
+    "distractors": [
+      "to neglect",
+      "to negotiate",
+      "to navigate",
+      "to negate",
+      "to register",
+      "to regret",
+      "to relegate",
+      "to renegade"
+    ],
+    "explanation": "negar is a Spanish verb meaning \"to deny\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 7,
+    "visualDescription": "Person shaking head firmly",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "neh-GAHR",
+    "exampleSentence": "No puedo negar que es verdad.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-021",
+    "type": "vocabulary",
+    "statement": "recuerdo means 'memory' in Spanish",
+    "quizQuestion": "What does 'recuerdo' mean in English?",
+    "correctAnswer": "memory",
+    "distractors": [
+      "record",
+      "recount",
+      "recur",
+      "recover",
+      "reckon",
+      "recoil",
+      "recollect",
+      "recommend"
+    ],
+    "explanation": "recuerdo is a Spanish noun meaning \"memory\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Photo album with cherished memories",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "reh-KWEHR-doh",
+    "exampleSentence": "Tengo un bonito recuerdo de las vacaciones.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-022",
+    "type": "vocabulary",
+    "statement": "avanzar means 'to advance' in Spanish",
+    "quizQuestion": "What does 'avanzar' mean in English?",
+    "correctAnswer": "to advance",
+    "distractors": [
+      "to advantage",
+      "to advance",
+      "to advent",
+      "to avenue",
+      "to avarice",
+      "to available",
+      "to avalanche",
+      "to avert"
+    ],
+    "explanation": "avanzar is a Spanish verb meaning \"to advance\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 5,
+    "visualDescription": "Arrow pointing forward with speed",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "ah-vahn-SAHR",
+    "exampleSentence": "Los estudiantes avanzan rápidamente en matemáticas.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-023",
+    "type": "vocabulary",
+    "statement": "consecuencia means 'consequence' in Spanish",
+    "quizQuestion": "What does 'consecuencia' mean in English?",
+    "correctAnswer": "consequence",
+    "distractors": [
+      "consequence",
+      "consequent",
+      "consequence",
+      "consistency",
+      "consequence",
+      "consider",
+      "consist",
+      "consult"
+    ],
+    "explanation": "consecuencia is a Spanish noun meaning \"consequence\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 7,
+    "visualDescription": "Domino tiles falling in sequence",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "kohn-seh-KWEHN-see-ah",
+    "exampleSentence": "Como consecuencia, todos están más cuidadosos.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-024",
+    "type": "vocabulary",
+    "statement": "piedra means 'stone' in Spanish",
+    "quizQuestion": "What does 'piedra' mean in English?",
+    "correctAnswer": "stone",
+    "distractors": [
+      "piece",
+      "pier",
+      "pierce",
+      "piety",
+      "pirate",
+      "pioneer",
+      "pieces",
+      "pictures"
+    ],
+    "explanation": "piedra is a Spanish noun meaning \"stone\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Rocky landscape with gray boulders",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "pee-EH-drah",
+    "exampleSentence": "Encontramos una piedra lisa en la playa.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-025",
+    "type": "vocabulary",
+    "statement": "costar means 'to cost' in Spanish",
+    "quizQuestion": "What does 'costar' mean in English?",
+    "correctAnswer": "to cost",
+    "distractors": [
+      "to coast",
+      "to roast",
+      "to toast",
+      "to boast",
+      "to custom",
+      "to costume",
+      "to customer",
+      "to costly"
+    ],
+    "explanation": "costar is a Spanish verb meaning \"to cost\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Coins and price tag display",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "kos-TAHR",
+    "exampleSentence": "Este regalo me va a costar mucho dinero.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-026",
+    "type": "vocabulary",
+    "statement": "pierna means 'leg' in Spanish",
+    "quizQuestion": "What does 'pierna' mean in English?",
+    "correctAnswer": "leg",
+    "distractors": [
+      "pier",
+      "pierce",
+      "piggy",
+      "pilgrim",
+      "pillar",
+      "pigeon",
+      "pipeline",
+      "pineapple"
+    ],
+    "explanation": "pierna is a Spanish noun meaning \"leg\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Leg in motion while running",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "pee-EHR-nah",
+    "exampleSentence": "Me duele la pierna después de correr.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-027",
+    "type": "vocabulary",
+    "statement": "funcionar means 'to work' in Spanish",
+    "quizQuestion": "What does 'funcionar' mean in English?",
+    "correctAnswer": "to work",
+    "distractors": [
+      "to function",
+      "to functional",
+      "to fundamentals",
+      "to fundamental",
+      "to fundraise",
+      "to funeral",
+      "to furnace",
+      "to furniture"
+    ],
+    "explanation": "funcionar is a Spanish verb meaning \"to work\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 7,
+    "visualDescription": "Gears turning smoothly together",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "foon-see-oh-NAHR",
+    "exampleSentence": "El reloj no funciona correctamente hoy.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-028",
+    "type": "vocabulary",
+    "statement": "pared means '(interior) wall' in Spanish",
+    "quizQuestion": "What does 'pared' mean in English?",
+    "correctAnswer": "(interior) wall",
+    "distractors": [
+      "paired",
+      "parent",
+      "pardon",
+      "parked",
+      "parade",
+      "parcel",
+      "parish",
+      "parlor"
+    ],
+    "explanation": "pared is a Spanish noun meaning \"(interior) wall\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 8,
+    "visualDescription": "Brick wall with climbing vines",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "pah-REHD",
+    "exampleSentence": "Pegamos un cartel en la pared del salón.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-029",
+    "type": "vocabulary",
+    "statement": "motivo means 'motive' in Spanish",
+    "quizQuestion": "What does 'motivo' mean in English?",
+    "correctAnswer": "motive",
+    "distractors": [
+      "motive",
+      "motivation",
+      "motivate",
+      "motor",
+      "motion",
+      "motto",
+      "mother",
+      "mobile"
+    ],
+    "explanation": "motivo is a Spanish noun meaning \"motive\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Question mark with puzzle pieces",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "moh-TEE-voh",
+    "exampleSentence": "No sé el motivo de su enojo.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-030",
+    "type": "vocabulary",
+    "statement": "deseo means 'desire' in Spanish",
+    "quizQuestion": "What does 'deseo' mean in English?",
+    "correctAnswer": "desire",
+    "distractors": [
+      "desire",
+      "design",
+      "despair",
+      "despite",
+      "desert",
+      "deserve",
+      "describe",
+      "discovery"
+    ],
+    "explanation": "deseo is a Spanish noun meaning \"desire\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Wishful figure gazing at stars",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "deh-SEH-oh",
+    "exampleSentence": "Mi deseo es viajar por el mundo.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-031",
+    "type": "vocabulary",
+    "statement": "suficiente means 'sufficient' in Spanish",
+    "quizQuestion": "What does 'suficiente' mean in English?",
+    "correctAnswer": "sufficient",
+    "distractors": [
+      "sufficient",
+      "sacrifice",
+      "scaffold",
+      "succumb",
+      "success",
+      "suffix",
+      "suggest",
+      "summary"
+    ],
+    "explanation": "suficiente is a Spanish adjective meaning \"sufficient\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 5,
+    "visualDescription": "Full cup overflowing with liquid",
+    "difficulty": 3,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "soo-fee-see-EHNT-eh",
+    "exampleSentence": "Tenemos suficiente comida para la cena.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-032",
+    "type": "vocabulary",
+    "statement": "ropa means 'clothes' in Spanish",
+    "quizQuestion": "What does 'ropa' mean in English?",
+    "correctAnswer": "clothes",
+    "distractors": [
+      "rope",
+      "roam",
+      "road",
+      "roast",
+      "rock",
+      "role",
+      "room",
+      "root"
+    ],
+    "explanation": "ropa is a Spanish noun meaning \"clothes\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Colorful clothes hanging on line",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "ROH-pah",
+    "exampleSentence": "Compré ropa nueva para el invierno.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-033",
+    "type": "vocabulary",
+    "statement": "abuela means 'grandmother' in Spanish",
+    "quizQuestion": "What does 'abuela' mean in English?",
+    "correctAnswer": "grandmother",
+    "distractors": [
+      "able",
+      "abuse",
+      "about",
+      "above",
+      "accept",
+      "abundant",
+      "absolute",
+      "absorb"
+    ],
+    "explanation": "abuela is a Spanish noun meaning \"grandmother\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Elderly woman with warm smile",
+    "difficulty": 3,
+    "funScore": 7,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "ah-BWEH-lah",
+    "exampleSentence": "Mi abuela hace deliciosas galletas.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-034",
+    "type": "vocabulary",
+    "statement": "ayuda means 'help' in Spanish",
+    "quizQuestion": "What does 'ayuda' mean in English?",
+    "correctAnswer": "help",
+    "distractors": [
+      "away",
+      "audio",
+      "audit",
+      "aisle",
+      "auxiliary",
+      "available",
+      "avenue",
+      "avatar"
+    ],
+    "explanation": "ayuda is a Spanish noun meaning \"help\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 5,
+    "visualDescription": "Helping hands reaching together",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "ah-YOO-dah",
+    "exampleSentence": "Necesito tu ayuda para este proyecto.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-035",
+    "type": "vocabulary",
+    "statement": "anunciar means 'to announce' in Spanish",
+    "quizQuestion": "What does 'anunciar' mean in English?",
+    "correctAnswer": "to announce",
+    "distractors": [
+      "announce",
+      "annual",
+      "annoy",
+      "annex",
+      "ant",
+      "ankle",
+      "angle",
+      "anger"
+    ],
+    "explanation": "anunciar is a Spanish verb meaning \"to announce\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 5,
+    "visualDescription": "Megaphone spreading announcement",
+    "difficulty": 3,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "ah-noon-see-AHR",
+    "exampleSentence": "Van a anunciar los ganadores mañana.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-036",
+    "type": "vocabulary",
+    "statement": "reunir means 'to gather' in Spanish",
+    "quizQuestion": "What does 'reunir' mean in English?",
+    "correctAnswer": "to gather",
+    "distractors": [
+      "reunion",
+      "reunite",
+      "rewind",
+      "renew",
+      "render",
+      "region",
+      "reign",
+      "resign"
+    ],
+    "explanation": "reunir is a Spanish verb meaning \"to gather\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 7,
+    "visualDescription": "Group of people gathering circle",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "reh-oo-NEER",
+    "exampleSentence": "Debemos reunir dinero para la caridad.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-037",
+    "type": "vocabulary",
+    "statement": "disponer means 'to have means' in Spanish",
+    "quizQuestion": "What does 'disponer' mean in English?",
+    "correctAnswer": "to have means",
+    "distractors": [
+      "dispose",
+      "discover",
+      "display",
+      "disobey",
+      "disorder",
+      "disown",
+      "displace",
+      "displease"
+    ],
+    "explanation": "disponer is a Spanish verb meaning \"to have means\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Items arranged in careful order",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "dees-poh-NEHR",
+    "exampleSentence": "No dispongo de tiempo para viajar ahora.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-038",
+    "type": "vocabulary",
+    "statement": "abajo means 'down' in Spanish",
+    "quizQuestion": "What does 'abajo' mean in English?",
+    "correctAnswer": "down",
+    "distractors": [
+      "away",
+      "above",
+      "aback",
+      "abandon",
+      "abbey",
+      "ability",
+      "able",
+      "about"
+    ],
+    "explanation": "abajo is a Spanish verb meaning \"down\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 8,
+    "visualDescription": "Ball rolling down steep slope",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "ah-BAH-hoh",
+    "exampleSentence": "La pelota rueda hacia abajo por la colina.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-039",
+    "type": "vocabulary",
+    "statement": "sostener means 'to support' in Spanish",
+    "quizQuestion": "What does 'sostener' mean in English?",
+    "correctAnswer": "to support",
+    "distractors": [
+      "suspend",
+      "suppose",
+      "supply",
+      "support",
+      "surpass",
+      "surface",
+      "surgery",
+      "surprise"
+    ],
+    "explanation": "sostener is a Spanish verb meaning \"to support\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 7,
+    "visualDescription": "Hands firmly gripping something",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "sos-teh-NEHR",
+    "exampleSentence": "Tienes que sostener la cuerda con fuerza.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-040",
+    "type": "vocabulary",
+    "statement": "popular means 'popular' in Spanish",
+    "quizQuestion": "What does 'popular' mean in English?",
+    "correctAnswer": "popular",
+    "distractors": [
+      "populate",
+      "population",
+      "popular",
+      "popular",
+      "populace",
+      "popularity",
+      "populous",
+      "portal"
+    ],
+    "explanation": "popular is a Spanish adjective meaning \"popular\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 8,
+    "visualDescription": "Star shining brightly above",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "poh-poo-LAHR",
+    "exampleSentence": "Ese cantante es muy popular entre los jóvenes.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-041",
+    "type": "vocabulary",
+    "statement": "precisamente means 'precisely' in Spanish",
+    "quizQuestion": "What does 'precisamente' mean in English?",
+    "correctAnswer": "precisely",
+    "distractors": [
+      "precisely",
+      "president",
+      "present",
+      "pressure",
+      "precious",
+      "pretend",
+      "prevent",
+      "pretext"
+    ],
+    "explanation": "precisamente is a Spanish verb meaning \"precisely\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 5,
+    "visualDescription": "Clock showing exact time precisely",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "preh-see-sah-MEHN-teh",
+    "exampleSentence": "Lllegó precisamente a las cinco de la tarde.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-042",
+    "type": "vocabulary",
+    "statement": "visitar means 'to visit' in Spanish",
+    "quizQuestion": "What does 'visitar' mean in English?",
+    "correctAnswer": "to visit",
+    "distractors": [
+      "visit",
+      "visual",
+      "vista",
+      "vision",
+      "visible",
+      "visitor",
+      "visits",
+      "visa"
+    ],
+    "explanation": "visitar is a Spanish verb meaning \"to visit\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 5,
+    "visualDescription": "Door opening to new room",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "vee-see-TAHR",
+    "exampleSentence": "Quiero visitar el museo de arte este fin de semana.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-043",
+    "type": "vocabulary",
+    "statement": "construcción means 'construction' in Spanish",
+    "quizQuestion": "What does 'construcción' mean in English?",
+    "correctAnswer": "construction",
+    "distractors": [
+      "construction",
+      "construct",
+      "constructor",
+      "constrict",
+      "constraint",
+      "construct",
+      "contribution",
+      "conclusion"
+    ],
+    "explanation": "construcción is a Spanish noun meaning \"construction\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 5,
+    "visualDescription": "Crane building up tall structure",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "kons-trook-see-OHN",
+    "exampleSentence": "La construcción del edificio durará dos años.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-044",
+    "type": "vocabulary",
+    "statement": "contener means 'to contain' in Spanish",
+    "quizQuestion": "What does 'contener' mean in English?",
+    "correctAnswer": "to contain",
+    "distractors": [
+      "contain",
+      "container",
+      "content",
+      "contend",
+      "continent",
+      "context",
+      "contem",
+      "contrast"
+    ],
+    "explanation": "contener is a Spanish verb meaning \"to contain\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 8,
+    "visualDescription": "Box overflowing with full contents",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "kohn-teh-NEHR",
+    "exampleSentence": "Esta caja contiene mis tesoros favoritos.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-045",
+    "type": "vocabulary",
+    "statement": "estudiante means 'student' in Spanish",
+    "quizQuestion": "What does 'estudiante' mean in English?",
+    "correctAnswer": "student",
+    "distractors": [
+      "student",
+      "study",
+      "studio",
+      "stupid",
+      "sturdy",
+      "stunt",
+      "stuff",
+      "stunning"
+    ],
+    "explanation": "estudiante is a Spanish noun meaning \"student\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Student at desk with books",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "es-too-dee-AHN-teh",
+    "exampleSentence": "Ella es una estudiante muy dedicada y brillante.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-046",
+    "type": "vocabulary",
+    "statement": "fiesta means 'party' in Spanish",
+    "quizQuestion": "What does 'fiesta' mean in English?",
+    "correctAnswer": "party",
+    "distractors": [
+      "fiesta",
+      "feast",
+      "foist",
+      "forest",
+      "float",
+      "frost",
+      "faint",
+      "first"
+    ],
+    "explanation": "fiesta is a Spanish noun meaning \"party\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 8,
+    "visualDescription": "Decorations and balloons celebrating",
+    "difficulty": 4,
+    "funScore": 7,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "fee-EHS-tah",
+    "exampleSentence": "La fiesta fue muy divertida y memorable.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-047",
+    "type": "vocabulary",
+    "statement": "lucha means 'fight' in Spanish",
+    "quizQuestion": "What does 'lucha' mean in English?",
+    "correctAnswer": "fight",
+    "distractors": [
+      "lunch",
+      "lotus",
+      "lucid",
+      "lucky",
+      "loud",
+      "lush",
+      "lynch",
+      "luxe"
+    ],
+    "explanation": "lucha is a Spanish noun meaning \"fight\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 8,
+    "visualDescription": "Two figures in fierce wrestling",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "LOO-chah",
+    "exampleSentence": "La lucha por la justicia es importante.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-048",
+    "type": "vocabulary",
+    "statement": "metro means 'meter' in Spanish",
+    "quizQuestion": "What does 'metro' mean in English?",
+    "correctAnswer": "meter",
+    "distractors": [
+      "metro",
+      "meteor",
+      "meter",
+      "motor",
+      "mentor",
+      "metal",
+      "mettle",
+      "mellow"
+    ],
+    "explanation": "metro is a Spanish noun meaning \"meter\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 5,
+    "visualDescription": "Underground train in subway",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "MEH-troh",
+    "exampleSentence": "Tomo el metro para ir al trabajo cada día.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-049",
+    "type": "vocabulary",
+    "statement": "mañana means 'tomorrow' in Spanish",
+    "quizQuestion": "What does 'mañana' mean in English?",
+    "correctAnswer": "tomorrow",
+    "distractors": [
+      "manner",
+      "manage",
+      "mandate",
+      "mana",
+      "manana",
+      "manual",
+      "manifest",
+      "mansion"
+    ],
+    "explanation": "mañana is a Spanish verb meaning \"tomorrow\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Sun rising over horizon morning",
+    "difficulty": 4,
+    "funScore": 6,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "mahn-YAH-nah",
+    "exampleSentence": "Mañana vamos al parque con la familia.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-050",
+    "type": "vocabulary",
+    "statement": "rato means 'moment' in Spanish",
+    "quizQuestion": "What does 'rato' mean in English?",
+    "correctAnswer": "moment",
+    "distractors": [
+      "rat",
+      "rate",
+      "rare",
+      "ratio",
+      "ration",
+      "rattle",
+      "rating",
+      "rather"
+    ],
+    "explanation": "rato is a Spanish noun meaning \"moment\". It's commonly used in everyday Spanish and helps express actions, qualities, and relationships.",
+    "wowFactor": 6,
+    "visualDescription": "Hourglass with flowing sand",
+    "difficulty": 4,
+    "funScore": 8,
+    "ageRating": "kid",
+    "categoryL1": "Language",
+    "categoryL2": "spanish",
+    "pronunciation": "RAH-toh",
+    "exampleSentence": "Espéra un rato, llegaré en pocos minutos.",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-051",
+    "type": "vocabulary",
+    "question": "What does 'colocar' mean in English?",
+    "correctAnswer": "to place, position",
+    "incorrectAnswers": [
+      "to color",
+      "to locate",
+      "to collaborate"
+    ],
+    "explanation": "Colocar is a regular -ar verb meaning 'to place' or 'to position something.'",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-052",
+    "type": "vocabulary",
+    "question": "What does 'oscuro' mean in English?",
+    "correctAnswer": "dark, obscure",
+    "incorrectAnswers": [
+      "oscillating",
+      "clear",
+      "bright"
+    ],
+    "explanation": "Oscuro is an adjective meaning 'dark' or 'obscure,' often used to describe dim lighting or unclear situations.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-053",
+    "type": "vocabulary",
+    "question": "What does 'sombra' mean in English?",
+    "correctAnswer": "shade, shadow",
+    "incorrectAnswers": [
+      "summer",
+      "shape",
+      "similarity"
+    ],
+    "explanation": "Sombra is a feminine noun meaning 'shadow' or 'shade,' often referring to darkness or an outline cast by an object.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-054",
+    "type": "vocabulary",
+    "question": "What does 'expresión' mean in English?",
+    "correctAnswer": "expression",
+    "incorrectAnswers": [
+      "expiration",
+      "exposure",
+      "explanation"
+    ],
+    "explanation": "Expresión is a feminine noun meaning 'expression,' referring to facial features, words, or artistic representation.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-055",
+    "type": "vocabulary",
+    "question": "What does 'separar' mean in English?",
+    "correctAnswer": "to separate",
+    "incorrectAnswers": [
+      "to prepare",
+      "to scare",
+      "to appear"
+    ],
+    "explanation": "Separar is a regular -ar verb meaning 'to separate' or 'to divide something into parts.'",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-056",
+    "type": "vocabulary",
+    "question": "What does 'plaza' mean in English?",
+    "correctAnswer": "square, marketplace",
+    "incorrectAnswers": [
+      "place",
+      "planet",
+      "plain"
+    ],
+    "explanation": "Plaza is a feminine noun meaning 'public square' or 'marketplace,' a common gathering place in Spanish-speaking cities.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-057",
+    "type": "vocabulary",
+    "question": "What does 'vivo' mean in English?",
+    "correctAnswer": "alive, bright",
+    "incorrectAnswers": [
+      "vivid",
+      "vivacious",
+      "verb"
+    ],
+    "explanation": "Vivo is an adjective meaning 'alive' or 'bright,' used to describe living things or vibrant colors and qualities.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-058",
+    "type": "vocabulary",
+    "question": "What does 'vecino' mean in English?",
+    "correctAnswer": "neighbor",
+    "incorrectAnswers": [
+      "village",
+      "native",
+      "nearby"
+    ],
+    "explanation": "Vecino is a noun meaning 'neighbor,' referring to someone who lives nearby; can be masculine or feminine.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-059",
+    "type": "vocabulary",
+    "question": "What does 'pretender' mean in English?",
+    "correctAnswer": "to attempt",
+    "incorrectAnswers": [
+      "to pretend",
+      "to defend",
+      "to offend"
+    ],
+    "explanation": "Pretender is a regular -er verb meaning 'to attempt' or 'to try,' distinct from the English 'pretend.'",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 3,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-060",
+    "type": "vocabulary",
+    "question": "What does 'isla' mean in English?",
+    "correctAnswer": "island",
+    "incorrectAnswers": [
+      "aisle",
+      "Islam",
+      "isolation"
+    ],
+    "explanation": "Isla is a feminine noun meaning 'island,' a landmass surrounded by water.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-061",
+    "type": "vocabulary",
+    "question": "What does 'azul' mean in English?",
+    "correctAnswer": "blue",
+    "incorrectAnswers": [
+      "oval",
+      "annual",
+      "actual"
+    ],
+    "explanation": "Azul is an adjective meaning 'blue,' used to describe the color of the sky or sea.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-062",
+    "type": "vocabulary",
+    "question": "What does 'verde' mean in English?",
+    "correctAnswer": "green",
+    "incorrectAnswers": [
+      "verse",
+      "verb",
+      "veer"
+    ],
+    "explanation": "Verde is an adjective meaning 'green,' used to describe vegetation and the color of nature.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-063",
+    "type": "vocabulary",
+    "question": "What does 'carácter' mean in English?",
+    "correctAnswer": "personality, nature",
+    "incorrectAnswers": [
+      "character",
+      "carriage",
+      "carpet"
+    ],
+    "explanation": "Carácter is a masculine noun meaning 'character,' 'personality,' or 'nature,' describing a person's traits or temperament.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-064",
+    "type": "vocabulary",
+    "question": "What does 'viento' mean in English?",
+    "correctAnswer": "wind, scent",
+    "incorrectAnswers": [
+      "vendor",
+      "venom",
+      "venture"
+    ],
+    "explanation": "Viento is a masculine noun meaning 'wind' or 'scent,' referring to moving air or smell in some contexts.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-065",
+    "type": "vocabulary",
+    "question": "What does 'cruzar' mean in English?",
+    "correctAnswer": "to cross",
+    "incorrectAnswers": [
+      "to cruise",
+      "to crush",
+      "to crash"
+    ],
+    "explanation": "Cruzar is a regular -ar verb meaning 'to cross' or 'to go across something.'",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-066",
+    "type": "vocabulary",
+    "question": "What does 'completo' mean in English?",
+    "correctAnswer": "complete",
+    "incorrectAnswers": [
+      "complex",
+      "compute",
+      "complement"
+    ],
+    "explanation": "Completo is an adjective meaning 'complete' or 'whole,' indicating something has all its parts or is finished.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-067",
+    "type": "vocabulary",
+    "question": "What does 'artista' mean in English?",
+    "correctAnswer": "artist, performer",
+    "incorrectAnswers": [
+      "artificial",
+      "article",
+      "architect"
+    ],
+    "explanation": "Artista is a noun meaning 'artist' or 'performer,' referring to someone who creates or performs art.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-068",
+    "type": "vocabulary",
+    "question": "What does 'contacto' mean in English?",
+    "correctAnswer": "contact",
+    "incorrectAnswers": [
+      "contrast",
+      "construct",
+      "conduct"
+    ],
+    "explanation": "Contacto is a masculine noun meaning 'contact,' referring to communication or connection with someone.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-069",
+    "type": "vocabulary",
+    "question": "What does 'veinte' mean in English?",
+    "correctAnswer": "twenty",
+    "incorrectAnswers": [
+      "five",
+      "fifteen",
+      "twenty-five"
+    ],
+    "explanation": "Veinte is a numeral meaning 'twenty,' the number 20.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-070",
+    "type": "vocabulary",
+    "question": "What does 'invitar' mean in English?",
+    "correctAnswer": "to invite",
+    "incorrectAnswers": [
+      "to invest",
+      "to invade",
+      "to invent"
+    ],
+    "explanation": "Invitar is a regular -ar verb meaning 'to invite,' asking someone to attend or participate in something.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-071",
+    "type": "vocabulary",
+    "question": "What does 'religioso' mean in English?",
+    "correctAnswer": "religious",
+    "incorrectAnswers": [
+      "religious relief",
+      "reliable",
+      "relaxed"
+    ],
+    "explanation": "Religioso is an adjective meaning 'religious,' describing someone devoted to faith or related to religion.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-072",
+    "type": "vocabulary",
+    "question": "What does 'cargo' mean in English?",
+    "correctAnswer": "position, charge, fee",
+    "incorrectAnswers": [
+      "car",
+      "card",
+      "care"
+    ],
+    "explanation": "Cargo is a masculine noun meaning 'position' (job), 'charge' (responsibility), or 'fee' (payment).",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-073",
+    "type": "vocabulary",
+    "question": "What does 'nación' mean in English?",
+    "correctAnswer": "nation",
+    "incorrectAnswers": [
+      "narration",
+      "vacation",
+      "station"
+    ],
+    "explanation": "Nación is a feminine noun meaning 'nation,' a sovereign country or state.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-074",
+    "type": "vocabulary",
+    "question": "What does 'ministro' mean in English?",
+    "correctAnswer": "(government) secretary, minister",
+    "incorrectAnswers": [
+      "ministry",
+      "minister (priest)",
+      "minute"
+    ],
+    "explanation": "Ministro is a masculine noun referring to a government official, minister, or secretary of state.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-075",
+    "type": "vocabulary",
+    "question": "What does 'televisión' mean in English?",
+    "correctAnswer": "TV, television",
+    "incorrectAnswers": [
+      "telephone",
+      "telescope",
+      "teletype"
+    ],
+    "explanation": "Televisión is a feminine noun meaning 'television' or 'TV,' the broadcast medium for viewing programs.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-076",
+    "type": "vocabulary",
+    "question": "What does 'determinado' mean in English?",
+    "correctAnswer": "determined, fixed",
+    "incorrectAnswers": [
+      "determining",
+      "determined to be",
+      "determine"
+    ],
+    "explanation": "Determinado is an adjective meaning 'determined,' 'fixed,' or 'specific,' describing something that has been settled.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-077",
+    "type": "vocabulary",
+    "question": "What does 'memoria' mean in English?",
+    "correctAnswer": "memory",
+    "incorrectAnswers": [
+      "memorandum",
+      "mermaid",
+      "memorial"
+    ],
+    "explanation": "Memoria is a feminine noun meaning 'memory,' the ability to recall information or past events.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-078",
+    "type": "vocabulary",
+    "question": "What does 'recoger' mean in English?",
+    "correctAnswer": "to pick up",
+    "incorrectAnswers": [
+      "to recollect",
+      "to recognize",
+      "to recover"
+    ],
+    "explanation": "Recoger is a regular -er verb meaning 'to pick up,' 'to gather,' or 'to collect something.'",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-079",
+    "type": "vocabulary",
+    "question": "What does 'treinta' mean in English?",
+    "correctAnswer": "thirty",
+    "incorrectAnswers": [
+      "thirteen",
+      "twenty",
+      "fifty"
+    ],
+    "explanation": "Treinta is a numeral meaning 'thirty,' the number 30.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-080",
+    "type": "vocabulary",
+    "question": "What does 'histórico' mean in English?",
+    "correctAnswer": "historical",
+    "incorrectAnswers": [
+      "history",
+      "hysteria",
+      "historic"
+    ],
+    "explanation": "Histórico is an adjective meaning 'historical,' referring to events or matters of the past.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-081",
+    "type": "vocabulary",
+    "question": "What does 'extender' mean in English?",
+    "correctAnswer": "to extend, spread",
+    "incorrectAnswers": [
+      "to extend (hand)",
+      "to intend",
+      "to offend"
+    ],
+    "explanation": "Extender is a regular -er verb meaning 'to extend,' 'to stretch,' or 'to spread something out.'",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-082",
+    "type": "vocabulary",
+    "question": "What does 'espíritu' mean in English?",
+    "correctAnswer": "spirit, ghost",
+    "incorrectAnswers": [
+      "spiritual",
+      "spiral",
+      "spice"
+    ],
+    "explanation": "Espíritu is a masculine noun meaning 'spirit' or 'ghost,' referring to a supernatural being or one's soul.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-083",
+    "type": "vocabulary",
+    "question": "What does 'lejos' mean in English?",
+    "correctAnswer": "far (away, off)",
+    "incorrectAnswers": [
+      "legs",
+      "lesson",
+      "less"
+    ],
+    "explanation": "Lejos is an adverb meaning 'far' or 'far away,' used to express distance from a location or person.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-084",
+    "type": "vocabulary",
+    "question": "What does 'mitad' mean in English?",
+    "correctAnswer": "half, middle",
+    "incorrectAnswers": [
+      "might",
+      "mixed",
+      "mite"
+    ],
+    "explanation": "Mitad is a feminine noun meaning 'half' or 'middle,' referring to one of two equal parts.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-085",
+    "type": "vocabulary",
+    "question": "What does 'actitud' mean in English?",
+    "correctAnswer": "attitude",
+    "incorrectAnswers": [
+      "actual",
+      "activity",
+      "action"
+    ],
+    "explanation": "Actitud is a feminine noun meaning 'attitude,' referring to a person's disposition or way of thinking.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-086",
+    "type": "vocabulary",
+    "question": "What does 'solución' mean in English?",
+    "correctAnswer": "solution, answer",
+    "incorrectAnswers": [
+      "evolution",
+      "pollution",
+      "resolution"
+    ],
+    "explanation": "Solución is a feminine noun meaning 'solution' or 'answer,' an answer to a problem or question.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-087",
+    "type": "vocabulary",
+    "question": "What does 'público' mean in English?",
+    "correctAnswer": "public, audience",
+    "incorrectAnswers": [
+      "publish",
+      "public relations",
+      "publicity"
+    ],
+    "explanation": "Público can be a masculine noun meaning 'audience' or an adjective meaning 'public,' referring to the general population.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-088",
+    "type": "vocabulary",
+    "question": "What does 'basar' mean in English?",
+    "correctAnswer": "to base on, base upon",
+    "incorrectAnswers": [
+      "to base",
+      "to bash",
+      "to grasp"
+    ],
+    "explanation": "Basar is a regular -ar verb meaning 'to base' or 'to found on,' used to establish something on a foundation.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-089",
+    "type": "vocabulary",
+    "question": "What does 'totalmente' mean in English?",
+    "correctAnswer": "totally, completely",
+    "incorrectAnswers": [
+      "total",
+      "total number",
+      "totally not"
+    ],
+    "explanation": "Totalmente is an adverb meaning 'totally' or 'completely,' indicating something is done to its fullest extent.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-090",
+    "type": "vocabulary",
+    "question": "What does 'total' mean in English?",
+    "correctAnswer": "total, entire",
+    "incorrectAnswers": [
+      "to tell",
+      "totally",
+      "textile"
+    ],
+    "explanation": "Total is an adjective meaning 'total' or 'entire,' referring to the complete amount or whole of something.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-091",
+    "type": "vocabulary",
+    "question": "What does 'sala' mean in English?",
+    "correctAnswer": "room, hall",
+    "incorrectAnswers": [
+      "salt",
+      "salary",
+      "salad"
+    ],
+    "explanation": "Sala is a feminine noun meaning 'room' or 'hall,' a large or formal space in a building.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-092",
+    "type": "vocabulary",
+    "question": "What does 'acerca' mean in English?",
+    "correctAnswer": "about, concerning",
+    "incorrectAnswers": [
+      "accurate",
+      "acre",
+      "accrue"
+    ],
+    "explanation": "Acerca is a preposition meaning 'about' or 'concerning,' used in the phrase 'acerca de' (about, regarding).",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-093",
+    "type": "vocabulary",
+    "question": "What does 'par' mean in English?",
+    "correctAnswer": "pair, couple",
+    "incorrectAnswers": [
+      "part",
+      "park",
+      "pardon"
+    ],
+    "explanation": "Par is a masculine/feminine noun meaning 'pair' or 'couple,' two things of the same kind together.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-094",
+    "type": "vocabulary",
+    "question": "What does 'apoyo' mean in English?",
+    "correctAnswer": "support, backing",
+    "incorrectAnswers": [
+      "appointment",
+      "approval",
+      "apostle"
+    ],
+    "explanation": "Apoyo is a masculine noun meaning 'support' or 'backing,' assistance or help offered to someone.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-095",
+    "type": "vocabulary",
+    "question": "What does 'territorio' mean in English?",
+    "correctAnswer": "territory",
+    "incorrectAnswers": [
+      "terror",
+      "terrain",
+      "terrace"
+    ],
+    "explanation": "Territorio is a masculine noun meaning 'territory,' an area of land controlled by or belonging to someone.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-096",
+    "type": "vocabulary",
+    "question": "What does 'loco' mean in English?",
+    "correctAnswer": "crazy, insane",
+    "incorrectAnswers": [
+      "local",
+      "locate",
+      "lock"
+    ],
+    "explanation": "Loco is an adjective meaning 'crazy' or 'insane,' used to describe someone not in their right mind.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-097",
+    "type": "vocabulary",
+    "question": "What does 'mensaje' mean in English?",
+    "correctAnswer": "message",
+    "incorrectAnswers": [
+      "messenger",
+      "massage",
+      "menace"
+    ],
+    "explanation": "Mensaje is a masculine noun meaning 'message,' information communicated from one person to another.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-098",
+    "type": "vocabulary",
+    "question": "What does 'unidad' mean in English?",
+    "correctAnswer": "unit, unity",
+    "incorrectAnswers": [
+      "unified",
+      "universe",
+      "unique"
+    ],
+    "explanation": "Unidad is a feminine noun meaning 'unit' or 'unity,' a single whole thing or the state of being united.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 2,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-099",
+    "type": "vocabulary",
+    "question": "What does 'mexicano' mean in English?",
+    "correctAnswer": "Mexican",
+    "incorrectAnswers": [
+      "Mexico",
+      "Mexican (food)",
+      "mixture"
+    ],
+    "explanation": "Mexicano is an adjective meaning 'Mexican,' relating to Mexico or its people and culture.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-100",
+    "type": "vocabulary",
+    "question": "What does 'práctica' mean in English?",
+    "correctAnswer": "practice, skill",
+    "incorrectAnswers": [
+      "practical",
+      "practice (verb)",
+      "practitioner"
+    ],
+    "explanation": "Práctica is a feminine noun meaning 'practice,' the act of repeatedly doing something to improve or habitual behavior.",
+    "categoryL1": "spanish",
+    "categoryL2": "spanish",
+    "difficulty": 1,
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-101",
+    "question": "What is the English meaning of the Spanish word 'teoría'?",
+    "correctAnswer": "theory",
+    "answerOptions": [
+      "theory",
+      "therapy",
+      "theological"
+    ],
+    "explanation": "Teoría comes from Latin 'theoria' and means a system of ideas intended to explain something based on general principles.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "abstract",
+      "rank-851"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-102",
+    "question": "What is the English meaning of the Spanish verb 'preocupar'?",
+    "correctAnswer": "to worry",
+    "answerOptions": [
+      "to worry",
+      "to occupy",
+      "to prepare"
+    ],
+    "explanation": "Preocupar means to cause concern or anxiety. Often used reflexively as 'preocuparse' (to worry oneself).",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "emotion",
+      "rank-852"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-103",
+    "question": "What is the English meaning of the Spanish word 'cuento'?",
+    "correctAnswer": "story, tale",
+    "answerOptions": [
+      "story, tale",
+      "account",
+      "calculation"
+    ],
+    "explanation": "Cuento refers to a narrative or story, typically fictional. Related to 'contar' (to tell or count).",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "literature",
+      "rank-853"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-104",
+    "question": "What is the English meaning of the Spanish verb 'exigir'?",
+    "correctAnswer": "to demand",
+    "answerOptions": [
+      "to demand",
+      "to examine",
+      "to explain"
+    ],
+    "explanation": "Exigir means to require or demand something from someone, often with authority or expectation.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-854"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-105",
+    "question": "What is the English meaning of the Spanish verb 'mejorar'?",
+    "correctAnswer": "to improve, get better",
+    "answerOptions": [
+      "to improve, get better",
+      "to merge",
+      "to measure"
+    ],
+    "explanation": "Mejorar means to make or become better in quality, condition, or performance.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "change",
+      "rank-855"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-106",
+    "question": "What is the English meaning of the Spanish adjective 'serio'?",
+    "correctAnswer": "serious",
+    "answerOptions": [
+      "serious",
+      "serene",
+      "serial"
+    ],
+    "explanation": "Serio describes something grave, earnest, or not joking. Can also mean respectable or trustworthy.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "adjective",
+      "descriptor",
+      "rank-856"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-107",
+    "question": "What is the English meaning of the Spanish word 'edificio'?",
+    "correctAnswer": "building",
+    "answerOptions": [
+      "building",
+      "edition",
+      "editing"
+    ],
+    "explanation": "Edificio refers to a structure or building, typically a substantial one used for human activities like work or residence.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "architecture",
+      "rank-857"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-108",
+    "question": "What is the English meaning of the Spanish word 'técnica'?",
+    "correctAnswer": "technique, skill",
+    "answerOptions": [
+      "technique, skill",
+      "technology",
+      "textile"
+    ],
+    "explanation": "Técnica refers to a method, procedure, or skill used in performing an activity or creating something.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "skill",
+      "rank-858"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-109",
+    "question": "What is the English meaning of the Spanish word 'noticia'?",
+    "correctAnswer": "news",
+    "answerOptions": [
+      "news",
+      "notice",
+      "notation"
+    ],
+    "explanation": "Noticia refers to information about recent events, typically delivered through media or communication.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "communication",
+      "rank-859"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-110",
+    "question": "What is the English meaning of the Spanish word 'carne'?",
+    "correctAnswer": "meat, flesh",
+    "answerOptions": [
+      "meat, flesh",
+      "carnation",
+      "carnival"
+    ],
+    "explanation": "Carne refers to the tissue of an animal, used as food, or the body of a human or animal.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "food",
+      "rank-860"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-111",
+    "question": "What is the English meaning of the Spanish adjective 'moderno'?",
+    "correctAnswer": "modern",
+    "answerOptions": [
+      "modern",
+      "moderate",
+      "modem"
+    ],
+    "explanation": "Moderno refers to something contemporary, current, or relating to recent times, as opposed to ancient or traditional.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "adjective",
+      "descriptor",
+      "rank-861"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-112",
+    "question": "What is the English meaning of the Spanish word 'alumno'?",
+    "correctAnswer": "student, pupil",
+    "answerOptions": [
+      "student, pupil",
+      "alumni",
+      "aluminium"
+    ],
+    "explanation": "Alumno refers to a person who is learning or studying at a school or educational institution.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "education",
+      "rank-862"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-113",
+    "question": "What is the English meaning of the Spanish word 'oro'?",
+    "correctAnswer": "gold",
+    "answerOptions": [
+      "gold",
+      "hour",
+      "orange"
+    ],
+    "explanation": "Oro is the precious metal element Au, valued for its color, rarity, and malleability. Also used metaphorically for something precious.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "material",
+      "rank-863"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-114",
+    "question": "What is the English meaning of the Spanish word 'escritor'?",
+    "correctAnswer": "writer",
+    "answerOptions": [
+      "writer",
+      "writing",
+      "scripture"
+    ],
+    "explanation": "Escritor refers to a person who writes, especially one who writes professionally or as a literary profession.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "profession",
+      "rank-864"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-115",
+    "question": "What is the English meaning of the Spanish word 'papá'?",
+    "correctAnswer": "dad",
+    "answerOptions": [
+      "dad",
+      "papa",
+      "papaya"
+    ],
+    "explanation": "Papá is an informal, affectionate term for father, equivalent to 'dad' or 'daddy' in English.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "family",
+      "rank-865"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-116",
+    "question": "What is the English meaning of the Spanish word 'teléfono'?",
+    "correctAnswer": "phone, telephone",
+    "answerOptions": [
+      "phone, telephone",
+      "telepathy",
+      "telecast"
+    ],
+    "explanation": "Teléfono is a device for transmitting sound or conversation over distance, derived from Greek 'tele' (far) and 'phono' (sound).",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "technology",
+      "rank-866"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-117",
+    "question": "What is the English meaning of the Spanish verb 'resolver'?",
+    "correctAnswer": "to resolve, settle, work out",
+    "answerOptions": [
+      "to resolve, settle, work out",
+      "to resolve again",
+      "to involve"
+    ],
+    "explanation": "Resolver means to find a solution to a problem, to determine, or to decide definitively on a course of action.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-867"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-118",
+    "question": "What is the English meaning of the Spanish word 'concepto'?",
+    "correctAnswer": "concept",
+    "answerOptions": [
+      "concept",
+      "concert",
+      "concentrate"
+    ],
+    "explanation": "Concepto refers to an abstract idea or general notion; a way of understanding or categorizing something.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "abstract",
+      "rank-868"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-119",
+    "question": "What is the English meaning of the Spanish word 'interior'?",
+    "correctAnswer": "interior, inside",
+    "answerOptions": [
+      "interior, inside",
+      "intermediate",
+      "internet"
+    ],
+    "explanation": "Interior refers to the inside or inner part of something, as opposed to the outside or exterior surface.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "spatial",
+      "rank-869"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-120",
+    "question": "What is the English meaning of the Spanish adjective 'rápido'?",
+    "correctAnswer": "quick, fast",
+    "answerOptions": [
+      "quick, fast",
+      "rapid response",
+      "rapids"
+    ],
+    "explanation": "Rápido describes something that moves or happens with great speed; swift or quick in motion or action.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "adjective",
+      "descriptor",
+      "rank-870"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-121",
+    "question": "What is the English meaning of the Spanish word 'crisis'?",
+    "correctAnswer": "crisis",
+    "answerOptions": [
+      "crisis",
+      "crisp",
+      "critical"
+    ],
+    "explanation": "Crisis refers to a time of intense difficulty or danger, a turning point where change is inevitable, or a sudden event requiring immediate action.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "situation",
+      "rank-871"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-122",
+    "question": "What is the English meaning of the Spanish adjective 'civil'?",
+    "correctAnswer": "civil",
+    "answerOptions": [
+      "civil",
+      "civilize",
+      "civilization"
+    ],
+    "explanation": "Civil refers to citizens and their relations, or non-military affairs; also describes courteous and polite behavior.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "adjective",
+      "descriptor",
+      "rank-872"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-123",
+    "question": "What is the English meaning of the Spanish word 'pelo'?",
+    "correctAnswer": "hair",
+    "answerOptions": [
+      "hair",
+      "peel",
+      "pale"
+    ],
+    "explanation": "Pelo refers to the thin, thread-like strands growing from the skin of a human or animal; hair or fur.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "body",
+      "rank-873"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-124",
+    "question": "What is the English meaning of the Spanish word 'formación'?",
+    "correctAnswer": "formation, education",
+    "answerOptions": [
+      "formation, education",
+      "formal",
+      "formula"
+    ],
+    "explanation": "Formación refers to the arrangement or structure of something, or the process of acquiring knowledge and training.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "abstract",
+      "rank-874"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-125",
+    "question": "What is the English meaning of the Spanish adjective 'simple'?",
+    "correctAnswer": "simple, mere, simpleminded",
+    "answerOptions": [
+      "simple, mere, simpleminded",
+      "simulate",
+      "simultaneous"
+    ],
+    "explanation": "Simple describes something uncomplicated or easy to understand; it can also mean basic or just one thing, and sometimes carries a negative connotation of naïveté.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "adjective",
+      "descriptor",
+      "rank-875"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-126",
+    "question": "What is the English meaning of the Spanish adjective 'comercial'?",
+    "correctAnswer": "commercial, shopping",
+    "answerOptions": [
+      "commercial, shopping",
+      "commerce",
+      "communal"
+    ],
+    "explanation": "Comercial relates to buying and selling of goods, business transactions, or areas focused on retail and commerce.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "adjective",
+      "descriptor",
+      "rank-876"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-127",
+    "question": "What is the English meaning of the Spanish word 'riesgo'?",
+    "correctAnswer": "risk",
+    "answerOptions": [
+      "risk",
+      "rising",
+      "rough"
+    ],
+    "explanation": "Riesgo refers to a possibility of danger or loss; the chance that something undesirable may happen.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "abstract",
+      "rank-877"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-128",
+    "question": "What is the English meaning of the Spanish verb 'imponer'?",
+    "correctAnswer": "to impose, enforce",
+    "answerOptions": [
+      "to impose, enforce",
+      "to import",
+      "to impugn"
+    ],
+    "explanation": "Imponer means to force someone to accept or obey something; to establish or apply with authority.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-878"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-129",
+    "question": "What is the English meaning of the Spanish adjective 'fundamental'?",
+    "correctAnswer": "fundamental",
+    "answerOptions": [
+      "fundamental",
+      "funded",
+      "functionary"
+    ],
+    "explanation": "Fundamental refers to something that forms the essential base or core; of utmost importance or forming the foundation.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "adjective",
+      "descriptor",
+      "rank-879"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-130",
+    "question": "What is the English meaning of the Spanish adjective 'amplio'?",
+    "correctAnswer": "wide, ample, broad",
+    "answerOptions": [
+      "wide, ample, broad",
+      "amplify",
+      "amplitude"
+    ],
+    "explanation": "Amplio describes something that has great extent or scope; spacious, wide-ranging, or sufficient in quantity.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "adjective",
+      "descriptor",
+      "rank-880"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-131",
+    "question": "What is the English meaning of the Spanish verb 'afectar'?",
+    "correctAnswer": "to affect",
+    "answerOptions": [
+      "to affect",
+      "to affect emotionally",
+      "to pretend"
+    ],
+    "explanation": "Afectar means to have an influence or effect on something or someone; to change or impact in some way.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-881"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-132",
+    "question": "What is the English meaning of the Spanish word 'foto'?",
+    "correctAnswer": "photo, picture",
+    "answerOptions": [
+      "photo, picture",
+      "photography",
+      "photosynthesis"
+    ],
+    "explanation": "Foto is a shortened form of 'fotografía', referring to an image created by exposing light-sensitive material or a digital camera.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "visual",
+      "rank-882"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-133",
+    "question": "What is the English meaning of the Spanish verb 'reducir'?",
+    "correctAnswer": "to reduce",
+    "answerOptions": [
+      "to reduce",
+      "to seduce",
+      "to produce"
+    ],
+    "explanation": "Reducir means to make something smaller in size, amount, degree, or extent; to diminish or lessen.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-883"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-134",
+    "question": "What is the English meaning of the Spanish word 'fuego'?",
+    "correctAnswer": "fire, gunfire",
+    "answerOptions": [
+      "fire, gunfire",
+      "fury",
+      "fountain"
+    ],
+    "explanation": "Fuego refers to the rapid oxidation of a substance with the release of heat and light, or gunfire in military contexts.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "element",
+      "rank-884"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-135",
+    "question": "What is the English meaning of the Spanish verb 'aprovechar'?",
+    "correctAnswer": "to take advantage of",
+    "answerOptions": [
+      "to take advantage of",
+      "to approach",
+      "to appropriate"
+    ],
+    "explanation": "Aprovechar means to make use of or benefit from an opportunity, resource, or situation.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-885"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-136",
+    "question": "What is the English meaning of the Spanish verb 'celebrar'?",
+    "correctAnswer": "to celebrate",
+    "answerOptions": [
+      "to celebrate",
+      "to commemorate",
+      "to celibate"
+    ],
+    "explanation": "Celebrar means to honor or mark an important occasion or achievement with activities and festivities, or to perform a religious ceremony.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-886"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-137",
+    "question": "What is the English meaning of the Spanish word 'error'?",
+    "correctAnswer": "error, mistake",
+    "answerOptions": [
+      "error, mistake",
+      "heir",
+      "erase"
+    ],
+    "explanation": "Error refers to an incorrect action or decision; a mistake made through misunderstanding, carelessness, or inaccuracy.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "abstract",
+      "rank-887"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-138",
+    "question": "What is the English meaning of the Spanish word 'perro'?",
+    "correctAnswer": "dog",
+    "answerOptions": [
+      "dog",
+      "person",
+      "pear"
+    ],
+    "explanation": "Perro refers to a domesticated canine animal, typically kept as a pet or working animal.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "animal",
+      "rank-888"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-139",
+    "question": "What is the English meaning of the Spanish word 'piso'?",
+    "correctAnswer": "floor, story",
+    "answerOptions": [
+      "floor, story",
+      "step",
+      "peso"
+    ],
+    "explanation": "Piso refers to the level surface on which one walks in a building, or a level or story of a building.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "architecture",
+      "rank-889"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-140",
+    "question": "What is the English meaning of the Spanish word 'gusto'?",
+    "correctAnswer": "pleasure, taste, preference",
+    "answerOptions": [
+      "pleasure, taste, preference",
+      "guest",
+      "gust"
+    ],
+    "explanation": "Gusto refers to the sensation of flavor, aesthetic appreciation, or one's personal preference or inclination.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "sensory",
+      "rank-890"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-141",
+    "question": "What is the English meaning of the Spanish adjective 'bonito'?",
+    "correctAnswer": "pretty, nice",
+    "answerOptions": [
+      "pretty, nice",
+      "bonus",
+      "bonnet"
+    ],
+    "explanation": "Bonito describes something that is aesthetically pleasing, attractive, or of good quality; pretty or nice.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "adjective",
+      "descriptor",
+      "rank-891"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-142",
+    "question": "What is the English meaning of the Spanish verb 'medir'?",
+    "correctAnswer": "to measure",
+    "answerOptions": [
+      "to measure",
+      "to meditate",
+      "to remedy"
+    ],
+    "explanation": "Medir means to determine the size, length, volume, or quantity of something using an instrument or standard.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-892"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-143",
+    "question": "What is the English meaning of the Spanish word 'pareja'?",
+    "correctAnswer": "couple, pair",
+    "answerOptions": [
+      "couple, pair",
+      "parallel",
+      "parent"
+    ],
+    "explanation": "Pareja refers to two people in a romantic relationship, or two things of the same kind grouped together.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "relationship",
+      "rank-893"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-144",
+    "question": "What is the English meaning of the Spanish verb 'despertar'?",
+    "correctAnswer": "to wake (up), arouse",
+    "answerOptions": [
+      "to wake (up), arouse",
+      "to disperse",
+      "to depart"
+    ],
+    "explanation": "Despertar means to wake up from sleep or to rouse someone from sleep; can also mean to stir up emotion or interest.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-894"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-145",
+    "question": "What is the English meaning of the Spanish verb 'pesar'?",
+    "correctAnswer": "to weigh",
+    "answerOptions": [
+      "to weigh",
+      "to pass",
+      "to regret"
+    ],
+    "explanation": "Pesar means to determine the weight of something using a scale or balance; also used in the phrase 'a pesar de' (despite).",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-895"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-146",
+    "question": "What is the English meaning of the Spanish word 'costa'?",
+    "correctAnswer": "coast",
+    "answerOptions": [
+      "coast",
+      "cost",
+      "custom"
+    ],
+    "explanation": "Costa refers to the land along the edge of an ocean, sea, or large lake; a shoreline.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "noun",
+      "geography",
+      "rank-896"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-147",
+    "question": "What is the English meaning of the Spanish verb 'enfrentar'?",
+    "correctAnswer": "to confront, face",
+    "answerOptions": [
+      "to confront, face",
+      "to front",
+      "to confuse"
+    ],
+    "explanation": "Enfrentar means to face someone or something directly, often in a confrontational or challenging context.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-897"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-148",
+    "question": "What is the English meaning of the Spanish verb 'corresponder'?",
+    "correctAnswer": "to correspond with",
+    "answerOptions": [
+      "to correspond with",
+      "to correspond to",
+      "to correlate"
+    ],
+    "explanation": "Corresponder means to communicate by exchanging letters or messages, or to be in agreement with something.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-898"
+    ],
+    "difficulty": "intermediate",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-149",
+    "question": "What is the English meaning of the Spanish verb 'escapar'?",
+    "correctAnswer": "to escape",
+    "answerOptions": [
+      "to escape",
+      "to scrape",
+      "to escalate"
+    ],
+    "explanation": "Escapar means to get away from a place or situation, usually by fleeing or avoiding something or someone.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-899"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-150",
+    "question": "What is the English meaning of the Spanish verb 'causar'?",
+    "correctAnswer": "to cause, bring about",
+    "answerOptions": [
+      "to cause, bring about",
+      "to pause",
+      "to close"
+    ],
+    "explanation": "Causar means to be the cause or reason for something; to bring something into existence or effect.",
+    "type": "vocabulary",
+    "categoryL1": "language",
+    "categoryL2": "spanish",
+    "tags": [
+      "vocabulary",
+      "verb",
+      "action",
+      "rank-900"
+    ],
+    "difficulty": "beginner",
+    "rarity": "common",
+    "sourceLanguage": "es",
+    "targetLanguage": "en",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-151",
+    "question": "What does 'grave' mean in Spanish?",
+    "answers": [
+      "serious, solemn",
+      "heavy, weighty",
+      "dangerous, risky"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "grave",
+    "definition": "serious, solemn",
+    "partOfSpeech": "adj",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Grave is an adjective meaning serious or solemn in Spanish, often used to describe a grave situation or grave matter."
+  },
+  {
+    "id": "es-b04-152",
+    "question": "What does 'viajar' mean in Spanish?",
+    "answers": [
+      "to travel",
+      "to visit",
+      "to move quickly"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "viajar",
+    "definition": "to travel",
+    "partOfSpeech": "v",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Viajar is a verb that means to travel or journey to different places."
+  },
+  {
+    "id": "es-b04-153",
+    "question": "What does 'cámara' mean in Spanish?",
+    "answers": [
+      "camera, chamber",
+      "light, illumination",
+      "frame, picture"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "cámara",
+    "definition": "camera, chamber",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Cámara is a feminine noun meaning camera (photographic device) or chamber (an enclosed space)."
+  },
+  {
+    "id": "es-b04-154",
+    "question": "What does 'vía' mean in Spanish?",
+    "answers": [
+      "road, way",
+      "trip, journey",
+      "street, avenue"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "vía",
+    "definition": "road, way",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Vía is a feminine noun meaning road or way. It also appears in the phrase 'por vía' meaning 'by means of'."
+  },
+  {
+    "id": "es-b04-155",
+    "question": "What does 'ejército' mean in Spanish?",
+    "answers": [
+      "army",
+      "soldiers, troops",
+      "military force"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "ejército",
+    "definition": "army",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Ejército is a masculine noun meaning army, a large organized group of soldiers."
+  },
+  {
+    "id": "es-b04-156",
+    "question": "What does 'comida' mean in Spanish?",
+    "answers": [
+      "food, meal",
+      "lunch, dinner",
+      "grocery, provisions"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "comida",
+    "definition": "food, meal",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Comida is a feminine noun meaning food or meal, particularly referring to the main meal of the day."
+  },
+  {
+    "id": "es-b04-157",
+    "question": "What does 'caballo' mean in Spanish?",
+    "answers": [
+      "horse",
+      "donkey, mule",
+      "cattle, livestock"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "caballo",
+    "definition": "horse",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Caballo is a masculine noun meaning horse, a large domesticated animal used for riding or work."
+  },
+  {
+    "id": "es-b04-158",
+    "question": "What does 'feliz' mean in Spanish?",
+    "answers": [
+      "happy, fortunate",
+      "lucky, blessed",
+      "joyful, merry"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "feliz",
+    "definition": "happy, fortunate",
+    "partOfSpeech": "adj",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Feliz is an adjective meaning happy or fortunate, describing a state of contentment or good luck."
+  },
+  {
+    "id": "es-b04-159",
+    "question": "What does 'mayo' mean in Spanish?",
+    "answers": [
+      "May",
+      "mayonnaise, sauce",
+      "young, youthful"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "mayo",
+    "definition": "May",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Mayo is a masculine noun referring to the month of May in the Spanish calendar."
+  },
+  {
+    "id": "es-b04-160",
+    "question": "What does 'plata' mean in Spanish?",
+    "answers": [
+      "silver, money",
+      "metal, ore",
+      "coin, currency"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "plata",
+    "definition": "silver, money",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Plata is a feminine noun meaning silver (the precious metal) or money (colloquial usage in some Spanish-speaking regions)."
+  },
+  {
+    "id": "es-b04-161",
+    "question": "What does 'visita' mean in Spanish?",
+    "answers": [
+      "visit, visitor, guest",
+      "meeting, appointment",
+      "tour, sightseeing"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "visita",
+    "definition": "visit, visitor, guest",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Visita is a feminine noun meaning visit (the act of visiting) or visitor/guest (a person who visits)."
+  },
+  {
+    "id": "es-b04-162",
+    "question": "What does 'rodear' mean in Spanish?",
+    "answers": [
+      "to surround",
+      "to go around, circle",
+      "to enclose, encompass"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "rodear",
+    "definition": "to surround",
+    "partOfSpeech": "v",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Rodear is a verb meaning to surround or encircle something or someone."
+  },
+  {
+    "id": "es-b04-163",
+    "question": "What does 'adquirir' mean in Spanish?",
+    "answers": [
+      "to acquire, get",
+      "to purchase, buy",
+      "to obtain, receive"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "adquirir",
+    "definition": "to acquire, get",
+    "partOfSpeech": "v",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Adquirir is a verb meaning to acquire or get something, often through purchase or effort."
+  },
+  {
+    "id": "es-b04-164",
+    "question": "What does 'consejo' mean in Spanish?",
+    "answers": [
+      "advice, council, counsel",
+      "guidance, instruction",
+      "meeting, assembly"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "consejo",
+    "definition": "advice, council, counsel",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Consejo is a masculine noun meaning advice (recommendation) or council (a group of people)."
+  },
+  {
+    "id": "es-b04-165",
+    "question": "What does 'responsabilidad' mean in Spanish?",
+    "answers": [
+      "responsibility",
+      "obligation, duty",
+      "accountability, liability"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "responsabilidad",
+    "definition": "responsibility",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Responsabilidad is a feminine noun meaning responsibility, the state of being responsible for something."
+  },
+  {
+    "id": "es-b04-166",
+    "question": "What does 'hoja' mean in Spanish?",
+    "answers": [
+      "sheet, leaf",
+      "paper, page",
+      "blade, foil"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "hoja",
+    "definition": "sheet, leaf",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Hoja is a feminine noun meaning leaf (from a plant) or sheet (of paper)."
+  },
+  {
+    "id": "es-b04-167",
+    "question": "What does 'encuentro' mean in Spanish?",
+    "answers": [
+      "meeting, game, skirmish",
+      "encounter, meeting",
+      "match, competition"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "encuentro",
+    "definition": "meeting, game, skirmish",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Encuentro is a masculine noun meaning meeting, game, or skirmish—an encounter or confrontation."
+  },
+  {
+    "id": "es-b04-168",
+    "question": "What does 'arma' mean in Spanish?",
+    "answers": [
+      "weapon",
+      "tool, instrument",
+      "device, apparatus"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "arma",
+    "definition": "weapon",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Arma is a feminine noun meaning weapon, an instrument used for fighting or protection."
+  },
+  {
+    "id": "es-b04-169",
+    "question": "What does 'alejar' mean in Spanish?",
+    "answers": [
+      "to move away",
+      "to distance, remove",
+      "to go away, depart"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "alejar",
+    "definition": "to move away",
+    "partOfSpeech": "v",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Alejar is a verb meaning to move away or distance something from a particular place."
+  },
+  {
+    "id": "es-b04-170",
+    "question": "What does 'revista' mean in Spanish?",
+    "answers": [
+      "magazine, journal",
+      "review, inspection",
+      "publication, paper"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "revista",
+    "definition": "magazine, journal",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Revista is a feminine noun meaning magazine or journal, a periodical publication."
+  },
+  {
+    "id": "es-b04-171",
+    "question": "What does 'pertenecer' mean in Spanish?",
+    "answers": [
+      "to belong",
+      "to own, possess",
+      "to relate to, concern"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "pertenecer",
+    "definition": "to belong",
+    "partOfSpeech": "v",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Pertenecer is a verb meaning to belong to someone or something, or to be a member of a group."
+  },
+  {
+    "id": "es-b04-172",
+    "question": "What does 'debido' mean in Spanish?",
+    "answers": [
+      "due to",
+      "necessary, proper",
+      "owed, expected"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "debido",
+    "definition": "due to",
+    "partOfSpeech": "adj",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Debido is an adjective commonly used in the phrase 'debido a' meaning 'due to' or 'because of'."
+  },
+  {
+    "id": "es-b04-173",
+    "question": "What does 'agregar' mean in Spanish?",
+    "answers": [
+      "to add, gather",
+      "to include, incorporate",
+      "to join, unite"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "agregar",
+    "definition": "to add, gather",
+    "partOfSpeech": "v",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Agregar is a verb meaning to add or gather things together."
+  },
+  {
+    "id": "es-b04-174",
+    "question": "What does 'trabajador' mean in Spanish?",
+    "answers": [
+      "worker, laborer",
+      "employee, staff",
+      "person who works"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "trabajador",
+    "definition": "worker, laborer",
+    "partOfSpeech": "nm/f",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Trabajador is a masculine/feminine noun meaning worker or laborer, a person who performs work."
+  },
+  {
+    "id": "es-b04-175",
+    "question": "What does 'generación' mean in Spanish?",
+    "answers": [
+      "generation",
+      "age group, cohort",
+      "offspring, descendants"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "generación",
+    "definition": "generation",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Generación is a feminine noun meaning generation, a group of people born around the same time."
+  },
+  {
+    "id": "es-b04-176",
+    "question": "What does 'ciudadano' mean in Spanish?",
+    "answers": [
+      "citizen",
+      "person, individual",
+      "resident, inhabitant"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "ciudadano",
+    "definition": "citizen",
+    "partOfSpeech": "nm/f",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Ciudadano is a masculine/feminine noun meaning citizen, a member of a state or nation."
+  },
+  {
+    "id": "es-b04-177",
+    "question": "What does 'propiedad' mean in Spanish?",
+    "answers": [
+      "property",
+      "possession, asset",
+      "ownership, title"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "propiedad",
+    "definition": "property",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Propiedad is a feminine noun meaning property, something that is owned or a piece of real estate."
+  },
+  {
+    "id": "es-b04-178",
+    "question": "What does 'gesto' mean in Spanish?",
+    "answers": [
+      "gesture",
+      "movement, motion",
+      "sign, signal"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "gesto",
+    "definition": "gesture",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Gesto is a masculine noun meaning gesture, a movement of the body used to express meaning."
+  },
+  {
+    "id": "es-b04-179",
+    "question": "What does 'blog' mean in Spanish?",
+    "answers": [
+      "blog",
+      "website, web page",
+      "online journal, diary"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "blog",
+    "definition": "blog",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Blog is a masculine noun (borrowed from English) meaning blog, an online platform for publishing content."
+  },
+  {
+    "id": "es-b04-180",
+    "question": "What does 'departamento' mean in Spanish?",
+    "answers": [
+      "department, apartment",
+      "section, division",
+      "office, bureau"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "departamento",
+    "definition": "department, apartment",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Departamento is a masculine noun meaning department (a section of an organization) or apartment (a residential unit)."
+  },
+  {
+    "id": "es-b04-181",
+    "question": "What does 'agosto' mean in Spanish?",
+    "answers": [
+      "August",
+      "summer month, season",
+      "harvest time, season"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "agosto",
+    "definition": "August",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Agosto is a masculine noun referring to the month of August in the Spanish calendar."
+  },
+  {
+    "id": "es-b04-182",
+    "question": "What does 'pasado' mean in Spanish?",
+    "answers": [
+      "past, last",
+      "previous, former",
+      "gone, finished"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "pasado",
+    "definition": "past, last",
+    "partOfSpeech": "adj",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Pasado is an adjective meaning past or last, referring to something that has already happened or a previous time."
+  },
+  {
+    "id": "es-b04-183",
+    "question": "What does 'radio' mean in Spanish?",
+    "answers": [
+      "radio",
+      "broadcast, station",
+      "communication, transmission"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "radio",
+    "definition": "radio",
+    "partOfSpeech": "nmf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Radio is a masculine/feminine noun meaning radio, either the device (masculine) or the medium of communication (feminine)."
+  },
+  {
+    "id": "es-b04-184",
+    "question": "What does 'emplear' mean in Spanish?",
+    "answers": [
+      "to employ",
+      "to use, utilize",
+      "to hire, engage"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "emplear",
+    "definition": "to employ",
+    "partOfSpeech": "v",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Emplear is a verb meaning to employ (hire) or to use/utilize something."
+  },
+  {
+    "id": "es-b04-185",
+    "question": "What does 'máximo' mean in Spanish?",
+    "answers": [
+      "maximum",
+      "highest, greatest",
+      "largest, supreme"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "máximo",
+    "definition": "maximum",
+    "partOfSpeech": "adj",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Máximo is an adjective meaning maximum or highest, the greatest possible amount or level."
+  },
+  {
+    "id": "es-b04-186",
+    "question": "What does 'sorprender' mean in Spanish?",
+    "answers": [
+      "to surprise",
+      "to astonish, amaze",
+      "to catch, catch off guard"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "sorprender",
+    "definition": "to surprise",
+    "partOfSpeech": "v",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Sorprender is a verb meaning to surprise or astonish someone unexpectedly."
+  },
+  {
+    "id": "es-b04-187",
+    "question": "What does 'detalle' mean in Spanish?",
+    "answers": [
+      "detail",
+      "specific aspect, feature",
+      "small part, element"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "detalle",
+    "definition": "detail",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Detalle is a masculine noun meaning detail, a small but important piece of information."
+  },
+  {
+    "id": "es-b04-188",
+    "question": "What does 'puro' mean in Spanish?",
+    "answers": [
+      "pure, clean",
+      "unmixed, unadulterated",
+      "genuine, authentic"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "puro",
+    "definition": "pure, clean",
+    "partOfSpeech": "adj",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Puro is an adjective meaning pure or clean, free from contamination or admixture."
+  },
+  {
+    "id": "es-b04-189",
+    "question": "What does 'disfrutar' mean in Spanish?",
+    "answers": [
+      "to enjoy",
+      "to appreciate, relish",
+      "to have fun, delight"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "disfrutar",
+    "definition": "to enjoy",
+    "partOfSpeech": "v",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Disfrutar is a verb meaning to enjoy or take pleasure in something."
+  },
+  {
+    "id": "es-b04-190",
+    "question": "What does 'barrio' mean in Spanish?",
+    "answers": [
+      "neighborhood, district",
+      "area, region",
+      "locality, quarter"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "barrio",
+    "definition": "neighborhood, district",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Barrio is a masculine noun meaning neighborhood or district, a specific area of a city."
+  },
+  {
+    "id": "es-b04-191",
+    "question": "What does 'sentimiento' mean in Spanish?",
+    "answers": [
+      "feeling, sentiment",
+      "emotion, sensation",
+      "impression, thought"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "sentimiento",
+    "definition": "feeling, sentiment",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Sentimiento is a masculine noun meaning feeling or sentiment, an emotional state or response."
+  },
+  {
+    "id": "es-b04-192",
+    "question": "What does 'espalda' mean in Spanish?",
+    "answers": [
+      "back (body)",
+      "rear, behind",
+      "spine, backbone"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "espalda",
+    "definition": "back (body)",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Espalda is a feminine noun meaning back, the rear part of the human body."
+  },
+  {
+    "id": "es-b04-193",
+    "question": "What does 'fe' mean in Spanish?",
+    "answers": [
+      "faith",
+      "belief, conviction",
+      "trust, confidence"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "fe",
+    "definition": "faith",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Fe is a feminine noun meaning faith, belief or trust in something or someone."
+  },
+  {
+    "id": "es-b04-194",
+    "question": "What does 'distancia' mean in Spanish?",
+    "answers": [
+      "distance",
+      "space, interval",
+      "separation, gap"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "distancia",
+    "definition": "distance",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Distancia is a feminine noun meaning distance, the space between two points or objects."
+  },
+  {
+    "id": "es-b04-195",
+    "question": "What does 'calor' mean in Spanish?",
+    "answers": [
+      "heat, warmth",
+      "temperature, fever",
+      "hotness, burning"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "calor",
+    "definition": "heat, warmth",
+    "partOfSpeech": "nm",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Calor is a masculine noun meaning heat or warmth, the energy that causes temperature increase."
+  },
+  {
+    "id": "es-b04-196",
+    "question": "What does 'conciencia' mean in Spanish?",
+    "answers": [
+      "conscience, consciousness",
+      "awareness, understanding",
+      "sense, perception"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "conciencia",
+    "definition": "conscience, consciousness",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Conciencia is a feminine noun meaning conscience (moral sense) or consciousness (awareness)."
+  },
+  {
+    "id": "es-b04-197",
+    "question": "What does 'reunión' mean in Spanish?",
+    "answers": [
+      "meeting, reunion",
+      "gathering, assembly",
+      "conference, session"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "reunión",
+    "definition": "meeting, reunion",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Reunión is a feminine noun meaning meeting or reunion, a gathering of people."
+  },
+  {
+    "id": "es-b04-198",
+    "question": "What does 'finalmente' mean in Spanish?",
+    "answers": [
+      "finally, at last",
+      "ultimately, in the end",
+      "conclusively, at length"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "finalmente",
+    "definition": "finally, at last",
+    "partOfSpeech": "adv",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Finalmente is an adverb meaning finally or at last, indicating the conclusion of a series of events."
+  },
+  {
+    "id": "es-b04-199",
+    "question": "What does 'sonar' mean in Spanish?",
+    "answers": [
+      "to sound, ring",
+      "to ring, chime",
+      "to appear, seem"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "sonar",
+    "definition": "to sound, ring",
+    "partOfSpeech": "v",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Sonar is a verb meaning to sound or ring, to make or produce a sound."
+  },
+  {
+    "id": "es-b04-200",
+    "question": "What does 'defensa' mean in Spanish?",
+    "answers": [
+      "defense, plea",
+      "protection, shield",
+      "guard, safeguard"
+    ],
+    "correctAnswer": 0,
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "word": "defensa",
+    "definition": "defense, plea",
+    "partOfSpeech": "nf",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z",
+    "explanation": "Defensa is a feminine noun meaning defense or protection, action taken to guard against attack."
+  },
+  {
+    "id": "es-b04-201",
+    "front": "What does 'justicia' mean?",
+    "back": "Justice, fairness",
+    "options": [
+      "Justice, fairness",
+      "Judgment, decision",
+      "Obligation, duty"
+    ],
+    "explanation": "Justicia refers to the concept of justice and fairness, derived from Latin 'justitia'.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-202",
+    "front": "What does 'cine' mean?",
+    "back": "Cinema, movie theater",
+    "options": [
+      "Cinema, movie theater",
+      "Theater stage",
+      "Cinema ticket"
+    ],
+    "explanation": "Cine is the Spanish word for cinema or movie theater, commonly used in Spanish-speaking countries.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-203",
+    "front": "What does 'existencia' mean?",
+    "back": "Existence, life",
+    "options": [
+      "Existence, life",
+      "Persistence, continuity",
+      "Experience, event"
+    ],
+    "explanation": "Existencia means existence or life, referring to the state or fact of existing.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-204",
+    "front": "What does 'grado' mean?",
+    "back": "Degree, grade",
+    "options": [
+      "Degree, grade",
+      "Level of importance",
+      "Temperature scale"
+    ],
+    "explanation": "Grado refers to a degree or grade, used in academic, military, or measurement contexts.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-205",
+    "front": "What does 'ganas' mean?",
+    "back": "Desire",
+    "options": [
+      "Desire",
+      "Earnings, gains",
+      "Willingness, eagerness"
+    ],
+    "explanation": "Ganas means desire or willingness. The phrase 'tener ganas' means 'to feel like' or 'to want to'.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-206",
+    "front": "What does 'plantear' mean?",
+    "back": "To propose, present",
+    "options": [
+      "To propose, present",
+      "To plant, place",
+      "To stand, pose"
+    ],
+    "explanation": "Plantear means to propose, present, or raise (a question or issue). It's commonly used in formal contexts.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-207",
+    "front": "What does 'madera' mean?",
+    "back": "Wood",
+    "options": [
+      "Wood",
+      "Lumber, timber",
+      "Wooden furniture"
+    ],
+    "explanation": "Madera is the Spanish word for wood, referring to the material from trees.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-208",
+    "front": "What does 'menudo' mean?",
+    "back": "Often (a menudo)",
+    "options": [
+      "Often",
+      "Small, tiny",
+      "Frequently, regularly"
+    ],
+    "explanation": "Menudo means often or frequently, used in the phrase 'a menudo'. It can also mean small or tiny as an adjective.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-209",
+    "front": "What does 'probar' mean?",
+    "back": "To test, prove, try",
+    "options": [
+      "To test, prove, try",
+      "To taste, sample",
+      "To attempt, endeavor"
+    ],
+    "explanation": "Probar has multiple meanings: to test, prove, try, or taste. Context determines the specific meaning.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-210",
+    "front": "What does 'destino' mean?",
+    "back": "Destination, destiny",
+    "options": [
+      "Destination, destiny",
+      "Arrival point",
+      "Purpose, goal"
+    ],
+    "explanation": "Destino means destination or destiny, referring to where something/someone is headed or their fate.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-211",
+    "front": "What does 'café' mean?",
+    "back": "Coffee, cafe",
+    "options": [
+      "Coffee, cafe",
+      "Tea shop",
+      "Cafeteria, restaurant"
+    ],
+    "explanation": "Café refers to coffee or a cafe/coffee shop. It's a commonly used word in Spanish-speaking cultures.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-212",
+    "front": "What does 'contenido' mean?",
+    "back": "Contents, content",
+    "options": [
+      "Contents, content",
+      "Container, vessel",
+      "Capacity, volume"
+    ],
+    "explanation": "Contenido means contents or content, referring to what is contained within something.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-213",
+    "front": "What does 'cincuenta' mean?",
+    "back": "Fifty",
+    "options": [
+      "Fifty",
+      "Fifteen",
+      "Five"
+    ],
+    "explanation": "Cincuenta is the Spanish word for the number fifty (50).",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-214",
+    "front": "What does 'pintura' mean?",
+    "back": "Painting, paint",
+    "options": [
+      "Painting, paint",
+      "Picture, image",
+      "Drawing, sketch"
+    ],
+    "explanation": "Pintura refers to painting (the artwork) or paint (the substance used to paint).",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-215",
+    "front": "What does 'marido' mean?",
+    "back": "Husband",
+    "options": [
+      "Husband",
+      "Wife, spouse",
+      "Partner, companion"
+    ],
+    "explanation": "Marido is the Spanish word for husband, referring to a married man.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-216",
+    "front": "What does 'diario' mean?",
+    "back": "Newspaper",
+    "options": [
+      "Newspaper",
+      "Daily journal",
+      "Magazine, publication"
+    ],
+    "explanation": "Diario means newspaper or daily publication. It can also mean 'daily' as an adjective.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-217",
+    "front": "What does 'recorrer' mean?",
+    "back": "To travel, cover (distance)",
+    "options": [
+      "To travel, cover distance",
+      "To walk around",
+      "To tour, visit"
+    ],
+    "explanation": "Recorrer means to travel, cover a distance, or traverse a path or area.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-218",
+    "front": "What does 'hallar' mean?",
+    "back": "To find (out)",
+    "options": [
+      "To find out",
+      "To lose, misplace",
+      "To search, look for"
+    ],
+    "explanation": "Hallar means to find or discover something. It's a more formal or literary term than 'encontrar'.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-219",
+    "front": "What does 'poseer' mean?",
+    "back": "To possess, own",
+    "options": [
+      "To possess, own",
+      "To have temporarily",
+      "To hold, carry"
+    ],
+    "explanation": "Poseer means to possess or own something, indicating permanent ownership.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-220",
+    "front": "What does 'altura' mean?",
+    "back": "Height, altitude",
+    "options": [
+      "Height, altitude",
+      "Width, breadth",
+      "Depth, length"
+    ],
+    "explanation": "Altura refers to height or altitude, measuring vertical distance.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-221",
+    "front": "What does 'pecho' mean?",
+    "back": "Chest, breast",
+    "options": [
+      "Chest, breast",
+      "Heart, emotion",
+      "Shoulders, upper back"
+    ],
+    "explanation": "Pecho refers to the chest or breast area of the body.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-222",
+    "front": "What does 'costumbre' mean?",
+    "back": "Habit, custom, usage",
+    "options": [
+      "Habit, custom, usage",
+      "Clothing, garment",
+      "Fashion, style"
+    ],
+    "explanation": "Costumbre means habit, custom, or traditional usage. It refers to what people typically do.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-223",
+    "front": "What does 'recién' mean?",
+    "back": "Recently, just",
+    "options": [
+      "Recently, just",
+      "Immediately, right now",
+      "Soon, shortly"
+    ],
+    "explanation": "Recién means recently or just, often used in phrases like 'recién llegado' (just arrived).",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-224",
+    "front": "What does 'estrella' mean?",
+    "back": "Star",
+    "options": [
+      "Star",
+      "Light, brightness",
+      "Galaxy, space"
+    ],
+    "explanation": "Estrella is the Spanish word for star, referring to celestial bodies or a famous person.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-225",
+    "front": "What does 'mente' mean?",
+    "back": "Mind",
+    "options": [
+      "Mind",
+      "Thought, idea",
+      "Brain, intellect"
+    ],
+    "explanation": "Mente means mind, referring to the faculty of thinking and consciousness.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-226",
+    "front": "What does 'declarar' mean?",
+    "back": "To declare, testify",
+    "options": [
+      "To declare, testify",
+      "To announce, proclaim",
+      "To state, express"
+    ],
+    "explanation": "Declarar means to declare or testify, commonly used in legal or formal contexts.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-227",
+    "front": "What does 'letra' mean?",
+    "back": "Letter, handwriting, lyrics",
+    "options": [
+      "Letter, handwriting, lyrics",
+      "Character, symbol",
+      "Word, text"
+    ],
+    "explanation": "Letra can mean a letter (character), handwriting, or song lyrics depending on context.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-228",
+    "front": "What does 'sonreír' mean?",
+    "back": "To smile",
+    "options": [
+      "To smile",
+      "To laugh, chuckle",
+      "To grin, show teeth"
+    ],
+    "explanation": "Sonreír means to smile, expressing happiness or friendliness.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-229",
+    "front": "What does 'creación' mean?",
+    "back": "Creation",
+    "options": [
+      "Creation",
+      "Creativity, innovation",
+      "Creator, maker"
+    ],
+    "explanation": "Creación means creation, referring to the act or result of creating something.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-230",
+    "front": "What does 'hermoso' mean?",
+    "back": "Beautiful, lovely",
+    "options": [
+      "Beautiful, lovely",
+      "Handsome, attractive",
+      "Pretty, nice"
+    ],
+    "explanation": "Hermoso means beautiful or lovely, used to describe something aesthetically pleasing.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-231",
+    "front": "What does 'advertir' mean?",
+    "back": "To notice, warn",
+    "options": [
+      "To notice, warn",
+      "To alert, inform",
+      "To caution, advise"
+    ],
+    "explanation": "Advertir means to notice or warn, often used to alert someone of danger or importance.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-232",
+    "front": "What does 'canción' mean?",
+    "back": "Song",
+    "options": [
+      "Song",
+      "Music, tune",
+      "Melody, harmony"
+    ],
+    "explanation": "Canción is the Spanish word for song, a piece of music with lyrics.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-233",
+    "front": "What does 'método' mean?",
+    "back": "Method",
+    "options": [
+      "Method",
+      "Manner, way",
+      "Procedure, technique"
+    ],
+    "explanation": "Método means method, referring to a systematic way of doing something.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-234",
+    "front": "What does 'república' mean?",
+    "back": "Republic",
+    "options": [
+      "Republic",
+      "Government, state",
+      "Country, nation"
+    ],
+    "explanation": "República means republic, a form of government where power rests with citizens and their representatives.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-235",
+    "front": "What does 'reforma' mean?",
+    "back": "Reform, improvement",
+    "options": [
+      "Reform, improvement",
+      "Repair, renovation",
+      "Change, modification"
+    ],
+    "explanation": "Reforma means reform or improvement, referring to changes made to improve something.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-236",
+    "front": "What does 'lluvia' mean?",
+    "back": "Rain",
+    "options": [
+      "Rain",
+      "Storm, thunderstorm",
+      "Cloud, mist"
+    ],
+    "explanation": "Lluvia is the Spanish word for rain, water falling from clouds.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-237",
+    "front": "What does 'esperanza' mean?",
+    "back": "Hope",
+    "options": [
+      "Hope",
+      "Expectation, anticipation",
+      "Wish, desire"
+    ],
+    "explanation": "Esperanza means hope, the feeling that something desired will happen.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-238",
+    "front": "What does 'tío' mean?",
+    "back": "Uncle, guy",
+    "options": [
+      "Uncle, guy",
+      "Brother, relative",
+      "Friend, pal"
+    ],
+    "explanation": "Tío means uncle or can be used informally to mean 'guy' or 'dude' in Spanish.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-239",
+    "front": "What does 'conversación' mean?",
+    "back": "Conversation",
+    "options": [
+      "Conversation",
+      "Discussion, debate",
+      "Dialogue, exchange"
+    ],
+    "explanation": "Conversación means conversation, a discussion between two or more people.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-240",
+    "front": "What does 'influencia' mean?",
+    "back": "Influence",
+    "options": [
+      "Influence",
+      "Effect, impact",
+      "Power, authority"
+    ],
+    "explanation": "Influencia means influence, the power or ability to affect someone or something.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-241",
+    "front": "What does 'nueve' mean?",
+    "back": "Nine",
+    "options": [
+      "Nine",
+      "Nineteen",
+      "Ninety"
+    ],
+    "explanation": "Nueve is the Spanish word for the number nine (9).",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-242",
+    "front": "What does 'instante' mean?",
+    "back": "Instant, moment",
+    "options": [
+      "Instant, moment",
+      "Second, brief time",
+      "Instance, occurrence"
+    ],
+    "explanation": "Instante means instant or moment, a very brief period of time.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-243",
+    "front": "What does 'marcar' mean?",
+    "back": "To mark, note, dial",
+    "options": [
+      "To mark, note, dial",
+      "To score, point",
+      "To trace, outline"
+    ],
+    "explanation": "Marcar means to mark, make a note, or dial (a phone number) depending on context.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-244",
+    "front": "What does 'controlar' mean?",
+    "back": "To control",
+    "options": [
+      "To control",
+      "To check, verify",
+      "To manage, oversee"
+    ],
+    "explanation": "Controlar means to control or manage something, keeping it under regulation.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-245",
+    "front": "What does 'tarea' mean?",
+    "back": "Task, job",
+    "options": [
+      "Task, job",
+      "Homework, assignment",
+      "Work, labor"
+    ],
+    "explanation": "Tarea means task or job, commonly used for schoolwork or assigned duties.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-246",
+    "front": "What does 'documento' mean?",
+    "back": "Document",
+    "options": [
+      "Document",
+      "Paper, file",
+      "Certificate, proof"
+    ],
+    "explanation": "Documento means document, an official or written record.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-247",
+    "front": "What does 'famoso' mean?",
+    "back": "Famous, well known",
+    "options": [
+      "Famous, well known",
+      "Popular, renowned",
+      "Celebrated, distinguished"
+    ],
+    "explanation": "Famoso means famous or well-known, used to describe someone or something widely recognized.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-248",
+    "front": "What does 'conducir' mean?",
+    "back": "To lead, drive",
+    "options": [
+      "To lead, drive",
+      "To direct, guide",
+      "To operate, steer"
+    ],
+    "explanation": "Conducir means to lead or drive, referring to guiding something or operating a vehicle.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-249",
+    "front": "What does 'prensa' mean?",
+    "back": "Press",
+    "options": [
+      "Press",
+      "News media, journalism",
+      "Printing press"
+    ],
+    "explanation": "Prensa means press, referring to the news media, journalism, or a printing press.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "es-b04-250",
+    "front": "What does 'normal' mean?",
+    "back": "Normal, usual, regular",
+    "options": [
+      "Normal, usual, regular",
+      "Standard, typical",
+      "Common, ordinary"
+    ],
+    "explanation": "Normal means normal, usual, or regular, describing something that is typical or expected.",
+    "type": "vocabulary",
+    "categoryL2": "spanish",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  }
+]

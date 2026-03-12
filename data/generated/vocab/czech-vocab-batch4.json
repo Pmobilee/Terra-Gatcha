@@ -1,0 +1,4252 @@
+[
+  {
+    "id": "cs-b04-001",
+    "type": "vocabulary",
+    "question": "What does \"přerušovat\" mean?",
+    "correctAnswer": "to interrupt",
+    "explanation": "From the example: 'Nepřerušujte nás.' (Don't interrupt us.)",
+    "categoryL2": "czech",
+    "context": "přerušovat",
+    "answers": [
+      "to hold hands",
+      "to interrupt",
+      "to confess"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-002",
+    "type": "vocabulary",
+    "question": "What does \"držet za ruce\" mean?",
+    "correctAnswer": "to hold hands",
+    "explanation": "From the example: 'Řekla mu aby jí držel za ruce.' (She told him to hold her hand.)",
+    "categoryL2": "czech",
+    "context": "držet za ruce",
+    "answers": [
+      "to interrupt",
+      "to hold hands",
+      "to confess"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-003",
+    "type": "vocabulary",
+    "question": "What does \"přiznat\" mean?",
+    "correctAnswer": "to confess",
+    "explanation": "From the example: 'Obžalovaný přiznal, že ukradl oběti peníze.' (The accused confessed that he stole money from the victim.)",
+    "categoryL2": "czech",
+    "context": "přiznat",
+    "answers": [
+      "to hold hands",
+      "to confess",
+      "name"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-004",
+    "type": "vocabulary",
+    "question": "What does \"jméno\" mean?",
+    "correctAnswer": "name",
+    "explanation": "From the example: 'On se mě včera v noci ptal na její jméno.' (He asked me last night about her name.)",
+    "categoryL2": "czech",
+    "context": "jméno",
+    "answers": [
+      "surname",
+      "name",
+      "hometown"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-005",
+    "type": "vocabulary",
+    "question": "What does \"příjmení\" mean?",
+    "correctAnswer": "surname",
+    "explanation": "From the example: 'Doktor se zeptal pacienta, jaké je jeho příjmení.' (The doctor asked the patient what his surname was.)",
+    "categoryL2": "czech",
+    "context": "příjmení",
+    "answers": [
+      "name",
+      "surname",
+      "hometown"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-006",
+    "type": "vocabulary",
+    "question": "What does \"rodné město\" mean?",
+    "correctAnswer": "hometown",
+    "explanation": "From the example: 'Ona se ho zeptala minulý týden, jaké je jeho rodné město.' (She asked him last week what his hometown was.)",
+    "categoryL2": "czech",
+    "context": "rodné město",
+    "answers": [
+      "surname",
+      "if",
+      "hometown"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-007",
+    "type": "vocabulary",
+    "question": "What does \"jestli\" mean?",
+    "correctAnswer": "if",
+    "explanation": "From the example: 'On se mě včera zeptal, jestli ho miluji.' (He asked me yesterday if I love him.)",
+    "categoryL2": "czech",
+    "context": "jestli",
+    "answers": [
+      "hometown",
+      "if",
+      "knife"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-008",
+    "type": "vocabulary",
+    "question": "What does \"nůž\" mean?",
+    "correctAnswer": "knife",
+    "explanation": "From the example: 'Použij nůž na řezání.' (Use a knife for cutting.)",
+    "categoryL2": "czech",
+    "context": "nůž",
+    "answers": [
+      "fork",
+      "knife",
+      "spoon"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-009",
+    "type": "vocabulary",
+    "question": "What does \"vidlička\" mean?",
+    "correctAnswer": "fork",
+    "explanation": "From the example: 'Použij vidličku k jídlu.' (Use a fork for eating.)",
+    "categoryL2": "czech",
+    "context": "vidlička",
+    "answers": [
+      "knife",
+      "fork",
+      "spoon"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-010",
+    "type": "vocabulary",
+    "question": "What does \"lžíce\" mean?",
+    "correctAnswer": "spoon",
+    "explanation": "From the example: 'Použij lžíci k jezení polévky.' (Use a spoon for eating soup.)",
+    "categoryL2": "czech",
+    "context": "lžíce",
+    "answers": [
+      "fork",
+      "spoon",
+      "to fry"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-011",
+    "type": "vocabulary",
+    "question": "What does \"smažit\" mean?",
+    "correctAnswer": "to fry",
+    "explanation": "From the example: 'Smaž kuře jednu minutu.' (Fry the chicken for one minute.)",
+    "categoryL2": "czech",
+    "context": "smažit",
+    "answers": [
+      "to steam",
+      "to fry",
+      "to wash"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-012",
+    "type": "vocabulary",
+    "question": "What does \"dusit\" mean?",
+    "correctAnswer": "to steam",
+    "explanation": "From the example: 'Dus rybu asi hodinu.' (Steam the fish for about an hour.)",
+    "categoryL2": "czech",
+    "context": "dusit",
+    "answers": [
+      "to fry",
+      "to steam",
+      "to wash"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-013",
+    "type": "vocabulary",
+    "question": "What does \"umýt\" mean?",
+    "correctAnswer": "to wash",
+    "explanation": "From the example: 'Umyj zeleninu.' (Wash the vegetables.)",
+    "categoryL2": "czech",
+    "context": "umýt",
+    "answers": [
+      "to peel",
+      "to wash",
+      "to cut"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-014",
+    "type": "vocabulary",
+    "question": "What does \"oloupat\" mean?",
+    "correctAnswer": "to peel",
+    "explanation": "From the example: 'Nejprve oloupej brambory.' (First peel the potatoes.)",
+    "categoryL2": "czech",
+    "context": "oloupat",
+    "answers": [
+      "to wash",
+      "to peel",
+      "to cut"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-015",
+    "type": "vocabulary",
+    "question": "What does \"řezat\" mean?",
+    "correctAnswer": "to cut",
+    "explanation": "From the example: 'Dále je přeřízni na polovinu.' (Then cut them in half.)",
+    "categoryL2": "czech",
+    "context": "řezat",
+    "answers": [
+      "to chop",
+      "to cut",
+      "to put"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-016",
+    "type": "vocabulary",
+    "question": "What does \"sekat\" mean?",
+    "correctAnswer": "to chop",
+    "explanation": "From the example: 'Poté nasekej nějaké listy máty.' (Then chop some mint leaves.)",
+    "categoryL2": "czech",
+    "context": "sekat",
+    "answers": [
+      "to cut",
+      "to chop",
+      "to stir fry"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-017",
+    "type": "vocabulary",
+    "question": "What does \"přidat\" mean?",
+    "correctAnswer": "to put",
+    "explanation": "From the example: 'Potom přidej trochu soli.' (Then put a bit of salt.)",
+    "categoryL2": "czech",
+    "context": "přidat",
+    "answers": [
+      "to stir fry",
+      "to put",
+      "to mix"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-018",
+    "type": "vocabulary",
+    "question": "What does \"zamíchat\" mean?",
+    "correctAnswer": "to stir fry; to mix",
+    "explanation": "From the example: 'Později smaž a míchej zeleninu pět minut.' (Later fry and stir the vegetables for five minutes.)",
+    "categoryL2": "czech",
+    "context": "zamíchat",
+    "answers": [
+      "to put",
+      "to stir fry; to mix",
+      "fragrant"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-019",
+    "type": "vocabulary",
+    "question": "What does \"vonný\" mean?",
+    "correctAnswer": "fragrant",
+    "explanation": "From the example: 'Smaž v pánvi česnek, dokud nezačně vonět.' (Fry garlic in a pan until it becomes fragrant.)",
+    "categoryL2": "czech",
+    "context": "vonný",
+    "answers": [
+      "to mix",
+      "fragrant",
+      "pan"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-020",
+    "type": "vocabulary",
+    "question": "What does \"pánev\" mean?",
+    "correctAnswer": "pan",
+    "explanation": "From the example: 'Smaž v pánvi vajíčko.' (Fry an egg in a pan.)",
+    "categoryL2": "czech",
+    "context": "pánev",
+    "answers": [
+      "pot",
+      "pan",
+      "oven"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-021",
+    "type": "vocabulary",
+    "question": "What does \"hrnec\" mean?",
+    "correctAnswer": "pot",
+    "explanation": "From the example: 'Smíchej dohromady všechnu zeleninu v hrnci.' (Mix all the vegetables together in a pot.)",
+    "categoryL2": "czech",
+    "context": "hrnec",
+    "answers": [
+      "pan",
+      "pot",
+      "to grill"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-022",
+    "type": "vocabulary",
+    "question": "What does \"grilovat\" mean?",
+    "correctAnswer": "to grill",
+    "explanation": "From the example: 'Griluj stejk dokud není hotový.' (Grill the steak until it's done.)",
+    "categoryL2": "czech",
+    "context": "grilovat",
+    "answers": [
+      "to bake",
+      "to grill",
+      "to heat"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-023",
+    "type": "vocabulary",
+    "question": "What does \"péct\" mean?",
+    "correctAnswer": "to bake",
+    "explanation": "From the example: 'Peč koláč 40 minut dokud nezačne vonět.' (Bake the cake for 40 minutes until it becomes fragrant.)",
+    "categoryL2": "czech",
+    "context": "péct",
+    "answers": [
+      "to grill",
+      "to bake",
+      "to heat"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-024",
+    "type": "vocabulary",
+    "question": "What does \"ohřát\" mean?",
+    "correctAnswer": "to heat",
+    "explanation": "From the example: 'Ohřej polévku v hrnci.' (Heat the soup in a pot.)",
+    "categoryL2": "czech",
+    "context": "ohřát",
+    "answers": [
+      "to bake",
+      "to heat",
+      "microwave"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-025",
+    "type": "vocabulary",
+    "question": "What does \"mikrovlnná trouba\" mean?",
+    "correctAnswer": "microwave",
+    "explanation": "From the example: 'Rýži ohřej v mikrovlnné troubě.' (Heat the rice in a microwave.)",
+    "categoryL2": "czech",
+    "context": "mikrovlnná trouba",
+    "answers": [
+      "to heat",
+      "microwave",
+      "pizza"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-026",
+    "type": "vocabulary",
+    "question": "What does \"pizza\" mean?",
+    "correctAnswer": "pizza",
+    "explanation": "From the example: 'Pizzu ohřej v mikrovlnné troubě.' (Heat the pizza in a microwave.)",
+    "categoryL2": "czech",
+    "context": "pizza",
+    "answers": [
+      "microwave",
+      "pizza",
+      "oven"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-027",
+    "type": "vocabulary",
+    "question": "What does \"trouba\" mean?",
+    "correctAnswer": "oven",
+    "explanation": "From the example: 'Nakonec peč pizzu v troubě.' (Finally bake the pizza in an oven.)",
+    "categoryL2": "czech",
+    "context": "trouba",
+    "answers": [
+      "pizza",
+      "oven",
+      "fridge"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-028",
+    "type": "vocabulary",
+    "question": "What does \"lednička\" mean?",
+    "correctAnswer": "fridge",
+    "explanation": "From the example: 'Vlož mléko do ledničky.' (Put milk in the fridge.)",
+    "categoryL2": "czech",
+    "context": "lednička",
+    "answers": [
+      "oven",
+      "fridge",
+      "alien"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-029",
+    "type": "vocabulary",
+    "question": "What does \"mimozemšťan\" mean?",
+    "correctAnswer": "alien",
+    "explanation": "From the example: 'My jsme včera sledovali film o mimozemšťanech.' (We watched a film about aliens yesterday.)",
+    "categoryL2": "czech",
+    "context": "mimozemšťan",
+    "answers": [
+      "fridge",
+      "alien",
+      "news"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-030",
+    "type": "vocabulary",
+    "question": "What does \"zprávy\" mean?",
+    "correctAnswer": "news",
+    "explanation": "From the example: 'Dnešní ranní zprávy byli o známém zpěvákovi.' (Today's morning news was about a famous singer.)",
+    "categoryL2": "czech",
+    "context": "zprávy",
+    "answers": [
+      "alien",
+      "news",
+      "murder"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-031",
+    "type": "vocabulary",
+    "question": "What does \"vražda\" mean?",
+    "correctAnswer": "murder",
+    "explanation": "From the example: 'Včera večer byla vražda.' (There was a murder last night.)",
+    "categoryL2": "czech",
+    "context": "vražda",
+    "answers": [
+      "news",
+      "murder",
+      "drama"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-032",
+    "type": "vocabulary",
+    "question": "What does \"drama\" mean?",
+    "correctAnswer": "drama",
+    "explanation": "From the example: 'Tento dramatický příběh byl o vraždě.' (This dramatic story was about a murder.)",
+    "categoryL2": "czech",
+    "context": "drama",
+    "answers": [
+      "murder",
+      "drama",
+      "novel"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-033",
+    "type": "vocabulary",
+    "question": "What does \"román\" mean?",
+    "correctAnswer": "novel",
+    "explanation": "From the example: 'Ten román byl o lásce.' (That novel was about love.)",
+    "categoryL2": "czech",
+    "context": "román",
+    "answers": [
+      "drama",
+      "novel",
+      "to kill"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-034",
+    "type": "vocabulary",
+    "question": "What does \"zabít\" mean?",
+    "correctAnswer": "to kill",
+    "explanation": "From the example: 'V tomto filmu mimozemšťané zabili všechny lidi.' (In this film, aliens killed all the people.)",
+    "categoryL2": "czech",
+    "context": "zabít",
+    "answers": [
+      "novel",
+      "to kill",
+      "ghost"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-035",
+    "type": "vocabulary",
+    "question": "What does \"duch\" mean?",
+    "correctAnswer": "ghost",
+    "explanation": "From the example: 'I když jsem ducha nikdy neviděl, bojím se duchů.' (Even though I've never seen a ghost, I'm afraid of ghosts.)",
+    "categoryL2": "czech",
+    "context": "duch",
+    "answers": [
+      "to kill",
+      "ghost",
+      "horror"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-036",
+    "type": "vocabulary",
+    "question": "What does \"horor\" mean?",
+    "correctAnswer": "horror",
+    "explanation": "From the example: 'Já jsem slyšel, že tato hororová kniha je o duších.' (I heard that this horror book is about ghosts.)",
+    "categoryL2": "czech",
+    "context": "horor",
+    "answers": [
+      "ghost",
+      "horror",
+      "adventure"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-037",
+    "type": "vocabulary",
+    "question": "What does \"dobrodružství\" mean?",
+    "correctAnswer": "adventure",
+    "explanation": "From the example: 'Já jsem slyšel, že tento dobrodružný film je velmi dobrý.' (I heard that this adventure film is very good.)",
+    "categoryL2": "czech",
+    "context": "dobrodružství",
+    "answers": [
+      "horror",
+      "adventure",
+      "romantic"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-038",
+    "type": "vocabulary",
+    "question": "What does \"romantický\" mean?",
+    "correctAnswer": "romantic",
+    "explanation": "From the example: 'Ona slyšela, že tento dramatický příběh je romantický.' (She heard that this dramatic story is romantic.)",
+    "categoryL2": "czech",
+    "context": "romantický",
+    "answers": [
+      "adventure",
+      "romantic",
+      "comedy"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-039",
+    "type": "vocabulary",
+    "question": "What does \"komedie\" mean?",
+    "correctAnswer": "comedy",
+    "explanation": "From the example: 'My jsme v kině sledovali komedii.' (We watched a comedy at the cinema.)",
+    "categoryL2": "czech",
+    "context": "komedie",
+    "answers": [
+      "romantic",
+      "comedy",
+      "story"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-040",
+    "type": "vocabulary",
+    "question": "What does \"příběh\" mean?",
+    "correctAnswer": "story",
+    "explanation": "From the example: 'Já jsem slyšel, že tento příběh je o dvou lidech.' (I heard that this story is about two people.)",
+    "categoryL2": "czech",
+    "context": "příběh",
+    "answers": [
+      "comedy",
+      "story",
+      "to find"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-041",
+    "type": "vocabulary",
+    "question": "What does \"zjišťovat\" mean?",
+    "correctAnswer": "to find",
+    "explanation": "From the example: 'Já zjišťuji, že tento příběh je velmi romantický.' (I find that this story is very romantic.)",
+    "categoryL2": "czech",
+    "context": "zjišťovat",
+    "answers": [
+      "story",
+      "to find",
+      "sad"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-042",
+    "type": "vocabulary",
+    "question": "What does \"smutný\" mean?",
+    "correctAnswer": "sad",
+    "explanation": "From the example: 'Myslíme si, že ta píseň byla velice smutná.' (We think that song was very sad.)",
+    "categoryL2": "czech",
+    "context": "smutný",
+    "answers": [
+      "to find",
+      "sad",
+      "interesting"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-043",
+    "type": "vocabulary",
+    "question": "What does \"zajímavý\" mean?",
+    "correctAnswer": "interesting",
+    "explanation": "From the example: 'Já si myslím, že je to zajímavé.' (I think that is interesting.)",
+    "categoryL2": "czech",
+    "context": "zajímavý",
+    "answers": [
+      "sad",
+      "interesting",
+      "boring"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-044",
+    "type": "vocabulary",
+    "question": "What does \"nudný\" mean?",
+    "correctAnswer": "boring",
+    "explanation": "From the example: 'Já jsem zjistil, že tento film o vraždě je tak nudný.' (I found that this murder film is so boring.)",
+    "categoryL2": "czech",
+    "context": "nudný",
+    "answers": [
+      "interesting",
+      "boring",
+      "war"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-045",
+    "type": "vocabulary",
+    "question": "What does \"válka\" mean?",
+    "correctAnswer": "war",
+    "explanation": "From the example: 'Já zjišťuji, že tento válečný film je tak smutný.' (I find that this war film is so sad.)",
+    "categoryL2": "czech",
+    "context": "válka",
+    "answers": [
+      "boring",
+      "war",
+      "opinion"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-046",
+    "type": "vocabulary",
+    "question": "What does \"názor\" mean?",
+    "correctAnswer": "opinion",
+    "explanation": "From the example: 'On poskytl jen dva názory na ten film.' (He gave only two opinions about that film.)",
+    "categoryL2": "czech",
+    "context": "názor",
+    "answers": [
+      "war",
+      "opinion",
+      "idea"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-047",
+    "type": "vocabulary",
+    "question": "What does \"nápad\" mean?",
+    "correctAnswer": "idea",
+    "explanation": "From the example: 'Já mám právě jeden nápad.' (I have just one idea.)",
+    "categoryL2": "czech",
+    "context": "nápad",
+    "answers": [
+      "opinion",
+      "idea",
+      "to express"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-048",
+    "type": "vocabulary",
+    "question": "What does \"vyjádřit\" mean?",
+    "correctAnswer": "to express",
+    "explanation": "From the example: 'Ona právě vyjádřila svůj názor.' (She just expressed her opinion.)",
+    "categoryL2": "czech",
+    "context": "vyjádřit",
+    "answers": [
+      "idea",
+      "to express",
+      "to be heartbroken"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-049",
+    "type": "vocabulary",
+    "question": "What does \"mít zlomené srdce\" mean?",
+    "correctAnswer": "to be heartbroken",
+    "explanation": "From the example: 'On měl zlomené srdce.' (He was heartbroken.)",
+    "categoryL2": "czech",
+    "context": "mít zlomené srdce",
+    "answers": [
+      "to express",
+      "to be heartbroken",
+      "to repeat"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-050",
+    "type": "vocabulary",
+    "question": "What does \"opakovat\" mean?",
+    "correctAnswer": "to repeat",
+    "explanation": "From the example: 'Mohl bys to zopakovat, prosím?' (Could you repeat that, please?)",
+    "categoryL2": "czech",
+    "context": "opakovat",
+    "answers": [
+      "to be heartbroken",
+      "to repeat",
+      "name"
+    ],
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-051",
+    "type": "vocabulary",
+    "question": "What does 'vysvětlit' mean?",
+    "correctAnswer": "to explain",
+    "incorrectAnswers": [
+      "to understand",
+      "to describe"
+    ],
+    "explanation": "Vysvětlit means 'to explain' in Czech. Example: 'Mohl bys to vysvětlit znovu, prosím?' (Could you explain that again, please?)",
+    "example": "Mohl bys to vysvětlit znovu, prosím?",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-052",
+    "type": "vocabulary",
+    "question": "What does 'detaily' mean?",
+    "correctAnswer": "details",
+    "incorrectAnswers": [
+      "decisions",
+      "delays"
+    ],
+    "explanation": "Detaily means 'details' in Czech. Example: 'Mohl bys znovu vysvětlit detaily, prosím?' (Could you explain the details again, please?)",
+    "example": "Mohl bys znovu vysvětlit detaily, prosím?",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-053",
+    "type": "vocabulary",
+    "question": "What does 'jasný' mean?",
+    "correctAnswer": "clearly; bright",
+    "incorrectAnswers": [
+      "softly; dark",
+      "quietly; dim"
+    ],
+    "explanation": "Jasný means 'clearly' or 'bright' in Czech. Example: 'Můžeš mluvit jasněji, prosím?' (Can you speak more clearly, please?)",
+    "example": "Můžeš mluvit jasněji, prosím?",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-054",
+    "type": "vocabulary",
+    "question": "What does 'navrhnout' mean?",
+    "correctAnswer": "to suggest",
+    "incorrectAnswers": [
+      "to demand",
+      "to require"
+    ],
+    "explanation": "Navrhnout means 'to suggest' in Czech. Example: 'Mohl bys navrhnout nový nápad, prosím?' (Could you suggest a new idea, please?)",
+    "example": "Mohl bys navrhnout nový nápad, prosím?",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-055",
+    "type": "vocabulary",
+    "question": "What does 'pokračovat' mean?",
+    "correctAnswer": "to continue",
+    "incorrectAnswers": [
+      "to start",
+      "to pause"
+    ],
+    "explanation": "Pokračovat means 'to continue' in Czech. Example: 'Mohu pokračovat?' (Can I continue?)",
+    "example": "Mohu pokračovat?",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-056",
+    "type": "vocabulary",
+    "question": "What does 'výsledek' mean?",
+    "correctAnswer": "result",
+    "incorrectAnswers": [
+      "process",
+      "method"
+    ],
+    "explanation": "Výsledek means 'result' in Czech, referring to the outcome of an action or process.",
+    "example": "",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-057",
+    "type": "vocabulary",
+    "question": "What does 'přezkoumat' mean?",
+    "correctAnswer": "to review",
+    "incorrectAnswers": [
+      "to examine briefly",
+      "to ignore"
+    ],
+    "explanation": "Přezkoumat means 'to review' in Czech. Example: 'Mohli bychom přezkoumat výsledky?' (Could we review the results?)",
+    "example": "Mohli bychom přezkoumat výsledky?",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-058",
+    "type": "vocabulary",
+    "question": "What does 'problém' mean?",
+    "correctAnswer": "problem",
+    "incorrectAnswers": [
+      "solution",
+      "question"
+    ],
+    "explanation": "Problém means 'problem' in Czech. Example: 'To je velký problém.' (That is a big problem.)",
+    "example": "To je velký problém.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-059",
+    "type": "vocabulary",
+    "question": "What does 'řešit' mean?",
+    "correctAnswer": "to deal",
+    "incorrectAnswers": [
+      "to avoid",
+      "to ignore"
+    ],
+    "explanation": "Řešit means 'to deal' (with a problem) in Czech. Example: 'My řešíme ten problém nyní.' (We are dealing with that problem now.)",
+    "example": "My řešíme ten problém nyní.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-060",
+    "type": "vocabulary",
+    "question": "What does 'cíl' mean?",
+    "correctAnswer": "target",
+    "incorrectAnswers": [
+      "plan",
+      "strategy"
+    ],
+    "explanation": "Cíl means 'target' or 'goal' in Czech. Example: 'To je náš cíl.' (That is our target.)",
+    "example": "To je náš cíl.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-061",
+    "type": "vocabulary",
+    "question": "What does 'denní program' mean?",
+    "correctAnswer": "agenda",
+    "incorrectAnswers": [
+      "daily schedule",
+      "meeting plan"
+    ],
+    "explanation": "Denní program means 'agenda' in Czech. Example: 'My musíme napsat denní program teď.' (We need to write the agenda now.)",
+    "example": "My musíme napsat denní program teď.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-062",
+    "type": "vocabulary",
+    "question": "What does 'tvrdě pracovat' mean?",
+    "correctAnswer": "to work hard",
+    "incorrectAnswers": [
+      "to work fast",
+      "to work late"
+    ],
+    "explanation": "Tvrdě pracovat means 'to work hard' in Czech. Example: 'My musíme tvrdě pracovat.' (We must work hard.)",
+    "example": "My musíme tvrdě pracovat.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-063",
+    "type": "vocabulary",
+    "question": "What does 'dosáhnout' mean?",
+    "correctAnswer": "to achieve",
+    "incorrectAnswers": [
+      "to attempt",
+      "to reach for"
+    ],
+    "explanation": "Dosáhnout means 'to achieve' in Czech. Example: 'My musíme tvrdě pracovat, abychom dosáhli cílů.' (We must work hard to achieve our goals.)",
+    "example": "My musíme tvrdě pracovat, abychom dosáhli cílů.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-064",
+    "type": "vocabulary",
+    "question": "What does 'tým' mean?",
+    "correctAnswer": "team",
+    "incorrectAnswers": [
+      "group",
+      "crew"
+    ],
+    "explanation": "Tým means 'team' in Czech. Example: 'Náš tým musí tvrdě pracovat na řešení tohoto problému.' (Our team must work hard on solving this problem.)",
+    "example": "Náš tým musí tvrdě pracovat na řešení tohoto problému.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-065",
+    "type": "vocabulary",
+    "question": "What does 'e-mailem' mean?",
+    "correctAnswer": "E-mail",
+    "incorrectAnswers": [
+      "by letter",
+      "by phone"
+    ],
+    "explanation": "E-mailem means 'by e-mail' in Czech. Example: 'Já musím napsat e-mail všem o tomto problému.' (I must send an e-mail to everyone about this problem.)",
+    "example": "Já musím napsat e-mail všem o tomto problému.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-066",
+    "type": "vocabulary",
+    "question": "What does 'poznámky' mean?",
+    "correctAnswer": "minutes",
+    "incorrectAnswers": [
+      "notes",
+      "comments"
+    ],
+    "explanation": "Poznámky means 'minutes' (meeting notes) in Czech. Example: 'Podívejme se na poznámky ze schůzky.' (Let's look at the minutes from the meeting.)",
+    "example": "Podívejme se na poznámky ze schůzky.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-067",
+    "type": "vocabulary",
+    "question": "What does 'shrnout' mean?",
+    "correctAnswer": "to summarize",
+    "incorrectAnswers": [
+      "to summarize quickly",
+      "to brief"
+    ],
+    "explanation": "Shrnout means 'to summarize' in Czech. Example: 'Shrňme výsledky.' (Let's summarize the results.)",
+    "example": "Shrňme výsledky.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-068",
+    "type": "vocabulary",
+    "question": "What does 'souhlasit' mean?",
+    "correctAnswer": "to agree",
+    "incorrectAnswers": [
+      "to disagree",
+      "to understand"
+    ],
+    "explanation": "Souhlasit means 'to agree' in Czech. Example: 'Pojďme si odsouhlasit nápad.' (Let's agree on the idea.)",
+    "example": "Pojďme si odsouhlasit nápad.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-069",
+    "type": "vocabulary",
+    "question": "What does 'šéf' mean?",
+    "correctAnswer": "boss",
+    "incorrectAnswers": [
+      "manager",
+      "supervisor"
+    ],
+    "explanation": "Šéf means 'boss' in Czech. Example: 'Pojďme se setkat s šéfem.' (Let's meet with the boss.)",
+    "example": "Pojďme se setkat s šéfem.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-070",
+    "type": "vocabulary",
+    "question": "What does 'příležitost' mean?",
+    "correctAnswer": "opportunity",
+    "incorrectAnswers": [
+      "chance",
+      "possibility"
+    ],
+    "explanation": "Příležitost means 'opportunity' in Czech. Example: 'Tohle je její příležitost.' (This is her opportunity.)",
+    "example": "Tohle je její příležitost.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-071",
+    "type": "vocabulary",
+    "question": "What does 'stěžovat si' mean?",
+    "correctAnswer": "to complain",
+    "incorrectAnswers": [
+      "to protest",
+      "to object"
+    ],
+    "explanation": "Stěžovat si means 'to complain' in Czech. Example: 'Stěžoval si na ní její manažer.' (Her manager complained about her.)",
+    "example": "Stěžoval si na ní její manažer.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-072",
+    "type": "vocabulary",
+    "question": "What does 'najmout' mean?",
+    "correctAnswer": "to hire",
+    "incorrectAnswers": [
+      "to employ",
+      "to recruit"
+    ],
+    "explanation": "Najmout means 'to hire' in Czech. Example: 'On byl najmutý svým šéfem minulý měsíc.' (He was hired by his boss last month.)",
+    "example": "On byl najmutý svým šéfem minulý měsíc.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-073",
+    "type": "vocabulary",
+    "question": "What does 'propustit' mean?",
+    "correctAnswer": "to fire",
+    "incorrectAnswers": [
+      "to dismiss",
+      "to release"
+    ],
+    "explanation": "Propustit means 'to fire' in Czech. Example: 'On byl propuštěn jeho manažerem.' (He was fired by his manager.)",
+    "example": "On byl propuštěn jeho manažerem.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-074",
+    "type": "vocabulary",
+    "question": "What does 'povýšit' mean?",
+    "correctAnswer": "to promote",
+    "incorrectAnswers": [
+      "to advance",
+      "to elevate"
+    ],
+    "explanation": "Povýšit means 'to promote' in Czech. Example: 'Ona byla povýšena na manažerku.' (She was promoted to manager.)",
+    "example": "Ona byla povýšena na manažerku.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-075",
+    "type": "vocabulary",
+    "question": "What does 'kolega' mean?",
+    "correctAnswer": "colleague",
+    "incorrectAnswers": [
+      "coworker",
+      "partner"
+    ],
+    "explanation": "Kolega means 'colleague' in Czech. Example: 'Její nápad ukradl její kolega.' (Her colleague stole her idea.)",
+    "example": "Její nápad ukradl její kolega.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-076",
+    "type": "vocabulary",
+    "question": "What does 'projednat' mean?",
+    "correctAnswer": "to discuss",
+    "incorrectAnswers": [
+      "to debate",
+      "to converse"
+    ],
+    "explanation": "Projednat means 'to discuss' in Czech. Example: 'Tento problém by měl být podrobně projednán.' (This problem should be discussed in detail.)",
+    "example": "Tento problém by měl být podrobně projednán.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-077",
+    "type": "vocabulary",
+    "question": "What does 'předložit' mean?",
+    "correctAnswer": "to present",
+    "incorrectAnswers": [
+      "to propose",
+      "to submit"
+    ],
+    "explanation": "Předložit means 'to present' in Czech. Example: 'Plán by měl být předložen všem.' (The plan should be presented to everyone.)",
+    "example": "Plán by měl být předložen všem.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-078",
+    "type": "vocabulary",
+    "question": "What does 'údaje' mean?",
+    "correctAnswer": "data",
+    "incorrectAnswers": [
+      "information",
+      "facts"
+    ],
+    "explanation": "Údaje means 'data' in Czech. Example: 'Údaje by měly být přezkoumány do zítřka.' (The data should be reviewed by tomorrow.)",
+    "example": "Údaje by měly být přezkoumány do zítřka.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-079",
+    "type": "vocabulary",
+    "question": "What does 'analyzovat' mean?",
+    "correctAnswer": "to analyze",
+    "incorrectAnswers": [
+      "to examine",
+      "to study"
+    ],
+    "explanation": "Analyzovat means 'to analyze' in Czech. Example: 'Údaje by měly být analyzovány do příštího týdne.' (The data should be analyzed by next week.)",
+    "example": "Údaje by měly být analyzovány do příštího týdne.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-080",
+    "type": "vocabulary",
+    "question": "What does 'práce' mean?",
+    "correctAnswer": "job",
+    "incorrectAnswers": [
+      "work",
+      "employment"
+    ],
+    "explanation": "Práce means 'job' in Czech. Example: 'Podrobnosti o této práci by měly být přezkoumány před příštím pondělím.' (The details of this job should be reviewed before next Monday.)",
+    "example": "Podrobnosti o této práci by měly být přezkoumány před příštím pondělím.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-081",
+    "type": "vocabulary",
+    "question": "What does 'dělat pohovor' mean?",
+    "correctAnswer": "to interview",
+    "incorrectAnswers": [
+      "to question",
+      "to interrogate"
+    ],
+    "explanation": "Dělat pohovor means 'to interview' in Czech. Example: 'Všichni zaměstnanci musí udělat pohovor pro povýšení.' (All employees must have an interview for promotion.)",
+    "example": "Všichni zaměstnanci musí udělat pohovor pro povýšení.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-082",
+    "type": "vocabulary",
+    "question": "What does 'schválit' mean?",
+    "correctAnswer": "to approve",
+    "incorrectAnswers": [
+      "to accept",
+      "to confirm"
+    ],
+    "explanation": "Schválit means 'to approve' in Czech. Example: 'Agenda musí být schválena mým manažerem příští týden.' (The agenda must be approved by my manager next week.)",
+    "example": "Agenda musí být schválena mým manažerem příští týden.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-083",
+    "type": "vocabulary",
+    "question": "What does 'smlouva' mean?",
+    "correctAnswer": "contract",
+    "incorrectAnswers": [
+      "agreement",
+      "document"
+    ],
+    "explanation": "Smlouva means 'contract' in Czech. Example: 'Smlouva bude zítra schválena manažerem.' (The contract will be approved by the manager tomorrow.)",
+    "example": "Smlouva bude zítra schválena manažerem.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-084",
+    "type": "vocabulary",
+    "question": "What does 'personální oddělení' mean?",
+    "correctAnswer": "human resource",
+    "incorrectAnswers": [
+      "HR department",
+      "personnel office"
+    ],
+    "explanation": "Personální oddělení means 'human resource' in Czech. Example: 'Za prvé, smlouva musí být přezkoumána personálním oddělením.' (First, the contract must be reviewed by the HR department.)",
+    "example": "Za prvé, smlouva musí být přezkoumána personálním oddělením.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-085",
+    "type": "vocabulary",
+    "question": "What does 'žadatel' mean?",
+    "correctAnswer": "applicant",
+    "incorrectAnswers": [
+      "candidate",
+      "applicant for job"
+    ],
+    "explanation": "Žadatel means 'applicant' in Czech. Example: 'Žadatelé čekají na pracovní pohovor od dnešního rána.' (Applicants have been waiting for an interview since this morning.)",
+    "example": "Žadatelé čekají na pracovní pohovor od dnešního rána.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-086",
+    "type": "vocabulary",
+    "question": "What does 'ucházet se' mean?",
+    "correctAnswer": "to apply",
+    "incorrectAnswers": [
+      "to apply for",
+      "to submit application"
+    ],
+    "explanation": "Ucházet se means 'to apply' in Czech. Example: 'Chce se ucházet o práci zde, protože společnost je velmi známá.' (He wants to apply for a job here because the company is very well-known.)",
+    "example": "Chce se ucházet o práci zde, protože společnost je velmi známá.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-087",
+    "type": "vocabulary",
+    "question": "What does 'získat' mean?",
+    "correctAnswer": "to get",
+    "incorrectAnswers": [
+      "to obtain",
+      "to receive"
+    ],
+    "explanation": "Získat means 'to get' in Czech. Example: 'On získal práci.' (He got a job.)",
+    "example": "On získal práci.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-088",
+    "type": "vocabulary",
+    "question": "What does 'práce na částečný úvazek' mean?",
+    "correctAnswer": "part-time job",
+    "incorrectAnswers": [
+      "temporary job",
+      "casual work"
+    ],
+    "explanation": "Práce na částečný úvazek means 'part-time job' in Czech. Example: 'On získal v supermarketu práci na částečný úvazek.' (He got a part-time job at the supermarket.)",
+    "example": "On získal v supermarketu práci na částečný úvazek.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-089",
+    "type": "vocabulary",
+    "question": "What does 'práce na plný úvazek' mean?",
+    "correctAnswer": "full-time job",
+    "incorrectAnswers": [
+      "permanent job",
+      "full employment"
+    ],
+    "explanation": "Práce na plný úvazek means 'full-time job' in Czech. Example: 'On získal práci na plný úvazek ve velké společnosti.' (He got a full-time job at a large company.)",
+    "example": "On získal práci na plný úvazek ve velké společnosti.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-090",
+    "type": "vocabulary",
+    "question": "What does 'učební obor' mean?",
+    "correctAnswer": "apprenticeship",
+    "incorrectAnswers": [
+      "training program",
+      "vocational course"
+    ],
+    "explanation": "Učební obor means 'apprenticeship' in Czech. Example: 'On získal praxi.' (He got apprenticeship/practice.)",
+    "example": "On získal praxi.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-091",
+    "type": "vocabulary",
+    "question": "What does 'zaměstnanec' mean?",
+    "correctAnswer": "employee",
+    "incorrectAnswers": [
+      "worker",
+      "staff member"
+    ],
+    "explanation": "Zaměstnanec means 'employee' in Czech. Example: 'Já jsem slyšel, že zaměstnanci této společnosti pracují tvrdě.' (I heard that employees of this company work hard.)",
+    "example": "Já jsem slyšel, že zaměstnanci této společnosti pracují tvrdě.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-092",
+    "type": "vocabulary",
+    "question": "What does 'bonus' mean?",
+    "correctAnswer": "bonus",
+    "incorrectAnswers": [
+      "reward",
+      "incentive"
+    ],
+    "explanation": "Bonus means 'bonus' in Czech. Example: 'Bonus byl dán každému ve společnosti minulý rok.' (A bonus was given to everyone in the company last year.)",
+    "example": "Bonus byl dán každému ve společnosti minulý rok.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-093",
+    "type": "vocabulary",
+    "question": "What does 'metoda' mean?",
+    "correctAnswer": "method",
+    "incorrectAnswers": [
+      "approach",
+      "way"
+    ],
+    "explanation": "Metoda means 'method' in Czech. Example: 'Dovolte mi vysvětlit tuto metodu.' (Let me explain this method.)",
+    "example": "Dovolte mi vysvětlit tuto metodu.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-094",
+    "type": "vocabulary",
+    "question": "What does 'shromáždit' mean?",
+    "correctAnswer": "to gather",
+    "incorrectAnswers": [
+      "to collect",
+      "to assemble"
+    ],
+    "explanation": "Shromáždit means 'to gather' in Czech. Example: 'Dovolte mi shromáždit všechna data.' (Let me gather all the data.)",
+    "example": "Dovolte mi shromáždit všechna data.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-095",
+    "type": "vocabulary",
+    "question": "What does 'tajemství' mean?",
+    "correctAnswer": "secret",
+    "incorrectAnswers": [
+      "mystery",
+      "hidden information"
+    ],
+    "explanation": "Tajemství means 'secret' in Czech. Example: 'Dovolte mi nejdřív říct své tajemství.' (Let me tell my secret first.)",
+    "example": "Dovolte mi nejdřív říct své tajemství.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-096",
+    "type": "vocabulary",
+    "question": "What does 'vyřešit' mean?",
+    "correctAnswer": "to fix; to solve",
+    "incorrectAnswers": [
+      "to address",
+      "to settle"
+    ],
+    "explanation": "Vyřešit means 'to fix' or 'to solve' in Czech. Example: 'On ji nechá, aby si své problémy vyřešila sama.' (He lets her solve her problems by herself.)",
+    "example": "On ji nechá, aby si své problémy vyřešila sama.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-097",
+    "type": "vocabulary",
+    "question": "What does 'téma' mean?",
+    "correctAnswer": "topic",
+    "incorrectAnswers": [
+      "subject",
+      "theme"
+    ],
+    "explanation": "Téma means 'topic' in Czech. Example: 'Učitel umožňuje studentům najít téma, o které se oni zajímají.' (The teacher allows students to find a topic they are interested in.)",
+    "example": "Učitel umožňuje studentům najít téma, o které se oni zajímají.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-098",
+    "type": "vocabulary",
+    "question": "What does 'dávat přednost' mean?",
+    "correctAnswer": "to prefer",
+    "incorrectAnswers": [
+      "to favor",
+      "to like better"
+    ],
+    "explanation": "Dávat přednost means 'to prefer' in Czech. Example: 'Já dávám přednost myšlence, kterou on navrhl.' (I prefer the idea that he suggested.)",
+    "example": "Já dávám přednost myšlence, kterou on navrhl.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-099",
+    "type": "vocabulary",
+    "question": "What does 'report' mean?",
+    "correctAnswer": "report",
+    "incorrectAnswers": [
+      "article",
+      "document"
+    ],
+    "explanation": "Report means 'report' in Czech. Example: 'Oni neschválili report, který jsem napsal.' (They didn't approve the report I wrote.)",
+    "example": "Oni neschválili report, který jsem napsal.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-100",
+    "type": "vocabulary",
+    "question": "What does 'řešení' mean?",
+    "correctAnswer": "solution",
+    "incorrectAnswers": [
+      "answer",
+      "resolution"
+    ],
+    "explanation": "Řešení means 'solution' in Czech. Example: 'My jsme nesouhlasili s řešením, které on navrhl.' (We didn't agree with the solution he suggested.)",
+    "example": "My jsme nesouhlasili s řešením, které on navrhl.",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-101",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of the Czech word 'projekt'?",
+    "correctAnswer": "project",
+    "options": [
+      "project",
+      "proposal",
+      "plan"
+    ],
+    "explanation": "The Czech word 'projekt' translates to 'project' in English. Example: 'Na posledním zasedání neodprezentoval svůj projekt.' (At the last meeting, he did not present his project.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-102",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'konzultant' mean?",
+    "correctAnswer": "consultant",
+    "options": [
+      "consultant",
+      "advisor",
+      "specialist"
+    ],
+    "explanation": "The Czech word 'konzultant' means 'consultant' in English. Example: 'Minulý měsíc byla doba, kdy jsme najali konzultanta.' (Last month was the time when we hired a consultant.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-103",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'zaměstnavatel'?",
+    "correctAnswer": "employer",
+    "options": [
+      "employer",
+      "employee",
+      "manager"
+    ],
+    "explanation": "The Czech word 'zaměstnavatel' translates to 'employer' in English. Example: 'Ten měsíc, kdy zaměstnavatel vyplácí bonus, je v prosinci.' (The month when the employer pays the bonus is in December.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-104",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'zisk' mean?",
+    "correctAnswer": "profit",
+    "options": [
+      "profit",
+      "income",
+      "earnings"
+    ],
+    "explanation": "The Czech word 'zisk' means 'profit' in English. Example: 'Ta doba, kdy budeme znát zisky naší společnosti, je zítra.' (The time when we will know our company's profits is tomorrow.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-105",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'plat'?",
+    "correctAnswer": "salary",
+    "options": [
+      "salary",
+      "wage",
+      "payment"
+    ],
+    "explanation": "The Czech word 'plat' translates to 'salary' in English. Example: 'Ten den, kdy on dostane svůj plat, je 31.12.' (The day when he gets his salary is December 31st.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-106",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'dovednosti' mean?",
+    "correctAnswer": "skills",
+    "options": [
+      "skills",
+      "abilities",
+      "talents"
+    ],
+    "explanation": "The Czech word 'dovednosti' means 'skills' in English. Example: 'On byl povýšen velmi rychle, protože má mnoho dovedností.' (He was promoted very quickly because he has many skills.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-107",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'zkušenost'?",
+    "correctAnswer": "experience",
+    "options": [
+      "experience",
+      "practice",
+      "background"
+    ],
+    "explanation": "The Czech word 'zkušenost' translates to 'experience' in English. Example: 'Ten důvod, proč jsme ho najali, je, že má spoustu zkušeností.' (The reason we hired him is that he has lots of experience.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-108",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'dodat' mean?",
+    "correctAnswer": "to promote",
+    "options": [
+      "to promote",
+      "to deliver",
+      "to add"
+    ],
+    "explanation": "The Czech word 'dodat' means 'to promote' in English. Example: 'Ten důvod, proč byla povýšena, je to, že vytváří značné zisky.' (The reason she was promoted is that she generates significant profits.)",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-109",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'ukončit'?",
+    "correctAnswer": "to quit",
+    "options": [
+      "to quit",
+      "to end",
+      "to finish"
+    ],
+    "explanation": "The Czech word 'ukončit' translates to 'to quit' in English. Example: 'Ten důvod, proč odešel, je proto, že našel novou práci.' (The reason he quit is because he found new work.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-110",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'nebe' mean?",
+    "correctAnswer": "sky",
+    "options": [
+      "sky",
+      "heaven",
+      "blue"
+    ],
+    "explanation": "The Czech word 'nebe' means 'sky' in English. Example: 'Obloha je dnes modrá.' (The sky is blue today.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-111",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'slunce'?",
+    "correctAnswer": "sun",
+    "options": [
+      "sun",
+      "light",
+      "star"
+    ],
+    "explanation": "The Czech word 'slunce' translates to 'sun' in English. Example: 'Měsíc je menší než Slunce.' (The moon is smaller than the sun.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-112",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'hvězdy' mean?",
+    "correctAnswer": "stars",
+    "options": [
+      "stars",
+      "lights",
+      "planets"
+    ],
+    "explanation": "The Czech word 'hvězdy' means 'stars' in English. Example: 'Na obloze je spousta hvězd.' (There are lots of stars in the sky.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-113",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'zahrada'?",
+    "correctAnswer": "garden",
+    "options": [
+      "garden",
+      "yard",
+      "park"
+    ],
+    "explanation": "The Czech word 'zahrada' translates to 'garden' in English. Example: 'Má zahrada je větší než jeho zahrada.' (My garden is bigger than his garden.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-114",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'květ' mean?",
+    "correctAnswer": "flower",
+    "options": [
+      "flower",
+      "bloom",
+      "petal"
+    ],
+    "explanation": "The Czech word 'květ' means 'flower' in English. Example: 'Má zahrada má více květin než jeho zahrada.' (My garden has more flowers than his garden.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-115",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'strom'?",
+    "correctAnswer": "tree",
+    "options": [
+      "tree",
+      "wood",
+      "plant"
+    ],
+    "explanation": "The Czech word 'strom' translates to 'tree' in English. Example: 'Dávám přednost květinám před stromy.' (I prefer flowers to trees.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-116",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'včela' mean?",
+    "correctAnswer": "bee",
+    "options": [
+      "bee",
+      "insect",
+      "wasp"
+    ],
+    "explanation": "The Czech word 'včela' means 'bee' in English. Example: 'Tato zahrada má více včel než tamta zahrada, protože má více květin.' (This garden has more bees than that garden because it has more flowers.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-117",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'stejně'?",
+    "correctAnswer": "equal",
+    "options": [
+      "equal",
+      "same",
+      "similar"
+    ],
+    "explanation": "The Czech word 'stejně' translates to 'equal' in English. Example: 'Jeho zahrada a moje zahrada jsou stejně krásné.' (His garden and my garden are equally beautiful.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-118",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'zvíře' mean?",
+    "correctAnswer": "animal",
+    "options": [
+      "animal",
+      "creature",
+      "beast"
+    ],
+    "explanation": "The Czech word 'zvíře' means 'animal' in English. Example: 'Já nemám ráda nechávat zvířata vstupovat do mé zahrady.' (I don't like letting animals enter my garden.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-119",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'poušť'?",
+    "correctAnswer": "desert",
+    "options": [
+      "desert",
+      "wasteland",
+      "dune"
+    ],
+    "explanation": "The Czech word 'poušť' translates to 'desert' in English. Example: 'Největší poušť je v Antarktidě.' (The biggest desert is in Antarctica.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-120",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'svět' mean?",
+    "correctAnswer": "world",
+    "options": [
+      "world",
+      "earth",
+      "globe"
+    ],
+    "explanation": "The Czech word 'svět' means 'world' in English. Example: 'Největším zvířetem na světě je modrá velryba.' (The biggest animal in the world is the blue whale.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-121",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'oceán'?",
+    "correctAnswer": "ocean",
+    "options": [
+      "ocean",
+      "sea",
+      "water"
+    ],
+    "explanation": "The Czech word 'oceán' translates to 'ocean' in English. Example: 'Největší oceán na světě je Tichý oceán.' (The biggest ocean in the world is the Pacific Ocean.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-122",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'hora' mean?",
+    "correctAnswer": "mountain",
+    "options": [
+      "mountain",
+      "hill",
+      "peak"
+    ],
+    "explanation": "The Czech word 'hora' means 'mountain' in English. Example: 'Nejvyšší horou na světě je Mount Everest.' (The highest mountain in the world is Mount Everest.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-123",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'řeka'?",
+    "correctAnswer": "river",
+    "options": [
+      "river",
+      "stream",
+      "creek"
+    ],
+    "explanation": "The Czech word 'řeka' translates to 'river' in English. Example: 'Nejdelší řeka na světě je v Jižní Americe.' (The longest river in the world is in South America.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-124",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'vodopád' mean?",
+    "correctAnswer": "waterfall",
+    "options": [
+      "waterfall",
+      "cascade",
+      "falls"
+    ],
+    "explanation": "The Czech word 'vodopád' means 'waterfall' in English. Example: 'Vodopády jsou mnohem krásnější v průběhu léta.' (Waterfalls are much more beautiful during summer.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-125",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'horké prameny'?",
+    "correctAnswer": "hot spring",
+    "options": [
+      "hot spring",
+      "thermal spring",
+      "warm water"
+    ],
+    "explanation": "The Czech phrase 'horké prameny' translates to 'hot spring' in English. Example: 'Horké prameny jsou nejnavštěvovanější v zimě.' (Hot springs are most visited in winter.)",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-126",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'ostrov' mean?",
+    "correctAnswer": "island",
+    "options": [
+      "island",
+      "isle",
+      "atoll"
+    ],
+    "explanation": "The Czech word 'ostrov' means 'island' in English. Example: 'Ostrov je nejpřeplněnější v průběhu léta.' (The island is most crowded during summer.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-127",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'nebezpečný'?",
+    "correctAnswer": "dangerous",
+    "options": [
+      "dangerous",
+      "unsafe",
+      "risky"
+    ],
+    "explanation": "The Czech word 'nebezpečný' translates to 'dangerous' in English. Example: 'Zvíře je nejnebezpečnější, když je hladové.' (An animal is most dangerous when it is hungry.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-128",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'džungle' mean?",
+    "correctAnswer": "jungle",
+    "options": [
+      "jungle",
+      "rainforest",
+      "forest"
+    ],
+    "explanation": "The Czech word 'džungle' means 'jungle' in English. Example: 'Džungle je nejnebezpečnější v noci.' (The jungle is most dangerous at night.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-129",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'jezero'?",
+    "correctAnswer": "lake",
+    "options": [
+      "lake",
+      "pond",
+      "reservoir"
+    ],
+    "explanation": "The Czech word 'jezero' translates to 'lake' in English. Example: 'Jezero je mé nejoblíbenější místo.' (The lake is my favorite place.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-130",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'zemětřesení' mean?",
+    "correctAnswer": "earthquake",
+    "options": [
+      "earthquake",
+      "tremor",
+      "quake"
+    ],
+    "explanation": "The Czech word 'zemětřesení' means 'earthquake' in English. Example: 'Japonsko má časté zemětřesení.' (Japan has frequent earthquakes.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-131",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'vesnice'?",
+    "correctAnswer": "village",
+    "options": [
+      "village",
+      "town",
+      "settlement"
+    ],
+    "explanation": "The Czech word 'vesnice' translates to 'village' in English. Example: 'Vesnice na ostrově mají časté zemětřesení.' (Villages on the island have frequent earthquakes.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-132",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'zaplavit' mean?",
+    "correctAnswer": "to flood",
+    "options": [
+      "to flood",
+      "to overflow",
+      "to inundate"
+    ],
+    "explanation": "The Czech word 'zaplavit' means 'to flood' in English. Example: 'U vesnic kolem řeky se očekává časté zaplavení.' (Frequent flooding is expected in villages around the river.)",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-133",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'sesuv půdy'?",
+    "correctAnswer": "mudslide",
+    "options": [
+      "mudslide",
+      "landslide",
+      "rockslide"
+    ],
+    "explanation": "The Czech phrase 'sesuv půdy' translates to 'mudslide' in English. Example: 'Po silném dešti se tam vyskytují časté sesuvy půdy.' (After heavy rain, frequent mudslides occur there.)",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-134",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'město' mean?",
+    "correctAnswer": "city",
+    "options": [
+      "city",
+      "town",
+      "metropolis"
+    ],
+    "explanation": "The Czech word 'město' means 'city' in English. Example: 'Důvodem, proč je město často zaplavováno, je, že se nachází poblíž řeky.' (The reason the city is often flooded is that it is located near the river.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-135",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'vyskytovat'?",
+    "correctAnswer": "to occur",
+    "options": [
+      "to occur",
+      "to happen",
+      "to appear"
+    ],
+    "explanation": "The Czech word 'vyskytovat' translates to 'to occur' in English. Example: 'Zemětřesení se vyskytují každý rok.' (Earthquakes occur every year.)",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-136",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'hurikán' mean?",
+    "correctAnswer": "hurricane",
+    "options": [
+      "hurricane",
+      "cyclone",
+      "storm"
+    ],
+    "explanation": "The Czech word 'hurikán' means 'hurricane' in English. Example: 'Hurikány se obvykle vyskytují v červnu.' (Hurricanes usually occur in June.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-137",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'tsunami'?",
+    "correctAnswer": "tsunami",
+    "options": [
+      "tsunami",
+      "tidal wave",
+      "wave"
+    ],
+    "explanation": "The Czech word 'tsunami' translates to 'tsunami' in English. Example: 'Zemětřesení se obvykle vyskytují před tsunami.' (Earthquakes usually occur before tsunamis.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-138",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'blesk' mean?",
+    "correctAnswer": "lightning",
+    "options": [
+      "lightning",
+      "flash",
+      "bolt"
+    ],
+    "explanation": "The Czech word 'blesk' means 'lightning' in English. Example: 'Obvykle se blýská před bouří.' (Lightning usually occurs before a storm.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-139",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'lesní požár'?",
+    "correctAnswer": "forest fire",
+    "options": [
+      "forest fire",
+      "wildfire",
+      "bushfire"
+    ],
+    "explanation": "The Czech phrase 'lesní požár' translates to 'forest fire' in English. Example: 'Lesní požáry se obvykle vyskytují v létě.' (Forest fires usually occur in summer.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-140",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'poškodit' mean?",
+    "correctAnswer": "to damage",
+    "options": [
+      "to damage",
+      "to harm",
+      "to hurt"
+    ],
+    "explanation": "The Czech word 'poškodit' means 'to damage' in English. Example: 'Zemětřesení mohou poškodit vše.' (Earthquakes can damage everything.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-141",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'zničit'?",
+    "correctAnswer": "to destroy",
+    "options": [
+      "to destroy",
+      "to ruin",
+      "to demolish"
+    ],
+    "explanation": "The Czech word 'zničit' translates to 'to destroy' in English. Example: 'Tsunami může zničit velkou loď. Zemětřesení může zničit celé město.' (A tsunami can destroy a large ship. An earthquake can destroy an entire city.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-142",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'vyhnat' mean?",
+    "correctAnswer": "to uproot",
+    "options": [
+      "to uproot",
+      "to expel",
+      "to drive out"
+    ],
+    "explanation": "The Czech word 'vyhnat' means 'to uproot' in English. Example: 'Lesní požár může vyhnat všechna zvířata z lesa.' (A forest fire can uproot all animals from the forest.)",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-143",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'způsobit'?",
+    "correctAnswer": "to cause",
+    "options": [
+      "to cause",
+      "to make",
+      "to produce"
+    ],
+    "explanation": "The Czech word 'způsobit' translates to 'to cause' in English. Example: 'Silný déšť způsobil povodeň.' (Heavy rain caused a flood.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-144",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'sopka' mean?",
+    "correctAnswer": "volcano",
+    "options": [
+      "volcano",
+      "crater",
+      "lava"
+    ],
+    "explanation": "The Czech word 'sopka' means 'volcano' in English. Example: 'Výbuch sopky způsobuje zemětřesení.' (A volcano eruption causes earthquakes.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-145",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'panika'?",
+    "correctAnswer": "panic",
+    "options": [
+      "panic",
+      "fear",
+      "dread"
+    ],
+    "explanation": "The Czech word 'panika' translates to 'panic' in English. Example: 'Požár způsobuje paniku.' (Fire causes panic.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-146",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'zemřít' mean?",
+    "correctAnswer": "to die",
+    "options": [
+      "to die",
+      "to pass away",
+      "to perish"
+    ],
+    "explanation": "The Czech word 'zemřít' means 'to die' in English. Example: 'Lesní požáry způsobují, že zvířata zemřou.' (Forest fires cause animals to die.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-147",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'příroda'?",
+    "correctAnswer": "nature",
+    "options": [
+      "nature",
+      "environment",
+      "wilderness"
+    ],
+    "explanation": "The Czech word 'příroda' translates to 'nature' in English. Example: 'Povodně se často vyskytují, protože lidé ničí přírodu.' (Floods often occur because people destroy nature.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-148",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'raketa' mean?",
+    "correctAnswer": "rocket",
+    "options": [
+      "rocket",
+      "missile",
+      "shuttle"
+    ],
+    "explanation": "The Czech word 'raketa' means 'rocket' in English. Example: 'On si rád čte o raketách.' (He likes to read about rockets.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-149",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What is the English translation of 'obloha'?",
+    "correctAnswer": "sky",
+    "options": [
+      "sky",
+      "atmosphere",
+      "heavens"
+    ],
+    "explanation": "The Czech word 'obloha' translates to 'sky' in English. Example: 'Já se rád dívám na oblohu v noci.' (I like to look at the sky at night.)",
+    "rarity": "common",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-150",
+    "type": "vocabulary",
+    "domain": "czech",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "source": "czech-vocab-b4",
+    "prompt": "What does the Czech word 'pozorovat' mean?",
+    "correctAnswer": "to stargaze",
+    "options": [
+      "to stargaze",
+      "to observe",
+      "to watch"
+    ],
+    "explanation": "The Czech word 'pozorovat' translates to 'to stargaze' in English. Example: 'Ona nerada pozoruje hvězdy na obloze.' (She doesn't like to stargaze at the stars in the sky.)",
+    "rarity": "uncommon",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-151",
+    "type": "vocabulary",
+    "question": "What does 'dalekohled' mean in English?",
+    "correctAnswer": "telescope",
+    "incorrectAnswers": [
+      "microscope",
+      "binoculars",
+      "mirror"
+    ],
+    "explanation": "Dalekohled is a Czech word for an optical instrument used to observe distant objects in the sky.",
+    "example": "Ráda používá dalekohled ke sledování oblohy.",
+    "categoryL2": "czech",
+    "rarity": "uncommon",
+    "difficulty": 3,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-152",
+    "type": "vocabulary",
+    "question": "What does 'planeta' mean in English?",
+    "correctAnswer": "planet",
+    "incorrectAnswers": [
+      "star",
+      "moon",
+      "comet"
+    ],
+    "explanation": "Planeta refers to a large celestial body that orbits a star.",
+    "example": "Ráda používá dalekohled k pozorování planet v noci.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-153",
+    "type": "vocabulary",
+    "question": "What does 'astronaut' mean in English?",
+    "correctAnswer": "astronaut",
+    "incorrectAnswers": [
+      "pilot",
+      "engineer",
+      "scientist"
+    ],
+    "explanation": "Astronaut is a person trained to travel and work in space.",
+    "example": "Já si myslím, že být astronautem je zajímavá práce.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-154",
+    "type": "vocabulary",
+    "question": "What does 'Saturn' mean in English?",
+    "correctAnswer": "Saturn",
+    "incorrectAnswers": [
+      "Mars",
+      "Venus",
+      "Jupiter"
+    ],
+    "explanation": "Saturn is the sixth planet from the Sun, famous for its prominent ring system.",
+    "example": "Já pochybuji, že lidé mohou žít na Saturnu.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-155",
+    "type": "vocabulary",
+    "question": "What does 'zatmění Měsíce' mean in English?",
+    "correctAnswer": "lunar eclipse",
+    "incorrectAnswers": [
+      "solar eclipse",
+      "meteor shower",
+      "full moon"
+    ],
+    "explanation": "Zatmění Měsíce occurs when Earth passes between the Sun and Moon, casting Earth's shadow on the Moon.",
+    "example": "Já pochybuji, že dnes večer můžeme vidět zatmění měsíce.",
+    "categoryL2": "czech",
+    "rarity": "uncommon",
+    "difficulty": 3,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-156",
+    "type": "vocabulary",
+    "question": "What does 'úplněk' mean in English?",
+    "correctAnswer": "full moon",
+    "incorrectAnswers": [
+      "new moon",
+      "crescent moon",
+      "lunar eclipse"
+    ],
+    "explanation": "Úplněk is when the Moon is fully illuminated by the Sun as seen from Earth.",
+    "example": "Ona věří, že může mluvit s duchy v den úplňku.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-157",
+    "type": "vocabulary",
+    "question": "What does 'atmosféra' mean in English?",
+    "correctAnswer": "atmosphere",
+    "incorrectAnswers": [
+      "stratosphere",
+      "ionosphere",
+      "climate"
+    ],
+    "explanation": "Atmosféra is the layer of gases surrounding a planet or celestial body.",
+    "example": "Astronaut věří, že Měsíc nemá atmosféru.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-158",
+    "type": "vocabulary",
+    "question": "What does 'průměr' mean in English?",
+    "correctAnswer": "diameter",
+    "incorrectAnswers": [
+      "radius",
+      "circumference",
+      "area"
+    ],
+    "explanation": "Průměr is the straight line passing through the center of a circle or sphere.",
+    "example": "Já pochybuji, že průměr Země je větší než průměr Saturnu.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-159",
+    "type": "vocabulary",
+    "question": "What does 'představit si' mean in English?",
+    "correctAnswer": "to imagine",
+    "incorrectAnswers": [
+      "to remember",
+      "to understand",
+      "to think"
+    ],
+    "explanation": "Představit si means to form a mental image or picture of something.",
+    "example": "Já si představuji, že jsou tam mimozemšťané.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-160",
+    "type": "vocabulary",
+    "question": "What does 'zatmění Slunce' mean in English?",
+    "correctAnswer": "solar eclipse",
+    "incorrectAnswers": [
+      "lunar eclipse",
+      "sunburn",
+      "sunrise"
+    ],
+    "explanation": "Zatmění Slunce occurs when the Moon passes between the Sun and Earth, blocking sunlight.",
+    "example": "Neumím si představit, jak zatmění slunce zničí svět.",
+    "categoryL2": "czech",
+    "rarity": "uncommon",
+    "difficulty": 3,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-161",
+    "type": "vocabulary",
+    "question": "What does 'sluneční soustava' mean in English?",
+    "correctAnswer": "solar system",
+    "incorrectAnswers": [
+      "galaxy",
+      "universe",
+      "nebula"
+    ],
+    "explanation": "Sluneční soustava is the system of the Sun and all objects orbiting it.",
+    "example": "Já si představuji, že v naší sluneční soustavě jsou dvě slunce.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-162",
+    "type": "vocabulary",
+    "question": "What does 'družice' mean in English?",
+    "correctAnswer": "satellite",
+    "incorrectAnswers": [
+      "spaceship",
+      "meteor",
+      "comet"
+    ],
+    "explanation": "Družice is an artificial object placed in orbit around Earth or another celestial body.",
+    "example": "Já si představuji, že za deset let bude na obloze mnoho satelitů.",
+    "categoryL2": "czech",
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-163",
+    "type": "vocabulary",
+    "question": "What does 'kosmická loď' mean in English?",
+    "correctAnswer": "spaceship",
+    "incorrectAnswers": [
+      "rocket",
+      "shuttle",
+      "airplane"
+    ],
+    "explanation": "Kosmická loď is a vessel designed for travel in outer space.",
+    "example": "Já si představuji, že můžeme vzít kosmickou loď na Měsíc.",
+    "categoryL2": "czech",
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-164",
+    "type": "vocabulary",
+    "question": "What does 'domnívat se' mean in English?",
+    "correctAnswer": "to suppose",
+    "incorrectAnswers": [
+      "to believe",
+      "to know",
+      "to doubt"
+    ],
+    "explanation": "Domnívat se means to hold an opinion or belief about something.",
+    "example": "Já se domnívám, že existuje mnoho solárních systémů.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-165",
+    "type": "vocabulary",
+    "question": "What does 'galaxie' mean in English?",
+    "correctAnswer": "galaxy",
+    "incorrectAnswers": [
+      "star",
+      "planet",
+      "nebula"
+    ],
+    "explanation": "Galaxie is a large system of stars, gas, and dust held together by gravity.",
+    "example": "Země je planeta v sluneční soustavě galaxie.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-166",
+    "type": "vocabulary",
+    "question": "What does 'vesmír' mean in English?",
+    "correctAnswer": "universe",
+    "incorrectAnswers": [
+      "space",
+      "galaxy",
+      "cosmos"
+    ],
+    "explanation": "Vesmír is all of existence, including all galaxies, stars, planets, and space itself.",
+    "example": "Já se domnívám, že ve vesmíru je mnoho galaxií.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-167",
+    "type": "vocabulary",
+    "question": "What does 'oběžná dráha' mean in English?",
+    "correctAnswer": "orbit",
+    "incorrectAnswers": [
+      "trajectory",
+      "rotation",
+      "axis"
+    ],
+    "explanation": "Oběžná dráha is the curved path an object follows around another object in space.",
+    "example": "Já jsem si jen uvědomil, že oběžná dráha Země není kruh.",
+    "categoryL2": "czech",
+    "rarity": "uncommon",
+    "difficulty": 3,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-168",
+    "type": "vocabulary",
+    "question": "What does 'dveře' mean in English?",
+    "correctAnswer": "door",
+    "incorrectAnswers": [
+      "window",
+      "gate",
+      "entrance"
+    ],
+    "explanation": "Dveře is a hinged barrier used to close an opening in a wall or building.",
+    "example": "Já jsem poručila manželovi, aby opravil ty dveře.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-169",
+    "type": "vocabulary",
+    "question": "What does 'natřít' mean in English?",
+    "correctAnswer": "to paint",
+    "incorrectAnswers": [
+      "to draw",
+      "to color",
+      "to stain"
+    ],
+    "explanation": "Natřít means to coat a surface with paint or a similar substance.",
+    "example": "Já jsem mu poručila, aby natřel dveře na červeno.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-170",
+    "type": "vocabulary",
+    "question": "What does 'střecha' mean in English?",
+    "correctAnswer": "roof",
+    "incorrectAnswers": [
+      "attic",
+      "ceiling",
+      "wall"
+    ],
+    "explanation": "Střecha is the upper outer covering of a building that protects it from weather.",
+    "example": "Já jsem mu poručila aby opravil střechu.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-171",
+    "type": "vocabulary",
+    "question": "What does 'obývací pokoj' mean in English?",
+    "correctAnswer": "living room",
+    "incorrectAnswers": [
+      "bedroom",
+      "kitchen",
+      "office"
+    ],
+    "explanation": "Obývací pokoj is a room in a house used for general living and relaxation.",
+    "example": "Ona mu poručila, aby vymaloval obývací pokoj na modro.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-172",
+    "type": "vocabulary",
+    "question": "What does 'kuchyně' mean in English?",
+    "correctAnswer": "kitchen",
+    "incorrectAnswers": [
+      "dining room",
+      "pantry",
+      "stove"
+    ],
+    "explanation": "Kuchyně is a room where food is prepared and cooked.",
+    "example": "Kuchyně byla minulý týden vymalovaná na bílo.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-173",
+    "type": "vocabulary",
+    "question": "What does 'dřez' mean in English?",
+    "correctAnswer": "sink",
+    "incorrectAnswers": [
+      "faucet",
+      "drain",
+      "basin"
+    ],
+    "explanation": "Dřez is a fixed basin with running water for washing dishes and other items.",
+    "example": "Dřez byl opravený včera.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-174",
+    "type": "vocabulary",
+    "question": "What does 'uchovávat' mean in English?",
+    "correctAnswer": "to keep",
+    "incorrectAnswers": [
+      "to store",
+      "to hold",
+      "to preserve"
+    ],
+    "explanation": "Uchovávat means to retain possession of something or maintain its condition.",
+    "example": "Ovoce je uchované v kuchyni.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-175",
+    "type": "vocabulary",
+    "question": "What does 'komora' mean in English?",
+    "correctAnswer": "storage room",
+    "incorrectAnswers": [
+      "cellar",
+      "attic",
+      "closet"
+    ],
+    "explanation": "Komora is a small room used for storing items, typically in a house.",
+    "example": "Staré oblečení bylo uloženo v komoře.",
+    "categoryL2": "czech",
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-176",
+    "type": "vocabulary",
+    "question": "What does 'skříň' mean in English?",
+    "correctAnswer": "closet",
+    "incorrectAnswers": [
+      "cabinet",
+      "wardrobe",
+      "cupboard"
+    ],
+    "explanation": "Skříň is a piece of furniture or small room for storing clothes or items.",
+    "example": "Staré boty byly uloženy v červeném skříni.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-177",
+    "type": "vocabulary",
+    "question": "What does 'ložnice' mean in English?",
+    "correctAnswer": "bedroom",
+    "incorrectAnswers": [
+      "bathroom",
+      "living room",
+      "hall"
+    ],
+    "explanation": "Ložnice is a room in a house where people sleep.",
+    "example": "Moje matka mi dovolila, abych vymaloval ložnici na modro.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-178",
+    "type": "vocabulary",
+    "question": "What does 'připomínat' mean in English?",
+    "correctAnswer": "to remind",
+    "incorrectAnswers": [
+      "to remember",
+      "to suggest",
+      "to mention"
+    ],
+    "explanation": "Připomínat means to cause someone to recall or think of something.",
+    "example": "Ona mu připomněla, aby natřel dveře na bílo.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-179",
+    "type": "vocabulary",
+    "question": "What does 'záclony' mean in English?",
+    "correctAnswer": "curtains",
+    "incorrectAnswers": [
+      "drapes",
+      "blinds",
+      "shades"
+    ],
+    "explanation": "Záclony are fabric coverings hung at windows to provide privacy or shade.",
+    "example": "On mě donutil vyměnit záclony.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-180",
+    "type": "vocabulary",
+    "question": "What does 'radit' mean in English?",
+    "correctAnswer": "to advise",
+    "incorrectAnswers": [
+      "to suggest",
+      "to recommend",
+      "to guide"
+    ],
+    "explanation": "Radit means to give someone advice or counsel about what they should do.",
+    "example": "Lékař mi doporučil, abych spal osm hodin denně.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-181",
+    "type": "vocabulary",
+    "question": "What does 'polštář' mean in English?",
+    "correctAnswer": "pillow",
+    "incorrectAnswers": [
+      "mattress",
+      "cushion",
+      "blanket"
+    ],
+    "explanation": "Polštář is a cushion filled with soft material used to support the head while sleeping.",
+    "example": "Lékař mi doporučil, abych spal s polštářem.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-182",
+    "type": "vocabulary",
+    "question": "What does 'deka' mean in English?",
+    "correctAnswer": "blanket",
+    "incorrectAnswers": [
+      "sheet",
+      "quilt",
+      "comforter"
+    ],
+    "explanation": "Deka is a cloth covering used on a bed for warmth.",
+    "example": "Řekl jsem mu, aby si nechal přikrývku v ložnici",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-183",
+    "type": "vocabulary",
+    "question": "What does 'regál' mean in English?",
+    "correctAnswer": "bookshelf",
+    "incorrectAnswers": [
+      "bookcase",
+      "library",
+      "desk"
+    ],
+    "explanation": "Regál is a shelving unit used for storing and displaying books.",
+    "example": "Já jsem jí pomohl dát její knihy na polici.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-184",
+    "type": "vocabulary",
+    "question": "What does 'ozdobit' mean in English?",
+    "correctAnswer": "to decorate",
+    "incorrectAnswers": [
+      "to design",
+      "to arrange",
+      "to beautify"
+    ],
+    "explanation": "Ozdobit means to add ornaments or embellishments to make something more attractive.",
+    "example": "Ona mu pomáhá ozdobit jeho ložnici.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-185",
+    "type": "vocabulary",
+    "question": "What does 'renovovat' mean in English?",
+    "correctAnswer": "to renovate",
+    "incorrectAnswers": [
+      "to repair",
+      "to rebuild",
+      "to restore"
+    ],
+    "explanation": "Renovovat means to restore something to good condition by making repairs and improvements.",
+    "example": "Já jsem mu pomohl zrenovovat dům.",
+    "categoryL2": "czech",
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-186",
+    "type": "vocabulary",
+    "question": "What does 'postavit' mean in English?",
+    "correctAnswer": "to build",
+    "incorrectAnswers": [
+      "to construct",
+      "to make",
+      "to create"
+    ],
+    "explanation": "Postavit means to construct or assemble something by putting parts together.",
+    "example": "On pomohl otci postavit novou kuchyni.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-187",
+    "type": "vocabulary",
+    "question": "What does 'rozbít' mean in English?",
+    "correctAnswer": "to break",
+    "incorrectAnswers": [
+      "to smash",
+      "to shatter",
+      "to crack"
+    ],
+    "explanation": "Rozbít means to cause something to split or separate into pieces.",
+    "example": "Ona spala, když zloděj rozbil okno.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-188",
+    "type": "vocabulary",
+    "question": "What does 'lupič' mean in English?",
+    "correctAnswer": "burglar",
+    "incorrectAnswers": [
+      "thief",
+      "robber",
+      "criminal"
+    ],
+    "explanation": "Lupič is a person who breaks into buildings to steal valuables.",
+    "example": "Ona spala, když zloděj rozbil okno.",
+    "categoryL2": "czech",
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-189",
+    "type": "vocabulary",
+    "question": "What does 'hledat' mean in English?",
+    "correctAnswer": "to look for",
+    "incorrectAnswers": [
+      "to find",
+      "to search",
+      "to hunt"
+    ],
+    "explanation": "Hledat means to seek or attempt to find something.",
+    "example": "Lupič hledal peníze v ložnici, když jsem byl v kuchyni.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-190",
+    "type": "vocabulary",
+    "question": "What does 'chytit' mean in English?",
+    "correctAnswer": "to catch",
+    "incorrectAnswers": [
+      "to grab",
+      "to seize",
+      "to capture"
+    ],
+    "explanation": "Chytit means to capture or apprehend someone or something.",
+    "example": "Lupič hledal peníze, když ho policie chytila.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-191",
+    "type": "vocabulary",
+    "question": "What does 'uniknout' mean in English?",
+    "correctAnswer": "to escape",
+    "incorrectAnswers": [
+      "to flee",
+      "to run away",
+      "to evade"
+    ],
+    "explanation": "Uniknout means to get away from or break free from a situation or person.",
+    "example": "Lupič mohl uniknout policii.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-192",
+    "type": "vocabulary",
+    "question": "What does 'vykrást' mean in English?",
+    "correctAnswer": "to rob",
+    "incorrectAnswers": [
+      "to steal",
+      "to burglarize",
+      "to loot"
+    ],
+    "explanation": "Vykrást means to steal goods from a place or person by force or breaking in.",
+    "example": "Lupič vykradl tento dům.",
+    "categoryL2": "czech",
+    "rarity": "uncommon",
+    "difficulty": 3,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-193",
+    "type": "vocabulary",
+    "question": "What does 'zločin' mean in English?",
+    "correctAnswer": "crime",
+    "incorrectAnswers": [
+      "sin",
+      "mistake",
+      "offense"
+    ],
+    "explanation": "Zločin is an illegal act that violates the law and is punishable by authorities.",
+    "example": "On spáchal zločin.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-194",
+    "type": "vocabulary",
+    "question": "What does 'podvádět' mean in English?",
+    "correctAnswer": "to cheat",
+    "incorrectAnswers": [
+      "to deceive",
+      "to trick",
+      "to fool"
+    ],
+    "explanation": "Podvádět means to act dishonestly or fraudulently to gain an unfair advantage.",
+    "example": "On podváděl během školní zkoušky.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-195",
+    "type": "vocabulary",
+    "question": "What does 'krádež' mean in English?",
+    "correctAnswer": "stealing",
+    "incorrectAnswers": [
+      "theft",
+      "robbery",
+      "larceny"
+    ],
+    "explanation": "Krádež is the act of taking something that belongs to another person without permission.",
+    "example": "Krádež peněz je zločin.",
+    "categoryL2": "czech",
+    "rarity": "uncommon",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-196",
+    "type": "vocabulary",
+    "question": "What does 'obviněný' mean in English?",
+    "correctAnswer": "defendant",
+    "incorrectAnswers": [
+      "accused",
+      "criminal",
+      "suspect"
+    ],
+    "explanation": "Obviněný is a person who is formally charged with a crime in a court of law.",
+    "example": "On je obviněný z trestného činu.",
+    "categoryL2": "czech",
+    "rarity": "uncommon",
+    "difficulty": 3,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-197",
+    "type": "vocabulary",
+    "question": "What does 'soud' mean in English?",
+    "correctAnswer": "court",
+    "incorrectAnswers": [
+      "judge",
+      "law",
+      "trial"
+    ],
+    "explanation": "Soud is an institution where legal disputes are resolved and justice is administered.",
+    "example": "Obžalovaný se objevil u soudu.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-198",
+    "type": "vocabulary",
+    "question": "What does 'vinný' mean in English?",
+    "correctAnswer": "guilty",
+    "incorrectAnswers": [
+      "wrong",
+      "bad",
+      "evil"
+    ],
+    "explanation": "Vinný means responsible for a crime or wrongdoing and deserving of punishment.",
+    "example": "Soud ho uznal vinným.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-199",
+    "type": "vocabulary",
+    "question": "What does 'omluvit se' mean in English?",
+    "correctAnswer": "to apologize",
+    "incorrectAnswers": [
+      "to forgive",
+      "to excuse",
+      "to explain"
+    ],
+    "explanation": "Omluvit se means to express regret and ask for forgiveness for having done something wrong.",
+    "example": "Obžalovaný se nikdy neomluvil.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 2,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-200",
+    "type": "vocabulary",
+    "question": "What does 'oběť' mean in English?",
+    "correctAnswer": "victim",
+    "incorrectAnswers": [
+      "witness",
+      "criminal",
+      "survivor"
+    ],
+    "explanation": "Oběť is a person who is harmed, killed, or wronged by another person or event.",
+    "example": "Oběť nikdy nedostala omluvu.",
+    "categoryL2": "czech",
+    "rarity": "common",
+    "difficulty": 1,
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-201",
+    "type": "vocabulary",
+    "question": "What does 'svědek' mean in Czech?",
+    "correctAnswer": "witness",
+    "incorrectAnswers": [
+      "judge",
+      "suspect"
+    ],
+    "explanation": "Svědek (witness) is someone who sees and can testify about an event. Example: 'Svědek nebyl nikdy před soudem.' (The witness was never in court before.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-202",
+    "type": "vocabulary",
+    "question": "What does 'soudce' mean in Czech?",
+    "correctAnswer": "judge",
+    "incorrectAnswers": [
+      "lawyer",
+      "witness"
+    ],
+    "explanation": "Soudce (judge) is a person who presides over a court and makes legal decisions. Example: 'Soudce nikdy neviděl takový zločin.' (The judge had never seen such a crime.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-203",
+    "type": "vocabulary",
+    "question": "What does 'podezřelý' mean in Czech?",
+    "correctAnswer": "suspect",
+    "incorrectAnswers": [
+      "guilty",
+      "innocent"
+    ],
+    "explanation": "Podezřelý (suspect) is a person suspected of committing a crime. Example: 'Podezřelý nikdy předtím neviděl svědka.' (The suspect had never seen the witness before.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-204",
+    "type": "vocabulary",
+    "question": "What does 'nevinný' mean in Czech?",
+    "correctAnswer": "innocent",
+    "incorrectAnswers": [
+      "guilty",
+      "proven"
+    ],
+    "explanation": "Nevinný (innocent) means not guilty of a crime or wrongdoing. Example: 'Podezřelý je nevinný.' (The suspect is innocent.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-205",
+    "type": "vocabulary",
+    "question": "What does 'spáchat sebevraždu' mean in Czech?",
+    "correctAnswer": "to commit suicide",
+    "incorrectAnswers": [
+      "to escape",
+      "to confess"
+    ],
+    "explanation": "Spáchat sebevraždu literally means 'to commit suicide' (ending one's own life). Example: 'Oběť plánovala spáchat sebevraždu.' (The victim was planning to commit suicide.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-206",
+    "type": "vocabulary",
+    "question": "What does 'popřít' mean in Czech?",
+    "correctAnswer": "to deny",
+    "incorrectAnswers": [
+      "to prove",
+      "to admit"
+    ],
+    "explanation": "Popřít (to deny) means to refuse to admit or acknowledge something. Example: 'Podezřelý popřel spáchání trestného činu.' (The suspect denied committing the crime.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-207",
+    "type": "vocabulary",
+    "question": "What does 'přiznat si' mean in Czech?",
+    "correctAnswer": "to admit",
+    "incorrectAnswers": [
+      "to deny",
+      "to forgive"
+    ],
+    "explanation": "Přiznat si (to admit) means to acknowledge or confess something, usually something wrongdoing. Example: 'Obžalovaný přiznal, že vykradl dům oběti.' (The accused admitted that he robbed the victim's house.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-208",
+    "type": "vocabulary",
+    "question": "What does 'případ' mean in Czech?",
+    "correctAnswer": "case",
+    "incorrectAnswers": [
+      "crime",
+      "trial"
+    ],
+    "explanation": "Případ (case) refers to a particular matter or legal case being investigated. Example: 'Soudce rozhodl, že v tomto případě je vinen.' (The judge decided that in this case he is guilty.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-209",
+    "type": "vocabulary",
+    "question": "What does 'dokázat' mean in Czech?",
+    "correctAnswer": "to prove",
+    "incorrectAnswers": [
+      "to demonstrate",
+      "to admit"
+    ],
+    "explanation": "Dokázat (to prove) means to show evidence that something is true. Example: 'On dokázal, že je nevinný.' (He proved that he is innocent.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-210",
+    "type": "vocabulary",
+    "question": "What does 'cukrovka' mean in Czech?",
+    "correctAnswer": "diabetes",
+    "incorrectAnswers": [
+      "candy",
+      "sweetness"
+    ],
+    "explanation": "Cukrovka (diabetes) is a medical condition affecting blood sugar levels. Example: 'Pokud budete jíst příliš mnoho sladkostí, dostanete cukrovku.' (If you eat too many sweets, you will get diabetes.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-211",
+    "type": "vocabulary",
+    "question": "What does 'sedět' mean in Czech?",
+    "correctAnswer": "to sit",
+    "incorrectAnswers": [
+      "to stand",
+      "to lie"
+    ],
+    "explanation": "Sedět (to sit) is the action of being seated. Example: 'Pokud budete dlouho sedět, budou vás bolet záda.' (If you sit for a long time, your back will hurt.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-212",
+    "type": "vocabulary",
+    "question": "What does 'zdravý' mean in Czech?",
+    "correctAnswer": "healthy",
+    "incorrectAnswers": [
+      "strong",
+      "fit"
+    ],
+    "explanation": "Zdravý (healthy) means in good health and well-being. Example: 'Pokud budu jíst více zeleniny, budu zdravý.' (If I eat more vegetables, I will be healthy.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-213",
+    "type": "vocabulary",
+    "question": "What does 'možný' mean in Czech?",
+    "correctAnswer": "possible",
+    "incorrectAnswers": [
+      "probable",
+      "certain"
+    ],
+    "explanation": "Možný (possible) means that something can happen or be done. Example: 'Pokud je to možné, půjdu domů.' (If it is possible, I will go home.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-214",
+    "type": "vocabulary",
+    "question": "What does 'svěží' mean in Czech?",
+    "correctAnswer": "fresh",
+    "incorrectAnswers": [
+      "clean",
+      "cool"
+    ],
+    "explanation": "Svěží (fresh) describes something new, cool, or invigorating. Example: 'Pokud budete dělat jógu každý den, budete vypadat svěží.' (If you do yoga every day, you will look fresh.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-215",
+    "type": "vocabulary",
+    "question": "What does 'v dobré kondici' mean in Czech?",
+    "correctAnswer": "in good shape",
+    "incorrectAnswers": [
+      "in good mood",
+      "in good condition"
+    ],
+    "explanation": "V dobré kondici (in good shape) refers to being physically fit and well-conditioned. Example: 'Pokud budete chodit často do posilovny, budete v dobré kondici.' (If you go to the gym often, you will be in good shape.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-216",
+    "type": "vocabulary",
+    "question": "What does 'nezbytné' mean in Czech?",
+    "correctAnswer": "necessary",
+    "incorrectAnswers": [
+      "important",
+      "useful"
+    ],
+    "explanation": "Nezbytné (necessary) means absolutely needed or required. Example: 'Pokud je to nutné, opravím auto sám.' (If it is necessary, I will repair the car myself.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-217",
+    "type": "vocabulary",
+    "question": "What does 'bolest ramene' mean in Czech?",
+    "correctAnswer": "shoulder pain",
+    "incorrectAnswers": [
+      "neck pain",
+      "back pain"
+    ],
+    "explanation": "Bolest ramene (shoulder pain) is discomfort or ache in the shoulder area. Example: 'Pokud by nepracovala příliš dlouho, nebolelo by jí teď rameno.' (If she hadn't worked so long, her shoulder wouldn't hurt now.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-218",
+    "type": "vocabulary",
+    "question": "What does 'čistit si zuby' mean in Czech?",
+    "correctAnswer": "to brush one's teeth",
+    "incorrectAnswers": [
+      "to clean one's mouth",
+      "to wash one's hands"
+    ],
+    "explanation": "Čistit si zuby (to brush one's teeth) is the daily dental hygiene practice. Example: 'Kdybych si každý den čistil zuby, nebolely by mě teď.' (If I brushed my teeth every day, they wouldn't hurt now.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-219",
+    "type": "vocabulary",
+    "question": "What does 'osprchovat se' mean in Czech?",
+    "correctAnswer": "to shower",
+    "incorrectAnswers": [
+      "to bathe",
+      "to wash"
+    ],
+    "explanation": "Osprchovat se (to shower) means to wash oneself under a shower. Example: 'Kdybych si nedal včera v noci sprchu, nespal bych dobře.' (If I hadn't showered last night, I wouldn't have slept well.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-220",
+    "type": "vocabulary",
+    "question": "What does 'prášky proti bolesti' mean in Czech?",
+    "correctAnswer": "pain killer",
+    "incorrectAnswers": [
+      "aspirin",
+      "medicine"
+    ],
+    "explanation": "Prášky proti bolesti (pain killer) are medications that relieve pain. Example: 'Kdybych užívala prášky proti bolesti, necítila bych včera takové bolesti.' (If I had taken painkillers, I wouldn't have felt such pain yesterday.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-221",
+    "type": "vocabulary",
+    "question": "What does 'zotavit' mean in Czech?",
+    "correctAnswer": "to recover",
+    "incorrectAnswers": [
+      "to rest",
+      "to heal"
+    ],
+    "explanation": "Zotavit (to recover) means to regain health or strength after illness or injury. Example: 'Kdybych si vzal ten lék včera, už bych se zotavil.' (If I had taken that medicine yesterday, I would have recovered by now.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-222",
+    "type": "vocabulary",
+    "question": "What does 'operace' mean in Czech?",
+    "correctAnswer": "operation",
+    "incorrectAnswers": [
+      "surgery",
+      "treatment"
+    ],
+    "explanation": "Operace (operation) is a surgical procedure performed by doctors. Example: 'Kdybych nepodstoupil operaci, nebyl bych se zotavil z bolesti.' (If I hadn't had the operation, I wouldn't have recovered from the pain.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-223",
+    "type": "vocabulary",
+    "question": "What does 'léčba' mean in Czech?",
+    "correctAnswer": "treatment",
+    "incorrectAnswers": [
+      "cure",
+      "medicine"
+    ],
+    "explanation": "Léčba (treatment) refers to medical care or therapy for an illness. Example: 'Kdybych měl více peněz, tak bych zahájil léčbu.' (If I had more money, I would start treatment.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-224",
+    "type": "vocabulary",
+    "question": "What does 'narozeniny' mean in Czech?",
+    "correctAnswer": "Birthday",
+    "incorrectAnswers": [
+      "Anniversary",
+      "Holiday"
+    ],
+    "explanation": "Narozeniny (Birthday) is the anniversary of the day someone was born. Example: 'Přeji ti všechno nejlepší k narozeninám.' (I wish you all the best on your birthday.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-225",
+    "type": "vocabulary",
+    "question": "What does 'slavit' mean in Czech?",
+    "correctAnswer": "to celebrate",
+    "incorrectAnswers": [
+      "to party",
+      "to enjoy"
+    ],
+    "explanation": "Slavit (to celebrate) means to mark a special occasion with joy and festivities. Example: 'Dnes večer budeme slavit mé narozeniny u mě v bytě.' (Tonight we will celebrate my birthday at my apartment.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-226",
+    "type": "vocabulary",
+    "question": "What does 'říjen' mean in Czech?",
+    "correctAnswer": "october",
+    "incorrectAnswers": [
+      "September",
+      "November"
+    ],
+    "explanation": "Říjen (October) is the tenth month of the year. Example: 'Moje narozeniny jsou 25.října 1972.' (My birthday is October 25, 1972.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-227",
+    "type": "vocabulary",
+    "question": "What does 'výročí' mean in Czech?",
+    "correctAnswer": "anniversary",
+    "incorrectAnswers": [
+      "birthday",
+      "celebration"
+    ],
+    "explanation": "Výročí (anniversary) is the yearly recurrence of a significant date or event. Example: 'Přejeme Vám šťastné výročí.' (We wish you a happy anniversary.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-228",
+    "type": "vocabulary",
+    "question": "What does 'oslava nového bytu' mean in Czech?",
+    "correctAnswer": "Housewarming",
+    "incorrectAnswers": [
+      "House party",
+      "Moving day"
+    ],
+    "explanation": "Oslava nového bytu (Housewarming) is a celebration held when someone moves into a new home. Example: 'V létě jsme plánovali oslavu nového bytu.' (In summer we were planning a housewarming party.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-229",
+    "type": "vocabulary",
+    "question": "What does 'stipendium' mean in Czech?",
+    "correctAnswer": "scholarship",
+    "incorrectAnswers": [
+      "grant",
+      "loan"
+    ],
+    "explanation": "Stipendium (scholarship) is financial aid given to students for education. Example: 'On doufá, že získá japonské stipendium.' (He hopes to get a Japanese scholarship.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-230",
+    "type": "vocabulary",
+    "question": "What does 'selhat' mean in Czech?",
+    "correctAnswer": "to fail",
+    "incorrectAnswers": [
+      "to fall",
+      "to miss"
+    ],
+    "explanation": "Selhat (to fail) means to be unsuccessful or not achieve a goal. Example: 'Já doufám, že neselžu u zkoušky.' (I hope I won't fail the exam.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-231",
+    "type": "vocabulary",
+    "question": "What does 'zlepšit' mean in Czech?",
+    "correctAnswer": "to improve",
+    "incorrectAnswers": [
+      "to change",
+      "to strengthen"
+    ],
+    "explanation": "Zlepšit (to improve) means to make something better or enhance it. Example: 'Já doufám, že brzy zlepším své komunikační schopnosti.' (I hope to improve my communication skills soon.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-232",
+    "type": "vocabulary",
+    "question": "What does 'přát si' mean in Czech?",
+    "correctAnswer": "to wish",
+    "incorrectAnswers": [
+      "to hope",
+      "to desire"
+    ],
+    "explanation": "Přát si (to wish) means to have a strong desire for something. It is commonly used to express hopes and dreams.",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-233",
+    "type": "vocabulary",
+    "question": "What does 'povýšení' mean in Czech?",
+    "correctAnswer": "promotion",
+    "incorrectAnswers": [
+      "advancement",
+      "progress"
+    ],
+    "explanation": "Povýšení (promotion) is advancement to a higher position or rank in a job. Example: 'Kéž bych mohl být brzy povýšen, abych byl manažer.' (I wish I could be promoted soon to become a manager.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-234",
+    "type": "vocabulary",
+    "question": "What does 'stát se' mean in Czech?",
+    "correctAnswer": "to become",
+    "incorrectAnswers": [
+      "to turn into",
+      "to transform"
+    ],
+    "explanation": "Stát se (to become) means to change into a different state or condition. Example: 'Oni by si přáli stát se brzy rodiči.' (They would wish to become parents soon.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-235",
+    "type": "vocabulary",
+    "question": "What does 'studovat tvrdě' mean in Czech?",
+    "correctAnswer": "to study hard",
+    "incorrectAnswers": [
+      "to work hard",
+      "to learn well"
+    ],
+    "explanation": "Studovat tvrdě (to study hard) means to put great effort into learning. Example: 'Ona se stala doktorem, protože tvrdě studovala.' (She became a doctor because she studied hard.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-236",
+    "type": "vocabulary",
+    "question": "What does 'školení' mean in Czech?",
+    "correctAnswer": "training",
+    "incorrectAnswers": [
+      "education",
+      "teaching"
+    ],
+    "explanation": "Školení (training) is instruction or practice in a skill or subject. Example: 'On se stal manažerem, protože často chodil na školení.' (He became a manager because he often attended training.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-237",
+    "type": "vocabulary",
+    "question": "What does 'svatba' mean in Czech?",
+    "correctAnswer": "wedding",
+    "incorrectAnswers": [
+      "marriage",
+      "ceremony"
+    ],
+    "explanation": "Svatba (wedding) is a ceremony in which two people are joined in marriage. Example: 'Já doufám, že budeš moci přijít na mou svatbu v lednu.' (I hope you can come to my wedding in January.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-238",
+    "type": "vocabulary",
+    "question": "What does 'svatební dort' mean in Czech?",
+    "correctAnswer": "wedding cake",
+    "incorrectAnswers": [
+      "birthday cake",
+      "celebration cake"
+    ],
+    "explanation": "Svatební dort (wedding cake) is the special cake served at a wedding celebration. Example: 'Já doufám, že na svůj svatební den budu mít velký svatební dort.' (I hope to have a big wedding cake on my wedding day.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-239",
+    "type": "vocabulary",
+    "question": "What does 'snubní prsten' mean in Czech?",
+    "correctAnswer": "wedding ring",
+    "incorrectAnswers": [
+      "engagement ring",
+      "gold ring"
+    ],
+    "explanation": "Snubní prsten (wedding ring) is the ring exchanged during a wedding ceremony. Example: 'On doufá, že se jí bude líbit snubní prsten, který on koupil.' (He hopes she will like the wedding ring he bought.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-240",
+    "type": "vocabulary",
+    "question": "What does 'oslava' mean in Czech?",
+    "correctAnswer": "celebration",
+    "incorrectAnswers": [
+      "party",
+      "festivity"
+    ],
+    "explanation": "Oslava (celebration) is a joyful event or gathering to commemorate something special. Example: 'On doufá, že si hosté užijí svatební oslavu.' (He hopes the guests will enjoy the wedding celebration.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-241",
+    "type": "vocabulary",
+    "question": "What does 'pozvánka' mean in Czech?",
+    "correctAnswer": "Invitation letter",
+    "incorrectAnswers": [
+      "invitation card",
+      "letter of intent"
+    ],
+    "explanation": "Pozvánka (Invitation letter) is a written request for someone to attend an event. Example: 'Já doufám, že budu moci poslat 100 pozvánek dnes.' (I hope I can send 100 invitation letters today.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-242",
+    "type": "vocabulary",
+    "question": "What does 'vrátit se' mean in Czech?",
+    "correctAnswer": "to come back",
+    "incorrectAnswers": [
+      "to return",
+      "to go back"
+    ],
+    "explanation": "Vrátit se (to come back) means to return to a place or person. Example: 'Přál bych si, aby se ke mně vrátila.' (I wish she would come back to me.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-243",
+    "type": "vocabulary",
+    "question": "What does 'pamatovat si' mean in Czech?",
+    "correctAnswer": "to remember",
+    "incorrectAnswers": [
+      "to recall",
+      "to think of"
+    ],
+    "explanation": "Pamatovat si (to remember) means to keep something in memory or recall it. Example: 'Přál bych si, aby si na ni pamatoval.' (I wish he would remember her.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-244",
+    "type": "vocabulary",
+    "question": "What does 'bohatý' mean in Czech?",
+    "correctAnswer": "rich",
+    "incorrectAnswers": [
+      "wealthy",
+      "prosperous"
+    ],
+    "explanation": "Bohatý (rich) means having a lot of money or possessions. Example: 'Kdybych byl bohatý, koupil bych velký dům.' (If I were rich, I would buy a big house.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-245",
+    "type": "vocabulary",
+    "question": "What does 'rozzlobený' mean in Czech?",
+    "correctAnswer": "angry",
+    "incorrectAnswers": [
+      "upset",
+      "furious"
+    ],
+    "explanation": "Rozzlobený (angry) means feeling or expressing anger. Example: 'Kdyby byla touto ženou, byla by velmi rozzlobená.' (If she were this woman, she would be very angry.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-246",
+    "type": "vocabulary",
+    "question": "What does 'vyhrát' mean in Czech?",
+    "correctAnswer": "to win",
+    "incorrectAnswers": [
+      "to succeed",
+      "to beat"
+    ],
+    "explanation": "Vyhrát (to win) means to be victorious or gain success in a competition. Example: 'Kdyby byl silný, vyhrál by.' (If he were strong, he would win.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-247",
+    "type": "vocabulary",
+    "question": "What does 'odpustit' mean in Czech?",
+    "correctAnswer": "to forgive",
+    "incorrectAnswers": [
+      "to excuse",
+      "to pardon"
+    ],
+    "explanation": "Odpustit (to forgive) means to stop feeling angry at someone for a wrongdoing. Example: 'Kdybych byl tebou, neodpustil bych mu to.' (If I were you, I wouldn't forgive him.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-248",
+    "type": "vocabulary",
+    "question": "What does 'opice' mean in Czech?",
+    "correctAnswer": "monkey",
+    "incorrectAnswers": [
+      "ape",
+      "primate"
+    ],
+    "explanation": "Opice (monkey) is a primate animal known for intelligence and agility. Example: 'Kdybych byl opice, jedl bych jen banány.' (If I were a monkey, I would eat only bananas.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-249",
+    "type": "vocabulary",
+    "question": "What does 'vila' mean in Czech?",
+    "correctAnswer": "villa",
+    "incorrectAnswers": [
+      "house",
+      "mansion"
+    ],
+    "explanation": "Vila (villa) is a large, luxurious country house or residence. Example: 'Přál bych si, abych měl vilu.' (I wish I had a villa.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  },
+  {
+    "id": "cs-b04-250",
+    "type": "vocabulary",
+    "question": "What does 'španělština' mean in Czech?",
+    "correctAnswer": "Spanish",
+    "incorrectAnswers": [
+      "France",
+      "Portuguese"
+    ],
+    "explanation": "Španělština (Spanish) is the language spoken in Spain and many countries in Central and South America. Example: 'Přál bych si, abych uměl mluvit španělsky, abych s ním mohl mluvit.' (I wish I could speak Spanish so I could talk with him.)",
+    "source": "Czech vocabulary",
+    "rarity": "common",
+    "categoryL1": "language",
+    "categoryL2": "czech",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
+  }
+]

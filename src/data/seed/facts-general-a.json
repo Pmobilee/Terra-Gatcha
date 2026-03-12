@@ -7,40 +7,7 @@
     "explanation": "Lightning superheats the narrow air channel it travels through almost instantaneously. The Sun's photosphere is hot, but lightning's extreme compression and electrical discharge briefly exceeds it by a large margin.",
     "quizQuestion": "How much hotter is lightning than the Sun's surface?",
     "correctAnswer": "Five times hotter",
-    "distractors": [
-      {
-        "text": "About the same temperature",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Sun is five times hotter",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Twice as hot",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Ten times hotter",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Three times hotter",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Fifty times hotter",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Only hotter in upper atmosphere",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Temperature depends on humidity",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "How does lightning temperature compare to the Sun's surface?",
@@ -87,7 +54,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -105,7 +74,9 @@
     "visualDescription": "A jagged lightning bolt mid-strike splitting the sky, its core glowing brilliant white-blue while a small disk of the Sun visible in the corner appears dim orange-yellow by comparison, heat waves radiating violently from the lightning channel as it connects earth to cloud.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Electricity"
+    "categoryL3": "Electricity",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-002",
@@ -115,40 +86,7 @@
     "explanation": "Claude Shannon estimated this in 1950. Even though chess has simple rules, the branching factor at each move creates astronomical combinations. This is why computers still cannot solve chess completely by brute force.",
     "quizQuestion": "More possible chess games or atoms in universe?",
     "correctAnswer": "Chess games",
-    "distractors": [
-      {
-        "text": "They're roughly equal",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Atoms outnumber chess games",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Nobody can calculate this",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Computers solved chess in 2020",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Shannon Number refers to Go",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Chess games equal grains of sand",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Both numbers are infinite",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Quantum chess changes the answer",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Which outnumbers the other: chess games or atoms?",
@@ -157,7 +95,7 @@
         "distractors": [
           "Atoms",
           "They're equal",
-          "Unknown"
+          "Plausible option 3"
         ]
       },
       {
@@ -196,8 +134,8 @@
         "correctAnswer": "True",
         "distractors": [
           "False",
-          "Unknown",
-          "Debated"
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -215,7 +153,9 @@
     "visualDescription": "Two chess players mid-game surrounded by countless translucent ghostly chess positions branching infinitely in all directions, while tiny glowing atoms swirl in a confined sphere beside them, the atom cluster dwarfed by the vast expanding chess possibility cloud filling the frame.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Combinatorics"
+    "categoryL3": "Combinatorics",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-003",
@@ -225,40 +165,7 @@
     "explanation": "The speed of sound in Earth's atmosphere at sea level is about 1,235 km/h. Neptune's winds, despite it being the coldest major planet, are driven by internal heat and atmospheric dynamics that scientists still do not fully understand.",
     "quizQuestion": "How fast do Neptune's winds travel?",
     "correctAnswer": "2,100 km/h",
-    "distractors": [
-      {
-        "text": "500 km/h",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "800 km/h",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "1,000 km/h",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "1,500 km/h",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "1,800 km/h",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "3,000 km/h",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "10,000 km/h",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Unmeasurable from Earth",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What is Neptune's maximum wind speed?",
@@ -305,7 +212,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -315,15 +224,17 @@
       "Planetary Science"
     ],
     "rarity": "uncommon",
-    "difficulty": 2,
-    "funScore": 8,
+    "difficulty": 3,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "NASA",
     "gaiaComment": "Neptune's winds hit 2,100 km/h. Your 'bad weather' doesn't even register on this scale.",
     "visualDescription": "A massive blue-grey gas giant with swirling cloud bands being torn horizontally across its surface by visible streaks of violent white atmospheric currents, speed lines trailing behind the clouds showing motion far faster than typical wind patterns, a small sonic boom cloud icon frozen mid-air for scale comparison, deep space black background with distant stars.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Planetary Science"
+    "categoryL3": "Planetary Science",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-004",
@@ -333,40 +244,7 @@
     "explanation": "Scientists confirmed this through laboratory experiments replicating the extreme pressures inside ice giants. Temperatures of thousands of degrees and pressures millions of times greater than Earth's atmosphere cause carbon atoms to crystallise into diamonds.",
     "quizQuestion": "What unusual precipitation occurs inside Neptune and Uranus?",
     "correctAnswer": "Diamond rain",
-    "distractors": [
-      {
-        "text": "Iron hail",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Methane snow",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Liquid helium",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Graphite crystals",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Silicon droplets",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Ammonia ice",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Platinum crystals",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Sapphire fragments",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What unusual precipitation occurs inside Neptune and Uranus?",
@@ -413,7 +291,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -423,15 +303,17 @@
       "Planetary Science"
     ],
     "rarity": "rare",
-    "difficulty": 3,
-    "funScore": 10,
+    "difficulty": 2,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Nature Astrophysics",
     "gaiaComment": "It literally rains diamonds on ice giant planets. Meanwhile you're excited about finding quartz.",
     "visualDescription": "A swirling blue-green atmospheric vortex on a gas giant with countless shimmering crystalline shards falling diagonally through the clouds, each diamond-shaped ice crystal catching light and refracting rainbow glints as they descend into deeper darkness below.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Planetary Science"
+    "categoryL3": "Planetary Science",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-005",
@@ -441,40 +323,7 @@
     "explanation": "Neutron stars form when massive stars collapse. The gravity is so extreme that protons and electrons are forced to merge into neutrons, packed as densely as an atomic nucleus. A typical neutron star is 20 km across but contains more mass than the Sun.",
     "quizQuestion": "How much would a teaspoon of neutron star material weigh?",
     "correctAnswer": "About a billion tonnes",
-    "distractors": [
-      {
-        "text": "About a thousand tonnes",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About a million tonnes",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About a kilogram",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About a trillion tonnes",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Ten billion tonnes",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Weight of a mountain",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Would collapse into black hole",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "No weight in space",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "How much would a teaspoon of neutron star material weigh on Earth?",
@@ -521,7 +370,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -532,14 +383,16 @@
     ],
     "rarity": "rare",
     "difficulty": 3,
-    "funScore": 10,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "NASA",
     "gaiaComment": "One teaspoon outweighs all of humanity. I'd ask you to imagine that, but I don't think you can.",
     "visualDescription": "A teaspoon being slowly lowered onto a scale, the needle spinning wildly past all numbered markings as the tiny spoonful of dense stellar material crushes the platform beneath it, surrounding buildings and landscape crumbling under the invisible weight, the spoon still holding its shape despite the catastrophic gravitational force it exerts downward.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Stellar Physics"
+    "categoryL3": "Stellar Physics",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-006",
@@ -549,40 +402,7 @@
     "explanation": "Early Earth's atmosphere was rich in nitrogen, methane, and carbon dioxide. Cyanobacteria evolved oxygenic photosynthesis and began releasing oxygen as waste. To anaerobic life forms, this oxygen was toxic — it caused a mass extinction before complex life could even begin.",
     "quizQuestion": "What caused Earth's atmosphere to become oxygen-rich?",
     "correctAnswer": "Cyanobacteria",
-    "distractors": [
-      {
-        "text": "Volcanic eruptions",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Lightning splitting water",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Meteor impacts",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Algae in oceans",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Early plant life",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Underground chemical reactions",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Solar wind deposits",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Ozone forming naturally",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Which organisms caused the Great Oxidation Event?",
@@ -641,7 +461,7 @@
       "Earth History"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
+    "difficulty": 5,
     "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Britannica",
@@ -649,7 +469,9 @@
     "visualDescription": "A primordial Earth shrouded in thick purple-brown volcanic gases swirls with methane and ammonia clouds, while a tiny glowing oxygen molecule floats impossibly small and alone in the corner of the turbulent sky, vastly outnumbered by the roiling toxic atmosphere surrounding it.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "geology_earth",
-    "categoryL3": "Earth History"
+    "categoryL3": "Earth History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-007",
@@ -659,40 +481,7 @@
     "explanation": "The Mpemba effect is real but not universal. Proposed explanations include evaporation reducing mass, dissolved gases escaping, convection patterns, and hydrogen bond dynamics. It works reliably only under specific conditions, which is why it remained controversial for decades.",
     "quizQuestion": "What is the Mpemba effect?",
     "correctAnswer": "Hot water freezes faster than cold",
-    "distractors": [
-      {
-        "text": "Ice melts in saltwater",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Water boils in vacuum",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Water expands when frozen",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Hydrogen bonds weaken when hot",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Supercooled water freezes instantly",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Thermal currents form unevenly",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Water density peaks at 4°C",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Salt water freezes differently",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Which freezes faster under certain conditions?",
@@ -739,7 +528,9 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -750,14 +541,16 @@
     ],
     "rarity": "uncommon",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Nature",
     "gaiaComment": "Hot water can freeze faster than cold. Science: still figuring that one out since Aristotle.",
     "visualDescription": "A container of steaming hot water with visible heat ripples visibly freezing into solid ice while an identical container of cold water beside it remains unfrozen, frost crystals rapidly spreading across the hot water's surface as steam still rises from its edges.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Thermodynamics"
+    "categoryL3": "Thermodynamics",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-008",
@@ -767,40 +560,7 @@
     "explanation": "Voyager 1 crossed the heliopause — the boundary where the Sun's solar wind is overcome by interstellar medium — in 2012. It carries a Golden Record with sounds and images of Earth, intended as a message to any extraterrestrial intelligence that might find it.",
     "quizQuestion": "When did Voyager 1 enter interstellar space?",
     "correctAnswer": "2012",
-    "distractors": [
-      {
-        "text": "1977",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "1990",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "2001",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "2005",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "2008",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "2018",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "It has not left yet",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Scientists still disagree",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "When did Voyager 1 cross into interstellar space?",
@@ -848,8 +608,8 @@
         "correctAnswer": "False",
         "distractors": [
           "True",
-          "Unknown",
-          "Disputed"
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -859,15 +619,17 @@
       "Space Exploration"
     ],
     "rarity": "common",
-    "difficulty": 2,
-    "funScore": 8,
+    "difficulty": 3,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "NASA",
     "gaiaComment": "Voyager 1 is still texting us from 23 billion kilometers away. Your phone can't hold a signal in a tunnel.",
     "visualDescription": "A sleek probe with golden solar panels and a long antenna extending outward drifts alone against a backdrop of distant stars and the faint curved edge of our solar system retreating behind it, crossing an invisible boundary marked by the last wisps of solar wind dispersing into absolute darkness and alien star fields ahead.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Space Exploration"
+    "categoryL3": "Space Exploration",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-009",
@@ -877,40 +639,7 @@
     "explanation": "Sound is a mechanical wave that requires a medium — particles to compress and rarefy. The vacuum of space has far too few particles per cubic metre to transmit any sound wave at audible frequencies. Gas clouds in space can carry very low-frequency pressure waves, but nothing a human ear can detect.",
     "quizQuestion": "Why can't sound travel through outer space?",
     "correctAnswer": "Space lacks a medium for sound waves",
-    "distractors": [
-      {
-        "text": "Sound travels too slowly",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Space is too cold",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Gravity absorbs sound",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Radiation destroys sound waves",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Magnetic fields block sound",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Light prevents sound travel",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Dark matter absorbs all sound",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Sound converts to radiation",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Why is sound unable to propagate through space?",
@@ -969,15 +698,17 @@
       "Acoustics"
     ],
     "rarity": "common",
-    "difficulty": 1,
-    "funScore": 7,
+    "difficulty": 3,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "NASA",
     "gaiaComment": "No medium, no sound. Every space explosion movie lied to you. Beautifully, dramatically lied.",
     "visualDescription": "A silent cosmic void with a spacecraft's speaker emitting visible sound waves that abruptly stop and vanish at the ship's hull, while outside the window stars shine in absolute stillness, the vacuum depicted as empty nothingness swallowing all vibrations.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Acoustics"
+    "categoryL3": "Acoustics",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-010",
@@ -987,40 +718,7 @@
     "explanation": "The African Humid Period, also called the Green Sahara, occurred due to shifts in Earth's orbital cycle (Milankovitch cycles) that brought monsoon rains deeper into Africa. The transition back to desert happened rapidly — possibly within centuries — due to vegetation feedbacks.",
     "quizQuestion": "What was the Sahara Desert like 6,000 years ago?",
     "correctAnswer": "Lush green savanna with lakes",
-    "distractors": [
-      {
-        "text": "Frozen tundra landscape",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Tropical rainforest region",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Shallow inland sea",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Volcanic wasteland",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Temperate forest ecosystem",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Semi-arid steppe region",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Glaciated plateau from ice age",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Geothermal volcanic lake basin",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What was the Sahara Desert like 6,000 years ago?",
@@ -1067,7 +765,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1077,15 +777,17 @@
       "Climate History"
     ],
     "rarity": "rare",
-    "difficulty": 3,
-    "funScore": 9,
+    "difficulty": 2,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Nature",
     "gaiaComment": "Six thousand years ago, hippos lived in the Sahara. Take that in before you complain about the heat.",
     "visualDescription": "A vast green savanna landscape splits into two halves: the left side shows thriving acacia trees, flowing rivers, and grazing herds beside sparkling lakes under a wet-season sky, while the right side abruptly transforms into golden sand dunes and barren rock, a cracked boundary line dividing the two ecosystems, an ancient calendar or time marker on the ground marking the transition between the verdant past and arid present.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "geology_earth",
-    "categoryL3": "Climate History"
+    "categoryL3": "Climate History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-011",
@@ -1095,40 +797,7 @@
     "explanation": "When water molecules arrange into ice crystals, they form a hexagonal lattice with more empty space between molecules than liquid water. This lower density makes ice float. Without this anomaly, lakes would freeze solid from the bottom up, wiping out aquatic life every winter.",
     "quizQuestion": "By approximately how much does water expand when freezing?",
     "correctAnswer": "About 9%",
-    "distractors": [
-      {
-        "text": "About 3%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 5%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "It doesn't expand",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 12%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 15%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 7%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Water doubles in volume",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Expansion varies too much",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "By approximately how much does water expand when freezing?",
@@ -1165,9 +834,9 @@
         "type": "fill_blank",
         "correctAnswer": "9",
         "distractors": [
-          "5",
           "15",
-          "3"
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -1187,15 +856,17 @@
       "Properties of Water"
     ],
     "rarity": "common",
-    "difficulty": 1,
-    "funScore": 7,
+    "difficulty": 2,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Britannica",
     "gaiaComment": "Ice floats because water is weird. If it didn't, every lake would freeze solid and life would have ended. You're welcome.",
     "visualDescription": "A clear glass pipe splitting open with jagged cracks radiating outward as solid ice bulges outward from inside, pushing the glass walls apart, with liquid water still visible in unfrozen sections and shards of glass scattered on a snowy ground below.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Properties of Water"
+    "categoryL3": "Properties of Water",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-012",
@@ -1205,40 +876,7 @@
     "explanation": "Earth's inner core reaches temperatures between 5,000°C and 6,000°C, maintained by residual heat from planetary formation and ongoing radioactive decay of uranium, thorium, and potassium. Despite the extreme heat, the inner core is solid due to immense pressure.",
     "quizQuestion": "Earth's core temperature compares to Sun's surface how?",
     "correctAnswer": "Approximately the same temperature",
-    "distractors": [
-      {
-        "text": "Much cooler than Sun",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Ten times hotter than Sun",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Around 1,000 degrees C",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Cooled by ocean water",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Only 3,000 degrees C",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Hotter than Sun's core",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Earth's core is frozen solid",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Sun's surface is 50,000°C",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Earth's core temperature compares to Sun's surface how?",
@@ -1285,7 +923,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1303,7 +943,9 @@
     "visualDescription": "A massive cross-section of Earth with layers peeling away revealing a molten core at the center glowing the same intense yellow-white as the Sun itself hanging in the sky above, the core's heat visibly radiating outward through concentric bands of rock and metal, a temperature scale running along the edge showing identical readings for both.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "geology_earth",
-    "categoryL3": "Earth's Interior"
+    "categoryL3": "Earth's Interior",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-013",
@@ -1313,40 +955,7 @@
     "explanation": "Venus's extremely slow retrograde rotation is thought to result from a collision early in solar system history or tidal locking interactions. Its thick atmosphere also rotates much faster than the planet itself, creating winds of up to 350 km/h.",
     "quizQuestion": "Why is a Venus day longer than its year?",
     "correctAnswer": "Extremely slow rotation",
-    "distractors": [
-      {
-        "text": "Venus rotates forward like Earth",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Days and years are equal length",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Venus has no measurable rotation",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "A day lasts exactly 24 hours",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Year lasts twice as long as day",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Venus is tidally locked to Sun",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Day-night cycle lasts one week",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Rotation equals orbital period exactly",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What makes a Venus day longer than its year?",
@@ -1394,8 +1003,8 @@
         "correctAnswer": "True",
         "distractors": [
           "False",
-          "Unknown",
-          "Debated"
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1405,15 +1014,17 @@
       "Planetary Science"
     ],
     "rarity": "uncommon",
-    "difficulty": 2,
-    "funScore": 9,
+    "difficulty": 3,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "NASA",
     "gaiaComment": "A day on Venus is longer than its year. Also, the Sun rises in the west there. Venus gave up caring.",
     "visualDescription": "A massive golden Venus slowly rotating on its axis while a smaller orbital path circles it much faster, with a giant hourglass beside them showing sand falling through the Venus-rotation chamber slower than the orbital chamber above, both tracking elapsed time.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Planetary Science"
+    "categoryL3": "Planetary Science",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-014",
@@ -1423,40 +1034,7 @@
     "explanation": "Pierre Janssen and Norman Lockyer independently detected helium's spectral signature during a solar eclipse in 1868. Helium was isolated on Earth in 1895 by William Ramsay from uranium ore (cleveite), where radioactive decay produces helium as alpha particles.",
     "quizQuestion": "Where was helium first discovered?",
     "correctAnswer": "Sun's spectrum",
-    "distractors": [
-      {
-        "text": "In a laboratory in France",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Deep underground in Texas",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "In volcanic gas vents",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Detected in Jupiter's spectrum",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Isolated from uranium ore",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Found in natural gas fields",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "In meteorites from Antarctica",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "From radioactive mineral decay",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Which element was discovered in the Sun first?",
@@ -1503,7 +1081,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1513,15 +1093,17 @@
       "Elements"
     ],
     "rarity": "uncommon",
-    "difficulty": 2,
-    "funScore": 8,
+    "difficulty": 3,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Britannica",
     "gaiaComment": "Helium was found on the Sun 27 years before anyone found it on Earth. Named after a god, discovered in a star.",
     "visualDescription": "A glowing yellow Sun dominates the upper frame with a spectroscope beam splitting its light into a rainbow spectrum, revealing a bright helium line glowing distinctly, while far below on Earth a scientist in a laboratory squints at an empty test tube and shrugs in confusion, the helium discovery clearly originating from the celestial body above.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "chemistry_elements",
-    "categoryL3": "Elements"
+    "categoryL3": "Elements",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-015",
@@ -1531,40 +1113,7 @@
     "explanation": "Entangled particles share a quantum state. When you measure one, you instantly know the state of the other — even across the universe. This does not allow faster-than-light communication because the outcome is random; you cannot control what result you get to send a message.",
     "quizQuestion": "What did Einstein call quantum entanglement?",
     "correctAnswer": "Spooky action at a distance",
-    "distractors": [
-      {
-        "text": "Quantum teleportation",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Wave-particle duality",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Invisible quantum force",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Hidden variable theory",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "The uncertainty principle",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Quantum tunneling effect",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "The EPR paradox",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Wave function collapse",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Einstein's famous name for quantum entanglement?",
@@ -1624,14 +1173,16 @@
     ],
     "rarity": "rare",
     "difficulty": 4,
-    "funScore": 10,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Nature",
     "gaiaComment": "Einstein called it spooky and then spent years trying to disprove it. He was wrong. That's peak science.",
     "visualDescription": "Two glowing particles separated by a vast starry void suddenly flash in perfect synchronization—one spinning clockwise as the other instantly mirrors the motion, their linked light beams connecting across the impossible distance, neither particle wavering or delaying its response.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Quantum Mechanics"
+    "categoryL3": "Quantum Mechanics",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-016",
@@ -1641,40 +1192,7 @@
     "explanation": "Medieval glass was made by spinning molten glass into discs, which were thicker at the edges — so glaziers placed the thicker edge downward for stability. True glass flow at room temperature requires geological timescales. The liquid-glass distinction is real but irrelevant to window thickness.",
     "quizQuestion": "Why are old medieval window panes thicker at bottom?",
     "correctAnswer": "Manufacturing placed thicker edges downward",
-    "distractors": [
-      {
-        "text": "Glass slowly flows downward",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Sunlight softens the bottom",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Gravity causes glass migration",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Heat causes bottom expansion",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Moisture erodes upper glass faster",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Mineral deposition thickens base",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Molten glass poured unevenly",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Chemical frame reactions increase thickness",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Why did medieval glaziers place thick glass edges at bottom?",
@@ -1733,15 +1251,17 @@
       "Materials Science"
     ],
     "rarity": "rare",
-    "difficulty": 4,
-    "funScore": 9,
+    "difficulty": 2,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "American Journal of Physics",
     "gaiaComment": "Old glass is thicker at the bottom because of manufacturing, not flow. The myth is more satisfying. I understand the attachment.",
     "visualDescription": "An ancient cathedral window pane visibly sagging downward with its bottom edge noticeably thicker than its top edge, the glass appearing to drip like honey in extreme slow motion, hands measuring the thickness difference with a ruler, sunlight streaming through the warped pane casting distorted light patterns on stone walls.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "materials_engineering",
-    "categoryL3": "Materials Science"
+    "categoryL3": "Materials Science",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-017",
@@ -1751,40 +1271,7 @@
     "explanation": "Carbon is the backbone of all organic molecules — DNA, proteins, fats, carbohydrates. The carbon in your body was forged in the cores of ancient stars that exploded as supernovae billions of years ago, seeding space with the elements of life.",
     "quizQuestion": "How much carbon does average adult contain?",
     "correctAnswer": "About 16 kg",
-    "distractors": [
-      {
-        "text": "About 5 kg",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 2 kg",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 1 kg",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 30 kg",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 20 kg",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 12 kg",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 100 kg",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Less than 1 kg",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "How much carbon in average adult body?",
@@ -1831,7 +1318,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -1841,15 +1330,17 @@
       "Biochemistry"
     ],
     "rarity": "common",
-    "difficulty": 2,
-    "funScore": 8,
+    "difficulty": 3,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Britannica",
     "gaiaComment": "You're made of 16 kilograms of carbon that used to be inside a star. That's not a metaphor.",
     "visualDescription": "A translucent human silhouette stands with arms outstretched as glowing carbon atoms stream outward from their body, coalescing mid-air into a towering pile of freshly sharpened wooden pencils stacked eight feet high, their red erasers and graphite tips gleaming against a dark laboratory background.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "chemistry_elements",
-    "categoryL3": "Biochemistry"
+    "categoryL3": "Biochemistry",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-018",
@@ -1859,40 +1350,7 @@
     "explanation": "The universe's expansion means distant objects moved away while their light was travelling. Using the comoving distance — accounting for expansion — the observable universe's diameter is about 93 billion light-years. This is not contradicted by relativity because it is space itself expanding, not objects moving through space.",
     "quizQuestion": "What is the observable universe's approximate diameter?",
     "correctAnswer": "93 billion light-years",
-    "distractors": [
-      {
-        "text": "13.8 billion light-years",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "10 billion light-years",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "1 trillion light-years",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "50 billion light-years",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "200 billion light-years",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "46 billion light-years",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Universe diameter immeasurable",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Concept inapplicable universe",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What is the observable universe's approximate diameter?",
@@ -1959,7 +1417,9 @@
     "visualDescription": "A vast cosmic sphere expanding outward with galaxies and stars scattering across its surface, a glowing edge racing outward faster than light itself travels, while a cosmic clock in the corner shows only 13.8 billion years have passed, the sphere's diameter measuring visibly larger than the time should allow.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Cosmology"
+    "categoryL3": "Cosmology",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-019",
@@ -1969,40 +1429,7 @@
     "explanation": "Researchers at Goethe University Frankfurt used attosecond X-ray pulses to measure the photoionization process in hydrogen molecules. The 247 zeptosecond measurement represents the quantum mechanical traversal time of light across two atoms — approximately 0.000000000000000000000247 seconds.",
     "quizQuestion": "What is a zeptosecond in seconds?",
     "correctAnswer": "10^-21 seconds",
-    "distractors": [
-      {
-        "text": "One billionth of a second",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "One trillionth of a second",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "One millionth of a second",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "10^-12 seconds",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "10^-15 seconds",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "10^-9 seconds",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "10^-24 seconds",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "The Planck time",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What is a zeptosecond?",
@@ -2050,8 +1477,8 @@
         "correctAnswer": "True",
         "distractors": [
           "False",
-          "Unknown",
-          "Unmeasurable"
+          "Unmeasurable",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2069,7 +1496,9 @@
     "visualDescription": "A photon beam striking a tiny hydrogen molecule while a massive cosmic clock face behind it displays an impossibly small number—247—on its dial, the light visibly partway through crossing the molecule's diameter, frozen mid-traverse, with concentric ripple waves emanating from the impact point.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Time Measurement"
+    "categoryL3": "Time Measurement",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "nsci-020",
@@ -2079,40 +1508,7 @@
     "explanation": "A rainbow forms at a specific angle (42°) from the antisolar point — the point directly opposite the Sun from your perspective. The full geometry is circular, but the ground intercepts the lower half. Pilots and people on tall mountains or above waterfalls sometimes see complete circles.",
     "quizQuestion": "What is a rainbow's complete geometric shape?",
     "correctAnswer": "Full circle",
-    "distractors": [
-      {
-        "text": "Semicircle",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Parabola",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Ellipse",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Arc of exactly 180 degrees",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Spiral shape",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Cone shape",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Varies by droplet size",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Depends on sun intensity",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What is a rainbow's complete geometric shape?",
@@ -2159,7 +1555,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2170,14 +1568,16 @@
     ],
     "rarity": "common",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Wikipedia",
     "gaiaComment": "Rainbows are full circles. The Earth is just in the way of the bottom half. As usual.",
     "visualDescription": "A person standing on a hilltop viewing a complete circular rainbow arcing overhead and curving down behind them, with the ground beneath their feet visibly blocking the lower half of the circle, a second observer floating in a hot air balloon above seeing the rainbow as a perfect unbroken circle spreading in all directions below them.",
     "categoryL1": "Natural Sciences",
     "categoryL2": "physics_mechanics",
-    "categoryL3": "Optics"
+    "categoryL3": "Optics",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-001",
@@ -2187,40 +1587,7 @@
     "explanation": "In their cryptobiotic tun state, tardigrades replace water in their cells with a sugar called trehalose, which forms a glass-like matrix that preserves their cellular machinery. They can survive radiation doses thousands of times lethal to humans and rehydrate after decades of dormancy.",
     "quizQuestion": "What sugar do tardigrades use for extreme survival?",
     "correctAnswer": "Trehalose",
-    "distractors": [
-      {
-        "text": "Antifreeze proteins",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Silica gel from glands",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Salt crystals",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Glycerol like commercial antifreeze",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Heat-shock proteins stabilize cells",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Specialized lipids prevent ice",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Cryogenic enzymes function at extremes",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Polysaccharide gel coats organs",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What do tardigrades replace water with to survive?",
@@ -2267,7 +1634,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2278,14 +1647,16 @@
     ],
     "rarity": "rare",
     "difficulty": 4,
-    "funScore": 10,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Nature",
     "gaiaComment": "Tardigrades survived open space for 10 days. No oxygen, radiation, vacuum. They just napped through it.",
     "visualDescription": "A tiny barrel-shaped tardigrade curled into a protective ball floats motionless in the absolute blackness of space, its translucent body unharmed while jagged radiation bolts streak past it, frost crystals coating one side while the opposite side glows red-hot from extreme temperature exposure, stars scattered behind in the void.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "immunity_disease",
-    "categoryL3": "Extremophiles"
+    "categoryL3": "Extremophiles",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-002",
@@ -2295,40 +1666,7 @@
     "explanation": "Honey's chemistry prevents spoilage: it has very low water content (below 20%), high acidity (pH 3.5–4.5), and bees add glucose oxidase which produces hydrogen peroxide. Together, these create an environment hostile to bacteria and fungi. Properly sealed honey is indefinitely shelf-stable.",
     "quizQuestion": "What makes honey resistant to spoilage?",
     "correctAnswer": "Low water, high acidity, hydrogen peroxide",
-    "distractors": [
-      {
-        "text": "High sugar content alone",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Beeswax coating the jar",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Natural alcohol from fermentation",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Propolis added by bees",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Absence of oxygen prevents decay",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Flower pollen acts antifungal",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Royal jelly preserves all honey",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Melittin compound is natural preservative",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What combination prevents honey from spoiling?",
@@ -2395,7 +1733,9 @@
     "visualDescription": "An archaeologist in dusty robes cracking open a sealed ancient Egyptian clay jar, golden honey still gleaming and perfectly liquid inside, hieroglyphic-covered tomb walls surrounding them, a calendar stone showing thousands of years passing in shadow, the honey untouched and fresh despite millennia of darkness.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "digestion_metabolism",
-    "categoryL3": "Food Science"
+    "categoryL3": "Food Science",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-003",
@@ -2405,40 +1745,7 @@
     "explanation": "Human DNA is coiled extraordinarily tightly inside cell nuclei using proteins called histones. The 46 chromosomes in each cell contain about 3 billion base pairs. Despite their tiny size, cells achieve this by supercoiling the DNA into chromatin fibres, fitting 2 metres into a space 0.006 mm across.",
     "quizQuestion": "How far would all human body DNA stretch if uncoiled?",
     "correctAnswer": "Pluto and back multiple times",
-    "distractors": [
-      {
-        "text": "To the Moon and back",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Around Earth once",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 1,000 kilometres",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "To Mars and back",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "To the Sun and back",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "To Jupiter and back",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "To the nearest star",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Across the Milky Way",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "How far would all human DNA stretch if uncoiled?",
@@ -2498,14 +1805,16 @@
     ],
     "rarity": "uncommon",
     "difficulty": 2,
-    "funScore": 10,
+    "funScore": 9,
     "ageRating": "kid",
     "sourceName": "Nature",
     "gaiaComment": "Your DNA, uncoiled, reaches Pluto and back six times. All crammed into cells you can't see without a microscope.",
     "visualDescription": "A human figure standing upright with a glowing double-helix strand unwinding from their body, stretching across a cosmic scene showing Earth on one side and the distant Pluto on the other, the DNA strand visibly coiling back toward Earth in a second loop, stars and planets scattered throughout the vast space.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "genetics_dna",
-    "categoryL3": "Genetics"
+    "categoryL3": "Genetics",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-004",
@@ -2515,40 +1824,7 @@
     "explanation": "Mycorrhizal fungi form symbiotic relationships with tree roots, extending their reach dramatically. In exchange for sugars from photosynthesis, fungi provide water and minerals. Research by Suzanne Simard showed carbon-isotope labelled sugars moving between trees, proving active transfer through the network.",
     "quizQuestion": "What nickname describes underground fungal forest networks?",
     "correctAnswer": "The Wood Wide Web",
-    "distractors": [
-      {
-        "text": "The Root Internet",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "The Forest Highway",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Nature's Ethernet",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "The Underground Grid",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "The Fungal Grid",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "The Nutrient Pipeline",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "The Hyphal Network",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "The Mycelial System",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What are underground fungal networks connecting trees called?",
@@ -2595,7 +1871,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2605,15 +1883,17 @@
       "Forest Biology"
     ],
     "rarity": "uncommon",
-    "difficulty": 2,
-    "funScore": 10,
+    "difficulty": 4,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Nature",
     "gaiaComment": "Trees share nutrients through fungal networks. Forests cooperate. Still more functional than most cities.",
     "visualDescription": "A cross-section of forest floor revealing tree roots intertwined with glowing fungal threads spreading between them like luminescent cables, nutrients visibly flowing as golden droplets through the threadwork from one tree to another, multiple tree trunks rooted above with their root systems actively exchanging resources underground.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "digestion_metabolism",
-    "categoryL3": "Forest Biology"
+    "categoryL3": "Forest Biology",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-005",
@@ -2623,40 +1903,7 @@
     "explanation": "The mantis shrimp's dactyl clubs can strike at 23 m/s. The cavitation bubbles this creates collapse with enough force to stun or kill prey even on a miss. Its 16 photoreceptor types allow it to see ultraviolet, visible, and infrared light simultaneously, likely to process colour information rapidly rather than with enhanced discrimination.",
     "quizQuestion": "How many colour receptors does mantis shrimp have?",
     "correctAnswer": "Sixteen",
-    "distractors": [
-      {
-        "text": "Three",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Eight",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Ten",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Twelve",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Twenty",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Thirty-two",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Varies by species",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "One hundred",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "How many colour receptors does mantis shrimp have?",
@@ -2693,9 +1940,9 @@
         "type": "fill_blank",
         "correctAnswer": "16",
         "distractors": [
-          "4",
-          "8",
-          "32"
+          "32",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -2703,7 +1950,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -2714,14 +1963,16 @@
     ],
     "rarity": "rare",
     "difficulty": 3,
-    "funScore": 10,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Science journal",
     "gaiaComment": "Sixteen color receptors. Sixteen. We have three and still can't agree on whether that dress was gold or blue.",
     "visualDescription": "A mantis shrimp coiled underwater with its raptorial front legs cocked back in explosive tension, one limb mid-punch creating a visible shockwave cone of bubbles erupting outward, its compound eyes glowing with impossible ultraviolet and polarized light wavelengths swirling around its head like a halo of colors beyond human spectrum.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "senses_perception",
-    "categoryL3": "Crustaceans"
+    "categoryL3": "Crustaceans",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-006",
@@ -2731,40 +1982,7 @@
     "explanation": "The Egyptian civilisation lasted over 3,000 years. Cleopatra VII, the famous last pharaoh, lived in what we now call the Ptolemaic period — a full 2,500 years after the Old Kingdom pyramids were built. This comparison illustrates how the ancient world's timeline is often compressed in our minds.",
     "quizQuestion": "Cleopatra lived closer to Moon landing or Great Pyramid?",
     "correctAnswer": "Moon landing",
-    "distractors": [
-      {
-        "text": "Great Pyramid construction",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Fall of Roman Empire",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Birth of Jesus",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Julius Caesar's assassination",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Construction of Stonehenge",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Eruption of Mount Vesuvius",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Alexander's Persian conquest",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Invention of cuneiform writing",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Which event is closer in time to Cleopatra's death?",
@@ -2823,15 +2041,17 @@
       "Historical Biology"
     ],
     "rarity": "common",
-    "difficulty": 2,
-    "funScore": 10,
+    "difficulty": 3,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Wikipedia",
     "gaiaComment": "Cleopatra is closer in time to the Moon landing than to the pyramids. Ancient history is longer than you think.",
     "visualDescription": "A split-screen timeline carved into stone: on the left, Cleopatra in Egyptian dress standing beside a colossal pyramid under construction with workers hauling massive blocks, stretching far into the distant past; on the right, Cleopatra's ghostly translucent figure watching an Apollo lunar module touching down on the moon's gray surface, the two scenes separated by a vertical dividing line that visibly distances the left scene much farther away.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "anatomy_organs",
-    "categoryL3": "Historical Biology"
+    "categoryL3": "Historical Biology",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-007",
@@ -2841,40 +2061,7 @@
     "explanation": "Shark ancestors appeared in the Silurian period. Early land plants evolved in the Devonian, and the first true trees appeared around 385 million years ago. Sharks survived all five major mass extinctions, outlasting dinosaurs, trilobites, and countless other lifeforms.",
     "quizQuestion": "Which existed first on Earth: sharks or trees?",
     "correctAnswer": "Sharks, 200 million years earlier",
-    "distractors": [
-      {
-        "text": "Trees evolved first",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "They evolved at same time",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Trees predate sharks 100 million",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Sharks evolved in Mesozoic era",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Both appeared in Cambrian period",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Trees older by 65 million",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Sharks descended from forest plants",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Both co-evolved with dinosaurs",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Which appeared on Earth first — sharks or trees?",
@@ -2911,7 +2098,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -2931,15 +2120,17 @@
       "Evolution"
     ],
     "rarity": "uncommon",
-    "difficulty": 2,
-    "funScore": 10,
+    "difficulty": 3,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "Sharks predate trees by 200 million years. Forests haven't existed as long as sharks have. Sit with that.",
     "visualDescription": "A massive gray shark with serrated teeth swimming through a barren rocky underwater canyon devoid of any plant life, while above the waterline a desolate brown landscape shows zero trees or vegetation, emphasizing the ancient shark predating all forest life by eons.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "anatomy_organs",
-    "categoryL3": "Evolution"
+    "categoryL3": "Evolution",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-008",
@@ -2949,40 +2140,7 @@
     "explanation": "Collective nouns for animals are often historical terms that reflect the animal's characteristics or behaviour. Flamingos get their pink colour from the carotenoid pigments in their food — shrimp and algae. A captive flamingo fed a plain diet will turn white.",
     "quizQuestion": "What is the collective noun for flamingos?",
     "correctAnswer": "Flamboyance",
-    "distractors": [
-      {
-        "text": "Flock",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Colony",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Parade",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Shimmer",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Kaleidoscope",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Blush",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Murmuration",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Convocation",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What is the collective noun for flamingos?",
@@ -3041,7 +2199,7 @@
       "Animal Behaviour"
     ],
     "rarity": "common",
-    "difficulty": 1,
+    "difficulty": 2,
     "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Merriam-Webster",
@@ -3049,7 +2207,9 @@
     "visualDescription": "A massive flock of brilliantly pink flamingos strutting and posing together in shallow turquoise water, their long curved necks arched dramatically, feathers fluffed in exaggerated displays, each bird striking an ostentatiously theatrical stance as if performing for an audience.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "anatomy_organs",
-    "categoryL3": "Animal Behaviour"
+    "categoryL3": "Animal Behaviour",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-009",
@@ -3059,40 +2219,7 @@
     "explanation": "Clownfish live in strict social hierarchies. The largest individual is the breeding female; the second-largest is the breeding male. If the female dies, the male undergoes a complete sex change — becoming the new female — and the next fish in the hierarchy becomes the new breeding male.",
     "quizQuestion": "What would realistically happen to Marlin after Nemo's mother died?",
     "correctAnswer": "Change sex to become female",
-    "distractors": [
-      {
-        "text": "Find a new mate",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Leave the anemone",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Become infertile",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Develop hermaphroditic organs",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Produce eggs and sperm",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Reproduce asexually",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Sex change requires external trigger",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Clownfish don't change sex",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What would realistically happen to Marlin after Nemo's mother died?",
@@ -3130,7 +2257,8 @@
         "correctAnswer": "male",
         "distractors": [
           "female",
-          "genderless"
+          "genderless",
+          "Plausible option 3"
         ]
       },
       {
@@ -3138,7 +2266,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -3149,14 +2279,16 @@
     ],
     "rarity": "uncommon",
     "difficulty": 2,
-    "funScore": 10,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Nature",
     "gaiaComment": "Marlin should have become Nemo's mother. Finding Nemo is biologically incorrect and I cannot forgive that.",
     "visualDescription": "A large clownfish with swollen body and deepened coloring sits at the center of a coral cluster while smaller male clownfish scatter around it, its lower abdomen visibly transforming with internal anatomical changes glowing faintly, egg sacs beginning to develop inside its translucent belly as bubbles rise around the coral reef scene.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "anatomy_organs",
-    "categoryL3": "Fish Biology"
+    "categoryL3": "Fish Biology",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-010",
@@ -3166,40 +2298,7 @@
     "explanation": "Blue whales are the largest animals known to have ever existed. Their hearts pump approximately 220 litres of blood per beat. The slow heartbeat during dives is a form of physiological diving response that conserves oxygen for the brain and essential muscles.",
     "quizQuestion": "How much does a blue whale's heart weigh?",
     "correctAnswer": "About 180 kg",
-    "distractors": [
-      {
-        "text": "About 50 kg",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 20 kg",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 10 kg",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 300 kg",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 250 kg",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 100 kg",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 1 tonne",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "About 2 tonnes",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "A blue whale's heart weighs approximately how much?",
@@ -3259,14 +2358,16 @@
     ],
     "rarity": "uncommon",
     "difficulty": 2,
-    "funScore": 9,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
     "gaiaComment": "A 180-kilogram heart that beats eight times a minute. A toddler could crawl through the aorta. Whales are absurd.",
     "visualDescription": "A massive blue whale heart the size of a small car lies dissected open, its enormous aorta stretched wide enough for a tiny human figure to crawl through on hands and knees inside the pulsing crimson vessel, ocean depths and whale body tissue surrounding the anatomical display.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "cardiovascular",
-    "categoryL3": "Cetaceans"
+    "categoryL3": "Cetaceans",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-011",
@@ -3276,40 +2377,7 @@
     "explanation": "Crows have a highly developed forebrain that enables face recognition, problem-solving, and social memory. They can communicate 'dangerous human' information to flock members who weren't present during the original encounter. This cultural transmission of knowledge is rare outside primates.",
     "quizQuestion": "What did crows remember about mask-wearing researchers?",
     "correctAnswer": "Remembered faces for years, taught offspring",
-    "distractors": [
-      {
-        "text": "They avoided the area forever",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "They attacked all hat-wearers",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "They migrated away permanently",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "They forgot within one week",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "They only feared the mask during nesting",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "They mimicked researcher voices",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "They confused mask with food source",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "They warned distant crow populations",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What did trapped crows do years later when they saw the same mask?",
@@ -3346,7 +2414,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -3367,14 +2437,16 @@
     ],
     "rarity": "uncommon",
     "difficulty": 3,
-    "funScore": 10,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Science journal",
     "gaiaComment": "Crows remember faces, hold grudges, and teach their children who to hate. I respect it, honestly.",
     "visualDescription": "A crow perched on a fence post staring intensely at a specific human figure walking below, its head tilted with recognition, while other identical-looking humans pass nearby unnoticed; the crow's eye gleaming with focused memory, its body leaning forward with apparent disdain.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "brain_neuro",
-    "categoryL3": "Animal Cognition"
+    "categoryL3": "Animal Cognition",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-012",
@@ -3384,40 +2456,7 @@
     "explanation": "The botanical definition of a berry is specific: fleshy fruit derived from a single ovary containing seeds embedded in the flesh. Bananas, watermelons, tomatoes, and cucumbers all qualify. Strawberries, raspberries, and blackberries fail this test by botanical standards.",
     "quizQuestion": "Which fruit is botanically classified as true berry?",
     "correctAnswer": "Banana",
-    "distractors": [
-      {
-        "text": "Strawberry",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Raspberry",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Blackberry",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Multiple ovaries",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "External seeds",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Grows on vine",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Has sweet flavor",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Aggregate fruit type",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Which fruit is botanically a true berry?",
@@ -3454,7 +2493,9 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -3475,14 +2516,16 @@
     ],
     "rarity": "common",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Britannica",
     "gaiaComment": "Bananas are berries. Strawberries are not. Botany is petty and I love it.",
     "visualDescription": "A cross-section diagram showing a banana split open to reveal dozens of tiny seeds embedded throughout its flesh glowing with classification light, while beside it a strawberry's surface is covered in external seeds that visibly don't count, a glowing botanical scroll unfurling between them with checkmarks and X marks.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "anatomy_organs",
-    "categoryL3": "Botany"
+    "categoryL3": "Botany",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-013",
@@ -3492,40 +2535,7 @@
     "explanation": "All eukaryotic life shares core genetic sequences because the basic mechanisms of cellular life are ancient and conserved by evolution. Humans share roughly 85% of their genes with mice, 60% with fruit flies, and 60% with bananas. We share 99.9% with other humans, and about 98.7% with chimpanzees.",
     "quizQuestion": "What percentage of DNA do humans share with bananas?",
     "correctAnswer": "About 60%",
-    "distractors": [
-      {
-        "text": "About 10%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 30%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 90%",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 40%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 50%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 75%",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 99%",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "About 85%",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What percentage of DNA do humans share with bananas?",
@@ -3573,8 +2583,8 @@
         "correctAnswer": "True",
         "distractors": [
           "False",
-          "Unknown",
-          "Partially true"
+          "Partially true",
+          "Plausible option 3"
         ]
       }
     ],
@@ -3584,15 +2594,17 @@
       "Genetics"
     ],
     "rarity": "common",
-    "difficulty": 2,
-    "funScore": 9,
+    "difficulty": 5,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Nature",
     "gaiaComment": "You share 60% of your DNA with a banana. That's not an insult, it's just ancient shared plumbing.",
     "visualDescription": "A human figure and a massive banana plant standing side-by-side, their bodies outlined with glowing genetic double-helix strands, sixty percent of the spiraling DNA sequences perfectly matching and intertwining between them while forty percent diverges into separate colors, laboratory glass beakers and microscopes surrounding the scene.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "genetics_dna",
-    "categoryL3": "Genetics"
+    "categoryL3": "Genetics",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-014",
@@ -3602,40 +2614,7 @@
     "explanation": "Jellyfish have no brain, no heart, and no blood. They use a diffuse nerve net for sensing and responding to the environment, and their 'blood' function is handled by the diffusion of nutrients through their jelly-like mesoglea. They have survived all five major mass extinctions.",
     "quizQuestion": "What organs do jellyfish completely lack?",
     "correctAnswer": "Brain, heart, blood",
-    "distractors": [
-      {
-        "text": "Only blood",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Only a heart",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Only a brain",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Brain and blood only",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Heart and blood only",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "All three organs present",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "None—jellyfish have all organs",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Lungs, liver, kidneys",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What organs do jellyfish completely lack?",
@@ -3672,7 +2651,9 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False"
+          "False",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       },
       {
@@ -3692,7 +2673,7 @@
       "Invertebrates"
     ],
     "rarity": "common",
-    "difficulty": 1,
+    "difficulty": 3,
     "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Smithsonian",
@@ -3700,7 +2681,9 @@
     "visualDescription": "A translucent jellyfish with a dome-shaped bell drifting through dark prehistoric ocean waters, its long trailing tentacles glowing faintly, ancient trilobites swimming nearby, geological layer lines visible in the background showing millions of years passing",
     "categoryL1": "Human Body & Health",
     "categoryL2": "anatomy_organs",
-    "categoryL3": "Invertebrates"
+    "categoryL3": "Invertebrates",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-015",
@@ -3710,40 +2693,7 @@
     "explanation": "The Moon exerts tidal forces on Earth, transferring rotational energy from Earth to the Moon's orbit. This gradually slows Earth's rotation and pushes the Moon further away (currently 3.8 cm per year). Ancient corals and bivalves preserve daily growth rings that confirm historical day lengths.",
     "quizQuestion": "How long was a day during dinosaur times?",
     "correctAnswer": "About 22 hours",
-    "distractors": [
-      {
-        "text": "Exactly 24 hours",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 18 hours",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "About 30 hours",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Solar wind friction",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Continental drift",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Asteroid impacts",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "About 6 hours",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "About 48 hours",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "How long was a day during dinosaur times?",
@@ -3803,14 +2753,16 @@
     ],
     "rarity": "uncommon",
     "difficulty": 3,
-    "funScore": 9,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Nature",
     "gaiaComment": "Dinosaurs lived in 22-hour days. The Moon has been slowly braking us ever since. We're still slowing down.",
     "visualDescription": "A colossal T-Rex mid-stride across a prehistoric landscape while an ancient Earth rotates noticeably faster in the starry sky above, a transparent clock face overlaid on the horizon showing twenty-two hour markings instead of twenty-four, the sun visibly racing across the sky leaving a bright trail.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "anatomy_organs",
-    "categoryL3": "Earth History"
+    "categoryL3": "Earth History",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-016",
@@ -3820,40 +2772,7 @@
     "explanation": "Research published in 2018 revealed that wombat intestines have two regions of differing stiffness in the final section, which causes faeces to form into cubes rather than cylinders. Wombats use these distinctive droppings as territorial markers — the flat sides stop them rolling away.",
     "quizQuestion": "What unique shape do wombat droppings have?",
     "correctAnswer": "Cubic",
-    "distractors": [
-      {
-        "text": "Spherical droppings",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Cylindrical like other mammals",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Flat discs for rolling",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Hexagonal like honeycomb",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Pyramid-shaped droppings",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Star-shaped from diet",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Pentagonal from muscle rings",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Octagonal geometric shape",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What shape are wombat faeces?",
@@ -3900,8 +2819,6 @@
         "type": "true_false",
         "correctAnswer": "True",
         "distractors": [
-          "False",
-          "False",
           "False"
         ]
       }
@@ -3913,14 +2830,16 @@
     ],
     "rarity": "epic",
     "difficulty": 3,
-    "funScore": 10,
+    "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Soft Matter journal",
     "gaiaComment": "Wombats produce cubic droppings. Engineers are studying the mechanism. Nature wins again.",
     "visualDescription": "A wombat crouched mid-defecation, dropping a perfectly geometric cube-shaped dropping onto brown earth below, its flat six sides and sharp edges unmistakably cubic, contrasting dramatically with the wombat's round furry body, Australian scrubland and eucalyptus trees behind.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "digestion_metabolism",
-    "categoryL3": "Animal Physiology"
+    "categoryL3": "Animal Physiology",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-017",
@@ -3930,40 +2849,7 @@
     "explanation": "Research by William Parker at Duke University showed the appendix's structure — a blind-ended tube covered in immune tissue — is ideal for sheltering beneficial bacterial populations. After illnesses that flush the intestines, bacteria from the appendix repopulate the gut. The appendix is also active in foetal immune function.",
     "quizQuestion": "What function does the appendix serve?",
     "correctAnswer": "Reservoir for beneficial gut bacteria",
-    "distractors": [
-      {
-        "text": "Produces digestive enzymes",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Absorbs water from intestines",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Filters toxins from food",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Secretes hormones for metabolism",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Produces white blood cells",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Regulates intestinal pH balance",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Monitors gut microbiome signals",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Activates immune response to pathogens",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What recently discovered function does the appendix serve?",
@@ -4022,15 +2908,17 @@
       "Human Anatomy"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
-    "funScore": 8,
+    "difficulty": 2,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Journal of Theoretical Biology",
     "gaiaComment": "The appendix was called useless for 150 years. It's a bacterial bunker. Always gets the last laugh.",
     "visualDescription": "A human torso cross-section showing a glowing appendix filled with swirling beneficial bacteria colonies in bright cyan and green, while a scientist's hand points to it with a magnifying glass, surrounding intestinal walls lined with the same luminous bacterial clouds, a medical chart behind them marked with a large checkmark.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "immunity_disease",
-    "categoryL3": "Human Anatomy"
+    "categoryL3": "Human Anatomy",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-018",
@@ -4040,40 +2928,7 @@
     "explanation": "Electric eels (Electrophorus electricus and related species) are knifefish — a group more closely related to catfish than to true eels. They evolved three separate electric organs from modified muscle tissue. The high-voltage discharge is used for stunning prey; lower voltages are used for navigation and communication.",
     "quizQuestion": "What animal group is the electric eel most closely related to?",
     "correctAnswer": "Catfish",
-    "distractors": [
-      {
-        "text": "True eels",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Sharks",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Lampreys",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Electric rays",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Lungfish",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Hagfish",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Coelacanths",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Paddlefish",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Electric eels are knifefish most closely related to which group?",
@@ -4121,8 +2976,8 @@
         "correctAnswer": "True",
         "distractors": [
           "False",
-          "Unknown",
-          "Partially true"
+          "Partially true",
+          "Plausible option 3"
         ]
       }
     ],
@@ -4132,7 +2987,7 @@
       "Fish Biology"
     ],
     "rarity": "uncommon",
-    "difficulty": 3,
+    "difficulty": 2,
     "funScore": 8,
     "ageRating": "kid",
     "sourceName": "Nature Communications",
@@ -4140,7 +2995,9 @@
     "visualDescription": "A sleek, catfish-like creature with whisker-like barbels around its mouth and a flattened head swimming through murky water while crackling bolts of electricity arc across its body, surrounded by smaller actual catfish that share its same facial structure, while in the background a true eel with a pointed snout and smooth face drifts away distinctly separate.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "anatomy_organs",
-    "categoryL3": "Fish Biology"
+    "categoryL3": "Fish Biology",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-019",
@@ -4150,40 +3007,7 @@
     "explanation": "The gene for the Tas1r2 taste receptor — which in humans and most mammals detects sweet tastes — is a non-functional pseudogene in cats. This is true of all felids, not just domestic cats. It likely evolved away because a purely meat-based diet offers no benefit from detecting sugars.",
     "quizQuestion": "Why can't cats taste sweetness?",
     "correctAnswer": "Lack functional sweet taste receptor gene",
-    "distractors": [
-      {
-        "text": "Dogs can taste sweetness",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Sugar blocks taste buds",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Cats prefer savory flavors",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Saliva neutralizes sugar molecules",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Sweet taste evolved in prey",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Cats have extra taste buds",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Tas1r2 mutated into umami detector",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Sweet receptors became bitter receptors",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Why can't cats taste sweetness?",
@@ -4243,14 +3067,16 @@
     ],
     "rarity": "common",
     "difficulty": 2,
-    "funScore": 8,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "PLOS Genetics",
     "gaiaComment": "Cats can't taste sweetness. Their entire world has no dessert. I feel vaguely sorry for them.",
     "visualDescription": "A cat sitting at a table with its paw pushing away a bowl of honey, while a human child beside it eagerly licks a lollipop with visible enjoyment, the cat's tongue extended but unresponsive to the sweet substance, its whiskers twitching with indifference as sugar crystals cling to its fur.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "senses_perception",
-    "categoryL3": "Animal Physiology"
+    "categoryL3": "Animal Physiology",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-020",
@@ -4260,40 +3086,7 @@
     "explanation": "Hemocyanin is less efficient at oxygen transport than the iron-based hemoglobin found in vertebrates. The additional hearts compensate. The blue colour appears because copper oxidises blue, unlike iron which oxidises red. Hemocyanin works better than hemoglobin in cold, low-oxygen environments like the deep sea.",
     "quizQuestion": "Why is octopus blood blue instead of red?",
     "correctAnswer": "Contains copper-based hemocyanin",
-    "distractors": [
-      {
-        "text": "Red, like human blood",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Green, from dietary chlorophyll",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Clear, no blood pigment",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Purple, from cephalophin protein",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Yellow, from carotenoid pigments",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Orange, high copper concentration",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Hemoglobin-based like vertebrates",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Manganese-based oxygen carrier",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "Why is octopus blood blue?",
@@ -4340,7 +3133,9 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -4351,14 +3146,16 @@
     ],
     "rarity": "common",
     "difficulty": 2,
-    "funScore": 9,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "National Geographic",
     "gaiaComment": "Three hearts, blue blood, two stop beating when they swim. Octopuses are doing too much.",
     "visualDescription": "A translucent octopus with its body cavity split open like anatomical diagram, three distinct glowing red hearts beating visibly inside the torso while brilliant blue liquid pumps through transparent vessels branching across its writhing tentacles, deep ocean backdrop with bioluminescent creatures watching.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "cardiovascular",
-    "categoryL3": "Cephalopods"
+    "categoryL3": "Cephalopods",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   },
   {
     "id": "lsci-021",
@@ -4368,40 +3165,7 @@
     "explanation": "Axolotls (Ambystoma mexicanum) are paedomorphic salamanders that retain juvenile traits including extraordinary regenerative capacity. Their cells can dedifferentiate — reverting to stem-cell-like states — and then redifferentiate into the correct cell types for the missing structure. Scientists are studying this to understand human wound healing.",
     "quizQuestion": "What can axolotls regenerate throughout their lives?",
     "correctAnswer": "Limbs, heart tissue, brain tissue",
-    "distractors": [
-      {
-        "text": "Can survive without oxygen",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Change color to blend in",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Reproduce asexually only",
-        "difficultyTier": "easy"
-      },
-      {
-        "text": "Have four separate brains",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Produce paralyzing skin venom",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Use electrical signals underwater",
-        "difficultyTier": "medium"
-      },
-      {
-        "text": "Biologically immortal never aging",
-        "difficultyTier": "hard"
-      },
-      {
-        "text": "Regrow from single cells",
-        "difficultyTier": "hard"
-      }
-    ],
+    "distractors": [],
     "variants": [
       {
         "question": "What can axolotls regenerate throughout their lives?",
@@ -4448,7 +3212,9 @@
         "type": "true_false",
         "correctAnswer": "False",
         "distractors": [
-          "True"
+          "True",
+          "Plausible option 2",
+          "Plausible option 3"
         ]
       }
     ],
@@ -4458,14 +3224,16 @@
       "Regenerative Biology"
     ],
     "rarity": "rare",
-    "difficulty": 3,
-    "funScore": 10,
+    "difficulty": 2,
+    "funScore": 5,
     "ageRating": "kid",
     "sourceName": "Nature",
     "gaiaComment": "Axolotls regrow limbs, heart tissue, and brain matter. Repeatedly. With no scarring. Show-offs.",
     "visualDescription": "A pink axolotl mid-regeneration with a translucent glowing limb actively regrowing from its shoulder socket, its chest cavity faintly visible showing a heart reforming with new tissue, while its head displays a luminescent brain section knitting itself together, surrounded by swirling aquatic particles, underwater plants framing the scene.",
     "categoryL1": "Human Body & Health",
     "categoryL2": "medical_science",
-    "categoryL3": "Regenerative Biology"
+    "categoryL3": "Regenerative Biology",
+    "_haikuProcessed": true,
+    "_haikuProcessedAt": "2026-03-11T00:00:00Z"
   }
 ]
