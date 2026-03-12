@@ -85,6 +85,15 @@ export interface VocabularyFact {
   age_rating: 'kid' | 'teen' | 'adult'
 }
 
+/** Configurable display option for a language deck */
+export interface LanguageDeckOption {
+  id: string              // 'furigana', 'romaji'
+  label: string           // 'Show Furigana'
+  description: string     // 'Display hiragana readings above kanji'
+  type: 'toggle'          // extensible later
+  default: boolean        // default value
+}
+
 /** Language configuration */
 export interface LanguageConfig {
   code: string          // ISO 639-1
@@ -92,6 +101,8 @@ export interface LanguageConfig {
   nativeName: string
   levels: LanguageLevel[]
   voiceId?: string      // TTS voice identifier
+  subdecks?: string[]                    // Available subdecks e.g. ['Vocabulary', 'Kanji', 'Grammar', 'Kana']
+  options?: LanguageDeckOption[]         // Configurable display options
 }
 
 export interface LanguageLevel {
@@ -127,7 +138,12 @@ export const SUPPORTED_LANGUAGES: LanguageConfig[] = [
       { id: 'N2', name: 'JLPT N2', wordCount: 5000, order: 4 },
       { id: 'N1', name: 'JLPT N1', wordCount: 10000, order: 5 }
     ],
-    voiceId: 'ja-JP-NanamiNeural'
+    voiceId: 'ja-JP-NanamiNeural',
+    subdecks: ['Vocabulary', 'Kanji', 'Grammar', 'Kana'],
+    options: [
+      { id: 'furigana', label: 'Show Furigana', description: 'Display hiragana readings above kanji', type: 'toggle', default: true },
+      { id: 'romaji', label: 'Show Romaji', description: 'Display romanized readings', type: 'toggle', default: false },
+    ]
   },
   {
     code: 'es',

@@ -15,11 +15,12 @@ Run the full content pipeline autonomously: raw data → Haiku-processed facts �
 - `categoryL2` is mandatory for canonical domains (use IDs from `src/data/subcategoryTaxonomy.ts`).
 
 ## Current Database State
-- **32,172 facts** in `src/data/seed/facts-generated.json`
-- **~11,563 knowledge facts** across 10 domains
-- **~20,609 vocabulary facts** across 8 languages
+- **33,766 facts** in `src/data/seed/facts-generated.json` (34,289 total in DB with seed files)
+- **~10,423 knowledge facts** across 10 domains
+- **~23,343 vocabulary facts** across 7 languages
 - **Knowledge domains**: animals_wildlife, general_knowledge, human_body_health, food_cuisine, geography, art_architecture, history, mythology_folklore, natural_sciences, space_astronomy
-- **Languages**: ja (Japanese), es (Spanish), fr (French), de (German), ko (Korean), it (Italian), nl (Dutch), cs (Czech)
+- **Languages**: ko (7,686), es (5,575), de (4,778), it (1,924), fr (1,200), nl (1,131), cs (1,049) — Japanese pending Anki deck
+- **All 5 Anki decks fully exhausted**: Spanish, Korean, German, Dutch, Czech
 
 ## Mandatory Haiku Processing (All Facts)
 Every single fact that enters the database MUST be processed by a Haiku agent.
