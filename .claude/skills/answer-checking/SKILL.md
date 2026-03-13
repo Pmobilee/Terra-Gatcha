@@ -81,6 +81,9 @@ The `check` command now also validates distractors:
 - Empty/single-character distractors
 - Scientific names as distractors when question asks for common name
 - Variant-specific distractor issues
+- **Format mismatch (vocab)**: Distractors must match correct answer's word count (±1) and character length (within 2x ratio). Catches "pick the longest option" exploits.
+- **Semantic randomness (vocab)**: Distractors must be from the same semantic field as the correct answer, not random unrelated words.
+- **Nonsense templates**: "Xing process", "Act of X", "To X" pattern distractors are auto-flagged.
 
 ## Tagged Fact Variants
 Use `--tags` and `--tag-mode` with `check` or `export-flagged`.
@@ -111,6 +114,18 @@ On March 12, 2026, we had to strip 58,359 garbage distractors that were generate
 **ONLY permitted DB use:** POST-GENERATION VALIDATION — checking that a generated distractor doesn't accidentally match another fact's correct answer.
 
 **PERMANENTLY BANNED:** Scripts like `mine-distractors.mjs` or any `SELECT correct_answer FROM facts WHERE category = ...` approach for distractor generation.
+
+## Vocabulary Format-Matching Rules — MANDATORY
+When checking or fixing vocabulary facts, enforce these format-matching rules to prevent pattern-matching exploits:
+
+1. **Word count**: Each distractor word count must be within ±1 of the correct answer's word count
+2. **Character length**: Each distractor must be within 0.5x-2.0x of the correct answer's character length
+3. **Style consistency**: Comma-separated answers need comma-separated distractors; single words need single words
+4. **Semantic relatedness**: Distractors must be plausible wrong translations from the same semantic field
+5. **No nonsense**: Reject "Xing process", "Act of X", "library action" type generated garbage
+
+These rules apply to ALL 8 languages: ja, ko, es, de, it, fr, nl, cs.
+Facts failing these checks should be flagged with `answer_check_issue: "format_mismatch_distractors"`.
 
 ## Notes
 - `check` updates DB flags immediately.

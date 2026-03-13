@@ -258,6 +258,31 @@ These patterns were found in 7,000+ broken facts. Generating ANY of these is a c
 - NEVER use generic English words ("book", "chair") — use actual translations from the vocabulary pool
 - Each vocab fact must have 8 UNIQUE distractors from the same language domain
 
+### Vocabulary Distractor Format Matching — MANDATORY
+**CRITICAL anti-pattern-matching rule.** On March 12, 2026 we found 12,527 vocab facts (34.5% of all vocab) where distractors had exploitable format mismatches — players could learn to "always pick the longest option" or "always pick the multi-word phrase."
+
+**The Rule:** Every distractor MUST match the correct answer's format:
+1. **Word count match**: If the answer is 3 words, each distractor must be 2-4 words (±1 tolerance). A single-word distractor for a multi-word answer is ALWAYS wrong.
+2. **Length match**: Each distractor's character length must be within 50% of the answer's length. "sour" (4 chars) vs "as a matter of course" (21 chars) is ALWAYS wrong.
+3. **Style match**: If the answer contains commas/slashes (e.g., "fall, drop, plunge"), distractors must also be comma/slash-separated lists of similar length. If the answer is a single clean word, distractors must be single clean words.
+4. **Semantic relatedness**: Distractors must be plausible wrong translations — words from the same semantic field, part of speech, and register. "library" → "judge | receive | establish | gather" is GARBAGE. "library" → "museum | theater | bookstore | archive" is GOOD.
+5. **No nonsense templates**: NEVER generate "Xing process", "Act of X", "To X", "X action" style distractors. These are instantly recognizable as machine-generated garbage.
+
+**Examples of BAD vs GOOD:**
+| Answer | BAD Distractors | GOOD Distractors |
+|--------|----------------|-----------------|
+| "as a matter of course" (5 words) | "surprisingly \| regrettably \| accidentally" (1 word each) | "without a doubt \| in any event \| as a general rule" (4-5 words each) |
+| "simple and honest" (3 words) | "elaborate \| deceptive \| complex" (1 word each) | "proud and stubborn \| quick and clever \| calm and patient" (3 words each) |
+| "sour" (1 word) | "cause \| bad \| weak \| truth" (random words) | "bitter \| sweet \| spicy \| bland" (taste words) |
+| "library" (1 word) | "To library \| library action \| Act of library" (nonsense) | "museum \| hospital \| university \| station" (places) |
+| "get cold" (2 words) | "knowledge \| hospital room \| small scale" (random) | "get warm \| get lost \| get sick" (same "get X" pattern) |
+
+**Verification after generation:** For every batch of vocab distractors, compute:
+- `answerWordCount` = number of words in correctAnswer
+- `distWordCount` = number of words in each distractor
+- REJECT if any `|distWordCount - answerWordCount| > 1`
+- REJECT if any distractor length ratio > 2.0x or < 0.5x vs answer length
+
 ### Rules for Knowledge Facts
 - Distractors MUST be from the same domain/subcategory as the correct answer
 - For animal questions: other animal names. For country questions: other countries. For year questions: other years.
