@@ -137,7 +137,7 @@ test('ascension level 6 disables flee from campfire', async ({ page }) => {
     floor: 4,
     screen: 'roomSelection',
     roomOptions: [
-      { type: 'rest', icon: '🔥', label: 'Rest', detail: 'Recover HP', hidden: false },
+      { type: 'rest', icon: '🔥', label: 'Rest Site', detail: 'Rest or Upgrade', hidden: false },
     ],
   })
 

@@ -419,7 +419,7 @@ function buildRoomOption(type: RoomType, floor: number, preselectedEnemyId?: str
         type: 'rest',
         icon: '\u2764\uFE0F', // ❤️
         label: 'Rest Site',
-        detail: 'Heal 30% HP',
+        detail: 'Rest or Upgrade',
         hidden: false,
       }
     case 'treasure':

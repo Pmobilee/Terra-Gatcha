@@ -18,6 +18,18 @@ export function getCardTypeIconPath(type: CardType | 'heal' | 'regen'): string {
 }
 
 /**
+ * Ordered candidate chain for card type icons.
+ * Consumers should try entries in order and fall back to emoji only if all fail.
+ */
+export function getCardTypeIconCandidates(type: CardType | 'heal' | 'regen'): string[] {
+	return [
+		`/assets/sprites/icons/icon_cardtype_${type}.png`,
+		`/assets/sprites/icons/icon_cardtype_${type}.webp`,
+		'/assets/sprites/icons/icon_ui_card_fallback.png',
+	]
+}
+
+/**
  * Emoji fallback for card types (used when icon fails to load).
  * @param type - The card type
  * @returns An emoji representation of the card type

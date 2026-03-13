@@ -53,6 +53,11 @@ import {
   shouldSuppressRewardsForTinyPool,
 } from './masteryScalingService';
 
+export interface EncounterSnapshot {
+  activeDeck: CardRunState | null
+  activeRunPool: Card[]
+}
+
 /** Create a shallow copy of TurnState with fresh array references for Svelte reactivity. */
 function freshTurnState(ts: TurnState): TurnState {
   return {
@@ -110,6 +115,39 @@ function notifyEncounterComplete(result: EncounterCompletionResult): void {
 
 let activeDeck: CardRunState | null = null;
 let activeRunPool: Card[] = [];
+
+function cloneCard(card: Card): Card {
+  return { ...card }
+}
+
+function cloneDeck(deck: CardRunState): CardRunState {
+  return {
+    ...deck,
+    drawPile: deck.drawPile.map(cloneCard),
+    discardPile: deck.discardPile.map(cloneCard),
+    hand: deck.hand.map(cloneCard),
+    exhaustPile: deck.exhaustPile.map(cloneCard),
+    factPool: [...deck.factPool],
+    factCooldown: deck.factCooldown.map((entry) => ({ ...entry })),
+  }
+}
+
+export function serializeEncounterSnapshot(): EncounterSnapshot {
+  return {
+    activeDeck: activeDeck ? cloneDeck(activeDeck) : null,
+    activeRunPool: activeRunPool.map(cloneCard),
+  }
+}
+
+export function hydrateEncounterSnapshot(snapshot?: EncounterSnapshot | null): void {
+  if (!snapshot) {
+    activeDeck = null
+    activeRunPool = []
+    return
+  }
+  activeDeck = snapshot.activeDeck ? cloneDeck(snapshot.activeDeck) : null
+  activeRunPool = (snapshot.activeRunPool ?? []).map(cloneCard)
+}
 
 function buildStarterDeckFromRunPool(runPool: Card[], targetSize: number): Card[] {
   const byType = new Map<CardType, Card[]>();

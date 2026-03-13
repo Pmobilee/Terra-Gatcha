@@ -289,6 +289,23 @@ export function discardCard(deck: CardRunState, cardId: string): Card {
 }
 
 /**
+ * Discards all cards currently in hand.
+ *
+ * End-turn flow uses this to move unplayed cards into discard before drawing
+ * a fresh hand (Slay the Spire-style pile cycle).
+ *
+ * @param deck - The current deck state (mutated in place).
+ * @returns The cards moved from hand to discard.
+ */
+export function discardHand(deck: CardRunState): Card[] {
+  if (deck.hand.length === 0) return [];
+  const discarded = [...deck.hand];
+  deck.discardPile.push(...discarded);
+  deck.hand = [];
+  return discarded;
+}
+
+/**
  * Exhausts a card — permanently removes it from the run.
  *
  * The card is moved from the hand to the exhaust pile. Exhausted cards are

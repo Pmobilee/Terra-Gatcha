@@ -8,9 +8,11 @@
     playerMaxHp: number
     onheal: () => void
     onupgrade: () => void
+    upgradeDisabled?: boolean
+    upgradeDisabledReason?: string
   }
 
-  let { playerHp, playerMaxHp, onheal, onupgrade }: Props = $props()
+  let { playerHp, playerMaxHp, onheal, onupgrade, upgradeDisabled = false, upgradeDisabledReason = 'No cards to upgrade' }: Props = $props()
   const bgUrl = getRandomRoomBg('rest')
   holdScreenTransition()
   preloadImages([bgUrl]).then(releaseScreenTransition)
@@ -23,6 +25,7 @@
   <img class="screen-bg" src={bgUrl} alt="" aria-hidden="true" loading="eager" decoding="async" />
   <div class="rest-card" style="position: relative; z-index: 1;">
     <h2 class="rest-title">Rest Site</h2>
+    <p class="rest-choice-caption">Choose one: Rest or Upgrade</p>
 
     <div class="hp-info">
       HP: {playerHp} / {playerMaxHp}
@@ -42,13 +45,15 @@
 
       <button
         class="option-card upgrade-card"
+        class:disabled={upgradeDisabled}
         data-testid="rest-upgrade"
-        onclick={onupgrade}
+        onclick={() => { if (!upgradeDisabled) onupgrade() }}
+        disabled={upgradeDisabled}
       >
         <span class="option-icon">{'\u2B06\uFE0F'}</span>
         <span class="option-label">Upgrade</span>
         <span class="option-detail">Boost one card</span>
-        <span class="option-preview">Enhance one card</span>
+        <span class="option-preview">{upgradeDisabled ? upgradeDisabledReason : 'Enhance one card'}</span>
       </button>
     </div>
   </div>
@@ -95,6 +100,14 @@
     margin: 0;
   }
 
+  .rest-choice-caption {
+    font-size: 12px;
+    color: #9adab4;
+    margin: -6px 0 0;
+    text-align: center;
+    font-weight: 700;
+  }
+
   .hp-info {
     font-size: 14px;
     color: #8B949E;
@@ -124,12 +137,29 @@
     transform: scale(1.03);
   }
 
+  .option-card:disabled {
+    cursor: not-allowed;
+  }
+
   .heal-card:hover {
     border-color: #2ECC71;
   }
 
   .upgrade-card:hover {
     border-color: #3498DB;
+  }
+
+  .upgrade-card.disabled {
+    border-color: #5b6471;
+    background: #17212b;
+    filter: grayscale(0.35);
+    opacity: 0.72;
+    transform: none;
+  }
+
+  .upgrade-card.disabled:hover {
+    border-color: #5b6471;
+    transform: none;
   }
 
   .option-icon {

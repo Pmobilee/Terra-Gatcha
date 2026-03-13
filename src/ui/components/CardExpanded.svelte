@@ -4,6 +4,7 @@
   import { getDomainMetadata } from '../../data/domainMetadata'
   import { getCardFramePath, getDomainIconPath } from '../utils/domainAssets'
   import { getTierDisplayName } from '../../services/tierDerivation'
+  import { getCardTypeEmoji, getCardTypeIconCandidates } from '../utils/iconAssets'
 
   interface Props {
     card: Card
@@ -47,15 +48,6 @@
     onusehint = () => {},
   }: Props = $props()
 
-  const TYPE_ICONS: Record<CardType, string> = {
-    attack: '⚔',
-    shield: '🛡',
-    utility: '⭐',
-    buff: '⬆',
-    debuff: '⬇',
-    wild: '💎',
-  }
-
   const EFFECT_DESCRIPTIONS: Record<CardType, string> = {
     attack: 'Deal N Damage',
     shield: 'Block N Damage',
@@ -71,7 +63,10 @@
   )
   let domainColor = $derived(getDomainMetadata(card.domain).colorTint)
   let domainName = $derived(getDomainMetadata(card.domain).displayName)
-  let typeIcon = $derived(TYPE_ICONS[card.cardType])
+  let typeIconCandidates = $derived(getCardTypeIconCandidates(card.cardType))
+  let typeIconFallback = $derived(getCardTypeEmoji(card.cardType))
+  let typeIconAttempt = $state(0)
+  let typeIconPath = $derived(typeIconCandidates[typeIconAttempt] ?? null)
   let tierLabel = $derived(card.tier === '1' ? '' : getTierDisplayName(card.tier))
   let framePath = $derived(card.isEcho ? '/assets/sprites/cards/frame_echo.webp' : getCardFramePath(card.cardType))
   let domainIconPath = $derived(getDomainIconPath(card.domain))
@@ -146,6 +141,11 @@
       if (correctRevealTimeoutId !== undefined) clearTimeout(correctRevealTimeoutId)
       if (speedBonusTimeoutId !== undefined) clearTimeout(speedBonusTimeoutId)
     }
+  })
+
+  $effect(() => {
+    card.cardType
+    typeIconAttempt = 0
   })
 
   function handleAnswer(index: number): void {
@@ -269,7 +269,18 @@
         <span class="tier-stars">{tierLabel}</span>
       {/if}
     </span>
-    <span class="header-icon">{typeIcon}</span>
+    <span class="header-icon">
+      {#if typeIconPath}
+        <img
+          class="header-type-icon"
+          src={typeIconPath}
+          alt=""
+          onerror={() => { typeIconAttempt += 1 }}
+        />
+      {:else}
+        <span>{typeIconFallback}</span>
+      {/if}
+    </span>
   </div>
 
   <div class="card-effect-desc">{effectDescription}</div>
@@ -350,7 +361,7 @@
     max-height: 55vh;
     overflow-y: auto;
     background:
-      linear-gradient(rgba(14, 20, 30, 0.86), rgba(14, 20, 30, 0.9)),
+      linear-gradient(rgba(14, 20, 30, 0.95), rgba(14, 20, 30, 0.97)),
       var(--card-frame-image) center / cover no-repeat,
       #1a2332;
     border-radius: 12px;
@@ -407,6 +418,19 @@
 
   .header-icon {
     font-size: 16px;
+    display: inline-flex;
+    width: 18px;
+    height: 18px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-type-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
   }
 
   .tier-stars {
@@ -416,13 +440,13 @@
   }
 
   .card-effect-desc {
-    font-size: 12px;
+    font-size: calc(12px * var(--text-scale, 1));
     color: #94a3b8;
     padding: 8px 12px 0;
   }
 
   .card-question {
-    font-size: 16px;
+    font-size: calc(16px * var(--text-scale, 1));
     color: #f8fafc;
     line-height: 1.35;
     padding: 8px 12px 10px;
@@ -430,7 +454,7 @@
 
   .first-letter-hint {
     margin: 0 12px 8px;
-    font-size: 12px;
+    font-size: calc(12px * var(--text-scale, 1));
     color: #facc15;
   }
 
@@ -446,7 +470,7 @@
     border-radius: 10px;
     background: #0f172a;
     color: #e2e8f0;
-    font-size: 14px;
+    font-size: calc(14px * var(--text-scale, 1));
     padding: 10px;
     text-align: left;
   }
@@ -477,7 +501,7 @@
     top: 40px;
     background: #2563eb;
     color: #fff;
-    font-size: 10px;
+    font-size: calc(10px * var(--text-scale, 1));
     font-weight: 700;
     border-radius: 8px;
     padding: 4px 7px;
@@ -506,7 +530,7 @@
     position: absolute;
     right: 8px;
     top: -18px;
-    font-size: 11px;
+    font-size: calc(11px * var(--text-scale, 1));
     font-weight: 600;
     color: #e2e8f0;
   }
@@ -523,6 +547,7 @@
     border: none;
     border-radius: 10px;
     font-weight: 700;
+    font-size: calc(14px * var(--text-scale, 1));
   }
 
   .hint-btn {

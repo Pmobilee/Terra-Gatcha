@@ -7,6 +7,9 @@
 import type { RunState } from './runManager';
 import type { RoomOption } from './floorManager';
 import { getAscensionModifiers } from './ascension';
+import type { Card, CardRunState } from '../data/card-types';
+import type { RewardBundle, RewardRevealStep } from '../ui/stores/gameState';
+import type { EncounterSnapshot } from './encounterBridge';
 
 const SAVE_KEY = 'recall-rogue-active-run';
 
@@ -28,6 +31,13 @@ export interface RunSaveState {
   runSeed?: number | null;
   /** Room options if paused at room selection. */
   roomOptions?: RoomOption[];
+  /** Card reward options when paused on card reward screen. */
+  cardRewardOptions?: Card[];
+  /** Reward reveal metadata when paused on reward screen. */
+  activeRewardBundle?: RewardBundle | null;
+  rewardRevealStep?: RewardRevealStep;
+  /** Serialized encounter bridge state required for exact resume. */
+  encounterSnapshot?: SerializedEncounterSnapshot;
 }
 
 /** RunState with Sets replaced by arrays for JSON serialization. */
@@ -39,6 +49,11 @@ interface SerializedRunState extends Omit<
   consumedRewardFactIds: string[];
   factsAnsweredCorrectly: string[];
   factsAnsweredIncorrectly: string[];
+}
+
+interface SerializedEncounterSnapshot {
+  activeDeck: CardRunState | null
+  activeRunPool: Card[]
 }
 
 /** Serialize RunState Sets to arrays for JSON storage. */
@@ -84,7 +99,17 @@ export function saveActiveRun(state: {
   dailySeed?: number | null;
   runSeed?: number | null;
   roomOptions?: RoomOption[];
+  cardRewardOptions?: Card[];
+  activeRewardBundle?: RewardBundle | null;
+  rewardRevealStep?: RewardRevealStep;
+  encounterSnapshot?: EncounterSnapshot | null;
 }): void {
+  const encounterSnapshot: SerializedEncounterSnapshot | undefined = state.encounterSnapshot
+    ? {
+      activeDeck: state.encounterSnapshot.activeDeck,
+      activeRunPool: state.encounterSnapshot.activeRunPool,
+    }
+    : undefined;
   const serialized: RunSaveState = {
     version: state.version,
     savedAt: state.savedAt,
@@ -94,6 +119,10 @@ export function saveActiveRun(state: {
     dailySeed: state.dailySeed ?? null,
     runSeed: state.runSeed ?? null,
     roomOptions: state.roomOptions,
+    cardRewardOptions: state.cardRewardOptions,
+    activeRewardBundle: state.activeRewardBundle ?? null,
+    rewardRevealStep: state.rewardRevealStep ?? 'gold',
+    encounterSnapshot,
   };
   try {
     localStorage.setItem(SAVE_KEY, JSON.stringify(serialized));
@@ -110,6 +139,10 @@ export function loadActiveRun(): {
   dailySeed?: number | null;
   runSeed?: number | null;
   roomOptions?: RoomOption[];
+  cardRewardOptions?: Card[];
+  activeRewardBundle?: RewardBundle | null;
+  rewardRevealStep?: RewardRevealStep;
+  encounterSnapshot?: EncounterSnapshot | null;
 } | null {
   try {
     const raw = localStorage.getItem(SAVE_KEY);
@@ -123,6 +156,15 @@ export function loadActiveRun(): {
       dailySeed: parsed.dailySeed ?? null,
       runSeed: parsed.runSeed ?? null,
       roomOptions: parsed.roomOptions,
+      cardRewardOptions: parsed.cardRewardOptions ?? [],
+      activeRewardBundle: parsed.activeRewardBundle ?? null,
+      rewardRevealStep: parsed.rewardRevealStep ?? 'gold',
+      encounterSnapshot: parsed.encounterSnapshot
+        ? {
+          activeDeck: parsed.encounterSnapshot.activeDeck ?? null,
+          activeRunPool: parsed.encounterSnapshot.activeRunPool ?? [],
+        }
+        : null,
     };
   } catch {
     return null;

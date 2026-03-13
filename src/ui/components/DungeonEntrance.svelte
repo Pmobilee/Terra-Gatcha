@@ -71,7 +71,8 @@
   }
 
   .enter-btn {
-    width: 220px;
+    width: auto;
+    min-width: 220px;
     max-width: 100%;
     min-height: 56px;
     border: none;
@@ -81,6 +82,7 @@
     font-size: 15px;
     font-weight: 800;
     letter-spacing: 1px;
+    padding: 12px 28px;
   }
 
 </style>

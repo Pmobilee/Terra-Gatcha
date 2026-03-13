@@ -4,7 +4,7 @@
   import { getDetailedCardDescription } from '../../services/cardDescriptionService'
   import { getCardFramePath } from '../utils/domainAssets'
   import { getRewardIconPath } from '../utils/iconAssets'
-  import { activeRewardBundle, holdScreenTransition, releaseScreenTransition } from '../../ui/stores/gameState'
+  import { activeRewardBundle, activeRewardRevealStep, holdScreenTransition, releaseScreenTransition } from '../../ui/stores/gameState'
   import { getRandomRoomBg } from '../../data/backgroundManifest'
   import { preloadImages } from '../utils/assetPreloader'
   import { untrack } from 'svelte'
@@ -13,9 +13,10 @@
     options: Card[]
     onselect: (card: Card) => void
     onskip: () => void
+    onrewardstepchange?: (step: 'gold' | 'heal' | 'card') => void
   }
 
-  let { options, onselect, onskip }: Props = $props()
+  let { options, onselect, onskip, onrewardstepchange }: Props = $props()
 
   const bgUrl = getRandomRoomBg('treasure')
   holdScreenTransition()
@@ -28,7 +29,6 @@
   let showSkipConfirm = $state(false)
 
   // Reward reveal state
-  let rewardStep = $state<'gold' | 'heal' | 'card'>('gold')
   let stepVisible = $state(false)
   let altarCeremonyPhase = $state(0)
 
@@ -107,6 +107,12 @@
 
   // Derive reward bundle from store
   let bundle = $derived($activeRewardBundle)
+  let rewardStep = $derived($activeRewardRevealStep)
+
+  function setRewardStep(step: 'gold' | 'heal' | 'card'): void {
+    activeRewardRevealStep.set(step)
+    onrewardstepchange?.(step)
+  }
 
   function emptyIconMap(): Record<CardType, RewardIcon | null> {
     return {
@@ -229,13 +235,13 @@
     setTimeout(() => {
       if (rewardStep === 'gold') {
         if (bundle && bundle.healAmount > 0) {
-          rewardStep = 'heal'
+          setRewardStep('heal')
         } else {
-          rewardStep = 'card'
+          setRewardStep('card')
           startCeremony()
         }
       } else if (rewardStep === 'heal') {
-        rewardStep = 'card'
+        setRewardStep('card')
         startCeremony()
       }
       stepVisible = true
@@ -259,9 +265,9 @@
       if (isNewReward) {
         lastOptionsRef = opts
         if (!b || (b.goldEarned === 0 && b.healAmount === 0)) {
-          rewardStep = 'card'
+          setRewardStep('card')
         } else {
-          rewardStep = 'gold'
+          setRewardStep('gold')
         }
         stepVisible = false
         setTimeout(() => {
@@ -300,22 +306,26 @@
 
 <div class="reward-screen">
   <img class="overlay-bg" src={bgUrl} alt="" aria-hidden="true" />
-  {#if rewardStep === 'gold' && bundle}
+{#if rewardStep === 'gold' && bundle}
     <div class="step-container" class:step-visible={stepVisible}>
-      <div class="step-icon">🪙</div>
+      <button class="step-icon-action gold-action" onclick={advanceStep} aria-label="Collect gold reward">
+        <div class="step-icon">🪙</div>
+      </button>
       <h1 class="step-title">Gold Earned</h1>
       <div class="step-value gold-value">+{bundle.goldEarned}</div>
       {#if bundle.comboBonus > 0}
         <div class="step-bonus">+{bundle.comboBonus} combo bonus</div>
       {/if}
-      <button class="step-continue" onclick={advanceStep}>Continue</button>
+      <div class="step-hint">Click the reward icon to continue</div>
     </div>
   {:else if rewardStep === 'heal' && bundle}
     <div class="step-container" class:step-visible={stepVisible}>
-      <div class="step-icon">💚</div>
+      <button class="step-icon-action heal-action" onclick={advanceStep} aria-label="Collect healing reward">
+        <div class="step-icon">💚</div>
+      </button>
       <h1 class="step-title">HP Restored</h1>
       <div class="step-value heal-value">+{bundle.healAmount} HP</div>
-      <button class="step-continue" onclick={advanceStep}>Continue</button>
+      <div class="step-hint">Click the reward icon to continue</div>
     </div>
   {:else}
     <div class="spotlight-cone" aria-hidden="true"></div>
@@ -445,23 +455,91 @@
   }
 
   .step-icon {
-    font-size: 64px;
-    filter: drop-shadow(0 0 20px rgba(255, 200, 50, 0.4));
-    animation: stepPulse 1.5s ease-in-out infinite;
+    font-size: 86px;
+    line-height: 1;
+    text-shadow:
+      -3px 0 #000,
+      3px 0 #000,
+      0 -3px #000,
+      0 3px #000,
+      -3px -3px #000,
+      3px 3px #000,
+      3px -3px #000,
+      -3px 3px #000,
+      0 0 20px rgba(255, 200, 50, 0.45);
+    animation: rewardBob 2200ms ease-in-out infinite;
+  }
+
+  .step-icon-action {
+    width: 164px;
+    height: 164px;
+    border: 4px solid #000;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(34, 50, 69, 0.92), rgba(13, 20, 30, 0.96));
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    box-shadow:
+      0 10px 0 rgba(0, 0, 0, 0.5),
+      0 18px 26px rgba(0, 0, 0, 0.5),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.06);
+    image-rendering: pixelated;
+    animation: rewardBreath 1800ms ease-in-out infinite;
+    transition: transform 120ms ease;
+  }
+
+  .step-icon-action:hover {
+    transform: translateY(-2px) scale(1.03);
+  }
+
+  .step-icon-action:active {
+    transform: translateY(2px) scale(0.98);
+    box-shadow:
+      0 4px 0 rgba(0, 0, 0, 0.5),
+      0 10px 18px rgba(0, 0, 0, 0.45),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.06);
+  }
+
+  .gold-action {
+    border-color: #000;
+    box-shadow:
+      0 10px 0 rgba(0, 0, 0, 0.5),
+      0 18px 26px rgba(0, 0, 0, 0.5),
+      0 0 22px rgba(255, 195, 32, 0.35),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.06);
+  }
+
+  .heal-action {
+    border-color: #000;
+    box-shadow:
+      0 10px 0 rgba(0, 0, 0, 0.5),
+      0 18px 26px rgba(0, 0, 0, 0.5),
+      0 0 22px rgba(62, 220, 123, 0.35),
+      inset 0 0 0 2px rgba(255, 255, 255, 0.06);
   }
 
   .step-title {
-    font-size: 28px;
+    font-size: 34px;
     font-weight: 900;
     color: #f8d779;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    text-shadow:
+      -2px 0 #000,
+      2px 0 #000,
+      0 -2px #000,
+      0 2px #000,
+      0 4px 12px rgba(0, 0, 0, 0.6);
     margin: 0;
   }
 
   .step-value {
-    font-size: 48px;
+    font-size: 62px;
     font-weight: 900;
     margin: 8px 0;
+    text-shadow:
+      -2px 0 #000,
+      2px 0 #000,
+      0 -2px #000,
+      0 2px #000;
   }
 
   .gold-value {
@@ -475,36 +553,43 @@
   }
 
   .step-bonus {
-    font-size: 16px;
+    font-size: 21px;
     color: #fbbf24;
     font-weight: 700;
+    text-shadow:
+      -1px 0 #000,
+      1px 0 #000,
+      0 -1px #000,
+      0 1px #000;
   }
 
-  .step-continue {
-    margin-top: 24px;
-    width: min(300px, 80%);
-    height: 52px;
-    border-radius: 10px;
-    border: none;
+  .step-hint {
     font-size: 16px;
-    font-weight: 800;
-    background: linear-gradient(180deg, #4a5568, #2d3748);
+    font-weight: 700;
     color: #e2e8f0;
-    cursor: pointer;
-    transition: transform 150ms ease;
+    text-shadow:
+      -1px 0 #000,
+      1px 0 #000,
+      0 -1px #000,
+      0 1px #000;
+    opacity: 0.95;
   }
 
-  .step-continue:hover {
-    transform: scale(1.02);
-  }
-
-  .step-continue:active {
-    transform: scale(0.98);
-  }
-
-  @keyframes stepPulse {
+  @keyframes rewardBob {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
+    50% { transform: translateY(-4px) scale(1.04) rotate(-1deg); }
+  }
+
+  @keyframes rewardBreath {
+    0%, 100% { transform: perspective(600px) rotateX(2deg) rotateY(-1deg); }
+    50% { transform: perspective(600px) rotateX(-1deg) rotateY(1deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .step-icon,
+    .step-icon-action {
+      animation: none;
+    }
   }
 
   .spotlight-cone {

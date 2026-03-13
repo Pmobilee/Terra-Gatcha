@@ -230,5 +230,8 @@ export interface RewardBundle {
   healAmount: number
 }
 
+export type RewardRevealStep = 'gold' | 'heal' | 'card'
+
 /** Store holding current reward reveal state (gold → heal → card selection). */
 export const activeRewardBundle = singletonWritable<RewardBundle | null>('activeRewardBundle', null)
+export const activeRewardRevealStep = singletonWritable<RewardRevealStep>('activeRewardRevealStep', 'gold')

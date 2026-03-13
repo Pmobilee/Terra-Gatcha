@@ -3,7 +3,7 @@
  */
 
 import { writable, get } from 'svelte/store';
-import { currentScreen, activeRewardBundle, holdScreenTransition } from '../ui/stores/gameState';
+import { currentScreen, activeRewardBundle, activeRewardRevealStep, holdScreenTransition } from '../ui/stores/gameState';
 import type { RunState, RunEndData } from './runManager';
 import { createRunState, endRun } from './runManager';
 import type { RewardArchetype } from './runManager';
@@ -31,6 +31,7 @@ import {
   getRunPoolCards,
   registerEncounterCompleteHandler,
   resetEncounterBridge,
+  serializeEncounterSnapshot,
   sellCardFromActiveDeck,
   startEncounterForRoom,
 } from './encounterBridge';
@@ -499,6 +500,8 @@ function finishRunAndReturnToHub(run: RunState, endData: RunEndData): void {
   activeRunEndData.set(endData);
   activeRunState.set(null);
   activeCardRewardOptions.set([]);
+  activeRewardBundle.set(null);
+  activeRewardRevealStep.set('gold');
   activeShopCards.set([]);
   activeShopInventory.set(null);
   activeMysteryEvent.set(null);
@@ -720,7 +723,13 @@ function openCardReward(): void {
     return;
   }
 
+  const bundle = get(activeRewardBundle);
+  const initialRevealStep = (!bundle || (bundle.goldEarned === 0 && bundle.healAmount === 0))
+    ? 'card'
+    : 'gold';
+
   activeCardRewardOptions.set(options);
+  activeRewardRevealStep.set(initialRevealStep);
   analyticsService.track({
     name: 'card_reward',
     properties: {
@@ -731,6 +740,7 @@ function openCardReward(): void {
   });
   gameFlowState.set('cardReward');
   currentScreen.set('cardReward');
+  autoSaveRun('cardReward');
 }
 
 export function onCardRewardReroll(type: Card['cardType']): void {
@@ -836,7 +846,6 @@ export function onEncounterComplete(result: 'victory' | 'defeat'): void {
   pendingFloorCompleted = advanceEncounter(run.floor);
   pendingClearedFloor = run.floor.currentFloor;
   activeRunState.set(run);
-  autoSaveRun('cardReward');
 
   // Relic acquisition
   if (wasBoss || wasMiniBoss) {
@@ -905,6 +914,7 @@ export function onCardRewardSelected(card: Card): void {
   });
   activeCardRewardOptions.set([]);
   activeRewardBundle.set(null);
+  activeRewardRevealStep.set('gold');
   autoSaveRun('roomSelection');
   void proceedAfterReward();
 }
@@ -912,6 +922,8 @@ export function onCardRewardSelected(card: Card): void {
 export function onCardRewardSkipped(): void {
   activeCardRewardOptions.set([]);
   activeRewardBundle.set(null);
+  activeRewardRevealStep.set('gold');
+  autoSaveRun('roomSelection');
   void proceedAfterReward();
 }
 
@@ -1268,6 +1280,8 @@ export function abandonActiveRun(): void {
   clearActiveRun();
   activeRunState.set(null);
   activeCardRewardOptions.set([]);
+  activeRewardBundle.set(null);
+  activeRewardRevealStep.set('gold');
   activeShopCards.set([]);
   activeShopInventory.set(null);
   activeMysteryEvent.set(null);
@@ -1307,6 +1321,10 @@ export function autoSaveRun(screen: string): void {
       dailySeed: activeDailySeed,
       runSeed: (activeRunMode === 'standard' || activeRunMode === 'endless_depths') ? run.runSeed : null,
       roomOptions: get(activeRoomOptions),
+      cardRewardOptions: get(activeCardRewardOptions),
+      activeRewardBundle: get(activeRewardBundle),
+      rewardRevealStep: get(activeRewardRevealStep),
+      encounterSnapshot: serializeEncounterSnapshot(),
     });
   } catch {
     // Silently fail — save is best-effort
@@ -1314,15 +1332,19 @@ export function autoSaveRun(screen: string): void {
 }
 
 /** Prepare upgrade candidates and transition to upgrade selection screen. */
-export function openUpgradeSelection(): void {
+export function openUpgradeSelection(): boolean {
   const candidates = prepareUpgradeCandidates();
   if (candidates.length === 0) {
-    onRestResolved();
-    return;
+    return false;
   }
   activeUpgradeCandidates.set(candidates);
   gameFlowState.set('upgradeSelection');
   currentScreen.set('upgradeSelection');
+  return true;
+}
+
+export function hasRestUpgradeCandidates(): boolean {
+  return prepareUpgradeCandidates().length > 0;
 }
 
 /** Prepare upgrade candidates from the active deck. */
@@ -1430,6 +1452,8 @@ export function returnToMenu(): void {
   activeRunState.set(null);
   activeRunEndData.set(null);
   activeCardRewardOptions.set([]);
+  activeRewardBundle.set(null);
+  activeRewardRevealStep.set('gold');
   activeShopCards.set([]);
   activeShopInventory.set(null);
   activeMysteryEvent.set(null);
@@ -1453,6 +1477,8 @@ export function playAgain(): void {
   activeRunState.set(null);
   activeRunEndData.set(null);
   activeCardRewardOptions.set([]);
+  activeRewardBundle.set(null);
+  activeRewardRevealStep.set('gold');
   activeShopCards.set([]);
   activeShopInventory.set(null);
   activeMysteryEvent.set(null);

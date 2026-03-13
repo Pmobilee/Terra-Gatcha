@@ -3,7 +3,15 @@
   import { get } from 'svelte/store'
 
   let phaserContainer: HTMLDivElement
-  import { currentScreen, screenTransitionActive, screenTransitionDirection, screenTransitionLoading, releaseScreenTransition } from './ui/stores/gameState'
+  import {
+    currentScreen,
+    screenTransitionActive,
+    screenTransitionDirection,
+    screenTransitionLoading,
+    releaseScreenTransition,
+    activeRewardBundle,
+    activeRewardRevealStep,
+  } from './ui/stores/gameState'
   import type { Screen } from './ui/stores/gameState'
   import { navigateToScreen } from './services/screenController'
   import {
@@ -35,6 +43,7 @@
     onSpecialEventResolved,
     openCampfire,
     openUpgradeSelection,
+    hasRestUpgradeCandidates,
     onUpgradeSelected,
     onUpgradeSkipped,
     onPostMiniBossUpgradeSelected,
@@ -60,6 +69,7 @@
   } from './services/gameFlowController'
   import {
     activeTurnState,
+    hydrateEncounterSnapshot,
     handleEndTurn,
     handlePlayCard,
     handleSkipCard,
@@ -334,7 +344,9 @@
   }
 
   function handleRestUpgrade(): void {
-    openUpgradeSelection()
+    if (!openUpgradeSelection()) {
+      return
+    }
   }
 
   function handleRewardSelected(card: import('./data/card-types').Card): void {
@@ -369,12 +381,19 @@
     if (!saved) return
     restoreRunMode(saved.runMode, saved.dailySeed, saved.runSeed)
     activeRunState.set(saved.runState)
+    hydrateEncounterSnapshot(saved.encounterSnapshot ?? null)
+    activeCardRewardOptions.set(saved.cardRewardOptions ?? [])
+    activeRewardBundle.set(saved.activeRewardBundle ?? null)
+    activeRewardRevealStep.set(saved.rewardRevealStep ?? 'gold')
     if (saved.roomOptions && saved.roomOptions.length > 0) {
       activeRoomOptions.set(saved.roomOptions)
     }
     // Navigate to the saved screen or default to room selection
     const screen = saved.currentScreen as import('./ui/stores/gameState').Screen
-    const targetScreen = screen === 'campfire' ? 'roomSelection' : (screen || 'roomSelection')
+    let targetScreen = screen === 'campfire' ? 'roomSelection' : (screen || 'roomSelection')
+    if (targetScreen === 'cardReward' && (saved.cardRewardOptions?.length ?? 0) === 0) {
+      targetScreen = 'roomSelection'
+    }
     // If navigating to roomSelection but no room options exist, regenerate them
     if (targetScreen === 'roomSelection' && (!saved.roomOptions || saved.roomOptions.length === 0)) {
       activeRoomOptions.set(generateCombatRoomOptions(saved.runState.floor.currentFloor))
@@ -597,6 +616,7 @@
       options={$activeCardRewardOptions}
       onselect={handleRewardSelected}
       onskip={onCardRewardSkipped}
+      onrewardstepchange={() => autoSaveRun('cardReward')}
     />
   {/if}
 
@@ -698,11 +718,14 @@
 
   {#if $currentScreen === 'restRoom'}
     {@const run = $activeRunState}
+    {@const upgradeDisabled = !hasRestUpgradeCandidates()}
     <RestRoomOverlay
       playerHp={run?.playerHp ?? 0}
       playerMaxHp={run?.playerMaxHp ?? 0}
       onheal={handleRestHeal}
       onupgrade={handleRestUpgrade}
+      upgradeDisabled={upgradeDisabled}
+      upgradeDisabledReason={upgradeDisabled ? 'No cards to upgrade' : undefined}
     />
   {/if}
 

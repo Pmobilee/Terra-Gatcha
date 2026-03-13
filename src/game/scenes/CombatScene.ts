@@ -14,7 +14,7 @@ const ENEMY_HP_Y_PCT = 0.12
 const FLOOR_COUNTER_Y = 16
 const INTENT_ICON_OFFSET_Y = -40
 const RELIC_TRAY_Y_PCT = 0.92
-const FLOOR_LINE_PCT = 0.80
+const FLOOR_LINE_PCT = 0.73
 
 /** Enemy HP bar dimensions. */
 const ENEMY_HP_BAR_W = 160
@@ -23,8 +23,8 @@ const ENEMY_HP_BAR_H = 12
 /** Player HP bar dimensions (vertical, right side). */
 const PLAYER_HP_BAR_WIDTH = 16
 const PLAYER_HP_BAR_X_OFFSET = 24
-const PLAYER_HP_BAR_TOP_PCT = 0.35
-const PLAYER_HP_BAR_BOTTOM_PCT = 0.82
+const PLAYER_HP_BAR_TOP_PCT = 0.45
+const PLAYER_HP_BAR_BOTTOM_PCT = 0.92
 
 /** Enemy first-person sprite sizes by enemy tier. */
 const ENEMY_SIZE_COMMON = 300
@@ -210,26 +210,16 @@ export class CombatScene extends Phaser.Scene {
     // Initial dark background — real bg loaded per-encounter via setBackground()
     this.combatBackground = this.add.rectangle(w / 2, h / 2, w, h, 0x0d1117)
 
-    // ── Permanent vignette (dark edge fade) ──────────────
+    // ── Permanent vignette (smooth edge fade) ────────────
     this.vignetteGfx = this.add.graphics().setDepth(1)
-    const vigSteps = 48
-    const vigInsetX = w * 0.12
-    const vigInsetY = h * 0.12
-    for (let i = 0; i < vigSteps; i++) {
-      const t = i / vigSteps
-      const alpha = 0.5 * Math.pow(1 - t, 3.5)
-      const offsetX = vigInsetX * t
-      const offsetY = vigInsetY * t
-      this.vignetteGfx.fillStyle(0x000000, alpha)
-      // Top edge
-      this.vignetteGfx.fillRect(0, offsetY, w, (vigInsetY - offsetY) / vigSteps + 1)
-      // Bottom edge
-      this.vignetteGfx.fillRect(0, h - offsetY - (vigInsetY - offsetY) / vigSteps - 1, w, (vigInsetY - offsetY) / vigSteps + 1)
-      // Left edge
-      this.vignetteGfx.fillRect(offsetX, 0, (vigInsetX - offsetX) / vigSteps + 1, h)
-      // Right edge
-      this.vignetteGfx.fillRect(w - offsetX - (vigInsetX - offsetX) / vigSteps - 1, 0, (vigInsetX - offsetX) / vigSteps + 1, h)
-    }
+    const sideVignetteW = Math.round(w * 0.24)
+    const topVignetteH = Math.round(h * 0.16)
+    this.vignetteGfx.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0.52, 0, 0.52, 0)
+    this.vignetteGfx.fillRect(0, 0, sideVignetteW, h)
+    this.vignetteGfx.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0, 0.52, 0, 0.52)
+    this.vignetteGfx.fillRect(w - sideVignetteW, 0, sideVignetteW, h)
+    this.vignetteGfx.fillGradientStyle(0x000000, 0x000000, 0x000000, 0x000000, 0.18, 0.18, 0, 0)
+    this.vignetteGfx.fillRect(0, 0, w, topVignetteH)
 
     // ── Near-death tension vignette (hidden by default) ──
     this.nearDeathVignette = this.add.graphics().setDepth(3).setAlpha(0)
