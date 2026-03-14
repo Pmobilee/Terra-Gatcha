@@ -1,0 +1,152 @@
+{
+  "playthroughId": "playthrough-impatient-92033-1773463921062",
+  "profileId": "impatient",
+  "analyzedAt": "2026-03-14T05:02:31.949Z",
+  "issueCount": 7,
+  "issues": [
+    {
+      "id": "issue-playthrough-impatient-92033-1773463921062-001",
+      "playthroughId": "playthrough-impatient-92033-1773463921062",
+      "profileId": "impatient",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 31 (100% HP) on floor 5",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          263
+        ],
+        "floor": 5,
+        "encounter": 2,
+        "metric": "damage=31, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92033",
+        "Floor 5 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-impatient-92033-1773463921062-002",
+      "playthroughId": "playthrough-impatient-92033-1773463921062",
+      "profileId": "impatient",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "12 easy encounters in a row (HP > 90%)",
+      "description": "Multiple consecutive encounters ended above 90% HP.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 2,
+        "floors": [
+          1,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          5,
+          5
+        ],
+        "metric": "hp=[82, 105, 110, 120, 108, 92, 80, 104, 101, 115, 112, 78]"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92033"
+      ],
+      "suggestedFix": "Increase pressure for this profile slice."
+    },
+    {
+      "id": "issue-playthrough-impatient-92033-1773463921062-003",
+      "playthroughId": "playthrough-impatient-92033-1773463921062",
+      "profileId": "impatient",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 4 encounter 2 (8 vs 3.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 4,
+        "encounter": 2,
+        "metric": "turns=8, prevAvg=3.67"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92033"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-impatient-92033-1773463921062-004",
+      "playthroughId": "playthrough-impatient-92033-1773463921062",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92033"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-impatient-92033-1773463921062-005",
+      "playthroughId": "playthrough-impatient-92033-1773463921062",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'utility' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "utility=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92033"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-impatient-92033-1773463921062-006",
+      "playthroughId": "playthrough-impatient-92033-1773463921062",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92033"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-impatient-92033-1773463921062-007",
+      "playthroughId": "playthrough-impatient-92033-1773463921062",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92033"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "playthroughId": "playthrough-impatient-92147-1773464395706",
+  "profileId": "impatient",
+  "analyzedAt": "2026-03-14T05:02:32.024Z",
+  "issueCount": 6,
+  "issues": [
+    {
+      "id": "issue-playthrough-impatient-92147-1773464395706-001",
+      "playthroughId": "playthrough-impatient-92147-1773464395706",
+      "profileId": "impatient",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 26 (63% HP) on floor 6",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          406
+        ],
+        "floor": 6,
+        "encounter": 1,
+        "metric": "damage=26, ratio=0.634"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92147",
+        "Floor 6 Encounter 1"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-impatient-92147-1773464395706-002",
+      "playthroughId": "playthrough-impatient-92147-1773464395706",
+      "profileId": "impatient",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 13 (100% HP) on floor 6",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          423
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "damage=13, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92147",
+        "Floor 6 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-impatient-92147-1773464395706-003",
+      "playthroughId": "playthrough-impatient-92147-1773464395706",
+      "profileId": "impatient",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 3 encounter 2 (12 vs 4.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turns=12, prevAvg=4.67"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92147"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-impatient-92147-1773464395706-004",
+      "playthroughId": "playthrough-impatient-92147-1773464395706",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92147"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-impatient-92147-1773464395706-005",
+      "playthroughId": "playthrough-impatient-92147-1773464395706",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92147"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-impatient-92147-1773464395706-006",
+      "playthroughId": "playthrough-impatient-92147-1773464395706",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92147"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

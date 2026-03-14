@@ -1,0 +1,116 @@
+{
+  "playthroughId": "playthrough-average-92053-1773464000083",
+  "profileId": "average",
+  "analyzedAt": "2026-03-14T05:02:31.961Z",
+  "issueCount": 6,
+  "issues": [
+    {
+      "id": "issue-playthrough-average-92053-1773464000083-001",
+      "playthroughId": "playthrough-average-92053-1773464000083",
+      "profileId": "average",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 2 encounter 1",
+      "description": "Player defeat occurred on early floor segment.",
+      "evidence": {
+        "floor": 2,
+        "encounter": 1,
+        "metric": "enemy=geode_beetle, accuracy=0.444"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92053"
+      ],
+      "suggestedFix": "Soften early-floor enemy scaling."
+    },
+    {
+      "id": "issue-playthrough-average-92053-1773464000083-002",
+      "playthroughId": "playthrough-average-92053-1773464000083",
+      "profileId": "average",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92053"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-average-92053-1773464000083-003",
+      "playthroughId": "playthrough-average-92053-1773464000083",
+      "profileId": "average",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'debuff' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "debuff=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92053"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-average-92053-1773464000083-004",
+      "playthroughId": "playthrough-average-92053-1773464000083",
+      "profileId": "average",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'utility' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "utility=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92053"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-average-92053-1773464000083-005",
+      "playthroughId": "playthrough-average-92053-1773464000083",
+      "profileId": "average",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92053"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-average-92053-1773464000083-006",
+      "playthroughId": "playthrough-average-92053-1773464000083",
+      "profileId": "average",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92053"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

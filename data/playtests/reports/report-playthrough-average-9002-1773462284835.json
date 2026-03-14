@@ -1,0 +1,190 @@
+{
+  "playthroughId": "playthrough-average-9002-1773462284835",
+  "profileId": "average",
+  "analyzedAt": "2026-03-14T04:26:35.305Z",
+  "issueCount": 8,
+  "engagementSummary": null,
+  "issues": [
+    {
+      "id": "issue-playthrough-average-9002-1773462284835-001",
+      "playthroughId": "playthrough-average-9002-1773462284835",
+      "profileId": "average",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "8 easy encounters in a row (HP > 90%)",
+      "description": "8 consecutive encounters ended with HP above 90% threshold.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 0,
+        "floors": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          3
+        ],
+        "metric": "hpRemaining=[108, 112, 82, 111, 108, 89, 116, 117]"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 9002",
+        "Starts floor 1 encounter 0"
+      ],
+      "suggestedFix": "Increase pressure on this profile/seed segment."
+    },
+    {
+      "id": "issue-playthrough-average-9002-1773462284835-002",
+      "playthroughId": "playthrough-average-9002-1773462284835",
+      "profileId": "average",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "14 easy encounters in a row (HP > 90%)",
+      "description": "14 consecutive encounters ended with HP above 90% threshold.",
+      "evidence": {
+        "floor": 4,
+        "encounter": 0,
+        "floors": [
+          4,
+          4,
+          4,
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          8,
+          8
+        ],
+        "metric": "hpRemaining=[89, 103, 117, 118, 114, 118, 115, 112, 120, 109, 108, 94, 101, 108]"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 9002",
+        "Starts floor 4 encounter 0"
+      ],
+      "suggestedFix": "Increase pressure on this profile/seed segment."
+    },
+    {
+      "id": "issue-playthrough-average-9002-1773462284835-003",
+      "playthroughId": "playthrough-average-9002-1773462284835",
+      "profileId": "average",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "3 easy encounters in a row (HP > 90%)",
+      "description": "3 consecutive encounters ended with HP above 90% threshold.",
+      "evidence": {
+        "floor": 9,
+        "encounter": 0,
+        "floors": [
+          9,
+          9,
+          9
+        ],
+        "metric": "hpRemaining=[95, 94, 95]"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 9002",
+        "Starts floor 9 encounter 0"
+      ],
+      "suggestedFix": "Increase pressure on this profile/seed segment."
+    },
+    {
+      "id": "issue-playthrough-average-9002-1773462284835-004",
+      "playthroughId": "playthrough-average-9002-1773462284835",
+      "profileId": "average",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 3 encounter 2 (11 vs 4.3)",
+      "description": "Encounter took 11 turns, over 2x previous floor average (4.3).",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turns=11, prevFloorAvg=4.33, ratio=2.54"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 9002",
+        "Floor 3, Encounter 2"
+      ],
+      "suggestedFix": "Smooth per-floor enemy durability growth."
+    },
+    {
+      "id": "issue-playthrough-average-9002-1773462284835-005",
+      "playthroughId": "playthrough-average-9002-1773462284835",
+      "profileId": "average",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 6 encounter 2 (11 vs 3.3)",
+      "description": "Encounter took 11 turns, over 2x previous floor average (3.3).",
+      "evidence": {
+        "floor": 6,
+        "encounter": 2,
+        "metric": "turns=11, prevFloorAvg=3.33, ratio=3.30"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 9002",
+        "Floor 6, Encounter 2"
+      ],
+      "suggestedFix": "Smooth per-floor enemy durability growth."
+    },
+    {
+      "id": "issue-playthrough-average-9002-1773462284835-006",
+      "playthroughId": "playthrough-average-9002-1773462284835",
+      "profileId": "average",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 9 encounter 2 (9 vs 3.7)",
+      "description": "Encounter took 9 turns, over 2x previous floor average (3.7).",
+      "evidence": {
+        "floor": 9,
+        "encounter": 2,
+        "metric": "turns=9, prevFloorAvg=3.67, ratio=2.45"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 9002",
+        "Floor 9, Encounter 2"
+      ],
+      "suggestedFix": "Smooth per-floor enemy durability growth."
+    },
+    {
+      "id": "issue-playthrough-average-9002-1773462284835-007",
+      "playthroughId": "playthrough-average-9002-1773462284835",
+      "profileId": "average",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "One card type had zero actual play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 9002"
+      ],
+      "suggestedFix": "Review deck composition and type exposure balance."
+    },
+    {
+      "id": "issue-playthrough-average-9002-1773462284835-008",
+      "playthroughId": "playthrough-average-9002-1773462284835",
+      "profileId": "average",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "One card type had zero actual play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 9002"
+      ],
+      "suggestedFix": "Review deck composition and type exposure balance."
+    }
+  ]
+}

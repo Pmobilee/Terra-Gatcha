@@ -1,0 +1,146 @@
+{
+  "playthroughId": "playthrough-average-92083-1773464120073",
+  "profileId": "average",
+  "analyzedAt": "2026-03-14T05:02:31.982Z",
+  "issueCount": 7,
+  "issues": [
+    {
+      "id": "issue-playthrough-average-92083-1773464120073-001",
+      "playthroughId": "playthrough-average-92083-1773464120073",
+      "profileId": "average",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 26 (60% HP) on floor 1",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          69
+        ],
+        "floor": 1,
+        "encounter": 2,
+        "metric": "damage=26, ratio=0.605"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92083",
+        "Floor 1 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-average-92083-1773464120073-002",
+      "playthroughId": "playthrough-average-92083-1773464120073",
+      "profileId": "average",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 15 (88% HP) on floor 2",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          158
+        ],
+        "floor": 2,
+        "encounter": 1,
+        "metric": "damage=15, ratio=0.882"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92083",
+        "Floor 2 Encounter 1"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-average-92083-1773464120073-003",
+      "playthroughId": "playthrough-average-92083-1773464120073",
+      "profileId": "average",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 15 (100% HP) on floor 2",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          162
+        ],
+        "floor": 2,
+        "encounter": 1,
+        "metric": "damage=15, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92083",
+        "Floor 2 Encounter 1"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-average-92083-1773464120073-004",
+      "playthroughId": "playthrough-average-92083-1773464120073",
+      "profileId": "average",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 2 encounter 1",
+      "description": "Player defeat occurred on early floor segment.",
+      "evidence": {
+        "floor": 2,
+        "encounter": 1,
+        "metric": "enemy=quartz_elemental, accuracy=0.694"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92083"
+      ],
+      "suggestedFix": "Soften early-floor enemy scaling."
+    },
+    {
+      "id": "issue-playthrough-average-92083-1773464120073-005",
+      "playthroughId": "playthrough-average-92083-1773464120073",
+      "profileId": "average",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92083"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-average-92083-1773464120073-006",
+      "playthroughId": "playthrough-average-92083-1773464120073",
+      "profileId": "average",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92083"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-average-92083-1773464120073-007",
+      "playthroughId": "playthrough-average-92083-1773464120073",
+      "profileId": "average",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92083"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

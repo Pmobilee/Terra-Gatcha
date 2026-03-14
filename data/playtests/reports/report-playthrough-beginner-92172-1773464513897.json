@@ -1,0 +1,150 @@
+{
+  "playthroughId": "playthrough-beginner-92172-1773464513897",
+  "profileId": "beginner",
+  "analyzedAt": "2026-03-14T05:02:32.037Z",
+  "issueCount": 7,
+  "issues": [
+    {
+      "id": "issue-playthrough-beginner-92172-1773464513897-001",
+      "playthroughId": "playthrough-beginner-92172-1773464513897",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 15 (75% HP) on floor 3",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          227
+        ],
+        "floor": 3,
+        "encounter": 0,
+        "metric": "damage=15, ratio=0.750"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92172",
+        "Floor 3 Encounter 0"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-beginner-92172-1773464513897-002",
+      "playthroughId": "playthrough-beginner-92172-1773464513897",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 10 (53% HP) on floor 3",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          235
+        ],
+        "floor": 3,
+        "encounter": 1,
+        "metric": "damage=10, ratio=0.526"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92172",
+        "Floor 3 Encounter 1"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-beginner-92172-1773464513897-003",
+      "playthroughId": "playthrough-beginner-92172-1773464513897",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 16 (73% HP) on floor 3",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          255
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damage=16, ratio=0.727"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92172",
+        "Floor 3 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-beginner-92172-1773464513897-004",
+      "playthroughId": "playthrough-beginner-92172-1773464513897",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 13 (100% HP) on floor 3",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          259
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damage=13, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92172",
+        "Floor 3 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-beginner-92172-1773464513897-005",
+      "playthroughId": "playthrough-beginner-92172-1773464513897",
+      "profileId": "beginner",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 3 encounter 2",
+      "description": "Player defeat occurred on early floor segment.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "enemy=the_excavator, accuracy=0.667"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92172"
+      ],
+      "suggestedFix": "Soften early-floor enemy scaling."
+    },
+    {
+      "id": "issue-playthrough-beginner-92172-1773464513897-006",
+      "playthroughId": "playthrough-beginner-92172-1773464513897",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92172"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-beginner-92172-1773464513897-007",
+      "playthroughId": "playthrough-beginner-92172-1773464513897",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92172"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

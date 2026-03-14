@@ -1,0 +1,168 @@
+{
+  "type": "visual_playthrough",
+  "seed": 4250,
+  "startedAt": "2026-03-14T04:28:01.762Z",
+  "baseUrl": "http://127.0.0.1:5173",
+  "maxTurns": 220,
+  "steps": [
+    {
+      "turn": 0,
+      "action": "boot",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleIds": [],
+      "ids": []
+    },
+    {
+      "turn": 1,
+      "action": "api-startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleIds": [],
+      "ids": [],
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 2,
+      "action": "api-startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleIds": [],
+      "ids": [],
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 3,
+      "action": "api-startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleIds": [],
+      "ids": [],
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 4,
+      "action": "api-startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleIds": [],
+      "ids": [],
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 5,
+      "action": "api-startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleIds": [],
+      "ids": [],
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 6,
+      "action": "api-startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleIds": [],
+      "ids": [],
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 7,
+      "action": "api-startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleIds": [],
+      "ids": [],
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 8,
+      "action": "api-startRun",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleIds": [],
+      "ids": [],
+      "actionResult": {
+        "ok": false,
+        "message": "Start Run button not found"
+      }
+    },
+    {
+      "turn": 9,
+      "action": "hub-after-run",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleIds": [],
+      "ids": []
+    }
+  ],
+  "issues": [],
+  "screenshots": [
+    "/tmp/visual-playthrough-4250-00.png"
+  ],
+  "result": "completed",
+  "completedAt": "2026-03-14T04:28:11.294Z",
+  "consoleErrors": []
+}

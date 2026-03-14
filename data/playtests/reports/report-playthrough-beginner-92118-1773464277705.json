@@ -1,0 +1,186 @@
+{
+  "playthroughId": "playthrough-beginner-92118-1773464277705",
+  "profileId": "beginner",
+  "analyzedAt": "2026-03-14T05:02:32.004Z",
+  "issueCount": 9,
+  "issues": [
+    {
+      "id": "issue-playthrough-beginner-92118-1773464277705-001",
+      "playthroughId": "playthrough-beginner-92118-1773464277705",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 29 (55% HP) on floor 1",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          63
+        ],
+        "floor": 1,
+        "encounter": 2,
+        "metric": "damage=29, ratio=0.547"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92118",
+        "Floor 1 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-beginner-92118-1773464277705-002",
+      "playthroughId": "playthrough-beginner-92118-1773464277705",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 18 (60% HP) on floor 2",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          118
+        ],
+        "floor": 2,
+        "encounter": 2,
+        "metric": "damage=18, ratio=0.600"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92118",
+        "Floor 2 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-beginner-92118-1773464277705-003",
+      "playthroughId": "playthrough-beginner-92118-1773464277705",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 9 (64% HP) on floor 3",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          234
+        ],
+        "floor": 3,
+        "encounter": 1,
+        "metric": "damage=9, ratio=0.643"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92118",
+        "Floor 3 Encounter 1"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-beginner-92118-1773464277705-004",
+      "playthroughId": "playthrough-beginner-92118-1773464277705",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 5 (100% HP) on floor 3",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          238
+        ],
+        "floor": 3,
+        "encounter": 1,
+        "metric": "damage=5, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92118",
+        "Floor 3 Encounter 1"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-beginner-92118-1773464277705-005",
+      "playthroughId": "playthrough-beginner-92118-1773464277705",
+      "profileId": "beginner",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 3 encounter 1",
+      "description": "Player defeat occurred on early floor segment.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 1,
+        "metric": "enemy=obsidian_shard, accuracy=0.481"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92118"
+      ],
+      "suggestedFix": "Soften early-floor enemy scaling."
+    },
+    {
+      "id": "issue-playthrough-beginner-92118-1773464277705-006",
+      "playthroughId": "playthrough-beginner-92118-1773464277705",
+      "profileId": "beginner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 3 encounter 0 (14 vs 6.0)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 0,
+        "metric": "turns=14, prevAvg=6.00"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92118"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-beginner-92118-1773464277705-007",
+      "playthroughId": "playthrough-beginner-92118-1773464277705",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92118"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-beginner-92118-1773464277705-008",
+      "playthroughId": "playthrough-beginner-92118-1773464277705",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92118"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-beginner-92118-1773464277705-009",
+      "playthroughId": "playthrough-beginner-92118-1773464277705",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92118"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

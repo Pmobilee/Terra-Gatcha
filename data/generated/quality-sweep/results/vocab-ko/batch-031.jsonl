@@ -1,0 +1,117 @@
+{"id":"ko-b28-001","q":null,"a":null,"d":["permit","license","badge","certificate","membership card","loyalty card","boarding pass","season pass"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-002","q":null,"a":"in that case","d":["even so","despite that","regardless","in any case","however","nevertheless","on the other hand","even if that is so"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-003","q":null,"a":null,"d":["beer","liquor","whiskey","vodka","rum","brandy","champagne","sake"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-004","q":null,"a":null,"d":["I will be in contact.","I will call soon.","Speak to you later.","I will stay in touch.","I will reach out.","I will contact you.","See you soon.","Until next time."],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-005","q":null,"a":null,"d":["dinner plate","soup bowl","serving dish","mixing bowl","salad bowl","cereal bowl","dessert bowl","noodle bowl"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-006","q":null,"a":null,"d":["convenience store","grocery store","department store","drug store","boutique","specialty shop","warehouse store","mini mart"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-007","q":null,"a":"maintain","d":["abandon","give up","discard","neglect","drop","cease","end","break"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-008","q":null,"a":"circumstances","d":["outcome","result","decision","solution","conclusion","judgment","answer","resolution"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-009","q":null,"a":null,"d":["ski lift","gondola","chairlift","funicular","escalator","elevator","tram","monorail"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-010","q":null,"a":"eggplant","d":["zucchini","cucumber","pumpkin","pepper","potato","tomato","radish","carrot"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-011","q":null,"a":"elementary school","d":["middle school","high school","university","kindergarten","graduate school","vocational school","community college","preschool"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-012","q":"SKIP","a":"CORRUPTED","d":["CORRUPTED"],"e":null,"l1":null,"l2":null,"i":"corrupted — answer field contains garbled unicode; record should be reviewed or removed"}
+{"id":"ko-b28-013","q":null,"a":"meanwhile","d":["eventually","afterward","before that","in the past","previously","thereafter","subsequently","much later"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-014","q":null,"a":"air","d":["water","soil","rock","fire","ice","metal","wood","earth"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-015","q":null,"a":null,"d":["be identified","be labeled","be found","be registered","be recognized","be noticed","be pinpointed","be described"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-016","q":null,"a":null,"d":["haltingly","hesitantly","with difficulty","roughly","brokenly","poorly","awkwardly","with pauses"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-017","q":null,"a":"attack","d":["defend","protect","retreat","guard","shield","deflect","cover","repel"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-018","q":null,"a":"raise an issue","d":["dismiss an issue","resolve a matter","close a case","drop a subject","settle a question","avoid a topic","table a discussion","conclude a debate"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-019","q":null,"a":null,"d":["lunar","terrestrial","planetary","stellar","galactic","cosmic","tidal","gravitational"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-020","q":null,"a":"similarity","d":["difference","contrast","distinction","dissimilarity","disparity","divergence","gap","discrepancy"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-021","q":null,"a":"unusual","d":["ordinary","typical","common","standard","conventional","normal","routine","expected"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-022","q":null,"a":null,"d":["temple","mosque","chapel","cathedral","synagogue","shrine","basilica","abbey"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-023","q":null,"a":null,"d":["Japanese person","Chinese person","Thai person","Vietnamese person","Filipino person","Mongolian person","Taiwanese person","Singaporean person"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-024","q":null,"a":"in Korea","d":["in Japan","in China","in the US","in Germany","in France","in the UK","in Canada","in Australia"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-025","q":null,"a":"capital city","d":["port city","mountain village","coastal town","border region","inland province","rural district","suburb","industrial zone"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-026","q":null,"a":"personal money","d":["public funds","company budget","government revenue","shared expenses","collective savings","organizational funds","national treasury","institutional budget"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-027","q":null,"a":"at night","d":["in the morning","in the afternoon","at dawn","at noon","at dusk","at midnight","during the day","in the evening"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-028","q":null,"a":"trigger","d":["prevent","stop","suppress","block","inhibit","avert","discourage","avoid"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-029","q":null,"a":null,"d":["nose","ear","eye","forehead","cheek","neck","shoulder","chin"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-030","q":"What does \"기간의\" mean in English?","a":"periodic","d":["permanent","current","ongoing","real-time","immediate","up-to-date","instantaneous","live"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-031","q":null,"a":null,"d":["maximum","average","median","sufficient","optimal","required","standard","normal"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-032","q":null,"a":null,"d":["broth","stew","consomme","bouillon","bisque","chowder","porridge","thick sauce"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-033","q":null,"a":"specialty","d":["weakness","failing","blind spot","inexperience","shortcoming","deficiency","poor area","lack of skill"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-034","q":null,"a":"strong","d":["weak","gentle","mild","soft","fragile","delicate","feeble","powerless"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-035","q":null,"a":"full-scale","d":["preliminary","introductory","partial","experimental","trial","tentative","limited","preparatory"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-036","q":null,"a":null,"d":["doenjang jjigae","soybean paste stew","japchae","bibimbap","galbitang","tteokguk","sundubu jjigae","yukgaejang"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-037","q":null,"a":null,"d":["butterfly","dragonfly","drone","glider","paper plane","helicopter","seagull","frisbee"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-038","q":null,"a":"cause","d":["prevent","suppress","stop","halt","block","avert","inhibit","quell"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-039","q":null,"a":"surge","d":["plummet","decline","drop sharply","fall rapidly","decrease steeply","shrink dramatically","collapse","dwindle"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-040","q":null,"a":"repair","d":["destroy","break","damage","smash","ruin","wreck","dismantle","discard"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-041","q":null,"a":null,"d":["personal","individual","private","solitary","internal","domestic","familial","isolated"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-042","q":null,"a":"treat as","d":["abandon","discard","ignore","dismiss","cast away","throw out","reject","give up"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-043","q":null,"a":null,"d":["irrationally","emotionally","intuitively","impulsively","randomly","haphazardly","unreasonably","nonsensically"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-044","q":null,"a":"purple","d":["red","blue","green","yellow","orange","pink","brown","black"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-045","q":null,"a":"moonlight","d":["sunlight","starlight","firelight","candlelight","lamplight","flashlight","streetlight","daylight"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-046","q":null,"a":null,"d":["traditional culture","fine arts","academic culture","religious culture","folk tradition","historical heritage","classical arts","cultural preservation"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-047","q":null,"a":"sparsely","d":["densely","thickly","closely together","in abundance","uniformly","solidly","crowdedly","tightly packed"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-048","q":null,"a":"investigation","d":["conclusion","verdict","ruling","judgment","sentence","dismissal","acquittal","exoneration"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-049","q":null,"a":"hereditary","d":["acquired","learned","environmental","cultural","accidental","random","infectious","congenital disorder"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b28-050","q":null,"a":null,"d":["ineffectively","wastefully","poorly","uselessly","in vain","without result","unsuccessfully","counterproductively"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-001","q":null,"a":"inheritance","d":["donation","loan","gift","tribute","debt","purchase","earning","tax"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-002","q":null,"a":"weapon","d":["shield","armor","helmet","uniform","supply","equipment","vehicle","ration"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-003","q":null,"a":"little kid","d":["elderly person","adult","young professional","college student","middle-aged person","teenager","parent","grandparent"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-004","q":null,"a":"semantic","d":["phonetic","syntactic","pragmatic","morphological","prosodic","orthographic","lexical","phonological"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-005","q":null,"a":null,"d":["reader","listener","subscriber","commenter","patron","attendee","participant","follower"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-006","q":null,"a":"employee","d":["employer","manager","owner","director","executive","boss","supervisor","proprietor"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-007","q":null,"a":null,"d":["idle","free","relaxed","unoccupied","at leisure","calm","unhurried","carefree"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-008","q":null,"a":"charter","d":["purchase","ownership","sale","transfer","mortgage","lease agreement","rental contract","deed"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-009","q":null,"a":"water level","d":["water temperature","water pressure","water flow","water quality","water clarity","water density","water source","water supply"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-010","q":null,"a":"beautifully","d":["uglily","plainly","dully","clumsily","messily","carelessly","roughly","unappealing"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-011","q":null,"a":"negligence","d":["attention","care","diligence","concern","vigilance","accountability","responsibility","mindfulness"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-012","q":null,"a":"telephone","d":["radio","television","computer","fax machine","intercom","pager","satellite phone","walkie-talkie"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-013","q":null,"a":null,"d":["cold","chill","frost","breeze","coolness","shade","ice","draft"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-014","q":null,"a":"seok (unit of measure)","d":["don","mal","geun","pul","jwa","gwan","jak","mun"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-015","q":null,"a":"plausible","d":["implausible","ridiculous","absurd","farfetched","unlikely","unbelievable","preposterous","unreasonable"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-016","q":null,"a":"argue","d":["agree","concede","concur","accept","yield","comply","consent","go along with"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-017","q":null,"a":"irresponsibility","d":["accountability","responsibility","reliability","trustworthiness","diligence","conscientiousness","dependability","integrity"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-018","q":null,"a":"mine owner","d":["farmer","shopkeeper","factory manager","bank manager","school principal","hospital director","hotel owner","restaurant owner"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-019","q":null,"a":"psychological","d":["physical","biological","chemical","neurological","physiological","anatomical","muscular","skeletal"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-020","q":null,"a":"mountain","d":["valley","plain","plateau","river","lake","ocean","desert","forest"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-021","q":null,"a":"wire","d":["pipe","hose","tube","duct","channel","rail","track","rod"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-022","q":null,"a":null,"d":["Venus","Jupiter","Mercury","Saturn","Neptune","Uranus","Earth","Pluto"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-023","q":null,"a":"certain","d":["uncertain","doubtful","questionable","ambiguous","unclear","debatable","disputable","dubious"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-024","q":null,"a":"overexert oneself","d":["take it easy","pace oneself","rest adequately","act reasonably","work moderately","be careful","conserve energy","hold back"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-025","q":null,"a":"thinking ability","d":["physical strength","musical talent","artistic skill","athletic ability","cooking skill","language fluency","technical skill","mechanical ability"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-026","q":null,"a":"acidic","d":["alkaline","neutral","basic","non-reactive","inert","stable","non-corrosive","pH-neutral"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-027","q":null,"a":"easygoing","d":["strict","rigorous","demanding","serious","hardworking","meticulous","thorough","disciplined"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-028","q":null,"a":"film actor","d":["film director","screenwriter","producer","cinematographer","editor","composer","costume designer","location scout"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-029","q":null,"a":null,"d":["screw","bolt","pin","spike","fastener","rivet","peg","hook"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-030","q":null,"a":"flavor","d":["odor","texture","color","appearance","sound","temperature","weight","density"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-031","q":null,"a":"with peace of mind","d":["with worry","anxiously","nervously","with dread","uneasily","with hesitation","apprehensively","with concern"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-032","q":null,"a":"until now","d":["from now on","in the future","starting today","going forward","henceforth","from this point","after today","from here on"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-033","q":null,"a":"is visible","d":["is hidden","is invisible","is obscured","is blocked","is covered","is out of sight","is out of view","is concealed"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-034","q":null,"a":"anything","d":["nothing","something specific","one thing only","a definite item","a particular thing","something certain","a specific choice","a fixed option"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-035","q":null,"a":"nutrient","d":["toxin","pollutant","allergen","preservative","additive","pesticide","contaminant","synthetic compound"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-036","q":null,"a":"orally","d":["in writing","by text","via email","through documentation","in printed form","by letter","officially","in a signed contract"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-037","q":null,"a":"join hands","d":["let go","release hands","separate","walk apart","keep distance","turn away","step back","go separate ways"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-038","q":null,"a":"poison","d":["antidote","remedy","cure","medicine","treatment","serum","vaccine","counteragent"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-039","q":null,"a":"relevant","d":["irrelevant","unrelated","inapplicable","outside the scope","beside the point","off-topic","unconnected","out of context"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-040","q":null,"a":"envy","d":["admiration","appreciation","respect","gratitude","contentment","satisfaction","goodwill","praise"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-041","q":null,"a":"confidence","d":["self-doubt","insecurity","hesitation","uncertainty","timidity","low self-esteem","nervousness","diffidence"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-042","q":null,"a":"Beijing","d":["Shanghai","Tokyo","Seoul","Bangkok","Singapore","Hanoi","Taipei","Hong Kong"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-043","q":null,"a":"engage in","d":["quit","retire from","abandon","give up","step away from","leave","withdraw from","resign from"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-044","q":null,"a":"liver","d":["kidney","heart","lung","stomach","spleen","intestine","pancreas","gallbladder"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-045","q":null,"a":"male","d":["female","feminine","womanly","ladylike","maternal","girlish","sisterly","motherly"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-046","q":"What does \"대상자\" mean in English?","a":"target person","d":["random person","bystander","anonymous person","uninvolved party","unrelated individual","spectator","passerby","onlooker"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-047","q":null,"a":"scientifically","d":["artistically","intuitively","emotionally","spiritually","traditionally","anecdotally","subjectively","speculatively"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-048","q":null,"a":"relocation","d":["staying in place","remaining put","not moving","settling down","establishing roots","staying home","permanent residence","refusing to move"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-049","q":null,"a":"professional","d":["amateur","hobbyist","novice","beginner","volunteer","unskilled","inexperienced","layperson"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b29-050","q":null,"a":null,"d":["broth","stew","consomme","bouillon","bisque","chowder","porridge","thick sauce"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-001","q":null,"a":"match","d":["practice session","training","warm-up","scrimmage","drill","simulation","rehearsal","exhibition"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-002","q":null,"a":"bus stop","d":["intersection","toll gate","rest area","parking lot","terminal","garage","road junction","checkpoint"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-003","q":null,"a":"not but","d":["and also","together with","along with","in addition to","as well as","both and","including","combined with"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-004","q":null,"a":"for home use","d":["for industrial use","for commercial use","for military use","for professional use","for agricultural use","for governmental use","for scientific use","for institutional use"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-005","q":null,"a":"train station","d":["bus terminal","airport","harbor","subway station","taxi stand","ferry port","highway rest stop","cable car station"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-006","q":null,"a":"for a long time","d":["briefly","momentarily","for a short time","temporarily","just a second","fleetingly","in no time","quickly"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-007","q":null,"a":"well","d":["poorly","badly","clumsily","incorrectly","carelessly","roughly","ineptly","inadequately"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-008","q":null,"a":"actor","d":["director","writer","producer","cinematographer","set designer","composer","editor","costume designer"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-009","q":null,"a":"air","d":["water","soil","fire","ice","rock","metal","wood","earth"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-010","q":null,"a":"dialogue","d":["monologue","narration","description","stage direction","soundtrack","subtitle","prologue","epilogue"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-011","q":null,"a":null,"d":["below","under","beneath","lower than","at the bottom","at ground level","underground","at the base"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-012","q":null,"a":"centimeter","d":["millimeter","meter","kilometer","inch","foot","yard","mile","decimeter"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-013","q":null,"a":"goodwill","d":["hostility","coldness","indifference","resentment","ill will","contempt","disrespect","rudeness"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-014","q":null,"a":"wake up","d":["fall asleep","doze off","slumber","take a nap","pass out","hibernate","rest","drowse"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-015","q":null,"a":"harmony","d":["discord","conflict","tension","dissonance","imbalance","clash","disruption","disorder"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-016","q":null,"a":"expert","d":["amateur","beginner","novice","layperson","hobbyist","student","apprentice","trainee"],"e":null,"l1":null,"l2":null,"i":null}
+{"id":"ko-b30-017","q":null,"a":"drainpipe","d":["water supply pipe","sprinkler pipe","heating pipe","gas pipe","irrigation hose","intake valve","faucet","water meter"],"e":null,"l1":null,"l2":null,"i":null}

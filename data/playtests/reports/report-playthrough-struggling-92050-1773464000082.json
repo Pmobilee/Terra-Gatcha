@@ -1,0 +1,156 @@
+{
+  "playthroughId": "playthrough-struggling-92050-1773464000082",
+  "profileId": "struggling",
+  "analyzedAt": "2026-03-14T05:02:31.961Z",
+  "issueCount": 8,
+  "issues": [
+    {
+      "id": "issue-playthrough-struggling-92050-1773464000082-001",
+      "playthroughId": "playthrough-struggling-92050-1773464000082",
+      "profileId": "struggling",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 12 (100% HP) on floor 1",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          23
+        ],
+        "floor": 1,
+        "encounter": 1,
+        "metric": "damage=12, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92050",
+        "Floor 1 Encounter 1"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-struggling-92050-1773464000082-002",
+      "playthroughId": "playthrough-struggling-92050-1773464000082",
+      "profileId": "struggling",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 1 encounter 1",
+      "description": "Player defeat occurred on early floor segment.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 1,
+        "metric": "enemy=void_tendril, accuracy=0.333"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92050"
+      ],
+      "suggestedFix": "Soften early-floor enemy scaling."
+    },
+    {
+      "id": "issue-playthrough-struggling-92050-1773464000082-003",
+      "playthroughId": "playthrough-struggling-92050-1773464000082",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92050"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-struggling-92050-1773464000082-004",
+      "playthroughId": "playthrough-struggling-92050-1773464000082",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'buff' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "buff=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92050"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-struggling-92050-1773464000082-005",
+      "playthroughId": "playthrough-struggling-92050-1773464000082",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'debuff' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "debuff=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92050"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-struggling-92050-1773464000082-006",
+      "playthroughId": "playthrough-struggling-92050-1773464000082",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'utility' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "utility=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92050"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-struggling-92050-1773464000082-007",
+      "playthroughId": "playthrough-struggling-92050-1773464000082",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92050"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-struggling-92050-1773464000082-008",
+      "playthroughId": "playthrough-struggling-92050-1773464000082",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92050"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

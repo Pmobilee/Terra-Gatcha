@@ -1,0 +1,830 @@
+{
+  "updatedAt": "2026-03-14T04:48:53.424Z",
+  "totalPlaythroughs": 10,
+  "totalIssues": 10,
+  "campaignId": "smoke-campaign",
+  "runCount": 10,
+  "headlessCount": 9,
+  "visualCount": 1,
+  "generatedAt": "2026-03-14T04:48:53.425Z",
+  "issues": [
+    {
+      "canonicalId": "balance_too_hard_early",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 1 encounter 2",
+      "description": "Player defeat occurred on early floor segment.",
+      "frequency": 7,
+      "affectedProfiles": [
+        "average",
+        "beginner",
+        "impatient",
+        "struggling"
+      ],
+      "profiles": [
+        "average",
+        "beginner",
+        "impatient",
+        "struggling"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "history"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "average",
+          "seed": 91003,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 52.2,
+          "maxCombo": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 91002,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 56.5,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "beginner",
+          "seed": 91008,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 45.5,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "impatient",
+          "seed": 91001,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 2,
+          "accuracy": 81.6,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "impatient",
+          "seed": 91007,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 57.7,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "struggling",
+          "seed": 91000,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 52.4,
+          "maxCombo": 2
+        },
+        {
+          "profileId": "struggling",
+          "seed": 91006,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 50,
+          "maxCombo": 3
+        }
+      ],
+      "firstSeen": "2026-03-14T04:48:53.135Z",
+      "lastSeen": "2026-03-14T04:48:53.142Z",
+      "rank": 1,
+      "score": 31.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-91003-1773463694974",
+        "playthrough-beginner-91002-1773463694975",
+        "playthrough-beginner-91008-1773463733068",
+        "playthrough-impatient-91001-1773463694978",
+        "playthrough-impatient-91007-1773463733070",
+        "playthrough-struggling-91000-1773463694977",
+        "playthrough-struggling-91006-1773463733072"
+      ],
+      "bestEvidence": {
+        "floor": 1,
+        "encounter": 2,
+        "metric": "enemy=mushroom_sovereign, accuracy=0.333"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 91003"
+      ]
+    },
+    {
+      "canonicalId": "balance_damage_spike_early",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 13 (100% HP) on floor 1",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "frequency": 4,
+      "affectedProfiles": [
+        "average",
+        "beginner",
+        "impatient",
+        "struggling"
+      ],
+      "profiles": [
+        "average",
+        "beginner",
+        "impatient",
+        "struggling"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "history"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "average",
+          "seed": 91003,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 52.2,
+          "maxCombo": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 91002,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 56.5,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "impatient",
+          "seed": 91001,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 2,
+          "accuracy": 81.6,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "struggling",
+          "seed": 91000,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 52.4,
+          "maxCombo": 2
+        }
+      ],
+      "firstSeen": "2026-03-14T04:48:53.135Z",
+      "lastSeen": "2026-03-14T04:48:53.139Z",
+      "rank": 2,
+      "score": 30,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-91003-1773463694974",
+        "playthrough-beginner-91002-1773463694975",
+        "playthrough-impatient-91001-1773463694978",
+        "playthrough-struggling-91000-1773463694977"
+      ],
+      "bestEvidence": {
+        "turnSeqs": [
+          34
+        ],
+        "floor": 1,
+        "encounter": 2,
+        "metric": "damage=13, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 91003",
+        "Floor 1 Encounter 2"
+      ]
+    },
+    {
+      "canonicalId": "mechanic_unused_global",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'utility' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "frequency": 9,
+      "affectedProfiles": [
+        "average",
+        "beginner",
+        "expert",
+        "impatient",
+        "speed-runner",
+        "struggling"
+      ],
+      "profiles": [
+        "average",
+        "beginner",
+        "expert",
+        "impatient",
+        "speed-runner",
+        "struggling"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "history"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "average",
+          "seed": 91003,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 52.2,
+          "maxCombo": 2
+        },
+        {
+          "profileId": "beginner",
+          "seed": 91002,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 56.5,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "beginner",
+          "seed": 91008,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 45.5,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "expert",
+          "seed": 91004,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 10,
+          "accuracy": 89.7,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "impatient",
+          "seed": 91001,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 2,
+          "accuracy": 81.6,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "impatient",
+          "seed": 91007,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 57.7,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 91005,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "victory",
+          "floor": 12,
+          "accuracy": 92.5,
+          "maxCombo": 4
+        },
+        {
+          "profileId": "struggling",
+          "seed": 91000,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 52.4,
+          "maxCombo": 2
+        },
+        {
+          "profileId": "struggling",
+          "seed": 91006,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 1,
+          "accuracy": 50,
+          "maxCombo": 3
+        }
+      ],
+      "firstSeen": "2026-03-14T04:48:53.135Z",
+      "lastSeen": "2026-03-14T04:48:53.142Z",
+      "rank": 3,
+      "score": 13.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-average-91003-1773463694974",
+        "playthrough-beginner-91002-1773463694975",
+        "playthrough-beginner-91008-1773463733068",
+        "playthrough-expert-91004-1773463733075",
+        "playthrough-impatient-91001-1773463694978",
+        "playthrough-impatient-91007-1773463733070",
+        "playthrough-speed-runner-91005-1773463733073",
+        "playthrough-struggling-91000-1773463694977",
+        "playthrough-struggling-91006-1773463733072"
+      ],
+      "bestEvidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "utility=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 91003"
+      ]
+    },
+    {
+      "canonicalId": "balance_damage_spike_late",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 17 (100% HP) on floor 10",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "frequency": 2,
+      "affectedProfiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "profiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "history"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "expert",
+          "seed": 91004,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 10,
+          "accuracy": 89.7,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 91005,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "victory",
+          "floor": 12,
+          "accuracy": 92.5,
+          "maxCombo": 4
+        }
+      ],
+      "firstSeen": "2026-03-14T04:48:53.140Z",
+      "lastSeen": "2026-03-14T04:48:53.141Z",
+      "rank": 4,
+      "score": 12.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-91004-1773463733075",
+        "playthrough-speed-runner-91005-1773463733073"
+      ],
+      "bestEvidence": {
+        "turnSeqs": [
+          486
+        ],
+        "floor": 10,
+        "encounter": 2,
+        "metric": "damage=17, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 91004",
+        "Floor 10 Encounter 2"
+      ]
+    },
+    {
+      "canonicalId": "progression_difficulty_spike_early",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 3 encounter 2 (9 vs 2.3)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "frequency": 2,
+      "affectedProfiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "profiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "history"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "expert",
+          "seed": 91004,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 10,
+          "accuracy": 89.7,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 91005,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "victory",
+          "floor": 12,
+          "accuracy": 92.5,
+          "maxCombo": 4
+        }
+      ],
+      "firstSeen": "2026-03-14T04:48:53.140Z",
+      "lastSeen": "2026-03-14T04:48:53.141Z",
+      "rank": 5,
+      "score": 12.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-91004-1773463733075",
+        "playthrough-speed-runner-91005-1773463733073"
+      ],
+      "bestEvidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turns=9, prevAvg=2.33"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 91004"
+      ]
+    },
+    {
+      "canonicalId": "progression_difficulty_spike_mid",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 9 encounter 2 (8 vs 3.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "frequency": 2,
+      "affectedProfiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "profiles": [
+        "expert",
+        "speed-runner"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "history"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "expert",
+          "seed": 91004,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "defeat",
+          "floor": 10,
+          "accuracy": 89.7,
+          "maxCombo": 3
+        },
+        {
+          "profileId": "speed-runner",
+          "seed": 91005,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "victory",
+          "floor": 12,
+          "accuracy": 92.5,
+          "maxCombo": 4
+        }
+      ],
+      "firstSeen": "2026-03-14T04:48:53.140Z",
+      "lastSeen": "2026-03-14T04:48:53.141Z",
+      "rank": 6,
+      "score": 12.5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-expert-91004-1773463733075",
+        "playthrough-speed-runner-91005-1773463733073"
+      ],
+      "bestEvidence": {
+        "floor": 9,
+        "encounter": 2,
+        "metric": "turns=8, prevAvg=3.67"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 91004"
+      ]
+    },
+    {
+      "canonicalId": "progression_difficulty_spike_late",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 12 encounter 2 (8 vs 3.0)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "speed-runner"
+      ],
+      "profiles": [
+        "speed-runner"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "history"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "speed-runner",
+          "seed": 91005,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "victory",
+          "floor": 12,
+          "accuracy": 92.5,
+          "maxCombo": 4
+        }
+      ],
+      "firstSeen": "2026-03-14T04:48:53.141Z",
+      "lastSeen": "2026-03-14T04:48:53.141Z",
+      "rank": 7,
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-speed-runner-91005-1773463733073"
+      ],
+      "bestEvidence": {
+        "floor": 12,
+        "encounter": 2,
+        "metric": "turns=8, prevAvg=3.00"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 91005"
+      ]
+    },
+    {
+      "canonicalId": "progression_difficulty_spike_mid_early",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 6 encounter 2 (6 vs 2.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "speed-runner"
+      ],
+      "profiles": [
+        "speed-runner"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "normal"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "history"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": "speed-runner",
+          "seed": 91005,
+          "difficultyMode": "normal",
+          "archetype": "balanced",
+          "domain": "history",
+          "result": "victory",
+          "floor": 12,
+          "accuracy": 92.5,
+          "maxCombo": 4
+        }
+      ],
+      "firstSeen": "2026-03-14T04:48:53.141Z",
+      "lastSeen": "2026-03-14T04:48:53.141Z",
+      "rank": 8,
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "playthrough-speed-runner-91005-1773463733073"
+      ],
+      "bestEvidence": {
+        "floor": 6,
+        "encounter": 2,
+        "metric": "turns=6, prevAvg=2.67"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 91005"
+      ]
+    },
+    {
+      "canonicalId": "visual_start_run_unavailable_global",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 100",
+      "description": "Start Run button not found",
+      "frequency": 1,
+      "affectedProfiles": [
+        "visual-worker"
+      ],
+      "profiles": [
+        "visual-worker"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": null,
+          "seed": null,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": null,
+          "floor": null,
+          "accuracy": null,
+          "maxCombo": null
+        }
+      ],
+      "firstSeen": "2026-03-14T04:48:53.136Z",
+      "lastSeen": "2026-03-14T04:48:53.136Z",
+      "rank": 9,
+      "score": 5,
+      "status": "open",
+      "sourceReports": [
+        "visual-playthrough-591000-1773463693218"
+      ],
+      "bestEvidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=100"
+      },
+      "reproductionSteps": [
+        "Visual seed: 591000",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ]
+    },
+    {
+      "canonicalId": "visual_hub_stuck_global",
+      "category": "visual_hub_stuck",
+      "severity": "medium",
+      "title": "Visual run remained on hub only",
+      "description": "No non-hub screen transitions were observed during the visual run.",
+      "frequency": 1,
+      "affectedProfiles": [
+        "visual-worker"
+      ],
+      "profiles": [
+        "visual-worker"
+      ],
+      "affectedSettings": {
+        "difficultyModes": [
+          "standard"
+        ],
+        "archetypes": [
+          "balanced"
+        ],
+        "domains": [
+          "general_knowledge"
+        ]
+      },
+      "runBreakdown": [
+        {
+          "profileId": null,
+          "seed": null,
+          "difficultyMode": "standard",
+          "archetype": "balanced",
+          "domain": "general_knowledge",
+          "result": null,
+          "floor": null,
+          "accuracy": null,
+          "maxCombo": null
+        }
+      ],
+      "firstSeen": "2026-03-14T04:48:53.136Z",
+      "lastSeen": "2026-03-14T04:48:53.136Z",
+      "rank": 10,
+      "score": 3,
+      "status": "open",
+      "sourceReports": [
+        "visual-playthrough-591000-1773463693218"
+      ],
+      "bestEvidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "steps=121, nonHub=0"
+      },
+      "reproductionSteps": [
+        "Visual seed: 591000",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ]
+    }
+  ]
+}

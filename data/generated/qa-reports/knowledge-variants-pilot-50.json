@@ -1,0 +1,396 @@
+{
+  "startedAt": "2026-03-14T08:54:13.106Z",
+  "finishedAt": "2026-03-14T09:11:07.900Z",
+  "inputPath": "/Users/damion/CODE/Recall_Rogue/src/data/seed/facts-generated.json",
+  "reportPath": "/Users/damion/CODE/Recall_Rogue/data/generated/qa-reports/knowledge-variants-pilot-50.json",
+  "model": "gpt-5.4",
+  "fallbackModel": "gpt-5.2",
+  "totalFacts": 46657,
+  "candidateFacts": 10423,
+  "selectedFacts": 50,
+  "updatedFacts": 34,
+  "failedFacts": 40,
+  "batchCount": 10,
+  "batchSize": 5,
+  "concurrency": 3,
+  "syncWorkerOutput": true,
+  "workerOutputSummary": {
+    "changedFiles": 9,
+    "changedFacts": 34
+  },
+  "rebuiltDb": true,
+  "samples": [
+    {
+      "id": "senna-alata-001",
+      "domain": "animals_wildlife",
+      "updated": true
+    },
+    {
+      "id": "mfn-berlin-1810",
+      "domain": "art_architecture",
+      "updated": true
+    },
+    {
+      "id": "waffle-origin-france",
+      "domain": "food_cuisine",
+      "updated": true
+    },
+    {
+      "id": "fan-sin-temple-001",
+      "domain": "general_knowledge",
+      "updated": false
+    },
+    {
+      "id": "geo-cap-canada-001",
+      "domain": "geography",
+      "updated": false
+    },
+    {
+      "id": "battle-marignano-1515",
+      "domain": "history",
+      "updated": true
+    },
+    {
+      "id": "adgra2-gene-001",
+      "domain": "human_body_health",
+      "updated": true
+    },
+    {
+      "id": "cupid-001",
+      "domain": "mythology_folklore",
+      "updated": true
+    }
+  ],
+  "failures": [
+    {
+      "id": "aqaba-church-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"phaseolus-vulgaris-001\",\"variants\":[{\"question\":\"What is Phaseolus vulgaris commonly known as?\",\"type\":\"forward\",\"correctAnswer\":\"common bean\",\"distractors\":[\"soybean\",\"chickpea\",\"garden pea\"]},{\"question\":\"Common bean is the common name for which species?\",\"type\":\"reverse\",\"correctAnswer\":\"Phaseolus vulgaris\",\"distractors\":[\"Glycine max\",\"Pisum sativum\",\"Cicer arietinum\"]},{\"question\":\"Which statement about Phaseolus vulgaris is false?\",\"type\":\"negative\",\"correctAnswer\":\"It is called soybean\",\"distractors\":[\"It is a legume\",\"It is grown for food\",\"It is called common bean\"…"
+    },
+    {
+      "id": "geo-cap-japan-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"phaseolus-vulgaris-001\",\"variants\":[{\"question\":\"What is Phaseolus vulgaris commonly known as?\",\"type\":\"forward\",\"correctAnswer\":\"common bean\",\"distractors\":[\"soybean\",\"chickpea\",\"garden pea\"]},{\"question\":\"Common bean is the common name for which species?\",\"type\":\"reverse\",\"correctAnswer\":\"Phaseolus vulgaris\",\"distractors\":[\"Glycine max\",\"Pisum sativum\",\"Cicer arietinum\"]},{\"question\":\"Which statement about Phaseolus vulgaris is false?\",\"type\":\"negative\",\"correctAnswer\":\"It is called soybean\",\"distractors\":[\"It is a legume\",\"It is grown for food\",\"It is called common bean\"…"
+    },
+    {
+      "id": "aqaba-church-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question",
+        "variant[4] question leaks answer"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"aqaba-church-001\",\"variants\":[{\"question\":\"Where is Aqaba Church located?\",\"type\":\"forward\",\"correctAnswer\":\"Aqaba, Jordan\",\"distractors\":[\"Tyre, Lebanon\",\"Jerusalem, Israel\",\"Cairo, Egypt\"]},{\"question\":\"Which church is located in Aqaba, Jordan?\",\"type\":\"reverse\",\"correctAnswer\":\"Aqaba Church\",\"distractors\":[\"Petra Church\",\"Church of the Nativity\",\"St. George's Church\"]},{\"question\":\"Which option is NOT a correct location for Aqaba Church?\",\"type\":\"negative\",\"correctAnswer\":\"Amman, Jordan\",\"distractors\":[\"Aqaba, Jordan\",\"Aqaba in Jordan\",\"Jordan's city of Aqaba\"]},{\"questi…"
+    },
+    {
+      "id": "aqaba-church-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question",
+        "variant[4] question leaks answer"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"aqaba-church-001\",\"variants\":[{\"question\":\"Where is Aqaba Church located?\",\"type\":\"forward\",\"correctAnswer\":\"Aqaba, Jordan\",\"distractors\":[\"Eilat, Israel\",\"Amman, Jordan\",\"Beirut, Lebanon\"]},{\"question\":\"Which church is located in Aqaba, Jordan?\",\"type\":\"reverse\",\"correctAnswer\":\"Aqaba Church\",\"distractors\":[\"Petra Church\",\"Church of the Holy Sepulchre\",\"St. George's Church\"]},{\"question\":\"Aqaba Church is located in ____.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Aqaba, Jordan\",\"distractors\":[\"Eilat, Israel\",\"Petra, Jordan\",\"Cairo, Egypt\"]},{\"question\":\"Which is NOT where Aqaba…"
+    },
+    {
+      "id": "geo-cap-japan-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"geo-cap-japan-001\",\"variants\":[{\"question\":\"What is the capital of Japan?\",\"type\":\"forward\",\"correctAnswer\":\"Tokyo\",\"distractors\":[\"Osaka\",\"Kyoto\",\"Nagoya\"]},{\"question\":\"Tokyo is the capital of which country?\",\"type\":\"reverse\",\"correctAnswer\":\"Japan\",\"distractors\":[\"China\",\"South Korea\",\"Thailand\"]},{\"question\":\"Japan's capital city is ____.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Tokyo\",\"distractors\":[\"Osaka\",\"Sapporo\",\"Fukuoka\"]},{\"question\":\"True or False: Tokyo is the capital of Japan.\",\"type\":\"true_false\",\"correctAnswer\":\"True\",\"distractors\":[\"False\"]},{\"question\":\"Whic…"
+    },
+    {
+      "id": "fan-sin-temple-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"senna-alata-001\",\"variants\":[{\"question\":\"What kind of organism is Senna alata?\",\"type\":\"forward\",\"correctAnswer\":\"Tropical plant\",\"distractors\":[\"Marine crustacean\",\"Desert reptile\",\"Mountain bird\"]},{\"question\":\"Which species is a tropical plant with least concern status?\",\"type\":\"reverse\",\"correctAnswer\":\"Senna alata\",\"distractors\":[\"Aloe vera\",\"Nepenthes rajah\",\"Salvia officinalis\"]},{\"question\":\"Senna alata has _____ conservation status.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Least concern\",\"distractors\":[\"Endangered\",\"Vulnerable\",\"Near threatened\"]},{\"question\":\"Which…"
+    },
+    {
+      "id": "geo-cap-canada-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"senna-alata-001\",\"variants\":[{\"question\":\"What kind of organism is Senna alata?\",\"type\":\"forward\",\"correctAnswer\":\"Tropical plant\",\"distractors\":[\"Marine crustacean\",\"Desert reptile\",\"Mountain bird\"]},{\"question\":\"Which species is a tropical plant with least concern status?\",\"type\":\"reverse\",\"correctAnswer\":\"Senna alata\",\"distractors\":[\"Aloe vera\",\"Nepenthes rajah\",\"Salvia officinalis\"]},{\"question\":\"Senna alata has _____ conservation status.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Least concern\",\"distractors\":[\"Endangered\",\"Vulnerable\",\"Near threatened\"]},{\"question\":\"Which…"
+    },
+    {
+      "id": "fan-sin-temple-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"fan-sin-temple-001\",\"variants\":[{\"question\":\"Where is Fan Sin Temple located?\",\"type\":\"forward\",\"correctAnswer\":\"Hong Kong, China\",\"distractors\":[\"Macau, China\",\"Shanghai, China\",\"Beijing, China\"]},{\"question\":\"A historic building located in Hong Kong, China is called what?\",\"type\":\"reverse\",\"correctAnswer\":\"Fan Sin Temple\",\"distractors\":[\"Wong Tai Sin Temple\",\"Man Mo Temple\",\"Po Lin Monastery\"]},{\"question\":\"Fan Sin Temple is located in _____, China.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Hong Kong\",\"distractors\":[\"Macau\",\"Guangzhou\",\"Shanghai\"]},{\"question\":\"Which statemen…"
+    },
+    {
+      "id": "geo-cap-canada-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"geo-cap-canada-001\",\"variants\":[{\"question\":\"What is the capital of Canada?\",\"type\":\"forward\",\"correctAnswer\":\"Ottawa\",\"distractors\":[\"Edmonton\",\"Winnipeg\",\"Quebec City\"]},{\"question\":\"Ottawa is the capital of which country?\",\"type\":\"reverse\",\"correctAnswer\":\"Canada\",\"distractors\":[\"Australia\",\"Ireland\",\"Brazil\"]},{\"question\":\"The capital of Canada is _____.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Ottawa\",\"distractors\":[\"Halifax\",\"Regina\",\"Victoria\"]},{\"question\":\"Which is false about Canada's capital?\",\"type\":\"negative\",\"correctAnswer\":\"Toronto is capital\",\"distractors\":[\"Ot…"
+    },
+    {
+      "id": "bronze-alloy-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"battle-nieuwpoort-1600\",\"variants\":[{\"question\":\"In which Belgian town did Dutch and Spanish forces clash in 1600?\",\"type\":\"forward\",\"correctAnswer\":\"Nieuwpoort\",\"distractors\":[\"Ostend\",\"Antwerp\",\"Ypres\"]},{\"question\":\"Nieuwpoort was the site of what 1600 conflict?\",\"type\":\"reverse\",\"correctAnswer\":\"Dutch-Spanish battle\",\"distractors\":[\"French-English truce\",\"Ottoman siege\",\"Prussian revolt\"]},{\"question\":\"The Battle of _____ saw Dutch and Spanish forces clash in Belgium.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Nieuwpoort\",\"distractors\":[\"Rocroi\",\"Lepanto\",\"Gravelines\"]},{\"qu…"
+    },
+    {
+      "id": "bronze-alloy-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question",
+        "variant[3] negative question should clearly signal NOT/FALSE"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"bronze-alloy-001\",\"variants\":[{\"question\":\"What two metals make up bronze?\",\"type\":\"forward\",\"correctAnswer\":\"Copper and tin\",\"distractors\":[\"Copper and zinc\",\"Iron and carbon\",\"Tin and lead\"]},{\"question\":\"An alloy of copper and tin is called what?\",\"type\":\"reverse\",\"correctAnswer\":\"Bronze\",\"distractors\":[\"Brass\",\"Pewter\",\"Steel\"]},{\"question\":\"Bronze is made from copper and _____.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Tin\",\"distractors\":[\"Zinc\",\"Lead\",\"Nickel\"]},{\"question\":\"Which composition description of bronze is incorrect?\",\"type\":\"negative\",\"correctAnswer\":\"Copper–z…"
+    },
+    {
+      "id": "geo-cap-norway-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"serval-001\",\"variants\":[{\"question\":\"What African wild cat is known for exceptionally long legs?\",\"type\":\"forward\",\"correctAnswer\":\"Serval\",\"distractors\":[\"Caracal\",\"Ocelot\",\"Cheetah\"]},{\"question\":\"Servals are native to which continent?\",\"type\":\"reverse\",\"correctAnswer\":\"Africa\",\"distractors\":[\"Asia\",\"Europe\",\"South America\"]},{\"question\":\"Servals are African wild cats with ____ coats.\",\"type\":\"fill_blank\",\"correctAnswer\":\"spotted\",\"distractors\":[\"striped\",\"shaggy\",\"plain\"]},{\"question\":\"Which statement about servals is false?\",\"type\":\"negative\",\"correctAnswer\":\"Servals li…"
+    },
+    {
+      "id": "geo-cap-norway-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question",
+        "variant[2] negative question should clearly signal NOT/FALSE"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"geo-cap-norway-001\",\"variants\":[{\"question\":\"What is the capital of Norway?\",\"type\":\"forward\",\"correctAnswer\":\"Oslo\",\"distractors\":[\"Bergen\",\"Trondheim\",\"Stavanger\"]},{\"question\":\"Oslo is the capital of which country?\",\"type\":\"reverse\",\"correctAnswer\":\"Norway\",\"distractors\":[\"Sweden\",\"Denmark\",\"Finland\"]},{\"question\":\"Which country-capital pair is incorrect?\",\"type\":\"negative\",\"correctAnswer\":\"Norway — Bergen\",\"distractors\":[\"Norway — Oslo\",\"Sweden — Stockholm\",\"Finland — Helsinki\"]},{\"question\":\"Norway's capital is ____.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Oslo\",\"distrac…"
+    },
+    {
+      "id": "geo-cap-norway-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"geo-cap-norway-001\",\"variants\":[{\"question\":\"What is the capital of Norway?\",\"type\":\"forward\",\"correctAnswer\":\"Oslo\",\"distractors\":[\"Stockholm\",\"Copenhagen\",\"Helsinki\"]},{\"question\":\"Oslo is the capital of which country?\",\"type\":\"reverse\",\"correctAnswer\":\"Norway\",\"distractors\":[\"Sweden\",\"Denmark\",\"Finland\"]},{\"question\":\"Which city is NOT Norway's capital?\",\"type\":\"negative\",\"correctAnswer\":\"Oslo\",\"distractors\":[\"Bergen\",\"Trondheim\",\"Stavanger\"]},{\"question\":\"Norway's capital is ____.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Oslo\",\"distractors\":[\"Reykjavik\",\"Stockholm\",\"Helsin…"
+    },
+    {
+      "id": "olavinlinna-castle-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"laetacara-curviceps-001\",\"variants\":[{\"question\":\"What kind of animal is Laetacara curviceps?\",\"type\":\"forward\",\"correctAnswer\":\"Freshwater fish\",\"distractors\":[\"Saltwater fish\",\"Tree frog\",\"Small mammal\"]},{\"question\":\"Which species is a small freshwater fish of least concern?\",\"type\":\"reverse\",\"correctAnswer\":\"Laetacara curviceps\",\"distractors\":[\"Pterophyllum scalare\",\"Astronotus ocellatus\",\"Symphysodon aequifasciatus\"]},{\"question\":\"Laetacara curviceps is a small _____ fish.\",\"type\":\"fill_blank\",\"correctAnswer\":\"freshwater\",\"distractors\":[\"saltwater\",\"terrestrial\",\"arbor…"
+    },
+    {
+      "id": "Q2882977-etemple-uruk",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"laetacara-curviceps-001\",\"variants\":[{\"question\":\"What kind of animal is Laetacara curviceps?\",\"type\":\"forward\",\"correctAnswer\":\"Freshwater fish\",\"distractors\":[\"Saltwater fish\",\"Tree frog\",\"Small mammal\"]},{\"question\":\"Which species is a small freshwater fish of least concern?\",\"type\":\"reverse\",\"correctAnswer\":\"Laetacara curviceps\",\"distractors\":[\"Pterophyllum scalare\",\"Astronotus ocellatus\",\"Symphysodon aequifasciatus\"]},{\"question\":\"Laetacara curviceps is a small _____ fish.\",\"type\":\"fill_blank\",\"correctAnswer\":\"freshwater\",\"distractors\":[\"saltwater\",\"terrestrial\",\"arbor…"
+    },
+    {
+      "id": "geo-cap-ireland-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"laetacara-curviceps-001\",\"variants\":[{\"question\":\"What kind of animal is Laetacara curviceps?\",\"type\":\"forward\",\"correctAnswer\":\"Freshwater fish\",\"distractors\":[\"Saltwater fish\",\"Tree frog\",\"Small mammal\"]},{\"question\":\"Which species is a small freshwater fish of least concern?\",\"type\":\"reverse\",\"correctAnswer\":\"Laetacara curviceps\",\"distractors\":[\"Pterophyllum scalare\",\"Astronotus ocellatus\",\"Symphysodon aequifasciatus\"]},{\"question\":\"Laetacara curviceps is a small _____ fish.\",\"type\":\"fill_blank\",\"correctAnswer\":\"freshwater\",\"distractors\":[\"saltwater\",\"terrestrial\",\"arbor…"
+    },
+    {
+      "id": "Q2882977-etemple-uruk",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question",
+        "variant[2] negative question should clearly signal NOT/FALSE"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"Q2882977-etemple-uruk\",\"variants\":[{\"question\":\"What ancient temple is located in Uruk?\",\"type\":\"forward\",\"correctAnswer\":\"E-sara\",\"distractors\":[\"Eanna\",\"Ekur\",\"Esagila\"]},{\"question\":\"E-sara is located in which ancient city?\",\"type\":\"reverse\",\"correctAnswer\":\"Uruk\",\"distractors\":[\"Ur\",\"Nineveh\",\"Babylon\"]},{\"question\":\"Which pairing is incorrect?\",\"type\":\"negative\",\"correctAnswer\":\"E-sara - Ur\",\"distractors\":[\"E-sara - Uruk\",\"Parthenon - Athens\",\"Colosseum - Rome\"]},{\"question\":\"The ancient temple located in Uruk was ____.\",\"type\":\"fill_blank\",\"correctAnswer\":\"E-sara\",\"di…"
+    },
+    {
+      "id": "geo-cap-ireland-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question",
+        "variant[2] negative question should clearly signal NOT/FALSE"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"geo-cap-ireland-001\",\"variants\":[{\"question\":\"What is the capital of Ireland?\",\"type\":\"forward\",\"correctAnswer\":\"Dublin\",\"distractors\":[\"Cork\",\"Galway\",\"Belfast\"]},{\"question\":\"Dublin is the capital of which country?\",\"type\":\"reverse\",\"correctAnswer\":\"Ireland\",\"distractors\":[\"Iceland\",\"Finland\",\"Austria\"]},{\"question\":\"Which country-capital pair is incorrect?\",\"type\":\"negative\",\"correctAnswer\":\"Ireland - Cork\",\"distractors\":[\"Ireland - Dublin\",\"France - Paris\",\"Italy - Rome\"]},{\"question\":\"Ireland's capital is ____.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Dublin\",\"distractors…"
+    },
+    {
+      "id": "olavinlinna-castle-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[2] distractor[1] duplicated"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"olavinlinna-castle-001\",\"variants\":[{\"question\":\"In which Finnish town is Olavinlinna Castle located?\",\"type\":\"forward\",\"correctAnswer\":\"Savonlinna\",\"distractors\":[\"Turku\",\"Porvoo\",\"Oulu\"]},{\"question\":\"A medieval fortress in Savonlinna, Finland is called what?\",\"type\":\"reverse\",\"correctAnswer\":\"Olavinlinna Castle\",\"distractors\":[\"Suomenlinna Fortress\",\"Turku Castle\",\"Häme Castle\"]},{\"question\":\"Which location pairing is NOT correct for Olavinlinna Castle?\",\"type\":\"negative\",\"correctAnswer\":\"Savonlinna, Sweden\",\"distractors\":[\"Savonlinna, Finland\",\"Savonlinna (Finland)\",\"Sa…"
+    },
+    {
+      "id": "Q2882977-etemple-uruk",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"Q2882977-etemple-uruk\",\"variants\":[{\"question\":\"What ancient temple is located in Uruk?\",\"type\":\"forward\",\"correctAnswer\":\"E-sara\",\"distractors\":[\"Esagila\",\"Ekur\",\"Temple of Ningirsu\"]},{\"question\":\"E-sara is located in which ancient city?\",\"type\":\"reverse\",\"correctAnswer\":\"Uruk\",\"distractors\":[\"Ur\",\"Nippur\",\"Babylon\"]},{\"question\":\"Fill in the blank: _____ is an ancient temple located in Uruk.\",\"type\":\"fill_blank\",\"correctAnswer\":\"E-sara\",\"distractors\":[\"Esagila\",\"Ekur\",\"Temple of Amun\"]},{\"question\":\"Fill in the blank: E-sara is located in _____.\",\"type\":\"fill_blank\",\"cor…"
+    },
+    {
+      "id": "geo-cap-ireland-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"geo-cap-ireland-001\",\"variants\":[{\"question\":\"What is the capital of Ireland?\",\"type\":\"forward\",\"correctAnswer\":\"Dublin\",\"distractors\":[\"Cork\",\"Belfast\",\"Galway\"]},{\"question\":\"Dublin is the capital of which country?\",\"type\":\"reverse\",\"correctAnswer\":\"Ireland\",\"distractors\":[\"Iceland\",\"Scotland\",\"Denmark\"]},{\"question\":\"Ireland's capital is ____.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Dublin\",\"distractors\":[\"Cork\",\"Belfast\",\"Limerick\"]},{\"question\":\"Which statement about Ireland's capital is FALSE?\",\"type\":\"negative\",\"correctAnswer\":\"It's Cork\",\"distractors\":[\"It's Dublin\",\"…"
+    },
+    {
+      "id": "gpc4-protein-gene-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"hist-vlasenica-1943-001\",\"variants\":[{\"question\":\"What was the 1943 Battle for Vlasenica?\",\"type\":\"forward\",\"correctAnswer\":\"People's Liberation Army operation\",\"distractors\":[\"Axis garrison defense\",\"Soviet armored offensive\",\"Italian punitive expedition\"]},{\"question\":\"Which 1943 battle was a Yugoslav People's Liberation Army operation?\",\"type\":\"reverse\",\"correctAnswer\":\"Battle for Vlasenica\",\"distractors\":[\"Battle of Kursk\",\"Battle of Tarawa\",\"Battle of Monte Cassino\"]},{\"question\":\"Which claim about the 1943 Battle for Vlasenica is false?\",\"type\":\"negative\",\"correctAnsw…"
+    },
+    {
+      "id": "easter-bunny-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question",
+        "variant[1] question leaks answer"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"hist-vlasenica-1943-001\",\"variants\":[{\"question\":\"What was the 1943 Battle for Vlasenica?\",\"type\":\"forward\",\"correctAnswer\":\"People's Liberation Army operation\",\"distractors\":[\"Axis garrison defense\",\"Soviet armored offensive\",\"Italian punitive expedition\"]},{\"question\":\"Which 1943 battle was a Yugoslav People's Liberation Army operation?\",\"type\":\"reverse\",\"correctAnswer\":\"Battle for Vlasenica\",\"distractors\":[\"Battle of Kursk\",\"Battle of Tarawa\",\"Battle of Monte Cassino\"]},{\"question\":\"Which claim about the 1943 Battle for Vlasenica is false?\",\"type\":\"negative\",\"correctAnsw…"
+    },
+    {
+      "id": "easter-bunny-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[1] question leaks answer",
+        "variant[3] question leaks answer"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"easter-bunny-001\",\"variants\":[{\"question\":\"Which folkloric figure symbolizes Easter?\",\"type\":\"forward\",\"correctAnswer\":\"Easter Bunny\",\"distractors\":[\"Jack Frost\",\"Tooth Fairy\",\"Sandman\"]},{\"question\":\"The Easter Bunny is a symbol of which holiday?\",\"type\":\"reverse\",\"correctAnswer\":\"Easter\",\"distractors\":[\"Halloween\",\"Christmas\",\"Thanksgiving\"]},{\"question\":\"Which statement about the Easter Bunny is NOT true?\",\"type\":\"negative\",\"correctAnswer\":\"Symbolizes Halloween\",\"distractors\":[\"Symbolizes Easter\",\"Represents spring renewal\",\"Appears in folklore\"]},{\"question\":\"The _____…"
+    },
+    {
+      "id": "gpc4-protein-gene-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"gpc4-protein-gene-001\",\"variants\":[{\"question\":\"What type of gene is GPC4?\",\"type\":\"forward\",\"correctAnswer\":\"Protein-coding gene\",\"distractors\":[\"Pseudogene\",\"microRNA gene\",\"tRNA gene\"]},{\"question\":\"Which gene is a protein-coding gene found in human cells?\",\"type\":\"reverse\",\"correctAnswer\":\"GPC4\",\"distractors\":[\"GPC1\",\"GPC3\",\"GPC6\"]},{\"question\":\"Which description of GPC4 is FALSE?\",\"type\":\"negative\",\"correctAnswer\":\"microRNA gene\",\"distractors\":[\"protein-coding gene\",\"found in human cells\",\"encoded in human DNA\"]},{\"question\":\"GPC4 is a ____ gene.\",\"type\":\"fill_blank\",\"…"
+    },
+    {
+      "id": "easter-bunny-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[1] question leaks answer"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"easter-bunny-001\",\"variants\":[{\"question\":\"Which folkloric figure symbolizes Easter and springtime renewal?\",\"type\":\"forward\",\"correctAnswer\":\"Easter Bunny\",\"distractors\":[\"Santa Claus\",\"Tooth Fairy\",\"Jack Frost\"]},{\"question\":\"The Easter Bunny is a folkloric symbol of which holiday?\",\"type\":\"reverse\",\"correctAnswer\":\"Easter\",\"distractors\":[\"Christmas\",\"Halloween\",\"Valentine's Day\"]},{\"question\":\"Fill in the blank: The ____ is a folkloric figure linked to Easter and springtime renewal.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Easter Bunny\",\"distractors\":[\"May Queen\",\"Green Man…"
+    },
+    {
+      "id": "battle-jarama-1937",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"battle-jarama-1937\",\"variants\":[{\"question\":\"When did the Battle of Jarama occur?\",\"type\":\"forward\",\"correctAnswer\":\"February 1937\",\"distractors\":[\"January 1937\",\"March 1937\",\"July 1936\"]},{\"question\":\"Which battle was a February 1937 Spanish Civil War engagement near Madrid?\",\"type\":\"reverse\",\"correctAnswer\":\"Battle of Jarama\",\"distractors\":[\"Battle of Guadalajara\",\"Battle of Brunete\",\"Siege of Madrid\"]},{\"question\":\"The Battle of Jarama took place in ___.\",\"type\":\"fill_blank\",\"correctAnswer\":\"February 1937\",\"distractors\":[\"November 1936\",\"March 1937\",\"January 1938\"]},{\"qu…"
+    },
+    {
+      "id": "loch-ness-monster-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[4] question leaks answer"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"battle-jarama-1937\",\"variants\":[{\"question\":\"When did the Battle of Jarama occur?\",\"type\":\"forward\",\"correctAnswer\":\"February 1937\",\"distractors\":[\"January 1937\",\"March 1937\",\"July 1936\"]},{\"question\":\"Which battle was a February 1937 Spanish Civil War engagement near Madrid?\",\"type\":\"reverse\",\"correctAnswer\":\"Battle of Jarama\",\"distractors\":[\"Battle of Guadalajara\",\"Battle of Brunete\",\"Siege of Madrid\"]},{\"question\":\"The Battle of Jarama took place in ___.\",\"type\":\"fill_blank\",\"correctAnswer\":\"February 1937\",\"distractors\":[\"November 1936\",\"March 1937\",\"January 1938\"]},{\"qu…"
+    },
+    {
+      "id": "A-103-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "missing reverse variant"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"battle-jarama-1937\",\"variants\":[{\"question\":\"When did the Battle of Jarama occur?\",\"type\":\"forward\",\"correctAnswer\":\"February 1937\",\"distractors\":[\"January 1937\",\"March 1937\",\"July 1936\"]},{\"question\":\"Which battle was a February 1937 Spanish Civil War engagement near Madrid?\",\"type\":\"reverse\",\"correctAnswer\":\"Battle of Jarama\",\"distractors\":[\"Battle of Guadalajara\",\"Battle of Brunete\",\"Siege of Madrid\"]},{\"question\":\"The Battle of Jarama took place in ___.\",\"type\":\"fill_blank\",\"correctAnswer\":\"February 1937\",\"distractors\":[\"November 1936\",\"March 1937\",\"January 1938\"]},{\"qu…"
+    },
+    {
+      "id": "loch-ness-monster-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[3] question leaks answer"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"loch-ness-monster-001\",\"variants\":[{\"question\":\"The Loch Ness Monster belongs to what folklore tradition?\",\"type\":\"forward\",\"correctAnswer\":\"Scottish folklore\",\"distractors\":[\"Irish mythology\",\"Welsh folklore\",\"Norse legend\"]},{\"question\":\"Which legendary creature is tied to Scottish folklore and Loch Ness?\",\"type\":\"reverse\",\"correctAnswer\":\"Loch Ness Monster\",\"distractors\":[\"Ogopogo\",\"Champ\",\"Mokele-mbembe\"]},{\"question\":\"Which claim about the Loch Ness Monster is false?\",\"type\":\"negative\",\"correctAnswer\":\"It comes from Irish mythology.\",\"distractors\":[\"It is linked to Sco…"
+    },
+    {
+      "id": "A-103-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"A-103-001\",\"variants\":[{\"question\":\"What was the purpose of A-103?\",\"type\":\"forward\",\"correctAnswer\":\"Soviet test mission\",\"distractors\":[\"lunar landing mission\",\"military spy satellite\",\"space station module\"]},{\"question\":\"Which mission was a Soviet spacecraft-systems test?\",\"type\":\"reverse\",\"correctAnswer\":\"A-103\",\"distractors\":[\"Sputnik 1\",\"Luna 9\",\"Vostok 1\"]},{\"question\":\"A-103 primarily explored which systems?\",\"type\":\"forward\",\"correctAnswer\":\"spacecraft systems\",\"distractors\":[\"missile guidance\",\"weather systems\",\"radio telescopes\"]},{\"question\":\"A-103 was NOT prim…"
+    },
+    {
+      "id": "battle-jarama-1937",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"battle-jarama-1937\",\"variants\":[{\"question\":\"When did the Battle of Jarama occur?\",\"type\":\"forward\",\"correctAnswer\":\"February 1937\",\"distractors\":[\"February 1936\",\"March 1937\",\"July 1937\"]},{\"question\":\"A Spanish Civil War engagement near Madrid in February 1937 was the what?\",\"type\":\"reverse\",\"correctAnswer\":\"Battle of Jarama\",\"distractors\":[\"Battle of Guadalajara\",\"Battle of Brunete\",\"Battle of the Ebro\"]},{\"question\":\"The Battle of Jarama was fought near which city?\",\"type\":\"forward\",\"correctAnswer\":\"Madrid\",\"distractors\":[\"Barcelona\",\"Valencia\",\"Seville\"]},{\"question\":\"…"
+    },
+    {
+      "id": "loch-ness-monster-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[1] question leaks answer"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"loch-ness-monster-001\",\"variants\":[{\"question\":\"The Loch Ness Monster is a legendary creature from what tradition?\",\"type\":\"forward\",\"correctAnswer\":\"Scottish folklore\",\"distractors\":[\"Irish folklore\",\"Welsh folklore\",\"Cornish folklore\"]},{\"question\":\"In Scottish folklore, the Loch Ness Monster is said to inhabit which lake?\",\"type\":\"reverse\",\"correctAnswer\":\"Loch Ness\",\"distractors\":[\"Loch Lomond\",\"Loch Morar\",\"Loch Awe\"]},{\"question\":\"Which option about the Loch Ness Monster is false?\",\"type\":\"negative\",\"correctAnswer\":\"From Greek mythology\",\"distractors\":[\"From Scottish…"
+    },
+    {
+      "id": "A-103-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question",
+        "variant[1] question leaks answer"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"A-103-001\",\"variants\":[{\"question\":\"What was the purpose of A-103?\",\"type\":\"forward\",\"correctAnswer\":\"Spacecraft systems test\",\"distractors\":[\"Military reconnaissance mission\",\"Lunar sample return\",\"Communications satellite deployment\"]},{\"question\":\"A-103 was a Soviet test mission exploring spacecraft systems. What was the mission?\",\"type\":\"reverse\",\"correctAnswer\":\"A-103\",\"distractors\":[\"Zond 3\",\"Kosmos 140\",\"Vostok 5\"]},{\"question\":\"Which is NOT true about A-103?\",\"type\":\"negative\",\"correctAnswer\":\"Crewed Moon landing\",\"distractors\":[\"Soviet test mission\",\"Explored space…"
+    },
+    {
+      "id": "geo-cap-hungary-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"baikal-seal-001\",\"variants\":[{\"question\":\"What lake is home to the Baikal seal?\",\"type\":\"forward\",\"correctAnswer\":\"Lake Baikal\",\"distractors\":[\"Lake Ladoga\",\"Lake Tanganyika\",\"Caspian Sea\"]},{\"question\":\"Which seal is the world's only freshwater species?\",\"type\":\"reverse\",\"correctAnswer\":\"Baikal seal\",\"distractors\":[\"harp seal\",\"harbor seal\",\"ringed seal\"]},{\"question\":\"Which statement about Baikal seals is false?\",\"type\":\"negative\",\"correctAnswer\":\"They are marine-only\",\"distractors\":[\"They live in Lake Baikal\",\"They are freshwater seals\",\"They are unique among seals\"]},{\"…"
+    },
+    {
+      "id": "geo-cap-hungary-001",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question",
+        "variant[2] negative question should clearly signal NOT/FALSE"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"geo-cap-hungary-001\",\"variants\":[{\"question\":\"What is the capital of Hungary?\",\"type\":\"forward\",\"correctAnswer\":\"Budapest\",\"distractors\":[\"Debrecen\",\"Szeged\",\"Pecs\"]},{\"question\":\"Budapest is the capital of which country?\",\"type\":\"reverse\",\"correctAnswer\":\"Hungary\",\"distractors\":[\"Romania\",\"Slovakia\",\"Croatia\"]},{\"question\":\"Which capital-country pair is incorrect?\",\"type\":\"negative\",\"correctAnswer\":\"Hungary - Vienna\",\"distractors\":[\"Hungary - Budapest\",\"Austria - Vienna\",\"Czechia - Prague\"]},{\"question\":\"The capital of Hungary is _____.\",\"type\":\"fill_blank\",\"correctAnswer\"…"
+    },
+    {
+      "id": "geo-cap-hungary-001",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"geo-cap-hungary-001\",\"variants\":[{\"question\":\"What is the capital of Hungary?\",\"type\":\"forward\",\"correctAnswer\":\"Budapest\",\"distractors\":[\"Vienna\",\"Prague\",\"Bucharest\"]},{\"question\":\"Budapest is the capital of which country?\",\"type\":\"reverse\",\"correctAnswer\":\"Hungary\",\"distractors\":[\"Austria\",\"Romania\",\"Slovakia\"]},{\"question\":\"The capital of Hungary is ____.\",\"type\":\"fill_blank\",\"correctAnswer\":\"Budapest\",\"distractors\":[\"Belgrade\",\"Bratislava\",\"Bucharest\"]},{\"question\":\"Which option about Hungary's capital is FALSE?\",\"type\":\"negative\",\"correctAnswer\":\"Hungary's capital is…"
+    },
+    {
+      "id": "q4373-white-mountain-1620",
+      "model": "gpt-5.4",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"q4373-white-mountain-1620\",\"variants\":[{\"question\":\"What battle ended the Bohemian phase of the Thirty Years' War?\",\"type\":\"forward\",\"correctAnswer\":\"Battle of White Mountain\",\"distractors\":[\"Battle of Breitenfeld\",\"Battle of Lutzen\",\"Battle of Rocroi\"]},{\"question\":\"The Battle of White Mountain ended which phase of the Thirty Years' War?\",\"type\":\"reverse\",\"correctAnswer\":\"Bohemian phase\",\"distractors\":[\"Danish phase\",\"Swedish phase\",\"French phase\"]},{\"question\":\"The Battle of White Mountain took place in ____.\",\"type\":\"fill_blank\",\"correctAnswer\":\"1620\",\"distractors\":[\"161…"
+    },
+    {
+      "id": "q4373-white-mountain-1620",
+      "model": "gpt-5.2",
+      "errors": [
+        "variant[0] repeats base question"
+      ],
+      "rawOutputPreview": "{\"results\":[{\"id\":\"q4373-white-mountain-1620\",\"variants\":[{\"question\":\"What battle ended the Bohemian phase of the Thirty Years' War?\",\"type\":\"forward\",\"correctAnswer\":\"Battle of White Mountain\",\"distractors\":[\"Battle of Breitenfeld\",\"Battle of L\\u00fctzen\",\"Battle of N\\u00f6rdlingen\"]},{\"question\":\"The Battle of White Mountain ended which phase of the Thirty Years' War?\",\"type\":\"reverse\",\"correctAnswer\":\"Bohemian phase\",\"distractors\":[\"Danish phase\",\"Swedish phase\",\"French phase\"]},{\"question\":\"The Battle of White Mountain ended the Bohemian phase of which conflict?\",\"type\":\"reverse\",\"correc…"
+    }
+  ]
+}

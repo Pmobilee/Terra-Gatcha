@@ -1,0 +1,121 @@
+{
+  "playthroughId": "playthrough-average-92137-1773464356422",
+  "profileId": "average",
+  "analyzedAt": "2026-03-14T05:02:32.015Z",
+  "issueCount": 5,
+  "issues": [
+    {
+      "id": "issue-playthrough-average-92137-1773464356422-001",
+      "playthroughId": "playthrough-average-92137-1773464356422",
+      "profileId": "average",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "8 easy encounters in a row (HP > 90%)",
+      "description": "Multiple consecutive encounters ended above 90% HP.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 0,
+        "floors": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          3
+        ],
+        "metric": "hp=[103, 106, 116, 116, 113, 90, 103, 88]"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92137"
+      ],
+      "suggestedFix": "Increase pressure for this profile slice."
+    },
+    {
+      "id": "issue-playthrough-average-92137-1773464356422-002",
+      "playthroughId": "playthrough-average-92137-1773464356422",
+      "profileId": "average",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "11 easy encounters in a row (HP > 90%)",
+      "description": "Multiple consecutive encounters ended above 90% HP.",
+      "evidence": {
+        "floor": 6,
+        "encounter": 0,
+        "floors": [
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          8,
+          8,
+          8,
+          9,
+          9
+        ],
+        "metric": "hp=[103, 107, 83, 120, 85, 86, 97, 107, 108, 107, 90]"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92137"
+      ],
+      "suggestedFix": "Increase pressure for this profile slice."
+    },
+    {
+      "id": "issue-playthrough-average-92137-1773464356422-003",
+      "playthroughId": "playthrough-average-92137-1773464356422",
+      "profileId": "average",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 9 encounter 2 (13 vs 3.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 9,
+        "encounter": 2,
+        "metric": "turns=13, prevAvg=3.67"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92137"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-average-92137-1773464356422-004",
+      "playthroughId": "playthrough-average-92137-1773464356422",
+      "profileId": "average",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92137"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-average-92137-1773464356422-005",
+      "playthroughId": "playthrough-average-92137-1773464356422",
+      "profileId": "average",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: average, Seed: 92137"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "playthroughId": "playthrough-expert-92096-1773464197502",
+  "profileId": "expert",
+  "analyzedAt": "2026-03-14T05:02:31.986Z",
+  "issueCount": 5,
+  "issues": [
+    {
+      "id": "issue-playthrough-expert-92096-1773464197502-001",
+      "playthroughId": "playthrough-expert-92096-1773464197502",
+      "profileId": "expert",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "36 easy encounters in a row (HP > 90%)",
+      "description": "Multiple consecutive encounters ended above 90% HP.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 0,
+        "floors": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          8,
+          8,
+          8,
+          9,
+          9,
+          9,
+          10,
+          10,
+          10,
+          11,
+          11,
+          11,
+          12,
+          12,
+          12
+        ],
+        "metric": "hp=[113, 120, 112, 120, 120, 120, 120, 113, 120, 120, 120, 120, 105, 119, 120, 120, 118, 108, 115, 113, 108, 111, 108, 108, 116, 111, 120, 120, 111, 111, 120, 111, 111, 116, 111, 120]"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92096"
+      ],
+      "suggestedFix": "Increase pressure for this profile slice."
+    },
+    {
+      "id": "issue-playthrough-expert-92096-1773464197502-002",
+      "playthroughId": "playthrough-expert-92096-1773464197502",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 6 encounter 2 (6 vs 2.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 6,
+        "encounter": 2,
+        "metric": "turns=6, prevAvg=2.67"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92096"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-expert-92096-1773464197502-003",
+      "playthroughId": "playthrough-expert-92096-1773464197502",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 11 encounter 2 (6 vs 2.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 11,
+        "encounter": 2,
+        "metric": "turns=6, prevAvg=2.67"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92096"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-expert-92096-1773464197502-004",
+      "playthroughId": "playthrough-expert-92096-1773464197502",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92096"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-expert-92096-1773464197502-005",
+      "playthroughId": "playthrough-expert-92096-1773464197502",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92096"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{"id":"ko-b21-216","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-217","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-218","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-219","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-220","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-221","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-222","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-223","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-224","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-225","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-226","q":null,"a":"command; direction","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer (removed trailing semicolons and repeated words)"}
+{"id":"ko-b21-227","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-228","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-229","q":null,"a":"hearing; auditory sense","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing; distractors ok"}
+{"id":"ko-b21-230","q":null,"a":"two days","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer (removed trailing alternative); distractors ok"}
+{"id":"ko-b21-231","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-232","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-233","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-234","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-235","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-236","q":null,"a":null,"d":["style","mood","manner","expression","inflection","accent","register","pitch"],"e":null,"l1":null,"l2":null,"i":"fixed distractors (color/shade/tint are wrong category for tone of speech)"}
+{"id":"ko-b21-237","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-238","q":null,"a":"moving load; belongings","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer (이삿짐 = moving goods/belongings, not cargo in the shipping sense)"}
+{"id":"ko-b21-240","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-241","q":null,"a":"bear (fruit); conclude; tie (a knot)","d":["scatter","lose","break apart","untangle","fail to produce","miss","dissolve","drop"],"e":null,"l1":null,"l2":null,"i":"fixed answer; fixed garbage distractors (To X / State of X pattern)"}
+{"id":"ko-b21-242","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-243","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-244","q":null,"a":"basics; foundation","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-245","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-246","q":null,"a":"the public","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-247","q":null,"a":"eternal youth","d":["old age","rapid aging","early death","decline","deterioration","senility","mortality","withering"],"e":null,"l1":null,"l2":null,"i":"fixed answer (removed trailing period); fixed garbage distractors (without a doubt / in any event pattern)"}
+{"id":"ko-b21-248","q":null,"a":"the outcome; win or defeat","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-249","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-300","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-301","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-302","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-303","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-304","q":null,"a":"general; admiral","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-305","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-306","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-307","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-308","q":null,"a":"something; anything","d":["nothing","no one","no thing","emptiness","void","absence","zero","nothingness"],"e":null,"l1":null,"l2":null,"i":"fixed wrong answer (무언가 = something/anything, not songs without words); fixed distractors"}
+{"id":"ko-b21-309","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-310","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-311","q":null,"a":null,"d":["upstairs","across the street","around the corner","down the hall","in front","behind the house","nearby","adjacent"],"e":null,"l1":null,"l2":null,"i":"fixed garbage distractors (without a doubt / in any event pattern)"}
+{"id":"ko-b21-312","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-313","q":null,"a":"one's love; one's lover","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-314","q":null,"a":null,"d":["reunite","reconcile","make up","come together","stay together","meet again","continue the relationship","rekindle"],"e":null,"l1":null,"l2":null,"i":"fixed distractors (portion/piece/section are wrong — part as in part ways)"}
+{"id":"ko-b21-315","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-316","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-317","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-318","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-319","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-320","q":null,"a":"an interval; space between layers","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-321","q":null,"a":"western part; the west","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-322","q":null,"a":"establishment; founding","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-323","q":null,"a":"study; one's studies","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-324","q":null,"a":"business; enterprise","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-325","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-326","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-327","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-328","q":null,"a":"middle-aged woman; madam","d":["young girl","elderly woman","teenage girl","little girl","baby","toddler","college student","elderly man"],"e":null,"l1":null,"l2":null,"i":"fixed garbage distractors (To X / State of X pattern)"}
+{"id":"ko-b21-329","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-330","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-331","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-332","q":null,"a":"set; adjust; tune","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-333","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-334","q":null,"a":"departure; start","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-335","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-336","q":null,"a":"revive; come back to life","d":["die","perish","expire","pass away","cease to exist","fade away","collapse","disappear"],"e":null,"l1":null,"l2":null,"i":"fixed answer; fixed garbage distractors (To X / State of X pattern)"}
+{"id":"ko-b21-337","q":null,"a":"port; harbor","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-338","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-339","q":null,"a":"close; shut","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-340","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-341","q":null,"a":"altitude; elevation; height","d":["depth","sea level","low point","distance","width","floor level","underground depth","underwater depth"],"e":null,"l1":null,"l2":null,"i":"fixed answer; fixed garbage distractors (To X / State of X pattern)"}
+{"id":"ko-b21-342","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-343","q":null,"a":"be tied; be bound","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-344","q":null,"a":"the last; final","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-345","q":null,"a":"hose; hosepipe","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-346","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-347","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-348","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-349","q":null,"a":"large scale; grand scale","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-400","q":null,"a":"immigration; emigration","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-401","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-402","q":null,"a":"beginner; novice","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-403","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-404","q":null,"a":"one step; one level","d":["many steps","a great deal","enormously","massively","drastically","enormously more","substantially","to a huge degree"],"e":null,"l1":null,"l2":null,"i":"fixed answer; fixed garbage distractors (without a doubt / in any event pattern)"}
+{"id":"ko-b21-405","q":null,"a":"medicine; medical science","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-406","q":null,"a":"volume; bulk","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-407","q":null,"a":"kettle; teakettle","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-408","q":null,"a":"tax; duty","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-409","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-410","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-411","q":null,"a":"keep; store","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-412","q":null,"a":"approach; draw near","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-413","q":null,"a":null,"d":null,"e":null,"l1":null,"l2":null,"i":"ok"}
+{"id":"ko-b21-414","q":null,"a":"talent; skill; gift","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-415","q":null,"a":"land; ground; shore","d":null,"e":null,"l1":null,"l2":null,"i":"fixed answer spacing"}
+{"id":"ko-b21-416","q":null,"a":"the old and the infirm","d":["the young and the healthy","the strong and the able","the wealthy and the powerful","the young and the vibrant","adults in prime health","working-age people","the active and able-bodied","the fit and energetic"],"e":null,"l1":null,"l2":null,"i":"fixed garbage distractors (To X / State of X pattern)"}

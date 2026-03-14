@@ -12,56 +12,6 @@
       "Sun is five times hotter",
       "Twice as hot"
     ],
-    "variants": [
-      {
-        "question": "How does lightning temperature compare to the Sun's surface?",
-        "type": "forward",
-        "correctAnswer": "Five times hotter",
-        "distractors": [
-          "About the same",
-          "Sun is five times hotter",
-          "Twice as hot"
-        ]
-      },
-      {
-        "question": "Which reaches approximately 30,000 K, five times hotter than the Sun?",
-        "type": "reverse",
-        "correctAnswer": "Lightning",
-        "distractors": [
-          "Lava",
-          "Meteor impact",
-          "Volcano eruption"
-        ]
-      },
-      {
-        "question": "Which is NOT true about lightning temperature?",
-        "type": "negative",
-        "correctAnswer": "Lightning stays hot for minutes",
-        "distractors": [
-          "Lightning exceeds Sun's surface temperature",
-          "Lightning channel reaches 30,000 K",
-          "Sun's surface is 5,778 K"
-        ]
-      },
-      {
-        "question": "A lightning bolt reaches _____ times hotter than the Sun's surface.",
-        "type": "fill_blank",
-        "correctAnswer": "five",
-        "distractors": [
-          "two",
-          "ten",
-          "three"
-        ]
-      },
-      {
-        "question": "Lightning briefly reaches 30,000 K, about five times hotter than the Sun's surface.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
-    ],
     "category": [
       "Natural Sciences",
       "physics_mechanics",
@@ -95,55 +45,6 @@
       "the cinema quarters",
       "piece(s) of firewood (esp. chopped or split from logs)"
     ],
-    "variants": [
-      {
-        "question": "Which outnumbers the other: chess games or atoms?",
-        "type": "forward",
-        "correctAnswer": "Chess games",
-        "distractors": [
-          "Atoms",
-          "They're equal"
-        ]
-      },
-      {
-        "question": "The Shannon Number (~10^120) estimates what?",
-        "type": "reverse",
-        "correctAnswer": "Possible chess games",
-        "distractors": [
-          "Atoms in universe",
-          "Go game variations",
-          "Checkers combinations"
-        ]
-      },
-      {
-        "question": "Which is NOT true about chess combinations?",
-        "type": "negative",
-        "correctAnswer": "Computers solved chess completely",
-        "distractors": [
-          "Shannon estimated 10^120 games",
-          "Observable universe has ~10^80 atoms",
-          "Chess has simple rules"
-        ]
-      },
-      {
-        "question": "Observable universe has ~10^80 atoms. Chess has ~10^___ possible games.",
-        "type": "fill_blank",
-        "correctAnswer": "120",
-        "distractors": [
-          "80",
-          "100",
-          "50"
-        ]
-      },
-      {
-        "question": "There are fewer atoms than chess game possibilities.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
-    ],
     "category": [
       "Natural Sciences",
       "physics_mechanics",
@@ -174,56 +75,6 @@
       "500 km/h",
       "800 km/h",
       "5,000 km/h"
-    ],
-    "variants": [
-      {
-        "question": "What is Neptune's maximum wind speed?",
-        "type": "forward",
-        "correctAnswer": "2,100 km/h",
-        "distractors": [
-          "500 km/h",
-          "800 km/h",
-          "5,000 km/h"
-        ]
-      },
-      {
-        "question": "Which planet has winds exceeding the speed of sound?",
-        "type": "reverse",
-        "correctAnswer": "Neptune",
-        "distractors": [
-          "Jupiter",
-          "Saturn",
-          "Uranus"
-        ]
-      },
-      {
-        "question": "Which is NOT true about Neptune's winds?",
-        "type": "negative",
-        "correctAnswer": "Powered entirely by solar radiation",
-        "distractors": [
-          "Exceed 2,000 km/h",
-          "Faster than Earth's sound speed",
-          "Driven by internal heat"
-        ]
-      },
-      {
-        "question": "Neptune's winds reach up to _____ km/h.",
-        "type": "fill_blank",
-        "correctAnswer": "2,100",
-        "distractors": [
-          "500",
-          "1,000",
-          "10,000"
-        ]
-      },
-      {
-        "question": "Neptune's winds exceed Earth's speed of sound.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
     ],
     "category": [
       "Natural Sciences",
@@ -256,56 +107,6 @@
       "Methane snow",
       "Liquid helium"
     ],
-    "variants": [
-      {
-        "question": "What unusual precipitation occurs inside Neptune and Uranus?",
-        "type": "forward",
-        "correctAnswer": "Diamond rain",
-        "distractors": [
-          "Iron hail",
-          "Methane snow",
-          "Liquid helium"
-        ]
-      },
-      {
-        "question": "On which planets does diamond rain theoretically occur?",
-        "type": "reverse",
-        "correctAnswer": "Neptune and Uranus",
-        "distractors": [
-          "Jupiter and Saturn",
-          "Mars and Venus",
-          "Mercury and Earth"
-        ]
-      },
-      {
-        "question": "Which statement about diamond rain is NOT true?",
-        "type": "negative",
-        "correctAnswer": "Spacecraft directly observed it",
-        "distractors": [
-          "Extreme pressure creates diamonds",
-          "Scientists replicated it in labs",
-          "Carbon crystallises from hydrocarbons"
-        ]
-      },
-      {
-        "question": "Extreme pressure and heat compress carbon into _____ inside ice giants.",
-        "type": "fill_blank",
-        "correctAnswer": "diamonds",
-        "distractors": [
-          "graphite",
-          "silicon",
-          "iron"
-        ]
-      },
-      {
-        "question": "Laboratory experiments confirmed diamond rain conditions exist on Neptune.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
-    ],
     "category": [
       "Natural Sciences",
       "physics_mechanics",
@@ -336,56 +137,6 @@
       "About a million tonnes",
       "About a trillion tonnes",
       "About a thousand tonnes"
-    ],
-    "variants": [
-      {
-        "question": "How much would a teaspoon of neutron star material weigh on Earth?",
-        "type": "forward",
-        "correctAnswer": "About a billion tonnes",
-        "distractors": [
-          "About a million tonnes",
-          "About a trillion tonnes",
-          "About a thousand tonnes"
-        ]
-      },
-      {
-        "question": "Which stellar remnant is so dense one teaspoon weighs a billion tonnes?",
-        "type": "reverse",
-        "correctAnswer": "Neutron star",
-        "distractors": [
-          "White dwarf",
-          "Red giant",
-          "Black hole"
-        ]
-      },
-      {
-        "question": "Which is NOT true about neutron star density?",
-        "type": "negative",
-        "correctAnswer": "Less dense than regular matter",
-        "distractors": [
-          "Forms from massive star collapse",
-          "Protons merge into neutrons",
-          "Comparable to atomic nucleus"
-        ]
-      },
-      {
-        "question": "A teaspoon of neutron star material weighs about _____ on Earth.",
-        "type": "fill_blank",
-        "correctAnswer": "a billion tonnes",
-        "distractors": [
-          "a million tonnes",
-          "ten billion tonnes",
-          "a trillion tonnes"
-        ]
-      },
-      {
-        "question": "Neutron stars form when massive stars collapse and electrons merge with protons.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
     ],
     "category": [
       "Natural Sciences",
@@ -418,58 +169,6 @@
       "Meteor impacts",
       "Early algae"
     ],
-    "variants": [
-      {
-        "question": "Which organisms caused the Great Oxidation Event?",
-        "type": "forward",
-        "correctAnswer": "Cyanobacteria",
-        "distractors": [
-          "Volcanic eruptions",
-          "Meteor impacts",
-          "Early algae"
-        ]
-      },
-      {
-        "question": "Early Earth's oxygen came from photosynthesizing what?",
-        "type": "reverse",
-        "correctAnswer": "Cyanobacteria",
-        "distractors": [
-          "Plants",
-          "Coral reefs",
-          "Fungi"
-        ]
-      },
-      {
-        "question": "Which did NOT cause atmospheric oxygen?",
-        "type": "negative",
-        "correctAnswer": "Volcanic eruptions",
-        "distractors": [
-          "Cyanobacteria photosynthesis",
-          "Oxygenic microbes",
-          "Photosynthetic organisms"
-        ]
-      },
-      {
-        "question": "The Great Oxidation Event was caused by _____ photosynthesis.",
-        "type": "fill_blank",
-        "correctAnswer": "Cyanobacteria",
-        "distractors": [
-          "Volcanic",
-          "Lightning",
-          "Meteorite"
-        ]
-      },
-      {
-        "question": "Earth's early atmosphere contained almost no oxygen before cyanobacteria evolved.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False, oxygen was always abundant",
-          "False, volcanoes provided oxygen",
-          "False, plants created all oxygen"
-        ]
-      }
-    ],
     "category": [
       "Natural Sciences",
       "botany_plants",
@@ -500,56 +199,6 @@
       "Cold water always",
       "They freeze equally",
       "It depends on container size"
-    ],
-    "variants": [
-      {
-        "question": "Which freezes faster under certain conditions?",
-        "type": "forward",
-        "correctAnswer": "Hot water",
-        "distractors": [
-          "Cold water always",
-          "They freeze equally",
-          "It depends on container size"
-        ]
-      },
-      {
-        "question": "Name the effect where hot water sometimes freezes faster than cold water.",
-        "type": "reverse",
-        "correctAnswer": "Mpemba effect",
-        "distractors": [
-          "Leidenfrost effect",
-          "Bernoulli effect",
-          "Coriolis effect"
-        ]
-      },
-      {
-        "question": "Which is NOT a proposed explanation for the Mpemba effect?",
-        "type": "negative",
-        "correctAnswer": "Water density increases when heated",
-        "distractors": [
-          "Evaporation reduces mass",
-          "Dissolved gases escape",
-          "Convection patterns change"
-        ]
-      },
-      {
-        "question": "The _____ effect explains why hot water can freeze faster than cold.",
-        "type": "fill_blank",
-        "correctAnswer": "Mpemba",
-        "distractors": [
-          "Newton",
-          "Archimedes",
-          "Joule"
-        ]
-      },
-      {
-        "question": "The Mpemba effect works reliably under all freezing conditions.",
-        "type": "true_false",
-        "correctAnswer": "False",
-        "distractors": [
-          "True"
-        ]
-      }
     ],
     "category": [
       "Natural Sciences",
@@ -582,56 +231,6 @@
       "2001",
       "2018"
     ],
-    "variants": [
-      {
-        "question": "When did Voyager 1 cross into interstellar space?",
-        "type": "forward",
-        "correctAnswer": "2012",
-        "distractors": [
-          "1977",
-          "2001",
-          "2018"
-        ]
-      },
-      {
-        "question": "Which spacecraft first entered interstellar space?",
-        "type": "reverse",
-        "correctAnswer": "Voyager 1",
-        "distractors": [
-          "Voyager 2",
-          "Pioneer 10",
-          "New Horizons"
-        ]
-      },
-      {
-        "question": "Which is NOT true about Voyager 1?",
-        "type": "negative",
-        "correctAnswer": "Launched in the 1990s",
-        "distractors": [
-          "Carries a Golden Record",
-          "Crossed heliopause in 2012",
-          "Launched in 1977"
-        ]
-      },
-      {
-        "question": "Voyager 1 crossed the heliopause in _____.",
-        "type": "fill_blank",
-        "correctAnswer": "2012",
-        "distractors": [
-          "1990",
-          "2005",
-          "2019"
-        ]
-      },
-      {
-        "question": "Voyager 1 entered interstellar space before 2010.",
-        "type": "true_false",
-        "correctAnswer": "False",
-        "distractors": [
-          "True"
-        ]
-      }
-    ],
     "category": [
       "Natural Sciences",
       "physics_mechanics",
@@ -662,58 +261,6 @@
       "Sound waves freeze in cold",
       "Gravity absorbs all sound",
       "Radiation destroys sound waves"
-    ],
-    "variants": [
-      {
-        "question": "Why is sound unable to propagate through space?",
-        "type": "forward",
-        "correctAnswer": "Space is a near-perfect vacuum",
-        "distractors": [
-          "Sound waves freeze in cold",
-          "Gravity absorbs all sound",
-          "Radiation destroys sound waves"
-        ]
-      },
-      {
-        "question": "What property of space prevents sound transmission?",
-        "type": "reverse",
-        "correctAnswer": "Absence of a sound-carrying medium",
-        "distractors": [
-          "Extreme temperature variations",
-          "Intense magnetic fields",
-          "Solar wind interference"
-        ]
-      },
-      {
-        "question": "Which statement about space sound is FALSE?",
-        "type": "negative",
-        "correctAnswer": "Sound travels freely through space",
-        "distractors": [
-          "Sound needs a medium",
-          "Space is a vacuum",
-          "Explosions are silent in space"
-        ]
-      },
-      {
-        "question": "Sound requires a _____ to travel, which space lacks.",
-        "type": "fill_blank",
-        "correctAnswer": "medium",
-        "distractors": [
-          "frequency",
-          "source",
-          "temperature"
-        ]
-      },
-      {
-        "question": "Sound waves can propagate through the vacuum of space.",
-        "type": "true_false",
-        "correctAnswer": "False",
-        "distractors": [
-          "True",
-          "Sometimes true",
-          "Depends on frequency"
-        ]
-      }
     ],
     "category": [
       "Natural Sciences",
@@ -746,56 +293,6 @@
       "A volcanic wasteland",
       "Even larger desert"
     ],
-    "variants": [
-      {
-        "question": "What was the Sahara Desert like 6,000 years ago?",
-        "type": "forward",
-        "correctAnswer": "Lush green savanna with lakes",
-        "distractors": [
-          "A frozen tundra",
-          "A volcanic wasteland",
-          "Even larger desert"
-        ]
-      },
-      {
-        "question": "Which desert was a lush green savanna with lakes about 6,000 years ago?",
-        "type": "reverse",
-        "correctAnswer": "The Sahara",
-        "distractors": [
-          "The Gobi",
-          "The Atacama",
-          "The Kalahari"
-        ]
-      },
-      {
-        "question": "Which is NOT true about the Green Sahara period?",
-        "type": "negative",
-        "correctAnswer": "It occurred 60,000 years ago",
-        "distractors": [
-          "Monsoon rains brought vegetation",
-          "Hippos and crocodiles lived there",
-          "Transition to desert was rapid"
-        ]
-      },
-      {
-        "question": "The African Humid Period, also called the _____ Sahara, brought monsoon rains.",
-        "type": "fill_blank",
-        "correctAnswer": "Green",
-        "distractors": [
-          "Blue",
-          "Ancient",
-          "Lost"
-        ]
-      },
-      {
-        "question": "The Sahara was a lush savanna with lakes and rivers 6,000 years ago.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
-    ],
     "category": [
       "Natural Sciences",
       "geology_earth",
@@ -826,56 +323,6 @@
       "About 3%",
       "About 25%",
       "About 50%"
-    ],
-    "variants": [
-      {
-        "question": "By approximately how much does water expand when freezing?",
-        "type": "forward",
-        "correctAnswer": "About 9%",
-        "distractors": [
-          "About 3%",
-          "About 25%",
-          "About 50%"
-        ]
-      },
-      {
-        "question": "Why does ice float while most frozen liquids sink?",
-        "type": "reverse",
-        "correctAnswer": "Water expands when freezing",
-        "distractors": [
-          "Ice is denser than water",
-          "Frozen water releases heat energy",
-          "Hexagonal crystals are heavier"
-        ]
-      },
-      {
-        "question": "Which is NOT true about water freezing?",
-        "type": "negative",
-        "correctAnswer": "Most liquids expand when frozen",
-        "distractors": [
-          "Ice forms a hexagonal lattice",
-          "Water expands about 9% when frozen",
-          "Lakes freeze from top down"
-        ]
-      },
-      {
-        "question": "Water expands by about _____% when it freezes.",
-        "type": "fill_blank",
-        "correctAnswer": "9",
-        "distractors": [
-          "15"
-        ]
-      },
-      {
-        "question": "Water's 9% expansion when freezing prevents lakes from freezing solid.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False — water contracts instead",
-          "False — ice sinks in water",
-          "False — expansion is negligible"
-        ]
-      }
     ],
     "category": [
       "Natural Sciences",
@@ -908,56 +355,6 @@
       "Ten times hotter",
       "Significantly colder"
     ],
-    "variants": [
-      {
-        "question": "Earth's core temperature compares to Sun's surface how?",
-        "type": "forward",
-        "correctAnswer": "Approximately the same",
-        "distractors": [
-          "Much cooler",
-          "Ten times hotter",
-          "Significantly colder"
-        ]
-      },
-      {
-        "question": "Which Earth layer reaches 5,000-6,000°C like the Sun's surface?",
-        "type": "reverse",
-        "correctAnswer": "Inner core",
-        "distractors": [
-          "Outer mantle",
-          "Crust",
-          "Outer core"
-        ]
-      },
-      {
-        "question": "Which is NOT true about Earth's core temperature?",
-        "type": "negative",
-        "correctAnswer": "It is much cooler than Sun",
-        "distractors": [
-          "Radioactive decay heats it",
-          "Reaches 5,000-6,000 degrees C",
-          "Maintained by formation heat"
-        ]
-      },
-      {
-        "question": "Earth's inner core reaches approximately _____ degrees Celsius.",
-        "type": "fill_blank",
-        "correctAnswer": "5,000-6,000",
-        "distractors": [
-          "1,000-2,000",
-          "10,000-15,000",
-          "500-1,000"
-        ]
-      },
-      {
-        "question": "Earth's core rivals the Sun's surface in temperature.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
-    ],
     "category": [
       "Natural Sciences",
       "geology_earth",
@@ -988,56 +385,6 @@
       "Thick atmospheric winds",
       "Retrograde orbit direction",
       "Lack of a moon"
-    ],
-    "variants": [
-      {
-        "question": "What makes a Venus day longer than its year?",
-        "type": "forward",
-        "correctAnswer": "Extremely slow rotation",
-        "distractors": [
-          "Thick atmospheric winds",
-          "Retrograde orbit direction",
-          "Lack of a moon"
-        ]
-      },
-      {
-        "question": "On which planet does one day exceed its orbital year?",
-        "type": "reverse",
-        "correctAnswer": "Venus",
-        "distractors": [
-          "Mercury",
-          "Mars",
-          "Jupiter"
-        ]
-      },
-      {
-        "question": "Which is NOT true about Venus rotation?",
-        "type": "negative",
-        "correctAnswer": "It rotates faster than Earth",
-        "distractors": [
-          "A day lasts 243 Earth days",
-          "It rotates retrograde",
-          "Its year is 225 Earth days"
-        ]
-      },
-      {
-        "question": "Venus takes 243 Earth days to rotate once, but only _____ days to orbit the Sun.",
-        "type": "fill_blank",
-        "correctAnswer": "225",
-        "distractors": [
-          "300",
-          "150",
-          "365"
-        ]
-      },
-      {
-        "question": "A day on Venus is longer than its year.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
     ],
     "category": [
       "Natural Sciences",
@@ -1070,56 +417,6 @@
       "Argon",
       "Hydrogen"
     ],
-    "variants": [
-      {
-        "question": "Which element was discovered in the Sun first?",
-        "type": "forward",
-        "correctAnswer": "Helium",
-        "distractors": [
-          "Neon",
-          "Argon",
-          "Hydrogen"
-        ]
-      },
-      {
-        "question": "When was helium first detected in sunlight during eclipse?",
-        "type": "reverse",
-        "correctAnswer": "1868",
-        "distractors": [
-          "1895",
-          "1842",
-          "1912"
-        ]
-      },
-      {
-        "question": "Which is NOT true about helium's discovery?",
-        "type": "negative",
-        "correctAnswer": "Found on Earth before the Sun",
-        "distractors": [
-          "Named after Greek sun god",
-          "Discovered during solar eclipse",
-          "Found on Earth in 1895"
-        ]
-      },
-      {
-        "question": "Helium was discovered in the _____ before being found on Earth.",
-        "type": "fill_blank",
-        "correctAnswer": "Sun",
-        "distractors": [
-          "Moon",
-          "Jupiter",
-          "Mars"
-        ]
-      },
-      {
-        "question": "Helium was found on the Sun 27 years before Earth discovery.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
-    ],
     "category": [
       "Natural Sciences",
       "chemistry_elements",
@@ -1150,58 +447,6 @@
       "Invisible quantum force",
       "Ghostly particle coupling",
       "Hidden variable theory"
-    ],
-    "variants": [
-      {
-        "question": "Einstein's famous name for quantum entanglement?",
-        "type": "forward",
-        "correctAnswer": "Spooky action at a distance",
-        "distractors": [
-          "Invisible quantum force",
-          "Ghostly particle coupling",
-          "Hidden variable theory"
-        ]
-      },
-      {
-        "question": "Which phenomenon did Einstein dismiss as spooky?",
-        "type": "reverse",
-        "correctAnswer": "Quantum entanglement",
-        "distractors": [
-          "Wave-particle duality",
-          "Quantum tunneling",
-          "The uncertainty principle"
-        ]
-      },
-      {
-        "question": "Which is NOT true about entanglement?",
-        "type": "negative",
-        "correctAnswer": "Allows faster-than-light communication",
-        "distractors": [
-          "Particles share quantum state",
-          "Measuring one reveals other instantly",
-          "Einstein was skeptical of it"
-        ]
-      },
-      {
-        "question": "Einstein called entanglement \"_____ action at a distance.\"",
-        "type": "fill_blank",
-        "correctAnswer": "spooky",
-        "distractors": [
-          "ghostly",
-          "invisible",
-          "magical"
-        ]
-      },
-      {
-        "question": "Entangled particles instantly correlate across any distance. What did Einstein call this?",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "He called it quantum teleportation",
-          "He accepted it immediately",
-          "He proved it impossible"
-        ]
-      }
     ],
     "category": [
       "Natural Sciences",
@@ -1234,58 +479,6 @@
       "Sunlight softens lower portions",
       "Gravity compresses bottom glass"
     ],
-    "variants": [
-      {
-        "question": "Why did medieval glaziers place thick glass edges at bottom?",
-        "type": "forward",
-        "correctAnswer": "For stability",
-        "distractors": [
-          "Glass flows downward slowly",
-          "Sunlight softens lower portions",
-          "Gravity compresses bottom glass"
-        ]
-      },
-      {
-        "question": "What technique made medieval glass unevenly thick?",
-        "type": "reverse",
-        "correctAnswer": "Spinning molten glass into discs",
-        "distractors": [
-          "Pouring into uneven moulds",
-          "Blowing into rectangular shapes",
-          "Dipping frames in molten pools"
-        ]
-      },
-      {
-        "question": "Which is NOT true about medieval window glass?",
-        "type": "negative",
-        "correctAnswer": "Glass noticeably flows at room temperature",
-        "distractors": [
-          "Made by spinning molten glass",
-          "Thicker edges placed at bottom",
-          "True flow requires geological timescales"
-        ]
-      },
-      {
-        "question": "Medieval glass was spun into _____, creating thicker edges.",
-        "type": "fill_blank",
-        "correctAnswer": "discs",
-        "distractors": [
-          "rods",
-          "sheets",
-          "tubes"
-        ]
-      },
-      {
-        "question": "Glass at room temperature flows so slowly it takes geological timescales to move measurably.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False — it flows within centuries",
-          "False — it flows within decades",
-          "False — it doesn't flow at all"
-        ]
-      }
-    ],
     "category": [
       "Natural Sciences",
       "materials_engineering",
@@ -1316,56 +509,6 @@
       "About 5 kg",
       "About 50 kg",
       "About 2 kg"
-    ],
-    "variants": [
-      {
-        "question": "How much carbon in average adult body?",
-        "type": "forward",
-        "correctAnswer": "About 16 kg",
-        "distractors": [
-          "About 5 kg",
-          "About 50 kg",
-          "About 2 kg"
-        ]
-      },
-      {
-        "question": "What element is backbone of all organic molecules?",
-        "type": "reverse",
-        "correctAnswer": "Carbon",
-        "distractors": [
-          "Nitrogen",
-          "Calcium",
-          "Phosphorus"
-        ]
-      },
-      {
-        "question": "Which is NOT true about body carbon?",
-        "type": "negative",
-        "correctAnswer": "Created entirely on Earth",
-        "distractors": [
-          "Forged in ancient stars",
-          "About 16 kg per adult",
-          "Backbone of DNA and proteins"
-        ]
-      },
-      {
-        "question": "Body carbon makes nearly _____ pencils.",
-        "type": "fill_blank",
-        "correctAnswer": "9,000",
-        "distractors": [
-          "500",
-          "50,000",
-          "1,000"
-        ]
-      },
-      {
-        "question": "Human body carbon originated in star cores.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
     ],
     "category": [
       "Natural Sciences",
@@ -1398,58 +541,6 @@
       "1 trillion light-years",
       "10 billion light-years"
     ],
-    "variants": [
-      {
-        "question": "What is the observable universe's approximate diameter?",
-        "type": "forward",
-        "correctAnswer": "93 billion light-years",
-        "distractors": [
-          "13.8 billion light-years",
-          "1 trillion light-years",
-          "10 billion light-years"
-        ]
-      },
-      {
-        "question": "Why is the observable universe 93 billion light-years wide but only 13.8 billion years old?",
-        "type": "reverse",
-        "correctAnswer": "Universe expansion over time",
-        "distractors": [
-          "Light travelled faster initially",
-          "Dark matter distorts measurements",
-          "Gravitational lensing effect"
-        ]
-      },
-      {
-        "question": "Which statement about the observable universe is NOT true?",
-        "type": "negative",
-        "correctAnswer": "It is 13.8 billion light-years wide",
-        "distractors": [
-          "It has continuously expanded",
-          "Distant objects moved apart",
-          "Expansion accounts for diameter"
-        ]
-      },
-      {
-        "question": "The observable universe is approximately _____ billion light-years in diameter.",
-        "type": "fill_blank",
-        "correctAnswer": "93",
-        "distractors": [
-          "13.8",
-          "186",
-          "50"
-        ]
-      },
-      {
-        "question": "The observable universe is wider than its age in light-years because of cosmic expansion.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False",
-          "Cannot be determined",
-          "Partially true"
-        ]
-      }
-    ],
     "category": [
       "Natural Sciences",
       "physics_mechanics",
@@ -1480,57 +571,6 @@
       "10^-12 seconds",
       "10^-15 seconds",
       "10^-9 seconds"
-    ],
-    "variants": [
-      {
-        "question": "What is a zeptosecond?",
-        "type": "forward",
-        "correctAnswer": "10^-21 seconds",
-        "distractors": [
-          "10^-12 seconds",
-          "10^-15 seconds",
-          "10^-9 seconds"
-        ]
-      },
-      {
-        "question": "What unit describes 10^-21 seconds, measured across a hydrogen molecule?",
-        "type": "reverse",
-        "correctAnswer": "Zeptosecond",
-        "distractors": [
-          "Attosecond",
-          "Femtosecond",
-          "Nanosecond"
-        ]
-      },
-      {
-        "question": "Which is NOT true about zeptoseconds?",
-        "type": "negative",
-        "correctAnswer": "Used in everyday physics",
-        "distractors": [
-          "Equals 10^-21 seconds",
-          "Light crosses hydrogen in 247",
-          "Measured at Goethe University"
-        ]
-      },
-      {
-        "question": "Light crosses a hydrogen molecule in 247 _____ seconds.",
-        "type": "fill_blank",
-        "correctAnswer": "zepto",
-        "distractors": [
-          "atto",
-          "femto",
-          "pico"
-        ]
-      },
-      {
-        "question": "Scientists measured light crossing hydrogen at zeptosecond scale in 2020.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False",
-          "Unmeasurable"
-        ]
-      }
     ],
     "category": [
       "Natural Sciences",
@@ -1563,56 +603,6 @@
       "Parabola",
       "Ellipse"
     ],
-    "variants": [
-      {
-        "question": "What is a rainbow's complete geometric shape?",
-        "type": "forward",
-        "correctAnswer": "Full circle",
-        "distractors": [
-          "Semicircle",
-          "Parabola",
-          "Ellipse"
-        ]
-      },
-      {
-        "question": "What optical phenomenon appears circular but looks like an arc from the ground?",
-        "type": "reverse",
-        "correctAnswer": "Rainbow",
-        "distractors": [
-          "Sun halo",
-          "Lens flare",
-          "Mirage"
-        ]
-      },
-      {
-        "question": "Which is NOT true about rainbows?",
-        "type": "negative",
-        "correctAnswer": "Rainbows are naturally semicircular",
-        "distractors": [
-          "They form at 42-degree angles",
-          "Ground blocks the lower half",
-          "Pilots see full circles aloft"
-        ]
-      },
-      {
-        "question": "Rainbows are actually full _____ — the ground cuts off the bottom half.",
-        "type": "fill_blank",
-        "correctAnswer": "circles",
-        "distractors": [
-          "arcs",
-          "domes",
-          "rings"
-        ]
-      },
-      {
-        "question": "From high altitude, you can see a rainbow's complete circular form.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
-    ],
     "category": [
       "Natural Sciences",
       "physics_mechanics",
@@ -1643,56 +633,6 @@
       "Antifreeze proteins",
       "Silica gel",
       "Glycerol"
-    ],
-    "variants": [
-      {
-        "question": "What do tardigrades replace water with to survive?",
-        "type": "forward",
-        "correctAnswer": "Trehalose",
-        "distractors": [
-          "Antifreeze proteins",
-          "Silica gel",
-          "Glycerol"
-        ]
-      },
-      {
-        "question": "Which microscopic animal survives space vacuum and extreme temperatures?",
-        "type": "reverse",
-        "correctAnswer": "Tardigrades",
-        "distractors": [
-          "Rotifers",
-          "Nematodes",
-          "Amoebae"
-        ]
-      },
-      {
-        "question": "Which is NOT true about tardigrades?",
-        "type": "negative",
-        "correctAnswer": "They remain active during extreme conditions",
-        "distractors": [
-          "They enter cryptobiotic tun state",
-          "Trehalose protects their cells",
-          "They survive intense radiation"
-        ]
-      },
-      {
-        "question": "In tun state, tardigrades replace water with _____, forming a protective matrix.",
-        "type": "fill_blank",
-        "correctAnswer": "trehalose",
-        "distractors": [
-          "glucose",
-          "sucrose",
-          "fructose"
-        ]
-      },
-      {
-        "question": "Tardigrades can survive from near absolute zero to 150°C.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
     ],
     "category": [
       "Life Sciences",
@@ -1725,58 +665,6 @@
       "Wax coating by bees",
       "Natural alcohol fermentation"
     ],
-    "variants": [
-      {
-        "question": "What combination prevents honey from spoiling?",
-        "type": "forward",
-        "correctAnswer": "Low water, high acidity, hydrogen peroxide",
-        "distractors": [
-          "High sugar content alone",
-          "Wax coating by bees",
-          "Natural alcohol fermentation"
-        ]
-      },
-      {
-        "question": "Which ancient food still edible after 3,000 years?",
-        "type": "reverse",
-        "correctAnswer": "Honey",
-        "distractors": [
-          "Olive oil",
-          "Grain",
-          "Meat"
-        ]
-      },
-      {
-        "question": "Which is NOT a reason honey resists spoilage?",
-        "type": "negative",
-        "correctAnswer": "High water content kills bacteria",
-        "distractors": [
-          "Low water content below twenty percent",
-          "pH between three point five and four point five",
-          "Glucose oxidase produces hydrogen peroxide"
-        ]
-      },
-      {
-        "question": "Bees add _____ enzyme to honey for preservation.",
-        "type": "fill_blank",
-        "correctAnswer": "glucose oxidase",
-        "distractors": [
-          "lactase",
-          "amylase",
-          "catalase"
-        ]
-      },
-      {
-        "question": "Three-thousand-year-old sealed honey from tombs is still edible.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "All food eventually spoils",
-          "Only honey in gold containers lasts",
-          "Honey needs added preservatives"
-        ]
-      }
-    ],
     "category": [
       "Life Sciences",
       "digestion_metabolism",
@@ -1807,58 +695,6 @@
       "To the Moon and back",
       "Around Earth once",
       "To Mars and back"
-    ],
-    "variants": [
-      {
-        "question": "How far would all human DNA stretch if uncoiled?",
-        "type": "forward",
-        "correctAnswer": "Pluto and back multiple times",
-        "distractors": [
-          "To the Moon and back",
-          "Around Earth once",
-          "To Mars and back"
-        ]
-      },
-      {
-        "question": "What molecule in human cells stretches Pluto and back if fully uncoiled?",
-        "type": "reverse",
-        "correctAnswer": "DNA",
-        "distractors": [
-          "RNA",
-          "Collagen",
-          "Keratin"
-        ]
-      },
-      {
-        "question": "Which is NOT true about human DNA?",
-        "type": "negative",
-        "correctAnswer": "Each cell has 300 base pairs",
-        "distractors": [
-          "Histones coil DNA tightly",
-          "Each cell has 46 chromosomes",
-          "3 billion base pairs per cell"
-        ]
-      },
-      {
-        "question": "DNA coils around proteins called _____.",
-        "type": "fill_blank",
-        "correctAnswer": "histones",
-        "distractors": [
-          "keratin",
-          "collagen",
-          "elastin"
-        ]
-      },
-      {
-        "question": "All DNA in a human body reaches Pluto six times over.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False — only once",
-          "False — to Mars only",
-          "False — to the Moon"
-        ]
-      }
     ],
     "category": [
       "Life Sciences",
@@ -1891,56 +727,6 @@
       "The Forest Highway",
       "The Fungal Grid"
     ],
-    "variants": [
-      {
-        "question": "What are underground fungal networks connecting trees called?",
-        "type": "forward",
-        "correctAnswer": "The Wood Wide Web",
-        "distractors": [
-          "The Root Internet",
-          "The Forest Highway",
-          "The Fungal Grid"
-        ]
-      },
-      {
-        "question": "Mycorrhizal fungi connect trees and enable nutrient sharing. What is this system called?",
-        "type": "reverse",
-        "correctAnswer": "The Wood Wide Web",
-        "distractors": [
-          "The Root Network",
-          "The Green Grid",
-          "The Forest Matrix"
-        ]
-      },
-      {
-        "question": "Which is NOT true about the Wood Wide Web?",
-        "type": "negative",
-        "correctAnswer": "Trees only benefit themselves, never help others",
-        "distractors": [
-          "Fungi exchange minerals for tree sugars",
-          "Suzanne Simard proved carbon moves between trees",
-          "Trees share nutrients across species"
-        ]
-      },
-      {
-        "question": "Fungi provide water and minerals in exchange for _____ from photosynthesis.",
-        "type": "fill_blank",
-        "correctAnswer": "sugars",
-        "distractors": [
-          "nitrogen",
-          "oxygen",
-          "proteins"
-        ]
-      },
-      {
-        "question": "Trees share nutrients through underground fungal networks.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
-    ],
     "category": [
       "Life Sciences",
       "digestion_metabolism",
@@ -1971,54 +757,6 @@
       "Three",
       "Eight",
       "Thirty-two"
-    ],
-    "variants": [
-      {
-        "question": "How many colour receptors does mantis shrimp have?",
-        "type": "forward",
-        "correctAnswer": "Sixteen",
-        "distractors": [
-          "Three",
-          "Eight",
-          "Thirty-two"
-        ]
-      },
-      {
-        "question": "Which creature has 16 colour receptors and bullet-speed punches?",
-        "type": "reverse",
-        "correctAnswer": "Mantis shrimp",
-        "distractors": [
-          "Pistol shrimp",
-          "Blue-ringed octopus",
-          "Cone snail"
-        ]
-      },
-      {
-        "question": "Which is NOT true about mantis shrimp?",
-        "type": "negative",
-        "correctAnswer": "Has three colour receptors",
-        "distractors": [
-          "Strikes create cavitation bubbles",
-          "Sees ultraviolet light",
-          "Punches like bullets"
-        ]
-      },
-      {
-        "question": "Mantis shrimp has _____ colour receptors versus three in humans.",
-        "type": "fill_blank",
-        "correctAnswer": "16",
-        "distractors": [
-          "32"
-        ]
-      },
-      {
-        "question": "Mantis shrimp punches create cavitation bubbles that stun prey.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
     ],
     "category": [
       "Life Sciences",
@@ -2051,58 +789,6 @@
       "Fall of Rome",
       "Birth of Jesus"
     ],
-    "variants": [
-      {
-        "question": "Which event is closer in time to Cleopatra's death?",
-        "type": "forward",
-        "correctAnswer": "Moon landing",
-        "distractors": [
-          "Great Pyramid construction",
-          "Fall of Rome",
-          "Birth of Jesus"
-        ]
-      },
-      {
-        "question": "Who lived closer to 1969 than to 2560 BC?",
-        "type": "reverse",
-        "correctAnswer": "Cleopatra",
-        "distractors": [
-          "Khufu",
-          "Julius Caesar",
-          "Tutankhamun"
-        ]
-      },
-      {
-        "question": "Which is NOT true about Cleopatra's timeline?",
-        "type": "negative",
-        "correctAnswer": "She lived during pyramid construction",
-        "distractors": [
-          "Lived in Ptolemaic period",
-          "Died 30 BC",
-          "Lived 2000 years after pyramids"
-        ]
-      },
-      {
-        "question": "Cleopatra lived closer to the _____ than pyramids.",
-        "type": "fill_blank",
-        "correctAnswer": "Moon landing",
-        "distractors": [
-          "Roman conquest",
-          "Medieval period",
-          "Industrial Revolution"
-        ]
-      },
-      {
-        "question": "The Moon landing is closer in time to Cleopatra than the Great Pyramid.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False",
-          "Cannot be determined",
-          "Debatable"
-        ]
-      }
-    ],
     "category": [
       "Life Sciences",
       "anatomy_organs",
@@ -2133,56 +819,6 @@
       "Trees, by 100 million years",
       "They evolved simultaneously",
       "Trees, by 200 million years"
-    ],
-    "variants": [
-      {
-        "question": "Which appeared on Earth first — sharks or trees?",
-        "type": "forward",
-        "correctAnswer": "Sharks, 200 million years earlier",
-        "distractors": [
-          "Trees, by 100 million years",
-          "They evolved simultaneously",
-          "Trees, by 200 million years"
-        ]
-      },
-      {
-        "question": "What animal group predates forests by roughly 200 million years?",
-        "type": "reverse",
-        "correctAnswer": "Sharks",
-        "distractors": [
-          "Dinosaurs",
-          "Insects",
-          "Amphibians"
-        ]
-      },
-      {
-        "question": "Which is NOT true about shark evolution?",
-        "type": "negative",
-        "correctAnswer": "Trees evolved before sharks",
-        "distractors": [
-          "Sharks survived five mass extinctions",
-          "First trees appeared 385 million years ago",
-          "Sharks existed 450 million years ago"
-        ]
-      },
-      {
-        "question": "Sharks have existed much longer than trees.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      },
-      {
-        "question": "Sharks appeared ___ million years before trees.",
-        "type": "fill_blank",
-        "correctAnswer": "200",
-        "distractors": [
-          "100",
-          "65",
-          "150"
-        ]
-      }
     ],
     "category": [
       "Life Sciences",
@@ -2215,58 +851,6 @@
       "Colony",
       "Parade"
     ],
-    "variants": [
-      {
-        "question": "What is the collective noun for flamingos?",
-        "type": "forward",
-        "correctAnswer": "Flamboyance",
-        "distractors": [
-          "Flock",
-          "Colony",
-          "Parade"
-        ]
-      },
-      {
-        "question": "Which bird group is called a flamboyance?",
-        "type": "reverse",
-        "correctAnswer": "Flamingos",
-        "distractors": [
-          "Peacocks",
-          "Parrots",
-          "Toucans"
-        ]
-      },
-      {
-        "question": "Which is NOT true about flamingos?",
-        "type": "negative",
-        "correctAnswer": "Born naturally pink",
-        "distractors": [
-          "Called a flamboyance",
-          "Pink from carotenoids",
-          "Color from shrimp diet"
-        ]
-      },
-      {
-        "question": "A group of flamingos is a _____.",
-        "type": "fill_blank",
-        "correctAnswer": "flamboyance",
-        "distractors": [
-          "colony",
-          "flock",
-          "parade"
-        ]
-      },
-      {
-        "question": "Flamingos are pink because of carotenoids in their food.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False: naturally pink",
-          "False: genetic trait",
-          "False: water minerals"
-        ]
-      }
-    ],
     "category": [
       "Life Sciences",
       "anatomy_organs",
@@ -2297,55 +881,6 @@
       "Find a new mate immediately",
       "Leave the anemone",
       "Become infertile"
-    ],
-    "variants": [
-      {
-        "question": "What would realistically happen to Marlin after Nemo's mother died?",
-        "type": "forward",
-        "correctAnswer": "Change sex to become female",
-        "distractors": [
-          "Find a new mate immediately",
-          "Leave the anemone",
-          "Become infertile"
-        ]
-      },
-      {
-        "question": "Which fish species are born male, with dominant individuals changing sex to female?",
-        "type": "reverse",
-        "correctAnswer": "Clownfish",
-        "distractors": [
-          "Goldfish",
-          "Angelfish",
-          "Betta fish"
-        ]
-      },
-      {
-        "question": "Which is NOT true about clownfish sex change?",
-        "type": "negative",
-        "correctAnswer": "Only females can change sex",
-        "distractors": [
-          "All clownfish born male",
-          "Dominant individual becomes female",
-          "Change is permanent"
-        ]
-      },
-      {
-        "question": "All clownfish are born _____, with dominant fish changing sex to female.",
-        "type": "fill_blank",
-        "correctAnswer": "male",
-        "distractors": [
-          "female",
-          "genderless"
-        ]
-      },
-      {
-        "question": "All clownfish are born male, and the dominant individual can change sex to female.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
     ],
     "category": [
       "Life Sciences",
@@ -2378,58 +913,6 @@
       "About 500 kg",
       "About 20 kg"
     ],
-    "variants": [
-      {
-        "question": "A blue whale's heart weighs approximately how much?",
-        "type": "forward",
-        "correctAnswer": "About 180 kg",
-        "distractors": [
-          "About 50 kg",
-          "About 500 kg",
-          "About 20 kg"
-        ]
-      },
-      {
-        "question": "Which animal has an aorta large enough for a human to crawl through?",
-        "type": "reverse",
-        "correctAnswer": "Blue whale",
-        "distractors": [
-          "Elephant",
-          "Sperm whale",
-          "Hippopotamus"
-        ]
-      },
-      {
-        "question": "Which is NOT true about blue whale hearts?",
-        "type": "negative",
-        "correctAnswer": "They beat hundreds of times per minute",
-        "distractors": [
-          "They weigh about 180 kg",
-          "They pump 220 litres per beat",
-          "Humans could crawl through aorta"
-        ]
-      },
-      {
-        "question": "A blue whale's heart weighs approximately _____ kg.",
-        "type": "fill_blank",
-        "correctAnswer": "180",
-        "distractors": [
-          "50",
-          "500",
-          "20"
-        ]
-      },
-      {
-        "question": "Blue whale hearts beat only 4–8 times per minute when diving.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False — they beat 50–100 times",
-          "False — they beat 200+ times",
-          "False — heartbeat doesn't change"
-        ]
-      }
-    ],
     "category": [
       "Life Sciences",
       "cardiovascular",
@@ -2460,56 +943,6 @@
       "Ignored the mask completely",
       "Attacked all nearby humans",
       "Fled the territory"
-    ],
-    "variants": [
-      {
-        "question": "What did trapped crows do years later when they saw the same mask?",
-        "type": "forward",
-        "correctAnswer": "Alarm calls and dive-bombing",
-        "distractors": [
-          "Ignored the mask completely",
-          "Attacked all nearby humans",
-          "Fled the territory"
-        ]
-      },
-      {
-        "question": "Which bird species remembers human faces and teaches others to fear them?",
-        "type": "reverse",
-        "correctAnswer": "Crows",
-        "distractors": [
-          "Pigeons",
-          "Sparrows",
-          "Seagulls"
-        ]
-      },
-      {
-        "question": "Which is NOT true about crow intelligence?",
-        "type": "negative",
-        "correctAnswer": "They forget faces after weeks",
-        "distractors": [
-          "They have highly developed forebrains",
-          "They share danger information socially",
-          "They remember specific human faces"
-        ]
-      },
-      {
-        "question": "Crows can teach their offspring about dangerous humans they never met.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      },
-      {
-        "question": "Crows who were trapped learned to fear the mask and _______ their young to fear it.",
-        "type": "fill_blank",
-        "correctAnswer": "taught",
-        "distractors": [
-          "ignored",
-          "forgot",
-          "avoided"
-        ]
-      }
     ],
     "category": [
       "Life Sciences",
@@ -2542,56 +975,6 @@
       "Raspberry",
       "Blackberry"
     ],
-    "variants": [
-      {
-        "question": "Which fruit is botanically a true berry?",
-        "type": "forward",
-        "correctAnswer": "Banana",
-        "distractors": [
-          "Strawberry",
-          "Raspberry",
-          "Blackberry"
-        ]
-      },
-      {
-        "question": "What makes bananas berries but excludes strawberries botanically?",
-        "type": "reverse",
-        "correctAnswer": "Single ovary with embedded seeds",
-        "distractors": [
-          "Growing on vines",
-          "External seeds",
-          "Sweet flavor"
-        ]
-      },
-      {
-        "question": "Which is NOT botanically a true berry?",
-        "type": "negative",
-        "correctAnswer": "Strawberry",
-        "distractors": [
-          "Banana",
-          "Watermelon",
-          "Tomato"
-        ]
-      },
-      {
-        "question": "Bananas are berries. Strawberries are berries. True or false?",
-        "type": "true_false",
-        "correctAnswer": "False",
-        "distractors": [
-          "True"
-        ]
-      },
-      {
-        "question": "Botanically, berries develop from ___ with seeds in flesh.",
-        "type": "fill_blank",
-        "correctAnswer": "Single ovary",
-        "distractors": [
-          "Multiple ovaries",
-          "One stigma",
-          "External sepals"
-        ]
-      }
-    ],
     "category": [
       "Life Sciences",
       "anatomy_organs",
@@ -2622,57 +1005,6 @@
       "About 10%",
       "About 30%",
       "About 90%"
-    ],
-    "variants": [
-      {
-        "question": "What percentage of DNA do humans share with bananas?",
-        "type": "forward",
-        "correctAnswer": "About 60%",
-        "distractors": [
-          "About 10%",
-          "About 30%",
-          "About 90%"
-        ]
-      },
-      {
-        "question": "With which fruit do humans share approximately 60% of their DNA?",
-        "type": "reverse",
-        "correctAnswer": "Bananas",
-        "distractors": [
-          "Apples",
-          "Oranges",
-          "Tomatoes"
-        ]
-      },
-      {
-        "question": "Which is NOT true about human and banana DNA?",
-        "type": "negative",
-        "correctAnswer": "Humans share more with bananas than mice",
-        "distractors": [
-          "Core genes are conserved across eukaryotes",
-          "Humans share 85% with mice",
-          "Basic cellular machinery is ancient"
-        ]
-      },
-      {
-        "question": "Humans share about _____% of DNA with bananas.",
-        "type": "fill_blank",
-        "correctAnswer": "60",
-        "distractors": [
-          "10",
-          "30",
-          "95"
-        ]
-      },
-      {
-        "question": "Humans and bananas share 60% of DNA due to ancient shared cellular machinery.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False",
-          "Partially true"
-        ]
-      }
     ],
     "category": [
       "Life Sciences",
@@ -2705,56 +1037,6 @@
       "Muscles, nerves, skin",
       "Eyes, ears, stomach"
     ],
-    "variants": [
-      {
-        "question": "What organs do jellyfish completely lack?",
-        "type": "forward",
-        "correctAnswer": "Brain, heart, blood",
-        "distractors": [
-          "Lungs, liver, kidneys",
-          "Muscles, nerves, skin",
-          "Eyes, ears, stomach"
-        ]
-      },
-      {
-        "question": "Which animal survived 500 million years without brain, heart, blood?",
-        "type": "reverse",
-        "correctAnswer": "Jellyfish",
-        "distractors": [
-          "Sea sponges",
-          "Corals",
-          "Sea anemones"
-        ]
-      },
-      {
-        "question": "Which is NOT true about jellyfish?",
-        "type": "negative",
-        "correctAnswer": "They have a centralized brain",
-        "distractors": [
-          "They use a nerve net",
-          "They lack blood entirely",
-          "They predate dinosaurs"
-        ]
-      },
-      {
-        "question": "Jellyfish have survived 500 million years without brain, heart, blood.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      },
-      {
-        "question": "Jellyfish sense and respond using a _____ nerve net.",
-        "type": "fill_blank",
-        "correctAnswer": "diffuse",
-        "distractors": [
-          "centralized",
-          "primitive",
-          "distributed"
-        ]
-      }
-    ],
     "category": [
       "Life Sciences",
       "anatomy_organs",
@@ -2785,58 +1067,6 @@
       "Exactly 24 hours",
       "About 18 hours",
       "About 30 hours"
-    ],
-    "variants": [
-      {
-        "question": "How long was a day during dinosaur times?",
-        "type": "forward",
-        "correctAnswer": "About 22 hours",
-        "distractors": [
-          "Exactly 24 hours",
-          "About 18 hours",
-          "About 30 hours"
-        ]
-      },
-      {
-        "question": "What gradually slows Earth's rotation over millions of years?",
-        "type": "reverse",
-        "correctAnswer": "The Moon's tidal forces",
-        "distractors": [
-          "Solar wind",
-          "Continental drift",
-          "Solar gravity"
-        ]
-      },
-      {
-        "question": "Which is NOT true about ancient Earth day length?",
-        "type": "negative",
-        "correctAnswer": "Days were longer than today",
-        "distractors": [
-          "The Moon exerts tidal forces",
-          "Earth's rotation is slowing",
-          "The Moon moves away yearly"
-        ]
-      },
-      {
-        "question": "Dinosaurs lived on a planet where days lasted _____ hours.",
-        "type": "fill_blank",
-        "correctAnswer": "22",
-        "distractors": [
-          "24",
-          "18",
-          "30"
-        ]
-      },
-      {
-        "question": "Ancient Earth days were shorter than today's 24 hours.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "Days were always 24 hours",
-          "Days were much longer then",
-          "Day length never changed"
-        ]
-      }
     ],
     "category": [
       "Life Sciences",
@@ -2869,56 +1099,6 @@
       "Cylindrical",
       "Flat discs"
     ],
-    "variants": [
-      {
-        "question": "What shape are wombat faeces?",
-        "type": "forward",
-        "correctAnswer": "Cubic",
-        "distractors": [
-          "Spherical",
-          "Cylindrical",
-          "Flat discs"
-        ]
-      },
-      {
-        "question": "Which animal produces cube-shaped droppings?",
-        "type": "reverse",
-        "correctAnswer": "Wombat",
-        "distractors": [
-          "Koala",
-          "Platypus",
-          "Echidna"
-        ]
-      },
-      {
-        "question": "Which is NOT true about wombat faeces?",
-        "type": "negative",
-        "correctAnswer": "They are spherical",
-        "distractors": [
-          "Cubic shape prevents rolling",
-          "Intestinal elasticity causes cubes",
-          "Used for territorial marking"
-        ]
-      },
-      {
-        "question": "Wombat droppings are _____-shaped, unique among animals.",
-        "type": "fill_blank",
-        "correctAnswer": "cube",
-        "distractors": [
-          "sphere",
-          "cylinder",
-          "disc"
-        ]
-      },
-      {
-        "question": "Wombats are the only known animals producing cubic faeces.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False"
-        ]
-      }
-    ],
     "category": [
       "Life Sciences",
       "digestion_metabolism",
@@ -2949,58 +1129,6 @@
       "Produces digestive enzymes",
       "Filters toxins from food",
       "Absorbs water from intestines"
-    ],
-    "variants": [
-      {
-        "question": "What recently discovered function does the appendix serve?",
-        "type": "forward",
-        "correctAnswer": "Reservoir for beneficial gut bacteria",
-        "distractors": [
-          "Produces digestive enzymes",
-          "Filters toxins from food",
-          "Absorbs water from intestines"
-        ]
-      },
-      {
-        "question": "Which organ shelters beneficial bacteria after severe illness?",
-        "type": "reverse",
-        "correctAnswer": "The appendix",
-        "distractors": [
-          "The gallbladder",
-          "The spleen",
-          "The pancreas"
-        ]
-      },
-      {
-        "question": "Which statement about the appendix is NOT true?",
-        "type": "negative",
-        "correctAnswer": "It has no biological function",
-        "distractors": [
-          "It shelters beneficial bacteria",
-          "It reboots gut microbiome after illness",
-          "It's immune tissue-lined"
-        ]
-      },
-      {
-        "question": "The appendix recolonizes the gut with beneficial _____ after diarrhea.",
-        "type": "fill_blank",
-        "correctAnswer": "bacteria",
-        "distractors": [
-          "enzymes",
-          "white blood cells",
-          "hormones"
-        ]
-      },
-      {
-        "question": "The appendix acts as a safe house for gut bacteria.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "It produces digestive acid",
-          "It absorbs excess water",
-          "It filters blood toxins"
-        ]
-      }
     ],
     "category": [
       "Life Sciences",
@@ -3033,57 +1161,6 @@
       "Sharks",
       "Lampreys"
     ],
-    "variants": [
-      {
-        "question": "Electric eels are knifefish most closely related to which group?",
-        "type": "forward",
-        "correctAnswer": "Catfish",
-        "distractors": [
-          "True eels",
-          "Sharks",
-          "Lampreys"
-        ]
-      },
-      {
-        "question": "Which fish is actually a knifefish related to catfish, not true eels?",
-        "type": "reverse",
-        "correctAnswer": "Electric eel",
-        "distractors": [
-          "Moray eel",
-          "Hagfish",
-          "Lamprey"
-        ]
-      },
-      {
-        "question": "Which is NOT true about electric eels?",
-        "type": "negative",
-        "correctAnswer": "They are true eels",
-        "distractors": [
-          "They evolved three electric organs",
-          "They are knifefish",
-          "They relate to catfish"
-        ]
-      },
-      {
-        "question": "Electric eels are not true eels—they are _____ related to catfish.",
-        "type": "fill_blank",
-        "correctAnswer": "knifefish",
-        "distractors": [
-          "hagfish",
-          "lampreys",
-          "rays"
-        ]
-      },
-      {
-        "question": "Electric eels evolved from modified muscle tissue into electric organs.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "False",
-          "Partially true"
-        ]
-      }
-    ],
     "category": [
       "Life Sciences",
       "anatomy_organs",
@@ -3114,58 +1191,6 @@
       "Saliva neutralizes sugar molecules",
       "Tongue papillae block sweet receptors",
       "Brain cannot process sweet signals"
-    ],
-    "variants": [
-      {
-        "question": "Why can't cats taste sweetness?",
-        "type": "forward",
-        "correctAnswer": "Lack functional sweet taste receptor gene",
-        "distractors": [
-          "Saliva neutralizes sugar molecules",
-          "Tongue papillae block sweet receptors",
-          "Brain cannot process sweet signals"
-        ]
-      },
-      {
-        "question": "Which pet completely lacks the ability to taste sweetness due to a non-functional gene?",
-        "type": "reverse",
-        "correctAnswer": "Cats",
-        "distractors": [
-          "Dogs",
-          "Hamsters",
-          "Rabbits"
-        ]
-      },
-      {
-        "question": "Which is NOT true about cats and sweetness?",
-        "type": "negative",
-        "correctAnswer": "Only domestic cats lost sweet taste",
-        "distractors": [
-          "All felids lack sweet receptors",
-          "Tas1r2 gene is non-functional",
-          "Meat diet made it unnecessary"
-        ]
-      },
-      {
-        "question": "Cats lack a functional _____ gene responsible for detecting sweetness.",
-        "type": "fill_blank",
-        "correctAnswer": "Tas1r2",
-        "distractors": [
-          "Tas2r38",
-          "Pkd2l1",
-          "Scn10a"
-        ]
-      },
-      {
-        "question": "All feline species lack functional sweet taste receptors.",
-        "type": "true_false",
-        "correctAnswer": "True",
-        "distractors": [
-          "Only domestic cats lack them",
-          "Wild cats retained sweet taste",
-          "Lions can taste sweetness"
-        ]
-      }
     ],
     "category": [
       "Life Sciences",
@@ -3198,56 +1223,6 @@
       "Chlorophyll absorption",
       "Bioluminescent proteins"
     ],
-    "variants": [
-      {
-        "question": "Why is octopus blood blue?",
-        "type": "forward",
-        "correctAnswer": "Copper-based hemocyanin",
-        "distractors": [
-          "Iron-based hemoglobin",
-          "Chlorophyll absorption",
-          "Bioluminescent proteins"
-        ]
-      },
-      {
-        "question": "Which marine animal has blue blood with copper-based oxygen carriers?",
-        "type": "reverse",
-        "correctAnswer": "Octopus",
-        "distractors": [
-          "Shark",
-          "Dolphin",
-          "Sea turtle"
-        ]
-      },
-      {
-        "question": "Which is NOT true about octopus blood?",
-        "type": "negative",
-        "correctAnswer": "It contains iron-based hemoglobin",
-        "distractors": [
-          "It is blue in color",
-          "It contains hemocyanin",
-          "It uses copper for oxygen"
-        ]
-      },
-      {
-        "question": "Octopus blood is blue because copper oxidizes blue, unlike iron which oxidizes _____.",
-        "type": "fill_blank",
-        "correctAnswer": "red",
-        "distractors": [
-          "green",
-          "yellow",
-          "purple"
-        ]
-      },
-      {
-        "question": "Hemocyanin is more efficient at oxygen transport than hemoglobin.",
-        "type": "true_false",
-        "correctAnswer": "False",
-        "distractors": [
-          "True"
-        ]
-      }
-    ],
     "category": [
       "Life Sciences",
       "cardiovascular",
@@ -3278,56 +1253,6 @@
       "Eyes and entire spinal cord",
       "Organs and skeletal structure",
       "Skin and internal organs"
-    ],
-    "variants": [
-      {
-        "question": "What can axolotls regenerate throughout their lives?",
-        "type": "forward",
-        "correctAnswer": "Limbs, heart tissue, brain tissue",
-        "distractors": [
-          "Eyes and entire spinal cord",
-          "Organs and skeletal structure",
-          "Skin and internal organs"
-        ]
-      },
-      {
-        "question": "Which amphibian regenerates limbs, heart, and brain parts repeatedly?",
-        "type": "reverse",
-        "correctAnswer": "Axolotl",
-        "distractors": [
-          "Newt",
-          "Frog",
-          "Salamander"
-        ]
-      },
-      {
-        "question": "Which is NOT something axolotls can regenerate?",
-        "type": "negative",
-        "correctAnswer": "Entire organs like kidneys",
-        "distractors": [
-          "Parts of their brain",
-          "Heart tissue",
-          "Complete limbs with bones"
-        ]
-      },
-      {
-        "question": "Axolotl cells can _____ into stem-cell-like states for regeneration.",
-        "type": "fill_blank",
-        "correctAnswer": "dedifferentiate",
-        "distractors": [
-          "photosynthesize",
-          "calcify",
-          "hibernate"
-        ]
-      },
-      {
-        "question": "Axolotls lose regenerative ability after reaching adulthood.",
-        "type": "true_false",
-        "correctAnswer": "False",
-        "distractors": [
-          "True"
-        ]
-      }
     ],
     "category": [
       "Life Sciences",

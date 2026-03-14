@@ -1,0 +1,48 @@
+{
+  "playthroughId": "visual-playthrough-4251-1773462491294",
+  "profileId": "visual-worker",
+  "analyzedAt": "2026-03-14T04:29:43.097Z",
+  "issueCount": 2,
+  "issues": [
+    {
+      "id": "issue-visual-playthrough-4251-1773462491294-001",
+      "playthroughId": "visual-playthrough-4251-1773462491294",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "Hub start action unavailable (8 failed attempts)",
+      "description": "Visual playtester could not start a run because start controls were missing from hub in playtest mode.",
+      "evidence": {
+        "floor": 0,
+        "encounter": 0,
+        "metric": "startRun failures=8"
+      },
+      "reproductionSteps": [
+        "Visual worker seed 4251",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true",
+        "Attempt startRun via window.__terraPlay.startRun()"
+      ],
+      "suggestedFix": "Ensure hub run-start controls are mounted/visible in playtest mode and expose a resilient start action."
+    },
+    {
+      "id": "issue-visual-playthrough-4251-1773462491294-002",
+      "playthroughId": "visual-playthrough-4251-1773462491294",
+      "profileId": "visual-worker",
+      "category": "visual_hub_no_visible_controls",
+      "severity": "medium",
+      "title": "Hub rendered with no visible interactive controls (10 steps)",
+      "description": "No visible data-testid controls appeared on the hub during the visual run, blocking click-path verification.",
+      "evidence": {
+        "floor": 0,
+        "encounter": 0,
+        "metric": "stepsWithNoVisibleControls=10"
+      },
+      "reproductionSteps": [
+        "Visual worker seed 4251",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true",
+        "Attempt startRun via window.__terraPlay.startRun()"
+      ],
+      "suggestedFix": "Ensure hub run-start controls are mounted/visible in playtest mode and expose a resilient start action."
+    }
+  ]
+}

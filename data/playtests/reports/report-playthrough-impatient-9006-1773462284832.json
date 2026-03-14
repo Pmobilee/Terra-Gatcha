@@ -1,0 +1,120 @@
+{
+  "playthroughId": "playthrough-impatient-9006-1773462284832",
+  "profileId": "impatient",
+  "analyzedAt": "2026-03-14T04:26:35.313Z",
+  "issueCount": 5,
+  "engagementSummary": null,
+  "issues": [
+    {
+      "id": "issue-playthrough-impatient-9006-1773462284832-001",
+      "playthroughId": "playthrough-impatient-9006-1773462284832",
+      "profileId": "impatient",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 23 (66% HP) on floor 4",
+      "description": "Enemy dealt 23 damage in one enemy turn (seq 234), which is 66% of player HP (35) before the hit.",
+      "evidence": {
+        "turnSeqs": [
+          234
+        ],
+        "floor": 4,
+        "encounter": 2,
+        "metric": "damage=23, hpBefore=35, ratio=0.657"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 9006",
+        "Floor 4, Encounter 2"
+      ],
+      "suggestedFix": "Cap spike damage or scale down high-roll enemy intents."
+    },
+    {
+      "id": "issue-playthrough-impatient-9006-1773462284832-002",
+      "playthroughId": "playthrough-impatient-9006-1773462284832",
+      "profileId": "impatient",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 13 (100% HP) on floor 4",
+      "description": "Enemy dealt 13 damage in one enemy turn (seq 238), which is 100% of player HP (13) before the hit.",
+      "evidence": {
+        "turnSeqs": [
+          238
+        ],
+        "floor": 4,
+        "encounter": 2,
+        "metric": "damage=13, hpBefore=13, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 9006",
+        "Floor 4, Encounter 2"
+      ],
+      "suggestedFix": "Cap spike damage or scale down high-roll enemy intents."
+    },
+    {
+      "id": "issue-playthrough-impatient-9006-1773462284832-003",
+      "playthroughId": "playthrough-impatient-9006-1773462284832",
+      "profileId": "impatient",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "10 easy encounters in a row (HP > 90%)",
+      "description": "10 consecutive encounters ended with HP above 90% threshold.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 0,
+        "floors": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          4
+        ],
+        "metric": "hpRemaining=[101, 110, 120, 115, 118, 97, 114, 120, 75, 78]"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 9006",
+        "Starts floor 1 encounter 0"
+      ],
+      "suggestedFix": "Increase pressure on this profile/seed segment."
+    },
+    {
+      "id": "issue-playthrough-impatient-9006-1773462284832-004",
+      "playthroughId": "playthrough-impatient-9006-1773462284832",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "One card type had zero actual play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 9006"
+      ],
+      "suggestedFix": "Review deck composition and type exposure balance."
+    },
+    {
+      "id": "issue-playthrough-impatient-9006-1773462284832-005",
+      "playthroughId": "playthrough-impatient-9006-1773462284832",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "One card type had zero actual play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 9006"
+      ],
+      "suggestedFix": "Review deck composition and type exposure balance."
+    }
+  ]
+}

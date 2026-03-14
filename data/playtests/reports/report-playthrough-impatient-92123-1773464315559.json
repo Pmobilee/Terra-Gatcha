@@ -1,0 +1,120 @@
+{
+  "playthroughId": "playthrough-impatient-92123-1773464315559",
+  "profileId": "impatient",
+  "analyzedAt": "2026-03-14T05:02:32.007Z",
+  "issueCount": 6,
+  "issues": [
+    {
+      "id": "issue-playthrough-impatient-92123-1773464315559-001",
+      "playthroughId": "playthrough-impatient-92123-1773464315559",
+      "profileId": "impatient",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 8 (57% HP) on floor 2",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          121
+        ],
+        "floor": 2,
+        "encounter": 1,
+        "metric": "damage=8, ratio=0.571"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92123",
+        "Floor 2 Encounter 1"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-impatient-92123-1773464315559-002",
+      "playthroughId": "playthrough-impatient-92123-1773464315559",
+      "profileId": "impatient",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 2 encounter 1",
+      "description": "Player defeat occurred on early floor segment.",
+      "evidence": {
+        "floor": 2,
+        "encounter": 1,
+        "metric": "enemy=pressure_djinn, accuracy=0.500"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92123"
+      ],
+      "suggestedFix": "Soften early-floor enemy scaling."
+    },
+    {
+      "id": "issue-playthrough-impatient-92123-1773464315559-003",
+      "playthroughId": "playthrough-impatient-92123-1773464315559",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92123"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-impatient-92123-1773464315559-004",
+      "playthroughId": "playthrough-impatient-92123-1773464315559",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'utility' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "utility=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92123"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-impatient-92123-1773464315559-005",
+      "playthroughId": "playthrough-impatient-92123-1773464315559",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92123"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-impatient-92123-1773464315559-006",
+      "playthroughId": "playthrough-impatient-92123-1773464315559",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92123"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "playthroughId": "playthrough-expert-92012-1773463804303",
+  "profileId": "expert",
+  "analyzedAt": "2026-03-14T05:02:31.938Z",
+  "issueCount": 7,
+  "issues": [
+    {
+      "id": "issue-playthrough-expert-92012-1773463804303-001",
+      "playthroughId": "playthrough-expert-92012-1773463804303",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 33 (100% HP) on floor 6",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          281
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "damage=33, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92012",
+        "Floor 6 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-expert-92012-1773463804303-002",
+      "playthroughId": "playthrough-expert-92012-1773463804303",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 3 encounter 2 (10 vs 2.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turns=10, prevAvg=2.67"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92012"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-expert-92012-1773463804303-003",
+      "playthroughId": "playthrough-expert-92012-1773463804303",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 6 encounter 1 (5 vs 2.3)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 6,
+        "encounter": 1,
+        "metric": "turns=5, prevAvg=2.33"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92012"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-expert-92012-1773463804303-004",
+      "playthroughId": "playthrough-expert-92012-1773463804303",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 6 encounter 2 (5 vs 2.3)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 6,
+        "encounter": 2,
+        "metric": "turns=5, prevAvg=2.33"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92012"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-expert-92012-1773463804303-005",
+      "playthroughId": "playthrough-expert-92012-1773463804303",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92012"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-expert-92012-1773463804303-006",
+      "playthroughId": "playthrough-expert-92012-1773463804303",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92012"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-expert-92012-1773463804303-007",
+      "playthroughId": "playthrough-expert-92012-1773463804303",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92012"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "playthroughId": "playthrough-beginner-93000-1773464647590",
+  "profileId": "beginner",
+  "analyzedAt": "2026-03-14T05:04:44.018Z",
+  "issueCount": 7,
+  "issues": [
+    {
+      "id": "issue-playthrough-beginner-93000-1773464647590-001",
+      "playthroughId": "playthrough-beginner-93000-1773464647590",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 25 (83% HP) on floor 3",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          207
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damage=25, ratio=0.833"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 93000",
+        "Floor 3 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-beginner-93000-1773464647590-002",
+      "playthroughId": "playthrough-beginner-93000-1773464647590",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 43 (100% HP) on floor 3",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          215
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damage=43, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 93000",
+        "Floor 3 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-beginner-93000-1773464647590-003",
+      "playthroughId": "playthrough-beginner-93000-1773464647590",
+      "profileId": "beginner",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "5 easy encounters in a row (HP > 90%)",
+      "description": "Multiple consecutive encounters ended above 90% HP.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 0,
+        "floors": [
+          1,
+          1,
+          1,
+          2,
+          2
+        ],
+        "metric": "hp=[82, 88, 90, 96, 74]"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 93000"
+      ],
+      "suggestedFix": "Increase pressure for this profile slice."
+    },
+    {
+      "id": "issue-playthrough-beginner-93000-1773464647590-004",
+      "playthroughId": "playthrough-beginner-93000-1773464647590",
+      "profileId": "beginner",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 3 encounter 2",
+      "description": "Player defeat occurred on early floor segment.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "enemy=the_archivist, accuracy=0.438"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 93000"
+      ],
+      "suggestedFix": "Soften early-floor enemy scaling."
+    },
+    {
+      "id": "issue-playthrough-beginner-93000-1773464647590-005",
+      "playthroughId": "playthrough-beginner-93000-1773464647590",
+      "profileId": "beginner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 3 encounter 2 (16 vs 4.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turns=16, prevAvg=4.67"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 93000"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-beginner-93000-1773464647590-006",
+      "playthroughId": "playthrough-beginner-93000-1773464647590",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 93000"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-beginner-93000-1773464647590-007",
+      "playthroughId": "playthrough-beginner-93000-1773464647590",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 93000"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

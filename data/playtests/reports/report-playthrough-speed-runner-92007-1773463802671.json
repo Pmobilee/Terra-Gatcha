@@ -1,0 +1,120 @@
+{
+  "playthroughId": "playthrough-speed-runner-92007-1773463802671",
+  "profileId": "speed-runner",
+  "analyzedAt": "2026-03-14T05:02:31.935Z",
+  "issueCount": 6,
+  "issues": [
+    {
+      "id": "issue-playthrough-speed-runner-92007-1773463802671-001",
+      "playthroughId": "playthrough-speed-runner-92007-1773463802671",
+      "profileId": "speed-runner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 25 (51% HP) on floor 12",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          497
+        ],
+        "floor": 12,
+        "encounter": 2,
+        "metric": "damage=25, ratio=0.510"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92007",
+        "Floor 12 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92007-1773463802671-002",
+      "playthroughId": "playthrough-speed-runner-92007-1773463802671",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 6 encounter 2 (8 vs 2.0)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 6,
+        "encounter": 2,
+        "metric": "turns=8, prevAvg=2.00"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92007"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92007-1773463802671-003",
+      "playthroughId": "playthrough-speed-runner-92007-1773463802671",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 9 encounter 2 (5 vs 2.3)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 9,
+        "encounter": 2,
+        "metric": "turns=5, prevAvg=2.33"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92007"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92007-1773463802671-004",
+      "playthroughId": "playthrough-speed-runner-92007-1773463802671",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92007"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92007-1773463802671-005",
+      "playthroughId": "playthrough-speed-runner-92007-1773463802671",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92007"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92007-1773463802671-006",
+      "playthroughId": "playthrough-speed-runner-92007-1773463802671",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92007"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

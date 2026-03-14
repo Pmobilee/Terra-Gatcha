@@ -791,6 +791,14 @@ function broadcastToGame(event) {
 // Static files
 app.use(express.static(resolve(__dirname, 'public')));
 
+// Route aliases for dashboard pages
+app.get('/playtest', (_req, res) => {
+  res.sendFile(resolve(__dirname, 'public', 'playtest.html'));
+});
+app.get('/playtest/', (_req, res) => {
+  res.sendFile(resolve(__dirname, 'public', 'playtest.html'));
+});
+
 // --- API Endpoints ---
 
 // List all cards (with filters and pagination)

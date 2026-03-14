@@ -1,0 +1,222 @@
+{
+  "playthroughId": "playthrough-speed-runner-92055-1773464001610",
+  "profileId": "speed-runner",
+  "analyzedAt": "2026-03-14T05:02:31.964Z",
+  "issueCount": 11,
+  "issues": [
+    {
+      "id": "issue-playthrough-speed-runner-92055-1773464001610-001",
+      "playthroughId": "playthrough-speed-runner-92055-1773464001610",
+      "profileId": "speed-runner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 24 (63% HP) on floor 6",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          162
+        ],
+        "floor": 6,
+        "encounter": 2,
+        "metric": "damage=24, ratio=0.632"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92055",
+        "Floor 6 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92055-1773464001610-002",
+      "playthroughId": "playthrough-speed-runner-92055-1773464001610",
+      "profileId": "speed-runner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 27 (93% HP) on floor 9",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          255
+        ],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "damage=27, ratio=0.931"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92055",
+        "Floor 9 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92055-1773464001610-003",
+      "playthroughId": "playthrough-speed-runner-92055-1773464001610",
+      "profileId": "speed-runner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 30 (86% HP) on floor 10",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          285
+        ],
+        "floor": 10,
+        "encounter": 2,
+        "metric": "damage=30, ratio=0.857"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92055",
+        "Floor 10 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92055-1773464001610-004",
+      "playthroughId": "playthrough-speed-runner-92055-1773464001610",
+      "profileId": "speed-runner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 17 (94% HP) on floor 10",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          289
+        ],
+        "floor": 10,
+        "encounter": 2,
+        "metric": "damage=17, ratio=0.944"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92055",
+        "Floor 10 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92055-1773464001610-005",
+      "playthroughId": "playthrough-speed-runner-92055-1773464001610",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 3 encounter 2 (4 vs 1.3)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turns=4, prevAvg=1.33"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92055"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92055-1773464001610-006",
+      "playthroughId": "playthrough-speed-runner-92055-1773464001610",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 6 encounter 2 (6 vs 2.0)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 6,
+        "encounter": 2,
+        "metric": "turns=6, prevAvg=2.00"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92055"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92055-1773464001610-007",
+      "playthroughId": "playthrough-speed-runner-92055-1773464001610",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 9 encounter 2 (5 vs 2.0)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 9,
+        "encounter": 2,
+        "metric": "turns=5, prevAvg=2.00"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92055"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92055-1773464001610-008",
+      "playthroughId": "playthrough-speed-runner-92055-1773464001610",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92055"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92055-1773464001610-009",
+      "playthroughId": "playthrough-speed-runner-92055-1773464001610",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'debuff' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "debuff=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92055"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92055-1773464001610-010",
+      "playthroughId": "playthrough-speed-runner-92055-1773464001610",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92055"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92055-1773464001610-011",
+      "playthroughId": "playthrough-speed-runner-92055-1773464001610",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92055"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "playthroughId": "playthrough-expert-92150-1773464433682",
+  "profileId": "expert",
+  "analyzedAt": "2026-03-14T05:02:32.026Z",
+  "issueCount": 9,
+  "issues": [
+    {
+      "id": "issue-playthrough-expert-92150-1773464433682-001",
+      "playthroughId": "playthrough-expert-92150-1773464433682",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 39 (95% HP) on floor 9",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          505
+        ],
+        "floor": 9,
+        "encounter": 2,
+        "metric": "damage=39, ratio=0.951"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92150",
+        "Floor 9 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-expert-92150-1773464433682-002",
+      "playthroughId": "playthrough-expert-92150-1773464433682",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 36 (88% HP) on floor 10",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          544
+        ],
+        "floor": 10,
+        "encounter": 2,
+        "metric": "damage=36, ratio=0.878"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92150",
+        "Floor 10 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-expert-92150-1773464433682-003",
+      "playthroughId": "playthrough-expert-92150-1773464433682",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 17 (94% HP) on floor 10",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          548
+        ],
+        "floor": 10,
+        "encounter": 2,
+        "metric": "damage=17, ratio=0.944"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92150",
+        "Floor 10 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-expert-92150-1773464433682-004",
+      "playthroughId": "playthrough-expert-92150-1773464433682",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 3 encounter 2 (8 vs 3.3)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turns=8, prevAvg=3.33"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92150"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-expert-92150-1773464433682-005",
+      "playthroughId": "playthrough-expert-92150-1773464433682",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 6 encounter 2 (10 vs 3.0)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 6,
+        "encounter": 2,
+        "metric": "turns=10, prevAvg=3.00"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92150"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-expert-92150-1773464433682-006",
+      "playthroughId": "playthrough-expert-92150-1773464433682",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 9 encounter 2 (11 vs 4.3)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 9,
+        "encounter": 2,
+        "metric": "turns=11, prevAvg=4.33"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92150"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-expert-92150-1773464433682-007",
+      "playthroughId": "playthrough-expert-92150-1773464433682",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92150"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-expert-92150-1773464433682-008",
+      "playthroughId": "playthrough-expert-92150-1773464433682",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92150"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-expert-92150-1773464433682-009",
+      "playthroughId": "playthrough-expert-92150-1773464433682",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92150"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "playthroughId": "playthrough-expert-92120-1773464277707",
+  "profileId": "expert",
+  "analyzedAt": "2026-03-14T05:02:32.005Z",
+  "issueCount": 4,
+  "issues": [
+    {
+      "id": "issue-playthrough-expert-92120-1773464277707-001",
+      "playthroughId": "playthrough-expert-92120-1773464277707",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 3 encounter 2 (12 vs 2.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turns=12, prevAvg=2.67"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92120"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-expert-92120-1773464277707-002",
+      "playthroughId": "playthrough-expert-92120-1773464277707",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92120"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-expert-92120-1773464277707-003",
+      "playthroughId": "playthrough-expert-92120-1773464277707",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92120"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-expert-92120-1773464277707-004",
+      "playthroughId": "playthrough-expert-92120-1773464277707",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 92120"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

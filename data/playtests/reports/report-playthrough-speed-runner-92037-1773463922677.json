@@ -1,0 +1,172 @@
+{
+  "playthroughId": "playthrough-speed-runner-92037-1773463922677",
+  "profileId": "speed-runner",
+  "analyzedAt": "2026-03-14T05:02:31.955Z",
+  "issueCount": 7,
+  "issues": [
+    {
+      "id": "issue-playthrough-speed-runner-92037-1773463922677-001",
+      "playthroughId": "playthrough-speed-runner-92037-1773463922677",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "36 easy encounters in a row (HP > 90%)",
+      "description": "Multiple consecutive encounters ended above 90% HP.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 0,
+        "floors": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          8,
+          8,
+          8,
+          9,
+          9,
+          9,
+          10,
+          10,
+          10,
+          11,
+          11,
+          11,
+          12,
+          12,
+          12
+        ],
+        "metric": "hp=[113, 120, 112, 120, 113, 117, 120, 116, 105, 117, 117, 96, 118, 120, 120, 120, 120, 78, 104, 108, 88, 102, 111, 99, 113, 108, 108, 106, 108, 102, 108, 108, 108, 108, 108, 100]"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92037"
+      ],
+      "suggestedFix": "Increase pressure for this profile slice."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92037-1773463922677-002",
+      "playthroughId": "playthrough-speed-runner-92037-1773463922677",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 2 encounter 1 (4 vs 1.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 2,
+        "encounter": 1,
+        "metric": "turns=4, prevAvg=1.67"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92037"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92037-1773463922677-003",
+      "playthroughId": "playthrough-speed-runner-92037-1773463922677",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 6 encounter 2 (6 vs 2.3)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 6,
+        "encounter": 2,
+        "metric": "turns=6, prevAvg=2.33"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92037"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92037-1773463922677-004",
+      "playthroughId": "playthrough-speed-runner-92037-1773463922677",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92037"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92037-1773463922677-005",
+      "playthroughId": "playthrough-speed-runner-92037-1773463922677",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'debuff' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "debuff=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92037"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92037-1773463922677-006",
+      "playthroughId": "playthrough-speed-runner-92037-1773463922677",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92037"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-92037-1773463922677-007",
+      "playthroughId": "playthrough-speed-runner-92037-1773463922677",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 92037"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

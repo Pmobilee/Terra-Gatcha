@@ -1,0 +1,121 @@
+{
+  "playthroughId": "playthrough-speed-runner-9004-1773462284831",
+  "profileId": "speed-runner",
+  "analyzedAt": "2026-03-14T04:26:35.316Z",
+  "issueCount": 4,
+  "engagementSummary": null,
+  "issues": [
+    {
+      "id": "issue-playthrough-speed-runner-9004-1773462284831-001",
+      "playthroughId": "playthrough-speed-runner-9004-1773462284831",
+      "profileId": "speed-runner",
+      "category": "balance_too_easy",
+      "severity": "low",
+      "title": "36 easy encounters in a row (HP > 90%)",
+      "description": "36 consecutive encounters ended with HP above 90% threshold.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 0,
+        "floors": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          8,
+          8,
+          8,
+          9,
+          9,
+          9,
+          10,
+          10,
+          10,
+          11,
+          11,
+          11,
+          12,
+          12,
+          12
+        ],
+        "metric": "hpRemaining=[120, 115, 120, 120, 120, 120, 120, 120, 120, 116, 118, 119, 120, 118, 120, 120, 116, 120, 120, 108, 106, 108, 99, 108, 108, 110, 96, 108, 107, 105, 108, 106, 108, 107, 108, 106]"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 9004",
+        "Starts floor 1 encounter 0"
+      ],
+      "suggestedFix": "Increase pressure on this profile/seed segment."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-9004-1773462284831-002",
+      "playthroughId": "playthrough-speed-runner-9004-1773462284831",
+      "profileId": "speed-runner",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 9 encounter 2 (7 vs 3.0)",
+      "description": "Encounter took 7 turns, over 2x previous floor average (3.0).",
+      "evidence": {
+        "floor": 9,
+        "encounter": 2,
+        "metric": "turns=7, prevFloorAvg=3.00, ratio=2.33"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 9004",
+        "Floor 9, Encounter 2"
+      ],
+      "suggestedFix": "Smooth per-floor enemy durability growth."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-9004-1773462284831-003",
+      "playthroughId": "playthrough-speed-runner-9004-1773462284831",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "One card type had zero actual play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 9004"
+      ],
+      "suggestedFix": "Review deck composition and type exposure balance."
+    },
+    {
+      "id": "issue-playthrough-speed-runner-9004-1773462284831-004",
+      "playthroughId": "playthrough-speed-runner-9004-1773462284831",
+      "profileId": "speed-runner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "One card type had zero actual play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: speed-runner, Seed: 9004"
+      ],
+      "suggestedFix": "Review deck composition and type exposure balance."
+    }
+  ]
+}

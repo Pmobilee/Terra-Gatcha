@@ -1,0 +1,124 @@
+{
+  "playthroughId": "playthrough-struggling-92074-1773464080596",
+  "profileId": "struggling",
+  "analyzedAt": "2026-03-14T05:02:31.976Z",
+  "issueCount": 6,
+  "issues": [
+    {
+      "id": "issue-playthrough-struggling-92074-1773464080596-001",
+      "playthroughId": "playthrough-struggling-92074-1773464080596",
+      "profileId": "struggling",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 35 (95% HP) on floor 1",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          148
+        ],
+        "floor": 1,
+        "encounter": 2,
+        "metric": "damage=35, ratio=0.946"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92074",
+        "Floor 1 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-struggling-92074-1773464080596-002",
+      "playthroughId": "playthrough-struggling-92074-1773464080596",
+      "profileId": "struggling",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 61 (100% HP) on floor 1",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          168
+        ],
+        "floor": 1,
+        "encounter": 2,
+        "metric": "damage=61, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92074",
+        "Floor 1 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-struggling-92074-1773464080596-003",
+      "playthroughId": "playthrough-struggling-92074-1773464080596",
+      "profileId": "struggling",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 1 encounter 2",
+      "description": "Player defeat occurred on early floor segment.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 2,
+        "metric": "enemy=iron_matriarch, accuracy=0.400"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92074"
+      ],
+      "suggestedFix": "Soften early-floor enemy scaling."
+    },
+    {
+      "id": "issue-playthrough-struggling-92074-1773464080596-004",
+      "playthroughId": "playthrough-struggling-92074-1773464080596",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92074"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-struggling-92074-1773464080596-005",
+      "playthroughId": "playthrough-struggling-92074-1773464080596",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92074"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-struggling-92074-1773464080596-006",
+      "playthroughId": "playthrough-struggling-92074-1773464080596",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92074"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

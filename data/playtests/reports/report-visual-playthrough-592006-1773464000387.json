@@ -1,0 +1,2307 @@
+{
+  "playthroughId": "visual-playthrough-592006-1773464000387",
+  "profileId": "visual-worker",
+  "analyzedAt": "2026-03-14T05:02:31.963Z",
+  "issueCount": 121,
+  "issues": [
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-001",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 1",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=1"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-002",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 2",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=2"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-003",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 3",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=3"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-004",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 4",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=4"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-005",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 5",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=5"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-006",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 6",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=6"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-007",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 7",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=7"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-008",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 8",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=8"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-009",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 9",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=9"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-010",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 10",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=10"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-011",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 11",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=11"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-012",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 12",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=12"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-013",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 13",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=13"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-014",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 14",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=14"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-015",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 15",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=15"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-016",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 16",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=16"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-017",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 17",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=17"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-018",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 18",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=18"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-019",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 19",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=19"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-020",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 20",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=20"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-021",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 21",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=21"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-022",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 22",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=22"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-023",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 23",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=23"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-024",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 24",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=24"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-025",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 25",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=25"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-026",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 26",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=26"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-027",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 27",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=27"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-028",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 28",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=28"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-029",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 29",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=29"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-030",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 30",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=30"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-031",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 31",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=31"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-032",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 32",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=32"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-033",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 33",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=33"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-034",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 34",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=34"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-035",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 35",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=35"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-036",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 36",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=36"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-037",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 37",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=37"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-038",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 38",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=38"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-039",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 39",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=39"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-040",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 40",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=40"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-041",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 41",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=41"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-042",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 42",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=42"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-043",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 43",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=43"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-044",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 44",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=44"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-045",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 45",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=45"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-046",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 46",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=46"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-047",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 47",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=47"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-048",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 48",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=48"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-049",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 49",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=49"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-050",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 50",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=50"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-051",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 51",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=51"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-052",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 52",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=52"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-053",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 53",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=53"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-054",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 54",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=54"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-055",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 55",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=55"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-056",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 56",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=56"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-057",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 57",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=57"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-058",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 58",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=58"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-059",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 59",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=59"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-060",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 60",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=60"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-061",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 61",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=61"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-062",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 62",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=62"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-063",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 63",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=63"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-064",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 64",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=64"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-065",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 65",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=65"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-066",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 66",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=66"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-067",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 67",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=67"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-068",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 68",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=68"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-069",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 69",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=69"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-070",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 70",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=70"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-071",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 71",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=71"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-072",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 72",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=72"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-073",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 73",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=73"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-074",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 74",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=74"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-075",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 75",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=75"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-076",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 76",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=76"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-077",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 77",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=77"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-078",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 78",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=78"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-079",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 79",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=79"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-080",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 80",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=80"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-081",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 81",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=81"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-082",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 82",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=82"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-083",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 83",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=83"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-084",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 84",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=84"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-085",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 85",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=85"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-086",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 86",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=86"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-087",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 87",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=87"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-088",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 88",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=88"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-089",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 89",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=89"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-090",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 90",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=90"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-091",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 91",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=91"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-092",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 92",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=92"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-093",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 93",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=93"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-094",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 94",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=94"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-095",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 95",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=95"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-096",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 96",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=96"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-097",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 97",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=97"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-098",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 98",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=98"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-099",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 99",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=99"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-100",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 100",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=100"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-101",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 101",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=101"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-102",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 102",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=102"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-103",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 103",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=103"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-104",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 104",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=104"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-105",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 105",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=105"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-106",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 106",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=106"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-107",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 107",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=107"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-108",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 108",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=108"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-109",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 109",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=109"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-110",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 110",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=110"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-111",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 111",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=111"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-112",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 112",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=112"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-113",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 113",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=113"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-114",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 114",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=114"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-115",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 115",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=115"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-116",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 116",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=116"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-117",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 117",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=117"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-118",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 118",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=118"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-119",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 119",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=119"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-120",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_start_run_unavailable",
+      "severity": "high",
+      "title": "visual start run unavailable at turn 120",
+      "description": "Start Run button not found",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "screen=hub turn=120"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Review visual playtest controls and state transitions."
+    },
+    {
+      "id": "issue-visual-playthrough-592006-1773464000387-121",
+      "playthroughId": "visual-playthrough-592006-1773464000387",
+      "profileId": "visual-worker",
+      "category": "visual_hub_stuck",
+      "severity": "medium",
+      "title": "Visual run remained on hub only",
+      "description": "No non-hub screen transitions were observed during the visual run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "steps=121, nonHub=0"
+      },
+      "reproductionSteps": [
+        "Visual seed: 592006",
+        "Open ?skipOnboarding=true&devpreset=post_tutorial&playtest=true"
+      ],
+      "suggestedFix": "Confirm start-run controls are available in playtest mode."
+    }
+  ]
+}

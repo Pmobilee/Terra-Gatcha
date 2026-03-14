@@ -1,0 +1,146 @@
+{
+  "playthroughId": "playthrough-struggling-92116-1773464276186",
+  "profileId": "struggling",
+  "analyzedAt": "2026-03-14T05:02:32.002Z",
+  "issueCount": 7,
+  "issues": [
+    {
+      "id": "issue-playthrough-struggling-92116-1773464276186-001",
+      "playthroughId": "playthrough-struggling-92116-1773464276186",
+      "profileId": "struggling",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 15 (75% HP) on floor 1",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          72
+        ],
+        "floor": 1,
+        "encounter": 2,
+        "metric": "damage=15, ratio=0.750"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92116",
+        "Floor 1 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-struggling-92116-1773464276186-002",
+      "playthroughId": "playthrough-struggling-92116-1773464276186",
+      "profileId": "struggling",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 13 (68% HP) on floor 2",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          98
+        ],
+        "floor": 2,
+        "encounter": 0,
+        "metric": "damage=13, ratio=0.684"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92116",
+        "Floor 2 Encounter 0"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-struggling-92116-1773464276186-003",
+      "playthroughId": "playthrough-struggling-92116-1773464276186",
+      "profileId": "struggling",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 13 (100% HP) on floor 2",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          102
+        ],
+        "floor": 2,
+        "encounter": 0,
+        "metric": "damage=13, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92116",
+        "Floor 2 Encounter 0"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-struggling-92116-1773464276186-004",
+      "playthroughId": "playthrough-struggling-92116-1773464276186",
+      "profileId": "struggling",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 2 encounter 0",
+      "description": "Player defeat occurred on early floor segment.",
+      "evidence": {
+        "floor": 2,
+        "encounter": 0,
+        "metric": "enemy=limestone_imp, accuracy=0.278"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92116"
+      ],
+      "suggestedFix": "Soften early-floor enemy scaling."
+    },
+    {
+      "id": "issue-playthrough-struggling-92116-1773464276186-005",
+      "playthroughId": "playthrough-struggling-92116-1773464276186",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92116"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-struggling-92116-1773464276186-006",
+      "playthroughId": "playthrough-struggling-92116-1773464276186",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92116"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-struggling-92116-1773464276186-007",
+      "playthroughId": "playthrough-struggling-92116-1773464276186",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 92116"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

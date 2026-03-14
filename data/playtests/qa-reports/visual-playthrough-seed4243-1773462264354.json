@@ -1,0 +1,184 @@
+{
+  "type": "visual_playthrough",
+  "seed": 4243,
+  "startedAt": "2026-03-14T04:24:18.847Z",
+  "baseUrl": "http://127.0.0.1:5173",
+  "maxTurns": 220,
+  "steps": [
+    {
+      "turn": 0,
+      "action": "boot",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleTestIds": []
+    },
+    {
+      "turn": 1,
+      "action": "unknown-state",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleTestIds": [],
+      "unknownVisibleIds": []
+    },
+    {
+      "turn": 2,
+      "action": "unknown-state",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleTestIds": [],
+      "unknownVisibleIds": []
+    },
+    {
+      "turn": 3,
+      "action": "unknown-state",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleTestIds": [],
+      "unknownVisibleIds": []
+    },
+    {
+      "turn": 4,
+      "action": "unknown-state",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleTestIds": [],
+      "unknownVisibleIds": []
+    },
+    {
+      "turn": 5,
+      "action": "unknown-state",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleTestIds": [],
+      "unknownVisibleIds": []
+    },
+    {
+      "turn": 6,
+      "action": "unknown-state",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleTestIds": [],
+      "unknownVisibleIds": []
+    },
+    {
+      "turn": 7,
+      "action": "unknown-state",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleTestIds": [],
+      "unknownVisibleIds": []
+    },
+    {
+      "turn": 8,
+      "action": "unknown-state",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleTestIds": [],
+      "unknownVisibleIds": []
+    },
+    {
+      "turn": 9,
+      "action": "run-ended",
+      "screen": "hub",
+      "look": "SCREEN: hub\nCURRENCY: ?  STREAK: 0 days  RUNS: 0\n\nRECENT EVENTS:\n  - [state-change] Debug bridge initialized",
+      "validation": {
+        "valid": true,
+        "issues": []
+      },
+      "visibleTestIds": []
+    }
+  ],
+  "issues": [
+    {
+      "type": "unknown_state",
+      "turn": 1,
+      "visibleIds": [],
+      "screen": "hub"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 2,
+      "visibleIds": [],
+      "screen": "hub"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 3,
+      "visibleIds": [],
+      "screen": "hub"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 4,
+      "visibleIds": [],
+      "screen": "hub"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 5,
+      "visibleIds": [],
+      "screen": "hub"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 6,
+      "visibleIds": [],
+      "screen": "hub"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 7,
+      "visibleIds": [],
+      "screen": "hub"
+    },
+    {
+      "type": "unknown_state",
+      "turn": 8,
+      "visibleIds": [],
+      "screen": "hub"
+    }
+  ],
+  "screenshots": [
+    "/tmp/visual-playthrough-4243-00.png",
+    "/tmp/visual-playthrough-4243-end.png"
+  ],
+  "result": "completed",
+  "completedAt": "2026-03-14T04:24:24.354Z",
+  "consoleErrors": []
+}

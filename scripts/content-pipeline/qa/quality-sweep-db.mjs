@@ -355,9 +355,11 @@ function validateOutputRow(outputRow, inputRow, group = '') {
     }
   }
 
-  // Distractor validation
+  // Distractor validation — null means "keep existing", skip validation
   const distractors = outputRow.d
-  if (!Array.isArray(distractors)) {
+  if (distractors === null || distractors === undefined) {
+    // null = keep existing distractors, no validation needed
+  } else if (!Array.isArray(distractors)) {
     reasons.push('distractors field is not an array')
   } else {
     if (distractors.length < 5) {

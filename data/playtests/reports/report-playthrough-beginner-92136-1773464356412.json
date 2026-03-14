@@ -1,0 +1,106 @@
+{
+  "playthroughId": "playthrough-beginner-92136-1773464356412",
+  "profileId": "beginner",
+  "analyzedAt": "2026-03-14T05:02:32.014Z",
+  "issueCount": 5,
+  "issues": [
+    {
+      "id": "issue-playthrough-beginner-92136-1773464356412-001",
+      "playthroughId": "playthrough-beginner-92136-1773464356412",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 9 (64% HP) on floor 2",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          152
+        ],
+        "floor": 2,
+        "encounter": 1,
+        "metric": "damage=9, ratio=0.643"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92136",
+        "Floor 2 Encounter 1"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-beginner-92136-1773464356412-002",
+      "playthroughId": "playthrough-beginner-92136-1773464356412",
+      "profileId": "beginner",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 6 (60% HP) on floor 2",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          166
+        ],
+        "floor": 2,
+        "encounter": 2,
+        "metric": "damage=6, ratio=0.600"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92136",
+        "Floor 2 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-beginner-92136-1773464356412-003",
+      "playthroughId": "playthrough-beginner-92136-1773464356412",
+      "profileId": "beginner",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 2 encounter 2",
+      "description": "Player defeat occurred on early floor segment.",
+      "evidence": {
+        "floor": 2,
+        "encounter": 2,
+        "metric": "enemy=mushroom_sovereign, accuracy=0.571"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92136"
+      ],
+      "suggestedFix": "Soften early-floor enemy scaling."
+    },
+    {
+      "id": "issue-playthrough-beginner-92136-1773464356412-004",
+      "playthroughId": "playthrough-beginner-92136-1773464356412",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92136"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-beginner-92136-1773464356412-005",
+      "playthroughId": "playthrough-beginner-92136-1773464356412",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 92136"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

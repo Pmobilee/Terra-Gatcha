@@ -1,0 +1,164 @@
+{
+  "playthroughId": "playthrough-impatient-92009-1773463804305",
+  "profileId": "impatient",
+  "analyzedAt": "2026-03-14T05:02:31.936Z",
+  "issueCount": 8,
+  "issues": [
+    {
+      "id": "issue-playthrough-impatient-92009-1773463804305-001",
+      "playthroughId": "playthrough-impatient-92009-1773463804305",
+      "profileId": "impatient",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 14 (52% HP) on floor 3",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          173
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damage=14, ratio=0.519"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92009",
+        "Floor 3 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-impatient-92009-1773463804305-002",
+      "playthroughId": "playthrough-impatient-92009-1773463804305",
+      "profileId": "impatient",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 6 (67% HP) on floor 3",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          177
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damage=6, ratio=0.667"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92009",
+        "Floor 3 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-impatient-92009-1773463804305-003",
+      "playthroughId": "playthrough-impatient-92009-1773463804305",
+      "profileId": "impatient",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 18 (100% HP) on floor 3",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          189
+        ],
+        "floor": 3,
+        "encounter": 2,
+        "metric": "damage=18, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92009",
+        "Floor 3 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-impatient-92009-1773463804305-004",
+      "playthroughId": "playthrough-impatient-92009-1773463804305",
+      "profileId": "impatient",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 3 encounter 2",
+      "description": "Player defeat occurred on early floor segment.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "enemy=shadow_hydra, accuracy=0.667"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92009"
+      ],
+      "suggestedFix": "Soften early-floor enemy scaling."
+    },
+    {
+      "id": "issue-playthrough-impatient-92009-1773463804305-005",
+      "playthroughId": "playthrough-impatient-92009-1773463804305",
+      "profileId": "impatient",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 2 encounter 1 (10 vs 3.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 2,
+        "encounter": 1,
+        "metric": "turns=10, prevAvg=3.67"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92009"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-impatient-92009-1773463804305-006",
+      "playthroughId": "playthrough-impatient-92009-1773463804305",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92009"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-impatient-92009-1773463804305-007",
+      "playthroughId": "playthrough-impatient-92009-1773463804305",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92009"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-impatient-92009-1773463804305-008",
+      "playthroughId": "playthrough-impatient-92009-1773463804305",
+      "profileId": "impatient",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: impatient, Seed: 92009"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

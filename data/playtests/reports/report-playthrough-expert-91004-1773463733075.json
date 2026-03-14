@@ -1,0 +1,120 @@
+{
+  "playthroughId": "playthrough-expert-91004-1773463733075",
+  "profileId": "expert",
+  "analyzedAt": "2026-03-14T04:48:53.140Z",
+  "issueCount": 6,
+  "issues": [
+    {
+      "id": "issue-playthrough-expert-91004-1773463733075-001",
+      "playthroughId": "playthrough-expert-91004-1773463733075",
+      "profileId": "expert",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 17 (100% HP) on floor 10",
+      "description": "Single enemy turn exceeded 50% current HP damage threshold.",
+      "evidence": {
+        "turnSeqs": [
+          486
+        ],
+        "floor": 10,
+        "encounter": 2,
+        "metric": "damage=17, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 91004",
+        "Floor 10 Encounter 2"
+      ],
+      "suggestedFix": "Reduce enemy burst damage scaling or cap extreme intents."
+    },
+    {
+      "id": "issue-playthrough-expert-91004-1773463733075-002",
+      "playthroughId": "playthrough-expert-91004-1773463733075",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 3 encounter 2 (9 vs 2.3)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 3,
+        "encounter": 2,
+        "metric": "turns=9, prevAvg=2.33"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 91004"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-expert-91004-1773463733075-003",
+      "playthroughId": "playthrough-expert-91004-1773463733075",
+      "profileId": "expert",
+      "category": "progression_difficulty_spike",
+      "severity": "high",
+      "title": "Turns spike on floor 9 encounter 2 (8 vs 3.7)",
+      "description": "Encounter turns exceeded 2x previous floor average.",
+      "evidence": {
+        "floor": 9,
+        "encounter": 2,
+        "metric": "turns=8, prevAvg=3.67"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 91004"
+      ],
+      "suggestedFix": "Smooth progression curve between floors."
+    },
+    {
+      "id": "issue-playthrough-expert-91004-1773463733075-004",
+      "playthroughId": "playthrough-expert-91004-1773463733075",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 91004"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-expert-91004-1773463733075-005",
+      "playthroughId": "playthrough-expert-91004-1773463733075",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 91004"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-expert-91004-1773463733075-006",
+      "playthroughId": "playthrough-expert-91004-1773463733075",
+      "profileId": "expert",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: expert, Seed: 91004"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

@@ -429,9 +429,11 @@
       </select>
       <select id="filter-difficulty" onchange="renderIssues()">
         <option value="all">All Difficulty Modes</option>
-        <option value="story">Story</option>
-        <option value="standard">Standard</option>
-        <option value="expert">Expert</option>
+        <option value="normal">Normal</option>
+        <option value="relaxed">Relaxed</option>
+        <option value="standard">Standard (Legacy)</option>
+        <option value="story">Story (Legacy)</option>
+        <option value="expert">Expert (Legacy)</option>
       </select>
       <select id="filter-archetype" onchange="renderIssues()">
         <option value="all">All Archetypes</option>
@@ -505,6 +507,16 @@
   let logsData = [];
   let reportsData = [];
 
+  function getIssueProfiles(issue) {
+    return issue.affectedProfiles || issue.profiles || [];
+  }
+
+  function getIssueKey(issue) {
+    if (issue.canonicalId) return issue.canonicalId;
+    if (issue.id) return issue.id;
+    return (issue.category || 'issue') + '::' + (issue.title || '');
+  }
+
   async function fetchLeaderboard() {
     try {
       const res = await fetch('/api/playtest/leaderboard');
@@ -564,7 +576,7 @@
     const current = sel.value;
     const profiles = new Set();
     (leaderboardData.issues || []).forEach(issue => {
-      (issue.profiles || []).forEach(p => profiles.add(p));
+      getIssueProfiles(issue).forEach(p => profiles.add(p));
     });
     const sorted = [...profiles].sort();
     sel.innerHTML = '<option value="all">All Profiles</option>';
@@ -593,7 +605,7 @@
       issues = issues.filter(i => i.status === statusFilter);
     }
     if (profileFilter !== 'all') {
-      issues = issues.filter(i => (i.profiles || []).includes(profileFilter));
+      issues = issues.filter(i => getIssueProfiles(i).includes(profileFilter));
     }
     if (diffFilter !== 'all') {
       issues = issues.filter(i => i.affectedSettings && i.affectedSettings.difficultyModes && i.affectedSettings.difficultyModes.includes(diffFilter));
@@ -620,10 +632,11 @@
       const rank = idx + 1;
       const sev = issue.severity || 'low';
       const status = issue.status || 'open';
-      const profiles = (issue.profiles || []).join(', ') || '--';
+      const issueKey = getIssueKey(issue);
+      const profiles = getIssueProfiles(issue).join(', ') || '--';
       const freq = issue.frequency ?? '--';
       const score = typeof issue.score === 'number' ? issue.score.toFixed(1) : '--';
-      const isExpanded = expandedIssueId === issue.id;
+      const isExpanded = expandedIssueId === issueKey;
 
       // Build context tags from affectedSettings
       let ctxHtml = '';
@@ -640,7 +653,7 @@
       }
       if (!ctxHtml) ctxHtml = '<span style="color:#64748b;">--</span>';
 
-      html += '<tr onclick="toggleIssueDetail(\'' + escapeAttr(issue.id) + '\')" class="' + (isExpanded ? 'expanded-parent' : '') + '">';
+      html += '<tr onclick="toggleIssueDetail(\'' + escapeAttr(issueKey) + '\')" class="' + (isExpanded ? 'expanded-parent' : '') + '">';
       html += '<td>' + rank + '</td>';
       html += '<td><span class="badge badge-' + sev + '">' + sev + '</span></td>';
       html += '<td style="color:#f1f5f9;font-family:system-ui,sans-serif;">' + escapeHtml(issue.title || 'Untitled') + '</td>';
@@ -688,6 +701,18 @@
       h += '</ul></div>';
     }
 
+    if (issue.sourceReports && issue.sourceReports.length > 0) {
+      h += '<div class="detail-section"><h4>Source Runs</h4><ul>';
+      issue.sourceReports.forEach(id => {
+        const safeId = escapeHtml(String(id));
+        h += '<li><code>' + safeId + '</code> ';
+        h += '[<a href=\"/api/playtest/report/' + safeId + '\" target=\"_blank\" rel=\"noopener\">report</a>] ';
+        h += '[<a href=\"/api/playtest/log/' + safeId + '\" target=\"_blank\" rel=\"noopener\">log</a>]';
+        h += '</li>';
+      });
+      h += '</ul></div>';
+    }
+
     if (issue.suggestedFix) {
       h += '<div class="detail-section"><h4>Suggested Fix</h4><p>' + escapeHtml(issue.suggestedFix) + '</p></div>';
     }
@@ -696,7 +721,7 @@
     if (issue.runBreakdown && issue.runBreakdown.length > 0) {
       h += '<div class="detail-section"><h4>Run Breakdown</h4>';
       h += '<table class="breakdown-table"><thead><tr>';
-      h += '<th>Profile</th><th>Seed</th><th>Mode</th><th>Archetype</th><th>Result</th><th>Floor</th>';
+      h += '<th>Profile</th><th>Seed</th><th>Mode</th><th>Archetype</th><th>Domain</th><th>Result</th><th>Floor</th><th>Accuracy%</th><th>Max Combo</th>';
       h += '</tr></thead><tbody>';
       issue.runBreakdown.forEach(rb => {
         const resultClass = rb.result === 'victory' ? 'result-victory' : rb.result === 'defeat' ? 'result-defeat' : rb.result === 'cash_out' ? 'result-cash_out' : '';
@@ -705,8 +730,11 @@
         h += '<td>' + escapeHtml(rb.seed != null ? String(rb.seed) : '--') + '</td>';
         h += '<td><span class="ctx-tag ctx-tag-mode">' + escapeHtml(rb.difficultyMode || '--') + '</span></td>';
         h += '<td><span class="ctx-tag ctx-tag-archetype">' + escapeHtml(rb.archetype || '--') + '</span></td>';
+        h += '<td><span class="ctx-tag ctx-tag-domain">' + escapeHtml(rb.domain || '--') + '</span></td>';
         h += '<td class="' + resultClass + '">' + escapeHtml(rb.result || '--') + '</td>';
         h += '<td>' + (rb.floor != null ? rb.floor : '--') + '</td>';
+        h += '<td>' + (rb.accuracy != null ? rb.accuracy : '--') + '</td>';
+        h += '<td>' + (rb.maxCombo != null ? rb.maxCombo : '--') + '</td>';
         h += '</tr>';
       });
       h += '</tbody></table></div>';

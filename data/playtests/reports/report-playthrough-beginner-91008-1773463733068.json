@@ -1,0 +1,134 @@
+{
+  "playthroughId": "playthrough-beginner-91008-1773463733068",
+  "profileId": "beginner",
+  "analyzedAt": "2026-03-14T04:48:53.142Z",
+  "issueCount": 7,
+  "issues": [
+    {
+      "id": "issue-playthrough-beginner-91008-1773463733068-001",
+      "playthroughId": "playthrough-beginner-91008-1773463733068",
+      "profileId": "beginner",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 1 encounter 0",
+      "description": "Player defeat occurred on early floor segment.",
+      "evidence": {
+        "floor": 1,
+        "encounter": 0,
+        "metric": "enemy=geode_beetle, accuracy=0.455"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 91008"
+      ],
+      "suggestedFix": "Soften early-floor enemy scaling."
+    },
+    {
+      "id": "issue-playthrough-beginner-91008-1773463733068-002",
+      "playthroughId": "playthrough-beginner-91008-1773463733068",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 91008"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-beginner-91008-1773463733068-003",
+      "playthroughId": "playthrough-beginner-91008-1773463733068",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'buff' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "buff=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 91008"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-beginner-91008-1773463733068-004",
+      "playthroughId": "playthrough-beginner-91008-1773463733068",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'debuff' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "debuff=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 91008"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-beginner-91008-1773463733068-005",
+      "playthroughId": "playthrough-beginner-91008-1773463733068",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'utility' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "utility=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 91008"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-beginner-91008-1773463733068-006",
+      "playthroughId": "playthrough-beginner-91008-1773463733068",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 91008"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    },
+    {
+      "id": "issue-playthrough-beginner-91008-1773463733068-007",
+      "playthroughId": "playthrough-beginner-91008-1773463733068",
+      "profileId": "beginner",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'wild' never played in run",
+      "description": "Card type had zero play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "wild=0"
+      },
+      "reproductionSteps": [
+        "Profile: beginner, Seed: 91008"
+      ],
+      "suggestedFix": "Review deck distribution and role relevance."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "playthroughId": "playthrough-struggling-9005-1773462284828",
+  "profileId": "struggling",
+  "analyzedAt": "2026-03-14T04:26:35.317Z",
+  "issueCount": 4,
+  "engagementSummary": null,
+  "issues": [
+    {
+      "id": "issue-playthrough-struggling-9005-1773462284828-001",
+      "playthroughId": "playthrough-struggling-9005-1773462284828",
+      "profileId": "struggling",
+      "category": "balance_damage_spike",
+      "severity": "high",
+      "title": "Enemy hit for 21 (100% HP) on floor 2",
+      "description": "Enemy dealt 21 damage in one enemy turn (seq 157), which is 100% of player HP (21) before the hit.",
+      "evidence": {
+        "turnSeqs": [
+          157
+        ],
+        "floor": 2,
+        "encounter": 2,
+        "metric": "damage=21, hpBefore=21, ratio=1.000"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 9005",
+        "Floor 2, Encounter 2"
+      ],
+      "suggestedFix": "Cap spike damage or scale down high-roll enemy intents."
+    },
+    {
+      "id": "issue-playthrough-struggling-9005-1773462284828-002",
+      "playthroughId": "playthrough-struggling-9005-1773462284828",
+      "profileId": "struggling",
+      "category": "balance_too_hard",
+      "severity": "medium",
+      "title": "Early defeat on floor 2 encounter 2",
+      "description": "Player lost on early floor 2 against tectonic_titan with accuracy 22%.",
+      "evidence": {
+        "floor": 2,
+        "encounter": 2,
+        "metric": "enemy=tectonic_titan, accuracy=0.222, dmgTaken=66"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 9005",
+        "Floor 2, Encounter 2"
+      ],
+      "suggestedFix": "Soften early enemy scaling or improve assist recovery."
+    },
+    {
+      "id": "issue-playthrough-struggling-9005-1773462284828-003",
+      "playthroughId": "playthrough-struggling-9005-1773462284828",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'heal' never played in run",
+      "description": "One card type had zero actual play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "heal=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 9005"
+      ],
+      "suggestedFix": "Review deck composition and type exposure balance."
+    },
+    {
+      "id": "issue-playthrough-struggling-9005-1773462284828-004",
+      "playthroughId": "playthrough-struggling-9005-1773462284828",
+      "profileId": "struggling",
+      "category": "mechanic_unused",
+      "severity": "low",
+      "title": "Card type 'regen' never played in run",
+      "description": "One card type had zero actual play events in this run.",
+      "evidence": {
+        "floor": null,
+        "encounter": null,
+        "metric": "regen=0"
+      },
+      "reproductionSteps": [
+        "Profile: struggling, Seed: 9005"
+      ],
+      "suggestedFix": "Review deck composition and type exposure balance."
+    }
+  ]
+}
